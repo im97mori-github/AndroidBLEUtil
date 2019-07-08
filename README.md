@@ -3,6 +3,21 @@
 ## Prerequire
 minSdkVersion 19
 
+## Download
+project/build.gradle
+
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://github.com/im97mori-github/maven/raw/master" }
+    }
+
+project/module/build.gradle
+
+    dependencies {
+        implementation 'org.im97mori:ad:1.0.0'
+    }
+
 ## How to use
 for Manufacturer Specific Data (data type 0xff)
 
