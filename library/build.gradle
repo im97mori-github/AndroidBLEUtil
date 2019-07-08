@@ -7,7 +7,7 @@ task setupMavenRepositoryUrl {
     MAVEN_REPOSITORY_URL = System.getenv('MAVEN_REPOSITORY_URL')
 }
 
-def VERSION_NAME = '1.0.0'
+def VERSION_NAME = '1.1.0'
 
 android {
     compileSdkVersion 28

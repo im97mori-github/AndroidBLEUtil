@@ -167,34 +167,64 @@ public class AdvertisingDataParser {
         private List<AbstractAdvertisingData> mResultList;
 
         /**
-         * Incomplete List of 16-bit Service Class UUIDs
+         * Latest Incomplete List of 16-bit Service Class UUIDs
          */
         private IncompleteListOf16BitServiceUUIDs mIncompleteListOf16BitServiceUUIDs;
 
         /**
-         * Complete List of 16-bit Service Class UUIDs
+         * All Incomplete List of 16-bit Service Class UUIDs List
+         */
+        private final List<IncompleteListOf16BitServiceUUIDs> mIncompleteListOf16BitServiceUUIDsList = new ArrayList<>();
+
+        /**
+         * Latest Complete List of 16-bit Service Class UUIDs
          */
         private CompleteListOf16BitServiceUUIDs mCompleteListOf16BitServiceUUIDs;
 
         /**
-         * Incomplete List of 32-bit Service Class UUIDs
+         * All Complete List of 16-bit Service Class UUIDs List
+         */
+        private final List<CompleteListOf16BitServiceUUIDs> mCompleteListOf16BitServiceUUIDsList = new ArrayList<>();
+
+        /**
+         * Latest Incomplete List of 32-bit Service Class UUIDs
          */
         private IncompleteListOf32BitServiceUUIDs mIncompleteListOf32BitServiceUUIDs;
 
         /**
-         * Complete List of 32-bit Service Class UUIDs
+         * All Incomplete List of 32-bit Service Class UUIDs List
+         */
+        private final List<IncompleteListOf32BitServiceUUIDs> mIncompleteListOf32BitServiceUUIDsList = new ArrayList<>();
+
+        /**
+         * Latest Complete List of 32-bit Service Class UUIDs
          */
         private CompleteListOf32BitServiceUUIDs mCompleteListOf32BitServiceUUIDs;
 
         /**
-         * Incomplete List of 128-bit Service Class UUIDs
+         * All Complete List of 32-bit Service Class UUIDs List
+         */
+        private final List<CompleteListOf32BitServiceUUIDs> mCompleteListOf32BitServiceUUIDsList = new ArrayList<>();
+
+        /**
+         * Latest Incomplete List of 128-bit Service Class UUIDs
          */
         private IncompleteListOf128BitServiceUUIDs mIncompleteListOf128BitServiceUUIDs;
 
         /**
-         * Complete List of 128-bit Service Class UUIDs
+         * All Incomplete List of 128-bit Service Class UUIDs List
+         */
+        private final List<IncompleteListOf128BitServiceUUIDs> mIncompleteListOf128BitServiceUUIDsList = new ArrayList<>();
+
+        /**
+         * Latest Complete List of 128-bit Service Class UUIDs
          */
         private CompleteListOf128BitServiceUUIDs mCompleteListOf128BitServiceUUIDs;
+
+        /**
+         * All Complete List of 128-bit Service Class UUIDs List
+         */
+        private final List<CompleteListOf128BitServiceUUIDs> mCompleteListOf128BitServiceUUIDsList = new ArrayList<>();
 
         /**
          * Shortened Local Name
@@ -212,49 +242,94 @@ public class AdvertisingDataParser {
         private Flags mFlags;
 
         /**
-         * Manufacturer Specific Data
+         * Latest Manufacturer Specific Data
          */
         private ManufacturerSpecificData mManufacturerSpecificData;
 
         /**
-         * Tx Power Level
+         * All Manufacturer Specific Datas List
+         */
+        private final List<ManufacturerSpecificData> mManufacturerSpecificDataList = new ArrayList<>();
+
+        /**
+         * Latest Tx Power Level
          */
         private TxPowerLevel mTxPowerLevel;
 
         /**
-         * Slave Connection Interval Range
+         * All Tx Power Level List
+         */
+        private final List<TxPowerLevel> mTxPowerLevelList = new ArrayList<>();
+
+        /**
+         * Latest Slave Connection Interval Range
          */
         private SlaveConnectionIntervalRange mSlaveConnectionIntervalRange;
 
         /**
-         * List of 16-bit Service Solicitation UUIDs
+         * All Slave Connection Interval Range List
+         */
+        private final List<SlaveConnectionIntervalRange> mSlaveConnectionIntervalRangeList = new ArrayList<>();
+
+        /**
+         * Latest List of 16-bit Service Solicitation UUIDs
          */
         private ListOf16BitServiceSolicitationUUIDs mListOf16BitServiceSolicitationUUIDs;
 
         /**
-         * List of 32-bit Service Solicitation UUIDs
+         * All List of 16-bit Service Solicitation UUIDs List
+         */
+        private final List<ListOf16BitServiceSolicitationUUIDs> mListOf16BitServiceSolicitationUUIDsList = new ArrayList<>();
+
+        /**
+         * Latest List of 32-bit Service Solicitation UUIDs
          */
         private ListOf32BitServiceSolicitationUUIDs mListOf32BitServiceSolicitationUUIDs;
 
         /**
-         * List of 128-bit Service Solicitation UUIDs
+         * All List of 32-bit Service Solicitation UUIDs List
+         */
+        private final List<ListOf32BitServiceSolicitationUUIDs> mListOf32BitServiceSolicitationUUIDsList = new ArrayList<>();
+
+        /**
+         * Latest List of 128-bit Service Solicitation UUIDs
          */
         private ListOf128BitServiceSolicitationUUIDs mListOf128BitServiceSolicitationUUIDs;
 
         /**
-         * Service Data - 16-bit UUID
+         * All List of 128-bit Service Solicitation UUIDs List
+         */
+        private final List<ListOf128BitServiceSolicitationUUIDs> mListOf128BitServiceSolicitationUUIDsList = new ArrayList<>();
+
+        /**
+         * Latest Service Data - 16-bit UUID
          */
         private ServiceData16BitUUID mServiceData16BitUUID;
 
         /**
-         * Service Data - 32-bit UUID
+         * All Service Data - 16-bit UUID List
+         */
+        private final List<ServiceData16BitUUID> mServiceData16BitUUIDList = new ArrayList<>();
+
+        /**
+         * Latest Service Data - 32-bit UUID
          */
         private ServiceData32BitUUID mServiceData32BitUUID;
 
         /**
-         * Service Data - 128-bit UUID
+         * All Service Data - 32-bit UUID List
+         */
+        private final List<ServiceData32BitUUID> mServiceData32BitUUIDList = new ArrayList<>();
+
+        /**
+         * Latest Service Data - 128-bit UUID
          */
         private ServiceData128BitUUID mServiceData128BitUUID;
+
+        /**
+         * All Service Data - 128-bit UUID List
+         */
+        private final List<ServiceData128BitUUID> mServiceData128BitUUIDList = new ArrayList<>();
 
         /**
          * Appearance
@@ -277,9 +352,14 @@ public class AdvertisingDataParser {
         private AdvertisingInterval mAdvertisingInterval;
 
         /**
-         * URI
+         * Latest URI
          */
         private UniformRsourceIdentifier mUniformRsourceIdentifier;
+
+        /**
+         * All URI List
+         */
+        private final List<UniformRsourceIdentifier> mUniformRsourceIdentifierList = new ArrayList<>();
 
         /**
          * LE Supported Features
@@ -299,45 +379,87 @@ public class AdvertisingDataParser {
         }
 
         /**
-         * @return Incomplete List of 16-bit Service Class UUIDs
+         * @return Latest Incomplete List of 16-bit Service Class UUIDs
          */
         public IncompleteListOf16BitServiceUUIDs getIncompleteListOf16BitServiceUUIDs() {
             return mIncompleteListOf16BitServiceUUIDs;
         }
 
         /**
-         * @return Complete List of 16-bit Service Class UUIDs
+         * @return All Incomplete List of 16-bit Service Class UUIDs List
+         */
+        public List<IncompleteListOf16BitServiceUUIDs> getIncompleteListOf16BitServiceUUIDsList() {
+            return mIncompleteListOf16BitServiceUUIDsList;
+        }
+
+        /**
+         * @return Latest Complete List of 16-bit Service Class UUIDs
          */
         public CompleteListOf16BitServiceUUIDs getCompleteListOf16BitServiceUUIDs() {
             return mCompleteListOf16BitServiceUUIDs;
         }
 
         /**
-         * @return Incomplete List of 32-bit Service Class UUIDs
+         * @return All Complete List of 16-bit Service Class UUIDs List
+         */
+        public List<CompleteListOf16BitServiceUUIDs> getCompleteListOf16BitServiceUUIDsList() {
+            return mCompleteListOf16BitServiceUUIDsList;
+        }
+
+        /**
+         * @return Latest Incomplete List of 32-bit Service Class UUIDs
          */
         public IncompleteListOf32BitServiceUUIDs getIncompleteListOf32BitServiceUUIDs() {
             return mIncompleteListOf32BitServiceUUIDs;
         }
 
         /**
-         * @return Complete List of 32-bit Service Class UUIDs
+         * @return All Incomplete List of 32-bit Service Class UUIDs List
+         */
+        public List<IncompleteListOf32BitServiceUUIDs> getIncompleteListOf32BitServiceUUIDsList() {
+            return mIncompleteListOf32BitServiceUUIDsList;
+        }
+
+        /**
+         * @return Latest Complete List of 32-bit Service Class UUIDs
          */
         public CompleteListOf32BitServiceUUIDs getCompleteListOf32BitServiceUUIDs() {
             return mCompleteListOf32BitServiceUUIDs;
         }
 
         /**
-         * @return Incomplete List of 128-bit Service Class UUIDs
+         * @return All Complete List of 32-bit Service Class UUIDs List
+         */
+        public List<CompleteListOf32BitServiceUUIDs> getCompleteListOf32BitServiceUUIDsList() {
+            return mCompleteListOf32BitServiceUUIDsList;
+        }
+
+        /**
+         * @return Latest Incomplete List of 128-bit Service Class UUIDs
          */
         public IncompleteListOf128BitServiceUUIDs getIncompleteListOf128BitServiceUUIDs() {
             return mIncompleteListOf128BitServiceUUIDs;
         }
 
         /**
-         * @return Complete List of 128-bit Service Class UUIDs
+         * @return All Incomplete List of 128-bit Service Class UUIDs List
+         */
+        public List<IncompleteListOf128BitServiceUUIDs> getIncompleteListOf128BitServiceUUIDsList() {
+            return mIncompleteListOf128BitServiceUUIDsList;
+        }
+
+        /**
+         * @return Latest Complete List of 128-bit Service Class UUIDs
          */
         public CompleteListOf128BitServiceUUIDs getCompleteListOf128BitServiceUUIDs() {
             return mCompleteListOf128BitServiceUUIDs;
+        }
+
+        /**
+         * @return All Complete List of 128-bit Service Class UUIDs List
+         */
+        public List<CompleteListOf128BitServiceUUIDs> getCompleteListOf128BitServiceUUIDsList() {
+            return mCompleteListOf128BitServiceUUIDsList;
         }
 
         /**
@@ -362,66 +484,129 @@ public class AdvertisingDataParser {
         }
 
         /**
-         * @return Manufacturer Specific Data
+         * @return Latest Manufacturer Specific Data
          */
         public ManufacturerSpecificData getManufacturerSpecificData() {
             return mManufacturerSpecificData;
         }
 
         /**
-         * @return Tx Power Level
+         * @return All Manufacturer Specific Datas List
+         */
+        public List<ManufacturerSpecificData> getManufacturerSpecificDataList() {
+            return mManufacturerSpecificDataList;
+        }
+
+        /**
+         * @return Latest Tx Power Level
          */
         public TxPowerLevel getTxPowerLevel() {
             return mTxPowerLevel;
         }
 
         /**
-         * @return Slave Connection Interval Range
+         * @return All Tx Power Level List
+         */
+        public List<TxPowerLevel> getTxPowerLevelList() {
+            return mTxPowerLevelList;
+        }
+
+        /**
+         * @return Latest Slave Connection Interval Range
          */
         public SlaveConnectionIntervalRange getSlaveConnectionIntervalRange() {
             return mSlaveConnectionIntervalRange;
         }
 
         /**
-         * @return List of 16-bit Service Solicitation UUIDs
+         * @return All All Slave Connection Interval Range List List
+         */
+        public List<SlaveConnectionIntervalRange> getSlaveConnectionIntervalRangeList() {
+            return mSlaveConnectionIntervalRangeList;
+        }
+
+        /**
+         * @return Latest List of 16-bit Service Solicitation UUIDs
          */
         public ListOf16BitServiceSolicitationUUIDs getListOf16BitServiceSolicitationUUIDs() {
             return mListOf16BitServiceSolicitationUUIDs;
         }
 
         /**
-         * @return List of 32-bit Service Solicitation UUIDs
+         * @return All List of 16-bit Service Solicitation UUIDs List
+         */
+        public List<ListOf16BitServiceSolicitationUUIDs> getListOf16BitServiceSolicitationUUIDsList() {
+            return mListOf16BitServiceSolicitationUUIDsList;
+        }
+
+        /**
+         * @return Latest List of 32-bit Service Solicitation UUIDs
          */
         public ListOf32BitServiceSolicitationUUIDs getListOf32BitServiceSolicitationUUIDs() {
             return mListOf32BitServiceSolicitationUUIDs;
         }
 
         /**
-         * @return List of 128-bit Service Solicitation UUIDs
+         * @return All List of 16-bit Service Solicitation UUIDs List
+         */
+        public List<ListOf32BitServiceSolicitationUUIDs> getListOf32BitServiceSolicitationUUIDsList() {
+            return mListOf32BitServiceSolicitationUUIDsList;
+        }
+
+        /**
+         * @return Latest List of 128-bit Service Solicitation UUIDs
          */
         public ListOf128BitServiceSolicitationUUIDs getListOf128BitServiceSolicitationUUIDs() {
             return mListOf128BitServiceSolicitationUUIDs;
         }
 
         /**
-         * @return Service Data - 16-bit UUID
+         * @return All List of 128-bit Service Solicitation UUIDs List
+         */
+        public List<ListOf128BitServiceSolicitationUUIDs> getListOf128BitServiceSolicitationUUIDsList() {
+            return mListOf128BitServiceSolicitationUUIDsList;
+        }
+
+        /**
+         * @return Latest Service Data - 16-bit UUID
          */
         public ServiceData16BitUUID getServiceData16BitUUID() {
             return mServiceData16BitUUID;
         }
 
         /**
-         * @return Service Data - 32-bit UUID
+         * @return All Service Data - 16-bit UUID List
+         */
+        public List<ServiceData16BitUUID> getServiceData16BitUUIDList() {
+            return mServiceData16BitUUIDList;
+        }
+
+        /**
+         * @return Latest Service Data - 32-bit UUID
          */
         public ServiceData32BitUUID getServiceData32BitUUID() {
             return mServiceData32BitUUID;
         }
 
         /**
-         * @return Service Data - 128-bit UUID
+         * @return All Service Data - 32-bit UUID List
+         */
+        public List<ServiceData32BitUUID> getServiceData32BitUUIDList() {
+            return mServiceData32BitUUIDList;
+        }
+
+        /**
+         * @return Latest Service Data - 128-bit UUID
          */
         public ServiceData128BitUUID getServiceData128BitUUID() {
             return mServiceData128BitUUID;
+        }
+
+        /**
+         * @return All Service Data - 128-bit UUID List
+         */
+        public List<ServiceData128BitUUID> getServiceData128BitUUIDList() {
+            return mServiceData128BitUUIDList;
         }
 
         /**
@@ -453,10 +638,17 @@ public class AdvertisingDataParser {
         }
 
         /**
-         * @return URI
+         * @return Latest URI
          */
         public UniformRsourceIdentifier getUniformRsourceIdentifier() {
             return mUniformRsourceIdentifier;
+        }
+
+        /**
+         * @return All URI List
+         */
+        public List<UniformRsourceIdentifier> getUniformRsourceIdentifierList() {
+            return mUniformRsourceIdentifierList;
         }
 
         /**
@@ -515,21 +707,27 @@ public class AdvertisingDataParser {
                 if (mTargetDataTypeSet.contains(dataType)) {
                     if (DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS == dataType) {
                         result.mIncompleteListOf16BitServiceUUIDs = new IncompleteListOf16BitServiceUUIDs(data, i, dataLength);
+                        result.mIncompleteListOf16BitServiceUUIDsList.add(result.mIncompleteListOf16BitServiceUUIDs);
                         result.mResultList.add(result.mIncompleteListOf16BitServiceUUIDs);
                     } else if (DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS == dataType) {
                         result.mCompleteListOf16BitServiceUUIDs = new CompleteListOf16BitServiceUUIDs(data, i, dataLength);
+                        result.mCompleteListOf16BitServiceUUIDsList.add(result.mCompleteListOf16BitServiceUUIDs);
                         result.mResultList.add(result.mCompleteListOf16BitServiceUUIDs);
                     } else if (DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS == dataType) {
                         result.mIncompleteListOf32BitServiceUUIDs = new IncompleteListOf32BitServiceUUIDs(data, i, dataLength);
+                        result.mIncompleteListOf32BitServiceUUIDsList.add(result.mIncompleteListOf32BitServiceUUIDs);
                         result.mResultList.add(result.mIncompleteListOf32BitServiceUUIDs);
                     } else if (DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS == dataType) {
                         result.mCompleteListOf32BitServiceUUIDs = new CompleteListOf32BitServiceUUIDs(data, i, dataLength);
+                        result.mCompleteListOf32BitServiceUUIDsList.add(result.mCompleteListOf32BitServiceUUIDs);
                         result.mResultList.add(result.mCompleteListOf32BitServiceUUIDs);
                     } else if (DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS == dataType) {
                         result.mIncompleteListOf128BitServiceUUIDs = new IncompleteListOf128BitServiceUUIDs(data, i, dataLength);
+                        result.mIncompleteListOf128BitServiceUUIDsList.add(result.mIncompleteListOf128BitServiceUUIDs);
                         result.mResultList.add(result.mIncompleteListOf128BitServiceUUIDs);
                     } else if (DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS == dataType) {
                         result.mCompleteListOf128BitServiceUUIDs = new CompleteListOf128BitServiceUUIDs(data, i, dataLength);
+                        result.mCompleteListOf128BitServiceUUIDsList.add(result.mCompleteListOf128BitServiceUUIDs);
                         result.mResultList.add(result.mCompleteListOf128BitServiceUUIDs);
                     } else if (DATA_TYPE_SHORTENED_LOCAL_NAME == dataType) {
                         result.mShortenedLocalName = new ShortenedLocalName(data, i, dataLength);
@@ -542,30 +740,39 @@ public class AdvertisingDataParser {
                         result.mResultList.add(result.mFlags);
                     } else if (DATA_TYPE_MANUFACTURER_SPECIFIC_DATA == dataType) {
                         result.mManufacturerSpecificData = new ManufacturerSpecificData(data, i, dataLength);
+                        result.mManufacturerSpecificDataList.add(result.mManufacturerSpecificData);
                         result.mResultList.add(result.mManufacturerSpecificData);
                     } else if (DATA_TYPE_TX_POWER_LEVEL == dataType) {
                         result.mTxPowerLevel = new TxPowerLevel(data, i, dataLength);
+                        result.mTxPowerLevelList.add(result.mTxPowerLevel);
                         result.mResultList.add(result.mTxPowerLevel);
                     } else if (DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE == dataType) {
                         result.mSlaveConnectionIntervalRange = new SlaveConnectionIntervalRange(data, i, dataLength);
+                        result.mSlaveConnectionIntervalRangeList.add(result.mSlaveConnectionIntervalRange);
                         result.mResultList.add(result.mSlaveConnectionIntervalRange);
                     } else if (DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS == dataType) {
                         result.mListOf16BitServiceSolicitationUUIDs = new ListOf16BitServiceSolicitationUUIDs(data, i, dataLength);
+                        result.mListOf16BitServiceSolicitationUUIDsList.add(result.mListOf16BitServiceSolicitationUUIDs);
                         result.mResultList.add(result.mListOf16BitServiceSolicitationUUIDs);
                     } else if (DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS == dataType) {
                         result.mListOf32BitServiceSolicitationUUIDs = new ListOf32BitServiceSolicitationUUIDs(data, i, dataLength);
+                        result.mListOf32BitServiceSolicitationUUIDsList.add(result.mListOf32BitServiceSolicitationUUIDs);
                         result.mResultList.add(result.mListOf32BitServiceSolicitationUUIDs);
                     } else if (DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS == dataType) {
                         result.mListOf128BitServiceSolicitationUUIDs = new ListOf128BitServiceSolicitationUUIDs(data, i, dataLength);
+                        result.mListOf128BitServiceSolicitationUUIDsList.add(result.mListOf128BitServiceSolicitationUUIDs);
                         result.mResultList.add(result.mListOf128BitServiceSolicitationUUIDs);
                     } else if (DATA_TYPE_SERVICE_DATA_16_BIT_UUID == dataType) {
                         result.mServiceData16BitUUID = new ServiceData16BitUUID(data, i, dataLength);
+                        result.mServiceData16BitUUIDList.add(result.mServiceData16BitUUID);
                         result.mResultList.add(result.mServiceData16BitUUID);
                     } else if (DATA_TYPE_SERVICE_DATA_32_BIT_UUID == dataType) {
                         result.mServiceData32BitUUID = new ServiceData32BitUUID(data, i, dataLength);
+                        result.mServiceData32BitUUIDList.add(result.mServiceData32BitUUID);
                         result.mResultList.add(result.mServiceData32BitUUID);
                     } else if (DATA_TYPE_SERVICE_DATA_128_BIT_UUID == dataType) {
                         result.mServiceData128BitUUID = new ServiceData128BitUUID(data, i, dataLength);
+                        result.mServiceData128BitUUIDList.add(result.mServiceData128BitUUID);
                         result.mResultList.add(result.mServiceData128BitUUID);
                     } else if (DATA_TYPE_APPEARANCE == dataType) {
                         result.mAppearance = new Appearance(data, i, dataLength);
@@ -581,6 +788,7 @@ public class AdvertisingDataParser {
                         result.mResultList.add(result.mAdvertisingInterval);
                     } else if (DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER == dataType) {
                         result.mUniformRsourceIdentifier = new UniformRsourceIdentifier(data, i, dataLength);
+                        result.mUniformRsourceIdentifierList.add(result.mUniformRsourceIdentifier);
                         result.mResultList.add(result.mUniformRsourceIdentifier);
                     } else if (DATA_TYPE_LE_SUPPORTED_FEATURES == dataType) {
                         result.mLeSupportedFeatures = new LeSupportedFeatures(data, i, dataLength);

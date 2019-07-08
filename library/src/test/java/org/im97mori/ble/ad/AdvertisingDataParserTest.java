@@ -2,8 +2,10 @@ package org.im97mori.ble.ad;
 
 import org.junit.Test;
 
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.UUID;
 
 import static org.im97mori.ble.ad.AdvertisingDataConstants.APPEARANCE_VALUE_MAP;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_ADVERTISING_INTERVAL;
@@ -31,9 +33,12 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_TX_POWER_LEVEL;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+import static org.im97mori.ble.ad.AdvertisingDataConstants.SLAVE_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS;
+import static org.im97mori.ble.ad.AdvertisingDataConstants.URI_SCHEME_NAME_STRING_MAPPING;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 public class AdvertisingDataParserTest {
 
@@ -5671,62 +5676,62 @@ public class AdvertisingDataParserTest {
 
     @Test
     public void builderTest0419() {
-AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
         builder.include(DATA_TYPE_SERVICE_DATA_128_BIT_UUID);
         builder.exclude(DATA_TYPE_SERVICE_DATA_128_BIT_UUID);
-    AdvertisingDataParser parser = builder.build();
+        AdvertisingDataParser parser = builder.build();
 
-    byte[] data = new byte[18];
-    data[0] = 17;
-    data[1] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
-    data[2] = 0x00;
-    data[3] = 0x00;
-    data[4] = 0x00;
-    data[5] = 0x00;
-    data[6] = 0x00;
-    data[7] = 0x00;
-    data[8] = 0x00;
-    data[9] = 0x00;
-    data[10] = 0x00;
-    data[11] = 0x00;
-    data[12] = 0x00;
-    data[13] = 0x00;
-    data[14] = 0x00;
-    data[15] = 0x00;
-    data[16] = 0x00;
-    data[17] = 0x00;
+        byte[] data = new byte[18];
+        data[0] = 17;
+        data[1] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[2] = 0x00;
+        data[3] = 0x00;
+        data[4] = 0x00;
+        data[5] = 0x00;
+        data[6] = 0x00;
+        data[7] = 0x00;
+        data[8] = 0x00;
+        data[9] = 0x00;
+        data[10] = 0x00;
+        data[11] = 0x00;
+        data[12] = 0x00;
+        data[13] = 0x00;
+        data[14] = 0x00;
+        data[15] = 0x00;
+        data[16] = 0x00;
+        data[17] = 0x00;
 
-    AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
-    assertNotNull(result);
-    assertNotNull(result.getResultList());
-    assertEquals(0, result.getResultList().size());
-    assertNull(result.getIncompleteListOf16BitServiceUUIDs());
-    assertNull(result.getCompleteListOf16BitServiceUUIDs());
-    assertNull(result.getIncompleteListOf32BitServiceUUIDs());
-    assertNull(result.getCompleteListOf32BitServiceUUIDs());
-    assertNull(result.getIncompleteListOf128BitServiceUUIDs());
-    assertNull(result.getCompleteListOf128BitServiceUUIDs());
-    assertNull(result.getShortenedLocalName());
-    assertNull(result.getCompleteLocalName());
-    assertNull(result.getFlags());
-    assertNull(result.getManufacturerSpecificData());
-    assertNull(result.getTxPowerLevel());
-    assertNull(result.getSlaveConnectionIntervalRange());
-    assertNull(result.getListOf16BitServiceSolicitationUUIDs());
-    assertNull(result.getListOf32BitServiceSolicitationUUIDs());
-    assertNull(result.getListOf128BitServiceSolicitationUUIDs());
-    assertNull(result.getServiceData16BitUUID());
-    assertNull(result.getServiceData32BitUUID());
-    assertNull(result.getServiceData128BitUUID());
-    assertNull(result.getAppearance());
-    assertNull(result.getPublicTargetAddress());
-    assertNull(result.getRandomTargetAddress());
-    assertNull(result.getAdvertisingInterval());
-    assertNull(result.getUniformRsourceIdentifier());
-    assertNull(result.getLeSupportedFeatures());
-    assertNull(result.getChannelMapUpdateIndication());
-}
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(0, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
 
     @Test
     public void builderTest0420() {
@@ -8339,6 +8344,939 @@ AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false)
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0604() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[8];
+        data[0] = 3;
+        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[2] = 1;
+        data[3] = 1;
+        data[4] = 3;
+        data[5] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[6] = 0;
+        data[7] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(2, result.getResultList().size());
+        assertEquals(2, result.getIncompleteListOf16BitServiceUUIDsList().size());
+        assertEquals(result.getIncompleteListOf16BitServiceUUIDs(), result.getIncompleteListOf16BitServiceUUIDsList().get(1));
+        assertEquals(AdvertisingDataConstants.BASE_UUID, result.getIncompleteListOf16BitServiceUUIDs().getUuidList().get(0));
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0605() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[8];
+        data[0] = 3;
+        data[1] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[2] = 1;
+        data[3] = 1;
+        data[4] = 3;
+        data[5] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[6] = 0;
+        data[7] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(2, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertEquals(2, result.getCompleteListOf16BitServiceUUIDsList().size());
+        assertEquals(result.getCompleteListOf16BitServiceUUIDs(), result.getCompleteListOf16BitServiceUUIDsList().get(1));
+        assertEquals(AdvertisingDataConstants.BASE_UUID, result.getCompleteListOf16BitServiceUUIDs().getUuidList().get(0));
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0606() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[12];
+        data[0] = 5;
+        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[2] = 1;
+        data[3] = 1;
+        data[4] = 1;
+        data[5] = 1;
+        data[6] = 5;
+        data[7] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[8] = 0;
+        data[9] = 0;
+        data[10] = 0;
+        data[11] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(2, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertEquals(2, result.getIncompleteListOf32BitServiceUUIDsList().size());
+        assertEquals(result.getIncompleteListOf32BitServiceUUIDs(), result.getIncompleteListOf32BitServiceUUIDsList().get(1));
+        assertEquals(AdvertisingDataConstants.BASE_UUID, result.getIncompleteListOf32BitServiceUUIDs().getUuidList().get(0));
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0607() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[12];
+        data[0] = 5;
+        data[1] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[2] = 1;
+        data[3] = 1;
+        data[4] = 1;
+        data[5] = 1;
+        data[6] = 5;
+        data[7] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[8] = 0;
+        data[9] = 0;
+        data[10] = 0;
+        data[11] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(2, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertEquals(2, result.getCompleteListOf32BitServiceUUIDsList().size());
+        assertEquals(result.getCompleteListOf32BitServiceUUIDs(), result.getCompleteListOf32BitServiceUUIDsList().get(1));
+        assertEquals(AdvertisingDataConstants.BASE_UUID, result.getCompleteListOf32BitServiceUUIDs().getUuidList().get(0));
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0608() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[36];
+        data[0] = 17;
+        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[2] = 1;
+        data[3] = 1;
+        data[4] = 1;
+        data[5] = 1;
+        data[6] = 1;
+        data[7] = 1;
+        data[8] = 1;
+        data[9] = 1;
+        data[10] = 1;
+        data[11] = 1;
+        data[12] = 1;
+        data[13] = 1;
+        data[14] = 1;
+        data[15] = 1;
+        data[16] = 1;
+        data[17] = 1;
+        data[18] = 17;
+        data[19] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[20] = 0;
+        data[21] = 0;
+        data[22] = 0;
+        data[23] = 0;
+        data[24] = 0;
+        data[25] = 0;
+        data[26] = 0;
+        data[27] = 0;
+        data[28] = 0;
+        data[29] = 0;
+        data[30] = 0;
+        data[31] = 0;
+        data[32] = 0;
+        data[33] = 0;
+        data[34] = 0;
+        data[35] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(2, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertEquals(2, result.getIncompleteListOf128BitServiceUUIDsList().size());
+        assertEquals(result.getIncompleteListOf128BitServiceUUIDs(), result.getIncompleteListOf128BitServiceUUIDsList().get(1));
+        assertEquals(new UUID(0, 0), result.getIncompleteListOf128BitServiceUUIDs().getUuidList().get(0));
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0609() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[36];
+        data[0] = 17;
+        data[1] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[2] = 1;
+        data[3] = 1;
+        data[4] = 1;
+        data[5] = 1;
+        data[6] = 1;
+        data[7] = 1;
+        data[8] = 1;
+        data[9] = 1;
+        data[10] = 1;
+        data[11] = 1;
+        data[12] = 1;
+        data[13] = 1;
+        data[14] = 1;
+        data[15] = 1;
+        data[16] = 1;
+        data[17] = 1;
+        data[18] = 17;
+        data[19] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[20] = 0;
+        data[21] = 0;
+        data[22] = 0;
+        data[23] = 0;
+        data[24] = 0;
+        data[25] = 0;
+        data[26] = 0;
+        data[27] = 0;
+        data[28] = 0;
+        data[29] = 0;
+        data[30] = 0;
+        data[31] = 0;
+        data[32] = 0;
+        data[33] = 0;
+        data[34] = 0;
+        data[35] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(2, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertEquals(2, result.getCompleteListOf128BitServiceUUIDsList().size());
+        assertEquals(result.getCompleteListOf128BitServiceUUIDs(), result.getCompleteListOf128BitServiceUUIDsList().get(1));
+        assertEquals(new UUID(0, 0), result.getCompleteListOf128BitServiceUUIDs().getUuidList().get(0));
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0610() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[8];
+        data[0] = 3;
+        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[2] = (byte) (0x000000E0 & 0x0000ff);
+        data[3] = (byte) (0x000000E0 & (0x0000ff >> 8));
+        data[4] = 3;
+        data[5] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[6] = (byte) (0x00000008 & 0x0000ff);
+        data[7] = (byte) (0x00000008 & (0x0000ff >> 8));
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(2, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertEquals(2, result.getManufacturerSpecificDataList().size());
+        assertEquals(result.getManufacturerSpecificData(), result.getManufacturerSpecificDataList().get(1));
+        assertEquals(0x00000008, result.getManufacturerSpecificData().getCompanyIdentifier());
+        assertEquals(AdvertisingDataConstants.COMPANY_MAPPING.get(0x00000008), result.getManufacturerSpecificData().getCompanyName());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0611() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[6];
+        data[0] = 2;
+        data[1] = DATA_TYPE_TX_POWER_LEVEL;
+        data[2] = -127;
+        data[3] = 2;
+        data[4] = DATA_TYPE_TX_POWER_LEVEL;
+        data[5] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(2, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertEquals(2, result.getTxPowerLevelList().size());
+        assertEquals(result.getTxPowerLevel(), result.getTxPowerLevelList().get(1));
+        assertEquals(0, result.getTxPowerLevel().getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0612() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[12];
+        data[0] = 5;
+        data[1] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        data[2] = (byte) 0xff;
+        data[3] = (byte) 0xff;
+        data[4] = (byte) 0xff;
+        data[5] = (byte) 0xff;
+        data[6] = 5;
+        data[7] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        data[8] = (byte) 0x06;
+        data[9] = (byte) 0x00;
+        data[10] = (byte) 0x06;
+        data[11] = (byte) 0x00;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(2, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertEquals(2, result.getSlaveConnectionIntervalRangeList().size());
+        assertEquals(result.getSlaveConnectionIntervalRange(), result.getSlaveConnectionIntervalRangeList().get(1));
+        assertTrue(result.getSlaveConnectionIntervalRange().hasMaximum());
+        assertEquals(0d, 0x0006 * SLAVE_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result.getSlaveConnectionIntervalRange().getMaximuValueMillis());
+        assertTrue(result.getSlaveConnectionIntervalRange().hasMinimum());
+        assertEquals(0d, 0x0006 * SLAVE_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS, result.getSlaveConnectionIntervalRange().getMinimumValueMillis());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0613() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[8];
+        data[0] = 3;
+        data[1] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[2] = 1;
+        data[3] = 1;
+        data[4] = 3;
+        data[5] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[6] = 0;
+        data[7] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(2, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertEquals(2, result.getListOf16BitServiceSolicitationUUIDsList().size());
+        assertEquals(result.getListOf16BitServiceSolicitationUUIDs(), result.getListOf16BitServiceSolicitationUUIDsList().get(1));
+        assertEquals(AdvertisingDataConstants.BASE_UUID, result.getListOf16BitServiceSolicitationUUIDs().getUuidList().get(0));
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0614() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[12];
+        data[0] = 5;
+        data[1] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[2] = 1;
+        data[3] = 1;
+        data[4] = 1;
+        data[5] = 1;
+        data[6] = 5;
+        data[7] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[8] = 0;
+        data[9] = 0;
+        data[10] = 0;
+        data[11] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(2, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertEquals(2, result.getListOf32BitServiceSolicitationUUIDsList().size());
+        assertEquals(result.getListOf32BitServiceSolicitationUUIDs(), result.getListOf32BitServiceSolicitationUUIDsList().get(1));
+        assertEquals(AdvertisingDataConstants.BASE_UUID, result.getListOf32BitServiceSolicitationUUIDs().getUuidList().get(0));
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0615() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[36];
+        data[0] = 17;
+        data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[2] = 1;
+        data[3] = 1;
+        data[4] = 1;
+        data[5] = 1;
+        data[6] = 1;
+        data[7] = 1;
+        data[8] = 1;
+        data[9] = 1;
+        data[10] = 1;
+        data[11] = 1;
+        data[12] = 1;
+        data[13] = 1;
+        data[14] = 1;
+        data[15] = 1;
+        data[16] = 1;
+        data[17] = 1;
+        data[18] = 17;
+        data[19] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[20] = 0;
+        data[21] = 0;
+        data[22] = 0;
+        data[23] = 0;
+        data[24] = 0;
+        data[25] = 0;
+        data[26] = 0;
+        data[27] = 0;
+        data[28] = 0;
+        data[29] = 0;
+        data[30] = 0;
+        data[31] = 0;
+        data[32] = 0;
+        data[33] = 0;
+        data[34] = 0;
+        data[35] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(2, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertEquals(2, result.getListOf128BitServiceSolicitationUUIDsList().size());
+        assertEquals(result.getListOf128BitServiceSolicitationUUIDs(), result.getListOf128BitServiceSolicitationUUIDsList().get(1));
+        assertEquals(new UUID(0, 0), result.getListOf128BitServiceSolicitationUUIDs().getUuidList().get(0));
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0616() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[8];
+        data[0] = 3;
+        data[1] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[2] = 1;
+        data[3] = 1;
+        data[4] = 3;
+        data[5] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[6] = 0;
+        data[7] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(2, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertEquals(2, result.getServiceData16BitUUIDList().size());
+        assertEquals(result.getServiceData16BitUUID(), result.getServiceData16BitUUIDList().get(1));
+        assertEquals(AdvertisingDataConstants.BASE_UUID, result.getServiceData16BitUUID().getUuid());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0617() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[12];
+        data[0] = 5;
+        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[2] = 1;
+        data[3] = 1;
+        data[4] = 1;
+        data[5] = 1;
+        data[6] = 5;
+        data[7] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[8] = 0;
+        data[9] = 0;
+        data[10] = 0;
+        data[11] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(2, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertEquals(2, result.getServiceData32BitUUIDList().size());
+        assertEquals(result.getServiceData32BitUUID(), result.getServiceData32BitUUIDList().get(1));
+        assertEquals(AdvertisingDataConstants.BASE_UUID, result.getServiceData32BitUUID().getUuid());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0618() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[36];
+        data[0] = 17;
+        data[1] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[2] = 1;
+        data[3] = 1;
+        data[4] = 1;
+        data[5] = 1;
+        data[6] = 1;
+        data[7] = 1;
+        data[8] = 1;
+        data[9] = 1;
+        data[10] = 1;
+        data[11] = 1;
+        data[12] = 1;
+        data[13] = 1;
+        data[14] = 1;
+        data[15] = 1;
+        data[16] = 1;
+        data[17] = 1;
+        data[18] = 17;
+        data[19] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[20] = 0;
+        data[21] = 0;
+        data[22] = 0;
+        data[23] = 0;
+        data[24] = 0;
+        data[25] = 0;
+        data[26] = 0;
+        data[27] = 0;
+        data[28] = 0;
+        data[29] = 0;
+        data[30] = 0;
+        data[31] = 0;
+        data[32] = 0;
+        data[33] = 0;
+        data[34] = 0;
+        data[35] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(2, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertEquals(2, result.getServiceData128BitUUIDList().size());
+        assertEquals(result.getServiceData128BitUUID(), result.getServiceData128BitUUIDList().get(1));
+        assertEquals(new UUID(0, 0), result.getServiceData128BitUUID().getUuid());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0619() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[23];
+        data[0] = 10;
+        data[1] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        data[2] = 0x16;
+        data[3] = '/';
+        data[4] = '/';
+        data[5] = 'i';
+        data[6] = 'm';
+        data[7] = 'o';
+        data[8] = 'r';
+        data[9] = 'i';
+        data[10] = '/';
+        data[11] = 11;
+        data[12] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        data[13] = (byte) 0xc2;
+        data[14] = (byte) 0xb9;
+        data[15] = '/';
+        data[16] = '/';
+        data[17] = 'i';
+        data[18] = 'm';
+        data[19] = 'o';
+        data[20] = 'r';
+        data[21] = 'i';
+        data[22] = '/';
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(2, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertEquals(2, result.getUniformRsourceIdentifierList().size());
+        assertEquals(result.getUniformRsourceIdentifier(), result.getUniformRsourceIdentifierList().get(1));
+        assertEquals(URI.create(URI_SCHEME_NAME_STRING_MAPPING.get(0xb9) + new String(data, 15, 8)), result.getUniformRsourceIdentifier().getUri());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
