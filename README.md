@@ -15,7 +15,7 @@ project/build.gradle
 project/module/build.gradle
 
     dependencies {
-        implementation 'org.im97mori:ad:1.0.0'
+        implementation 'org.im97mori:ad:1.1.0'
     }
 
 ## How to use
