@@ -1,6 +1,8 @@
 package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,7 +17,31 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-public class PublicTargetAddress extends AbstractAdvertisingData {
+@SuppressWarnings("WeakerAccess")
+public class PublicTargetAddress extends AbstractAdvertisingData implements Parcelable {
+
+    /**
+     * @see Creator
+     */
+    public static final Creator<PublicTargetAddress> CREATOR = new Creator<PublicTargetAddress>() {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public PublicTargetAddress createFromParcel(Parcel in) {
+            return new PublicTargetAddress(in);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public PublicTargetAddress[] newArray(int size) {
+            return new PublicTargetAddress[size];
+        }
+
+    };
 
     /**
      * Public Target Address list
@@ -29,7 +55,7 @@ public class PublicTargetAddress extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    PublicTargetAddress(byte[] data, int offset, int length) {
+    public PublicTargetAddress(byte[] data, int offset, int length) {
         super(length);
 
         List<byte[]> addressList = new ArrayList<>();
@@ -40,6 +66,34 @@ public class PublicTargetAddress extends AbstractAdvertisingData {
             addressList.add(address);
         }
         mAddressList = Collections.synchronizedList(Collections.unmodifiableList(addressList));
+    }
+
+    /**
+     * Constructor from {@link Parcel}
+     *
+     * @param in Parcel
+     */
+    @SuppressWarnings("unchecked")
+    public PublicTargetAddress(Parcel in) {
+        super(in.readInt());
+        mAddressList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mLength);
+        dest.writeList(mAddressList);
     }
 
     /**

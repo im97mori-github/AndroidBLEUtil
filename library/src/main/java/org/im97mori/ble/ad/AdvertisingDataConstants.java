@@ -1,8 +1,8 @@
 package org.im97mori.ble.ad;
 
 import android.annotation.SuppressLint;
+import android.util.Pair;
 
-import java.util.AbstractMap;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -208,7 +208,7 @@ public class AdvertisingDataConstants {
      * <p>
      * Core Specification Supplement v8 Part A 1.3
      * <p>
-     * {@link AbstractMap.SimpleImmutableEntry#getKey()}:offset, {@link AbstractMap.SimpleImmutableEntry#getValue()}:bitmask
+     * {@link Pair#first}:offset, {@link Pair#second}:bitmask
      * </p>
      */
     public static final class FlagsDataType {
@@ -216,27 +216,27 @@ public class AdvertisingDataConstants {
         /**
          * LE Limited Discoverable Mode
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FLAG_LE_LIMITED_DISCOVERABLE_MODE = new AbstractMap.SimpleImmutableEntry<>(0, 0b00000001);
+        public static final Pair<Integer, Integer> FLAG_LE_LIMITED_DISCOVERABLE_MODE = Pair.create(0, 0b00000001);
 
         /**
          * LE General Discoverable Mode
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FLAG_LE_GENERAL_DISCOVERABLE_MODE = new AbstractMap.SimpleImmutableEntry<>(0, 0b00000010);
+        public static final Pair<Integer, Integer> FLAG_LE_GENERAL_DISCOVERABLE_MODE = Pair.create(0, 0b00000010);
 
         /**
          * BR/EDR Not Supported
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FLAG_BR_EDR_NOT_SUPPORTED = new AbstractMap.SimpleImmutableEntry<>(0, 0b00000100);
+        public static final Pair<Integer, Integer> FLAG_BR_EDR_NOT_SUPPORTED = Pair.create(0, 0b00000100);
 
         /**
          * Simultaneous LE and BR/EDR to Same Device Capable (Controller)
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FLAG_SIMULTANEOUS_LE_AND_BR_EDR_TO_SAME_DEVICE_CAPABLE_CONTROLLER = new AbstractMap.SimpleImmutableEntry<>(0, 0b00001000);
+        public static final Pair<Integer, Integer> FLAG_SIMULTANEOUS_LE_AND_BR_EDR_TO_SAME_DEVICE_CAPABLE_CONTROLLER = Pair.create(0, 0b00001000);
 
         /**
          * Simultaneous LE and BR/EDR to Same Device Capable (Host)
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FLAG_SIMULTANEOUS_LE_AND_BR_EDR_TO_SAME_DEVICE_CAPABLE_HOST = new AbstractMap.SimpleImmutableEntry<>(0, 0b00010000);
+        public static final Pair<Integer, Integer> FLAG_SIMULTANEOUS_LE_AND_BR_EDR_TO_SAME_DEVICE_CAPABLE_HOST = Pair.create(0, 0b00010000);
 
     }
 
@@ -2616,7 +2616,7 @@ public class AdvertisingDataConstants {
      * Core Specification Supplement v8 Part A 1.19
      * Core Specification v5.1 Vol 6 Part B 4.6
      * <p>
-     * {@link AbstractMap.SimpleImmutableEntry#getKey()}:offset, {@link AbstractMap.SimpleImmutableEntry#getValue()}:bitmask
+     * {@link Pair#first}:offset, {@link Pair#second}:bitmask
      * </p>
      */
     public static final class LeSupportedFeatures {
@@ -2624,142 +2624,142 @@ public class AdvertisingDataConstants {
         /**
          * LE Encryption
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_SUPPORTED_FEATURE_LE_ENCRYPTION = new AbstractMap.SimpleImmutableEntry<>(0, 0b00000001);
+        public static final Pair<Integer, Integer> FEATURE_SUPPORTED_FEATURE_LE_ENCRYPTION = Pair.create(0, 0b00000001);
 
         /**
          * Connection Parameters Request Procedure
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_CONNECTION_PARAMETERS_REQUEST_PROCEDURE = new AbstractMap.SimpleImmutableEntry<>(0, 0b00000010);
+        public static final Pair<Integer, Integer> FEATURE_CONNECTION_PARAMETERS_REQUEST_PROCEDURE = Pair.create(0, 0b00000010);
 
         /**
          * Extended Reject Indication
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_EXTENDED_REJECT_INDICATION = new AbstractMap.SimpleImmutableEntry<>(0, 0b00000100);
+        public static final Pair<Integer, Integer> FEATURE_EXTENDED_REJECT_INDICATION = Pair.create(0, 0b00000100);
 
         /**
          * Slave-initiated Features Exchange
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_SLAVE_INITIATED_FEATURES_EXCHANGE = new AbstractMap.SimpleImmutableEntry<>(0, 0b00001000);
+        public static final Pair<Integer, Integer> FEATURE_SLAVE_INITIATED_FEATURES_EXCHANGE = Pair.create(0, 0b00001000);
 
         /**
          * LE Ping
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_LE_PING = new AbstractMap.SimpleImmutableEntry<>(0, 0b00010000);
+        public static final Pair<Integer, Integer> FEATURE_LE_PING = Pair.create(0, 0b00010000);
 
         /**
          * LE Data Packet Length Extension
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_LE_DATA_PACKET_LENGTH_EXTENSION = new AbstractMap.SimpleImmutableEntry<>(0, 0b00100000);
+        public static final Pair<Integer, Integer> FEATURE_LE_DATA_PACKET_LENGTH_EXTENSION = Pair.create(0, 0b00100000);
 
         /**
          * LL Privacy
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_LL_PRIVACY = new AbstractMap.SimpleImmutableEntry<>(0, 0b01000000);
+        public static final Pair<Integer, Integer> FEATURE_LL_PRIVACY = Pair.create(0, 0b01000000);
 
         /**
          * Extended Scanner Filter Policies
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_EXTENDED_SCANNER_FILTER_POLICIES = new AbstractMap.SimpleImmutableEntry<>(0, 0b10000000);
+        public static final Pair<Integer, Integer> FEATURE_EXTENDED_SCANNER_FILTER_POLICIES = Pair.create(0, 0b10000000);
 
         /**
          * LE 2M PHY
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_LE_2M_PHY = new AbstractMap.SimpleImmutableEntry<>(1, 0b00000001);
+        public static final Pair<Integer, Integer> FEATURE_LE_2M_PHY = Pair.create(1, 0b00000001);
 
         /**
          * Stable Modulation Index - Transmitter
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_STABLE_MODULATION_INDEX_TRANSMITTER = new AbstractMap.SimpleImmutableEntry<>(1, 0b00000010);
+        public static final Pair<Integer, Integer> FEATURE_STABLE_MODULATION_INDEX_TRANSMITTER = Pair.create(1, 0b00000010);
 
         /**
          * Stable Modulation Index - Receiver
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_STABLE_MODULATION_INDEX_RECEIVER = new AbstractMap.SimpleImmutableEntry<>(1, 0b00000100);
+        public static final Pair<Integer, Integer> FEATURE_STABLE_MODULATION_INDEX_RECEIVER = Pair.create(1, 0b00000100);
 
         /**
          * LE Coded PHY
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_LE_CODED_PHY = new AbstractMap.SimpleImmutableEntry<>(1, 0b00001000);
+        public static final Pair<Integer, Integer> FEATURE_LE_CODED_PHY = Pair.create(1, 0b00001000);
 
         /**
          * LE Extended Advertising
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_LE_EXTENDED_ADVERTISING = new AbstractMap.SimpleImmutableEntry<>(1, 0b00010000);
+        public static final Pair<Integer, Integer> FEATURE_LE_EXTENDED_ADVERTISING = Pair.create(1, 0b00010000);
 
         /**
          * LE Periodic Advertising
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_LE_PERIODIC_ADVERTISING = new AbstractMap.SimpleImmutableEntry<>(1, 0b00100000);
+        public static final Pair<Integer, Integer> FEATURE_LE_PERIODIC_ADVERTISING = Pair.create(1, 0b00100000);
 
         /**
          * Channel Selection Algorithm #2
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_CHANNEL_SELCTION_ALGORITHM_2 = new AbstractMap.SimpleImmutableEntry<>(1, 0b01000000);
+        public static final Pair<Integer, Integer> FEATURE_CHANNEL_SELCTION_ALGORITHM_2 = Pair.create(1, 0b01000000);
 
         /**
          * LE Power Class 1
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_LE_POWER_CLASS_1 = new AbstractMap.SimpleImmutableEntry<>(1, 0b10000000);
+        public static final Pair<Integer, Integer> FEATURE_LE_POWER_CLASS_1 = Pair.create(1, 0b10000000);
 
         /**
          * Minimum Number of Used Channels Procedure
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_MINIMUM_NUMBER_OF_USED_CHANNELS_PROCEDURE = new AbstractMap.SimpleImmutableEntry<>(2, 0b00000001);
+        public static final Pair<Integer, Integer> FEATURE_MINIMUM_NUMBER_OF_USED_CHANNELS_PROCEDURE = Pair.create(2, 0b00000001);
 
         /**
          * Connection CTE Request
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_CONNECTION_CTE_REQUEST = new AbstractMap.SimpleImmutableEntry<>(2, 0b00000010);
+        public static final Pair<Integer, Integer> FEATURE_CONNECTION_CTE_REQUEST = Pair.create(2, 0b00000010);
 
         /**
          * Connection CTE Response
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_CONNECTION_CTE_RESPONSE = new AbstractMap.SimpleImmutableEntry<>(2, 0b00000100);
+        public static final Pair<Integer, Integer> FEATURE_CONNECTION_CTE_RESPONSE = Pair.create(2, 0b00000100);
 
         /**
          * Connectionless CTE Transmitter
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_CONNECTIONLESS_CTE_TRANSMITTER = new AbstractMap.SimpleImmutableEntry<>(2, 0b00001000);
+        public static final Pair<Integer, Integer> FEATURE_CONNECTIONLESS_CTE_TRANSMITTER = Pair.create(2, 0b00001000);
 
         /**
          * Connectionless CTE Receiver
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_CONNECTIONLESS_CTE_RECEIVER = new AbstractMap.SimpleImmutableEntry<>(2, 0b00010000);
+        public static final Pair<Integer, Integer> FEATURE_CONNECTIONLESS_CTE_RECEIVER = Pair.create(2, 0b00010000);
 
         /**
          * Antenna Switching During CTE Transmission (AoD)
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_ANTENNA_SWITCHING_DURING_CTE_TRANSMISSION_AOD = new AbstractMap.SimpleImmutableEntry<>(2, 0b00100000);
+        public static final Pair<Integer, Integer> FEATURE_ANTENNA_SWITCHING_DURING_CTE_TRANSMISSION_AOD = Pair.create(2, 0b00100000);
 
         /**
          * Antenna Switching During CTE Reception (AoA)
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_ANTENNA_SWITCHING_DURING_CTE_RECEPTION_AOA = new AbstractMap.SimpleImmutableEntry<>(2, 0b01000000);
+        public static final Pair<Integer, Integer> FEATURE_ANTENNA_SWITCHING_DURING_CTE_RECEPTION_AOA = Pair.create(2, 0b01000000);
 
         /**
          * Receiving Constant Tone Extensions
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_RECEIVING_CONSTANT_TONE_EXTENSIONS = new AbstractMap.SimpleImmutableEntry<>(2, 0b10000000);
+        public static final Pair<Integer, Integer> FEATURE_RECEIVING_CONSTANT_TONE_EXTENSIONS = Pair.create(2, 0b10000000);
 
         /**
          * Periodic Advertising Sync Transfer - Sender
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_PERIODIC_ADVERTISING_SYNC_TRANSFER_SENDER = new AbstractMap.SimpleImmutableEntry<>(3, 0b00000001);
+        public static final Pair<Integer, Integer> FEATURE_PERIODIC_ADVERTISING_SYNC_TRANSFER_SENDER = Pair.create(3, 0b00000001);
 
         /**
          * Periodic Advertising Sync Transfer - Recipient
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_PERIODIC_ADVERTISING_SYNC_TRANSFER_RECIPIENT = new AbstractMap.SimpleImmutableEntry<>(3, 0b00000010);
+        public static final Pair<Integer, Integer> FEATURE_PERIODIC_ADVERTISING_SYNC_TRANSFER_RECIPIENT = Pair.create(3, 0b00000010);
 
         /**
          * Sleep Clock Accuracy Updates
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_SLEEP_CLOCK_ACCURACY_UPDATES = new AbstractMap.SimpleImmutableEntry<>(3, 0b00000100);
+        public static final Pair<Integer, Integer> FEATURE_SLEEP_CLOCK_ACCURACY_UPDATES = Pair.create(3, 0b00000100);
 
         /**
          * Remote Public Key Validation
          */
-        public static final AbstractMap.SimpleImmutableEntry<Integer, Integer> FEATURE_REMOTE_PUBLIC_KEY_VALIDATION = new AbstractMap.SimpleImmutableEntry<>(3, 0b00001000);
+        public static final Pair<Integer, Integer> FEATURE_REMOTE_PUBLIC_KEY_VALIDATION = Pair.create(3, 0b00001000);
 
     }
 

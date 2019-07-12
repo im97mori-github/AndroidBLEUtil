@@ -1,6 +1,8 @@
 package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_COMPLETE_LOCAL_NAME;
 
@@ -11,7 +13,31 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-public class CompleteLocalName extends AbstractAdvertisingData {
+@SuppressWarnings("WeakerAccess")
+public class CompleteLocalName extends AbstractAdvertisingData implements Parcelable {
+
+    /**
+     * @see Creator
+     */
+    public static final Creator<CompleteLocalName> CREATOR = new Creator<CompleteLocalName>() {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public CompleteLocalName createFromParcel(Parcel in) {
+            return new CompleteLocalName(in);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public CompleteLocalName[] newArray(int size) {
+            return new CompleteLocalName[size];
+        }
+
+    };
 
     /**
      * Complete Local Name
@@ -25,9 +51,36 @@ public class CompleteLocalName extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    CompleteLocalName(byte[] data, int offset, int length) {
+    public CompleteLocalName(byte[] data, int offset, int length) {
         super(length);
         mCompleteLocalName = new String(data, offset + 2, length - 1);
+    }
+
+    /**
+     * Constructor from {@link Parcel}
+     *
+     * @param in Parcel
+     */
+    public CompleteLocalName(Parcel in) {
+        super(in.readInt());
+        mCompleteLocalName = in.readString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mLength);
+        dest.writeString(mCompleteLocalName);
     }
 
     /**

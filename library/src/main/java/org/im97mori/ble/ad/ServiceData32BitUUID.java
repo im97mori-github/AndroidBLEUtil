@@ -1,6 +1,8 @@
 package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.UUID;
 
@@ -14,7 +16,31 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.BASE_UUID;
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-public class ServiceData32BitUUID extends AbstractAdvertisingData {
+@SuppressWarnings("WeakerAccess")
+public class ServiceData32BitUUID extends AbstractAdvertisingData implements Parcelable {
+
+    /**
+     * @see Creator
+     */
+    public static final Creator<ServiceData32BitUUID> CREATOR = new Creator<ServiceData32BitUUID>() {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public ServiceData32BitUUID createFromParcel(Parcel in) {
+            return new ServiceData32BitUUID(in);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public ServiceData32BitUUID[] newArray(int size) {
+            return new ServiceData32BitUUID[size];
+        }
+
+    };
 
     /**
      * UUID
@@ -33,7 +59,7 @@ public class ServiceData32BitUUID extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    ServiceData32BitUUID(byte[] data, int offset, int length) {
+    public ServiceData32BitUUID(byte[] data, int offset, int length) {
         super(length);
 
         long target = data[offset + 2] & 0xff;
@@ -48,6 +74,35 @@ public class ServiceData32BitUUID extends AbstractAdvertisingData {
         if (mAdditionalServiceData.length > 0) {
             System.arraycopy(data, offset + 6, mAdditionalServiceData, 0, length - 5);
         }
+    }
+
+    /**
+     * Constructor from {@link Parcel}
+     *
+     * @param in Parcel
+     */
+    public ServiceData32BitUUID(Parcel in) {
+        super(in.readInt());
+        mUuid = (UUID) in.readSerializable();
+        mAdditionalServiceData = in.createByteArray();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mLength);
+        dest.writeSerializable(mUuid);
+        dest.writeByteArray(mAdditionalServiceData);
     }
 
     /**

@@ -209,7 +209,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append("Slave Connection Interval Range");
                 if (slaveConnectionIntervalRange.hasMaximum()) {
                     sb.append("\nhas maximum\n");
-                    sb.append(slaveConnectionIntervalRange.getMaximuValueMillis());
+                    sb.append(slaveConnectionIntervalRange.getMaximumValueMillis());
                 }
                 if (slaveConnectionIntervalRange.hasMinimum()) {
                     sb.append("\nhas minimum\n");
@@ -460,7 +460,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     try {
                         mMainActivity.mResultTextView.setText(sb);
                         mMainActivity.mBluetoothLeScanner.stopScan(TestScanCallback.this);
-                        mMainActivity.mBluetoothLeScanner = null;
+                        mMainActivity.mTestScanCallback = null;
                         mMainActivity.mStartStopButton.setText(R.string.scan_start);
                     } catch (Exception e) {
                         e.printStackTrace();

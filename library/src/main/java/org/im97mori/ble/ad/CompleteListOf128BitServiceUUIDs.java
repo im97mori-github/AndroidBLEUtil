@@ -1,6 +1,8 @@
 package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -18,7 +20,31 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-public class CompleteListOf128BitServiceUUIDs extends AbstractAdvertisingData {
+@SuppressWarnings("WeakerAccess")
+public class CompleteListOf128BitServiceUUIDs extends AbstractAdvertisingData  implements Parcelable {
+
+    /**
+     * @see Creator
+     */
+    public static final Creator<CompleteListOf128BitServiceUUIDs> CREATOR = new Creator<CompleteListOf128BitServiceUUIDs>() {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public CompleteListOf128BitServiceUUIDs createFromParcel(Parcel in) {
+            return new CompleteListOf128BitServiceUUIDs(in);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public CompleteListOf128BitServiceUUIDs[] newArray(int size) {
+            return new CompleteListOf128BitServiceUUIDs[size];
+        }
+
+    };
 
     /**
      * UUID list
@@ -32,7 +58,7 @@ public class CompleteListOf128BitServiceUUIDs extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    CompleteListOf128BitServiceUUIDs(byte[] data, int offset, int length) {
+    public CompleteListOf128BitServiceUUIDs(byte[] data, int offset, int length) {
         super(length);
 
         ByteBuffer bb;
@@ -44,6 +70,34 @@ public class CompleteListOf128BitServiceUUIDs extends AbstractAdvertisingData {
             uuidList.add(new UUID(msb, lsb));
         }
         mUuidList = Collections.synchronizedList(Collections.unmodifiableList(uuidList));
+    }
+
+    /**
+     * Constructor from {@link Parcel}
+     *
+     * @param in Parcel
+     */
+    @SuppressWarnings("unchecked")
+    public CompleteListOf128BitServiceUUIDs(Parcel in) {
+        super(in.readInt());
+        mUuidList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mLength);
+        dest.writeList(mUuidList);
     }
 
     /**

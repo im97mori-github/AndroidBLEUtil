@@ -1,6 +1,8 @@
 package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_TX_POWER_LEVEL;
 
@@ -11,7 +13,31 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-public class TxPowerLevel extends AbstractAdvertisingData {
+@SuppressWarnings("WeakerAccess")
+public class TxPowerLevel extends AbstractAdvertisingData implements Parcelable {
+
+    /**
+     * @see Creator
+     */
+    public static final Creator<TxPowerLevel> CREATOR = new Creator<TxPowerLevel>() {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public TxPowerLevel createFromParcel(Parcel in) {
+            return new TxPowerLevel(in);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public TxPowerLevel[] newArray(int size) {
+            return new TxPowerLevel[size];
+        }
+
+    };
 
     /**
      * Tx Power Level
@@ -25,10 +51,37 @@ public class TxPowerLevel extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    TxPowerLevel(byte[] data, int offset, int length) {
+    public TxPowerLevel(byte[] data, int offset, int length) {
         super(length);
 
         mTxPowerLevel = data[offset + 2];
+    }
+
+    /**
+     * Constructor from {@link Parcel}
+     *
+     * @param in Parcel
+     */
+    public TxPowerLevel(Parcel in) {
+        super(in.readInt());
+        mTxPowerLevel = in.readByte();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mLength);
+        dest.writeByte(mTxPowerLevel);
     }
 
     /**

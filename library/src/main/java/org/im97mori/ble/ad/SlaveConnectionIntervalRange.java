@@ -1,6 +1,8 @@
 package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -16,7 +18,31 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.SLAVE_CONNECTION_INTE
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-public class SlaveConnectionIntervalRange extends AbstractAdvertisingData {
+@SuppressWarnings("WeakerAccess")
+public class SlaveConnectionIntervalRange extends AbstractAdvertisingData  implements Parcelable {
+
+    /**
+     * @see Creator
+     */
+    public static final Creator<SlaveConnectionIntervalRange> CREATOR = new Creator<SlaveConnectionIntervalRange>() {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public SlaveConnectionIntervalRange createFromParcel(Parcel in) {
+            return new SlaveConnectionIntervalRange(in);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public SlaveConnectionIntervalRange[] newArray(int size) {
+            return new SlaveConnectionIntervalRange[size];
+        }
+
+    };
 
     /**
      * <p>
@@ -43,12 +69,41 @@ public class SlaveConnectionIntervalRange extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    SlaveConnectionIntervalRange(byte[] data, int offset, int length) {
+    public SlaveConnectionIntervalRange(byte[] data, int offset, int length) {
         super(length);
 
         ByteBuffer bb = ByteBuffer.wrap(data, offset + 2, length - 1).order(ByteOrder.LITTLE_ENDIAN);
         mMinimumValue = bb.getShort() & 0xffff;
         mMaximumValue = bb.getShort() & 0xffff;
+    }
+
+    /**
+     * Constructor from {@link Parcel}
+     *
+     * @param in Parcel
+     */
+    public SlaveConnectionIntervalRange(Parcel in) {
+        super(in.readInt());
+        mMinimumValue = in.readInt();
+        mMaximumValue = in.readInt();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mLength);
+        dest.writeInt(mMinimumValue);
+        dest.writeInt(mMaximumValue);
     }
 
     /**
@@ -80,6 +135,15 @@ public class SlaveConnectionIntervalRange extends AbstractAdvertisingData {
     /**
      * if {@link #hasMinimum()} return true, return Minimum connection interval
      *
+     * @return Minimum connection interval
+     */
+    public int getMinimumValue() {
+        return mMinimumValue;
+    }
+
+    /**
+     * if {@link #hasMinimum()} return true, return Minimum connection interval
+     *
      * @return Minimum connection interval(millis)
      */
     public double getMinimumValueMillis() {
@@ -89,9 +153,19 @@ public class SlaveConnectionIntervalRange extends AbstractAdvertisingData {
     /**
      * if {@link #hasMaximum()} return true, return Maximum connection interval
      *
+     * @return Maximum connection interval
+     */
+    public int getMaximumValue() {
+        return mMaximumValue;
+    }
+
+    /**
+     * if {@link #hasMaximum()} return true, return Maximum connection interval
+     *
      * @return Maximum connection interval(millis)
      */
-    public double getMaximuValueMillis() {
+    public double getMaximumValueMillis() {
         return mMaximumValue * SLAVE_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS;
     }
+
 }

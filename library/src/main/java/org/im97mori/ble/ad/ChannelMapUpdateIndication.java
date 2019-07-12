@@ -1,6 +1,8 @@
 package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,7 +19,31 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.PHYSICAL_CHANNEL_INDI
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
+@SuppressWarnings("WeakerAccess")
+public class ChannelMapUpdateIndication extends AbstractAdvertisingData implements Parcelable {
+
+    /**
+     * @see Creator
+     */
+    public static final Creator<ChannelMapUpdateIndication> CREATOR = new Creator<ChannelMapUpdateIndication>() {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public ChannelMapUpdateIndication createFromParcel(Parcel in) {
+            return new ChannelMapUpdateIndication(in);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public ChannelMapUpdateIndication[] newArray(int size) {
+            return new ChannelMapUpdateIndication[size];
+        }
+
+    };
 
     /**
      * ChM list
@@ -47,7 +73,7 @@ public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    ChannelMapUpdateIndication(byte[] data, int offset, int length) {
+    public ChannelMapUpdateIndication(byte[] data, int offset, int length) {
         super(length);
 
         List<Integer> chmList = new ArrayList<>();
@@ -80,6 +106,41 @@ public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
         int instant = data[offset + 7] & 0xff;
         instant |= (data[offset + 8] & 0xff) << 8;
         mInstant = instant;
+    }
+
+
+    /**
+     * Constructor from {@link Parcel}
+     *
+     * @param in Parcel
+     */
+    @SuppressWarnings("unchecked")
+    public ChannelMapUpdateIndication(Parcel in) {
+        super(in.readInt());
+        mChmList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));
+        mUnusedChannelList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));
+        mUnusedChannelListRfCenterFrequencyList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));
+        mInstant = in.readInt();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mLength);
+        dest.writeList(mChmList);
+        dest.writeList(mUnusedChannelList);
+        dest.writeList(mUnusedChannelListRfCenterFrequencyList);
+        dest.writeInt(mInstant);
     }
 
     /**

@@ -1,6 +1,8 @@
 package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.net.URI;
 
@@ -14,7 +16,31 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.URI_SCHEME_NAME_STRIN
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-public class UniformRsourceIdentifier extends AbstractAdvertisingData {
+@SuppressWarnings("WeakerAccess")
+public class UniformRsourceIdentifier extends AbstractAdvertisingData implements Parcelable {
+
+    /**
+     * @see Creator
+     */
+    public static final Creator<UniformRsourceIdentifier> CREATOR = new Creator<UniformRsourceIdentifier>() {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public UniformRsourceIdentifier createFromParcel(Parcel in) {
+            return new UniformRsourceIdentifier(in);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public UniformRsourceIdentifier[] newArray(int size) {
+            return new UniformRsourceIdentifier[size];
+        }
+
+    };
 
     /**
      * URI text
@@ -33,12 +59,41 @@ public class UniformRsourceIdentifier extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    UniformRsourceIdentifier(byte[] data, int offset, int length) {
+    public UniformRsourceIdentifier(byte[] data, int offset, int length) {
         super(length);
 
         mUriString = new String(data, offset + 2, length - 1);
         int scheme = mUriString.charAt(0) & 0xff;
         mUri = URI.create(URI_SCHEME_NAME_STRING_MAPPING.get(scheme) + mUriString.substring(1));
+    }
+
+    /**
+     * Constructor from {@link Parcel}
+     *
+     * @param in Parcel
+     */
+    public UniformRsourceIdentifier(Parcel in) {
+        super(in.readInt());
+        mUriString = in.readString();
+        mUri = (URI) in.readSerializable();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mLength);
+        dest.writeString(mUriString);
+        dest.writeSerializable(mUri);
     }
 
     /**

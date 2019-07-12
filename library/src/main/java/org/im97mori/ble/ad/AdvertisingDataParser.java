@@ -247,7 +247,7 @@ public class AdvertisingDataParser {
         private ManufacturerSpecificData mManufacturerSpecificData;
 
         /**
-         * All Manufacturer Specific Datas List
+         * All Manufacturer Specific Data List
          */
         private final List<ManufacturerSpecificData> mManufacturerSpecificDataList = new ArrayList<>();
 

@@ -1,6 +1,8 @@
 package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -16,7 +18,31 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-public class Appearance extends AbstractAdvertisingData {
+@SuppressWarnings("WeakerAccess")
+public class Appearance extends AbstractAdvertisingData implements Parcelable {
+
+    /**
+     * @see Creator
+     */
+    public static final Creator<Appearance> CREATOR = new Creator<Appearance>() {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public Appearance createFromParcel(Parcel in) {
+            return new Appearance(in);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public Appearance[] newArray(int size) {
+            return new Appearance[size];
+        }
+
+    };
 
     /**
      * Appearance key
@@ -30,11 +56,38 @@ public class Appearance extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    Appearance(byte[] data, int offset, int length) {
+    public Appearance(byte[] data, int offset, int length) {
         super(length);
 
         ByteBuffer bb = ByteBuffer.wrap(data, offset + 2, length - 1).order(ByteOrder.LITTLE_ENDIAN);
         mAppearanceKey = bb.getShort() & 0xffff;
+    }
+
+    /**
+     * Constructor from {@link Parcel}
+     *
+     * @param in Parcel
+     */
+    public Appearance(Parcel in) {
+        super(in.readInt());
+        mAppearanceKey = in.readInt();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mLength);
+        dest.writeInt(mAppearanceKey);
     }
 
     /**

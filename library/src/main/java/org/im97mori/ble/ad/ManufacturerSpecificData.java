@@ -1,6 +1,8 @@
 package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.COMPANY_MAPPING;
@@ -12,7 +14,31 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.COMPANY_MAPPING;
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-public class ManufacturerSpecificData extends AbstractAdvertisingData {
+@SuppressWarnings("WeakerAccess")
+public class ManufacturerSpecificData extends AbstractAdvertisingData implements Parcelable {
+
+    /**
+     * @see Creator
+     */
+    public static final Creator<ManufacturerSpecificData> CREATOR = new Creator<ManufacturerSpecificData>() {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public ManufacturerSpecificData createFromParcel(Parcel in) {
+            return new ManufacturerSpecificData(in);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public ManufacturerSpecificData[] newArray(int size) {
+            return new ManufacturerSpecificData[size];
+        }
+
+    };
 
     /**
      * <p>
@@ -35,7 +61,7 @@ public class ManufacturerSpecificData extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    ManufacturerSpecificData(byte[] data, int offset, int length) {
+    public ManufacturerSpecificData(byte[] data, int offset, int length) {
         super(length);
 
         // Company Identifier Code
@@ -46,6 +72,35 @@ public class ManufacturerSpecificData extends AbstractAdvertisingData {
         if (mManufacturerSpecificData.length > 0) {
             System.arraycopy(data, offset + 4, mManufacturerSpecificData, 0, mManufacturerSpecificData.length);
         }
+    }
+
+    /**
+     * Constructor from {@link Parcel}
+     *
+     * @param in Parcel
+     */
+    public ManufacturerSpecificData(Parcel in) {
+        super(in.readInt());
+        mCompanyIdentifier = in.readInt();
+        mManufacturerSpecificData = in.createByteArray();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mLength);
+        dest.writeInt(mCompanyIdentifier);
+        dest.writeByteArray(mManufacturerSpecificData);
     }
 
     /**

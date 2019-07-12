@@ -1,8 +1,10 @@
 package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.util.Pair;
 
-import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,7 +24,30 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.FlagsDataType.FLAG_SI
  * </p>
  */
 @SuppressWarnings("WeakerAccess")
-public class Flags extends AbstractAdvertisingData {
+public class Flags extends AbstractAdvertisingData implements Parcelable {
+
+    /**
+     * @see Creator
+     */
+    public static final Creator<Flags> CREATOR = new Creator<Flags>() {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public Flags createFromParcel(Parcel in) {
+            return new Flags(in);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public Flags[] newArray(int size) {
+            return new Flags[size];
+        }
+
+    };
 
     /**
      * Flags list
@@ -36,7 +61,7 @@ public class Flags extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    Flags(byte[] data, int offset, int length) {
+    public Flags(byte[] data, int offset, int length) {
         super(length);
 
         List<Integer> flagsList = new ArrayList<>();
@@ -44,6 +69,34 @@ public class Flags extends AbstractAdvertisingData {
             flagsList.add(data[i] & 0xff);
         }
         mFlagsList = Collections.synchronizedList(Collections.unmodifiableList(flagsList));
+    }
+
+    /**
+     * Constructor from {@link Parcel}
+     *
+     * @param in Parcel
+     */
+    @SuppressWarnings("unchecked")
+    public Flags(Parcel in) {
+        super(in.readInt());
+        mFlagsList = in.readArrayList(this.getClass().getClassLoader());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mLength);
+        dest.writeList(mFlagsList);
     }
 
     /**
@@ -89,7 +142,7 @@ public class Flags extends AbstractAdvertisingData {
     }
 
     /**
-     * check Simultaneous LE and BR/EDR to Same Device Capable (Controller).
+     * check Simultaneous LE and BR/EDR to Same Device Capable (Controller)
      *
      * @return {@code true}:Simultaneous LE and BR/EDR to Same Device Capable (Controller) bit is 1, {@code false}:bit is 0;
      */
@@ -98,7 +151,7 @@ public class Flags extends AbstractAdvertisingData {
     }
 
     /**
-     * check Simultaneous LE and BR/EDR to Same Device Capable (Host).
+     * check Simultaneous LE and BR/EDR to Same Device Capable (Host)
      *
      * @return {@code true}:Simultaneous LE and BR/EDR to Same Device Capable (Host) bit is 1, {@code false}:bit is 0;
      */
@@ -112,11 +165,11 @@ public class Flags extends AbstractAdvertisingData {
      * @param target one of {@link AdvertisingDataConstants.FlagsDataType}
      * @return {@code true}:target bit is 1, {@code false}:target bit is 0
      */
-    private boolean check(AbstractMap.SimpleImmutableEntry<Integer, Integer> target) {
+    private boolean check(Pair<Integer, Integer> target) {
         boolean result;
-        int index = target.getKey();
+        int index = target.first;
         if (mFlagsList.size() > index) {
-            result = (mFlagsList.get(index) & target.getValue()) != 0;
+            result = (mFlagsList.get(index) & target.second) != 0;
         } else {
             result = false;
         }

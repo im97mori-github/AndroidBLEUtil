@@ -1,13 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
-def MAVEN_REPOSITORY_URL
-
-task setupMavenRepositoryUrl {
-    MAVEN_REPOSITORY_URL = System.getenv('MAVEN_REPOSITORY_URL')
-}
-
-def VERSION_NAME = '1.1.0'
+def VERSION_NAME = '1.2.0'
 
 android {
     compileSdkVersion 28
@@ -32,6 +26,7 @@ android {
 
 dependencies {
     testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
 }
 
 task sourcesJar(type: Jar) {
@@ -51,12 +46,11 @@ publishing {
     }
     repositories {
         maven {
-            url MAVEN_REPOSITORY_URL
+            url System.getenv('MAVEN_REPOSITORY_URL')
         }
     }
 }
 
 publish {
     dependsOn ':library:assembleRelease'
-    dependsOn 'setupMavenRepositoryUrl'
 }

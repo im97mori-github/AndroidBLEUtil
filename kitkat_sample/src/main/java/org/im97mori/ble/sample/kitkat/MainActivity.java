@@ -182,7 +182,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append("Slave Connection Interval Range");
                 if (slaveConnectionIntervalRange.hasMaximum()) {
                     sb.append("\nhas maximum\n");
-                    sb.append(slaveConnectionIntervalRange.getMaximuValueMillis());
+                    sb.append(slaveConnectionIntervalRange.getMaximumValueMillis());
                 }
                 if (slaveConnectionIntervalRange.hasMinimum()) {
                     sb.append("\nhas minimum\n");

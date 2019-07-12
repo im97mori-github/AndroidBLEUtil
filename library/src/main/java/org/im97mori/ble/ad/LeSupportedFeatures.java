@@ -1,8 +1,10 @@
 package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.util.Pair;
 
-import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -45,7 +47,31 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.LeSupportedFeatures.F
  * Core Specification v5.1 Vol 6 Part B 4.6
  * </p>
  */
-public class LeSupportedFeatures extends AbstractAdvertisingData {
+@SuppressWarnings("WeakerAccess")
+public class LeSupportedFeatures extends AbstractAdvertisingData implements Parcelable {
+
+    /**
+     * @see Parcelable.Creator
+     */
+    public static final Parcelable.Creator<LeSupportedFeatures> CREATOR = new Parcelable.Creator<LeSupportedFeatures>() {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public LeSupportedFeatures createFromParcel(Parcel in) {
+            return new LeSupportedFeatures(in);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public LeSupportedFeatures[] newArray(int size) {
+            return new LeSupportedFeatures[size];
+        }
+
+    };
 
     /**
      * LE Supported Features list
@@ -59,7 +85,7 @@ public class LeSupportedFeatures extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    LeSupportedFeatures(byte[] data, int offset, int length) {
+    public LeSupportedFeatures(byte[] data, int offset, int length) {
         super(length);
 
         List<Integer> leSupportedFeaturesList = new ArrayList<>();
@@ -67,6 +93,34 @@ public class LeSupportedFeatures extends AbstractAdvertisingData {
             leSupportedFeaturesList.add(data[i] & 0xff);
         }
         mLeSupportedFeaturesList = Collections.synchronizedList(Collections.unmodifiableList(leSupportedFeaturesList));
+    }
+
+    /**
+     * Constructor from {@link Parcel}
+     *
+     * @param in Parcel
+     */
+    @SuppressWarnings("unchecked")
+    public LeSupportedFeatures(Parcel in) {
+        super(in.readInt());
+        mLeSupportedFeaturesList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mLength);
+        dest.writeList(mLeSupportedFeaturesList);
     }
 
     /**
@@ -342,11 +396,11 @@ public class LeSupportedFeatures extends AbstractAdvertisingData {
      * @param target one of {@link AdvertisingDataConstants.LeSupportedFeatures}
      * @return {@code true}:target bit is 1, {@code false}:target bit is 0
      */
-    private boolean check(AbstractMap.SimpleImmutableEntry<Integer, Integer> target) {
+    private boolean check(Pair<Integer, Integer> target) {
         boolean result;
-        int index = target.getKey();
-        if (mLeSupportedFeaturesList.size() > index) {
-            result = (mLeSupportedFeaturesList.get(index) & target.getValue()) != 0;
+        int index = target.first;
+        if (mLeSupportedFeaturesList.size() > target.first) {
+            result = (mLeSupportedFeaturesList.get(index) & target.second) != 0;
         } else {
             result = false;
         }

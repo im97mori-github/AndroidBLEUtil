@@ -1,6 +1,8 @@
 package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -15,7 +17,31 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-public class ServiceData128BitUUID extends AbstractAdvertisingData {
+@SuppressWarnings("WeakerAccess")
+public class ServiceData128BitUUID extends AbstractAdvertisingData implements Parcelable {
+
+    /**
+     * @see Creator
+     */
+    public static final Creator<ServiceData128BitUUID> CREATOR = new Creator<ServiceData128BitUUID>() {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public ServiceData128BitUUID createFromParcel(Parcel in) {
+            return new ServiceData128BitUUID(in);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public ServiceData128BitUUID[] newArray(int size) {
+            return new ServiceData128BitUUID[size];
+        }
+
+    };
 
     /**
      * UUID
@@ -34,7 +60,7 @@ public class ServiceData128BitUUID extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    ServiceData128BitUUID(byte[] data, int offset, int length) {
+    public ServiceData128BitUUID(byte[] data, int offset, int length) {
         super(length);
 
         ByteBuffer bb = ByteBuffer.wrap(data, offset + 2, 16).order(ByteOrder.LITTLE_ENDIAN);
@@ -47,6 +73,35 @@ public class ServiceData128BitUUID extends AbstractAdvertisingData {
         if (mAdditionalServiceData.length > 0) {
             System.arraycopy(data, offset + 18, mAdditionalServiceData, 0, length - 17);
         }
+    }
+
+    /**
+     * Constructor from {@link Parcel}
+     *
+     * @param in Parcel
+     */
+    public ServiceData128BitUUID(Parcel in) {
+        super(in.readInt());
+        mUuid = (UUID) in.readSerializable();
+        mAdditionalServiceData = in.createByteArray();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mLength);
+        dest.writeSerializable(mUuid);
+        dest.writeByteArray(mAdditionalServiceData);
     }
 
     /**

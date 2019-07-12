@@ -1,6 +1,8 @@
 package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,7 +19,31 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.BASE_UUID;
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-public class ListOf32BitServiceSolicitationUUIDs extends AbstractAdvertisingData {
+@SuppressWarnings("WeakerAccess")
+public class ListOf32BitServiceSolicitationUUIDs extends AbstractAdvertisingData implements Parcelable {
+
+    /**
+     * @see Creator
+     */
+    public static final Creator<ListOf32BitServiceSolicitationUUIDs> CREATOR = new Creator<ListOf32BitServiceSolicitationUUIDs>() {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public ListOf32BitServiceSolicitationUUIDs createFromParcel(Parcel in) {
+            return new ListOf32BitServiceSolicitationUUIDs(in);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public ListOf32BitServiceSolicitationUUIDs[] newArray(int size) {
+            return new ListOf32BitServiceSolicitationUUIDs[size];
+        }
+
+    };
 
     /**
      * UUID list
@@ -31,7 +57,7 @@ public class ListOf32BitServiceSolicitationUUIDs extends AbstractAdvertisingData
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    ListOf32BitServiceSolicitationUUIDs(byte[] data, int offset, int length) {
+    public ListOf32BitServiceSolicitationUUIDs(byte[] data, int offset, int length) {
         super(length);
 
         // combine with BASE UUID
@@ -47,6 +73,34 @@ public class ListOf32BitServiceSolicitationUUIDs extends AbstractAdvertisingData
             uuidList.add(new UUID(msb | target, lsb));
         }
         mUuidList = Collections.synchronizedList(Collections.unmodifiableList(uuidList));
+    }
+
+    /**
+     * Constructor from {@link Parcel}
+     *
+     * @param in Parcel
+     */
+    @SuppressWarnings("unchecked")
+    public ListOf32BitServiceSolicitationUUIDs(Parcel in) {
+        super(in.readInt());
+        mUuidList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mLength);
+        dest.writeList(mUuidList);
     }
 
     /**
