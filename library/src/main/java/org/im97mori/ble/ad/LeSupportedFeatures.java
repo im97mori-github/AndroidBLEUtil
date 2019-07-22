@@ -101,7 +101,7 @@ public class LeSupportedFeatures extends AbstractAdvertisingData implements Parc
      * @param in Parcel
      */
     @SuppressWarnings("unchecked")
-    public LeSupportedFeatures(Parcel in) {
+    private LeSupportedFeatures(Parcel in) {
         super(in.readInt());
         mLeSupportedFeaturesList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));
     }

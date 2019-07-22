@@ -1,16 +1,16 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
-def VERSION_NAME = '1.2.0'
+def VERSION_NAME = '1.2.0beta'
 
 android {
     compileSdkVersion 28
-    buildToolsVersion "29.0.0"
+    buildToolsVersion "29.0.1"
 
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 1
+        versionCode 3
         versionName VERSION_NAME
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

@@ -61,7 +61,7 @@ public class CompleteLocalName extends AbstractAdvertisingData implements Parcel
      *
      * @param in Parcel
      */
-    public CompleteLocalName(Parcel in) {
+    private CompleteLocalName(Parcel in) {
         super(in.readInt());
         mCompleteLocalName = in.readString();
     }

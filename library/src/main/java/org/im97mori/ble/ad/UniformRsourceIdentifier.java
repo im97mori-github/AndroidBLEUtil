@@ -72,7 +72,7 @@ public class UniformRsourceIdentifier extends AbstractAdvertisingData implements
      *
      * @param in Parcel
      */
-    public UniformRsourceIdentifier(Parcel in) {
+    private UniformRsourceIdentifier(Parcel in) {
         super(in.readInt());
         mUriString = in.readString();
         mUri = (URI) in.readSerializable();

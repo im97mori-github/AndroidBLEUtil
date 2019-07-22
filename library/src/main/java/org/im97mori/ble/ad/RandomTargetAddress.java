@@ -74,7 +74,7 @@ public class RandomTargetAddress extends AbstractAdvertisingData implements Parc
      * @param in Parcel
      */
     @SuppressWarnings("unchecked")
-    public RandomTargetAddress(Parcel in) {
+    private RandomTargetAddress(Parcel in) {
         super(in.readInt());
         mAddressList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));
     }

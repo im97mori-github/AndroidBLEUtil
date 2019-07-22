@@ -80,7 +80,7 @@ public class ServiceData16BitUUID extends AbstractAdvertisingData implements Par
      *
      * @param in Parcel
      */
-    public ServiceData16BitUUID(Parcel in) {
+    private ServiceData16BitUUID(Parcel in) {
         super(in.readInt());
         mUuid = (UUID) in.readSerializable();
         mAdditionalServiceData = in.createByteArray();

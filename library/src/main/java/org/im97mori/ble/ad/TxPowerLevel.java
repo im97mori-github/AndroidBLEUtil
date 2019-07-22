@@ -62,7 +62,7 @@ public class TxPowerLevel extends AbstractAdvertisingData implements Parcelable 
      *
      * @param in Parcel
      */
-    public TxPowerLevel(Parcel in) {
+    private TxPowerLevel(Parcel in) {
         super(in.readInt());
         mTxPowerLevel = in.readByte();
     }

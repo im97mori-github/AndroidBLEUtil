@@ -115,7 +115,7 @@ public class ChannelMapUpdateIndication extends AbstractAdvertisingData implemen
      * @param in Parcel
      */
     @SuppressWarnings("unchecked")
-    public ChannelMapUpdateIndication(Parcel in) {
+    private ChannelMapUpdateIndication(Parcel in) {
         super(in.readInt());
         mChmList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));
         mUnusedChannelList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));

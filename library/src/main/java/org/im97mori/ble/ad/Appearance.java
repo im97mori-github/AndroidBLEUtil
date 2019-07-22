@@ -68,7 +68,7 @@ public class Appearance extends AbstractAdvertisingData implements Parcelable {
      *
      * @param in Parcel
      */
-    public Appearance(Parcel in) {
+    private Appearance(Parcel in) {
         super(in.readInt());
         mAppearanceKey = in.readInt();
     }

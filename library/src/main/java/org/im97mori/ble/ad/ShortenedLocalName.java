@@ -61,7 +61,7 @@ public class ShortenedLocalName extends AbstractAdvertisingData implements Parce
      *
      * @param in Parcel
      */
-    public ShortenedLocalName(Parcel in) {
+    private ShortenedLocalName(Parcel in) {
         super(in.readInt());
         mShortenedLocalName = in.readString();
     }

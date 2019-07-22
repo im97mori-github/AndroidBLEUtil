@@ -82,7 +82,7 @@ public class SlaveConnectionIntervalRange extends AbstractAdvertisingData  imple
      *
      * @param in Parcel
      */
-    public SlaveConnectionIntervalRange(Parcel in) {
+    private SlaveConnectionIntervalRange(Parcel in) {
         super(in.readInt());
         mMinimumValue = in.readInt();
         mMaximumValue = in.readInt();

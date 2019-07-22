@@ -77,7 +77,7 @@ public class Flags extends AbstractAdvertisingData implements Parcelable {
      * @param in Parcel
      */
     @SuppressWarnings("unchecked")
-    public Flags(Parcel in) {
+    private Flags(Parcel in) {
         super(in.readInt());
         mFlagsList = in.readArrayList(this.getClass().getClassLoader());
     }

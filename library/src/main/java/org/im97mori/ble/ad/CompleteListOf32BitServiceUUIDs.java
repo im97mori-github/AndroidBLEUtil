@@ -81,7 +81,7 @@ public class CompleteListOf32BitServiceUUIDs extends AbstractAdvertisingData imp
      * @param in Parcel
      */
     @SuppressWarnings("unchecked")
-    public CompleteListOf32BitServiceUUIDs(Parcel in) {
+    private CompleteListOf32BitServiceUUIDs(Parcel in) {
         super(in.readInt());
         mUuidList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));
     }

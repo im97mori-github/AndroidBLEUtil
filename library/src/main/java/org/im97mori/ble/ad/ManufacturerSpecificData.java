@@ -79,7 +79,7 @@ public class ManufacturerSpecificData extends AbstractAdvertisingData implements
      *
      * @param in Parcel
      */
-    public ManufacturerSpecificData(Parcel in) {
+    private ManufacturerSpecificData(Parcel in) {
         super(in.readInt());
         mCompanyIdentifier = in.readInt();
         mManufacturerSpecificData = in.createByteArray();

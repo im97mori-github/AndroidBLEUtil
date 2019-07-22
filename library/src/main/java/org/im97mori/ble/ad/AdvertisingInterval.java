@@ -67,7 +67,7 @@ public class AdvertisingInterval extends AbstractAdvertisingData implements Parc
      *
      * @param in Parcel
      */
-    public AdvertisingInterval(Parcel in) {
+    private AdvertisingInterval(Parcel in) {
         super(in.readInt());
         mAdvertisingInterval = in.readInt();
     }
