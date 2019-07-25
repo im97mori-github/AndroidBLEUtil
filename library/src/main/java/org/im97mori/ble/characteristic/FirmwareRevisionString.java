@@ -4,6 +4,10 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.im97mori.ble.ByteArrayCreater;
+
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FIRMWARE_REVISION_STRING_CHARACTERISTIC;
+
 /**
  * Firmware revision string (Characteristics UUID: 0x2A26)
  */
@@ -11,9 +15,9 @@ import android.os.Parcelable;
 public class FirmwareRevisionString extends AbstractCharacteristic implements Parcelable {
 
     /**
-     * @see Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<FirmwareRevisionString> CREATOR = new Creator<FirmwareRevisionString>() {
+    public static final ByteArrayCreater<FirmwareRevisionString> CREATOR = new ByteArrayCreater<FirmwareRevisionString>() {
 
         /**
          * {@inheritDoc}
@@ -29,6 +33,15 @@ public class FirmwareRevisionString extends AbstractCharacteristic implements Pa
         @Override
         public FirmwareRevisionString[] newArray(int size) {
             return new FirmwareRevisionString[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        public FirmwareRevisionString createFromByteArray(byte[] values) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(FIRMWARE_REVISION_STRING_CHARACTERISTIC, 0, 0);
+            bluetoothGattCharacteristic.setValue(values);
+            return new FirmwareRevisionString(bluetoothGattCharacteristic);
         }
 
     };

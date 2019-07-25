@@ -52,4 +52,17 @@ public class CentralAddressResolutionTest {
         byte[] resultData = result1.getBytes();
         assertArrayEquals(data, resultData);
     }
+
+    @Test
+    public void test4() {
+        byte[] data = new byte[1];
+        data[0] = (byte) (CentralAddressResolution.CENTRAL_ADDRESS_RESOLUTION_SUPPORTED & 0xff);
+
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(AdvertisingDataConstants.BASE_UUID, 0, 0);
+        bluetoothGattCharacteristic.setValue(data);
+
+        CentralAddressResolution result1 = new CentralAddressResolution(bluetoothGattCharacteristic);
+        CentralAddressResolution result2 = CentralAddressResolution.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
 }

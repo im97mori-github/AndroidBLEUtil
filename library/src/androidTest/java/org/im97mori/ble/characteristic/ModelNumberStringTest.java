@@ -52,4 +52,16 @@ public class ModelNumberStringTest {
         byte[] resultData = result1.getBytes();
         assertArrayEquals(modelNumber.getBytes(), resultData);
     }
+
+    @Test
+    public void test4() {
+        String modelNumber = "2JCIE-BU01";
+
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(AdvertisingDataConstants.BASE_UUID, 0, 0);
+        bluetoothGattCharacteristic.setValue(modelNumber.getBytes(StandardCharsets.UTF_8));
+
+        ModelNumberString result1 = new ModelNumberString(bluetoothGattCharacteristic);
+        ModelNumberString result2 = ModelNumberString.CREATOR.createFromByteArray(modelNumber.getBytes(StandardCharsets.UTF_8));
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
 }

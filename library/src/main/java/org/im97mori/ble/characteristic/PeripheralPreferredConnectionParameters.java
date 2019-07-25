@@ -4,8 +4,12 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.im97mori.ble.ByteArrayCreater;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.PERIPHERAL_PREFERRED_CONNECTION_PARAMATERS_CHARACTERISTIC;
 
 /**
  * Peripheral preferred connection parameters (Characteristics UUID: 0x2A04)
@@ -29,9 +33,9 @@ public class PeripheralPreferredConnectionParameters extends AbstractCharacteris
     public static final double CONNECTION_SUPERVISION_TIMEOUT_MULTIPLIER_UNIT = 10d;
 
     /**
-     * @see Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<PeripheralPreferredConnectionParameters> CREATOR = new Creator<PeripheralPreferredConnectionParameters>() {
+    public static final ByteArrayCreater<PeripheralPreferredConnectionParameters> CREATOR = new ByteArrayCreater<PeripheralPreferredConnectionParameters>() {
 
         /**
          * {@inheritDoc}
@@ -47,6 +51,15 @@ public class PeripheralPreferredConnectionParameters extends AbstractCharacteris
         @Override
         public PeripheralPreferredConnectionParameters[] newArray(int size) {
             return new PeripheralPreferredConnectionParameters[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        public PeripheralPreferredConnectionParameters createFromByteArray(byte[] values) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PERIPHERAL_PREFERRED_CONNECTION_PARAMATERS_CHARACTERISTIC, 0, 0);
+            bluetoothGattCharacteristic.setValue(values);
+            return new PeripheralPreferredConnectionParameters(bluetoothGattCharacteristic);
         }
 
     };

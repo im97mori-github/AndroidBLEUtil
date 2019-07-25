@@ -4,8 +4,12 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.im97mori.ble.ByteArrayCreater;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC;
 
 /**
  * Central address resolution (Characteristics UUID: 0x2AA6)
@@ -19,9 +23,9 @@ public class CentralAddressResolution extends AbstractCharacteristic implements 
     public static final int CENTRAL_ADDRESS_RESOLUTION_SUPPORTED = 1;
 
     /**
-     * @see Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<CentralAddressResolution> CREATOR = new Creator<CentralAddressResolution>() {
+    public static final ByteArrayCreater<CentralAddressResolution> CREATOR = new ByteArrayCreater<CentralAddressResolution>() {
 
         /**
          * {@inheritDoc}
@@ -37,6 +41,15 @@ public class CentralAddressResolution extends AbstractCharacteristic implements 
         @Override
         public CentralAddressResolution[] newArray(int size) {
             return new CentralAddressResolution[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        public CentralAddressResolution createFromByteArray(byte[] values) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC, 0, 0);
+            bluetoothGattCharacteristic.setValue(values);
+            return new CentralAddressResolution(bluetoothGattCharacteristic);
         }
 
     };

@@ -78,4 +78,16 @@ public class HardwareRevisionStringTest {
         byte[] resultData = result1.getBytes();
         assertArrayEquals(hardwareRevision.getBytes(), resultData);
     }
+
+    @Test
+    public void test6() {
+        String hardwareRevision = "12.34";
+
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(AdvertisingDataConstants.BASE_UUID, 0, 0);
+        bluetoothGattCharacteristic.setValue(hardwareRevision.getBytes(StandardCharsets.UTF_8));
+
+        HardwareRevisionString result1 = new HardwareRevisionString(bluetoothGattCharacteristic);
+        HardwareRevisionString result2 = HardwareRevisionString.CREATOR.createFromByteArray(hardwareRevision.getBytes(StandardCharsets.UTF_8));
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
 }

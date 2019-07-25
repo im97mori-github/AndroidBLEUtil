@@ -78,4 +78,16 @@ public class SerialNumberStringTest {
         byte[] resultData = result1.getBytes();
         assertArrayEquals(serialNumber.getBytes(), resultData);
     }
+
+    @Test
+    public void test6() {
+        String serialNumber = "39Z9MY9999";
+
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(AdvertisingDataConstants.BASE_UUID, 0, 0);
+        bluetoothGattCharacteristic.setValue(serialNumber.getBytes(StandardCharsets.UTF_8));
+
+        SerialNumberString result1 = new SerialNumberString(bluetoothGattCharacteristic);
+        SerialNumberString result2 = SerialNumberString.CREATOR.createFromByteArray(serialNumber.getBytes(StandardCharsets.UTF_8));
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
 }

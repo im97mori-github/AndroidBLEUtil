@@ -4,8 +4,12 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.im97mori.ble.ByteArrayCreater;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.APPEARANCE_CHARACTERISTIC;
 
 /**
  * Appearance (Characteristics UUID: 0x2A01)
@@ -22,9 +26,9 @@ public class Appearance extends AbstractCharacteristic implements Parcelable {
     public static final int CATEGORY_UNKNOWN = 0x00;
 
     /**
-     * @see Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<Appearance> CREATOR = new Creator<Appearance>() {
+    public static final ByteArrayCreater<Appearance> CREATOR = new ByteArrayCreater<Appearance>() {
 
         /**
          * {@inheritDoc}
@@ -40,6 +44,15 @@ public class Appearance extends AbstractCharacteristic implements Parcelable {
         @Override
         public Appearance[] newArray(int size) {
             return new Appearance[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        public Appearance createFromByteArray(byte[] values) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(APPEARANCE_CHARACTERISTIC, 0, 0);
+            bluetoothGattCharacteristic.setValue(values);
+            return new Appearance(bluetoothGattCharacteristic);
         }
 
     };

@@ -4,6 +4,10 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.im97mori.ble.ByteArrayCreater;
+
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SERIAL_NUMBER_STRING_CHARACTERISTIC;
+
 /**
  * Serial number string (Characteristics UUID: 0x2A25)
  */
@@ -11,9 +15,9 @@ import android.os.Parcelable;
 public class SerialNumberString extends AbstractCharacteristic implements Parcelable {
 
     /**
-     * @see Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<SerialNumberString> CREATOR = new Creator<SerialNumberString>() {
+    public static final ByteArrayCreater<SerialNumberString> CREATOR = new ByteArrayCreater<SerialNumberString>() {
 
         /**
          * {@inheritDoc}
@@ -29,6 +33,15 @@ public class SerialNumberString extends AbstractCharacteristic implements Parcel
         @Override
         public SerialNumberString[] newArray(int size) {
             return new SerialNumberString[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        public SerialNumberString createFromByteArray(byte[] values) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SERIAL_NUMBER_STRING_CHARACTERISTIC, 0, 0);
+            bluetoothGattCharacteristic.setValue(values);
+            return new SerialNumberString(bluetoothGattCharacteristic);
         }
 
     };

@@ -4,18 +4,24 @@ import android.bluetooth.BluetoothGattDescriptor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.im97mori.ble.ByteArrayCreater;
+
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.Arrays;
+
+import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR;
 
 /**
  * Client Characteristic Configuration (Descriptor UUID: 0x2902)
  */
 @SuppressWarnings("WeakerAccess")
-public class ClientCharacteristicConfiguration implements Parcelable {
+public class ClientCharacteristicConfiguration extends AbstractDescriptor implements Parcelable {
 
     /**
      * @see Creator
      */
-    public static final Creator<ClientCharacteristicConfiguration> CREATOR = new Creator<ClientCharacteristicConfiguration>() {
+    public static final ByteArrayCreater<ClientCharacteristicConfiguration> CREATOR = new ByteArrayCreater<ClientCharacteristicConfiguration>() {
 
         /**
          * {@inheritDoc}
@@ -31,6 +37,15 @@ public class ClientCharacteristicConfiguration implements Parcelable {
         @Override
         public ClientCharacteristicConfiguration[] newArray(int size) {
             return new ClientCharacteristicConfiguration[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        public ClientCharacteristicConfiguration createFromByteArray(byte[] values) {
+            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR, 0);
+            bluetoothGattDescriptor.setValue(values);
+            return new ClientCharacteristicConfiguration(bluetoothGattDescriptor);
         }
 
     };
@@ -103,6 +118,17 @@ public class ClientCharacteristicConfiguration implements Parcelable {
      */
     public boolean isIndication() {
         return Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, mConfiguration);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public byte[] getBytes() {
+        byte[] data = new byte[2];
+        ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);
+        byteBuffer.put(mConfiguration);
+        return data;
     }
 
 }

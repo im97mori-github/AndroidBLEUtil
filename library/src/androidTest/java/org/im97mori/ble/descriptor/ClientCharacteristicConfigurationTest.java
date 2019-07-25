@@ -58,4 +58,23 @@ public class ClientCharacteristicConfigurationTest {
 
         assertArrayEquals(result1.getConfiguration(), result2.getConfiguration());
     }
+
+    @Test
+    public void test102() {
+        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(AdvertisingDataConstants.BASE_UUID, 0);
+        bluetoothGattDescriptor.setValue(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
+
+        ClientCharacteristicConfiguration result1 = new ClientCharacteristicConfiguration(bluetoothGattDescriptor);
+        assertArrayEquals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, result1.getBytes());
+    }
+
+    @Test
+    public void test103() {
+        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(AdvertisingDataConstants.BASE_UUID, 0);
+        bluetoothGattDescriptor.setValue(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
+
+        ClientCharacteristicConfiguration result1 = new ClientCharacteristicConfiguration(bluetoothGattDescriptor);
+        ClientCharacteristicConfiguration result2 = ClientCharacteristicConfiguration.CREATOR.createFromByteArray(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
 }

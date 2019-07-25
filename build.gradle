@@ -18,6 +18,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url System.getenv('MAVEN_REPOSITORY_URL') }
     }
 }
 

@@ -52,7 +52,7 @@ public class AppearanceTest {
         bluetoothGattCharacteristic.setValue(data);
 
         Appearance result1 = new Appearance(bluetoothGattCharacteristic);
-        byte[] resultData = result1.getBytes();
-        assertArrayEquals(data, resultData);
+        Appearance result2 = Appearance.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 }

@@ -82,4 +82,24 @@ public class PeripheralPreferredConnectionParametersTest {
         byte[] resultData = result1.getBytes();
         assertArrayEquals(data, resultData);
     }
+
+    @Test
+    public void test4() {
+        byte[] data = new byte[8];
+        data[0] = (byte) (0x10 & 0xff);
+        data[1] = (byte) (0x00 & 0xff);
+        data[2] = (byte) (0x20 & 0xff);
+        data[3] = (byte) (0x00 & 0xff);
+        data[4] = (byte) (0x04 & 0xff);
+        data[5] = (byte) (0x00 & 0xff);
+        data[6] = (byte) (0x90 & 0xff);
+        data[7] = (byte) (0x01 & 0xff);
+
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(AdvertisingDataConstants.BASE_UUID, 0, 0);
+        bluetoothGattCharacteristic.setValue(data);
+
+        PeripheralPreferredConnectionParameters result1 = new PeripheralPreferredConnectionParameters(bluetoothGattCharacteristic);
+        PeripheralPreferredConnectionParameters result2 = PeripheralPreferredConnectionParameters.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
 }

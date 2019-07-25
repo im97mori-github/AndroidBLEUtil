@@ -4,6 +4,10 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.im97mori.ble.ByteArrayCreater;
+
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC;
+
 /**
  * Device mName (Characteristics UUID: 0x2A00)
  */
@@ -11,9 +15,9 @@ import android.os.Parcelable;
 public class DeviceName extends AbstractCharacteristic implements Parcelable {
 
     /**
-     * @see Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<DeviceName> CREATOR = new Creator<DeviceName>() {
+    public static final ByteArrayCreater<DeviceName> CREATOR = new ByteArrayCreater<DeviceName>() {
 
         /**
          * {@inheritDoc}
@@ -29,6 +33,15 @@ public class DeviceName extends AbstractCharacteristic implements Parcelable {
         @Override
         public DeviceName[] newArray(int size) {
             return new DeviceName[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        public DeviceName createFromByteArray(byte[] values) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DEVICE_NAME_CHARACTERISTIC, 0, 0);
+            bluetoothGattCharacteristic.setValue(values);
+            return new DeviceName(bluetoothGattCharacteristic);
         }
 
     };

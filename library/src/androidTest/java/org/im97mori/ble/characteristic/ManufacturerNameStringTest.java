@@ -51,4 +51,17 @@ public class ManufacturerNameStringTest {
         byte[] resultData = result1.getBytes();
         assertArrayEquals(manufactureName.getBytes(), resultData);
     }
+
+    @Test
+    public void test4() {
+        String manufactureName = "OMRON";
+
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(AdvertisingDataConstants.BASE_UUID, 0, 0);
+        bluetoothGattCharacteristic.setValue(manufactureName.getBytes(StandardCharsets.UTF_8));
+
+        ManufacturerNameString result1 = new ManufacturerNameString(bluetoothGattCharacteristic);
+        ManufacturerNameString result2 = ManufacturerNameString.CREATOR.createFromByteArray(manufactureName.getBytes(StandardCharsets.UTF_8));
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
 }

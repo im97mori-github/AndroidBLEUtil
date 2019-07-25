@@ -4,6 +4,10 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.im97mori.ble.ByteArrayCreater;
+
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MANUFACTURER_NAME_STRING_CHARACTERISTIC;
+
 /**
  * Manufacturer name string (Characteristics UUID: 0x2A28)
  */
@@ -11,9 +15,9 @@ import android.os.Parcelable;
 public class ManufacturerNameString extends AbstractCharacteristic implements Parcelable {
 
     /**
-     * @see Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<ManufacturerNameString> CREATOR = new Creator<ManufacturerNameString>() {
+    public static final ByteArrayCreater<ManufacturerNameString> CREATOR = new ByteArrayCreater<ManufacturerNameString>() {
 
         /**
          * {@inheritDoc}
@@ -29,6 +33,15 @@ public class ManufacturerNameString extends AbstractCharacteristic implements Pa
         @Override
         public ManufacturerNameString[] newArray(int size) {
             return new ManufacturerNameString[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        public ManufacturerNameString createFromByteArray(byte[] values) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(MANUFACTURER_NAME_STRING_CHARACTERISTIC, 0, 0);
+            bluetoothGattCharacteristic.setValue(values);
+            return new ManufacturerNameString(bluetoothGattCharacteristic);
         }
 
     };

@@ -1,20 +1,11 @@
 package org.im97mori.ble.sample.lolipop;
 
-import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanRecord;
 import android.bluetooth.le.ScanResult;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -49,20 +40,17 @@ import org.im97mori.ble.ad.UniformRsourceIdentifier;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends FragmentActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback {
-
-    private static final int REQUEST_PERMISSION_COARSE_LOCATION = 0;
-    private static final String FRAGMENT_TAG_ALERT_DIALOG = "FRAGMENT_TAG_ALERT_DIALOG";
+public class AdvertisingDataSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback {
 
     private static class TestScanCallback extends ScanCallback {
 
 
-        final MainActivity mMainActivity;
+        final AdvertisingDataSampleActivity mAdvertisingDataSampleActivity;
         final AdvertisingDataParser mAdvertisingDataParser;
 
 
-        private TestScanCallback(MainActivity mainActivity) {
-            mMainActivity = mainActivity;
+        private TestScanCallback(AdvertisingDataSampleActivity advertisingDataSampleActivity) {
+            mAdvertisingDataSampleActivity = advertisingDataSampleActivity;
             AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
             mAdvertisingDataParser = builder.build();
         }
@@ -454,14 +442,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            mMainActivity.runOnUiThread(new Runnable() {
+            mAdvertisingDataSampleActivity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        mMainActivity.mResultTextView.setText(sb);
-                        mMainActivity.mBluetoothLeScanner.stopScan(TestScanCallback.this);
-                        mMainActivity.mTestScanCallback = null;
-                        mMainActivity.mStartStopButton.setText(R.string.scan_start);
+                        mAdvertisingDataSampleActivity.mResultTextView.setText(sb);
+                        mAdvertisingDataSampleActivity.mBluetoothLeScanner.stopScan(TestScanCallback.this);
+                        mAdvertisingDataSampleActivity.mTestScanCallback = null;
+                        mAdvertisingDataSampleActivity.mStartStopButton.setText(R.string.scan_start);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -470,7 +458,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
     }
 
-    private Button mGetPermissionButton;
     private Button mStartStopButton;
     private TextView mResultTextView;
 
@@ -479,20 +466,16 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private TestScanCallback mTestScanCallback;
 
-    private FragmentManager mFragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         mFragmentManager = getSupportFragmentManager();
 
-        mGetPermissionButton = findViewById(R.id.getPermissionButton);
         mStartStopButton = findViewById(R.id.startStopButton);
         mResultTextView = findViewById(R.id.resultTextView);
 
-        mGetPermissionButton.setOnClickListener(this);
         mStartStopButton.setOnClickListener(this);
 
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -502,10 +485,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
-
-        hasPermission();
 
         if (mBluetoothLeScanner == null) {
             mResultTextView.setText(null);
@@ -518,9 +504,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        if (R.id.getPermissionButton == v.getId()) {
-            hasPermission();
-        } else if (R.id.startStopButton == v.getId()) {
+        if (R.id.startStopButton == v.getId()) {
             if (mBluetoothLeScanner != null) {
                 if (mTestScanCallback == null) {
                     if (hasPermission()) {
@@ -535,49 +519,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     mTestScanCallback = null;
                 }
             }
-        }
-    }
-
-
-    @Override
-    public void onOk() {
-        try {
-            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-            intent.setData(Uri.parse("package:" + getPackageName()));
-            startActivity(intent);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void onCancel() {
-        Fragment fragment = mFragmentManager.findFragmentByTag(FRAGMENT_TAG_ALERT_DIALOG);
-        if (fragment instanceof AlertDialogFragment) {
-            ((AlertDialogFragment) fragment).dismissAllowingStateLoss();
-        }
-    }
-
-    private boolean hasPermission() {
-        boolean result = true;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (PackageManager.PERMISSION_DENIED == checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)) {
-                result = false;
-                if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)) {
-                    if (mFragmentManager.findFragmentByTag(FRAGMENT_TAG_ALERT_DIALOG) == null) {
-                        AlertDialogFragment fragment = new AlertDialogFragment();
-                        fragment.show(mFragmentManager, FRAGMENT_TAG_ALERT_DIALOG);
-                    }
-                } else {
-                    requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_PERMISSION_COARSE_LOCATION);
-                }
-            }
-        }
-        if (result) {
-            mGetPermissionButton.setVisibility(View.GONE);
         } else {
-            mGetPermissionButton.setVisibility(View.VISIBLE);
+            super.onClick(v);
         }
-        return result;
     }
+
 }

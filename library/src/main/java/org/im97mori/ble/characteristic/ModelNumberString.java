@@ -4,6 +4,10 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.im97mori.ble.ByteArrayCreater;
+
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MODEL_NUMBER_STRING_CHARACTERISTIC;
+
 /**
  * Model number string (Characteristics UUID: 0x2A24)
  */
@@ -11,9 +15,9 @@ import android.os.Parcelable;
 public class ModelNumberString extends AbstractCharacteristic implements Parcelable {
 
     /**
-     * @see Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<ModelNumberString> CREATOR = new Creator<ModelNumberString>() {
+    public static final ByteArrayCreater<ModelNumberString> CREATOR = new ByteArrayCreater<ModelNumberString>() {
 
         /**
          * {@inheritDoc}
@@ -29,6 +33,15 @@ public class ModelNumberString extends AbstractCharacteristic implements Parcela
         @Override
         public ModelNumberString[] newArray(int size) {
             return new ModelNumberString[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        public ModelNumberString createFromByteArray(byte[] values) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(MODEL_NUMBER_STRING_CHARACTERISTIC, 0, 0);
+            bluetoothGattCharacteristic.setValue(values);
+            return new ModelNumberString(bluetoothGattCharacteristic);
         }
 
     };
