@@ -29,7 +29,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC
 /**
  * BLE connection
  */
-@SuppressWarnings({"JavadocReference", "WeakerAccess"})
+@SuppressWarnings({"JavadocReference", "WeakerAccess", "unused"})
 public class BLEConnection extends BluetoothGattCallback {
 
     /**
@@ -416,6 +416,24 @@ public class BLEConnection extends BluetoothGattCallback {
         BluetoothGatt bluetoothGatt = mBluetoothGatt;
         if (bluetoothGatt != null) {
             WriteCharacteristicTask task = new WriteCharacteristicTask(this, bluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, abstractCharacteristic, timeout);
+            Message message = WriteCharacteristicTask.createWriteCharacteristicMessage(characteristicUUID, task);
+            mTaskHandler.addTask(task, message);
+        }
+    }
+
+    /**
+     * Create write characteristic task
+     *
+     * @param serviceUUID            service {@link UUID}
+     * @param characteristicUUID     characteristic {@link UUID}
+     * @param abstractCharacteristic write data
+     * @param writeType              one of {@link BluetoothGattCharacteristic#WRITE_TYPE_DEFAULT}, {@link BluetoothGattCharacteristic#WRITE_TYPE_NO_RESPONSE}, {@link BluetoothGattCharacteristic#WRITE_TYPE_SIGNED}
+     * @param timeout                timeout(millis)
+     */
+    public void createWriteCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, AbstractCharacteristic abstractCharacteristic, int writeType, long timeout) {
+        BluetoothGatt bluetoothGatt = mBluetoothGatt;
+        if (bluetoothGatt != null) {
+            WriteCharacteristicTask task = new WriteCharacteristicTask(this, bluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, abstractCharacteristic, writeType, timeout);
             Message message = WriteCharacteristicTask.createWriteCharacteristicMessage(characteristicUUID, task);
             mTaskHandler.addTask(task, message);
         }
