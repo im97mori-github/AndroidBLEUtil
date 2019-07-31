@@ -58,10 +58,10 @@ public interface BLECallback {
      *
      * @param bluetoothDevice    BLE device
      * @param characteristicUUID characteristic {@link UUID}
-     * @param status             {@link android.bluetooth.BluetoothGattCallback#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter or -1
+     * @param status             {@link android.bluetooth.BluetoothGattCallback#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter or {@link BLEConstants.ErrorCodes#UNKNOWN}
      * @see BLEConstants.ErrorCodes
      */
-    void onCharacteristicReadFail(BluetoothDevice bluetoothDevice, UUID characteristicUUID, int status);
+    void onCharacteristicReadFailed(BluetoothDevice bluetoothDevice, UUID characteristicUUID, int status);
 
     /**
      * Read characteristic timeout callback
@@ -86,10 +86,10 @@ public interface BLECallback {
      *
      * @param bluetoothDevice    BLE device
      * @param characteristicUUID characteristic {@link UUID}
-     * @param status             {@link android.bluetooth.BluetoothGattCallback#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter or -1
+     * @param status             {@link android.bluetooth.BluetoothGattCallback#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter or {@link BLEConstants.ErrorCodes#UNKNOWN}
      * @see BLEConstants.ErrorCodes
      */
-    void onCharacteristicWriteFail(BluetoothDevice bluetoothDevice, UUID characteristicUUID, int status);
+    void onCharacteristicWriteFailed(BluetoothDevice bluetoothDevice, UUID characteristicUUID, int status);
 
     /**
      * Write characteristic timeout callback
@@ -116,10 +116,10 @@ public interface BLECallback {
      * @param bluetoothDevice    BLE device
      * @param characteristicUUID characteristic {@link UUID}
      * @param descriptorUUID     descriptor  {@link UUID}
-     * @param status             {@link android.bluetooth.BluetoothGattCallback#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter or -1
+     * @param status             {@link android.bluetooth.BluetoothGattCallback#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter or {@link BLEConstants.ErrorCodes#UNKNOWN}
      * @see BLEConstants.ErrorCodes
      */
-    void onDescriptorReadFail(BluetoothDevice bluetoothDevice, UUID characteristicUUID, UUID descriptorUUID, int status);
+    void onDescriptorReadFailed(BluetoothDevice bluetoothDevice, UUID characteristicUUID, UUID descriptorUUID, int status);
 
     /**
      * Read descriptor timeout callback
@@ -147,10 +147,10 @@ public interface BLECallback {
      *
      * @param bluetoothDevice    BLE device
      * @param characteristicUUID characteristic {@link UUID}
-     * @param status             {@link android.bluetooth.BluetoothGattCallback#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter or -1
+     * @param status             {@link android.bluetooth.BluetoothGattCallback#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter or {@link BLEConstants.ErrorCodes#UNKNOWN}
      * @see BLEConstants.ErrorCodes
      */
-    void onDescriptorWriteFail(BluetoothDevice bluetoothDevice, UUID characteristicUUID, UUID descriptorUUID, int status);
+    void onDescriptorWriteFailed(BluetoothDevice bluetoothDevice, UUID characteristicUUID, UUID descriptorUUID, int status);
 
     /**
      * Write descriptor timeout callback

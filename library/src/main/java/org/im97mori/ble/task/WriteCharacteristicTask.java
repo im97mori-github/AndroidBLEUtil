@@ -31,7 +31,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
      *
      * @param characteristicUUID target characteristic UUID
      * @param obj                instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
-     * @return create write characteristic {@link Message} instance
+     * @return write characteristic {@link Message} instance
      */
     public static Message createWriteCharacteristicMessage(UUID characteristicUUID, Object obj) {
         Bundle bundle = new Bundle();
@@ -47,7 +47,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
      * create write characteristic finished message
      *
      * @param characteristicUUID target characteristic UUID
-     * @param values             read result
+     * @param values             {@link BluetoothGattCharacteristic#getValue()}
      * @return write characteristic finished {@link Message} instance
      */
     public static Message createWriteCharacteristicFinishedMessage(UUID characteristicUUID, byte[] values) {
@@ -64,8 +64,8 @@ public class WriteCharacteristicTask extends AbstractBLETask {
      * create write characteristic error message
      *
      * @param characteristicUUID target characteristic UUID
-     * @param status             read result
-     * @return read characteristic error {@link Message} instance
+     * @param status             {@link android.bluetooth.BluetoothGattCallback#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     * @return write characteristic error {@link Message} instance
      */
     public static Message createWriteCharacteristicErrorMessage(UUID characteristicUUID, int status) {
         Bundle bundle = new Bundle();
@@ -157,11 +157,10 @@ public class WriteCharacteristicTask extends AbstractBLETask {
                         if (mBluetoothGatt.writeCharacteristic(bluetoothGattCharacteristic)) {
 
                             // set timeout message
-                            Message timeoutMessage = createTimeoutMessage(mCharacteristicUUID, this);
-                            mTaskHandler.sendTimeoutMessage(timeoutMessage, mTimeout);
+                            mTaskHandler.sendProcessingMessage(createTimeoutMessage(mCharacteristicUUID, this), mTimeout);
                         } else {
                             nextProgress = PROGRESS_FINISHED;
-                            mBLEConnection.getBLECallback().onCharacteristicWriteFail(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, UNKNOWN);
+                            mBLEConnection.getBLECallback().onCharacteristicWriteFailed(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, UNKNOWN);
                         }
                     }
                 }
@@ -174,7 +173,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
                     mBLEConnection.getBLECallback().onCharacteristicWriteSuccess(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, bundle.getByteArray(KEY_VALUES));
                 } else if (PROGRESS_CHARACTERISTIC_WRITE_ERROR == nextProgress) {
                     // current:write start, next:write error
-                    mBLEConnection.getBLECallback().onCharacteristicWriteFail(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, bundle.getInt(KEY_STATUS));
+                    mBLEConnection.getBLECallback().onCharacteristicWriteFailed(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, bundle.getInt(KEY_STATUS));
                 }
 
                 mCurrentProgress = PROGRESS_FINISHED;

@@ -79,6 +79,21 @@ public class BLEConnection extends BluetoothGattCallback {
 
     /**
      * <p>
+     * Start task handling
+     * <p>
+     * used for original Connect task(such as connect and manual bonding or application layer key exchange)
+     * </p>
+     */
+    public synchronized void start() {
+        if (mBluetoothGatt == null) {
+            HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
+            thread.start();
+            mTaskHandler = new TaskHandler(thread.getLooper());
+        }
+    }
+
+    /**
+     * <p>
      * Connect ble
      * <p>
      * if already connected, do not anything
@@ -88,9 +103,7 @@ public class BLEConnection extends BluetoothGattCallback {
      */
     public synchronized void connect(long timeout) {
         if (mBluetoothGatt == null) {
-            HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
-            thread.start();
-            mTaskHandler = new TaskHandler(thread.getLooper());
+            start();
 
             ConnectTask task = new ConnectTask(this, mTaskHandler, timeout);
             Message message = ConnectTask.createConnectMessage(task);
@@ -107,6 +120,8 @@ public class BLEConnection extends BluetoothGattCallback {
      */
     public synchronized void quit() {
         if (mBluetoothGatt != null) {
+            mTaskHandler.clearTask();
+
             DisconnectTask task = new DisconnectTask(this, mBluetoothGatt);
             Message message = DisconnectTask.createDisconnectMessage(task);
             mTaskHandler.addTask(task, message);
@@ -244,7 +259,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
+    public synchronized void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
         // gatt instance is not matched
         if (gatt != mBluetoothGatt) {
             return;
@@ -265,16 +280,17 @@ public class BLEConnection extends BluetoothGattCallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
+    public synchronized void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
         // gatt instance is not matched
         if (gatt != mBluetoothGatt) {
             return;
         }
         try {
+            UUID uuid = characteristic.getUuid();
             if (BluetoothGatt.GATT_SUCCESS == status) {
-                mTaskHandler.sendProcessingMessage(WriteCharacteristicTask.createWriteCharacteristicFinishedMessage(characteristic.getUuid(), characteristic.getValue()));
+                mTaskHandler.sendProcessingMessage(WriteCharacteristicTask.createWriteCharacteristicFinishedMessage(uuid, characteristic.getValue()));
             } else {
-                mTaskHandler.sendProcessingMessage(WriteCharacteristicTask.createWriteCharacteristicErrorMessage(characteristic.getUuid(), status));
+                mTaskHandler.sendProcessingMessage(WriteCharacteristicTask.createWriteCharacteristicErrorMessage(uuid, status));
             }
         } catch (Exception e) {
             BLELogUtils.stackLog(e);
@@ -285,7 +301,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
+    public synchronized void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
         // gatt instance is not matched
         if (gatt != mBluetoothGatt) {
             return;
@@ -306,7 +322,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorRead(BluetoothGatt gatt, BluetoothGattDescriptor descriptor, int status) {
+    public synchronized void onDescriptorRead(BluetoothGatt gatt, BluetoothGattDescriptor descriptor, int status) {
         // gatt instance is not matched
         if (gatt != mBluetoothGatt) {
             return;
@@ -341,7 +357,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorWrite(BluetoothGatt gatt, BluetoothGattDescriptor descriptor, int status) {
+    public synchronized void onDescriptorWrite(BluetoothGatt gatt, BluetoothGattDescriptor descriptor, int status) {
         // gatt instance is not matched
         if (gatt != mBluetoothGatt) {
             return;

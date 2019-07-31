@@ -169,7 +169,7 @@ public class WriteDescriptorTaskTest {
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_VALUES));
         assertNull(bundle.getByteArray(AbstractBLETask.KEY_VALUES));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_FINISHED, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_WRITE_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -187,7 +187,7 @@ public class WriteDescriptorTaskTest {
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_VALUES));
         assertNull(bundle.getByteArray(AbstractBLETask.KEY_VALUES));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_FINISHED, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_WRITE_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -205,7 +205,7 @@ public class WriteDescriptorTaskTest {
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_VALUES));
         assertNull(bundle.getByteArray(AbstractBLETask.KEY_VALUES));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_FINISHED, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_WRITE_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -223,7 +223,7 @@ public class WriteDescriptorTaskTest {
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_VALUES));
         assertArrayEquals(values, bundle.getByteArray(AbstractBLETask.KEY_VALUES));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_FINISHED, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_WRITE_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -242,7 +242,7 @@ public class WriteDescriptorTaskTest {
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_VALUES));
         assertNull(bundle.getByteArray(AbstractBLETask.KEY_VALUES));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_FINISHED, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_WRITE_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -261,7 +261,7 @@ public class WriteDescriptorTaskTest {
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_VALUES));
         assertArrayEquals(values, bundle.getByteArray(AbstractBLETask.KEY_VALUES));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_FINISHED, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_WRITE_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -280,7 +280,7 @@ public class WriteDescriptorTaskTest {
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_VALUES));
         assertArrayEquals(values, bundle.getByteArray(AbstractBLETask.KEY_VALUES));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_FINISHED, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_WRITE_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -300,7 +300,7 @@ public class WriteDescriptorTaskTest {
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_VALUES));
         assertArrayEquals(values, bundle.getByteArray(AbstractBLETask.KEY_VALUES));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_FINISHED, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_WRITE_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -318,7 +318,7 @@ public class WriteDescriptorTaskTest {
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
         assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_FINISHED, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_WRITE_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -337,7 +337,7 @@ public class WriteDescriptorTaskTest {
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
         assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_FINISHED, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_WRITE_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -356,7 +356,7 @@ public class WriteDescriptorTaskTest {
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
         assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_FINISHED, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_WRITE_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -376,6 +376,6 @@ public class WriteDescriptorTaskTest {
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
         assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_FINISHED, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_WRITE_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 }

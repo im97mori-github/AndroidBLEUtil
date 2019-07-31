@@ -67,7 +67,7 @@ public class BLECallbackSample implements BLECallback {
     }
 
     @Override
-    public void onCharacteristicReadFail(BluetoothDevice bluetoothDevice, UUID characteristicUUID, int status) {
+    public void onCharacteristicReadFailed(BluetoothDevice bluetoothDevice, UUID characteristicUUID, int status) {
         callback(status);
     }
 
@@ -82,7 +82,7 @@ public class BLECallbackSample implements BLECallback {
     }
 
     @Override
-    public void onCharacteristicWriteFail(BluetoothDevice bluetoothDevice, UUID characteristicUUID, int status) {
+    public void onCharacteristicWriteFailed(BluetoothDevice bluetoothDevice, UUID characteristicUUID, int status) {
         callback(characteristicUUID, status);
     }
 
@@ -97,7 +97,7 @@ public class BLECallbackSample implements BLECallback {
     }
 
     @Override
-    public void onDescriptorReadFail(BluetoothDevice bluetoothDevice, UUID characteristicUUID, UUID descriptorUUID, int status) {
+    public void onDescriptorReadFailed(BluetoothDevice bluetoothDevice, UUID characteristicUUID, UUID descriptorUUID, int status) {
         callback(characteristicUUID, descriptorUUID, status);
     }
 
@@ -112,7 +112,7 @@ public class BLECallbackSample implements BLECallback {
     }
 
     @Override
-    public void onDescriptorWriteFail(BluetoothDevice bluetoothDevice, UUID characteristicUUID, UUID descriptorUUID, int status) {
+    public void onDescriptorWriteFailed(BluetoothDevice bluetoothDevice, UUID characteristicUUID, UUID descriptorUUID, int status) {
         callback(characteristicUUID, descriptorUUID, status);
     }
 

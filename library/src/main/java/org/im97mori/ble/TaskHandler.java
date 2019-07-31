@@ -43,7 +43,7 @@ public class TaskHandler extends Handler {
     /**
      * task queue
      */
-    private Queue<Pair<AbstractBLETask, Message>> mQueue = new LinkedList<>();
+    private final Queue<Pair<AbstractBLETask, Message>> mQueue = new LinkedList<>();
 
     /**
      * {@inheritDoc}
@@ -112,33 +112,31 @@ public class TaskHandler extends Handler {
         sendEmptyMessage(MESSAGE_QUIT);
     }
 
+
+    /**
+     * @see #sendProcessingMessage(Message, long)
+     */
+    public void sendProcessingMessage(Message message) {
+        sendProcessingMessage(message, 0);
+    }
+
     /**
      * send processing message
      *
      * @param message target {@link Message}
+     * @param delay   millis
      * @see AbstractBLETask#createReadCharacteristicMessage(UUID, Object)
      * @see AbstractBLETask#createReadCharacteristicFinishedMessage(UUID, Parcelable)
+     * @see AbstractBLETask#createTimeoutMessage(UUID, Object)
      * @see ConnectTask#createConnectMessage(Object)
      * @see DisconnectTask#createDisconnectMessage(Object)
      * @see NotificationSettingTask#createWriteDescriptorMessage(UUID, Object)
      * @see NotificationSettingTask#createWriteDescriptorFinishedMessage(UUID)
      * @see WriteCharacteristicTask#createWriteCharacteristicMessage(UUID, Object)
      */
-    public void sendProcessingMessage(Message message) {
+    public void sendProcessingMessage(Message message, long delay) {
         message.what = MESSAGE_TASK_PROCESSING;
-        sendMessage(message);
-    }
-
-    /**
-     * send timeout message
-     *
-     * @param message target {@link Message}
-     * @param timeout millis
-     * @see AbstractBLETask#createTimeoutMessage(UUID, Object)
-     */
-    public void sendTimeoutMessage(Message message, long timeout) {
-        message.what = MESSAGE_TASK_PROCESSING;
-        sendMessageDelayed(message, timeout);
+        sendMessageDelayed(message, delay);
     }
 
     /**

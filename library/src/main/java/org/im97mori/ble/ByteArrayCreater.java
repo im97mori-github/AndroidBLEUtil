@@ -7,7 +7,7 @@ import android.os.Parcelable;
 /**
  * Byte array Creator
  *
- * @param <T> T must has constructor with {@link BluetoothGattCharacteristic}
+ * @param <T> T must have constructor with {@link BluetoothGattCharacteristic}
  */
 public interface ByteArrayCreater<T> extends Parcelable.Creator<T> {
 
@@ -18,4 +18,5 @@ public interface ByteArrayCreater<T> extends Parcelable.Creator<T> {
      * @return {@link T} instance
      */
     T createFromByteArray(byte[] values);
+
 }

@@ -32,7 +32,7 @@ public class ReadDescriptorTask extends AbstractBLETask {
      * @param characteristicUUID target characteristic UUID
      * @param descriptorUUID     target descriptor UUID
      * @param obj                instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
-     * @return create read descriptor {@link Message} instance
+     * @return read descriptor {@link Message} instance
      */
     public static Message createReadDescriptorMessage(UUID characteristicUUID, UUID descriptorUUID, Object obj) {
         Bundle bundle = new Bundle();
@@ -51,7 +51,7 @@ public class ReadDescriptorTask extends AbstractBLETask {
      * @param characteristicUUID target characteristic UUID
      * @param descriptorUUID     target descriptor UUID
      * @param values             {@link BluetoothGattDescriptor#getValue()}
-     * @return create read descriptor finished {@link Message} instance
+     * @return read descriptor finished {@link Message} instance
      */
     public static Message createReadDescriptorFinishedMessage(UUID characteristicUUID, UUID descriptorUUID, byte[] values) {
         Bundle bundle = new Bundle();
@@ -70,7 +70,7 @@ public class ReadDescriptorTask extends AbstractBLETask {
      * @param characteristicUUID target characteristic UUID
      * @param descriptorUUID     target descriptor UUID
      * @param status             {@link android.bluetooth.BluetoothGattCallback#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
-     * @return create read descriptor error {@link Message} instance
+     * @return read descriptor error {@link Message} instance
      */
     public static Message createReadDescriptorErrorMessage(UUID characteristicUUID, UUID descriptorUUID, int status) {
         Bundle bundle = new Bundle();
@@ -163,11 +163,10 @@ public class ReadDescriptorTask extends AbstractBLETask {
                             if (mBluetoothGatt.readDescriptor(bluetoothGattDescriptor)) {
 
                                 // set timeout message
-                                Message timeoutMessage = createTimeoutMessage(mCharacteristicUUID, this);
-                                mTaskHandler.sendTimeoutMessage(timeoutMessage, mTimeout);
+                                mTaskHandler.sendProcessingMessage(createTimeoutMessage(mCharacteristicUUID, this), mTimeout);
                             } else {
                                 nextProgress = PROGRESS_FINISHED;
-                                mBLEConnection.getBLECallback().onDescriptorReadFail(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, mDescriptorUUID, UNKNOWN);
+                                mBLEConnection.getBLECallback().onDescriptorReadFailed(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, mDescriptorUUID, UNKNOWN);
                             }
                         }
                     }
@@ -181,7 +180,7 @@ public class ReadDescriptorTask extends AbstractBLETask {
                     mBLEConnection.getBLECallback().onDescriptorReadSuccess(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, mDescriptorUUID, bundle.getByteArray(KEY_VALUES));
                 } else if (PROGRESS_DESCRIPTOR_READ_ERROR == nextProgress) {
                     // current:read start, next:read error
-                    mBLEConnection.getBLECallback().onDescriptorReadFail(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, mDescriptorUUID, bundle.getInt(KEY_STATUS));
+                    mBLEConnection.getBLECallback().onDescriptorReadFailed(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, mDescriptorUUID, bundle.getInt(KEY_STATUS));
                 }
 
                 mCurrentProgress = PROGRESS_FINISHED;
@@ -189,6 +188,7 @@ public class ReadDescriptorTask extends AbstractBLETask {
                 mTaskHandler.removeCallbacksAndMessages(this);
             }
         }
+
         return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
     }
 }

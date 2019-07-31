@@ -20,7 +20,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import org.im97mori.ble.BLEConnection;
-import org.im97mori.ble.ad.AdvertisingDataParser;
 import org.im97mori.ble.characteristic.AbstractCharacteristic;
 import org.im97mori.ble.descriptor.ClientCharacteristicConfiguration;
 import org.im97mori.ble.task.ConnectTask;
@@ -194,7 +193,7 @@ public class ConnectSampleActivity extends BaseActivity implements View.OnClickL
             mBleConnection.createWriteDescriptorTask(UUID.fromString("ab705010-0a3a-11e8-ba89-0ed5f89f718b")
                     , UUID.fromString("ab705012-0a3a-11e8-ba89-0ed5f89f718b")
                     , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
-                    , new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE)
+                    , ClientCharacteristicConfiguration.CREATOR.createFromByteArray(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE)
                     , WriteDescriptorTask.TIMEOUT_MILLIS);
         } else if (R.id.clear == item.getItemId()) {
             mBleConnection.clear();

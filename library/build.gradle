@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
-def VERSION_NAME = '1.2.0beta8'
+def VERSION_NAME = '0.1.0'
 
 android {
     compileSdkVersion 28
@@ -39,7 +39,7 @@ publishing {
     publications {
         bar(MavenPublication) {
             groupId 'org.im97mori'
-            artifactId 'ad'
+            artifactId 'ble'
             version VERSION_NAME
             artifact(sourcesJar)
             artifact("$buildDir/outputs/aar/library-release.aar")

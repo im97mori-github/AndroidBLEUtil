@@ -70,10 +70,6 @@ public class ClientCharacteristicConfiguration extends AbstractDescriptor implem
         mConfiguration = bluetoothGattDescriptor.getValue();
     }
 
-    public ClientCharacteristicConfiguration(byte[] configration) {
-        mConfiguration = configration;
-    }
-
     /**
      * Constructor from {@link Parcel}
      *

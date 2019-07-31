@@ -127,7 +127,7 @@ public class ConnectTask extends AbstractBLETask {
 
                         // set timeout message
                         Message timeoutMessage = createTimeoutMessage(null, this);
-                        mTaskHandler.sendTimeoutMessage(timeoutMessage, mTimeout);
+                        mTaskHandler.sendProcessingMessage(timeoutMessage, mTimeout);
                         mCurrentProgress = nextProgress;
                     }
                 }

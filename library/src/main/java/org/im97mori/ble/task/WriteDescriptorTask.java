@@ -31,8 +31,9 @@ public class WriteDescriptorTask extends AbstractBLETask {
      * create write descriptor message
      *
      * @param characteristicUUID target characteristic UUID
+     * @param descriptorUUID     target descriptor UUID
      * @param obj                instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
-     * @return create write descriptor {@link Message} instance
+     * @return write descriptor {@link Message} instance
      */
     public static Message createWriteDescriptorMessage(UUID characteristicUUID, UUID descriptorUUID, Object obj) {
         Bundle bundle = new Bundle();
@@ -49,14 +50,16 @@ public class WriteDescriptorTask extends AbstractBLETask {
      * create write descriptor finished message
      *
      * @param characteristicUUID target characteristic UUID
-     * @return create write descriptor finished {@link Message} instance
+     * @param descriptorUUID     target descriptor UUID
+     * @param values             {@link BluetoothGattDescriptor#getValue()}
+     * @return write descriptor finished {@link Message} instance
      */
     public static Message createWriteDescriptorFinishedMessage(UUID characteristicUUID, UUID descriptorUUID, byte[] values) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
         bundle.putSerializable(KEY_DESCRIPTOR_UUID, descriptorUUID);
         bundle.putByteArray(KEY_VALUES, values);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_FINISHED);
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_WRITE_SUCCESS);
         Message message = new Message();
         message.setData(bundle);
         return message;
@@ -67,15 +70,15 @@ public class WriteDescriptorTask extends AbstractBLETask {
      *
      * @param characteristicUUID target characteristic UUID
      * @param descriptorUUID     target descriptor UUID
-     * @param status             {@link android.bluetooth.BluetoothGattCallback#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
-     * @return create write descriptor error {@link Message} instance
+     * @param status             {@link android.bluetooth.BluetoothGattCallback#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     * @return write descriptor error {@link Message} instance
      */
     public static Message createWriteDescriptorErrorMessage(UUID characteristicUUID, UUID descriptorUUID, int status) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
         bundle.putSerializable(KEY_DESCRIPTOR_UUID, descriptorUUID);
         bundle.putInt(KEY_STATUS, status);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_FINISHED);
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_WRITE_ERROR);
         Message message = new Message();
         message.setData(bundle);
         return message;
@@ -170,11 +173,10 @@ public class WriteDescriptorTask extends AbstractBLETask {
                             if (mBluetoothGatt.writeDescriptor(bluetoothGattDescriptor)) {
 
                                 // set timeout message
-                                Message timeoutMessage = createTimeoutMessage(mCharacteristicUUID, this);
-                                mTaskHandler.sendTimeoutMessage(timeoutMessage, mTimeout);
+                                mTaskHandler.sendProcessingMessage(createTimeoutMessage(mCharacteristicUUID, this), mTimeout);
                             } else {
                                 nextProgress = PROGRESS_FINISHED;
-                                mBLEConnection.getBLECallback().onDescriptorWriteFail(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, mDescriptorUUID, UNKNOWN);
+                                mBLEConnection.getBLECallback().onDescriptorWriteFailed(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, mDescriptorUUID, UNKNOWN);
                             }
                         }
                     }
@@ -188,7 +190,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
                     mBLEConnection.getBLECallback().onDescriptorWriteSuccess(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, mDescriptorUUID, bundle.getByteArray(KEY_VALUES));
                 } else if (PROGRESS_DESCRIPTOR_WRITE_ERROR == nextProgress) {
                     // current:write start, next:write error
-                    mBLEConnection.getBLECallback().onDescriptorWriteFail(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, mDescriptorUUID, bundle.getInt(KEY_STATUS));
+                    mBLEConnection.getBLECallback().onDescriptorWriteFailed(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, mDescriptorUUID, bundle.getInt(KEY_STATUS));
                 }
 
                 mCurrentProgress = PROGRESS_FINISHED;

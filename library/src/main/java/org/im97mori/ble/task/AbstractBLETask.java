@@ -5,6 +5,9 @@ import android.os.Message;
 
 import java.util.UUID;
 
+/**
+ * Base task class
+ */
 @SuppressWarnings({"WeakerAccess", "JavadocReference"})
 public abstract class AbstractBLETask {
 
@@ -117,6 +120,12 @@ public abstract class AbstractBLETask {
      * PROGRESS:DESCRIPTOR_WRITE_ERROR
      */
     public static final int PROGRESS_DESCRIPTOR_WRITE_ERROR = PROGRESS_DESCRIPTOR_WRITE_SUCCESS + 1;
+
+    /**
+     * For user defined progress
+     */
+    @SuppressWarnings("unused")
+    public static final int PROGRESS_FIRST_USER = PROGRESS_DESCRIPTOR_WRITE_ERROR + 1;
 
     /**
      * create timeout message
