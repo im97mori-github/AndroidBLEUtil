@@ -85,7 +85,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * </p>
      */
     public synchronized void start() {
-        if (mBluetoothGatt == null) {
+        if (mTaskHandler == null) {
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
             thread.start();
             mTaskHandler = new TaskHandler(thread.getLooper());

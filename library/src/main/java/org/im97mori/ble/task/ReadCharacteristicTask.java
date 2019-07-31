@@ -140,21 +140,22 @@ public class ReadCharacteristicTask extends AbstractBLETask {
             // current:init, next:read start
             if (this == message.obj && PROGRESS_CHARACTERISTIC_READ_START == nextProgress) {
 
+                boolean result = false;
                 BluetoothGattService bluetoothGattService = mBluetoothGatt.getService(mServiceUUID);
                 if (bluetoothGattService != null) {
                     BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(mCharacteristicUUID);
                     if (bluetoothGattCharacteristic != null) {
-
                         // read characteristic
-                        if (mBluetoothGatt.readCharacteristic(bluetoothGattCharacteristic)) {
-
-                            // set timeout message
-                            mTaskHandler.sendProcessingMessage(createTimeoutMessage(mCharacteristicUUID, this), mTimeout);
-                        } else {
-                            nextProgress = PROGRESS_FINISHED;
-                            mBLEConnection.getBLECallback().onCharacteristicReadFailed(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, UNKNOWN);
-                        }
+                        result = mBluetoothGatt.readCharacteristic(bluetoothGattCharacteristic);
                     }
+                }
+
+                if (result) {
+                    // set timeout message
+                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(mCharacteristicUUID, this), mTimeout);
+                } else {
+                    nextProgress = PROGRESS_FINISHED;
+                    mBLEConnection.getBLECallback().onCharacteristicReadFailed(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, UNKNOWN);
                 }
                 mCurrentProgress = nextProgress;
             }

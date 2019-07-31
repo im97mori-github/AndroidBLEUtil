@@ -153,6 +153,8 @@ public class ReadDescriptorTask extends AbstractBLETask {
         } else if (PROGRESS_INIT == mCurrentProgress) {
             // current:init, next:read start
             if (message.obj == this && PROGRESS_DESCRIPTOR_READ_START == nextProgress) {
+
+                boolean result = false;
                 BluetoothGattService bluetoothGattService = mBluetoothGatt.getService(mServiceUUID);
                 if (bluetoothGattService != null) {
                     BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(mCharacteristicUUID);
@@ -160,16 +162,17 @@ public class ReadDescriptorTask extends AbstractBLETask {
                         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(mDescriptorUUID);
                         if (bluetoothGattDescriptor != null) {
                             // read descriptor
-                            if (mBluetoothGatt.readDescriptor(bluetoothGattDescriptor)) {
-
-                                // set timeout message
-                                mTaskHandler.sendProcessingMessage(createTimeoutMessage(mCharacteristicUUID, this), mTimeout);
-                            } else {
-                                nextProgress = PROGRESS_FINISHED;
-                                mBLEConnection.getBLECallback().onDescriptorReadFailed(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, mDescriptorUUID, UNKNOWN);
-                            }
+                            result = mBluetoothGatt.readDescriptor(bluetoothGattDescriptor);
                         }
                     }
+                }
+
+                if (result) {
+                    // set timeout message
+                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(mCharacteristicUUID, this), mTimeout);
+                } else {
+                    nextProgress = PROGRESS_FINISHED;
+                    mBLEConnection.getBLECallback().onDescriptorReadFailed(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, mDescriptorUUID, UNKNOWN);
                 }
                 mCurrentProgress = nextProgress;
             }

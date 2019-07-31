@@ -108,9 +108,21 @@ public class WriteCharacteristicTask extends AbstractBLETask {
     private final AbstractCharacteristic mAbstractCharacteristic;
 
     /**
+     * one of {@link BluetoothGattCharacteristic#WRITE_TYPE_DEFAULT}, {@link BluetoothGattCharacteristic#WRITE_TYPE_NO_RESPONSE}, {@link BluetoothGattCharacteristic#WRITE_TYPE_SIGNED}
+     */
+    private final int mWriteType;
+
+    /**
      * timeout(millis)
      */
     private final long mTimeout;
+
+    /**
+     * @see #WriteCharacteristicTask(BLEConnection, BluetoothGatt, TaskHandler, UUID, UUID, AbstractCharacteristic, int, long)
+     */
+    public WriteCharacteristicTask(BLEConnection bleConnection, BluetoothGatt bluetoothGatt, TaskHandler taskHandler, UUID serviceUUID, UUID characteristicUUID, AbstractCharacteristic abstractCharacteristic, long timeout) {
+        this(bleConnection, bluetoothGatt, taskHandler, serviceUUID, characteristicUUID, abstractCharacteristic, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, timeout);
+    }
 
     /**
      * @param bleConnection          task target {@link BLEConnection} instance
@@ -119,15 +131,17 @@ public class WriteCharacteristicTask extends AbstractBLETask {
      * @param serviceUUID            task target characteristic {@link UUID}
      * @param characteristicUUID     task target {@link TaskHandler} instance
      * @param abstractCharacteristic task target data class
+     * @param writeType              one of {@link BluetoothGattCharacteristic#WRITE_TYPE_DEFAULT}, {@link BluetoothGattCharacteristic#WRITE_TYPE_NO_RESPONSE}, {@link BluetoothGattCharacteristic#WRITE_TYPE_SIGNED}
      * @param timeout                timeout(millis)
      */
-    public WriteCharacteristicTask(BLEConnection bleConnection, BluetoothGatt bluetoothGatt, TaskHandler taskHandler, UUID serviceUUID, UUID characteristicUUID, AbstractCharacteristic abstractCharacteristic, long timeout) {
+    public WriteCharacteristicTask(BLEConnection bleConnection, BluetoothGatt bluetoothGatt, TaskHandler taskHandler, UUID serviceUUID, UUID characteristicUUID, AbstractCharacteristic abstractCharacteristic, int writeType, long timeout) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
         mTaskHandler = taskHandler;
         mServiceUUID = serviceUUID;
         mCharacteristicUUID = characteristicUUID;
         mAbstractCharacteristic = abstractCharacteristic;
+        mWriteType = writeType;
         mTimeout = timeout;
     }
 
@@ -147,22 +161,32 @@ public class WriteCharacteristicTask extends AbstractBLETask {
         } else if (PROGRESS_INIT == mCurrentProgress) {
             // current:init, next:write start
             if (message.obj == this && PROGRESS_CHARACTERISTIC_WRITE_START == nextProgress) {
+
+                boolean result = false;
                 BluetoothGattService bluetoothGattService = mBluetoothGatt.getService(mServiceUUID);
                 if (bluetoothGattService != null) {
                     BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(mCharacteristicUUID);
                     if (bluetoothGattCharacteristic != null) {
                         bluetoothGattCharacteristic.setValue(mAbstractCharacteristic.getBytes());
+                        bluetoothGattCharacteristic.setWriteType(mWriteType);
 
                         // write characteristic
-                        if (mBluetoothGatt.writeCharacteristic(bluetoothGattCharacteristic)) {
-
-                            // set timeout message
-                            mTaskHandler.sendProcessingMessage(createTimeoutMessage(mCharacteristicUUID, this), mTimeout);
-                        } else {
-                            nextProgress = PROGRESS_FINISHED;
-                            mBLEConnection.getBLECallback().onCharacteristicWriteFailed(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, UNKNOWN);
-                        }
+                        result = mBluetoothGatt.writeCharacteristic(bluetoothGattCharacteristic);
                     }
+                }
+
+                if (result) {
+                    // with response
+                    if (BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT == mWriteType) {
+                        // set timeout message
+                        mTaskHandler.sendProcessingMessage(createTimeoutMessage(mCharacteristicUUID, this), mTimeout);
+                    } else {
+                        // with no response
+                        mBLEConnection.getBLECallback().onCharacteristicWriteSuccess(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, mAbstractCharacteristic.getBytes());
+                    }
+                } else {
+                    nextProgress = PROGRESS_FINISHED;
+                    mBLEConnection.getBLECallback().onCharacteristicWriteFailed(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, UNKNOWN);
                 }
                 mCurrentProgress = nextProgress;
             }

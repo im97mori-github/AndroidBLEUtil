@@ -160,6 +160,8 @@ public class WriteDescriptorTask extends AbstractBLETask {
         } else if (PROGRESS_INIT == mCurrentProgress) {
             // current:init, next:write start
             if (message.obj == this && PROGRESS_DESCRIPTOR_WRITE_START == nextProgress) {
+
+                boolean result = false;
                 BluetoothGattService bluetoothGattService = mBluetoothGatt.getService(mServiceUUID);
                 if (bluetoothGattService != null) {
                     BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(mCharacteristicUUID);
@@ -170,16 +172,17 @@ public class WriteDescriptorTask extends AbstractBLETask {
                             bluetoothGattDescriptor.setValue(bytes);
 
                             // write descriptor
-                            if (mBluetoothGatt.writeDescriptor(bluetoothGattDescriptor)) {
-
-                                // set timeout message
-                                mTaskHandler.sendProcessingMessage(createTimeoutMessage(mCharacteristicUUID, this), mTimeout);
-                            } else {
-                                nextProgress = PROGRESS_FINISHED;
-                                mBLEConnection.getBLECallback().onDescriptorWriteFailed(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, mDescriptorUUID, UNKNOWN);
-                            }
+                            result = mBluetoothGatt.writeDescriptor(bluetoothGattDescriptor);
                         }
                     }
+                }
+
+                if (result) {
+                    // set timeout message
+                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(mCharacteristicUUID, this), mTimeout);
+                } else {
+                    nextProgress = PROGRESS_FINISHED;
+                    mBLEConnection.getBLECallback().onDescriptorWriteFailed(mBLEConnection.getBluetoothDevice(), mCharacteristicUUID, mDescriptorUUID, UNKNOWN);
                 }
                 mCurrentProgress = nextProgress;
             }

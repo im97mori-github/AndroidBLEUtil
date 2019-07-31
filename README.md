@@ -15,7 +15,7 @@ project/build.gradle
 project/module/build.gradle
 
     dependencies {
-        implementation 'org.im97mori:ble:0.1.0'
+        implementation 'org.im97mori:ble:0.1.1'
     }
 
 ## Features
