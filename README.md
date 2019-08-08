@@ -1,7 +1,7 @@
 # Simple Advertising data parser and BLE Connection for Android
 
 ## Prerequire
-minSdkVersion 19
+minSdkVersion 18
 
 ## Download
 project/build.gradle

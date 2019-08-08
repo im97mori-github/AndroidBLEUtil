@@ -1,1 +1,1 @@
-include ':library', ':kitkat_sample', ':lolipop_sample'
+include ':library', ':kitkat_sample', ':lolipop_sample', ':test_peripheral'

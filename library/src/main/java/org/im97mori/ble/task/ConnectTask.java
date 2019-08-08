@@ -10,6 +10,8 @@ import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.TaskHandler;
 
+import java.lang.reflect.Method;
+
 /**
  * Connect to {@link BluetoothDevice} task
  */
@@ -113,9 +115,12 @@ public class ConnectTask extends AbstractBLETask {
 
                     // create gatt connection
                     try {
-                        mBluetoothGatt = mBLEConnection.getBluetoothDevice().connectGatt(mBLEConnection.getContext(), true, mBLEConnection);
+                        mBluetoothGatt = mBLEConnection.getBluetoothDevice().connectGatt(mBLEConnection.getContext(), false, mBLEConnection);
+                        Method method = BluetoothGatt.class.getMethod("refresh");
+                        method.invoke(mBluetoothGatt);
                     } catch (Exception e) {
                         BLELogUtils.stackLog(e);
+                        mBluetoothGatt = null;
                     }
 
                     // connect failed

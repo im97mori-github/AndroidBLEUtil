@@ -503,6 +503,15 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
     }
 
     @Override
+    protected void onDestroy() {
+        if (mBluetoothLeScanner != null && mTestScanCallback != null) {
+            mBluetoothLeScanner.stopScan(mTestScanCallback);
+            mTestScanCallback = null;
+        }
+        super.onDestroy();
+    }
+
+    @Override
     public void onClick(View v) {
         if (R.id.startStopButton == v.getId()) {
             if (mBluetoothLeScanner != null) {
