@@ -47,7 +47,7 @@ public class DisconnectTaskTest {
             }
         };
 
-        DisconnectTask task = new DisconnectTask(mockBleConnection, null);
+        DisconnectTask task = new DisconnectTask(mockBleConnection, null, null);
 
         assertTrue(task.doProcess(null));
     }

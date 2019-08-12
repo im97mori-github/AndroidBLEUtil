@@ -2,7 +2,6 @@ package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,7 +19,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.PHYSICAL_CHANNEL_INDI
  * </p>
  */
 @SuppressWarnings("WeakerAccess")
-public class ChannelMapUpdateIndication extends AbstractAdvertisingData implements Parcelable {
+public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
 
     /**
      * @see Creator

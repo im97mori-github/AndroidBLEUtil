@@ -1,10 +1,11 @@
 package org.im97mori.ble.ad;
 
+import android.os.Parcelable;
+
 /**
  * Advertising Data(Extended Inquiry Response Data)
  */
-@SuppressWarnings("WeakerAccess")
-public abstract class AbstractAdvertisingData {
+public abstract class AbstractAdvertisingData implements Parcelable {
 
     /**
      * <p>

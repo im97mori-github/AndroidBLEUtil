@@ -1,6 +1,8 @@
 package org.im97mori.ble;
 
 import android.annotation.SuppressLint;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
 import android.os.Message;
 
 import java.util.Collections;
@@ -2672,6 +2674,23 @@ public class BLEConstants {
          * error in {@link org.im97mori.ble.task.AbstractBLETask#doProcess(Message)}
          */
         public static final int UNKNOWN = 0xffffffff;
+
+        /**
+         * task canceled
+         *
+         * @see TaskHandler#cancelTask(long)
+         */
+        public static final int CANCEL = 0xfffffffe;
+
+        /**
+         * error at read / write
+         *
+         * @see android.bluetooth.BluetoothGatt#readCharacteristic(BluetoothGattCharacteristic)
+         * @see android.bluetooth.BluetoothGatt#writeCharacteristic(BluetoothGattCharacteristic)
+         * @see android.bluetooth.BluetoothGatt#readDescriptor(BluetoothGattDescriptor)
+         * @see android.bluetooth.BluetoothGatt#writeDescriptor(BluetoothGattDescriptor)
+         */
+        public static final int BUSY = 0xfffffffd;
 
     }
 

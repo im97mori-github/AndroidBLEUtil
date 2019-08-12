@@ -2,7 +2,6 @@ package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import java.net.URI;
 
@@ -17,7 +16,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.URI_SCHEME_NAME_STRIN
  * </p>
  */
 @SuppressWarnings("WeakerAccess")
-public class UniformRsourceIdentifier extends AbstractAdvertisingData implements Parcelable {
+public class UniformRsourceIdentifier extends AbstractAdvertisingData {
 
     /**
      * @see Creator

@@ -2,7 +2,6 @@ package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.COMPANY_MAPPING;
@@ -15,7 +14,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.COMPANY_MAPPING;
  * </p>
  */
 @SuppressWarnings("WeakerAccess")
-public class ManufacturerSpecificData extends AbstractAdvertisingData implements Parcelable {
+public class ManufacturerSpecificData extends AbstractAdvertisingData {
 
     /**
      * @see Creator

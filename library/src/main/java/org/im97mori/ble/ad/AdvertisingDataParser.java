@@ -1,6 +1,8 @@
 package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -159,12 +161,34 @@ public class AdvertisingDataParser {
     /**
      * parse result for Advertising Data
      */
-    public static class AdvertisingDataParseResult {
+    public static class AdvertisingDataParseResult implements Parcelable {
 
+        /**
+         * @see Creator
+         */
+        public static final Creator<AdvertisingDataParseResult> CREATOR = new Creator<AdvertisingDataParseResult>() {
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public AdvertisingDataParseResult createFromParcel(Parcel in) {
+                return new AdvertisingDataParseResult(in);
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public AdvertisingDataParseResult[] newArray(int size) {
+                return new AdvertisingDataParseResult[size];
+            }
+
+        };
         /**
          * all parsed data list
          */
-        private List<AbstractAdvertisingData> mResultList;
+        private final List<AbstractAdvertisingData> mResultList;
 
         /**
          * Latest Incomplete List of 16-bit Service Class UUIDs
@@ -370,6 +394,52 @@ public class AdvertisingDataParser {
          * Channel Map Update Indication
          */
         private ChannelMapUpdateIndication mChannelMapUpdateIndication;
+
+        /**
+         * Constructor from {@link #parse(byte[], int, int)}
+         *
+         * @param resultList all parsed data list
+         */
+        private AdvertisingDataParseResult(List<AbstractAdvertisingData> resultList) {
+            mResultList = Collections.unmodifiableList(resultList);
+            toMember();
+        }
+
+        /**
+         * Constructor from {@link Parcel}
+         *
+         * @param in Parcel
+         */
+        private AdvertisingDataParseResult(Parcel in) {
+            int size = in.readInt();
+            List<AbstractAdvertisingData> list = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                AbstractAdvertisingData data = in.readParcelable(this.getClass().getClassLoader());
+                list.add(data);
+            }
+            mResultList = Collections.unmodifiableList(list);
+            toMember();
+        }
+
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeInt(mResultList.size());
+            for (AbstractAdvertisingData data : mResultList) {
+                dest.writeParcelable(data, flags);
+            }
+        }
 
         /**
          * @return all parsed data list
@@ -665,6 +735,81 @@ public class AdvertisingDataParser {
             return mChannelMapUpdateIndication;
         }
 
+        /**
+         * list to member
+         */
+        private void toMember() {
+            for (AbstractAdvertisingData data : mResultList) {
+                if (data instanceof IncompleteListOf16BitServiceUUIDs) {
+                    mIncompleteListOf16BitServiceUUIDs = (IncompleteListOf16BitServiceUUIDs) data;
+                    mIncompleteListOf16BitServiceUUIDsList.add(mIncompleteListOf16BitServiceUUIDs);
+                } else if (data instanceof CompleteListOf16BitServiceUUIDs) {
+                    mCompleteListOf16BitServiceUUIDs = (CompleteListOf16BitServiceUUIDs) data;
+                    mCompleteListOf16BitServiceUUIDsList.add(mCompleteListOf16BitServiceUUIDs);
+                } else if (data instanceof IncompleteListOf32BitServiceUUIDs) {
+                    mIncompleteListOf32BitServiceUUIDs = (IncompleteListOf32BitServiceUUIDs) data;
+                    mIncompleteListOf32BitServiceUUIDsList.add(mIncompleteListOf32BitServiceUUIDs);
+                } else if (data instanceof CompleteListOf32BitServiceUUIDs) {
+                    mCompleteListOf32BitServiceUUIDs = (CompleteListOf32BitServiceUUIDs) data;
+                    mCompleteListOf32BitServiceUUIDsList.add(mCompleteListOf32BitServiceUUIDs);
+                } else if (data instanceof IncompleteListOf128BitServiceUUIDs) {
+                    mIncompleteListOf128BitServiceUUIDs = (IncompleteListOf128BitServiceUUIDs) data;
+                    mIncompleteListOf128BitServiceUUIDsList.add(mIncompleteListOf128BitServiceUUIDs);
+                } else if (data instanceof CompleteListOf128BitServiceUUIDs) {
+                    mCompleteListOf128BitServiceUUIDs = (CompleteListOf128BitServiceUUIDs) data;
+                    mCompleteListOf128BitServiceUUIDsList.add(mCompleteListOf128BitServiceUUIDs);
+                } else if (data instanceof ShortenedLocalName) {
+                    mShortenedLocalName = (ShortenedLocalName) data;
+                } else if (data instanceof CompleteLocalName) {
+                    mCompleteLocalName = (CompleteLocalName) data;
+                } else if (data instanceof Flags) {
+                    mFlags = (Flags) data;
+                } else if (data instanceof ManufacturerSpecificData) {
+                    mManufacturerSpecificData = (ManufacturerSpecificData) data;
+                    mManufacturerSpecificDataList.add(mManufacturerSpecificData);
+                } else if (data instanceof TxPowerLevel) {
+                    mTxPowerLevel = (TxPowerLevel) data;
+                    mTxPowerLevelList.add(mTxPowerLevel);
+                } else if (data instanceof SlaveConnectionIntervalRange) {
+                    mSlaveConnectionIntervalRange = (SlaveConnectionIntervalRange) data;
+                    mSlaveConnectionIntervalRangeList.add(mSlaveConnectionIntervalRange);
+                } else if (data instanceof ListOf16BitServiceSolicitationUUIDs) {
+                    mListOf16BitServiceSolicitationUUIDs = (ListOf16BitServiceSolicitationUUIDs) data;
+                    mListOf16BitServiceSolicitationUUIDsList.add(mListOf16BitServiceSolicitationUUIDs);
+                } else if (data instanceof ListOf32BitServiceSolicitationUUIDs) {
+                    mListOf32BitServiceSolicitationUUIDs = (ListOf32BitServiceSolicitationUUIDs) data;
+                    mListOf32BitServiceSolicitationUUIDsList.add(mListOf32BitServiceSolicitationUUIDs);
+                } else if (data instanceof ListOf128BitServiceSolicitationUUIDs) {
+                    mListOf128BitServiceSolicitationUUIDs = (ListOf128BitServiceSolicitationUUIDs) data;
+                    mListOf128BitServiceSolicitationUUIDsList.add(mListOf128BitServiceSolicitationUUIDs);
+                } else if (data instanceof ServiceData16BitUUID) {
+                    mServiceData16BitUUID = (ServiceData16BitUUID) data;
+                    mServiceData16BitUUIDList.add(mServiceData16BitUUID);
+                } else if (data instanceof ServiceData32BitUUID) {
+                    mServiceData32BitUUID = (ServiceData32BitUUID) data;
+                    mServiceData32BitUUIDList.add(mServiceData32BitUUID);
+                } else if (data instanceof ServiceData128BitUUID) {
+                    mServiceData128BitUUID = (ServiceData128BitUUID) data;
+                    mServiceData128BitUUIDList.add(mServiceData128BitUUID);
+                } else if (data instanceof Appearance) {
+                    mAppearance = (Appearance) data;
+                } else if (data instanceof PublicTargetAddress) {
+                    mPublicTargetAddress = (PublicTargetAddress) data;
+                } else if (data instanceof RandomTargetAddress) {
+                    mRandomTargetAddress = (RandomTargetAddress) data;
+                } else if (data instanceof AdvertisingInterval) {
+                    mAdvertisingInterval = (AdvertisingInterval) data;
+                } else if (data instanceof UniformRsourceIdentifier) {
+                    mUniformRsourceIdentifier = (UniformRsourceIdentifier) data;
+                    mUniformRsourceIdentifierList.add(mUniformRsourceIdentifier);
+                } else if (data instanceof LeSupportedFeatures) {
+                    mLeSupportedFeatures = (LeSupportedFeatures) data;
+                } else if (data instanceof ChannelMapUpdateIndication) {
+                    mChannelMapUpdateIndication = (ChannelMapUpdateIndication) data;
+                }
+            }
+        }
+
     }
 
     /**
@@ -696,8 +841,7 @@ public class AdvertisingDataParser {
      * @return {@link AdvertisingDataParseResult}
      */
     public AdvertisingDataParseResult parse(byte[] data, int offset, int totalLength) {
-        AdvertisingDataParseResult result = new AdvertisingDataParseResult();
-        result.mResultList = new ArrayList<>();
+        List<AbstractAdvertisingData> resultList = new ArrayList<>();
         for (int i = offset; i < offset + totalLength; i++) {
             int dataLength = data[i];
             if (dataLength > 0) {
@@ -706,102 +850,61 @@ public class AdvertisingDataParser {
                 // parse only target data type
                 if (mTargetDataTypeSet.contains(dataType)) {
                     if (DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS == dataType) {
-                        result.mIncompleteListOf16BitServiceUUIDs = new IncompleteListOf16BitServiceUUIDs(data, i, dataLength);
-                        result.mIncompleteListOf16BitServiceUUIDsList.add(result.mIncompleteListOf16BitServiceUUIDs);
-                        result.mResultList.add(result.mIncompleteListOf16BitServiceUUIDs);
+                        resultList.add(new IncompleteListOf16BitServiceUUIDs(data, i, dataLength));
                     } else if (DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS == dataType) {
-                        result.mCompleteListOf16BitServiceUUIDs = new CompleteListOf16BitServiceUUIDs(data, i, dataLength);
-                        result.mCompleteListOf16BitServiceUUIDsList.add(result.mCompleteListOf16BitServiceUUIDs);
-                        result.mResultList.add(result.mCompleteListOf16BitServiceUUIDs);
+                        resultList.add(new CompleteListOf16BitServiceUUIDs(data, i, dataLength));
                     } else if (DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS == dataType) {
-                        result.mIncompleteListOf32BitServiceUUIDs = new IncompleteListOf32BitServiceUUIDs(data, i, dataLength);
-                        result.mIncompleteListOf32BitServiceUUIDsList.add(result.mIncompleteListOf32BitServiceUUIDs);
-                        result.mResultList.add(result.mIncompleteListOf32BitServiceUUIDs);
+                        resultList.add(new IncompleteListOf32BitServiceUUIDs(data, i, dataLength));
                     } else if (DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS == dataType) {
-                        result.mCompleteListOf32BitServiceUUIDs = new CompleteListOf32BitServiceUUIDs(data, i, dataLength);
-                        result.mCompleteListOf32BitServiceUUIDsList.add(result.mCompleteListOf32BitServiceUUIDs);
-                        result.mResultList.add(result.mCompleteListOf32BitServiceUUIDs);
+                        resultList.add(new CompleteListOf32BitServiceUUIDs(data, i, dataLength));
                     } else if (DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS == dataType) {
-                        result.mIncompleteListOf128BitServiceUUIDs = new IncompleteListOf128BitServiceUUIDs(data, i, dataLength);
-                        result.mIncompleteListOf128BitServiceUUIDsList.add(result.mIncompleteListOf128BitServiceUUIDs);
-                        result.mResultList.add(result.mIncompleteListOf128BitServiceUUIDs);
+                        resultList.add(new IncompleteListOf128BitServiceUUIDs(data, i, dataLength));
                     } else if (DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS == dataType) {
-                        result.mCompleteListOf128BitServiceUUIDs = new CompleteListOf128BitServiceUUIDs(data, i, dataLength);
-                        result.mCompleteListOf128BitServiceUUIDsList.add(result.mCompleteListOf128BitServiceUUIDs);
-                        result.mResultList.add(result.mCompleteListOf128BitServiceUUIDs);
+                        resultList.add(new CompleteListOf128BitServiceUUIDs(data, i, dataLength));
                     } else if (DATA_TYPE_SHORTENED_LOCAL_NAME == dataType) {
-                        result.mShortenedLocalName = new ShortenedLocalName(data, i, dataLength);
-                        result.mResultList.add(result.mShortenedLocalName);
+                        resultList.add(new ShortenedLocalName(data, i, dataLength));
                     } else if (DATA_TYPE_COMPLETE_LOCAL_NAME == dataType) {
-                        result.mCompleteLocalName = new CompleteLocalName(data, i, dataLength);
-                        result.mResultList.add(result.mCompleteLocalName);
+                        resultList.add(new CompleteLocalName(data, i, dataLength));
                     } else if (DATA_TYPE_FLAGS == dataType) {
-                        result.mFlags = new Flags(data, i, dataLength);
-                        result.mResultList.add(result.mFlags);
+                        resultList.add(new Flags(data, i, dataLength));
                     } else if (DATA_TYPE_MANUFACTURER_SPECIFIC_DATA == dataType) {
-                        result.mManufacturerSpecificData = new ManufacturerSpecificData(data, i, dataLength);
-                        result.mManufacturerSpecificDataList.add(result.mManufacturerSpecificData);
-                        result.mResultList.add(result.mManufacturerSpecificData);
+                        resultList.add(new ManufacturerSpecificData(data, i, dataLength));
                     } else if (DATA_TYPE_TX_POWER_LEVEL == dataType) {
-                        result.mTxPowerLevel = new TxPowerLevel(data, i, dataLength);
-                        result.mTxPowerLevelList.add(result.mTxPowerLevel);
-                        result.mResultList.add(result.mTxPowerLevel);
+                        resultList.add(new TxPowerLevel(data, i, dataLength));
                     } else if (DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE == dataType) {
-                        result.mSlaveConnectionIntervalRange = new SlaveConnectionIntervalRange(data, i, dataLength);
-                        result.mSlaveConnectionIntervalRangeList.add(result.mSlaveConnectionIntervalRange);
-                        result.mResultList.add(result.mSlaveConnectionIntervalRange);
+                        resultList.add(new SlaveConnectionIntervalRange(data, i, dataLength));
                     } else if (DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS == dataType) {
-                        result.mListOf16BitServiceSolicitationUUIDs = new ListOf16BitServiceSolicitationUUIDs(data, i, dataLength);
-                        result.mListOf16BitServiceSolicitationUUIDsList.add(result.mListOf16BitServiceSolicitationUUIDs);
-                        result.mResultList.add(result.mListOf16BitServiceSolicitationUUIDs);
+                        resultList.add(new ListOf16BitServiceSolicitationUUIDs(data, i, dataLength));
                     } else if (DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS == dataType) {
-                        result.mListOf32BitServiceSolicitationUUIDs = new ListOf32BitServiceSolicitationUUIDs(data, i, dataLength);
-                        result.mListOf32BitServiceSolicitationUUIDsList.add(result.mListOf32BitServiceSolicitationUUIDs);
-                        result.mResultList.add(result.mListOf32BitServiceSolicitationUUIDs);
+                        resultList.add(new ListOf32BitServiceSolicitationUUIDs(data, i, dataLength));
                     } else if (DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS == dataType) {
-                        result.mListOf128BitServiceSolicitationUUIDs = new ListOf128BitServiceSolicitationUUIDs(data, i, dataLength);
-                        result.mListOf128BitServiceSolicitationUUIDsList.add(result.mListOf128BitServiceSolicitationUUIDs);
-                        result.mResultList.add(result.mListOf128BitServiceSolicitationUUIDs);
+                        resultList.add(new ListOf128BitServiceSolicitationUUIDs(data, i, dataLength));
                     } else if (DATA_TYPE_SERVICE_DATA_16_BIT_UUID == dataType) {
-                        result.mServiceData16BitUUID = new ServiceData16BitUUID(data, i, dataLength);
-                        result.mServiceData16BitUUIDList.add(result.mServiceData16BitUUID);
-                        result.mResultList.add(result.mServiceData16BitUUID);
+                        resultList.add(new ServiceData16BitUUID(data, i, dataLength));
                     } else if (DATA_TYPE_SERVICE_DATA_32_BIT_UUID == dataType) {
-                        result.mServiceData32BitUUID = new ServiceData32BitUUID(data, i, dataLength);
-                        result.mServiceData32BitUUIDList.add(result.mServiceData32BitUUID);
-                        result.mResultList.add(result.mServiceData32BitUUID);
+                        resultList.add(new ServiceData32BitUUID(data, i, dataLength));
                     } else if (DATA_TYPE_SERVICE_DATA_128_BIT_UUID == dataType) {
-                        result.mServiceData128BitUUID = new ServiceData128BitUUID(data, i, dataLength);
-                        result.mServiceData128BitUUIDList.add(result.mServiceData128BitUUID);
-                        result.mResultList.add(result.mServiceData128BitUUID);
+                        resultList.add(new ServiceData128BitUUID(data, i, dataLength));
                     } else if (DATA_TYPE_APPEARANCE == dataType) {
-                        result.mAppearance = new Appearance(data, i, dataLength);
-                        result.mResultList.add(result.mAppearance);
+                        resultList.add(new Appearance(data, i, dataLength));
                     } else if (DATA_TYPE_PUBLIC_TARGET_ADDRESS == dataType) {
-                        result.mPublicTargetAddress = new PublicTargetAddress(data, i, dataLength);
-                        result.mResultList.add(result.mPublicTargetAddress);
+                        resultList.add(new PublicTargetAddress(data, i, dataLength));
                     } else if (DATA_TYPE_RANDOM_TARGET_ADDRESS == dataType) {
-                        result.mRandomTargetAddress = new RandomTargetAddress(data, i, dataLength);
-                        result.mResultList.add(result.mRandomTargetAddress);
+                        resultList.add(new RandomTargetAddress(data, i, dataLength));
                     } else if (DATA_TYPE_ADVERTISING_INTERVAL == dataType) {
-                        result.mAdvertisingInterval = new AdvertisingInterval(data, i, dataLength);
-                        result.mResultList.add(result.mAdvertisingInterval);
+                        resultList.add(new AdvertisingInterval(data, i, dataLength));
                     } else if (DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER == dataType) {
-                        result.mUniformRsourceIdentifier = new UniformRsourceIdentifier(data, i, dataLength);
-                        result.mUniformRsourceIdentifierList.add(result.mUniformRsourceIdentifier);
-                        result.mResultList.add(result.mUniformRsourceIdentifier);
+                        resultList.add(new UniformRsourceIdentifier(data, i, dataLength));
                     } else if (DATA_TYPE_LE_SUPPORTED_FEATURES == dataType) {
-                        result.mLeSupportedFeatures = new LeSupportedFeatures(data, i, dataLength);
-                        result.mResultList.add(result.mLeSupportedFeatures);
+                        resultList.add(new LeSupportedFeatures(data, i, dataLength));
                     } else if (DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION == dataType) {
-                        result.mChannelMapUpdateIndication = new ChannelMapUpdateIndication(data, i, dataLength);
-                        result.mResultList.add(result.mChannelMapUpdateIndication);
+                        resultList.add(new ChannelMapUpdateIndication(data, i, dataLength));
                     }
                 }
                 i += dataLength;
             }
         }
-        return result;
+        return new AdvertisingDataParseResult(resultList);
     }
 
 }

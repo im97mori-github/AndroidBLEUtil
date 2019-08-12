@@ -25,8 +25,11 @@
             android:name=".AdvertisingDataSampleActivity"
             android:label="@string/label_advertising" />
         <activity
-            android:name=".ConnectSampleActivity"
-            android:label="@string/label_connect" />
+            android:name=".PeripheralSampleActivity"
+            android:label="@string/label_peripheral" />
+        <activity
+            android:name=".CentralSampleActivity"
+            android:label="@string/label_central" />
     </application>
 
 </manifest>

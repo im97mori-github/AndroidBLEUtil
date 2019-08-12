@@ -2,7 +2,6 @@ package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,7 +17,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * </p>
  */
 @SuppressWarnings("WeakerAccess")
-public class RandomTargetAddress extends AbstractAdvertisingData implements Parcelable {
+public class RandomTargetAddress extends AbstractAdvertisingData {
 
     /**
      * @see Creator

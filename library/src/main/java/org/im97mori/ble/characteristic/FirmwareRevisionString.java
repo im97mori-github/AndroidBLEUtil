@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayInterface;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FIRMWARE_REVISION_STRING_CHARACTERISTIC;
 
@@ -12,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FIRMWARE_REVISION
  * Firmware revision string (Characteristics UUID: 0x2A26)
  */
 @SuppressWarnings("WeakerAccess")
-public class FirmwareRevisionString extends AbstractCharacteristic implements Parcelable {
+public class FirmwareRevisionString implements ByteArrayInterface, Parcelable {
 
     /**
      * @see ByteArrayCreater

@@ -2,7 +2,6 @@ package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
-import android.os.Parcelable;
 import android.util.Pair;
 
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.FlagsDataType.FLAG_SI
  * </p>
  */
 @SuppressWarnings("WeakerAccess")
-public class Flags extends AbstractAdvertisingData implements Parcelable {
+public class Flags extends AbstractAdvertisingData {
 
     /**
      * @see Creator

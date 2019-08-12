@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayInterface;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SERIAL_NUMBER_STRING_CHARACTERISTIC;
 
@@ -12,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SERIAL_NUMBER_STR
  * Serial number string (Characteristics UUID: 0x2A25)
  */
 @SuppressWarnings("WeakerAccess")
-public class SerialNumberString extends AbstractCharacteristic implements Parcelable {
+public class SerialNumberString implements ByteArrayInterface, Parcelable {
 
     /**
      * @see ByteArrayCreater

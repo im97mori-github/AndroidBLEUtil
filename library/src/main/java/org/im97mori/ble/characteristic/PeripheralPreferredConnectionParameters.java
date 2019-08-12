@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayInterface;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -15,7 +16,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.PERIPHERAL_PREFER
  * Peripheral preferred connection parameters (Characteristics UUID: 0x2A04)
  */
 @SuppressWarnings("WeakerAccess")
-public class PeripheralPreferredConnectionParameters extends AbstractCharacteristic implements Parcelable {
+public class PeripheralPreferredConnectionParameters implements ByteArrayInterface, Parcelable {
 
     /**
      * Unit: 1.25ms

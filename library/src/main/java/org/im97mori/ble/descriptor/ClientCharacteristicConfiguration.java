@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayInterface;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -16,7 +17,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC
  * Client Characteristic Configuration (Descriptor UUID: 0x2902)
  */
 @SuppressWarnings("WeakerAccess")
-public class ClientCharacteristicConfiguration extends AbstractDescriptor implements Parcelable {
+public class ClientCharacteristicConfiguration implements ByteArrayInterface, Parcelable {
 
     /**
      * @see Creator

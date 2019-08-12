@@ -77,10 +77,9 @@ public class ConnectTaskTest {
         HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
         thread.start();
         Looper looper = thread.getLooper();
-        TaskHandler mockTaskHandler = new TaskHandler(looper) {
-        };
+        TaskHandler mockTaskHandler = new TaskHandler(looper);
 
-        ConnectTask task = new ConnectTask(mockBleConnection, mockTaskHandler, ConnectTask.TIMEOUT_MILLIS);
+        ConnectTask task = new ConnectTask(mockBleConnection, mockTaskHandler, ConnectTask.TIMEOUT_MILLIS, null);
 
         assertTrue(task.doProcess(null));
 

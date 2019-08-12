@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayInterface;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -15,7 +16,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.APPEARANCE_CHARAC
  * Appearance (Characteristics UUID: 0x2A01)
  */
 @SuppressWarnings("WeakerAccess")
-public class Appearance extends AbstractCharacteristic implements Parcelable {
+public class Appearance implements ByteArrayInterface, Parcelable {
 
     /**
      * 0x00: Unknown

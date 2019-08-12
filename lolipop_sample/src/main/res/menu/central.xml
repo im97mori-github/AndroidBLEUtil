@@ -6,5 +6,7 @@
     <item
         android:id="@+id/write"
         android:title="@string/menu_write_0002" />
-
+    <item
+        android:id="@+id/clear"
+        android:title="@string/menu_clear" />
 </menu>

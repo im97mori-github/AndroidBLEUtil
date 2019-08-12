@@ -1,5 +1,7 @@
 package org.im97mori.ble.ad;
 
+import android.os.Parcel;
+
 import org.junit.Test;
 
 import java.net.URI;
@@ -9279,5 +9281,286 @@ public class AdvertisingDataParserTest {
         assertEquals(URI.create(URI_SCHEME_NAME_STRING_MAPPING.get(0xb9) + new String(data, 15, 8)), result.getUniformRsourceIdentifier().getUri());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0620() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[190];
+        data[0] = 3;
+        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[2] = 0;
+        data[3] = 0;
+
+        data[4] = 3;
+        data[5] = DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[6] = 0;
+        data[7] = 0;
+
+        data[8] = 5;
+        data[9] = DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[10] = 0x00;
+        data[11] = 0x00;
+        data[12] = 0x00;
+        data[13] = 0x00;
+
+        data[14] = 5;
+        data[15] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[16] = 0x00;
+        data[17] = 0x00;
+        data[18] = 0x00;
+        data[19] = 0x00;
+
+        data[20] = 17;
+        data[21] = DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[22] = 0x00;
+        data[23] = 0x00;
+        data[24] = 0x00;
+        data[25] = 0x00;
+        data[26] = 0x00;
+        data[27] = 0x00;
+        data[28] = 0x00;
+        data[29] = 0x00;
+        data[30] = 0x00;
+        data[31] = 0x00;
+        data[32] = 0x00;
+        data[33] = 0x00;
+        data[34] = 0x00;
+        data[35] = 0x00;
+        data[36] = 0x00;
+        data[37] = 0x00;
+
+        data[38] = 17;
+        data[39] = DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+        data[40] = 0x00;
+        data[41] = 0x00;
+        data[42] = 0x00;
+        data[43] = 0x00;
+        data[44] = 0x00;
+        data[45] = 0x00;
+        data[46] = 0x00;
+        data[47] = 0x00;
+        data[48] = 0x00;
+        data[49] = 0x00;
+        data[50] = 0x00;
+        data[51] = 0x00;
+        data[52] = 0x00;
+        data[53] = 0x00;
+        data[54] = 0x00;
+        data[55] = 0x00;
+
+        data[56] = 2;
+        data[57] = DATA_TYPE_SHORTENED_LOCAL_NAME;
+        data[58] = 'a';
+
+        data[59] = 3;
+        data[60] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        data[61] = 'a';
+        data[62] = 'b';
+
+        data[63] = 2;
+        data[64] = DATA_TYPE_FLAGS;
+        data[65] = 0b00000001;
+
+        data[66] = 3;
+        data[67] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[68] = (byte) (0x000000E0 & 0x0000ff);
+        data[69] = (byte) (0x000000E0 & (0x0000ff >> 8));
+
+        data[70] = 2;
+        data[71] = DATA_TYPE_TX_POWER_LEVEL;
+        data[72] = -127;
+
+        data[73] = 5;
+        data[74] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        data[75] = (byte) 0xff;
+        data[76] = (byte) 0xff;
+        data[77] = (byte) 0xff;
+        data[78] = (byte) 0xff;
+
+        data[79] = 3;
+        data[80] = DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[81] = 0;
+        data[82] = 0;
+
+        data[83] = 5;
+        data[84] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[85] = 0x00;
+        data[86] = 0x00;
+        data[87] = 0x00;
+        data[88] = 0x00;
+
+        data[89] = 17;
+        data[90] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[91] = 0x00;
+        data[92] = 0x00;
+        data[93] = 0x00;
+        data[94] = 0x00;
+        data[95] = 0x00;
+        data[96] = 0x00;
+        data[97] = 0x00;
+        data[98] = 0x00;
+        data[99] = 0x00;
+        data[100] = 0x00;
+        data[101] = 0x00;
+        data[102] = 0x00;
+        data[103] = 0x00;
+        data[104] = 0x00;
+        data[105] = 0x00;
+        data[106] = 0x00;
+
+        data[107] = 3;
+        data[108] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[109] = 0;
+        data[110] = 0;
+
+        data[111] = 5;
+        data[112] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[113] = 0x00;
+        data[114] = 0x00;
+        data[115] = 0x00;
+        data[116] = 0x00;
+
+        data[117] = 17;
+        data[118] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[119] = 0x00;
+        data[120] = 0x00;
+        data[121] = 0x00;
+        data[122] = 0x00;
+        data[123] = 0x00;
+        data[124] = 0x00;
+        data[125] = 0x00;
+        data[126] = 0x00;
+        data[127] = 0x00;
+        data[128] = 0x00;
+        data[129] = 0x00;
+        data[130] = 0x00;
+        data[131] = 0x00;
+        data[132] = 0x00;
+        data[133] = 0x00;
+        data[134] = 0x00;
+
+        data[135] = 3;
+        data[136] = DATA_TYPE_APPEARANCE;
+        data[137] = (byte) (0x64 & 0x00ff);
+        data[138] = (byte) ((0x64 >> 8) & 0x00ff);
+
+        data[139] = 7;
+        data[140] = DATA_TYPE_PUBLIC_TARGET_ADDRESS;
+        data[141] = 0;
+        data[142] = 0;
+        data[143] = 0;
+        data[144] = 0;
+        data[145] = 0;
+        data[146] = 0;
+
+        data[147] = 7;
+        data[148] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        data[149] = 0;
+        data[150] = 0;
+        data[151] = 0;
+        data[152] = 0;
+        data[153] = 0;
+        data[154] = 0;
+
+        data[155] = 3;
+        data[156] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[157] = 0x00;
+        data[158] = 0x00;
+
+        data[159] = 17;
+        data[160] = DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
+        data[161] = 0x16;
+        data[162] = '/';
+        data[163] = '/';
+        data[164] = 'i';
+        data[165] = 'm';
+        data[166] = '9';
+        data[167] = '7';
+        data[168] = 'm';
+        data[169] = 'o';
+        data[170] = 'r';
+        data[171] = 'i';
+        data[172] = '.';
+        data[173] = 'o';
+        data[174] = 'r';
+        data[175] = 'g';
+        data[176] = '/';
+
+        data[177] = 2;
+        data[178] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[179] = 0b00000001;
+
+        data[180] = 8;
+        data[181] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[182] = (byte) 0b11111110;
+        data[183] = (byte) 0b11111111;
+        data[184] = (byte) 0b11111111;
+        data[185] = (byte) 0b11111111;
+        data[186] = (byte) 0b11111111;
+        data[187] = 0b00000000;
+        data[188] = 0b00000000;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+        Parcel parcel = Parcel.obtain();
+        result.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        AdvertisingDataParser.AdvertisingDataParseResult result2 = AdvertisingDataParser.AdvertisingDataParseResult.CREATOR.createFromParcel(parcel);
+
+        assertNotNull(result2);
+        assertNotNull(result2.getResultList());
+        assertEquals(25, result2.getResultList().size());
+        assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result2.getResultList().get(0).getDataType());
+        assertEquals(DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result2.getResultList().get(1).getDataType());
+        assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS, result2.getResultList().get(2).getDataType());
+        assertEquals(DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS, result2.getResultList().get(3).getDataType());
+        assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS, result2.getResultList().get(4).getDataType());
+        assertEquals(DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS, result2.getResultList().get(5).getDataType());
+        assertEquals(DATA_TYPE_SHORTENED_LOCAL_NAME, result2.getResultList().get(6).getDataType());
+        assertEquals(DATA_TYPE_COMPLETE_LOCAL_NAME, result2.getResultList().get(7).getDataType());
+        assertEquals(DATA_TYPE_FLAGS, result2.getResultList().get(8).getDataType());
+        assertEquals(DATA_TYPE_MANUFACTURER_SPECIFIC_DATA, result2.getResultList().get(9).getDataType());
+        assertEquals(DATA_TYPE_TX_POWER_LEVEL, result2.getResultList().get(10).getDataType());
+        assertEquals(DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE, result2.getResultList().get(11).getDataType());
+        assertEquals(DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS, result2.getResultList().get(12).getDataType());
+        assertEquals(DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS, result2.getResultList().get(13).getDataType());
+        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result2.getResultList().get(14).getDataType());
+        assertEquals(DATA_TYPE_SERVICE_DATA_16_BIT_UUID, result2.getResultList().get(15).getDataType());
+        assertEquals(DATA_TYPE_SERVICE_DATA_32_BIT_UUID, result2.getResultList().get(16).getDataType());
+        assertEquals(DATA_TYPE_SERVICE_DATA_128_BIT_UUID, result2.getResultList().get(17).getDataType());
+        assertEquals(DATA_TYPE_APPEARANCE, result2.getResultList().get(18).getDataType());
+        assertEquals(DATA_TYPE_PUBLIC_TARGET_ADDRESS, result2.getResultList().get(19).getDataType());
+        assertEquals(DATA_TYPE_RANDOM_TARGET_ADDRESS, result2.getResultList().get(20).getDataType());
+        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result2.getResultList().get(21).getDataType());
+        assertEquals(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER, result2.getResultList().get(22).getDataType());
+        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result2.getResultList().get(23).getDataType());
+        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result2.getResultList().get(24).getDataType());
+        assertNotNull(result2.getIncompleteListOf16BitServiceUUIDs());
+        assertNotNull(result2.getCompleteListOf16BitServiceUUIDs());
+        assertNotNull(result2.getIncompleteListOf32BitServiceUUIDs());
+        assertNotNull(result2.getCompleteListOf32BitServiceUUIDs());
+        assertNotNull(result2.getIncompleteListOf128BitServiceUUIDs());
+        assertNotNull(result2.getCompleteListOf128BitServiceUUIDs());
+        assertNotNull(result2.getShortenedLocalName());
+        assertNotNull(result2.getCompleteLocalName());
+        assertNotNull(result2.getFlags());
+        assertNotNull(result2.getManufacturerSpecificData());
+        assertNotNull(result2.getTxPowerLevel());
+        assertNotNull(result2.getSlaveConnectionIntervalRange());
+        assertNotNull(result2.getListOf16BitServiceSolicitationUUIDs());
+        assertNotNull(result2.getListOf32BitServiceSolicitationUUIDs());
+        assertNotNull(result2.getListOf128BitServiceSolicitationUUIDs());
+        assertNotNull(result2.getServiceData16BitUUID());
+        assertNotNull(result2.getServiceData32BitUUID());
+        assertNotNull(result2.getServiceData128BitUUID());
+        assertNotNull(result2.getAppearance());
+        assertNotNull(result2.getPublicTargetAddress());
+        assertNotNull(result2.getRandomTargetAddress());
+        assertNotNull(result2.getAdvertisingInterval());
+        assertNotNull(result2.getUniformRsourceIdentifier());
+        assertNotNull(result2.getLeSupportedFeatures());
+        assertNotNull(result2.getChannelMapUpdateIndication());
     }
 }

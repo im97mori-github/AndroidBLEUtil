@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayInterface;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -15,7 +16,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CENTRAL_ADDRESS_R
  * Central address resolution (Characteristics UUID: 0x2AA6)
  */
 @SuppressWarnings("WeakerAccess")
-public class CentralAddressResolution extends AbstractCharacteristic implements Parcelable {
+public class CentralAddressResolution implements ByteArrayInterface, Parcelable {
 
     /**
      * 1: Address resolution is supported in this device

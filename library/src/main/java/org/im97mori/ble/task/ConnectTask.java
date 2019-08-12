@@ -10,7 +10,8 @@ import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.TaskHandler;
 
-import java.lang.reflect.Method;
+import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
+import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 
 /**
  * Connect to {@link BluetoothDevice} task
@@ -69,19 +70,26 @@ public class ConnectTask extends AbstractBLETask {
     private final long mTimeout;
 
     /**
+     * callback argument
+     */
+    private final Bundle mArgument;
+
+    /**
      * task target {@link BluetoothGatt} instance
      */
     private BluetoothGatt mBluetoothGatt;
 
     /**
-     * @param bleConnection      task target {@link BLEConnection} instance
-     * @param taskHandler task target {@link TaskHandler} instance
-     * @param timeout     timeout(millis)
+     * @param bleConnection task target {@link BLEConnection} instance
+     * @param taskHandler   task target {@link TaskHandler} instance
+     * @param timeout       timeout(millis)
+     * @param argument      callback argument
      */
-    public ConnectTask(BLEConnection bleConnection, TaskHandler taskHandler, long timeout) {
+    public ConnectTask(BLEConnection bleConnection, TaskHandler taskHandler, long timeout, Bundle argument) {
         mBLEConnection = bleConnection;
         mTaskHandler = taskHandler;
         mTimeout = timeout;
+        mArgument = argument;
     }
 
     /**
@@ -106,7 +114,7 @@ public class ConnectTask extends AbstractBLETask {
                     mBluetoothGatt.close();
                 }
 
-                mBLEConnection.onConnectTimeout();
+                mBLEConnection.onConnectTimeout(mTaskId, mArgument);
 
                 mCurrentProgress = nextProgress;
             } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
@@ -116,16 +124,13 @@ public class ConnectTask extends AbstractBLETask {
                     // create gatt connection
                     try {
                         mBluetoothGatt = mBLEConnection.getBluetoothDevice().connectGatt(mBLEConnection.getContext(), false, mBLEConnection);
-                        Method method = BluetoothGatt.class.getMethod("refresh");
-                        method.invoke(mBluetoothGatt);
                     } catch (Exception e) {
                         BLELogUtils.stackLog(e);
-                        mBluetoothGatt = null;
                     }
 
                     // connect failed
                     if (mBluetoothGatt == null) {
-                        mBLEConnection.onConnectTimeout();
+                        mBLEConnection.onConnectFailed(mTaskId, UNKNOWN, mArgument);
                         mCurrentProgress = PROGRESS_FINISHED;
                     } else {
                         // connecting
@@ -141,7 +146,7 @@ public class ConnectTask extends AbstractBLETask {
                 if (mBluetoothGatt == message.obj && PROGRESS_FINISHED == nextProgress) {
 
                     // callback
-                    mBLEConnection.onConnected(mBluetoothGatt);
+                    mBLEConnection.onConnected(mTaskId, mBluetoothGatt, mArgument);
 
                     // remove timeout message
                     mTaskHandler.removeCallbacksAndMessages(this);
@@ -152,6 +157,22 @@ public class ConnectTask extends AbstractBLETask {
         }
 
         return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isBusy() {
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void cancel() {
+        mBLEConnection.onConnectFailed(mTaskId, CANCEL, mArgument);
     }
 
 }

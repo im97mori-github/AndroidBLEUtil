@@ -48,7 +48,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.LeSupportedFeatures.F
  * </p>
  */
 @SuppressWarnings("WeakerAccess")
-public class LeSupportedFeatures extends AbstractAdvertisingData implements Parcelable {
+public class LeSupportedFeatures extends AbstractAdvertisingData {
 
     /**
      * @see Parcelable.Creator

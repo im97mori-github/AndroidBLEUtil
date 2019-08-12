@@ -2,7 +2,6 @@ package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import java.util.UUID;
 
@@ -17,7 +16,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.BASE_UUID;
  * </p>
  */
 @SuppressWarnings("WeakerAccess")
-public class ServiceData32BitUUID extends AbstractAdvertisingData implements Parcelable {
+public class ServiceData32BitUUID extends AbstractAdvertisingData {
 
     /**
      * @see Creator

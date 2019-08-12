@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.os.Message;
 
 import org.im97mori.ble.BLEConnection;
+import org.im97mori.ble.BLEConstants;
+
+import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
 
 /**
  * Disconnect from {@link BluetoothGatt} task
@@ -13,14 +16,23 @@ import org.im97mori.ble.BLEConnection;
 public class DisconnectTask extends AbstractBLETask {
 
     /**
-     * create disconnect message
-     *
-     * @param obj instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
-     * @return create disconnect {@link Message} instance
+     * @see #createDisconnectMessage(Object, int)
      */
     public static Message createDisconnectMessage(Object obj) {
+        return createDisconnectMessage(obj, BLEConstants.ErrorCodes.UNKNOWN);
+    }
+
+    /**
+     * create disconnect message
+     *
+     * @param obj    instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
+     * @param status {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link BLEConstants.ErrorCodes#UNKNOWN}
+     * @return create disconnect {@link Message} instance
+     */
+    public static Message createDisconnectMessage(Object obj, int status) {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_DISCONNECT);
+        bundle.putInt(KEY_STATUS, status);
         Message message = new Message();
         message.setData(bundle);
         message.obj = obj;
@@ -38,12 +50,19 @@ public class DisconnectTask extends AbstractBLETask {
     private final BluetoothGatt mBluetoothGatt;
 
     /**
+     * callback argument
+     */
+    private final Bundle mArgument;
+
+    /**
      * @param bleConnection task target {@link BLEConnection} instance
      * @param bluetoothGatt task target {@link BluetoothGatt} instance
+     * @param argument      callback argument
      */
-    public DisconnectTask(BLEConnection bleConnection, BluetoothGatt bluetoothGatt) {
+    public DisconnectTask(BLEConnection bleConnection, BluetoothGatt bluetoothGatt, Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
+        mArgument = argument;
     }
 
     /**
@@ -65,7 +84,7 @@ public class DisconnectTask extends AbstractBLETask {
                     if (mBLEConnection.isCurrentConnectionTarget(mBluetoothGatt)) {
                         mBluetoothGatt.disconnect();
                         mBluetoothGatt.close();
-                        mBLEConnection.onDisconnected(mBluetoothGatt);
+                        mBLEConnection.onDisconnected(mTaskId, mBluetoothGatt, bundle.getInt(KEY_STATUS), mArgument);
                     }
                     mCurrentProgress = nextProgress;
                 }
@@ -74,4 +93,21 @@ public class DisconnectTask extends AbstractBLETask {
 
         return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_DISCONNECT == mCurrentProgress;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isBusy() {
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void cancel() {
+        mBLEConnection.onDisconnected(mTaskId, mBluetoothGatt, CANCEL, mArgument);
+    }
+
 }

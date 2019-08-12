@@ -1,22 +1,31 @@
 package org.im97mori.ble.sample.lolipop;
 
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
+import android.bluetooth.BluetoothGattServer;
+import android.bluetooth.BluetoothGattService;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Pair;
 
 import org.im97mori.ble.BLECallback;
+import org.im97mori.ble.BLEServerCallback;
+import org.im97mori.ble.BLEServerConnection;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-public class BLECallbackSample implements BLECallback {
+public class BLECallbackSample implements BLECallback, BLEServerCallback {
 
     private final SimpleDateFormat format = new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US);
 
-    private SampleCallback mSampleCallback;
+    private final BLEServerConnection.DefaultServerSetting mDefaultServerSetting = new BLEServerConnection.DefaultServerSetting();
+    private final SampleCallback mSampleCallback;
 
     BLECallbackSample(SampleCallback sampleCallback) {
         mSampleCallback = sampleCallback;
@@ -47,82 +56,129 @@ public class BLECallbackSample implements BLECallback {
     }
 
     @Override
-    public void onBLEConnected(BluetoothDevice bluetoothDevice) {
-        callback();
+    public void onBLEConnected(long taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+        callback(argument);
     }
 
     @Override
-    public void onBLEConnectTimeout(BluetoothDevice bluetoothDevice) {
-        callback();
+    public void onBLEConnectFailed(long taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+        callback(status, argument);
     }
 
     @Override
-    public void onBLEDisonnected(BluetoothDevice bluetoothDevice) {
-        callback();
+    public void onBLEConnectTimeout(long taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+        callback(argument);
     }
 
     @Override
-    public void onCharacteristicReadSuccess(BluetoothDevice bluetoothDevice, UUID characteristicUUID, byte[] values) {
-        callback(characteristicUUID, Arrays.toString(values));
+    public void onBLEDisonnected(long taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+        callback(argument);
     }
 
     @Override
-    public void onCharacteristicReadFailed(BluetoothDevice bluetoothDevice, UUID characteristicUUID, int status) {
-        callback(status);
+    public void onCharacteristicReadSuccess(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+        callback(characteristicUUID, Arrays.toString(values), argument);
     }
 
     @Override
-    public void onCharacteristicReadTimeout(BluetoothDevice bluetoothDevice, UUID characteristicUUID, long timeout) {
-        callback(characteristicUUID, timeout);
+    public void onCharacteristicReadFailed(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+        callback(status, argument);
     }
 
     @Override
-    public void onCharacteristicWriteSuccess(BluetoothDevice bluetoothDevice, UUID characteristicUUID, byte[] values) {
-        callback(characteristicUUID, Arrays.toString(values));
+    public void onCharacteristicReadTimeout(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+        callback(characteristicUUID, timeout, argument);
     }
 
     @Override
-    public void onCharacteristicWriteFailed(BluetoothDevice bluetoothDevice, UUID characteristicUUID, int status) {
-        callback(characteristicUUID, status);
+    public void onCharacteristicWriteSuccess(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+        callback(characteristicUUID, Arrays.toString(values), argument);
     }
 
     @Override
-    public void onCharacteristicWriteTimeout(BluetoothDevice bluetoothDevice, UUID characteristicUUID, long timeout) {
-        callback(characteristicUUID, timeout);
+    public void onCharacteristicWriteFailed(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+        callback(characteristicUUID, status, argument);
     }
 
     @Override
-    public void onDescriptorReadSuccess(BluetoothDevice bluetoothDevice, UUID characteristicUUID, UUID descriptorUUID, byte[] values) {
-        callback(characteristicUUID, descriptorUUID, Arrays.toString(values));
+    public void onCharacteristicWriteTimeout(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+        callback(characteristicUUID, timeout, argument);
     }
 
     @Override
-    public void onDescriptorReadFailed(BluetoothDevice bluetoothDevice, UUID characteristicUUID, UUID descriptorUUID, int status) {
-        callback(characteristicUUID, descriptorUUID, status);
+    public void onDescriptorReadSuccess(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+        callback(characteristicUUID, descriptorUUID, Arrays.toString(values), argument);
     }
 
     @Override
-    public void onDescriptorReadTimeout(BluetoothDevice bluetoothDevice, UUID characteristicUUID, UUID descriptorUUID, long timeout) {
-        callback(characteristicUUID, descriptorUUID, timeout);
+    public void onDescriptorReadFailed(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+        callback(characteristicUUID, descriptorUUID, status, argument);
     }
 
     @Override
-    public void onDescriptorWriteSuccess(BluetoothDevice bluetoothDevice, UUID characteristicUUID, UUID descriptorUUID, byte[] values) {
-        callback(characteristicUUID, descriptorUUID, Arrays.toString(values));
+    public void onDescriptorReadTimeout(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+        callback(characteristicUUID, descriptorUUID, timeout, argument);
     }
 
     @Override
-    public void onDescriptorWriteFailed(BluetoothDevice bluetoothDevice, UUID characteristicUUID, UUID descriptorUUID, int status) {
-        callback(characteristicUUID, descriptorUUID, status);
+    public void onDescriptorWriteSuccess(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+        callback(characteristicUUID, descriptorUUID, Arrays.toString(values), argument);
     }
 
     @Override
-    public void onDescriptorWriteTimeout(BluetoothDevice bluetoothDevice, UUID characteristicUUID, UUID descriptorUUID, long timeout) {
-        callback(characteristicUUID, descriptorUUID, timeout);
+    public void onDescriptorWriteFailed(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+        callback(characteristicUUID, descriptorUUID, status, argument);
     }
 
     @Override
-    public void onCharacteristicNotified(BluetoothDevice bluetoothDevice, UUID characteristicUUID, byte[] values) {
+    public void onDescriptorWriteTimeout(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+        callback(characteristicUUID, descriptorUUID, timeout, argument);
+    }
+
+    @Override
+    public void onCharacteristicNotified(BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values) {
         callback(characteristicUUID, characteristicUUID, Arrays.toString(values));
+    }
+
+    @Override
+    public void onServerStarted() {
+        callback();
+        mDefaultServerSetting.onServerStarted();
+    }
+
+    @Override
+    public void onServerStopped() {
+        callback();
+        mDefaultServerSetting.onServerStopped();
+    }
+
+    @Override
+    public List<BluetoothGattService> getBluetoothGattServiceList() {
+        callback();
+        return mDefaultServerSetting.getBluetoothGattServiceList();
+    }
+
+    @Override
+    public boolean onCharacteristicReadRequest(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, int requestId, int offset, BluetoothGattCharacteristic characteristic) {
+        callback(device, characteristic.getUuid());
+        return mDefaultServerSetting.onCharacteristicReadRequest(bluetoothGattServer, device, requestId, offset, characteristic);
+    }
+
+    @Override
+    public boolean onCharacteristicWriteRequest(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, int requestId, BluetoothGattCharacteristic characteristic, boolean preparedWrite, boolean responseNeeded, int offset, byte[] value) {
+        callback(device, characteristic.getUuid());
+        return mDefaultServerSetting.onCharacteristicWriteRequest(bluetoothGattServer, device, requestId, characteristic, preparedWrite, responseNeeded, offset, value);
+    }
+
+    @Override
+    public boolean onDescriptorReadRequest(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, int requestId, int offset, BluetoothGattDescriptor descriptor) {
+        callback(descriptor, descriptor.getUuid());
+        return mDefaultServerSetting.onDescriptorReadRequest(bluetoothGattServer, device, requestId, offset, descriptor);
+    }
+
+    @Override
+    public boolean onDescriptorWriteRequest(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, int requestId, BluetoothGattDescriptor descriptor, boolean preparedWrite, boolean responseNeeded, int offset, byte[] value) {
+        callback(descriptor, descriptor.getUuid());
+        return mDefaultServerSetting.onDescriptorWriteRequest(bluetoothGattServer, device, requestId, descriptor, preparedWrite, responseNeeded, offset, value);
     }
 }

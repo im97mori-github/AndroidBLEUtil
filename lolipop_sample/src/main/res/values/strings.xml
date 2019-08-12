@@ -5,15 +5,21 @@
     <string name="scan_stop">Scan Stop</string>
     <string name="connect">Connect</string>
     <string name="disconnect">Disconnect</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
     <string name="permission_message">bluetooth low energy feature needs coarse location permission</string>
 
     <string name="label_advertising">Advertising sample</string>
     <string name="label_connect">Connect sample</string>
+    <string name="label_peripheral">Peripheral sample</string>
+    <string name="label_central">Central sample</string>
 
     <string name="menu_read_5111">Read LED setting [normal state]</string>
     <string name="menu_write_5111">Write LED setting [normal state]</string>
     <string name="menu_read_cccd_5012">Read CCCD Latest sensing data</string>
     <string name="menu_write_cccd_5012">Write CCCD Latest sensing data</string>
+    <string name="menu_read_0002">Read 0002</string>
+    <string name="menu_write_0002">Write 0002</string>
 
     <string name="menu_clear">Clear</string>
 </resources>

@@ -2,7 +2,6 @@ package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_TX_POWER_LEVEL;
 
@@ -14,7 +13,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * </p>
  */
 @SuppressWarnings("WeakerAccess")
-public class TxPowerLevel extends AbstractAdvertisingData implements Parcelable {
+public class TxPowerLevel extends AbstractAdvertisingData {
 
     /**
      * @see Creator

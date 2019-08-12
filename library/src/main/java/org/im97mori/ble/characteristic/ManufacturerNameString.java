@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayInterface;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MANUFACTURER_NAME_STRING_CHARACTERISTIC;
 
@@ -12,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MANUFACTURER_NAME
  * Manufacturer name string (Characteristics UUID: 0x2A28)
  */
 @SuppressWarnings("WeakerAccess")
-public class ManufacturerNameString extends AbstractCharacteristic implements Parcelable {
+public class ManufacturerNameString implements ByteArrayInterface, Parcelable {
 
     /**
      * @see ByteArrayCreater

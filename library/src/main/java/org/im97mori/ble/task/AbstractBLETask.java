@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Message;
 
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Base task class
@@ -11,10 +12,16 @@ import java.util.UUID;
 @SuppressWarnings({"WeakerAccess", "JavadocReference"})
 public abstract class AbstractBLETask {
 
+    public static final AtomicLong TASK_ID_GENERATOR = new AtomicLong(0);
     /**
      * KEY:NEXT_PROGRESS
      */
     public static final String KEY_NEXT_PROGRESS = "KEY_NEXT_PROGRESS";
+
+    /**
+     * KEY:SERVICE_UUID
+     */
+    public static final String KEY_SERVICE_UUID = "KEY_SERVICE_UUID";
 
     /**
      * KEY:CHARACTERISTIC_UUID
@@ -47,9 +54,14 @@ public abstract class AbstractBLETask {
     public static final int PROGRESS_FINISHED = PROGRESS_INIT + 1;
 
     /**
+     * PROGRESS:BUSY
+     */
+    public static final int PROGRESS_BUSY = PROGRESS_FINISHED + 1;
+
+    /**
      * PROGRESS:TIMEOUT
      */
-    public static final int PROGRESS_TIMEOUT = PROGRESS_FINISHED + 1;
+    public static final int PROGRESS_TIMEOUT = PROGRESS_BUSY + 1;
 
     /**
      * PROGRESS:CONNECT
@@ -128,6 +140,11 @@ public abstract class AbstractBLETask {
     public static final int PROGRESS_FIRST_USER = PROGRESS_DESCRIPTOR_WRITE_ERROR + 1;
 
     /**
+     * task id at task not registered
+     */
+    public static final long TASK_ID_UNREGISTED = -1;
+
+    /**
      * create timeout message
      *
      * @param characteristicUUID target characteristic/descritor UUID or null(for connect)
@@ -170,11 +187,35 @@ public abstract class AbstractBLETask {
     protected int mCurrentProgress = PROGRESS_INIT;
 
     /**
+     * task id
+     */
+    protected final long mTaskId = TASK_ID_GENERATOR.getAndIncrement();
+
+    /**
      * do task
      *
      * @param message {@link Message} from {@link org.im97mori.ble.TaskHandler#handleMessage(Message)}
      * @return {@code true}:this task has been finished(or timeout), {@code false}:work in progress
      */
     public abstract boolean doProcess(Message message);
+
+    /**
+     * check busy status
+     *
+     * @return {@code true}:{@link android.bluetooth.BluetoothGatt} is busy, {@code false}: not busy
+     */
+    public abstract boolean isBusy();
+
+    /**
+     * cancel task
+     */
+    public abstract void cancel();
+
+    /**
+     * @return task id
+     */
+    public long getTaskId() {
+        return mTaskId;
+    }
 
 }

@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayInterface;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC;
 
@@ -12,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DEVICE_NAME_CHARA
  * Device mName (Characteristics UUID: 0x2A00)
  */
 @SuppressWarnings("WeakerAccess")
-public class DeviceName extends AbstractCharacteristic implements Parcelable {
+public class DeviceName implements ByteArrayInterface, Parcelable {
 
     /**
      * @see ByteArrayCreater

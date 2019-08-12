@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayInterface;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HARDWARE_REVISION_STRING_CHARACTERISTIC;
 
@@ -12,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HARDWARE_REVISION
  * Hardware revision string (Characteristics UUID: 0x2A27)
  */
 @SuppressWarnings("WeakerAccess")
-public class HardwareRevisionString extends AbstractCharacteristic implements Parcelable {
+public class HardwareRevisionString implements ByteArrayInterface, Parcelable {
 
     /**
      * @see ByteArrayCreater

@@ -27,7 +27,7 @@ public class IndexActivity extends Activity implements AdapterView.OnItemClickLi
 
     private static class IndexAdapter extends ArrayAdapter<ActivityInfo> {
 
-        private LayoutInflater mLayoutInflater;
+        private final LayoutInflater mLayoutInflater;
 
         IndexAdapter(Context context, List<ActivityInfo> list) {
             super(context, 0, list);

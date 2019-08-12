@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayInterface;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MODEL_NUMBER_STRING_CHARACTERISTIC;
 
@@ -12,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MODEL_NUMBER_STRI
  * Model number string (Characteristics UUID: 0x2A24)
  */
 @SuppressWarnings("WeakerAccess")
-public class ModelNumberString extends AbstractCharacteristic implements Parcelable {
+public class ModelNumberString implements ByteArrayInterface, Parcelable {
 
     /**
      * @see ByteArrayCreater

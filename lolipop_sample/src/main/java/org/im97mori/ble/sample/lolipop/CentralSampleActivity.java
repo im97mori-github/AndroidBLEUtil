@@ -1,4 +1,4 @@
-package org.im97mori.test_peripheral;
+package org.im97mori.ble.sample.lolipop;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -77,7 +77,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     && (result.getFlags().isLeLimitedDiscoverableMode() || result.getFlags().isLeGeneralDiscoverableMode())
                     && result.getCompleteListOf128BitServiceUUIDs() != null
                     && !result.getCompleteListOf128BitServiceUUIDs().getUuidList().isEmpty()
-                    && BLEServerConnection.AD_SERVICE_UUID.equals(result.getCompleteListOf128BitServiceUUIDs().getUuidList().get(0))) {
+                    && BLEServerConnection.CONTROL_SERVICE_UUID.equals(result.getCompleteListOf128BitServiceUUIDs().getUuidList().get(0))) {
                 mActivity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -217,8 +217,8 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (R.id.read == item.getItemId()) {
-            mBleConnection.createReadCharacteristicTask(BLEServerConnection.AD_SERVICE_UUID
-                    , BLEServerConnection.GATT_CHARACTERISTIC_UUID
+            mBleConnection.createReadCharacteristicTask(BLEServerConnection.DefaultServerSetting.DEFAULT_SERVICE_UUID
+                    , BLEServerConnection.DefaultServerSetting.READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S
                     , ReadCharacteristicTask.TIMEOUT_MILLIS);
         } else if (R.id.write == item.getItemId()) {
 //            mBleConnection.createWriteCharacteristicTask(UUID.fromString("ab705110-0a3a-11e8-ba89-0ed5f89f718b")
@@ -268,14 +268,8 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                         ParcelUuid[] parcelUuids = device.getUuids();
                         if (parcelUuids != null) {
                             for (ParcelUuid parcelUuid : parcelUuids) {
-                                if (BLEServerConnection.AD_SERVICE_UUID.equals(parcelUuid.getUuid())) {
+                                if (BLEServerConnection.CONTROL_SERVICE_UUID.equals(parcelUuid.getUuid())) {
                                     target = device;
-//                                    try {
-//                                        Method method = BluetoothDevice.class.getMethod("removeBond");
-//                                        method.invoke(device);
-//                                    } catch (Exception e) {
-//                                        BLELogUtils.stackLog(e);
-//                                    }
                                     break;
                                 }
                             }
@@ -312,7 +306,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     mBleConnection.quit();
                     mBleConnection = null;
                 } else {
-                    mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
+                    mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS, null);
                 }
             }
 
