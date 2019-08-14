@@ -9,6 +9,7 @@ import android.os.Message;
 import android.text.format.DateUtils;
 
 import org.im97mori.ble.BLEConnection;
+import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.TaskHandler;
 
 import java.util.UUID;
@@ -19,6 +20,8 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 
 /**
  * Read descriptor task
+ * <p>
+ * for central role
  */
 @SuppressWarnings("JavadocReference")
 public class ReadDescriptorTask extends AbstractBLETask {
@@ -180,7 +183,11 @@ public class ReadDescriptorTask extends AbstractBLETask {
                         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(mDescriptorUUID);
                         if (bluetoothGattDescriptor != null) {
                             // read descriptor
-                            result = mBluetoothGatt.readDescriptor(bluetoothGattDescriptor);
+                            try {
+                                result = mBluetoothGatt.readDescriptor(bluetoothGattDescriptor);
+                            } catch (Exception e) {
+                                BLELogUtils.stackLog(e);
+                            }
                         }
                     }
                 }
@@ -231,6 +238,8 @@ public class ReadDescriptorTask extends AbstractBLETask {
      */
     @Override
     public void cancel() {
+        mTaskHandler.removeCallbacksAndMessages(this);
+        mCurrentProgress = PROGRESS_FINISHED;
         mBLEConnection.getBLECallback().onDescriptorReadFailed(mTaskId, mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, CANCEL, mArgument);
     }
 

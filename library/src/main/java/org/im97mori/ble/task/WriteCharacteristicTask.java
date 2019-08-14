@@ -8,6 +8,7 @@ import android.os.Message;
 import android.text.format.DateUtils;
 
 import org.im97mori.ble.BLEConnection;
+import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.TaskHandler;
 
@@ -19,6 +20,8 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 
 /**
  * Write characteristic task
+ * <p>
+ * for central role
  */
 @SuppressWarnings("JavadocReference")
 public class WriteCharacteristicTask extends AbstractBLETask {
@@ -181,7 +184,11 @@ public class WriteCharacteristicTask extends AbstractBLETask {
                         bluetoothGattCharacteristic.setWriteType(mWriteType);
 
                         // write characteristic
-                        result = mBluetoothGatt.writeCharacteristic(bluetoothGattCharacteristic);
+                        try {
+                            result = mBluetoothGatt.writeCharacteristic(bluetoothGattCharacteristic);
+                        } catch (Exception e) {
+                            BLELogUtils.stackLog(e);
+                        }
                     }
                 }
 
@@ -237,6 +244,8 @@ public class WriteCharacteristicTask extends AbstractBLETask {
      */
     @Override
     public void cancel() {
+        mTaskHandler.removeCallbacksAndMessages(this);
+        mCurrentProgress = PROGRESS_FINISHED;
         mBLEConnection.getBLECallback().onCharacteristicWriteFailed(mTaskId, mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, CANCEL, mArguemnt);
     }
 

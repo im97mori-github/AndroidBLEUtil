@@ -399,11 +399,13 @@ public class TaskHandlerTest {
 
         assertEquals(1, countDownLatch.getCount());
 
-        try {
-            Thread.sleep(DateUtils.SECOND_IN_MILLIS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        do {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } while (taskHandler.isBusy());
 
         taskHandler.addTask(task3, new Message());
 
@@ -462,6 +464,14 @@ public class TaskHandlerTest {
         taskHandler.addTask(task2, new Message());
 
         assertEquals(1, countDownLatch.getCount());
+
+        do {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } while (taskHandler.isBusy());
 
         taskHandler.clearBusy();
 

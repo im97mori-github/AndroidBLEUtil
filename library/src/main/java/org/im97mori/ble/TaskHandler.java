@@ -10,10 +10,10 @@ import android.text.format.DateUtils;
 import android.util.Pair;
 
 import org.im97mori.ble.task.AbstractBLETask;
+import org.im97mori.ble.task.DisconnectTask;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Queue;
 import java.util.UUID;
 
 @SuppressWarnings({"WeakerAccess", "JavadocReference"})
@@ -67,7 +67,7 @@ public class TaskHandler extends Handler {
     /**
      * task queue
      */
-    private final Queue<Pair<AbstractBLETask, Message>> mQueue = new LinkedList<>();
+    private final LinkedList<Pair<AbstractBLETask, Message>> mQueue = new LinkedList<>();
 
     /**
      * end of busy status
@@ -130,7 +130,7 @@ public class TaskHandler extends Handler {
                     @SuppressWarnings("unchecked") Pair<AbstractBLETask, Message> pair = (Pair<AbstractBLETask, Message>) msg.obj;
                     if (hasMessages(MESSAGE_TASK_CANCEL, pair.first.getTaskId())) {
                         removeMessages(MESSAGE_TASK_CANCEL, pair.first.getTaskId());
-                    } else if(hasMessages(MESSAGE_TASK_CLEAR)) {
+                    } else if (hasMessages(MESSAGE_TASK_CLEAR)) {
                         pair.first.cancel();
                     } else {
                         // add to task queue
@@ -162,21 +162,28 @@ public class TaskHandler extends Handler {
                     mWaitForBusy = 0;
                 }
 
-                // no current task, task queue has task
-                if (mCurrentTask == null && mWaitForBusy < SystemClock.elapsedRealtime()) {
+                // no current task and task queue is not empty
+                if (mCurrentTask == null && !mQueue.isEmpty()) {
                     // set current task
-
                     do {
                         Pair<AbstractBLETask, Message> pair = mQueue.poll();
                         if (pair != null) {
                             if (hasMessages(MESSAGE_TASK_CANCEL, pair.first.getTaskId())) {
                                 pair.first.cancel();
                                 removeMessages(MESSAGE_TASK_CANCEL, pair.first.getTaskId());
-                            } else {
+                            } else if (mWaitForBusy < SystemClock.elapsedRealtime() || pair.first instanceof DisconnectTask) {
+                                // Disconnect task ignore busy status
+
                                 mCurrentTask = pair.first;
 
                                 // send current task's first message
                                 sendMessage(pair.second);
+                                break;
+                            } else {
+                                // busy status
+
+                                // return to queue
+                                mQueue.push(pair);
                                 break;
                             }
                         }
@@ -222,19 +229,27 @@ public class TaskHandler extends Handler {
     }
 
     /**
+     * @see #addTaskDelayed(AbstractBLETask, Message, long)
+     */
+    public void addTask(AbstractBLETask task, Message original) {
+        addTaskDelayed(task, original, 0);
+    }
+
+    /**
      * add task and task's first message to task queue
      *
      * @param task     {@link AbstractBLETask} instance
      * @param original task's first {@link Message} instance
+     * @param delay    millis
      */
-    public void addTask(AbstractBLETask task, Message original) {
+    public void addTaskDelayed(AbstractBLETask task, Message original, long delay) {
         original.what = MESSAGE_TASK_PROCESSING;
         Pair pair = Pair.create(task, original);
 
         Message message = new Message();
         message.what = MESSAGE_TASK_ADD;
         message.obj = pair;
-        sendMessage(message);
+        sendMessageDelayed(message, delay);
     }
 
     /**
@@ -264,6 +279,15 @@ public class TaskHandler extends Handler {
      */
     public void clearBusy() {
         sendEmptyMessage(MESSAGE_CLEAR_BUSY);
+    }
+
+    /**
+     * check busy status
+     *
+     * @return {@code true}:busy, {@code false}:not busy
+     */
+    public boolean isBusy() {
+        return mWaitForBusy > SystemClock.elapsedRealtime();
     }
 
     /**

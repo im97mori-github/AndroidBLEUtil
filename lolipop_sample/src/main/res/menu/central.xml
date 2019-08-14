@@ -7,6 +7,18 @@
         android:id="@+id/write"
         android:title="@string/menu_write_0002" />
     <item
+        android:id="@+id/write_notification"
+        android:title="@string/menu_write_notification" />
+    <item
+        android:id="@+id/write_indication"
+        android:title="@string/menu_write_indication" />
+    <item
+        android:id="@+id/write_notification_stop"
+        android:title="@string/menu_write_notification_stop" />
+    <item
+        android:id="@+id/write_indication_stop"
+        android:title="@string/menu_write_indication_stop" />
+    <item
         android:id="@+id/clear"
         android:title="@string/menu_clear" />
 </menu>

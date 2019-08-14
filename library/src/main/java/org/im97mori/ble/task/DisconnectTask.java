@@ -6,11 +6,14 @@ import android.os.Message;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConstants;
+import org.im97mori.ble.BLELogUtils;
 
 import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
 
 /**
  * Disconnect from {@link BluetoothGatt} task
+ * <p>
+ * for central role
  */
 @SuppressWarnings("JavadocReference")
 public class DisconnectTask extends AbstractBLETask {
@@ -82,8 +85,16 @@ public class DisconnectTask extends AbstractBLETask {
                 if (PROGRESS_DISCONNECT == nextProgress) {
                     // target is newest one
                     if (mBLEConnection.isCurrentConnectionTarget(mBluetoothGatt)) {
-                        mBluetoothGatt.disconnect();
-                        mBluetoothGatt.close();
+                        try {
+                            mBluetoothGatt.disconnect();
+                        } catch (Exception e) {
+                            BLELogUtils.stackLog(e);
+                        }
+                        try {
+                            mBluetoothGatt.close();
+                        } catch (Exception e) {
+                            BLELogUtils.stackLog(e);
+                        }
                         mBLEConnection.onDisconnected(mTaskId, mBluetoothGatt, bundle.getInt(KEY_STATUS), mArgument);
                     }
                     mCurrentProgress = nextProgress;
@@ -107,6 +118,7 @@ public class DisconnectTask extends AbstractBLETask {
      */
     @Override
     public void cancel() {
+        mCurrentProgress = PROGRESS_FINISHED;
         mBLEConnection.onDisconnected(mTaskId, mBluetoothGatt, CANCEL, mArgument);
     }
 

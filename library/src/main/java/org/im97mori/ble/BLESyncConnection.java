@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.Pair;
 
 import org.im97mori.ble.task.AbstractBLETask;
 import org.im97mori.ble.task.ConnectTask;
@@ -17,6 +18,8 @@ import org.im97mori.ble.task.WriteDescriptorTask;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -34,10 +37,18 @@ import static org.im97mori.ble.task.AbstractBLETask.TASK_ID_UNREGISTED;
  * <p>
  * Synchronous
  */
-@SuppressWarnings("ALL")
+@SuppressWarnings("JavadocReference")
 public class BLESyncConnection implements BLECallback {
 
-    private static final AtomicLong LOCK_ID_GENERATOR = new AtomicLong(1);
+    /**
+     * all lock id greater than this number
+     */
+    private static final long NOT_AVAILABLE_LOCK_ID = 0;
+
+    /**
+     * unique lock id generetor
+     */
+    private static final AtomicLong LOCK_ID_GENERATOR = new AtomicLong(NOT_AVAILABLE_LOCK_ID);
 
     /**
      * BLE result class
@@ -59,6 +70,7 @@ public class BLESyncConnection implements BLECallback {
      * @see #onDescriptorWriteFailed(long, BluetoothDevice, UUID, UUID, UUID, int, Bundle)
      * @see #onDescriptorWriteTimeout(long, BluetoothDevice, UUID, UUID, UUID, long, Bundle)
      */
+    @SuppressWarnings("unused")
     public static class BLEResult {
 
         /**
@@ -244,19 +256,24 @@ public class BLESyncConnection implements BLECallback {
     private final BluetoothDevice mBluetoothDevice;
 
     /**
-     * {@link BLEConnection} instance
-     */
-    private BLEConnection mBLEConnection;
-
-    /**
      * map for waiting result lock
      */
-    private Map<Long, CountDownLatch> mLockMap = Collections.synchronizedMap(new LinkedHashMap<Long, CountDownLatch>());
+    private final Map<Long, CountDownLatch> mLockMap = Collections.synchronizedMap(new LinkedHashMap<Long, CountDownLatch>());
 
     /**
      * map for result
      */
-    private Map<Long, BLEResult> mResultMap = Collections.synchronizedMap(new LinkedHashMap<Long, BLEResult>());
+    private final Map<Long, BLEResult> mResultMap = Collections.synchronizedMap(new LinkedHashMap<Long, BLEResult>());
+
+    /**
+     * notification(indication) listner map
+     */
+    private final Map<Pair<UUID, UUID>, List<List<byte[]>>> mNotificationListenerMap = new LinkedHashMap<>();
+
+    /**
+     * {@link BLEConnection} instance
+     */
+    private BLEConnection mBLEConnection;
 
     /**
      * @param context         {@link Context} instance
@@ -405,6 +422,45 @@ public class BLESyncConnection implements BLECallback {
     }
 
     /**
+     * Listen notification or indication
+     *
+     * @param serviceUUID        service {@link UUID}
+     * @param characteristicUUID characteristic {@link UUID}
+     * @param duration           listen duration
+     * @return notification or lidication value list
+     */
+    public List<byte[]> listen(UUID serviceUUID, UUID characteristicUUID, long notification) {
+        List<byte[]> listener = new LinkedList<>();
+
+        Pair<UUID, UUID> pair = Pair.create(serviceUUID, characteristicUUID);
+        List<List<byte[]>> listenerList;
+        synchronized (mNotificationListenerMap) {
+            listenerList = mNotificationListenerMap.get(pair);
+            if (listenerList == null) {
+                listenerList = new LinkedList<>();
+                mNotificationListenerMap.put(pair, listenerList);
+            }
+            listenerList.add(listener);
+            mNotificationListenerMap.notifyAll();
+        }
+
+        long end = SystemClock.elapsedRealtime() + notification;
+        do {
+            try {
+                Thread.sleep(end - SystemClock.elapsedRealtime());
+            } catch (InterruptedException e) {
+                BLELogUtils.stackLog(e);
+            }
+        } while (end > SystemClock.elapsedRealtime());
+
+        synchronized (mNotificationListenerMap) {
+            listenerList.remove(listener);
+            mNotificationListenerMap.notifyAll();
+        }
+        return listener;
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
@@ -537,7 +593,14 @@ public class BLESyncConnection implements BLECallback {
      */
     @Override
     public void onCharacteristicNotified(BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values) {
-        // TODO
+        synchronized (mNotificationListenerMap) {
+            List<List<byte[]>> list = mNotificationListenerMap.get(Pair.create(serviceUUID, characteristicUUID));
+            //noinspection ConstantConditions
+            for (List<byte[]> listener : list) {
+                listener.add(values);
+            }
+            mNotificationListenerMap.notifyAll();
+        }
     }
 
     /**
@@ -560,7 +623,7 @@ public class BLESyncConnection implements BLECallback {
         long end = taskTimeout + SystemClock.elapsedRealtime();
 
         // create lock
-        long key = LOCK_ID_GENERATOR.getAndDecrement();
+        long key = LOCK_ID_GENERATOR.incrementAndGet();
         CountDownLatch countDownLatch = new CountDownLatch(1);
         mLockMap.put(key, countDownLatch);
 

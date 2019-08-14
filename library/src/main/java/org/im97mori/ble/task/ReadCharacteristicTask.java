@@ -8,6 +8,7 @@ import android.os.Message;
 import android.text.format.DateUtils;
 
 import org.im97mori.ble.BLEConnection;
+import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.TaskHandler;
 
 import java.util.UUID;
@@ -18,6 +19,8 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 
 /**
  * Read characteristic task
+ * <p>
+ * for central role
  */
 @SuppressWarnings("JavadocReference")
 public class ReadCharacteristicTask extends AbstractBLETask {
@@ -163,7 +166,11 @@ public class ReadCharacteristicTask extends AbstractBLETask {
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(mCharacteristicUUID);
                     if (bluetoothGattCharacteristic != null) {
                         // read characteristic
-                        result = mBluetoothGatt.readCharacteristic(bluetoothGattCharacteristic);
+                        try {
+                            result = mBluetoothGatt.readCharacteristic(bluetoothGattCharacteristic);
+                        } catch (Exception e) {
+                            BLELogUtils.stackLog(e);
+                        }
                     }
                 }
 
@@ -213,6 +220,8 @@ public class ReadCharacteristicTask extends AbstractBLETask {
      */
     @Override
     public void cancel() {
+        mTaskHandler.removeCallbacksAndMessages(this);
+        mCurrentProgress = PROGRESS_FINISHED;
         mBLEConnection.getBLECallback().onCharacteristicReadFailed(mTaskId, mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, CANCEL, mArgument);
     }
 

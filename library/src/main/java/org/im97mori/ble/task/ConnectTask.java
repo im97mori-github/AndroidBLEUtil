@@ -15,6 +15,8 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 
 /**
  * Connect to {@link BluetoothDevice} task
+ * <p>
+ * for central role
  */
 @SuppressWarnings("JavadocReference")
 public class ConnectTask extends AbstractBLETask {
@@ -110,8 +112,16 @@ public class ConnectTask extends AbstractBLETask {
 
                 // disconnect current target
                 if (mBluetoothGatt != null) {
-                    mBluetoothGatt.disconnect();
-                    mBluetoothGatt.close();
+                    try {
+                        mBluetoothGatt.disconnect();
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
+                    try {
+                        mBluetoothGatt.close();
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
                 }
 
                 mBLEConnection.onConnectTimeout(mTaskId, mArgument);
@@ -172,6 +182,8 @@ public class ConnectTask extends AbstractBLETask {
      */
     @Override
     public void cancel() {
+        mTaskHandler.removeCallbacksAndMessages(this);
+        mCurrentProgress = PROGRESS_FINISHED;
         mBLEConnection.onConnectFailed(mTaskId, CANCEL, mArgument);
     }
 

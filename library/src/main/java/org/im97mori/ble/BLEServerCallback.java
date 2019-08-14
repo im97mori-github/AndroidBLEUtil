@@ -10,8 +10,10 @@ import android.bluetooth.le.AdvertiseCallback;
 import android.bluetooth.le.AdvertiseData;
 import android.bluetooth.le.AdvertiseSettings;
 import android.content.Context;
+import android.os.Bundle;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * BLE server callback
@@ -30,6 +32,20 @@ public interface BLEServerCallback {
      * BLEServer stopped or start failed callback
      */
     void onServerStopped();
+
+    /**
+     * Central connected callback
+     *
+     * @param device central BLE device
+     */
+    void onDeviceConnected(BluetoothDevice device);
+
+    /**
+     * Central disconnected callback
+     *
+     * @param device central BLE device
+     */
+    void onDeviceDisconnected(BluetoothDevice device);
 
     /**
      * BLEServer's {@link BluetoothGattService} list
@@ -62,5 +78,42 @@ public interface BLEServerCallback {
      * @see BluetoothGattServerCallback#onDescriptorWriteRequest(BluetoothDevice, int, BluetoothGattDescriptor, boolean, boolean, int, byte[])
      */
     boolean onDescriptorWriteRequest(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, int requestId, BluetoothGattDescriptor descriptor, boolean preparedWrite, boolean responseNeeded, int offset, byte[] value);
+
+    /**
+     * Notification(Indication) success callback
+     *
+     * @param taskId              task id
+     * @param bluetoothGattServer {@link BluetoothGattServer} instance
+     * @param device              BLE device
+     * @param serviceUUID         service {@link UUID}
+     * @param characteristicUUID  characteristic {@link UUID}
+     * @param value               one of {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE}, {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}, {@link BluetoothGattDescriptor#DISABLE_NOTIFICATION_VALUE}
+     * @param argument            callback argument
+     */
+    void onNotificationSuccess(long taskId, BluetoothGattServer bluetoothGattServer, BluetoothDevice device, UUID serviceUUID, UUID characteristicUUID, byte[] value, Bundle argument);
+
+    /**
+     * Notification(Indication) error callback
+     *
+     * @param taskId              task id
+     * @param bluetoothGattServer {@link BluetoothGattServer} instance
+     * @param device              BLE device
+     * @param serviceUUID         service {@link UUID}
+     * @param characteristicUUID  characteristic {@link UUID}
+     * @param status              one of {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
+     * @param argument            callback argument
+     */
+    void onNotificationFailed(long taskId, BluetoothGattServer bluetoothGattServer, BluetoothDevice device, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument);
+
+    /**
+     * Client Characteristic Configuration (Descriptor UUID: 0x2902) updated callback
+     *
+     * @param bluetoothGattServer {@link BluetoothGattServer} instance
+     * @param device              BLE device
+     * @param serviceUUID         service {@link UUID}
+     * @param characteristicUUID  characteristic {@link UUID}
+     * @param value               one of {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE}, {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}, {@link BluetoothGattDescriptor#DISABLE_NOTIFICATION_VALUE}
+     */
+    void onClientCharacteristicConfigurationUpdated(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, UUID serviceUUID, UUID characteristicUUID, byte[] value);
 
 }

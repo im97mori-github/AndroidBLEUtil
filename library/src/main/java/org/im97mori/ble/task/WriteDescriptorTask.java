@@ -9,6 +9,7 @@ import android.os.Message;
 import android.text.format.DateUtils;
 
 import org.im97mori.ble.BLEConnection;
+import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.TaskHandler;
 
@@ -20,6 +21,8 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 
 /**
  * Set characteristic notification task
+ * <p>
+ * for central role
  */
 @SuppressWarnings("JavadocReference")
 public class WriteDescriptorTask extends AbstractBLETask {
@@ -190,7 +193,12 @@ public class WriteDescriptorTask extends AbstractBLETask {
                             bluetoothGattDescriptor.setValue(bytes);
 
                             // write descriptor
-                            result = mBluetoothGatt.writeDescriptor(bluetoothGattDescriptor);
+                            try {
+                                result = mBluetoothGatt.writeDescriptor(bluetoothGattDescriptor);
+                            } catch (Exception e) {
+                                BLELogUtils.stackLog(e);
+                            }
+
                         }
                     }
                 }
@@ -241,6 +249,8 @@ public class WriteDescriptorTask extends AbstractBLETask {
      */
     @Override
     public void cancel() {
+        mTaskHandler.removeCallbacksAndMessages(this);
+        mCurrentProgress = PROGRESS_FINISHED;
         mBLEConnection.getBLECallback().onDescriptorWriteFailed(mTaskId, mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, CANCEL, mArguemnt);
     }
 

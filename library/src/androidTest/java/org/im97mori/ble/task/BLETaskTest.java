@@ -3,6 +3,7 @@ package org.im97mori.ble.task;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.os.Bundle;
@@ -20,11 +21,15 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.DEFAULT_SERVICE_UUID;
+import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.INDICATABLE_CHARACTERISTIC_UUID;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.MESSAGE_SUCCESS;
+import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.NOTIFICATABLE_CHARACTERISTIC_UUID;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.READABLE_CHARACTERISTIC_UUID_WITH_ERROR;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S;
@@ -46,6 +51,7 @@ import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
@@ -986,4 +992,69 @@ public class BLETaskTest {
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
     }
 
+    @Test
+    public void test_listen001() {
+        BLELogUtils.stackLog();
+        BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
+                DEFAULT_SERVICE_UUID
+                , NOTIFICATABLE_CHARACTERISTIC_UUID
+                , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                , new ByteArrayInterface() {
+
+                    @Override
+                    public byte[] getBytes() {
+                        return BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
+                    }
+                }
+                , WriteDescriptorTask.TIMEOUT_MILLIS
+                , DateUtils.MINUTE_IN_MILLIS
+                , null
+        );
+
+        BLELogUtils.stackLog();
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+
+        BLELogUtils.stackLog();
+        List<byte[]> list = BLE_SYNC_CONNECTION.listen(
+                DEFAULT_SERVICE_UUID
+                , NOTIFICATABLE_CHARACTERISTIC_UUID
+                , DateUtils.SECOND_IN_MILLIS * 5
+        );
+
+        BLELogUtils.stackLog();
+        assertNotNull(list);
+        assertFalse(list.isEmpty());
+    }
+
+    @Test
+    public void test_listen002() {
+        BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
+                DEFAULT_SERVICE_UUID
+                , INDICATABLE_CHARACTERISTIC_UUID
+                , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                , new ByteArrayInterface() {
+
+                    @Override
+                    public byte[] getBytes() {
+                        return BluetoothGattDescriptor.ENABLE_INDICATION_VALUE;
+                    }
+                }
+                , WriteDescriptorTask.TIMEOUT_MILLIS
+                , DateUtils.MINUTE_IN_MILLIS
+                , null
+        );
+
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+
+        List<byte[]> list = BLE_SYNC_CONNECTION.listen(
+                DEFAULT_SERVICE_UUID
+                , INDICATABLE_CHARACTERISTIC_UUID
+                , DateUtils.SECOND_IN_MILLIS * 5
+        );
+
+        assertNotNull(list);
+        assertFalse(list.isEmpty());
+    }
 }

@@ -10,7 +10,6 @@ import android.text.TextUtils;
 import android.util.Pair;
 
 import org.im97mori.ble.BLECallback;
-import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.BLEServerConnection;
 
 import java.text.SimpleDateFormat;
@@ -20,11 +19,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-public class BLECallbackSample implements BLECallback, BLEServerCallback {
+public class BLECallbackSample extends BLEServerConnection.DefaultServerSetting implements BLECallback {
 
     private final SimpleDateFormat format = new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US);
 
-    private final BLEServerConnection.DefaultServerSetting mDefaultServerSetting = new BLEServerConnection.DefaultServerSetting();
     private final SampleCallback mSampleCallback;
 
     BLECallbackSample(SampleCallback sampleCallback) {
@@ -137,48 +135,75 @@ public class BLECallbackSample implements BLECallback, BLEServerCallback {
 
     @Override
     public void onCharacteristicNotified(BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values) {
-        callback(characteristicUUID, characteristicUUID, Arrays.toString(values));
+        if (NOTIFICATABLE_CHARACTERISTIC_UUID.equals(characteristicUUID) || INDICATABLE_CHARACTERISTIC_UUID.equals(characteristicUUID)) {
+            callback(serviceUUID, characteristicUUID, new String(values));
+        } else {
+            callback(serviceUUID, characteristicUUID, Arrays.toString(values));
+        }
     }
 
     @Override
     public void onServerStarted() {
         callback();
-        mDefaultServerSetting.onServerStarted();
+        super.onServerStarted();
     }
 
     @Override
     public void onServerStopped() {
         callback();
-        mDefaultServerSetting.onServerStopped();
+        super.onServerStopped();
     }
 
     @Override
     public List<BluetoothGattService> getBluetoothGattServiceList() {
         callback();
-        return mDefaultServerSetting.getBluetoothGattServiceList();
+        return super.getBluetoothGattServiceList();
     }
 
     @Override
     public boolean onCharacteristicReadRequest(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, int requestId, int offset, BluetoothGattCharacteristic characteristic) {
         callback(device, characteristic.getUuid());
-        return mDefaultServerSetting.onCharacteristicReadRequest(bluetoothGattServer, device, requestId, offset, characteristic);
+        return super.onCharacteristicReadRequest(bluetoothGattServer, device, requestId, offset, characteristic);
     }
 
     @Override
     public boolean onCharacteristicWriteRequest(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, int requestId, BluetoothGattCharacteristic characteristic, boolean preparedWrite, boolean responseNeeded, int offset, byte[] value) {
         callback(device, characteristic.getUuid());
-        return mDefaultServerSetting.onCharacteristicWriteRequest(bluetoothGattServer, device, requestId, characteristic, preparedWrite, responseNeeded, offset, value);
+        return super.onCharacteristicWriteRequest(bluetoothGattServer, device, requestId, characteristic, preparedWrite, responseNeeded, offset, value);
     }
 
     @Override
     public boolean onDescriptorReadRequest(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, int requestId, int offset, BluetoothGattDescriptor descriptor) {
-        callback(descriptor, descriptor.getUuid());
-        return mDefaultServerSetting.onDescriptorReadRequest(bluetoothGattServer, device, requestId, offset, descriptor);
+        callback(device, descriptor.getUuid());
+        return super.onDescriptorReadRequest(bluetoothGattServer, device, requestId, offset, descriptor);
     }
 
     @Override
     public boolean onDescriptorWriteRequest(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, int requestId, BluetoothGattDescriptor descriptor, boolean preparedWrite, boolean responseNeeded, int offset, byte[] value) {
-        callback(descriptor, descriptor.getUuid());
-        return mDefaultServerSetting.onDescriptorWriteRequest(bluetoothGattServer, device, requestId, descriptor, preparedWrite, responseNeeded, offset, value);
+        callback(device, descriptor.getUuid());
+        return super.onDescriptorWriteRequest(bluetoothGattServer, device, requestId, descriptor, preparedWrite, responseNeeded, offset, value);
     }
+
+    @Override
+    public void onNotificationSuccess(long taskId, BluetoothGattServer bluetoothGattServer, BluetoothDevice device, UUID serviceUUID, UUID characteristicUUID, byte[] value, Bundle argument) {
+        if (NOTIFICATABLE_CHARACTERISTIC_UUID.equals(characteristicUUID) || INDICATABLE_CHARACTERISTIC_UUID.equals(characteristicUUID)) {
+            callback(serviceUUID, characteristicUUID, new String(value));
+        } else {
+            callback(serviceUUID, characteristicUUID, Arrays.toString(value));
+        }
+        super.onNotificationSuccess(taskId, bluetoothGattServer, device, serviceUUID, characteristicUUID, value, argument);
+    }
+
+    @Override
+    public void onNotificationFailed(long taskId, BluetoothGattServer bluetoothGattServer, BluetoothDevice device, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+        callback(device, characteristicUUID, status);
+        super.onNotificationFailed(taskId, bluetoothGattServer, device, serviceUUID, characteristicUUID, status, argument);
+    }
+
+    @Override
+    public void onClientCharacteristicConfigurationUpdated(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, UUID serviceUUID, UUID characteristicUUID, byte[] value) {
+        callback(device, characteristicUUID, Arrays.toString(value));
+        super.onClientCharacteristicConfigurationUpdated(bluetoothGattServer, device, serviceUUID, characteristicUUID, value);
+    }
+
 }

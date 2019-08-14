@@ -12,7 +12,16 @@ import java.util.concurrent.atomic.AtomicLong;
 @SuppressWarnings({"WeakerAccess", "JavadocReference"})
 public abstract class AbstractBLETask {
 
-    public static final AtomicLong TASK_ID_GENERATOR = new AtomicLong(0);
+    /**
+     * all task id greater than this number
+     */
+    private static final long NOT_AVAILABLE_TASK_ID = 0;
+
+    /**
+     * unique task id generator
+     */
+    public static final AtomicLong TASK_ID_GENERATOR = new AtomicLong(NOT_AVAILABLE_TASK_ID);
+
     /**
      * KEY:NEXT_PROGRESS
      */
@@ -134,10 +143,15 @@ public abstract class AbstractBLETask {
     public static final int PROGRESS_DESCRIPTOR_WRITE_ERROR = PROGRESS_DESCRIPTOR_WRITE_SUCCESS + 1;
 
     /**
+     * PROGRESS:NOTIFICATION
+     */
+    public static final int PROGRESS_NOTIFICATION = PROGRESS_DESCRIPTOR_WRITE_ERROR + 1;
+
+    /**
      * For user defined progress
      */
     @SuppressWarnings("unused")
-    public static final int PROGRESS_FIRST_USER = PROGRESS_DESCRIPTOR_WRITE_ERROR + 1;
+    public static final int PROGRESS_FIRST_USER = PROGRESS_NOTIFICATION + 1;
 
     /**
      * task id at task not registered
@@ -189,7 +203,7 @@ public abstract class AbstractBLETask {
     /**
      * task id
      */
-    protected final long mTaskId = TASK_ID_GENERATOR.getAndIncrement();
+    protected final long mTaskId = TASK_ID_GENERATOR.incrementAndGet();
 
     /**
      * do task

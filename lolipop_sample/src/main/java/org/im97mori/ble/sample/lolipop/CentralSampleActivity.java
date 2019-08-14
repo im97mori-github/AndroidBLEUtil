@@ -2,6 +2,7 @@ package org.im97mori.ble.sample.lolipop;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanResult;
@@ -29,13 +30,20 @@ import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.ad.AdvertisingDataParser;
+import org.im97mori.ble.descriptor.ClientCharacteristicConfiguration;
 import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
+import org.im97mori.ble.task.WriteDescriptorTask;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR;
+import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.DEFAULT_SERVICE_UUID;
+import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.INDICATABLE_CHARACTERISTIC_UUID;
+import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.NOTIFICATABLE_CHARACTERISTIC_UUID;
+import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_FLAGS;
 
@@ -217,8 +225,8 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (R.id.read == item.getItemId()) {
-            mBleConnection.createReadCharacteristicTask(BLEServerConnection.DefaultServerSetting.DEFAULT_SERVICE_UUID
-                    , BLEServerConnection.DefaultServerSetting.READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S
+            mBleConnection.createReadCharacteristicTask(DEFAULT_SERVICE_UUID
+                    , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S
                     , ReadCharacteristicTask.TIMEOUT_MILLIS);
         } else if (R.id.write == item.getItemId()) {
 //            mBleConnection.createWriteCharacteristicTask(UUID.fromString("ab705110-0a3a-11e8-ba89-0ed5f89f718b")
@@ -230,6 +238,46 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
 //                        }
 //                    }
 //                    , WriteCharacteristicTask.TIMEOUT_MILLIS);
+        } else if (R.id.write_notification == item.getItemId()) {
+            BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR, 0);
+            descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
+            mBleConnection.createWriteDescriptorTask(
+                    DEFAULT_SERVICE_UUID
+                    , NOTIFICATABLE_CHARACTERISTIC_UUID
+                    , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                    , new ClientCharacteristicConfiguration(descriptor)
+                    , WriteDescriptorTask.TIMEOUT_MILLIS
+            );
+        } else if (R.id.write_indication == item.getItemId()) {
+            BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR, 0);
+            descriptor.setValue(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
+            mBleConnection.createWriteDescriptorTask(
+                    DEFAULT_SERVICE_UUID
+                    , INDICATABLE_CHARACTERISTIC_UUID
+                    , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                    , new ClientCharacteristicConfiguration(descriptor)
+                    , WriteDescriptorTask.TIMEOUT_MILLIS
+            );
+        } else if (R.id.write_notification_stop == item.getItemId()) {
+            BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR, 0);
+            descriptor.setValue(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
+            mBleConnection.createWriteDescriptorTask(
+                    DEFAULT_SERVICE_UUID
+                    , NOTIFICATABLE_CHARACTERISTIC_UUID
+                    , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                    , new ClientCharacteristicConfiguration(descriptor)
+                    , WriteDescriptorTask.TIMEOUT_MILLIS
+            );
+        } else if (R.id.write_indication_stop == item.getItemId()) {
+            BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR, 0);
+            descriptor.setValue(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
+            mBleConnection.createWriteDescriptorTask(
+                    DEFAULT_SERVICE_UUID
+                    , INDICATABLE_CHARACTERISTIC_UUID
+                    , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                    , new ClientCharacteristicConfiguration(descriptor)
+                    , WriteDescriptorTask.TIMEOUT_MILLIS
+            );
         }
         return true;
     }

@@ -83,7 +83,7 @@ public interface BLECallback {
      * @param bluetoothDevice    BLE device
      * @param serviceUUID        service {@link UUID}
      * @param characteristicUUID characteristic {@link UUID}
-     * @param status             one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}
+     * @param status             one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
      * @param argument           callback argument
      */
     void onCharacteristicReadFailed(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument);
@@ -119,7 +119,7 @@ public interface BLECallback {
      * @param bluetoothDevice    BLE device
      * @param serviceUUID        service {@link UUID}
      * @param characteristicUUID characteristic {@link UUID}
-     * @param status             one of {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}
+     * @param status             one of {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
      * @param argument           callback argument
      * @see BLEConstants.ErrorCodes
      */
@@ -157,7 +157,7 @@ public interface BLECallback {
      * @param serviceUUID        service {@link UUID}
      * @param characteristicUUID characteristic {@link UUID}
      * @param descriptorUUID     descriptor  {@link UUID}
-     * @param status             one of {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}
+     * @param status             one of {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
      * @param argument           callback argument
      */
     void onDescriptorReadFailed(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument);
@@ -194,7 +194,7 @@ public interface BLECallback {
      * @param bluetoothDevice    BLE device
      * @param serviceUUID        service {@link UUID}
      * @param characteristicUUID characteristic {@link UUID}
-     * @param status             one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}
+     * @param status             one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
      * @param argument           callback argument
      * @see BLEConstants.ErrorCodes
      */
