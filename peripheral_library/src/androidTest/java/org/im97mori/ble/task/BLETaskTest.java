@@ -13,7 +13,6 @@ import android.support.test.InstrumentationRegistry;
 import android.text.format.DateUtils;
 
 import org.im97mori.ble.BLEConstants;
-import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.BLESyncConnection;
 import org.im97mori.ble.ByteArrayInterface;
@@ -71,17 +70,23 @@ public class BLETaskTest {
                 if (parcelUuids != null) {
                     for (ParcelUuid parcelUuid : parcelUuids) {
                         if (BLEServerConnection.CONTROL_SERVICE_UUID.equals(parcelUuid.getUuid())) {
-                            BLE_SYNC_CONNECTION = new BLESyncConnection(context, device);
-                            BLESyncConnection.BLEResult result = BLE_SYNC_CONNECTION.connect(
+                            BLESyncConnection bleSyncConnection = new BLESyncConnection(context, device);
+                            BLESyncConnection.BLEResult result = bleSyncConnection.connect(
                                     ConnectTask.TIMEOUT_MILLIS
                                     , ConnectTask.TIMEOUT_MILLIS
                                     , null);
-                            BLELogUtils.stackLog(result.getResultCode(), result.getStatus());
+                            if (result != null && RESULT_SUCCESS == result.getResultCode()) {
+                                BLE_SYNC_CONNECTION = bleSyncConnection;
+                            }
                             break;
                         }
                     }
                 }
             }
+        }
+
+        if (BLE_SYNC_CONNECTION == null) {
+            System.exit(1);
         }
     }
 
@@ -94,6 +99,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadCharacteristicTask001() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadCharacteristicTask(
                 DEFAULT_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -110,6 +116,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadCharacteristicTask002() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         long randomLong = new Random().nextLong();
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
@@ -130,6 +137,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadCharacteristicTask003() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         long randomLong = new Random().nextLong();
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
@@ -150,6 +158,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadCharacteristicTask004() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadCharacteristicTask(
                 DEFAULT_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -166,6 +175,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadCharacteristicTask005() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadCharacteristicTask(
                 UNDIFINED_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -182,6 +192,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadCharacteristicTask006() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadCharacteristicTask(
                 UNDIFINED_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -198,6 +209,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadCharacteristicTask007() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadCharacteristicTask(
                 DEFAULT_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S
@@ -213,6 +225,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadCharacteristicTask008() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         long randomLong = new Random().nextLong();
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
@@ -232,6 +245,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteCharacteristicTask001() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
@@ -256,6 +270,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteCharacteristicTask002() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         long randomLong = new Random().nextLong();
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
@@ -284,6 +299,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteCharacteristicTask003() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
@@ -308,6 +324,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteCharacteristicTask004() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         long randomLong = new Random().nextLong();
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
@@ -336,6 +353,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteCharacteristicTask005() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 UNDIFINED_SERVICE_UUID
@@ -360,6 +378,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteCharacteristicTask006() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 UNDIFINED_SERVICE_UUID
@@ -384,6 +403,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteCharacteristicTask007() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
@@ -407,6 +427,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteCharacteristicTask008() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         long randomLong = new Random().nextLong();
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
@@ -434,6 +455,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteCharacteristicTask009() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
@@ -458,6 +480,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadDescriptorTask001() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -476,6 +499,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadDescriptorTask002() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         long randomLong = new Random().nextLong();
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
@@ -498,6 +522,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadDescriptorTask003() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -516,6 +541,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadDescriptorTask004() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         long randomLong = new Random().nextLong();
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
@@ -538,6 +564,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadDescriptorTask005() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -556,6 +583,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadDescriptorTask006() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -574,6 +602,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadDescriptorTask007() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 UNDIFINED_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -592,6 +621,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadDescriptorTask008() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 UNDIFINED_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -610,6 +640,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadDescriptorTask009() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 UNDIFINED_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -628,6 +659,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadDescriptorTask010() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 UNDIFINED_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -646,6 +678,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadDescriptorTask011() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S
@@ -663,6 +696,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createReadDescriptorTask012() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         long randomLong = new Random().nextLong();
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
@@ -684,6 +718,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteDescriptorTask001() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
@@ -709,6 +744,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteDescriptorTask002() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         long randomLong = new Random().nextLong();
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
@@ -738,6 +774,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteDescriptorTask003() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
@@ -763,6 +800,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteDescriptorTask004() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         long randomLong = new Random().nextLong();
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
@@ -792,6 +830,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteDescriptorTask005() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
@@ -817,6 +856,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteDescriptorTask006() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
@@ -842,6 +882,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteDescriptorTask007() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 UNDIFINED_SERVICE_UUID
@@ -867,6 +908,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteDescriptorTask008() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 UNDIFINED_SERVICE_UUID
@@ -892,6 +934,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteDescriptorTask009() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 UNDIFINED_SERVICE_UUID
@@ -917,6 +960,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteDescriptorTask010() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 UNDIFINED_SERVICE_UUID
@@ -942,6 +986,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteDescriptorTask011() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
@@ -966,6 +1011,7 @@ public class BLETaskTest {
 
     @Test
     public void test_createWriteDescriptorTask012() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         long randomLong = new Random().nextLong();
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
@@ -994,7 +1040,7 @@ public class BLETaskTest {
 
     @Test
     public void test_listen001() {
-        BLELogUtils.stackLog();
+        assertNotNull(BLE_SYNC_CONNECTION);
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
@@ -1011,24 +1057,22 @@ public class BLETaskTest {
                 , null
         );
 
-        BLELogUtils.stackLog();
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
 
-        BLELogUtils.stackLog();
         List<byte[]> list = BLE_SYNC_CONNECTION.listen(
                 DEFAULT_SERVICE_UUID
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
                 , DateUtils.SECOND_IN_MILLIS * 5
         );
 
-        BLELogUtils.stackLog();
         assertNotNull(list);
         assertFalse(list.isEmpty());
     }
 
     @Test
     public void test_listen002() {
+        assertNotNull(BLE_SYNC_CONNECTION);
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , INDICATABLE_CHARACTERISTIC_UUID

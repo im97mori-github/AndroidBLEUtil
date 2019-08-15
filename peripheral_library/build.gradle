@@ -1,16 +1,19 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
+apply plugin: 'maven'
 
-def VERSION_NAME = '0.2.0'
+def GROUP_ID = 'org.im97mori'
+def ARTIFACT_ID = 'ble_peripheral'
+def VERSION_NAME = '0.1.0'
 
 android {
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        minSdkVersion 18
+        minSdkVersion 21
         targetSdkVersion 28
-        versionCode 5
+        versionCode 1
         versionName VERSION_NAME
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -21,11 +24,10 @@ android {
             minifyEnabled false
         }
     }
-
 }
 
 dependencies {
-    api 'org.im97mori:stacklog:0.0.2'
+    api 'org.im97mori:ble:0.2.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
 }
@@ -38,11 +40,12 @@ task sourcesJar(type: Jar) {
 publishing {
     publications {
         bar(MavenPublication) {
-            groupId 'org.im97mori'
-            artifactId 'ble'
+            groupId GROUP_ID
+            artifactId ARTIFACT_ID
             version VERSION_NAME
+
             artifact(sourcesJar)
-            artifact("$buildDir/outputs/aar/library-release.aar")
+            artifact("$buildDir/outputs/aar/peripheral_library-release.aar")
         }
     }
     repositories {
@@ -54,4 +57,19 @@ publishing {
 
 publish {
     dependsOn ':library:assembleRelease'
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: System.getenv('MAVEN_REPOSITORY_URL'))
+            pom.groupId = GROUP_ID
+            pom.artifactId = ARTIFACT_ID
+            pom.version = VERSION_NAME
+        }
+    }
+}
+
+uploadArchives {
+    dependsOn ':peripheral_library:publish'
 }

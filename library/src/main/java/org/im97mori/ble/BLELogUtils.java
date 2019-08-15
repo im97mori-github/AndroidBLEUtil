@@ -2,7 +2,7 @@ package org.im97mori.ble;
 
 import android.util.Log;
 
-import org.im97mori.ble.ad.BuildConfig;
+import org.im97mori.ble.BuildConfig;
 import org.im97mori.stacklog.LogUtils;
 
 /**
