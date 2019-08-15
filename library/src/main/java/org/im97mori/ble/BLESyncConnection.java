@@ -316,8 +316,8 @@ public class BLESyncConnection implements BLECallback {
     /**
      * @see #quit(Bundle)
      */
-    public void quit() {
-        quit(null);
+    public BLEResult quit() {
+        return quit(null);
     }
 
     /**

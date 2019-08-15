@@ -2,6 +2,7 @@ package org.im97mori.ble.sample.lolipop;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanCallback;
@@ -29,10 +30,13 @@ import android.widget.TextView;
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.BLEServerConnection;
+import org.im97mori.ble.BLESyncConnection;
+import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.ad.AdvertisingDataParser;
 import org.im97mori.ble.descriptor.ClientCharacteristicConfiguration;
 import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
+import org.im97mori.ble.task.WriteCharacteristicTask;
 import org.im97mori.ble.task.WriteDescriptorTask;
 
 import java.util.LinkedList;
@@ -43,7 +47,11 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.DEFAULT_SERVICE_UUID;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.INDICATABLE_CHARACTERISTIC_UUID;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.NOTIFICATABLE_CHARACTERISTIC_UUID;
-import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S;
+import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT;
+import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_FLAGS;
 
@@ -217,27 +225,31 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         for (int i = 0; i < menu.size(); i++) {
-            menu.getItem(i).setEnabled(mBleConnection != null && mBleConnection.isConnected());
+            MenuItem menuItem = menu.getItem(i);
+            int menuItemId = menuItem.getItemId();
+            if (R.id.read_characteristic_sync != menuItemId && R.id.write_characteristc_sync != menuItemId) {
+                menuItem.setEnabled(mBleConnection != null && mBleConnection.isConnected());
+            }
         }
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (R.id.read == item.getItemId()) {
+        if (R.id.read_characteristic == item.getItemId()) {
             mBleConnection.createReadCharacteristicTask(DEFAULT_SERVICE_UUID
-                    , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S
+                    , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                     , ReadCharacteristicTask.TIMEOUT_MILLIS);
-        } else if (R.id.write == item.getItemId()) {
-//            mBleConnection.createWriteCharacteristicTask(UUID.fromString("ab705110-0a3a-11e8-ba89-0ed5f89f718b")
-//                    , UUID.fromString("ab705111-0a3a-11e8-ba89-0ed5f89f718b")
-//                    , new AbstractCharacteristic() {
-//                        @Override
-//                        public byte[] getBytes() {
-//                            return new byte[]{0x00, 0x00, 0x00, 0x00, 0x00};
-//                        }
-//                    }
-//                    , WriteCharacteristicTask.TIMEOUT_MILLIS);
+        } else if (R.id.write_characteristc == item.getItemId()) {
+            mBleConnection.createWriteCharacteristicTask(DEFAULT_SERVICE_UUID
+                    , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                    , new ByteArrayInterface() {
+                        @Override
+                        public byte[] getBytes() {
+                            return new byte[]{0x00, 0x00, 0x00, 0x00, 0x00};
+                        }
+                    }
+                    , WriteCharacteristicTask.TIMEOUT_MILLIS);
         } else if (R.id.write_notification == item.getItemId()) {
             BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR, 0);
             descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
@@ -278,6 +290,84 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     , new ClientCharacteristicConfiguration(descriptor)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
             );
+        } else if (R.id.read_characteristic_sync == item.getItemId()) {
+            new Thread() {
+                @Override
+                public void run() {
+                    BluetoothDevice target = findDevice();
+                    if (target != null) {
+                        BLESyncConnection bleSyncConnection = new BLESyncConnection(CentralSampleActivity.this, target);
+                        BLESyncConnection.BLEResult result = bleSyncConnection.connect(ConnectTask.TIMEOUT_MILLIS, ConnectTask.TIMEOUT_MILLIS, null);
+                        if (RESULT_SUCCESS == result.getResultCode()) {
+                            mBLECallbackSample.onBLEConnected(result.getTaskId(), target, result.getArgument());
+
+                            result = bleSyncConnection.createReadCharacteristicTask(DEFAULT_SERVICE_UUID
+                                    , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                                    , ReadCharacteristicTask.TIMEOUT_MILLIS
+                                    , ReadCharacteristicTask.TIMEOUT_MILLIS
+                                    , null);
+
+                            if (RESULT_SUCCESS == result.getResultCode()) {
+                                mBLECallbackSample.onCharacteristicReadSuccess(result.getTaskId(), target, result.getServiceUUID(), result.getCharacteristicUUID(), result.getValues(), result.getArgument());
+                            } else if (RESULT_FAILED == result.getResultCode()) {
+                                mBLECallbackSample.onCharacteristicReadFailed(result.getTaskId(), target, result.getServiceUUID(), result.getCharacteristicUUID(), result.getStatus(), result.getArgument());
+                            } else if (RESULT_TIMEOUT == result.getResultCode()) {
+                                mBLECallbackSample.onCharacteristicReadTimeout(result.getTaskId(), target, result.getServiceUUID(), result.getCharacteristicUUID(), WriteCharacteristicTask.TIMEOUT_MILLIS, result.getArgument());
+                            }
+
+                            result = bleSyncConnection.quit();
+                            mBLECallbackSample.onBLEDisonnected(result.getTaskId(), target, result.getStatus(), result.getArgument());
+                        } else if (RESULT_FAILED == result.getResultCode()) {
+                            mBLECallbackSample.onBLEConnectFailed(result.getTaskId(), target, result.getStatus(), result.getArgument());
+                        } else if (RESULT_TIMEOUT == result.getResultCode()) {
+                            mBLECallbackSample.onBLEConnectTimeout(result.getTaskId(), target, result.getArgument());
+                        }
+                    }
+                }
+            }.start();
+        } else if (R.id.write_characteristc_sync == item.getItemId()) {
+            new Thread() {
+                @Override
+                public void run() {
+                    BluetoothDevice target = findDevice();
+                    if (target != null) {
+                        BLESyncConnection bleSyncConnection = new BLESyncConnection(CentralSampleActivity.this, target);
+                        BLESyncConnection.BLEResult result = bleSyncConnection.connect(ConnectTask.TIMEOUT_MILLIS, ConnectTask.TIMEOUT_MILLIS, null);
+                        if (RESULT_SUCCESS == result.getResultCode()) {
+                            mBLECallbackSample.onBLEConnected(result.getTaskId(), target, result.getArgument());
+                            result = bleSyncConnection.createWriteCharacteristicTask(DEFAULT_SERVICE_UUID
+                                    , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                                    , new ByteArrayInterface() {
+                                        @Override
+                                        public byte[] getBytes() {
+                                            return new byte[]{0x00, 0x00, 0x00, 0x00, 0x00};
+                                        }
+                                    }
+                                    , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                                    , WriteCharacteristicTask.TIMEOUT_MILLIS
+                                    , WriteCharacteristicTask.TIMEOUT_MILLIS
+                                    , null);
+
+                            if (RESULT_SUCCESS == result.getResultCode()) {
+                                mBLECallbackSample.onCharacteristicWriteSuccess(result.getTaskId(), target, result.getServiceUUID(), result.getCharacteristicUUID(), result.getValues(), result.getArgument());
+                            } else if (RESULT_FAILED == result.getResultCode()) {
+                                mBLECallbackSample.onCharacteristicWriteFailed(result.getTaskId(), target, result.getServiceUUID(), result.getCharacteristicUUID(), result.getStatus(), result.getArgument());
+                            } else if (RESULT_TIMEOUT == result.getResultCode()) {
+                                mBLECallbackSample.onCharacteristicWriteTimeout(result.getTaskId(), target, result.getServiceUUID(), result.getCharacteristicUUID(), WriteCharacteristicTask.TIMEOUT_MILLIS, result.getArgument());
+                            }
+
+                            result = bleSyncConnection.quit();
+                            mBLECallbackSample.onBLEDisonnected(result.getTaskId(), target, result.getStatus(), result.getArgument());
+                        } else if (RESULT_FAILED == result.getResultCode()) {
+                            mBLECallbackSample.onBLEConnectFailed(result.getTaskId(), target, result.getStatus(), result.getArgument());
+                        } else if (RESULT_TIMEOUT == result.getResultCode()) {
+                            mBLECallbackSample.onBLEConnectTimeout(result.getTaskId(), target, result.getArgument());
+                        }
+                    }
+                }
+            }.start();
+        } else if (R.id.clear == item.getItemId()) {
+            mBleConnection.clear();
         }
         return true;
     }
@@ -308,22 +398,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
     public void onClick(View v) {
         if (R.id.connectDisconnectButton == v.getId()) {
             if (mBleConnection == null) {
-
-                BluetoothDevice target = null;
-                Set<BluetoothDevice> bluetoothDeviceSet = mBluetoothAdapter.getBondedDevices();
-                if (bluetoothDeviceSet != null) {
-                    for (BluetoothDevice device : bluetoothDeviceSet) {
-                        ParcelUuid[] parcelUuids = device.getUuids();
-                        if (parcelUuids != null) {
-                            for (ParcelUuid parcelUuid : parcelUuids) {
-                                if (BLEServerConnection.CONTROL_SERVICE_UUID.equals(parcelUuid.getUuid())) {
-                                    target = device;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
+                BluetoothDevice target = findDevice();
                 if (target == null) {
                     if (mBluetoothLeScanner != null) {
                         if (mTestScanCallback == null) {
@@ -378,4 +453,22 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
         });
     }
 
+    private BluetoothDevice findDevice() {
+        BluetoothDevice target = null;
+        Set<BluetoothDevice> bluetoothDeviceSet = mBluetoothAdapter.getBondedDevices();
+        if (bluetoothDeviceSet != null) {
+            for (BluetoothDevice device : bluetoothDeviceSet) {
+                ParcelUuid[] parcelUuids = device.getUuids();
+                if (parcelUuids != null) {
+                    for (ParcelUuid parcelUuid : parcelUuids) {
+                        if (BLEServerConnection.CONTROL_SERVICE_UUID.equals(parcelUuid.getUuid())) {
+                            target = device;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return target;
+    }
 }

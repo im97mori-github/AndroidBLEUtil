@@ -14,16 +14,14 @@
     <string name="label_peripheral">Peripheral sample</string>
     <string name="label_central">Central sample</string>
 
-    <string name="menu_read_5111">Read LED setting [normal state]</string>
-    <string name="menu_write_5111">Write LED setting [normal state]</string>
-    <string name="menu_read_cccd_5012">Read CCCD Latest sensing data</string>
-    <string name="menu_write_cccd_5012">Write CCCD Latest sensing data</string>
-    <string name="menu_read_0002">Read 0002</string>
-    <string name="menu_write_0002">Write 0002</string>
+    <string name="menu_read_characteristic">Read Characteristic</string>
+    <string name="menu_write_characteristic">Write Characteristic</string>
     <string name="menu_write_notification">Write CCCD Notification</string>
     <string name="menu_write_indication">Write CCCD Indication</string>
-    <string name="menu_write_notification_stop">Write Notification stop</string>
-    <string name="menu_write_indication_stop">Write Indication stop</string>
+    <string name="menu_write_notification_stop">Write CCCD Notification stop</string>
+    <string name="menu_write_indication_stop">Write CCCD Indication stop</string>
+    <string name="menu_read_characteristic_sync">Read Characteristic(Synchronous)</string>
+    <string name="menu_write_characteristic_sync">Write Characteristic(Synchronous)</string>
 
     <string name="menu_clear">Clear</string>
 </resources>
