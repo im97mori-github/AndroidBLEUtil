@@ -9,8 +9,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 
-import org.im97mori.ble.sample.kitkat.R;
-
 public class AlertDialogFragment extends DialogFragment implements DialogInterface.OnClickListener {
 
     public interface AlertDialogFragmentCallback {

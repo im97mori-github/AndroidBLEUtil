@@ -51,7 +51,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.LeSupportedFeatures.F
 public class LeSupportedFeatures extends AbstractAdvertisingData {
 
     /**
-     * @see Parcelable.Creator
+     * @see android.os.Parcelable.Creator
      */
     public static final Parcelable.Creator<LeSupportedFeatures> CREATOR = new Parcelable.Creator<LeSupportedFeatures>() {
 

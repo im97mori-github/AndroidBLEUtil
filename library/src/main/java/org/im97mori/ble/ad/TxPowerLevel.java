@@ -16,7 +16,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
 public class TxPowerLevel extends AbstractAdvertisingData {
 
     /**
-     * @see Creator
+     * @see android.os.Parcelable.Creator
      */
     public static final Creator<TxPowerLevel> CREATOR = new Creator<TxPowerLevel>() {
 

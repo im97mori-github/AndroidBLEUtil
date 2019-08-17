@@ -1,4 +1,4 @@
-package org.im97mori.ble;
+package org.im97mori.ble_peripheral;
 
 import android.util.Log;
 
@@ -8,7 +8,7 @@ import org.im97mori.stacklog.LogUtils;
  * Output log when {@link BuildConfig#DEBUG} == {@code true}
  */
 @SuppressWarnings({"JavadocReference", "unused"})
-public class BLELogUtils {
+public class BLEPeripheralLogUtils {
 
     /**
      * @see LogUtils#stackLog(Object...)

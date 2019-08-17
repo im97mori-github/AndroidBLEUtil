@@ -8,6 +8,7 @@ import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLELogUtils;
 
+import static org.im97mori.ble.BLEConstants.*;
 import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
 
 /**
@@ -22,14 +23,14 @@ public class DisconnectTask extends AbstractBLETask {
      * @see #createDisconnectMessage(Object, int)
      */
     public static Message createDisconnectMessage(Object obj) {
-        return createDisconnectMessage(obj, BLEConstants.ErrorCodes.UNKNOWN);
+        return createDisconnectMessage(obj, ErrorCodes.UNKNOWN);
     }
 
     /**
      * create disconnect message
      *
      * @param obj    instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
-     * @param status {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link BLEConstants.ErrorCodes#UNKNOWN}
+     * @param status {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link ErrorCodes#UNKNOWN}
      * @return create disconnect {@link Message} instance
      */
     public static Message createDisconnectMessage(Object obj, int status) {

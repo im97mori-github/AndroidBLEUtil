@@ -22,7 +22,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.BASE_UUID;
 public class ListOf32BitServiceSolicitationUUIDs extends AbstractAdvertisingData {
 
     /**
-     * @see Creator
+     * @see android.os.Parcelable.Creator
      */
     public static final Creator<ListOf32BitServiceSolicitationUUIDs> CREATOR = new Creator<ListOf32BitServiceSolicitationUUIDs>() {
 
@@ -111,9 +111,7 @@ public class ListOf32BitServiceSolicitationUUIDs extends AbstractAdvertisingData
     }
 
     /**
-     * UUID list
-     *
-     * @return {@link List<UUID>}
+     * @return UUID list
      */
     public List<UUID> getUuidList() {
         return mUuidList;

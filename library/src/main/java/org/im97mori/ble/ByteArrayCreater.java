@@ -15,7 +15,7 @@ public interface ByteArrayCreater<T> extends Parcelable.Creator<T> {
      * Create instance from byte array
      *
      * @param values from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
-     * @return {@link T} instance
+     * @return T instance
      */
     T createFromByteArray(byte[] values);
 

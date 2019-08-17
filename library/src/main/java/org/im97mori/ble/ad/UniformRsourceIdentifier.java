@@ -19,7 +19,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.URI_SCHEME_NAME_STRIN
 public class UniformRsourceIdentifier extends AbstractAdvertisingData {
 
     /**
-     * @see Creator
+     * @see android.os.Parcelable.Creator
      */
     public static final Creator<UniformRsourceIdentifier> CREATOR = new Creator<UniformRsourceIdentifier>() {
 

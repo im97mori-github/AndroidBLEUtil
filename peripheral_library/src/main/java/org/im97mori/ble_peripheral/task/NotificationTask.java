@@ -1,4 +1,4 @@
-package org.im97mori.ble.task;
+package org.im97mori.ble_peripheral.task;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -7,8 +7,9 @@ import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
 import android.os.Message;
 
-import org.im97mori.ble.BLELogUtils;
-import org.im97mori.ble.BLEServerCallback;
+import org.im97mori.ble.task.AbstractBLETask;
+import org.im97mori.ble_peripheral.BLEPeripheralLogUtils;
+import org.im97mori.ble_peripheral.BLEServerCallback;
 import org.im97mori.ble.ByteArrayInterface;
 
 import java.util.UUID;
@@ -126,7 +127,7 @@ public class NotificationTask extends AbstractBLETask {
                         try {
                             result = mBluetoothGattServer.notifyCharacteristicChanged(mBluetoothDevice, bluetoothGattCharacteristic, mIsConfirm);
                         } catch (Exception e) {
-                            BLELogUtils.stackLog(e);
+                            BLEPeripheralLogUtils.stackLog(e);
                         }
                     }
                 }

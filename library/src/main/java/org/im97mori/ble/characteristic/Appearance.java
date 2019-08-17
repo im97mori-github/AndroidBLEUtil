@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
@@ -21,8 +22,8 @@ public class Appearance implements ByteArrayInterface, Parcelable {
     /**
      * 0x00: Unknown
      *
-     * @see org.im97mori.ble.BLEConstants#APPEARANCE_VALUE_MAP
-     * @see org.im97mori.ble.BLEConstants#APPEARANCE_DESCRIPTION_MAP
+     * @see BLEConstants#APPEARANCE_VALUE_MAP
+     * @see BLEConstants#APPEARANCE_DESCRIPTION_MAP
      */
     public static final int CATEGORY_UNKNOWN = 0x00;
 

@@ -1,4 +1,4 @@
-package org.im97mori.ble;
+package org.im97mori.ble_peripheral;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -11,6 +11,9 @@ import android.bluetooth.le.AdvertiseData;
 import android.bluetooth.le.AdvertiseSettings;
 import android.content.Context;
 import android.os.Bundle;
+
+import org.im97mori.ble.BLEConstants.ErrorCodes;
+import org.im97mori.ble_peripheral.characteristic.MockControl;
 
 import java.util.List;
 import java.util.UUID;
@@ -100,7 +103,7 @@ public interface BLEServerCallback {
      * @param device              BLE device
      * @param serviceUUID         service {@link UUID}
      * @param characteristicUUID  characteristic {@link UUID}
-     * @param status              one of {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
+     * @param status              one of {@link ErrorCodes#UNKNOWN}, {@link ErrorCodes#CANCEL}, {@link ErrorCodes#BUSY}
      * @param argument            callback argument
      */
     void onNotificationFailed(long taskId, BluetoothGattServer bluetoothGattServer, BluetoothDevice device, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument);
@@ -115,5 +118,13 @@ public interface BLEServerCallback {
      * @param value               one of {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE}, {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}, {@link BluetoothGattDescriptor#DISABLE_NOTIFICATION_VALUE}
      */
     void onClientCharacteristicConfigurationUpdated(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, UUID serviceUUID, UUID characteristicUUID, byte[] value);
+
+    /**
+     * Mock updated (Characterisitc UUID:{@link BLEServerConnection#MOCK_CONTROL_CHARACTERISTIC_UUID}) callback
+     *
+     * @param device      BLE device
+     * @param mockControl mock data
+     */
+    void onMockUpdated(BluetoothDevice device, MockControl mockControl);
 
 }

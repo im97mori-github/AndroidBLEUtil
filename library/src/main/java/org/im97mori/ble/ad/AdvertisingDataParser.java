@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static org.im97mori.ble.ad.AdvertisingDataConstants.*;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_ADVERTISING_INTERVAL;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_APPEARANCE;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
@@ -52,7 +53,7 @@ public class AdvertisingDataParser {
          * <p>
          * All Advertising Data Type set
          *
-         * @see AdvertisingDataConstants.AdvertisingDataTypes
+         * @see AdvertisingDataTypes
          * </p>
          */
         private static final Set<Integer> ALL_DATA_TYPE_SET;
@@ -117,7 +118,7 @@ public class AdvertisingDataParser {
         /**
          * include Advertising Data Type
          *
-         * @param advertisingDataTypes one of {@link AdvertisingDataConstants.AdvertisingDataTypes}
+         * @param advertisingDataTypes one of {@link AdvertisingDataTypes}
          * @return myself
          */
         public Builder include(int advertisingDataTypes) {
@@ -140,7 +141,7 @@ public class AdvertisingDataParser {
         /**
          * exclude Advertising Data Type
          *
-         * @param advertisingDataTypes one of {@link AdvertisingDataConstants.AdvertisingDataTypes}
+         * @param advertisingDataTypes one of {@link AdvertisingDataTypes}
          * @return myself
          */
         public Builder exclude(int advertisingDataTypes) {
@@ -164,7 +165,7 @@ public class AdvertisingDataParser {
     public static class AdvertisingDataParseResult implements Parcelable {
 
         /**
-         * @see Creator
+         * @see android.os.Parcelable.Creator
          */
         public static final Creator<AdvertisingDataParseResult> CREATOR = new Creator<AdvertisingDataParseResult>() {
 

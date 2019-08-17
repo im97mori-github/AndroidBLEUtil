@@ -20,7 +20,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC
 public class ClientCharacteristicConfiguration implements ByteArrayInterface, Parcelable {
 
     /**
-     * @see Creator
+     * @see ByteArrayCreater
      */
     public static final ByteArrayCreater<ClientCharacteristicConfiguration> CREATOR = new ByteArrayCreater<ClientCharacteristicConfiguration>() {
 

@@ -23,7 +23,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
 public class IncompleteListOf128BitServiceUUIDs extends AbstractAdvertisingData {
 
     /**
-     * @see Creator
+     * @see android.os.Parcelable.Creator
      */
     public static final Creator<IncompleteListOf128BitServiceUUIDs> CREATOR = new Creator<IncompleteListOf128BitServiceUUIDs>() {
 
@@ -108,9 +108,7 @@ public class IncompleteListOf128BitServiceUUIDs extends AbstractAdvertisingData 
     }
 
     /**
-     * UUID list
-     *
-     * @return {@link List<UUID>}
+     * @return UUID list
      */
     public List<UUID> getUuidList() {
         return mUuidList;

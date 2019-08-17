@@ -18,7 +18,8 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url System.getenv('MAVEN_REPOSITORY_URL') }
+        maven { url "https://github.com/im97mori-github/maven/raw/master" }
+//        maven { url System.getenv('MAVEN_REPOSITORY_URL') }
     }
 }
 

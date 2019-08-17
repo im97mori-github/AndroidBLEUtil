@@ -21,7 +21,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.SLAVE_CONNECTION_INTE
 public class SlaveConnectionIntervalRange extends AbstractAdvertisingData {
 
     /**
-     * @see Creator
+     * @see android.os.Parcelable.Creator
      */
     public static final Creator<SlaveConnectionIntervalRange> CREATOR = new Creator<SlaveConnectionIntervalRange>() {
 

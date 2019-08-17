@@ -135,14 +135,14 @@ public class ReadDescriptorTask extends AbstractBLETask {
     private final Bundle mArgument;
 
     /**
-     * @param bleConnection                     task target {@link BLEConnection} instance
-     * @param bluetoothGatt                     task target {@link TaskHandler} instance
-     * @param taskHandler                       task target {@link BluetoothGatt} instance
-     * @param serviceUUID                       task target service {@link UUID}
-     * @param characteristicUUID                task target characteristic {@link UUID}
-     * @param clientCharacteristicConfiguration task target notification setting
-     * @param timeout                           timeout(millis)
-     * @param argument                          callback argument
+     * @param bleConnection      task target {@link BLEConnection} instance
+     * @param bluetoothGatt      task target {@link TaskHandler} instance
+     * @param taskHandler        task target {@link BluetoothGatt} instance
+     * @param serviceUUID        task target service {@link UUID}
+     * @param characteristicUUID task target characteristic {@link UUID}
+     * @param descriptorUUID     task target descriptor {@link UUID}
+     * @param timeout            timeout(millis)
+     * @param argument           callback argument
      */
     public ReadDescriptorTask(BLEConnection bleConnection, BluetoothGatt bluetoothGatt, TaskHandler taskHandler, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
         mBLEConnection = bleConnection;

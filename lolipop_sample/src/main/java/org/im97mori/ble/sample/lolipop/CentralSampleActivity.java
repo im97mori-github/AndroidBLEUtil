@@ -2,6 +2,7 @@ package org.im97mori.ble.sample.lolipop;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.le.BluetoothLeScanner;
@@ -29,10 +30,10 @@ import android.widget.TextView;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
-import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.BLESyncConnection;
 import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.ad.AdvertisingDataParser;
+import org.im97mori.ble_peripheral.characteristic.MockControl;
 import org.im97mori.ble.descriptor.ClientCharacteristicConfiguration;
 import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
@@ -44,11 +45,14 @@ import java.util.List;
 import java.util.Set;
 
 import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR;
-import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.DEFAULT_SERVICE_UUID;
-import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.INDICATABLE_CHARACTERISTIC_UUID;
-import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.NOTIFICATABLE_CHARACTERISTIC_UUID;
-import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT;
-import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT;
+import static org.im97mori.ble_peripheral.BLEServerConnection.DefaultServerSetting.DEFAULT_SERVICE_UUID;
+import static org.im97mori.ble_peripheral.BLEServerConnection.DefaultServerSetting.INDICATABLE_CHARACTERISTIC_UUID;
+import static org.im97mori.ble_peripheral.BLEServerConnection.DefaultServerSetting.NOTIFICATABLE_CHARACTERISTIC_UUID;
+import static org.im97mori.ble_peripheral.BLEServerConnection.DefaultServerSetting.READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT;
+import static org.im97mori.ble_peripheral.BLEServerConnection.DefaultServerSetting.WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT;
+import static org.im97mori.ble_peripheral.BLEServerConnection.MOCK_CONTROL_CHARACTERISTIC_UUID;
+import static org.im97mori.ble_peripheral.BLEServerConnection.MOCK_CONTROL_SERVICE_UUID;
+import static org.im97mori.ble_peripheral.BLEServerConnection.MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
@@ -93,7 +97,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     && (result.getFlags().isLeLimitedDiscoverableMode() || result.getFlags().isLeGeneralDiscoverableMode())
                     && result.getCompleteListOf128BitServiceUUIDs() != null
                     && !result.getCompleteListOf128BitServiceUUIDs().getUuidList().isEmpty()
-                    && BLEServerConnection.CONTROL_SERVICE_UUID.equals(result.getCompleteListOf128BitServiceUUIDs().getUuidList().get(0))) {
+                    && MOCK_CONTROL_SERVICE_UUID.equals(result.getCompleteListOf128BitServiceUUIDs().getUuidList().get(0))) {
                 mActivity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -227,7 +231,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
         for (int i = 0; i < menu.size(); i++) {
             MenuItem menuItem = menu.getItem(i);
             int menuItemId = menuItem.getItemId();
-            if (R.id.read_characteristic_sync != menuItemId && R.id.write_characteristc_sync != menuItemId) {
+            if (R.id.read_characteristic_sync != menuItemId && R.id.write_characteristic_sync != menuItemId) {
                 menuItem.setEnabled(mBleConnection != null && mBleConnection.isConnected());
             }
         }
@@ -325,7 +329,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     }
                 }
             }.start();
-        } else if (R.id.write_characteristc_sync == item.getItemId()) {
+        } else if (R.id.write_characteristic_sync == item.getItemId()) {
             new Thread() {
                 @Override
                 public void run() {
@@ -366,6 +370,18 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     }
                 }
             }.start();
+        } else if (R.id.mock_characteristic == item.getItemId()) {
+            mBleConnection.createWriteCharacteristicTask(MOCK_CONTROL_SERVICE_UUID
+                    , MOCK_CONTROL_CHARACTERISTIC_UUID
+                    , new MockControl(
+                            DEFAULT_SERVICE_UUID
+                            , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                            , MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
+                            , MockControl.TARGET_TYPE_CHARACTERISTIC
+                            , BluetoothGatt.GATT_SUCCESS
+                            , "Mocked!".getBytes()
+                    )
+                    , WriteCharacteristicTask.TIMEOUT_MILLIS);
         } else if (R.id.clear == item.getItemId()) {
             mBleConnection.clear();
         }
@@ -461,7 +477,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                 ParcelUuid[] parcelUuids = device.getUuids();
                 if (parcelUuids != null) {
                     for (ParcelUuid parcelUuid : parcelUuids) {
-                        if (BLEServerConnection.CONTROL_SERVICE_UUID.equals(parcelUuid.getUuid())) {
+                        if (MOCK_CONTROL_SERVICE_UUID.equals(parcelUuid.getUuid())) {
                             target = device;
                             break;
                         }

@@ -16,7 +16,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
 public class CompleteLocalName extends AbstractAdvertisingData {
 
     /**
-     * @see Creator
+     * @see android.os.Parcelable.Creator
      */
     public static final Creator<CompleteLocalName> CREATOR = new Creator<CompleteLocalName>() {
 

@@ -22,7 +22,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.PHYSICAL_CHANNEL_INDI
 public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
 
     /**
-     * @see Creator
+     * @see android.os.Parcelable.Creator
      */
     public static final Creator<ChannelMapUpdateIndication> CREATOR = new Creator<ChannelMapUpdateIndication>() {
 

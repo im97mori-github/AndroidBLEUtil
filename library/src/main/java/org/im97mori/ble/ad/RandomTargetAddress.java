@@ -20,7 +20,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
 public class RandomTargetAddress extends AbstractAdvertisingData {
 
     /**
-     * @see Creator
+     * @see android.os.Parcelable.Creator
      */
     public static final Creator<RandomTargetAddress> CREATOR = new Creator<RandomTargetAddress>() {
 

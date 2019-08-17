@@ -17,7 +17,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.COMPANY_MAPPING;
 public class ManufacturerSpecificData extends AbstractAdvertisingData {
 
     /**
-     * @see Creator
+     * @see android.os.Parcelable.Creator
      */
     public static final Creator<ManufacturerSpecificData> CREATOR = new Creator<ManufacturerSpecificData>() {
 

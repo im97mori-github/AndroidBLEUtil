@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static org.im97mori.ble.ad.AdvertisingDataConstants.*;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_FLAGS;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.FlagsDataType.FLAG_BR_EDR_NOT_SUPPORTED;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.FlagsDataType.FLAG_LE_GENERAL_DISCOVERABLE_MODE;
@@ -26,7 +27,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.FlagsDataType.FLAG_SI
 public class Flags extends AbstractAdvertisingData {
 
     /**
-     * @see Creator
+     * @see android.os.Parcelable.Creator
      */
     public static final Creator<Flags> CREATOR = new Creator<Flags>() {
 
@@ -161,7 +162,7 @@ public class Flags extends AbstractAdvertisingData {
     /**
      * check flag
      *
-     * @param target one of {@link AdvertisingDataConstants.FlagsDataType}
+     * @param target one of {@link FlagsDataType}
      * @return {@code true}:target bit is 1, {@code false}:target bit is 0
      */
     private boolean check(Pair<Integer, Integer> target) {

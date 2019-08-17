@@ -4,13 +4,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.os.Parcelable;
 import android.os.SystemClock;
 import android.text.format.DateUtils;
 import android.util.Pair;
 
 import org.im97mori.ble.task.AbstractBLETask;
+import org.im97mori.ble.task.AbstractBLETask;
 import org.im97mori.ble.task.DisconnectTask;
+import org.im97mori.ble.task.ReadCharacteristicTask;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -75,7 +76,7 @@ public class TaskHandler extends Handler {
     private long mWaitForBusy;
 
     /**
-     * {@inheritDoc}
+     * @see Handler#Handler(Looper)
      */
     public TaskHandler(Looper looper) {
         super(looper);
@@ -214,14 +215,6 @@ public class TaskHandler extends Handler {
      *
      * @param message target {@link Message}
      * @param delay   millis
-     * @see AbstractBLETask#createReadCharacteristicMessage(UUID, Object)
-     * @see AbstractBLETask#createReadCharacteristicFinishedMessage(UUID, Parcelable)
-     * @see AbstractBLETask#createTimeoutMessage(UUID, Object)
-     * @see ConnectTask#createConnectMessage(Object)
-     * @see DisconnectTask#createDisconnectMessage(Object)
-     * @see NotificationSettingTask#createWriteDescriptorMessage(UUID, Object)
-     * @see NotificationSettingTask#createWriteDescriptorFinishedMessage(UUID)
-     * @see WriteCharacteristicTask#createWriteCharacteristicMessage(UUID, Object)
      */
     public void sendProcessingMessage(Message message, long delay) {
         message.what = MESSAGE_TASK_PROCESSING;

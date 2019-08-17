@@ -1,6 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
+apply plugin: 'maven'
 
+def GROUP_ID = 'org.im97mori'
+def ARTIFACT_ID = 'ble'
 def VERSION_NAME = '0.2.0'
 
 android {
@@ -54,4 +57,19 @@ publishing {
 
 publish {
     dependsOn ':library:assembleRelease'
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: System.getenv('MAVEN_REPOSITORY_URL'))
+            pom.groupId = GROUP_ID
+            pom.artifactId = ARTIFACT_ID
+            pom.version = VERSION_NAME
+        }
+    }
+}
+
+uploadArchives {
+    dependsOn ':library:publish'
 }

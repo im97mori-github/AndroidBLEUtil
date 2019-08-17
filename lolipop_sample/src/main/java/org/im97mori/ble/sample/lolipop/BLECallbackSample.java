@@ -10,7 +10,7 @@ import android.text.TextUtils;
 import android.util.Pair;
 
 import org.im97mori.ble.BLECallback;
-import org.im97mori.ble.BLEServerConnection;
+import org.im97mori.ble_peripheral.BLEServerConnection;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -75,7 +75,11 @@ public class BLECallbackSample extends BLEServerConnection.DefaultServerSetting 
 
     @Override
     public void onCharacteristicReadSuccess(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
-        callback(characteristicUUID, Arrays.toString(values), argument);
+        if (READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT.equals(characteristicUUID)) {
+            callback(characteristicUUID, new String(values), argument);
+        } else {
+            callback(characteristicUUID, Arrays.toString(values), argument);
+        }
     }
 
     @Override

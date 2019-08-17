@@ -20,7 +20,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
 public class ServiceData128BitUUID extends AbstractAdvertisingData {
 
     /**
-     * @see Creator
+     * @see android.os.Parcelable.Creator
      */
     public static final Creator<ServiceData128BitUUID> CREATOR = new Creator<ServiceData128BitUUID>() {
 

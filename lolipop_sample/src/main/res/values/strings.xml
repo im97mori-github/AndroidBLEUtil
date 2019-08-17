@@ -10,7 +10,6 @@
     <string name="permission_message">bluetooth low energy feature needs coarse location permission</string>
 
     <string name="label_advertising">Advertising sample</string>
-    <string name="label_connect">Connect sample</string>
     <string name="label_peripheral">Peripheral sample</string>
     <string name="label_central">Central sample</string>
 
@@ -22,6 +21,7 @@
     <string name="menu_write_indication_stop">Write CCCD Indication stop</string>
     <string name="menu_read_characteristic_sync">Read Characteristic(Synchronous)</string>
     <string name="menu_write_characteristic_sync">Write Characteristic(Synchronous)</string>
+    <string name="menu_mock_characteristic">Mock Characteristic</string>
 
     <string name="menu_clear">Clear</string>
 </resources>
