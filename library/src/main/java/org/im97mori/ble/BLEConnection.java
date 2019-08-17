@@ -7,6 +7,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.os.Message;
@@ -602,9 +603,14 @@ public class BLEConnection extends BluetoothGattCallback {
             if (BluetoothGatt.GATT_SUCCESS == status) {
                 // service discover finished
 
-                // connect task finished
-                Message message = ConnectTask.createConnectFinished(gatt);
-                mTaskHandler.sendProcessingMessage(message);
+                // maximus mtu
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    gatt.requestMtu(BLEConstants.MAXIMUX_MTU);
+                } else {
+                    // connect task finished
+                    Message message = ConnectTask.createConnectFinished(gatt);
+                    mTaskHandler.sendProcessingMessage(message);
+                }
             } else {
                 // service discover failed
 
@@ -765,6 +771,29 @@ public class BLEConnection extends BluetoothGattCallback {
             mTaskHandler.clearBusy();
         } catch (Exception e) {
             BLELogUtils.stackLog(e);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onMtuChanged(BluetoothGatt gatt, int mtu, int status) {
+        if (mTaskHandler != null) {
+            if (BluetoothGatt.GATT_SUCCESS == status) {
+                // service discover finished
+
+                // connect task finished
+                Message message = ConnectTask.createConnectFinished(gatt);
+                mTaskHandler.sendProcessingMessage(message);
+            } else {
+                // service discover failed
+
+                // add disconnect task
+                DisconnectTask task = new DisconnectTask(this, gatt, null);
+                Message message = DisconnectTask.createDisconnectMessage(task, status);
+                mTaskHandler.addTask(task, message);
+            }
         }
     }
 

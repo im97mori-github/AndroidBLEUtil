@@ -298,34 +298,23 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
             new Thread() {
                 @Override
                 public void run() {
-                    BluetoothDevice target = findDevice();
+                    BLEConnection target = mBleConnection;
                     if (target != null) {
-                        BLESyncConnection bleSyncConnection = new BLESyncConnection(CentralSampleActivity.this, target);
-                        BLESyncConnection.BLEResult result = bleSyncConnection.connect(ConnectTask.TIMEOUT_MILLIS, ConnectTask.TIMEOUT_MILLIS, null);
+                        BLESyncConnection.BLEResult result = BLESyncConnection.createReadCharacteristicTask(target
+                                , DEFAULT_SERVICE_UUID
+                                , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                                , ReadCharacteristicTask.TIMEOUT_MILLIS
+                                , ReadCharacteristicTask.TIMEOUT_MILLIS
+                                , null);
+
                         if (RESULT_SUCCESS == result.getResultCode()) {
-                            mBLECallbackSample.onBLEConnected(result.getTaskId(), target, result.getArgument());
-
-                            result = bleSyncConnection.createReadCharacteristicTask(DEFAULT_SERVICE_UUID
-                                    , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
-                                    , ReadCharacteristicTask.TIMEOUT_MILLIS
-                                    , ReadCharacteristicTask.TIMEOUT_MILLIS
-                                    , null);
-
-                            if (RESULT_SUCCESS == result.getResultCode()) {
-                                mBLECallbackSample.onCharacteristicReadSuccess(result.getTaskId(), target, result.getServiceUUID(), result.getCharacteristicUUID(), result.getValues(), result.getArgument());
-                            } else if (RESULT_FAILED == result.getResultCode()) {
-                                mBLECallbackSample.onCharacteristicReadFailed(result.getTaskId(), target, result.getServiceUUID(), result.getCharacteristicUUID(), result.getStatus(), result.getArgument());
-                            } else if (RESULT_TIMEOUT == result.getResultCode()) {
-                                mBLECallbackSample.onCharacteristicReadTimeout(result.getTaskId(), target, result.getServiceUUID(), result.getCharacteristicUUID(), WriteCharacteristicTask.TIMEOUT_MILLIS, result.getArgument());
-                            }
-
-                            result = bleSyncConnection.quit();
-                            mBLECallbackSample.onBLEDisonnected(result.getTaskId(), target, result.getStatus(), result.getArgument());
+                            mBLECallbackSample.onCharacteristicReadSuccess(result.getTaskId(), target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), result.getValues(), result.getArgument());
                         } else if (RESULT_FAILED == result.getResultCode()) {
-                            mBLECallbackSample.onBLEConnectFailed(result.getTaskId(), target, result.getStatus(), result.getArgument());
+                            mBLECallbackSample.onCharacteristicReadFailed(result.getTaskId(), target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), result.getStatus(), result.getArgument());
                         } else if (RESULT_TIMEOUT == result.getResultCode()) {
-                            mBLECallbackSample.onBLEConnectTimeout(result.getTaskId(), target, result.getArgument());
+                            mBLECallbackSample.onCharacteristicReadTimeout(result.getTaskId(), target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), WriteCharacteristicTask.TIMEOUT_MILLIS, result.getArgument());
                         }
+
                     }
                 }
             }.start();
@@ -333,40 +322,31 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
             new Thread() {
                 @Override
                 public void run() {
-                    BluetoothDevice target = findDevice();
+                    BLEConnection target = mBleConnection;
                     if (target != null) {
-                        BLESyncConnection bleSyncConnection = new BLESyncConnection(CentralSampleActivity.this, target);
-                        BLESyncConnection.BLEResult result = bleSyncConnection.connect(ConnectTask.TIMEOUT_MILLIS, ConnectTask.TIMEOUT_MILLIS, null);
-                        if (RESULT_SUCCESS == result.getResultCode()) {
-                            mBLECallbackSample.onBLEConnected(result.getTaskId(), target, result.getArgument());
-                            result = bleSyncConnection.createWriteCharacteristicTask(DEFAULT_SERVICE_UUID
-                                    , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
-                                    , new ByteArrayInterface() {
-                                        @Override
-                                        public byte[] getBytes() {
-                                            return new byte[]{0x00, 0x00, 0x00, 0x00, 0x00};
-                                        }
+
+                        BLESyncConnection.BLEResult result = BLESyncConnection.createWriteCharacteristicTask(target,
+                                DEFAULT_SERVICE_UUID
+                                , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                                , new ByteArrayInterface() {
+                                    @Override
+                                    public byte[] getBytes() {
+                                        return new byte[]{0x00, 0x00, 0x00, 0x00, 0x00};
                                     }
-                                    , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
-                                    , WriteCharacteristicTask.TIMEOUT_MILLIS
-                                    , WriteCharacteristicTask.TIMEOUT_MILLIS
-                                    , null);
+                                }
+                                , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                                , WriteCharacteristicTask.TIMEOUT_MILLIS
+                                , WriteCharacteristicTask.TIMEOUT_MILLIS
+                                , null);
 
-                            if (RESULT_SUCCESS == result.getResultCode()) {
-                                mBLECallbackSample.onCharacteristicWriteSuccess(result.getTaskId(), target, result.getServiceUUID(), result.getCharacteristicUUID(), result.getValues(), result.getArgument());
-                            } else if (RESULT_FAILED == result.getResultCode()) {
-                                mBLECallbackSample.onCharacteristicWriteFailed(result.getTaskId(), target, result.getServiceUUID(), result.getCharacteristicUUID(), result.getStatus(), result.getArgument());
-                            } else if (RESULT_TIMEOUT == result.getResultCode()) {
-                                mBLECallbackSample.onCharacteristicWriteTimeout(result.getTaskId(), target, result.getServiceUUID(), result.getCharacteristicUUID(), WriteCharacteristicTask.TIMEOUT_MILLIS, result.getArgument());
-                            }
-
-                            result = bleSyncConnection.quit();
-                            mBLECallbackSample.onBLEDisonnected(result.getTaskId(), target, result.getStatus(), result.getArgument());
+                        if (RESULT_SUCCESS == result.getResultCode()) {
+                            mBLECallbackSample.onCharacteristicWriteSuccess(result.getTaskId(), target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), result.getValues(), result.getArgument());
                         } else if (RESULT_FAILED == result.getResultCode()) {
-                            mBLECallbackSample.onBLEConnectFailed(result.getTaskId(), target, result.getStatus(), result.getArgument());
+                            mBLECallbackSample.onCharacteristicWriteFailed(result.getTaskId(), target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), result.getStatus(), result.getArgument());
                         } else if (RESULT_TIMEOUT == result.getResultCode()) {
-                            mBLECallbackSample.onBLEConnectTimeout(result.getTaskId(), target, result.getArgument());
+                            mBLECallbackSample.onCharacteristicWriteTimeout(result.getTaskId(), target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), WriteCharacteristicTask.TIMEOUT_MILLIS, result.getArgument());
                         }
+
                     }
                 }
             }.start();

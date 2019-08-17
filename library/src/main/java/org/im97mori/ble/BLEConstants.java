@@ -5,6 +5,8 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.os.Message;
 
+import org.im97mori.ble.task.AbstractBLETask;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -2671,7 +2673,7 @@ public class BLEConstants {
         public static final int OUT_OF_RANGE = 0xff;
 
         /**
-         * error in {@link org.im97mori.ble.task.AbstractBLETask#doProcess(Message)}
+         * error in {@link AbstractBLETask#doProcess(Message)}
          */
         public static final int UNKNOWN = 0xffffffff;
 
@@ -2693,5 +2695,12 @@ public class BLEConstants {
         public static final int BUSY = 0xfffffffd;
 
     }
+
+    /**
+     * Maximum MTU size
+     * <p>
+     * Core Specification v5.1 Vol 3 Part F 3.2.9
+     */
+    public static final int MAXIMUX_MTU = 512;
 
 }
