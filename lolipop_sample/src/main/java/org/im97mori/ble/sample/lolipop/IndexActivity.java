@@ -17,6 +17,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import org.im97mori.ble.BLELogUtils;
 
 import java.util.ArrayList;
@@ -35,7 +38,8 @@ public class IndexActivity extends Activity implements AdapterView.OnItemClickLi
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        @NonNull
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             View view = convertView;
             if (view == null) {
                 view = mLayoutInflater.inflate(android.R.layout.simple_list_item_1, parent, false);

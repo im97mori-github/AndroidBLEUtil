@@ -2,8 +2,8 @@ package org.im97mori.ble.sample.lolipop;
 
 import android.bluetooth.BluetoothAdapter;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;

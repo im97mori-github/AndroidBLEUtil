@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * Base task class
  */
-@SuppressWarnings({"WeakerAccess", "JavadocReference"})
+@SuppressWarnings({"WeakerAccess"})
 public abstract class AbstractBLETask {
 
     /**

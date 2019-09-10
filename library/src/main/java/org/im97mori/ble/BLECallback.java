@@ -11,7 +11,6 @@ import java.util.UUID;
 /**
  * BLE callback
  */
-@SuppressWarnings("JavadocReference")
 public interface BLECallback {
 
     /**

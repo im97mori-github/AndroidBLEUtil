@@ -37,7 +37,7 @@ import static org.im97mori.ble.task.AbstractBLETask.TASK_ID_UNREGISTED;
  * <p>
  * Synchronous
  */
-@SuppressWarnings({"JavadocReference", "WeakerAccess"})
+@SuppressWarnings({"WeakerAccess"})
 public class BLESyncConnection implements BLECallback {
 
     /**

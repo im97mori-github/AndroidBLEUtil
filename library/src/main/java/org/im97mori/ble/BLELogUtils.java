@@ -7,7 +7,7 @@ import org.im97mori.stacklog.LogUtils;
 /**
  * Output log when {@link BuildConfig#DEBUG} == {@code true}
  */
-@SuppressWarnings({"JavadocReference", "unused"})
+@SuppressWarnings({"unused"})
 public class BLELogUtils {
 
     /**

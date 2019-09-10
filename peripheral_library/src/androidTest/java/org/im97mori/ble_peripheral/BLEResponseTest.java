@@ -10,19 +10,20 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.ParcelUuid;
 import android.os.SystemClock;
-import android.support.test.InstrumentationRegistry;
 import android.text.format.DateUtils;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLESyncConnection;
 import org.im97mori.ble.ByteArrayInterface;
-import org.im97mori.ble_peripheral.characteristic.MockControl;
 import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
 import org.im97mori.ble.task.ReadDescriptorTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
 import org.im97mori.ble.task.WriteDescriptorTask;
+import org.im97mori.ble_peripheral.characteristic.MockControl;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -33,6 +34,9 @@ import java.util.Set;
 import java.util.UUID;
 
 import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
 import static org.im97mori.ble_peripheral.BLEServerConnection.DefaultServerSetting.DEFAULT_SERVICE_UUID;
 import static org.im97mori.ble_peripheral.BLEServerConnection.DefaultServerSetting.INDICATABLE_CHARACTERISTIC_UUID;
 import static org.im97mori.ble_peripheral.BLEServerConnection.DefaultServerSetting.MESSAGE_SUCCESS;
@@ -57,9 +61,6 @@ import static org.im97mori.ble_peripheral.BLEServerConnection.MOCK_CONTROL_CHARA
 import static org.im97mori.ble_peripheral.BLEServerConnection.MOCK_CONTROL_SERVICE_UUID;
 import static org.im97mori.ble_peripheral.BLEServerConnection.MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID;
 import static org.im97mori.ble_peripheral.BLEServerConnection.MOCK_CONTROL_TARGET_NOTIFICATION_UUID;
-import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
-import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
-import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -88,7 +89,7 @@ public class BLEResponseTest {
 
     @BeforeClass
     public static void setup() {
-        Context context = InstrumentationRegistry.getContext();
+        Context context = ApplicationProvider.getApplicationContext();
         BluetoothManager bluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
         BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
         Set<BluetoothDevice> bluetoothDeviceSet = bluetoothAdapter.getBondedDevices();

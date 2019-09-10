@@ -8,16 +8,15 @@ import android.os.SystemClock;
 import android.text.format.DateUtils;
 import android.util.Pair;
 
-import org.im97mori.ble.task.AbstractBLETask;
+import androidx.annotation.NonNull;
+
 import org.im97mori.ble.task.AbstractBLETask;
 import org.im97mori.ble.task.DisconnectTask;
-import org.im97mori.ble.task.ReadCharacteristicTask;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.UUID;
 
-@SuppressWarnings({"WeakerAccess", "JavadocReference"})
+@SuppressWarnings({"WeakerAccess"})
 public class TaskHandler extends Handler {
 
     /**
@@ -86,7 +85,7 @@ public class TaskHandler extends Handler {
      * {@inheritDoc}
      */
     @Override
-    public void handleMessage(Message msg) {
+    public void handleMessage(@NonNull Message msg) {
         try {
             // current message is quit, or message queue has quit
             if (MESSAGE_QUIT == msg.what || hasMessages(MESSAGE_QUIT)) {

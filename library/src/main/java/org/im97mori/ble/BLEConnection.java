@@ -33,7 +33,7 @@ import static org.im97mori.ble.task.AbstractBLETask.TASK_ID_UNREGISTED;
  * <p>
  * Asynchronous
  */
-@SuppressWarnings({"JavadocReference", "WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class BLEConnection extends BluetoothGattCallback {
 
     /**

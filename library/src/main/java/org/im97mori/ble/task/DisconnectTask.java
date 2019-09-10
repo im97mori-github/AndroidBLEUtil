@@ -5,10 +5,9 @@ import android.os.Bundle;
 import android.os.Message;
 
 import org.im97mori.ble.BLEConnection;
-import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLELogUtils;
 
-import static org.im97mori.ble.BLEConstants.*;
+import static org.im97mori.ble.BLEConstants.ErrorCodes;
 import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
 
 /**
@@ -16,7 +15,6 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
  * <p>
  * for central role
  */
-@SuppressWarnings("JavadocReference")
 public class DisconnectTask extends AbstractBLETask {
 
     /**

@@ -23,7 +23,6 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
  * <p>
  * for peripheral role
  */
-@SuppressWarnings("JavadocReference")
 public class NotificationTask extends AbstractBLETask {
 
     /**

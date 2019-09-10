@@ -9,12 +9,13 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 
 import org.im97mori.ble.ad.AdvertisingDataParser;
 import org.im97mori.ble.ad.AdvertisingInterval;
@@ -321,85 +322,85 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 if (leSupportedFeatures.isLeEncryptionSupported()) {
                     sb.append("LE Encryption\n");
                 }
-                if (leSupportedFeatures.isConnectionParametersRequestProcedureSupported()){
+                if (leSupportedFeatures.isConnectionParametersRequestProcedureSupported()) {
                     sb.append("Connection Parameters Request Procedure\n");
                 }
-                if (leSupportedFeatures.isExtendedRejectIndicationSupported()){
+                if (leSupportedFeatures.isExtendedRejectIndicationSupported()) {
                     sb.append("Extended Reject Indication\n");
                 }
-                if (leSupportedFeatures.isSlaveInitiatedFeaturesExchangeSupported()){
+                if (leSupportedFeatures.isSlaveInitiatedFeaturesExchangeSupported()) {
                     sb.append("Slave-initiated Features Exchange\n");
                 }
-                if (leSupportedFeatures.isLePingSupported()){
+                if (leSupportedFeatures.isLePingSupported()) {
                     sb.append("LE Ping\n");
                 }
-                if (leSupportedFeatures.isLeDataPacketLengthExtensionSupported()){
+                if (leSupportedFeatures.isLeDataPacketLengthExtensionSupported()) {
                     sb.append("LE Data Packet Length Extension\n");
                 }
-                if (leSupportedFeatures.isLlPrivacySupported()){
+                if (leSupportedFeatures.isLlPrivacySupported()) {
                     sb.append("LL Privacy\n");
                 }
-                if (leSupportedFeatures.isExtendedScannerFilterPoliciesSupported()){
+                if (leSupportedFeatures.isExtendedScannerFilterPoliciesSupported()) {
                     sb.append("Extended Scanner Filter Policies\n");
                 }
-                if (leSupportedFeatures.isLe2mPhySupported()){
+                if (leSupportedFeatures.isLe2mPhySupported()) {
                     sb.append("LE 2M PHY\n");
                 }
-                if (leSupportedFeatures.isStableModulationIndexTransmitterSupported()){
+                if (leSupportedFeatures.isStableModulationIndexTransmitterSupported()) {
                     sb.append("Stable Modulation Index - Transmitter\n");
                 }
-                if (leSupportedFeatures.isStableModulationIndexReceiverSupported()){
+                if (leSupportedFeatures.isStableModulationIndexReceiverSupported()) {
                     sb.append("Stable Modulation Index - Receiver\n");
                 }
-                if (leSupportedFeatures.isLeCodedPhySupported()){
+                if (leSupportedFeatures.isLeCodedPhySupported()) {
                     sb.append("LE Coded PHY\n");
                 }
-                if (leSupportedFeatures.isLeExtendedAdvertisingSupported()){
+                if (leSupportedFeatures.isLeExtendedAdvertisingSupported()) {
                     sb.append("LE Extended Advertising\n");
                 }
-                if (leSupportedFeatures.isLePeriodicAdvertisingSupported()){
+                if (leSupportedFeatures.isLePeriodicAdvertisingSupported()) {
                     sb.append("LE Periodic Advertising\n");
                 }
-                if (leSupportedFeatures.isChannelSelectionAlgorithm2Supported()){
+                if (leSupportedFeatures.isChannelSelectionAlgorithm2Supported()) {
                     sb.append("Channel Selection Algorithm #2\n");
                 }
-                if (leSupportedFeatures.isLePowerClass1Supported()){
+                if (leSupportedFeatures.isLePowerClass1Supported()) {
                     sb.append("LE Power Class 1\n");
                 }
-                if (leSupportedFeatures.isMinimumNumberOfUsedChannelsProcedureSupported()){
+                if (leSupportedFeatures.isMinimumNumberOfUsedChannelsProcedureSupported()) {
                     sb.append("Minimum Number of Used Channels Procedure\n");
                 }
-                if (leSupportedFeatures.isConnectionCteRequestSupported()){
+                if (leSupportedFeatures.isConnectionCteRequestSupported()) {
                     sb.append("Connection CTE Request\n");
                 }
-                if (leSupportedFeatures.isConnectionCteResponseSupported()){
+                if (leSupportedFeatures.isConnectionCteResponseSupported()) {
                     sb.append("Connection CTE Response\n");
                 }
-                if (leSupportedFeatures.isConnectionlessCteTransmitterSupported()){
+                if (leSupportedFeatures.isConnectionlessCteTransmitterSupported()) {
                     sb.append("Connectionless CTE Transmitter\n");
                 }
-                if (leSupportedFeatures.isConnectionlessCteReceiverSupported()){
+                if (leSupportedFeatures.isConnectionlessCteReceiverSupported()) {
                     sb.append("Connectionless CTE Receiver\n");
                 }
-                if (leSupportedFeatures.isAntennaSwitchingDuringCteTransmissionAodSupported()){
+                if (leSupportedFeatures.isAntennaSwitchingDuringCteTransmissionAodSupported()) {
                     sb.append("Antenna Switching During CTE Transmission (AoD)\n");
                 }
-                if (leSupportedFeatures.isAntennaSwitchingDuringCteReceptionAoaSupported()){
+                if (leSupportedFeatures.isAntennaSwitchingDuringCteReceptionAoaSupported()) {
                     sb.append("Antenna Switching During CTE Reception (AoA)\n");
                 }
-                if (leSupportedFeatures.isReceivingConstantToneExtensionsSupported()){
+                if (leSupportedFeatures.isReceivingConstantToneExtensionsSupported()) {
                     sb.append("Receiving Constant Tone Extensions\n");
                 }
-                if (leSupportedFeatures.isPeriodicAdvertisingSyncTransferSenderSupported()){
+                if (leSupportedFeatures.isPeriodicAdvertisingSyncTransferSenderSupported()) {
                     sb.append("Periodic Advertising Sync Transfer - Sender\n");
                 }
-                if (leSupportedFeatures.isPeriodicAdvertisingSyncTransferRecipientSupported()){
+                if (leSupportedFeatures.isPeriodicAdvertisingSyncTransferRecipientSupported()) {
                     sb.append("Periodic Advertising Sync Transfer - Recipient\n");
                 }
-                if (leSupportedFeatures.isSleepClockAccuracyUpdatesSupported()){
+                if (leSupportedFeatures.isSleepClockAccuracyUpdatesSupported()) {
                     sb.append("Sleep Clock Accuracy Updates\n");
                 }
-                if (leSupportedFeatures.isRemotePublicKeyValidationSupported()){
+                if (leSupportedFeatures.isRemotePublicKeyValidationSupported()) {
                     sb.append("Remote Public Key Validation\n");
                 }
                 sb.append('\n');

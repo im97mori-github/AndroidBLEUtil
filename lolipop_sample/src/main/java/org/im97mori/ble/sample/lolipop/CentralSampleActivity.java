@@ -15,9 +15,6 @@ import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.ParcelUuid;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,23 +25,32 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.BLESyncConnection;
 import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.ad.AdvertisingDataParser;
-import org.im97mori.ble_peripheral.characteristic.MockControl;
 import org.im97mori.ble.descriptor.ClientCharacteristicConfiguration;
 import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
 import org.im97mori.ble.task.WriteDescriptorTask;
+import org.im97mori.ble_peripheral.characteristic.MockControl;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
+import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
+import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_FLAGS;
 import static org.im97mori.ble_peripheral.BLEServerConnection.DefaultServerSetting.DEFAULT_SERVICE_UUID;
 import static org.im97mori.ble_peripheral.BLEServerConnection.DefaultServerSetting.INDICATABLE_CHARACTERISTIC_UUID;
 import static org.im97mori.ble_peripheral.BLEServerConnection.DefaultServerSetting.NOTIFICATABLE_CHARACTERISTIC_UUID;
@@ -53,11 +59,6 @@ import static org.im97mori.ble_peripheral.BLEServerConnection.DefaultServerSetti
 import static org.im97mori.ble_peripheral.BLEServerConnection.MOCK_CONTROL_CHARACTERISTIC_UUID;
 import static org.im97mori.ble_peripheral.BLEServerConnection.MOCK_CONTROL_SERVICE_UUID;
 import static org.im97mori.ble_peripheral.BLEServerConnection.MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID;
-import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
-import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
-import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
-import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_FLAGS;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class CentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
@@ -135,7 +136,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                 device.createBond();
                             }
                         } catch (Exception e) {
-                            e.printStackTrace();
+                            BLELogUtils.stackLog(e);
                         }
                     }
                 });
