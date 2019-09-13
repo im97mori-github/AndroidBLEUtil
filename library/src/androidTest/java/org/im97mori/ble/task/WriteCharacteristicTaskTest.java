@@ -1,5 +1,6 @@
 package org.im97mori.ble.task;
 
+import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Bundle;
 import android.os.Message;
 
@@ -18,7 +19,8 @@ public class WriteCharacteristicTaskTest {
 
     @Test
     public void test_createWriteCharacteristicMessage001() {
-        Message message = WriteCharacteristicTask.createWriteCharacteristicMessage(null, null, null);
+        WriteCharacteristicTask task = new WriteCharacteristicTask(null, null, null, null, null, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null);
+        Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
@@ -29,13 +31,14 @@ public class WriteCharacteristicTaskTest {
         assertNull(bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(AbstractBLETask.PROGRESS_CHARACTERISTIC_WRITE_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertNull(message.obj);
+        assertEquals(task, message.obj);
     }
 
     @Test
     public void test_createWriteCharacteristicMessage002() {
         UUID serviceUUID = UUID.randomUUID();
-        Message message = WriteCharacteristicTask.createWriteCharacteristicMessage(serviceUUID, null, null);
+        WriteCharacteristicTask task = new WriteCharacteristicTask(null, null, null, serviceUUID, null, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null);
+        Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
@@ -46,13 +49,14 @@ public class WriteCharacteristicTaskTest {
         assertNull(bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(AbstractBLETask.PROGRESS_CHARACTERISTIC_WRITE_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertNull(message.obj);
+        assertEquals(task, message.obj);
     }
 
     @Test
     public void test_createWriteCharacteristicMessage003() {
         UUID characteristicUUID = UUID.randomUUID();
-        Message message = WriteCharacteristicTask.createWriteCharacteristicMessage(null, characteristicUUID, null);
+        WriteCharacteristicTask task = new WriteCharacteristicTask(null, null, null, null, characteristicUUID, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null);
+        Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
@@ -63,24 +67,7 @@ public class WriteCharacteristicTaskTest {
         assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(AbstractBLETask.PROGRESS_CHARACTERISTIC_WRITE_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertNull(message.obj);
-    }
-
-    @Test
-    public void test_createWriteCharacteristicMessage004() {
-        Object object = new Object();
-        Message message = WriteCharacteristicTask.createWriteCharacteristicMessage(null, null, object);
-
-        assertNotNull(message);
-        Bundle bundle = message.getData();
-        assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
-        assertNull(bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertNull(bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_CHARACTERISTIC_WRITE_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(object, message.obj);
+        assertEquals(task, message.obj);
     }
 
     @Test

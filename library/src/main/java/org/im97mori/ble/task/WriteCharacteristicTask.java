@@ -31,25 +31,6 @@ public class WriteCharacteristicTask extends AbstractBLETask {
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 10;
 
     /**
-     * create write characteristic message
-     *
-     * @param serviceUUID        target service UUID
-     * @param characteristicUUID target characteristic UUID
-     * @param obj                instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
-     * @return write characteristic {@link Message} instance
-     */
-    public static Message createWriteCharacteristicMessage(UUID serviceUUID, UUID characteristicUUID, Object obj) {
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_CHARACTERISTIC_WRITE_START);
-        Message message = new Message();
-        message.setData(bundle);
-        message.obj = obj;
-        return message;
-    }
-
-    /**
      * create write characteristic finished message
      *
      * @param serviceUUID        target service UUID
@@ -153,6 +134,21 @@ public class WriteCharacteristicTask extends AbstractBLETask {
         mWriteType = writeType;
         mTimeout = timeout;
         mArguemnt = argument;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Message createInitialMessage() {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(KEY_SERVICE_UUID, mServiceUUID);
+        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, mCharacteristicUUID);
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_CHARACTERISTIC_WRITE_START);
+        Message message = new Message();
+        message.setData(bundle);
+        message.obj = this;
+        return message;
     }
 
     /**

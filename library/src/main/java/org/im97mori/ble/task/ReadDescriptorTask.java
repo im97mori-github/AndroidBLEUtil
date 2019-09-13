@@ -31,27 +31,6 @@ public class ReadDescriptorTask extends AbstractBLETask {
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 5;
 
     /**
-     * create read descriptor message
-     *
-     * @param serviceUUID        target service UUID
-     * @param characteristicUUID target characteristic UUID
-     * @param descriptorUUID     target descriptor UUID
-     * @param obj                instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
-     * @return read descriptor {@link Message} instance
-     */
-    public static Message createReadDescriptorMessage(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, Object obj) {
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
-        bundle.putSerializable(KEY_DESCRIPTOR_UUID, descriptorUUID);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_READ_START);
-        Message message = new Message();
-        message.setData(bundle);
-        message.obj = obj;
-        return message;
-    }
-
-    /**
      * create read descriptor finished message
      *
      * @param serviceUUID        target service UUID
@@ -152,6 +131,22 @@ public class ReadDescriptorTask extends AbstractBLETask {
         mDescriptorUUID = descriptorUUID;
         mTimeout = timeout;
         mArgument = argument;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Message createInitialMessage() {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(KEY_SERVICE_UUID, mServiceUUID);
+        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, mCharacteristicUUID);
+        bundle.putSerializable(KEY_DESCRIPTOR_UUID, mDescriptorUUID);
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_READ_START);
+        Message message = new Message();
+        message.setData(bundle);
+        message.obj = this;
+        return message;
     }
 
     /**

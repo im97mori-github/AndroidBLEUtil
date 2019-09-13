@@ -113,12 +113,21 @@ public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("unchecked")
     private ChannelMapUpdateIndication(Parcel in) {
         super(in.readInt());
-        mChmList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));
-        mUnusedChannelList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));
-        mUnusedChannelListRfCenterFrequencyList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));
+
+        List<Integer> list = new ArrayList<>();
+        in.readList(list, this.getClass().getClassLoader());
+        mChmList = Collections.synchronizedList(list);
+
+        list = new ArrayList<>();
+        in.readList(list, this.getClass().getClassLoader());
+        mUnusedChannelList = Collections.synchronizedList(list);
+
+        list = new ArrayList<>();
+        in.readList(list, this.getClass().getClassLoader());
+        mUnusedChannelListRfCenterFrequencyList = Collections.synchronizedList(list);
+
         mInstant = in.readInt();
     }
 

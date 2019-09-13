@@ -26,22 +26,6 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 public class NotificationTask extends AbstractBLETask {
 
     /**
-     * create notification(indication) message
-     *
-     * @param obj instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
-     * @return notification(indication) {@link Message} instance
-     */
-    public static Message createNotificationMessage(Object obj) {
-        Bundle bundle = new Bundle();
-        bundle.putInt(AbstractBLETask.KEY_NEXT_PROGRESS, AbstractBLETask.PROGRESS_NOTIFICATION);
-        Message message = new Message();
-        message.setData(bundle);
-        message.obj = obj;
-        return message;
-    }
-
-
-    /**
      * {@link BLEServerCallback} instance
      */
     private final BLEServerCallback mBLEServerCallback;
@@ -100,6 +84,19 @@ public class NotificationTask extends AbstractBLETask {
         mByteArrayInterface = byteArrayInterface;
         mIsConfirm = isConfirm;
         mArgument = argument;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Message createInitialMessage() {
+        Bundle bundle = new Bundle();
+        bundle.putInt(AbstractBLETask.KEY_NEXT_PROGRESS, AbstractBLETask.PROGRESS_NOTIFICATION);
+        Message message = new Message();
+        message.setData(bundle);
+        message.obj = this;
+        return message;
     }
 
     /**

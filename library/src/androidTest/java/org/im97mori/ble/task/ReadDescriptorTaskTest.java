@@ -18,7 +18,8 @@ public class ReadDescriptorTaskTest {
 
     @Test
     public void test_createReadDescriptorMessage001() {
-        Message message = ReadDescriptorTask.createReadDescriptorMessage(null, null, null, null);
+        ReadDescriptorTask task = new ReadDescriptorTask(null, null, null, null, null, null, ReadDescriptorTask.TIMEOUT_MILLIS, null);
+        Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
@@ -31,13 +32,14 @@ public class ReadDescriptorTaskTest {
         assertNull(bundle.getSerializable(AbstractBLETask.KEY_DESCRIPTOR_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_READ_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertNull(message.obj);
+        assertEquals(task, message.obj);
     }
 
     @Test
     public void test_createReadDescriptorMessage002() {
         UUID serviceUUID = UUID.randomUUID();
-        Message message = ReadDescriptorTask.createReadDescriptorMessage(serviceUUID, null, null, null);
+        ReadDescriptorTask task = new ReadDescriptorTask(null, null, null, serviceUUID, null, null, ReadDescriptorTask.TIMEOUT_MILLIS, null);
+        Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
@@ -50,13 +52,14 @@ public class ReadDescriptorTaskTest {
         assertNull(bundle.getSerializable(AbstractBLETask.KEY_DESCRIPTOR_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_READ_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertNull(message.obj);
+        assertEquals(task, message.obj);
     }
 
     @Test
     public void test_createReadDescriptorMessage003() {
         UUID characteristicUUID = UUID.randomUUID();
-        Message message = ReadDescriptorTask.createReadDescriptorMessage(null, characteristicUUID, null, null);
+        ReadDescriptorTask task = new ReadDescriptorTask(null, null, null, null, characteristicUUID, null, ReadDescriptorTask.TIMEOUT_MILLIS, null);
+        Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
@@ -69,13 +72,14 @@ public class ReadDescriptorTaskTest {
         assertNull(bundle.getSerializable(AbstractBLETask.KEY_DESCRIPTOR_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_READ_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertNull(message.obj);
+        assertEquals(task, message.obj);
     }
 
     @Test
     public void test_createReadDescriptorMessage004() {
         UUID descriptorUUID = UUID.randomUUID();
-        Message message = ReadDescriptorTask.createReadDescriptorMessage(null, null, descriptorUUID, null);
+        ReadDescriptorTask task = new ReadDescriptorTask(null, null, null, null, null, descriptorUUID, ReadDescriptorTask.TIMEOUT_MILLIS, null);
+        Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
@@ -88,28 +92,8 @@ public class ReadDescriptorTaskTest {
         assertEquals(descriptorUUID, bundle.getSerializable(AbstractBLETask.KEY_DESCRIPTOR_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_READ_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertNull(message.obj);
+        assertEquals(task, message.obj);
     }
-
-    @Test
-    public void test_createReadDescriptorMessage005() {
-        Object object = new Object();
-        Message message = ReadDescriptorTask.createReadDescriptorMessage(null, null, null, object);
-
-        assertNotNull(message);
-        Bundle bundle = message.getData();
-        assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
-        assertNull(bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertNull(bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_DESCRIPTOR_UUID));
-        assertNull(bundle.getSerializable(AbstractBLETask.KEY_DESCRIPTOR_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_READ_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(object, message.obj);
-    }
-
 
     @Test
     public void test_createReadDescriptorFinishedMessage001() {

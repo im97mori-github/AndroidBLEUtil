@@ -18,30 +18,6 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
 public class DisconnectTask extends AbstractBLETask {
 
     /**
-     * @see #createDisconnectMessage(Object, int)
-     */
-    public static Message createDisconnectMessage(Object obj) {
-        return createDisconnectMessage(obj, ErrorCodes.UNKNOWN);
-    }
-
-    /**
-     * create disconnect message
-     *
-     * @param obj    instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
-     * @param status {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link ErrorCodes#UNKNOWN}
-     * @return create disconnect {@link Message} instance
-     */
-    public static Message createDisconnectMessage(Object obj, int status) {
-        Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_DISCONNECT);
-        bundle.putInt(KEY_STATUS, status);
-        Message message = new Message();
-        message.setData(bundle);
-        message.obj = obj;
-        return message;
-    }
-
-    /**
      * task target {@link BLEConnection} instance
      */
     private final BLEConnection mBLEConnection;
@@ -52,6 +28,11 @@ public class DisconnectTask extends AbstractBLETask {
     private final BluetoothGatt mBluetoothGatt;
 
     /**
+     * {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link ErrorCodes#UNKNOWN}
+     */
+    private final int mStatus;
+
+    /**
      * callback argument
      */
     private final Bundle mArgument;
@@ -59,12 +40,28 @@ public class DisconnectTask extends AbstractBLETask {
     /**
      * @param bleConnection task target {@link BLEConnection} instance
      * @param bluetoothGatt task target {@link BluetoothGatt} instance
+     * @param status        {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link ErrorCodes#UNKNOWN}
      * @param argument      callback argument
      */
-    public DisconnectTask(BLEConnection bleConnection, BluetoothGatt bluetoothGatt, Bundle argument) {
+    public DisconnectTask(BLEConnection bleConnection, BluetoothGatt bluetoothGatt, int status, Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
+        mStatus = status;
         mArgument = argument;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Message createInitialMessage() {
+        Bundle bundle = new Bundle();
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_DISCONNECT);
+        bundle.putInt(KEY_STATUS, mStatus);
+        Message message = new Message();
+        message.setData(bundle);
+        message.obj = this;
+        return message;
     }
 
     /**

@@ -100,10 +100,12 @@ public class LeSupportedFeatures extends AbstractAdvertisingData {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("unchecked")
     private LeSupportedFeatures(Parcel in) {
         super(in.readInt());
-        mLeSupportedFeaturesList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));
+
+        List<Integer> list = new ArrayList<>();
+        in.readList(list, this.getClass().getClassLoader());
+        mLeSupportedFeaturesList = Collections.synchronizedList(list);
     }
 
     /**

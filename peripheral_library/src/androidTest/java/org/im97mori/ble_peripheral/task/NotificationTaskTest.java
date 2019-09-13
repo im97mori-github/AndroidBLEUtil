@@ -8,30 +8,19 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 public class NotificationTaskTest {
 
     @Test
     public void test_createNotificationMessage001() {
-        Message message = NotificationTask.createNotificationMessage(null);
+        NotificationTask task = new NotificationTask(null, null, null, null, null, null, true, null);
+        Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertEquals(AbstractBLETask.PROGRESS_NOTIFICATION, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertNull(message.obj);
+        assertEquals(task, message.obj);
     }
 
-    @Test
-    public void test_createNotificationMessage002() {
-        Object object = new Object();
-        Message message = NotificationTask.createNotificationMessage(object);
-
-        assertNotNull(message);
-        Bundle bundle = message.getData();
-        assertNotNull(bundle);
-        assertEquals(AbstractBLETask.PROGRESS_NOTIFICATION, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(object, message.obj);
-    }
 }

@@ -2,11 +2,13 @@ package org.im97mori.ble.task;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.format.DateUtils;
 
 import org.im97mori.ble.BLEConnection;
+import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.TaskHandler;
 
@@ -26,14 +28,14 @@ public class ConnectTask extends AbstractBLETask {
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 50;
 
     /**
-     * create connect message
+     * create service discovered message
      *
      * @param obj instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
-     * @return create connect {@link Message} instance
+     * @return create service discovered {@link Message} instance
      */
-    public static Message createConnectMessage(Object obj) {
+    public static Message createServiceDiscovered(Object obj) {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_CONNECT);
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_SERVICE_DISCOVERD);
         Message message = new Message();
         message.setData(bundle);
         message.obj = obj;
@@ -41,10 +43,10 @@ public class ConnectTask extends AbstractBLETask {
     }
 
     /**
-     * create connect timeout message
+     * create connect finished message
      *
      * @param obj instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
-     * @return create connect timeout {@link Message} instance
+     * @return create connect finished {@link Message} instance
      */
     public static Message createConnectFinished(Object obj) {
         Bundle bundle = new Bundle();
@@ -76,21 +78,42 @@ public class ConnectTask extends AbstractBLETask {
     private final Bundle mArgument;
 
     /**
+     * {@code true}:try 512octed mtu setting, {@code false}:no mtu setting
+     */
+    private final boolean mNeedMtuSetting;
+
+    /**
      * task target {@link BluetoothGatt} instance
      */
     private BluetoothGatt mBluetoothGatt;
 
+
     /**
-     * @param bleConnection task target {@link BLEConnection} instance
-     * @param taskHandler   task target {@link TaskHandler} instance
-     * @param timeout       timeout(millis)
-     * @param argument      callback argument
+     * @param bleConnection  task target {@link BLEConnection} instance
+     * @param taskHandler    task target {@link TaskHandler} instance
+     * @param needMtuSetting {@code true}:try 512octed mtu setting, {@code false}:no mtu setting
+     * @param timeout        timeout(millis)
+     * @param argument       callback argument
      */
-    public ConnectTask(BLEConnection bleConnection, TaskHandler taskHandler, long timeout, Bundle argument) {
+    public ConnectTask(BLEConnection bleConnection, TaskHandler taskHandler, boolean needMtuSetting, long timeout, Bundle argument) {
         mBLEConnection = bleConnection;
         mTaskHandler = taskHandler;
         mTimeout = timeout;
+        mNeedMtuSetting = needMtuSetting;
         mArgument = argument;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Message createInitialMessage() {
+        Bundle bundle = new Bundle();
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_CONNECT);
+        Message message = new Message();
+        message.setData(bundle);
+        message.obj = this;
+        return message;
     }
 
     /**
@@ -151,7 +174,27 @@ public class ConnectTask extends AbstractBLETask {
                     }
                 }
             } else if (PROGRESS_CONNECT == mCurrentProgress) {
-                // current:connect, next:finish(connected)
+                if (mBluetoothGatt == message.obj && PROGRESS_SERVICE_DISCOVERD == nextProgress) {
+                    // current:connect, next:service discovered
+                    if (mNeedMtuSetting) {
+                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP || !mBluetoothGatt.requestMtu(BLEConstants.MAXIMUM_MTU)) {
+                            nextProgress = PROGRESS_FINISHED;
+                        }
+                    } else {
+                        nextProgress = PROGRESS_FINISHED;
+                    }
+
+                    if (PROGRESS_FINISHED == nextProgress) {
+                        // callback
+                        mBLEConnection.onConnected(mTaskId, mBluetoothGatt, mArgument);
+
+                        // remove timeout message
+                        mTaskHandler.removeCallbacksAndMessages(this);
+                    }
+                    mCurrentProgress = nextProgress;
+                }
+            } else if (PROGRESS_SERVICE_DISCOVERD == mCurrentProgress) {
+                // current:service discovered, next:finish(connected)
                 if (mBluetoothGatt == message.obj && PROGRESS_FINISHED == nextProgress) {
 
                     // callback

@@ -22,6 +22,11 @@ public class TaskHandlerTest {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task = new AbstractBLETask() {
             @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
             public boolean doProcess(Message message) {
                 countDownLatch.countDown();
                 return true;
@@ -42,7 +47,7 @@ public class TaskHandlerTest {
         thread.start();
         TaskHandler taskHandler = new TaskHandler(thread.getLooper());
 
-        taskHandler.addTask(task, new Message());
+        taskHandler.addTask(task);
 
         try {
             countDownLatch.await();
@@ -59,6 +64,11 @@ public class TaskHandlerTest {
         final CountDownLatch countDownLatch = new CountDownLatch(2);
         AbstractBLETask task = new AbstractBLETask() {
             @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
             public boolean doProcess(Message message) {
                 countDownLatch.countDown();
                 return true;
@@ -79,8 +89,8 @@ public class TaskHandlerTest {
         thread.start();
         TaskHandler taskHandler = new TaskHandler(thread.getLooper());
 
-        taskHandler.addTask(task, new Message());
-        taskHandler.addTask(task, new Message());
+        taskHandler.addTask(task);
+        taskHandler.addTask(task);
 
         try {
             countDownLatch.await();
@@ -96,6 +106,11 @@ public class TaskHandlerTest {
     public void cancelTaskTest001() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task1 = new AbstractBLETask() {
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
             @Override
             public boolean doProcess(Message message) {
                 try {
@@ -119,6 +134,11 @@ public class TaskHandlerTest {
         final AtomicInteger atomicInteger = new AtomicInteger(0);
         AbstractBLETask task2 = new AbstractBLETask() {
             @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
             public boolean doProcess(Message message) {
                 atomicInteger.addAndGet(1);
                 countDownLatch.countDown();
@@ -140,8 +160,8 @@ public class TaskHandlerTest {
         thread.start();
         TaskHandler taskHandler = new TaskHandler(thread.getLooper());
 
-        taskHandler.addTask(task1, new Message());
-        taskHandler.addTask(task2, new Message());
+        taskHandler.addTask(task1);
+        taskHandler.addTask(task2);
         taskHandler.cancelTask(task2.getTaskId());
 
         try {
@@ -159,6 +179,11 @@ public class TaskHandlerTest {
     public void cancelTaskTest002() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task1 = new AbstractBLETask() {
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
             @Override
             public boolean doProcess(Message message) {
                 try {
@@ -182,6 +207,11 @@ public class TaskHandlerTest {
         final AtomicInteger atomicInteger1 = new AtomicInteger(0);
         AbstractBLETask task2 = new AbstractBLETask() {
             @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
             public boolean doProcess(Message message) {
                 atomicInteger1.addAndGet(1);
                 return true;
@@ -199,6 +229,11 @@ public class TaskHandlerTest {
         };
         final AtomicInteger atomicInteger2 = new AtomicInteger(0);
         AbstractBLETask task3 = new AbstractBLETask() {
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
             @Override
             public boolean doProcess(Message message) {
                 atomicInteger2.addAndGet(1);
@@ -221,9 +256,9 @@ public class TaskHandlerTest {
         thread.start();
         TaskHandler taskHandler = new TaskHandler(thread.getLooper());
 
-        taskHandler.addTask(task1, new Message());
-        taskHandler.addTask(task2, new Message());
-        taskHandler.addTask(task3, new Message());
+        taskHandler.addTask(task1);
+        taskHandler.addTask(task2);
+        taskHandler.addTask(task3);
         taskHandler.cancelTask(task2.getTaskId());
 
         try {
@@ -242,6 +277,11 @@ public class TaskHandlerTest {
     public void clearTaskTest001() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task1 = new AbstractBLETask() {
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
             @Override
             public boolean doProcess(Message message) {
                 try {
@@ -264,6 +304,11 @@ public class TaskHandlerTest {
         final AtomicInteger atomicInteger1 = new AtomicInteger(0);
         AbstractBLETask task2 = new AbstractBLETask() {
             @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
             public boolean doProcess(Message message) {
                 atomicInteger1.addAndGet(1);
                 return true;
@@ -281,6 +326,11 @@ public class TaskHandlerTest {
         final AtomicInteger atomicInteger2 = new AtomicInteger(0);
         AbstractBLETask task3 = new AbstractBLETask() {
             @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
             public boolean doProcess(Message message) {
                 atomicInteger2.addAndGet(1);
                 return true;
@@ -297,6 +347,11 @@ public class TaskHandlerTest {
         };
         final AtomicInteger atomicInteger3 = new AtomicInteger(0);
         AbstractBLETask task4 = new AbstractBLETask() {
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
             @Override
             public boolean doProcess(Message message) {
                 atomicInteger3.addAndGet(1);
@@ -319,12 +374,11 @@ public class TaskHandlerTest {
         thread.start();
         TaskHandler taskHandler = new TaskHandler(thread.getLooper());
 
-        taskHandler.addTask(task1, new Message());
-        taskHandler.addTask(task2, new Message());
-        taskHandler.addTask(task3, new Message());
+        taskHandler.addTask(task1);
+        taskHandler.addTask(task2);
+        taskHandler.addTask(task3);
         taskHandler.clearTask();
-        taskHandler.addTask(task4, new Message());
-
+        taskHandler.addTask(task4);
         try {
             countDownLatch.await();
         } catch (InterruptedException e) {
@@ -342,6 +396,11 @@ public class TaskHandlerTest {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task1 = new AbstractBLETask() {
             @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
             public boolean doProcess(Message message) {
                 return true;
             }
@@ -357,6 +416,11 @@ public class TaskHandlerTest {
             }
         };
         AbstractBLETask task2 = new AbstractBLETask() {
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
             @Override
             public boolean doProcess(Message message) {
                 countDownLatch.countDown();
@@ -375,6 +439,11 @@ public class TaskHandlerTest {
         };
         AbstractBLETask task3 = new AbstractBLETask() {
             @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
             public boolean doProcess(Message message) {
                 return true;
             }
@@ -394,8 +463,8 @@ public class TaskHandlerTest {
         Looper looper = thread.getLooper();
         TaskHandler taskHandler = new TaskHandler(looper);
 
-        taskHandler.addTask(task1, new Message());
-        taskHandler.addTask(task2, new Message());
+        taskHandler.addTask(task1);
+        taskHandler.addTask(task2);
 
         assertEquals(1, countDownLatch.getCount());
 
@@ -407,7 +476,7 @@ public class TaskHandlerTest {
             }
         } while (taskHandler.isBusy());
 
-        taskHandler.addTask(task3, new Message());
+        taskHandler.addTask(task3);
 
         try {
             countDownLatch.await();
@@ -424,6 +493,11 @@ public class TaskHandlerTest {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task1 = new AbstractBLETask() {
             @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
+            @Override
             public boolean doProcess(Message message) {
                 return true;
             }
@@ -439,6 +513,11 @@ public class TaskHandlerTest {
             }
         };
         AbstractBLETask task2 = new AbstractBLETask() {
+            @Override
+            public Message createInitialMessage() {
+                return new Message();
+            }
+
             @Override
             public boolean doProcess(Message message) {
                 countDownLatch.countDown();
@@ -460,8 +539,8 @@ public class TaskHandlerTest {
         Looper looper = thread.getLooper();
         TaskHandler taskHandler = new TaskHandler(looper);
 
-        taskHandler.addTask(task1, new Message());
-        taskHandler.addTask(task2, new Message());
+        taskHandler.addTask(task1);
+        taskHandler.addTask(task2);
 
         assertEquals(1, countDownLatch.getCount());
 

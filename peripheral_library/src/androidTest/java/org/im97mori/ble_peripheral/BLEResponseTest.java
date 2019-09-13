@@ -281,7 +281,7 @@ public class BLEResponseTest {
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
 
-        long end = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
+        long end = DateUtils.SECOND_IN_MILLIS * 15 + SystemClock.elapsedRealtime();
         do {
             try {
                 Thread.sleep(end - SystemClock.elapsedRealtime());

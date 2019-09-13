@@ -18,7 +18,8 @@ public class ReadCharacteristicTaskTest {
 
     @Test
     public void test_createReadCharacteristicMessage001() {
-        Message message = ReadCharacteristicTask.createReadCharacteristicMessage(null, null, null);
+        ReadCharacteristicTask task = new ReadCharacteristicTask(null, null, null, null, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null);
+        Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
@@ -29,13 +30,14 @@ public class ReadCharacteristicTaskTest {
         assertNull(bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(AbstractBLETask.PROGRESS_CHARACTERISTIC_READ_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertNull(message.obj);
+        assertEquals(task, message.obj);
     }
 
     @Test
     public void test_createReadCharacteristicMessage002() {
         UUID serviceUUID = UUID.randomUUID();
-        Message message = ReadCharacteristicTask.createReadCharacteristicMessage(serviceUUID, null, null);
+        ReadCharacteristicTask task = new ReadCharacteristicTask(null, null, null, serviceUUID, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null);
+        Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
@@ -46,13 +48,14 @@ public class ReadCharacteristicTaskTest {
         assertNull(bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(AbstractBLETask.PROGRESS_CHARACTERISTIC_READ_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertNull(message.obj);
+        assertEquals(task, message.obj);
     }
 
     @Test
     public void test_createReadCharacteristicMessage003() {
         UUID characteristicUUID = UUID.randomUUID();
-        Message message = ReadCharacteristicTask.createReadCharacteristicMessage(null, characteristicUUID, null);
+        ReadCharacteristicTask task = new ReadCharacteristicTask(null, null, null, null, characteristicUUID, ReadCharacteristicTask.TIMEOUT_MILLIS, null);
+        Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
@@ -63,24 +66,7 @@ public class ReadCharacteristicTaskTest {
         assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(AbstractBLETask.PROGRESS_CHARACTERISTIC_READ_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertNull(message.obj);
-    }
-
-    @Test
-    public void test_createReadCharacteristicMessage004() {
-        Object object = new Object();
-        Message message = ReadCharacteristicTask.createReadCharacteristicMessage(null, null, object);
-
-        assertNotNull(message);
-        Bundle bundle = message.getData();
-        assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
-        assertNull(bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertNull(bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_CHARACTERISTIC_READ_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(object, message.obj);
+        assertEquals(task, message.obj);
     }
 
     @Test

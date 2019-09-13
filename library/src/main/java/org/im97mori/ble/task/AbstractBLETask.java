@@ -73,9 +73,14 @@ public abstract class AbstractBLETask {
     public static final int PROGRESS_TIMEOUT = PROGRESS_BUSY + 1;
 
     /**
+     * PROGRESS:SERVICE_DISCOVERD
+     */
+    public static final int PROGRESS_SERVICE_DISCOVERD = PROGRESS_TIMEOUT + 1;
+
+    /**
      * PROGRESS:CONNECT
      */
-    public static final int PROGRESS_CONNECT = PROGRESS_TIMEOUT + 1;
+    public static final int PROGRESS_CONNECT = PROGRESS_SERVICE_DISCOVERD + 1;
 
     /**
      * PROGRESS:DISCONNECT
@@ -204,6 +209,13 @@ public abstract class AbstractBLETask {
      * task id
      */
     protected final long mTaskId = TASK_ID_GENERATOR.incrementAndGet();
+
+    /**
+     * create inital message
+     *
+     * @return task's initlal {@link Message} instance
+     */
+    public abstract Message createInitialMessage();
 
     /**
      * do task

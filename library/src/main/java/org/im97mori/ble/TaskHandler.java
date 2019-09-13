@@ -6,7 +6,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.format.DateUtils;
-import android.util.Pair;
 
 import androidx.annotation.NonNull;
 
@@ -67,7 +66,7 @@ public class TaskHandler extends Handler {
     /**
      * task queue
      */
-    private final LinkedList<Pair<AbstractBLETask, Message>> mQueue = new LinkedList<>();
+    private final LinkedList<AbstractBLETask> mQueue = new LinkedList<>();
 
     /**
      * end of busy status
@@ -109,10 +108,10 @@ public class TaskHandler extends Handler {
                     mCurrentTask = null;
                 }
 
-                Iterator<Pair<AbstractBLETask, Message>> it = mQueue.iterator();
+                Iterator<AbstractBLETask> it = mQueue.iterator();
                 while (it.hasNext()) {
-                    Pair<AbstractBLETask, Message> pair = it.next();
-                    if (pair.first.getTaskId() == taskId) {
+                    AbstractBLETask task = it.next();
+                    if (task.getTaskId() == taskId) {
                         it.remove();
                         break;
                     }
@@ -127,14 +126,14 @@ public class TaskHandler extends Handler {
 
                 // add task
                 if (MESSAGE_TASK_ADD == msg.what) {
-                    @SuppressWarnings("unchecked") Pair<AbstractBLETask, Message> pair = (Pair<AbstractBLETask, Message>) msg.obj;
-                    if (hasMessages(MESSAGE_TASK_CANCEL, pair.first.getTaskId())) {
-                        removeMessages(MESSAGE_TASK_CANCEL, pair.first.getTaskId());
+                    AbstractBLETask task = (AbstractBLETask) msg.obj;
+                    if (hasMessages(MESSAGE_TASK_CANCEL, task.getTaskId())) {
+                        removeMessages(MESSAGE_TASK_CANCEL, task.getTaskId());
                     } else if (hasMessages(MESSAGE_TASK_CLEAR)) {
-                        pair.first.cancel();
+                        task.cancel();
                     } else {
                         // add to task queue
-                        mQueue.add(pair);
+                        mQueue.add(task);
                     }
                 }
 
@@ -166,24 +165,26 @@ public class TaskHandler extends Handler {
                 if (mCurrentTask == null && !mQueue.isEmpty()) {
                     // set current task
                     do {
-                        Pair<AbstractBLETask, Message> pair = mQueue.poll();
-                        if (pair != null) {
-                            if (hasMessages(MESSAGE_TASK_CANCEL, pair.first.getTaskId())) {
-                                pair.first.cancel();
-                                removeMessages(MESSAGE_TASK_CANCEL, pair.first.getTaskId());
-                            } else if (mWaitForBusy < SystemClock.elapsedRealtime() || pair.first instanceof DisconnectTask) {
+                        AbstractBLETask task = mQueue.poll();
+                        if (task != null) {
+                            if (hasMessages(MESSAGE_TASK_CANCEL, task.getTaskId())) {
+                                task.cancel();
+                                removeMessages(MESSAGE_TASK_CANCEL, task.getTaskId());
+                            } else if (mWaitForBusy < SystemClock.elapsedRealtime() || task instanceof DisconnectTask) {
                                 // Disconnect task ignore busy status
 
-                                mCurrentTask = pair.first;
+                                mCurrentTask = task;
 
                                 // send current task's first message
-                                sendMessage(pair.second);
+                                Message initialMessage = task.createInitialMessage();
+                                initialMessage.what = MESSAGE_TASK_PROCESSING;
+                                sendMessage(initialMessage);
                                 break;
                             } else {
                                 // busy status
 
                                 // return to queue
-                                mQueue.push(pair);
+                                mQueue.push(task);
                                 break;
                             }
                         }
@@ -221,26 +222,22 @@ public class TaskHandler extends Handler {
     }
 
     /**
-     * @see #addTaskDelayed(AbstractBLETask, Message, long)
+     * @see #addTaskDelayed(AbstractBLETask, long)
      */
-    public void addTask(AbstractBLETask task, Message original) {
-        addTaskDelayed(task, original, 0);
+    public void addTask(AbstractBLETask task) {
+        addTaskDelayed(task, 0);
     }
 
     /**
      * add task and task's first message to task queue
      *
      * @param task     {@link AbstractBLETask} instance
-     * @param original task's first {@link Message} instance
      * @param delay    millis
      */
-    public void addTaskDelayed(AbstractBLETask task, Message original, long delay) {
-        original.what = MESSAGE_TASK_PROCESSING;
-        Pair pair = Pair.create(task, original);
-
+    public void addTaskDelayed(AbstractBLETask task, long delay) {
         Message message = new Message();
         message.what = MESSAGE_TASK_ADD;
-        message.obj = pair;
+        message.obj = task;
         sendMessageDelayed(message, delay);
     }
 
@@ -290,8 +287,8 @@ public class TaskHandler extends Handler {
             mCurrentTask.cancel();
             mCurrentTask = null;
         }
-        for (Pair<AbstractBLETask, Message> pair : mQueue) {
-            pair.first.cancel();
+        for (AbstractBLETask task : mQueue) {
+            task.cancel();
         }
         mQueue.clear();
     }

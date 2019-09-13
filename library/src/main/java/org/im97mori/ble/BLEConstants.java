@@ -2701,6 +2701,6 @@ public class BLEConstants {
      * <p>
      * Core Specification v5.1 Vol 3 Part F 3.2.9
      */
-    public static final int MAXIMUX_MTU = 512;
+    public static final int MAXIMUM_MTU = 512;
 
 }

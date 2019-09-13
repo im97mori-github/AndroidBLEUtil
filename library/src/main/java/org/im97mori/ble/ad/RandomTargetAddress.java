@@ -72,10 +72,12 @@ public class RandomTargetAddress extends AbstractAdvertisingData {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("unchecked")
     private RandomTargetAddress(Parcel in) {
         super(in.readInt());
-        mAddressList = Collections.synchronizedList(in.readArrayList(this.getClass().getClassLoader()));
+
+        List<byte[]> list = new ArrayList<>();
+        in.readList(list, this.getClass().getClassLoader());
+        mAddressList = Collections.synchronizedList(list);
     }
 
     /**

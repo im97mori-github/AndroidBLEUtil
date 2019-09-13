@@ -32,27 +32,6 @@ public class WriteDescriptorTask extends AbstractBLETask {
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 10;
 
     /**
-     * create write descriptor message
-     *
-     * @param serviceUUID        target service UUID
-     * @param characteristicUUID target characteristic UUID
-     * @param descriptorUUID     target descriptor UUID
-     * @param obj                instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
-     * @return write descriptor {@link Message} instance
-     */
-    public static Message createWriteDescriptorMessage(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, Object obj) {
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
-        bundle.putSerializable(KEY_DESCRIPTOR_UUID, descriptorUUID);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_WRITE_START);
-        Message message = new Message();
-        message.setData(bundle);
-        message.obj = obj;
-        return message;
-    }
-
-    /**
      * create write descriptor finished message
      *
      * @param serviceUUID        target service UUID
@@ -159,6 +138,22 @@ public class WriteDescriptorTask extends AbstractBLETask {
         mByteArrayInterface = byteArrayInterface;
         mTimeout = timeout;
         mArguemnt = argument;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Message createInitialMessage() {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(KEY_SERVICE_UUID, mServiceUUID);
+        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, mCharacteristicUUID);
+        bundle.putSerializable(KEY_DESCRIPTOR_UUID, mDescriptorUUID);
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_WRITE_START);
+        Message message = new Message();
+        message.setData(bundle);
+        message.obj = this;
+        return message;
     }
 
     /**

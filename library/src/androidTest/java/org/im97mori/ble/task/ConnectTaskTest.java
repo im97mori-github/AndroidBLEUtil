@@ -17,28 +17,16 @@ import static org.junit.Assert.assertTrue;
 public class ConnectTaskTest {
 
     @Test
-    public void test_createConnectMessage001() {
-        Message message = ConnectTask.createConnectMessage(null);
-
-        assertNotNull(message);
-        Bundle bundle = message.getData();
-        assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_CONNECT, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertNull(message.obj);
-    }
-
-    @Test
     public void test_createConnectMessage002() {
-        Object object = new Object();
-        Message message = ConnectTask.createConnectMessage(object);
+        ConnectTask task = new ConnectTask(null, null, false, ConnectTask.TIMEOUT_MILLIS, null);
+        Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(AbstractBLETask.PROGRESS_CONNECT, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(object, message.obj);
+        assertEquals(task, message.obj);
     }
 
     @Test
@@ -79,7 +67,7 @@ public class ConnectTaskTest {
         Looper looper = thread.getLooper();
         TaskHandler mockTaskHandler = new TaskHandler(looper);
 
-        ConnectTask task = new ConnectTask(mockBleConnection, mockTaskHandler, ConnectTask.TIMEOUT_MILLIS, null);
+        ConnectTask task = new ConnectTask(mockBleConnection, mockTaskHandler, false, ConnectTask.TIMEOUT_MILLIS, null);
 
         assertTrue(task.doProcess(null));
 

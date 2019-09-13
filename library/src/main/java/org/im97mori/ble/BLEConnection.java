@@ -7,7 +7,6 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.os.Message;
@@ -359,10 +358,17 @@ public class BLEConnection extends BluetoothGattCallback {
     }
 
     /**
-     * @see #connect(long, Bundle)
+     * @see #connect(boolean, long, Bundle)
      */
     public long connect(long timeout) {
-        return connect(timeout, null);
+        return connect(false, timeout, null);
+    }
+
+    /**
+     * @see #connect(boolean, long, Bundle)
+     */
+    public long connect(long timeout, Bundle argument) {
+        return connect(false, timeout, argument);
     }
 
     /**
@@ -372,17 +378,17 @@ public class BLEConnection extends BluetoothGattCallback {
      * if already connected, do not anything
      * </p>
      *
-     * @param timeout  timeout(millis)
-     * @param argument callback argument
+     * @param needMtuSetting {@code true}:try 512octed mtu setting, {@code false}:no mtu setting
+     * @param timeout        timeout(millis)
+     * @param argument       callback argument
      */
-    public synchronized long connect(long timeout, Bundle argument) {
+    public synchronized long connect(boolean needMtuSetting, long timeout, Bundle argument) {
         long taskId = TASK_ID_UNREGISTED;
         if (mBluetoothGatt == null) {
             start();
 
-            ConnectTask task = new ConnectTask(this, mTaskHandler, timeout, argument);
-            Message message = ConnectTask.createConnectMessage(task);
-            mTaskHandler.addTask(task, message);
+            ConnectTask task = new ConnectTask(this, mTaskHandler, needMtuSetting, timeout, argument);
+            mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
         return taskId;
@@ -410,9 +416,8 @@ public class BLEConnection extends BluetoothGattCallback {
         if (mBluetoothGatt != null) {
             mTaskHandler.clearTask();
 
-            DisconnectTask task = new DisconnectTask(this, mBluetoothGatt, argument);
-            Message message = DisconnectTask.createDisconnectMessage(task);
-            mTaskHandler.addTask(task, message);
+            DisconnectTask task = new DisconnectTask(this, mBluetoothGatt, BLEConstants.ErrorCodes.UNKNOWN, argument);
+            mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
         return taskId;
@@ -442,12 +447,11 @@ public class BLEConnection extends BluetoothGattCallback {
      * Add user original task
      *
      * @param task    {@link AbstractBLETask} instance
-     * @param message task's first {@link Message} instance
-     * @see TaskHandler#addTask(AbstractBLETask, Message)
+     * @see TaskHandler#addTask(AbstractBLETask)
      */
-    public synchronized void addTask(AbstractBLETask task, Message message) {
+    public synchronized void addTask(AbstractBLETask task) {
         if (mTaskHandler != null) {
-            mTaskHandler.addTask(task, message);
+            mTaskHandler.addTask(task);
         }
     }
 
@@ -576,9 +580,8 @@ public class BLEConnection extends BluetoothGattCallback {
 
                     // start discover services
                     if (!gatt.discoverServices()) {
-                        DisconnectTask task = new DisconnectTask(this, gatt, null);
-                        Message message = DisconnectTask.createDisconnectMessage(task, status);
-                        mTaskHandler.addTask(task, message);
+                        DisconnectTask task = new DisconnectTask(this, gatt, status, null);
+                        mTaskHandler.addTask(task);
                     }
                 }
             }
@@ -587,9 +590,8 @@ public class BLEConnection extends BluetoothGattCallback {
                 // disconnected
 
                 // add disconnect task
-                DisconnectTask task = new DisconnectTask(this, gatt, null);
-                Message message = DisconnectTask.createDisconnectMessage(task, status);
-                mTaskHandler.addTask(task, message);
+                DisconnectTask task = new DisconnectTask(this, gatt, status, null);
+                mTaskHandler.addTask(task);
             }
         }
     }
@@ -603,21 +605,15 @@ public class BLEConnection extends BluetoothGattCallback {
             if (BluetoothGatt.GATT_SUCCESS == status) {
                 // service discover finished
 
-                // maximus mtu
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    gatt.requestMtu(BLEConstants.MAXIMUX_MTU);
-                } else {
-                    // connect task finished
-                    Message message = ConnectTask.createConnectFinished(gatt);
-                    mTaskHandler.sendProcessingMessage(message);
-                }
+                // service discovered
+                Message message = ConnectTask.createServiceDiscovered(gatt);
+                mTaskHandler.sendProcessingMessage(message);
             } else {
                 // service discover failed
 
                 // add disconnect task
-                DisconnectTask task = new DisconnectTask(this, gatt, null);
-                Message message = DisconnectTask.createDisconnectMessage(task, status);
-                mTaskHandler.addTask(task, message);
+                DisconnectTask task = new DisconnectTask(this, gatt, status, null);
+                mTaskHandler.addTask(task);
             }
         }
     }
@@ -790,9 +786,8 @@ public class BLEConnection extends BluetoothGattCallback {
                 // service discover failed
 
                 // add disconnect task
-                DisconnectTask task = new DisconnectTask(this, gatt, null);
-                Message message = DisconnectTask.createDisconnectMessage(task, status);
-                mTaskHandler.addTask(task, message);
+                DisconnectTask task = new DisconnectTask(this, gatt, status, null);
+                mTaskHandler.addTask(task);
             }
         }
     }
@@ -817,8 +812,7 @@ public class BLEConnection extends BluetoothGattCallback {
         BluetoothGatt bluetoothGatt = mBluetoothGatt;
         if (bluetoothGatt != null) {
             ReadCharacteristicTask task = new ReadCharacteristicTask(this, bluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, timeout, argument);
-            Message message = ReadCharacteristicTask.createReadCharacteristicMessage(serviceUUID, characteristicUUID, task);
-            mTaskHandler.addTask(task, message);
+            mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
         return taskId;
@@ -852,8 +846,7 @@ public class BLEConnection extends BluetoothGattCallback {
         long taskId = TASK_ID_UNREGISTED;
         if (mBluetoothGatt != null) {
             WriteCharacteristicTask task = new WriteCharacteristicTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, byteArrayInterface, writeType, timeout, argument);
-            Message message = WriteCharacteristicTask.createWriteCharacteristicMessage(serviceUUID, characteristicUUID, task);
-            mTaskHandler.addTask(task, message);
+            mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
         return taskId;
@@ -879,8 +872,7 @@ public class BLEConnection extends BluetoothGattCallback {
         long taskId = TASK_ID_UNREGISTED;
         if (mBluetoothGatt != null) {
             ReadDescriptorTask task = new ReadDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, descriptorUUID, timeout, argument);
-            Message message = ReadDescriptorTask.createReadDescriptorMessage(serviceUUID, characteristicUUID, descriptorUUID, task);
-            mTaskHandler.addTask(task, message);
+            mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
         return taskId;
@@ -907,8 +899,7 @@ public class BLEConnection extends BluetoothGattCallback {
         long taskId = TASK_ID_UNREGISTED;
         if (mBluetoothGatt != null) {
             WriteDescriptorTask task = new WriteDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, descriptorUUID, byteArrayInterface, timeout, argument);
-            Message message = WriteDescriptorTask.createWriteDescriptorMessage(serviceUUID, characteristicUUID, descriptorUUID, task);
-            mTaskHandler.addTask(task, message);
+            mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
         return taskId;

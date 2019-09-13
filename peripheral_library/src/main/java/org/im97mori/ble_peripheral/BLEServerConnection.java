@@ -19,7 +19,6 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.HandlerThread;
-import android.os.Message;
 import android.os.ParcelUuid;
 import android.os.SystemClock;
 import android.text.format.DateUtils;
@@ -532,8 +531,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
                     }
                             , isIndication
                             , null);
-                    Message message = NotificationTask.createNotificationMessage(task);
-                    mTaskHandler.addTaskDelayed(task, message, DateUtils.SECOND_IN_MILLIS);
+                    mTaskHandler.addTaskDelayed(task, DateUtils.SECOND_IN_MILLIS);
                 }
             }
         }
@@ -648,7 +646,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
     public BLEServerConnection(Context context, BLEServerCallback bleServerCallback) {
         mContext = context;
         mBluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
-        mBluetoothAdapter = mBluetoothManager.getAdapter();
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         mBLEServerCallback = bleServerCallback;
     }
 
