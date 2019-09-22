@@ -3,6 +3,8 @@ package org.im97mori.ble.ad;
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,7 +32,8 @@ public class ListOf32BitServiceSolicitationUUIDs extends AbstractAdvertisingData
          * {@inheritDoc}
          */
         @Override
-        public ListOf32BitServiceSolicitationUUIDs createFromParcel(Parcel in) {
+        @NonNull
+        public ListOf32BitServiceSolicitationUUIDs createFromParcel(@NonNull Parcel in) {
             return new ListOf32BitServiceSolicitationUUIDs(in);
         }
 
@@ -38,6 +41,7 @@ public class ListOf32BitServiceSolicitationUUIDs extends AbstractAdvertisingData
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public ListOf32BitServiceSolicitationUUIDs[] newArray(int size) {
             return new ListOf32BitServiceSolicitationUUIDs[size];
         }
@@ -56,7 +60,7 @@ public class ListOf32BitServiceSolicitationUUIDs extends AbstractAdvertisingData
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public ListOf32BitServiceSolicitationUUIDs(byte[] data, int offset, int length) {
+    public ListOf32BitServiceSolicitationUUIDs(@NonNull byte[] data, int offset, int length) {
         super(length);
 
         // combine with BASE UUID
@@ -79,12 +83,12 @@ public class ListOf32BitServiceSolicitationUUIDs extends AbstractAdvertisingData
      *
      * @param in Parcel
      */
-    private ListOf32BitServiceSolicitationUUIDs(Parcel in) {
+    private ListOf32BitServiceSolicitationUUIDs(@NonNull Parcel in) {
         super(in.readInt());
 
         List<UUID> list = new ArrayList<>();
         in.readList(list, this.getClass().getClassLoader());
-        mUuidList = Collections.synchronizedList(list);
+        mUuidList = Collections.synchronizedList(Collections.unmodifiableList(list));
     }
 
     /**
@@ -99,7 +103,7 @@ public class ListOf32BitServiceSolicitationUUIDs extends AbstractAdvertisingData
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mLength);
         dest.writeList(mUuidList);
     }
@@ -115,6 +119,7 @@ public class ListOf32BitServiceSolicitationUUIDs extends AbstractAdvertisingData
     /**
      * @return UUID list
      */
+    @NonNull
     public List<UUID> getUuidList() {
         return mUuidList;
     }

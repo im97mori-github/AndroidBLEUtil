@@ -266,6 +266,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                     , new ByteArrayInterface() {
                         @Override
+                        @NonNull
                         public byte[] getBytes() {
                             return new byte[]{0x00, 0x00, 0x00, 0x00, 0x00};
                         }
@@ -325,12 +326,13 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                 , null
                                 , false);
 
-                        if (RESULT_SUCCESS == result.getResultCode()) {
-                            mBLECallbackSample.onCharacteristicReadSuccess(0, target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), result.getValues(), result.getArgument());
+                        byte[] value = result.getValues();
+                        if (RESULT_SUCCESS == result.getResultCode() && value != null) {
+                            mBLECallbackSample.onCharacteristicReadSuccess(0, target.getBluetoothDevice(), DEFAULT_SERVICE_UUID, READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, value, result.getArgument());
                         } else if (RESULT_FAILED == result.getResultCode()) {
-                            mBLECallbackSample.onCharacteristicReadFailed(0, target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), result.getStatus(), result.getArgument());
+                            mBLECallbackSample.onCharacteristicReadFailed(0, target.getBluetoothDevice(), DEFAULT_SERVICE_UUID, READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, result.getStatus(), result.getArgument());
                         } else if (RESULT_TIMEOUT == result.getResultCode()) {
-                            mBLECallbackSample.onCharacteristicReadTimeout(0, target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), ReadCharacteristicTask.TIMEOUT_MILLIS, result.getArgument());
+                            mBLECallbackSample.onCharacteristicReadTimeout(0, target.getBluetoothDevice(), DEFAULT_SERVICE_UUID, READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, ReadCharacteristicTask.TIMEOUT_MILLIS, result.getArgument());
                         }
 
                     }
@@ -343,13 +345,15 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     BLEConnection target = mBleConnection;
                     if (target != null) {
 
+                        final byte[] value = new byte[]{0x00, 0x00, 0x00, 0x00, 0x00};
                         BLESyncConnection.BLEResult result = BLESyncConnection.createWriteCharacteristicTask(target,
                                 DEFAULT_SERVICE_UUID
                                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                                 , new ByteArrayInterface() {
                                     @Override
+                                    @NonNull
                                     public byte[] getBytes() {
-                                        return new byte[]{0x00, 0x00, 0x00, 0x00, 0x00};
+                                        return value;
                                     }
                                 }
                                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
@@ -359,11 +363,11 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                 , false);
 
                         if (RESULT_SUCCESS == result.getResultCode()) {
-                            mBLECallbackSample.onCharacteristicWriteSuccess(0, target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), result.getValues(), result.getArgument());
+                            mBLECallbackSample.onCharacteristicWriteSuccess(0, target.getBluetoothDevice(), DEFAULT_SERVICE_UUID, WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, value, result.getArgument());
                         } else if (RESULT_FAILED == result.getResultCode()) {
-                            mBLECallbackSample.onCharacteristicWriteFailed(0, target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), result.getStatus(), result.getArgument());
+                            mBLECallbackSample.onCharacteristicWriteFailed(0, target.getBluetoothDevice(), DEFAULT_SERVICE_UUID, WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, result.getStatus(), result.getArgument());
                         } else if (RESULT_TIMEOUT == result.getResultCode()) {
-                            mBLECallbackSample.onCharacteristicWriteTimeout(0, target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), WriteCharacteristicTask.TIMEOUT_MILLIS, result.getArgument());
+                            mBLECallbackSample.onCharacteristicWriteTimeout(0, target.getBluetoothDevice(), DEFAULT_SERVICE_UUID, WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, WriteCharacteristicTask.TIMEOUT_MILLIS, result.getArgument());
                         }
 
                     }

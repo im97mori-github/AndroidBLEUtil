@@ -12,6 +12,9 @@ import android.bluetooth.le.AdvertiseSettings;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import org.im97mori.ble.BLEConstants.ErrorCodes;
 import org.im97mori.ble_peripheral.characteristic.MockControl;
 
@@ -62,25 +65,25 @@ public interface BLEServerCallback {
      * @return {@code true}:{@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} success or dont need response, {@code false}:need call {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} but not called
      * @see BluetoothGattServerCallback#onCharacteristicReadRequest(BluetoothDevice, int, int, BluetoothGattCharacteristic)
      */
-    boolean onCharacteristicReadRequest(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, int requestId, int offset, BluetoothGattCharacteristic characteristic);
+    boolean onCharacteristicReadRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic characteristic);
 
     /**
      * @return {@code true}:{@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} success or dont need response, {@code false}:need call {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} but not called
      * @see BluetoothGattServerCallback#onCharacteristicWriteRequest(BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[])
      */
-    boolean onCharacteristicWriteRequest(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, int requestId, BluetoothGattCharacteristic characteristic, boolean preparedWrite, boolean responseNeeded, int offset, byte[] value);
+    boolean onCharacteristicWriteRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic characteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value);
 
     /**
      * @return {@code true}:{@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} success or dont need response, {@code false}:need call {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} but not called
      * @see BluetoothGattServerCallback#onDescriptorReadRequest(BluetoothDevice, int, int, BluetoothGattDescriptor)
      */
-    boolean onDescriptorReadRequest(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, int requestId, int offset, BluetoothGattDescriptor descriptor);
+    boolean onDescriptorReadRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattDescriptor descriptor);
 
     /**
      * @return {@code true}:{@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} success or dont need response, {@code false}:need call {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} but not called
      * @see BluetoothGattServerCallback#onDescriptorWriteRequest(BluetoothDevice, int, BluetoothGattDescriptor, boolean, boolean, int, byte[])
      */
-    boolean onDescriptorWriteRequest(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, int requestId, BluetoothGattDescriptor descriptor, boolean preparedWrite, boolean responseNeeded, int offset, byte[] value);
+    boolean onDescriptorWriteRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattDescriptor descriptor, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value);
 
     /**
      * Notification(Indication) success callback
@@ -93,7 +96,7 @@ public interface BLEServerCallback {
      * @param value               one of {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE}, {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}, {@link BluetoothGattDescriptor#DISABLE_NOTIFICATION_VALUE}
      * @param argument            callback argument
      */
-    void onNotificationSuccess(int taskId, BluetoothGattServer bluetoothGattServer, BluetoothDevice device, UUID serviceUUID, UUID characteristicUUID, byte[] value, Bundle argument);
+    void onNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] value, @Nullable Bundle argument);
 
     /**
      * Notification(Indication) error callback
@@ -106,7 +109,7 @@ public interface BLEServerCallback {
      * @param status              one of {@link ErrorCodes#UNKNOWN}, {@link ErrorCodes#CANCEL}, {@link ErrorCodes#BUSY}
      * @param argument            callback argument
      */
-    void onNotificationFailed(int taskId, BluetoothGattServer bluetoothGattServer, BluetoothDevice device, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument);
+    void onNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, @Nullable Bundle argument);
 
     /**
      * Client Characteristic Configuration (Descriptor UUID: 0x2902) updated callback
@@ -117,7 +120,7 @@ public interface BLEServerCallback {
      * @param characteristicUUID  characteristic {@link UUID}
      * @param value               one of {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE}, {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}, {@link BluetoothGattDescriptor#DISABLE_NOTIFICATION_VALUE}
      */
-    void onClientCharacteristicConfigurationUpdated(BluetoothGattServer bluetoothGattServer, BluetoothDevice device, UUID serviceUUID, UUID characteristicUUID, byte[] value);
+    void onClientCharacteristicConfigurationUpdated(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] value);
 
     /**
      * Mock updated (Characterisitc UUID:{@link BLEServerConnection#MOCK_CONTROL_CHARACTERISTIC_UUID}) callback
@@ -125,6 +128,6 @@ public interface BLEServerCallback {
      * @param device      BLE device
      * @param mockControl mock data
      */
-    void onMockUpdated(BluetoothDevice device, MockControl mockControl);
+    void onMockUpdated(@NonNull BluetoothDevice device, @NonNull MockControl mockControl);
 
 }

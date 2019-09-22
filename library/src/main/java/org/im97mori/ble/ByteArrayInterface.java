@@ -1,5 +1,7 @@
 package org.im97mori.ble;
 
+import androidx.annotation.NonNull;
+
 public interface ByteArrayInterface {
 
     /**
@@ -7,6 +9,7 @@ public interface ByteArrayInterface {
      *
      * @return byte array
      */
+    @NonNull
     byte[] getBytes();
 
 }

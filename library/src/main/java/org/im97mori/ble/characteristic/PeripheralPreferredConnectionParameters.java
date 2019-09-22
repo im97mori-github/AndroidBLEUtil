@@ -4,6 +4,8 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
@@ -42,7 +44,8 @@ public class PeripheralPreferredConnectionParameters implements ByteArrayInterfa
          * {@inheritDoc}
          */
         @Override
-        public PeripheralPreferredConnectionParameters createFromParcel(Parcel in) {
+        @NonNull
+        public PeripheralPreferredConnectionParameters createFromParcel(@NonNull Parcel in) {
             return new PeripheralPreferredConnectionParameters(in);
         }
 
@@ -50,6 +53,7 @@ public class PeripheralPreferredConnectionParameters implements ByteArrayInterfa
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public PeripheralPreferredConnectionParameters[] newArray(int size) {
             return new PeripheralPreferredConnectionParameters[size];
         }
@@ -57,7 +61,8 @@ public class PeripheralPreferredConnectionParameters implements ByteArrayInterfa
         /**
          * {@inheritDoc}
          */
-        public PeripheralPreferredConnectionParameters createFromByteArray(byte[] values) {
+        @NonNull
+        public PeripheralPreferredConnectionParameters createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PERIPHERAL_PREFERRED_CONNECTION_PARAMATERS_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new PeripheralPreferredConnectionParameters(bluetoothGattCharacteristic);
@@ -90,7 +95,7 @@ public class PeripheralPreferredConnectionParameters implements ByteArrayInterfa
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A04
      */
-    public PeripheralPreferredConnectionParameters(BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public PeripheralPreferredConnectionParameters(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         mMinimumConnectionInterval = bluetoothGattCharacteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 0);
         mMaximumConnectionInterval = bluetoothGattCharacteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 2);
         mSlaveLatency = bluetoothGattCharacteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 4);
@@ -102,7 +107,7 @@ public class PeripheralPreferredConnectionParameters implements ByteArrayInterfa
      *
      * @param in Parcel
      */
-    private PeripheralPreferredConnectionParameters(Parcel in) {
+    private PeripheralPreferredConnectionParameters(@NonNull Parcel in) {
         mMinimumConnectionInterval = in.readInt();
         mMaximumConnectionInterval = in.readInt();
         mSlaveLatency = in.readInt();
@@ -121,7 +126,7 @@ public class PeripheralPreferredConnectionParameters implements ByteArrayInterfa
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mMinimumConnectionInterval);
         dest.writeInt(mMaximumConnectionInterval);
         dest.writeInt(mSlaveLatency);
@@ -181,6 +186,7 @@ public class PeripheralPreferredConnectionParameters implements ByteArrayInterfa
      * {@inheritDoc}
      */
     @Override
+    @NonNull
     public byte[] getBytes() {
         byte[] data = new byte[8];
         ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);

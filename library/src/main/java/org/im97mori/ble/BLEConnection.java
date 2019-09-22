@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.os.HandlerThread;
 import android.os.Message;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import org.im97mori.ble.descriptor.ClientCharacteristicConfiguration;
 import org.im97mori.ble.task.AbstractBLETask;
 import org.im97mori.ble.task.ConnectTask;
@@ -57,7 +60,7 @@ public class BLEConnection extends BluetoothGattCallback {
         /**
          * @param bleConnection {@link BLEConnection}
          */
-        private DistributionBLECallback(BLEConnection bleConnection) {
+        private DistributionBLECallback(@NonNull BLEConnection bleConnection) {
             mBLEConnection = bleConnection;
         }
 
@@ -65,7 +68,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onBLEConnected(Integer taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+        public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
             synchronized (mBLEConnection) {
 
                 Integer callbackId;
@@ -96,7 +99,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onBLEConnectFailed(Integer taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+        public void onBLEConnectFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
             synchronized (mBLEConnection) {
 
                 Integer callbackId;
@@ -126,7 +129,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onBLEConnectTimeout(Integer taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+        public void onBLEConnectTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
             synchronized (mBLEConnection) {
 
                 Integer callbackId;
@@ -156,7 +159,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onBLEDisconnected(Integer taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+        public void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
             synchronized (mBLEConnection) {
 
                 Integer callbackId;
@@ -186,7 +189,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onCharacteristicReadSuccess(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+        public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
             synchronized (mBLEConnection) {
 
                 Integer callbackId;
@@ -217,7 +220,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onCharacteristicReadFailed(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+        public void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
             synchronized (mBLEConnection) {
 
                 Integer callbackId;
@@ -248,7 +251,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onCharacteristicReadTimeout(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+        public void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
             synchronized (mBLEConnection) {
 
                 Integer callbackId;
@@ -279,7 +282,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onCharacteristicWriteSuccess(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+        public void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
             synchronized (mBLEConnection) {
 
                 Integer callbackId;
@@ -310,7 +313,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onCharacteristicWriteFailed(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+        public void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
             synchronized (mBLEConnection) {
 
                 Integer callbackId;
@@ -341,7 +344,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onCharacteristicWriteTimeout(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+        public void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
             synchronized (mBLEConnection) {
 
                 Integer callbackId;
@@ -372,7 +375,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onDescriptorReadSuccess(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+        public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
             synchronized (mBLEConnection) {
 
                 Integer callbackId;
@@ -403,7 +406,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onDescriptorReadFailed(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+        public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
             synchronized (mBLEConnection) {
 
                 Integer callbackId;
@@ -434,7 +437,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onDescriptorReadTimeout(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+        public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
             synchronized (mBLEConnection) {
 
                 Integer callbackId;
@@ -465,7 +468,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onDescriptorWriteSuccess(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+        public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
             synchronized (mBLEConnection) {
 
                 Integer callbackId;
@@ -496,7 +499,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onDescriptorWriteFailed(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+        public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
             synchronized (mBLEConnection) {
 
                 Integer callbackId;
@@ -527,7 +530,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onDescriptorWriteTimeout(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+        public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
             synchronized (mBLEConnection) {
 
                 Integer callbackId;
@@ -558,7 +561,7 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onCharacteristicNotified(BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values) {
+        public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values) {
             synchronized (mBLEConnection) {
                 for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
                     try {
@@ -616,7 +619,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param context         {@link Context} instance
      * @param bluetoothDevice BLE device
      */
-    public BLEConnection(Context context, BluetoothDevice bluetoothDevice) {
+    public BLEConnection(@NonNull Context context, @NonNull BluetoothDevice bluetoothDevice) {
         mContext = context.getApplicationContext();
         mBluetoothDevice = bluetoothDevice;
         mDistributionBLECallback = new DistributionBLECallback(this);
@@ -627,7 +630,7 @@ public class BLEConnection extends BluetoothGattCallback {
      *
      * @param callback {@link BLECallback}
      */
-    public synchronized void attach(BLECallback callback) {
+    public synchronized void attach(@NonNull BLECallback callback) {
         mAttachedBLECallbackSet.add(callback);
     }
 
@@ -636,7 +639,7 @@ public class BLEConnection extends BluetoothGattCallback {
      *
      * @param callback {@link BLECallback}
      */
-    public synchronized void detach(BLECallback callback) {
+    public synchronized void detach(@NonNull BLECallback callback) {
         mAttachedBLECallbackSet.remove(callback);
     }
 
@@ -646,7 +649,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param callback target callback
      * @return {@code true}:attached, {@code false}:not attached
      */
-    public synchronized boolean isAttached(BLECallback callback) {
+    public synchronized boolean isAttached(@NonNull BLECallback callback) {
         return mAttachedBLECallbackSet.contains(callback);
     }
 
@@ -675,7 +678,7 @@ public class BLEConnection extends BluetoothGattCallback {
     /**
      * @see #connect(boolean, long, Bundle, BLECallback)
      */
-    public Integer connect(long timeout, Bundle argument) {
+    public Integer connect(long timeout, @Nullable Bundle argument) {
         return connect(false, timeout, argument, null);
     }
 
@@ -692,7 +695,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param bleCallback    {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
-    public synchronized Integer connect(boolean needMtuSetting, long timeout, Bundle argument, BLECallback bleCallback) {
+    public synchronized Integer connect(boolean needMtuSetting, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (mBluetoothGatt == null) {
             start();
@@ -723,7 +726,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
-    public synchronized Integer quit(Bundle argument, BLECallback bleCallback) {
+    public synchronized Integer quit(@Nullable Bundle argument, @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (mBluetoothGatt != null) {
             mTaskHandler.clearTask();
@@ -749,7 +752,7 @@ public class BLEConnection extends BluetoothGattCallback {
      *
      * @param taskId task id
      */
-    public synchronized void cancelTask(Integer taskId) {
+    public synchronized void cancelTask(@NonNull Integer taskId) {
         if (mTaskHandler != null) {
             mTaskHandler.cancelTask(taskId);
         }
@@ -761,7 +764,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param task {@link AbstractBLETask} instance
      * @see TaskHandler#addTask(AbstractBLETask)
      */
-    public synchronized void addTask(AbstractBLETask task) {
+    public synchronized void addTask(@NonNull AbstractBLETask task) {
         if (mTaskHandler != null) {
             mTaskHandler.addTask(task);
         }
@@ -774,7 +777,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param bluetoothGatt Connected {@link BluetoothGatt}
      * @param argument      callback argument
      */
-    public synchronized void onConnected(int taskId, BluetoothGatt bluetoothGatt, Bundle argument) {
+    public synchronized void onConnected(int taskId, @NonNull BluetoothGatt bluetoothGatt, @NonNull Bundle argument) {
         if (mBluetoothGatt == null) {
             mBluetoothGatt = bluetoothGatt;
 
@@ -789,7 +792,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param status   one of {@link BLEConnection#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}
      * @param argument callback argument
      */
-    public synchronized void onConnectFailed(int taskId, int status, Bundle argument) {
+    public synchronized void onConnectFailed(int taskId, int status, @NonNull Bundle argument) {
         if (mTaskHandler != null) {
             mTaskHandler.quit();
             mTaskHandler = null;
@@ -804,7 +807,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param taskId   task id
      * @param argument callback argument
      */
-    public synchronized void onConnectTimeout(int taskId, Bundle argument) {
+    public synchronized void onConnectTimeout(int taskId, @NonNull Bundle argument) {
         if (mTaskHandler != null) {
             mTaskHandler.quit();
             mTaskHandler = null;
@@ -821,7 +824,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param status        {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link BLEConstants.ErrorCodes#UNKNOWN}
      * @param argument      callback argument
      */
-    public synchronized void onDisconnected(int taskId, BluetoothGatt bluetoothGatt, int status, Bundle argument) {
+    public synchronized void onDisconnected(int taskId, @NonNull BluetoothGatt bluetoothGatt, int status, @NonNull Bundle argument) {
         if (bluetoothGatt == mBluetoothGatt) {
             mBluetoothGatt = null;
             if (mTaskHandler != null) {
@@ -840,13 +843,14 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param bluetoothGatt check target {@link BluetoothGatt}
      * @return {@code true}:newest one, {@code false}:not newest one
      */
-    public boolean isCurrentConnectionTarget(BluetoothGatt bluetoothGatt) {
+    public boolean isCurrentConnectionTarget(@NonNull BluetoothGatt bluetoothGatt) {
         return bluetoothGatt == mBluetoothGatt;
     }
 
     /**
      * @return {@link Context} instance
      */
+    @NonNull
     public Context getContext() {
         return mContext;
     }
@@ -854,6 +858,7 @@ public class BLEConnection extends BluetoothGattCallback {
     /**
      * @return BLE device {@link BluetoothDevice}
      */
+    @NonNull
     public BluetoothDevice getBluetoothDevice() {
         return mBluetoothDevice;
     }
@@ -861,6 +866,7 @@ public class BLEConnection extends BluetoothGattCallback {
     /**
      * @return {@link BLECallback} instance
      */
+    @NonNull
     public BLECallback getBLECallback() {
         return mDistributionBLECallback;
     }
@@ -886,7 +892,7 @@ public class BLEConnection extends BluetoothGattCallback {
 
                     // start discover services
                     if (!gatt.discoverServices()) {
-                        DisconnectTask task = new DisconnectTask(this, gatt, status, null);
+                        DisconnectTask task = new DisconnectTask(this, gatt, status, wrapArgument(null, null));
                         mTaskHandler.addTask(task);
                     }
                 }
@@ -896,7 +902,7 @@ public class BLEConnection extends BluetoothGattCallback {
                 // disconnected
 
                 // add disconnect task
-                DisconnectTask task = new DisconnectTask(this, gatt, status, null);
+                DisconnectTask task = new DisconnectTask(this, gatt, status, wrapArgument(null, null));
                 mTaskHandler.addTask(task);
             }
         }
@@ -918,7 +924,7 @@ public class BLEConnection extends BluetoothGattCallback {
                 // service discover failed
 
                 // add disconnect task
-                DisconnectTask task = new DisconnectTask(this, gatt, status, null);
+                DisconnectTask task = new DisconnectTask(this, gatt, status, wrapArgument(null, null));
                 mTaskHandler.addTask(task);
             }
         }
@@ -1095,7 +1101,7 @@ public class BLEConnection extends BluetoothGattCallback {
                 // service discover failed
 
                 // add disconnect task
-                DisconnectTask task = new DisconnectTask(this, gatt, status, null);
+                DisconnectTask task = new DisconnectTask(this, gatt, status, wrapArgument(null, null));
                 mTaskHandler.addTask(task);
             }
         }
@@ -1104,7 +1110,7 @@ public class BLEConnection extends BluetoothGattCallback {
     /**
      * @see #createReadCharacteristicTask(UUID, UUID, long, Bundle, BLECallback)
      */
-    public Integer createReadCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, long timeout) {
+    public Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout) {
         return createReadCharacteristicTask(serviceUUID, characteristicUUID, timeout, null, null);
     }
 
@@ -1118,7 +1124,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param bleCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
-    public synchronized Integer createReadCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument, BLECallback bleCallback) {
+    public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         BluetoothGatt bluetoothGatt = mBluetoothGatt;
         if (bluetoothGatt != null) {
@@ -1132,14 +1138,14 @@ public class BLEConnection extends BluetoothGattCallback {
     /**
      * @see #createWriteCharacteristicTask(UUID, UUID, ByteArrayInterface, int, long, Bundle, BLECallback)
      */
-    public Integer createWriteCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, ByteArrayInterface byteArrayInterface, long timeout) {
+    public Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout) {
         return createWriteCharacteristicTask(serviceUUID, characteristicUUID, byteArrayInterface, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, timeout, null, null);
     }
 
     /**
      * @see #createWriteCharacteristicTask(UUID, UUID, ByteArrayInterface, int, long, Bundle, BLECallback)
      */
-    public Integer createWriteCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, ByteArrayInterface byteArrayInterface, int writeType, long timeout) {
+    public Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout) {
         return createWriteCharacteristicTask(serviceUUID, characteristicUUID, byteArrayInterface, writeType, timeout, null, null);
     }
 
@@ -1155,7 +1161,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param bleCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
-    public synchronized Integer createWriteCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, ByteArrayInterface byteArrayInterface, int writeType, long timeout, Bundle argument, BLECallback bleCallback) {
+    public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (mBluetoothGatt != null) {
             WriteCharacteristicTask task = new WriteCharacteristicTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, byteArrayInterface, writeType, timeout, wrapArgument(argument, bleCallback));
@@ -1168,7 +1174,7 @@ public class BLEConnection extends BluetoothGattCallback {
     /**
      * @see #createReadDescriptorTask(UUID, UUID, UUID, long, Bundle, BLECallback)
      */
-    public Integer createReadDescriptorTask(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout) {
+    public Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout) {
         return createReadDescriptorTask(serviceUUID, characteristicUUID, descriptorUUID, timeout, null, null);
     }
 
@@ -1183,7 +1189,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param bleCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
-    public synchronized Integer createReadDescriptorTask(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument, BLECallback bleCallback) {
+    public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (mBluetoothGatt != null) {
             ReadDescriptorTask task = new ReadDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, descriptorUUID, timeout, wrapArgument(argument, bleCallback));
@@ -1196,7 +1202,7 @@ public class BLEConnection extends BluetoothGattCallback {
     /**
      * @see #createWriteDescriptorTask(UUID, UUID, UUID, ByteArrayInterface, long, Bundle, BLECallback)
      */
-    public Integer createWriteDescriptorTask(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, ByteArrayInterface byteArrayInterface, long timeout) {
+    public Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout) {
         return createWriteDescriptorTask(serviceUUID, characteristicUUID, descriptorUUID, byteArrayInterface, timeout, null, null);
     }
 
@@ -1212,7 +1218,7 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param bleCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
-    public synchronized Integer createWriteDescriptorTask(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, ByteArrayInterface byteArrayInterface, long timeout, Bundle argument, BLECallback bleCallback) {
+    public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (mBluetoothGatt != null) {
             WriteDescriptorTask task = new WriteDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, descriptorUUID, byteArrayInterface, timeout, wrapArgument(argument, bleCallback));
@@ -1229,7 +1235,8 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param bleCallback callback instance for get callback id
      * @return wrapped argument(original argument and callback id)
      */
-    public Bundle wrapArgument(Bundle argument, BLECallback bleCallback) {
+    @NonNull
+    public Bundle wrapArgument(@Nullable Bundle argument, @Nullable BLECallback bleCallback) {
         Bundle wrap = new Bundle();
         if (bleCallback != null) {
             wrap.putInt(KEY_CALLBACK_ID, bleCallback.hashCode());

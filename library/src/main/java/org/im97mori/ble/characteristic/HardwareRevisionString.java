@@ -4,6 +4,8 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
@@ -24,7 +26,8 @@ public class HardwareRevisionString implements ByteArrayInterface, Parcelable {
          * {@inheritDoc}
          */
         @Override
-        public HardwareRevisionString createFromParcel(Parcel in) {
+        @NonNull
+        public HardwareRevisionString createFromParcel(@NonNull Parcel in) {
             return new HardwareRevisionString(in);
         }
 
@@ -32,6 +35,7 @@ public class HardwareRevisionString implements ByteArrayInterface, Parcelable {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public HardwareRevisionString[] newArray(int size) {
             return new HardwareRevisionString[size];
         }
@@ -39,7 +43,8 @@ public class HardwareRevisionString implements ByteArrayInterface, Parcelable {
         /**
          * {@inheritDoc}
          */
-        public HardwareRevisionString createFromByteArray(byte[] values) {
+        @NonNull
+        public HardwareRevisionString createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(HARDWARE_REVISION_STRING_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new HardwareRevisionString(bluetoothGattCharacteristic);
@@ -57,7 +62,7 @@ public class HardwareRevisionString implements ByteArrayInterface, Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A27
      */
-    public HardwareRevisionString(BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public HardwareRevisionString(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         mHardwareRevision = bluetoothGattCharacteristic.getStringValue(0);
     }
 
@@ -66,7 +71,7 @@ public class HardwareRevisionString implements ByteArrayInterface, Parcelable {
      *
      * @param in Parcel
      */
-    private HardwareRevisionString(Parcel in) {
+    private HardwareRevisionString(@NonNull Parcel in) {
         mHardwareRevision = in.readString();
     }
 
@@ -82,13 +87,14 @@ public class HardwareRevisionString implements ByteArrayInterface, Parcelable {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(mHardwareRevision);
     }
 
     /**
      * @return Hardware revision
      */
+    @NonNull
     public String getHardwareRevision() {
         return mHardwareRevision;
     }
@@ -97,6 +103,7 @@ public class HardwareRevisionString implements ByteArrayInterface, Parcelable {
      * {@inheritDoc}
      */
     @Override
+    @NonNull
     public byte[] getBytes() {
         return mHardwareRevision.getBytes();
     }

@@ -3,6 +3,8 @@ package org.im97mori.ble.ad;
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 
+import androidx.annotation.NonNull;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
@@ -29,7 +31,8 @@ public class SlaveConnectionIntervalRange extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
-        public SlaveConnectionIntervalRange createFromParcel(Parcel in) {
+        @NonNull
+        public SlaveConnectionIntervalRange createFromParcel(@NonNull Parcel in) {
             return new SlaveConnectionIntervalRange(in);
         }
 
@@ -37,6 +40,7 @@ public class SlaveConnectionIntervalRange extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public SlaveConnectionIntervalRange[] newArray(int size) {
             return new SlaveConnectionIntervalRange[size];
         }
@@ -68,7 +72,7 @@ public class SlaveConnectionIntervalRange extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public SlaveConnectionIntervalRange(byte[] data, int offset, int length) {
+    public SlaveConnectionIntervalRange(@NonNull byte[] data, int offset, int length) {
         super(length);
 
         ByteBuffer bb = ByteBuffer.wrap(data, offset + 2, length - 1).order(ByteOrder.LITTLE_ENDIAN);
@@ -81,7 +85,7 @@ public class SlaveConnectionIntervalRange extends AbstractAdvertisingData {
      *
      * @param in Parcel
      */
-    private SlaveConnectionIntervalRange(Parcel in) {
+    private SlaveConnectionIntervalRange(@NonNull Parcel in) {
         super(in.readInt());
         mMinimumValue = in.readInt();
         mMaximumValue = in.readInt();
@@ -99,7 +103,7 @@ public class SlaveConnectionIntervalRange extends AbstractAdvertisingData {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mLength);
         dest.writeInt(mMinimumValue);
         dest.writeInt(mMaximumValue);

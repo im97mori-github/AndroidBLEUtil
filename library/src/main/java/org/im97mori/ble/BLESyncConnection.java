@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Pair;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import org.im97mori.ble.task.AbstractBLETask;
 import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.DisconnectTask;
@@ -36,7 +39,7 @@ import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
  * <p>
  * Synchronous
  */
-@SuppressWarnings({"WeakerAccess"})
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class BLESyncConnection implements BLECallback {
 
     /**
@@ -165,7 +168,7 @@ public class BLESyncConnection implements BLECallback {
          * @param values             response data
          * @param argument           callback argument
          */
-        private BLEResult(Integer taskId, int resultCode, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, byte[] values, Bundle argument) {
+        private BLEResult(@Nullable Integer taskId, int resultCode, @Nullable UUID serviceUUID, @Nullable UUID characteristicUUID, @Nullable UUID descriptorUUID, int status, @Nullable byte[] values, @Nullable Bundle argument) {
             mTaskId = taskId;
             mResultCode = resultCode;
             mServiceUUID = serviceUUID;
@@ -179,7 +182,7 @@ public class BLESyncConnection implements BLECallback {
         /**
          * @return task id
          */
-        public long getTaskId() {
+        public Integer getTaskId() {
             return mTaskId;
         }
 
@@ -193,6 +196,7 @@ public class BLESyncConnection implements BLECallback {
         /**
          * @return task target service {@link UUID}
          */
+        @Nullable
         public UUID getServiceUUID() {
             return mServiceUUID;
         }
@@ -200,6 +204,7 @@ public class BLESyncConnection implements BLECallback {
         /**
          * @return task target characteristic {@link UUID}
          */
+        @Nullable
         public UUID getCharacteristicUUID() {
             return mCharacteristicUUID;
         }
@@ -207,6 +212,7 @@ public class BLESyncConnection implements BLECallback {
         /**
          * @return task target descriptor {@link UUID}
          */
+        @Nullable
         public UUID getDescriptorUUID() {
             return mDescriptorUUID;
         }
@@ -221,6 +227,7 @@ public class BLESyncConnection implements BLECallback {
         /**
          * @return response data
          */
+        @Nullable
         public byte[] getValues() {
             return mValues;
         }
@@ -228,6 +235,7 @@ public class BLESyncConnection implements BLECallback {
         /**
          * @return callback argument
          */
+        @Nullable
         public Bundle getArgument() {
             return mArgument;
         }
@@ -278,7 +286,7 @@ public class BLESyncConnection implements BLECallback {
      * @param context         {@link Context} instance
      * @param bluetoothDevice BLE device
      */
-    public BLESyncConnection(Context context, BluetoothDevice bluetoothDevice) {
+    public BLESyncConnection(@NonNull Context context, @NonNull BluetoothDevice bluetoothDevice) {
         mContext = context;
         mBluetoothDevice = bluetoothDevice;
     }
@@ -309,9 +317,9 @@ public class BLESyncConnection implements BLECallback {
      * @param isBroadcast {@code true}:task result is communicated to all attached callbacks, {@code false}:the task result is communicated to the specified callback
      * @return {@code null}:BLE not connected, {@link BLEResult}:connected
      */
-    public synchronized BLEResult connect(long taskTimeout, long bleTimeout, Bundle argument, boolean isBroadcast) {
+    public synchronized BLEResult connect(long taskTimeout, long bleTimeout, @Nullable Bundle argument, boolean isBroadcast) {
         BLEResult bleResult = null;
-        if (mBLEConnection == null && mContext != null) {
+        if (mBLEConnection == null && mBluetoothDevice != null && mContext != null) {
             mResultMap.clear();
 
             BLEConnection bleConnection = BLEConnectionHolder.getInstance(mBluetoothDevice);
@@ -350,7 +358,7 @@ public class BLESyncConnection implements BLECallback {
      * @param isBroadcast {@code true}:task result is communicated to all attached callbacks, {@code false}:the task result is communicated to the specified callback
      * @return {@code null}:BLE not connected, {@link BLEResult}:connected
      */
-    public synchronized BLEResult quit(Bundle argument, boolean isBroadcast) {
+    public synchronized BLEResult quit(@Nullable Bundle argument, boolean isBroadcast) {
         BLEResult bleResult = null;
         if (mBLEConnection != null) {
             bleResult = createTaskSynchronous(mBLEConnection, DisconnectTask.class, null, null, null, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, DisconnectTask.PROGRESS_TIMEOUT + 1, DisconnectTask.PROGRESS_TIMEOUT, argument, isBroadcast);
@@ -371,7 +379,7 @@ public class BLESyncConnection implements BLECallback {
      * @param isBroadcast        {@code true}:task result is communicated to all attached callbacks, {@code false}:the task result is communicated to the specified callback
      * @return {@code null}:BLE not connected, {@link BLEResult}:connected
      */
-    public BLEResult createReadCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, long taskTimeout, long bleTimeout, Bundle argument, boolean isBroadcast) {
+    public BLEResult createReadCharacteristicTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long taskTimeout, long bleTimeout, @Nullable Bundle argument, boolean isBroadcast) {
         BLEResult bleResult = null;
         BLEConnection bleConnection = mBLEConnection;
         if (bleConnection != null) {
@@ -385,9 +393,9 @@ public class BLESyncConnection implements BLECallback {
      *
      * @see #createReadCharacteristicTask(UUID, UUID, long, long, Bundle, boolean)
      */
-    public static BLEResult createReadCharacteristicTask(BLEConnection bleConnection, UUID serviceUUID, UUID characteristicUUID, long taskTimeout, long bleTimeout, Bundle argument, boolean isBroadcast) {
+    public static BLEResult createReadCharacteristicTask(@NonNull BLEConnection bleConnection, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long taskTimeout, long bleTimeout, @Nullable Bundle argument, boolean isBroadcast) {
         BLEResult bleResult = null;
-        if (bleConnection != null) {
+        if (bleConnection.isConnected()) {
             BLESyncConnection bleSyncConnection = new BLESyncConnection();
             bleSyncConnection.mBLEConnection = bleConnection;
             bleResult = bleSyncConnection.createReadCharacteristicTask(serviceUUID, characteristicUUID, taskTimeout, bleTimeout, argument, isBroadcast);
@@ -408,7 +416,7 @@ public class BLESyncConnection implements BLECallback {
      * @param isBroadcast        {@code true}:task result is communicated to all attached callbacks, {@code false}:the task result is communicated to the specified callback
      * @return {@code null}:BLE not connected, {@link BLEResult}:connected
      */
-    public BLEResult createWriteCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, ByteArrayInterface byteArrayInterface, int writeType, long taskTimeout, long bleTimeout, Bundle argument, boolean isBroadcast) {
+    public BLEResult createWriteCharacteristicTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long taskTimeout, long bleTimeout, @Nullable Bundle argument, boolean isBroadcast) {
         BLEResult bleResult = null;
         BLEConnection bleConnection = mBLEConnection;
         if (bleConnection != null) {
@@ -422,9 +430,9 @@ public class BLESyncConnection implements BLECallback {
      *
      * @see #createWriteCharacteristicTask(UUID, UUID, ByteArrayInterface, int, long, long, Bundle, boolean)
      */
-    public static BLEResult createWriteCharacteristicTask(BLEConnection bleConnection, UUID serviceUUID, UUID characteristicUUID, ByteArrayInterface byteArrayInterface, int writeType, long taskTimeout, long bleTimeout, Bundle argument, boolean isBroadcast) {
+    public static BLEResult createWriteCharacteristicTask(@NonNull BLEConnection bleConnection, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long taskTimeout, long bleTimeout, @Nullable Bundle argument, boolean isBroadcast) {
         BLEResult bleResult = null;
-        if (bleConnection != null && bleConnection.isConnected()) {
+        if (bleConnection.isConnected()) {
             BLESyncConnection bleSyncConnection = new BLESyncConnection();
             bleSyncConnection.mBLEConnection = bleConnection;
             bleResult = bleSyncConnection.createWriteCharacteristicTask(serviceUUID, characteristicUUID, byteArrayInterface, writeType, taskTimeout, bleTimeout, argument, isBroadcast);
@@ -444,7 +452,7 @@ public class BLESyncConnection implements BLECallback {
      * @param isBroadcast        {@code true}:task result is communicated to all attached callbacks, {@code false}:the task result is communicated to the specified callback
      * @return {@code null}:BLE not connected, {@link BLEResult}:connected
      */
-    public BLEResult createReadDescriptorTask(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long taskTimeout, long bleTimeout, Bundle argument, boolean isBroadcast) {
+    public BLEResult createReadDescriptorTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long taskTimeout, long bleTimeout, @Nullable Bundle argument, boolean isBroadcast) {
         BLEResult bleResult = null;
         BLEConnection bleConnection = mBLEConnection;
         if (bleConnection != null) {
@@ -458,9 +466,9 @@ public class BLESyncConnection implements BLECallback {
      *
      * @see #createReadDescriptorTask(UUID, UUID, UUID, long, long, Bundle, boolean)
      */
-    public static BLEResult createReadDescriptorTask(BLEConnection bleConnection, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long taskTimeout, long bleTimeout, Bundle argument, boolean isBroadcast) {
+    public static BLEResult createReadDescriptorTask(@NonNull BLEConnection bleConnection, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long taskTimeout, long bleTimeout, @Nullable Bundle argument, boolean isBroadcast) {
         BLEResult bleResult = null;
-        if (bleConnection != null && bleConnection.isConnected()) {
+        if (bleConnection.isConnected()) {
             BLESyncConnection bleSyncConnection = new BLESyncConnection();
             bleSyncConnection.mBLEConnection = bleConnection;
             bleResult = bleSyncConnection.createReadDescriptorTask(serviceUUID, characteristicUUID, descriptorUUID, taskTimeout, bleTimeout, argument, isBroadcast);
@@ -481,7 +489,7 @@ public class BLESyncConnection implements BLECallback {
      * @param isBroadcast        {@code true}:task result is communicated to all attached callbacks, {@code false}:the task result is communicated to the specified callback
      * @return {@code null}:BLE not connected, {@link BLEResult}:connected
      */
-    public BLEResult createWriteDescriptorTask(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, ByteArrayInterface byteArrayInterface, long taskTimeout, long bleTimeout, Bundle argument, boolean isBroadcast) {
+    public BLEResult createWriteDescriptorTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long taskTimeout, long bleTimeout, @Nullable Bundle argument, boolean isBroadcast) {
         BLEResult bleResult = null;
         BLEConnection bleConnection = mBLEConnection;
         if (bleConnection != null) {
@@ -495,9 +503,9 @@ public class BLESyncConnection implements BLECallback {
      *
      * @see #createWriteDescriptorTask(UUID, UUID, UUID, ByteArrayInterface, long, long, Bundle, boolean)
      */
-    public static BLEResult createWriteDescriptorTask(BLEConnection bleConnection, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, ByteArrayInterface byteArrayInterface, long taskTimeout, long bleTimeout, Bundle argument, boolean isBroadcast) {
+    public static BLEResult createWriteDescriptorTask(@NonNull BLEConnection bleConnection, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long taskTimeout, long bleTimeout, @Nullable Bundle argument, boolean isBroadcast) {
         BLEResult bleResult = null;
-        if (bleConnection != null && bleConnection.isConnected()) {
+        if (bleConnection.isConnected()) {
             BLESyncConnection bleSyncConnection = new BLESyncConnection();
             bleSyncConnection.mBLEConnection = bleConnection;
             bleResult = bleSyncConnection.createWriteDescriptorTask(serviceUUID, characteristicUUID, descriptorUUID, byteArrayInterface, taskTimeout, bleTimeout, argument, isBroadcast);
@@ -513,7 +521,7 @@ public class BLESyncConnection implements BLECallback {
      * @param duration           listen duration(millis)
      * @return notification or indication value list
      */
-    public List<byte[]> listen(UUID serviceUUID, UUID characteristicUUID, long duration) {
+    public List<byte[]> listen(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long duration) {
         List<byte[]> listener = new LinkedList<>();
 
         try {
@@ -554,9 +562,9 @@ public class BLESyncConnection implements BLECallback {
      *
      * @see #listen(UUID, UUID, long)
      */
-    public static List<byte[]> listen(BLEConnection bleConnection, UUID serviceUUID, UUID characteristicUUID, long duration) {
+    public static List<byte[]> listen(@NonNull BLEConnection bleConnection, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long duration) {
         List<byte[]> listener = null;
-        if (bleConnection != null && bleConnection.isConnected()) {
+        if (bleConnection.isConnected()) {
             BLESyncConnection bleSyncConnection = new BLESyncConnection();
             bleSyncConnection.mBLEConnection = bleConnection;
             listener = bleSyncConnection.listen(serviceUUID, characteristicUUID, duration);
@@ -568,7 +576,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onBLEConnected(Integer taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+    public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_SUCCESS, null, null, null, BluetoothGatt.GATT_SUCCESS, null, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -576,7 +584,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onBLEConnectFailed(Integer taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+    public void onBLEConnectFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_FAILED, null, null, null, status, null, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -584,7 +592,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onBLEConnectTimeout(Integer taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+    public void onBLEConnectTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_TIMEOUT, null, null, null, BluetoothGatt.GATT_SUCCESS, null, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -592,7 +600,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onBLEDisconnected(Integer taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+    public void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_SUCCESS, null, null, null, BluetoothGatt.GATT_SUCCESS, null, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -600,7 +608,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadSuccess(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+    public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_SUCCESS, serviceUUID, characteristicUUID, null, BluetoothGatt.GATT_SUCCESS, values, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -608,7 +616,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadFailed(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+    public void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_FAILED, serviceUUID, characteristicUUID, null, status, null, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -616,7 +624,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadTimeout(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+    public void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_TIMEOUT, serviceUUID, characteristicUUID, null, BluetoothGatt.GATT_SUCCESS, null, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -624,7 +632,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicWriteSuccess(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+    public void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_SUCCESS, serviceUUID, characteristicUUID, null, BluetoothGatt.GATT_SUCCESS, values, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -632,7 +640,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicWriteFailed(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+    public void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_FAILED, serviceUUID, characteristicUUID, null, status, null, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -640,7 +648,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicWriteTimeout(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+    public void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_TIMEOUT, serviceUUID, characteristicUUID, null, BluetoothGatt.GATT_SUCCESS, null, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -648,7 +656,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorReadSuccess(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+    public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_SUCCESS, serviceUUID, characteristicUUID, descriptorUUID, BluetoothGatt.GATT_SUCCESS, values, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -656,7 +664,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorReadFailed(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+    public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_FAILED, serviceUUID, characteristicUUID, descriptorUUID, status, null, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -664,7 +672,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorReadTimeout(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+    public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_TIMEOUT, serviceUUID, characteristicUUID, descriptorUUID, BluetoothGatt.GATT_SUCCESS, null, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -672,7 +680,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorWriteSuccess(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+    public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_SUCCESS, serviceUUID, characteristicUUID, descriptorUUID, BluetoothGatt.GATT_SUCCESS, values, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -680,7 +688,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorWriteFailed(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+    public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_FAILED, serviceUUID, characteristicUUID, descriptorUUID, status, null, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -688,7 +696,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorWriteTimeout(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+    public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_TIMEOUT, serviceUUID, characteristicUUID, descriptorUUID, BluetoothGatt.GATT_SUCCESS, null, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -696,7 +704,7 @@ public class BLESyncConnection implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicNotified(BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values) {
+    public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values) {
         synchronized (mNotificationListenerMap) {
             List<List<byte[]>> list = mNotificationListenerMap.get(Pair.create(serviceUUID, characteristicUUID));
             //noinspection ConstantConditions
@@ -723,7 +731,7 @@ public class BLESyncConnection implements BLECallback {
      * @param isBroadcast        {@code true}:task result is communicated to all attached callbacks, {@code false}:the task result is communicated to the specified callback
      * @return BLE result
      */
-    private BLEResult createTaskSynchronous(BLEConnection bleConnection, Class<? extends AbstractBLETask> taskClass, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, ByteArrayInterface byteArrayInterface, int writeType, long taskTimeout, long bleTimeout, Bundle argument, boolean isBroadcast) {
+    private BLEResult createTaskSynchronous(@NonNull BLEConnection bleConnection, @NonNull Class<? extends AbstractBLETask> taskClass, @Nullable UUID serviceUUID, @Nullable UUID characteristicUUID, @Nullable UUID descriptorUUID, @Nullable ByteArrayInterface byteArrayInterface, int writeType, long taskTimeout, long bleTimeout, @Nullable Bundle argument, boolean isBroadcast) {
         taskTimeout = taskTimeout < bleTimeout ? bleTimeout : taskTimeout;
         long end = taskTimeout + SystemClock.elapsedRealtime();
 
@@ -746,13 +754,13 @@ public class BLESyncConnection implements BLECallback {
                 taskId = bleConnection.connect(false, bleTimeout, wrappedArgument, isBroadcast ? null : this);
             } else if (DisconnectTask.class.equals(taskClass)) {
                 taskId = bleConnection.quit(wrappedArgument, isBroadcast ? null : this);
-            } else if (ReadCharacteristicTask.class.equals(taskClass)) {
+            } else if (ReadCharacteristicTask.class.equals(taskClass) && serviceUUID != null && characteristicUUID != null) {
                 taskId = bleConnection.createReadCharacteristicTask(serviceUUID, characteristicUUID, bleTimeout, wrappedArgument, isBroadcast ? null : this);
-            } else if (WriteCharacteristicTask.class.equals(taskClass)) {
+            } else if (WriteCharacteristicTask.class.equals(taskClass) && serviceUUID != null && characteristicUUID != null && byteArrayInterface != null) {
                 taskId = bleConnection.createWriteCharacteristicTask(serviceUUID, characteristicUUID, byteArrayInterface, writeType, bleTimeout, wrappedArgument, isBroadcast ? null : this);
-            } else if (ReadDescriptorTask.class.equals(taskClass)) {
+            } else if (ReadDescriptorTask.class.equals(taskClass) && serviceUUID != null && characteristicUUID != null && descriptorUUID != null) {
                 taskId = bleConnection.createReadDescriptorTask(serviceUUID, characteristicUUID, descriptorUUID, bleTimeout, wrappedArgument, isBroadcast ? null : this);
-            } else if (WriteDescriptorTask.class.equals(taskClass)) {
+            } else if (WriteDescriptorTask.class.equals(taskClass) && serviceUUID != null && characteristicUUID != null && descriptorUUID != null && byteArrayInterface != null) {
                 taskId = bleConnection.createWriteDescriptorTask(serviceUUID, characteristicUUID, descriptorUUID, byteArrayInterface, bleTimeout, wrappedArgument, isBroadcast ? null : this);
             } else {
                 taskId = null;
@@ -802,7 +810,7 @@ public class BLESyncConnection implements BLECallback {
      * @param argument  {@link #createTaskSynchronous(BLEConnection, Class, UUID, UUID, UUID, ByteArrayInterface, int, long, long, Bundle, boolean)} 10th argument
      * @param bleResult ble request result
      */
-    private void unlock(Bundle argument, BLEResult bleResult) {
+    private void unlock(@NonNull Bundle argument, @NonNull BLEResult bleResult) {
         long key = argument.getLong(KEY_RESULT, 0);
         CountDownLatch countDownLatch = mLockMap.get(key);
         if (countDownLatch != null) {

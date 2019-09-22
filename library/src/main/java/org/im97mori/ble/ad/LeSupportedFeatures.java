@@ -5,6 +5,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Pair;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -59,7 +61,8 @@ public class LeSupportedFeatures extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
-        public LeSupportedFeatures createFromParcel(Parcel in) {
+        @NonNull
+        public LeSupportedFeatures createFromParcel(@NonNull Parcel in) {
             return new LeSupportedFeatures(in);
         }
 
@@ -67,6 +70,7 @@ public class LeSupportedFeatures extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public LeSupportedFeatures[] newArray(int size) {
             return new LeSupportedFeatures[size];
         }
@@ -85,7 +89,7 @@ public class LeSupportedFeatures extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public LeSupportedFeatures(byte[] data, int offset, int length) {
+    public LeSupportedFeatures(@NonNull byte[] data, int offset, int length) {
         super(length);
 
         List<Integer> leSupportedFeaturesList = new ArrayList<>();
@@ -105,7 +109,7 @@ public class LeSupportedFeatures extends AbstractAdvertisingData {
 
         List<Integer> list = new ArrayList<>();
         in.readList(list, this.getClass().getClassLoader());
-        mLeSupportedFeaturesList = Collections.synchronizedList(list);
+        mLeSupportedFeaturesList = Collections.synchronizedList(Collections.unmodifiableList(list));
     }
 
     /**
@@ -120,7 +124,7 @@ public class LeSupportedFeatures extends AbstractAdvertisingData {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mLength);
         dest.writeList(mLeSupportedFeaturesList);
     }
@@ -136,6 +140,7 @@ public class LeSupportedFeatures extends AbstractAdvertisingData {
     /**
      * @return LE Supported Features list
      */
+    @NonNull
     public List<Integer> getLeSupportedFeaturesList() {
         return mLeSupportedFeaturesList;
     }
@@ -398,7 +403,7 @@ public class LeSupportedFeatures extends AbstractAdvertisingData {
      * @param target one of {@link AdvertisingDataConstants.LeSupportedFeatures}
      * @return {@code true}:target bit is 1, {@code false}:target bit is 0
      */
-    private boolean check(Pair<Integer, Integer> target) {
+    private boolean check(@NonNull Pair<Integer, Integer> target) {
         boolean result;
         int index = target.first;
         if (mLeSupportedFeaturesList.size() > target.first) {

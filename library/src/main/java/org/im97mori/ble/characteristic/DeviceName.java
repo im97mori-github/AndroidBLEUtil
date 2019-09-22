@@ -4,6 +4,8 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
@@ -24,7 +26,8 @@ public class DeviceName implements ByteArrayInterface, Parcelable {
          * {@inheritDoc}
          */
         @Override
-        public DeviceName createFromParcel(Parcel in) {
+        @NonNull
+        public DeviceName createFromParcel(@NonNull Parcel in) {
             return new DeviceName(in);
         }
 
@@ -32,6 +35,7 @@ public class DeviceName implements ByteArrayInterface, Parcelable {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public DeviceName[] newArray(int size) {
             return new DeviceName[size];
         }
@@ -39,7 +43,8 @@ public class DeviceName implements ByteArrayInterface, Parcelable {
         /**
          * {@inheritDoc}
          */
-        public DeviceName createFromByteArray(byte[] values) {
+        @NonNull
+        public DeviceName createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DEVICE_NAME_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new DeviceName(bluetoothGattCharacteristic);
@@ -57,7 +62,7 @@ public class DeviceName implements ByteArrayInterface, Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A00
      */
-    public DeviceName(BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public DeviceName(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         mName = bluetoothGattCharacteristic.getStringValue(0);
     }
 
@@ -66,7 +71,7 @@ public class DeviceName implements ByteArrayInterface, Parcelable {
      *
      * @param in Parcel
      */
-    private DeviceName(Parcel in) {
+    private DeviceName(@NonNull Parcel in) {
         mName = in.readString();
     }
 
@@ -82,13 +87,14 @@ public class DeviceName implements ByteArrayInterface, Parcelable {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(mName);
     }
 
     /**
      * @return Name
      */
+    @NonNull
     public String getName() {
         return mName;
     }
@@ -97,6 +103,7 @@ public class DeviceName implements ByteArrayInterface, Parcelable {
      * {@inheritDoc}
      */
     @Override
+    @NonNull
     public byte[] getBytes() {
         return mName.getBytes();
     }

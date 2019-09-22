@@ -4,6 +4,8 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
@@ -24,7 +26,8 @@ public class ModelNumberString implements ByteArrayInterface, Parcelable {
          * {@inheritDoc}
          */
         @Override
-        public ModelNumberString createFromParcel(Parcel in) {
+        @NonNull
+        public ModelNumberString createFromParcel(@NonNull Parcel in) {
             return new ModelNumberString(in);
         }
 
@@ -32,6 +35,7 @@ public class ModelNumberString implements ByteArrayInterface, Parcelable {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public ModelNumberString[] newArray(int size) {
             return new ModelNumberString[size];
         }
@@ -39,7 +43,8 @@ public class ModelNumberString implements ByteArrayInterface, Parcelable {
         /**
          * {@inheritDoc}
          */
-        public ModelNumberString createFromByteArray(byte[] values) {
+        @NonNull
+        public ModelNumberString createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(MODEL_NUMBER_STRING_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new ModelNumberString(bluetoothGattCharacteristic);
@@ -57,7 +62,7 @@ public class ModelNumberString implements ByteArrayInterface, Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A24
      */
-    public ModelNumberString(BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public ModelNumberString(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         mModelNumber = bluetoothGattCharacteristic.getStringValue(0);
     }
 
@@ -66,7 +71,7 @@ public class ModelNumberString implements ByteArrayInterface, Parcelable {
      *
      * @param in Parcel
      */
-    private ModelNumberString(Parcel in) {
+    private ModelNumberString(@NonNull Parcel in) {
         mModelNumber = in.readString();
     }
 
@@ -82,13 +87,14 @@ public class ModelNumberString implements ByteArrayInterface, Parcelable {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(mModelNumber);
     }
 
     /**
      * @return Model number
      */
+    @NonNull
     public String getModelNumber() {
         return mModelNumber;
     }
@@ -97,6 +103,7 @@ public class ModelNumberString implements ByteArrayInterface, Parcelable {
      * {@inheritDoc}
      */
     @Override
+    @NonNull
     public byte[] getBytes() {
         return mModelNumber.getBytes();
     }

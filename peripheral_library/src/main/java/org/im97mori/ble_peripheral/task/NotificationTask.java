@@ -7,10 +7,13 @@ import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
 import android.os.Message;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.task.AbstractBLETask;
 import org.im97mori.ble_peripheral.BLEPeripheralLogUtils;
 import org.im97mori.ble_peripheral.BLEServerCallback;
-import org.im97mori.ble.ByteArrayInterface;
 
 import java.util.UUID;
 
@@ -75,7 +78,7 @@ public class NotificationTask extends AbstractBLETask {
      * @param isConfirm           {@code true}:indication, {@code false}:notification
      * @param argument            callback argument
      */
-    public NotificationTask(BLEServerCallback bleServerCallback, BluetoothGattServer bluetoothGattServer, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, ByteArrayInterface byteArrayInterface, boolean isConfirm, Bundle argument) {
+    public NotificationTask(@NonNull BLEServerCallback bleServerCallback, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull ByteArrayInterface byteArrayInterface, boolean isConfirm, @Nullable Bundle argument) {
         mBLEServerCallback = bleServerCallback;
         mBluetoothGattServer = bluetoothGattServer;
         mBluetoothDevice = bluetoothDevice;
@@ -103,7 +106,7 @@ public class NotificationTask extends AbstractBLETask {
      * {@inheritDoc}
      */
     @Override
-    public boolean doProcess(Message message) {
+    public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         int nextProgress = bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS);
 

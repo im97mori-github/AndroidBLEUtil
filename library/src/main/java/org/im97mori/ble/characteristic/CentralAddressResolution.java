@@ -4,6 +4,8 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
@@ -32,7 +34,8 @@ public class CentralAddressResolution implements ByteArrayInterface, Parcelable 
          * {@inheritDoc}
          */
         @Override
-        public CentralAddressResolution createFromParcel(Parcel in) {
+        @NonNull
+        public CentralAddressResolution createFromParcel(@NonNull Parcel in) {
             return new CentralAddressResolution(in);
         }
 
@@ -40,6 +43,7 @@ public class CentralAddressResolution implements ByteArrayInterface, Parcelable 
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public CentralAddressResolution[] newArray(int size) {
             return new CentralAddressResolution[size];
         }
@@ -47,7 +51,8 @@ public class CentralAddressResolution implements ByteArrayInterface, Parcelable 
         /**
          * {@inheritDoc}
          */
-        public CentralAddressResolution createFromByteArray(byte[] values) {
+        @NonNull
+        public CentralAddressResolution createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new CentralAddressResolution(bluetoothGattCharacteristic);
@@ -65,7 +70,7 @@ public class CentralAddressResolution implements ByteArrayInterface, Parcelable 
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AA6
      */
-    public CentralAddressResolution(BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public CentralAddressResolution(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         mCentralAddressResolutionSupport = bluetoothGattCharacteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT8, 0);
     }
 
@@ -90,7 +95,7 @@ public class CentralAddressResolution implements ByteArrayInterface, Parcelable 
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mCentralAddressResolutionSupport);
     }
 
@@ -105,6 +110,7 @@ public class CentralAddressResolution implements ByteArrayInterface, Parcelable 
      * {@inheritDoc}
      */
     @Override
+    @NonNull
     public byte[] getBytes() {
         byte[] data = new byte[1];
         ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);

@@ -3,6 +3,8 @@ package org.im97mori.ble.ad;
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 
+import androidx.annotation.NonNull;
+
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SHORTENED_LOCAL_NAME;
 
 /**
@@ -24,7 +26,8 @@ public class ShortenedLocalName extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
-        public ShortenedLocalName createFromParcel(Parcel in) {
+        @NonNull
+        public ShortenedLocalName createFromParcel(@NonNull Parcel in) {
             return new ShortenedLocalName(in);
         }
 
@@ -32,6 +35,7 @@ public class ShortenedLocalName extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public ShortenedLocalName[] newArray(int size) {
             return new ShortenedLocalName[size];
         }
@@ -50,7 +54,7 @@ public class ShortenedLocalName extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public ShortenedLocalName(byte[] data, int offset, int length) {
+    public ShortenedLocalName(@NonNull byte[] data, int offset, int length) {
         super(length);
         mShortenedLocalName = new String(data, offset + 2, length - 1);
     }
@@ -60,7 +64,7 @@ public class ShortenedLocalName extends AbstractAdvertisingData {
      *
      * @param in Parcel
      */
-    private ShortenedLocalName(Parcel in) {
+    private ShortenedLocalName(@NonNull Parcel in) {
         super(in.readInt());
         mShortenedLocalName = in.readString();
     }
@@ -77,7 +81,7 @@ public class ShortenedLocalName extends AbstractAdvertisingData {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mLength);
         dest.writeString(mShortenedLocalName);
     }
@@ -93,6 +97,7 @@ public class ShortenedLocalName extends AbstractAdvertisingData {
     /**
      * @return Shortened Local Name
      */
+    @NonNull
     public String getShortenedLocalName() {
         return mShortenedLocalName;
     }

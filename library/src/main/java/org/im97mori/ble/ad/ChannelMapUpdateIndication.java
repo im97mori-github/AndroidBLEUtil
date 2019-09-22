@@ -3,6 +3,8 @@ package org.im97mori.ble.ad;
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,7 +32,8 @@ public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
-        public ChannelMapUpdateIndication createFromParcel(Parcel in) {
+        @NonNull
+        public ChannelMapUpdateIndication createFromParcel(@NonNull Parcel in) {
             return new ChannelMapUpdateIndication(in);
         }
 
@@ -38,6 +41,7 @@ public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public ChannelMapUpdateIndication[] newArray(int size) {
             return new ChannelMapUpdateIndication[size];
         }
@@ -72,7 +76,7 @@ public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public ChannelMapUpdateIndication(byte[] data, int offset, int length) {
+    public ChannelMapUpdateIndication(@NonNull byte[] data, int offset, int length) {
         super(length);
 
         List<Integer> chmList = new ArrayList<>();
@@ -113,20 +117,20 @@ public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
      *
      * @param in Parcel
      */
-    private ChannelMapUpdateIndication(Parcel in) {
+    private ChannelMapUpdateIndication(@NonNull Parcel in) {
         super(in.readInt());
 
         List<Integer> list = new ArrayList<>();
         in.readList(list, this.getClass().getClassLoader());
-        mChmList = Collections.synchronizedList(list);
+        mChmList = Collections.synchronizedList(Collections.unmodifiableList(list));
 
         list = new ArrayList<>();
         in.readList(list, this.getClass().getClassLoader());
-        mUnusedChannelList = Collections.synchronizedList(list);
+        mUnusedChannelList = Collections.synchronizedList(Collections.unmodifiableList(list));
 
         list = new ArrayList<>();
         in.readList(list, this.getClass().getClassLoader());
-        mUnusedChannelListRfCenterFrequencyList = Collections.synchronizedList(list);
+        mUnusedChannelListRfCenterFrequencyList = Collections.synchronizedList(Collections.unmodifiableList(list));
 
         mInstant = in.readInt();
     }
@@ -143,7 +147,7 @@ public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mLength);
         dest.writeList(mChmList);
         dest.writeList(mUnusedChannelList);
@@ -162,6 +166,7 @@ public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
     /**
      * @return ChM list
      */
+    @NonNull
     public List<Integer> getChmList() {
         return mChmList;
     }
@@ -169,6 +174,7 @@ public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
     /**
      * @return unused PHY Channel list
      */
+    @NonNull
     public List<Integer> getUnusedPhyChannelList() {
         return mUnusedChannelList;
     }
@@ -176,6 +182,7 @@ public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
     /**
      * @return unused RF Center Frequency(MHz)
      */
+    @NonNull
     public List<Integer> getUnusedPhyChannelRfCenterFrequencyList() {
         return mUnusedChannelListRfCenterFrequencyList;
     }

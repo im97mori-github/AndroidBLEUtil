@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Message;
 import android.text.format.DateUtils;
 
+import androidx.annotation.NonNull;
+
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLELogUtils;
@@ -33,7 +35,7 @@ public class ConnectTask extends AbstractBLETask {
      * @param obj instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
      * @return create service discovered {@link Message} instance
      */
-    public static Message createServiceDiscovered(Object obj) {
+    public static Message createServiceDiscovered(@NonNull Object obj) {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_SERVICE_DISCOVERD);
         Message message = new Message();
@@ -48,7 +50,7 @@ public class ConnectTask extends AbstractBLETask {
      * @param obj instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
      * @return create connect finished {@link Message} instance
      */
-    public static Message createConnectFinished(Object obj) {
+    public static Message createConnectFinished(@NonNull Object obj) {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_FINISHED);
         Message message = new Message();
@@ -95,7 +97,7 @@ public class ConnectTask extends AbstractBLETask {
      * @param timeout        timeout(millis)
      * @param argument       callback argument
      */
-    public ConnectTask(BLEConnection bleConnection, TaskHandler taskHandler, boolean needMtuSetting, long timeout, Bundle argument) {
+    public ConnectTask(@NonNull BLEConnection bleConnection, @NonNull TaskHandler taskHandler, boolean needMtuSetting, long timeout, @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
         mTaskHandler = taskHandler;
         mTimeout = timeout;
@@ -120,7 +122,7 @@ public class ConnectTask extends AbstractBLETask {
      * {@inheritDoc}
      */
     @Override
-    public boolean doProcess(Message message) {
+    public boolean doProcess(@NonNull Message message) {
         // if connected, finish task
         if (mBLEConnection.isConnected()) {
             mTaskHandler.removeCallbacksAndMessages(this);

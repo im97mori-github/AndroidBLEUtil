@@ -2,6 +2,9 @@ package org.im97mori.ble;
 
 import android.bluetooth.BluetoothDevice;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -22,7 +25,8 @@ public class BLEConnectionHolder {
      * @param bluetoothDevice target BLE device
      * @return {@link BLEConnection} instance
      */
-    public static synchronized <T extends BLEConnection> T getInstance(BluetoothDevice bluetoothDevice) {
+    @Nullable
+    public static synchronized <T extends BLEConnection> T getInstance(@NonNull BluetoothDevice bluetoothDevice) {
         return (T) CONNECTION_MAP.get(bluetoothDevice);
     }
 
@@ -33,7 +37,7 @@ public class BLEConnectionHolder {
      * @param force         {@code true}:overwrite current {@link BLEConnection} instance, {@code false}:dont overwrite
      * @return {@code true}:added, {@code false}:not added
      */
-    public static synchronized boolean addInstance(BLEConnection bleConnection, boolean force) {
+    public static synchronized boolean addInstance(@NonNull BLEConnection bleConnection, boolean force) {
         BluetoothDevice bluetoothDevice = bleConnection.getBluetoothDevice();
         boolean result = false;
         if (!CONNECTION_MAP.containsKey(bluetoothDevice) || force) {
@@ -48,7 +52,8 @@ public class BLEConnectionHolder {
      *
      * @param bleConnection removed {@link BLEConnection} instance, or {@code null} when not removed
      */
-    public static synchronized <T extends BLEConnection> T removeInstance(BLEConnection bleConnection) {
+    @Nullable
+    public static synchronized <T extends BLEConnection> T removeInstance(@NonNull BLEConnection bleConnection) {
         BluetoothDevice bluetoothDevice = bleConnection.getBluetoothDevice();
         return (T) CONNECTION_MAP.remove(bluetoothDevice);
     }

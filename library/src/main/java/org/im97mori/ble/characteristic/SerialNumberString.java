@@ -4,6 +4,8 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
@@ -24,7 +26,8 @@ public class SerialNumberString implements ByteArrayInterface, Parcelable {
          * {@inheritDoc}
          */
         @Override
-        public SerialNumberString createFromParcel(Parcel in) {
+        @NonNull
+        public SerialNumberString createFromParcel(@NonNull Parcel in) {
             return new SerialNumberString(in);
         }
 
@@ -32,6 +35,7 @@ public class SerialNumberString implements ByteArrayInterface, Parcelable {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public SerialNumberString[] newArray(int size) {
             return new SerialNumberString[size];
         }
@@ -39,7 +43,8 @@ public class SerialNumberString implements ByteArrayInterface, Parcelable {
         /**
          * {@inheritDoc}
          */
-        public SerialNumberString createFromByteArray(byte[] values) {
+        @NonNull
+        public SerialNumberString createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SERIAL_NUMBER_STRING_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new SerialNumberString(bluetoothGattCharacteristic);
@@ -57,7 +62,7 @@ public class SerialNumberString implements ByteArrayInterface, Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A25
      */
-    public SerialNumberString(BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public SerialNumberString(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         mSerialNumber = bluetoothGattCharacteristic.getStringValue(0);
     }
 
@@ -66,7 +71,7 @@ public class SerialNumberString implements ByteArrayInterface, Parcelable {
      *
      * @param in Parcel
      */
-    private SerialNumberString(Parcel in) {
+    private SerialNumberString(@NonNull Parcel in) {
         mSerialNumber = in.readString();
     }
 
@@ -82,7 +87,7 @@ public class SerialNumberString implements ByteArrayInterface, Parcelable {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(mSerialNumber);
     }
 
@@ -97,6 +102,7 @@ public class SerialNumberString implements ByteArrayInterface, Parcelable {
      * {@inheritDoc}
      */
     @Override
+    @NonNull
     public byte[] getBytes() {
         return mSerialNumber.getBytes();
     }

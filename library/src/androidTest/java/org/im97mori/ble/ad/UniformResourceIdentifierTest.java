@@ -7,8 +7,8 @@ import org.junit.Test;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 
+import static org.im97mori.ble.BLEConstants.URI_SCHEME_NAME_STRING_MAPPING;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-import static org.im97mori.ble.ad.AdvertisingDataConstants.URI_SCHEME_NAME_STRING_MAPPING;
 import static org.junit.Assert.assertEquals;
 
 public class UniformResourceIdentifierTest {

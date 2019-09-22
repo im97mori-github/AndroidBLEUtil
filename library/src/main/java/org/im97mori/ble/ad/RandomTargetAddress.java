@@ -3,6 +3,8 @@ package org.im97mori.ble.ad;
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -28,7 +30,8 @@ public class RandomTargetAddress extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
-        public RandomTargetAddress createFromParcel(Parcel in) {
+        @NonNull
+        public RandomTargetAddress createFromParcel(@NonNull Parcel in) {
             return new RandomTargetAddress(in);
         }
 
@@ -36,6 +39,7 @@ public class RandomTargetAddress extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public RandomTargetAddress[] newArray(int size) {
             return new RandomTargetAddress[size];
         }
@@ -54,7 +58,7 @@ public class RandomTargetAddress extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public RandomTargetAddress(byte[] data, int offset, int length) {
+    public RandomTargetAddress(@NonNull byte[] data, int offset, int length) {
         super(length);
 
         List<byte[]> addressList = new ArrayList<>();
@@ -72,12 +76,12 @@ public class RandomTargetAddress extends AbstractAdvertisingData {
      *
      * @param in Parcel
      */
-    private RandomTargetAddress(Parcel in) {
+    private RandomTargetAddress(@NonNull Parcel in) {
         super(in.readInt());
 
         List<byte[]> list = new ArrayList<>();
         in.readList(list, this.getClass().getClassLoader());
-        mAddressList = Collections.synchronizedList(list);
+        mAddressList = Collections.synchronizedList(Collections.unmodifiableList(list));
     }
 
     /**
@@ -92,7 +96,7 @@ public class RandomTargetAddress extends AbstractAdvertisingData {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mLength);
         dest.writeList(mAddressList);
     }
@@ -108,6 +112,7 @@ public class RandomTargetAddress extends AbstractAdvertisingData {
     /**
      * @return Random Target Address list
      */
+    @NonNull
     public List<byte[]> getAddressList() {
         return mAddressList;
     }

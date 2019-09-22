@@ -3,6 +3,8 @@ package org.im97mori.ble.ad;
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 
+import androidx.annotation.NonNull;
+
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_COMPLETE_LOCAL_NAME;
 
 /**
@@ -24,7 +26,8 @@ public class CompleteLocalName extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
-        public CompleteLocalName createFromParcel(Parcel in) {
+        @NonNull
+        public CompleteLocalName createFromParcel(@NonNull Parcel in) {
             return new CompleteLocalName(in);
         }
 
@@ -32,6 +35,7 @@ public class CompleteLocalName extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public CompleteLocalName[] newArray(int size) {
             return new CompleteLocalName[size];
         }
@@ -50,7 +54,7 @@ public class CompleteLocalName extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public CompleteLocalName(byte[] data, int offset, int length) {
+    public CompleteLocalName(@NonNull byte[] data, int offset, int length) {
         super(length);
         mCompleteLocalName = new String(data, offset + 2, length - 1);
     }
@@ -77,7 +81,7 @@ public class CompleteLocalName extends AbstractAdvertisingData {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mLength);
         dest.writeString(mCompleteLocalName);
     }
@@ -93,6 +97,7 @@ public class CompleteLocalName extends AbstractAdvertisingData {
     /**
      * @return Complete Local Name
      */
+    @NonNull
     public String getCompleteLocalName() {
         return mCompleteLocalName;
     }

@@ -9,7 +9,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.UUID;
 
-import static org.im97mori.ble.ad.AdvertisingDataConstants.APPEARANCE_VALUE_MAP;
+import static org.im97mori.ble.BLEConstants.APPEARANCE_VALUE_MAP;
+import static org.im97mori.ble.BLEConstants.COMPANY_MAPPING;
+import static org.im97mori.ble.BLEConstants.URI_SCHEME_NAME_STRING_MAPPING;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_ADVERTISING_INTERVAL;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_APPEARANCE;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
@@ -36,7 +38,6 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_TX_POWER_LEVEL;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.SLAVE_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS;
-import static org.im97mori.ble.ad.AdvertisingDataConstants.URI_SCHEME_NAME_STRING_MAPPING;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -8740,7 +8741,7 @@ public class AdvertisingDataParserTest {
         assertEquals(2, result.getManufacturerSpecificDataList().size());
         assertEquals(result.getManufacturerSpecificData(), result.getManufacturerSpecificDataList().get(1));
         assertEquals(0x00000008, result.getManufacturerSpecificData().getCompanyIdentifier());
-        assertEquals(AdvertisingDataConstants.COMPANY_MAPPING.get(0x00000008), result.getManufacturerSpecificData().getCompanyName());
+        assertEquals(COMPANY_MAPPING.get(0x00000008), result.getManufacturerSpecificData().getCompanyName());
         assertNull(result.getTxPowerLevel());
         assertNull(result.getSlaveConnectionIntervalRange());
         assertNull(result.getListOf16BitServiceSolicitationUUIDs());

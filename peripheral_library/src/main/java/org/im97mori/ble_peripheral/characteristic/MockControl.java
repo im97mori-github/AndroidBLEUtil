@@ -5,9 +5,11 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import org.im97mori.ble_peripheral.BLEServerConnection;
+import androidx.annotation.NonNull;
+
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
+import org.im97mori.ble_peripheral.BLEServerConnection;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -18,6 +20,7 @@ import java.util.UUID;
  *
  * @see BLEServerConnection#MOCK_CONTROL_CHARACTERISTIC_UUID
  */
+@SuppressWarnings("WeakerAccess")
 public class MockControl implements ByteArrayInterface, Parcelable {
 
     /**
@@ -49,7 +52,8 @@ public class MockControl implements ByteArrayInterface, Parcelable {
          * {@inheritDoc}
          */
         @Override
-        public MockControl createFromParcel(Parcel in) {
+        @NonNull
+        public MockControl createFromParcel(@NonNull Parcel in) {
             return new MockControl(in);
         }
 
@@ -57,6 +61,7 @@ public class MockControl implements ByteArrayInterface, Parcelable {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public MockControl[] newArray(int size) {
             return new MockControl[size];
         }
@@ -64,7 +69,8 @@ public class MockControl implements ByteArrayInterface, Parcelable {
         /**
          * {@inheritDoc}
          */
-        public MockControl createFromByteArray(byte[] values) {
+        @NonNull
+        public MockControl createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BLEServerConnection.MOCK_CONTROL_CHARACTERISTIC_UUID, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new MockControl(bluetoothGattCharacteristic);
@@ -90,6 +96,7 @@ public class MockControl implements ByteArrayInterface, Parcelable {
     /**
      * mock target type
      * <p>
+     *
      * @see #TARGET_TYPE_CHARACTERISTIC
      * @see #TARGET_TYPE_DESCRIPTOR
      * @see #TARGET_TYPE_NOTIFICATION
@@ -116,7 +123,7 @@ public class MockControl implements ByteArrayInterface, Parcelable {
      *
      * @param bluetoothGattCharacteristic {@link BLEServerConnection#MOCK_CONTROL_CHARACTERISTIC_UUID}
      */
-    public MockControl(BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public MockControl(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         byte[] data = bluetoothGattCharacteristic.getValue();
         ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);
         mServiceUUID = new UUID(byteBuffer.getLong(), byteBuffer.getLong());
@@ -139,7 +146,7 @@ public class MockControl implements ByteArrayInterface, Parcelable {
      * @param status             for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
      * @param value              for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
      */
-    public MockControl(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int targetType, int status, byte[] value) {
+    public MockControl(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int targetType, int status, @NonNull byte[] value) {
         mServiceUUID = serviceUUID;
         mCharacteristicUUID = characteristicUUID;
         mDescriptorUUID = descriptorUUID;
@@ -153,7 +160,7 @@ public class MockControl implements ByteArrayInterface, Parcelable {
      *
      * @param in Parcel
      */
-    private MockControl(Parcel in) {
+    private MockControl(@NonNull Parcel in) {
         mServiceUUID = new UUID(in.readLong(), in.readLong());
         mCharacteristicUUID = new UUID(in.readLong(), in.readLong());
         mDescriptorUUID = new UUID(in.readLong(), in.readLong());
@@ -174,7 +181,7 @@ public class MockControl implements ByteArrayInterface, Parcelable {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeLong(mServiceUUID.getMostSignificantBits());
         dest.writeLong(mServiceUUID.getLeastSignificantBits());
         dest.writeLong(mCharacteristicUUID.getMostSignificantBits());
@@ -189,6 +196,7 @@ public class MockControl implements ByteArrayInterface, Parcelable {
     /**
      * @return mock target service UUID
      */
+    @NonNull
     public UUID getServiceUUID() {
         return mServiceUUID;
     }
@@ -196,6 +204,7 @@ public class MockControl implements ByteArrayInterface, Parcelable {
     /**
      * @return mock target characteristic UUID
      */
+    @NonNull
     public UUID getCharacteristicUUID() {
         return mCharacteristicUUID;
     }
@@ -203,6 +212,7 @@ public class MockControl implements ByteArrayInterface, Parcelable {
     /**
      * @return mock target descriptor UUID
      */
+    @NonNull
     public UUID getDescriptorUUID() {
         return mDescriptorUUID;
     }
@@ -224,6 +234,7 @@ public class MockControl implements ByteArrayInterface, Parcelable {
     /**
      * @return response value
      */
+    @NonNull
     public byte[] getValue() {
         return mValue;
     }
@@ -232,6 +243,7 @@ public class MockControl implements ByteArrayInterface, Parcelable {
      * {@inheritDoc}
      */
     @Override
+    @NonNull
     public byte[] getBytes() {
         byte[] data = new byte[56 + mValue.length];
         ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);

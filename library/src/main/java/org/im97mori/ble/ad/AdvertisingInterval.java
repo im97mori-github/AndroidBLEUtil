@@ -3,6 +3,8 @@ package org.im97mori.ble.ad;
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 
+import androidx.annotation.NonNull;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
@@ -28,7 +30,8 @@ public class AdvertisingInterval extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
-        public AdvertisingInterval createFromParcel(Parcel in) {
+        @NonNull
+        public AdvertisingInterval createFromParcel(@NonNull Parcel in) {
             return new AdvertisingInterval(in);
         }
 
@@ -36,6 +39,7 @@ public class AdvertisingInterval extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public AdvertisingInterval[] newArray(int size) {
             return new AdvertisingInterval[size];
         }
@@ -54,7 +58,7 @@ public class AdvertisingInterval extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public AdvertisingInterval(byte[] data, int offset, int length) {
+    public AdvertisingInterval(@NonNull byte[] data, int offset, int length) {
         super(length);
 
         ByteBuffer bb = ByteBuffer.wrap(data, offset + 2, length - 1).order(ByteOrder.LITTLE_ENDIAN);
@@ -66,7 +70,7 @@ public class AdvertisingInterval extends AbstractAdvertisingData {
      *
      * @param in Parcel
      */
-    private AdvertisingInterval(Parcel in) {
+    private AdvertisingInterval(@NonNull Parcel in) {
         super(in.readInt());
         mAdvertisingInterval = in.readInt();
     }
@@ -83,7 +87,7 @@ public class AdvertisingInterval extends AbstractAdvertisingData {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mLength);
         dest.writeInt(mAdvertisingInterval);
     }

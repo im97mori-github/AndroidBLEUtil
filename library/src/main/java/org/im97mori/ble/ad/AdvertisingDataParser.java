@@ -4,13 +4,16 @@ import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static org.im97mori.ble.ad.AdvertisingDataConstants.*;
+import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_ADVERTISING_INTERVAL;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_APPEARANCE;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
@@ -86,7 +89,7 @@ public class AdvertisingDataParser {
             set.add(DATA_TYPE_LE_SUPPORTED_FEATURES);
             set.add(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION);
 
-            ALL_DATA_TYPE_SET = Collections.synchronizedSet(Collections.synchronizedSet(set));
+            ALL_DATA_TYPE_SET = Collections.unmodifiableSet(Collections.synchronizedSet(set));
         }
 
         /**
@@ -401,7 +404,7 @@ public class AdvertisingDataParser {
          *
          * @param resultList all parsed data list
          */
-        private AdvertisingDataParseResult(List<AbstractAdvertisingData> resultList) {
+        private AdvertisingDataParseResult(@NonNull List<AbstractAdvertisingData> resultList) {
             mResultList = Collections.unmodifiableList(resultList);
             toMember();
         }
@@ -411,7 +414,7 @@ public class AdvertisingDataParser {
          *
          * @param in Parcel
          */
-        private AdvertisingDataParseResult(Parcel in) {
+        private AdvertisingDataParseResult(@NonNull Parcel in) {
             int size = in.readInt();
             List<AbstractAdvertisingData> list = new ArrayList<>();
             for (int i = 0; i < size; i++) {
@@ -435,7 +438,7 @@ public class AdvertisingDataParser {
          * {@inheritDoc}
          */
         @Override
-        public void writeToParcel(Parcel dest, int flags) {
+        public void writeToParcel(@NonNull Parcel dest, int flags) {
             dest.writeInt(mResultList.size());
             for (AbstractAdvertisingData data : mResultList) {
                 dest.writeParcelable(data, flags);
@@ -445,6 +448,7 @@ public class AdvertisingDataParser {
         /**
          * @return all parsed data list
          */
+        @NonNull
         public List<AbstractAdvertisingData> getResultList() {
             return mResultList;
         }
@@ -452,6 +456,7 @@ public class AdvertisingDataParser {
         /**
          * @return Latest Incomplete List of 16-bit Service Class UUIDs
          */
+        @Nullable
         public IncompleteListOf16BitServiceUUIDs getIncompleteListOf16BitServiceUUIDs() {
             return mIncompleteListOf16BitServiceUUIDs;
         }
@@ -459,6 +464,7 @@ public class AdvertisingDataParser {
         /**
          * @return All Incomplete List of 16-bit Service Class UUIDs List
          */
+        @NonNull
         public List<IncompleteListOf16BitServiceUUIDs> getIncompleteListOf16BitServiceUUIDsList() {
             return mIncompleteListOf16BitServiceUUIDsList;
         }
@@ -466,6 +472,7 @@ public class AdvertisingDataParser {
         /**
          * @return Latest Complete List of 16-bit Service Class UUIDs
          */
+        @Nullable
         public CompleteListOf16BitServiceUUIDs getCompleteListOf16BitServiceUUIDs() {
             return mCompleteListOf16BitServiceUUIDs;
         }
@@ -473,6 +480,7 @@ public class AdvertisingDataParser {
         /**
          * @return All Complete List of 16-bit Service Class UUIDs List
          */
+        @NonNull
         public List<CompleteListOf16BitServiceUUIDs> getCompleteListOf16BitServiceUUIDsList() {
             return mCompleteListOf16BitServiceUUIDsList;
         }
@@ -480,6 +488,7 @@ public class AdvertisingDataParser {
         /**
          * @return Latest Incomplete List of 32-bit Service Class UUIDs
          */
+        @Nullable
         public IncompleteListOf32BitServiceUUIDs getIncompleteListOf32BitServiceUUIDs() {
             return mIncompleteListOf32BitServiceUUIDs;
         }
@@ -487,6 +496,7 @@ public class AdvertisingDataParser {
         /**
          * @return All Incomplete List of 32-bit Service Class UUIDs List
          */
+        @NonNull
         public List<IncompleteListOf32BitServiceUUIDs> getIncompleteListOf32BitServiceUUIDsList() {
             return mIncompleteListOf32BitServiceUUIDsList;
         }
@@ -494,6 +504,7 @@ public class AdvertisingDataParser {
         /**
          * @return Latest Complete List of 32-bit Service Class UUIDs
          */
+        @Nullable
         public CompleteListOf32BitServiceUUIDs getCompleteListOf32BitServiceUUIDs() {
             return mCompleteListOf32BitServiceUUIDs;
         }
@@ -501,6 +512,7 @@ public class AdvertisingDataParser {
         /**
          * @return All Complete List of 32-bit Service Class UUIDs List
          */
+        @NonNull
         public List<CompleteListOf32BitServiceUUIDs> getCompleteListOf32BitServiceUUIDsList() {
             return mCompleteListOf32BitServiceUUIDsList;
         }
@@ -508,6 +520,7 @@ public class AdvertisingDataParser {
         /**
          * @return Latest Incomplete List of 128-bit Service Class UUIDs
          */
+        @Nullable
         public IncompleteListOf128BitServiceUUIDs getIncompleteListOf128BitServiceUUIDs() {
             return mIncompleteListOf128BitServiceUUIDs;
         }
@@ -515,6 +528,7 @@ public class AdvertisingDataParser {
         /**
          * @return All Incomplete List of 128-bit Service Class UUIDs List
          */
+        @NonNull
         public List<IncompleteListOf128BitServiceUUIDs> getIncompleteListOf128BitServiceUUIDsList() {
             return mIncompleteListOf128BitServiceUUIDsList;
         }
@@ -522,6 +536,7 @@ public class AdvertisingDataParser {
         /**
          * @return Latest Complete List of 128-bit Service Class UUIDs
          */
+        @Nullable
         public CompleteListOf128BitServiceUUIDs getCompleteListOf128BitServiceUUIDs() {
             return mCompleteListOf128BitServiceUUIDs;
         }
@@ -529,6 +544,7 @@ public class AdvertisingDataParser {
         /**
          * @return All Complete List of 128-bit Service Class UUIDs List
          */
+        @NonNull
         public List<CompleteListOf128BitServiceUUIDs> getCompleteListOf128BitServiceUUIDsList() {
             return mCompleteListOf128BitServiceUUIDsList;
         }
@@ -536,6 +552,7 @@ public class AdvertisingDataParser {
         /**
          * @return Shortened Local Name
          */
+        @Nullable
         public ShortenedLocalName getShortenedLocalName() {
             return mShortenedLocalName;
         }
@@ -543,6 +560,7 @@ public class AdvertisingDataParser {
         /**
          * @return Complete Local Name
          */
+        @Nullable
         public CompleteLocalName getCompleteLocalName() {
             return mCompleteLocalName;
         }
@@ -550,6 +568,7 @@ public class AdvertisingDataParser {
         /**
          * @return Flags
          */
+        @Nullable
         public Flags getFlags() {
             return mFlags;
         }
@@ -557,6 +576,7 @@ public class AdvertisingDataParser {
         /**
          * @return Latest Manufacturer Specific Data
          */
+        @Nullable
         public ManufacturerSpecificData getManufacturerSpecificData() {
             return mManufacturerSpecificData;
         }
@@ -564,6 +584,7 @@ public class AdvertisingDataParser {
         /**
          * @return All Manufacturer Specific Datas List
          */
+        @NonNull
         public List<ManufacturerSpecificData> getManufacturerSpecificDataList() {
             return mManufacturerSpecificDataList;
         }
@@ -571,6 +592,7 @@ public class AdvertisingDataParser {
         /**
          * @return Latest Tx Power Level
          */
+        @Nullable
         public TxPowerLevel getTxPowerLevel() {
             return mTxPowerLevel;
         }
@@ -578,6 +600,7 @@ public class AdvertisingDataParser {
         /**
          * @return All Tx Power Level List
          */
+        @NonNull
         public List<TxPowerLevel> getTxPowerLevelList() {
             return mTxPowerLevelList;
         }
@@ -585,6 +608,7 @@ public class AdvertisingDataParser {
         /**
          * @return Latest Slave Connection Interval Range
          */
+        @Nullable
         public SlaveConnectionIntervalRange getSlaveConnectionIntervalRange() {
             return mSlaveConnectionIntervalRange;
         }
@@ -592,6 +616,7 @@ public class AdvertisingDataParser {
         /**
          * @return All All Slave Connection Interval Range List List
          */
+        @NonNull
         public List<SlaveConnectionIntervalRange> getSlaveConnectionIntervalRangeList() {
             return mSlaveConnectionIntervalRangeList;
         }
@@ -599,6 +624,7 @@ public class AdvertisingDataParser {
         /**
          * @return Latest List of 16-bit Service Solicitation UUIDs
          */
+        @Nullable
         public ListOf16BitServiceSolicitationUUIDs getListOf16BitServiceSolicitationUUIDs() {
             return mListOf16BitServiceSolicitationUUIDs;
         }
@@ -606,6 +632,7 @@ public class AdvertisingDataParser {
         /**
          * @return All List of 16-bit Service Solicitation UUIDs List
          */
+        @NonNull
         public List<ListOf16BitServiceSolicitationUUIDs> getListOf16BitServiceSolicitationUUIDsList() {
             return mListOf16BitServiceSolicitationUUIDsList;
         }
@@ -613,6 +640,7 @@ public class AdvertisingDataParser {
         /**
          * @return Latest List of 32-bit Service Solicitation UUIDs
          */
+        @Nullable
         public ListOf32BitServiceSolicitationUUIDs getListOf32BitServiceSolicitationUUIDs() {
             return mListOf32BitServiceSolicitationUUIDs;
         }
@@ -620,6 +648,7 @@ public class AdvertisingDataParser {
         /**
          * @return All List of 16-bit Service Solicitation UUIDs List
          */
+        @NonNull
         public List<ListOf32BitServiceSolicitationUUIDs> getListOf32BitServiceSolicitationUUIDsList() {
             return mListOf32BitServiceSolicitationUUIDsList;
         }
@@ -627,6 +656,7 @@ public class AdvertisingDataParser {
         /**
          * @return Latest List of 128-bit Service Solicitation UUIDs
          */
+        @Nullable
         public ListOf128BitServiceSolicitationUUIDs getListOf128BitServiceSolicitationUUIDs() {
             return mListOf128BitServiceSolicitationUUIDs;
         }
@@ -634,6 +664,7 @@ public class AdvertisingDataParser {
         /**
          * @return All List of 128-bit Service Solicitation UUIDs List
          */
+        @NonNull
         public List<ListOf128BitServiceSolicitationUUIDs> getListOf128BitServiceSolicitationUUIDsList() {
             return mListOf128BitServiceSolicitationUUIDsList;
         }
@@ -641,6 +672,7 @@ public class AdvertisingDataParser {
         /**
          * @return Latest Service Data - 16-bit UUID
          */
+        @Nullable
         public ServiceData16BitUUID getServiceData16BitUUID() {
             return mServiceData16BitUUID;
         }
@@ -648,6 +680,7 @@ public class AdvertisingDataParser {
         /**
          * @return All Service Data - 16-bit UUID List
          */
+        @NonNull
         public List<ServiceData16BitUUID> getServiceData16BitUUIDList() {
             return mServiceData16BitUUIDList;
         }
@@ -655,6 +688,7 @@ public class AdvertisingDataParser {
         /**
          * @return Latest Service Data - 32-bit UUID
          */
+        @Nullable
         public ServiceData32BitUUID getServiceData32BitUUID() {
             return mServiceData32BitUUID;
         }
@@ -662,6 +696,7 @@ public class AdvertisingDataParser {
         /**
          * @return All Service Data - 32-bit UUID List
          */
+        @NonNull
         public List<ServiceData32BitUUID> getServiceData32BitUUIDList() {
             return mServiceData32BitUUIDList;
         }
@@ -669,6 +704,7 @@ public class AdvertisingDataParser {
         /**
          * @return Latest Service Data - 128-bit UUID
          */
+        @Nullable
         public ServiceData128BitUUID getServiceData128BitUUID() {
             return mServiceData128BitUUID;
         }
@@ -676,6 +712,7 @@ public class AdvertisingDataParser {
         /**
          * @return All Service Data - 128-bit UUID List
          */
+        @NonNull
         public List<ServiceData128BitUUID> getServiceData128BitUUIDList() {
             return mServiceData128BitUUIDList;
         }
@@ -683,6 +720,7 @@ public class AdvertisingDataParser {
         /**
          * @return Appearance
          */
+        @Nullable
         public Appearance getAppearance() {
             return mAppearance;
         }
@@ -690,6 +728,7 @@ public class AdvertisingDataParser {
         /**
          * @return Public Target Address
          */
+        @Nullable
         public PublicTargetAddress getPublicTargetAddress() {
             return mPublicTargetAddress;
         }
@@ -697,6 +736,7 @@ public class AdvertisingDataParser {
         /**
          * @return Random Target Address
          */
+        @Nullable
         public RandomTargetAddress getRandomTargetAddress() {
             return mRandomTargetAddress;
         }
@@ -704,6 +744,7 @@ public class AdvertisingDataParser {
         /**
          * @return Advertising Interval
          */
+        @Nullable
         public AdvertisingInterval getAdvertisingInterval() {
             return mAdvertisingInterval;
         }
@@ -711,6 +752,7 @@ public class AdvertisingDataParser {
         /**
          * @return Latest URI
          */
+        @Nullable
         public UniformRsourceIdentifier getUniformRsourceIdentifier() {
             return mUniformRsourceIdentifier;
         }
@@ -718,6 +760,7 @@ public class AdvertisingDataParser {
         /**
          * @return All URI List
          */
+        @NonNull
         public List<UniformRsourceIdentifier> getUniformRsourceIdentifierList() {
             return mUniformRsourceIdentifierList;
         }
@@ -725,6 +768,7 @@ public class AdvertisingDataParser {
         /**
          * @return LE Supported Features
          */
+        @Nullable
         public LeSupportedFeatures getLeSupportedFeatures() {
             return mLeSupportedFeatures;
         }
@@ -732,6 +776,7 @@ public class AdvertisingDataParser {
         /**
          * @return Channel Map Update Indication
          */
+        @Nullable
         public ChannelMapUpdateIndication getChannelMapUpdateIndication() {
             return mChannelMapUpdateIndication;
         }
@@ -822,14 +867,14 @@ public class AdvertisingDataParser {
      * @param targetDataTypeSet parse target data type set
      * @see Builder#build()
      */
-    private AdvertisingDataParser(Set<Integer> targetDataTypeSet) {
+    private AdvertisingDataParser(@NonNull Set<Integer> targetDataTypeSet) {
         mTargetDataTypeSet = targetDataTypeSet;
     }
 
     /**
      * @see #parse(byte[], int, int)
      */
-    public AdvertisingDataParseResult parse(byte[] data) {
+    public AdvertisingDataParseResult parse(@NonNull byte[] data) {
         return parse(data, 0, data.length);
     }
 
@@ -841,7 +886,8 @@ public class AdvertisingDataParser {
      * @param totalLength data length
      * @return {@link AdvertisingDataParseResult}
      */
-    public AdvertisingDataParseResult parse(byte[] data, int offset, int totalLength) {
+    @NonNull
+    public AdvertisingDataParseResult parse(@NonNull byte[] data, int offset, int totalLength) {
         List<AbstractAdvertisingData> resultList = new ArrayList<>();
         for (int i = offset; i < offset + totalLength; i++) {
             int dataLength = data[i];

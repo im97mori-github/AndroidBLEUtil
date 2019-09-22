@@ -4,6 +4,8 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 /**
  * Byte array Creator
  *
@@ -17,6 +19,7 @@ public interface ByteArrayCreater<T> extends Parcelable.Creator<T> {
      * @param values from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
      * @return T instance
      */
-    T createFromByteArray(byte[] values);
+    @NonNull
+    T createFromByteArray(@NonNull byte[] values);
 
 }

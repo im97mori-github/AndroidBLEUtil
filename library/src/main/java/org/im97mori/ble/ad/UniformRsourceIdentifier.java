@@ -3,10 +3,13 @@ package org.im97mori.ble.ad;
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.net.URI;
 
+import static org.im97mori.ble.BLEConstants.URI_SCHEME_NAME_STRING_MAPPING;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
-import static org.im97mori.ble.ad.AdvertisingDataConstants.URI_SCHEME_NAME_STRING_MAPPING;
 
 /**
  * <p>
@@ -27,7 +30,8 @@ public class UniformRsourceIdentifier extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
-        public UniformRsourceIdentifier createFromParcel(Parcel in) {
+        @NonNull
+        public UniformRsourceIdentifier createFromParcel(@NonNull Parcel in) {
             return new UniformRsourceIdentifier(in);
         }
 
@@ -35,6 +39,7 @@ public class UniformRsourceIdentifier extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public UniformRsourceIdentifier[] newArray(int size) {
             return new UniformRsourceIdentifier[size];
         }
@@ -58,12 +63,16 @@ public class UniformRsourceIdentifier extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public UniformRsourceIdentifier(byte[] data, int offset, int length) {
+    public UniformRsourceIdentifier(@NonNull byte[] data, int offset, int length) {
         super(length);
 
         mUriString = new String(data, offset + 2, length - 1);
         int scheme = mUriString.charAt(0) & 0xff;
-        mUri = URI.create(URI_SCHEME_NAME_STRING_MAPPING.get(scheme) + mUriString.substring(1));
+        if (URI_SCHEME_NAME_STRING_MAPPING.containsKey(scheme)) {
+            mUri = URI.create(URI_SCHEME_NAME_STRING_MAPPING.get(scheme) + mUriString.substring(1));
+        } else {
+            mUri = null;
+        }
     }
 
     /**
@@ -71,7 +80,7 @@ public class UniformRsourceIdentifier extends AbstractAdvertisingData {
      *
      * @param in Parcel
      */
-    private UniformRsourceIdentifier(Parcel in) {
+    private UniformRsourceIdentifier(@NonNull Parcel in) {
         super(in.readInt());
         mUriString = in.readString();
         mUri = (URI) in.readSerializable();
@@ -89,7 +98,7 @@ public class UniformRsourceIdentifier extends AbstractAdvertisingData {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mLength);
         dest.writeString(mUriString);
         dest.writeSerializable(mUri);
@@ -106,13 +115,15 @@ public class UniformRsourceIdentifier extends AbstractAdvertisingData {
     /**
      * @return URI text
      */
+    @NonNull
     public String getUriString() {
         return mUriString;
     }
 
     /**
-     * @return {@link URI}
+     * @return {@link URI}, or {@code null} when unknown scheme
      */
+    @Nullable
     public URI getUri() {
         return mUri;
     }

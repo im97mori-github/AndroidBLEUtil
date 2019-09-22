@@ -4,6 +4,8 @@ import android.bluetooth.BluetoothGattDescriptor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
@@ -43,7 +45,8 @@ public class ClientCharacteristicConfiguration implements ByteArrayInterface, Pa
         /**
          * {@inheritDoc}
          */
-        public ClientCharacteristicConfiguration createFromByteArray(byte[] values) {
+        @NonNull
+        public ClientCharacteristicConfiguration createFromByteArray(@NonNull byte[] values) {
             BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR, 0);
             bluetoothGattDescriptor.setValue(values);
             return new ClientCharacteristicConfiguration(bluetoothGattDescriptor);
@@ -120,6 +123,7 @@ public class ClientCharacteristicConfiguration implements ByteArrayInterface, Pa
     /**
      * {@inheritDoc}
      */
+    @NonNull
     @Override
     public byte[] getBytes() {
         byte[] data = new byte[2];

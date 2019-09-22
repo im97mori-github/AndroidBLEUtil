@@ -2,6 +2,8 @@ package org.im97mori.ble;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import org.im97mori.stacklog.LogUtils;
 
 /**
@@ -13,7 +15,7 @@ public class BLELogUtils {
     /**
      * @see LogUtils#stackLog(Object...)
      */
-    public static void stackLog(Object... args) {
+    public static void stackLog(@NonNull Object... args) {
         if (BuildConfig.DEBUG) {
             LogUtils.stackLogWithOffset(1, args);
         }
@@ -22,7 +24,7 @@ public class BLELogUtils {
     /**
      * @see LogUtils#stackLog(Object...)
      */
-    public static void stackLog(Throwable t) {
+    public static void stackLog(@NonNull Throwable t) {
         if (BuildConfig.DEBUG) {
             LogUtils.stackLogWithOffset(1, Log.getStackTraceString(t));
         }

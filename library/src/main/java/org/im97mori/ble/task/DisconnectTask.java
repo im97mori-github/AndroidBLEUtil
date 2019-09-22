@@ -4,6 +4,8 @@ import android.bluetooth.BluetoothGatt;
 import android.os.Bundle;
 import android.os.Message;
 
+import androidx.annotation.NonNull;
+
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
 
@@ -43,7 +45,7 @@ public class DisconnectTask extends AbstractBLETask {
      * @param status        {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link ErrorCodes#UNKNOWN}
      * @param argument      callback argument
      */
-    public DisconnectTask(BLEConnection bleConnection, BluetoothGatt bluetoothGatt, int status, Bundle argument) {
+    public DisconnectTask(@NonNull BLEConnection bleConnection, @NonNull BluetoothGatt bluetoothGatt, int status, @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
         mStatus = status;
@@ -68,7 +70,7 @@ public class DisconnectTask extends AbstractBLETask {
      * {@inheritDoc}
      */
     @Override
-    public boolean doProcess(Message message) {
+    public boolean doProcess(@NonNull Message message) {
         // if not connected, finish task
         if (!mBLEConnection.isConnected()) {
             mCurrentProgress = PROGRESS_FINISHED;

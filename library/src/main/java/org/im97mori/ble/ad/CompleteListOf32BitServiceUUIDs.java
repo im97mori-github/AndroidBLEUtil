@@ -3,6 +3,8 @@ package org.im97mori.ble.ad;
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,7 +32,8 @@ public class CompleteListOf32BitServiceUUIDs extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
-        public CompleteListOf32BitServiceUUIDs createFromParcel(Parcel in) {
+        @NonNull
+        public CompleteListOf32BitServiceUUIDs createFromParcel(@NonNull Parcel in) {
             return new CompleteListOf32BitServiceUUIDs(in);
         }
 
@@ -38,6 +41,7 @@ public class CompleteListOf32BitServiceUUIDs extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public CompleteListOf32BitServiceUUIDs[] newArray(int size) {
             return new CompleteListOf32BitServiceUUIDs[size];
         }
@@ -56,7 +60,7 @@ public class CompleteListOf32BitServiceUUIDs extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public CompleteListOf32BitServiceUUIDs(byte[] data, int offset, int length) {
+    public CompleteListOf32BitServiceUUIDs(@NonNull byte[] data, int offset, int length) {
         super(length);
 
         // combine with BASE UUID
@@ -84,7 +88,7 @@ public class CompleteListOf32BitServiceUUIDs extends AbstractAdvertisingData {
 
         List<UUID> list = new ArrayList<>();
         in.readList(list, this.getClass().getClassLoader());
-        mUuidList = Collections.synchronizedList(list);
+        mUuidList = Collections.synchronizedList(Collections.unmodifiableList(list));
     }
 
     /**
@@ -99,7 +103,7 @@ public class CompleteListOf32BitServiceUUIDs extends AbstractAdvertisingData {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mLength);
         dest.writeList(mUuidList);
     }
@@ -115,6 +119,7 @@ public class CompleteListOf32BitServiceUUIDs extends AbstractAdvertisingData {
     /**
      * @return UUID list
      */
+    @NonNull
     public List<UUID> getUuidList() {
         return mUuidList;
     }

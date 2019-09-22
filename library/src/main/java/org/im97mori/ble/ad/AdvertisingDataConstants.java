@@ -254,26 +254,6 @@ public class AdvertisingDataConstants {
     public static final double ADVERTISING_INTERVAL_UNIT_MILLIS = 0.625d;
 
     /**
-     * @see BLEConstants#APPEARANCE_VALUE_MAP
-     */
-    public static final Map<Integer, String> APPEARANCE_VALUE_MAP = BLEConstants.APPEARANCE_VALUE_MAP;
-
-    /**
-     * @see BLEConstants#APPEARANCE_DESCRIPTION_MAP
-     */
-    public static final Map<Integer, String> APPEARANCE_DESCRIPTION_MAP = BLEConstants.APPEARANCE_DESCRIPTION_MAP;
-
-    /**
-     * @see BLEConstants#URI_SCHEME_NAME_STRING_MAPPING
-     */
-    public static final Map<Integer, String> URI_SCHEME_NAME_STRING_MAPPING = BLEConstants.URI_SCHEME_NAME_STRING_MAPPING;
-
-    /**
-     * @see BLEConstants#COMPANY_MAPPING
-     */
-    public static final Map<Integer, String> COMPANY_MAPPING = BLEConstants.COMPANY_MAPPING;
-
-    /**
      * <p>
      * LE Supported Features Constants
      * <p>

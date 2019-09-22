@@ -4,8 +4,8 @@ import android.os.Parcel;
 
 import org.junit.Test;
 
+import static org.im97mori.ble.BLEConstants.COMPANY_MAPPING;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
-import static org.im97mori.ble.ad.AdvertisingDataConstants.COMPANY_MAPPING;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 

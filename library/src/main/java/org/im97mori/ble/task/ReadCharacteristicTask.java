@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.os.Message;
 import android.text.format.DateUtils;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.TaskHandler;
@@ -37,7 +40,7 @@ public class ReadCharacteristicTask extends AbstractBLETask {
      * @param values             {@link BluetoothGattCharacteristic#getValue()}
      * @return read characteristic finished {@link Message} instance
      */
-    public static Message createReadCharacteristicFinishedMessage(UUID serviceUUID, UUID characteristicUUID, byte[] values) {
+    public static Message createReadCharacteristicFinishedMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
         bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
@@ -56,7 +59,7 @@ public class ReadCharacteristicTask extends AbstractBLETask {
      * @param status             {@link android.bluetooth.BluetoothGattCallback#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      * @return read characteristic error {@link Message} instance
      */
-    public static Message createReadCharacteristicErrorMessage(UUID serviceUUID, UUID characteristicUUID, int status) {
+    public static Message createReadCharacteristicErrorMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
         bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
@@ -111,7 +114,7 @@ public class ReadCharacteristicTask extends AbstractBLETask {
      * @param timeout            timeout(millis)
      * @param argument           callback argument
      */
-    public ReadCharacteristicTask(BLEConnection bleConnection, BluetoothGatt bluetoothGatt, TaskHandler taskHandler, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+    public ReadCharacteristicTask(@NonNull BLEConnection bleConnection, @NonNull BluetoothGatt bluetoothGatt, @NonNull TaskHandler taskHandler, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, @Nullable Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
         mServiceUUID = serviceUUID;
@@ -140,7 +143,7 @@ public class ReadCharacteristicTask extends AbstractBLETask {
      * {@inheritDoc}
      */
     @Override
-    public boolean doProcess(Message message) {
+    public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         UUID serviceUUID = (UUID) bundle.getSerializable(KEY_SERVICE_UUID);
         UUID characteristicUUID = (UUID) bundle.getSerializable(KEY_CHARACTERISTIC_UUID);
@@ -187,12 +190,16 @@ public class ReadCharacteristicTask extends AbstractBLETask {
             if (mServiceUUID.equals(serviceUUID) && mCharacteristicUUID.equals(characteristicUUID)) {
                 // current:read start, next:read success
                 if (PROGRESS_CHARACTERISTIC_READ_SUCCESS == nextProgress) {
-                    mBLEConnection.getBLECallback().onCharacteristicReadSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, bundle.getByteArray(KEY_VALUES), mArgument);
+                    byte[] value = bundle.getByteArray(KEY_VALUES);
+                    if (value == null) {
+                        mBLEConnection.getBLECallback().onCharacteristicReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, UNKNOWN, mArgument);
+                    } else {
+                        mBLEConnection.getBLECallback().onCharacteristicReadSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, value, mArgument);
+                    }
                 } else if (PROGRESS_CHARACTERISTIC_READ_ERROR == nextProgress) {
                     // current:read start, next:read error
                     mBLEConnection.getBLECallback().onCharacteristicReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, bundle.getInt(KEY_STATUS), mArgument);
                 }
-
                 mCurrentProgress = PROGRESS_FINISHED;
                 // remove timeout message
                 mTaskHandler.removeCallbacksAndMessages(this);

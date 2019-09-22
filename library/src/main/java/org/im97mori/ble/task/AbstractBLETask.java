@@ -3,6 +3,9 @@ package org.im97mori.ble.task;
 import android.os.Bundle;
 import android.os.Message;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.util.UUID;
 
 /**
@@ -154,7 +157,7 @@ public abstract class AbstractBLETask {
      * @param obj                instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
      * @return create timeout {@link Message} instance
      */
-    public static Message createTimeoutMessage(UUID characteristicUUID, Object obj) {
+    public static Message createTimeoutMessage(@Nullable UUID characteristicUUID, @NonNull Object obj) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
         bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_TIMEOUT);
@@ -189,6 +192,9 @@ public abstract class AbstractBLETask {
      */
     protected int mCurrentProgress = PROGRESS_INIT;
 
+    /**
+     * task id
+     */
     private final Integer mTaskId = hashCode();
 
     /**
@@ -204,7 +210,7 @@ public abstract class AbstractBLETask {
      * @param message {@link Message} from {@link org.im97mori.ble.TaskHandler#handleMessage(Message)}
      * @return {@code true}:this task has been finished(or timeout), {@code false}:work in progress
      */
-    public abstract boolean doProcess(Message message);
+    public abstract boolean doProcess(@NonNull Message message);
 
     /**
      * check busy status
@@ -218,6 +224,10 @@ public abstract class AbstractBLETask {
      */
     public abstract void cancel();
 
+    /**
+     * @return task id
+     */
+    @NonNull
     public final Integer getTaskId() {
         return mTaskId;
     }

@@ -3,8 +3,11 @@ package org.im97mori.ble.ad;
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import static org.im97mori.ble.BLEConstants.COMPANY_MAPPING;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
-import static org.im97mori.ble.ad.AdvertisingDataConstants.COMPANY_MAPPING;
 
 /**
  * <p>
@@ -25,7 +28,8 @@ public class ManufacturerSpecificData extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
-        public ManufacturerSpecificData createFromParcel(Parcel in) {
+        @NonNull
+        public ManufacturerSpecificData createFromParcel(@NonNull Parcel in) {
             return new ManufacturerSpecificData(in);
         }
 
@@ -33,6 +37,7 @@ public class ManufacturerSpecificData extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public ManufacturerSpecificData[] newArray(int size) {
             return new ManufacturerSpecificData[size];
         }
@@ -60,7 +65,7 @@ public class ManufacturerSpecificData extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public ManufacturerSpecificData(byte[] data, int offset, int length) {
+    public ManufacturerSpecificData(@NonNull byte[] data, int offset, int length) {
         super(length);
 
         // Company Identifier Code
@@ -78,7 +83,7 @@ public class ManufacturerSpecificData extends AbstractAdvertisingData {
      *
      * @param in Parcel
      */
-    private ManufacturerSpecificData(Parcel in) {
+    private ManufacturerSpecificData(@NonNull Parcel in) {
         super(in.readInt());
         mCompanyIdentifier = in.readInt();
         mManufacturerSpecificData = in.createByteArray();
@@ -96,7 +101,7 @@ public class ManufacturerSpecificData extends AbstractAdvertisingData {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mLength);
         dest.writeInt(mCompanyIdentifier);
         dest.writeByteArray(mManufacturerSpecificData);
@@ -120,6 +125,7 @@ public class ManufacturerSpecificData extends AbstractAdvertisingData {
     /**
      * @return Company Name
      */
+    @Nullable
     public String getCompanyName() {
         return COMPANY_MAPPING.get(mCompanyIdentifier);
     }
@@ -127,6 +133,7 @@ public class ManufacturerSpecificData extends AbstractAdvertisingData {
     /**
      * @return byte array of Manufacturer Specific Data
      */
+    @NonNull
     public byte[] getManufacturerSpecificData() {
         return mManufacturerSpecificData;
     }

@@ -3,6 +3,8 @@ package org.im97mori.ble.ad;
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 
+import androidx.annotation.NonNull;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
@@ -31,7 +33,8 @@ public class ListOf128BitServiceSolicitationUUIDs extends AbstractAdvertisingDat
          * {@inheritDoc}
          */
         @Override
-        public ListOf128BitServiceSolicitationUUIDs createFromParcel(Parcel in) {
+        @NonNull
+        public ListOf128BitServiceSolicitationUUIDs createFromParcel(@NonNull Parcel in) {
             return new ListOf128BitServiceSolicitationUUIDs(in);
         }
 
@@ -39,6 +42,7 @@ public class ListOf128BitServiceSolicitationUUIDs extends AbstractAdvertisingDat
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public ListOf128BitServiceSolicitationUUIDs[] newArray(int size) {
             return new ListOf128BitServiceSolicitationUUIDs[size];
         }
@@ -57,7 +61,7 @@ public class ListOf128BitServiceSolicitationUUIDs extends AbstractAdvertisingDat
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public ListOf128BitServiceSolicitationUUIDs(byte[] data, int offset, int length) {
+    public ListOf128BitServiceSolicitationUUIDs(@NonNull byte[] data, int offset, int length) {
         super(length);
 
         ByteBuffer bb;
@@ -81,7 +85,7 @@ public class ListOf128BitServiceSolicitationUUIDs extends AbstractAdvertisingDat
 
         List<UUID> list = new ArrayList<>();
         in.readList(list, this.getClass().getClassLoader());
-        mUuidList = Collections.synchronizedList(list);
+        mUuidList = Collections.synchronizedList(Collections.unmodifiableList(list));
     }
 
     /**
@@ -96,7 +100,7 @@ public class ListOf128BitServiceSolicitationUUIDs extends AbstractAdvertisingDat
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mLength);
         dest.writeList(mUuidList);
     }
@@ -112,6 +116,7 @@ public class ListOf128BitServiceSolicitationUUIDs extends AbstractAdvertisingDat
     /**
      * @return UUID list
      */
+    @NonNull
     public List<UUID> getUuidList() {
         return mUuidList;
     }

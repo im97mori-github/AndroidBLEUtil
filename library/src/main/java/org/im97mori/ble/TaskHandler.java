@@ -70,7 +70,7 @@ public class TaskHandler extends Handler {
     /**
      * @see Handler#Handler(Looper)
      */
-    public TaskHandler(Looper looper) {
+    public TaskHandler(@NonNull Looper looper) {
         super(looper);
     }
 
@@ -200,7 +200,7 @@ public class TaskHandler extends Handler {
     /**
      * @see #sendProcessingMessage(Message, long)
      */
-    public void sendProcessingMessage(Message message) {
+    public void sendProcessingMessage(@NonNull Message message) {
         sendProcessingMessage(message, 0);
     }
 
@@ -210,7 +210,7 @@ public class TaskHandler extends Handler {
      * @param message target {@link Message}
      * @param delay   millis
      */
-    public void sendProcessingMessage(Message message, long delay) {
+    public void sendProcessingMessage(@NonNull Message message, long delay) {
         message.what = MESSAGE_TASK_PROCESSING;
         sendMessageDelayed(message, delay);
     }
@@ -228,7 +228,7 @@ public class TaskHandler extends Handler {
      * @param task     {@link AbstractBLETask} instance
      * @param delay    millis
      */
-    public void addTaskDelayed(AbstractBLETask task, long delay) {
+    public void addTaskDelayed(@NonNull AbstractBLETask task, long delay) {
         Message message = new Message();
         message.what = MESSAGE_TASK_ADD;
         message.obj = task;
@@ -247,7 +247,7 @@ public class TaskHandler extends Handler {
      *
      * @param taskId task id
      */
-    public void cancelTask(Integer taskId) {
+    public void cancelTask(@NonNull Integer taskId) {
         Message message = new Message();
         message.what = MESSAGE_TASK_CANCEL;
         message.obj = taskId;

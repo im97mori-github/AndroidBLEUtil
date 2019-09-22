@@ -3,6 +3,8 @@ package org.im97mori.ble.ad;
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 
+import androidx.annotation.NonNull;
+
 import java.util.UUID;
 
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
@@ -27,7 +29,8 @@ public class ServiceData16BitUUID extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
-        public ServiceData16BitUUID createFromParcel(Parcel in) {
+        @NonNull
+        public ServiceData16BitUUID createFromParcel(@NonNull Parcel in) {
             return new ServiceData16BitUUID(in);
         }
 
@@ -35,6 +38,7 @@ public class ServiceData16BitUUID extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public ServiceData16BitUUID[] newArray(int size) {
             return new ServiceData16BitUUID[size];
         }
@@ -58,7 +62,7 @@ public class ServiceData16BitUUID extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public ServiceData16BitUUID(byte[] data, int offset, int length) {
+    public ServiceData16BitUUID(@NonNull byte[] data, int offset, int length) {
         super(length);
 
         // combine with BASE UUID
@@ -79,7 +83,7 @@ public class ServiceData16BitUUID extends AbstractAdvertisingData {
      *
      * @param in Parcel
      */
-    private ServiceData16BitUUID(Parcel in) {
+    private ServiceData16BitUUID(@NonNull Parcel in) {
         super(in.readInt());
         mUuid = (UUID) in.readSerializable();
         mAdditionalServiceData = in.createByteArray();
@@ -97,7 +101,7 @@ public class ServiceData16BitUUID extends AbstractAdvertisingData {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mLength);
         dest.writeSerializable(mUuid);
         dest.writeByteArray(mAdditionalServiceData);
@@ -114,6 +118,7 @@ public class ServiceData16BitUUID extends AbstractAdvertisingData {
     /**
      * @return {@link UUID}
      */
+    @NonNull
     public UUID getUuid() {
         return mUuid;
     }
@@ -121,6 +126,7 @@ public class ServiceData16BitUUID extends AbstractAdvertisingData {
     /**
      * @return byte array of Additional service data
      */
+    @NonNull
     public byte[] getAdditionalServiceData() {
         return mAdditionalServiceData;
     }

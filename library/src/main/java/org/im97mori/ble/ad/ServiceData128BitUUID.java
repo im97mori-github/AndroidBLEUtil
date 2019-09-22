@@ -3,6 +3,8 @@ package org.im97mori.ble.ad;
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 
+import androidx.annotation.NonNull;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.UUID;
@@ -28,7 +30,8 @@ public class ServiceData128BitUUID extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
-        public ServiceData128BitUUID createFromParcel(Parcel in) {
+        @NonNull
+        public ServiceData128BitUUID createFromParcel(@NonNull Parcel in) {
             return new ServiceData128BitUUID(in);
         }
 
@@ -36,6 +39,7 @@ public class ServiceData128BitUUID extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public ServiceData128BitUUID[] newArray(int size) {
             return new ServiceData128BitUUID[size];
         }
@@ -59,7 +63,7 @@ public class ServiceData128BitUUID extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public ServiceData128BitUUID(byte[] data, int offset, int length) {
+    public ServiceData128BitUUID(@NonNull byte[] data, int offset, int length) {
         super(length);
 
         ByteBuffer bb = ByteBuffer.wrap(data, offset + 2, 16).order(ByteOrder.LITTLE_ENDIAN);
@@ -79,7 +83,7 @@ public class ServiceData128BitUUID extends AbstractAdvertisingData {
      *
      * @param in Parcel
      */
-    private ServiceData128BitUUID(Parcel in) {
+    private ServiceData128BitUUID(@NonNull Parcel in) {
         super(in.readInt());
         mUuid = (UUID) in.readSerializable();
         mAdditionalServiceData = in.createByteArray();
@@ -97,7 +101,7 @@ public class ServiceData128BitUUID extends AbstractAdvertisingData {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mLength);
         dest.writeSerializable(mUuid);
         dest.writeByteArray(mAdditionalServiceData);
@@ -114,6 +118,7 @@ public class ServiceData128BitUUID extends AbstractAdvertisingData {
     /**
      * @return {@link UUID}
      */
+    @NonNull
     public UUID getUuid() {
         return mUuid;
     }
@@ -121,6 +126,7 @@ public class ServiceData128BitUUID extends AbstractAdvertisingData {
     /**
      * @return byte array of Manufacturer Specific Data
      */
+    @NonNull
     public byte[] getAdditionalServiceData() {
         return mAdditionalServiceData;
     }

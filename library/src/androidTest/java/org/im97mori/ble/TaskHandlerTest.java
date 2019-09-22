@@ -5,6 +5,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.format.DateUtils;
 
+import androidx.annotation.NonNull;
+
 import org.im97mori.ble.task.AbstractBLETask;
 import org.junit.Test;
 
@@ -27,7 +29,7 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean doProcess(Message message) {
+            public boolean doProcess(@NonNull Message message) {
                 countDownLatch.countDown();
                 return true;
             }
@@ -69,7 +71,7 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean doProcess(Message message) {
+            public boolean doProcess(@NonNull Message message) {
                 countDownLatch.countDown();
                 return true;
             }
@@ -112,7 +114,7 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean doProcess(Message message) {
+            public boolean doProcess(@NonNull Message message) {
                 try {
                     Thread.sleep(DateUtils.SECOND_IN_MILLIS);
                 } catch (InterruptedException e) {
@@ -138,7 +140,7 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean doProcess(Message message) {
+            public boolean doProcess(@NonNull Message message) {
                 atomicInteger.set(1);
                 countDownLatch.countDown();
                 return true;
@@ -185,7 +187,7 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean doProcess(Message message) {
+            public boolean doProcess(@NonNull Message message) {
                 try {
                     Thread.sleep(DateUtils.SECOND_IN_MILLIS * 2);
                 } catch (InterruptedException e) {
@@ -211,7 +213,7 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean doProcess(Message message) {
+            public boolean doProcess(@NonNull Message message) {
                 atomicInteger1.set(1);
                 return true;
             }
@@ -234,7 +236,7 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean doProcess(Message message) {
+            public boolean doProcess(@NonNull Message message) {
                 atomicInteger2.set(1);
                 countDownLatch.countDown();
                 return true;
@@ -283,7 +285,7 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean doProcess(Message message) {
+            public boolean doProcess(@NonNull Message message) {
                 try {
                     Thread.sleep(DateUtils.SECOND_IN_MILLIS * 2);
                 } catch (InterruptedException e) {
@@ -309,7 +311,7 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean doProcess(Message message) {
+            public boolean doProcess(@NonNull Message message) {
                 atomicInteger1.set(1);
                 return true;
             }
@@ -332,7 +334,7 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean doProcess(Message message) {
+            public boolean doProcess(@NonNull Message message) {
                 atomicInteger2.set(1);
                 return true;
             }
@@ -355,7 +357,7 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean doProcess(Message message) {
+            public boolean doProcess(@NonNull Message message) {
                 atomicInteger3.set(1);
                 countDownLatch.countDown();
                 return true;
@@ -404,7 +406,7 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean doProcess(Message message) {
+            public boolean doProcess(@NonNull Message message) {
                 return true;
             }
 
@@ -425,7 +427,7 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean doProcess(Message message) {
+            public boolean doProcess(@NonNull Message message) {
                 countDownLatch.countDown();
                 return true;
             }
@@ -447,7 +449,7 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean doProcess(Message message) {
+            public boolean doProcess(@NonNull Message message) {
                 return true;
             }
 
@@ -501,7 +503,7 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean doProcess(Message message) {
+            public boolean doProcess(@NonNull Message message) {
                 return true;
             }
 
@@ -522,7 +524,7 @@ public class TaskHandlerTest {
             }
 
             @Override
-            public boolean doProcess(Message message) {
+            public boolean doProcess(@NonNull Message message) {
                 countDownLatch.countDown();
                 return true;
             }

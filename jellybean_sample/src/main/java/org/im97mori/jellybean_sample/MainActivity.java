@@ -247,7 +247,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             }
 
             ServiceData128BitUUID serviceData128BitUUID = result.getServiceData128BitUUID();
-            if (serviceData32BitUUID != null) {
+            if (serviceData128BitUUID != null) {
                 sb.append("Service Data - 128-bit UUID");
                 sb.append("\nuuid\n");
                 sb.append(serviceData128BitUUID.getUuid());

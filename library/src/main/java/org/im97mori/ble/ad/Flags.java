@@ -4,12 +4,14 @@ import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 import android.util.Pair;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.im97mori.ble.ad.AdvertisingDataConstants.*;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_FLAGS;
+import static org.im97mori.ble.ad.AdvertisingDataConstants.FlagsDataType;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.FlagsDataType.FLAG_BR_EDR_NOT_SUPPORTED;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.FlagsDataType.FLAG_LE_GENERAL_DISCOVERABLE_MODE;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.FlagsDataType.FLAG_LE_LIMITED_DISCOVERABLE_MODE;
@@ -35,7 +37,8 @@ public class Flags extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
-        public Flags createFromParcel(Parcel in) {
+        @NonNull
+        public Flags createFromParcel(@NonNull Parcel in) {
             return new Flags(in);
         }
 
@@ -43,6 +46,7 @@ public class Flags extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public Flags[] newArray(int size) {
             return new Flags[size];
         }
@@ -61,7 +65,7 @@ public class Flags extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public Flags(byte[] data, int offset, int length) {
+    public Flags(@NonNull byte[] data, int offset, int length) {
         super(length);
 
         List<Integer> flagsList = new ArrayList<>();
@@ -76,10 +80,12 @@ public class Flags extends AbstractAdvertisingData {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("unchecked")
-    private Flags(Parcel in) {
+    private Flags(@NonNull Parcel in) {
         super(in.readInt());
-        mFlagsList = in.readArrayList(this.getClass().getClassLoader());
+
+        List<Integer> list = new ArrayList<>();
+        in.readList(list, this.getClass().getClassLoader());
+        mFlagsList = Collections.synchronizedList(Collections.unmodifiableList(list));
     }
 
     /**
@@ -94,7 +100,7 @@ public class Flags extends AbstractAdvertisingData {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mLength);
         dest.writeList(mFlagsList);
     }
@@ -110,6 +116,7 @@ public class Flags extends AbstractAdvertisingData {
     /**
      * @return Flags list
      */
+    @NonNull
     public List<Integer> getFlagsList() {
         return mFlagsList;
     }
@@ -165,7 +172,7 @@ public class Flags extends AbstractAdvertisingData {
      * @param target one of {@link FlagsDataType}
      * @return {@code true}:target bit is 1, {@code false}:target bit is 0
      */
-    private boolean check(Pair<Integer, Integer> target) {
+    private boolean check(@NonNull Pair<Integer, Integer> target) {
         boolean result;
         int index = target.first;
         if (mFlagsList.size() > index) {

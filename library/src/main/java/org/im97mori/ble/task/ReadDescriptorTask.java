@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.os.Message;
 import android.text.format.DateUtils;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.TaskHandler;
@@ -39,7 +42,7 @@ public class ReadDescriptorTask extends AbstractBLETask {
      * @param values             {@link BluetoothGattDescriptor#getValue()}
      * @return read descriptor finished {@link Message} instance
      */
-    public static Message createReadDescriptorFinishedMessage(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values) {
+    public static Message createReadDescriptorFinishedMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
         bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
@@ -60,7 +63,7 @@ public class ReadDescriptorTask extends AbstractBLETask {
      * @param status             {@link android.bluetooth.BluetoothGattCallback#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      * @return read descriptor error {@link Message} instance
      */
-    public static Message createReadDescriptorErrorMessage(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status) {
+    public static Message createReadDescriptorErrorMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
         bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
@@ -122,7 +125,7 @@ public class ReadDescriptorTask extends AbstractBLETask {
      * @param timeout            timeout(millis)
      * @param argument           callback argument
      */
-    public ReadDescriptorTask(BLEConnection bleConnection, BluetoothGatt bluetoothGatt, TaskHandler taskHandler, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+    public ReadDescriptorTask(@NonNull BLEConnection bleConnection, @NonNull BluetoothGatt bluetoothGatt, @NonNull TaskHandler taskHandler, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
         mTaskHandler = taskHandler;
@@ -153,7 +156,7 @@ public class ReadDescriptorTask extends AbstractBLETask {
      * {@inheritDoc}
      */
     @Override
-    public boolean doProcess(Message message) {
+    public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         UUID serviceUUID = (UUID) bundle.getSerializable(KEY_SERVICE_UUID);
         UUID characteristicUUID = (UUID) bundle.getSerializable(KEY_CHARACTERISTIC_UUID);
@@ -204,7 +207,12 @@ public class ReadDescriptorTask extends AbstractBLETask {
             if (mServiceUUID.equals(serviceUUID) && mCharacteristicUUID.equals(characteristicUUID) && mDescriptorUUID.equals(descriptorUUID)) {
                 // current:read start, next:read success
                 if (PROGRESS_DESCRIPTOR_READ_SUCCESS == nextProgress) {
-                    mBLEConnection.getBLECallback().onDescriptorReadSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, bundle.getByteArray(KEY_VALUES), mArgument);
+                    byte[] value = bundle.getByteArray(KEY_VALUES);
+                    if (value == null) {
+                        mBLEConnection.getBLECallback().onDescriptorReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, UNKNOWN, mArgument);
+                    } else {
+                        mBLEConnection.getBLECallback().onDescriptorReadSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, value, mArgument);
+                    }
                 } else if (PROGRESS_DESCRIPTOR_READ_ERROR == nextProgress) {
                     // current:read start, next:read error
                     mBLEConnection.getBLECallback().onDescriptorReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, bundle.getInt(KEY_STATUS), mArgument);

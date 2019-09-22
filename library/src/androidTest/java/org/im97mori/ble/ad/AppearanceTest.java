@@ -6,8 +6,8 @@ import org.junit.Test;
 
 import java.util.Map;
 
-import static org.im97mori.ble.ad.AdvertisingDataConstants.APPEARANCE_DESCRIPTION_MAP;
-import static org.im97mori.ble.ad.AdvertisingDataConstants.APPEARANCE_VALUE_MAP;
+import static org.im97mori.ble.BLEConstants.APPEARANCE_DESCRIPTION_MAP;
+import static org.im97mori.ble.BLEConstants.APPEARANCE_VALUE_MAP;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_APPEARANCE;
 import static org.junit.Assert.assertEquals;
 

@@ -3,6 +3,8 @@ package org.im97mori.ble.ad;
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 
+import androidx.annotation.NonNull;
+
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_TX_POWER_LEVEL;
 
 /**
@@ -24,7 +26,8 @@ public class TxPowerLevel extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
-        public TxPowerLevel createFromParcel(Parcel in) {
+        @NonNull
+        public TxPowerLevel createFromParcel(@NonNull Parcel in) {
             return new TxPowerLevel(in);
         }
 
@@ -32,6 +35,7 @@ public class TxPowerLevel extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public TxPowerLevel[] newArray(int size) {
             return new TxPowerLevel[size];
         }
@@ -50,7 +54,7 @@ public class TxPowerLevel extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public TxPowerLevel(byte[] data, int offset, int length) {
+    public TxPowerLevel(@NonNull byte[] data, int offset, int length) {
         super(length);
 
         mTxPowerLevel = data[offset + 2];
@@ -61,7 +65,7 @@ public class TxPowerLevel extends AbstractAdvertisingData {
      *
      * @param in Parcel
      */
-    private TxPowerLevel(Parcel in) {
+    private TxPowerLevel(@NonNull Parcel in) {
         super(in.readInt());
         mTxPowerLevel = in.readByte();
     }
@@ -78,7 +82,7 @@ public class TxPowerLevel extends AbstractAdvertisingData {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mLength);
         dest.writeByte(mTxPowerLevel);
     }

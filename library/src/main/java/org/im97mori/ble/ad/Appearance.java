@@ -3,11 +3,14 @@ package org.im97mori.ble.ad;
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-import static org.im97mori.ble.ad.AdvertisingDataConstants.APPEARANCE_DESCRIPTION_MAP;
-import static org.im97mori.ble.ad.AdvertisingDataConstants.APPEARANCE_VALUE_MAP;
+import static org.im97mori.ble.BLEConstants.APPEARANCE_DESCRIPTION_MAP;
+import static org.im97mori.ble.BLEConstants.APPEARANCE_VALUE_MAP;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_APPEARANCE;
 
 /**
@@ -29,7 +32,8 @@ public class Appearance extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
-        public Appearance createFromParcel(Parcel in) {
+        @NonNull
+        public Appearance createFromParcel(@NonNull Parcel in) {
             return new Appearance(in);
         }
 
@@ -37,6 +41,7 @@ public class Appearance extends AbstractAdvertisingData {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public Appearance[] newArray(int size) {
             return new Appearance[size];
         }
@@ -55,7 +60,7 @@ public class Appearance extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public Appearance(byte[] data, int offset, int length) {
+    public Appearance(@NonNull byte[] data, int offset, int length) {
         super(length);
 
         ByteBuffer bb = ByteBuffer.wrap(data, offset + 2, length - 1).order(ByteOrder.LITTLE_ENDIAN);
@@ -67,7 +72,7 @@ public class Appearance extends AbstractAdvertisingData {
      *
      * @param in Parcel
      */
-    private Appearance(Parcel in) {
+    private Appearance(@NonNull Parcel in) {
         super(in.readInt());
         mAppearanceKey = in.readInt();
     }
@@ -107,6 +112,7 @@ public class Appearance extends AbstractAdvertisingData {
     /**
      * @return Appearance value
      */
+    @Nullable
     public String getAppearanceValue() {
         return APPEARANCE_VALUE_MAP.get(mAppearanceKey);
     }
@@ -114,6 +120,7 @@ public class Appearance extends AbstractAdvertisingData {
     /**
      * @return Appearance description
      */
+    @Nullable
     public String getAppearanceDescription() {
         return APPEARANCE_DESCRIPTION_MAP.get(mAppearanceKey);
     }

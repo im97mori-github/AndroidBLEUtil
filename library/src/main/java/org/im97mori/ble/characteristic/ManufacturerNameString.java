@@ -4,6 +4,8 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
@@ -24,7 +26,8 @@ public class ManufacturerNameString implements ByteArrayInterface, Parcelable {
          * {@inheritDoc}
          */
         @Override
-        public ManufacturerNameString createFromParcel(Parcel in) {
+        @NonNull
+        public ManufacturerNameString createFromParcel(@NonNull Parcel in) {
             return new ManufacturerNameString(in);
         }
 
@@ -32,6 +35,7 @@ public class ManufacturerNameString implements ByteArrayInterface, Parcelable {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public ManufacturerNameString[] newArray(int size) {
             return new ManufacturerNameString[size];
         }
@@ -39,7 +43,8 @@ public class ManufacturerNameString implements ByteArrayInterface, Parcelable {
         /**
          * {@inheritDoc}
          */
-        public ManufacturerNameString createFromByteArray(byte[] values) {
+        @NonNull
+        public ManufacturerNameString createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(MANUFACTURER_NAME_STRING_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new ManufacturerNameString(bluetoothGattCharacteristic);
@@ -57,7 +62,7 @@ public class ManufacturerNameString implements ByteArrayInterface, Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A28
      */
-    public ManufacturerNameString(BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public ManufacturerNameString(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         mManufactureName = bluetoothGattCharacteristic.getStringValue(0);
     }
 
@@ -66,7 +71,7 @@ public class ManufacturerNameString implements ByteArrayInterface, Parcelable {
      *
      * @param in Parcel
      */
-    private ManufacturerNameString(Parcel in) {
+    private ManufacturerNameString(@NonNull Parcel in) {
         mManufactureName = in.readString();
     }
 
@@ -82,13 +87,14 @@ public class ManufacturerNameString implements ByteArrayInterface, Parcelable {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(mManufactureName);
     }
 
     /**
      * @return Manufacture name
      */
+    @NonNull
     public String getManufactureName() {
         return mManufactureName;
     }
@@ -97,6 +103,7 @@ public class ManufacturerNameString implements ByteArrayInterface, Parcelable {
      * {@inheritDoc}
      */
     @Override
+    @NonNull
     public byte[] getBytes() {
         return mManufactureName.getBytes();
     }

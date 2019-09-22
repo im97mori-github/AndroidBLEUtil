@@ -1,9 +1,11 @@
 package org.im97mori.ble;
 
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
 import android.os.Message;
 
+import androidx.annotation.NonNull;
 import androidx.test.core.app.ApplicationProvider;
 
 import org.im97mori.ble.task.AbstractBLETask;
@@ -18,96 +20,99 @@ import static org.junit.Assert.assertTrue;
 
 public class BLEConnectionTest {
 
+    private static final BluetoothDevice MOCK_DEVICE = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:BB");
+    private static final UUID MOCK_UUID = UUID.randomUUID();
+
     private static final class MockBLEConnection extends BLEConnection {
         private MockBLEConnection() {
-            super(ApplicationProvider.getApplicationContext(), null);
+            super(ApplicationProvider.getApplicationContext(), MOCK_DEVICE);
             this.start();
         }
     }
 
     private static class BaseBLECallback implements BLECallback {
         @Override
-        public void onBLEConnected(int taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+        public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, Bundle argument) {
 
         }
 
         @Override
-        public void onBLEConnectFailed(int taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+        public void onBLEConnectFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, Bundle argument) {
 
         }
 
         @Override
-        public void onBLEConnectTimeout(int taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+        public void onBLEConnectTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, Bundle argument) {
 
         }
 
         @Override
-        public void onBLEDisconnected(int taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+        public void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, Bundle argument) {
 
         }
 
         @Override
-        public void onCharacteristicReadSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+        public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values, Bundle argument) {
 
         }
 
         @Override
-        public void onCharacteristicReadFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+        public void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, Bundle argument) {
 
         }
 
         @Override
-        public void onCharacteristicReadTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+        public void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, Bundle argument) {
 
         }
 
         @Override
-        public void onCharacteristicWriteSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+        public void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values, Bundle argument) {
 
         }
 
         @Override
-        public void onCharacteristicWriteFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+        public void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, Bundle argument) {
 
         }
 
         @Override
-        public void onCharacteristicWriteTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+        public void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, Bundle argument) {
 
         }
 
         @Override
-        public void onDescriptorReadSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+        public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values, Bundle argument) {
 
         }
 
         @Override
-        public void onDescriptorReadFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+        public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status, Bundle argument) {
 
         }
 
         @Override
-        public void onDescriptorReadTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+        public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, Bundle argument) {
 
         }
 
         @Override
-        public void onDescriptorWriteSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+        public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values, Bundle argument) {
 
         }
 
         @Override
-        public void onDescriptorWriteFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+        public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status, Bundle argument) {
 
         }
 
         @Override
-        public void onDescriptorWriteTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+        public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, Bundle argument) {
 
         }
 
         @Override
-        public void onCharacteristicNotified(BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values) {
+        public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values) {
 
         }
     }
@@ -143,7 +148,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onBLEConnected(int taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+            public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -151,7 +156,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onBLEConnected(int taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+            public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -160,8 +165,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnected(getTaskId(), null, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnected(getTaskId(), MOCK_DEVICE, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -195,7 +200,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onBLEConnected(int taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+            public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -203,7 +208,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onBLEConnected(int taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+            public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -212,8 +217,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnected(getTaskId(), null, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnected(getTaskId(), MOCK_DEVICE, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -247,7 +252,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onBLEConnectFailed(int taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+            public void onBLEConnectFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -255,7 +260,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onBLEConnectFailed(int taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+            public void onBLEConnectFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -264,8 +269,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnectFailed(getTaskId(), null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnectFailed(getTaskId(), MOCK_DEVICE, BLEConstants.ErrorCodes.UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -299,7 +304,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onBLEConnectFailed(int taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+            public void onBLEConnectFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -307,7 +312,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onBLEConnectFailed(int taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+            public void onBLEConnectFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -316,8 +321,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnectFailed(getTaskId(), null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnectFailed(getTaskId(), MOCK_DEVICE, BLEConstants.ErrorCodes.UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -351,7 +356,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onBLEConnectTimeout(int taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+            public void onBLEConnectTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -359,7 +364,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onBLEConnectTimeout(int taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+            public void onBLEConnectTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -368,8 +373,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnectTimeout(getTaskId(), null, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnectTimeout(getTaskId(), MOCK_DEVICE, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -403,7 +408,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onBLEConnectTimeout(int taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+            public void onBLEConnectTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -411,7 +416,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onBLEConnectTimeout(int taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+            public void onBLEConnectTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -420,8 +425,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnectTimeout(getTaskId(), null, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onBLEConnectTimeout(getTaskId(), MOCK_DEVICE, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -455,7 +460,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onBLEDisconnected(int taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+            public void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -463,7 +468,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onBLEDisconnected(int taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+            public void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -472,8 +477,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onBLEDisconnected(getTaskId(), null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onBLEDisconnected(getTaskId(), MOCK_DEVICE, BLEConstants.ErrorCodes.UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -507,7 +512,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onBLEDisconnected(int taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+            public void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -515,7 +520,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onBLEDisconnected(int taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+            public void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -524,8 +529,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onBLEDisconnected(getTaskId(), null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onBLEDisconnected(getTaskId(), MOCK_DEVICE, BLEConstants.ErrorCodes.UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -559,7 +564,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicReadSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+            public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -567,7 +572,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicReadSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+            public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -576,8 +581,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadSuccess(getTaskId(), null, null, null, null, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadSuccess(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, new byte[0], argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -611,7 +616,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicReadSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+            public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -619,7 +624,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicReadSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+            public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -628,8 +633,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadSuccess(getTaskId(), null, null, null, null, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadSuccess(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, new byte[0], argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -663,7 +668,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicReadFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+            public void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -671,7 +676,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicReadFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+            public void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -680,8 +685,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadFailed(getTaskId(), null, null, null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadFailed(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, BLEConstants.ErrorCodes.UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -715,7 +720,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicReadFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+            public void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -723,7 +728,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicReadFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+            public void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -732,8 +737,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadFailed(getTaskId(), null, null, null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadFailed(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, BLEConstants.ErrorCodes.UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -767,7 +772,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicReadTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+            public void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -775,7 +780,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicReadTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+            public void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -784,8 +789,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadTimeout(getTaskId(), null, null, null, 0, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadTimeout(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, 0, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -819,7 +824,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicReadTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+            public void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -827,7 +832,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicReadTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+            public void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -836,8 +841,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadTimeout(getTaskId(), null, null, null, 0, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadTimeout(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, 0, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -871,7 +876,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicWriteSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+            public void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -879,7 +884,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicWriteSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+            public void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -888,8 +893,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteSuccess(getTaskId(), null, null, null, null, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteSuccess(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, new byte[0], argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -923,7 +928,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicWriteSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+            public void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -931,7 +936,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicWriteSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+            public void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -940,8 +945,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteSuccess(getTaskId(), null, null, null, null, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteSuccess(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, new byte[0], argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -975,7 +980,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicWriteFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+            public void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -983,7 +988,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicWriteFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+            public void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -992,8 +997,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteFailed(getTaskId(), null, null, null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteFailed(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, BLEConstants.ErrorCodes.UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1027,7 +1032,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicWriteFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+            public void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -1035,7 +1040,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicWriteFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+            public void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -1044,8 +1049,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteFailed(getTaskId(), null, null, null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteFailed(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, BLEConstants.ErrorCodes.UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1079,7 +1084,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicWriteTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+            public void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -1087,7 +1092,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicWriteTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+            public void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -1096,8 +1101,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteTimeout(getTaskId(), null, null, null, 0, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteTimeout(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, 0, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1131,7 +1136,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicWriteTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+            public void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -1139,7 +1144,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicWriteTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+            public void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -1148,8 +1153,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteTimeout(getTaskId(), null, null, null, 0, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteTimeout(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, 0, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1183,7 +1188,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicNotified(BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values) {
+            public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values) {
                 firstResult.set(true);
             }
         };
@@ -1191,7 +1196,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onCharacteristicNotified(BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values) {
+            public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values) {
                 secondResult.set(true);
             }
         };
@@ -1199,8 +1204,8 @@ public class BLEConnectionTest {
         final AtomicBoolean isProccesing = new AtomicBoolean(true);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicNotified(null, null, null, null);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicNotified(MOCK_DEVICE, MOCK_UUID, MOCK_UUID, new byte[0]);
                 isProccesing.set(false);
                 return true;
             }
@@ -1235,7 +1240,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorReadSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+            public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -1243,7 +1248,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorReadSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+            public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -1252,8 +1257,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadSuccess(getTaskId(), null, null, null, null, null, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadSuccess(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, MOCK_UUID, new byte[0], argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1287,7 +1292,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorReadSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+            public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -1295,7 +1300,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorReadSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+            public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -1304,8 +1309,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadSuccess(getTaskId(), null, null, null, null, null, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadSuccess(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, MOCK_UUID, new byte[0], argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1339,7 +1344,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorReadFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+            public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -1347,7 +1352,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorReadFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+            public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -1356,8 +1361,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadFailed(getTaskId(), null, null, null, null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadFailed(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, MOCK_UUID, BLEConstants.ErrorCodes.UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1391,7 +1396,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorReadFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+            public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -1399,7 +1404,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorReadFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+            public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -1408,8 +1413,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadFailed(getTaskId(), null, null, null, null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadFailed(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, MOCK_UUID, BLEConstants.ErrorCodes.UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1443,7 +1448,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorReadTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+            public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -1451,7 +1456,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorReadTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+            public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -1460,8 +1465,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadTimeout(getTaskId(), null, null, null, null, 0, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadTimeout(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, MOCK_UUID, 0, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1495,7 +1500,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorReadTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+            public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -1503,7 +1508,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorReadTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+            public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -1512,8 +1517,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadTimeout(getTaskId(), null, null, null, null, 0, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadTimeout(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, MOCK_UUID, 0, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1547,7 +1552,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorWriteSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+            public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -1555,7 +1560,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorWriteSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+            public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -1564,8 +1569,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteSuccess(getTaskId(), null, null, null, null, null, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteSuccess(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, MOCK_UUID, new byte[0], argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1599,7 +1604,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorWriteSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+            public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -1607,7 +1612,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorWriteSuccess(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+            public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -1616,8 +1621,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteSuccess(getTaskId(), null, null, null, null, null, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteSuccess(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, MOCK_UUID, new byte[0], argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1651,7 +1656,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorWriteFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+            public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -1659,7 +1664,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorWriteFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+            public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -1668,8 +1673,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteFailed(getTaskId(), null, null, null, null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteFailed(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, MOCK_UUID, BLEConstants.ErrorCodes.UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1703,7 +1708,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorWriteFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+            public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -1711,7 +1716,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorWriteFailed(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+            public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -1720,8 +1725,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteFailed(getTaskId(), null, null, null, null, BLEConstants.ErrorCodes.UNKNOWN, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteFailed(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, MOCK_UUID, BLEConstants.ErrorCodes.UNKNOWN, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1755,7 +1760,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorWriteTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+            public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -1763,7 +1768,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorWriteTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+            public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -1772,8 +1777,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteTimeout(getTaskId(), null, null, null, null, 0, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteTimeout(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, MOCK_UUID, 0, argument);
                 isProccesing.set(false);
                 return true;
             }
@@ -1807,7 +1812,7 @@ public class BLEConnectionTest {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorWriteTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+            public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, Bundle argument) {
                 firstResult.set(true);
             }
         };
@@ -1815,7 +1820,7 @@ public class BLEConnectionTest {
         BaseBLECallback secondCallback = new BaseBLECallback() {
 
             @Override
-            public void onDescriptorWriteTimeout(int taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+            public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, Bundle argument) {
                 secondResult.set(true);
             }
         };
@@ -1824,8 +1829,8 @@ public class BLEConnectionTest {
         final Bundle argument = MOCK_BLE_CONNECTION.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
-            public boolean doProcess(Message message) {
-                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteTimeout(getTaskId(), null, null, null, null, 0, argument);
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteTimeout(getTaskId(), MOCK_DEVICE, MOCK_UUID, MOCK_UUID, MOCK_UUID, 0, argument);
                 isProccesing.set(false);
                 return true;
             }

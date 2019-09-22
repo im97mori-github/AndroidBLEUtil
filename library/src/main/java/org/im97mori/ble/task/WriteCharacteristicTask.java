@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Message;
 import android.text.format.DateUtils;
 
+import androidx.annotation.NonNull;
+
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.ByteArrayInterface;
@@ -38,7 +40,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
      * @param values             {@link BluetoothGattCharacteristic#getValue()}
      * @return write characteristic finished {@link Message} instance
      */
-    public static Message createWriteCharacteristicFinishedMessage(UUID serviceUUID, UUID characteristicUUID, byte[] values) {
+    public static Message createWriteCharacteristicFinishedMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, byte[] values) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
         bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
@@ -57,7 +59,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
      * @param status             {@link android.bluetooth.BluetoothGattCallback#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      * @return write characteristic error {@link Message} instance
      */
-    public static Message createWriteCharacteristicErrorMessage(UUID serviceUUID, UUID characteristicUUID, int status) {
+    public static Message createWriteCharacteristicErrorMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
         bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
@@ -114,17 +116,17 @@ public class WriteCharacteristicTask extends AbstractBLETask {
     private final Bundle mArguemnt;
 
     /**
-     * @param bleConnection          task target {@link BLEConnection} instance
-     * @param bluetoothGatt          task target {@link BluetoothGatt} instance
-     * @param taskHandler            task target service {@link UUID}
-     * @param serviceUUID            task target characteristic {@link UUID}
-     * @param characteristicUUID     task target {@link TaskHandler} instance
+     * @param bleConnection      task target {@link BLEConnection} instance
+     * @param bluetoothGatt      task target {@link BluetoothGatt} instance
+     * @param taskHandler        task target service {@link UUID}
+     * @param serviceUUID        task target characteristic {@link UUID}
+     * @param characteristicUUID task target {@link TaskHandler} instance
      * @param byteArrayInterface task target data class
-     * @param writeType              one of {@link BluetoothGattCharacteristic#WRITE_TYPE_DEFAULT}, {@link BluetoothGattCharacteristic#WRITE_TYPE_NO_RESPONSE}, {@link BluetoothGattCharacteristic#WRITE_TYPE_SIGNED}
-     * @param timeout                timeout(millis)
-     * @param argument               callback argument
+     * @param writeType          one of {@link BluetoothGattCharacteristic#WRITE_TYPE_DEFAULT}, {@link BluetoothGattCharacteristic#WRITE_TYPE_NO_RESPONSE}, {@link BluetoothGattCharacteristic#WRITE_TYPE_SIGNED}
+     * @param timeout            timeout(millis)
+     * @param argument           callback argument
      */
-    public WriteCharacteristicTask(BLEConnection bleConnection, BluetoothGatt bluetoothGatt, TaskHandler taskHandler, UUID serviceUUID, UUID characteristicUUID, ByteArrayInterface byteArrayInterface, int writeType, long timeout, Bundle argument) {
+    public WriteCharacteristicTask(@NonNull BLEConnection bleConnection, @NonNull BluetoothGatt bluetoothGatt, @NonNull TaskHandler taskHandler, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
         mTaskHandler = taskHandler;
@@ -155,7 +157,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
      * {@inheritDoc}
      */
     @Override
-    public boolean doProcess(Message message) {
+    public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         UUID serviceUUID = (UUID) bundle.getSerializable(KEY_SERVICE_UUID);
         UUID characteristicUUID = (UUID) bundle.getSerializable(KEY_CHARACTERISTIC_UUID);
@@ -211,7 +213,12 @@ public class WriteCharacteristicTask extends AbstractBLETask {
             if (mServiceUUID.equals(serviceUUID) && mCharacteristicUUID.equals(characteristicUUID)) {
                 // current:write start, next:write success
                 if (PROGRESS_CHARACTERISTIC_WRITE_SUCCESS == nextProgress) {
-                    mBLEConnection.getBLECallback().onCharacteristicWriteSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, bundle.getByteArray(KEY_VALUES), mArguemnt);
+                    byte[] value = bundle.getByteArray(KEY_VALUES);
+                    if (value == null) {
+                        mBLEConnection.getBLECallback().onCharacteristicWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, UNKNOWN, mArguemnt);
+                    } else {
+                        mBLEConnection.getBLECallback().onCharacteristicWriteSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, value, mArguemnt);
+                    }
                 } else if (PROGRESS_CHARACTERISTIC_WRITE_ERROR == nextProgress) {
                     // current:write start, next:write error
                     mBLEConnection.getBLECallback().onCharacteristicWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, bundle.getInt(KEY_STATUS), mArguemnt);

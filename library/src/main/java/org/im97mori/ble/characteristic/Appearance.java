@@ -4,6 +4,8 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
@@ -36,7 +38,8 @@ public class Appearance implements ByteArrayInterface, Parcelable {
          * {@inheritDoc}
          */
         @Override
-        public Appearance createFromParcel(Parcel in) {
+        @NonNull
+        public Appearance createFromParcel(@NonNull Parcel in) {
             return new Appearance(in);
         }
 
@@ -44,6 +47,7 @@ public class Appearance implements ByteArrayInterface, Parcelable {
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public Appearance[] newArray(int size) {
             return new Appearance[size];
         }
@@ -51,7 +55,8 @@ public class Appearance implements ByteArrayInterface, Parcelable {
         /**
          * {@inheritDoc}
          */
-        public Appearance createFromByteArray(byte[] values) {
+        @NonNull
+        public Appearance createFromByteArray(@NonNull byte[] values) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(APPEARANCE_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new Appearance(bluetoothGattCharacteristic);
@@ -69,7 +74,7 @@ public class Appearance implements ByteArrayInterface, Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A01
      */
-    public Appearance(BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public Appearance(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         mCategory = bluetoothGattCharacteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 0);
     }
 
@@ -78,7 +83,7 @@ public class Appearance implements ByteArrayInterface, Parcelable {
      *
      * @param in Parcel
      */
-    private Appearance(Parcel in) {
+    private Appearance(@NonNull Parcel in) {
         mCategory = in.readInt();
     }
 
@@ -94,7 +99,7 @@ public class Appearance implements ByteArrayInterface, Parcelable {
      * {@inheritDoc}
      */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(mCategory);
     }
 
@@ -109,6 +114,7 @@ public class Appearance implements ByteArrayInterface, Parcelable {
      * {@inheritDoc}
      */
     @Override
+    @NonNull
     public byte[] getBytes() {
         byte[] data = new byte[2];
         ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);
