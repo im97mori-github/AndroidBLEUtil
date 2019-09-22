@@ -130,14 +130,14 @@ public class NotificationTask extends AbstractBLETask {
 
                 if (result) {
                     nextProgress = AbstractBLETask.PROGRESS_FINISHED;
-                    mBLEServerCallback.onNotificationSuccess(mTaskId, mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mCharacteristicUUID, values, mArgument);
+                    mBLEServerCallback.onNotificationSuccess(getTaskId(), mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mCharacteristicUUID, values, mArgument);
                 } else {
                     if (bluetoothGattCharacteristic == null) {
                         nextProgress = AbstractBLETask.PROGRESS_FINISHED;
-                        mBLEServerCallback.onNotificationFailed(mTaskId, mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mCharacteristicUUID, UNKNOWN, mArgument);
+                        mBLEServerCallback.onNotificationFailed(getTaskId(), mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mCharacteristicUUID, UNKNOWN, mArgument);
                     } else {
                         nextProgress = AbstractBLETask.PROGRESS_BUSY;
-                        mBLEServerCallback.onNotificationFailed(mTaskId, mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mCharacteristicUUID, BUSY, mArgument);
+                        mBLEServerCallback.onNotificationFailed(getTaskId(), mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mCharacteristicUUID, BUSY, mArgument);
                     }
                 }
 
@@ -162,6 +162,6 @@ public class NotificationTask extends AbstractBLETask {
     @Override
     public void cancel() {
         mCurrentProgress = AbstractBLETask.PROGRESS_FINISHED;
-        mBLEServerCallback.onNotificationFailed(mTaskId, mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mCharacteristicUUID, CANCEL, mArgument);
+        mBLEServerCallback.onNotificationFailed(getTaskId(), mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mCharacteristicUUID, CANCEL, mArgument);
     }
 }

@@ -24,7 +24,7 @@ public interface BLECallback {
      * @see BLEConnection#onServicesDiscovered(BluetoothGatt, int)
      * @see org.im97mori.ble.task.ConnectTask
      */
-    void onBLEConnected(long taskId, BluetoothDevice bluetoothDevice, Bundle argument);
+    void onBLEConnected(Integer taskId, BluetoothDevice bluetoothDevice, Bundle argument);
 
     /**
      * Connect error callback
@@ -36,7 +36,7 @@ public interface BLECallback {
      * @see BLEConnection#onConnectionStateChange(BluetoothGatt, int, int)
      * @see org.im97mori.ble.task.ConnectTask
      */
-    void onBLEConnectFailed(long taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument);
+    void onBLEConnectFailed(Integer taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument);
 
     /**
      * Connect task timeout callback
@@ -47,7 +47,7 @@ public interface BLECallback {
      * @see BluetoothGatt#connect()
      * @see org.im97mori.ble.task.ConnectTask
      */
-    void onBLEConnectTimeout(long taskId, BluetoothDevice bluetoothDevice, Bundle argument);
+    void onBLEConnectTimeout(Integer taskId, BluetoothDevice bluetoothDevice, Bundle argument);
 
     /**
      * Disconnected callback
@@ -62,7 +62,7 @@ public interface BLECallback {
      * @see BLEConnection#quit()
      * @see org.im97mori.ble.task.DisconnectTask
      */
-    void onBLEDisonnected(long taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument);
+    void onBLEDisconnected(Integer taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument);
 
     /**
      * Read characteristic success callback
@@ -74,7 +74,7 @@ public interface BLECallback {
      * @param values             {@link BluetoothGattCharacteristic#getValue()}
      * @param argument           callback argument
      */
-    void onCharacteristicReadSuccess(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument);
+    void onCharacteristicReadSuccess(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument);
 
     /**
      * Read characteristic error callback
@@ -86,7 +86,7 @@ public interface BLECallback {
      * @param status             one of {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
      * @param argument           callback argument
      */
-    void onCharacteristicReadFailed(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument);
+    void onCharacteristicReadFailed(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument);
 
     /**
      * Read characteristic timeout callback
@@ -98,7 +98,7 @@ public interface BLECallback {
      * @param timeout            timeout(millis)
      * @param argument           callback argument
      */
-    void onCharacteristicReadTimeout(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument);
+    void onCharacteristicReadTimeout(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument);
 
     /**
      * Write characteristic success callback
@@ -110,7 +110,7 @@ public interface BLECallback {
      * @param values             {@link BluetoothGattCharacteristic#getValue()}
      * @param argument           callback argument
      */
-    void onCharacteristicWriteSuccess(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument);
+    void onCharacteristicWriteSuccess(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument);
 
     /**
      * Write characteristic error callback
@@ -123,7 +123,7 @@ public interface BLECallback {
      * @param argument           callback argument
      * @see BLEConstants.ErrorCodes
      */
-    void onCharacteristicWriteFailed(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument);
+    void onCharacteristicWriteFailed(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument);
 
     /**
      * Write characteristic timeout callback
@@ -135,7 +135,7 @@ public interface BLECallback {
      * @param timeout            timeout(millis)
      * @param argument           callback argument
      */
-    void onCharacteristicWriteTimeout(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument);
+    void onCharacteristicWriteTimeout(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument);
 
     /**
      * Read descriptor success callback
@@ -147,7 +147,7 @@ public interface BLECallback {
      * @param descriptorUUID     descriptor  {@link UUID}
      * @param values             {@link BluetoothGattDescriptor#getValue()}
      */
-    void onDescriptorReadSuccess(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument);
+    void onDescriptorReadSuccess(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument);
 
     /**
      * Read descriptor error callback
@@ -160,7 +160,7 @@ public interface BLECallback {
      * @param status             one of {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
      * @param argument           callback argument
      */
-    void onDescriptorReadFailed(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument);
+    void onDescriptorReadFailed(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument);
 
     /**
      * Read descriptor timeout callback
@@ -172,7 +172,7 @@ public interface BLECallback {
      * @param descriptorUUID     descriptor  {@link UUID}
      * @param timeout            timeout(millis)
      */
-    void onDescriptorReadTimeout(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument);
+    void onDescriptorReadTimeout(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument);
 
     /**
      * Write descriptor success callback
@@ -185,7 +185,7 @@ public interface BLECallback {
      * @param values             {@link BluetoothGattDescriptor#getValue()}
      * @param argument           callback argument
      */
-    void onDescriptorWriteSuccess(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument);
+    void onDescriptorWriteSuccess(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument);
 
     /**
      * Write descriptor error callback
@@ -198,7 +198,7 @@ public interface BLECallback {
      * @param argument           callback argument
      * @see BLEConstants.ErrorCodes
      */
-    void onDescriptorWriteFailed(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument);
+    void onDescriptorWriteFailed(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument);
 
     /**
      * Write descriptor timeout callback
@@ -211,7 +211,7 @@ public interface BLECallback {
      * @param timeout            timeout(millis)
      * @param argument           callback argument
      */
-    void onDescriptorWriteTimeout(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument);
+    void onDescriptorWriteTimeout(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument);
 
     /**
      * Notification characteristic callback

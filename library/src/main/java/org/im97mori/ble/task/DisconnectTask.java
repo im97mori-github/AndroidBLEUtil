@@ -91,7 +91,7 @@ public class DisconnectTask extends AbstractBLETask {
                         } catch (Exception e) {
                             BLELogUtils.stackLog(e);
                         }
-                        mBLEConnection.onDisconnected(mTaskId, mBluetoothGatt, bundle.getInt(KEY_STATUS), mArgument);
+                        mBLEConnection.onDisconnected(getTaskId(), mBluetoothGatt, bundle.getInt(KEY_STATUS), mArgument);
                     }
                     mCurrentProgress = nextProgress;
                 }
@@ -115,7 +115,7 @@ public class DisconnectTask extends AbstractBLETask {
     @Override
     public void cancel() {
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.onDisconnected(mTaskId, mBluetoothGatt, CANCEL, mArgument);
+        mBLEConnection.onDisconnected(getTaskId(), mBluetoothGatt, CANCEL, mArgument);
     }
 
 }

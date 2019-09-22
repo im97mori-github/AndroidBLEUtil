@@ -1,4 +1,4 @@
-package org.im97mori.ble.sample.kitkat;
+package org.im97mori.jellybean_sample;
 
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;

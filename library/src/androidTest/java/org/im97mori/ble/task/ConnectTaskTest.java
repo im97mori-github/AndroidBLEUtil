@@ -5,6 +5,8 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 
+import androidx.test.core.app.ApplicationProvider;
+
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.TaskHandler;
 import org.junit.Test;
@@ -56,7 +58,7 @@ public class ConnectTaskTest {
 
     @Test
     public void test_doProcess001() {
-        BLEConnection mockBleConnection = new BLEConnection(null, null, null) {
+        BLEConnection mockBleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), null) {
             @Override
             public boolean isConnected() {
                 return true;

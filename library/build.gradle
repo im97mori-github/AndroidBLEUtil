@@ -4,7 +4,7 @@ apply plugin: 'maven'
 
 def GROUP_ID = 'org.im97mori'
 def ARTIFACT_ID = 'ble'
-def VERSION_NAME = '0.2.2'
+def VERSION_NAME = '0.3.0'
 
 android {
     compileSdkVersion 29
@@ -13,7 +13,7 @@ android {
     defaultConfig {
         minSdkVersion 18
         targetSdkVersion 29
-        versionCode 7
+        versionCode 8
         versionName VERSION_NAME
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -32,6 +32,7 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:core:1.2.0'
 }
 
 task sourcesJar(type: Jar) {

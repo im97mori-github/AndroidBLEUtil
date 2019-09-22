@@ -18,15 +18,15 @@ project/build.gradle
 project/module/build.gradle
 
     dependencies {
-        implementation 'org.im97mori:ble:0.2.2' // central feature
-        implementation 'org.im97mori:ble_peripheral:0.1.2' // peripheral feature
+        implementation 'org.im97mori:ble:0.3.0' // central feature
+        implementation 'org.im97mori:ble_peripheral:0.1.3' // peripheral feature
     }
 
 ## Features
 ### Advertising data parsing
 It analyzes Advertising data byte array delivered from [LeScanCallback](https://developer.android.com/reference/android/bluetooth/BluetoothAdapter.LeScanCallback.html#onLeScan(android.bluetooth.BluetoothDevice,%20int,%20byte[])) or [ScanCallback](https://developer.android.com/reference/android/bluetooth/le/ScanCallback#onScanResult(int,%2520android.bluetooth.le.ScanResult)) as data class according to type defined in BLE5.1.
 
-#### Kitkat(API 19)
+#### Jelly Bean(API 18)
     class TestLeScanCallback implements BluetoothAdapter.LeScanCallback {
         @Override
         public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
@@ -68,7 +68,8 @@ Begin connection
             Intent intent = getIntent();
             BluetoothDevice bluetoothDevice = intent.getParcelableExtra("device");
     
-            mBleConnection = new BLEConnection(this, target, mBLECallbackSample);
+            mBleConnection = BLEConnectionHolder.getInstance(this, target);
+            mBleConnection.attach(mBLECallbackSample);
             mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
         }
 
@@ -98,6 +99,14 @@ Finish connection(release Handler)
     @Override
     protected void onDestroy() {
         mBleConnection.quit();
+        super.onDestroy();
+    }
+
+or detach callback(keep connection and Handler in BLEConnectionHolder)
+
+    @Override
+    protected void onDestroy() {
+        mBleConnection.detach(mBLECallbackSample);
         super.onDestroy();
     }
  

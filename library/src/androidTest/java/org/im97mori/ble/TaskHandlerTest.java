@@ -128,7 +128,6 @@ public class TaskHandlerTest {
 
             @Override
             public void cancel() {
-
             }
         };
         final AtomicInteger atomicInteger = new AtomicInteger(0);
@@ -140,7 +139,7 @@ public class TaskHandlerTest {
 
             @Override
             public boolean doProcess(Message message) {
-                atomicInteger.addAndGet(1);
+                atomicInteger.set(1);
                 countDownLatch.countDown();
                 return true;
             }
@@ -152,7 +151,8 @@ public class TaskHandlerTest {
 
             @Override
             public void cancel() {
-
+                atomicInteger.set(2);
+                countDownLatch.countDown();
             }
         };
 
@@ -170,7 +170,7 @@ public class TaskHandlerTest {
             e.printStackTrace();
         }
 
-        assertEquals(0, atomicInteger.get());
+        assertEquals(2, atomicInteger.get());
 
         taskHandler.quit();
     }
@@ -191,7 +191,7 @@ public class TaskHandlerTest {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                  return true;
+                return true;
             }
 
             @Override
@@ -201,7 +201,6 @@ public class TaskHandlerTest {
 
             @Override
             public void cancel() {
-
             }
         };
         final AtomicInteger atomicInteger1 = new AtomicInteger(0);
@@ -213,7 +212,7 @@ public class TaskHandlerTest {
 
             @Override
             public boolean doProcess(Message message) {
-                atomicInteger1.addAndGet(1);
+                atomicInteger1.set(1);
                 return true;
             }
 
@@ -224,7 +223,7 @@ public class TaskHandlerTest {
 
             @Override
             public void cancel() {
-
+                atomicInteger1.set(2);
             }
         };
         final AtomicInteger atomicInteger2 = new AtomicInteger(0);
@@ -236,7 +235,7 @@ public class TaskHandlerTest {
 
             @Override
             public boolean doProcess(Message message) {
-                atomicInteger2.addAndGet(1);
+                atomicInteger2.set(1);
                 countDownLatch.countDown();
                 return true;
             }
@@ -248,7 +247,8 @@ public class TaskHandlerTest {
 
             @Override
             public void cancel() {
-
+                atomicInteger2.set(2);
+                countDownLatch.countDown();
             }
         };
 
@@ -267,7 +267,7 @@ public class TaskHandlerTest {
             e.printStackTrace();
         }
 
-        assertEquals(0, atomicInteger1.get());
+        assertEquals(2, atomicInteger1.get());
         assertEquals(1, atomicInteger2.get());
 
         taskHandler.quit();
@@ -310,7 +310,7 @@ public class TaskHandlerTest {
 
             @Override
             public boolean doProcess(Message message) {
-                atomicInteger1.addAndGet(1);
+                atomicInteger1.set(1);
                 return true;
             }
 
@@ -321,6 +321,7 @@ public class TaskHandlerTest {
 
             @Override
             public void cancel() {
+                atomicInteger1.set(2);
             }
         };
         final AtomicInteger atomicInteger2 = new AtomicInteger(0);
@@ -332,7 +333,7 @@ public class TaskHandlerTest {
 
             @Override
             public boolean doProcess(Message message) {
-                atomicInteger2.addAndGet(1);
+                atomicInteger2.set(1);
                 return true;
             }
 
@@ -343,6 +344,7 @@ public class TaskHandlerTest {
 
             @Override
             public void cancel() {
+                atomicInteger2.set(2);
             }
         };
         final AtomicInteger atomicInteger3 = new AtomicInteger(0);
@@ -354,7 +356,7 @@ public class TaskHandlerTest {
 
             @Override
             public boolean doProcess(Message message) {
-                atomicInteger3.addAndGet(1);
+                atomicInteger3.set(1);
                 countDownLatch.countDown();
                 return true;
             }
@@ -366,7 +368,8 @@ public class TaskHandlerTest {
 
             @Override
             public void cancel() {
-                BLELogUtils.stackLog();
+                atomicInteger3.set(2);
+                countDownLatch.countDown();
             }
         };
 
@@ -384,8 +387,8 @@ public class TaskHandlerTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        assertEquals(0, atomicInteger1.get());
-        assertEquals(0, atomicInteger2.get());
+        assertEquals(2, atomicInteger1.get());
+        assertEquals(2, atomicInteger2.get());
         assertEquals(1, atomicInteger3.get());
 
         taskHandler.quit();

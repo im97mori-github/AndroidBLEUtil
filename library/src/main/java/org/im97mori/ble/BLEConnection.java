@@ -25,7 +25,6 @@ import java.util.Set;
 import java.util.UUID;
 
 import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR;
-import static org.im97mori.ble.task.AbstractBLETask.TASK_ID_UNREGISTED;
 
 /**
  * BLE connection(central role)
@@ -36,12 +35,22 @@ import static org.im97mori.ble.task.AbstractBLETask.TASK_ID_UNREGISTED;
 public class BLEConnection extends BluetoothGattCallback {
 
     /**
+     * KEY:CALLBACK_ID
+     */
+    protected static final String KEY_CALLBACK_ID = "KEY_CALLBACK_ID";
+
+    /**
+     * KEY:WRAPPED_ARGUMENT
+     */
+    protected static final String KEY_WRAPPED_ARGUMENT = "KEY_WRAPPED_ARGUMENT";
+
+    /**
      * BLECallback wrapper for distribute
      */
     private static final class DistributionBLECallback implements BLECallback {
 
         /**
-         * get {@link #mPrimaryBLECallback} and {@link #mAdditionalBLECallbackSet}
+         * {@link #mAttachedBLECallbackSet}
          */
         private final BLEConnection mBLEConnection;
 
@@ -56,43 +65,28 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onBLEConnected(long taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
-            // do nothing
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public void onBLEConnectFailed(long taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
-            // do nothing
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public void onBLEConnectTimeout(long taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
-            // do nothing
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public void onBLEDisonnected(long taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
-            // do nothing
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public void onCharacteristicReadSuccess(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+        public void onBLEConnected(Integer taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
             synchronized (mBLEConnection) {
-                mBLEConnection.mPrimaryBLECallback.onCharacteristicReadSuccess(taskId, bluetoothDevice, serviceUUID, characteristicUUID, values, argument);
-                for (BLECallback bleCallback : mBLEConnection.mAdditionalBLECallbackSet) {
-                    bleCallback.onCharacteristicReadSuccess(taskId, bluetoothDevice, serviceUUID, characteristicUUID, values, argument);
+
+                Integer callbackId;
+                if (argument.containsKey(KEY_CALLBACK_ID)) {
+                    callbackId = argument.getInt(KEY_CALLBACK_ID);
+                } else {
+                    callbackId = null;
+                }
+                Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        if (callbackId == null) {
+                            bleCallback.onBLEConnected(taskId, bluetoothDevice, originalArgument);
+                        } else if (bleCallback.hashCode() == callbackId) {
+                            bleCallback.onBLEConnected(taskId, bluetoothDevice, originalArgument);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
                 }
                 mBLEConnection.notifyAll();
             }
@@ -102,11 +96,118 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onCharacteristicReadFailed(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+        public void onBLEConnectFailed(Integer taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
             synchronized (mBLEConnection) {
-                mBLEConnection.mPrimaryBLECallback.onCharacteristicReadFailed(taskId, bluetoothDevice, serviceUUID, characteristicUUID, status, argument);
-                for (BLECallback bleCallback : mBLEConnection.mAdditionalBLECallbackSet) {
-                    bleCallback.onCharacteristicReadFailed(taskId, bluetoothDevice, serviceUUID, characteristicUUID, status, argument);
+
+                Integer callbackId;
+                if (argument.containsKey(KEY_CALLBACK_ID)) {
+                    callbackId = argument.getInt(KEY_CALLBACK_ID);
+                } else {
+                    callbackId = null;
+                }
+                Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        if (callbackId == null) {
+                            bleCallback.onBLEConnectFailed(taskId, bluetoothDevice, status, originalArgument);
+                        } else if (bleCallback.hashCode() == callbackId) {
+                            bleCallback.onBLEConnectFailed(taskId, bluetoothDevice, status, originalArgument);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
+                }
+            }
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public void onBLEConnectTimeout(Integer taskId, BluetoothDevice bluetoothDevice, Bundle argument) {
+            synchronized (mBLEConnection) {
+
+                Integer callbackId;
+                if (argument.containsKey(KEY_CALLBACK_ID)) {
+                    callbackId = argument.getInt(KEY_CALLBACK_ID);
+                } else {
+                    callbackId = null;
+                }
+                Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        if (callbackId == null) {
+                            bleCallback.onBLEConnectTimeout(taskId, bluetoothDevice, originalArgument);
+                        } else if (bleCallback.hashCode() == callbackId) {
+                            bleCallback.onBLEConnectTimeout(taskId, bluetoothDevice, originalArgument);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
+                }
+            }
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public void onBLEDisconnected(Integer taskId, BluetoothDevice bluetoothDevice, int status, Bundle argument) {
+            synchronized (mBLEConnection) {
+
+                Integer callbackId;
+                if (argument.containsKey(KEY_CALLBACK_ID)) {
+                    callbackId = argument.getInt(KEY_CALLBACK_ID);
+                } else {
+                    callbackId = null;
+                }
+                Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        if (callbackId == null) {
+                            bleCallback.onBLEDisconnected(taskId, bluetoothDevice, status, originalArgument);
+                        } else if (bleCallback.hashCode() == callbackId) {
+                            bleCallback.onBLEDisconnected(taskId, bluetoothDevice, status, originalArgument);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
+                }
+            }
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public void onCharacteristicReadSuccess(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+            synchronized (mBLEConnection) {
+
+                Integer callbackId;
+                if (argument.containsKey(KEY_CALLBACK_ID)) {
+                    callbackId = argument.getInt(KEY_CALLBACK_ID);
+                } else {
+                    callbackId = null;
+                }
+                Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        if (callbackId == null) {
+                            bleCallback.onCharacteristicReadSuccess(taskId, bluetoothDevice, serviceUUID, characteristicUUID, values, originalArgument);
+                        } else if (bleCallback.hashCode() == callbackId) {
+                            bleCallback.onCharacteristicReadSuccess(taskId, bluetoothDevice, serviceUUID, characteristicUUID, values, originalArgument);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
                 }
                 mBLEConnection.notifyAll();
             }
@@ -116,11 +217,28 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onCharacteristicReadTimeout(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+        public void onCharacteristicReadFailed(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
             synchronized (mBLEConnection) {
-                mBLEConnection.mPrimaryBLECallback.onCharacteristicReadTimeout(taskId, bluetoothDevice, serviceUUID, characteristicUUID, timeout, argument);
-                for (BLECallback bleCallback : mBLEConnection.mAdditionalBLECallbackSet) {
-                    bleCallback.onCharacteristicReadTimeout(taskId, bluetoothDevice, serviceUUID, characteristicUUID, timeout, argument);
+
+                Integer callbackId;
+                if (argument.containsKey(KEY_CALLBACK_ID)) {
+                    callbackId = argument.getInt(KEY_CALLBACK_ID);
+                } else {
+                    callbackId = null;
+                }
+                Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        if (callbackId == null) {
+                            bleCallback.onCharacteristicReadFailed(taskId, bluetoothDevice, serviceUUID, characteristicUUID, status, originalArgument);
+                        } else if (bleCallback.hashCode() == callbackId) {
+                            bleCallback.onCharacteristicReadFailed(taskId, bluetoothDevice, serviceUUID, characteristicUUID, status, originalArgument);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
                 }
                 mBLEConnection.notifyAll();
             }
@@ -130,11 +248,28 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onCharacteristicWriteSuccess(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
+        public void onCharacteristicReadTimeout(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
             synchronized (mBLEConnection) {
-                mBLEConnection.mPrimaryBLECallback.onCharacteristicWriteSuccess(taskId, bluetoothDevice, serviceUUID, characteristicUUID, values, argument);
-                for (BLECallback bleCallback : mBLEConnection.mAdditionalBLECallbackSet) {
-                    bleCallback.onCharacteristicWriteSuccess(taskId, bluetoothDevice, serviceUUID, characteristicUUID, values, argument);
+
+                Integer callbackId;
+                if (argument.containsKey(KEY_CALLBACK_ID)) {
+                    callbackId = argument.getInt(KEY_CALLBACK_ID);
+                } else {
+                    callbackId = null;
+                }
+                Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        if (callbackId == null) {
+                            bleCallback.onCharacteristicReadTimeout(taskId, bluetoothDevice, serviceUUID, characteristicUUID, timeout, originalArgument);
+                        } else if (bleCallback.hashCode() == callbackId) {
+                            bleCallback.onCharacteristicReadTimeout(taskId, bluetoothDevice, serviceUUID, characteristicUUID, timeout, originalArgument);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
                 }
                 mBLEConnection.notifyAll();
             }
@@ -144,11 +279,28 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onCharacteristicWriteFailed(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
+        public void onCharacteristicWriteSuccess(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values, Bundle argument) {
             synchronized (mBLEConnection) {
-                mBLEConnection.mPrimaryBLECallback.onCharacteristicWriteFailed(taskId, bluetoothDevice, serviceUUID, characteristicUUID, status, argument);
-                for (BLECallback bleCallback : mBLEConnection.mAdditionalBLECallbackSet) {
-                    bleCallback.onCharacteristicWriteFailed(taskId, bluetoothDevice, serviceUUID, characteristicUUID, status, argument);
+
+                Integer callbackId;
+                if (argument.containsKey(KEY_CALLBACK_ID)) {
+                    callbackId = argument.getInt(KEY_CALLBACK_ID);
+                } else {
+                    callbackId = null;
+                }
+                Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        if (callbackId == null) {
+                            bleCallback.onCharacteristicWriteSuccess(taskId, bluetoothDevice, serviceUUID, characteristicUUID, values, originalArgument);
+                        } else if (bleCallback.hashCode() == callbackId) {
+                            bleCallback.onCharacteristicWriteSuccess(taskId, bluetoothDevice, serviceUUID, characteristicUUID, values, originalArgument);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
                 }
                 mBLEConnection.notifyAll();
             }
@@ -158,11 +310,28 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onCharacteristicWriteTimeout(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
+        public void onCharacteristicWriteFailed(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, int status, Bundle argument) {
             synchronized (mBLEConnection) {
-                mBLEConnection.mPrimaryBLECallback.onCharacteristicWriteTimeout(taskId, bluetoothDevice, serviceUUID, characteristicUUID, timeout, argument);
-                for (BLECallback bleCallback : mBLEConnection.mAdditionalBLECallbackSet) {
-                    bleCallback.onCharacteristicWriteTimeout(taskId, bluetoothDevice, serviceUUID, characteristicUUID, timeout, argument);
+
+                Integer callbackId;
+                if (argument.containsKey(KEY_CALLBACK_ID)) {
+                    callbackId = argument.getInt(KEY_CALLBACK_ID);
+                } else {
+                    callbackId = null;
+                }
+                Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        if (callbackId == null) {
+                            bleCallback.onCharacteristicWriteFailed(taskId, bluetoothDevice, serviceUUID, characteristicUUID, status, originalArgument);
+                        } else if (bleCallback.hashCode() == callbackId) {
+                            bleCallback.onCharacteristicWriteFailed(taskId, bluetoothDevice, serviceUUID, characteristicUUID, status, originalArgument);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
                 }
                 mBLEConnection.notifyAll();
             }
@@ -172,11 +341,28 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onDescriptorReadSuccess(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+        public void onCharacteristicWriteTimeout(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
             synchronized (mBLEConnection) {
-                mBLEConnection.mPrimaryBLECallback.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, values, argument);
-                for (BLECallback bleCallback : mBLEConnection.mAdditionalBLECallbackSet) {
-                    bleCallback.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, values, argument);
+
+                Integer callbackId;
+                if (argument.containsKey(KEY_CALLBACK_ID)) {
+                    callbackId = argument.getInt(KEY_CALLBACK_ID);
+                } else {
+                    callbackId = null;
+                }
+                Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        if (callbackId == null) {
+                            bleCallback.onCharacteristicWriteTimeout(taskId, bluetoothDevice, serviceUUID, characteristicUUID, timeout, originalArgument);
+                        } else if (bleCallback.hashCode() == callbackId) {
+                            bleCallback.onCharacteristicWriteTimeout(taskId, bluetoothDevice, serviceUUID, characteristicUUID, timeout, originalArgument);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
                 }
                 mBLEConnection.notifyAll();
             }
@@ -186,11 +372,28 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onDescriptorReadFailed(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+        public void onDescriptorReadSuccess(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
             synchronized (mBLEConnection) {
-                mBLEConnection.mPrimaryBLECallback.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, status, argument);
-                for (BLECallback bleCallback : mBLEConnection.mAdditionalBLECallbackSet) {
-                    bleCallback.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, status, argument);
+
+                Integer callbackId;
+                if (argument.containsKey(KEY_CALLBACK_ID)) {
+                    callbackId = argument.getInt(KEY_CALLBACK_ID);
+                } else {
+                    callbackId = null;
+                }
+                Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        if (callbackId == null) {
+                            bleCallback.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, values, originalArgument);
+                        } else if (bleCallback.hashCode() == callbackId) {
+                            bleCallback.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, values, originalArgument);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
                 }
                 mBLEConnection.notifyAll();
             }
@@ -200,11 +403,28 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onDescriptorReadTimeout(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+        public void onDescriptorReadFailed(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
             synchronized (mBLEConnection) {
-                mBLEConnection.mPrimaryBLECallback.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, timeout, argument);
-                for (BLECallback bleCallback : mBLEConnection.mAdditionalBLECallbackSet) {
-                    bleCallback.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, timeout, argument);
+
+                Integer callbackId;
+                if (argument.containsKey(KEY_CALLBACK_ID)) {
+                    callbackId = argument.getInt(KEY_CALLBACK_ID);
+                } else {
+                    callbackId = null;
+                }
+                Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        if (callbackId == null) {
+                            bleCallback.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, status, originalArgument);
+                        } else if (bleCallback.hashCode() == callbackId) {
+                            bleCallback.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, status, originalArgument);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
                 }
                 mBLEConnection.notifyAll();
             }
@@ -214,11 +434,28 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onDescriptorWriteSuccess(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
+        public void onDescriptorReadTimeout(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
             synchronized (mBLEConnection) {
-                mBLEConnection.mPrimaryBLECallback.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, values, argument);
-                for (BLECallback bleCallback : mBLEConnection.mAdditionalBLECallbackSet) {
-                    bleCallback.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, values, argument);
+
+                Integer callbackId;
+                if (argument.containsKey(KEY_CALLBACK_ID)) {
+                    callbackId = argument.getInt(KEY_CALLBACK_ID);
+                } else {
+                    callbackId = null;
+                }
+                Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        if (callbackId == null) {
+                            bleCallback.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, timeout, originalArgument);
+                        } else if (bleCallback.hashCode() == callbackId) {
+                            bleCallback.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, timeout, originalArgument);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
                 }
                 mBLEConnection.notifyAll();
             }
@@ -228,11 +465,28 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onDescriptorWriteFailed(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
+        public void onDescriptorWriteSuccess(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, byte[] values, Bundle argument) {
             synchronized (mBLEConnection) {
-                mBLEConnection.mPrimaryBLECallback.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, status, argument);
-                for (BLECallback bleCallback : mBLEConnection.mAdditionalBLECallbackSet) {
-                    bleCallback.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, status, argument);
+
+                Integer callbackId;
+                if (argument.containsKey(KEY_CALLBACK_ID)) {
+                    callbackId = argument.getInt(KEY_CALLBACK_ID);
+                } else {
+                    callbackId = null;
+                }
+                Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        if (callbackId == null) {
+                            bleCallback.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, values, originalArgument);
+                        } else if (bleCallback.hashCode() == callbackId) {
+                            bleCallback.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, values, originalArgument);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
                 }
                 mBLEConnection.notifyAll();
             }
@@ -242,11 +496,59 @@ public class BLEConnection extends BluetoothGattCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onDescriptorWriteTimeout(long taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+        public void onDescriptorWriteFailed(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, int status, Bundle argument) {
             synchronized (mBLEConnection) {
-                mBLEConnection.mPrimaryBLECallback.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, timeout, argument);
-                for (BLECallback bleCallback : mBLEConnection.mAdditionalBLECallbackSet) {
-                    bleCallback.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, timeout, argument);
+
+                Integer callbackId;
+                if (argument.containsKey(KEY_CALLBACK_ID)) {
+                    callbackId = argument.getInt(KEY_CALLBACK_ID);
+                } else {
+                    callbackId = null;
+                }
+                Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        if (callbackId == null) {
+                            bleCallback.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, status, originalArgument);
+                        } else if (bleCallback.hashCode() == callbackId) {
+                            bleCallback.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, status, originalArgument);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
+                }
+                mBLEConnection.notifyAll();
+            }
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public void onDescriptorWriteTimeout(Integer taskId, BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
+            synchronized (mBLEConnection) {
+
+                Integer callbackId;
+                if (argument.containsKey(KEY_CALLBACK_ID)) {
+                    callbackId = argument.getInt(KEY_CALLBACK_ID);
+                } else {
+                    callbackId = null;
+                }
+                Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        if (callbackId == null) {
+                            bleCallback.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, timeout, originalArgument);
+                        } else if (bleCallback.hashCode() == callbackId) {
+                            bleCallback.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, characteristicUUID, descriptorUUID, timeout, originalArgument);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
                 }
                 mBLEConnection.notifyAll();
             }
@@ -258,9 +560,12 @@ public class BLEConnection extends BluetoothGattCallback {
         @Override
         public void onCharacteristicNotified(BluetoothDevice bluetoothDevice, UUID serviceUUID, UUID characteristicUUID, byte[] values) {
             synchronized (mBLEConnection) {
-                mBLEConnection.mPrimaryBLECallback.onCharacteristicNotified(bluetoothDevice, serviceUUID, characteristicUUID, values);
-                for (BLECallback bleCallback : mBLEConnection.mAdditionalBLECallbackSet) {
-                    bleCallback.onCharacteristicNotified(bluetoothDevice, serviceUUID, characteristicUUID, values);
+                for (BLECallback bleCallback : mBLEConnection.mAttachedBLECallbackSet) {
+                    try {
+                        bleCallback.onCharacteristicNotified(bluetoothDevice, serviceUUID, characteristicUUID, values);
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
                 }
                 mBLEConnection.notifyAll();
             }
@@ -279,14 +584,9 @@ public class BLEConnection extends BluetoothGattCallback {
     protected final BluetoothDevice mBluetoothDevice;
 
     /**
-     * {@link BLECallback} instance
+     * callback for {@link #mBluetoothDevice}
      */
-    protected final BLECallback mPrimaryBLECallback;
-
-    /**
-     * additional callback from {@link BLESyncConnection}
-     */
-    protected final Set<BLECallback> mAdditionalBLECallbackSet = new HashSet<>();
+    protected final Set<BLECallback> mAttachedBLECallbackSet = new HashSet<>();
 
     /**
      * <p>
@@ -298,7 +598,7 @@ public class BLEConnection extends BluetoothGattCallback {
     protected final Set<UUID> mNotificationSet = new HashSet<>();
 
     /**
-     * {@link BLEConnection.DistributionBLECallback} instance
+     * {@link DistributionBLECallback} instance
      */
     protected final DistributionBLECallback mDistributionBLECallback;
 
@@ -315,31 +615,39 @@ public class BLEConnection extends BluetoothGattCallback {
     /**
      * @param context         {@link Context} instance
      * @param bluetoothDevice BLE device
-     * @param bleCallback     {@link BLECallback} instance
      */
-    public BLEConnection(Context context, BluetoothDevice bluetoothDevice, BLECallback bleCallback) {
-        mContext = context;
+    public BLEConnection(Context context, BluetoothDevice bluetoothDevice) {
+        mContext = context.getApplicationContext();
         mBluetoothDevice = bluetoothDevice;
-        mPrimaryBLECallback = bleCallback;
         mDistributionBLECallback = new DistributionBLECallback(this);
     }
 
     /**
-     * regist additional callback
+     * attach callback
      *
-     * @param callback additional {@link BLECallback}
+     * @param callback {@link BLECallback}
      */
-    synchronized void addCallback(BLECallback callback) {
-        mAdditionalBLECallbackSet.add(callback);
+    public synchronized void attach(BLECallback callback) {
+        mAttachedBLECallbackSet.add(callback);
     }
 
     /**
-     * unregist additional callback
+     * detach callback
      *
-     * @param callback added {@link BLECallback}
+     * @param callback {@link BLECallback}
      */
-    synchronized void removeCallback(BLECallback callback) {
-        mAdditionalBLECallbackSet.remove(callback);
+    public synchronized void detach(BLECallback callback) {
+        mAttachedBLECallbackSet.remove(callback);
+    }
+
+    /**
+     * check target callback is attached
+     *
+     * @param callback target callback
+     * @return {@code true}:attached, {@code false}:not attached
+     */
+    public synchronized boolean isAttached(BLECallback callback) {
+        return mAttachedBLECallbackSet.contains(callback);
     }
 
     /**
@@ -358,17 +666,17 @@ public class BLEConnection extends BluetoothGattCallback {
     }
 
     /**
-     * @see #connect(boolean, long, Bundle)
+     * @see #connect(boolean, long, Bundle, BLECallback)
      */
-    public long connect(long timeout) {
-        return connect(false, timeout, null);
+    public Integer connect(long timeout) {
+        return connect(false, timeout, null, null);
     }
 
     /**
-     * @see #connect(boolean, long, Bundle)
+     * @see #connect(boolean, long, Bundle, BLECallback)
      */
-    public long connect(long timeout, Bundle argument) {
-        return connect(false, timeout, argument);
+    public Integer connect(long timeout, Bundle argument) {
+        return connect(false, timeout, argument, null);
     }
 
     /**
@@ -381,13 +689,15 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param needMtuSetting {@code true}:try 512octed mtu setting, {@code false}:no mtu setting
      * @param timeout        timeout(millis)
      * @param argument       callback argument
+     * @param bleCallback    {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
+     * @return task id. if {@code null} returned, task was not registed
      */
-    public synchronized long connect(boolean needMtuSetting, long timeout, Bundle argument) {
-        long taskId = TASK_ID_UNREGISTED;
+    public synchronized Integer connect(boolean needMtuSetting, long timeout, Bundle argument, BLECallback bleCallback) {
+        Integer taskId = null;
         if (mBluetoothGatt == null) {
             start();
 
-            ConnectTask task = new ConnectTask(this, mTaskHandler, needMtuSetting, timeout, argument);
+            ConnectTask task = new ConnectTask(this, mTaskHandler, needMtuSetting, timeout, wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -395,10 +705,10 @@ public class BLEConnection extends BluetoothGattCallback {
     }
 
     /**
-     * @see #quit(Bundle)
+     * @see #quit(Bundle, BLECallback)
      */
-    public long quit() {
-        return this.quit(null);
+    public Integer quit() {
+        return quit(null, null);
     }
 
 
@@ -409,14 +719,16 @@ public class BLEConnection extends BluetoothGattCallback {
      * if already disconnect, do not anything
      * </p>
      *
-     * @param argument callback argument
+     * @param argument    callback argument
+     * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
+     * @return task id. if {@code null} returned, task was not registed
      */
-    public synchronized long quit(Bundle argument) {
-        long taskId = TASK_ID_UNREGISTED;
+    public synchronized Integer quit(Bundle argument, BLECallback bleCallback) {
+        Integer taskId = null;
         if (mBluetoothGatt != null) {
             mTaskHandler.clearTask();
 
-            DisconnectTask task = new DisconnectTask(this, mBluetoothGatt, BLEConstants.ErrorCodes.UNKNOWN, argument);
+            DisconnectTask task = new DisconnectTask(this, mBluetoothGatt, BLEConstants.ErrorCodes.UNKNOWN, wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -437,7 +749,7 @@ public class BLEConnection extends BluetoothGattCallback {
      *
      * @param taskId task id
      */
-    public synchronized void cancelTask(long taskId) {
+    public synchronized void cancelTask(Integer taskId) {
         if (mTaskHandler != null) {
             mTaskHandler.cancelTask(taskId);
         }
@@ -446,7 +758,7 @@ public class BLEConnection extends BluetoothGattCallback {
     /**
      * Add user original task
      *
-     * @param task    {@link AbstractBLETask} instance
+     * @param task {@link AbstractBLETask} instance
      * @see TaskHandler#addTask(AbstractBLETask)
      */
     public synchronized void addTask(AbstractBLETask task) {
@@ -462,10 +774,11 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param bluetoothGatt Connected {@link BluetoothGatt}
      * @param argument      callback argument
      */
-    public synchronized void onConnected(long taskId, BluetoothGatt bluetoothGatt, Bundle argument) {
+    public synchronized void onConnected(int taskId, BluetoothGatt bluetoothGatt, Bundle argument) {
         if (mBluetoothGatt == null) {
             mBluetoothGatt = bluetoothGatt;
-            mPrimaryBLECallback.onBLEConnected(taskId, mBluetoothDevice, argument);
+
+            mDistributionBLECallback.onBLEConnected(taskId, mBluetoothDevice, argument);
         }
     }
 
@@ -476,14 +789,12 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param status   one of {@link BLEConnection#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}
      * @param argument callback argument
      */
-    public synchronized void onConnectFailed(long taskId, int status, Bundle argument) {
+    public synchronized void onConnectFailed(int taskId, int status, Bundle argument) {
         if (mTaskHandler != null) {
             mTaskHandler.quit();
             mTaskHandler = null;
-            mPrimaryBLECallback.onBLEConnectFailed(taskId, mBluetoothDevice, status, argument);
-            for (BLECallback callback : mAdditionalBLECallbackSet) {
-                callback.onBLEConnectFailed(taskId, mBluetoothDevice, status, argument);
-            }
+
+            mDistributionBLECallback.onBLEConnectFailed(taskId, mBluetoothDevice, status, argument);
         }
     }
 
@@ -493,27 +804,24 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param taskId   task id
      * @param argument callback argument
      */
-    public synchronized void onConnectTimeout(long taskId, Bundle argument) {
+    public synchronized void onConnectTimeout(int taskId, Bundle argument) {
         if (mTaskHandler != null) {
             mTaskHandler.quit();
             mTaskHandler = null;
-            mPrimaryBLECallback.onBLEConnectTimeout(taskId, mBluetoothDevice, argument);
-            for (BLECallback callback : mAdditionalBLECallbackSet) {
-                callback.onBLEConnectTimeout(taskId, mBluetoothDevice, argument);
-            }
+
+            mDistributionBLECallback.onBLEConnectTimeout(taskId, mBluetoothDevice, argument);
         }
     }
-
 
     /**
      * Callback at disconnected
      *
      * @param taskId        task id
      * @param bluetoothGatt Disconnected {@link BluetoothGatt}
-     * @param status        @link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link BLEConstants.ErrorCodes#UNKNOWN}
+     * @param status        {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link BLEConstants.ErrorCodes#UNKNOWN}
      * @param argument      callback argument
      */
-    public synchronized void onDisconnected(long taskId, BluetoothGatt bluetoothGatt, int status, Bundle argument) {
+    public synchronized void onDisconnected(int taskId, BluetoothGatt bluetoothGatt, int status, Bundle argument) {
         if (bluetoothGatt == mBluetoothGatt) {
             mBluetoothGatt = null;
             if (mTaskHandler != null) {
@@ -521,10 +829,8 @@ public class BLEConnection extends BluetoothGattCallback {
                 mTaskHandler = null;
             }
             mNotificationSet.clear();
-            mPrimaryBLECallback.onBLEDisonnected(taskId, mBluetoothDevice, status, argument);
-            for (BLECallback callback : mAdditionalBLECallbackSet) {
-                callback.onBLEDisonnected(taskId, mBluetoothDevice, status, argument);
-            }
+
+            mDistributionBLECallback.onBLEDisconnected(taskId, mBluetoothDevice, status, argument);
         }
     }
 
@@ -680,9 +986,12 @@ public class BLEConnection extends BluetoothGattCallback {
 
             // notification status check
             if (mNotificationSet.contains(uuid)) {
-                mPrimaryBLECallback.onCharacteristicNotified(mBluetoothDevice, characteristic.getService().getUuid(), uuid, characteristic.getValue());
-                for (BLECallback callback : mAdditionalBLECallbackSet) {
-                    callback.onCharacteristicNotified(mBluetoothDevice, characteristic.getService().getUuid(), uuid, characteristic.getValue());
+                for (BLECallback callback : mAttachedBLECallbackSet) {
+                    try {
+                        callback.onCharacteristicNotified(mBluetoothDevice, characteristic.getService().getUuid(), uuid, characteristic.getValue());
+                    } catch (Exception e) {
+                        BLELogUtils.stackLog(e);
+                    }
                 }
             }
         } catch (Exception e) {
@@ -793,10 +1102,10 @@ public class BLEConnection extends BluetoothGattCallback {
     }
 
     /**
-     * @see #createReadCharacteristicTask(UUID, UUID, long, Bundle)
+     * @see #createReadCharacteristicTask(UUID, UUID, long, Bundle, BLECallback)
      */
-    public long createReadCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, long timeout) {
-        return this.createReadCharacteristicTask(serviceUUID, characteristicUUID, timeout, null);
+    public Integer createReadCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, long timeout) {
+        return createReadCharacteristicTask(serviceUUID, characteristicUUID, timeout, null, null);
     }
 
     /**
@@ -806,12 +1115,14 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param characteristicUUID characteristic {@link UUID}
      * @param timeout            timeout(millis)
      * @param argument           callback argument
+     * @param bleCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
+     * @return task id. if {@code null} returned, task was not registed
      */
-    public synchronized long createReadCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument) {
-        long taskId = TASK_ID_UNREGISTED;
+    public synchronized Integer createReadCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, long timeout, Bundle argument, BLECallback bleCallback) {
+        Integer taskId = null;
         BluetoothGatt bluetoothGatt = mBluetoothGatt;
         if (bluetoothGatt != null) {
-            ReadCharacteristicTask task = new ReadCharacteristicTask(this, bluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, timeout, argument);
+            ReadCharacteristicTask task = new ReadCharacteristicTask(this, bluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, timeout, wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -819,17 +1130,17 @@ public class BLEConnection extends BluetoothGattCallback {
     }
 
     /**
-     * @see #createWriteCharacteristicTask(UUID, UUID, ByteArrayInterface, int, long, Bundle)
+     * @see #createWriteCharacteristicTask(UUID, UUID, ByteArrayInterface, int, long, Bundle, BLECallback)
      */
-    public long createWriteCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, ByteArrayInterface byteArrayInterface, long timeout) {
-        return createWriteCharacteristicTask(serviceUUID, characteristicUUID, byteArrayInterface, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, timeout);
+    public Integer createWriteCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, ByteArrayInterface byteArrayInterface, long timeout) {
+        return createWriteCharacteristicTask(serviceUUID, characteristicUUID, byteArrayInterface, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, timeout, null, null);
     }
 
     /**
-     * @see #createWriteCharacteristicTask(UUID, UUID, ByteArrayInterface, int, long, Bundle)
+     * @see #createWriteCharacteristicTask(UUID, UUID, ByteArrayInterface, int, long, Bundle, BLECallback)
      */
-    public long createWriteCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, ByteArrayInterface byteArrayInterface, int writeType, long timeout) {
-        return this.createWriteCharacteristicTask(serviceUUID, characteristicUUID, byteArrayInterface, writeType, timeout, null);
+    public Integer createWriteCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, ByteArrayInterface byteArrayInterface, int writeType, long timeout) {
+        return createWriteCharacteristicTask(serviceUUID, characteristicUUID, byteArrayInterface, writeType, timeout, null, null);
     }
 
     /**
@@ -841,11 +1152,13 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param writeType          one of {@link BluetoothGattCharacteristic#WRITE_TYPE_DEFAULT}, {@link BluetoothGattCharacteristic#WRITE_TYPE_NO_RESPONSE}, {@link BluetoothGattCharacteristic#WRITE_TYPE_SIGNED}
      * @param timeout            timeout(millis)
      * @param argument           callback argument
+     * @param bleCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
+     * @return task id. if {@code null} returned, task was not registed
      */
-    public synchronized long createWriteCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, ByteArrayInterface byteArrayInterface, int writeType, long timeout, Bundle argument) {
-        long taskId = TASK_ID_UNREGISTED;
+    public synchronized Integer createWriteCharacteristicTask(UUID serviceUUID, UUID characteristicUUID, ByteArrayInterface byteArrayInterface, int writeType, long timeout, Bundle argument, BLECallback bleCallback) {
+        Integer taskId = null;
         if (mBluetoothGatt != null) {
-            WriteCharacteristicTask task = new WriteCharacteristicTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, byteArrayInterface, writeType, timeout, argument);
+            WriteCharacteristicTask task = new WriteCharacteristicTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, byteArrayInterface, writeType, timeout, wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -853,10 +1166,10 @@ public class BLEConnection extends BluetoothGattCallback {
     }
 
     /**
-     * @see #createReadDescriptorTask(UUID, UUID, UUID, long, Bundle)
+     * @see #createReadDescriptorTask(UUID, UUID, UUID, long, Bundle, BLECallback)
      */
-    public long createReadDescriptorTask(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout) {
-        return this.createReadDescriptorTask(serviceUUID, characteristicUUID, descriptorUUID, timeout, null);
+    public Integer createReadDescriptorTask(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout) {
+        return createReadDescriptorTask(serviceUUID, characteristicUUID, descriptorUUID, timeout, null, null);
     }
 
     /**
@@ -867,11 +1180,13 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param descriptorUUID     descriptor {@link UUID}
      * @param timeout            timeout(millis)
      * @param argument           callback argument
+     * @param bleCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
+     * @return task id. if {@code null} returned, task was not registed
      */
-    public synchronized long createReadDescriptorTask(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument) {
-        long taskId = TASK_ID_UNREGISTED;
+    public synchronized Integer createReadDescriptorTask(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, long timeout, Bundle argument, BLECallback bleCallback) {
+        Integer taskId = null;
         if (mBluetoothGatt != null) {
-            ReadDescriptorTask task = new ReadDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, descriptorUUID, timeout, argument);
+            ReadDescriptorTask task = new ReadDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, descriptorUUID, timeout, wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -879,10 +1194,10 @@ public class BLEConnection extends BluetoothGattCallback {
     }
 
     /**
-     * @see #createWriteDescriptorTask(UUID, UUID, UUID, ByteArrayInterface, long, Bundle)
+     * @see #createWriteDescriptorTask(UUID, UUID, UUID, ByteArrayInterface, long, Bundle, BLECallback)
      */
-    public long createWriteDescriptorTask(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, ByteArrayInterface byteArrayInterface, long timeout) {
-        return createWriteDescriptorTask(serviceUUID, characteristicUUID, descriptorUUID, byteArrayInterface, timeout, null);
+    public Integer createWriteDescriptorTask(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, ByteArrayInterface byteArrayInterface, long timeout) {
+        return createWriteDescriptorTask(serviceUUID, characteristicUUID, descriptorUUID, byteArrayInterface, timeout, null, null);
     }
 
     /**
@@ -894,15 +1209,35 @@ public class BLEConnection extends BluetoothGattCallback {
      * @param byteArrayInterface write data
      * @param timeout            timeout(millis)
      * @param argument           callback argument
+     * @param bleCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
+     * @return task id. if {@code null} returned, task was not registed
      */
-    public synchronized long createWriteDescriptorTask(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, ByteArrayInterface byteArrayInterface, long timeout, Bundle argument) {
-        long taskId = TASK_ID_UNREGISTED;
+    public synchronized Integer createWriteDescriptorTask(UUID serviceUUID, UUID characteristicUUID, UUID descriptorUUID, ByteArrayInterface byteArrayInterface, long timeout, Bundle argument, BLECallback bleCallback) {
+        Integer taskId = null;
         if (mBluetoothGatt != null) {
-            WriteDescriptorTask task = new WriteDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, descriptorUUID, byteArrayInterface, timeout, argument);
+            WriteDescriptorTask task = new WriteDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, descriptorUUID, byteArrayInterface, timeout, wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
         return taskId;
+    }
+
+    /**
+     * wrap original argument
+     *
+     * @param argument    original argument
+     * @param bleCallback callback instance for get callback id
+     * @return wrapped argument(original argument and callback id)
+     */
+    public Bundle wrapArgument(Bundle argument, BLECallback bleCallback) {
+        Bundle wrap = new Bundle();
+        if (bleCallback != null) {
+            wrap.putInt(KEY_CALLBACK_ID, bleCallback.hashCode());
+        }
+        if (argument != null) {
+            wrap.putBundle(KEY_WRAPPED_ARGUMENT, argument);
+        }
+        return wrap;
     }
 
 }

@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-public class AlertDialogFragment extends DialogFragment implements DialogInterface.OnClickListener {
+class AlertDialogFragment extends DialogFragment implements DialogInterface.OnClickListener {
 
     public interface AlertDialogFragmentCallback {
         void onOk();

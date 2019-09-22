@@ -146,7 +146,7 @@ public class ConnectTask extends AbstractBLETask {
                     }
                 }
 
-                mBLEConnection.onConnectTimeout(mTaskId, mArgument);
+                mBLEConnection.onConnectTimeout(getTaskId(), mArgument);
 
                 mCurrentProgress = nextProgress;
             } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
@@ -162,7 +162,7 @@ public class ConnectTask extends AbstractBLETask {
 
                     // connect failed
                     if (mBluetoothGatt == null) {
-                        mBLEConnection.onConnectFailed(mTaskId, UNKNOWN, mArgument);
+                        mBLEConnection.onConnectFailed(getTaskId(), UNKNOWN, mArgument);
                         mCurrentProgress = PROGRESS_FINISHED;
                     } else {
                         // connecting
@@ -186,7 +186,7 @@ public class ConnectTask extends AbstractBLETask {
 
                     if (PROGRESS_FINISHED == nextProgress) {
                         // callback
-                        mBLEConnection.onConnected(mTaskId, mBluetoothGatt, mArgument);
+                        mBLEConnection.onConnected(getTaskId(), mBluetoothGatt, mArgument);
 
                         // remove timeout message
                         mTaskHandler.removeCallbacksAndMessages(this);
@@ -198,7 +198,7 @@ public class ConnectTask extends AbstractBLETask {
                 if (mBluetoothGatt == message.obj && PROGRESS_FINISHED == nextProgress) {
 
                     // callback
-                    mBLEConnection.onConnected(mTaskId, mBluetoothGatt, mArgument);
+                    mBLEConnection.onConnected(getTaskId(), mBluetoothGatt, mArgument);
 
                     // remove timeout message
                     mTaskHandler.removeCallbacksAndMessages(this);
@@ -226,7 +226,7 @@ public class ConnectTask extends AbstractBLETask {
     public void cancel() {
         mTaskHandler.removeCallbacksAndMessages(this);
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.onConnectFailed(mTaskId, CANCEL, mArgument);
+        mBLEConnection.onConnectFailed(getTaskId(), CANCEL, mArgument);
     }
 
 }

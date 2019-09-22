@@ -24,6 +24,7 @@ import android.os.SystemClock;
 import android.text.format.DateUtils;
 import android.util.Pair;
 
+import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLEConstants.ErrorCodes;
 import org.im97mori.ble.ByteArrayInterface;
@@ -58,7 +59,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
      * Default server setting
      */
     @SuppressWarnings("WeakerAccess")
-    public static class DefaultServerSetting implements BLEServerCallback {
+    public static abstract class DefaultServerSetting implements BLECallback, BLEServerCallback {
 
         /**
          * Default response message
@@ -383,7 +384,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onNotificationSuccess(long taskId, BluetoothGattServer bluetoothGattServer, BluetoothDevice device, UUID serviceUUID, UUID chacteristicUUID, byte[] value, Bundle argument) {
+        public void onNotificationSuccess(int taskId, BluetoothGattServer bluetoothGattServer, BluetoothDevice device, UUID serviceUUID, UUID chacteristicUUID, byte[] value, Bundle argument) {
             createNotificationTask(bluetoothGattServer, device, serviceUUID, chacteristicUUID);
         }
 
@@ -391,7 +392,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onNotificationFailed(long taskId, BluetoothGattServer bluetoothGattServer, BluetoothDevice device, UUID serviceUUID, UUID chacteristicUUID, int status, Bundle argument) {
+        public void onNotificationFailed(int taskId, BluetoothGattServer bluetoothGattServer, BluetoothDevice device, UUID serviceUUID, UUID chacteristicUUID, int status, Bundle argument) {
             createNotificationTask(bluetoothGattServer, device, serviceUUID, chacteristicUUID);
         }
 

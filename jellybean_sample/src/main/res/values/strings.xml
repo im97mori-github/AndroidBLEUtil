@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">kitkat_sample</string>
+    <string name="app_name">jellybean_sample</string>
     <string name="get_permission">Get Permission</string>
     <string name="scan_start">Scan Start</string>
     <string name="scan_stop">Scan Stop</string>

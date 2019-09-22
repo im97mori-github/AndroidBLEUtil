@@ -2680,7 +2680,7 @@ public class BLEConstants {
         /**
          * task canceled
          *
-         * @see TaskHandler#cancelTask(long)
+         * @see TaskHandler#cancelTask(Integer)
          */
         public static final int CANCEL = 0xfffffffe;
 

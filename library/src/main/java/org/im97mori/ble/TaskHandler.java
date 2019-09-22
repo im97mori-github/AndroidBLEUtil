@@ -1,6 +1,5 @@
 package org.im97mori.ble;
 
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -54,11 +53,6 @@ public class TaskHandler extends Handler {
     private static final int MESSAGE_CLEAR_BUSY = MESSAGE_TASK_CANCEL + 1;
 
     /**
-     * KEY:TASK_ID
-     */
-    private static final String KEY_TASK_ID = "KEY_TASK_ID";
-
-    /**
      * current task
      */
     private AbstractBLETask mCurrentTask;
@@ -100,10 +94,9 @@ public class TaskHandler extends Handler {
                 cancelAllQueue();
             } else if (MESSAGE_TASK_CANCEL == msg.what) {
                 // cancel single task
-                Bundle bundle = msg.getData();
-                long taskId = bundle.getLong(KEY_TASK_ID);
+                Integer canceldTask = (Integer) msg.obj;
 
-                if (mCurrentTask != null && mCurrentTask.getTaskId() == taskId) {
+                if (mCurrentTask != null && mCurrentTask.getTaskId().equals(canceldTask)) {
                     mCurrentTask.cancel();
                     mCurrentTask = null;
                 }
@@ -111,7 +104,7 @@ public class TaskHandler extends Handler {
                 Iterator<AbstractBLETask> it = mQueue.iterator();
                 while (it.hasNext()) {
                     AbstractBLETask task = it.next();
-                    if (task.getTaskId() == taskId) {
+                    if (task.getTaskId().equals(canceldTask)) {
                         it.remove();
                         break;
                     }
@@ -128,6 +121,7 @@ public class TaskHandler extends Handler {
                 if (MESSAGE_TASK_ADD == msg.what) {
                     AbstractBLETask task = (AbstractBLETask) msg.obj;
                     if (hasMessages(MESSAGE_TASK_CANCEL, task.getTaskId())) {
+                        task.cancel();
                         removeMessages(MESSAGE_TASK_CANCEL, task.getTaskId());
                     } else if (hasMessages(MESSAGE_TASK_CLEAR)) {
                         task.cancel();
@@ -253,11 +247,8 @@ public class TaskHandler extends Handler {
      *
      * @param taskId task id
      */
-    public void cancelTask(long taskId) {
+    public void cancelTask(Integer taskId) {
         Message message = new Message();
-        Bundle bundle = new Bundle();
-        bundle.putLong(KEY_TASK_ID, taskId);
-        message.setData(bundle);
         message.what = MESSAGE_TASK_CANCEL;
         message.obj = taskId;
         sendMessage(message);

@@ -4,23 +4,12 @@ import android.os.Bundle;
 import android.os.Message;
 
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Base task class
  */
 @SuppressWarnings({"WeakerAccess"})
 public abstract class AbstractBLETask {
-
-    /**
-     * all task id greater than this number
-     */
-    private static final long NOT_AVAILABLE_TASK_ID = 0;
-
-    /**
-     * unique task id generator
-     */
-    public static final AtomicLong TASK_ID_GENERATOR = new AtomicLong(NOT_AVAILABLE_TASK_ID);
 
     /**
      * KEY:NEXT_PROGRESS
@@ -159,11 +148,6 @@ public abstract class AbstractBLETask {
     public static final int PROGRESS_FIRST_USER = PROGRESS_NOTIFICATION + 1;
 
     /**
-     * task id at task not registered
-     */
-    public static final long TASK_ID_UNREGISTED = -1;
-
-    /**
      * create timeout message
      *
      * @param characteristicUUID target characteristic/descritor UUID or null(for connect)
@@ -205,10 +189,7 @@ public abstract class AbstractBLETask {
      */
     protected int mCurrentProgress = PROGRESS_INIT;
 
-    /**
-     * task id
-     */
-    protected final long mTaskId = TASK_ID_GENERATOR.incrementAndGet();
+    private final Integer mTaskId = hashCode();
 
     /**
      * create inital message
@@ -237,10 +218,7 @@ public abstract class AbstractBLETask {
      */
     public abstract void cancel();
 
-    /**
-     * @return task id
-     */
-    public long getTaskId() {
+    public final Integer getTaskId() {
         return mTaskId;
     }
 

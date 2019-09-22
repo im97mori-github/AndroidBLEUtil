@@ -30,6 +30,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import org.im97mori.ble.BLEConnection;
+import org.im97mori.ble.BLEConnectionHolder;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.BLESyncConnection;
 import org.im97mori.ble.ByteArrayInterface;
@@ -93,53 +94,65 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
 
         private void parse(final ScanResult scanResult) {
             BLELogUtils.stackLog(scanResult);
-            AdvertisingDataParser.AdvertisingDataParseResult result = mAdvertisingDataParser.parse(scanResult.getScanRecord().getBytes());
-            if (result.getFlags() != null
-                    && (result.getFlags().isLeLimitedDiscoverableMode() || result.getFlags().isLeGeneralDiscoverableMode())
-                    && result.getCompleteListOf128BitServiceUUIDs() != null
-                    && !result.getCompleteListOf128BitServiceUUIDs().getUuidList().isEmpty()
-                    && MOCK_CONTROL_SERVICE_UUID.equals(result.getCompleteListOf128BitServiceUUIDs().getUuidList().get(0))) {
-                mActivity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            mActivity.mBluetoothLeScanner.stopScan(CentralSampleActivity.TestScanCallback.this);
-                            mActivity.mTestScanCallback = null;
-                            BluetoothDevice device = scanResult.getDevice();
-                            if (BluetoothDevice.BOND_BONDED == device.getBondState()) {
-                                mActivity.mBleConnection = new BLEConnection(mActivity, device, mActivity.mBLECallbackSample);
-                                mActivity.mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
-                            } else {
-                                mActivity.mReceiver = new BroadcastReceiver() {
-                                    @Override
-                                    public void onReceive(Context context, Intent intent) {
-                                        try {
-                                            String action = intent.getAction();
-                                            BLELogUtils.stackLog(action, intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE));
-                                            if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
-                                                int state = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE);
-                                                if (BluetoothDevice.BOND_BONDED == state) {
-                                                    mActivity.mBleConnection = new BLEConnection(mActivity, scanResult.getDevice(), mActivity.mBLECallbackSample);
-                                                    mActivity.mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
-                                                    mActivity.unregisterReceiver(mActivity.mReceiver);
-                                                    mActivity.mReceiver = null;
-                                                }
-                                            }
-                                        } catch (Exception e) {
-                                            BLELogUtils.stackLog(e);
-                                        }
-
+            if (scanResult.getScanRecord() != null) {
+                AdvertisingDataParser.AdvertisingDataParseResult result = mAdvertisingDataParser.parse(scanResult.getScanRecord().getBytes());
+                if (result.getFlags() != null
+                        && (result.getFlags().isLeLimitedDiscoverableMode() || result.getFlags().isLeGeneralDiscoverableMode())
+                        && result.getCompleteListOf128BitServiceUUIDs() != null
+                        && !result.getCompleteListOf128BitServiceUUIDs().getUuidList().isEmpty()
+                        && MOCK_CONTROL_SERVICE_UUID.equals(result.getCompleteListOf128BitServiceUUIDs().getUuidList().get(0))) {
+                    mActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                mActivity.mBluetoothLeScanner.stopScan(CentralSampleActivity.TestScanCallback.this);
+                                mActivity.mTestScanCallback = null;
+                                BluetoothDevice device = scanResult.getDevice();
+                                if (BluetoothDevice.BOND_BONDED == device.getBondState()) {
+                                    mActivity.mBleConnection = BLEConnectionHolder.getInstance(device);
+                                    if (mActivity.mBleConnection == null) {
+                                        mActivity.mBleConnection = new BLEConnection(mActivity, device);
+                                        BLEConnectionHolder.addInstance(mActivity.mBleConnection, true);
                                     }
-                                };
-                                IntentFilter intentFilter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-                                mActivity.registerReceiver(mActivity.mReceiver, intentFilter);
-                                device.createBond();
+                                    mActivity.mBleConnection.attach(mActivity.mBLECallbackSample);
+                                    mActivity.mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
+                                } else {
+                                    mActivity.mReceiver = new BroadcastReceiver() {
+                                        @Override
+                                        public void onReceive(Context context, Intent intent) {
+                                            try {
+                                                String action = intent.getAction();
+                                                BLELogUtils.stackLog(action, intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE));
+                                                if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
+                                                    int state = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE);
+                                                    if (BluetoothDevice.BOND_BONDED == state) {
+                                                        mActivity.mBleConnection = BLEConnectionHolder.getInstance(scanResult.getDevice());
+                                                        if (mActivity.mBleConnection == null) {
+                                                            mActivity.mBleConnection = new BLEConnection(mActivity, scanResult.getDevice());
+                                                            BLEConnectionHolder.addInstance(mActivity.mBleConnection, true);
+                                                        }
+                                                        mActivity.mBleConnection.attach(mActivity.mBLECallbackSample);
+                                                        mActivity.mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
+                                                        mActivity.unregisterReceiver(mActivity.mReceiver);
+                                                        mActivity.mReceiver = null;
+                                                    }
+                                                }
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+
+                                        }
+                                    };
+                                    IntentFilter intentFilter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
+                                    mActivity.registerReceiver(mActivity.mReceiver, intentFilter);
+                                    device.createBond();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
-                        } catch (Exception e) {
-                            BLELogUtils.stackLog(e);
                         }
-                    }
-                });
+                    });
+                }
             }
         }
     }
@@ -175,10 +188,13 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                 if (child == null) {
                     child = getLayoutInflater().inflate(R.layout.list_child, parent, false);
                 }
-                TextView textView = child.findViewById(R.id.time);
-                textView.setText(getItem(position).first);
-                textView = child.findViewById(R.id.body);
-                textView.setText(getItem(position).second);
+                Pair<String, String> item = getItem(position);
+                if (item != null) {
+                    TextView textView = child.findViewById(R.id.time);
+                    textView.setText(item.first);
+                    textView = child.findViewById(R.id.body);
+                    textView.setText(item.second);
+                }
                 return child;
             }
         };
@@ -212,7 +228,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
             mTestScanCallback = null;
         }
         if (mBleConnection != null) {
-            mBleConnection.quit();
+            mBleConnection.detach(mBLECallbackSample);
             mBleConnection = null;
         }
         if (mReceiver != null) {
@@ -306,14 +322,15 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                                 , ReadCharacteristicTask.TIMEOUT_MILLIS
-                                , null);
+                                , null
+                                , false);
 
                         if (RESULT_SUCCESS == result.getResultCode()) {
-                            mBLECallbackSample.onCharacteristicReadSuccess(result.getTaskId(), target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), result.getValues(), result.getArgument());
+                            mBLECallbackSample.onCharacteristicReadSuccess(0, target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), result.getValues(), result.getArgument());
                         } else if (RESULT_FAILED == result.getResultCode()) {
-                            mBLECallbackSample.onCharacteristicReadFailed(result.getTaskId(), target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), result.getStatus(), result.getArgument());
+                            mBLECallbackSample.onCharacteristicReadFailed(0, target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), result.getStatus(), result.getArgument());
                         } else if (RESULT_TIMEOUT == result.getResultCode()) {
-                            mBLECallbackSample.onCharacteristicReadTimeout(result.getTaskId(), target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), WriteCharacteristicTask.TIMEOUT_MILLIS, result.getArgument());
+                            mBLECallbackSample.onCharacteristicReadTimeout(0, target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), ReadCharacteristicTask.TIMEOUT_MILLIS, result.getArgument());
                         }
 
                     }
@@ -338,14 +355,15 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                                 , WriteCharacteristicTask.TIMEOUT_MILLIS
                                 , WriteCharacteristicTask.TIMEOUT_MILLIS
-                                , null);
+                                , null
+                                , false);
 
                         if (RESULT_SUCCESS == result.getResultCode()) {
-                            mBLECallbackSample.onCharacteristicWriteSuccess(result.getTaskId(), target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), result.getValues(), result.getArgument());
+                            mBLECallbackSample.onCharacteristicWriteSuccess(0, target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), result.getValues(), result.getArgument());
                         } else if (RESULT_FAILED == result.getResultCode()) {
-                            mBLECallbackSample.onCharacteristicWriteFailed(result.getTaskId(), target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), result.getStatus(), result.getArgument());
+                            mBLECallbackSample.onCharacteristicWriteFailed(0, target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), result.getStatus(), result.getArgument());
                         } else if (RESULT_TIMEOUT == result.getResultCode()) {
-                            mBLECallbackSample.onCharacteristicWriteTimeout(result.getTaskId(), target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), WriteCharacteristicTask.TIMEOUT_MILLIS, result.getArgument());
+                            mBLECallbackSample.onCharacteristicWriteTimeout(0, target.getBluetoothDevice(), result.getServiceUUID(), result.getCharacteristicUUID(), WriteCharacteristicTask.TIMEOUT_MILLIS, result.getArgument());
                         }
 
                     }
@@ -382,7 +400,11 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                 mConnectDisconnectButton.setText(R.string.connect);
             } else {
                 if (mBleConnection.isConnected()) {
-                    mConnectDisconnectButton.setText(R.string.disconnect);
+                    if (mBleConnection.isAttached(mBLECallbackSample)) {
+                        mConnectDisconnectButton.setText(R.string.disconnect);
+                    } else {
+                        mConnectDisconnectButton.setText(R.string.connect);
+                    }
                 } else {
                     mConnectDisconnectButton.setText(R.string.connect);
                 }
@@ -418,15 +440,34 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                         }
                     }
                 } else {
-                    mBleConnection = new BLEConnection(this, target, mBLECallbackSample);
-                    mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
+                    mBleConnection = BLEConnectionHolder.getInstance(target);
+                    if (mBleConnection == null) {
+                        mBleConnection = new BLEConnection(this, target);
+                        BLEConnectionHolder.addInstance(mBleConnection, true);
+                    }
+                    mBleConnection.attach(mBLECallbackSample);
+                    if (mBleConnection.isConnected()) {
+                        mBLECallbackSample.onBLEConnected(0, target, null);
+                    } else {
+                        mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
+                    }
                 }
             } else {
                 if (mBleConnection.isConnected()) {
-                    mBleConnection.quit();
-                    mBleConnection = null;
+                    if (mBleConnection.isAttached(mBLECallbackSample)) {
+                        mBleConnection.detach(mBLECallbackSample);
+                        mBLECallbackSample.onBLEDisconnected(0, mBleConnection.getBluetoothDevice(), BluetoothGatt.GATT_SUCCESS, null);
+                    } else {
+                        mBleConnection.attach(mBLECallbackSample);
+                        mBLECallbackSample.onBLEConnected(0, mBleConnection.getBluetoothDevice(), null);
+                    }
                 } else {
-                    mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS, null);
+                    if (mBleConnection.isAttached(mBLECallbackSample)) {
+                        mBleConnection.detach(mBLECallbackSample);
+                    } else {
+                        mBleConnection.attach(mBLECallbackSample);
+                        mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS, null);
+                    }
                 }
             }
 

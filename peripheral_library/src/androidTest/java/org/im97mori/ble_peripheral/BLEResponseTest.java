@@ -5,7 +5,6 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
-import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.ParcelUuid;
@@ -90,8 +89,7 @@ public class BLEResponseTest {
     @BeforeClass
     public static void setup() {
         Context context = ApplicationProvider.getApplicationContext();
-        BluetoothManager bluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
-        BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         Set<BluetoothDevice> bluetoothDeviceSet = bluetoothAdapter.getBondedDevices();
         if (bluetoothDeviceSet != null) {
             for (BluetoothDevice device : bluetoothDeviceSet) {
@@ -103,7 +101,8 @@ public class BLEResponseTest {
                             BLESyncConnection.BLEResult result = bleSyncConnection.connect(
                                     ConnectTask.TIMEOUT_MILLIS
                                     , ConnectTask.TIMEOUT_MILLIS
-                                    , null);
+                                    , null
+                                    , true);
                             if (result != null && RESULT_SUCCESS == result.getResultCode()) {
                                 BLE_SYNC_CONNECTION = bleSyncConnection;
                                 BLE_CONNECTION = bleSyncConnection.getBLEConnection();
@@ -135,7 +134,8 @@ public class BLEResponseTest {
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -155,7 +155,8 @@ public class BLEResponseTest {
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , bundle);
+                , bundle
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -176,7 +177,8 @@ public class BLEResponseTest {
                 , READABLE_CHARACTERISTIC_UUID_WITH_ERROR
                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , bundle);
+                , bundle
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -194,7 +196,8 @@ public class BLEResponseTest {
                 , UNDIFINED_CHARACTERISTIC_UUID
                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -211,7 +214,8 @@ public class BLEResponseTest {
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(UNDIFINED_SERVICE_UUID, bleResult.getServiceUUID());
@@ -228,7 +232,8 @@ public class BLEResponseTest {
                 , UNDIFINED_CHARACTERISTIC_UUID
                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(UNDIFINED_SERVICE_UUID, bleResult.getServiceUUID());
@@ -245,7 +250,8 @@ public class BLEResponseTest {
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S
                 , 0
                 , 0
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_TIMEOUT, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -273,7 +279,8 @@ public class BLEResponseTest {
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S
                 , 0
                 , 0
-                , bundle);
+                , bundle
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_TIMEOUT, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -301,7 +308,8 @@ public class BLEResponseTest {
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                 , ReadCharacteristicTask.TIMEOUT_MILLIS
-                , null);
+                , null
+                , true);
 
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
@@ -327,7 +335,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -355,7 +364,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , bundle);
+                , bundle
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -381,7 +391,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -409,7 +420,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , bundle);
+                , bundle
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -435,7 +447,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(UNDIFINED_SERVICE_UUID, bleResult.getServiceUUID());
@@ -460,7 +473,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(UNDIFINED_SERVICE_UUID, bleResult.getServiceUUID());
@@ -485,7 +499,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , 0
                 , 0
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_TIMEOUT, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -521,7 +536,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , 0
                 , 0
-                , bundle);
+                , bundle
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_TIMEOUT, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -555,7 +571,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE
                 , WriteCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -582,7 +599,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -600,7 +618,8 @@ public class BLEResponseTest {
                 , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                 , ReadDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -622,7 +641,8 @@ public class BLEResponseTest {
                 , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                 , ReadDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , bundle);
+                , bundle
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -642,7 +662,8 @@ public class BLEResponseTest {
                 , READABLE_DESCRIPTOR_UUID_WITH_ERROR
                 , ReadDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -664,7 +685,8 @@ public class BLEResponseTest {
                 , UNDIFINED_DESCRIPTOR_UUID
                 , ReadDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , bundle);
+                , bundle
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -684,7 +706,8 @@ public class BLEResponseTest {
                 , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                 , ReadDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -703,7 +726,8 @@ public class BLEResponseTest {
                 , UNDIFINED_DESCRIPTOR_UUID
                 , ReadDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -722,7 +746,8 @@ public class BLEResponseTest {
                 , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                 , ReadDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(UNDIFINED_SERVICE_UUID, bleResult.getServiceUUID());
@@ -741,7 +766,8 @@ public class BLEResponseTest {
                 , UNDIFINED_DESCRIPTOR_UUID
                 , ReadDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(UNDIFINED_SERVICE_UUID, bleResult.getServiceUUID());
@@ -760,7 +786,8 @@ public class BLEResponseTest {
                 , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                 , ReadDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(UNDIFINED_SERVICE_UUID, bleResult.getServiceUUID());
@@ -779,7 +806,8 @@ public class BLEResponseTest {
                 , UNDIFINED_DESCRIPTOR_UUID
                 , ReadDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(UNDIFINED_SERVICE_UUID, bleResult.getServiceUUID());
@@ -798,7 +826,8 @@ public class BLEResponseTest {
                 , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_WAIT_10S
                 , 0
                 , 0
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_TIMEOUT, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -828,7 +857,8 @@ public class BLEResponseTest {
                 , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_WAIT_10S
                 , 0
                 , 0
-                , bundle);
+                , bundle
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_TIMEOUT, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -858,7 +888,8 @@ public class BLEResponseTest {
                 , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                 , ReadDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -884,7 +915,8 @@ public class BLEResponseTest {
                 }
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -913,7 +945,8 @@ public class BLEResponseTest {
                 }
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , bundle);
+                , bundle
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -940,7 +973,8 @@ public class BLEResponseTest {
                 }
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -969,7 +1003,8 @@ public class BLEResponseTest {
                 }
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , bundle);
+                , bundle
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -996,7 +1031,8 @@ public class BLEResponseTest {
                 }
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -1022,7 +1058,8 @@ public class BLEResponseTest {
                 }
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -1048,7 +1085,8 @@ public class BLEResponseTest {
                 }
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(UNDIFINED_SERVICE_UUID, bleResult.getServiceUUID());
@@ -1074,7 +1112,8 @@ public class BLEResponseTest {
                 }
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(UNDIFINED_SERVICE_UUID, bleResult.getServiceUUID());
@@ -1100,7 +1139,8 @@ public class BLEResponseTest {
                 }
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(UNDIFINED_SERVICE_UUID, bleResult.getServiceUUID());
@@ -1126,7 +1166,8 @@ public class BLEResponseTest {
                 }
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(UNDIFINED_SERVICE_UUID, bleResult.getServiceUUID());
@@ -1152,7 +1193,8 @@ public class BLEResponseTest {
                 }
                 , 0
                 , 0
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_TIMEOUT, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -1189,7 +1231,8 @@ public class BLEResponseTest {
                 }
                 , 0
                 , 0
-                , bundle);
+                , bundle
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_TIMEOUT, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -1227,7 +1270,8 @@ public class BLEResponseTest {
                 }
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -1254,7 +1298,7 @@ public class BLEResponseTest {
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
                 , null
-        );
+                , true);
 
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
@@ -1282,7 +1326,7 @@ public class BLEResponseTest {
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
                 , null
-        );
+                , true);
 
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
@@ -1305,7 +1349,7 @@ public class BLEResponseTest {
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
                 , null
-        );
+                , true);
 
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
@@ -1321,7 +1365,7 @@ public class BLEResponseTest {
 
         bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
-                , NOTIFICATABLE_CHARACTERISTIC_UUID
+                , INDICATABLE_CHARACTERISTIC_UUID
                 , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
                 , new ByteArrayInterface() {
 
@@ -1333,7 +1377,7 @@ public class BLEResponseTest {
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
                 , null
-        );
+                , true);
 
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
@@ -1358,7 +1402,7 @@ public class BLEResponseTest {
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
                 , null
-        );
+                , true);
 
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
@@ -1388,7 +1432,7 @@ public class BLEResponseTest {
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
                 , null
-        );
+                , true);
 
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
@@ -1411,7 +1455,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
 
@@ -1420,7 +1465,8 @@ public class BLEResponseTest {
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
@@ -1444,7 +1490,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
 
@@ -1453,7 +1500,8 @@ public class BLEResponseTest {
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
@@ -1476,7 +1524,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED, bleResult.getStatus());
@@ -1498,7 +1547,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
 
@@ -1514,7 +1564,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
 
@@ -1523,7 +1574,8 @@ public class BLEResponseTest {
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -1549,7 +1601,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
 
@@ -1559,7 +1612,8 @@ public class BLEResponseTest {
                 , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                 , ReadDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
@@ -1584,7 +1638,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
 
@@ -1594,7 +1649,8 @@ public class BLEResponseTest {
                 , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                 , ReadDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
@@ -1618,7 +1674,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED, bleResult.getStatus());
@@ -1641,7 +1698,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
 
@@ -1657,7 +1715,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
 
@@ -1667,7 +1726,8 @@ public class BLEResponseTest {
                 , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                 , ReadDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
@@ -1694,7 +1754,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
 
@@ -1712,7 +1773,7 @@ public class BLEResponseTest {
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
                 , null
-        );
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
 
@@ -1725,6 +1786,25 @@ public class BLEResponseTest {
         assertNotNull(list);
         assertFalse(list.isEmpty());
         assertArrayEquals(newMessage.getBytes(), list.get(0));
+
+        bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
+                DEFAULT_SERVICE_UUID
+                , NOTIFICATABLE_CHARACTERISTIC_UUID
+                , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                , new ByteArrayInterface() {
+
+                    @Override
+                    public byte[] getBytes() {
+                        return BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
+                    }
+                }
+                , WriteDescriptorTask.TIMEOUT_MILLIS
+                , DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
     }
 
     @Test
@@ -1744,7 +1824,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
 
@@ -1760,7 +1841,8 @@ public class BLEResponseTest {
                 , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
-                , null);
+                , null
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
 
@@ -1778,7 +1860,7 @@ public class BLEResponseTest {
                 , WriteDescriptorTask.TIMEOUT_MILLIS
                 , DateUtils.MINUTE_IN_MILLIS
                 , null
-        );
+                , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
 
@@ -1791,5 +1873,24 @@ public class BLEResponseTest {
         assertNotNull(list);
         assertFalse(list.isEmpty());
         assertNotEquals(newMessage, new String(list.get(0)));
+
+        bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
+                DEFAULT_SERVICE_UUID
+                , NOTIFICATABLE_CHARACTERISTIC_UUID
+                , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                , new ByteArrayInterface() {
+
+                    @Override
+                    public byte[] getBytes() {
+                        return BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
+                    }
+                }
+                , WriteDescriptorTask.TIMEOUT_MILLIS
+                , DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
     }
 }

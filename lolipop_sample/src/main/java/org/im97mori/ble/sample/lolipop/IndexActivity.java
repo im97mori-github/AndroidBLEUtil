@@ -20,13 +20,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.BLEConnectionHolder;
 import org.im97mori.ble.BLELogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class IndexActivity extends Activity implements AdapterView.OnItemClickListener {
-
 
     private static class IndexAdapter extends ArrayAdapter<ActivityInfo> {
 
@@ -46,8 +46,10 @@ public class IndexActivity extends Activity implements AdapterView.OnItemClickLi
             }
 
             ActivityInfo activityInfo = getItem(position);
-            TextView textView = view.findViewById(android.R.id.text1);
-            textView.setText(activityInfo.labelRes);
+            if (activityInfo != null) {
+                TextView textView = view.findViewById(android.R.id.text1);
+                textView.setText(activityInfo.labelRes);
+            }
             return view;
         }
     }
@@ -76,6 +78,12 @@ public class IndexActivity extends Activity implements AdapterView.OnItemClickLi
             listView.setAdapter(new IndexAdapter(this, list));
             listView.setOnItemClickListener(this);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        BLEConnectionHolder.clearInstance();
+        super.onDestroy();
     }
 
     @Override
