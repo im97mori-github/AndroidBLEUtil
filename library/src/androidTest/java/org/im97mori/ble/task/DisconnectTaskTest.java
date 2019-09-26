@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 public class DisconnectTaskTest {
 
     @Test
-    public void test_createDisconnectMessage001() {
+    public void test_createInitialMessage001() {
         DisconnectTask task = new DisconnectTask(null, null, BLEConstants.ErrorCodes.UNKNOWN, null);
         Message message = task.createInitialMessage();
 
@@ -30,7 +30,7 @@ public class DisconnectTaskTest {
 
     @Test
     public void test_doProcess001() {
-        BLEConnection mockBleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), null) {
+        BLEConnection mockBleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), null, null) {
             @Override
             public boolean isConnected() {
                 return false;

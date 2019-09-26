@@ -13,10 +13,29 @@ import org.im97mori.stacklog.LogUtils;
 public class BLELogUtils {
 
     /**
+     * verbose mode
+     */
+    private static boolean VERBOSE = false;
+
+    /**
+     * enable verbose mode
+     */
+    public static void verbose() {
+        VERBOSE = true;
+    }
+
+    /**
+     * disable verbose mode
+     */
+    public static void mute() {
+        VERBOSE = false;
+    }
+
+    /**
      * @see LogUtils#stackLog(Object...)
      */
     public static void stackLog(@NonNull Object... args) {
-        if (BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG || VERBOSE) {
             LogUtils.stackLogWithOffset(1, args);
         }
     }
@@ -25,7 +44,7 @@ public class BLELogUtils {
      * @see LogUtils#stackLog(Object...)
      */
     public static void stackLog(@NonNull Throwable t) {
-        if (BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG || VERBOSE) {
             LogUtils.stackLogWithOffset(1, Log.getStackTraceString(t));
         }
     }

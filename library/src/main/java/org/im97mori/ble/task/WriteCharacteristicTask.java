@@ -40,7 +40,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
      * @param values             {@link BluetoothGattCharacteristic#getValue()}
      * @return write characteristic finished {@link Message} instance
      */
-    public static Message createWriteCharacteristicFinishedMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, byte[] values) {
+    public static Message createWriteCharacteristicFinishedMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
         bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);

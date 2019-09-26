@@ -324,7 +324,7 @@ public class BLESyncConnection implements BLECallback {
 
             BLEConnection bleConnection = BLEConnectionHolder.getInstance(mBluetoothDevice);
             if (bleConnection == null) {
-                bleConnection = new BLEConnection(mContext, mBluetoothDevice);
+                bleConnection = new BLEConnection(mContext, mBluetoothDevice, null);
                 BLEConnectionHolder.addInstance(bleConnection, true);
             }
             if (bleConnection.isConnected()) {

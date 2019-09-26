@@ -113,6 +113,7 @@ public class AdvertisingDataParser {
          *
          * @return myself
          */
+        @NonNull
         public Builder includeAll() {
             mTypeSet.addAll(ALL_DATA_TYPE_SET);
             return this;
@@ -124,6 +125,7 @@ public class AdvertisingDataParser {
          * @param advertisingDataTypes one of {@link AdvertisingDataTypes}
          * @return myself
          */
+        @NonNull
         public Builder include(int advertisingDataTypes) {
             if (ALL_DATA_TYPE_SET.contains(advertisingDataTypes)) {
                 mTypeSet.add(advertisingDataTypes);
@@ -136,6 +138,7 @@ public class AdvertisingDataParser {
          *
          * @return myself
          */
+        @NonNull
         public Builder excludeAll() {
             mTypeSet.clear();
             return this;
@@ -147,6 +150,7 @@ public class AdvertisingDataParser {
          * @param advertisingDataTypes one of {@link AdvertisingDataTypes}
          * @return myself
          */
+        @NonNull
         public Builder exclude(int advertisingDataTypes) {
             mTypeSet.remove(advertisingDataTypes);
             return this;
@@ -157,6 +161,7 @@ public class AdvertisingDataParser {
          *
          * @return {@link AdvertisingDataParser}
          */
+        @NonNull
         public AdvertisingDataParser build() {
             return new AdvertisingDataParser(mTypeSet);
         }

@@ -111,7 +111,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                 if (BluetoothDevice.BOND_BONDED == device.getBondState()) {
                                     mActivity.mBleConnection = BLEConnectionHolder.getInstance(device);
                                     if (mActivity.mBleConnection == null) {
-                                        mActivity.mBleConnection = new BLEConnection(mActivity, device);
+                                        mActivity.mBleConnection = new BLEConnection(mActivity, device, null);
                                         BLEConnectionHolder.addInstance(mActivity.mBleConnection, true);
                                     }
                                     mActivity.mBleConnection.attach(mActivity.mBLECallbackSample);
@@ -128,7 +128,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                                     if (BluetoothDevice.BOND_BONDED == state) {
                                                         mActivity.mBleConnection = BLEConnectionHolder.getInstance(scanResult.getDevice());
                                                         if (mActivity.mBleConnection == null) {
-                                                            mActivity.mBleConnection = new BLEConnection(mActivity, scanResult.getDevice());
+                                                            mActivity.mBleConnection = new BLEConnection(mActivity, scanResult.getDevice(), null);
                                                             BLEConnectionHolder.addInstance(mActivity.mBleConnection, true);
                                                         }
                                                         mActivity.mBleConnection.attach(mActivity.mBLECallbackSample);
@@ -446,7 +446,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                 } else {
                     mBleConnection = BLEConnectionHolder.getInstance(target);
                     if (mBleConnection == null) {
-                        mBleConnection = new BLEConnection(this, target);
+                        mBleConnection = new BLEConnection(this, target, null);
                         BLEConnectionHolder.addInstance(mBleConnection, true);
                     }
                     mBleConnection.attach(mBLECallbackSample);

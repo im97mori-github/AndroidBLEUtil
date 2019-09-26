@@ -11,6 +11,7 @@ import android.os.ParcelUuid;
 import android.os.SystemClock;
 import android.text.format.DateUtils;
 
+import androidx.annotation.NonNull;
 import androidx.test.core.app.ApplicationProvider;
 
 import org.im97mori.ble.BLEConnection;
@@ -328,6 +329,7 @@ public class BLEResponseTest {
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -357,6 +359,7 @@ public class BLEResponseTest {
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -384,6 +387,7 @@ public class BLEResponseTest {
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_ERROR
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -413,6 +417,7 @@ public class BLEResponseTest {
                 , UNDIFINED_CHARACTERISTIC_UUID
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -440,6 +445,7 @@ public class BLEResponseTest {
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -466,6 +472,7 @@ public class BLEResponseTest {
                 , UNDIFINED_CHARACTERISTIC_UUID
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -492,6 +499,7 @@ public class BLEResponseTest {
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -529,6 +537,7 @@ public class BLEResponseTest {
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -564,6 +573,7 @@ public class BLEResponseTest {
                 , WRITABLE_NO_RESPONSE_CHARACTERISTIC_UUID
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -592,6 +602,7 @@ public class BLEResponseTest {
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -909,6 +920,7 @@ public class BLEResponseTest {
                 , WRITABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -939,6 +951,7 @@ public class BLEResponseTest {
                 , WRITABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -967,6 +980,7 @@ public class BLEResponseTest {
                 , WRITABLE_DESCRIPTOR_UUID_WITH_ERROR
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -997,6 +1011,7 @@ public class BLEResponseTest {
                 , UNDIFINED_DESCRIPTOR_UUID
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -1025,6 +1040,7 @@ public class BLEResponseTest {
                 , WRITABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -1052,6 +1068,7 @@ public class BLEResponseTest {
                 , UNDIFINED_DESCRIPTOR_UUID
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -1079,6 +1096,7 @@ public class BLEResponseTest {
                 , WRITABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -1106,6 +1124,7 @@ public class BLEResponseTest {
                 , UNDIFINED_DESCRIPTOR_UUID
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -1133,6 +1152,7 @@ public class BLEResponseTest {
                 , WRITABLE_DESCRIPTOR_UUID_WITH_ERROR
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -1160,6 +1180,7 @@ public class BLEResponseTest {
                 , UNDIFINED_DESCRIPTOR_UUID
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -1187,6 +1208,7 @@ public class BLEResponseTest {
                 , WRITABLE_DESCRIPTOR_UUID_WITH_SUCCESS_WAIT_10S
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -1225,6 +1247,7 @@ public class BLEResponseTest {
                 , WRITABLE_DESCRIPTOR_UUID_WITH_SUCCESS_WAIT_10S
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -1264,6 +1287,7 @@ public class BLEResponseTest {
                 , WRITABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                 , new ByteArrayInterface() {
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return data;
                     }
@@ -1289,8 +1313,8 @@ public class BLEResponseTest {
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
                 , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
                 , new ByteArrayInterface() {
-
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
                     }
@@ -1317,8 +1341,8 @@ public class BLEResponseTest {
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
                 , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
                 , new ByteArrayInterface() {
-
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
                     }
@@ -1340,8 +1364,8 @@ public class BLEResponseTest {
                 , INDICATABLE_CHARACTERISTIC_UUID
                 , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
                 , new ByteArrayInterface() {
-
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return BluetoothGattDescriptor.ENABLE_INDICATION_VALUE;
                     }
@@ -1368,8 +1392,8 @@ public class BLEResponseTest {
                 , INDICATABLE_CHARACTERISTIC_UUID
                 , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
                 , new ByteArrayInterface() {
-
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
                     }
@@ -1393,8 +1417,8 @@ public class BLEResponseTest {
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
                 , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
                 , new ByteArrayInterface() {
-
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
                     }
@@ -1423,8 +1447,8 @@ public class BLEResponseTest {
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
                 , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
                 , new ByteArrayInterface() {
-
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
                     }
@@ -1764,8 +1788,8 @@ public class BLEResponseTest {
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
                 , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
                 , new ByteArrayInterface() {
-
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
                     }
@@ -1792,8 +1816,8 @@ public class BLEResponseTest {
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
                 , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
                 , new ByteArrayInterface() {
-
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
                     }
@@ -1851,8 +1875,8 @@ public class BLEResponseTest {
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
                 , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
                 , new ByteArrayInterface() {
-
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
                     }
@@ -1879,8 +1903,8 @@ public class BLEResponseTest {
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
                 , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
                 , new ByteArrayInterface() {
-
                     @Override
+                    @NonNull
                     public byte[] getBytes() {
                         return BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
                     }

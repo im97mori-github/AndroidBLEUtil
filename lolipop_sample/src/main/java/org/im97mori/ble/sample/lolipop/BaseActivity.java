@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
+import org.im97mori.ble_peripheral.BLEPeripheralLogUtils;
+
 @SuppressWarnings({"SameReturnValue"})
 public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback {
 
@@ -27,6 +29,9 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        BLEPeripheralLogUtils.verbose();
+
         setContentView(getLayoutId());
 
         mFragmentManager = getSupportFragmentManager();

@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
+import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.ad.AdvertisingDataParser;
 import org.im97mori.ble.ad.AdvertisingInterval;
 import org.im97mori.ble.ad.Appearance;
@@ -458,6 +459,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        BLELogUtils.verbose();
+
         setContentView(R.layout.activity_main);
 
         mFragmentManager = getSupportFragmentManager();

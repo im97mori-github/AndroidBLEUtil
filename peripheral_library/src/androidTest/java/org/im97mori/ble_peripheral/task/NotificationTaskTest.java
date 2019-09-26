@@ -12,7 +12,7 @@ import static org.junit.Assert.assertNotNull;
 public class NotificationTaskTest {
 
     @Test
-    public void test_createNotificationMessage001() {
+    public void test_createInitialMessage001() {
         NotificationTask task = new NotificationTask(null, null, null, null, null, null, true, null);
         Message message = task.createInitialMessage();
 

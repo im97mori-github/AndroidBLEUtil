@@ -8,7 +8,6 @@ import android.os.Message;
 import android.text.format.DateUtils;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
@@ -114,7 +113,7 @@ public class ReadCharacteristicTask extends AbstractBLETask {
      * @param timeout            timeout(millis)
      * @param argument           callback argument
      */
-    public ReadCharacteristicTask(@NonNull BLEConnection bleConnection, @NonNull BluetoothGatt bluetoothGatt, @NonNull TaskHandler taskHandler, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, @Nullable Bundle argument) {
+    public ReadCharacteristicTask(@NonNull BLEConnection bleConnection, @NonNull BluetoothGatt bluetoothGatt, @NonNull TaskHandler taskHandler, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
         mServiceUUID = serviceUUID;

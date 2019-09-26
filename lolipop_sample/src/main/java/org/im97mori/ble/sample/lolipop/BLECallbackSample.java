@@ -72,7 +72,7 @@ public class BLECallbackSample extends BLEServerConnection.DefaultServerSetting 
 
     @Override
     public void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
-        callback(argument);
+        callback(status, argument);
     }
 
     @Override
