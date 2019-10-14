@@ -48,6 +48,44 @@ It analyzes Advertising data byte array delivered from [LeScanCallback](https://
 
 All analysis results are included in AdvertisingDataParseResult.
 
+Or software filtering callback.
+
+ex) Callback only when Advertising data Shortend local name is "DeviceName".
+ 
+#### Jelly Bean(API 18)
+    BluetoothAdapter.getDefaultAdapter().startLeScan(new FilteredLeScanCallback.Builder().addShortenedLocalNameFilter(new byte[]{
+            0
+            , 0
+            , 68 // D
+            , 101 // e
+            , 118 // v
+            , 105 // i
+            , 99 // c
+            , 101 // e
+            , 78 // N
+            , 97 // a
+            , 109 // m
+            , 101 // e
+    }).build());
+
+#### Lolipop(API 21)
+    BluetoothAdapter.getDefaultAdapter().getBluetoothLeScanner().startScan(new FilteredScanCallback.Builder().addShortenedLocalNameFilter(new byte[]{
+                    0
+                    , 0
+                    , 68 // D
+                    , 101 // e
+                    , 118 // v
+                    , 105 // i
+                    , 99 // c
+                    , 101 // e
+                    , 78 // N
+                    , 97 // a
+                    , 109 // m
+                    , 101 // e
+            }
+    ).build());
+}
+
 ### BLE Connection(central)
 Every connection has one [Handler](https://developer.android.com/reference/android/os/Handler)(aka worker thread).  
 Request and response processing is queing as a task and processed in order within the handler.  
