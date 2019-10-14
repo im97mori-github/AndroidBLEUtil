@@ -5,6 +5,8 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.ByteArrayCreater;
+
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_TX_POWER_LEVEL;
 
 /**
@@ -14,13 +16,12 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-@SuppressWarnings("WeakerAccess")
 public class TxPowerLevel extends AbstractAdvertisingData {
 
     /**
-     * @see android.os.Parcelable.Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<TxPowerLevel> CREATOR = new Creator<TxPowerLevel>() {
+    public static final ByteArrayCreater<TxPowerLevel> CREATOR = new ByteArrayCreater<TxPowerLevel>() {
 
         /**
          * {@inheritDoc}
@@ -38,6 +39,15 @@ public class TxPowerLevel extends AbstractAdvertisingData {
         @NonNull
         public TxPowerLevel[] newArray(int size) {
             return new TxPowerLevel[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @NonNull
+        @Override
+        public TxPowerLevel createFromByteArray(@NonNull byte[] values) {
+            return new TxPowerLevel(values, 0, values.length - 1);
         }
 
     };

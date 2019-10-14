@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 public class ListOf32BitServiceSolicitationUUIDsTest {
 
     @Test
-    public void constructTest() {
+    public void constructTest1() {
         byte[] data = new byte[6];
         data[0] = 5;
         data[1] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
@@ -176,4 +176,24 @@ public class ListOf32BitServiceSolicitationUUIDsTest {
         assertEquals(result1.getUuidList().size(), result2.getUuidList().size());
         assertEquals(result1.getUuidList().get(0), result2.getUuidList().get(0));
     }
+
+    @Test
+    public void constructTest11() {
+        byte[] data = new byte[6];
+        data[0] = 5;
+        data[1] = DATA_TYPE_LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[2] = 0x00;
+        data[3] = 0x00;
+        data[4] = 0x00;
+        data[5] = 0x00;
+
+        ListOf32BitServiceSolicitationUUIDs result1 = new ListOf32BitServiceSolicitationUUIDs(data, 0, data[0]);
+        ListOf32BitServiceSolicitationUUIDs result2 = ListOf32BitServiceSolicitationUUIDs.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getUuidList().size(), result2.getUuidList().size());
+        assertEquals(result1.getUuidList().get(0), result2.getUuidList().get(0));
+    }
+
 }

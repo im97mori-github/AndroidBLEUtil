@@ -128,4 +128,20 @@ public class AdvertisingIntervalTest {
         assertEquals(result1.getAdvertisingInterval(), result2.getAdvertisingInterval());
     }
 
+    @Test
+    public void constructTest9() {
+        byte[] data = new byte[4];
+        data[0] = 3;
+        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
+        data[2] = 0x00;
+        data[3] = 0x00;
+
+        AdvertisingInterval result1 = new AdvertisingInterval(data, 0, data[0]);
+        AdvertisingInterval result2 = AdvertisingInterval.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getAdvertisingInterval(), result2.getAdvertisingInterval());
+    }
+
 }

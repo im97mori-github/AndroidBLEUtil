@@ -1310,4 +1310,19 @@ public class LeSupportedFeaturesTest {
         assertEquals(result1.getDataType(), result2.getDataType());
         assertArrayEquals(result1.getLeSupportedFeaturesList().toArray(), result2.getLeSupportedFeaturesList().toArray());
     }
+
+    @Test
+    public void constructTest33() {
+        byte[] data = new byte[3];
+        data[0] = 2;
+        data[1] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[2] = 0b00000001;
+
+        LeSupportedFeatures result1 = new LeSupportedFeatures(data, 0, data[0]);
+        LeSupportedFeatures result2 = LeSupportedFeatures.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getLeSupportedFeaturesList().toArray(), result2.getLeSupportedFeaturesList().toArray());
+    }
 }

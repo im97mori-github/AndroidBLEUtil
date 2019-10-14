@@ -6,9 +6,16 @@ import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanRecord;
 import android.bluetooth.le.ScanResult;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.im97mori.ble.ad.AdvertisingDataParser;
 import org.im97mori.ble.ad.AdvertisingInterval;
@@ -36,9 +43,14 @@ import org.im97mori.ble.ad.ShortenedLocalName;
 import org.im97mori.ble.ad.SlaveConnectionIntervalRange;
 import org.im97mori.ble.ad.TxPowerLevel;
 import org.im97mori.ble.ad.UniformRsourceIdentifier;
+import org.im97mori.ble.ad.filter.FilteredScanCallback;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 public class AdvertisingDataSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback {
 
@@ -79,8 +91,11 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
         }
 
         private void parse(byte[] data) {
+            SimpleDateFormat format = new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US);
+            String now = format.format(new Date());
+
             AdvertisingDataParser.AdvertisingDataParseResult result = mAdvertisingDataParser.parse(data);
-            final StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
 
             sb.append("data count:");
             sb.append(result.getResultList().size());
@@ -442,14 +457,14 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
                 sb.append('\n');
             }
 
+            final Pair<String, String> log = Pair.create(now, sb.toString());
+
             mAdvertisingDataSampleActivity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        mAdvertisingDataSampleActivity.mResultTextView.setText(sb);
-                        mAdvertisingDataSampleActivity.mBluetoothLeScanner.stopScan(TestScanCallback.this);
-                        mAdvertisingDataSampleActivity.mTestScanCallback = null;
-                        mAdvertisingDataSampleActivity.mStartStopButton.setText(R.string.scan_start);
+                        mAdvertisingDataSampleActivity.mAdapter.add(log);
+                        mAdvertisingDataSampleActivity.mListView.smoothScrollToPosition(mAdvertisingDataSampleActivity.mAdapter.getCount());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -458,76 +473,103 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
         }
     }
 
-    private Button mStartStopButton;
-    private TextView mResultTextView;
+    private Button mConnectDisconnectButton;
+    private ArrayAdapter<Pair<String, String>> mAdapter;
+    private ListView mListView;
 
-
+    private BluetoothAdapter mBluetoothAdapter;
     private BluetoothLeScanner mBluetoothLeScanner;
 
-    private TestScanCallback mTestScanCallback;
-
+    private FilteredScanCallback mFilteredScanCallback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mFragmentManager = getSupportFragmentManager();
+        mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
+        mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View child = convertView;
+                if (child == null) {
+                    child = getLayoutInflater().inflate(R.layout.list_child, parent, false);
+                }
+                Pair<String, String> item = getItem(position);
+                if (item != null) {
+                    TextView textView = child.findViewById(R.id.time);
+                    textView.setText(item.first);
+                    textView = child.findViewById(R.id.body);
+                    textView.setText(item.second);
+                }
+                return child;
+            }
+        };
+        mListView = findViewById(android.R.id.list);
+        mListView.setAdapter(mAdapter);
 
-        mStartStopButton = findViewById(R.id.startStopButton);
-        mResultTextView = findViewById(R.id.resultTextView);
+        mConnectDisconnectButton.setOnClickListener(this);
 
-        mStartStopButton.setOnClickListener(this);
-
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (bluetoothAdapter != null) {
-            mBluetoothLeScanner = bluetoothAdapter.getBluetoothLeScanner();
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (mBluetoothAdapter != null) {
+            mBluetoothLeScanner = mBluetoothAdapter.getBluetoothLeScanner();
         }
     }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_main;
+        return R.layout.gatt_sample;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        if (mBluetoothLeScanner == null) {
-            mResultTextView.setText(null);
-        } else if (mTestScanCallback == null) {
-            mStartStopButton.setText(R.string.scan_start);
+        updateLayout();
+    }
+
+    private void updateLayout() {
+        if (mBluetoothAdapter != null && !mBluetoothAdapter.isEnabled()) {
+            mBluetoothAdapter.enable();
+        } else if (mBluetoothLeScanner == null) {
+            mConnectDisconnectButton.setVisibility(View.GONE);
         } else {
-            mStartStopButton.setText(R.string.scan_stop);
+            mConnectDisconnectButton.setVisibility(View.VISIBLE);
+
+            if (mBluetoothLeScanner == null) {
+                mConnectDisconnectButton.setText(null);
+            } else if (mFilteredScanCallback == null) {
+                mConnectDisconnectButton.setText(R.string.scan_start);
+            } else {
+                mConnectDisconnectButton.setText(R.string.scan_stop);
+            }
         }
     }
 
     @Override
     protected void onDestroy() {
-        if (mBluetoothLeScanner != null && mTestScanCallback != null) {
-            mBluetoothLeScanner.stopScan(mTestScanCallback);
-            mTestScanCallback = null;
+        if (mBluetoothLeScanner != null && mFilteredScanCallback != null) {
+            mBluetoothLeScanner.stopScan(mFilteredScanCallback);
+            mFilteredScanCallback = null;
         }
         super.onDestroy();
     }
 
     @Override
     public void onClick(View v) {
-        if (R.id.startStopButton == v.getId()) {
+        if (R.id.connectDisconnectButton == v.getId()) {
             if (mBluetoothLeScanner != null) {
-                if (mTestScanCallback == null) {
+                if (mFilteredScanCallback == null) {
                     if (hasPermission()) {
-                        mStartStopButton.setText(R.string.scan_stop);
-                        mResultTextView.setText(null);
-                        mTestScanCallback = new TestScanCallback(this);
-                        mBluetoothLeScanner.startScan(mTestScanCallback);
+                        mFilteredScanCallback = new FilteredScanCallback.Builder().setScanCallback(new TestScanCallback(this)).build();
+                        mBluetoothLeScanner.startScan(mFilteredScanCallback);
                     }
                 } else {
-                    mStartStopButton.setText(R.string.scan_start);
-                    mBluetoothLeScanner.stopScan(mTestScanCallback);
-                    mTestScanCallback = null;
+                    mBluetoothLeScanner.stopScan(mFilteredScanCallback);
+                    mFilteredScanCallback = null;
                 }
             }
+            updateLayout();
         } else {
             super.onClick(v);
         }

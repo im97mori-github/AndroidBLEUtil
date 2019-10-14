@@ -46,4 +46,21 @@ public class CompleteLocalNameTest {
         assertEquals(result1.getCompleteLocalName(), result2.getCompleteLocalName());
     }
 
+    @Test
+    public void constructTest3() {
+        String name = "complete local name";
+        byte[] utf8data = name.getBytes(StandardCharsets.UTF_8);
+        byte[] data = new byte[utf8data.length + 2];
+        data[0] = (byte) (utf8data.length + 1);
+        data[1] = DATA_TYPE_COMPLETE_LOCAL_NAME;
+        System.arraycopy(utf8data, 0, data, 2, utf8data.length);
+
+        CompleteLocalName result1 = new CompleteLocalName(data, 0, data[0]);
+        CompleteLocalName result2 = CompleteLocalName.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getCompleteLocalName(), result2.getCompleteLocalName());
+    }
+
 }

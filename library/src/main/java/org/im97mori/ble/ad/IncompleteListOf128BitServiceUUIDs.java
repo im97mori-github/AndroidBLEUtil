@@ -5,6 +5,8 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.ByteArrayCreater;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
@@ -21,13 +23,12 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-@SuppressWarnings("WeakerAccess")
 public class IncompleteListOf128BitServiceUUIDs extends AbstractAdvertisingData {
 
     /**
-     * @see android.os.Parcelable.Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<IncompleteListOf128BitServiceUUIDs> CREATOR = new Creator<IncompleteListOf128BitServiceUUIDs>() {
+    public static final ByteArrayCreater<IncompleteListOf128BitServiceUUIDs> CREATOR = new ByteArrayCreater<IncompleteListOf128BitServiceUUIDs>() {
 
         /**
          * {@inheritDoc}
@@ -45,6 +46,15 @@ public class IncompleteListOf128BitServiceUUIDs extends AbstractAdvertisingData 
         @NonNull
         public IncompleteListOf128BitServiceUUIDs[] newArray(int size) {
             return new IncompleteListOf128BitServiceUUIDs[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @NonNull
+        @Override
+        public IncompleteListOf128BitServiceUUIDs createFromByteArray(@NonNull byte[] values) {
+            return new IncompleteListOf128BitServiceUUIDs(values, 0, values.length - 1);
         }
 
     };

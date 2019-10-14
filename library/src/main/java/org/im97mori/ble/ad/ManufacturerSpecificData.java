@@ -6,6 +6,8 @@ import android.os.Parcel;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.ByteArrayCreater;
+
 import static org.im97mori.ble.BLEConstants.COMPANY_MAPPING;
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
 
@@ -16,13 +18,12 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-@SuppressWarnings("WeakerAccess")
 public class ManufacturerSpecificData extends AbstractAdvertisingData {
 
     /**
-     * @see android.os.Parcelable.Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<ManufacturerSpecificData> CREATOR = new Creator<ManufacturerSpecificData>() {
+    public static final ByteArrayCreater<ManufacturerSpecificData> CREATOR = new ByteArrayCreater<ManufacturerSpecificData>() {
 
         /**
          * {@inheritDoc}
@@ -40,6 +41,15 @@ public class ManufacturerSpecificData extends AbstractAdvertisingData {
         @NonNull
         public ManufacturerSpecificData[] newArray(int size) {
             return new ManufacturerSpecificData[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @NonNull
+        @Override
+        public ManufacturerSpecificData createFromByteArray(@NonNull byte[] values) {
+            return new ManufacturerSpecificData(values, 0, values.length - 1);
         }
 
     };

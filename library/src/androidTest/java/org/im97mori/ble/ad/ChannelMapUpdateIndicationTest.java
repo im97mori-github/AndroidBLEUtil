@@ -1391,4 +1391,29 @@ public class ChannelMapUpdateIndicationTest {
         assertArrayEquals(result1.getUnusedPhyChannelRfCenterFrequencyList().toArray(), result2.getUnusedPhyChannelRfCenterFrequencyList().toArray());
         assertEquals(result1.getInstant(), result2.getInstant());
     }
+
+    @Test
+    public void constructTest49() {
+        byte[] data = new byte[9];
+        data[0] = 8;
+        data[1] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[2] = (byte) 0b11111110;
+        data[3] = (byte) 0b11111111;
+        data[4] = (byte) 0b11111111;
+        data[5] = (byte) 0b11111111;
+        data[6] = (byte) 0b11111111;
+        data[7] = 0b00000000;
+        data[8] = 0b00000000;
+
+        ChannelMapUpdateIndication result1 = new ChannelMapUpdateIndication(data, 0, data[0]);
+        ChannelMapUpdateIndication result2 = ChannelMapUpdateIndication.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getChmList().toArray(), result2.getChmList().toArray());
+        assertArrayEquals(result1.getUnusedPhyChannelList().toArray(), result2.getUnusedPhyChannelList().toArray());
+        assertArrayEquals(result1.getUnusedPhyChannelRfCenterFrequencyList().toArray(), result2.getUnusedPhyChannelRfCenterFrequencyList().toArray());
+        assertEquals(result1.getInstant(), result2.getInstant());
+    }
+
 }

@@ -290,4 +290,36 @@ public class ListOf128BitServiceSolicitationUUIDsTest {
         assertEquals(result1.getUuidList().size(), result2.getUuidList().size());
         assertEquals(result1.getUuidList().get(0), result2.getUuidList().get(0));
     }
+
+    @Test
+    public void constructTest11() {
+        byte[] data = new byte[18];
+        data[0] = 17;
+        data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+        data[2] = 0x00;
+        data[3] = 0x00;
+        data[4] = 0x00;
+        data[5] = 0x00;
+        data[6] = 0x00;
+        data[7] = 0x00;
+        data[8] = 0x00;
+        data[9] = 0x00;
+        data[10] = 0x00;
+        data[11] = 0x00;
+        data[12] = 0x00;
+        data[13] = 0x00;
+        data[14] = 0x00;
+        data[15] = 0x00;
+        data[16] = 0x00;
+        data[17] = 0x00;
+
+        ListOf128BitServiceSolicitationUUIDs result1 = new ListOf128BitServiceSolicitationUUIDs(data, 0, data[0]);
+        ListOf128BitServiceSolicitationUUIDs result2 = ListOf128BitServiceSolicitationUUIDs.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getUuidList().size(), result2.getUuidList().size());
+        assertEquals(result1.getUuidList().get(0), result2.getUuidList().get(0));
+    }
+
 }

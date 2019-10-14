@@ -241,4 +241,34 @@ public class RandomTargetAddressTest {
             assertArrayEquals(list1.get(i), list2.get(i));
         }
     }
+
+    @Test
+    public void constructTest11() {
+        byte[] address = new byte[6];
+        address[0] = 0;
+        address[1] = 0;
+        address[2] = 0;
+        address[3] = 0;
+        address[4] = 0;
+        address[5] = 0;
+
+        byte[] data = new byte[8];
+        data[0] = 7;
+        data[1] = DATA_TYPE_RANDOM_TARGET_ADDRESS;
+        System.arraycopy(address, 0, data, 2, address.length);
+
+        RandomTargetAddress result1 = new RandomTargetAddress(data, 0, data[0]);
+        RandomTargetAddress result2 = RandomTargetAddress.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+
+        List<byte[]> list1 = result1.getAddressList();
+        List<byte[]> list2 = result2.getAddressList();
+        assertEquals(list1.size(), list2.size());
+        for (int i = 0; i < list1.size(); i++) {
+            assertArrayEquals(list1.get(i), list2.get(i));
+        }
+    }
+
 }

@@ -2,10 +2,11 @@ package org.im97mori.ble.ad;
 
 import android.bluetooth.le.ScanRecord;
 import android.os.Parcel;
-import android.os.Parcelable;
 import android.util.Pair;
 
 import androidx.annotation.NonNull;
+
+import org.im97mori.ble.ByteArrayCreater;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,13 +50,12 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.LeSupportedFeatures.F
  * Core Specification v5.1 Vol 6 Part B 4.6
  * </p>
  */
-@SuppressWarnings("WeakerAccess")
 public class LeSupportedFeatures extends AbstractAdvertisingData {
 
     /**
-     * @see android.os.Parcelable.Creator
+     * @see ByteArrayCreater
      */
-    public static final Parcelable.Creator<LeSupportedFeatures> CREATOR = new Parcelable.Creator<LeSupportedFeatures>() {
+    public static final ByteArrayCreater<LeSupportedFeatures> CREATOR = new ByteArrayCreater<LeSupportedFeatures>() {
 
         /**
          * {@inheritDoc}
@@ -73,6 +73,15 @@ public class LeSupportedFeatures extends AbstractAdvertisingData {
         @NonNull
         public LeSupportedFeatures[] newArray(int size) {
             return new LeSupportedFeatures[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @NonNull
+        @Override
+        public LeSupportedFeatures createFromByteArray(@NonNull byte[] values) {
+            return new LeSupportedFeatures(values, 0, values.length - 1);
         }
 
     };

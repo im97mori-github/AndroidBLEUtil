@@ -175,4 +175,23 @@ public class CompleteListOf32BitServiceUUIDsTest {
         assertEquals(result1.getUuidList().size(), result2.getUuidList().size());
         assertEquals(result1.getUuidList().get(0), result2.getUuidList().get(0));
     }
+
+    @Test
+    public void constructTest11() {
+        byte[] data = new byte[6];
+        data[0] = 5;
+        data[1] = DATA_TYPE_COMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+        data[2] = 0x00;
+        data[3] = 0x00;
+        data[4] = 0x00;
+        data[5] = 0x00;
+
+        CompleteListOf32BitServiceUUIDs result1 = new CompleteListOf32BitServiceUUIDs(data, 0, data[0]);
+        CompleteListOf32BitServiceUUIDs result2 = CompleteListOf32BitServiceUUIDs.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getUuidList().size(), result2.getUuidList().size());
+        assertEquals(result1.getUuidList().get(0), result2.getUuidList().get(0));
+    }
 }

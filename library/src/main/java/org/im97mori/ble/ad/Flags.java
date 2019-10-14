@@ -6,6 +6,8 @@ import android.util.Pair;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.ByteArrayCreater;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -29,9 +31,9 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.FlagsDataType.FLAG_SI
 public class Flags extends AbstractAdvertisingData {
 
     /**
-     * @see android.os.Parcelable.Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<Flags> CREATOR = new Creator<Flags>() {
+    public static final ByteArrayCreater<Flags> CREATOR = new ByteArrayCreater<Flags>() {
 
         /**
          * {@inheritDoc}
@@ -49,6 +51,15 @@ public class Flags extends AbstractAdvertisingData {
         @NonNull
         public Flags[] newArray(int size) {
             return new Flags[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @NonNull
+        @Override
+        public Flags createFromByteArray(@NonNull byte[] values) {
+            return new Flags(values, 0, values.length - 1);
         }
 
     };

@@ -5,6 +5,8 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.ByteArrayCreater;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
@@ -19,13 +21,12 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.SLAVE_CONNECTION_INTE
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-@SuppressWarnings("WeakerAccess")
 public class SlaveConnectionIntervalRange extends AbstractAdvertisingData {
 
     /**
-     * @see android.os.Parcelable.Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<SlaveConnectionIntervalRange> CREATOR = new Creator<SlaveConnectionIntervalRange>() {
+    public static final ByteArrayCreater<SlaveConnectionIntervalRange> CREATOR = new ByteArrayCreater<SlaveConnectionIntervalRange>() {
 
         /**
          * {@inheritDoc}
@@ -43,6 +44,15 @@ public class SlaveConnectionIntervalRange extends AbstractAdvertisingData {
         @NonNull
         public SlaveConnectionIntervalRange[] newArray(int size) {
             return new SlaveConnectionIntervalRange[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @NonNull
+        @Override
+        public SlaveConnectionIntervalRange createFromByteArray(@NonNull byte[] values) {
+            return new SlaveConnectionIntervalRange(values, 0, values.length - 1);
         }
 
     };

@@ -5,6 +5,8 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.ByteArrayCreater;
+
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_COMPLETE_LOCAL_NAME;
 
 /**
@@ -14,13 +16,12 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-@SuppressWarnings("WeakerAccess")
 public class CompleteLocalName extends AbstractAdvertisingData {
 
     /**
-     * @see android.os.Parcelable.Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<CompleteLocalName> CREATOR = new Creator<CompleteLocalName>() {
+    public static final ByteArrayCreater<CompleteLocalName> CREATOR = new ByteArrayCreater<CompleteLocalName>() {
 
         /**
          * {@inheritDoc}
@@ -38,6 +39,15 @@ public class CompleteLocalName extends AbstractAdvertisingData {
         @NonNull
         public CompleteLocalName[] newArray(int size) {
             return new CompleteLocalName[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @NonNull
+        @Override
+        public CompleteLocalName createFromByteArray(@NonNull byte[] values) {
+            return new CompleteLocalName(values, 0, values.length - 1);
         }
 
     };

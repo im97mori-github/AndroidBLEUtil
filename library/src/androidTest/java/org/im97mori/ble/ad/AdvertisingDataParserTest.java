@@ -1253,9 +1253,7 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0102() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.exclude(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS);
-        builder.include(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS);
-        AdvertisingDataParser parser = builder.build();
+        AdvertisingDataParser parser = builder.exclude(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS).include(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS).build();
 
         byte[] data = new byte[4];
         data[0] = 3;
@@ -7822,9 +7820,7 @@ public class AdvertisingDataParserTest {
     @Test
     public void builderTest0602() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-        builder.excludeAll();
-        builder.includeAll();
-        AdvertisingDataParser parser = builder.build();
+        AdvertisingDataParser parser = builder.excludeAll().includeAll().build();
 
         byte[] data = new byte[190];
         data[0] = 3;

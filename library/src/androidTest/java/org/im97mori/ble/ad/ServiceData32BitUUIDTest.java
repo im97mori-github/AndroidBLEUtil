@@ -356,4 +356,24 @@ public class ServiceData32BitUUIDTest {
         assertEquals(result1.getUuid(), result2.getUuid());
         assertArrayEquals(result1.getAdditionalServiceData(), result2.getAdditionalServiceData());
     }
+
+    @Test
+    public void constructTest18() {
+        byte[] data = new byte[6];
+        data[0] = 5;
+        data[1] = DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
+        data[2] = 0x00;
+        data[3] = 0x00;
+        data[4] = 0x00;
+        data[5] = 0x00;
+
+        ServiceData32BitUUID result1 = new ServiceData32BitUUID(data, 0, data[0]);
+        ServiceData32BitUUID result2 = ServiceData32BitUUID.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getUuid(), result2.getUuid());
+        assertEquals(result1.getAdditionalServiceData().length, result2.getAdditionalServiceData().length);
+    }
+
 }

@@ -49,7 +49,6 @@ public class AdvertisingDataParser {
     /**
      * Builder for {@link AdvertisingDataParser}
      */
-    @SuppressWarnings("UnusedReturnValue")
     public static class Builder {
 
         /**
@@ -879,6 +878,7 @@ public class AdvertisingDataParser {
     /**
      * @see #parse(byte[], int, int)
      */
+    @NonNull
     public AdvertisingDataParseResult parse(@NonNull byte[] data) {
         return parse(data, 0, data.length);
     }

@@ -35,6 +35,12 @@ import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.BLESyncConnection;
 import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.ad.AdvertisingDataParser;
+import org.im97mori.ble.ad.CompleteListOf128BitServiceUUIDs;
+import org.im97mori.ble.ad.Flags;
+import org.im97mori.ble.ad.filter.AdvertisingDataFilter;
+import org.im97mori.ble.ad.filter.FilteredScanCallback;
+import org.im97mori.ble.ad.filter.FlagsFilter;
+import org.im97mori.ble.ad.filter.OrFilter;
 import org.im97mori.ble.descriptor.ClientCharacteristicConfiguration;
 import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
@@ -42,6 +48,8 @@ import org.im97mori.ble.task.WriteCharacteristicTask;
 import org.im97mori.ble.task.WriteDescriptorTask;
 import org.im97mori.ble_peripheral.characteristic.MockControl;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -50,8 +58,6 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
-import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
-import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_FLAGS;
 import static org.im97mori.ble_peripheral.BLEServerConnection.DefaultServerSetting.DEFAULT_SERVICE_UUID;
 import static org.im97mori.ble_peripheral.BLEServerConnection.DefaultServerSetting.INDICATABLE_CHARACTERISTIC_UUID;
 import static org.im97mori.ble_peripheral.BLEServerConnection.DefaultServerSetting.NOTIFICATABLE_CHARACTERISTIC_UUID;
@@ -64,24 +70,39 @@ import static org.im97mori.ble_peripheral.BLEServerConnection.MOCK_CONTROL_TARGE
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class CentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
-    private static class TestScanCallback extends ScanCallback {
+    private static class TestScanCallback extends FilteredScanCallback {
 
-        final AdvertisingDataParser mAdvertisingDataParser;
-        final CentralSampleActivity mActivity;
+        private static class Builder extends FilteredScanCallback.Builder {
 
-        private TestScanCallback(CentralSampleActivity advertisingDataSampleActivity) {
-            mActivity = advertisingDataSampleActivity;
-            AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false).include(DATA_TYPE_COMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS).include(DATA_TYPE_FLAGS);
-            mAdvertisingDataParser = builder.build();
+            private final CentralSampleActivity mActivity;
+
+            Builder(@NonNull CentralSampleActivity activity) {
+                mActivity = activity;
+            }
+
+            @NonNull
+            @Override
+            public FilteredScanCallback build() {
+                return new TestScanCallback(mFilterList, mAdvertisingDataParser, mScanCallback, mActivity);
+            }
+
         }
 
+        final CentralSampleActivity mActivity;
+
+        private TestScanCallback(@NonNull List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> filterList, @Nullable AdvertisingDataParser parser, @Nullable ScanCallback scanCallback, @NonNull CentralSampleActivity advertisingDataSampleActivity) {
+            super(filterList, parser, scanCallback);
+            mActivity = advertisingDataSampleActivity;
+        }
+
+
         @Override
-        public void onScanResult(int callbackType, ScanResult result) {
+        public void onFilteredScanResult(int callbackType, @NonNull ScanResult result, @NonNull AdvertisingDataParser.AdvertisingDataParseResult parseResult) {
             parse(result);
         }
 
         @Override
-        public void onBatchScanResults(List<ScanResult> results) {
+        public void onFilteredBatchScanResults(@NonNull List<ScanResult> results, @NonNull List<AdvertisingDataParser.AdvertisingDataParseResult> parseResults) {
             for (ScanResult result : results) {
                 parse(result);
             }
@@ -89,72 +110,67 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
 
         @Override
         public void onScanFailed(int errorCode) {
-
+            BLELogUtils.stackLog(errorCode);
         }
 
-        private void parse(final ScanResult scanResult) {
+        private void parse(@NonNull final ScanResult scanResult) {
             BLELogUtils.stackLog(scanResult);
             if (scanResult.getScanRecord() != null) {
-                AdvertisingDataParser.AdvertisingDataParseResult result = mAdvertisingDataParser.parse(scanResult.getScanRecord().getBytes());
-                if (result.getFlags() != null
-                        && (result.getFlags().isLeLimitedDiscoverableMode() || result.getFlags().isLeGeneralDiscoverableMode())
-                        && result.getCompleteListOf128BitServiceUUIDs() != null
-                        && !result.getCompleteListOf128BitServiceUUIDs().getUuidList().isEmpty()
-                        && MOCK_CONTROL_SERVICE_UUID.equals(result.getCompleteListOf128BitServiceUUIDs().getUuidList().get(0))) {
-                    mActivity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                mActivity.mBluetoothLeScanner.stopScan(CentralSampleActivity.TestScanCallback.this);
-                                mActivity.mTestScanCallback = null;
-                                BluetoothDevice device = scanResult.getDevice();
-                                if (BluetoothDevice.BOND_BONDED == device.getBondState()) {
-                                    mActivity.mBleConnection = BLEConnectionHolder.getInstance(device);
-                                    if (mActivity.mBleConnection == null) {
-                                        mActivity.mBleConnection = new BLEConnection(mActivity, device, null);
-                                        BLEConnectionHolder.addInstance(mActivity.mBleConnection, true);
-                                    }
-                                    mActivity.mBleConnection.attach(mActivity.mBLECallbackSample);
-                                    mActivity.mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
-                                } else {
-                                    mActivity.mReceiver = new BroadcastReceiver() {
-                                        @Override
-                                        public void onReceive(Context context, Intent intent) {
-                                            try {
-                                                String action = intent.getAction();
-                                                BLELogUtils.stackLog(action, intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE));
-                                                if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
-                                                    int state = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE);
-                                                    if (BluetoothDevice.BOND_BONDED == state) {
-                                                        mActivity.mBleConnection = BLEConnectionHolder.getInstance(scanResult.getDevice());
-                                                        if (mActivity.mBleConnection == null) {
-                                                            mActivity.mBleConnection = new BLEConnection(mActivity, scanResult.getDevice(), null);
-                                                            BLEConnectionHolder.addInstance(mActivity.mBleConnection, true);
-                                                        }
-                                                        mActivity.mBleConnection.attach(mActivity.mBLECallbackSample);
-                                                        mActivity.mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
-                                                        mActivity.unregisterReceiver(mActivity.mReceiver);
-                                                        mActivity.mReceiver = null;
-                                                    }
-                                                }
-                                            } catch (Exception e) {
-                                                e.printStackTrace();
-                                            }
-
-                                        }
-                                    };
-                                    IntentFilter intentFilter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-                                    mActivity.registerReceiver(mActivity.mReceiver, intentFilter);
-                                    device.createBond();
+                mActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            mActivity.mBluetoothLeScanner.stopScan(CentralSampleActivity.TestScanCallback.this);
+                            mActivity.mTestScanCallback = null;
+                            BluetoothDevice device = scanResult.getDevice();
+                            if (BluetoothDevice.BOND_BONDED == device.getBondState()) {
+                                mActivity.mBleConnection = BLEConnectionHolder.getInstance(device);
+                                if (mActivity.mBleConnection == null) {
+                                    mActivity.mBleConnection = new BLEConnection(mActivity, device, null);
+                                    BLEConnectionHolder.addInstance(mActivity.mBleConnection, true);
                                 }
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                                mActivity.mBleConnection.attach(mActivity.mBLECallbackSample);
+                                mActivity.mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
+                            } else {
+                                mActivity.mReceiver = new BroadcastReceiver() {
+                                    @Override
+                                    public void onReceive(Context context, Intent intent) {
+                                        try {
+                                            String action = intent.getAction();
+                                            BLELogUtils.stackLog(action, intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE));
+                                            if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
+                                                int state = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE);
+                                                if (BluetoothDevice.BOND_BONDED == state) {
+                                                    mActivity.mBleConnection = BLEConnectionHolder.getInstance(scanResult.getDevice());
+                                                    if (mActivity.mBleConnection == null) {
+                                                        mActivity.mBleConnection = new BLEConnection(mActivity, scanResult.getDevice(), null);
+                                                        BLEConnectionHolder.addInstance(mActivity.mBleConnection, true);
+                                                    }
+                                                    mActivity.mBleConnection.attach(mActivity.mBLECallbackSample);
+                                                    mActivity.mBleConnection.connect(ConnectTask.TIMEOUT_MILLIS);
+                                                    mActivity.unregisterReceiver(mActivity.mReceiver);
+                                                    mActivity.mReceiver = null;
+                                                }
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+
+                                    }
+                                };
+                                IntentFilter intentFilter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
+                                mActivity.registerReceiver(mActivity.mReceiver, intentFilter);
+                                device.createBond();
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                    });
-                }
+                    }
+                });
+//                }
             }
         }
+
     }
 
     private Button mConnectDisconnectButton;
@@ -162,7 +178,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
     private BluetoothAdapter mBluetoothAdapter;
     private BluetoothLeScanner mBluetoothLeScanner;
 
-    private TestScanCallback mTestScanCallback;
+    private FilteredScanCallback mTestScanCallback;
 
     private BLEConnection mBleConnection;
     private ArrayAdapter<Pair<String, String>> mAdapter;
@@ -431,7 +447,18 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                         mBleConnection.quit();
                                         mBleConnection = null;
                                     }
-                                    mTestScanCallback = new TestScanCallback(this);
+
+                                    byte[] bytes = new byte[18];
+                                    ByteBuffer bb = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN);
+                                    bb.position(2);
+                                    bb.putLong(MOCK_CONTROL_SERVICE_UUID.getLeastSignificantBits());
+                                    bb.putLong(MOCK_CONTROL_SERVICE_UUID.getMostSignificantBits());
+                                    mTestScanCallback = new TestScanCallback.Builder(CentralSampleActivity.this)
+                                            .addFilter(new OrFilter<>(
+                                                    new FlagsFilter(Flags.CREATOR.createFromByteArray(new byte[]{0, 0, 1}))
+                                                    , new FlagsFilter(Flags.CREATOR.createFromByteArray(new byte[]{0, 0, 2}))))
+                                            .addCompleteListOf128BitServiceUUIDsFilter(CompleteListOf128BitServiceUUIDs.CREATOR.createFromByteArray(bytes))
+                                            .build();
                                     mBluetoothLeScanner.startScan(mTestScanCallback);
                                 }
                             } else {

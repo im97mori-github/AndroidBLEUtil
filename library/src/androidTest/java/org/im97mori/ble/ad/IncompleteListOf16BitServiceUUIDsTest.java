@@ -156,4 +156,22 @@ public class IncompleteListOf16BitServiceUUIDsTest {
         assertEquals(result1.getUuidList().size(), result2.getUuidList().size());
         assertEquals(result1.getUuidList().get(0), result2.getUuidList().get(0));
     }
+
+    @Test
+    public void constructTest11() {
+        byte[] data = new byte[4];
+        data[0] = 3;
+        data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
+        data[2] = 0;
+        data[3] = 0;
+
+        IncompleteListOf16BitServiceUUIDs result1 = new IncompleteListOf16BitServiceUUIDs(data, 0, data[0]);
+        IncompleteListOf16BitServiceUUIDs result2 = IncompleteListOf16BitServiceUUIDs.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getUuidList().size(), result2.getUuidList().size());
+        assertEquals(result1.getUuidList().get(0), result2.getUuidList().get(0));
+    }
+
 }

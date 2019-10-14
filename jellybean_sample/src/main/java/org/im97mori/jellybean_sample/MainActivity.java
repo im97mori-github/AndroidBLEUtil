@@ -9,10 +9,16 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Pair;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -44,8 +50,13 @@ import org.im97mori.ble.ad.ShortenedLocalName;
 import org.im97mori.ble.ad.SlaveConnectionIntervalRange;
 import org.im97mori.ble.ad.TxPowerLevel;
 import org.im97mori.ble.ad.UniformRsourceIdentifier;
+import org.im97mori.ble.ad.filter.FilteredLeScanCallback;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.Locale;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback {
 
@@ -66,6 +77,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         @Override
         public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
+            SimpleDateFormat format = new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US);
+            String now = format.format(new Date());
+
             AdvertisingDataParser.AdvertisingDataParseResult result = mAdvertisingDataParser.parse(scanRecord);
             final StringBuilder sb = new StringBuilder();
 
@@ -429,14 +443,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
+            final Pair<String, String> log = Pair.create(now, sb.toString());
+
             mMainActivity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        mMainActivity.mResultTextView.setText(sb);
-                        mMainActivity.mBluetoothAdapter.stopLeScan(TestLeScanCallback.this);
-                        mMainActivity.mTestLeScanCallback = null;
-                        mMainActivity.mStartStopButton.setText(R.string.scan_start);
+                        mMainActivity.mAdapter.add(log);
+                        mMainActivity.mListView.smoothScrollToPosition(mMainActivity.mAdapter.getCount());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -446,13 +460,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     private Button mGetPermissionButton;
-    private Button mStartStopButton;
-    private TextView mResultTextView;
-
+    private Button mConnectDisconnectButton;
+    private ArrayAdapter<Pair<String, String>> mAdapter;
+    private ListView mListView;
 
     private final BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
-    private TestLeScanCallback mTestLeScanCallback;
+    private FilteredLeScanCallback mFilteredLeScanCallback;
 
     private FragmentManager mFragmentManager;
 
@@ -462,16 +476,45 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         BLELogUtils.verbose();
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.gatt_sample);
 
         mFragmentManager = getSupportFragmentManager();
 
         mGetPermissionButton = findViewById(R.id.getPermissionButton);
-        mStartStopButton = findViewById(R.id.startStopButton);
-        mResultTextView = findViewById(R.id.resultTextView);
+
+        mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
+        mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View child = convertView;
+                if (child == null) {
+                    child = getLayoutInflater().inflate(R.layout.list_child, parent, false);
+                }
+                Pair<String, String> item = getItem(position);
+                if (item != null) {
+                    TextView textView = child.findViewById(R.id.time);
+                    textView.setText(item.first);
+                    textView = child.findViewById(R.id.body);
+                    textView.setText(item.second);
+                }
+                return child;
+            }
+        };
+        mListView = findViewById(android.R.id.list);
+        mListView.setAdapter(mAdapter);
 
         mGetPermissionButton.setOnClickListener(this);
-        mStartStopButton.setOnClickListener(this);
+        mConnectDisconnectButton.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (mFilteredLeScanCallback != null) {
+            mBluetoothAdapter.stopLeScan(mFilteredLeScanCallback);
+            mFilteredLeScanCallback = null;
+        }
+        super.onDestroy();
     }
 
     @Override
@@ -480,37 +523,43 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         hasPermission();
 
-        if (mBluetoothAdapter == null) {
-            mResultTextView.setText(null);
-        } else if (mTestLeScanCallback == null) {
-            mStartStopButton.setText(R.string.scan_start);
-        } else {
-            mStartStopButton.setText(R.string.scan_stop);
-        }
+        updateLayout();
     }
 
     @Override
     public void onClick(View v) {
         if (R.id.getPermissionButton == v.getId()) {
             hasPermission();
-        } else if (R.id.startStopButton == v.getId()) {
+        } else if (R.id.connectDisconnectButton == v.getId()) {
             if (mBluetoothAdapter != null) {
-                if (mTestLeScanCallback == null) {
+                if (mFilteredLeScanCallback == null) {
                     if (hasPermission()) {
-                        mStartStopButton.setText(R.string.scan_stop);
-                        mResultTextView.setText(null);
-                        mTestLeScanCallback = new TestLeScanCallback(this);
-                        mBluetoothAdapter.startLeScan(mTestLeScanCallback);
+                        mConnectDisconnectButton.setText(R.string.scan_stop);
+                        mFilteredLeScanCallback = new FilteredLeScanCallback.Builder().setScanCallback(new TestLeScanCallback(this)).build();
+                        mBluetoothAdapter.startLeScan(mFilteredLeScanCallback);
                     }
                 } else {
-                    mStartStopButton.setText(R.string.scan_start);
-                    mBluetoothAdapter.stopLeScan(mTestLeScanCallback);
-                    mTestLeScanCallback = null;
+                    mConnectDisconnectButton.setText(R.string.scan_start);
+                    mBluetoothAdapter.stopLeScan(mFilteredLeScanCallback);
+                    mFilteredLeScanCallback = null;
                 }
             }
+            updateLayout();
         }
     }
 
+    private void updateLayout() {
+        if (mBluetoothAdapter != null && !mBluetoothAdapter.isEnabled()) {
+            mBluetoothAdapter.enable();
+        } else if (mBluetoothAdapter == null) {
+            mAdapter.clear();
+            mAdapter.notifyDataSetChanged();
+        } else if (mFilteredLeScanCallback == null) {
+            mConnectDisconnectButton.setText(R.string.scan_start);
+        } else {
+            mConnectDisconnectButton.setText(R.string.scan_stop);
+        }
+    }
 
     @Override
     public void onOk() {

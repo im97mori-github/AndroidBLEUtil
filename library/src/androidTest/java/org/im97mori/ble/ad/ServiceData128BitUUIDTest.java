@@ -560,4 +560,35 @@ public class ServiceData128BitUUIDTest {
         assertEquals(result1.getUuid(), result2.getUuid());
         assertArrayEquals(result1.getAdditionalServiceData(), result2.getAdditionalServiceData());
     }
+
+    @Test
+    public void constructTest18() {
+        byte[] data = new byte[18];
+        data[0] = 17;
+        data[1] = DATA_TYPE_SERVICE_DATA_128_BIT_UUID;
+        data[2] = 0x00;
+        data[3] = 0x00;
+        data[4] = 0x00;
+        data[5] = 0x00;
+        data[6] = 0x00;
+        data[7] = 0x00;
+        data[8] = 0x00;
+        data[9] = 0x00;
+        data[10] = 0x00;
+        data[11] = 0x00;
+        data[12] = 0x00;
+        data[13] = 0x00;
+        data[14] = 0x00;
+        data[15] = 0x00;
+        data[16] = 0x00;
+        data[17] = 0x00;
+
+        ServiceData128BitUUID result1 = new ServiceData128BitUUID(data, 0, data[0]);
+        ServiceData128BitUUID result2 = ServiceData128BitUUID.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getUuid(), result2.getUuid());
+        assertEquals(result1.getAdditionalServiceData().length, result2.getAdditionalServiceData().length);
+    }
 }

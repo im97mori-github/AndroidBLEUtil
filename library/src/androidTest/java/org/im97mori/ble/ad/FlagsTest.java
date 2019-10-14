@@ -153,4 +153,20 @@ public class FlagsTest {
         assertEquals(result1.getDataType(), result2.getDataType());
         assertArrayEquals(result1.getFlagsList().toArray(), result2.getFlagsList().toArray());
     }
+
+    @Test
+    public void constructTest9() {
+        byte[] data = new byte[3];
+        data[0] = 2;
+        data[1] = DATA_TYPE_FLAGS;
+        data[2] = 0b00000001;
+
+        Flags result1 = new Flags(data, 0, data[0]);
+        Flags result2 = Flags.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getFlagsList().toArray(), result2.getFlagsList().toArray());
+    }
+
 }

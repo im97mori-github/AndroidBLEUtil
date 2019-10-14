@@ -113,4 +113,24 @@ public class SlaveConnectionIntervalRangeTest {
         assertEquals(result1.getMinimumValue(), result2.getMinimumValue());
         assertEquals(result1.getMaximumValue(), result2.getMaximumValue());
     }
+
+    @Test
+    public void constructTest6() {
+        byte[] data = new byte[6];
+        data[0] = 5;
+        data[1] = DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+        data[2] = (byte) 0xff;
+        data[3] = (byte) 0xff;
+        data[4] = (byte) 0xff;
+        data[5] = (byte) 0xff;
+
+        SlaveConnectionIntervalRange result1 = new SlaveConnectionIntervalRange(data, 0, data[0]);
+        SlaveConnectionIntervalRange result2 = SlaveConnectionIntervalRange.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getMinimumValue(), result2.getMinimumValue());
+        assertEquals(result1.getMaximumValue(), result2.getMaximumValue());
+    }
+
 }

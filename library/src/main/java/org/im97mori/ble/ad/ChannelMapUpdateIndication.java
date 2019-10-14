@@ -5,6 +5,8 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.ByteArrayCreater;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,13 +22,12 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.PHYSICAL_CHANNEL_INDI
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-@SuppressWarnings("WeakerAccess")
 public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
 
     /**
-     * @see android.os.Parcelable.Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<ChannelMapUpdateIndication> CREATOR = new Creator<ChannelMapUpdateIndication>() {
+    public static final ByteArrayCreater<ChannelMapUpdateIndication> CREATOR = new ByteArrayCreater<ChannelMapUpdateIndication>() {
 
         /**
          * {@inheritDoc}
@@ -44,6 +45,15 @@ public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
         @NonNull
         public ChannelMapUpdateIndication[] newArray(int size) {
             return new ChannelMapUpdateIndication[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @NonNull
+        @Override
+        public ChannelMapUpdateIndication createFromByteArray(@NonNull byte[] values) {
+            return new ChannelMapUpdateIndication(values, 0, values.length - 1);
         }
 
     };
@@ -70,7 +80,7 @@ public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
 
 
     /**
-     * Channel Map Update Indication
+     * Constructor for Channel Map Update Indication
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset

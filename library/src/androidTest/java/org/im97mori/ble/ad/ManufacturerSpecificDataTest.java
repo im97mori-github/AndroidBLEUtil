@@ -20,7 +20,7 @@ public class ManufacturerSpecificDataTest {
         data[0] = 3;
         data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
         data[2] = (byte) (companyId & 0x0000ff);
-        data[3] = (byte) (companyId & (0x0000ff >> 8));
+        data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
         ManufacturerSpecificData result = new ManufacturerSpecificData(data, 0, data[0]);
         assertEquals(3, result.getLength());
@@ -42,7 +42,7 @@ public class ManufacturerSpecificDataTest {
         data[0] = (byte) (3 + additionalData.length);
         data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
         data[2] = (byte) (companyId & 0x0000ff);
-        data[3] = (byte) (companyId & (0x0000ff >> 8));
+        data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
         System.arraycopy(additionalData, 0, data, 4, additionalData.length);
         ManufacturerSpecificData result = new ManufacturerSpecificData(data, 0, data[0]);
@@ -66,7 +66,7 @@ public class ManufacturerSpecificDataTest {
         data[0] = (byte) (3 + additionalData.length);
         data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
         data[2] = (byte) (companyId & 0x0000ff);
-        data[3] = (byte) (companyId & (0x0000ff >> 8));
+        data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
         System.arraycopy(additionalData, 0, data, 4, additionalData.length);
         ManufacturerSpecificData result = new ManufacturerSpecificData(data, 0, data[0]);
@@ -90,7 +90,7 @@ public class ManufacturerSpecificDataTest {
         data[0] = (byte) (3 + additionalData.length);
         data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
         data[2] = (byte) (companyId & 0x0000ff);
-        data[3] = (byte) (companyId & (0x0000ff >> 8));
+        data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
         System.arraycopy(additionalData, 0, data, 4, additionalData.length);
         ManufacturerSpecificData result = new ManufacturerSpecificData(data, 0, data[0]);
@@ -115,7 +115,7 @@ public class ManufacturerSpecificDataTest {
         data[0] = (byte) (3 + additionalData.length);
         data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
         data[2] = (byte) (companyId & 0x0000ff);
-        data[3] = (byte) (companyId & (0x0000ff >> 8));
+        data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
         System.arraycopy(additionalData, 0, data, 4, additionalData.length);
         ManufacturerSpecificData result = new ManufacturerSpecificData(data, 0, data[0]);
@@ -140,7 +140,7 @@ public class ManufacturerSpecificDataTest {
         data[0] = (byte) (3 + additionalData.length);
         data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
         data[2] = (byte) (companyId & 0x0000ff);
-        data[3] = (byte) (companyId & (0x0000ff >> 8));
+        data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
         System.arraycopy(additionalData, 0, data, 4, additionalData.length);
         ManufacturerSpecificData result = new ManufacturerSpecificData(data, 0, data[0]);
@@ -165,7 +165,7 @@ public class ManufacturerSpecificDataTest {
         data[0] = (byte) (3 + additionalData.length);
         data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
         data[2] = (byte) (companyId & 0x0000ff);
-        data[3] = (byte) (companyId & (0x0000ff >> 8));
+        data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
         System.arraycopy(additionalData, 0, data, 4, additionalData.length);
         ManufacturerSpecificData result = new ManufacturerSpecificData(data, 0, data[0]);
@@ -190,7 +190,7 @@ public class ManufacturerSpecificDataTest {
         data[0] = (byte) (3 + additionalData.length);
         data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
         data[2] = (byte) (companyId & 0x0000ff);
-        data[3] = (byte) (companyId & (0x0000ff >> 8));
+        data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
         System.arraycopy(additionalData, 0, data, 4, additionalData.length);
         ManufacturerSpecificData result = new ManufacturerSpecificData(data, 0, data[0]);
@@ -215,7 +215,7 @@ public class ManufacturerSpecificDataTest {
         data[0] = (byte) (3 + additionalData.length);
         data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
         data[2] = (byte) (companyId & 0x0000ff);
-        data[3] = (byte) (companyId & (0x0000ff >> 8));
+        data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
         System.arraycopy(additionalData, 0, data, 4, additionalData.length);
         ManufacturerSpecificData result = new ManufacturerSpecificData(data, 0, data[0]);
@@ -240,7 +240,7 @@ public class ManufacturerSpecificDataTest {
         data[0] = (byte) (3 + additionalData.length);
         data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
         data[2] = (byte) (companyId & 0x0000ff);
-        data[3] = (byte) (companyId & (0x0000ff >> 8));
+        data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
         System.arraycopy(additionalData, 0, data, 4, additionalData.length);
         ManufacturerSpecificData result = new ManufacturerSpecificData(data, 0, data[0]);
@@ -265,7 +265,7 @@ public class ManufacturerSpecificDataTest {
         data[0] = (byte) (3 + additionalData.length);
         data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
         data[2] = (byte) (companyId & 0x0000ff);
-        data[3] = (byte) (companyId & (0x0000ff >> 8));
+        data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
         System.arraycopy(additionalData, 0, data, 4, additionalData.length);
 
@@ -280,4 +280,25 @@ public class ManufacturerSpecificDataTest {
         assertEquals(result1.getCompanyIdentifier(), result2.getCompanyIdentifier());
         assertArrayEquals(result1.getManufacturerSpecificData(), result2.getManufacturerSpecificData());
     }
+
+    @Test
+    public void constructTest12() {
+        // google
+        int companyId = 0x000000E0;
+
+        byte[] data = new byte[4];
+        data[0] = 3;
+        data[1] = (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA;
+        data[2] = (byte) (companyId & 0x0000ff);
+        data[3] = (byte) ((companyId >> 8) & 0x0000ff);
+
+        ManufacturerSpecificData result1 = new ManufacturerSpecificData(data, 0, data[0]);
+        ManufacturerSpecificData result2 = ManufacturerSpecificData.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getCompanyIdentifier(), result2.getCompanyIdentifier());
+        assertArrayEquals(result1.getManufacturerSpecificData(), result2.getManufacturerSpecificData());
+    }
+
 }

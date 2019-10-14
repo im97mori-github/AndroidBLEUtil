@@ -5,6 +5,8 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.ByteArrayCreater;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,13 +20,12 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-@SuppressWarnings("WeakerAccess")
 public class PublicTargetAddress extends AbstractAdvertisingData {
 
     /**
-     * @see android.os.Parcelable.Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<PublicTargetAddress> CREATOR = new Creator<PublicTargetAddress>() {
+    public static final ByteArrayCreater<PublicTargetAddress> CREATOR = new ByteArrayCreater<PublicTargetAddress>() {
 
         /**
          * {@inheritDoc}
@@ -42,6 +43,15 @@ public class PublicTargetAddress extends AbstractAdvertisingData {
         @NonNull
         public PublicTargetAddress[] newArray(int size) {
             return new PublicTargetAddress[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @NonNull
+        @Override
+        public PublicTargetAddress createFromByteArray(@NonNull byte[] values) {
+            return new PublicTargetAddress(values, 0, values.length - 1);
         }
 
     };

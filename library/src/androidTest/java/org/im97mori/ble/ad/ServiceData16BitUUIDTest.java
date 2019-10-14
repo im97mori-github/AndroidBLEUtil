@@ -322,4 +322,22 @@ public class ServiceData16BitUUIDTest {
         assertEquals(result1.getUuid(), result2.getUuid());
         assertArrayEquals(result1.getAdditionalServiceData(), result2.getAdditionalServiceData());
     }
+
+    @Test
+    public void constructTest18() {
+        byte[] data = new byte[4];
+        data[0] = 3;
+        data[1] = DATA_TYPE_SERVICE_DATA_16_BIT_UUID;
+        data[2] = 0;
+        data[3] = 0;
+
+        ServiceData16BitUUID result1 = new ServiceData16BitUUID(data, 0, data[0]);
+        ServiceData16BitUUID result2 = ServiceData16BitUUID.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getUuid(), result2.getUuid());
+        assertEquals(result1.getAdditionalServiceData().length, result2.getAdditionalServiceData().length);
+    }
+
 }

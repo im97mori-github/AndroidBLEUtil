@@ -6,6 +6,8 @@ import android.os.Parcel;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.ByteArrayCreater;
+
 import java.net.URI;
 
 import static org.im97mori.ble.BLEConstants.URI_SCHEME_NAME_STRING_MAPPING;
@@ -18,13 +20,12 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-@SuppressWarnings("WeakerAccess")
 public class UniformRsourceIdentifier extends AbstractAdvertisingData {
 
     /**
-     * @see android.os.Parcelable.Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<UniformRsourceIdentifier> CREATOR = new Creator<UniformRsourceIdentifier>() {
+    public static final ByteArrayCreater<UniformRsourceIdentifier> CREATOR = new ByteArrayCreater<UniformRsourceIdentifier>() {
 
         /**
          * {@inheritDoc}
@@ -42,6 +43,15 @@ public class UniformRsourceIdentifier extends AbstractAdvertisingData {
         @NonNull
         public UniformRsourceIdentifier[] newArray(int size) {
             return new UniformRsourceIdentifier[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @NonNull
+        @Override
+        public UniformRsourceIdentifier createFromByteArray(@NonNull byte[] values) {
+            return new UniformRsourceIdentifier(values, 0, values.length - 1);
         }
 
     };

@@ -5,6 +5,73 @@
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
+  <component name="EntryPointsManager">
+    <pattern value="org.im97mori.ble.ad.filter.AdvertisingIntervalFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.AppearanceFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.AppearanceFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.FilteredScanCallback.Builder" method="build" />
+    <pattern value="org.im97mori.ble.ad.filter.FilteredScanCallback.Builder" />
+    <pattern value="org.im97mori.ble.ad.filter.ChannelMapUpdateIndicationFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.CompleteListOf128BitServiceUUIDsFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.CompleteListOf16BitServiceUUIDsFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.CompleteListOf32BitServiceUUIDsFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.CompleteLocalNameFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.FilteredScanCallback" />
+    <pattern value="org.im97mori.ble.ad.filter.FlagsFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.IncompleteListOf128BitServiceUUIDsFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.IncompleteListOf16BitServiceUUIDsFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.IncompleteListOf32BitServiceUUIDsFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.ChannelMapUpdateIndicationFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.CompleteListOf128BitServiceUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.CompleteListOf16BitServiceUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.CompleteListOf32BitServiceUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.CompleteLocalNameFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.FlagsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.IncompleteListOf128BitServiceUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.IncompleteListOf16BitServiceUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.IncompleteListOf32BitServiceUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.LeSupportedFeaturesFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.ListOf128BitServiceSolicitationUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.ListOf16BitServiceSolicitationUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.ListOf32BitServiceSolicitationUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.ManufacturerSpecificDataFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.PublicTargetAddressFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.RandomTargetAddressFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.ServiceData128BitUUIDFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.ServiceData16BitUUIDFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.ServiceData32BitUUIDFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.ShortenedLocalNameFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.SlaveConnectionIntervalRangeFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.TxPowerLevelFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.UniformRsourceIdentifierFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.OrFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.ad.filter.LeSupportedFeaturesFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.ListOf128BitServiceSolicitationUUIDsFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.ListOf16BitServiceSolicitationUUIDsFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.ListOf32BitServiceSolicitationUUIDsFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.ManufacturerSpecificDataFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.OrFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.PublicTargetAddressFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.RandomTargetAddressFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.ServiceData128BitUUIDFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.ServiceData16BitUUIDFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.ServiceData32BitUUIDFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.ShortenedLocalNameFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.SlaveConnectionIntervalRangeFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.TxPowerLevelFilter" />
+    <pattern value="org.im97mori.ble.ad.filter.UniformRsourceIdentifierFilter" />
+    <pattern value="org.im97mori.ble.sample.lolipop.BLECallbackSample" />
+    <pattern value="org.im97mori.ble.sample.lolipop.BLECallbackSample" method="getBluetoothGattServiceList" />
+    <pattern value="org.im97mori.ble.sample.lolipop.BLECallbackSample" method="onCharacteristicReadRequest" />
+    <pattern value="org.im97mori.ble.sample.lolipop.BLECallbackSample" method="onCharacteristicWriteRequest" />
+    <pattern value="org.im97mori.ble.sample.lolipop.BLECallbackSample" method="onClientCharacteristicConfigurationUpdated" />
+    <pattern value="org.im97mori.ble.sample.lolipop.BLECallbackSample" method="onDescriptorReadRequest" />
+    <pattern value="org.im97mori.ble.sample.lolipop.BLECallbackSample" method="onDescriptorWriteRequest" />
+    <pattern value="org.im97mori.ble.sample.lolipop.BLECallbackSample" method="onNotificationFailed" />
+    <pattern value="org.im97mori.ble.sample.lolipop.BLECallbackSample" method="onNotificationSuccess" />
+    <pattern value="org.im97mori.ble.sample.lolipop.BLECallbackSample" method="onServerStarted" />
+    <pattern value="org.im97mori.ble.sample.lolipop.BLECallbackSample" method="onServerStopped" />
+  </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="F:/a" />
     <option name="OPTION_SCOPE" value="private" />

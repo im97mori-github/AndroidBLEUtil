@@ -5,6 +5,8 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.ByteArrayCreater;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
@@ -18,13 +20,12 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-@SuppressWarnings("WeakerAccess")
 public class AdvertisingInterval extends AbstractAdvertisingData {
 
     /**
-     * @see android.os.Parcelable.Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<AdvertisingInterval> CREATOR = new Creator<AdvertisingInterval>() {
+    public static final ByteArrayCreater<AdvertisingInterval> CREATOR = new ByteArrayCreater<AdvertisingInterval>() {
 
         /**
          * {@inheritDoc}
@@ -42,6 +43,15 @@ public class AdvertisingInterval extends AbstractAdvertisingData {
         @NonNull
         public AdvertisingInterval[] newArray(int size) {
             return new AdvertisingInterval[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @NonNull
+        @Override
+        public AdvertisingInterval createFromByteArray(@NonNull byte[] values) {
+            return new AdvertisingInterval(values, 0, values.length - 1);
         }
 
     };

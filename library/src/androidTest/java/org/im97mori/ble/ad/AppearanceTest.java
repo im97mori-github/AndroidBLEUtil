@@ -51,4 +51,23 @@ public class AppearanceTest {
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getAppearanceKey(), result2.getAppearanceKey());
     }
+
+    @Test
+    public void constructTest3() {
+        Map.Entry<Integer, String> entry = APPEARANCE_VALUE_MAP.entrySet().iterator().next();
+        int key = entry.getKey();
+        byte[] data = new byte[4];
+        data[0] = 3;
+        data[1] = DATA_TYPE_APPEARANCE;
+        data[2] = (byte) (key & 0x00ff);
+        data[3] = (byte) ((key >> 8) & 0x00ff);
+
+        Appearance result1 = new Appearance(data, 0, data[0]);
+        Appearance result2 = Appearance.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getAppearanceKey(), result2.getAppearanceKey());
+    }
+
 }

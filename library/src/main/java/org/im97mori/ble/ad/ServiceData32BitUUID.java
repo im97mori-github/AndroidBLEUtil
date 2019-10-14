@@ -5,6 +5,8 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.ByteArrayCreater;
+
 import java.util.UUID;
 
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
@@ -17,13 +19,12 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.BASE_UUID;
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-@SuppressWarnings("WeakerAccess")
 public class ServiceData32BitUUID extends AbstractAdvertisingData {
 
     /**
-     * @see android.os.Parcelable.Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<ServiceData32BitUUID> CREATOR = new Creator<ServiceData32BitUUID>() {
+    public static final ByteArrayCreater<ServiceData32BitUUID> CREATOR = new ByteArrayCreater<ServiceData32BitUUID>() {
 
         /**
          * {@inheritDoc}
@@ -41,6 +42,15 @@ public class ServiceData32BitUUID extends AbstractAdvertisingData {
         @NonNull
         public ServiceData32BitUUID[] newArray(int size) {
             return new ServiceData32BitUUID[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @NonNull
+        @Override
+        public ServiceData32BitUUID createFromByteArray(@NonNull byte[] values) {
+            return new ServiceData32BitUUID(values, 0, values.length - 1);
         }
 
     };

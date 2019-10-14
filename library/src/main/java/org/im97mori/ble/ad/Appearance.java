@@ -6,6 +6,8 @@ import android.os.Parcel;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.ByteArrayCreater;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
@@ -20,13 +22,12 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-@SuppressWarnings("WeakerAccess")
 public class Appearance extends AbstractAdvertisingData {
 
     /**
-     * @see android.os.Parcelable.Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<Appearance> CREATOR = new Creator<Appearance>() {
+    public static final ByteArrayCreater<Appearance> CREATOR = new ByteArrayCreater<Appearance>() {
 
         /**
          * {@inheritDoc}
@@ -44,6 +45,15 @@ public class Appearance extends AbstractAdvertisingData {
         @NonNull
         public Appearance[] newArray(int size) {
             return new Appearance[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @NonNull
+        @Override
+        public Appearance createFromByteArray(@NonNull byte[] values) {
+            return new Appearance(values, 0, values.length - 1);
         }
 
     };

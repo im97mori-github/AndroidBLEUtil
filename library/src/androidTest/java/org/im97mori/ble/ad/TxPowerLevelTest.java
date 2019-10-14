@@ -52,4 +52,19 @@ public class TxPowerLevelTest {
         assertEquals(result1.getTxPowerLevel(), result2.getTxPowerLevel());
     }
 
+    @Test
+    public void constructTest4() {
+        byte[] data = new byte[3];
+        data[0] = 2;
+        data[1] = DATA_TYPE_TX_POWER_LEVEL;
+        data[2] = -127;
+
+        TxPowerLevel result1 = new TxPowerLevel(data, 0, data[0]);
+        TxPowerLevel result2 = TxPowerLevel.CREATOR.createFromByteArray(data);
+
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getTxPowerLevel(), result2.getTxPowerLevel());
+    }
+
 }

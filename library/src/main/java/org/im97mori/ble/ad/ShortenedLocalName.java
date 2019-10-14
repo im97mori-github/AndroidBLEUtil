@@ -5,6 +5,8 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.ByteArrayCreater;
+
 import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SHORTENED_LOCAL_NAME;
 
 /**
@@ -14,13 +16,12 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-@SuppressWarnings("WeakerAccess")
 public class ShortenedLocalName extends AbstractAdvertisingData {
 
     /**
-     * @see android.os.Parcelable.Creator
+     * @see ByteArrayCreater
      */
-    public static final Creator<ShortenedLocalName> CREATOR = new Creator<ShortenedLocalName>() {
+    public static final ByteArrayCreater<ShortenedLocalName> CREATOR = new ByteArrayCreater<ShortenedLocalName>() {
 
         /**
          * {@inheritDoc}
@@ -38,6 +39,15 @@ public class ShortenedLocalName extends AbstractAdvertisingData {
         @NonNull
         public ShortenedLocalName[] newArray(int size) {
             return new ShortenedLocalName[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @NonNull
+        @Override
+        public ShortenedLocalName createFromByteArray(@NonNull byte[] values) {
+            return new ShortenedLocalName(values, 0, values.length - 1);
         }
 
     };
