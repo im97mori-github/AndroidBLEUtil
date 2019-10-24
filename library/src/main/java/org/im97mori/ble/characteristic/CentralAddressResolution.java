@@ -17,7 +17,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CENTRAL_ADDRESS_R
 /**
  * Central address resolution (Characteristics UUID: 0x2AA6)
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class CentralAddressResolution implements ByteArrayInterface, Parcelable {
 
     /**

@@ -76,6 +76,80 @@ public class BLECallbackSample extends BLEServerConnection.DefaultServerSetting 
     }
 
     @Override
+    public void onDiscoverServiceSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull List<BluetoothGattService> serviceList, @Nullable Bundle argument) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < serviceList.size(); i++) {
+            BluetoothGattService service = serviceList.get(i);
+            List<BluetoothGattCharacteristic> characteristicList = service.getCharacteristics();
+            if (characteristicList.isEmpty()) {
+                writeServiceList(service.getUuid(), 0, null, 0, null, sb);
+            } else {
+                for (int j = 0; j < characteristicList.size(); j++) {
+                    BluetoothGattCharacteristic characteristic = characteristicList.get(j);
+                    List<BluetoothGattDescriptor> descriptorList = characteristic.getDescriptors();
+                    if (descriptorList.isEmpty()) {
+                        writeServiceList(service.getUuid(), j, characteristic.getUuid(), 0, null, sb);
+                    } else {
+                        for (int k = 0; k < descriptorList.size(); k++) {
+                            BluetoothGattDescriptor descriptor = descriptorList.get(k);
+                            writeServiceList(service.getUuid(), j, characteristic.getUuid(), k, descriptor.getUuid(), sb);
+                        }
+                    }
+                }
+            }
+        }
+        callback(sb, argument);
+    }
+
+    private void writeServiceList(@NonNull UUID serviceUUID, int characteristicLineNumber, @Nullable UUID characteristicUUID, int descriptorLineNumber, @Nullable UUID descriptorUUID, @NonNull StringBuilder sb) {
+        if (characteristicLineNumber == 0) {
+            sb.append(serviceUUID.toString().substring(4, 8));
+        } else {
+            sb.append(serviceUUID.toString().substring(4, 8));
+        }
+        sb.append('\t');
+
+        if (characteristicUUID != null) {
+            if (descriptorLineNumber == 0) {
+                sb.append(characteristicUUID.toString().substring(4, 8));
+            } else {
+                sb.append(characteristicUUID.toString().substring(4, 8));
+            }
+            sb.append('\t');
+
+            if (descriptorUUID != null) {
+                sb.append(descriptorUUID.toString().substring(4, 8));
+            }
+        }
+        sb.append('\n');
+    }
+
+    @Override
+    public void onDiscoverServiceFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+        callback(status, argument);
+    }
+
+    @Override
+    public void onDiscoverServiceTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+        callback(timeout, argument);
+    }
+
+    @Override
+    public void onRequestMtuSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int mtu, @Nullable Bundle argument) {
+        callback(mtu, argument);
+    }
+
+    @Override
+    public void onRequestMtuFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+        callback(status, argument);
+    }
+
+    @Override
+    public void onRequestMtuTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+        callback(timeout, argument);
+    }
+
+    @Override
     public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values, @Nullable Bundle argument) {
         if (READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT.equals(characteristicUUID)) {
             callback(characteristicUUID, new String(values), argument);
@@ -191,7 +265,7 @@ public class BLECallbackSample extends BLEServerConnection.DefaultServerSetting 
     }
 
     @Override
-    public void onNotificationSuccess(@NonNull  Integer taskId, @NonNull  BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] value, Bundle argument) {
+    public void onNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] value, Bundle argument) {
         if (NOTIFICATABLE_CHARACTERISTIC_UUID.equals(characteristicUUID) || INDICATABLE_CHARACTERISTIC_UUID.equals(characteristicUUID)) {
             callback(serviceUUID, characteristicUUID, new String(value));
         } else {

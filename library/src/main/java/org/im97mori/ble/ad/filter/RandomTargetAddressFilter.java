@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * filter for {@link RandomTargetAddress}
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class RandomTargetAddressFilter implements AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> {
 
     /**

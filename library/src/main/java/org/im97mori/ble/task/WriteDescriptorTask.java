@@ -26,6 +26,7 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
  * <p>
  * for central role
  */
+@SuppressWarnings("unused")
 public class WriteDescriptorTask extends AbstractBLETask {
 
     /**
@@ -34,15 +35,15 @@ public class WriteDescriptorTask extends AbstractBLETask {
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 10;
 
     /**
-     * create write descriptor finished message
+     * create write descriptor success message
      *
      * @param serviceUUID        target service UUID
      * @param characteristicUUID target characteristic UUID
      * @param descriptorUUID     target descriptor UUID
      * @param values             {@link BluetoothGattDescriptor#getValue()}
-     * @return write descriptor finished {@link Message} instance
+     * @return write descriptor success {@link Message} instance
      */
-    public static Message createWriteDescriptorFinishedMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values) {
+    public static Message createWriteDescriptorSuccessMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
         bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
@@ -145,6 +146,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
     /**
      * {@inheritDoc}
      */
+    @NonNull
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
@@ -201,7 +203,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
 
                 if (result) {
                     // set timeout message
-                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(mCharacteristicUUID, this), mTimeout);
+                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                 } else {
                     if (bluetoothGattDescriptor == null) {
                         nextProgress = PROGRESS_FINISHED;

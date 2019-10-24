@@ -4,11 +4,13 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
+import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -66,6 +68,71 @@ public interface BLECallback {
      * @see org.im97mori.ble.task.DisconnectTask
      */
     void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+
+    /**
+     * Discover service success callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param serviceList     {@link BluetoothGatt#getServices()}
+     * @param argument        callback argument
+     * @see org.im97mori.ble.task.DiscoverServiceTask
+     */
+    void onDiscoverServiceSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull List<BluetoothGattService> serviceList, @Nullable Bundle argument);
+
+    /**
+     * Discover service error callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param status          one of {@link BLEConnection#onServicesDiscovered(BluetoothGatt, int)} 2nd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
+     * @param argument        callback argument
+     * @see org.im97mori.ble.task.DiscoverServiceTask
+     */
+    void onDiscoverServiceFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+
+    /**
+     * Discover service timeout callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param timeout         timeout(millis)
+     * @param argument        callback argument
+     * @see org.im97mori.ble.task.DiscoverServiceTask
+     */
+    void onDiscoverServiceTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
+
+    /**
+     * Request mtu success callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param mtu             new mtu
+     * @param argument        callback argument
+     * @see org.im97mori.ble.task.RequestMtuTask
+     */
+    void onRequestMtuSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int mtu, @Nullable Bundle argument);
+
+    /**
+     * Request mtu error callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param status          one of {@link BLEConnection#onMtuChanged(BluetoothGatt, int, int)} 2nd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
+     * @param argument        callback argument
+     * @see org.im97mori.ble.task.RequestMtuTask
+     */
+    void onRequestMtuFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+
+    /**
+     * Request mtu timeout callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param timeout         timeout(millis)
+     * @param argument        callback argument
+     */
+    void onRequestMtuTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
 
     /**
      * Read characteristic success callback

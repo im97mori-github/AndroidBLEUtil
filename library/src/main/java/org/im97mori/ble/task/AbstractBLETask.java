@@ -4,14 +4,11 @@ import android.os.Bundle;
 import android.os.Message;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import java.util.UUID;
 
 /**
  * Base task class
  */
-@SuppressWarnings({"WeakerAccess"})
+@SuppressWarnings({"WeakerAccess", "unused"})
 public abstract class AbstractBLETask {
 
     /**
@@ -45,6 +42,11 @@ public abstract class AbstractBLETask {
     public static final String KEY_STATUS = "KEY_STATUS";
 
     /**
+     * KEY:MTU
+     */
+    public static final String KEY_MTU = "KEY_MTU";
+
+    /**
      * PROGRESS:INIT
      */
     public static final int PROGRESS_INIT = 0;
@@ -65,19 +67,34 @@ public abstract class AbstractBLETask {
     public static final int PROGRESS_TIMEOUT = PROGRESS_BUSY + 1;
 
     /**
-     * PROGRESS:SERVICE_DISCOVERD
-     */
-    public static final int PROGRESS_SERVICE_DISCOVERD = PROGRESS_TIMEOUT + 1;
-
-    /**
      * PROGRESS:CONNECT
      */
-    public static final int PROGRESS_CONNECT = PROGRESS_SERVICE_DISCOVERD + 1;
+    public static final int PROGRESS_CONNECT = PROGRESS_TIMEOUT + 1;
+
+    /**
+     * PROGRESS:CONNECT_SUCCESS
+     */
+    public static final int PROGRESS_CONNECT_SUCCESS = PROGRESS_CONNECT + 1;
+
+    /**
+     * PROGRESS:DISCOVER_SERVICE_START
+     */
+    public static final int PROGRESS_DISCOVER_SERVICE_START = PROGRESS_CONNECT_SUCCESS + 1;
+
+    /**
+     * PROGRESS:DISCOVER_SERVICE_SUCCESS
+     */
+    public static final int PROGRESS_DISCOVER_SERVICE_SUCCESS = PROGRESS_DISCOVER_SERVICE_START + 1;
+
+    /**
+     * PROGRESS:DISCOVER_SERVICE_ERROR
+     */
+    public static final int PROGRESS_DISCOVER_SERVICE_ERROR = PROGRESS_DISCOVER_SERVICE_SUCCESS + 1;
 
     /**
      * PROGRESS:DISCONNECT
      */
-    public static final int PROGRESS_DISCONNECT = PROGRESS_CONNECT + 1;
+    public static final int PROGRESS_DISCONNECT = PROGRESS_DISCOVER_SERVICE_ERROR + 1;
 
     /**
      * PROGRESS:CHARACTERISTIC_READ
@@ -145,21 +162,35 @@ public abstract class AbstractBLETask {
     public static final int PROGRESS_NOTIFICATION = PROGRESS_DESCRIPTOR_WRITE_ERROR + 1;
 
     /**
+     * PROGRESS:REQUEST_MTU
+     */
+    public static final int PROGRESS_REQUEST_MTU = PROGRESS_NOTIFICATION + 1;
+
+    /**
+     * PROGRESS:REQUEST_MTU_SUCCESS
+     */
+    public static final int PROGRESS_REQUEST_MTU_SUCCESS = PROGRESS_REQUEST_MTU + 1;
+
+    /**
+     * PROGRESS:REQUEST_MTU_ERROR
+     */
+    public static final int PROGRESS_REQUEST_MTU_ERROR = PROGRESS_REQUEST_MTU_SUCCESS + 1;
+
+    /**
      * For user defined progress
      */
     @SuppressWarnings("unused")
-    public static final int PROGRESS_FIRST_USER = PROGRESS_NOTIFICATION + 1;
+    public static final int PROGRESS_FIRST_USER = PROGRESS_REQUEST_MTU_ERROR + 1;
 
     /**
      * create timeout message
      *
-     * @param characteristicUUID target characteristic/descritor UUID or null(for connect)
      * @param obj                instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
      * @return create timeout {@link Message} instance
      */
-    public static Message createTimeoutMessage(@Nullable UUID characteristicUUID, @NonNull Object obj) {
+    @NonNull
+    public static Message createTimeoutMessage(@NonNull Object obj) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
         bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_TIMEOUT);
         Message message = new Message();
         message.setData(bundle);
@@ -202,6 +233,7 @@ public abstract class AbstractBLETask {
      *
      * @return task's initlal {@link Message} instance
      */
+    @NonNull
     public abstract Message createInitialMessage();
 
     /**

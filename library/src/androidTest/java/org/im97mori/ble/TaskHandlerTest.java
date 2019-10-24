@@ -23,6 +23,7 @@ public class TaskHandlerTest {
     public void addTaskTest001() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task = new AbstractBLETask() {
+            @NonNull
             @Override
             public Message createInitialMessage() {
                 return new Message();
@@ -65,6 +66,7 @@ public class TaskHandlerTest {
     public void addTaskTest002() {
         final CountDownLatch countDownLatch = new CountDownLatch(2);
         AbstractBLETask task = new AbstractBLETask() {
+            @NonNull
             @Override
             public Message createInitialMessage() {
                 return new Message();
@@ -108,6 +110,7 @@ public class TaskHandlerTest {
     public void cancelTaskTest001() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task1 = new AbstractBLETask() {
+            @NonNull
             @Override
             public Message createInitialMessage() {
                 return new Message();
@@ -134,6 +137,7 @@ public class TaskHandlerTest {
         };
         final AtomicInteger atomicInteger = new AtomicInteger(0);
         AbstractBLETask task2 = new AbstractBLETask() {
+            @NonNull
             @Override
             public Message createInitialMessage() {
                 return new Message();
@@ -181,6 +185,7 @@ public class TaskHandlerTest {
     public void cancelTaskTest002() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task1 = new AbstractBLETask() {
+            @NonNull
             @Override
             public Message createInitialMessage() {
                 return new Message();
@@ -207,6 +212,7 @@ public class TaskHandlerTest {
         };
         final AtomicInteger atomicInteger1 = new AtomicInteger(0);
         AbstractBLETask task2 = new AbstractBLETask() {
+            @NonNull
             @Override
             public Message createInitialMessage() {
                 return new Message();
@@ -230,6 +236,7 @@ public class TaskHandlerTest {
         };
         final AtomicInteger atomicInteger2 = new AtomicInteger(0);
         AbstractBLETask task3 = new AbstractBLETask() {
+            @NonNull
             @Override
             public Message createInitialMessage() {
                 return new Message();
@@ -279,6 +286,7 @@ public class TaskHandlerTest {
     public void clearTaskTest001() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task1 = new AbstractBLETask() {
+            @NonNull
             @Override
             public Message createInitialMessage() {
                 return new Message();
@@ -305,6 +313,7 @@ public class TaskHandlerTest {
         };
         final AtomicInteger atomicInteger1 = new AtomicInteger(0);
         AbstractBLETask task2 = new AbstractBLETask() {
+            @NonNull
             @Override
             public Message createInitialMessage() {
                 return new Message();
@@ -328,6 +337,7 @@ public class TaskHandlerTest {
         };
         final AtomicInteger atomicInteger2 = new AtomicInteger(0);
         AbstractBLETask task3 = new AbstractBLETask() {
+            @NonNull
             @Override
             public Message createInitialMessage() {
                 return new Message();
@@ -351,6 +361,7 @@ public class TaskHandlerTest {
         };
         final AtomicInteger atomicInteger3 = new AtomicInteger(0);
         AbstractBLETask task4 = new AbstractBLETask() {
+            @NonNull
             @Override
             public Message createInitialMessage() {
                 return new Message();
@@ -400,6 +411,7 @@ public class TaskHandlerTest {
     public void clearBusyTest001() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task1 = new AbstractBLETask() {
+            @NonNull
             @Override
             public Message createInitialMessage() {
                 return new Message();
@@ -421,6 +433,7 @@ public class TaskHandlerTest {
             }
         };
         AbstractBLETask task2 = new AbstractBLETask() {
+            @NonNull
             @Override
             public Message createInitialMessage() {
                 return new Message();
@@ -443,6 +456,7 @@ public class TaskHandlerTest {
             }
         };
         AbstractBLETask task3 = new AbstractBLETask() {
+            @NonNull
             @Override
             public Message createInitialMessage() {
                 return new Message();
@@ -497,6 +511,7 @@ public class TaskHandlerTest {
     public void clearBusyTest002() {
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         AbstractBLETask task1 = new AbstractBLETask() {
+            @NonNull
             @Override
             public Message createInitialMessage() {
                 return new Message();
@@ -518,6 +533,7 @@ public class TaskHandlerTest {
             }
         };
         AbstractBLETask task2 = new AbstractBLETask() {
+            @NonNull
             @Override
             public Message createInitialMessage() {
                 return new Message();

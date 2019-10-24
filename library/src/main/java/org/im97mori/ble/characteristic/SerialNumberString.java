@@ -14,7 +14,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SERIAL_NUMBER_STR
 /**
  * Serial number string (Characteristics UUID: 0x2A25)
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class SerialNumberString implements ByteArrayInterface, Parcelable {
 
     /**

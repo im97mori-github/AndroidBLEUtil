@@ -24,6 +24,7 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
  * <p>
  * for central role
  */
+@SuppressWarnings("unused")
 public class ReadCharacteristicTask extends AbstractBLETask {
 
     /**
@@ -32,14 +33,14 @@ public class ReadCharacteristicTask extends AbstractBLETask {
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 5;
 
     /**
-     * create read characteristic finished message
+     * create read characteristic success message
      *
      * @param serviceUUID        target service UUID
      * @param characteristicUUID target characteristic UUID
      * @param values             {@link BluetoothGattCharacteristic#getValue()}
-     * @return read characteristic finished {@link Message} instance
+     * @return read characteristic success {@link Message} instance
      */
-    public static Message createReadCharacteristicFinishedMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values) {
+    public static Message createReadCharacteristicSuccessMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
         bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
@@ -126,6 +127,7 @@ public class ReadCharacteristicTask extends AbstractBLETask {
     /**
      * {@inheritDoc}
      */
+    @NonNull
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
@@ -173,7 +175,7 @@ public class ReadCharacteristicTask extends AbstractBLETask {
 
                 if (result) {
                     // set timeout message
-                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(mCharacteristicUUID, this), mTimeout);
+                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                 } else {
                     if (bluetoothGattCharacteristic == null) {
                         nextProgress = PROGRESS_FINISHED;

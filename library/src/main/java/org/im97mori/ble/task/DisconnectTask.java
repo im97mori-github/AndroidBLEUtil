@@ -17,6 +17,7 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
  * <p>
  * for central role
  */
+@SuppressWarnings("unused")
 public class DisconnectTask extends AbstractBLETask {
 
     /**
@@ -55,6 +56,7 @@ public class DisconnectTask extends AbstractBLETask {
     /**
      * {@inheritDoc}
      */
+    @NonNull
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();

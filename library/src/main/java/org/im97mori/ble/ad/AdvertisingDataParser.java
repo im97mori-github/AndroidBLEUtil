@@ -43,7 +43,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.AdvertisingDataTypes.
 /**
  * Parser for {@link ScanRecord#getBytes()}
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class AdvertisingDataParser {
 
     /**

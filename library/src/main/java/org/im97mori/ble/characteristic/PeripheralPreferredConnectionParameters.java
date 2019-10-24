@@ -17,7 +17,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.PERIPHERAL_PREFER
 /**
  * Peripheral preferred connection parameters (Characteristics UUID: 0x2A04)
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class PeripheralPreferredConnectionParameters implements ByteArrayInterface, Parcelable {
 
     /**

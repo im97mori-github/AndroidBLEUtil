@@ -92,6 +92,7 @@ public class NotificationTask extends AbstractBLETask {
     /**
      * {@inheritDoc}
      */
+    @NonNull
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();

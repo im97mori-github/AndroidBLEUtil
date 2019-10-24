@@ -18,7 +18,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC
 /**
  * Client Characteristic Configuration (Descriptor UUID: 0x2902)
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class ClientCharacteristicConfiguration implements ByteArrayInterface, Parcelable {
 
     /**

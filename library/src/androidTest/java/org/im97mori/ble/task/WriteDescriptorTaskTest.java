@@ -1,8 +1,17 @@
 package org.im97mori.ble.task;
 
+import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
+import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.Message;
 
+import androidx.annotation.NonNull;
+
+import org.im97mori.ble.BLECallbackDistributer;
+import org.im97mori.ble.BaseBLECallback;
+import org.im97mori.ble.MockBLEConnection;
+import org.im97mori.ble.TaskHandler;
 import org.junit.Test;
 
 import java.util.Random;
@@ -38,12 +47,12 @@ public class WriteDescriptorTaskTest {
     }
 
     @Test
-    public void test_createWriteDescriptorFinishedMessage001() {
+    public void test_createWriteDescriptorSuccessMessage001() {
         UUID serviceUUID = UUID.randomUUID();
         UUID characteristicUUID = UUID.randomUUID();
         UUID descriptorUUID = UUID.randomUUID();
         byte[] values = new byte[0];
-        Message message = WriteDescriptorTask.createWriteDescriptorFinishedMessage(serviceUUID, characteristicUUID, descriptorUUID, values);
+        Message message = WriteDescriptorTask.createWriteDescriptorSuccessMessage(serviceUUID, characteristicUUID, descriptorUUID, values);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
@@ -81,6 +90,40 @@ public class WriteDescriptorTaskTest {
         assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(AbstractBLETask.PROGRESS_DESCRIPTOR_WRITE_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+    }
+
+    @Test
+    public void test_cancel001() {
+        MockBLEConnection mockBleConnection = new MockBLEConnection();
+        Looper looper = null;
+        try {
+            mockBleConnection.start();
+
+            BaseBLECallback callback = new BaseBLECallback() {
+
+                @Override
+                public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status, Bundle argument) {
+                    result.set(true);
+                }
+            };
+            mockBleConnection.attach(callback);
+
+            HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
+            thread.start();
+            looper = thread.getLooper();
+            TaskHandler mockTaskHandler = new TaskHandler(looper);
+            Message message = Message.obtain();
+            message.setData(Bundle.EMPTY);
+
+            WriteDescriptorTask task = new WriteDescriptorTask(mockBleConnection, null, mockTaskHandler, null, null, null, null, WriteDescriptorTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            task.cancel();
+            assertTrue(task.doProcess(message));
+            assertTrue(callback.result.get());
+        } finally {
+            if (looper != null) {
+                looper.quit();
+            }
+        }
     }
 
 }

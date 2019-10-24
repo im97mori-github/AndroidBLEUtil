@@ -15,7 +15,10 @@ import org.im97mori.ble.ad.AdvertisingDataParser;
 import java.util.LinkedList;
 import java.util.List;
 
-@SuppressWarnings("WeakerAccess")
+/**
+ * {@link ScanCallback} with filter function
+ */
+@SuppressWarnings({"WeakerAccess", "unused"})
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class FilteredScanCallback extends ScanCallback {
 
@@ -99,6 +102,8 @@ public class FilteredScanCallback extends ScanCallback {
     }
 
     /**
+     * Filtered {@link #onScanResult(int, ScanResult)}
+     *
      * @param callbackType {@link #onScanResult(int, ScanResult)} 1st parameter
      * @param result       {@link #onScanResult(int, ScanResult)} 2nd parameter
      * @param parseResult  {@link  org.im97mori.ble.ad.AdvertisingDataParser.AdvertisingDataParseResult} instance, created from result
@@ -135,6 +140,8 @@ public class FilteredScanCallback extends ScanCallback {
     }
 
     /**
+     * Filtered {@link #onBatchScanResults(List)}
+     *
      * @param results      {@link #onBatchScanResults(List)} 1st paramerter
      * @param parseResults List of {@link org.im97mori.ble.ad.AdvertisingDataParser.AdvertisingDataParseResult} instance, created from results
      */

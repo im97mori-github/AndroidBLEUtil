@@ -7,19 +7,22 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.HandlerThread;
-import android.os.Message;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import org.im97mori.ble.descriptor.ClientCharacteristicConfiguration;
 import org.im97mori.ble.task.AbstractBLETask;
 import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.DisconnectTask;
+import org.im97mori.ble.task.DiscoverServiceTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
 import org.im97mori.ble.task.ReadDescriptorTask;
+import org.im97mori.ble.task.RequestMtuTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
 import org.im97mori.ble.task.WriteDescriptorTask;
 
@@ -133,6 +136,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * @see #connect(boolean, long, Bundle, BLECallback)
      */
+    @Nullable
     public Integer connect(long timeout) {
         return connect(false, timeout, null, null);
     }
@@ -140,6 +144,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * @see #connect(boolean, long, Bundle, BLECallback)
      */
+    @Nullable
     public Integer connect(long timeout, @Nullable Bundle argument) {
         return connect(false, timeout, argument, null);
     }
@@ -157,12 +162,55 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param bleCallback    {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @Nullable
     public synchronized Integer connect(boolean needMtuSetting, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (mBluetoothGatt == null) {
             start();
 
             ConnectTask task = new ConnectTask(this, mTaskHandler, needMtuSetting, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            mTaskHandler.addTask(task);
+            taskId = task.getTaskId();
+        }
+        return taskId;
+    }
+
+    /**
+     * create discover service task
+     *
+     * @param timeout     timeout(millis)
+     * @param argument    callback argument
+     * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
+     * @return task id. if {@code null} returned, task was not registed
+     */
+    @Nullable
+    public Integer createDiscoverServiceTask(long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+        Integer taskId = null;
+        BluetoothGatt bluetoothGatt = mBluetoothGatt;
+        if (bluetoothGatt != null) {
+            DiscoverServiceTask task = new DiscoverServiceTask(this, bluetoothGatt, mTaskHandler, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            mTaskHandler.addTask(task);
+            taskId = task.getTaskId();
+        }
+        return taskId;
+    }
+
+    /**
+     * create request mtu task
+     *
+     * @param mtu         new mtu
+     * @param timeout     timeout(millis)
+     * @param argument    callback argument
+     * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
+     * @return task id. if {@code null} returned, task was not registed
+     */
+    @Nullable
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public Integer createRequestMtuTask(int mtu, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+        Integer taskId = null;
+        BluetoothGatt bluetoothGatt = mBluetoothGatt;
+        if (bluetoothGatt != null) {
+            RequestMtuTask task = new RequestMtuTask(this, bluetoothGatt, mTaskHandler, mtu, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -355,11 +403,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
                 if (BluetoothGatt.STATE_CONNECTED == newState) {
                     // connected
 
-                    // start discover services
-                    if (!gatt.discoverServices()) {
-                        DisconnectTask task = new DisconnectTask(this, gatt, status, BLECallbackDistributer.wrapArgument(null, null));
-                        mTaskHandler.addTask(task);
-                    }
+                    mTaskHandler.sendProcessingMessage(ConnectTask.createConnectSuccessMessage(gatt));
                 }
             }
 
@@ -383,14 +427,11 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
                 // service discover finished
 
                 // service discovered
-                Message message = ConnectTask.createServiceDiscovered(gatt);
-                mTaskHandler.sendProcessingMessage(message);
+                mTaskHandler.sendProcessingMessage(DiscoverServiceTask.createDiscoverServiceSuccessMessage(gatt));
             } else {
                 // service discover failed
 
-                // add disconnect task
-                DisconnectTask task = new DisconnectTask(this, gatt, status, BLECallbackDistributer.wrapArgument(null, null));
-                mTaskHandler.addTask(task);
+                mTaskHandler.sendProcessingMessage(DiscoverServiceTask.createDiscoverServiceErrorMessage(gatt, status));
             }
         }
     }
@@ -407,7 +448,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
         try {
             BluetoothGattService service = characteristic.getService();
             if (BluetoothGatt.GATT_SUCCESS == status) {
-                mTaskHandler.sendProcessingMessage(ReadCharacteristicTask.createReadCharacteristicFinishedMessage(service.getUuid(), characteristic.getUuid(), characteristic.getValue()));
+                mTaskHandler.sendProcessingMessage(ReadCharacteristicTask.createReadCharacteristicSuccessMessage(service.getUuid(), characteristic.getUuid(), characteristic.getValue()));
             } else {
                 mTaskHandler.sendProcessingMessage(ReadCharacteristicTask.createReadCharacteristicErrorMessage(service.getUuid(), characteristic.getUuid(), status));
             }
@@ -431,7 +472,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
         try {
             BluetoothGattService service = characteristic.getService();
             if (BluetoothGatt.GATT_SUCCESS == status) {
-                mTaskHandler.sendProcessingMessage(WriteCharacteristicTask.createWriteCharacteristicFinishedMessage(service.getUuid(), characteristic.getUuid(), characteristic.getValue()));
+                mTaskHandler.sendProcessingMessage(WriteCharacteristicTask.createWriteCharacteristicSuccessMessage(service.getUuid(), characteristic.getUuid(), characteristic.getValue()));
             } else {
                 mTaskHandler.sendProcessingMessage(WriteCharacteristicTask.createWriteCharacteristicErrorMessage(service.getUuid(), characteristic.getUuid(), status));
             }
@@ -487,7 +528,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
                     gatt.setCharacteristicNotification(descriptor.getCharacteristic(), isNotification);
                 }
                 // read decriptor task finished
-                mTaskHandler.sendProcessingMessage(ReadDescriptorTask.createReadDescriptorFinishedMessage(service.getUuid(), characteristicUUID, descriptorUUID, descriptor.getValue()));
+                mTaskHandler.sendProcessingMessage(ReadDescriptorTask.createReadDescriptorSuccessMessage(service.getUuid(), characteristicUUID, descriptorUUID, descriptor.getValue()));
             } else {
                 mTaskHandler.sendProcessingMessage(ReadDescriptorTask.createReadDescriptorErrorMessage(service.getUuid(), characteristicUUID, descriptorUUID, status));
             }
@@ -527,7 +568,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
                     gatt.setCharacteristicNotification(descriptor.getCharacteristic(), isNotification);
                 }
                 // write decriptor task finished
-                mTaskHandler.sendProcessingMessage(WriteDescriptorTask.createWriteDescriptorFinishedMessage(service.getUuid(), characteristicUUID, descriptorUUID, descriptor.getValue()));
+                mTaskHandler.sendProcessingMessage(WriteDescriptorTask.createWriteDescriptorSuccessMessage(service.getUuid(), characteristicUUID, descriptorUUID, descriptor.getValue()));
             } else {
                 mTaskHandler.sendProcessingMessage(WriteDescriptorTask.createWriteDescriptorErrorMessage(service.getUuid(), characteristicUUID, descriptorUUID, status));
             }
@@ -542,21 +583,19 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * {@inheritDoc}
      */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onMtuChanged(BluetoothGatt gatt, int mtu, int status) {
+        BLELogUtils.stackLog(mtu, status);
         if (mTaskHandler != null) {
             if (BluetoothGatt.GATT_SUCCESS == status) {
-                // service discover finished
+                // mtu updated
 
-                // connect task finished
-                Message message = ConnectTask.createConnectFinished(gatt);
-                mTaskHandler.sendProcessingMessage(message);
+                mTaskHandler.sendProcessingMessage(RequestMtuTask.createRequestMtuSuccess(mtu));
             } else {
-                // service discover failed
+                // mtu update failed
 
-                // add disconnect task
-                DisconnectTask task = new DisconnectTask(this, gatt, status, BLECallbackDistributer.wrapArgument(null, null));
-                mTaskHandler.addTask(task);
+                mTaskHandler.sendProcessingMessage(RequestMtuTask.createRequestMtuErrorMessage(gatt, status));
             }
         }
     }

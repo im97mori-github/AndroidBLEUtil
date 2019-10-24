@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * filter for {@link LeSupportedFeatures}
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class LeSupportedFeaturesFilter implements AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> {
 
     /**

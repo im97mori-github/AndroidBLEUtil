@@ -1,18 +1,20 @@
 package org.im97mori.ble;
 
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
 /**
  * BLECallback wrapper for distribute
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class BLECallbackDistributer implements BLECallback {
 
     /**
@@ -170,6 +172,168 @@ public class BLECallbackDistributer implements BLECallback {
                     bleCallback.onBLEDisconnected(taskId, bluetoothDevice, status, originalArgument);
                 } else if (bleCallback.hashCode() == callbackId) {
                     bleCallback.onBLEDisconnected(taskId, bluetoothDevice, status, originalArgument);
+                    break;
+                }
+            } catch (Exception e) {
+                BLELogUtils.stackLog(e);
+            }
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onDiscoverServiceSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull List<BluetoothGattService> serviceList, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
+        Integer callbackId;
+        if (argument.containsKey(KEY_CALLBACK_ID)) {
+            callbackId = argument.getInt(KEY_CALLBACK_ID);
+        } else {
+            callbackId = null;
+        }
+        Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+        for (BLECallback bleCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+            try {
+                if (callbackId == null) {
+                    bleCallback.onDiscoverServiceSuccess(taskId, bluetoothDevice, serviceList, originalArgument);
+                } else if (bleCallback.hashCode() == callbackId) {
+                    bleCallback.onDiscoverServiceSuccess(taskId, bluetoothDevice, serviceList, originalArgument);
+                    break;
+                }
+            } catch (Exception e) {
+                BLELogUtils.stackLog(e);
+            }
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onDiscoverServiceFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
+        Integer callbackId;
+        if (argument.containsKey(KEY_CALLBACK_ID)) {
+            callbackId = argument.getInt(KEY_CALLBACK_ID);
+        } else {
+            callbackId = null;
+        }
+        Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+        for (BLECallback bleCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+            try {
+                if (callbackId == null) {
+                    bleCallback.onDiscoverServiceFailed(taskId, bluetoothDevice, status, originalArgument);
+                } else if (bleCallback.hashCode() == callbackId) {
+                    bleCallback.onDiscoverServiceFailed(taskId, bluetoothDevice, status, originalArgument);
+                    break;
+                }
+            } catch (Exception e) {
+                BLELogUtils.stackLog(e);
+            }
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onDiscoverServiceTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
+        Integer callbackId;
+        if (argument.containsKey(KEY_CALLBACK_ID)) {
+            callbackId = argument.getInt(KEY_CALLBACK_ID);
+        } else {
+            callbackId = null;
+        }
+        Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+        for (BLECallback bleCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+            try {
+                if (callbackId == null) {
+                    bleCallback.onDiscoverServiceTimeout(taskId, bluetoothDevice, timeout, originalArgument);
+                } else if (bleCallback.hashCode() == callbackId) {
+                    bleCallback.onDiscoverServiceTimeout(taskId, bluetoothDevice, timeout, originalArgument);
+                    break;
+                }
+            } catch (Exception e) {
+                BLELogUtils.stackLog(e);
+            }
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onRequestMtuSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int mtu, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
+        Integer callbackId;
+        if (argument.containsKey(KEY_CALLBACK_ID)) {
+            callbackId = argument.getInt(KEY_CALLBACK_ID);
+        } else {
+            callbackId = null;
+        }
+        Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+        for (BLECallback bleCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+            try {
+                if (callbackId == null) {
+                    bleCallback.onRequestMtuSuccess(taskId, bluetoothDevice, mtu, originalArgument);
+                } else if (bleCallback.hashCode() == callbackId) {
+                    bleCallback.onRequestMtuSuccess(taskId, bluetoothDevice, mtu, originalArgument);
+                    break;
+                }
+            } catch (Exception e) {
+                BLELogUtils.stackLog(e);
+            }
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onRequestMtuFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
+        Integer callbackId;
+        if (argument.containsKey(KEY_CALLBACK_ID)) {
+            callbackId = argument.getInt(KEY_CALLBACK_ID);
+        } else {
+            callbackId = null;
+        }
+        Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+        for (BLECallback bleCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+            try {
+                if (callbackId == null) {
+                    bleCallback.onRequestMtuFailed(taskId, bluetoothDevice, status, originalArgument);
+                } else if (bleCallback.hashCode() == callbackId) {
+                    bleCallback.onRequestMtuFailed(taskId, bluetoothDevice, status, originalArgument);
+                    break;
+                }
+            } catch (Exception e) {
+                BLELogUtils.stackLog(e);
+            }
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onRequestMtuTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
+        Integer callbackId;
+        if (argument.containsKey(KEY_CALLBACK_ID)) {
+            callbackId = argument.getInt(KEY_CALLBACK_ID);
+        } else {
+            callbackId = null;
+        }
+        Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+        for (BLECallback bleCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+            try {
+                if (callbackId == null) {
+                    bleCallback.onRequestMtuTimeout(taskId, bluetoothDevice, timeout, originalArgument);
+                } else if (bleCallback.hashCode() == callbackId) {
+                    bleCallback.onRequestMtuTimeout(taskId, bluetoothDevice, timeout, originalArgument);
                     break;
                 }
             } catch (Exception e) {

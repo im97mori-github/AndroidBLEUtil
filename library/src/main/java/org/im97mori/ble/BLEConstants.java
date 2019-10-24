@@ -15,7 +15,7 @@ import java.util.UUID;
 /**
  * BLE Constants
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "WeakerAccess", "RedundantSuppression"})
 @SuppressLint("UseSparseArrays")
 public class BLEConstants {
 

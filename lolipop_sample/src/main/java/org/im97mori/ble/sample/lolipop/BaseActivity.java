@@ -16,7 +16,7 @@ import androidx.fragment.app.FragmentManager;
 
 import org.im97mori.ble_peripheral.BLEPeripheralLogUtils;
 
-@SuppressWarnings({"SameReturnValue"})
+@SuppressWarnings({"SameReturnValue", "WeakerAccess", "RedundantSuppression"})
 public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback {
 
     protected static final int REQUEST_PERMISSION_COARSE_LOCATION = 0;

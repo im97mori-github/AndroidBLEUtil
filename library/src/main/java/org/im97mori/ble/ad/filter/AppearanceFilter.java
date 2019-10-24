@@ -9,7 +9,7 @@ import org.im97mori.ble.ad.Appearance;
 /**
  * filter for {@link Appearance}
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class AppearanceFilter implements AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> {
 
     /**

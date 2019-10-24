@@ -14,7 +14,10 @@ import org.im97mori.ble.task.DisconnectTask;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@SuppressWarnings({"WeakerAccess"})
+/**
+ * Single queue task handler
+ */
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class TaskHandler extends Handler {
 
     /**
@@ -225,8 +228,8 @@ public class TaskHandler extends Handler {
     /**
      * add task and task's first message to task queue
      *
-     * @param task     {@link AbstractBLETask} instance
-     * @param delay    millis
+     * @param task  {@link AbstractBLETask} instance
+     * @param delay millis
      */
     public void addTaskDelayed(@NonNull AbstractBLETask task, long delay) {
         Message message = new Message();
@@ -266,6 +269,7 @@ public class TaskHandler extends Handler {
      *
      * @return {@code true}:busy, {@code false}:not busy
      */
+    @SuppressWarnings("unused")
     public boolean isBusy() {
         return mWaitForBusy > SystemClock.elapsedRealtime();
     }

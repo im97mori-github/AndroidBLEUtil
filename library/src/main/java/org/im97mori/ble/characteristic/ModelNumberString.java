@@ -14,7 +14,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MODEL_NUMBER_STRI
 /**
  * Model number string (Characteristics UUID: 0x2A24)
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class ModelNumberString implements ByteArrayInterface, Parcelable {
 
     /**

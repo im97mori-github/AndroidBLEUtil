@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * filter for {@link ChannelMapUpdateIndication}
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class ChannelMapUpdateIndicationFilter implements AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> {
 
     /**

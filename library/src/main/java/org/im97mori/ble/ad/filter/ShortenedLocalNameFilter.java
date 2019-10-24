@@ -9,7 +9,7 @@ import org.im97mori.ble.ad.ShortenedLocalName;
 /**
  * filter for {@link ShortenedLocalName}
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class ShortenedLocalNameFilter implements AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> {
 
     /**

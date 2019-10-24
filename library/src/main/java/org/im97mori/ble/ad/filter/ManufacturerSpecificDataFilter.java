@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * filter for {@link ManufacturerSpecificData}
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class ManufacturerSpecificDataFilter implements AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> {
 
     /**

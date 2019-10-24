@@ -27,7 +27,7 @@ import static org.im97mori.ble.ad.AdvertisingDataConstants.FlagsDataType.FLAG_SI
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class Flags extends AbstractAdvertisingData {
 
     /**

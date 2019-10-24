@@ -14,7 +14,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HARDWARE_REVISION
 /**
  * Hardware revision string (Characteristics UUID: 0x2A27)
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class HardwareRevisionString implements ByteArrayInterface, Parcelable {
 
     /**

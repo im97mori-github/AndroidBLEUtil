@@ -14,7 +14,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MANUFACTURER_NAME
 /**
  * Manufacturer name string (Characteristics UUID: 0x2A28)
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class ManufacturerNameString implements ByteArrayInterface, Parcelable {
 
     /**

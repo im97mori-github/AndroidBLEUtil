@@ -22,6 +22,7 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
  * <p>
  * for central role
  */
+@SuppressWarnings("unused")
 public class ConnectTask extends AbstractBLETask {
 
     /**
@@ -30,29 +31,14 @@ public class ConnectTask extends AbstractBLETask {
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 50;
 
     /**
-     * create service discovered message
+     * create connect success message
      *
-     * @param obj instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
-     * @return create service discovered {@link Message} instance
+     * @param obj current {@link BluetoothGatt} instance
+     * @return create connect success {@link Message} instance
      */
-    public static Message createServiceDiscovered(@NonNull Object obj) {
+    public static Message createConnectSuccessMessage(@NonNull Object obj) {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_SERVICE_DISCOVERD);
-        Message message = new Message();
-        message.setData(bundle);
-        message.obj = obj;
-        return message;
-    }
-
-    /**
-     * create connect finished message
-     *
-     * @param obj instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
-     * @return create connect finished {@link Message} instance
-     */
-    public static Message createConnectFinished(@NonNull Object obj) {
-        Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_FINISHED);
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_CONNECT_SUCCESS);
         Message message = new Message();
         message.setData(bundle);
         message.obj = obj;
@@ -108,6 +94,7 @@ public class ConnectTask extends AbstractBLETask {
     /**
      * {@inheritDoc}
      */
+    @NonNull
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
@@ -170,14 +157,36 @@ public class ConnectTask extends AbstractBLETask {
                         // connecting
 
                         // set timeout message
-                        Message timeoutMessage = createTimeoutMessage(null, this);
+                        Message timeoutMessage = createTimeoutMessage(this);
                         mTaskHandler.sendProcessingMessage(timeoutMessage, mTimeout);
                         mCurrentProgress = nextProgress;
                     }
                 }
             } else if (PROGRESS_CONNECT == mCurrentProgress) {
-                if (mBluetoothGatt == message.obj && PROGRESS_SERVICE_DISCOVERD == nextProgress) {
+                if (mBluetoothGatt == message.obj && PROGRESS_CONNECT_SUCCESS == nextProgress) {
+                    // current:connect, next:discover service
+
+                    // start discover services
+                    if (!mBluetoothGatt.discoverServices()) {
+                        // failed
+
+                        mBLEConnection.onConnectFailed(getTaskId(), UNKNOWN, mArgument);
+                        // remove timeout message
+                        mTaskHandler.removeCallbacksAndMessages(this);
+
+                        // add disconnect task
+                        DisconnectTask task = new DisconnectTask(mBLEConnection, mBluetoothGatt, UNKNOWN, mArgument);
+                        mTaskHandler.addTask(task);
+
+                        nextProgress = PROGRESS_FINISHED;
+                    }
+                    mCurrentProgress = nextProgress;
+                }
+            } else if (PROGRESS_CONNECT_SUCCESS == mCurrentProgress) {
+                if (mBluetoothGatt == message.obj && PROGRESS_DISCOVER_SERVICE_SUCCESS == nextProgress) {
                     // current:connect, next:service discovered
+
+                    // auto mtu setting
                     if (mNeedMtuSetting) {
                         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP || !mBluetoothGatt.requestMtu(BLEConstants.MAXIMUM_MTU)) {
                             nextProgress = PROGRESS_FINISHED;
@@ -194,19 +203,36 @@ public class ConnectTask extends AbstractBLETask {
                         mTaskHandler.removeCallbacksAndMessages(this);
                     }
                     mCurrentProgress = nextProgress;
-                }
-            } else if (PROGRESS_SERVICE_DISCOVERD == mCurrentProgress) {
-                // current:service discovered, next:finish(connected)
-                if (mBluetoothGatt == message.obj && PROGRESS_FINISHED == nextProgress) {
+                } else if (mBluetoothGatt == message.obj && PROGRESS_DISCOVER_SERVICE_ERROR == nextProgress) {
+                    // failed
 
-                    // callback
-                    mBLEConnection.onConnected(getTaskId(), mBluetoothGatt, mArgument);
+                    int status = bundle.getInt(KEY_STATUS);
+                    mBLEConnection.onConnectFailed(getTaskId(), status, mArgument);
 
                     // remove timeout message
                     mTaskHandler.removeCallbacksAndMessages(this);
 
-                    mCurrentProgress = nextProgress;
+                    // add disconnect task
+                    DisconnectTask task = new DisconnectTask(mBLEConnection, mBluetoothGatt, status, mArgument);
+                    mTaskHandler.addTask(task);
                 }
+            } else if (PROGRESS_DISCOVER_SERVICE_SUCCESS == mCurrentProgress) {
+                if (mBluetoothGatt == message.obj && PROGRESS_REQUEST_MTU_SUCCESS == nextProgress) {
+                    // current:service discovered, next:finish(connected)
+
+                    // callback
+                    mBLEConnection.onConnected(getTaskId(), mBluetoothGatt, mArgument);
+
+                } else if (mBluetoothGatt == message.obj && PROGRESS_REQUEST_MTU_ERROR == nextProgress) {
+                    // failed
+
+                    mBLEConnection.onConnectFailed(getTaskId(), bundle.getInt(KEY_STATUS), mArgument);
+                }
+
+                // remove timeout message
+                mTaskHandler.removeCallbacksAndMessages(this);
+
+                mCurrentProgress = PROGRESS_FINISHED;
             }
         }
 

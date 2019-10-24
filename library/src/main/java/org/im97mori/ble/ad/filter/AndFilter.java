@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @param <T> Advertising data or check target data
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class AndFilter<T> implements AdvertisingDataFilter<T> {
 
     /**

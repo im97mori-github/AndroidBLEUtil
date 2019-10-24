@@ -19,6 +19,7 @@ import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLESyncConnection;
 import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.task.ConnectTask;
+import org.im97mori.ble.task.DiscoverServiceTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
 import org.im97mori.ble.task.ReadDescriptorTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
@@ -127,9 +128,57 @@ public class BLEResponseTest {
         }
     }
 
+    private void waitUntil(long until) {
+        do {
+            try {
+                Thread.sleep(until - SystemClock.elapsedRealtime());
+            } catch (InterruptedException e) {
+                BLEPeripheralLogUtils.stackLog(e);
+            }
+        } while (until > SystemClock.elapsedRealtime());
+    }
+
+    @Test
+    public void test_createDiscoverServiceTask001() {
+        assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = DiscoverServiceTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
+        BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createDiscoverServiceTask(
+                DiscoverServiceTask.TIMEOUT_MILLIS
+                , DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertNotNull(bleResult.getServiceList());
+        assertNull(bleResult.getArgument());
+
+        waitUntil(until);
+    }
+
+    @Test
+    public void test_createDiscoverServiceTask002() {
+        assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = DiscoverServiceTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
+        BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createDiscoverServiceTask(
+                0
+                , 0
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_TIMEOUT, bleResult.getResultCode());
+        assertNull(bleResult.getServiceList());
+        assertNull(bleResult.getArgument());
+
+        waitUntil(until);
+    }
+
     @Test
     public void test_createReadCharacteristicTask001() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = ReadCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadCharacteristicTask(
                 DEFAULT_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -143,6 +192,8 @@ public class BLEResponseTest {
         assertEquals(READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
         assertArrayEquals(MESSAGE_SUCCESS.getBytes(), bleResult.getValues());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
@@ -151,6 +202,8 @@ public class BLEResponseTest {
         long randomLong = new Random().nextLong();
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
+
+        long until = ReadCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadCharacteristicTask(
                 DEFAULT_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -165,6 +218,8 @@ public class BLEResponseTest {
         assertArrayEquals(MESSAGE_SUCCESS.getBytes(), bleResult.getValues());
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
+
+        waitUntil(until);
     }
 
     @Test
@@ -173,6 +228,8 @@ public class BLEResponseTest {
         long randomLong = new Random().nextLong();
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
+
+        long until = ReadCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadCharacteristicTask(
                 DEFAULT_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_ERROR
@@ -187,11 +244,15 @@ public class BLEResponseTest {
         assertEquals(BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED, bleResult.getStatus());
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createReadCharacteristicTask004() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = ReadCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadCharacteristicTask(
                 DEFAULT_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -205,11 +266,15 @@ public class BLEResponseTest {
         assertEquals(UNDIFINED_CHARACTERISTIC_UUID, bleResult.getCharacteristicUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createReadCharacteristicTask005() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = ReadCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadCharacteristicTask(
                 UNDIFINED_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -223,11 +288,15 @@ public class BLEResponseTest {
         assertEquals(READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createReadCharacteristicTask006() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = ReadCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadCharacteristicTask(
                 UNDIFINED_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -241,6 +310,8 @@ public class BLEResponseTest {
         assertEquals(UNDIFINED_CHARACTERISTIC_UUID, bleResult.getCharacteristicUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
@@ -259,14 +330,8 @@ public class BLEResponseTest {
         assertEquals(READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S, bleResult.getCharacteristicUUID());
         assertNull(bleResult.getArgument());
 
-        long end = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
-        do {
-            try {
-                Thread.sleep(end - SystemClock.elapsedRealtime());
-            } catch (InterruptedException e) {
-                BLEPeripheralLogUtils.stackLog(e);
-            }
-        } while (end > SystemClock.elapsedRealtime());
+        long until = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
+        waitUntil(until);
     }
 
     @Test
@@ -289,20 +354,15 @@ public class BLEResponseTest {
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
 
-        long end = DateUtils.SECOND_IN_MILLIS * 15 + SystemClock.elapsedRealtime();
-        do {
-            try {
-                Thread.sleep(end - SystemClock.elapsedRealtime());
-            } catch (InterruptedException e) {
-                BLEPeripheralLogUtils.stackLog(e);
-            }
-        } while (end > SystemClock.elapsedRealtime());
+        long until = DateUtils.SECOND_IN_MILLIS * 15 + SystemClock.elapsedRealtime();
+        waitUntil(until);
     }
 
     @Test
     public void test_createReadCharacteristicTask009() {
         assertNotNull(BLE_CONNECTION);
 
+        long until = ReadCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLESyncConnection.createReadCharacteristicTask(
                 BLE_CONNECTION
                 , DEFAULT_SERVICE_UUID
@@ -318,12 +378,16 @@ public class BLEResponseTest {
         assertEquals(READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
         assertArrayEquals(MESSAGE_SUCCESS.getBytes(), bleResult.getValues());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createWriteCharacteristicTask001() {
         assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -345,6 +409,8 @@ public class BLEResponseTest {
         assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
         assertArrayEquals(data, bleResult.getValues());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
@@ -354,6 +420,8 @@ public class BLEResponseTest {
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -376,12 +444,16 @@ public class BLEResponseTest {
         assertArrayEquals(data, bleResult.getValues());
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createWriteCharacteristicTask003() {
         assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_ERROR
@@ -403,6 +475,8 @@ public class BLEResponseTest {
         assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_ERROR, bleResult.getCharacteristicUUID());
         assertEquals(BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
@@ -412,6 +486,8 @@ public class BLEResponseTest {
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -434,12 +510,16 @@ public class BLEResponseTest {
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createWriteCharacteristicTask005() {
         assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 UNDIFINED_SERVICE_UUID
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -461,12 +541,16 @@ public class BLEResponseTest {
         assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createWriteCharacteristicTask006() {
         assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 UNDIFINED_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -488,6 +572,8 @@ public class BLEResponseTest {
         assertEquals(UNDIFINED_CHARACTERISTIC_UUID, bleResult.getCharacteristicUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
@@ -515,14 +601,8 @@ public class BLEResponseTest {
         assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S, bleResult.getCharacteristicUUID());
         assertNull(bleResult.getArgument());
 
-        long end = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
-        do {
-            try {
-                Thread.sleep(end - SystemClock.elapsedRealtime());
-            } catch (InterruptedException e) {
-                BLEPeripheralLogUtils.stackLog(e);
-            }
-        } while (end > SystemClock.elapsedRealtime());
+        long until = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
+        waitUntil(until);
     }
 
     @Test
@@ -554,20 +634,16 @@ public class BLEResponseTest {
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
 
-        long end = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
-        do {
-            try {
-                Thread.sleep(end - SystemClock.elapsedRealtime());
-            } catch (InterruptedException e) {
-                BLEPeripheralLogUtils.stackLog(e);
-            }
-        } while (end > SystemClock.elapsedRealtime());
+        long until = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
+        waitUntil(until);
     }
 
     @Test
     public void test_createWriteCharacteristicTask009() {
         assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
                 , WRITABLE_NO_RESPONSE_CHARACTERISTIC_UUID
@@ -589,13 +665,15 @@ public class BLEResponseTest {
         assertEquals(WRITABLE_NO_RESPONSE_CHARACTERISTIC_UUID, bleResult.getCharacteristicUUID());
         assertArrayEquals(data, bleResult.getValues());
         assertNull(bleResult.getArgument());
+        waitUntil(until);
     }
 
     @Test
     public void test_createWriteCharacteristicTask010() {
         assertNotNull(BLE_CONNECTION);
-
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLESyncConnection.createWriteCharacteristicTask(
                 BLE_CONNECTION
                 , DEFAULT_SERVICE_UUID
@@ -618,11 +696,15 @@ public class BLEResponseTest {
         assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
         assertArrayEquals(data, bleResult.getValues());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createReadDescriptorTask001() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = ReadDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -638,6 +720,8 @@ public class BLEResponseTest {
         assertEquals(READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getDescriptorUUID());
         assertArrayEquals(MESSAGE_SUCCESS.getBytes(), bleResult.getValues());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
@@ -646,6 +730,8 @@ public class BLEResponseTest {
         long randomLong = new Random().nextLong();
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
+
+        long until = ReadDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -662,11 +748,15 @@ public class BLEResponseTest {
         assertArrayEquals(MESSAGE_SUCCESS.getBytes(), bleResult.getValues());
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createReadDescriptorTask003() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = ReadDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -682,6 +772,8 @@ public class BLEResponseTest {
         assertEquals(READABLE_DESCRIPTOR_UUID_WITH_ERROR, bleResult.getDescriptorUUID());
         assertEquals(BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
@@ -690,6 +782,8 @@ public class BLEResponseTest {
         long randomLong = new Random().nextLong();
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
+
+        long until = ReadDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -706,11 +800,15 @@ public class BLEResponseTest {
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createReadDescriptorTask005() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = ReadDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -726,11 +824,15 @@ public class BLEResponseTest {
         assertEquals(READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getDescriptorUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createReadDescriptorTask006() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = ReadDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -746,11 +848,15 @@ public class BLEResponseTest {
         assertEquals(UNDIFINED_DESCRIPTOR_UUID, bleResult.getDescriptorUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createReadDescriptorTask007() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = ReadDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 UNDIFINED_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -766,11 +872,15 @@ public class BLEResponseTest {
         assertEquals(READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getDescriptorUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createReadDescriptorTask008() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = ReadDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 UNDIFINED_SERVICE_UUID
                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -786,11 +896,15 @@ public class BLEResponseTest {
         assertEquals(UNDIFINED_DESCRIPTOR_UUID, bleResult.getDescriptorUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createReadDescriptorTask009() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = ReadDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 UNDIFINED_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -806,11 +920,15 @@ public class BLEResponseTest {
         assertEquals(READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getDescriptorUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createReadDescriptorTask010() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = ReadDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createReadDescriptorTask(
                 UNDIFINED_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -826,6 +944,8 @@ public class BLEResponseTest {
         assertEquals(UNDIFINED_DESCRIPTOR_UUID, bleResult.getDescriptorUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
@@ -846,14 +966,8 @@ public class BLEResponseTest {
         assertEquals(READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_WAIT_10S, bleResult.getDescriptorUUID());
         assertNull(bleResult.getArgument());
 
-        long end = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
-        do {
-            try {
-                Thread.sleep(end - SystemClock.elapsedRealtime());
-            } catch (InterruptedException e) {
-                BLEPeripheralLogUtils.stackLog(e);
-            }
-        } while (end > SystemClock.elapsedRealtime());
+        long until = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
+        waitUntil(until);
     }
 
     @Test
@@ -878,20 +992,15 @@ public class BLEResponseTest {
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
 
-        long end = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
-        do {
-            try {
-                Thread.sleep(end - SystemClock.elapsedRealtime());
-            } catch (InterruptedException e) {
-                BLEPeripheralLogUtils.stackLog(e);
-            }
-        } while (end > SystemClock.elapsedRealtime());
+        long until = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
+        waitUntil(until);
     }
 
     @Test
     public void test_createReadDescriptorTask013() {
         assertNotNull(BLE_CONNECTION);
 
+        long until = ReadDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLESyncConnection.createReadDescriptorTask(
                 BLE_CONNECTION
                 , DEFAULT_SERVICE_UUID
@@ -908,12 +1017,16 @@ public class BLEResponseTest {
         assertEquals(READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getDescriptorUUID());
         assertArrayEquals(MESSAGE_SUCCESS.getBytes(), bleResult.getValues());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createWriteDescriptorTask001() {
         assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -936,6 +1049,8 @@ public class BLEResponseTest {
         assertEquals(WRITABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getDescriptorUUID());
         assertArrayEquals(data, bleResult.getValues());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
@@ -945,6 +1060,8 @@ public class BLEResponseTest {
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -968,12 +1085,16 @@ public class BLEResponseTest {
         assertArrayEquals(data, bleResult.getValues());
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createWriteDescriptorTask003() {
         assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -996,6 +1117,8 @@ public class BLEResponseTest {
         assertEquals(WRITABLE_DESCRIPTOR_UUID_WITH_ERROR, bleResult.getDescriptorUUID());
         assertEquals(BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
@@ -1005,6 +1128,8 @@ public class BLEResponseTest {
         Bundle bundle = new Bundle();
         bundle.putLong("a", randomLong);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -1028,12 +1153,16 @@ public class BLEResponseTest {
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createWriteDescriptorTask005() {
         assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -1056,12 +1185,16 @@ public class BLEResponseTest {
         assertEquals(WRITABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getDescriptorUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createWriteDescriptorTask006() {
         assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -1084,12 +1217,16 @@ public class BLEResponseTest {
         assertEquals(UNDIFINED_DESCRIPTOR_UUID, bleResult.getDescriptorUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createWriteDescriptorTask007() {
         assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 UNDIFINED_SERVICE_UUID
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -1112,12 +1249,16 @@ public class BLEResponseTest {
         assertEquals(WRITABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getDescriptorUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createWriteDescriptorTask008() {
         assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 UNDIFINED_SERVICE_UUID
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
@@ -1140,12 +1281,16 @@ public class BLEResponseTest {
         assertEquals(UNDIFINED_DESCRIPTOR_UUID, bleResult.getDescriptorUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createWriteDescriptorTask009() {
         assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 UNDIFINED_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -1168,12 +1313,16 @@ public class BLEResponseTest {
         assertEquals(WRITABLE_DESCRIPTOR_UUID_WITH_ERROR, bleResult.getDescriptorUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_createWriteDescriptorTask010() {
         assertNotNull(BLE_SYNC_CONNECTION);
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 UNDIFINED_SERVICE_UUID
                 , UNDIFINED_CHARACTERISTIC_UUID
@@ -1196,6 +1345,8 @@ public class BLEResponseTest {
         assertEquals(UNDIFINED_DESCRIPTOR_UUID, bleResult.getDescriptorUUID());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
@@ -1224,14 +1375,8 @@ public class BLEResponseTest {
         assertEquals(WRITABLE_DESCRIPTOR_UUID_WITH_SUCCESS_WAIT_10S, bleResult.getDescriptorUUID());
         assertNull(bleResult.getArgument());
 
-        long end = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
-        do {
-            try {
-                Thread.sleep(end - SystemClock.elapsedRealtime());
-            } catch (InterruptedException e) {
-                BLEPeripheralLogUtils.stackLog(e);
-            }
-        } while (end > SystemClock.elapsedRealtime());
+        long until = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
+        waitUntil(until);
     }
 
     @Test
@@ -1264,14 +1409,8 @@ public class BLEResponseTest {
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
 
-        long end = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
-        do {
-            try {
-                Thread.sleep(end - SystemClock.elapsedRealtime());
-            } catch (InterruptedException e) {
-                BLEPeripheralLogUtils.stackLog(e);
-            }
-        } while (end > SystemClock.elapsedRealtime());
+        long until = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
+        waitUntil(until);
     }
 
 
@@ -1279,6 +1418,7 @@ public class BLEResponseTest {
     public void test_createWriteDescriptorTask013() {
         assertNotNull(BLE_CONNECTION);
 
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLESyncConnection.createWriteDescriptorTask(
                 BLE_CONNECTION
@@ -1303,11 +1443,16 @@ public class BLEResponseTest {
         assertEquals(WRITABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getDescriptorUUID());
         assertArrayEquals(data, bleResult.getValues());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_listen001() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS * 2 + DateUtils.SECOND_IN_MILLIS * 5 + SystemClock.elapsedRealtime();
+
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
@@ -1354,11 +1499,16 @@ public class BLEResponseTest {
 
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_listen002() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS * 2 + DateUtils.SECOND_IN_MILLIS * 5 + SystemClock.elapsedRealtime();
+
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , INDICATABLE_CHARACTERISTIC_UUID
@@ -1405,11 +1555,15 @@ public class BLEResponseTest {
 
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_listen003() {
         assertNotNull(BLE_CONNECTION);
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS * 2 + DateUtils.SECOND_IN_MILLIS * 5 + SystemClock.elapsedRealtime();
 
         BLESyncConnection.BLEResult bleResult = BLESyncConnection.createWriteDescriptorTask(
                 BLE_CONNECTION
@@ -1460,12 +1614,16 @@ public class BLEResponseTest {
 
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_mockCharacteristic001() {
         assertNotNull(BLE_SYNC_CONNECTION);
 
+        long until = WriteCharacteristicTask.TIMEOUT_MILLIS + ReadCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
+
         final String newMessage = UUID.randomUUID().toString();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
@@ -1496,12 +1654,16 @@ public class BLEResponseTest {
         assertEquals(READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
         assertEquals(BluetoothGatt.GATT_SUCCESS, bleResult.getStatus());
         assertArrayEquals(newMessage.getBytes(), bleResult.getValues());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_mockCharacteristic002() {
         assertNotNull(BLE_SYNC_CONNECTION);
 
+        long until = WriteCharacteristicTask.TIMEOUT_MILLIS + ReadCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
+
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
@@ -1530,11 +1692,15 @@ public class BLEResponseTest {
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
         assertEquals(BLEConstants.ErrorCodes.OUT_OF_RANGE, bleResult.getStatus());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_mockCharacteristic003() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = WriteCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
 
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
@@ -1553,11 +1719,15 @@ public class BLEResponseTest {
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED, bleResult.getStatus());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_mockCharacteristic004() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = WriteCharacteristicTask.TIMEOUT_MILLIS * 2 + ReadCharacteristicTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
 
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
@@ -1606,11 +1776,15 @@ public class BLEResponseTest {
         assertEquals(READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
         assertArrayEquals(MESSAGE_SUCCESS.getBytes(), bleResult.getValues());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_mockDescriptor001() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS + ReadDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
 
         final String newMessage = UUID.randomUUID().toString();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
@@ -1644,11 +1818,15 @@ public class BLEResponseTest {
         assertEquals(READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getDescriptorUUID());
         assertEquals(BluetoothGatt.GATT_SUCCESS, bleResult.getStatus());
         assertArrayEquals(newMessage.getBytes(), bleResult.getValues());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_mockDescriptor002() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS + ReadDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
 
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
@@ -1680,11 +1858,15 @@ public class BLEResponseTest {
         assertEquals(READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
         assertEquals(READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getDescriptorUUID());
         assertEquals(BLEConstants.ErrorCodes.OUT_OF_RANGE, bleResult.getStatus());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_mockDescriptor003() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
 
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
@@ -1703,11 +1885,15 @@ public class BLEResponseTest {
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED, bleResult.getStatus());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_mockDescriptor004() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS * 2 + ReadDescriptorTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
 
         final String newMessage = UUID.randomUUID().toString();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
@@ -1759,11 +1945,15 @@ public class BLEResponseTest {
         assertEquals(READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getDescriptorUUID());
         assertArrayEquals(MESSAGE_SUCCESS.getBytes(), bleResult.getValues());
         assertNull(bleResult.getArgument());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_mockNotification001() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS * 3 + DateUtils.SECOND_IN_MILLIS * 5 + SystemClock.elapsedRealtime();
 
         final String newMessage = UUID.randomUUID().toString();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
@@ -1829,11 +2019,15 @@ public class BLEResponseTest {
 
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+
+        waitUntil(until);
     }
 
     @Test
     public void test_mockNotification002() {
         assertNotNull(BLE_SYNC_CONNECTION);
+
+        long until = WriteDescriptorTask.TIMEOUT_MILLIS * 4 + DateUtils.SECOND_IN_MILLIS * 5 + SystemClock.elapsedRealtime();
 
         final String newMessage = UUID.randomUUID().toString();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
@@ -1916,5 +2110,7 @@ public class BLEResponseTest {
 
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+
+        waitUntil(until);
     }
 }

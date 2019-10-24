@@ -5,6 +5,7 @@ import android.os.Parcelable;
 /**
  * Advertising Data(Extended Inquiry Response Data)
  */
+@SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
 public abstract class AbstractAdvertisingData implements Parcelable {
 
     /**
@@ -39,6 +40,7 @@ public abstract class AbstractAdvertisingData implements Parcelable {
      * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
      * </p>
      */
+    @SuppressWarnings("unused")
     public abstract int getDataType();
 
 }

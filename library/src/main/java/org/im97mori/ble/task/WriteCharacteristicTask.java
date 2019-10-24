@@ -25,6 +25,7 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
  * <p>
  * for central role
  */
+@SuppressWarnings("unused")
 public class WriteCharacteristicTask extends AbstractBLETask {
 
     /**
@@ -33,14 +34,14 @@ public class WriteCharacteristicTask extends AbstractBLETask {
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 10;
 
     /**
-     * create write characteristic finished message
+     * create write characteristic success message
      *
      * @param serviceUUID        target service UUID
      * @param characteristicUUID target characteristic UUID
      * @param values             {@link BluetoothGattCharacteristic#getValue()}
-     * @return write characteristic finished {@link Message} instance
+     * @return write characteristic success {@link Message} instance
      */
-    public static Message createWriteCharacteristicFinishedMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values) {
+    public static Message createWriteCharacteristicSuccessMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
         bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
@@ -141,6 +142,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
     /**
      * {@inheritDoc}
      */
+    @NonNull
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
@@ -193,7 +195,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
                     // with response
                     if (BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT == mWriteType) {
                         // set timeout message
-                        mTaskHandler.sendProcessingMessage(createTimeoutMessage(mCharacteristicUUID, this), mTimeout);
+                        mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                     } else {
                         // with no response
                         mBLEConnection.getBLECallback().onCharacteristicWriteSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mbyteArrayInterface.getBytes(), mArguemnt);

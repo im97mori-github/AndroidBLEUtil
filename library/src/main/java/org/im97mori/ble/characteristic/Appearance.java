@@ -18,7 +18,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.APPEARANCE_CHARAC
 /**
  * Appearance (Characteristics UUID: 0x2A01)
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class Appearance implements ByteArrayInterface, Parcelable {
 
     /**

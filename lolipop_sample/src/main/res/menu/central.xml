@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/discover_service"
+        android:title="@string/menu_discover_service" />
+    <item
+        android:id="@+id/discover_service_sync"
+        android:title="@string/menu_discover_service_sync" />
+    <item
+        android:id="@+id/request_mtu"
+        android:title="@string/menu_request_mtu" />
+    <item
+        android:id="@+id/request_mtu_sync"
+        android:title="@string/menu_request_mtu_sync" />
+    <item
         android:id="@+id/read_characteristic"
         android:title="@string/menu_read_characteristic" />
     <item

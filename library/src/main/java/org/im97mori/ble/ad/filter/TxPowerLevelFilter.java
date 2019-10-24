@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * filter for {@link TxPowerLevel}
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class TxPowerLevelFilter implements AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> {
 
     /**

@@ -9,7 +9,7 @@ import org.im97mori.ble.ad.CompleteLocalName;
 /**
  * filter for {@link CompleteLocalName}
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class CompleteLocalNameFilter implements AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> {
 
     /**
