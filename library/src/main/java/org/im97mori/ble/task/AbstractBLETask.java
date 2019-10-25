@@ -57,6 +57,11 @@ public abstract class AbstractBLETask {
     public static final String KEY_RX_PHY = "KEY_RX_PHY";
 
     /**
+     * KEY:RSSI
+     */
+    public static final String KEY_RSSI = "KEY_RSSI";
+
+    /**
      * PROGRESS:INIT
      */
     public static final int PROGRESS_INIT = 0;
@@ -202,9 +207,24 @@ public abstract class AbstractBLETask {
     public static final int PROGRESS_READ_PHY_ERROR = PROGRESS_READ_PHY_SUCCESS + 1;
 
     /**
+     * PROGRESS:READ_REMOTE_RSSI_START
+     */
+    public static final int PROGRESS_READ_REMOTE_RSSI_START = PROGRESS_READ_PHY_ERROR + 1;
+
+    /**
+     * PROGRESS:READ_REMOTE_RSSI_SUCCESS
+     */
+    public static final int PROGRESS_READ_REMOTE_RSSI_SUCCESS = PROGRESS_READ_REMOTE_RSSI_START + 1;
+
+    /**
+     * PROGRESS:READ_REMOTE_RSSI_ERROR
+     */
+    public static final int PROGRESS_READ_REMOTE_RSSI_ERROR = PROGRESS_READ_REMOTE_RSSI_SUCCESS + 1;
+
+    /**
      * For user defined progress
      */
-    public static final int PROGRESS_FIRST_USER = PROGRESS_READ_PHY_ERROR + 1;
+    public static final int PROGRESS_FIRST_USER = PROGRESS_READ_REMOTE_RSSI_ERROR + 1;
 
     /**
      * create timeout message

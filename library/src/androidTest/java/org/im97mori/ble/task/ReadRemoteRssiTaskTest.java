@@ -21,48 +21,45 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class ReadPhyTaskTest {
+public class ReadRemoteRssiTaskTest {
 
     @Test
     public void test_createInitialMessage001() {
-        ReadPhyTask task = new ReadPhyTask(null, null, null, ReadPhyTask.TIMEOUT_MILLIS, null);
+        ReadRemoteRssiTask task = new ReadRemoteRssiTask(null, null, null, ReadRemoteRssiTask.TIMEOUT_MILLIS, null);
         Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_READ_PHY_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_READ_REMOTE_RSSI_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
     @Test
-    public void test_createReadPhySuccessMessage001() {
-        int txPhy = new Random().nextInt();
-        int rxPhy = new Random().nextInt();
-        Message message = ReadPhyTask.createReadPhySuccessMessage(txPhy, rxPhy);
+    public void test_createReadRemoteRssiSuccessMessage001() {
+        int rssi = new Random().nextInt();
+        Message message = ReadRemoteRssiTask.createReadRemoteRssiSuccessMessage(rssi);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_READ_PHY_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_TX_PHY));
-        assertEquals(txPhy, bundle.getInt(AbstractBLETask.KEY_TX_PHY));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_RX_PHY));
-        assertEquals(rxPhy, bundle.getInt(AbstractBLETask.KEY_RX_PHY));
+        assertEquals(AbstractBLETask.PROGRESS_READ_REMOTE_RSSI_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_RSSI));
+        assertEquals(rssi, bundle.getInt(AbstractBLETask.KEY_RSSI));
     }
 
     @Test
-    public void test_createReadPhyErrorMessage001() {
+    public void test_createReadRemoteRssiErrorMessage001() {
         int status = new Random().nextInt();
-        Message message = ReadPhyTask.createReadPhyErrorMessage(status);
+        Message message = ReadRemoteRssiTask.createReadRemoteRssiErrorMessage(status);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_READ_PHY_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_READ_REMOTE_RSSI_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
         assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
     }
@@ -78,7 +75,7 @@ public class ReadPhyTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ReadPhyTask task = new ReadPhyTask(new MockBLEConnection(), null, mockTaskHandler, ReadPhyTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ReadRemoteRssiTask task = new ReadRemoteRssiTask(new MockBLEConnection(), null, mockTaskHandler, ReadRemoteRssiTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -98,7 +95,7 @@ public class ReadPhyTaskTest {
             BaseBLECallback callback = new BaseBLECallback() {
 
                 @Override
-                public void onReadPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                public void onReadRemoteRssiFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
                     result.set(true);
                 }
             };
@@ -111,7 +108,7 @@ public class ReadPhyTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ReadPhyTask task = new ReadPhyTask(mockBleConnection, null, mockTaskHandler, ReadPhyTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ReadRemoteRssiTask task = new ReadRemoteRssiTask(mockBleConnection, null, mockTaskHandler, ReadRemoteRssiTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());

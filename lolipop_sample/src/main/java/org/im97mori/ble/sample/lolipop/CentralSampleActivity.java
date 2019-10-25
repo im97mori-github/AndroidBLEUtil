@@ -47,6 +47,7 @@ import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.DiscoverServiceTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
 import org.im97mori.ble.task.ReadPhyTask;
+import org.im97mori.ble.task.ReadRemoteRssiTask;
 import org.im97mori.ble.task.RequestMtuTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
 import org.im97mori.ble.task.WriteDescriptorTask;
@@ -357,6 +358,34 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                 mBLECallbackSample.onReadPhyFailed(0, target.getBluetoothDevice(), result.getStatus(), result.getArgument());
                             } else if (RESULT_TIMEOUT == result.getResultCode()) {
                                 mBLECallbackSample.onReadPhyTimeout(0, target.getBluetoothDevice(), RequestMtuTask.TIMEOUT_MILLIS, result.getArgument());
+                            }
+                        }
+                    }
+                }
+            }.start();
+        } else if (R.id.read_remote_rssi == item.getItemId()) {
+            mBleConnection.createReadRemoteRssiTask(ReadRemoteRssiTask.TIMEOUT_MILLIS, null, null);
+        } else if (R.id.read_remote_rssi_sync == item.getItemId()) {
+            new Thread() {
+                @Override
+                public void run() {
+                    BLEConnection target = mBleConnection;
+                    if (target != null) {
+                        BLESyncConnection.BLEResult result = BLESyncConnection.createReadRemoteRssiTask(target
+                                , ReadRemoteRssiTask.TIMEOUT_MILLIS
+                                , ReadRemoteRssiTask.TIMEOUT_MILLIS
+                                , null
+                                , false);
+
+                        if (result == null) {
+                            mBLECallbackSample.onReadRemoteRssiFailed(0, target.getBluetoothDevice(), BLEConstants.ErrorCodes.UNKNOWN, null);
+                        } else {
+                            if (RESULT_SUCCESS == result.getResultCode()) {
+                                mBLECallbackSample.onReadRemoteRssiSuccess(0, target.getBluetoothDevice(), result.getRssi(), result.getArgument());
+                            } else if (RESULT_FAILED == result.getResultCode()) {
+                                mBLECallbackSample.onReadRemoteRssiFailed(0, target.getBluetoothDevice(), result.getStatus(), result.getArgument());
+                            } else if (RESULT_TIMEOUT == result.getResultCode()) {
+                                mBLECallbackSample.onReadRemoteRssiTimeout(0, target.getBluetoothDevice(), RequestMtuTask.TIMEOUT_MILLIS, result.getArgument());
                             }
                         }
                     }

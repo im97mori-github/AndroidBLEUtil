@@ -23,6 +23,7 @@ import org.im97mori.ble.task.DiscoverServiceTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
 import org.im97mori.ble.task.ReadDescriptorTask;
 import org.im97mori.ble.task.ReadPhyTask;
+import org.im97mori.ble.task.ReadRemoteRssiTask;
 import org.im97mori.ble.task.RequestMtuTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
 import org.im97mori.ble.task.WriteDescriptorTask;
@@ -221,6 +222,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * @see #quit(Bundle, BLECallback)
      */
+    @Nullable
     public Integer quit() {
         return quit(null, null);
     }
@@ -237,6 +239,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @Nullable
     public synchronized Integer quit(@Nullable Bundle argument, @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (mBluetoothGatt != null) {
@@ -584,10 +587,27 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * {@inheritDoc}
      */
+    @Override
+    public void onReadRemoteRssi(BluetoothGatt gatt, int rssi, int status) {
+        if (mTaskHandler != null) {
+            if (BluetoothGatt.GATT_SUCCESS == status) {
+                // mtu updated
+
+                mTaskHandler.sendProcessingMessage(ReadRemoteRssiTask.createReadRemoteRssiSuccessMessage(rssi));
+            } else {
+                // mtu update failed
+
+                mTaskHandler.sendProcessingMessage(ReadRemoteRssiTask.createReadRemoteRssiErrorMessage(status));
+            }
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public synchronized void onMtuChanged(BluetoothGatt gatt, int mtu, int status) {
-        BLELogUtils.stackLog(mtu, status);
         if (mTaskHandler != null) {
             if (BluetoothGatt.GATT_SUCCESS == status) {
                 // mtu updated
@@ -607,7 +627,6 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public synchronized void onPhyRead(BluetoothGatt gatt, int txPhy, int rxPhy, int status) {
-        BLELogUtils.stackLog(txPhy, rxPhy, status);
         if (mTaskHandler != null) {
             if (BluetoothGatt.GATT_SUCCESS == status) {
                 // mtu updated
@@ -624,6 +643,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * @see #createReadCharacteristicTask(UUID, UUID, long, Bundle, BLECallback)
      */
+    @Nullable
     public Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout) {
         return createReadCharacteristicTask(serviceUUID, characteristicUUID, timeout, null, null);
     }
@@ -638,6 +658,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param bleCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @Nullable
     public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         BluetoothGatt bluetoothGatt = mBluetoothGatt;
@@ -652,6 +673,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * @see #createWriteCharacteristicTask(UUID, UUID, ByteArrayInterface, int, long, Bundle, BLECallback)
      */
+    @Nullable
     public Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout) {
         return createWriteCharacteristicTask(serviceUUID, characteristicUUID, byteArrayInterface, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, timeout, null, null);
     }
@@ -659,6 +681,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * @see #createWriteCharacteristicTask(UUID, UUID, ByteArrayInterface, int, long, Bundle, BLECallback)
      */
+    @Nullable
     public Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout) {
         return createWriteCharacteristicTask(serviceUUID, characteristicUUID, byteArrayInterface, writeType, timeout, null, null);
     }
@@ -675,6 +698,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param bleCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @Nullable
     public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (mBluetoothGatt != null) {
@@ -688,6 +712,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * @see #createReadDescriptorTask(UUID, UUID, UUID, long, Bundle, BLECallback)
      */
+    @Nullable
     public Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout) {
         return createReadDescriptorTask(serviceUUID, characteristicUUID, descriptorUUID, timeout, null, null);
     }
@@ -703,6 +728,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param bleCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @Nullable
     public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (mBluetoothGatt != null) {
@@ -716,6 +742,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * @see #createWriteDescriptorTask(UUID, UUID, UUID, ByteArrayInterface, long, Bundle, BLECallback)
      */
+    @Nullable
     public Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout) {
         return createWriteDescriptorTask(serviceUUID, characteristicUUID, descriptorUUID, byteArrayInterface, timeout, null, null);
     }
@@ -732,6 +759,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param bleCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
+    @Nullable
     public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (mBluetoothGatt != null) {
@@ -751,6 +779,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @return task id. if {@code null} returned, task was not registed
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
+    @Nullable
     public synchronized Integer createReadPhyTask(long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (mBluetoothGatt != null) {
@@ -762,9 +791,29 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     }
 
     /**
+     * Create read remote rssi task
+     *
+     * @param timeout     timeout(millis)
+     * @param argument    callback argument
+     * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
+     * @return task id. if {@code null} returned, task was not registed
+     */
+    @Nullable
+    public synchronized Integer createReadRemoteRssiTask(long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+        Integer taskId = null;
+        if (mBluetoothGatt != null) {
+            ReadRemoteRssiTask task = new ReadRemoteRssiTask(this, mBluetoothGatt, mTaskHandler, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            mTaskHandler.addTask(task);
+            taskId = task.getTaskId();
+        }
+        return taskId;
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
+    @NonNull
     public synchronized Set<BLECallback> getSubscriberCallbackSet() {
         return new HashSet<>(mAttachedBLECallbackSet);
     }

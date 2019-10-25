@@ -309,7 +309,7 @@ public interface BLECallback {
      *
      * @param taskId          task id
      * @param bluetoothDevice BLE device
-     * @param status          one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
+     * @param status          one of {@link BLEConnection#onPhyRead(BluetoothGatt, int, int, int)} 4th parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
      * @param argument        callback argument
      */
     void onReadPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
@@ -323,5 +323,28 @@ public interface BLECallback {
      * @param argument        callback argument
      */
     void onReadPhyTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
+
+    // TODO
+    void onReadRemoteRssiSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int rssi, @Nullable Bundle argument);
+
+    /**
+     * Read remote rssi error callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param status          one of {@link BLEConnection#onReadRemoteRssi(BluetoothGatt, int, int)} 3rd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
+     * @param argument        callback argument
+     */
+    void onReadRemoteRssiFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+
+    /**
+     * Read remote rssi timeout callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param timeout         timeout(millis)
+     * @param argument        callback argument
+     */
+    void onReadRemoteRssiTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
 
 }

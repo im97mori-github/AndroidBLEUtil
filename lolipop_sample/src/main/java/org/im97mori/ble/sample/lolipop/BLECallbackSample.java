@@ -238,6 +238,21 @@ public class BLECallbackSample extends BLEServerConnection.DefaultServerSetting 
     }
 
     @Override
+    public void onReadRemoteRssiSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int rssi, @Nullable Bundle argument) {
+        callback(rssi, argument);
+    }
+
+    @Override
+    public void onReadRemoteRssiFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+        callback(status, argument);
+    }
+
+    @Override
+    public void onReadRemoteRssiTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+        callback(timeout, argument);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
         super.onServerStarted();

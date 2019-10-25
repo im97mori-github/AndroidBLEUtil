@@ -1,27 +1,25 @@
 package org.im97mori.ble.task;
 
 import android.bluetooth.BluetoothGatt;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.format.DateUtils;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.TaskHandler;
 
 import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
+import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 
 /**
- * Read phy task
+ * Read remote rssi task
  * <p>
  * for central role
  */
-@RequiresApi(api = Build.VERSION_CODES.O)
 @SuppressWarnings("unused")
-public class ReadPhyTask extends AbstractBLETask {
+public class ReadRemoteRssiTask extends AbstractBLETask {
 
     /**
      * Default timeout(millis) for discover service:5sec
@@ -29,34 +27,32 @@ public class ReadPhyTask extends AbstractBLETask {
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 5;
 
     /**
-     * create read phy success message
+     * create read remote rssi success message
      *
-     * @param txPhy {@link android.bluetooth.BluetoothGattCallback#onPhyRead(BluetoothGatt, int, int, int)} 2nd argument
-     * @param rxPhy {@link android.bluetooth.BluetoothGattCallback#onPhyRead(BluetoothGatt, int, int, int)} 3rd argument
-     * @return read phy success {@link Message} instance
+     * @param rssi {@link android.bluetooth.BluetoothGattCallback#onReadRemoteRssi(BluetoothGatt, int, int)} 2nd parameter
+     * @return read remote rssi success {@link Message} instance
      */
     @NonNull
-    public static Message createReadPhySuccessMessage(int txPhy, int rxPhy) {
+    public static Message createReadRemoteRssiSuccessMessage(int rssi) {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_READ_PHY_SUCCESS);
-        bundle.putInt(KEY_TX_PHY, txPhy);
-        bundle.putInt(KEY_RX_PHY, rxPhy);
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_READ_REMOTE_RSSI_SUCCESS);
+        bundle.putInt(KEY_RSSI, rssi);
         Message message = new Message();
         message.setData(bundle);
         return message;
     }
 
     /**
-     * create read phy error message
+     * create read remote rssi error message
      *
-     * @param status {@link android.bluetooth.BluetoothGattCallback#onPhyRead(BluetoothGatt, int, int, int)} 4th argument
-     * @return read phy error {@link Message} instance
+     * @param status {@link android.bluetooth.BluetoothGattCallback#onReadRemoteRssi(BluetoothGatt, int, int)} 3rd parameter
+     * @return read remote rssi error {@link Message} instance
      */
     @NonNull
-    public static Message createReadPhyErrorMessage(int status) {
+    public static Message createReadRemoteRssiErrorMessage(int status) {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_STATUS, status);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_READ_PHY_ERROR);
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_READ_REMOTE_RSSI_ERROR);
         Message message = new Message();
         message.setData(bundle);
         return message;
@@ -94,7 +90,7 @@ public class ReadPhyTask extends AbstractBLETask {
      * @param timeout       timeout(millis)
      * @param argument      callback argument
      */
-    public ReadPhyTask(@NonNull BLEConnection bleConnection, @NonNull BluetoothGatt bluetoothGatt, @NonNull TaskHandler taskHandler, long timeout, @NonNull Bundle argument) {
+    public ReadRemoteRssiTask(@NonNull BLEConnection bleConnection, @NonNull BluetoothGatt bluetoothGatt, @NonNull TaskHandler taskHandler, long timeout, @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
         mTaskHandler = taskHandler;
@@ -109,7 +105,7 @@ public class ReadPhyTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_READ_PHY_START);
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_READ_REMOTE_RSSI_START);
         Message message = new Message();
         message.setData(bundle);
         message.obj = this;
@@ -126,29 +122,37 @@ public class ReadPhyTask extends AbstractBLETask {
 
         // timeout
         if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
-            mBLEConnection.getBLECallback().onReadPhyTimeout(getTaskId(), mBluetoothGatt.getDevice(), mTimeout, mArgument);
+            mBLEConnection.getBLECallback().onReadRemoteRssiTimeout(getTaskId(), mBluetoothGatt.getDevice(), mTimeout, mArgument);
             mCurrentProgress = nextProgress;
         } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
-            if (PROGRESS_READ_PHY_START == nextProgress) {
-                // current:init, next:read phy start
+            if (PROGRESS_READ_REMOTE_RSSI_START == nextProgress) {
+                // current:init, next:read remote rssi start
 
-                mBluetoothGatt.readPhy();
+                if (mBluetoothGatt.readRemoteRssi()) {
+                    // success
+                    // set timeout message
+                    Message timeoutMessage = createTimeoutMessage(this);
+                    mTaskHandler.sendProcessingMessage(timeoutMessage, mTimeout);
+                    mCurrentProgress = nextProgress;
+                } else {
+                    // failed
 
-                // set timeout message
-                Message timeoutMessage = createTimeoutMessage(this);
-                mTaskHandler.sendProcessingMessage(timeoutMessage, mTimeout);
-                mCurrentProgress = nextProgress;
+                    mBLEConnection.getBLECallback().onReadRemoteRssiFailed(getTaskId(), mBluetoothGatt.getDevice(), UNKNOWN, mArgument);
+                    mCurrentProgress = PROGRESS_BUSY;
+                }
             }
-        } else if (PROGRESS_READ_PHY_START == mCurrentProgress) {
-            if (PROGRESS_READ_PHY_SUCCESS == nextProgress) {
-                // current:read phy start, next:read phy success
+        } else if (PROGRESS_READ_REMOTE_RSSI_START == mCurrentProgress) {
+            if (PROGRESS_READ_REMOTE_RSSI_SUCCESS == nextProgress) {
+                // current:read remote rssi start, next:read remote rssi success
 
                 // callback
-                mBLEConnection.getBLECallback().onReadPhySuccess(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_TX_PHY), bundle.getInt(KEY_RX_PHY), mArgument);
-            } else if (PROGRESS_READ_PHY_ERROR == nextProgress) {
-                // current:read phy start, next:read phy failed
+                mBLEConnection.getBLECallback().onReadRemoteRssiSuccess(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_RSSI), mArgument);
 
-                mBLEConnection.getBLECallback().onReadPhyFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
+
+            } else if (PROGRESS_READ_REMOTE_RSSI_ERROR == nextProgress) {
+                // current:read remote rssi start, next:read remote rssi failed
+
+                mBLEConnection.getBLECallback().onReadRemoteRssiFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
             }
 
             // remove timeout message
@@ -157,7 +161,7 @@ public class ReadPhyTask extends AbstractBLETask {
             mCurrentProgress = PROGRESS_FINISHED;
         }
 
-        return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_BUSY == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
     }
 
     /**
@@ -165,7 +169,7 @@ public class ReadPhyTask extends AbstractBLETask {
      */
     @Override
     public boolean isBusy() {
-        return PROGRESS_TIMEOUT == mCurrentProgress;
+        return PROGRESS_BUSY == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;
     }
 
     /**
@@ -175,7 +179,7 @@ public class ReadPhyTask extends AbstractBLETask {
     public void cancel() {
         mTaskHandler.removeCallbacksAndMessages(this);
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.getBLECallback().onReadPhyFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), CANCEL, mArgument);
+        mBLEConnection.getBLECallback().onReadRemoteRssiFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), CANCEL, mArgument);
     }
 
 }

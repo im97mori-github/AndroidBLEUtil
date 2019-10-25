@@ -19,6 +19,8 @@
     <string name="menu_request_mtu_sync">Request MTU(Synchronous)</string>
     <string name="menu_read_phy">Read Phy</string>
     <string name="menu_read_phy_sync">Read Phy(Synchronous)</string>
+    <string name="menu_read_remote_rssi">Read Remote Rssi</string>
+    <string name="menu_read_remote_rssi_sync">Read Remote Rssi(Synchronous)</string>
     <string name="menu_read_characteristic">Read Characteristic</string>
     <string name="menu_write_characteristic">Write Characteristic</string>
     <string name="menu_write_notification">Write CCCD Notification</string>
