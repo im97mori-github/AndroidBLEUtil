@@ -46,6 +46,7 @@ import org.im97mori.ble.descriptor.ClientCharacteristicConfiguration;
 import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.DiscoverServiceTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
+import org.im97mori.ble.task.ReadPhyTask;
 import org.im97mori.ble.task.RequestMtuTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
 import org.im97mori.ble.task.WriteDescriptorTask;
@@ -313,7 +314,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     BLEConnection target = mBleConnection;
                     if (target != null) {
                         BLESyncConnection.BLEResult result = BLESyncConnection.createRequestMtuTask(target
-                                ,100
+                                , 100
                                 , RequestMtuTask.TIMEOUT_MILLIS
                                 , RequestMtuTask.TIMEOUT_MILLIS
                                 , null
@@ -328,6 +329,34 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                 mBLECallbackSample.onRequestMtuFailed(0, target.getBluetoothDevice(), result.getStatus(), result.getArgument());
                             } else if (RESULT_TIMEOUT == result.getResultCode()) {
                                 mBLECallbackSample.onRequestMtuTimeout(0, target.getBluetoothDevice(), RequestMtuTask.TIMEOUT_MILLIS, result.getArgument());
+                            }
+                        }
+                    }
+                }
+            }.start();
+        } else if (R.id.read_phy == item.getItemId()) {
+            mBleConnection.createReadPhyTask(ReadPhyTask.TIMEOUT_MILLIS, null, null);
+        } else if (R.id.read_phy_sync == item.getItemId()) {
+            new Thread() {
+                @Override
+                public void run() {
+                    BLEConnection target = mBleConnection;
+                    if (target != null) {
+                        BLESyncConnection.BLEResult result = BLESyncConnection.createReadPhyTask(target
+                                , ReadPhyTask.TIMEOUT_MILLIS
+                                , ReadPhyTask.TIMEOUT_MILLIS
+                                , null
+                                , false);
+
+                        if (result == null) {
+                            mBLECallbackSample.onReadPhyFailed(0, target.getBluetoothDevice(), BLEConstants.ErrorCodes.UNKNOWN, null);
+                        } else {
+                            if (RESULT_SUCCESS == result.getResultCode()) {
+                                mBLECallbackSample.onReadPhySuccess(0, target.getBluetoothDevice(), result.getTxPhy(), result.getRxPhy(), result.getArgument());
+                            } else if (RESULT_FAILED == result.getResultCode()) {
+                                mBLECallbackSample.onReadPhyFailed(0, target.getBluetoothDevice(), result.getStatus(), result.getArgument());
+                            } else if (RESULT_TIMEOUT == result.getResultCode()) {
+                                mBLECallbackSample.onReadPhyTimeout(0, target.getBluetoothDevice(), RequestMtuTask.TIMEOUT_MILLIS, result.getArgument());
                             }
                         }
                     }

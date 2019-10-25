@@ -22,6 +22,7 @@ import org.im97mori.ble.task.DisconnectTask;
 import org.im97mori.ble.task.DiscoverServiceTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
 import org.im97mori.ble.task.ReadDescriptorTask;
+import org.im97mori.ble.task.ReadPhyTask;
 import org.im97mori.ble.task.RequestMtuTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
 import org.im97mori.ble.task.WriteDescriptorTask;
@@ -585,7 +586,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    public void onMtuChanged(BluetoothGatt gatt, int mtu, int status) {
+    public synchronized void onMtuChanged(BluetoothGatt gatt, int mtu, int status) {
         BLELogUtils.stackLog(mtu, status);
         if (mTaskHandler != null) {
             if (BluetoothGatt.GATT_SUCCESS == status) {
@@ -596,6 +597,26 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
                 // mtu update failed
 
                 mTaskHandler.sendProcessingMessage(RequestMtuTask.createRequestMtuErrorMessage(gatt, status));
+            }
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public synchronized void onPhyRead(BluetoothGatt gatt, int txPhy, int rxPhy, int status) {
+        BLELogUtils.stackLog(txPhy, rxPhy, status);
+        if (mTaskHandler != null) {
+            if (BluetoothGatt.GATT_SUCCESS == status) {
+                // mtu updated
+
+                mTaskHandler.sendProcessingMessage(ReadPhyTask.createReadPhySuccessMessage(txPhy, rxPhy));
+            } else {
+                // mtu update failed
+
+                mTaskHandler.sendProcessingMessage(ReadPhyTask.createReadPhyErrorMessage(status));
             }
         }
     }
@@ -715,6 +736,25 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
         Integer taskId = null;
         if (mBluetoothGatt != null) {
             WriteDescriptorTask task = new WriteDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, descriptorUUID, byteArrayInterface, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            mTaskHandler.addTask(task);
+            taskId = task.getTaskId();
+        }
+        return taskId;
+    }
+
+    /**
+     * Create read phy task
+     *
+     * @param timeout     timeout(millis)
+     * @param argument    callback argument
+     * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
+     * @return task id. if {@code null} returned, task was not registed
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public synchronized Integer createReadPhyTask(long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+        Integer taskId = null;
+        if (mBluetoothGatt != null) {
+            ReadPhyTask task = new ReadPhyTask(this, mBluetoothGatt, mTaskHandler, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }

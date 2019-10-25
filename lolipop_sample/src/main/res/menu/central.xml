@@ -13,6 +13,12 @@
         android:id="@+id/request_mtu_sync"
         android:title="@string/menu_request_mtu_sync" />
     <item
+        android:id="@+id/read_phy"
+        android:title="@string/menu_read_phy" />
+    <item
+        android:id="@+id/read_phy_sync"
+        android:title="@string/menu_read_phy_sync" />
+    <item
         android:id="@+id/read_characteristic"
         android:title="@string/menu_read_characteristic" />
     <item

@@ -33,8 +33,9 @@ public class RequestMtuTask extends AbstractBLETask {
      * create request mtu success message
      *
      * @param mtu {@link android.bluetooth.BluetoothGattCallback#onMtuChanged(BluetoothGatt, int, int)} 2nd parameter
-     * @return create request mtu success {@link Message} instance
+     * @return request mtu success {@link Message} instance
      */
+    @NonNull
     public static Message createRequestMtuSuccess(int mtu) {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_REQUEST_MTU_SUCCESS);
@@ -49,8 +50,9 @@ public class RequestMtuTask extends AbstractBLETask {
      *
      * @param obj    current {@link BluetoothGatt} instance
      * @param status {@link android.bluetooth.BluetoothGattCallback#onMtuChanged(BluetoothGatt, int, int)} 3rd parameter
-     * @return read request mtu error {@link Message} instance
+     * @return request mtu error {@link Message} instance
      */
+    @NonNull
     public static Message createRequestMtuErrorMessage(Object obj, int status) {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_STATUS, status);
@@ -116,7 +118,7 @@ public class RequestMtuTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_REQUEST_MTU);
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_REQUEST_MTU_START);
         Message message = new Message();
         message.setData(bundle);
         message.obj = this;
@@ -138,7 +140,7 @@ public class RequestMtuTask extends AbstractBLETask {
 
             mCurrentProgress = nextProgress;
         } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
-            if (PROGRESS_REQUEST_MTU == nextProgress) {
+            if (PROGRESS_REQUEST_MTU_START == nextProgress) {
                 // current:init, next:request mtu start
 
                 if (mBluetoothGatt.requestMtu(mMtu)) {
@@ -152,7 +154,7 @@ public class RequestMtuTask extends AbstractBLETask {
                     mCurrentProgress = PROGRESS_BUSY;
                 }
             }
-        } else if (PROGRESS_REQUEST_MTU == mCurrentProgress) {
+        } else if (PROGRESS_REQUEST_MTU_START == mCurrentProgress) {
             if (PROGRESS_REQUEST_MTU_SUCCESS == nextProgress) {
                 // current:init start, next:request mtu success
 

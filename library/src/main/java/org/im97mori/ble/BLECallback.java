@@ -293,4 +293,35 @@ public interface BLECallback {
      */
     void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values);
 
+    /**
+     * Read phy success callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param txPhy           {@link android.bluetooth.BluetoothGattCallback#onPhyRead(BluetoothGatt, int, int, int)} 2nd argument
+     * @param rxPhy           {@link android.bluetooth.BluetoothGattCallback#onPhyRead(BluetoothGatt, int, int, int)} 3rd argument
+     * @param argument        callback argument
+     */
+    void onReadPhySuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int txPhy, int rxPhy, @Nullable Bundle argument);
+
+    /**
+     * Read phy error callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param status          one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
+     * @param argument        callback argument
+     */
+    void onReadPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+
+    /**
+     * Read phy timeout callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param timeout         timeout(millis)
+     * @param argument        callback argument
+     */
+    void onReadPhyTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
+
 }

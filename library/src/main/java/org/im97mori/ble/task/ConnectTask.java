@@ -36,6 +36,7 @@ public class ConnectTask extends AbstractBLETask {
      * @param obj current {@link BluetoothGatt} instance
      * @return create connect success {@link Message} instance
      */
+    @NonNull
     public static Message createConnectSuccessMessage(@NonNull Object obj) {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_CONNECT_SUCCESS);

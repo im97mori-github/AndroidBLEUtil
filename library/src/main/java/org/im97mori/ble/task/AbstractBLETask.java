@@ -47,6 +47,16 @@ public abstract class AbstractBLETask {
     public static final String KEY_MTU = "KEY_MTU";
 
     /**
+     * KEY:TX_PHY
+     */
+    public static final String KEY_TX_PHY = "KEY_TX_PHY";
+
+    /**
+     * KEY:RX_PHY
+     */
+    public static final String KEY_RX_PHY = "KEY_RX_PHY";
+
+    /**
      * PROGRESS:INIT
      */
     public static final int PROGRESS_INIT = 0;
@@ -162,14 +172,14 @@ public abstract class AbstractBLETask {
     public static final int PROGRESS_NOTIFICATION = PROGRESS_DESCRIPTOR_WRITE_ERROR + 1;
 
     /**
-     * PROGRESS:REQUEST_MTU
+     * PROGRESS:REQUEST_MTU_START
      */
-    public static final int PROGRESS_REQUEST_MTU = PROGRESS_NOTIFICATION + 1;
+    public static final int PROGRESS_REQUEST_MTU_START = PROGRESS_NOTIFICATION + 1;
 
     /**
      * PROGRESS:REQUEST_MTU_SUCCESS
      */
-    public static final int PROGRESS_REQUEST_MTU_SUCCESS = PROGRESS_REQUEST_MTU + 1;
+    public static final int PROGRESS_REQUEST_MTU_SUCCESS = PROGRESS_REQUEST_MTU_START + 1;
 
     /**
      * PROGRESS:REQUEST_MTU_ERROR
@@ -177,10 +187,24 @@ public abstract class AbstractBLETask {
     public static final int PROGRESS_REQUEST_MTU_ERROR = PROGRESS_REQUEST_MTU_SUCCESS + 1;
 
     /**
+     * PROGRESS:READ_PHY_START
+     */
+    public static final int PROGRESS_READ_PHY_START = PROGRESS_REQUEST_MTU_ERROR + 1;
+
+    /**
+     * PROGRESS:READ_PHY_SUCCESS
+     */
+    public static final int PROGRESS_READ_PHY_SUCCESS = PROGRESS_READ_PHY_START + 1;
+
+    /**
+     * PROGRESS:READ_PHY_ERROR
+     */
+    public static final int PROGRESS_READ_PHY_ERROR = PROGRESS_READ_PHY_SUCCESS + 1;
+
+    /**
      * For user defined progress
      */
-    @SuppressWarnings("unused")
-    public static final int PROGRESS_FIRST_USER = PROGRESS_REQUEST_MTU_ERROR + 1;
+    public static final int PROGRESS_FIRST_USER = PROGRESS_READ_PHY_ERROR + 1;
 
     /**
      * create timeout message

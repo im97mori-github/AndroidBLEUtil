@@ -40,6 +40,7 @@ public class ReadCharacteristicTask extends AbstractBLETask {
      * @param values             {@link BluetoothGattCharacteristic#getValue()}
      * @return read characteristic success {@link Message} instance
      */
+    @NonNull
     public static Message createReadCharacteristicSuccessMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
@@ -59,6 +60,7 @@ public class ReadCharacteristicTask extends AbstractBLETask {
      * @param status             {@link android.bluetooth.BluetoothGattCallback#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      * @return read characteristic error {@link Message} instance
      */
+    @NonNull
     public static Message createReadCharacteristicErrorMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);

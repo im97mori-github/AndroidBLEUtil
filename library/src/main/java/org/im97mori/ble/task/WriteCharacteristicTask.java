@@ -41,6 +41,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
      * @param values             {@link BluetoothGattCharacteristic#getValue()}
      * @return write characteristic success {@link Message} instance
      */
+    @NonNull
     public static Message createWriteCharacteristicSuccessMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
@@ -60,6 +61,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
      * @param status             {@link android.bluetooth.BluetoothGattCallback#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      * @return write characteristic error {@link Message} instance
      */
+    @NonNull
     public static Message createWriteCharacteristicErrorMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);

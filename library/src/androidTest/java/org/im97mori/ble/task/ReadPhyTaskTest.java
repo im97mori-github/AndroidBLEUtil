@@ -21,50 +21,50 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class RequestMtuTaskTest {
+public class ReadPhyTaskTest {
 
     @Test
     public void test_createInitialMessage001() {
-        int mtu = new Random().nextInt();
-        RequestMtuTask task = new RequestMtuTask(null, null, null, mtu, RequestMtuTask.TIMEOUT_MILLIS, null);
+        ReadPhyTask task = new ReadPhyTask(null, null, null, RequestMtuTask.TIMEOUT_MILLIS, null);
         Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_REQUEST_MTU_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_READ_PHY_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
     @Test
-    public void test_createServiceDiscoverSuccessMessage001() {
-        int mtu = new Random().nextInt();
-        Message message = RequestMtuTask.createRequestMtuSuccess(mtu);
+    public void test_createReadPhySuccessMessage001() {
+        int txPhy = new Random().nextInt();
+        int rxPhy = new Random().nextInt();
+        Message message = ReadPhyTask.createReadPhySuccessMessage(txPhy, rxPhy);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_REQUEST_MTU_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_MTU));
-        assertEquals(mtu, bundle.getInt(AbstractBLETask.KEY_MTU));
+        assertEquals(AbstractBLETask.PROGRESS_READ_PHY_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_TX_PHY));
+        assertEquals(txPhy, bundle.getInt(AbstractBLETask.KEY_TX_PHY));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_RX_PHY));
+        assertEquals(rxPhy, bundle.getInt(AbstractBLETask.KEY_RX_PHY));
     }
 
     @Test
-    public void test_createServiceDiscoverErrorMessage001() {
-        Object object = new Object();
+    public void test_createReadPhyErrorMessage001() {
         int status = new Random().nextInt();
-        Message message = RequestMtuTask.createRequestMtuErrorMessage(object, status);
+        Message message = ReadPhyTask.createReadPhyErrorMessage(status);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_DISCOVER_SERVICE_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_READ_PHY_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
         assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
-        assertEquals(object, message.obj);
     }
 
     @Test
@@ -78,7 +78,7 @@ public class RequestMtuTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            RequestMtuTask task = new RequestMtuTask(new MockBLEConnection(), null, mockTaskHandler, 0, RequestMtuTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ReadPhyTask task = new ReadPhyTask(new MockBLEConnection(), null, mockTaskHandler, RequestMtuTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -98,7 +98,7 @@ public class RequestMtuTaskTest {
             BaseBLECallback callback = new BaseBLECallback() {
 
                 @Override
-                public void onRequestMtuFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                public void onReadPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
                     result.set(true);
                 }
             };
@@ -111,7 +111,7 @@ public class RequestMtuTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            RequestMtuTask task = new RequestMtuTask(mockBleConnection, null, mockTaskHandler, 0, RequestMtuTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ReadPhyTask task = new ReadPhyTask(mockBleConnection, null, mockTaskHandler, RequestMtuTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());

@@ -43,6 +43,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
      * @param values             {@link BluetoothGattDescriptor#getValue()}
      * @return write descriptor success {@link Message} instance
      */
+    @NonNull
     public static Message createWriteDescriptorSuccessMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull byte[] values) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
@@ -64,6 +65,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
      * @param status             {@link android.bluetooth.BluetoothGattCallback#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      * @return write descriptor error {@link Message} instance
      */
+    @NonNull
     public static Message createWriteDescriptorErrorMessage(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
