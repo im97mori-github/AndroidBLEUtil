@@ -57,6 +57,11 @@ public abstract class AbstractBLETask {
     public static final String KEY_RX_PHY = "KEY_RX_PHY";
 
     /**
+     * KEY:PHY_OPTIONS
+     */
+    public static final String KEY_PHY_OPTIONS = "KEY_PHY_OPTIONS";
+
+    /**
      * KEY:RSSI
      */
     public static final String KEY_RSSI = "KEY_RSSI";
@@ -207,9 +212,24 @@ public abstract class AbstractBLETask {
     public static final int PROGRESS_READ_PHY_ERROR = PROGRESS_READ_PHY_SUCCESS + 1;
 
     /**
+     * PROGRESS:SET_PREFERRED_PHY_START
+     */
+    public static final int PROGRESS_SET_PREFERRED_PHY_START = PROGRESS_READ_PHY_ERROR + 1;
+
+    /**
+     * PROGRESS:SET_PREFERRED_PHY_SUCCESS
+     */
+    public static final int PROGRESS_SET_PREFERRED_PHY_SUCCESS = PROGRESS_SET_PREFERRED_PHY_START + 1;
+
+    /**
+     * PROGRESS:SET_PREFERRED_PHY_ERROR
+     */
+    public static final int PROGRESS_SET_PREFERRED_PHY_ERROR = PROGRESS_SET_PREFERRED_PHY_SUCCESS + 1;
+
+    /**
      * PROGRESS:READ_REMOTE_RSSI_START
      */
-    public static final int PROGRESS_READ_REMOTE_RSSI_START = PROGRESS_READ_PHY_ERROR + 1;
+    public static final int PROGRESS_READ_REMOTE_RSSI_START = PROGRESS_SET_PREFERRED_PHY_ERROR + 1;
 
     /**
      * PROGRESS:READ_REMOTE_RSSI_SUCCESS

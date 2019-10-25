@@ -19,6 +19,12 @@
         android:id="@+id/read_phy_sync"
         android:title="@string/menu_read_phy_sync" />
     <item
+        android:id="@+id/set_preferred_phy"
+        android:title="@string/menu_set_preferred_phy" />
+    <item
+        android:id="@+id/set_preferred_phy_sync"
+        android:title="@string/menu_set_preferred_phy_sync" />
+    <item
         android:id="@+id/read_remote_rssi"
         android:title="@string/menu_read_remote_rssi" />
     <item

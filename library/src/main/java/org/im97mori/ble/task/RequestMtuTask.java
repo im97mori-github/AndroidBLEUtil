@@ -74,7 +74,7 @@ public class RequestMtuTask extends AbstractBLETask {
     private final TaskHandler mTaskHandler;
 
     /**
-     * new mtu
+     * new mtu for {@link BluetoothGatt#requestMtu(int)} 1st argument
      */
     private final int mMtu;
 
@@ -98,7 +98,7 @@ public class RequestMtuTask extends AbstractBLETask {
      * @param bleConnection task target {@link BLEConnection} instance
      * @param bluetoothGatt task target {@link BluetoothGatt} instance
      * @param taskHandler   task target {@link TaskHandler} instance
-     * @param mtu           new mtu
+     * @param mtu           new mtu for {@link BluetoothGatt#requestMtu(int)} 1st argument
      * @param timeout       timeout(millis)
      * @param argument      callback argument
      */

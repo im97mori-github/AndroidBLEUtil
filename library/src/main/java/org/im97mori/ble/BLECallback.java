@@ -107,7 +107,7 @@ public interface BLECallback {
      *
      * @param taskId          task id
      * @param bluetoothDevice BLE device
-     * @param mtu             new mtu
+     * @param mtu             new mtu from  {@link android.bluetooth.BluetoothGattCallback#onMtuChanged(BluetoothGatt, int, int)} 2nd argument
      * @param argument        callback argument
      * @see org.im97mori.ble.task.RequestMtuTask
      */
@@ -324,7 +324,46 @@ public interface BLECallback {
      */
     void onReadPhyTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
 
-    // TODO
+    /**
+     * Set preferred phy success callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param txPhy           {@link android.bluetooth.BluetoothGattCallback#onPhyUpdate(BluetoothGatt, int, int, int)} 2nd argument
+     * @param rxPhy           {@link android.bluetooth.BluetoothGattCallback#onPhyUpdate(BluetoothGatt, int, int, int)} 3rd argument
+     * @param phyOptions      {@link android.bluetooth.BluetoothGatt#setPreferredPhy(int, int, int)} 3rd argument
+     * @param argument        callback argument
+     */
+    void onSetPreferredPhySuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int txPhy, int rxPhy, int phyOptions, @Nullable Bundle argument);
+
+    /**
+     * Set preferred phy error callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param status          one of {@link BLEConnection#onPhyRead(BluetoothGatt, int, int, int)} 4th parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
+     * @param argument        callback argument
+     */
+    void onSetPreferredPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+
+    /**
+     * Set preferred phy timeout callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param timeout         timeout(millis)
+     * @param argument        callback argument
+     */
+    void onSetPreferredPhyTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
+
+    /**
+     * Read remote rssi success callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param rssi            {@link android.bluetooth.BluetoothGattCallback#onReadRemoteRssi(BluetoothGatt, int, int)} 2nd argument
+     * @param argument        callback argument
+     */
     void onReadRemoteRssiSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int rssi, @Nullable Bundle argument);
 
     /**

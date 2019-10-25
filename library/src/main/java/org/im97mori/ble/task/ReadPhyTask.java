@@ -38,9 +38,9 @@ public class ReadPhyTask extends AbstractBLETask {
     @NonNull
     public static Message createReadPhySuccessMessage(int txPhy, int rxPhy) {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_READ_PHY_SUCCESS);
         bundle.putInt(KEY_TX_PHY, txPhy);
         bundle.putInt(KEY_RX_PHY, rxPhy);
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_READ_PHY_SUCCESS);
         Message message = new Message();
         message.setData(bundle);
         return message;

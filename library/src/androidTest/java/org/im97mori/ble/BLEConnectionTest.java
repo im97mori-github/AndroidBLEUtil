@@ -1608,6 +1608,186 @@ public class BLEConnectionTest {
     }
 
     @Test
+    public void setPreferredPhySuccessTest_001() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onSetPreferredPhySuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int txPhy, int rxPhy, int phyOptions, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onSetPreferredPhySuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int txPhy, int rxPhy, int phyOptions, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onSetPreferredPhySuccess(getTaskId(), MockBLEConnection.MOCK_DEVICE, 0, 0, 0, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, true);
+    }
+
+    @Test
+    public void setPreferredPhySuccessTest_002() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onSetPreferredPhySuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int txPhy, int rxPhy, int phyOptions, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onSetPreferredPhySuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int txPhy, int rxPhy, int phyOptions, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onSetPreferredPhySuccess(getTaskId(), MockBLEConnection.MOCK_DEVICE, 0, 0, 0, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, false);
+    }
+
+    @Test
+    public void setPreferredPhyFailedTest_001() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onSetPreferredPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onSetPreferredPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onSetPreferredPhyFailed(getTaskId(), MockBLEConnection.MOCK_DEVICE, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, true);
+    }
+
+    @Test
+    public void setPreferredPhyFailedTest_002() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onSetPreferredPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onSetPreferredPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onSetPreferredPhyFailed(getTaskId(), MockBLEConnection.MOCK_DEVICE, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, false);
+    }
+
+    @Test
+    public void setPreferredTimeoutTest_001() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onSetPreferredPhyTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onSetPreferredPhyTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onSetPreferredPhyTimeout(getTaskId(), MockBLEConnection.MOCK_DEVICE, 0, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, true);
+    }
+
+    @Test
+    public void setPreferredTimeoutTest_002() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onSetPreferredPhyTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onSetPreferredPhyTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onSetPreferredPhyTimeout(getTaskId(), MockBLEConnection.MOCK_DEVICE, 0, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, false);
+    }
+
+    @Test
     public void readRemoteRssiSuccessTest_001() {
         BaseBLECallback firstCallback = new BaseBLECallback() {
 

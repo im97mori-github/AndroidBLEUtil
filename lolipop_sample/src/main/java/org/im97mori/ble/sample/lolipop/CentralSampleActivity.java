@@ -49,6 +49,7 @@ import org.im97mori.ble.task.ReadCharacteristicTask;
 import org.im97mori.ble.task.ReadPhyTask;
 import org.im97mori.ble.task.ReadRemoteRssiTask;
 import org.im97mori.ble.task.RequestMtuTask;
+import org.im97mori.ble.task.SetPreferredPhyTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
 import org.im97mori.ble.task.WriteDescriptorTask;
 import org.im97mori.ble_peripheral.characteristic.MockControl;
@@ -363,6 +364,45 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     }
                 }
             }.start();
+        } else if (R.id.set_preferred_phy == item.getItemId()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                mBleConnection.createSetPreferredPhyTask(
+                        BluetoothDevice.PHY_LE_1M_MASK | BluetoothDevice.PHY_LE_2M_MASK | BluetoothDevice.PHY_LE_CODED_MASK
+                        , BluetoothDevice.PHY_LE_1M_MASK | BluetoothDevice.PHY_LE_2M_MASK | BluetoothDevice.PHY_LE_CODED_MASK
+                        , BluetoothDevice.PHY_OPTION_NO_PREFERRED
+                        , SetPreferredPhyTask.TIMEOUT_MILLIS, null, null);
+            }
+        } else if (R.id.set_preferred_phy_sync == item.getItemId()) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        BLEConnection target = mBleConnection;
+                        if (target != null) {
+                            BLESyncConnection.BLEResult result = BLESyncConnection.createSetPreferredPhyTask(target
+                                    , BluetoothDevice.PHY_LE_1M_MASK | BluetoothDevice.PHY_LE_2M_MASK | BluetoothDevice.PHY_LE_CODED_MASK
+                                    , BluetoothDevice.PHY_LE_1M_MASK | BluetoothDevice.PHY_LE_2M_MASK | BluetoothDevice.PHY_LE_CODED_MASK
+                                    , BluetoothDevice.PHY_OPTION_NO_PREFERRED
+                                    , SetPreferredPhyTask.TIMEOUT_MILLIS
+                                    , SetPreferredPhyTask.TIMEOUT_MILLIS
+                                    , null
+                                    , false);
+
+                            if (result == null) {
+                                mBLECallbackSample.onSetPreferredPhyFailed(0, target.getBluetoothDevice(), BLEConstants.ErrorCodes.UNKNOWN, null);
+                            } else {
+                                if (RESULT_SUCCESS == result.getResultCode()) {
+                                    mBLECallbackSample.onSetPreferredPhySuccess(0, target.getBluetoothDevice(), result.getTxPhy(), result.getRxPhy(), result.getPhyOptions(), result.getArgument());
+                                } else if (RESULT_FAILED == result.getResultCode()) {
+                                    mBLECallbackSample.onSetPreferredPhyFailed(0, target.getBluetoothDevice(), result.getStatus(), result.getArgument());
+                                } else if (RESULT_TIMEOUT == result.getResultCode()) {
+                                    mBLECallbackSample.onSetPreferredPhyTimeout(0, target.getBluetoothDevice(), RequestMtuTask.TIMEOUT_MILLIS, result.getArgument());
+                                }
+                            }
+                        }
+                    }
+                }.start();
+            }
         } else if (R.id.read_remote_rssi == item.getItemId()) {
             mBleConnection.createReadRemoteRssiTask(ReadRemoteRssiTask.TIMEOUT_MILLIS, null, null);
         } else if (R.id.read_remote_rssi_sync == item.getItemId()) {
