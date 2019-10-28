@@ -67,6 +67,11 @@ public abstract class AbstractBLETask {
     public static final String KEY_RSSI = "KEY_RSSI";
 
     /**
+     * KEY:BLUETOOTH_DEVICE
+     */
+    public static final String KEY_BLUETOOTH_DEVICE = "KEY_BLUETOOTH_DEVICE";
+
+    /**
      * PROGRESS:INIT
      */
     public static final int PROGRESS_INIT = 0;
@@ -177,14 +182,24 @@ public abstract class AbstractBLETask {
     public static final int PROGRESS_DESCRIPTOR_WRITE_ERROR = PROGRESS_DESCRIPTOR_WRITE_SUCCESS + 1;
 
     /**
-     * PROGRESS:NOTIFICATION
+     * PROGRESS:NOTIFICATION_START
      */
-    public static final int PROGRESS_NOTIFICATION = PROGRESS_DESCRIPTOR_WRITE_ERROR + 1;
+    public static final int PROGRESS_NOTIFICATION_START = PROGRESS_DESCRIPTOR_WRITE_ERROR + 1;
+
+    /**
+     * PROGRESS_NOTIFICATION_SUCCESS
+     */
+    public static final int PROGRESS_NOTIFICATION_SUCCESS = PROGRESS_NOTIFICATION_START + 1;
+
+    /**
+     * PROGRESS:NOTIFICATION_ERROR
+     */
+    public static final int PROGRESS_NOTIFICATION_ERROR = PROGRESS_NOTIFICATION_SUCCESS + 1;
 
     /**
      * PROGRESS:REQUEST_MTU_START
      */
-    public static final int PROGRESS_REQUEST_MTU_START = PROGRESS_NOTIFICATION + 1;
+    public static final int PROGRESS_REQUEST_MTU_START = PROGRESS_NOTIFICATION_ERROR + 1;
 
     /**
      * PROGRESS:REQUEST_MTU_SUCCESS

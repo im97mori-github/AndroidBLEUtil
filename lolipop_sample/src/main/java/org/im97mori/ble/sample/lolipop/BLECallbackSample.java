@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.im97mori.ble_peripheral.BLEServerConnection;
+import org.im97mori.ble_peripheral.characteristic.MockControl;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -280,6 +281,18 @@ public class BLECallbackSample extends BLEServerConnection.DefaultServerSetting 
     }
 
     @Override
+    public synchronized void onDeviceConnected(@NonNull BluetoothDevice device) {
+        callback(device);
+        super.onDeviceConnected(device);
+    }
+
+    @Override
+    public synchronized void onDeviceDisconnected(@NonNull BluetoothDevice device) {
+        callback(device);
+        super.onDeviceDisconnected(device);
+    }
+
+    @Override
     public List<BluetoothGattService> getBluetoothGattServiceList() {
         callback();
         return super.getBluetoothGattServiceList();
@@ -310,6 +323,12 @@ public class BLECallbackSample extends BLEServerConnection.DefaultServerSetting 
     }
 
     @Override
+    public void onNotificationSent(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int status) {
+        callback(device, status);
+        super.onNotificationSent(bluetoothGattServer, device, status);
+    }
+
+    @Override
     public void onNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] value, Bundle argument) {
         if (NOTIFICATABLE_CHARACTERISTIC_UUID.equals(characteristicUUID) || INDICATABLE_CHARACTERISTIC_UUID.equals(characteristicUUID)) {
             callback(serviceUUID, characteristicUUID, new String(value));
@@ -321,14 +340,25 @@ public class BLECallbackSample extends BLEServerConnection.DefaultServerSetting 
 
     @Override
     public void onNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, Bundle argument) {
-        callback(device, characteristicUUID, status);
+        callback(device, serviceUUID, characteristicUUID, status);
         super.onNotificationFailed(taskId, bluetoothGattServer, device, serviceUUID, characteristicUUID, status, argument);
+    }
+
+    @Override
+    public void onNotificationTimeout(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, @Nullable Bundle argument) {
+        callback(device, serviceUUID, characteristicUUID, timeout);
+        super.onNotificationTimeout(taskId, bluetoothGattServer, device, serviceUUID, characteristicUUID, timeout, argument);
     }
 
     @Override
     public void onClientCharacteristicConfigurationUpdated(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] value) {
         callback(device, characteristicUUID, Arrays.toString(value));
         super.onClientCharacteristicConfigurationUpdated(bluetoothGattServer, device, serviceUUID, characteristicUUID, value);
+    }
+
+    @Override
+    public void onMockUpdated(@NonNull BluetoothDevice device, @NonNull MockControl mockControl) {
+        super.onMockUpdated(device, mockControl);
     }
 
 }

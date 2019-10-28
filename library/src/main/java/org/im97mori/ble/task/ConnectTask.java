@@ -56,6 +56,12 @@ public class ConnectTask extends AbstractBLETask {
      */
     private final TaskHandler mTaskHandler;
 
+
+    /**
+     * {@code true}:try 512octed mtu setting, {@code false}:no mtu setting
+     */
+    private final boolean mNeedMtuSetting;
+
     /**
      * timeout(millis)
      */
@@ -65,11 +71,6 @@ public class ConnectTask extends AbstractBLETask {
      * callback argument
      */
     private final Bundle mArgument;
-
-    /**
-     * {@code true}:try 512octed mtu setting, {@code false}:no mtu setting
-     */
-    private final boolean mNeedMtuSetting;
 
     /**
      * task target {@link BluetoothGatt} instance

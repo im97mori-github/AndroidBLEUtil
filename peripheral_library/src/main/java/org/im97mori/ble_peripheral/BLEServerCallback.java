@@ -86,6 +86,15 @@ public interface BLEServerCallback {
     boolean onDescriptorWriteRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattDescriptor descriptor, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value);
 
     /**
+     * Notification complete callback
+     *
+     * @param bluetoothGattServer {@link BluetoothGattServer} instance
+     * @param device              {@link BluetoothGattServerCallback#onNotificationSent(BluetoothDevice, int)} 1st argument
+     * @param status              {@link BluetoothGattServerCallback#onNotificationSent(BluetoothDevice, int)} 2nd argument
+     */
+    void onNotificationSent(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int status);
+
+    /**
      * Notification(Indication) success callback
      *
      * @param taskId              task id
@@ -110,6 +119,19 @@ public interface BLEServerCallback {
      * @param argument            callback argument
      */
     void onNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, @Nullable Bundle argument);
+
+    /**
+     * Notification(Indication) timeout callback
+     *
+     * @param taskId              task id
+     * @param bluetoothGattServer {@link BluetoothGattServer} instance
+     * @param device              BLE device
+     * @param serviceUUID         service {@link UUID}
+     * @param characteristicUUID  characteristic {@link UUID}
+     * @param timeout             timeout(millis)
+     * @param argument            callback argument
+     */
+    void onNotificationTimeout(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, @Nullable Bundle argument);
 
     /**
      * Client Characteristic Configuration (Descriptor UUID: 0x2902) updated callback

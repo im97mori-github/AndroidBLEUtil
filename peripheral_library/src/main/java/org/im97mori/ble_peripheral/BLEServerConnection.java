@@ -388,16 +388,38 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID chacteristicUUID, @NonNull byte[] value, @Nullable Bundle argument) {
-            createNotificationTask(bluetoothGattServer, device, serviceUUID, chacteristicUUID);
+        public void onNotificationSent(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int status) {
+            if (BluetoothGatt.GATT_SUCCESS == status) {
+                mTaskHandler.sendProcessingMessage(NotificationTask.createNotificationSentSuccessMessage(device));
+            } else {
+                mTaskHandler.sendProcessingMessage(NotificationTask.createNotificationSentErrorMessage(device, status));
+            }
         }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        public void onNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID chacteristicUUID, int status, @Nullable Bundle argument) {
-            createNotificationTask(bluetoothGattServer, device, serviceUUID, chacteristicUUID);
+        public void onNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] value, @Nullable Bundle argument) {
+            createNotificationTask(bluetoothGattServer, device, serviceUUID, characteristicUUID);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public void onNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, @Nullable Bundle argument) {
+            if (ErrorCodes.CANCEL != status) {
+                createNotificationTask(bluetoothGattServer, device, serviceUUID, characteristicUUID);
+            }
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public void onNotificationTimeout(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, @Nullable Bundle argument) {
+            createNotificationTask(bluetoothGattServer, device, serviceUUID, characteristicUUID);
         }
 
         /**
@@ -526,6 +548,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
                             this
                             , bluetoothGattServer
                             , device
+                            , mTaskHandler
                             , serviceUUID
                             , characteristicUUID
                             , new ByteArrayInterface() {
@@ -537,6 +560,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
                         }
                     }
                             , isIndication
+                            , NotificationTask.TIMEOUT_MILLIS
                             , null);
                     mTaskHandler.addTaskDelayed(task, DateUtils.SECOND_IN_MILLIS);
                 }
@@ -961,6 +985,14 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
         if (responseNeeded && !result) {
             mBluetoothGattServer.sendResponse(device, requestId, BLEConstants.ErrorCodes.REQUEST_NOT_SUPPORTED, offset, null);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onNotificationSent(BluetoothDevice device, int status) {
+        mBLEServerCallback.onNotificationSent(mBluetoothGattServer, device, status);
     }
 
     /**
