@@ -62,28 +62,24 @@ public interface BLEServerCallback {
     List<BluetoothGattService> getBluetoothGattServiceList();
 
     /**
-     * @return {@code true}:{@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} success or dont need response, {@code false}:need call {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} but not called
      * @see BluetoothGattServerCallback#onCharacteristicReadRequest(BluetoothDevice, int, int, BluetoothGattCharacteristic)
      */
-    boolean onCharacteristicReadRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic characteristic);
+    void onCharacteristicReadRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic characteristic);
 
     /**
-     * @return {@code true}:{@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} success or dont need response, {@code false}:need call {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} but not called
      * @see BluetoothGattServerCallback#onCharacteristicWriteRequest(BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[])
      */
-    boolean onCharacteristicWriteRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic characteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value);
+    void onCharacteristicWriteRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic characteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value);
 
     /**
-     * @return {@code true}:{@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} success or dont need response, {@code false}:need call {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} but not called
      * @see BluetoothGattServerCallback#onDescriptorReadRequest(BluetoothDevice, int, int, BluetoothGattDescriptor)
      */
-    boolean onDescriptorReadRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattDescriptor descriptor);
+    void onDescriptorReadRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattDescriptor descriptor);
 
     /**
-     * @return {@code true}:{@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} success or dont need response, {@code false}:need call {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} but not called
      * @see BluetoothGattServerCallback#onDescriptorWriteRequest(BluetoothDevice, int, BluetoothGattDescriptor, boolean, boolean, int, byte[])
      */
-    boolean onDescriptorWriteRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattDescriptor descriptor, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value);
+    void onDescriptorWriteRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattDescriptor descriptor, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value);
 
     /**
      * Notification complete callback

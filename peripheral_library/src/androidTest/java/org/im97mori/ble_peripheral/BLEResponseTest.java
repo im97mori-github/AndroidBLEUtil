@@ -248,7 +248,7 @@ public class BLEResponseTest {
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
         assertEquals(READABLE_CHARACTERISTIC_UUID_WITH_ERROR, bleResult.getCharacteristicUUID());
-        assertEquals(BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED, bleResult.getStatus());
+        assertEquals(BLEConstants.ErrorCodes.APPLICATION_ERROR_9F, bleResult.getStatus());
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
         mNeedWait = false;
@@ -471,7 +471,7 @@ public class BLEResponseTest {
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
         assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_ERROR, bleResult.getCharacteristicUUID());
-        assertEquals(BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED, bleResult.getStatus());
+        assertEquals(BLEConstants.ErrorCodes.APPLICATION_ERROR_9F, bleResult.getStatus());
         assertNull(bleResult.getArgument());
         mNeedWait = false;
     }
@@ -759,7 +759,7 @@ public class BLEResponseTest {
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
         assertEquals(READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
         assertEquals(READABLE_DESCRIPTOR_UUID_WITH_ERROR, bleResult.getDescriptorUUID());
-        assertEquals(BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED, bleResult.getStatus());
+        assertEquals(BLEConstants.ErrorCodes.APPLICATION_ERROR_9F, bleResult.getStatus());
         assertNull(bleResult.getArgument());
         mNeedWait = false;
     }
@@ -1091,7 +1091,7 @@ public class BLEResponseTest {
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
         assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
         assertEquals(WRITABLE_DESCRIPTOR_UUID_WITH_ERROR, bleResult.getDescriptorUUID());
-        assertEquals(BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED, bleResult.getStatus());
+        assertEquals(BLEConstants.ErrorCodes.APPLICATION_ERROR_9F, bleResult.getStatus());
         assertNull(bleResult.getArgument());
         mNeedWait = false;
     }
@@ -1678,7 +1678,7 @@ public class BLEResponseTest {
                 , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
-        assertEquals(BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED, bleResult.getStatus());
+        assertEquals(BLEConstants.ErrorCodes.APPLICATION_ERROR_9F, bleResult.getStatus());
         mNeedWait = false;
     }
 
@@ -1840,7 +1840,7 @@ public class BLEResponseTest {
                 , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
-        assertEquals(BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED, bleResult.getStatus());
+        assertEquals(BLEConstants.ErrorCodes.APPLICATION_ERROR_9F, bleResult.getStatus());
         mNeedWait = false;
     }
 

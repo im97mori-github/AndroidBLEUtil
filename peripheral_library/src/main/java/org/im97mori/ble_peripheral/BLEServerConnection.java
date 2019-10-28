@@ -28,7 +28,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
-import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLEConstants.ErrorCodes;
 import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.TaskHandler;
@@ -50,7 +49,7 @@ import java.util.UUID;
 
 import static android.bluetooth.le.AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY;
 import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR;
-import static org.im97mori.ble.BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED;
+import static org.im97mori.ble.BLEConstants.ErrorCodes.APPLICATION_ERROR_9F;
 
 /**
  * BLE Connection(peripheral role)
@@ -267,10 +266,9 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
          * {@inheritDoc}
          */
         @Override
-        public boolean onCharacteristicReadRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic characteristic) {
-            boolean result = false;
+        public void onCharacteristicReadRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic characteristic) {
             if (READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT.equals(characteristic.getUuid())) {
-                result = bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, MESSAGE_SUCCESS.getBytes());
+                bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, MESSAGE_SUCCESS.getBytes());
             } else if (READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S.equals(characteristic.getUuid())) {
                 long end = SystemClock.elapsedRealtime() + DateUtils.SECOND_IN_MILLIS * 10;
                 do {
@@ -280,22 +278,20 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
                         BLEPeripheralLogUtils.stackLog(e);
                     }
                 } while (end > SystemClock.elapsedRealtime());
-                result = bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, MESSAGE_SUCCESS.getBytes());
+                bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, MESSAGE_SUCCESS.getBytes());
             } else if (READABLE_CHARACTERISTIC_UUID_WITH_ERROR.equals(characteristic.getUuid())) {
-                result = bluetoothGattServer.sendResponse(device, requestId, VALUE_NOT_ALLOWED, offset, null);
+                bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
             }
-            return result;
         }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        public boolean onCharacteristicWriteRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic characteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value) {
-            boolean result = false;
+        public void onCharacteristicWriteRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic characteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value) {
             if (WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT.equals(characteristic.getUuid())) {
                 if (responseNeeded) {
-                    result = bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, null);
+                    bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, null);
                 }
             } else if (WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S.equals(characteristic.getUuid())) {
                 long end = SystemClock.elapsedRealtime() + DateUtils.SECOND_IN_MILLIS * 10;
@@ -307,24 +303,22 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
                     }
                 } while (end > SystemClock.elapsedRealtime());
                 if (responseNeeded) {
-                    result = bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, null);
+                    bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, null);
                 }
             } else if (WRITABLE_CHARACTERISTIC_UUID_WITH_ERROR.equals(characteristic.getUuid())) {
                 if (responseNeeded) {
-                    result = bluetoothGattServer.sendResponse(device, requestId, VALUE_NOT_ALLOWED, offset, null);
+                    bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
                 }
             }
-            return result;
         }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        public boolean onDescriptorReadRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattDescriptor descriptor) {
-            boolean result = false;
+        public void onDescriptorReadRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattDescriptor descriptor) {
             if (READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT.equals(descriptor.getUuid())) {
-                result = bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, MESSAGE_SUCCESS.getBytes());
+                bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, MESSAGE_SUCCESS.getBytes());
             } else if (READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_WAIT_10S.equals(descriptor.getUuid())) {
                 long end = SystemClock.elapsedRealtime() + DateUtils.SECOND_IN_MILLIS * 10;
                 do {
@@ -334,9 +328,9 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
                         BLEPeripheralLogUtils.stackLog(e);
                     }
                 } while (end > SystemClock.elapsedRealtime());
-                result = bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, MESSAGE_SUCCESS.getBytes());
+                bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, MESSAGE_SUCCESS.getBytes());
             } else if (READABLE_DESCRIPTOR_UUID_WITH_ERROR.equals(descriptor.getUuid())) {
-                result = bluetoothGattServer.sendResponse(device, requestId, VALUE_NOT_ALLOWED, offset, null);
+                bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
             } else if (CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR.equals(descriptor.getUuid())) {
                 byte[] values;
                 Pair<BluetoothDevice, UUID> pair = Pair.create(device, descriptor.getCharacteristic().getUuid());
@@ -345,20 +339,18 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
                 } else {
                     values = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
                 }
-                result = bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, values);
+                bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, values);
             }
-            return result;
         }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        public boolean onDescriptorWriteRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattDescriptor descriptor, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value) {
-            boolean result = false;
+        public void onDescriptorWriteRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattDescriptor descriptor, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value) {
             if (WRITABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT.equals(descriptor.getUuid())) {
                 if (responseNeeded) {
-                    result = bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, null);
+                    bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, null);
                 }
             } else if (WRITABLE_DESCRIPTOR_UUID_WITH_SUCCESS_WAIT_10S.equals(descriptor.getUuid())) {
                 long end = SystemClock.elapsedRealtime() + DateUtils.SECOND_IN_MILLIS * 10;
@@ -370,18 +362,17 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
                     }
                 } while (end > SystemClock.elapsedRealtime());
                 if (responseNeeded) {
-                    result = bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, null);
+                    bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, null);
                 }
             } else if (WRITABLE_DESCRIPTOR_UUID_WITH_ERROR.equals(descriptor.getUuid())) {
                 if (responseNeeded) {
-                    result = bluetoothGattServer.sendResponse(device, requestId, VALUE_NOT_ALLOWED, offset, null);
+                    bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
                 }
             } else if (CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR.equals(descriptor.getUuid())) {
                 if (responseNeeded) {
-                    result = bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, null);
+                    bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, null);
                 }
             }
-            return result;
         }
 
         /**
@@ -842,21 +833,13 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
      */
     @Override
     public synchronized void onCharacteristicReadRequest(@NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic characteristic) {
-        boolean result = false;
-
         MockControl mockControl = findMockControl(device, characteristic.getService().getUuid(), characteristic.getUuid(), MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID, MockControl.TARGET_TYPE_CHARACTERISTIC);
         if (mockControl == null) {
             if (mBLEServerCallback != null) {
-                result = mBLEServerCallback.onCharacteristicReadRequest(mBluetoothGattServer, device, requestId, offset, characteristic);
+                mBLEServerCallback.onCharacteristicReadRequest(mBluetoothGattServer, device, requestId, offset, characteristic);
             }
         } else {
-            result = mBluetoothGattServer.sendResponse(device, requestId, mockControl.getStatus(), offset, mockControl.getValue());
-        }
-
-        // fallback response
-        // if you dont response, cause 133 error
-        if (!result) {
-            mBluetoothGattServer.sendResponse(device, requestId, BLEConstants.ErrorCodes.REQUEST_NOT_SUPPORTED, offset, null);
+            mBluetoothGattServer.sendResponse(device, requestId, mockControl.getStatus(), offset, mockControl.getValue());
         }
     }
 
@@ -865,7 +848,6 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
      */
     @Override
     public synchronized void onCharacteristicWriteRequest(@NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic characteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value) {
-        boolean result = false;
         if (MOCK_CONTROL_CHARACTERISTIC_UUID.equals(characteristic.getUuid())) {
             MockControl mockControl = null;
             try {
@@ -876,10 +858,10 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
 
             int status;
             if (mockControl == null) {
-                status = BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED;
+                status = APPLICATION_ERROR_9F;
             } else {
                 if (MOCK_CONTROL_SERVICE_UUID.equals(mockControl.getServiceUUID()) && MOCK_CONTROL_CHARACTERISTIC_UUID.equals(mockControl.getCharacteristicUUID())) {
-                    status = BLEConstants.ErrorCodes.VALUE_NOT_ALLOWED;
+                    status = APPLICATION_ERROR_9F;
                 } else {
                     status = BluetoothGatt.GATT_SUCCESS;
 
@@ -921,17 +903,11 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
             MockControl mockControl = findMockControl(device, characteristic.getService().getUuid(), characteristic.getUuid(), MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID, MockControl.TARGET_TYPE_CHARACTERISTIC);
             if (mockControl == null) {
                 if (mBLEServerCallback != null) {
-                    result = mBLEServerCallback.onCharacteristicWriteRequest(mBluetoothGattServer, device, requestId, characteristic, preparedWrite, responseNeeded, offset, value);
+                    mBLEServerCallback.onCharacteristicWriteRequest(mBluetoothGattServer, device, requestId, characteristic, preparedWrite, responseNeeded, offset, value);
                 }
             } else {
-                result = mBluetoothGattServer.sendResponse(device, requestId, mockControl.getStatus(), offset, mockControl.getValue());
+                mBluetoothGattServer.sendResponse(device, requestId, mockControl.getStatus(), offset, mockControl.getValue());
             }
-        }
-
-        // fallback response
-        // if you dont response, cause 133 error
-        if (responseNeeded && !result) {
-            mBluetoothGattServer.sendResponse(device, requestId, BLEConstants.ErrorCodes.REQUEST_NOT_SUPPORTED, offset, null);
         }
     }
 
@@ -940,21 +916,13 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
      */
     @Override
     public synchronized void onDescriptorReadRequest(@NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattDescriptor descriptor) {
-        boolean result = false;
-
         MockControl mockControl = findMockControl(device, descriptor.getCharacteristic().getService().getUuid(), descriptor.getCharacteristic().getUuid(), descriptor.getUuid(), MockControl.TARGET_TYPE_DESCRIPTOR);
         if (mockControl == null) {
             if (mBLEServerCallback != null) {
-                result = mBLEServerCallback.onDescriptorReadRequest(mBluetoothGattServer, device, requestId, offset, descriptor);
+                mBLEServerCallback.onDescriptorReadRequest(mBluetoothGattServer, device, requestId, offset, descriptor);
             }
         } else {
-            result = mBluetoothGattServer.sendResponse(device, requestId, mockControl.getStatus(), offset, mockControl.getValue());
-        }
-
-        // fallback response
-        // if you dont response, cause 133 error
-        if (!result) {
-            mBluetoothGattServer.sendResponse(device, requestId, BLEConstants.ErrorCodes.REQUEST_NOT_SUPPORTED, offset, null);
+            mBluetoothGattServer.sendResponse(device, requestId, mockControl.getStatus(), offset, mockControl.getValue());
         }
     }
 
@@ -963,15 +931,13 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
      */
     @Override
     public synchronized void onDescriptorWriteRequest(@NonNull BluetoothDevice device, int requestId, BluetoothGattDescriptor descriptor, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value) {
-        boolean result = false;
-
         MockControl mockControl = findMockControl(device, descriptor.getCharacteristic().getService().getUuid(), descriptor.getCharacteristic().getUuid(), descriptor.getUuid(), MockControl.TARGET_TYPE_DESCRIPTOR);
         if (mockControl == null) {
             if (mBLEServerCallback != null) {
-                result = mBLEServerCallback.onDescriptorWriteRequest(mBluetoothGattServer, device, requestId, descriptor, preparedWrite, responseNeeded, offset, value);
+                mBLEServerCallback.onDescriptorWriteRequest(mBluetoothGattServer, device, requestId, descriptor, preparedWrite, responseNeeded, offset, value);
             }
         } else {
-            result = mBluetoothGattServer.sendResponse(device, requestId, mockControl.getStatus(), offset, mockControl.getValue());
+            mBluetoothGattServer.sendResponse(device, requestId, mockControl.getStatus(), offset, mockControl.getValue());
         }
 
         // update cccd status
@@ -979,19 +945,13 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
             mCccdMap.put(Pair.create(device, descriptor.getCharacteristic().getUuid()), value);
             mBLEServerCallback.onClientCharacteristicConfigurationUpdated(mBluetoothGattServer, device, descriptor.getCharacteristic().getService().getUuid(), descriptor.getCharacteristic().getUuid(), value);
         }
-
-        // fallback response
-        // if you dont response, cause 133 error
-        if (responseNeeded && !result) {
-            mBluetoothGattServer.sendResponse(device, requestId, BLEConstants.ErrorCodes.REQUEST_NOT_SUPPORTED, offset, null);
-        }
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void onNotificationSent(BluetoothDevice device, int status) {
+    public synchronized void onNotificationSent(BluetoothDevice device, int status) {
         mBLEServerCallback.onNotificationSent(mBluetoothGattServer, device, status);
     }
 
