@@ -123,6 +123,7 @@ public class WriteDescriptorTaskTest {
             if (looper != null) {
                 looper.quit();
             }
+            mockBleConnection.quit();
         }
     }
 

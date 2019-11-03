@@ -85,7 +85,11 @@ public class ConnectTask extends AbstractBLETask {
      * @param timeout        timeout(millis)
      * @param argument       callback argument
      */
-    public ConnectTask(@NonNull BLEConnection bleConnection, @NonNull TaskHandler taskHandler, boolean needMtuSetting, long timeout, @NonNull Bundle argument) {
+    public ConnectTask(@NonNull BLEConnection bleConnection
+            , @NonNull TaskHandler taskHandler
+            , boolean needMtuSetting
+            , long timeout
+            , @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
         mTaskHandler = taskHandler;
         mTimeout = timeout;
@@ -159,8 +163,7 @@ public class ConnectTask extends AbstractBLETask {
                         // connecting
 
                         // set timeout message
-                        Message timeoutMessage = createTimeoutMessage(this);
-                        mTaskHandler.sendProcessingMessage(timeoutMessage, mTimeout);
+                        mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                         mCurrentProgress = nextProgress;
                     }
                 }

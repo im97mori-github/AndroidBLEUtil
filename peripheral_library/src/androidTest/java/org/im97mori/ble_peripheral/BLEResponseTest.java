@@ -18,8 +18,10 @@ import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLESyncConnection;
 import org.im97mori.ble.ByteArrayInterface;
+import org.im97mori.ble.task.AbortReliableWriteTask;
 import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.DiscoverServiceTask;
+import org.im97mori.ble.task.ExecuteReliableWriteTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
 import org.im97mori.ble.task.ReadDescriptorTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
@@ -2065,4 +2067,220 @@ public class BLEResponseTest {
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         mNeedWait = false;
     }
+
+    @Test
+    public void test_createBeginReliableWriteTask001() {
+        assertNotNull(BLE_SYNC_CONNECTION);
+
+        BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createBeginReliableWriteTask(
+                DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertNull(bleResult.getArgument());
+        mNeedWait = false;
+    }
+
+    @Test
+    public void test_createBeginReliableWriteTask002() {
+        assertNotNull(BLE_SYNC_CONNECTION);
+
+        BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createBeginReliableWriteTask(
+                0
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_TIMEOUT, bleResult.getResultCode());
+        assertNull(bleResult.getArgument());
+        mNeedWait = false;
+    }
+
+    @Test
+    public void test_createExecuteReliableWriteTask001() {
+        assertNotNull(BLE_SYNC_CONNECTION);
+
+        mUntil = WriteCharacteristicTask.TIMEOUT_MILLIS + ExecuteReliableWriteTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
+        final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+        BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createBeginReliableWriteTask(
+                DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertNull(bleResult.getArgument());
+
+        bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
+                DEFAULT_SERVICE_UUID
+                , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                , new ByteArrayInterface() {
+                    @Override
+                    @NonNull
+                    public byte[] getBytes() {
+                        return data;
+                    }
+                }
+                , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                , WriteCharacteristicTask.TIMEOUT_MILLIS
+                , DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
+        assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
+        assertArrayEquals(data, bleResult.getValues());
+        assertNull(bleResult.getArgument());
+
+        bleResult = BLE_SYNC_CONNECTION.createExecuteReliableWriteTask(
+                ExecuteReliableWriteTask.TIMEOUT_MILLIS
+                , DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertNull(bleResult.getArgument());
+        mNeedWait = false;
+    }
+
+    @Test
+    public void test_createExecuteReliableWriteTask002() {
+        assertNotNull(BLE_SYNC_CONNECTION);
+
+        mUntil = WriteCharacteristicTask.TIMEOUT_MILLIS + ExecuteReliableWriteTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
+        final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+        BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createBeginReliableWriteTask(
+                DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertNull(bleResult.getArgument());
+
+        bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
+                DEFAULT_SERVICE_UUID
+                , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                , new ByteArrayInterface() {
+                    @Override
+                    @NonNull
+                    public byte[] getBytes() {
+                        return data;
+                    }
+                }
+                , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                , WriteCharacteristicTask.TIMEOUT_MILLIS
+                , DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
+        assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
+        assertArrayEquals(data, bleResult.getValues());
+        assertNull(bleResult.getArgument());
+
+        bleResult = BLE_SYNC_CONNECTION.createExecuteReliableWriteTask(
+                0
+                , 0
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_TIMEOUT, bleResult.getResultCode());
+        assertNull(bleResult.getArgument());
+    }
+
+    @Test
+    public void test_createAbortReliableWriteTask001() {
+        assertNotNull(BLE_SYNC_CONNECTION);
+
+        mUntil = WriteCharacteristicTask.TIMEOUT_MILLIS + AbortReliableWriteTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
+        final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+        BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createBeginReliableWriteTask(
+                DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertNull(bleResult.getArgument());
+
+        bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
+                DEFAULT_SERVICE_UUID
+                , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                , new ByteArrayInterface() {
+                    @Override
+                    @NonNull
+                    public byte[] getBytes() {
+                        return data;
+                    }
+                }
+                , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                , WriteCharacteristicTask.TIMEOUT_MILLIS
+                , DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
+        assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
+        assertArrayEquals(data, bleResult.getValues());
+        assertNull(bleResult.getArgument());
+
+        bleResult = BLE_SYNC_CONNECTION.createAbortReliableWriteTask(
+                AbortReliableWriteTask.TIMEOUT_MILLIS
+                , DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertNull(bleResult.getArgument());
+        mNeedWait = false;
+    }
+
+    @Test
+    public void test_createAbortReliableWriteTask002() {
+        assertNotNull(BLE_SYNC_CONNECTION);
+
+        mUntil = WriteCharacteristicTask.TIMEOUT_MILLIS + AbortReliableWriteTask.TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
+        final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+        BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createBeginReliableWriteTask(
+                DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertNull(bleResult.getArgument());
+
+        bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
+                DEFAULT_SERVICE_UUID
+                , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                , new ByteArrayInterface() {
+                    @Override
+                    @NonNull
+                    public byte[] getBytes() {
+                        return data;
+                    }
+                }
+                , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                , WriteCharacteristicTask.TIMEOUT_MILLIS
+                , DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
+        assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
+        assertArrayEquals(data, bleResult.getValues());
+        assertNull(bleResult.getArgument());
+
+        bleResult = BLE_SYNC_CONNECTION.createAbortReliableWriteTask(
+                0
+                , 0
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_TIMEOUT, bleResult.getResultCode());
+        assertNull(bleResult.getServiceList());
+        assertNull(bleResult.getArgument());
+    }
+
 }

@@ -269,6 +269,46 @@ public class BLECallbackSample extends BLEServerConnection.DefaultServerSetting 
     }
 
     @Override
+    public void onBeginReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+        callback(argument);
+    }
+
+    @Override
+    public void onBeginReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+        callback(status, argument);
+    }
+
+    @Override
+    public void onExecuteReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+        callback(argument);
+    }
+
+    @Override
+    public void onExecuteReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+        callback(status, argument);
+    }
+
+    @Override
+    public void onExecuteReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+        callback(timeout, argument);
+    }
+
+    @Override
+    public void onAbortReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+        callback(argument);
+    }
+
+    @Override
+    public void onAbortReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+        callback(status, argument);
+    }
+
+    @Override
+    public void onAbortReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+        callback(timeout, argument);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
         super.onServerStarted();
@@ -306,7 +346,7 @@ public class BLECallbackSample extends BLEServerConnection.DefaultServerSetting 
 
     @Override
     public void onCharacteristicWriteRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic characteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value) {
-        callback(device, characteristic.getUuid());
+        callback(device, characteristic.getUuid(), preparedWrite, responseNeeded);
         super.onCharacteristicWriteRequest(bluetoothGattServer, device, requestId, characteristic, preparedWrite, responseNeeded, offset, value);
     }
 
@@ -318,7 +358,7 @@ public class BLECallbackSample extends BLEServerConnection.DefaultServerSetting 
 
     @Override
     public void onDescriptorWriteRequest(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattDescriptor descriptor, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value) {
-        callback(device, descriptor.getUuid());
+        callback(device, descriptor.getUuid(), preparedWrite, responseNeeded);
         super.onDescriptorWriteRequest(bluetoothGattServer, device, requestId, descriptor, preparedWrite, responseNeeded, offset, value);
     }
 
@@ -358,7 +398,14 @@ public class BLECallbackSample extends BLEServerConnection.DefaultServerSetting 
 
     @Override
     public void onMockUpdated(@NonNull BluetoothDevice device, @NonNull MockControl mockControl) {
+        callback(device, mockControl.getServiceUUID(), mockControl.getCharacteristicUUID(), mockControl.getDescriptorUUID());
         super.onMockUpdated(device, mockControl);
+    }
+
+    @Override
+    public void onExecuteWrite(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, boolean execute) {
+        callback(device, execute);
+        super.onExecuteWrite(bluetoothGattServer, device, requestId, execute);
     }
 
 }

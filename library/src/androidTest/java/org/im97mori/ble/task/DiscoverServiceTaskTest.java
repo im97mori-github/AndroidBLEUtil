@@ -115,6 +115,7 @@ public class DiscoverServiceTaskTest {
             if (looper != null) {
                 looper.quit();
             }
+            mockBleConnection.quit();
         }
     }
 }

@@ -64,7 +64,9 @@ public class ShortenedLocalName extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public ShortenedLocalName(@NonNull byte[] data, int offset, int length) {
+    public ShortenedLocalName(@NonNull byte[] data
+            , int offset
+            , int length) {
         super(length);
         mShortenedLocalName = new String(data, offset + 2, length - 1);
     }

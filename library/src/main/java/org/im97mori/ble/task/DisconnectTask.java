@@ -46,7 +46,10 @@ public class DisconnectTask extends AbstractBLETask {
      * @param status        {@link android.bluetooth.BluetoothGattCallback#onConnectionStateChange(BluetoothGatt, int, int)} 2nd parameter or {@link ErrorCodes#UNKNOWN}
      * @param argument      callback argument
      */
-    public DisconnectTask(@NonNull BLEConnection bleConnection, @NonNull BluetoothGatt bluetoothGatt, int status, @NonNull Bundle argument) {
+    public DisconnectTask(@NonNull BLEConnection bleConnection
+            , @NonNull BluetoothGatt bluetoothGatt
+            , int status
+            , @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
         mStatus = status;

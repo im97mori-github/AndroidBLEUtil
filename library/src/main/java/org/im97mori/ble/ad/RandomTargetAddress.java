@@ -68,7 +68,9 @@ public class RandomTargetAddress extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public RandomTargetAddress(@NonNull byte[] data, int offset, int length) {
+    public RandomTargetAddress(@NonNull byte[] data
+            , int offset
+            , int length) {
         super(length);
 
         List<byte[]> addressList = new ArrayList<>();

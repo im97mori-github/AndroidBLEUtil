@@ -40,7 +40,7 @@ public class RequestMtuTaskTest {
     @Test
     public void test_createServiceDiscoverSuccessMessage001() {
         int mtu = new Random().nextInt();
-        Message message = RequestMtuTask.createRequestMtuSuccess(mtu);
+        Message message = RequestMtuTask.createRequestMtuSuccessMessage(mtu);
 
         assertNotNull(message);
         Bundle bundle = message.getData();

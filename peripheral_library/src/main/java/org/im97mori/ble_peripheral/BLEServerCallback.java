@@ -148,4 +148,9 @@ public interface BLEServerCallback {
      */
     void onMockUpdated(@NonNull BluetoothDevice device, @NonNull MockControl mockControl);
 
+    /**
+     * @see BluetoothGattServerCallback#onExecuteWrite(BluetoothDevice, int, boolean)
+     */
+    void onExecuteWrite(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, boolean execute);
+
 }

@@ -22,7 +22,7 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
 import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 
 /**
- * Set characteristic notification task
+ * Write descriptor task
  * <p>
  * for central role
  */
@@ -30,7 +30,7 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 public class WriteDescriptorTask extends AbstractBLETask {
 
     /**
-     * Default timeout(millis) for write:10sec
+     * Default timeout(millis) for write descriptor:10sec
      */
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 10;
 
@@ -121,19 +121,27 @@ public class WriteDescriptorTask extends AbstractBLETask {
     /**
      * callback argument
      */
-    private final Bundle mArguemnt;
+    private final Bundle mArgumemnt;
 
     /**
      * @param bleConnection      task target {@link BLEConnection} instance
-     * @param bluetoothGatt      task target {@link TaskHandler} instance
-     * @param taskHandler        task target {@link BluetoothGatt} instance
+     * @param bluetoothGatt      task target {@link BluetoothGatt} instance
+     * @param taskHandler        task target {@link TaskHandler} instance
      * @param serviceUUID        task target service {@link UUID}
      * @param characteristicUUID task target characteristic {@link UUID}
      * @param byteArrayInterface task target data class
      * @param timeout            timeout(millis)
      * @param argument           callback argument
      */
-    public WriteDescriptorTask(@NonNull BLEConnection bleConnection, @NonNull BluetoothGatt bluetoothGatt, @NonNull TaskHandler taskHandler, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @NonNull Bundle argument) {
+    public WriteDescriptorTask(@NonNull BLEConnection bleConnection
+            , @NonNull BluetoothGatt bluetoothGatt
+            , @NonNull TaskHandler taskHandler
+            , @NonNull UUID serviceUUID
+            , @NonNull UUID characteristicUUID
+            , @NonNull UUID descriptorUUID
+            , @NonNull ByteArrayInterface byteArrayInterface
+            , long timeout
+            , @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
         mTaskHandler = taskHandler;
@@ -142,7 +150,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
         mDescriptorUUID = descriptorUUID;
         mByteArrayInterface = byteArrayInterface;
         mTimeout = timeout;
-        mArguemnt = argument;
+        mArgumemnt = argument;
     }
 
     /**
@@ -175,10 +183,10 @@ public class WriteDescriptorTask extends AbstractBLETask {
 
         // timeout
         if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
-            mBLEConnection.getBLECallback().onDescriptorWriteTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, mTimeout, mArguemnt);
+            mBLEConnection.getBLECallback().onDescriptorWriteTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, mTimeout, mArgumemnt);
             mCurrentProgress = PROGRESS_TIMEOUT;
         } else if (PROGRESS_INIT == mCurrentProgress) {
-            // current:init, next:write start
+            // current:init, next:write descriptor start
             if (message.obj == this && PROGRESS_DESCRIPTOR_WRITE_START == nextProgress) {
 
                 BluetoothGattDescriptor bluetoothGattDescriptor = null;
@@ -209,27 +217,27 @@ public class WriteDescriptorTask extends AbstractBLETask {
                 } else {
                     if (bluetoothGattDescriptor == null) {
                         nextProgress = PROGRESS_FINISHED;
-                        mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, UNKNOWN, mArguemnt);
+                        mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, UNKNOWN, mArgumemnt);
                     } else {
                         nextProgress = PROGRESS_BUSY;
-                        mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, BUSY, mArguemnt);
+                        mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, BUSY, mArgumemnt);
                     }
                 }
                 mCurrentProgress = nextProgress;
             }
         } else if (PROGRESS_DESCRIPTOR_WRITE_START == mCurrentProgress) {
             if (mServiceUUID.equals(serviceUUID) && mCharacteristicUUID.equals(characteristicUUID) || mDescriptorUUID.equals(descriptorUUID)) {
-                // current:write start, next:write success
+                // current:write descriptor start, next:write descriptor success
                 if (PROGRESS_DESCRIPTOR_WRITE_SUCCESS == nextProgress) {
                     byte[] value = bundle.getByteArray(KEY_VALUES);
                     if (value == null) {
-                        mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, UNKNOWN, mArguemnt);
+                        mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, UNKNOWN, mArgumemnt);
                     } else {
-                        mBLEConnection.getBLECallback().onDescriptorWriteSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, value, mArguemnt);
+                        mBLEConnection.getBLECallback().onDescriptorWriteSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, value, mArgumemnt);
                     }
                 } else if (PROGRESS_DESCRIPTOR_WRITE_ERROR == nextProgress) {
-                    // current:write start, next:write error
-                    mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, bundle.getInt(KEY_STATUS), mArguemnt);
+                    // current:write descriptor start, next:write descriptor error
+                    mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, bundle.getInt(KEY_STATUS), mArgumemnt);
                 }
                 mCurrentProgress = PROGRESS_FINISHED;
                 // remove timeout message
@@ -255,7 +263,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
     public void cancel() {
         mTaskHandler.removeCallbacksAndMessages(this);
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, CANCEL, mArguemnt);
+        mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mDescriptorUUID, CANCEL, mArgumemnt);
     }
 
 }

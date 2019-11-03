@@ -64,7 +64,9 @@ public class TxPowerLevel extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public TxPowerLevel(@NonNull byte[] data, int offset, int length) {
+    public TxPowerLevel(@NonNull byte[] data
+            , int offset
+            , int length) {
         super(length);
 
         mTxPowerLevel = data[offset + 2];

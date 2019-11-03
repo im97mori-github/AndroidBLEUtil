@@ -892,7 +892,9 @@ public class AdvertisingDataParser {
      * @return {@link AdvertisingDataParseResult}
      */
     @NonNull
-    public AdvertisingDataParseResult parse(@NonNull byte[] data, int offset, int totalLength) {
+    public AdvertisingDataParseResult parse(@NonNull byte[] data
+            , int offset
+            , int totalLength) {
         List<AbstractAdvertisingData> resultList = new ArrayList<>();
         for (int i = offset; i < offset + totalLength; i++) {
             int dataLength = data[i];

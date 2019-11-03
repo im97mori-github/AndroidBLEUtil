@@ -68,7 +68,9 @@ public class PublicTargetAddress extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public PublicTargetAddress(@NonNull byte[] data, int offset, int length) {
+    public PublicTargetAddress(@NonNull byte[] data
+            , int offset
+            , int length) {
         super(length);
 
         List<byte[]> addressList = new ArrayList<>();

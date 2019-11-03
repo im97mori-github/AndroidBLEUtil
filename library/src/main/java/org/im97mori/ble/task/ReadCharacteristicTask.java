@@ -28,7 +28,7 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 public class ReadCharacteristicTask extends AbstractBLETask {
 
     /**
-     * Default timeout(millis) for read:5sec
+     * Default timeout(millis) for read characteristic:5sec
      */
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 5;
 
@@ -116,7 +116,13 @@ public class ReadCharacteristicTask extends AbstractBLETask {
      * @param timeout            timeout(millis)
      * @param argument           callback argument
      */
-    public ReadCharacteristicTask(@NonNull BLEConnection bleConnection, @NonNull BluetoothGatt bluetoothGatt, @NonNull TaskHandler taskHandler, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, @NonNull Bundle argument) {
+    public ReadCharacteristicTask(@NonNull BLEConnection bleConnection
+            , @NonNull BluetoothGatt bluetoothGatt
+            , @NonNull TaskHandler taskHandler
+            , @NonNull UUID serviceUUID
+            , @NonNull UUID characteristicUUID
+            , long timeout
+            , @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
         mServiceUUID = serviceUUID;
@@ -157,7 +163,7 @@ public class ReadCharacteristicTask extends AbstractBLETask {
             mBLEConnection.getBLECallback().onCharacteristicReadTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, mTimeout, mArgument);
             mCurrentProgress = nextProgress;
         } else if (PROGRESS_INIT == mCurrentProgress) {
-            // current:init, next:read start
+            // current:init, next:read characteristic start
             if (this == message.obj && PROGRESS_CHARACTERISTIC_READ_START == nextProgress) {
 
                 BluetoothGattCharacteristic bluetoothGattCharacteristic = null;
@@ -191,7 +197,7 @@ public class ReadCharacteristicTask extends AbstractBLETask {
             }
         } else if (PROGRESS_CHARACTERISTIC_READ_START == mCurrentProgress) {
             if (mServiceUUID.equals(serviceUUID) && mCharacteristicUUID.equals(characteristicUUID)) {
-                // current:read start, next:read success
+                // current:read characteristic start, next:read characteristic success
                 if (PROGRESS_CHARACTERISTIC_READ_SUCCESS == nextProgress) {
                     byte[] value = bundle.getByteArray(KEY_VALUES);
                     if (value == null) {
@@ -200,7 +206,7 @@ public class ReadCharacteristicTask extends AbstractBLETask {
                         mBLEConnection.getBLECallback().onCharacteristicReadSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, value, mArgument);
                     }
                 } else if (PROGRESS_CHARACTERISTIC_READ_ERROR == nextProgress) {
-                    // current:read start, next:read error
+                    // current:read characteristic start, next:read characteristic error
                     mBLEConnection.getBLECallback().onCharacteristicReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mCharacteristicUUID, bundle.getInt(KEY_STATUS), mArgument);
                 }
                 mCurrentProgress = PROGRESS_FINISHED;

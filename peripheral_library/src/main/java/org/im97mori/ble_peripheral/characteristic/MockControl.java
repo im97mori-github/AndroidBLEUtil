@@ -31,17 +31,17 @@ public class MockControl implements ByteArrayInterface, Parcelable {
     /**
      * mock target:descriptor
      */
-    public static final int TARGET_TYPE_DESCRIPTOR = 1;
+    public static final int TARGET_TYPE_DESCRIPTOR = TARGET_TYPE_CHARACTERISTIC + 1;
 
     /**
      * mock target:notification(indication)
      */
-    public static final int TARGET_TYPE_NOTIFICATION = 2;
+    public static final int TARGET_TYPE_NOTIFICATION = TARGET_TYPE_DESCRIPTOR + 1;
 
     /**
      * clear target mock
      */
-    public static final int TARGET_CLEAR = 3;
+    public static final int TARGET_CLEAR = TARGET_TYPE_NOTIFICATION + 1;
 
     /**
      * @see ByteArrayCreater
@@ -142,7 +142,7 @@ public class MockControl implements ByteArrayInterface, Parcelable {
      * @param serviceUUID        mock target service UUID
      * @param characteristicUUID mock target characteristic UUID
      * @param descriptorUUID     mock target descriptor UUID
-     * @param targetType         {@link MockControl#TARGET_TYPE_CHARACTERISTIC} or {@link MockControl#TARGET_TYPE_DESCRIPTOR}
+     * @param targetType         one of {@link #TARGET_TYPE_CHARACTERISTIC}, {@link #TARGET_TYPE_DESCRIPTOR}, {@link #TARGET_TYPE_NOTIFICATION}, {@link #TARGET_CLEAR}
      * @param status             for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
      * @param value              for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
      */

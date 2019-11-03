@@ -1,13 +1,11 @@
 package org.im97mori.ble.task;
 
 import android.bluetooth.BluetoothGatt;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.format.DateUtils;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.TaskHandler;
@@ -16,50 +14,45 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
 import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 
 /**
- * Request mtu task
+ * Execute reliable write task
  * <p>
  * for central role
  */
-@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 @SuppressWarnings("unused")
-public class RequestMtuTask extends AbstractBLETask {
+public class ExecuteReliableWriteTask extends AbstractBLETask {
 
     /**
-     * Default timeout(millis) for request mtu:10sec
+     * Default timeout(millis) for execute reliable write:10sec
      */
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 10;
 
     /**
-     * create request mtu success message
+     * create execute reliable write success message
      *
-     * @param mtu {@link android.bluetooth.BluetoothGattCallback#onMtuChanged(BluetoothGatt, int, int)} 2nd parameter
-     * @return request mtu success {@link Message} instance
+     * @return execute reliable write success {@link Message} instance
      */
     @NonNull
-    public static Message createRequestMtuSuccessMessage(int mtu) {
+    public static Message createExecuteReliableWriteSuccessMessage() {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_MTU, mtu);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_REQUEST_MTU_SUCCESS);
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_EXECUTE_RELIABLE_WRITE_SUCCESS);
         Message message = new Message();
         message.setData(bundle);
         return message;
     }
 
     /**
-     * create request mtu error message
+     * create execute reliable write error message
      *
-     * @param obj    current {@link BluetoothGatt} instance
-     * @param status {@link android.bluetooth.BluetoothGattCallback#onMtuChanged(BluetoothGatt, int, int)} 3rd parameter
-     * @return request mtu error {@link Message} instance
+     * @param status {@link android.bluetooth.BluetoothGattCallback#onReliableWriteCompleted(BluetoothGatt, int)} 2nd parameter
+     * @return execute reliable write error {@link Message} instance
      */
     @NonNull
-    public static Message createRequestMtuErrorMessage(Object obj, int status) {
+    public static Message createExecuteReliableWriteErrorMessage(int status) {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_STATUS, status);
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_DISCOVER_SERVICE_ERROR);
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_EXECUTE_RELIABLE_WRITE_ERROR);
         Message message = new Message();
         message.setData(bundle);
-        message.obj = obj;
         return message;
     }
 
@@ -79,11 +72,6 @@ public class RequestMtuTask extends AbstractBLETask {
     private final TaskHandler mTaskHandler;
 
     /**
-     * new mtu for {@link BluetoothGatt#requestMtu(int)} 1st argument
-     */
-    private final int mMtu;
-
-    /**
      * timeout(millis)
      */
     private final long mTimeout;
@@ -93,24 +81,22 @@ public class RequestMtuTask extends AbstractBLETask {
      */
     private final Bundle mArgument;
 
+
     /**
      * @param bleConnection task target {@link BLEConnection} instance
      * @param bluetoothGatt task target {@link BluetoothGatt} instance
-     * @param taskHandler   task target {@link TaskHandler} instance
-     * @param mtu           new mtu for {@link BluetoothGatt#requestMtu(int)} 1st argument
+     * @param taskHandler   task target service {@link TaskHandler} instance
      * @param timeout       timeout(millis)
      * @param argument      callback argument
      */
-    public RequestMtuTask(@NonNull BLEConnection bleConnection
+    public ExecuteReliableWriteTask(@NonNull BLEConnection bleConnection
             , @NonNull BluetoothGatt bluetoothGatt
             , @NonNull TaskHandler taskHandler
-            , int mtu
             , long timeout
             , @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
         mTaskHandler = taskHandler;
-        mMtu = mtu;
         mTimeout = timeout;
         mArgument = argument;
     }
@@ -122,7 +108,7 @@ public class RequestMtuTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_REQUEST_MTU_START);
+        bundle.putInt(KEY_NEXT_PROGRESS, PROGRESS_EXECUTE_RELIABLE_WRITE_START);
         Message message = new Message();
         message.setData(bundle);
         message.obj = this;
@@ -138,38 +124,35 @@ public class RequestMtuTask extends AbstractBLETask {
         int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
 
         // timeout
-        if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
-
-            mBLEConnection.getBLECallback().onRequestMtuTimeout(getTaskId(), mBluetoothGatt.getDevice(), mTimeout, mArgument);
-
+        if (message.obj == this && PROGRESS_TIMEOUT == nextProgress) {
+            mBLEConnection.getBLECallback().onExecuteReliableWriteTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mTimeout, mArgument);
             mCurrentProgress = nextProgress;
         } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
-            if (PROGRESS_REQUEST_MTU_START == nextProgress) {
-                // current:init, next:request mtu start
+            if (PROGRESS_EXECUTE_RELIABLE_WRITE_START == nextProgress) {
+                // current:init, next:execute reliable write start
 
                 // success
-                if (mBluetoothGatt.requestMtu(mMtu)) {
+                if (mBluetoothGatt.executeReliableWrite()) {
                     // set timeout message
                     mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                 } else {
-                    // failed
-                    mBLEConnection.getBLECallback().onRequestMtuFailed(getTaskId(), mBluetoothGatt.getDevice(), UNKNOWN, mArgument);
+                    mBLEConnection.getBLECallback().onExecuteReliableWriteFailed(getTaskId(), mBluetoothGatt.getDevice(), UNKNOWN, mArgument);
                     nextProgress = PROGRESS_BUSY;
                 }
 
                 mCurrentProgress = nextProgress;
             }
-        } else if (PROGRESS_REQUEST_MTU_START == mCurrentProgress) {
-            if (PROGRESS_REQUEST_MTU_SUCCESS == nextProgress) {
-                // current:request mtu start, next:request mtu success
+        } else if (PROGRESS_EXECUTE_RELIABLE_WRITE_START == mCurrentProgress) {
+            if (PROGRESS_EXECUTE_RELIABLE_WRITE_SUCCESS == nextProgress) {
+                // current:execute reliable write start, next:execute reliable write success
 
                 // callback
-                mBLEConnection.getBLECallback().onRequestMtuSuccess(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_MTU), mArgument);
+                mBLEConnection.getBLECallback().onExecuteReliableWriteSuccess(getTaskId(), mBluetoothGatt.getDevice(), mArgument);
 
-            } else if (PROGRESS_REQUEST_MTU_ERROR == nextProgress) {
-                // current:request mtu start, next:request mtu failed
+            } else if (PROGRESS_EXECUTE_RELIABLE_WRITE_ERROR == nextProgress) {
+                // current:execute reliable write start, next:execute reliable write failed
 
-                mBLEConnection.getBLECallback().onRequestMtuFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
+                mBLEConnection.getBLECallback().onExecuteReliableWriteFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
             }
 
             // remove timeout message
@@ -194,9 +177,8 @@ public class RequestMtuTask extends AbstractBLETask {
      */
     @Override
     public void cancel() {
-        mTaskHandler.removeCallbacksAndMessages(this);
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.getBLECallback().onRequestMtuFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), CANCEL, mArgument);
+        mBLEConnection.getBLECallback().onExecuteReliableWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), CANCEL, mArgument);
     }
 
 }

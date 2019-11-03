@@ -64,7 +64,9 @@ public class CompleteLocalName extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public CompleteLocalName(@NonNull byte[] data, int offset, int length) {
+    public CompleteLocalName(@NonNull byte[] data
+            , int offset
+            , int length) {
         super(length);
         mCompleteLocalName = new String(data, offset + 2, length - 1);
     }

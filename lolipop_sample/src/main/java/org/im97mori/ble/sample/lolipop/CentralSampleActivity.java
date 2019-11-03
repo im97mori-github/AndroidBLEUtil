@@ -43,8 +43,10 @@ import org.im97mori.ble.ad.filter.FilteredScanCallback;
 import org.im97mori.ble.ad.filter.FlagsFilter;
 import org.im97mori.ble.ad.filter.OrFilter;
 import org.im97mori.ble.descriptor.ClientCharacteristicConfiguration;
+import org.im97mori.ble.task.AbortReliableWriteTask;
 import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.DiscoverServiceTask;
+import org.im97mori.ble.task.ExecuteReliableWriteTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
 import org.im97mori.ble.task.ReadPhyTask;
 import org.im97mori.ble.task.ReadRemoteRssiTask;
@@ -553,6 +555,32 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     }
                 }
             }.start();
+        } else if (R.id.write_characteristc_reliable == item.getItemId()) {
+            mBleConnection.createBeginReliableWriteTask(null, null);
+            mBleConnection.createWriteCharacteristicTask(DEFAULT_SERVICE_UUID
+                    , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                    , new ByteArrayInterface() {
+                        @Override
+                        @NonNull
+                        public byte[] getBytes() {
+                            return new byte[]{0x00, 0x00, 0x00, 0x00, 0x00};
+                        }
+                    }
+                    , WriteCharacteristicTask.TIMEOUT_MILLIS);
+            mBleConnection.createExecuteReliableWriteTask(ExecuteReliableWriteTask.TIMEOUT_MILLIS, null, null);
+        } else if (R.id.write_characteristc_reliable_abort == item.getItemId()) {
+            mBleConnection.createBeginReliableWriteTask(null, null);
+            mBleConnection.createWriteCharacteristicTask(DEFAULT_SERVICE_UUID
+                    , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                    , new ByteArrayInterface() {
+                        @Override
+                        @NonNull
+                        public byte[] getBytes() {
+                            return new byte[]{0x00, 0x00, 0x00, 0x00, 0x00};
+                        }
+                    }
+                    , WriteCharacteristicTask.TIMEOUT_MILLIS);
+            mBleConnection.createAbortReliableWriteTask(AbortReliableWriteTask.TIMEOUT_MILLIS, null, null);
         } else if (R.id.mock_characteristic == item.getItemId()) {
             mBleConnection.createWriteCharacteristicTask(MOCK_CONTROL_SERVICE_UUID
                     , MOCK_CONTROL_CHARACTERISTIC_UUID

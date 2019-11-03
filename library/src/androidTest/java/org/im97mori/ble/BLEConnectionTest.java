@@ -1967,4 +1967,484 @@ public class BLEConnectionTest {
         check(firstCallback, secondCallback, task, false);
     }
 
+    @Test
+    public void beginReliableWriteSuccessTest_001() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onBeginReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onBeginReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onBeginReliableWriteSuccess(getTaskId(), MockBLEConnection.MOCK_DEVICE, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, true);
+    }
+
+    @Test
+    public void beginReliableWriteSuccessTest_002() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onBeginReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onBeginReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onBeginReliableWriteSuccess(getTaskId(), MockBLEConnection.MOCK_DEVICE, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, false);
+    }
+
+    @Test
+    public void beginReliableWriteFailedTest_001() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onBeginReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onBeginReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onBeginReliableWriteFailed(getTaskId(), MockBLEConnection.MOCK_DEVICE, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, true);
+    }
+
+    @Test
+    public void beginReliableWriteFailedTest_002() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onBeginReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onBeginReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onBeginReliableWriteFailed(getTaskId(), MockBLEConnection.MOCK_DEVICE, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, false);
+    }
+
+    @Test
+    public void executeReliableWriteSuccessTest_001() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onExecuteReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onExecuteReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onExecuteReliableWriteSuccess(getTaskId(), MockBLEConnection.MOCK_DEVICE, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, true);
+    }
+
+    @Test
+    public void executeReliableWriteSuccessTest_002() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onExecuteReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onExecuteReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onExecuteReliableWriteSuccess(getTaskId(), MockBLEConnection.MOCK_DEVICE, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, false);
+    }
+
+    @Test
+    public void executeReliableWriteFailedTest_001() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onExecuteReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onExecuteReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onExecuteReliableWriteFailed(getTaskId(), MockBLEConnection.MOCK_DEVICE, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, true);
+    }
+
+    @Test
+    public void executeReliableWriteFailedTest_002() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onExecuteReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onExecuteReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onExecuteReliableWriteFailed(getTaskId(), MockBLEConnection.MOCK_DEVICE, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, false);
+    }
+
+    @Test
+    public void executeReliableWriteTimeoutTest_001() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onExecuteReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onExecuteReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onExecuteReliableWriteTimeout(getTaskId(), MockBLEConnection.MOCK_DEVICE, 0, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, true);
+    }
+
+    @Test
+    public void executeReliableWriteTimeoutTest_002() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onExecuteReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onExecuteReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onExecuteReliableWriteTimeout(getTaskId(), MockBLEConnection.MOCK_DEVICE, 0, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, false);
+    }
+
+    @Test
+    public void abortReliableWriteSuccessTest_001() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onAbortReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onAbortReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onAbortReliableWriteSuccess(getTaskId(), MockBLEConnection.MOCK_DEVICE, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, true);
+    }
+
+    @Test
+    public void abortReliableWriteSuccessTest_002() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onAbortReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onAbortReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onAbortReliableWriteSuccess(getTaskId(), MockBLEConnection.MOCK_DEVICE, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, false);
+    }
+
+    @Test
+    public void abortReliableWriteFailedTest_001() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onAbortReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onAbortReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onAbortReliableWriteFailed(getTaskId(), MockBLEConnection.MOCK_DEVICE, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, true);
+    }
+
+    @Test
+    public void abortReliableWriteFailedTest_002() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onAbortReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onAbortReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onAbortReliableWriteFailed(getTaskId(), MockBLEConnection.MOCK_DEVICE, BLEConstants.ErrorCodes.UNKNOWN, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, false);
+    }
+
+    @Test
+    public void abortReliableWriteTimeoutTest_001() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onAbortReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onAbortReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onAbortReliableWriteTimeout(getTaskId(), MockBLEConnection.MOCK_DEVICE, 0, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, true);
+    }
+
+    @Test
+    public void abortReliableWriteTimeoutTest_002() {
+        BaseBLECallback firstCallback = new BaseBLECallback() {
+
+            @Override
+            public void onAbortReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+        BaseBLECallback secondCallback = new BaseBLECallback() {
+
+            @Override
+            public void onAbortReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+                result.set(true);
+            }
+        };
+
+        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        MockBLETask task = new MockBLETask() {
+            @Override
+            public boolean doProcess(@NonNull Message message) {
+                MOCK_BLE_CONNECTION.getBLECallback().onAbortReliableWriteTimeout(getTaskId(), MockBLEConnection.MOCK_DEVICE, 0, argument);
+                isProccesing.set(false);
+                return true;
+            }
+        };
+
+        check(firstCallback, secondCallback, task, false);
+    }
+
 }

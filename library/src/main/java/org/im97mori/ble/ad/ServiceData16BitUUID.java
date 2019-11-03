@@ -72,7 +72,9 @@ public class ServiceData16BitUUID extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public ServiceData16BitUUID(@NonNull byte[] data, int offset, int length) {
+    public ServiceData16BitUUID(@NonNull byte[] data
+            , int offset
+            , int length) {
         super(length);
 
         // combine with BASE UUID

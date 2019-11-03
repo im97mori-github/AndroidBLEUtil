@@ -144,6 +144,7 @@ public class ReadDescriptorTaskTest {
             if (looper != null) {
                 looper.quit();
             }
+            mockBleConnection.quit();
         }
     }
 

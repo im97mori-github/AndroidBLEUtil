@@ -80,4 +80,9 @@ public class BaseBLEServerCallback implements BLEServerCallback {
     @Override
     public void onMockUpdated(@NonNull BluetoothDevice device, @NonNull MockControl mockControl) {
     }
+
+    @Override
+    public void onExecuteWrite(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, int requestId, boolean execute) {
+
+    }
 }

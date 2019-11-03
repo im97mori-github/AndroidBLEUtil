@@ -68,7 +68,9 @@ public class AdvertisingInterval extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public AdvertisingInterval(@NonNull byte[] data, int offset, int length) {
+    public AdvertisingInterval(@NonNull byte[] data
+            , int offset
+            , int length) {
         super(length);
 
         ByteBuffer bb = ByteBuffer.wrap(data, offset + 2, length - 1).order(ByteOrder.LITTLE_ENDIAN);

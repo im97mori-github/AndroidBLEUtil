@@ -66,6 +66,11 @@ public class DiscoverServiceTask extends AbstractBLETask {
     private final BLEConnection mBLEConnection;
 
     /**
+     * task target {@link BluetoothGatt} instance
+     */
+    private final BluetoothGatt mBluetoothGatt;
+
+    /**
      * task target {@link TaskHandler} instance
      */
     private final TaskHandler mTaskHandler;
@@ -81,18 +86,17 @@ public class DiscoverServiceTask extends AbstractBLETask {
     private final Bundle mArgument;
 
     /**
-     * task target {@link BluetoothGatt} instance
-     */
-    private final BluetoothGatt mBluetoothGatt;
-
-    /**
      * @param bleConnection task target {@link BLEConnection} instance
      * @param bluetoothGatt task target {@link BluetoothGatt} instance
      * @param taskHandler   task target {@link TaskHandler} instance
      * @param timeout       timeout(millis)
      * @param argument      callback argument
      */
-    public DiscoverServiceTask(@NonNull BLEConnection bleConnection, @NonNull BluetoothGatt bluetoothGatt, @NonNull TaskHandler taskHandler, long timeout, @NonNull Bundle argument) {
+    public DiscoverServiceTask(@NonNull BLEConnection bleConnection
+            , @NonNull BluetoothGatt bluetoothGatt
+            , @NonNull TaskHandler taskHandler
+            , long timeout
+            , @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
         mTaskHandler = taskHandler;
@@ -133,8 +137,7 @@ public class DiscoverServiceTask extends AbstractBLETask {
                 if (mBluetoothGatt.discoverServices()) {
                     // success
                     // set timeout message
-                    Message timeoutMessage = createTimeoutMessage(this);
-                    mTaskHandler.sendProcessingMessage(timeoutMessage, mTimeout);
+                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                     mCurrentProgress = nextProgress;
                 } else {
                     // failed

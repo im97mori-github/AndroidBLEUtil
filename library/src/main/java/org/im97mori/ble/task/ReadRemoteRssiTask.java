@@ -22,7 +22,7 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 public class ReadRemoteRssiTask extends AbstractBLETask {
 
     /**
-     * Default timeout(millis) for discover service:5sec
+     * Default timeout(millis) for read remote rssi:5sec
      */
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 5;
 
@@ -64,6 +64,11 @@ public class ReadRemoteRssiTask extends AbstractBLETask {
     private final BLEConnection mBLEConnection;
 
     /**
+     * task target {@link BluetoothGatt} instance
+     */
+    private final BluetoothGatt mBluetoothGatt;
+
+    /**
      * task target {@link TaskHandler} instance
      */
     private final TaskHandler mTaskHandler;
@@ -78,10 +83,6 @@ public class ReadRemoteRssiTask extends AbstractBLETask {
      */
     private final Bundle mArgument;
 
-    /**
-     * task target {@link BluetoothGatt} instance
-     */
-    private final BluetoothGatt mBluetoothGatt;
 
     /**
      * @param bleConnection task target {@link BLEConnection} instance
@@ -90,7 +91,11 @@ public class ReadRemoteRssiTask extends AbstractBLETask {
      * @param timeout       timeout(millis)
      * @param argument      callback argument
      */
-    public ReadRemoteRssiTask(@NonNull BLEConnection bleConnection, @NonNull BluetoothGatt bluetoothGatt, @NonNull TaskHandler taskHandler, long timeout, @NonNull Bundle argument) {
+    public ReadRemoteRssiTask(@NonNull BLEConnection bleConnection
+            , @NonNull BluetoothGatt bluetoothGatt
+            , @NonNull TaskHandler taskHandler
+            , long timeout
+            , @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
         mTaskHandler = taskHandler;
@@ -130,9 +135,9 @@ public class ReadRemoteRssiTask extends AbstractBLETask {
 
                 if (mBluetoothGatt.readRemoteRssi()) {
                     // success
+
                     // set timeout message
-                    Message timeoutMessage = createTimeoutMessage(this);
-                    mTaskHandler.sendProcessingMessage(timeoutMessage, mTimeout);
+                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                     mCurrentProgress = nextProgress;
                 } else {
                     // failed

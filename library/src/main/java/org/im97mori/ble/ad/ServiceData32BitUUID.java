@@ -72,7 +72,9 @@ public class ServiceData32BitUUID extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public ServiceData32BitUUID(@NonNull byte[] data, int offset, int length) {
+    public ServiceData32BitUUID(@NonNull byte[] data
+            , int offset
+            , int length) {
         super(length);
 
         long target = data[offset + 2] & 0xff;

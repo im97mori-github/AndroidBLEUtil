@@ -164,6 +164,7 @@ public class ConnectTaskTest {
             if (looper != null) {
                 looper.quit();
             }
+            mockBleConnection.quit();
         }
     }
 }

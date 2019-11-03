@@ -119,6 +119,7 @@ public class ReadPhyTaskTest {
             if (looper != null) {
                 looper.quit();
             }
+            mockBleConnection.quit();
         }
     }
 

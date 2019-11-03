@@ -135,6 +135,7 @@ public class ReadCharacteristicTaskTest {
             if (looper != null) {
                 looper.quit();
             }
+            mockBleConnection.quit();
         }
     }
 }

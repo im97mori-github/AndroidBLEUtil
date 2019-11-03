@@ -24,7 +24,7 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
 public class SetPreferredPhyTask extends AbstractBLETask {
 
     /**
-     * Default timeout(millis) for write:10sec
+     * Default timeout(millis) for set preferred phy:10sec
      */
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 10;
 
@@ -100,18 +100,26 @@ public class SetPreferredPhyTask extends AbstractBLETask {
     /**
      * callback argument
      */
-    private final Bundle mArguemnt;
+    private final Bundle mArgumemnt;
 
     /**
      * @param bleConnection task target {@link BLEConnection} instance
      * @param bluetoothGatt task target {@link BluetoothGatt} instance
+     * @param taskHandler   task target {@link TaskHandler} instance
      * @param txPhy         new txPhy for {@link BluetoothGatt#setPreferredPhy(int, int, int)} 1st argument
      * @param rxPhy         new rxPhy for {@link BluetoothGatt#setPreferredPhy(int, int, int)} 2nd argument
      * @param phyOptions    new phyOptions for {@link BluetoothGatt#setPreferredPhy(int, int, int)} 3rd argument
      * @param timeout       timeout(millis)
      * @param argument      callback argument
      */
-    public SetPreferredPhyTask(@NonNull BLEConnection bleConnection, @NonNull BluetoothGatt bluetoothGatt, @NonNull TaskHandler taskHandler, int txPhy, int rxPhy, int phyOptions, long timeout, @NonNull Bundle argument) {
+    public SetPreferredPhyTask(@NonNull BLEConnection bleConnection
+            , @NonNull BluetoothGatt bluetoothGatt
+            , @NonNull TaskHandler taskHandler
+            , int txPhy
+            , int rxPhy
+            , int phyOptions
+            , long timeout
+            , @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
         mTaskHandler = taskHandler;
@@ -119,7 +127,7 @@ public class SetPreferredPhyTask extends AbstractBLETask {
         mRxPhy = rxPhy;
         mPhyOptions = phyOptions;
         mTimeout = timeout;
-        mArguemnt = argument;
+        mArgumemnt = argument;
     }
 
     /**
@@ -146,7 +154,7 @@ public class SetPreferredPhyTask extends AbstractBLETask {
 
         // timeout
         if (message.obj == this && PROGRESS_TIMEOUT == nextProgress) {
-            mBLEConnection.getBLECallback().onSetPreferredPhyTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mTimeout, mArguemnt);
+            mBLEConnection.getBLECallback().onSetPreferredPhyTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mTimeout, mArgumemnt);
             mCurrentProgress = nextProgress;
         } else if (PROGRESS_INIT == mCurrentProgress) {
             if (message.obj == this && PROGRESS_SET_PREFERRED_PHY_START == nextProgress) {
@@ -154,17 +162,16 @@ public class SetPreferredPhyTask extends AbstractBLETask {
                 mBluetoothGatt.setPreferredPhy(mTxPhy, mRxPhy, mPhyOptions);
 
                 // set timeout message
-                Message timeoutMessage = createTimeoutMessage(this);
-                mTaskHandler.sendProcessingMessage(timeoutMessage, mTimeout);
+                mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                 mCurrentProgress = nextProgress;
             }
         } else if (PROGRESS_SET_PREFERRED_PHY_START == mCurrentProgress) {
             // current:set preferred phy start, next:set preferred phy success
             if (PROGRESS_SET_PREFERRED_PHY_SUCCESS == nextProgress) {
-                mBLEConnection.getBLECallback().onSetPreferredPhySuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), bundle.getInt(KEY_TX_PHY), bundle.getInt(KEY_RX_PHY), bundle.getInt(KEY_PHY_OPTIONS), mArguemnt);
+                mBLEConnection.getBLECallback().onSetPreferredPhySuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), bundle.getInt(KEY_TX_PHY), bundle.getInt(KEY_RX_PHY), bundle.getInt(KEY_PHY_OPTIONS), mArgumemnt);
             } else if (PROGRESS_SET_PREFERRED_PHY_ERROR == nextProgress) {
                 // current:set preferred phy start, next:set preferred phy error
-                mBLEConnection.getBLECallback().onSetPreferredPhyFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), bundle.getInt(KEY_STATUS), mArguemnt);
+                mBLEConnection.getBLECallback().onSetPreferredPhyFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), bundle.getInt(KEY_STATUS), mArgumemnt);
             }
 
             mCurrentProgress = PROGRESS_FINISHED;
@@ -190,7 +197,7 @@ public class SetPreferredPhyTask extends AbstractBLETask {
     public void cancel() {
         mTaskHandler.removeCallbacksAndMessages(this);
         mCurrentProgress = PROGRESS_FINISHED;
-        mBLEConnection.getBLECallback().onSetPreferredPhyFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), CANCEL, mArguemnt);
+        mBLEConnection.getBLECallback().onSetPreferredPhyFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), CANCEL, mArgumemnt);
     }
 
 }

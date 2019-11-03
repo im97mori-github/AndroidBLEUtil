@@ -73,7 +73,9 @@ public class UniformRsourceIdentifier extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public UniformRsourceIdentifier(@NonNull byte[] data, int offset, int length) {
+    public UniformRsourceIdentifier(@NonNull byte[] data
+            , int offset
+            , int length) {
         super(length);
 
         mUriString = new String(data, offset + 2, length - 1);

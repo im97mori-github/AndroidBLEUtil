@@ -75,7 +75,9 @@ public class ManufacturerSpecificData extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public ManufacturerSpecificData(@NonNull byte[] data, int offset, int length) {
+    public ManufacturerSpecificData(@NonNull byte[] data
+            , int offset
+            , int length) {
         super(length);
 
         // Company Identifier Code

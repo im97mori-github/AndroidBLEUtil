@@ -136,6 +136,7 @@ public class WriteCharacteristicTaskTest {
             if (looper != null) {
                 looper.quit();
             }
+            mockBleConnection.quit();
         }
     }
 }

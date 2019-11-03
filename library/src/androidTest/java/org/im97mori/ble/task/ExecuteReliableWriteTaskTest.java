@@ -21,47 +21,44 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class ReadRemoteRssiTaskTest {
+public class ExecuteReliableWriteTaskTest {
 
     @Test
     public void test_createInitialMessage001() {
-        ReadRemoteRssiTask task = new ReadRemoteRssiTask(null, null, null, ReadRemoteRssiTask.TIMEOUT_MILLIS, null);
+        ExecuteReliableWriteTask task = new ExecuteReliableWriteTask(null, null, null, ExecuteReliableWriteTask.TIMEOUT_MILLIS, null);
         Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_READ_REMOTE_RSSI_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_EXECUTE_RELIABLE_WRITE_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
     @Test
-    public void test_createReadRemoteRssiSuccessMessage001() {
-        int rssi = new Random().nextInt();
-        Message message = ReadRemoteRssiTask.createReadRemoteRssiSuccessMessage(rssi);
+    public void test_createExecuteReliableWriteSuccessMessage001() {
+        Message message = ExecuteReliableWriteTask.createExecuteReliableWriteSuccessMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_READ_REMOTE_RSSI_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_RSSI));
-        assertEquals(rssi, bundle.getInt(AbstractBLETask.KEY_RSSI));
+        assertEquals(AbstractBLETask.PROGRESS_EXECUTE_RELIABLE_WRITE_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 
     @Test
-    public void test_createReadRemoteRssiErrorMessage001() {
+    public void test_createWriteCharacteristicErrorMessage001() {
         int status = new Random().nextInt();
-        Message message = ReadRemoteRssiTask.createReadRemoteRssiErrorMessage(status);
+        Message message = ExecuteReliableWriteTask.createExecuteReliableWriteErrorMessage(status);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_READ_REMOTE_RSSI_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
         assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_EXECUTE_RELIABLE_WRITE_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -75,7 +72,7 @@ public class ReadRemoteRssiTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ReadRemoteRssiTask task = new ReadRemoteRssiTask(new MockBLEConnection(), null, mockTaskHandler, ReadRemoteRssiTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ExecuteReliableWriteTask task = new ExecuteReliableWriteTask(new MockBLEConnection(), null, mockTaskHandler, ExecuteReliableWriteTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -95,7 +92,7 @@ public class ReadRemoteRssiTaskTest {
             BaseBLECallback callback = new BaseBLECallback() {
 
                 @Override
-                public void onReadRemoteRssiFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+                public void onExecuteReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
                     result.set(true);
                 }
             };
@@ -108,7 +105,7 @@ public class ReadRemoteRssiTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ReadRemoteRssiTask task = new ReadRemoteRssiTask(mockBleConnection, null, mockTaskHandler, ReadRemoteRssiTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ExecuteReliableWriteTask task = new ExecuteReliableWriteTask(mockBleConnection, null, mockTaskHandler, ExecuteReliableWriteTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());
@@ -119,5 +116,4 @@ public class ReadRemoteRssiTaskTest {
             mockBleConnection.quit();
         }
     }
-
 }

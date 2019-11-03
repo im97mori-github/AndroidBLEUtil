@@ -98,7 +98,9 @@ public class LeSupportedFeatures extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public LeSupportedFeatures(@NonNull byte[] data, int offset, int length) {
+    public LeSupportedFeatures(@NonNull byte[] data
+            , int offset
+            , int length) {
         super(length);
 
         List<Integer> leSupportedFeaturesList = new ArrayList<>();

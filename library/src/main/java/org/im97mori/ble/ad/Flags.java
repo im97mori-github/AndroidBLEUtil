@@ -76,7 +76,9 @@ public class Flags extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public Flags(@NonNull byte[] data, int offset, int length) {
+    public Flags(@NonNull byte[] data
+            , int offset
+            , int length) {
         super(length);
 
         List<Integer> flagsList = new ArrayList<>();

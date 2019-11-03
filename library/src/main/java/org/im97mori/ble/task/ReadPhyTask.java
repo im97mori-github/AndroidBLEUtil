@@ -24,7 +24,7 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
 public class ReadPhyTask extends AbstractBLETask {
 
     /**
-     * Default timeout(millis) for discover service:5sec
+     * Default timeout(millis) for read phy:5sec
      */
     public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 5;
 
@@ -94,7 +94,11 @@ public class ReadPhyTask extends AbstractBLETask {
      * @param timeout       timeout(millis)
      * @param argument      callback argument
      */
-    public ReadPhyTask(@NonNull BLEConnection bleConnection, @NonNull BluetoothGatt bluetoothGatt, @NonNull TaskHandler taskHandler, long timeout, @NonNull Bundle argument) {
+    public ReadPhyTask(@NonNull BLEConnection bleConnection
+            , @NonNull BluetoothGatt bluetoothGatt
+            , @NonNull TaskHandler taskHandler
+            , long timeout
+            , @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
         mTaskHandler = taskHandler;
@@ -135,8 +139,7 @@ public class ReadPhyTask extends AbstractBLETask {
                 mBluetoothGatt.readPhy();
 
                 // set timeout message
-                Message timeoutMessage = createTimeoutMessage(this);
-                mTaskHandler.sendProcessingMessage(timeoutMessage, mTimeout);
+                mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                 mCurrentProgress = nextProgress;
             }
         } else if (PROGRESS_READ_PHY_START == mCurrentProgress) {

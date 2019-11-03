@@ -70,7 +70,9 @@ public class IncompleteListOf32BitServiceUUIDs extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public IncompleteListOf32BitServiceUUIDs(@NonNull byte[] data, int offset, int length) {
+    public IncompleteListOf32BitServiceUUIDs(@NonNull byte[] data
+            , int offset
+            , int length) {
         super(length);
 
         // combine with BASE UUID

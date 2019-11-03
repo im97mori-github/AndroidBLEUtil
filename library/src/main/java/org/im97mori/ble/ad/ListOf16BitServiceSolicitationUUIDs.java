@@ -70,7 +70,9 @@ public class ListOf16BitServiceSolicitationUUIDs extends AbstractAdvertisingData
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public ListOf16BitServiceSolicitationUUIDs(@NonNull byte[] data, int offset, int length) {
+    public ListOf16BitServiceSolicitationUUIDs(@NonNull byte[] data
+            , int offset
+            , int length) {
         super(length);
 
         // combine with BASE UUID

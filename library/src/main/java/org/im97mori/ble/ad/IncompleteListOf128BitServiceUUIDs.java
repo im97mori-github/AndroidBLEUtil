@@ -71,7 +71,9 @@ public class IncompleteListOf128BitServiceUUIDs extends AbstractAdvertisingData 
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public IncompleteListOf128BitServiceUUIDs(@NonNull byte[] data, int offset, int length) {
+    public IncompleteListOf128BitServiceUUIDs(@NonNull byte[] data
+            , int offset
+            , int length) {
         super(length);
 
         ByteBuffer bb;

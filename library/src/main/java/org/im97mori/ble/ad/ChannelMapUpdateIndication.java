@@ -86,7 +86,9 @@ public class ChannelMapUpdateIndication extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public ChannelMapUpdateIndication(@NonNull byte[] data, int offset, int length) {
+    public ChannelMapUpdateIndication(@NonNull byte[] data
+            , int offset
+            , int length) {
         super(length);
 
         List<Integer> chmList = new ArrayList<>();

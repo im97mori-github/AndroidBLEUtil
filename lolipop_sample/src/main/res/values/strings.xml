@@ -31,6 +31,8 @@
     <string name="menu_write_indication_stop">Write CCCD Indication stop</string>
     <string name="menu_read_characteristic_sync">Read Characteristic(Synchronous)</string>
     <string name="menu_write_characteristic_sync">Write Characteristic(Synchronous)</string>
+    <string name="menu_write_characteristic_reliable">Write Characteristic(Reliable)</string>
+    <string name="menu_write_characteristic_reliable_abort">Write Characteristic(Reliable abort)</string>
     <string name="menu_mock_characteristic">Mock Characteristic</string>
 
     <string name="menu_clear">Clear</string>

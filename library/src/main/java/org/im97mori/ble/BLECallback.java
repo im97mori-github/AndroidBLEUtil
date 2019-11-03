@@ -2,6 +2,7 @@ package org.im97mori.ble;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCallback;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
@@ -385,5 +386,82 @@ public interface BLECallback {
      * @param argument        callback argument
      */
     void onReadRemoteRssiTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
+
+    /**
+     * Begin reliable write success callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param argument        callback argument
+     */
+    void onBeginReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument);
+
+    /**
+     * Begin reliable write error callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param status          one of {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}
+     * @param argument        callback argument
+     */
+    void onBeginReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+
+    /**
+     * Execute reliable write success callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param argument        callback argument
+     */
+    void onExecuteReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument);
+
+    /**
+     * Execute reliable write error callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param status          one of {@link BluetoothGattCallback#onReliableWriteCompleted} 2nd argument, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}
+     * @param argument        callback argument
+     */
+    void onExecuteReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+
+    /**
+     * Execute reliable write timeout callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param timeout         timeout(millis)
+     * @param argument        callback argument
+     */
+    void onExecuteReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
+
+    /**
+     * Execute reliable write success callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param argument        callback argument
+     */
+    void onAbortReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument);
+
+    /**
+     * Abort reliable write error callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param status          one of {@link BluetoothGattCallback#onReliableWriteCompleted} 2nd argument, {@link BLEConstants.ErrorCodes#CANCEL}
+     * @param argument        callback argument
+     */
+    void onAbortReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+
+    /**
+     * Abort reliable write timeout callback
+     *
+     * @param taskId          task id
+     * @param bluetoothDevice BLE device
+     * @param timeout         timeout(millis)
+     * @param argument        callback argument
+     */
+    void onAbortReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
 
 }
