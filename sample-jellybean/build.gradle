@@ -1,0 +1,21 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        applicationId "org.im97mori.ble.sample.jellybean"
+        minSdkVersion 18
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+    }
+
+}
+
+dependencies {
+    implementation project(path: ':library-central')
+    implementation 'org.im97mori:ble-advertising:0.1.0'
+    implementation 'androidx.fragment:fragment:1.1.0'
+}

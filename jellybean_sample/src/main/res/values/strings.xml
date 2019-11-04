@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">jellybean_sample</string>
-    <string name="get_permission">Get Permission</string>
-    <string name="scan_start">Scan Start</string>
-    <string name="scan_stop">Scan Stop</string>
-    <string name="permission_message">bluetooth low energy feature needs coarse location permission</string>
-</resources>

@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">sample-lolipop</string>
+    <string name="get_permission">Get Permission</string>
+    <string name="scan_start">Scan Start</string>
+    <string name="scan_stop">Scan Stop</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="permission_message">bluetooth low energy feature needs coarse location permission</string>
+
+    <string name="label_advertising">Advertising sample</string>
+    <string name="label_peripheral">Peripheral sample</string>
+    <string name="label_central">Central sample</string>
+
+    <string name="menu_discover_service">Discover Service</string>
+    <string name="menu_discover_service_sync">Discover Service(Synchronous)</string>
+    <string name="menu_request_mtu">Request MTU</string>
+    <string name="menu_request_mtu_sync">Request MTU(Synchronous)</string>
+    <string name="menu_read_phy">Read Phy</string>
+    <string name="menu_read_phy_sync">Read Phy(Synchronous)</string>
+    <string name="menu_set_preferred_phy">Set Preferred Phy</string>
+    <string name="menu_set_preferred_phy_sync">Set Preferred Phy(Synchronous)</string>
+    <string name="menu_read_remote_rssi">Read Remote Rssi</string>
+    <string name="menu_read_remote_rssi_sync">Read Remote Rssi(Synchronous)</string>
+    <string name="menu_read_characteristic">Read Characteristic</string>
+    <string name="menu_write_characteristic">Write Characteristic</string>
+    <string name="menu_write_notification">Write CCCD Notification</string>
+    <string name="menu_write_indication">Write CCCD Indication</string>
+    <string name="menu_write_notification_stop">Write CCCD Notification stop</string>
+    <string name="menu_write_indication_stop">Write CCCD Indication stop</string>
+    <string name="menu_read_characteristic_sync">Read Characteristic(Synchronous)</string>
+    <string name="menu_write_characteristic_sync">Write Characteristic(Synchronous)</string>
+    <string name="menu_write_characteristic_reliable">Write Characteristic(Reliable)</string>
+    <string name="menu_write_characteristic_reliable_abort">Write Characteristic(Reliable abort)</string>
+    <string name="menu_mock_characteristic">Mock Characteristic</string>
+
+    <string name="menu_clear">Clear</string>
+</resources>

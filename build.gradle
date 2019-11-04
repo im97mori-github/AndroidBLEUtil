@@ -26,3 +26,10 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+task archiveAll {
+}
+
+archiveAll {
+    dependsOn ":core:uploadArchives", ":advertising:uploadArchives", ":characteristic-dis:uploadArchives", ":characteristic-gas:uploadArchives", ":library-central:uploadArchives", ":library-peripheral:uploadArchives"
+}
