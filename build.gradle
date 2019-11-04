@@ -31,5 +31,5 @@ task archiveAll {
 }
 
 archiveAll {
-    dependsOn ":core:uploadArchives", ":advertising:uploadArchives", ":characteristic-dis:uploadArchives", ":characteristic-gas:uploadArchives", ":library-central:uploadArchives", ":library-peripheral:uploadArchives"
+    dependsOn ":core:uploadArchives", ":advertising:uploadArchives", ":characteristic:characteristic-dis:uploadArchives", ":characteristic:characteristic-gas:uploadArchives", ":descriptor:uploadArchives", ":library-central:uploadArchives", ":library-peripheral:uploadArchives"
 }

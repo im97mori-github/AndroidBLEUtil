@@ -1,1 +1,1 @@
-include ':core', ':advertising', ':characteristic-dis', ':characteristic-gas', ':library-central', ':sample-jellybean', ':library-peripheral', ':sample-lolipop'
+include ':core', ':advertising', ':characteristic:characteristic-dis', ':characteristic:characteristic-gas', ':descriptor', ':library-central', ':sample-jellybean', ':library-peripheral', ':sample-lolipop'
