@@ -36,7 +36,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR;
+import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 
 /**
  * BLE connection(central role)
@@ -550,7 +550,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             BluetoothGattService service = characteristic.getService();
             UUID descriptorUUID = descriptor.getUuid();
             if (BluetoothGatt.GATT_SUCCESS == status) {
-                if (CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR.equals(descriptorUUID)) {
+                if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
                     ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptor);
                     boolean isNotification = clientCharacteristicConfiguration.isNotification() || clientCharacteristicConfiguration.isIndication();
 
@@ -592,7 +592,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             BluetoothGattService service = characteristic.getService();
             UUID descriptorUUID = descriptor.getUuid();
             if (BluetoothGatt.GATT_SUCCESS == status) {
-                if (CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR.equals(descriptorUUID)) {
+                if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
                     ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptor);
                     boolean isNotification = clientCharacteristicConfiguration.isNotification() || clientCharacteristicConfiguration.isIndication();
 

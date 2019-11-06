@@ -2457,9 +2457,79 @@ public class BLEConstants {
     public static final class DescriptorUUID {
 
         /**
+         * Environmental Sensing Configuration (Descriptor UUID: 0x290B)
+         */
+        public static final UUID ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR = UUID.fromString("0000290B-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Environmental Sensing Measurement (Descriptor UUID: 0x290C)
+         */
+        public static final UUID ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR = UUID.fromString("0000290C-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Environmental Sensing Trigger Setting (Descriptor UUID: 0x290D)
+         */
+        public static final UUID ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR = UUID.fromString("0000290D-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * External Report Reference (Descriptor UUID: 0x2907)
+         */
+        public static final UUID EXTERNAL_REPORT_REFERENCE_DESCRIPTOR = UUID.fromString("00002907-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Characteristic Aggregate Format (Descriptor UUID: 0x2905)
+         */
+        public static final UUID CHARACTERISTIC_AGGREGATE_FORMAT_DESCRIPTOR = UUID.fromString("00002905-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Characteristic Extended Properties (Descriptor UUID: 0x2900)
+         */
+        public static final UUID CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR = UUID.fromString("00002900-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Characteristic Presentation Format (Descriptor UUID: 0x2904)
+         */
+        public static final UUID CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR = UUID.fromString("00002904-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Characteristic User Description (Descriptor UUID: 0x2901)
+         */
+        public static final UUID CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR = UUID.fromString("00002901-0000-1000-8000-00805f9b34fb");
+
+        /**
          * Client Characteristic Configuration (Descriptor UUID: 0x2902)
          */
-        public static final UUID CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR = UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
+        public static final UUID CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR = UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Server Characteristic Configuration (Descriptor UUID: 0x2903)
+         */
+        public static final UUID SERVER_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR = UUID.fromString("00002903-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Number of Digitals (Descriptor UUID: 0x2909)
+         */
+        public static final UUID NUMBEROF_DIGITALS_DESCRIPTOR = UUID.fromString("00002909-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Report Reference (Descriptor UUID: 0x2908)
+         */
+        public static final UUID REPORT_REFERENCE_DESCRIPTOR = UUID.fromString("00002908-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Time Trigger Setting (Descriptor UUID: 0x290E)
+         */
+        public static final UUID TIME_TRIGGER_SETTING_DESCRIPTOR = UUID.fromString("0000290E-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Valid Range (Descriptor UUID: 0x2906)
+         */
+        public static final UUID VALID_RANGE_DESCRIPTOR = UUID.fromString("00002906-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Value Trigger Setting (Descriptor UUID: 0x290A)
+         */
+        public static final UUID VALUE_TRIGGER_SETTING_DESCRIPTOR = UUID.fromString("0000290A-0000-1000-8000-00805f9b34fb");
 
     }
 

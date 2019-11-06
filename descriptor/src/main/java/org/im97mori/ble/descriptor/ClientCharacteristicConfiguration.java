@@ -13,7 +13,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR;
+import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 
 /**
  * Client Characteristic Configuration (Descriptor UUID: 0x2902)
@@ -47,7 +47,7 @@ public class ClientCharacteristicConfiguration implements ByteArrayInterface, Pa
          */
         @NonNull
         public ClientCharacteristicConfiguration createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR, 0);
+            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, 0);
             bluetoothGattDescriptor.setValue(values);
             return new ClientCharacteristicConfiguration(bluetoothGattDescriptor);
         }
@@ -55,15 +55,9 @@ public class ClientCharacteristicConfiguration implements ByteArrayInterface, Pa
     };
 
     /**
-     * <p>
-     * Configuration
-     *
-     * @see BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE
-     * @see BluetoothGattDescriptor#ENABLE_INDICATION_VALUE
-     * @see BluetoothGattDescriptor#DISABLE_NOTIFICATION_VALUE
-     * </p>
+     * Properties
      */
-    private final byte[] mConfiguration;
+    private final byte[] mProperties;
 
     /**
      * Constructor from {@link BluetoothGattDescriptor}
@@ -71,7 +65,8 @@ public class ClientCharacteristicConfiguration implements ByteArrayInterface, Pa
      * @param bluetoothGattDescriptor Characteristics UUID: 0x2902
      */
     public ClientCharacteristicConfiguration(BluetoothGattDescriptor bluetoothGattDescriptor) {
-        mConfiguration = bluetoothGattDescriptor.getValue();
+        byte[] values = bluetoothGattDescriptor.getValue();
+        mProperties = Arrays.copyOfRange(values, 0, 2);
     }
 
     /**
@@ -80,7 +75,7 @@ public class ClientCharacteristicConfiguration implements ByteArrayInterface, Pa
      * @param in Parcel
      */
     private ClientCharacteristicConfiguration(Parcel in) {
-        mConfiguration = in.createByteArray();
+        mProperties = in.createByteArray();
     }
 
     /**
@@ -96,28 +91,29 @@ public class ClientCharacteristicConfiguration implements ByteArrayInterface, Pa
      */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeByteArray(mConfiguration);
+        dest.writeByteArray(mProperties);
     }
 
     /**
-     * @return Configuration
+     * @return Properties
      */
-    public byte[] getConfiguration() {
-        return mConfiguration;
+    @NonNull
+    public byte[] getProperties() {
+        return mProperties;
     }
 
     /**
      * @return {@code true}:current configuration is {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE}, {@code false}:not {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE}
      */
     public boolean isNotification() {
-        return Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, mConfiguration);
+        return Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, mProperties);
     }
 
     /**
      * @return {@code true}:current configuration is {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}, {@code false}:not {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}
      */
     public boolean isIndication() {
-        return Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, mConfiguration);
+        return Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, mProperties);
     }
 
     /**
@@ -128,7 +124,7 @@ public class ClientCharacteristicConfiguration implements ByteArrayInterface, Pa
     public byte[] getBytes() {
         byte[] data = new byte[2];
         ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);
-        byteBuffer.put(mConfiguration);
+        byteBuffer.put(mProperties);
         return data;
     }
 

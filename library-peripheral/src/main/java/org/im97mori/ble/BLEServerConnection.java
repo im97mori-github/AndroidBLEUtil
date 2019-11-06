@@ -45,7 +45,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import static android.bluetooth.le.AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY;
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR;
+import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.BLEConstants.ErrorCodes.APPLICATION_ERROR_9F;
 
 /**
@@ -246,12 +246,12 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
             bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
 
             bluetoothGattCharacteristic = new BluetoothGattCharacteristic(NOTIFICATABLE_CHARACTERISTIC_UUID, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-            bluetoothGattDescriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE);
+            bluetoothGattDescriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE);
             bluetoothGattCharacteristic.addDescriptor(bluetoothGattDescriptor);
             bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
 
             bluetoothGattCharacteristic = new BluetoothGattCharacteristic(INDICATABLE_CHARACTERISTIC_UUID, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
-            bluetoothGattDescriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE);
+            bluetoothGattDescriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE);
             bluetoothGattCharacteristic.addDescriptor(bluetoothGattDescriptor);
             bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
 
@@ -332,7 +332,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
                 bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, 0, MESSAGE_SUCCESS.getBytes());
             } else if (READABLE_DESCRIPTOR_UUID_WITH_ERROR.equals(descriptor.getUuid())) {
                 bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, 0, null);
-            } else if (CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR.equals(descriptor.getUuid())) {
+            } else if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptor.getUuid())) {
                 byte[] values;
                 Pair<BluetoothDevice, UUID> pair = Pair.create(device, descriptor.getCharacteristic().getUuid());
                 if (mCccdMap.containsKey(pair)) {
@@ -369,7 +369,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
                 if (responseNeeded) {
                     bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, 0, null);
                 }
-            } else if (CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR.equals(descriptor.getUuid())) {
+            } else if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptor.getUuid())) {
                 if (responseNeeded) {
                     bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, 0, null);
                 }
@@ -967,7 +967,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
         }
 
         // update cccd status
-        if (CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR.equals(descriptor.getUuid())) {
+        if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptor.getUuid())) {
             mCccdMap.put(Pair.create(device, descriptor.getCharacteristic().getUuid()), value);
             mBLEServerCallback.onClientCharacteristicConfigurationUpdated(mBluetoothGattServer, device, descriptor.getCharacteristic().getService().getUuid(), descriptor.getCharacteristic().getUuid(), value);
         }

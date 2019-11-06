@@ -62,7 +62,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR;
+import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
 import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
@@ -449,42 +449,42 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     }
                     , WriteCharacteristicTask.TIMEOUT_MILLIS);
         } else if (R.id.write_notification == item.getItemId()) {
-            BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR, 0);
+            BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, 0);
             descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
             mBleConnection.createWriteDescriptorTask(
                     DEFAULT_SERVICE_UUID
                     , NOTIFICATABLE_CHARACTERISTIC_UUID
-                    , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                    , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , new ClientCharacteristicConfiguration(descriptor)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
             );
         } else if (R.id.write_indication == item.getItemId()) {
-            BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR, 0);
+            BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, 0);
             descriptor.setValue(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
             mBleConnection.createWriteDescriptorTask(
                     DEFAULT_SERVICE_UUID
                     , INDICATABLE_CHARACTERISTIC_UUID
-                    , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                    , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , new ClientCharacteristicConfiguration(descriptor)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
             );
         } else if (R.id.write_notification_stop == item.getItemId()) {
-            BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR, 0);
+            BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, 0);
             descriptor.setValue(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
             mBleConnection.createWriteDescriptorTask(
                     DEFAULT_SERVICE_UUID
                     , NOTIFICATABLE_CHARACTERISTIC_UUID
-                    , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                    , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , new ClientCharacteristicConfiguration(descriptor)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
             );
         } else if (R.id.write_indication_stop == item.getItemId()) {
-            BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR, 0);
+            BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, 0);
             descriptor.setValue(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
             mBleConnection.createWriteDescriptorTask(
                     DEFAULT_SERVICE_UUID
                     , INDICATABLE_CHARACTERISTIC_UUID
-                    , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                    , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , new ClientCharacteristicConfiguration(descriptor)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
             );

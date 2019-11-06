@@ -18,7 +18,7 @@ public class ClientCharacteristicConfigurationTest {
         bluetoothGattDescriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
 
         ClientCharacteristicConfiguration result = new ClientCharacteristicConfiguration(bluetoothGattDescriptor);
-        assertArrayEquals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, result.getConfiguration());
+        assertArrayEquals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, result.getProperties());
         assertTrue(result.isNotification());
         assertFalse(result.isIndication());
     }
@@ -29,7 +29,7 @@ public class ClientCharacteristicConfigurationTest {
         bluetoothGattDescriptor.setValue(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
 
         ClientCharacteristicConfiguration result = new ClientCharacteristicConfiguration(bluetoothGattDescriptor);
-        assertArrayEquals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, result.getConfiguration());
+        assertArrayEquals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, result.getProperties());
         assertFalse(result.isNotification());
         assertTrue(result.isIndication());
     }
@@ -40,7 +40,7 @@ public class ClientCharacteristicConfigurationTest {
         bluetoothGattDescriptor.setValue(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
 
         ClientCharacteristicConfiguration result = new ClientCharacteristicConfiguration(bluetoothGattDescriptor);
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, result.getConfiguration());
+        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, result.getProperties());
         assertFalse(result.isNotification());
         assertFalse(result.isIndication());
     }
@@ -56,7 +56,7 @@ public class ClientCharacteristicConfigurationTest {
         parcel.setDataPosition(0);
         ClientCharacteristicConfiguration result2 = ClientCharacteristicConfiguration.CREATOR.createFromParcel(parcel);
 
-        assertArrayEquals(result1.getConfiguration(), result2.getConfiguration());
+        assertArrayEquals(result1.getProperties(), result2.getProperties());
     }
 
     @Test
