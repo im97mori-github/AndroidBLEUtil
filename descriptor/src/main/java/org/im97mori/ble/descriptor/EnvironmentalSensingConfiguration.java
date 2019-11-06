@@ -53,6 +53,10 @@ public class EnvironmentalSensingConfiguration implements ByteArrayInterface, Pa
 
     };
 
+    /**
+     * Trigger Logic Value
+     */
+    private final int mTriggerLogicValue;
 
     /**
      * Constructor from {@link BluetoothGattDescriptor}
@@ -60,7 +64,8 @@ public class EnvironmentalSensingConfiguration implements ByteArrayInterface, Pa
      * @param bluetoothGattDescriptor Characteristics UUID: 0x290B
      */
     public EnvironmentalSensingConfiguration(BluetoothGattDescriptor bluetoothGattDescriptor) {
-
+        byte[] values = bluetoothGattDescriptor.getValue();
+        mTriggerLogicValue = (values[0] & 0xff);
     }
 
     /**
@@ -69,7 +74,7 @@ public class EnvironmentalSensingConfiguration implements ByteArrayInterface, Pa
      * @param in Parcel
      */
     private EnvironmentalSensingConfiguration(Parcel in) {
-
+        mTriggerLogicValue = in.readInt();
     }
 
     /**
@@ -85,9 +90,15 @@ public class EnvironmentalSensingConfiguration implements ByteArrayInterface, Pa
      */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
+        dest.writeInt(mTriggerLogicValue);
     }
 
+    /**
+     * @return Trigger Logic Value
+     */
+    public int getTriggerLogicValue() {
+        return mTriggerLogicValue;
+    }
 
     /**
      * {@inheritDoc}
@@ -95,9 +106,9 @@ public class EnvironmentalSensingConfiguration implements ByteArrayInterface, Pa
     @NonNull
     @Override
     public byte[] getBytes() {
-        byte[] data = new byte[0];
+        byte[] data = new byte[1];
         ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);
-
+        byteBuffer.put((byte) mTriggerLogicValue);
         return data;
     }
 
