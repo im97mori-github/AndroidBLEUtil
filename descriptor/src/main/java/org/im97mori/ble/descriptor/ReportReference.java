@@ -21,6 +21,21 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.REPORT_REFERENCE_DESC
 public class ReportReference implements ByteArrayInterface, Parcelable {
 
     /**
+     * Report Type:Input Report
+     */
+    public static final int REPORT_TYPE_INPUT_REPORT = 0x01;
+
+    /**
+     * Report Type:Output Report
+     */
+    public static final int REPORT_TYPE_OUTPUT_REPORT = 0x02;
+
+    /**
+     * Report Type:Feature Report
+     */
+    public static final int REPORT_TYPE_FEATURE_REPORT = 0x03;
+
+    /**
      * @see ByteArrayCreater
      */
     public static final ByteArrayCreater<ReportReference> CREATOR = new ByteArrayCreater<ReportReference>() {
@@ -113,6 +128,27 @@ public class ReportReference implements ByteArrayInterface, Parcelable {
      */
     public int getReportType() {
         return mReportType;
+    }
+
+    /**
+     * @return {@code true}:report type is {@link #REPORT_TYPE_INPUT_REPORT}, {@code false}:not {@link #REPORT_TYPE_INPUT_REPORT}
+     */
+    public boolean isReportTypeInputReport() {
+        return mReportType == REPORT_TYPE_INPUT_REPORT;
+    }
+
+    /**
+     * @return {@code true}:report type is {@link #REPORT_TYPE_OUTPUT_REPORT}, {@code false}:not {@link #REPORT_TYPE_OUTPUT_REPORT}
+     */
+    public boolean isReportTypeOutputReport() {
+        return mReportType == REPORT_TYPE_OUTPUT_REPORT;
+    }
+
+    /**
+     * @return {@code true}:report type is {@link #REPORT_TYPE_FEATURE_REPORT}, {@code false}:not {@link #REPORT_TYPE_FEATURE_REPORT}
+     */
+    public boolean isReportTypeFeatureReport() {
+        return mReportType == REPORT_TYPE_FEATURE_REPORT;
     }
 
     /**

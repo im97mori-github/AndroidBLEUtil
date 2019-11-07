@@ -22,6 +22,46 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.VALUE_TRIGGER_SETTING
 public class ValueTriggerSetting implements ByteArrayInterface, Parcelable {
 
     /**
+     * Condition:The state is changed if the characteristic value is changed
+     */
+    public static final int CONDITION_THE_STATE_IS_CHANGED_IF_THE_CHARACTERISTIC_VALUE_IS_CHANGED = 0x00;
+
+    /**
+     * Condition:Crossed a boundary
+     */
+    public static final int CONDITION_CROSSED_A_BOUNDARY = 0x01;
+
+    /**
+     * Condition:On the boundary
+     */
+    public static final int CONDITION_ON_THE_BOUNDARY = 0x02;
+
+    /**
+     * Condition:The state is changed if the value of the analog characteristic is changed more than a settable Analog value
+     */
+    public static final int CONDITION_THE_STATE_IS_CHANGED_IF_THE_VALUE_OF_THE_ANALOG_CHARACTERISTIC_IS_CHANGED_MORE_THAN_A_SETTABLE_ANALOG_VALUE = 0x03;
+
+    /**
+     * Condition:Mask then compare
+     */
+    public static final int CONDITION_MASK_THEN_COMPARE = 0x04;
+
+    /**
+     * Condition:Inside or outside the boundaries
+     */
+    public static final int CONDITION_INSIDE_OR_OUTSIDE_THE_BOUNDARIES = 0x05;
+
+    /**
+     * Condition:On the boundaries
+     */
+    public static final int CONDITION_ON_THE_BOUNDARIES = 0x06;
+
+    /**
+     * Condition:No value trigger
+     */
+    public static final int CONDITION_NO_VALUE_TRIGGER = 0x07;
+
+    /**
      * @see ByteArrayCreater
      */
     public static final ByteArrayCreater<ValueTriggerSetting> CREATOR = new ByteArrayCreater<ValueTriggerSetting>() {
@@ -123,6 +163,62 @@ public class ValueTriggerSetting implements ByteArrayInterface, Parcelable {
      */
     public int getCondition() {
         return mCondition;
+    }
+
+    /**
+     * @return {@code true}:condition is {@link #CONDITION_THE_STATE_IS_CHANGED_IF_THE_CHARACTERISTIC_VALUE_IS_CHANGED}, {@code false}:not {@link #CONDITION_THE_STATE_IS_CHANGED_IF_THE_CHARACTERISTIC_VALUE_IS_CHANGED}
+     */
+    public boolean isConditionTheStateIsChangeIfTheCharacteristicValueIsChanged() {
+        return CONDITION_THE_STATE_IS_CHANGED_IF_THE_CHARACTERISTIC_VALUE_IS_CHANGED == mCondition;
+    }
+
+    /**
+     * @return {@code true}:condition is {@link #CONDITION_CROSSED_A_BOUNDARY}, {@code false}:not {@link #CONDITION_CROSSED_A_BOUNDARY}
+     */
+    public boolean isConditionCrossedABoundary() {
+        return CONDITION_CROSSED_A_BOUNDARY == mCondition;
+    }
+
+    /**
+     * @return {@code true}:condition is {@link #CONDITION_ON_THE_BOUNDARY}, {@code false}:not {@link #CONDITION_ON_THE_BOUNDARY}
+     */
+    public boolean isConditionOnTheBoundary() {
+        return CONDITION_ON_THE_BOUNDARY == mCondition;
+    }
+
+    /**
+     * @return {@code true}:condition is {@link #CONDITION_THE_STATE_IS_CHANGED_IF_THE_VALUE_OF_THE_ANALOG_CHARACTERISTIC_IS_CHANGED_MORE_THAN_A_SETTABLE_ANALOG_VALUE}, {@code false}:not {@link #CONDITION_THE_STATE_IS_CHANGED_IF_THE_VALUE_OF_THE_ANALOG_CHARACTERISTIC_IS_CHANGED_MORE_THAN_A_SETTABLE_ANALOG_VALUE}
+     */
+    public boolean isConditionTheStateIsChangedIfTheValueOfTheAnalogCharacteristicIsChangedMoreThanASettableAnalogValue() {
+        return CONDITION_THE_STATE_IS_CHANGED_IF_THE_VALUE_OF_THE_ANALOG_CHARACTERISTIC_IS_CHANGED_MORE_THAN_A_SETTABLE_ANALOG_VALUE == mCondition;
+    }
+
+    /**
+     * @return {@code true}:condition is {@link #CONDITION_MASK_THEN_COMPARE}, {@code false}:not {@link #CONDITION_MASK_THEN_COMPARE}
+     */
+    public boolean isConditionMaskThenCompare() {
+        return CONDITION_MASK_THEN_COMPARE == mCondition;
+    }
+
+    /**
+     * @return {@code true}:condition is {@link #CONDITION_INSIDE_OR_OUTSIDE_THE_BOUNDARIES}, {@code false}:not {@link #CONDITION_INSIDE_OR_OUTSIDE_THE_BOUNDARIES}
+     */
+    public boolean isConditionInsideOrOutsideTheBoundaries() {
+        return CONDITION_INSIDE_OR_OUTSIDE_THE_BOUNDARIES == mCondition;
+    }
+
+    /**
+     * @return {@code true}:condition is {@link #CONDITION_ON_THE_BOUNDARIES}, {@code false}:not {@link #CONDITION_ON_THE_BOUNDARIES}
+     */
+    public boolean isConditionOnTheBoundaries() {
+        return CONDITION_ON_THE_BOUNDARIES == mCondition;
+    }
+
+    /**
+     * @return {@code true}:condition is {@link #CONDITION_NO_VALUE_TRIGGER}, {@code false}:not {@link #CONDITION_NO_VALUE_TRIGGER}
+     */
+    public boolean isConditionNoValueTrigger() {
+        return CONDITION_NO_VALUE_TRIGGER == mCondition;
     }
 
     /**

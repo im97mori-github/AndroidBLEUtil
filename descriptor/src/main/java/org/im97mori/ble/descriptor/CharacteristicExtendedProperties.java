@@ -22,6 +22,16 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.CHARACTERISTIC_EXTEND
 public class CharacteristicExtendedProperties implements ByteArrayInterface, Parcelable {
 
     /**
+     * Properties:Reliable Write enabled
+     */
+    public static final byte[] PROPERTIES_RELIABLE_WRITE_ENABLED = {0x01, 0x00};
+
+    /**
+     * Properties:Writable Auxiliaries enabled
+     */
+    public static final byte[] PROPERTIES_WRITABLE_AUXILIARIES_ENABLED = {0x02, 0x00};
+
+    /**
      * @see ByteArrayCreater
      */
     public static final ByteArrayCreater<CharacteristicExtendedProperties> CREATOR = new ByteArrayCreater<CharacteristicExtendedProperties>() {
@@ -100,6 +110,20 @@ public class CharacteristicExtendedProperties implements ByteArrayInterface, Par
     @NonNull
     public byte[] getProperties() {
         return mProperties;
+    }
+
+    /**
+     * @return {@code true}:property is {@link #PROPERTIES_RELIABLE_WRITE_ENABLED}, {@code false}:not {@link #PROPERTIES_RELIABLE_WRITE_ENABLED}
+     */
+    public boolean isPropertiesReliableWrite() {
+        return (PROPERTIES_RELIABLE_WRITE_ENABLED[0] & mProperties[0]) != 0;
+    }
+
+    /**
+     * @return {@code true}:property is {@link #PROPERTIES_WRITABLE_AUXILIARIES_ENABLED}, {@code false}:not {@link #PROPERTIES_WRITABLE_AUXILIARIES_ENABLED}
+     */
+    public boolean isPropertiesWritableAuxiliariesEnabled() {
+        return (PROPERTIES_WRITABLE_AUXILIARIES_ENABLED[0] & mProperties[0]) != 0;
     }
 
     /**

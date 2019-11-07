@@ -175,6 +175,7 @@ public class IncompleteListOf32BitServiceUUIDsTest {
         assertEquals(result1.getUuidList().size(), result2.getUuidList().size());
         assertEquals(result1.getUuidList().get(0), result2.getUuidList().get(0));
     }
+
     @Test
     public void constructTest11() {
         byte[] data = new byte[6];

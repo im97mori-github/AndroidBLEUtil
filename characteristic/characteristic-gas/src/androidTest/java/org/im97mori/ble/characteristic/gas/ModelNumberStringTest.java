@@ -3,7 +3,6 @@ package org.im97mori.ble.characteristic.gas;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 
-import org.im97mori.ble.BLEConstants;
 import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;

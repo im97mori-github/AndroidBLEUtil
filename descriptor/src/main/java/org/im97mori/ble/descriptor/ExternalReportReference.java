@@ -121,7 +121,7 @@ public class ExternalReportReference implements ByteArrayInterface, Parcelable {
      * @return External Report Reference UUID
      */
     @NonNull
-    public UUID getUuid() {
+    public UUID getExternalReportReferenceUuid() {
         return mUuid;
     }
 

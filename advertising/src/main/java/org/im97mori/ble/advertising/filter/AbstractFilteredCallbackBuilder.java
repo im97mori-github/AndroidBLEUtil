@@ -825,7 +825,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
     /**
      * add Manufacturer Specific Data filter
      *
-     * @param expectList List of {@link ManufacturerSpecificData} instance
+     * @param expectList  List of {@link ManufacturerSpecificData} instance
      * @param bitmaskList bitmask for filter
      * @return myself
      * @see android.bluetooth.le.ScanFilter.Builder#setManufacturerData(int, byte[], byte[])

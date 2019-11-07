@@ -14,6 +14,7 @@ import android.text.format.DateUtils;
 import androidx.annotation.NonNull;
 import androidx.test.core.app.ApplicationProvider;
 
+import org.im97mori.ble.characteristic.MockControl;
 import org.im97mori.ble.task.AbortReliableWriteTask;
 import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.DiscoverServiceTask;
@@ -22,7 +23,6 @@ import org.im97mori.ble.task.ReadCharacteristicTask;
 import org.im97mori.ble.task.ReadDescriptorTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
 import org.im97mori.ble.task.WriteDescriptorTask;
-import org.im97mori.ble.characteristic.MockControl;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,10 +34,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR;
-import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
-import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
-import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
+import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.DEFAULT_SERVICE_UUID;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.INDICATABLE_CHARACTERISTIC_UUID;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.MESSAGE_SUCCESS;
@@ -62,6 +59,9 @@ import static org.im97mori.ble.BLEServerConnection.MOCK_CONTROL_CHARACTERISTIC_U
 import static org.im97mori.ble.BLEServerConnection.MOCK_CONTROL_SERVICE_UUID;
 import static org.im97mori.ble.BLEServerConnection.MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID;
 import static org.im97mori.ble.BLEServerConnection.MOCK_CONTROL_TARGET_NOTIFICATION_UUID;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_FAILED;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_SUCCESS;
+import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -1419,7 +1419,7 @@ public class BLEResponseTest {
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
-                , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -1447,7 +1447,7 @@ public class BLEResponseTest {
         bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
-                , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -1474,7 +1474,7 @@ public class BLEResponseTest {
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , INDICATABLE_CHARACTERISTIC_UUID
-                , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -1502,7 +1502,7 @@ public class BLEResponseTest {
         bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , INDICATABLE_CHARACTERISTIC_UUID
-                , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -1530,7 +1530,7 @@ public class BLEResponseTest {
                 BLE_CONNECTION
                 , DEFAULT_SERVICE_UUID
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
-                , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -1560,7 +1560,7 @@ public class BLEResponseTest {
                 BLE_CONNECTION
                 , DEFAULT_SERVICE_UUID
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
-                , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -1928,7 +1928,7 @@ public class BLEResponseTest {
         bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
-                , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -1956,7 +1956,7 @@ public class BLEResponseTest {
         bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
-                , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -2018,7 +2018,7 @@ public class BLEResponseTest {
         bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
-                , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -2046,7 +2046,7 @@ public class BLEResponseTest {
         bleResult = BLE_SYNC_CONNECTION.createWriteDescriptorTask(
                 DEFAULT_SERVICE_UUID
                 , NOTIFICATABLE_CHARACTERISTIC_UUID
-                , CLIENT_CHARACTERISTIC_CONFIGRATION_DESCRIPTOR
+                , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull

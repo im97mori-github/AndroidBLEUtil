@@ -299,7 +299,7 @@ public abstract class AbstractBLETask {
     /**
      * create timeout message
      *
-     * @param obj                instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
+     * @param obj instance for {@link android.os.Handler#removeCallbacksAndMessages(Object)}
      * @return create timeout {@link Message} instance
      */
     @NonNull

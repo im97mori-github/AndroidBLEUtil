@@ -62,7 +62,7 @@ public class FilteredLeScanCallbackTest {
                 list3.add(scanRecord);
             }
         };
-        FilteredLeScanCallback callback = new FilteredLeScanCallback.Builder().setScanCallback(leScanCallback).addFilter(new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>(){
+        FilteredLeScanCallback callback = new FilteredLeScanCallback.Builder().setScanCallback(leScanCallback).addFilter(new AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>() {
             @Override
             public boolean isMatched(AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
                 return false;
@@ -70,9 +70,9 @@ public class FilteredLeScanCallbackTest {
         }).build();
         callback.onLeScan(bluetoothDevice, rssi, scanRecord);
 
-       assertTrue(list1.isEmpty());
-       assertTrue(list2.isEmpty());
-       assertTrue(list3.isEmpty());
+        assertTrue(list1.isEmpty());
+        assertTrue(list2.isEmpty());
+        assertTrue(list3.isEmpty());
     }
 
 }

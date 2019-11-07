@@ -11,8 +11,8 @@ import android.os.Message;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.TaskHandler;
 import org.im97mori.ble.BaseBLEServerCallback;
+import org.im97mori.ble.TaskHandler;
 import org.junit.Test;
 
 import java.util.Random;

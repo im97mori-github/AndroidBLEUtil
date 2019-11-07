@@ -21,6 +21,26 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.TIME_TRIGGER_SETTING_
 public class TimeTriggerSetting implements ByteArrayInterface, Parcelable {
 
     /**
+     * Condition:No time-based triggering used
+     */
+    public static final int CONDITION_NO_TIME_BASED_TRIGGERING_USED = 0x00;
+
+    /**
+     * Condition:Indicates or notifies unconditionally after a settable time
+     */
+    public static final int CONDITION_INDICATES_OR_NOTIFIED_UNCONDITIONALLY_AFTER_A_SETTABLE_TIME = 0x01;
+
+    /**
+     * Condition:Not indicated or notified more often than a settable time
+     */
+    public static final int CONDITION_NOT_INDICATED_OR_NOTIFIED_MORE_OFTEN_THAN_A_SETTABLE_TIME = 0x02;
+
+    /**
+     * Condition:Changed more often than
+     */
+    public static final int CONDITION_CHANGED_MORE_OFTEN_THAN = 0x03;
+
+    /**
      * @see ByteArrayCreater
      */
     public static final ByteArrayCreater<TimeTriggerSetting> CREATOR = new ByteArrayCreater<TimeTriggerSetting>() {
@@ -122,6 +142,34 @@ public class TimeTriggerSetting implements ByteArrayInterface, Parcelable {
      */
     public int getCondition() {
         return mCondition;
+    }
+
+    /**
+     * @return {@code true}:condition is {@link #CONDITION_NO_TIME_BASED_TRIGGERING_USED}, {@code false}:not {@link #CONDITION_NO_TIME_BASED_TRIGGERING_USED}
+     */
+    public boolean isConditionNoTimeBasedTriggeringUsed() {
+        return CONDITION_NO_TIME_BASED_TRIGGERING_USED == mCondition;
+    }
+
+    /**
+     * @return {@code true}:condition is {@link #CONDITION_INDICATES_OR_NOTIFIED_UNCONDITIONALLY_AFTER_A_SETTABLE_TIME}, {@code false}:not {@link #CONDITION_INDICATES_OR_NOTIFIED_UNCONDITIONALLY_AFTER_A_SETTABLE_TIME}
+     */
+    public boolean isConditionIndicatesOrNotifiedIUnconditionallyAfterASettableTime() {
+        return CONDITION_INDICATES_OR_NOTIFIED_UNCONDITIONALLY_AFTER_A_SETTABLE_TIME == mCondition;
+    }
+
+    /**
+     * @return {@code true}:condition is {@link #CONDITION_NOT_INDICATED_OR_NOTIFIED_MORE_OFTEN_THAN_A_SETTABLE_TIME}, {@code false}:not {@link #CONDITION_NOT_INDICATED_OR_NOTIFIED_MORE_OFTEN_THAN_A_SETTABLE_TIME}
+     */
+    public boolean isConditionNotIndicatedOrNotifiedMoreOftenThanASettableTime() {
+        return CONDITION_NOT_INDICATED_OR_NOTIFIED_MORE_OFTEN_THAN_A_SETTABLE_TIME == mCondition;
+    }
+
+    /**
+     * @return {@code true}:condition is {@link #CONDITION_CHANGED_MORE_OFTEN_THAN}, {@code false}:not {@link #CONDITION_CHANGED_MORE_OFTEN_THAN}
+     */
+    public boolean isConditionChangedMoreOfthenThan() {
+        return CONDITION_CHANGED_MORE_OFTEN_THAN == mCondition;
     }
 
     /**

@@ -11,10 +11,10 @@ import android.text.format.DateUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.ByteArrayInterface;
-import org.im97mori.ble.TaskHandler;
 import org.im97mori.ble.BLEPeripheralLogUtils;
 import org.im97mori.ble.BLEServerCallback;
+import org.im97mori.ble.ByteArrayInterface;
+import org.im97mori.ble.TaskHandler;
 
 import java.util.UUID;
 

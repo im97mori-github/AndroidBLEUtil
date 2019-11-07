@@ -103,17 +103,17 @@ public class ClientCharacteristicConfiguration implements ByteArrayInterface, Pa
     }
 
     /**
-     * @return {@code true}:current configuration is {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE}, {@code false}:not {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE}
+     * @return {@code true}:property is {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE}, {@code false}:not {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE}
      */
     public boolean isNotification() {
-        return Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, mProperties);
+        return (mProperties[0] & BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE[0]) != 0;
     }
 
     /**
-     * @return {@code true}:current configuration is {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}, {@code false}:not {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}
+     * @return {@code true}:property is {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}, {@code false}:not {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}
      */
     public boolean isIndication() {
-        return Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, mProperties);
+        return (mProperties[0] & BluetoothGattDescriptor.ENABLE_INDICATION_VALUE[0]) != 0;
     }
 
     /**

@@ -21,6 +21,16 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.SERVER_CHARACTERISTIC
 public class ServerCharacteristicConfiguration implements ByteArrayInterface, Parcelable {
 
     /**
+     * Properties:Broadcasts disabled
+     */
+    public static final int PROPERTIES_BROADCASTS_DISABLED = 0x00;
+
+    /**
+     * Properties:Broadcasts enabled
+     */
+    public static final int PROPERTIES_BROADCASTS_ENABLED = 0x01;
+
+    /**
      * @see ByteArrayCreater
      */
     public static final ByteArrayCreater<ServerCharacteristicConfiguration> CREATOR = new ByteArrayCreater<ServerCharacteristicConfiguration>() {
@@ -98,6 +108,20 @@ public class ServerCharacteristicConfiguration implements ByteArrayInterface, Pa
      */
     public int getProperties() {
         return mProperties;
+    }
+
+    /**
+     * @return {@code true}:property is {@link #PROPERTIES_BROADCASTS_DISABLED}, {@code false}:not {@link #PROPERTIES_BROADCASTS_DISABLED}
+     */
+    public boolean isPropertiesBroadcastsDisabled() {
+        return PROPERTIES_BROADCASTS_DISABLED == mProperties;
+    }
+
+    /**
+     * @return {@code true}:property is {@link #PROPERTIES_BROADCASTS_ENABLED}, {@code false}:not {@link #PROPERTIES_BROADCASTS_ENABLED}
+     */
+    public boolean isPropertiesBroadcastsEnabled() {
+        return PROPERTIES_BROADCASTS_ENABLED == mProperties;
     }
 
     /**

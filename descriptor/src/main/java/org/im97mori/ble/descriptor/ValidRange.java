@@ -111,11 +111,193 @@ public class ValidRange implements ByteArrayInterface, Parcelable {
     }
 
     /**
+     * <p>
+     * Gust Factor (Characteristic UUID: 0x2A74)
+     * UV Index (Characteristic UUID: 0x2A76)
+     * Barometric Pressure Trend (Characteristic UUID: 0x2AA3)
+     * </p>
+     *
+     * @return Lower inclusive value(UINT8)
+     */
+    public int getLowerInclusiveValueUint8() {
+        return 0xff & mLowerInclusiveValue[0];
+    }
+
+    /**
+     * <p>
+     * Analog (Characteristic UUID: 0x2A58)
+     * Apparent Wind Direction (Characteristic UUID: 0x2A73)
+     * Apparent Wind Speed (Characteristic UUID: 0x2A72)
+     * Humidity (Characteristic UUID: 0x2A6F)
+     * Irradiance (Characteristic UUID: 0x2A77)
+     * Rainfall (Characteristic UUID: 0x2A78)
+     * True Wind Direction (Characteristic UUID: 0x2A71)
+     * True Wind Speed (Characteristic UUID: 0x2A70)
+     * Magnetic Declination (Characteristic UUID: 0x2A2C)
+     * </p>
+     *
+     * @return Lower inclusive value(UINT16)
+     */
+    public int getLowerInclusiveValueUint16() {
+        return (0xff & mLowerInclusiveValue[0]) | ((0xff & mLowerInclusiveValue[1]) << 8);
+    }
+
+    /**
+     * <p>
+     * Pollen Concentration (Characteristic UUID: 0x2A75)
+     * </p>
+     *
+     * @return Lower inclusive value(UINT24)
+     */
+    public int getLowerInclusiveValueUint24() {
+        return (0xff & mLowerInclusiveValue[0]) | ((0xff & mLowerInclusiveValue[1]) << 8) | ((0xff & mLowerInclusiveValue[2]) << 16);
+    }
+
+    /**
+     * <p>
+     * Pressure (Characteristic UUID: 0x2A6D)
+     * </p>
+     *
+     * @return Lower inclusive value(UINT32)
+     */
+    public long getLowerInclusiveValueUint32() {
+        return (0xff & mLowerInclusiveValue[0]) | ((0xff & mLowerInclusiveValue[1]) << 8) | ((0xff & mLowerInclusiveValue[2]) << 16) | ((0xff & mLowerInclusiveValue[3]) << 24);
+    }
+
+    /**
+     * <p>
+     * Dew Point (Characteristic UUID: 0x2A7B)
+     * Heat Index (Characteristic UUID: 0x2A7A)
+     * Wind Chill (Characteristic UUID: 0x2A79)
+     * </p>
+     *
+     * @return Lower inclusive value(SINT8)
+     */
+    public int getLowerInclusiveValueSint8() {
+        return mLowerInclusiveValue[0];
+    }
+
+    /**
+     * <p>
+     * Temperature (Characteristic UUID: 0x2A6E)
+     * Magnetic Flux Density - 2D (Characteristic UUID: 0x2AA0)
+     * Magnetic Flux Density - 3D (Characteristic UUID: 0x2AA1)
+     * </p>
+     *
+     * @return Lower inclusive value(SINT16)
+     */
+    public int getLowerInclusiveValueSint16() {
+        return (0xff & mLowerInclusiveValue[0]) | (mLowerInclusiveValue[1] << 8);
+    }
+
+    /**
+     * <p>
+     * Elevation (Characteristic UUID: 0x2A6C)
+     * </p>
+     *
+     * @return Lower inclusive value(SINT24)
+     */
+    public int getLowerInclusiveValueSint24() {
+        return (0xff & mLowerInclusiveValue[0]) | ((0xff & mLowerInclusiveValue[1]) << 8) | (mLowerInclusiveValue[2] << 16);
+    }
+
+    /**
      * @return Upper inclusive value
      */
     @NonNull
     public byte[] getUpperInclusiveValue() {
         return mUpperInclusiveValue;
+    }
+
+    /**
+     * <p>
+     * Gust Factor (Characteristic UUID: 0x2A74)
+     * UV Index (Characteristic UUID: 0x2A76)
+     * Barometric Pressure Trend (Characteristic UUID: 0x2AA3)
+     * </p>
+     *
+     * @return Upper inclusive value(UINT8)
+     */
+    public int getUpperInclusiveValueUint8() {
+        return 0xff & mUpperInclusiveValue[0];
+    }
+
+    /**
+     * <p>
+     * Analog (Characteristic UUID: 0x2A58)
+     * Apparent Wind Direction (Characteristic UUID: 0x2A73)
+     * Apparent Wind Speed (Characteristic UUID: 0x2A72)
+     * Humidity (Characteristic UUID: 0x2A6F)
+     * Irradiance (Characteristic UUID: 0x2A77)
+     * Rainfall (Characteristic UUID: 0x2A78)
+     * True Wind Direction (Characteristic UUID: 0x2A71)
+     * True Wind Speed (Characteristic UUID: 0x2A70)
+     * Magnetic Declination (Characteristic UUID: 0x2A2C)
+     * </p>
+     *
+     * @return Upper inclusive value(UINT16)
+     */
+    public int getUpperInclusiveValueUint16() {
+        return (0xff & mUpperInclusiveValue[0]) | ((0xff & mUpperInclusiveValue[1]) << 8);
+    }
+
+    /**
+     * <p>
+     * Pollen Concentration (Characteristic UUID: 0x2A75)
+     * </p>
+     *
+     * @return Upper inclusive value(UINT24)
+     */
+    public int getUpperInclusiveValueUint24() {
+        return (0xff & mUpperInclusiveValue[0]) | ((0xff & mUpperInclusiveValue[1]) << 8) | ((0xff & mUpperInclusiveValue[2]) << 16);
+    }
+
+    /**
+     * <p>
+     * Pressure (Characteristic UUID: 0x2A6D)
+     * </p>
+     *
+     * @return Upper inclusive value(UINT32)
+     */
+    public long getUpperInclusiveValueUint32() {
+        return (0xff & mUpperInclusiveValue[0]) | ((0xff & mUpperInclusiveValue[1]) << 8) | ((0xff & mUpperInclusiveValue[2]) << 16) | ((0xff & mUpperInclusiveValue[3]) << 24);
+    }
+
+    /**
+     * <p>
+     * Dew Point (Characteristic UUID: 0x2A7B)
+     * Heat Index (Characteristic UUID: 0x2A7A)
+     * Wind Chill (Characteristic UUID: 0x2A79)
+     * </p>
+     *
+     * @return Upper inclusive value(SINT8)
+     */
+    public int getUpperInclusiveValueSint8() {
+        return mUpperInclusiveValue[0];
+    }
+
+    /**
+     * <p>
+     * Temperature (Characteristic UUID: 0x2A6E)
+     * Magnetic Flux Density - 2D (Characteristic UUID: 0x2AA0)
+     * Magnetic Flux Density - 3D (Characteristic UUID: 0x2AA1)
+     * </p>
+     *
+     * @return Upper inclusive value(SINT16)
+     */
+    public int getUpperInclusiveValueSint16() {
+        return (0xff & mUpperInclusiveValue[0]) | (mUpperInclusiveValue[1] << 8);
+    }
+
+    /**
+     * <p>
+     * Elevation (Characteristic UUID: 0x2A6C)
+     * </p>
+     *
+     * @return Upper inclusive value(SINT24)
+     */
+    public int getUpperInclusiveValueSint24() {
+        return (0xff & mUpperInclusiveValue[0]) | ((0xff & mUpperInclusiveValue[1]) << 8) | (mUpperInclusiveValue[2] << 16);
     }
 
     /**

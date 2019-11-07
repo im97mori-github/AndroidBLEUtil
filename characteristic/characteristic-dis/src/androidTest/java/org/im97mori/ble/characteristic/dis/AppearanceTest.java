@@ -3,7 +3,6 @@ package org.im97mori.ble.characteristic.dis;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 
-import org.im97mori.ble.BLEConstants;
 import org.junit.Test;
 
 import static org.im97mori.ble.BLEConstants.BASE_UUID;
@@ -15,8 +14,8 @@ public class AppearanceTest {
     @Test
     public void test001() {
         byte[] data = new byte[2];
-        data[ 0] = (byte) ((Appearance.CATEGORY_UNKNOWN) & 0xff);
-        data[ 1] = (byte) ((Appearance.CATEGORY_UNKNOWN >> 8) & 0xff);
+        data[0] = (byte) ((Appearance.CATEGORY_UNKNOWN) & 0xff);
+        data[1] = (byte) ((Appearance.CATEGORY_UNKNOWN >> 8) & 0xff);
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
@@ -28,8 +27,8 @@ public class AppearanceTest {
     @Test
     public void test002() {
         byte[] data = new byte[2];
-        data[ 0] = (byte) ((Appearance.CATEGORY_UNKNOWN) & 0xff);
-        data[ 1] = (byte) ((Appearance.CATEGORY_UNKNOWN >> 8) & 0xff);
+        data[0] = (byte) ((Appearance.CATEGORY_UNKNOWN) & 0xff);
+        data[1] = (byte) ((Appearance.CATEGORY_UNKNOWN >> 8) & 0xff);
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
@@ -46,8 +45,8 @@ public class AppearanceTest {
     @Test
     public void test003() {
         byte[] data = new byte[2];
-        data[ 0] = (byte) ((Appearance.CATEGORY_UNKNOWN) & 0xff);
-        data[ 1] = (byte) ((Appearance.CATEGORY_UNKNOWN >> 8) & 0xff);
+        data[0] = (byte) ((Appearance.CATEGORY_UNKNOWN) & 0xff);
+        data[1] = (byte) ((Appearance.CATEGORY_UNKNOWN >> 8) & 0xff);
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);

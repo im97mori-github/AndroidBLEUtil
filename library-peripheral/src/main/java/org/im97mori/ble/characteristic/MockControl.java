@@ -7,9 +7,9 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
-import org.im97mori.ble.BLEServerConnection;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

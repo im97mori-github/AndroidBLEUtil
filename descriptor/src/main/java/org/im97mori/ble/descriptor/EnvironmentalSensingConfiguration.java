@@ -21,6 +21,16 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.ENVIRONMENTAL_SENSING
 public class EnvironmentalSensingConfiguration implements ByteArrayInterface, Parcelable {
 
     /**
+     * Trigger Logic Value:Boolean AND
+     */
+    public static final int TRIGGER_LOGIC_VALUE_BOOLAEN_AND = 0x00;
+
+    /**
+     * Trigger Logic Value:Boolean OR
+     */
+    public static final int TRIGGER_LOGIC_VALUE_BOOLAEN_OR = 0x01;
+
+    /**
      * @see ByteArrayCreater
      */
     public static final ByteArrayCreater<EnvironmentalSensingConfiguration> CREATOR = new ByteArrayCreater<EnvironmentalSensingConfiguration>() {
@@ -98,6 +108,20 @@ public class EnvironmentalSensingConfiguration implements ByteArrayInterface, Pa
      */
     public int getTriggerLogicValue() {
         return mTriggerLogicValue;
+    }
+
+    /**
+     * @return {@code true}:triger logic value  is {@link #TRIGGER_LOGIC_VALUE_BOOLAEN_AND}, {@code false}:not {@link #TRIGGER_LOGIC_VALUE_BOOLAEN_AND}
+     */
+    public boolean isTriggerLogicValueBooleanAnd() {
+        return mTriggerLogicValue == TRIGGER_LOGIC_VALUE_BOOLAEN_AND;
+    }
+
+    /**
+     * @return {@code true}:triger logic value is {@link #TRIGGER_LOGIC_VALUE_BOOLAEN_OR}, {@code false}:not {@link #TRIGGER_LOGIC_VALUE_BOOLAEN_OR}
+     */
+    public boolean isTriggerLogicValueBooleanOr() {
+        return mTriggerLogicValue == TRIGGER_LOGIC_VALUE_BOOLAEN_OR;
     }
 
     /**

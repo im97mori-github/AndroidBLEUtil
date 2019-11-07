@@ -21,6 +21,56 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.ENVIRONMENTAL_SENSING
 public class EnvironmentalSensingTriggerSetting implements ByteArrayInterface, Parcelable {
 
     /**
+     * Conditions:Trigger inactive
+     */
+    public static final int CONDITIONS_TRIGGER_INACTIVE = 0x00;
+
+    /**
+     * Conditions:Use a fixed time interval between transmissions
+     */
+    public static final int CONDITIONS_TRIGGER_USE_A_FIXED_TIME_INTERVAL_BETWEEN_TRANSMISSIONS = 0x01;
+
+    /**
+     * Conditions:No less than the specified time between transmissions
+     */
+    public static final int CONDITIONS_TRIGGER_NO_LESS_THAN_THE_SPECIFIED_TIME_BETWEEN_TRANSMISSIONS = 0x02;
+
+    /**
+     * Conditions:When value changes compared to previous value
+     */
+    public static final int CONDITIONS_TRIGGER_WHEN_VALUE_CHANGES_COMPARED_TO_PREVIOUS_VALUE = 0x03;
+
+    /**
+     * Conditions:While less than the specified value
+     */
+    public static final int CONDITIONS_TRIGGER_WHILE_LESS_THAN_THE_SPECIFIED_VALUE = 0x04;
+
+    /**
+     * Conditions:While less than or equal to the specified value
+     */
+    public static final int CONDITIONS_TRIGGER_WHILE_LESS_THAN_OR_EQUAL_TO_THE_SPECIFIED_VALUE = 0x05;
+
+    /**
+     * Conditions:While greater than the specified value
+     */
+    public static final int CONDITIONS_TRIGGER_WHILE_GREATER_THAN_THE_SPECIFIED_VALUE = 0x06;
+
+    /**
+     * Conditions:While greater than or equal to the specified value
+     */
+    public static final int CONDITIONS_TRIGGER_WHILE_GREATER_THAN_OR_EQUAL_TO_THE_SPECIFIED_VALUE = 0x07;
+
+    /**
+     * Conditions:While equal to the specified value
+     */
+    public static final int CONDITIONS_TRIGGER_WHILE_EQUAL_TO_THE_SPECIFIED_VALUE = 0x08;
+
+    /**
+     * Conditions:While not equal to the specified value
+     */
+    public static final int CONDITIONS_TRIGGER_WHILE_NOT_EQUAL_TO_THE_SPECIFIED_VALUE = 0x09;
+
+    /**
      * @see ByteArrayCreater
      */
     public static final ByteArrayCreater<EnvironmentalSensingTriggerSetting> CREATOR = new ByteArrayCreater<EnvironmentalSensingTriggerSetting>() {
@@ -98,6 +148,76 @@ public class EnvironmentalSensingTriggerSetting implements ByteArrayInterface, P
      */
     public int getConditions() {
         return mConditions;
+    }
+
+    /**
+     * @return {@code true}:conditions is {@link #CONDITIONS_TRIGGER_INACTIVE}, {@code false}:not {@link #CONDITIONS_TRIGGER_INACTIVE}
+     */
+    public boolean isConditionsTriggerInactive() {
+        return mConditions == CONDITIONS_TRIGGER_INACTIVE;
+    }
+
+    /**
+     * @return {@code true}:conditions is {@link #CONDITIONS_TRIGGER_USE_A_FIXED_TIME_INTERVAL_BETWEEN_TRANSMISSIONS}, {@code false}:not {@link #CONDITIONS_TRIGGER_USE_A_FIXED_TIME_INTERVAL_BETWEEN_TRANSMISSIONS}
+     */
+    public boolean isConditionsTriggerUsedAFixedTimeIntervalBetweenTransmissions() {
+        return mConditions == CONDITIONS_TRIGGER_USE_A_FIXED_TIME_INTERVAL_BETWEEN_TRANSMISSIONS;
+    }
+
+    /**
+     * @return {@code true}:conditions is {@link #CONDITIONS_TRIGGER_NO_LESS_THAN_THE_SPECIFIED_TIME_BETWEEN_TRANSMISSIONS}, {@code false}:not {@link #CONDITIONS_TRIGGER_NO_LESS_THAN_THE_SPECIFIED_TIME_BETWEEN_TRANSMISSIONS}
+     */
+    public boolean isConditionsTriggerNoLessThanTheSpecifiedTimeBetweenTransmissions() {
+        return mConditions == CONDITIONS_TRIGGER_NO_LESS_THAN_THE_SPECIFIED_TIME_BETWEEN_TRANSMISSIONS;
+    }
+
+    /**
+     * @return {@code true}:conditions is {@link #CONDITIONS_TRIGGER_WHEN_VALUE_CHANGES_COMPARED_TO_PREVIOUS_VALUE}, {@code false}:not {@link #CONDITIONS_TRIGGER_WHEN_VALUE_CHANGES_COMPARED_TO_PREVIOUS_VALUE}
+     */
+    public boolean isConditionsTriggerWhenValueChangesComparedToPreviousValue() {
+        return mConditions == CONDITIONS_TRIGGER_WHEN_VALUE_CHANGES_COMPARED_TO_PREVIOUS_VALUE;
+    }
+
+    /**
+     * @return {@code true}:conditions is {@link #CONDITIONS_TRIGGER_WHILE_LESS_THAN_THE_SPECIFIED_VALUE}, {@code false}:not {@link #CONDITIONS_TRIGGER_WHILE_LESS_THAN_THE_SPECIFIED_VALUE}
+     */
+    public boolean isConditionsTriggerWhileLessThanTheSpecifiedValue() {
+        return mConditions == CONDITIONS_TRIGGER_WHILE_LESS_THAN_THE_SPECIFIED_VALUE;
+    }
+
+    /**
+     * @return {@code true}:conditions is {@link #CONDITIONS_TRIGGER_WHILE_LESS_THAN_OR_EQUAL_TO_THE_SPECIFIED_VALUE}, {@code false}:not {@link #CONDITIONS_TRIGGER_WHILE_LESS_THAN_OR_EQUAL_TO_THE_SPECIFIED_VALUE}
+     */
+    public boolean isConditionsTriggerWhileLessThanOrEqualToTheSpecifiedValue() {
+        return mConditions == CONDITIONS_TRIGGER_WHILE_LESS_THAN_OR_EQUAL_TO_THE_SPECIFIED_VALUE;
+    }
+
+    /**
+     * @return {@code true}:conditions is {@link #CONDITIONS_TRIGGER_WHILE_GREATER_THAN_THE_SPECIFIED_VALUE}, {@code false}:not {@link #CONDITIONS_TRIGGER_WHILE_GREATER_THAN_THE_SPECIFIED_VALUE}
+     */
+    public boolean isConditionsTriggerWhileGreaterThanTheSpecifiedValue() {
+        return mConditions == CONDITIONS_TRIGGER_WHILE_GREATER_THAN_THE_SPECIFIED_VALUE;
+    }
+
+    /**
+     * @return {@code true}:conditions is {@link #CONDITIONS_TRIGGER_WHILE_GREATER_THAN_OR_EQUAL_TO_THE_SPECIFIED_VALUE}, {@code false}:not {@link #CONDITIONS_TRIGGER_WHILE_GREATER_THAN_OR_EQUAL_TO_THE_SPECIFIED_VALUE}
+     */
+    public boolean isConditionsTriggerWhileGreaterThanOrEqualToTheSpecifiedValue() {
+        return mConditions == CONDITIONS_TRIGGER_WHILE_GREATER_THAN_OR_EQUAL_TO_THE_SPECIFIED_VALUE;
+    }
+
+    /**
+     * @return {@code true}:conditions is {@link #CONDITIONS_TRIGGER_WHILE_EQUAL_TO_THE_SPECIFIED_VALUE}, {@code false}:not {@link #CONDITIONS_TRIGGER_WHILE_EQUAL_TO_THE_SPECIFIED_VALUE}
+     */
+    public boolean isConditionsTriggerWhileEqualToTheSpecifiedValue() {
+        return mConditions == CONDITIONS_TRIGGER_WHILE_EQUAL_TO_THE_SPECIFIED_VALUE;
+    }
+
+    /**
+     * @return {@code true}:conditions is {@link #CONDITIONS_TRIGGER_WHILE_NOT_EQUAL_TO_THE_SPECIFIED_VALUE}, {@code false}:not {@link #CONDITIONS_TRIGGER_WHILE_NOT_EQUAL_TO_THE_SPECIFIED_VALUE}
+     */
+    public boolean isConditionsTriggerWhileNotEqualToTheSpecifiedValue() {
+        return mConditions == CONDITIONS_TRIGGER_WHILE_NOT_EQUAL_TO_THE_SPECIFIED_VALUE;
     }
 
     /**

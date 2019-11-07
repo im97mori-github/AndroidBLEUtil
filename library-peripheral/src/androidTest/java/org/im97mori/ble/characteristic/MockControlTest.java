@@ -34,7 +34,7 @@ public class MockControlTest {
     @Test
     public void test002() {
         byte[] data = new byte[57];
-        data[ 0] = 1;
+        data[0] = 1;
         data[16] = 2;
         data[32] = 3;
         data[48] = 0xff & MockControl.TARGET_TYPE_DESCRIPTOR;
@@ -65,7 +65,7 @@ public class MockControlTest {
         UUID characteristicUUID = UUID.randomUUID();
         UUID descriptorUUID = UUID.randomUUID();
         byte[] data = new byte[57];
-        data[ 0] = 1;
+        data[0] = 1;
         data[16] = 2;
         data[32] = 3;
         data[48] = 0xff & MockControl.TARGET_TYPE_DESCRIPTOR;
@@ -90,7 +90,7 @@ public class MockControlTest {
     @Test
     public void test004() {
         byte[] data = new byte[57];
-        data[ 0] = 1;
+        data[0] = 1;
         data[16] = 2;
         data[32] = 3;
         data[48] = 0xff & MockControl.TARGET_TYPE_DESCRIPTOR;
@@ -114,7 +114,7 @@ public class MockControlTest {
     @Test
     public void test005() {
         byte[] data = new byte[57];
-        data[ 0] = 1;
+        data[0] = 1;
         data[16] = 2;
         data[32] = 3;
         data[48] = 0xff & MockControl.TARGET_TYPE_DESCRIPTOR;
