@@ -134,21 +134,21 @@ public class ReportReference implements ByteArrayInterface, Parcelable {
      * @return {@code true}:report type is {@link #REPORT_TYPE_INPUT_REPORT}, {@code false}:not {@link #REPORT_TYPE_INPUT_REPORT}
      */
     public boolean isReportTypeInputReport() {
-        return mReportType == REPORT_TYPE_INPUT_REPORT;
+        return REPORT_TYPE_INPUT_REPORT == mReportType;
     }
 
     /**
      * @return {@code true}:report type is {@link #REPORT_TYPE_OUTPUT_REPORT}, {@code false}:not {@link #REPORT_TYPE_OUTPUT_REPORT}
      */
     public boolean isReportTypeOutputReport() {
-        return mReportType == REPORT_TYPE_OUTPUT_REPORT;
+        return REPORT_TYPE_OUTPUT_REPORT == mReportType;
     }
 
     /**
      * @return {@code true}:report type is {@link #REPORT_TYPE_FEATURE_REPORT}, {@code false}:not {@link #REPORT_TYPE_FEATURE_REPORT}
      */
     public boolean isReportTypeFeatureReport() {
-        return mReportType == REPORT_TYPE_FEATURE_REPORT;
+        return REPORT_TYPE_FEATURE_REPORT == mReportType;
     }
 
     /**

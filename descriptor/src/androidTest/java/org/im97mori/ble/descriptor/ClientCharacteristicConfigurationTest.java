@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 public class ClientCharacteristicConfigurationTest {
 
     @Test
-    public void test001() {
+    public void test_constructor001() {
         BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
         bluetoothGattDescriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
 
@@ -24,7 +24,7 @@ public class ClientCharacteristicConfigurationTest {
     }
 
     @Test
-    public void test002() {
+    public void test_constructor002() {
         BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
         bluetoothGattDescriptor.setValue(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
 
@@ -35,7 +35,7 @@ public class ClientCharacteristicConfigurationTest {
     }
 
     @Test
-    public void test003() {
+    public void test_constructor003() {
         BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
         bluetoothGattDescriptor.setValue(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
 
@@ -46,7 +46,7 @@ public class ClientCharacteristicConfigurationTest {
     }
 
     @Test
-    public void test101() {
+    public void test_parcelable001() {
         BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
         bluetoothGattDescriptor.setValue(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
 
@@ -60,7 +60,7 @@ public class ClientCharacteristicConfigurationTest {
     }
 
     @Test
-    public void test102() {
+    public void test_parcelable002() {
         BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
         bluetoothGattDescriptor.setValue(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
 
@@ -69,7 +69,7 @@ public class ClientCharacteristicConfigurationTest {
     }
 
     @Test
-    public void test103() {
+    public void test_parcelable003() {
         BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
         bluetoothGattDescriptor.setValue(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
 

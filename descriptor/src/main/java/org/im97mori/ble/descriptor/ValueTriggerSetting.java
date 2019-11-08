@@ -24,42 +24,42 @@ public class ValueTriggerSetting implements ByteArrayInterface, Parcelable {
     /**
      * Condition:The state is changed if the characteristic value is changed
      */
-    public static final int CONDITION_THE_STATE_IS_CHANGED_IF_THE_CHARACTERISTIC_VALUE_IS_CHANGED = 0x00;
+    public static final int NONE_0 = 0x00;
 
     /**
      * Condition:Crossed a boundary
      */
-    public static final int CONDITION_CROSSED_A_BOUNDARY = 0x01;
+    public static final int ANALOG_1 = 0x01;
 
     /**
      * Condition:On the boundary
      */
-    public static final int CONDITION_ON_THE_BOUNDARY = 0x02;
+    public static final int ANALOG_2 = 0x02;
 
     /**
      * Condition:The state is changed if the value of the analog characteristic is changed more than a settable Analog value
      */
-    public static final int CONDITION_THE_STATE_IS_CHANGED_IF_THE_VALUE_OF_THE_ANALOG_CHARACTERISTIC_IS_CHANGED_MORE_THAN_A_SETTABLE_ANALOG_VALUE = 0x03;
+    public static final int ANALOG_3 = 0x03;
 
     /**
      * Condition:Mask then compare
      */
-    public static final int CONDITION_MASK_THEN_COMPARE = 0x04;
+    public static final int BIT_MASK_4 = 0x04;
 
     /**
      * Condition:Inside or outside the boundaries
      */
-    public static final int CONDITION_INSIDE_OR_OUTSIDE_THE_BOUNDARIES = 0x05;
+    public static final int ANALOG_INTERVAL_5 = 0x05;
 
     /**
      * Condition:On the boundaries
      */
-    public static final int CONDITION_ON_THE_BOUNDARIES = 0x06;
+    public static final int ANALOG_INTERVAL_6 = 0x06;
 
     /**
      * Condition:No value trigger
      */
-    public static final int CONDITION_NO_VALUE_TRIGGER = 0x07;
+    public static final int NONE_7 = 0x07;
 
     /**
      * @see ByteArrayCreater
@@ -124,7 +124,7 @@ public class ValueTriggerSetting implements ByteArrayInterface, Parcelable {
         mCondition = (values[0] & 0xff);
         mValueAnalog = (values[1] & 0xff) | ((values[2] & 0xff) << 8);
         mValueBitMask = Arrays.copyOfRange(values, 3, values.length - 4);
-        mValueAnalogInterval = (values[3] & 0xff) | ((values[4] & 0xff) << 8) | ((values[5] & 0xff) << 16) | ((values[6] & 0xff) << 24);
+        mValueAnalogInterval = ((values[values.length - 4] & 0xff) | ((values[values.length - 3] & 0xff) << 8) | ((values[values.length - 2] & 0xff) << 16) | ((values[values.length - 1] & 0xff) << 24) & 0xffffffffL);
     }
 
     /**
@@ -166,59 +166,59 @@ public class ValueTriggerSetting implements ByteArrayInterface, Parcelable {
     }
 
     /**
-     * @return {@code true}:condition is {@link #CONDITION_THE_STATE_IS_CHANGED_IF_THE_CHARACTERISTIC_VALUE_IS_CHANGED}, {@code false}:not {@link #CONDITION_THE_STATE_IS_CHANGED_IF_THE_CHARACTERISTIC_VALUE_IS_CHANGED}
+     * @return {@code true}:condition is {@link #NONE_0}, {@code false}:not {@link #NONE_0}
      */
-    public boolean isConditionTheStateIsChangeIfTheCharacteristicValueIsChanged() {
-        return CONDITION_THE_STATE_IS_CHANGED_IF_THE_CHARACTERISTIC_VALUE_IS_CHANGED == mCondition;
+    public boolean isNone0() {
+        return NONE_0 == mCondition;
     }
 
     /**
-     * @return {@code true}:condition is {@link #CONDITION_CROSSED_A_BOUNDARY}, {@code false}:not {@link #CONDITION_CROSSED_A_BOUNDARY}
+     * @return {@code true}:condition is {@link #ANALOG_1}, {@code false}:not {@link #ANALOG_1}
      */
-    public boolean isConditionCrossedABoundary() {
-        return CONDITION_CROSSED_A_BOUNDARY == mCondition;
+    public boolean isAnalog1() {
+        return ANALOG_1 == mCondition;
     }
 
     /**
-     * @return {@code true}:condition is {@link #CONDITION_ON_THE_BOUNDARY}, {@code false}:not {@link #CONDITION_ON_THE_BOUNDARY}
+     * @return {@code true}:condition is {@link #ANALOG_2}, {@code false}:not {@link #ANALOG_2}
      */
-    public boolean isConditionOnTheBoundary() {
-        return CONDITION_ON_THE_BOUNDARY == mCondition;
+    public boolean isAnalog2() {
+        return ANALOG_2 == mCondition;
     }
 
     /**
-     * @return {@code true}:condition is {@link #CONDITION_THE_STATE_IS_CHANGED_IF_THE_VALUE_OF_THE_ANALOG_CHARACTERISTIC_IS_CHANGED_MORE_THAN_A_SETTABLE_ANALOG_VALUE}, {@code false}:not {@link #CONDITION_THE_STATE_IS_CHANGED_IF_THE_VALUE_OF_THE_ANALOG_CHARACTERISTIC_IS_CHANGED_MORE_THAN_A_SETTABLE_ANALOG_VALUE}
+     * @return {@code true}:condition is {@link #ANALOG_3}, {@code false}:not {@link #ANALOG_3}
      */
-    public boolean isConditionTheStateIsChangedIfTheValueOfTheAnalogCharacteristicIsChangedMoreThanASettableAnalogValue() {
-        return CONDITION_THE_STATE_IS_CHANGED_IF_THE_VALUE_OF_THE_ANALOG_CHARACTERISTIC_IS_CHANGED_MORE_THAN_A_SETTABLE_ANALOG_VALUE == mCondition;
+    public boolean isAnalog3() {
+        return ANALOG_3 == mCondition;
     }
 
     /**
-     * @return {@code true}:condition is {@link #CONDITION_MASK_THEN_COMPARE}, {@code false}:not {@link #CONDITION_MASK_THEN_COMPARE}
+     * @return {@code true}:condition is {@link #BIT_MASK_4}, {@code false}:not {@link #BIT_MASK_4}
      */
-    public boolean isConditionMaskThenCompare() {
-        return CONDITION_MASK_THEN_COMPARE == mCondition;
+    public boolean isBitMask4() {
+        return BIT_MASK_4 == mCondition;
     }
 
     /**
-     * @return {@code true}:condition is {@link #CONDITION_INSIDE_OR_OUTSIDE_THE_BOUNDARIES}, {@code false}:not {@link #CONDITION_INSIDE_OR_OUTSIDE_THE_BOUNDARIES}
+     * @return {@code true}:condition is {@link #ANALOG_INTERVAL_5}, {@code false}:not {@link #ANALOG_INTERVAL_5}
      */
-    public boolean isConditionInsideOrOutsideTheBoundaries() {
-        return CONDITION_INSIDE_OR_OUTSIDE_THE_BOUNDARIES == mCondition;
+    public boolean isAnalogInterval5() {
+        return ANALOG_INTERVAL_5 == mCondition;
     }
 
     /**
-     * @return {@code true}:condition is {@link #CONDITION_ON_THE_BOUNDARIES}, {@code false}:not {@link #CONDITION_ON_THE_BOUNDARIES}
+     * @return {@code true}:condition is {@link #ANALOG_INTERVAL_6}, {@code false}:not {@link #ANALOG_INTERVAL_6}
      */
-    public boolean isConditionOnTheBoundaries() {
-        return CONDITION_ON_THE_BOUNDARIES == mCondition;
+    public boolean isAnalogInterval6() {
+        return ANALOG_INTERVAL_6 == mCondition;
     }
 
     /**
-     * @return {@code true}:condition is {@link #CONDITION_NO_VALUE_TRIGGER}, {@code false}:not {@link #CONDITION_NO_VALUE_TRIGGER}
+     * @return {@code true}:condition is {@link #NONE_7}, {@code false}:not {@link #NONE_7}
      */
-    public boolean isConditionNoValueTrigger() {
-        return CONDITION_NO_VALUE_TRIGGER == mCondition;
+    public boolean isNone7() {
+        return NONE_7 == mCondition;
     }
 
     /**

@@ -197,7 +197,7 @@ public class CharacteristicPresentationFormat implements ByteArrayInterface, Par
     /**
      * Format
      */
-    private final byte mFormat;
+    private final int mFormat;
 
     /**
      * Exponent
@@ -212,7 +212,7 @@ public class CharacteristicPresentationFormat implements ByteArrayInterface, Par
     /**
      * Namespace
      */
-    private final byte mNamespace;
+    private final int mNamespace;
 
     /**
      * Description
@@ -226,10 +226,10 @@ public class CharacteristicPresentationFormat implements ByteArrayInterface, Par
      */
     public CharacteristicPresentationFormat(BluetoothGattDescriptor bluetoothGattDescriptor) {
         byte[] values = bluetoothGattDescriptor.getValue();
-        mFormat = values[0];
+        mFormat = values[0] & 0xff;
         mExponent = values[1];
         mUnit = (values[2] & 0xff) | ((values[3] & 0xff) << 8);
-        mNamespace = values[4];
+        mNamespace = values[4] & 0xff;
         mDescription = Arrays.copyOfRange(values, 5, 7);
     }
 
@@ -239,10 +239,10 @@ public class CharacteristicPresentationFormat implements ByteArrayInterface, Par
      * @param in Parcel
      */
     private CharacteristicPresentationFormat(Parcel in) {
-        mFormat = in.readByte();
+        mFormat = in.readInt();
         mExponent = in.readInt();
         mUnit = in.readInt();
-        mNamespace = in.readByte();
+        mNamespace = in.readInt();
         mDescription = in.createByteArray();
     }
 
@@ -259,17 +259,17 @@ public class CharacteristicPresentationFormat implements ByteArrayInterface, Par
      */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeByte(mFormat);
+        dest.writeInt(mFormat);
         dest.writeInt(mExponent);
         dest.writeInt(mUnit);
-        dest.writeByte(mNamespace);
+        dest.writeInt(mNamespace);
         dest.writeByteArray(mDescription);
     }
 
     /**
      * @return Format
      */
-    public byte getFormat() {
+    public int getFormat() {
         return mFormat;
     }
 
@@ -277,189 +277,189 @@ public class CharacteristicPresentationFormat implements ByteArrayInterface, Par
      * @return {@code true}:format is {@link #FORMAT_BOOLEAN}, {@code false}:not {@link #FORMAT_BOOLEAN}
      */
     public boolean isFormatBoolean() {
-        return (FORMAT_BOOLEAN & mFormat) != 0;
+        return FORMAT_BOOLEAN == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_UNSIGNED_2_BIT_INTEGER}, {@code false}:not {@link #FORMAT_UNSIGNED_2_BIT_INTEGER}
      */
     public boolean isFormatUnsigned2BitInteger() {
-        return (FORMAT_UNSIGNED_2_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_UNSIGNED_2_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_UNSIGNED_4_BIT_INTEGER}, {@code false}:not {@link #FORMAT_UNSIGNED_4_BIT_INTEGER}
      */
     public boolean isFormatUnsigned4BitInteger() {
-        return (FORMAT_UNSIGNED_4_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_UNSIGNED_4_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_UNSIGNED_8_BIT_INTEGER}, {@code false}:not {@link #FORMAT_UNSIGNED_8_BIT_INTEGER}
      */
     public boolean isFormatUnsigned8BitInteger() {
-        return (FORMAT_UNSIGNED_8_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_UNSIGNED_8_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_UNSIGNED_12_BIT_INTEGER}, {@code false}:not {@link #FORMAT_UNSIGNED_12_BIT_INTEGER}
      */
     public boolean isFormatUnsigned12BitInteger() {
-        return (FORMAT_UNSIGNED_12_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_UNSIGNED_12_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_UNSIGNED_16_BIT_INTEGER}, {@code false}:not {@link #FORMAT_UNSIGNED_16_BIT_INTEGER}
      */
     public boolean isFormatUnsigned16BitInteger() {
-        return (FORMAT_UNSIGNED_16_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_UNSIGNED_16_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_UNSIGNED_24_BIT_INTEGER}, {@code false}:not {@link #FORMAT_UNSIGNED_24_BIT_INTEGER}
      */
     public boolean isFormatUnsigned24BitInteger() {
-        return (FORMAT_UNSIGNED_24_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_UNSIGNED_24_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_UNSIGNED_32_BIT_INTEGER}, {@code false}:not {@link #FORMAT_UNSIGNED_32_BIT_INTEGER}
      */
     public boolean isFormatUnsigned32BitInteger() {
-        return (FORMAT_UNSIGNED_32_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_UNSIGNED_32_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_UNSIGNED_48_BIT_INTEGER}, {@code false}:not {@link #FORMAT_UNSIGNED_48_BIT_INTEGER}
      */
     public boolean isFormatUnsigned48BitInteger() {
-        return (FORMAT_UNSIGNED_48_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_UNSIGNED_48_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_UNSIGNED_64_BIT_INTEGER}, {@code false}:not {@link #FORMAT_UNSIGNED_64_BIT_INTEGER}
      */
     public boolean isFormatUnsigned64BitInteger() {
-        return (FORMAT_UNSIGNED_64_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_UNSIGNED_64_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_UNSIGNED_128_BIT_INTEGER}, {@code false}:not {@link #FORMAT_UNSIGNED_128_BIT_INTEGER}
      */
     public boolean isFormatUnsigned128BitInteger() {
-        return (FORMAT_UNSIGNED_128_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_UNSIGNED_128_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_SIGNED_8_BIT_INTEGER}, {@code false}:not {@link #FORMAT_SIGNED_8_BIT_INTEGER}
      */
     public boolean isFormatSigned8BitInteger() {
-        return (FORMAT_SIGNED_8_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_SIGNED_8_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_SIGNED_12_BIT_INTEGER}, {@code false}:not {@link #FORMAT_SIGNED_12_BIT_INTEGER}
      */
     public boolean isFormatSigned12BitInteger() {
-        return (FORMAT_SIGNED_12_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_SIGNED_12_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_SIGNED_16_BIT_INTEGER}, {@code false}:not {@link #FORMAT_SIGNED_16_BIT_INTEGER}
      */
     public boolean isFormatSigned16BitInteger() {
-        return (FORMAT_SIGNED_16_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_SIGNED_16_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_SIGNED_24_BIT_INTEGER}, {@code false}:not {@link #FORMAT_SIGNED_24_BIT_INTEGER}
      */
     public boolean isFormatSigned24BitInteger() {
-        return (FORMAT_SIGNED_24_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_SIGNED_24_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_SIGNED_32_BIT_INTEGER}, {@code false}:not {@link #FORMAT_SIGNED_32_BIT_INTEGER}
      */
     public boolean isFormatSigned32BitInteger() {
-        return (FORMAT_SIGNED_32_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_SIGNED_32_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_SIGNED_48_BIT_INTEGER}, {@code false}:not {@link #FORMAT_SIGNED_48_BIT_INTEGER}
      */
     public boolean isFormatSigned48BitInteger() {
-        return (FORMAT_SIGNED_48_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_SIGNED_48_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_SIGNED_64_BIT_INTEGER}, {@code false}:not {@link #FORMAT_SIGNED_64_BIT_INTEGER}
      */
     public boolean isFormatSigned64BitInteger() {
-        return (FORMAT_SIGNED_64_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_SIGNED_64_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_SIGNED_128_BIT_INTEGER}, {@code false}:not {@link #FORMAT_SIGNED_128_BIT_INTEGER}
      */
     public boolean isFormatSigned128BitInteger() {
-        return (FORMAT_SIGNED_128_BIT_INTEGER & mFormat) != 0;
+        return FORMAT_SIGNED_128_BIT_INTEGER == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_IEEE_754_32_BIT_FLOATING_POINT}, {@code false}:not {@link #FORMAT_IEEE_754_32_BIT_FLOATING_POINT}
      */
     public boolean isFormatIEEE754_32BitFloatingPoint() {
-        return (FORMAT_IEEE_754_32_BIT_FLOATING_POINT & mFormat) != 0;
+        return FORMAT_IEEE_754_32_BIT_FLOATING_POINT == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_IEEE_754_64_BIT_FLOATING_POINT}, {@code false}:not {@link #FORMAT_IEEE_754_64_BIT_FLOATING_POINT}
      */
     public boolean isFormatIEEE754_64BitFloatingPoint() {
-        return (FORMAT_IEEE_754_64_BIT_FLOATING_POINT & mFormat) != 0;
+        return FORMAT_IEEE_754_64_BIT_FLOATING_POINT == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_IEEE_11073_16_BIT_SFLOAT}, {@code false}:not {@link #FORMAT_IEEE_11073_16_BIT_SFLOAT}
      */
     public boolean isFormatIEEE11073_16BitSfloat() {
-        return (FORMAT_IEEE_11073_16_BIT_SFLOAT & mFormat) != 0;
+        return FORMAT_IEEE_11073_16_BIT_SFLOAT == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_IEEE_11073_32_BIT_FLOAT}, {@code false}:not {@link #FORMAT_IEEE_11073_32_BIT_FLOAT}
      */
     public boolean isFormatIEEE11073_32BitFloat() {
-        return (FORMAT_IEEE_11073_32_BIT_FLOAT & mFormat) != 0;
+        return FORMAT_IEEE_11073_32_BIT_FLOAT == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_IEEE_20601_FORMAT}, {@code false}:not {@link #FORMAT_IEEE_20601_FORMAT}
      */
     public boolean isFormatIEEE20601Format() {
-        return (FORMAT_IEEE_20601_FORMAT & mFormat) != 0;
+        return FORMAT_IEEE_20601_FORMAT == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_UTF_8_STRING}, {@code false}:not {@link #FORMAT_UTF_8_STRING}
      */
     public boolean isFormatUtf8String() {
-        return (FORMAT_UTF_8_STRING & mFormat) != 0;
+        return FORMAT_UTF_8_STRING == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_UTF_16_STRING}, {@code false}:not {@link #FORMAT_UTF_16_STRING}
      */
     public boolean isFormatUtf16String() {
-        return (FORMAT_UTF_16_STRING & mFormat) != 0;
+        return FORMAT_UTF_16_STRING == mFormat;
     }
 
     /**
      * @return {@code true}:format is {@link #FORMAT_OPAQUE_STRUCTURE}, {@code false}:not {@link #FORMAT_OPAQUE_STRUCTURE}
      */
     public boolean isFormatOpaqueStructure() {
-        return (FORMAT_OPAQUE_STRUCTURE & mFormat) != 0;
+        return FORMAT_OPAQUE_STRUCTURE == mFormat;
     }
 
     /**
@@ -479,7 +479,7 @@ public class CharacteristicPresentationFormat implements ByteArrayInterface, Par
     /**
      * @return Namespace
      */
-    public byte getNamespace() {
+    public int getNamespace() {
         return mNamespace;
     }
 
@@ -487,7 +487,7 @@ public class CharacteristicPresentationFormat implements ByteArrayInterface, Par
      * @return {@code true}:namespace is {@link #NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS}, {@code false}:not {@link #NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS}
      */
     public boolean isNamespaceBluetoothSigAssignedNumbers() {
-        return (NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS & mFormat) != 0;
+        return (mNamespace & 0xff) == NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS;
     }
 
     /**
@@ -506,10 +506,10 @@ public class CharacteristicPresentationFormat implements ByteArrayInterface, Par
     public byte[] getBytes() {
         byte[] data = new byte[7];
         ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);
-        byteBuffer.put(mFormat);
+        byteBuffer.put((byte) mFormat);
         byteBuffer.put((byte) mExponent);
         byteBuffer.putShort((short) mUnit);
-        byteBuffer.put(mNamespace);
+        byteBuffer.put((byte) mNamespace);
         byteBuffer.put(mDescription);
         return data;
     }

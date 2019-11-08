@@ -378,56 +378,56 @@ public class EnvironmentalSensingMeasurement implements ByteArrayInterface, Parc
      * @return {@code true}:sampling function is {@link #SAMPLING_FUNCTION_UNSPECIFIED}, {@code false}:not {@link #SAMPLING_FUNCTION_UNSPECIFIED}
      */
     public boolean isSamplingFunctionUnspecified() {
-        return mSamplingFunction == SAMPLING_FUNCTION_UNSPECIFIED;
+        return SAMPLING_FUNCTION_UNSPECIFIED == mSamplingFunction;
     }
 
     /**
      * @return {@code true}:sampling function is {@link #SAMPLING_FUNCTION_INSTANTANEOUS}, {@code false}:not {@link #SAMPLING_FUNCTION_INSTANTANEOUS}
      */
     public boolean isSamplingFunctionInstantaneous() {
-        return mSamplingFunction == SAMPLING_FUNCTION_INSTANTANEOUS;
+        return SAMPLING_FUNCTION_INSTANTANEOUS == mSamplingFunction;
     }
 
     /**
      * @return {@code true}:sampling function is {@link #SAMPLING_FUNCTION_ARITHMETIC_MEAN}, {@code false}:not {@link #SAMPLING_FUNCTION_ARITHMETIC_MEAN}
      */
     public boolean isSamplingFunctionArithmeticMean() {
-        return mSamplingFunction == SAMPLING_FUNCTION_ARITHMETIC_MEAN;
+        return SAMPLING_FUNCTION_ARITHMETIC_MEAN == mSamplingFunction;
     }
 
     /**
      * @return {@code true}:sampling function is {@link #SAMPLING_FUNCTION_RMS}, {@code false}:not {@link #SAMPLING_FUNCTION_RMS}
      */
     public boolean isSamplingFunctionRms() {
-        return mSamplingFunction == SAMPLING_FUNCTION_RMS;
+        return SAMPLING_FUNCTION_RMS == mSamplingFunction;
     }
 
     /**
      * @return {@code true}:sampling function is {@link #SAMPLING_FUNCTION_MAXIMUM}, {@code false}:not {@link #SAMPLING_FUNCTION_MAXIMUM}
      */
     public boolean isSamplingFunctionMaximum() {
-        return mSamplingFunction == SAMPLING_FUNCTION_MAXIMUM;
+        return SAMPLING_FUNCTION_MAXIMUM == mSamplingFunction;
     }
 
     /**
      * @return {@code true}:sampling function is {@link #SAMPLING_FUNCTION_MINIMUM}, {@code false}:not {@link #SAMPLING_FUNCTION_MINIMUM}
      */
     public boolean isSamplingFunctionMinimum() {
-        return mSamplingFunction == SAMPLING_FUNCTION_MINIMUM;
+        return SAMPLING_FUNCTION_MINIMUM == mSamplingFunction;
     }
 
     /**
      * @return {@code true}:sampling function is {@link #SAMPLING_FUNCTION_ACCUMULATED}, {@code false}:not {@link #SAMPLING_FUNCTION_ACCUMULATED}
      */
     public boolean isSamplingFunctionAccumulated() {
-        return mSamplingFunction == SAMPLING_FUNCTION_ACCUMULATED;
+        return SAMPLING_FUNCTION_ACCUMULATED == mSamplingFunction;
     }
 
     /**
      * @return {@code true}:sampling function is {@link #SAMPLING_FUNCTION_COUNT}, {@code false}:not {@link #SAMPLING_FUNCTION_COUNT}
      */
     public boolean isSamplingFunctionCount() {
-        return mSamplingFunction == SAMPLING_FUNCTION_COUNT;
+        return SAMPLING_FUNCTION_COUNT == mSamplingFunction;
     }
 
     /**
@@ -440,8 +440,8 @@ public class EnvironmentalSensingMeasurement implements ByteArrayInterface, Parc
     /**
      * @return {@code true}:measurement period is {@link #SAMPLING_FUNCTION_COUNT}, {@code false}:not {@link #SAMPLING_FUNCTION_COUNT}
      */
-    public boolean isMeasurementPeriodNotInIUse() {
-        return mMeasurementPeriod == MEASUREMENT_PERIOD_NOT_IN_USE;
+    public boolean isMeasurementPeriodNotInUse() {
+        return MEASUREMENT_PERIOD_NOT_IN_USE == mMeasurementPeriod;
     }
 
     /**
@@ -454,8 +454,8 @@ public class EnvironmentalSensingMeasurement implements ByteArrayInterface, Parc
     /**
      * @return {@code true}:internal update interval is {@link #INTERNAL_UPDATE_INTERVAL_NOT_IN_USE}, {@code false}:not {@link #INTERNAL_UPDATE_INTERVAL_NOT_IN_USE}
      */
-    public boolean isInternalUpdateIntervalNotInIUse() {
-        return mInternalUpdateInterval == INTERNAL_UPDATE_INTERVAL_NOT_IN_USE;
+    public boolean isInternalUpdateIntervalNotInUse() {
+        return INTERNAL_UPDATE_INTERVAL_NOT_IN_USE == mInternalUpdateInterval;
     }
 
     /**
@@ -469,238 +469,238 @@ public class EnvironmentalSensingMeasurement implements ByteArrayInterface, Parc
      * @return {@code true}:application is {@link #APPLICATION_UNSPECIFIED}, {@code false}:not {@link #APPLICATION_UNSPECIFIED}
      */
     public boolean isApplicationUnspecified() {
-        return mApplication == APPLICATION_UNSPECIFIED;
+        return APPLICATION_UNSPECIFIED == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_AIR}, {@code false}:not {@link #APPLICATION_AIR}
      */
     public boolean isApplicationAir() {
-        return mApplication == APPLICATION_AIR;
+        return APPLICATION_AIR == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_WATER}, {@code false}:not {@link #APPLICATION_WATER}
      */
     public boolean isApplicationWater() {
-        return mApplication == APPLICATION_WATER;
+        return APPLICATION_WATER == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_BAROMETRIC}, {@code false}:not {@link #APPLICATION_BAROMETRIC}
      */
     public boolean isApplicationBarometric() {
-        return mApplication == APPLICATION_BAROMETRIC;
+        return APPLICATION_BAROMETRIC == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_SOIL}, {@code false}:not {@link #APPLICATION_SOIL}
      */
     public boolean isApplicationSoil() {
-        return mApplication == APPLICATION_SOIL;
+        return APPLICATION_SOIL == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_INFRARED}, {@code false}:not {@link #APPLICATION_INFRARED}
      */
     public boolean isApplicationInfrared() {
-        return mApplication == APPLICATION_INFRARED;
+        return APPLICATION_INFRARED == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_MAP_DATABASE}, {@code false}:not {@link #APPLICATION_MAP_DATABASE}
      */
     public boolean isApplicationMapDatabase() {
-        return mApplication == APPLICATION_MAP_DATABASE;
+        return APPLICATION_MAP_DATABASE == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_BAROMETRIC_ELEVATION_SOURCE}, {@code false}:not {@link #APPLICATION_BAROMETRIC_ELEVATION_SOURCE}
      */
     public boolean isApplicationBarometricElevationSource() {
-        return mApplication == APPLICATION_BAROMETRIC_ELEVATION_SOURCE;
+        return APPLICATION_BAROMETRIC_ELEVATION_SOURCE == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_GPS_ONLY_ELEVATION_SOURCE}, {@code false}:not {@link #APPLICATION_GPS_ONLY_ELEVATION_SOURCE}
      */
     public boolean isApplicationGpsOnlyElevationSource() {
-        return mApplication == APPLICATION_GPS_ONLY_ELEVATION_SOURCE;
+        return APPLICATION_GPS_ONLY_ELEVATION_SOURCE == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_GPS_AND_MAP_DATABASE_ELEVATION_SOURCE}, {@code false}:not {@link #APPLICATION_GPS_AND_MAP_DATABASE_ELEVATION_SOURCE}
      */
     public boolean isApplicationGpsAndMapDatabaseElevationSource() {
-        return mApplication == APPLICATION_GPS_AND_MAP_DATABASE_ELEVATION_SOURCE;
+        return APPLICATION_GPS_AND_MAP_DATABASE_ELEVATION_SOURCE == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_VERTICAL_DATUM_ELEVATION_SOURCE}, {@code false}:not {@link #APPLICATION_VERTICAL_DATUM_ELEVATION_SOURCE}
      */
     public boolean isApplicationVerticalDatumElevationSource() {
-        return mApplication == APPLICATION_VERTICAL_DATUM_ELEVATION_SOURCE;
+        return APPLICATION_VERTICAL_DATUM_ELEVATION_SOURCE == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_ONSHORE}, {@code false}:not {@link #APPLICATION_ONSHORE}
      */
     public boolean isApplicationOnshore() {
-        return mApplication == APPLICATION_ONSHORE;
+        return APPLICATION_ONSHORE == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_ONBOARD_VESSEL_OR_VEHICLE}, {@code false}:not {@link #APPLICATION_ONBOARD_VESSEL_OR_VEHICLE}
      */
     public boolean isApplicationOnboardVesselOrVehicle() {
-        return mApplication == APPLICATION_ONBOARD_VESSEL_OR_VEHICLE;
+        return APPLICATION_ONBOARD_VESSEL_OR_VEHICLE == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_FRONT}, {@code false}:not {@link #APPLICATION_FRONT}
      */
     public boolean isApplicationFront() {
-        return mApplication == APPLICATION_FRONT;
+        return APPLICATION_FRONT == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_BACK_REAR}, {@code false}:not {@link #APPLICATION_BACK_REAR}
      */
     public boolean isApplicationBackRear() {
-        return mApplication == APPLICATION_BACK_REAR;
+        return APPLICATION_BACK_REAR == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_UPPER}, {@code false}:not {@link #APPLICATION_UPPER}
      */
     public boolean isApplicationUpper() {
-        return mApplication == APPLICATION_UPPER;
+        return APPLICATION_UPPER == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_LOWER}, {@code false}:not {@link #APPLICATION_LOWER}
      */
     public boolean isApplicationLower() {
-        return mApplication == APPLICATION_LOWER;
+        return APPLICATION_LOWER == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_PRIMARY}, {@code false}:not {@link #APPLICATION_PRIMARY}
      */
     public boolean isApplicationPrimary() {
-        return mApplication == APPLICATION_PRIMARY;
+        return APPLICATION_PRIMARY == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_SECONDARY}, {@code false}:not {@link #APPLICATION_SECONDARY}
      */
     public boolean isApplicationSecondary() {
-        return mApplication == APPLICATION_SECONDARY;
+        return APPLICATION_SECONDARY == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_OUTDOOR}, {@code false}:not {@link #APPLICATION_OUTDOOR}
      */
     public boolean isApplicationOutdoor() {
-        return mApplication == APPLICATION_OUTDOOR;
+        return APPLICATION_OUTDOOR == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_INDOOR}, {@code false}:not {@link #APPLICATION_INDOOR}
      */
     public boolean isApplicationIndoor() {
-        return mApplication == APPLICATION_INDOOR;
+        return APPLICATION_INDOOR == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_TOP}, {@code false}:not {@link #APPLICATION_TOP}
      */
     public boolean isApplicationTop() {
-        return mApplication == APPLICATION_TOP;
+        return APPLICATION_TOP == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_BOTTOM}, {@code false}:not {@link #APPLICATION_BOTTOM}
      */
     public boolean isApplicationBottom() {
-        return mApplication == APPLICATION_BOTTOM;
+        return APPLICATION_BOTTOM == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_MAIN}, {@code false}:not {@link #APPLICATION_MAIN}
      */
     public boolean isApplicationMain() {
-        return mApplication == APPLICATION_MAIN;
+        return APPLICATION_MAIN == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_BACKUP}, {@code false}:not {@link #APPLICATION_BACKUP}
      */
     public boolean isApplicationBackup() {
-        return mApplication == APPLICATION_BACKUP;
+        return APPLICATION_BACKUP == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_AUXILIARY}, {@code false}:not {@link #APPLICATION_AUXILIARY}
      */
     public boolean isApplicationAuxiliary() {
-        return mApplication == APPLICATION_AUXILIARY;
+        return APPLICATION_AUXILIARY == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_SUPPLEMENTARY}, {@code false}:not {@link #APPLICATION_SUPPLEMENTARY}
      */
     public boolean isApplicationSupplementary() {
-        return mApplication == APPLICATION_SUPPLEMENTARY;
+        return APPLICATION_SUPPLEMENTARY == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_INSIDE}, {@code false}:not {@link #APPLICATION_INSIDE}
      */
     public boolean isApplicationInside() {
-        return mApplication == APPLICATION_INSIDE;
+        return APPLICATION_INSIDE == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_OUTSIDE}, {@code false}:not {@link #APPLICATION_OUTSIDE}
      */
     public boolean isApplicationOutside() {
-        return mApplication == APPLICATION_OUTSIDE;
+        return APPLICATION_OUTSIDE == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_LEFT}, {@code false}:not {@link #APPLICATION_LEFT}
      */
     public boolean isApplicationLeft() {
-        return mApplication == APPLICATION_LEFT;
+        return APPLICATION_LEFT == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_RIGHT}, {@code false}:not {@link #APPLICATION_RIGHT}
      */
     public boolean isApplicationRight() {
-        return mApplication == APPLICATION_RIGHT;
+        return APPLICATION_RIGHT == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_INTERNAL}, {@code false}:not {@link #APPLICATION_INTERNAL}
      */
     public boolean isApplicationInternal() {
-        return mApplication == APPLICATION_INTERNAL;
+        return APPLICATION_INTERNAL == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_EXTERNAL}, {@code false}:not {@link #APPLICATION_EXTERNAL}
      */
     public boolean isApplicationExternal() {
-        return mApplication == APPLICATION_EXTERNAL;
+        return APPLICATION_EXTERNAL == mApplication;
     }
 
     /**
      * @return {@code true}:application is {@link #APPLICATION_SOLAR}, {@code false}:not {@link #APPLICATION_SOLAR}
      */
     public boolean isApplicationSolar() {
-        return mApplication == APPLICATION_SOLAR;
+        return APPLICATION_SOLAR == mApplication;
     }
 
     /**
@@ -714,7 +714,7 @@ public class EnvironmentalSensingMeasurement implements ByteArrayInterface, Parc
      * @return {@code true}:measurement uncertainty is {@link #MEASUREMENT_UNCERTAINTY_INFORMATION_NOT_AVAILABLE}, {@code false}:not {@link #MEASUREMENT_UNCERTAINTY_INFORMATION_NOT_AVAILABLE}
      */
     public boolean isMeasurementUncertaintyInformationNotAvailable() {
-        return mMeasurementUncertainty == MEASUREMENT_UNCERTAINTY_INFORMATION_NOT_AVAILABLE;
+        return MEASUREMENT_UNCERTAINTY_INFORMATION_NOT_AVAILABLE == mMeasurementUncertainty;
     }
 
     /**

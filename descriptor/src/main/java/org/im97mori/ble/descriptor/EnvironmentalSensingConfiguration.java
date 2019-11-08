@@ -114,14 +114,14 @@ public class EnvironmentalSensingConfiguration implements ByteArrayInterface, Pa
      * @return {@code true}:triger logic value  is {@link #TRIGGER_LOGIC_VALUE_BOOLAEN_AND}, {@code false}:not {@link #TRIGGER_LOGIC_VALUE_BOOLAEN_AND}
      */
     public boolean isTriggerLogicValueBooleanAnd() {
-        return mTriggerLogicValue == TRIGGER_LOGIC_VALUE_BOOLAEN_AND;
+        return TRIGGER_LOGIC_VALUE_BOOLAEN_AND == mTriggerLogicValue;
     }
 
     /**
      * @return {@code true}:triger logic value is {@link #TRIGGER_LOGIC_VALUE_BOOLAEN_OR}, {@code false}:not {@link #TRIGGER_LOGIC_VALUE_BOOLAEN_OR}
      */
     public boolean isTriggerLogicValueBooleanOr() {
-        return mTriggerLogicValue == TRIGGER_LOGIC_VALUE_BOOLAEN_OR;
+        return TRIGGER_LOGIC_VALUE_BOOLAEN_OR == mTriggerLogicValue;
     }
 
     /**

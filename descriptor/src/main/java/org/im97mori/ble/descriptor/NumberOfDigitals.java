@@ -18,37 +18,37 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.NUMBEROF_DIGITALS_DES
  * Number of Digitals (Descriptor UUID: 0x2909)
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class NumberofDigitals implements ByteArrayInterface, Parcelable {
+public class NumberOfDigitals implements ByteArrayInterface, Parcelable {
 
     /**
      * @see ByteArrayCreater
      */
-    public static final ByteArrayCreater<NumberofDigitals> CREATOR = new ByteArrayCreater<NumberofDigitals>() {
+    public static final ByteArrayCreater<NumberOfDigitals> CREATOR = new ByteArrayCreater<NumberOfDigitals>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
-        public NumberofDigitals createFromParcel(Parcel in) {
-            return new NumberofDigitals(in);
+        public NumberOfDigitals createFromParcel(Parcel in) {
+            return new NumberOfDigitals(in);
         }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        public NumberofDigitals[] newArray(int size) {
-            return new NumberofDigitals[size];
+        public NumberOfDigitals[] newArray(int size) {
+            return new NumberOfDigitals[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public NumberofDigitals createFromByteArray(@NonNull byte[] values) {
+        public NumberOfDigitals createFromByteArray(@NonNull byte[] values) {
             BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(NUMBEROF_DIGITALS_DESCRIPTOR, 0);
             bluetoothGattDescriptor.setValue(values);
-            return new NumberofDigitals(bluetoothGattDescriptor);
+            return new NumberOfDigitals(bluetoothGattDescriptor);
         }
 
     };
@@ -63,7 +63,7 @@ public class NumberofDigitals implements ByteArrayInterface, Parcelable {
      *
      * @param bluetoothGattDescriptor Characteristics UUID: 0x2909
      */
-    public NumberofDigitals(BluetoothGattDescriptor bluetoothGattDescriptor) {
+    public NumberOfDigitals(BluetoothGattDescriptor bluetoothGattDescriptor) {
         byte[] values = bluetoothGattDescriptor.getValue();
         mNoOfDigitals = (values[0] & 0xff);
     }
@@ -73,7 +73,7 @@ public class NumberofDigitals implements ByteArrayInterface, Parcelable {
      *
      * @param in Parcel
      */
-    private NumberofDigitals(Parcel in) {
+    private NumberOfDigitals(Parcel in) {
         mNoOfDigitals = in.readInt();
     }
 

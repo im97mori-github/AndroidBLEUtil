@@ -9,9 +9,6 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-
 import static org.im97mori.ble.BLEConstants.DescriptorUUID.CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
 
 /**
@@ -107,10 +104,7 @@ public class CharacteristicUserDescription implements ByteArrayInterface, Parcel
     @NonNull
     @Override
     public byte[] getBytes() {
-        byte[] data = new byte[0];
-        ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);
-        byteBuffer.put(mUserDescription.getBytes());
-        return data;
+        return mUserDescription.getBytes();
     }
 
 }

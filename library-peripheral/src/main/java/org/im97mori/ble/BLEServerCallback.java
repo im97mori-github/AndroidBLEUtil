@@ -24,6 +24,7 @@ import java.util.UUID;
 /**
  * BLE server callback
  */
+@SuppressWarnings("unused")
 public interface BLEServerCallback {
 
     /**
