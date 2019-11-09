@@ -6,6 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
@@ -120,7 +121,7 @@ public class ValidRange implements ByteArrayInterface, Parcelable {
      * @return Lower inclusive value(UINT8)
      */
     public int getLowerInclusiveValueUint8() {
-        return mLowerInclusiveValue[0] & 0xff;
+        return BLEUtils.createUInt8(mLowerInclusiveValue, 0);
     }
 
     /**
@@ -139,7 +140,7 @@ public class ValidRange implements ByteArrayInterface, Parcelable {
      * @return Lower inclusive value(UINT16)
      */
     public int getLowerInclusiveValueUint16() {
-        return (mLowerInclusiveValue[0] & 0xff) | ((mLowerInclusiveValue[1] & 0xff) << 8);
+        return BLEUtils.createUInt16(mLowerInclusiveValue, 0);
     }
 
     /**
@@ -150,7 +151,7 @@ public class ValidRange implements ByteArrayInterface, Parcelable {
      * @return Lower inclusive value(UINT24)
      */
     public int getLowerInclusiveValueUint24() {
-        return (mLowerInclusiveValue[0] & 0xff) | ((mLowerInclusiveValue[1] & 0xff) << 8) | ((mLowerInclusiveValue[2] & 0xff) << 16);
+        return BLEUtils.createUInt24(mLowerInclusiveValue, 0);
     }
 
     /**
@@ -161,7 +162,7 @@ public class ValidRange implements ByteArrayInterface, Parcelable {
      * @return Lower inclusive value(UINT32)
      */
     public long getLowerInclusiveValueUint32() {
-        return ((mLowerInclusiveValue[0] & 0xff) | ((mLowerInclusiveValue[1] & 0xff) << 8) | ((mLowerInclusiveValue[2] & 0xff) << 16) | ((mLowerInclusiveValue[3] & 0xff) << 24) & 0xffffffffL);
+        return BLEUtils.createUInt32(mLowerInclusiveValue, 0);
     }
 
     /**
@@ -174,7 +175,7 @@ public class ValidRange implements ByteArrayInterface, Parcelable {
      * @return Lower inclusive value(SINT8)
      */
     public int getLowerInclusiveValueSint8() {
-        return mLowerInclusiveValue[0];
+        return BLEUtils.createSInt8(mLowerInclusiveValue, 0);
     }
 
     /**
@@ -187,7 +188,7 @@ public class ValidRange implements ByteArrayInterface, Parcelable {
      * @return Lower inclusive value(SINT16)
      */
     public int getLowerInclusiveValueSint16() {
-        return (mLowerInclusiveValue[0] & 0xff) | mLowerInclusiveValue[1] << 8;
+        return BLEUtils.createSInt16(mLowerInclusiveValue, 0);
     }
 
     /**
@@ -198,7 +199,7 @@ public class ValidRange implements ByteArrayInterface, Parcelable {
      * @return Lower inclusive value(SINT24)
      */
     public int getLowerInclusiveValueSint24() {
-        return (mLowerInclusiveValue[0] & 0xff) | ((mLowerInclusiveValue[1] & 0xff) << 8) | (mLowerInclusiveValue[2] << 16);
+        return BLEUtils.createSInt24(mLowerInclusiveValue, 0);
     }
 
     /**
@@ -219,7 +220,7 @@ public class ValidRange implements ByteArrayInterface, Parcelable {
      * @return Upper inclusive value(UINT8)
      */
     public int getUpperInclusiveValueUint8() {
-        return mUpperInclusiveValue[0] & 0xff;
+        return BLEUtils.createUInt8(mUpperInclusiveValue, 0);
     }
 
     /**
@@ -238,7 +239,7 @@ public class ValidRange implements ByteArrayInterface, Parcelable {
      * @return Upper inclusive value(UINT16)
      */
     public int getUpperInclusiveValueUint16() {
-        return (mUpperInclusiveValue[0] & 0xff) | ((mUpperInclusiveValue[1] & 0xff) << 8);
+        return BLEUtils.createUInt16(mUpperInclusiveValue, 0);
     }
 
     /**
@@ -249,7 +250,7 @@ public class ValidRange implements ByteArrayInterface, Parcelable {
      * @return Upper inclusive value(UINT24)
      */
     public int getUpperInclusiveValueUint24() {
-        return (mUpperInclusiveValue[0] & 0xff) | ((mUpperInclusiveValue[1] & 0xff) << 8) | ((mUpperInclusiveValue[2] & 0xff) << 16);
+        return BLEUtils.createUInt24(mUpperInclusiveValue, 0);
     }
 
     /**
@@ -260,7 +261,7 @@ public class ValidRange implements ByteArrayInterface, Parcelable {
      * @return Upper inclusive value(UINT32)
      */
     public long getUpperInclusiveValueUint32() {
-        return ((mUpperInclusiveValue[0] & 0xff) | ((mUpperInclusiveValue[1] & 0xff) << 8) | ((mUpperInclusiveValue[2] & 0xff) << 16) | ((mUpperInclusiveValue[3] & 0xff) << 24) & 0xffffffffL);
+        return BLEUtils.createUInt32(mUpperInclusiveValue, 0);
     }
 
     /**
@@ -273,7 +274,7 @@ public class ValidRange implements ByteArrayInterface, Parcelable {
      * @return Upper inclusive value(SINT8)
      */
     public int getUpperInclusiveValueSint8() {
-        return mUpperInclusiveValue[0];
+        return BLEUtils.createSInt8(mUpperInclusiveValue, 0);
     }
 
     /**
@@ -286,7 +287,7 @@ public class ValidRange implements ByteArrayInterface, Parcelable {
      * @return Upper inclusive value(SINT16)
      */
     public int getUpperInclusiveValueSint16() {
-        return (mUpperInclusiveValue[0] & 0xff) | mUpperInclusiveValue[1] << 8;
+        return BLEUtils.createSInt16(mUpperInclusiveValue, 0);
     }
 
     /**
@@ -297,7 +298,7 @@ public class ValidRange implements ByteArrayInterface, Parcelable {
      * @return Upper inclusive value(SINT24)
      */
     public int getUpperInclusiveValueSint24() {
-        return (mUpperInclusiveValue[0] & 0xff) | ((mUpperInclusiveValue[1] & 0xff) << 8) | (mUpperInclusiveValue[2] << 16);
+        return BLEUtils.createSInt24(mUpperInclusiveValue, 0);
     }
 
     /**

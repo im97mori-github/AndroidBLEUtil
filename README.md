@@ -18,8 +18,8 @@ project/build.gradle
 project/module/build.gradle
 
     dependencies {
-        implementation 'org.im97mori:ble:0.4.2' // central feature
-        implementation 'org.im97mori:ble_peripheral:0.1.7' // peripheral feature
+        implementation 'org.im97mori:ble:0.4.3' // central feature
+        implementation 'org.im97mori:ble_peripheral:0.1.8' // peripheral feature
     }
 
 ## Features

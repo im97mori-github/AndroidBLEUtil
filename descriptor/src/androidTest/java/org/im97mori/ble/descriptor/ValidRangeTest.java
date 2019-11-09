@@ -139,9 +139,9 @@ public class ValidRangeTest {
         ValidRange result = new ValidRange(bluetoothGattDescriptor);
         assertArrayEquals(Arrays.copyOfRange(value, 0, 3), result.getLowerInclusiveValue());
         assertArrayEquals(Arrays.copyOfRange(value, 3, 6), result.getUpperInclusiveValue());
-        assertEquals(0xffffff, result.getLowerInclusiveValueUint24());
+        assertEquals(0x00ffffff, result.getLowerInclusiveValueUint24());
         assertEquals(0xffffffff, result.getLowerInclusiveValueSint24());
-        assertEquals(0xfefefe, result.getUpperInclusiveValueUint24());
+        assertEquals(0x00fefefe, result.getUpperInclusiveValueUint24());
         assertEquals(0xfffefefe, result.getUpperInclusiveValueSint24());
     }
 
