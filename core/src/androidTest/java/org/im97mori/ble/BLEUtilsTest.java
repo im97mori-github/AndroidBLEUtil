@@ -7,6 +7,24 @@ import static org.junit.Assert.assertEquals;
 public class BLEUtilsTest {
 
     @Test
+    public void test_createBoolean_001() {
+        //@formatter:off
+        byte[] value = new byte[1];
+        value[ 0] = 0x01;
+        //@formatter:on
+        assertEquals(0x01, BLEUtils.createBoolean(value, 0));
+    }
+
+    @Test
+    public void test_createBoolean_002() {
+        //@formatter:off
+        byte[] value = new byte[1];
+        value[ 0] = 0x00;
+        //@formatter:on
+        assertEquals(0x00, BLEUtils.createBoolean(value, 0));
+    }
+
+    @Test
     public void test_createSInt8_001() {
         //@formatter:off
         byte[] value = new byte[1];
@@ -264,5 +282,91 @@ public class BLEUtilsTest {
         value[ 4] = 0x05;
         //@formatter:on
         assertEquals(0x05040302L, BLEUtils.createUInt32(value, 1));
+    }
+
+    @Test
+    public void test_createSInt48_001() {
+        //@formatter:off
+        byte[] value = new byte[6];
+        value[ 0] = 0x01;
+        value[ 1] = 0x02;
+        value[ 2] = 0x03;
+        value[ 3] = 0x04;
+        value[ 4] = 0x05;
+        value[ 5] = 0x06;
+        //@formatter:on
+        assertEquals(0x060504030201L, BLEUtils.createSInt48(value, 0));
+    }
+
+    @Test
+    public void test_createSInt48_002() {
+        //@formatter:off
+        byte[] value = new byte[6];
+        value[ 0] = (byte) 0x01;
+        value[ 1] = (byte) 0x02;
+        value[ 2] = (byte) 0x03;
+        value[ 3] = (byte) 0x04;
+        value[ 4] = (byte) 0x05;
+        value[ 5] = (byte) 0xff;
+        //@formatter:on
+        assertEquals(0xffffff0504030201L, BLEUtils.createSInt48(value, 0));
+    }
+
+    @Test
+    public void test_createSInt48_003() {
+        //@formatter:off
+        byte[] value = new byte[7];
+        value[ 0] = 0x01;
+        value[ 1] = 0x02;
+        value[ 2] = 0x03;
+        value[ 3] = 0x04;
+        value[ 4] = 0x05;
+        value[ 5] = 0x06;
+        value[ 6] = 0x07;
+        //@formatter:on
+        assertEquals(0x070605040302L, BLEUtils.createSInt48(value, 1));
+    }
+
+    @Test
+    public void test_createUInt48_001() {
+        //@formatter:off
+        byte[] value = new byte[6];
+        value[ 0] = 0x01;
+        value[ 1] = 0x02;
+        value[ 2] = 0x03;
+        value[ 3] = 0x04;
+        value[ 4] = 0x05;
+        value[ 5] = 0x06;
+        //@formatter:on
+        assertEquals(0x060504030201L, BLEUtils.createUInt48(value, 0));
+    }
+
+    @Test
+    public void test_createUInt48_002() {
+        //@formatter:off
+        byte[] value = new byte[6];
+        value[ 0] = (byte) 0x01;
+        value[ 1] = (byte) 0x02;
+        value[ 2] = (byte) 0x03;
+        value[ 3] = (byte) 0x04;
+        value[ 4] = (byte) 0x05;
+        value[ 5] = (byte) 0xff;
+        //@formatter:on
+        assertEquals(0xff0504030201L, BLEUtils.createUInt48(value, 0));
+    }
+
+    @Test
+    public void test_createUInt48_003() {
+        //@formatter:off
+        byte[] value = new byte[7];
+        value[ 0] = 0x01;
+        value[ 1] = 0x02;
+        value[ 2] = 0x03;
+        value[ 3] = 0x04;
+        value[ 4] = 0x05;
+        value[ 5] = 0x06;
+        value[ 6] = 0x07;
+        //@formatter:on
+        assertEquals(0x070605040302L, BLEUtils.createUInt48(value, 1));
     }
 }

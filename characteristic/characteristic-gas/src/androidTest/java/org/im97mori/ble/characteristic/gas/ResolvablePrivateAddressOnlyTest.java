@@ -11,38 +11,36 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class CentralAddressResolutionTest {
+public class ResolvablePrivateAddressOnlyTest {
 
     @Test
     public void test_constructor001() {
         //@formatter:off
         byte[] data = new byte[1];
-        data[ 0] = (byte) (CentralAddressResolution.CENTRAL_ADDRESS_RESOLUTION_NOT_SUPPORTED & 0xff);
+        data[ 0] = (byte) (ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0 & 0xff);
         //@formatter:on
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        CentralAddressResolution result1 = new CentralAddressResolution(bluetoothGattCharacteristic);
-        assertEquals(CentralAddressResolution.CENTRAL_ADDRESS_RESOLUTION_NOT_SUPPORTED, result1.getCentralAddressResolutionSupport());
-        assertTrue(result1.isCentralAddressResolutionNotSupported());
-        assertFalse(result1.isCentralAddressResolutionSupported());
+        ResolvablePrivateAddressOnly result1 = new ResolvablePrivateAddressOnly(bluetoothGattCharacteristic);
+        assertEquals(ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0, result1.getResolvablePrivateAddress());
+        assertTrue(result1.isResolvablePrivateAddress0());
     }
 
     @Test
     public void test_constructor002() {
         //@formatter:off
         byte[] data = new byte[1];
-        data[ 0] = (byte) (CentralAddressResolution.CENTRAL_ADDRESS_RESOLUTION_SUPPORTED & 0xff);
+        data[ 0] = (byte) (ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0 + 1 & 0xff);
         //@formatter:on
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        CentralAddressResolution result1 = new CentralAddressResolution(bluetoothGattCharacteristic);
-        assertEquals(CentralAddressResolution.CENTRAL_ADDRESS_RESOLUTION_SUPPORTED, result1.getCentralAddressResolutionSupport());
-        assertFalse(result1.isCentralAddressResolutionNotSupported());
-        assertTrue(result1.isCentralAddressResolutionSupported());
+        ResolvablePrivateAddressOnly result1 = new ResolvablePrivateAddressOnly(bluetoothGattCharacteristic);
+        assertEquals(ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0 + 1, result1.getResolvablePrivateAddress());
+        assertFalse(result1.isResolvablePrivateAddress0());
     }
 
     @Test
@@ -55,13 +53,13 @@ public class CentralAddressResolutionTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        CentralAddressResolution result1 = new CentralAddressResolution(bluetoothGattCharacteristic);
+        ResolvablePrivateAddressOnly result1 = new ResolvablePrivateAddressOnly(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
-        CentralAddressResolution result2 = CentralAddressResolution.CREATOR.createFromParcel(parcel);
+        ResolvablePrivateAddressOnly result2 = ResolvablePrivateAddressOnly.CREATOR.createFromParcel(parcel);
 
-        assertEquals(result1.getCentralAddressResolutionSupport(), result2.getCentralAddressResolutionSupport());
+        assertEquals(result1.getResolvablePrivateAddress(), result2.getResolvablePrivateAddress());
     }
 
     @Test
@@ -74,7 +72,7 @@ public class CentralAddressResolutionTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        CentralAddressResolution result1 = new CentralAddressResolution(bluetoothGattCharacteristic);
+        ResolvablePrivateAddressOnly result1 = new ResolvablePrivateAddressOnly(bluetoothGattCharacteristic);
         byte[] resultData = result1.getBytes();
         assertArrayEquals(data, resultData);
     }
@@ -89,8 +87,8 @@ public class CentralAddressResolutionTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        CentralAddressResolution result1 = new CentralAddressResolution(bluetoothGattCharacteristic);
-        CentralAddressResolution result2 = CentralAddressResolution.CREATOR.createFromByteArray(data);
+        ResolvablePrivateAddressOnly result1 = new ResolvablePrivateAddressOnly(bluetoothGattCharacteristic);
+        ResolvablePrivateAddressOnly result2 = ResolvablePrivateAddressOnly.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 }

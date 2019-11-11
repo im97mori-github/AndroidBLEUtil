@@ -6,21 +6,27 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC;
+
 /**
- * Central address resolution (Characteristics UUID: 0x2AA6)
+ * Central Address Resolution (Characteristics UUID: 0x2AA6)
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class CentralAddressResolution implements ByteArrayInterface, Parcelable {
 
     /**
-     * 1: Address resolution is supported in this device
+     * 0: address resolution is not supported in this device
+     */
+    public static final int CENTRAL_ADDRESS_RESOLUTION_NOT_SUPPORTED = 0;
+
+    /**
+     * 1: address resolution is supported in this device
      */
     public static final int CENTRAL_ADDRESS_RESOLUTION_SUPPORTED = 1;
 
@@ -52,7 +58,7 @@ public class CentralAddressResolution implements ByteArrayInterface, Parcelable 
          */
         @NonNull
         public CentralAddressResolution createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BLEConstants.CharacteristicUUID.CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new CentralAddressResolution(bluetoothGattCharacteristic);
         }
@@ -60,7 +66,7 @@ public class CentralAddressResolution implements ByteArrayInterface, Parcelable 
     };
 
     /**
-     * Central address resolution support
+     * Central Address Resolution Support
      */
     private final int mCentralAddressResolutionSupport;
 
@@ -70,7 +76,8 @@ public class CentralAddressResolution implements ByteArrayInterface, Parcelable 
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AA6
      */
     public CentralAddressResolution(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
-        mCentralAddressResolutionSupport = bluetoothGattCharacteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT8, 0);
+        byte[] values = bluetoothGattCharacteristic.getValue();
+        mCentralAddressResolutionSupport = (values[0] & 0xff);
     }
 
     /**
@@ -78,7 +85,7 @@ public class CentralAddressResolution implements ByteArrayInterface, Parcelable 
      *
      * @param in Parcel
      */
-    private CentralAddressResolution(Parcel in) {
+    private CentralAddressResolution(@NonNull Parcel in) {
         mCentralAddressResolutionSupport = in.readInt();
     }
 
@@ -99,10 +106,24 @@ public class CentralAddressResolution implements ByteArrayInterface, Parcelable 
     }
 
     /**
-     * @return Central address resolution support
+     * @return Central Address Resolution Support
      */
     public int getCentralAddressResolutionSupport() {
         return mCentralAddressResolutionSupport;
+    }
+
+    /**
+     * @return {@code true}:address resolution is not supported in this device
+     */
+    public boolean isCentralAddressResolutionNotSupported() {
+        return CENTRAL_ADDRESS_RESOLUTION_NOT_SUPPORTED == mCentralAddressResolutionSupport;
+    }
+
+    /**
+     * @return {@code true}:address resolution is supported in this device
+     */
+    public boolean isCentralAddressResolutionSupported() {
+        return CENTRAL_ADDRESS_RESOLUTION_SUPPORTED == mCentralAddressResolutionSupport;
     }
 
     /**

@@ -14,18 +14,18 @@ import static org.junit.Assert.assertEquals;
 public class DeviceNameTest {
 
     @Test
-    public void test1() {
+    public void test_constructor001() {
         String name = "Rbt-Sensor";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(name.getBytes(StandardCharsets.UTF_8));
 
-        DeviceName deviceName = new DeviceName(bluetoothGattCharacteristic);
-        assertEquals(name, deviceName.getName());
+        DeviceName result1 = new DeviceName(bluetoothGattCharacteristic);
+        assertEquals(name, result1.getName());
     }
 
     @Test
-    public void test2() {
+    public void test_parcelable001() {
         String name = "Rbt-Sensor";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -41,7 +41,7 @@ public class DeviceNameTest {
     }
 
     @Test
-    public void test3() {
+    public void test_parcelable002() {
         String name = "Rbt-Sensor";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -53,7 +53,7 @@ public class DeviceNameTest {
     }
 
     @Test
-    public void test4() {
+    public void test_parcelable003() {
         String name = "Rbt-Sensor";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);

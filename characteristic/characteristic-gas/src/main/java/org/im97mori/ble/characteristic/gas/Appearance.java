@@ -7,11 +7,15 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.BLEConstants;
+import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Arrays;
+
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.APPEARANCE_CHARACTERISTIC;
 
 /**
  * Appearance (Characteristics UUID: 0x2A01)
@@ -55,7 +59,7 @@ public class Appearance implements ByteArrayInterface, Parcelable {
          */
         @NonNull
         public Appearance createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BLEConstants.CharacteristicUUID.APPEARANCE_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(APPEARANCE_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new Appearance(bluetoothGattCharacteristic);
         }
@@ -65,7 +69,7 @@ public class Appearance implements ByteArrayInterface, Parcelable {
     /**
      * Category
      */
-    private final int mCategory;
+    private final byte[] mCategory;
 
     /**
      * Constructor from {@link BluetoothGattCharacteristic}
@@ -73,7 +77,8 @@ public class Appearance implements ByteArrayInterface, Parcelable {
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A01
      */
     public Appearance(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
-        mCategory = bluetoothGattCharacteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 0);
+        byte[] values = bluetoothGattCharacteristic.getValue();
+        mCategory = Arrays.copyOfRange(values, 0, 2);
     }
 
     /**
@@ -82,7 +87,7 @@ public class Appearance implements ByteArrayInterface, Parcelable {
      * @param in Parcel
      */
     private Appearance(@NonNull Parcel in) {
-        mCategory = in.readInt();
+        mCategory = in.createByteArray();
     }
 
     /**
@@ -98,14 +103,21 @@ public class Appearance implements ByteArrayInterface, Parcelable {
      */
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeInt(mCategory);
+        dest.writeByteArray(mCategory);
     }
 
     /**
      * @return Category
      */
-    public int getCategory() {
+    public byte[] getCategory() {
         return mCategory;
+    }
+
+    /**
+     * @return Category
+     */
+    public int getCategoryUint16() {
+        return BLEUtils.createUInt16(mCategory, 0);
     }
 
     /**
@@ -116,7 +128,7 @@ public class Appearance implements ByteArrayInterface, Parcelable {
     public byte[] getBytes() {
         byte[] data = new byte[2];
         ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);
-        byteBuffer.putShort((short) mCategory);
+        byteBuffer.put(mCategory);
         return data;
     }
 

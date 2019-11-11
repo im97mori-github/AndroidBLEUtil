@@ -6,15 +6,17 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import org.im97mori.ble.BLEUtils;
+
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC;
 
 /**
- * Peripheral preferred connection parameters (Characteristics UUID: 0x2A04)
+ * Peripheral Preferred Connection Parameters (Characteristics UUID: 0x2A04)
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class PeripheralPreferredConnectionParameters implements ByteArrayInterface, Parcelable {
@@ -62,7 +64,7 @@ public class PeripheralPreferredConnectionParameters implements ByteArrayInterfa
          */
         @NonNull
         public PeripheralPreferredConnectionParameters createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BLEConstants.CharacteristicUUID.PERIPHERAL_PREFERRED_CONNECTION_PARAMATERS_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new PeripheralPreferredConnectionParameters(bluetoothGattCharacteristic);
         }
@@ -70,12 +72,12 @@ public class PeripheralPreferredConnectionParameters implements ByteArrayInterfa
     };
 
     /**
-     * Minimum connection interval
+     * Minimum Connection Interval
      */
     private final int mMinimumConnectionInterval;
 
     /**
-     * Maximum connection interval
+     * Maximum Connection Interval
      */
     private final int mMaximumConnectionInterval;
 
@@ -95,10 +97,11 @@ public class PeripheralPreferredConnectionParameters implements ByteArrayInterfa
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A04
      */
     public PeripheralPreferredConnectionParameters(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
-        mMinimumConnectionInterval = bluetoothGattCharacteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 0);
-        mMaximumConnectionInterval = bluetoothGattCharacteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 2);
-        mSlaveLatency = bluetoothGattCharacteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 4);
-        mConnectionSupervisionTimeoutMultiplier = bluetoothGattCharacteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 6);
+        byte[] values = bluetoothGattCharacteristic.getValue();
+        mMinimumConnectionInterval = BLEUtils.createUInt16(values, 0);
+        mMaximumConnectionInterval = BLEUtils.createUInt16(values, 2);
+        mSlaveLatency = BLEUtils.createUInt16(values, 4);
+        mConnectionSupervisionTimeoutMultiplier = BLEUtils.createUInt16(values, 6);
     }
 
     /**
@@ -133,7 +136,7 @@ public class PeripheralPreferredConnectionParameters implements ByteArrayInterfa
     }
 
     /**
-     * @return Minimum connection interval
+     * @return Minimum Connection Interval
      */
     public int getMinimumConnectionInterval() {
         return mMinimumConnectionInterval;
@@ -147,7 +150,7 @@ public class PeripheralPreferredConnectionParameters implements ByteArrayInterfa
     }
 
     /**
-     * @return Maximum connection interval
+     * @return Maximum Connection Interval
      */
     public int getMaximumConnectionInterval() {
         return mMaximumConnectionInterval;

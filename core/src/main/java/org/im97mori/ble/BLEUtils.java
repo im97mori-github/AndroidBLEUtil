@@ -11,7 +11,23 @@ import java.nio.ByteOrder;
 /**
  * BLE Core Utilities
  */
+@SuppressWarnings("WeakerAccess")
 public class BLEUtils {
+
+    /**
+     * <p>
+     * create signed 8-bit integer
+     * <p>
+     * Core Specification v5.1 Vol 3 Part G 3.3.3.5.2 Format Table 3.16 (0x01)
+     * </p>
+     *
+     * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
+     * @param offset data offset
+     * @return unsigned 1-bit; 0 = false, 1 = true
+     */
+    public static int createBoolean(@NonNull byte[] data, int offset) {
+        return createByteBuffer(data, offset, 1, Byte.SIZE / 8).get() & 0x00000001;
+    }
 
     /**
      * <p>
@@ -131,6 +147,36 @@ public class BLEUtils {
      */
     public static long createUInt32(@NonNull byte[] data, int offset) {
         return createSInt32(data, offset) & 0xffffffffL;
+    }
+
+    /**
+     * <p>
+     * create signed 48-bit integer
+     * <p>
+     * Core Specification v5.1 Vol 3 Part G 3.3.3.5.2 Format Table 3.16 (0x11)
+     * </p>
+     *
+     * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
+     * @param offset data offset
+     * @return unsigned 16-bit integer
+     */
+    public static long createSInt48(@NonNull byte[] data, int offset) {
+        return createByteBuffer(data, offset, 6, Long.SIZE / 8).getLong() << 16 >> 16;
+    }
+
+    /**
+     * <p>
+     * create unsigned 48-bit integer
+     * <p>
+     * Core Specification v5.1 Vol 3 Part G 3.3.3.5.2 Format Table 3.16 (0x09)
+     * </p>
+     *
+     * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
+     * @param offset data offset
+     * @return unsigned 16-bit integer
+     */
+    public static long createUInt48(@NonNull byte[] data, int offset) {
+        return createSInt48(data, offset) & 0xffffffffffffL;
     }
 
     /**

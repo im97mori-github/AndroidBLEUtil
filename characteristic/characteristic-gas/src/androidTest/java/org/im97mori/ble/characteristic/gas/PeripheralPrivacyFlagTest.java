@@ -11,86 +11,85 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class CentralAddressResolutionTest {
+public class PeripheralPrivacyFlagTest {
 
     @Test
     public void test_constructor001() {
         //@formatter:off
         byte[] data = new byte[1];
-        data[ 0] = (byte) (CentralAddressResolution.CENTRAL_ADDRESS_RESOLUTION_NOT_SUPPORTED & 0xff);
+        data[ 0] = (byte) (PeripheralPrivacyFlag.FLAGS_PRIVACY_IS_DISABLED_IN_THIS_DEVICE & 0xff);
         //@formatter:on
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        CentralAddressResolution result1 = new CentralAddressResolution(bluetoothGattCharacteristic);
-        assertEquals(CentralAddressResolution.CENTRAL_ADDRESS_RESOLUTION_NOT_SUPPORTED, result1.getCentralAddressResolutionSupport());
-        assertTrue(result1.isCentralAddressResolutionNotSupported());
-        assertFalse(result1.isCentralAddressResolutionSupported());
+        PeripheralPrivacyFlag result1 = new PeripheralPrivacyFlag(bluetoothGattCharacteristic);
+        assertEquals(PeripheralPrivacyFlag.FLAGS_PRIVACY_IS_DISABLED_IN_THIS_DEVICE, result1.getFlag());
+        assertTrue(result1.isPrivacyDisabled());
+        assertFalse(result1.isPrivacyEnabled());
     }
 
     @Test
     public void test_constructor002() {
         //@formatter:off
         byte[] data = new byte[1];
-        data[ 0] = (byte) (CentralAddressResolution.CENTRAL_ADDRESS_RESOLUTION_SUPPORTED & 0xff);
+        data[ 0] = (byte) (PeripheralPrivacyFlag.FLAGS_PRIVACY_IS_ENABLED_IN_THIS_DEVICE & 0xff);
         //@formatter:on
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        CentralAddressResolution result1 = new CentralAddressResolution(bluetoothGattCharacteristic);
-        assertEquals(CentralAddressResolution.CENTRAL_ADDRESS_RESOLUTION_SUPPORTED, result1.getCentralAddressResolutionSupport());
-        assertFalse(result1.isCentralAddressResolutionNotSupported());
-        assertTrue(result1.isCentralAddressResolutionSupported());
+        PeripheralPrivacyFlag result1 = new PeripheralPrivacyFlag(bluetoothGattCharacteristic);
+        assertEquals(PeripheralPrivacyFlag.FLAGS_PRIVACY_IS_ENABLED_IN_THIS_DEVICE, result1.getFlag());
+        assertFalse(result1.isPrivacyDisabled());
+        assertTrue(result1.isPrivacyEnabled());
     }
 
     @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];
-        data[ 0] = (byte) (CentralAddressResolution.CENTRAL_ADDRESS_RESOLUTION_SUPPORTED & 0xff);
+        data[ 0] = (byte) (PeripheralPrivacyFlag.FLAGS_PRIVACY_IS_ENABLED_IN_THIS_DEVICE & 0xff);
         //@formatter:on
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        CentralAddressResolution result1 = new CentralAddressResolution(bluetoothGattCharacteristic);
+        PeripheralPrivacyFlag result1 = new PeripheralPrivacyFlag(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
-        CentralAddressResolution result2 = CentralAddressResolution.CREATOR.createFromParcel(parcel);
+        PeripheralPrivacyFlag result2 = PeripheralPrivacyFlag.CREATOR.createFromParcel(parcel);
 
-        assertEquals(result1.getCentralAddressResolutionSupport(), result2.getCentralAddressResolutionSupport());
+        assertEquals(result1.getFlag(), result2.getFlag());
     }
 
     @Test
     public void test_parcelable002() {
         //@formatter:off
         byte[] data = new byte[1];
-        data[ 0] = (byte) (CentralAddressResolution.CENTRAL_ADDRESS_RESOLUTION_SUPPORTED & 0xff);
+        data[ 0] = (byte) (PeripheralPrivacyFlag.FLAGS_PRIVACY_IS_ENABLED_IN_THIS_DEVICE & 0xff);
         //@formatter:on
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        CentralAddressResolution result1 = new CentralAddressResolution(bluetoothGattCharacteristic);
-        byte[] resultData = result1.getBytes();
-        assertArrayEquals(data, resultData);
+        PeripheralPrivacyFlag result1 = new PeripheralPrivacyFlag(bluetoothGattCharacteristic);
+        assertArrayEquals(data, result1.getBytes());
     }
 
     @Test
     public void test_parcelable003() {
         //@formatter:off
         byte[] data = new byte[1];
-        data[ 0] = (byte) (CentralAddressResolution.CENTRAL_ADDRESS_RESOLUTION_SUPPORTED & 0xff);
+        data[ 0] = (byte) (PeripheralPrivacyFlag.FLAGS_PRIVACY_IS_ENABLED_IN_THIS_DEVICE & 0xff);
         //@formatter:on
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        CentralAddressResolution result1 = new CentralAddressResolution(bluetoothGattCharacteristic);
-        CentralAddressResolution result2 = CentralAddressResolution.CREATOR.createFromByteArray(data);
+        PeripheralPrivacyFlag result1 = new PeripheralPrivacyFlag(bluetoothGattCharacteristic);
+        PeripheralPrivacyFlag result2 = PeripheralPrivacyFlag.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 }

@@ -2400,27 +2400,42 @@ public class BLEConstants {
      */
     public static final class CharacteristicUUID {
 
-        // Generic Access Service (Service UUID: 0x1800)
+        // Generic Access (Service UUID: 0x1800)
 
         /**
-         * Device name (Characteristics UUID: 0x2A00)
+         * Device Name (Characteristic UUID: 0x2A00)
          */
-        public static final UUID DEVICE_NAME_CHARACTERISTIC = UUID.fromString("00002a00-0000-1000-8000-00805f9b34fb");
+        public static final UUID DEVICE_NAME_CHARACTERISTIC = UUID.fromString("00002A00-0000-1000-8000-00805f9b34fb");
 
         /**
-         * Appearance (Characteristics UUID: 0x2A01)
+         * Appearance (Characteristic UUID: 0x2A01)
          */
-        public static final UUID APPEARANCE_CHARACTERISTIC = UUID.fromString("00002a01-0000-1000-8000-00805f9b34fb");
+        public static final UUID APPEARANCE_CHARACTERISTIC = UUID.fromString("00002A01-0000-1000-8000-00805f9b34fb");
 
         /**
-         * Peripheral preferred c onnection parameters (Characteristics UUID: 0x2A04)
+         * Peripheral Preferred Connection Parameters (Characteristic UUID: 0x2A04)
          */
-        public static final UUID PERIPHERAL_PREFERRED_CONNECTION_PARAMATERS_CHARACTERISTIC = UUID.fromString("00002a04-0000-1000-8000-00805f9b34fb");
+        public static final UUID PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC = UUID.fromString("00002A04-0000-1000-8000-00805f9b34fb");
 
         /**
-         * Central address resolution (Characteristics UUID: 0x2AA6)
+         * Central Address Resolution (Characteristic UUID: 0x2AA6)
          */
-        public static final UUID CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC = UUID.fromString("00002aa6-0000-1000-8000-00805f9b34fb");
+        public static final UUID CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC = UUID.fromString("00002AA6-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Resolvable Private Address Only (Characteristic UUID: 0x2AC9)
+         */
+        public static final UUID RESOLVABLE_PRIVATE_ADDRESS_ONLY_CHARACTERISTIC = UUID.fromString("00002AC9-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Reconnection Address (Characteristic UUID: 0x2A03)
+         */
+        public static final UUID RECONNECTION_ADDRESS_CHARACTERISTIC = UUID.fromString("00002A03-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Peripheral Privacy Flag (Characteristic UUID: 0x2A02)
+         */
+        public static final UUID PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC = UUID.fromString("00002A02-0000-1000-8000-00805f9b34fb");
 
         // Device Information Service (Service UUID: 0x180A)
 

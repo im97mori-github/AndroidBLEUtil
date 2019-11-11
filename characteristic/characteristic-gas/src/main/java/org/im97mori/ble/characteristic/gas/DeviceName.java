@@ -6,12 +6,17 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+
+
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC;
+
 /**
- * Device mName (Characteristics UUID: 0x2A00)
+ * Device Name (Characteristics UUID: 0x2A00)
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class DeviceName implements ByteArrayInterface, Parcelable {
@@ -44,7 +49,7 @@ public class DeviceName implements ByteArrayInterface, Parcelable {
          */
         @NonNull
         public DeviceName createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BLEConstants.CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DEVICE_NAME_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new DeviceName(bluetoothGattCharacteristic);
         }
@@ -62,7 +67,8 @@ public class DeviceName implements ByteArrayInterface, Parcelable {
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A00
      */
     public DeviceName(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
-        mName = bluetoothGattCharacteristic.getStringValue(0);
+        byte[] values = bluetoothGattCharacteristic.getValue();
+        mName = new String(values);
     }
 
     /**
@@ -93,7 +99,6 @@ public class DeviceName implements ByteArrayInterface, Parcelable {
     /**
      * @return Name
      */
-    @NonNull
     public String getName() {
         return mName;
     }
