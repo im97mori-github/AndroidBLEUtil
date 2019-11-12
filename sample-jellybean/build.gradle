@@ -16,6 +16,6 @@ android {
 
 dependencies {
     implementation project(path: ':library-central')
-    implementation 'org.im97mori:ble-advertising:0.1.0'
+    implementation 'org.im97mori:ble-advertising:0.1.3'
     implementation 'androidx.fragment:fragment:1.1.0'
 }

@@ -16,7 +16,7 @@ public class AndFilterTest {
                 return false;
             }
         };
-        AndFilter<AdvertisingDataParser.AdvertisingDataParseResult> andFilter = new AndFilter(new AdvertisingDataFilter[]{filter});
+        AndFilter<AdvertisingDataParser.AdvertisingDataParseResult> andFilter = new AndFilter(filter);
         assertFalse(andFilter.isMatched(new AdvertisingDataParser.Builder(true).build().parse(new byte[0])));
     }
 
@@ -28,7 +28,7 @@ public class AndFilterTest {
                 return true;
             }
         };
-        AndFilter<AdvertisingDataParser.AdvertisingDataParseResult> andFilter = new AndFilter(new AdvertisingDataFilter[]{filter});
+        AndFilter<AdvertisingDataParser.AdvertisingDataParseResult> andFilter = new AndFilter(filter);
         assertTrue(andFilter.isMatched(new AdvertisingDataParser.Builder(true).build().parse(new byte[0])));
     }
 
@@ -46,7 +46,7 @@ public class AndFilterTest {
                 return false;
             }
         };
-        AndFilter<AdvertisingDataParser.AdvertisingDataParseResult> andFilter = new AndFilter(new AdvertisingDataFilter[]{filter1, filter2});
+        AndFilter<AdvertisingDataParser.AdvertisingDataParseResult> andFilter = new AndFilter(filter1, filter2);
         assertFalse(andFilter.isMatched(new AdvertisingDataParser.Builder(true).build().parse(new byte[0])));
     }
 
@@ -64,7 +64,7 @@ public class AndFilterTest {
                 return false;
             }
         };
-        AndFilter<AdvertisingDataParser.AdvertisingDataParseResult> andFilter = new AndFilter(new AdvertisingDataFilter[]{filter1, filter2});
+        AndFilter<AdvertisingDataParser.AdvertisingDataParseResult> andFilter = new AndFilter(filter1, filter2);
         assertFalse(andFilter.isMatched(new AdvertisingDataParser.Builder(true).build().parse(new byte[0])));
     }
 
@@ -82,13 +82,13 @@ public class AndFilterTest {
                 return true;
             }
         };
-        AndFilter<AdvertisingDataParser.AdvertisingDataParseResult> andFilter = new AndFilter(new AdvertisingDataFilter[]{filter1, filter2});
+        AndFilter<AdvertisingDataParser.AdvertisingDataParseResult> andFilter = new AndFilter(filter1, filter2);
         assertTrue(andFilter.isMatched(new AdvertisingDataParser.Builder(true).build().parse(new byte[0])));
     }
 
     @Test
     public void test_006() {
-        AndFilter<AdvertisingDataParser.AdvertisingDataParseResult> andFilter = new AndFilter(new AdvertisingDataFilter[]{});
+        AndFilter<AdvertisingDataParser.AdvertisingDataParseResult> andFilter = new AndFilter();
         assertTrue(andFilter.isMatched(new AdvertisingDataParser.Builder(true).build().parse(new byte[0])));
     }
 }

@@ -6,12 +6,12 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import org.im97mori.ble.BLEUtils;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SYSTEM_ID_CHARACTERISTIC;
 

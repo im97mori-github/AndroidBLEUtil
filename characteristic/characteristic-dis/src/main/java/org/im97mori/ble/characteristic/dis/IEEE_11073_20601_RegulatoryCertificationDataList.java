@@ -12,7 +12,6 @@ import org.im97mori.ble.ByteArrayInterface;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_CHARACTERISTIC;
 
 /**

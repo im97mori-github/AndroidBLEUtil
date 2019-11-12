@@ -9,10 +9,6 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-
-
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC;
 
 /**
