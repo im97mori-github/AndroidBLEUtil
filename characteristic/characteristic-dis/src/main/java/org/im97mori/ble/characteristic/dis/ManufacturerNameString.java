@@ -12,7 +12,7 @@ import org.im97mori.ble.ByteArrayInterface;
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MANUFACTURER_NAME_STRING_CHARACTERISTIC;
 
 /**
- * Manufacturer name string (Characteristics UUID: 0x2A28)
+ * Manufacturer Name String (Characteristics UUID: 0x2A29)
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class ManufacturerNameString implements ByteArrayInterface, Parcelable {
@@ -53,17 +53,18 @@ public class ManufacturerNameString implements ByteArrayInterface, Parcelable {
     };
 
     /**
-     * Manufacture name
+     * Manufacturer Name
      */
-    private final String mManufactureName;
+    private final String mManufacturerName;
 
     /**
      * Constructor from {@link BluetoothGattCharacteristic}
      *
-     * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A28
+     * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A29
      */
     public ManufacturerNameString(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
-        mManufactureName = bluetoothGattCharacteristic.getStringValue(0);
+        byte[] values = bluetoothGattCharacteristic.getValue();
+        mManufacturerName = new String(values);
     }
 
     /**
@@ -72,7 +73,7 @@ public class ManufacturerNameString implements ByteArrayInterface, Parcelable {
      * @param in Parcel
      */
     private ManufacturerNameString(@NonNull Parcel in) {
-        mManufactureName = in.readString();
+        mManufacturerName = in.readString();
     }
 
     /**
@@ -88,15 +89,14 @@ public class ManufacturerNameString implements ByteArrayInterface, Parcelable {
      */
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeString(mManufactureName);
+        dest.writeString(mManufacturerName);
     }
 
     /**
-     * @return Manufacture name
+     * @return Manufacturer Name
      */
-    @NonNull
-    public String getManufactureName() {
-        return mManufactureName;
+    public String getManufacturerName() {
+        return mManufacturerName;
     }
 
     /**
@@ -105,7 +105,7 @@ public class ManufacturerNameString implements ByteArrayInterface, Parcelable {
     @Override
     @NonNull
     public byte[] getBytes() {
-        return mManufactureName.getBytes();
+        return mManufacturerName.getBytes();
     }
 
 }

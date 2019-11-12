@@ -2437,32 +2437,52 @@ public class BLEConstants {
          */
         public static final UUID PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC = UUID.fromString("00002A02-0000-1000-8000-00805f9b34fb");
 
-        // Device Information Service (Service UUID: 0x180A)
+        // Device Information (Service UUID: 0x180A)
 
         /**
-         * Model number string (Characteristics UUID: 0x2A24)
+         * Manufacturer Name String (Characteristic UUID: 0x2A29)
          */
-        public static final UUID MODEL_NUMBER_STRING_CHARACTERISTIC = UUID.fromString("00002a24-0000-1000-8000-00805f9b34fb");
+        public static final UUID MANUFACTURER_NAME_STRING_CHARACTERISTIC = UUID.fromString("00002A29-0000-1000-8000-00805f9b34fb");
 
         /**
-         * Serial number string (Characteristics UUID: 0x2A25)
+         * Model Number String (Characteristic UUID: 0x2A24)
          */
-        public static final UUID SERIAL_NUMBER_STRING_CHARACTERISTIC = UUID.fromString("00002a25-0000-1000-8000-00805f9b34fb");
+        public static final UUID MODEL_NUMBER_STRING_CHARACTERISTIC = UUID.fromString("00002A24-0000-1000-8000-00805f9b34fb");
 
         /**
-         * Firmware revision string (Characteristics UUID: 0x2A26)
+         * Serial Number String (Characteristic UUID: 0x2A25)
          */
-        public static final UUID FIRMWARE_REVISION_STRING_CHARACTERISTIC = UUID.fromString("00002a26-0000-1000-8000-00805f9b34fb");
+        public static final UUID SERIAL_NUMBER_STRING_CHARACTERISTIC = UUID.fromString("00002A25-0000-1000-8000-00805f9b34fb");
 
         /**
-         * Hardware revision string (Characteristics UUID: 0x2A27)
+         * Hardware Revision String (Characteristic UUID: 0x2A27)
          */
-        public static final UUID HARDWARE_REVISION_STRING_CHARACTERISTIC = UUID.fromString("00002a27-0000-1000-8000-00805f9b34fb");
+        public static final UUID HARDWARE_REVISION_STRING_CHARACTERISTIC = UUID.fromString("00002A27-0000-1000-8000-00805f9b34fb");
 
         /**
-         * Manufacturer name string (Characteristics UUID: 0x2A28)
+         * Firmware Revision String (Characteristic UUID: 0x2A26)
          */
-        public static final UUID MANUFACTURER_NAME_STRING_CHARACTERISTIC = UUID.fromString("00002a29-0000-1000-8000-00805f9b34fb");
+        public static final UUID FIRMWARE_REVISION_STRING_CHARACTERISTIC = UUID.fromString("00002A26-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Software Revision String (Characteristic UUID: 0x2A28)
+         */
+        public static final UUID SOFTWARE_REVISION_STRING_CHARACTERISTIC = UUID.fromString("00002A28-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * System ID (Characteristic UUID: 0x2A23)
+         */
+        public static final UUID SYSTEM_ID_CHARACTERISTIC = UUID.fromString("00002A23-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * IEEE 11073-20601 Regulatory Certification Data List (Characteristic UUID: 0x2A2A)
+         */
+        public static final UUID IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_CHARACTERISTIC = UUID.fromString("00002A2A-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * PnP ID (Characteristic UUID: 0x2A50)
+         */
+        public static final UUID PNP_ID_CHARACTERISTIC = UUID.fromString("00002A50-0000-1000-8000-00805f9b34fb");
 
     }
 

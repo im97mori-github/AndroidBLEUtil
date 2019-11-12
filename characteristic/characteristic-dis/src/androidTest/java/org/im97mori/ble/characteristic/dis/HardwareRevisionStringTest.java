@@ -14,29 +14,29 @@ import static org.junit.Assert.assertEquals;
 public class HardwareRevisionStringTest {
 
     @Test
-    public void test1() {
+    public void test_constructor001() {
         String hardwareRevision = "00.00";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(hardwareRevision.getBytes(StandardCharsets.UTF_8));
 
-        HardwareRevisionString hardwareRevisionString = new HardwareRevisionString(bluetoothGattCharacteristic);
-        assertEquals(hardwareRevision, hardwareRevisionString.getHardwareRevision());
+        HardwareRevisionString result1 = new HardwareRevisionString(bluetoothGattCharacteristic);
+        assertEquals(hardwareRevision, result1.getHardwareRevision());
     }
 
     @Test
-    public void test2() {
+    public void test_constructor002() {
         String hardwareRevision = "99.99";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(hardwareRevision.getBytes(StandardCharsets.UTF_8));
 
-        HardwareRevisionString hardwareRevisionString = new HardwareRevisionString(bluetoothGattCharacteristic);
-        assertEquals(hardwareRevision, hardwareRevisionString.getHardwareRevision());
+        HardwareRevisionString result1 = new HardwareRevisionString(bluetoothGattCharacteristic);
+        assertEquals(hardwareRevision, result1.getHardwareRevision());
     }
 
     @Test
-    public void test3() {
+    public void test_parcelable001() {
         String hardwareRevision = "00.00";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -52,7 +52,7 @@ public class HardwareRevisionStringTest {
     }
 
     @Test
-    public void test4() {
+    public void test_parcelable002() {
         String hardwareRevision = "12.34";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -68,7 +68,7 @@ public class HardwareRevisionStringTest {
     }
 
     @Test
-    public void test5() {
+    public void test_parcelable003() {
         String hardwareRevision = "12.34";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -80,7 +80,7 @@ public class HardwareRevisionStringTest {
     }
 
     @Test
-    public void test6() {
+    public void test_parcelable004() {
         String hardwareRevision = "12.34";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);

@@ -12,7 +12,7 @@ import org.im97mori.ble.ByteArrayInterface;
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HARDWARE_REVISION_STRING_CHARACTERISTIC;
 
 /**
- * Hardware revision string (Characteristics UUID: 0x2A27)
+ * Hardware Revision String (Characteristics UUID: 0x2A27)
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class HardwareRevisionString implements ByteArrayInterface, Parcelable {
@@ -53,7 +53,7 @@ public class HardwareRevisionString implements ByteArrayInterface, Parcelable {
     };
 
     /**
-     * Hardware revision
+     * Hardware Revision
      */
     private final String mHardwareRevision;
 
@@ -63,7 +63,8 @@ public class HardwareRevisionString implements ByteArrayInterface, Parcelable {
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A27
      */
     public HardwareRevisionString(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
-        mHardwareRevision = bluetoothGattCharacteristic.getStringValue(0);
+        byte[] values = bluetoothGattCharacteristic.getValue();
+        mHardwareRevision = new String(values);
     }
 
     /**
@@ -92,9 +93,8 @@ public class HardwareRevisionString implements ByteArrayInterface, Parcelable {
     }
 
     /**
-     * @return Hardware revision
+     * @return Hardware Revision
      */
-    @NonNull
     public String getHardwareRevision() {
         return mHardwareRevision;
     }

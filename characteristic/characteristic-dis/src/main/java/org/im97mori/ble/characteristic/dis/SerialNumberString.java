@@ -12,7 +12,7 @@ import org.im97mori.ble.ByteArrayInterface;
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SERIAL_NUMBER_STRING_CHARACTERISTIC;
 
 /**
- * Serial number string (Characteristics UUID: 0x2A25)
+ * Serial Number String (Characteristics UUID: 0x2A25)
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class SerialNumberString implements ByteArrayInterface, Parcelable {
@@ -53,7 +53,7 @@ public class SerialNumberString implements ByteArrayInterface, Parcelable {
     };
 
     /**
-     * Serial number
+     * Serial Number
      */
     private final String mSerialNumber;
 
@@ -63,7 +63,8 @@ public class SerialNumberString implements ByteArrayInterface, Parcelable {
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A25
      */
     public SerialNumberString(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
-        mSerialNumber = bluetoothGattCharacteristic.getStringValue(0);
+        byte[] values = bluetoothGattCharacteristic.getValue();
+        mSerialNumber = new String(values);
     }
 
     /**
@@ -92,7 +93,7 @@ public class SerialNumberString implements ByteArrayInterface, Parcelable {
     }
 
     /**
-     * @return Serial number
+     * @return Serial Number
      */
     public String getSerialNumber() {
         return mSerialNumber;

@@ -14,18 +14,18 @@ import static org.junit.Assert.assertEquals;
 public class ManufacturerNameStringTest {
 
     @Test
-    public void test1() {
+    public void test_constructor001() {
         String manufactureName = "OMRON";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(manufactureName.getBytes(StandardCharsets.UTF_8));
 
-        ManufacturerNameString manufacturerNameString = new ManufacturerNameString(bluetoothGattCharacteristic);
-        assertEquals(manufactureName, manufacturerNameString.getManufactureName());
+        ManufacturerNameString result1 = new ManufacturerNameString(bluetoothGattCharacteristic);
+        assertEquals(manufactureName, result1.getManufacturerName());
     }
 
     @Test
-    public void test2() {
+    public void test_parcelable001() {
         String manufactureName = "OMRON";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -37,11 +37,11 @@ public class ManufacturerNameStringTest {
         parcel.setDataPosition(0);
         ManufacturerNameString result2 = ManufacturerNameString.CREATOR.createFromParcel(parcel);
 
-        assertEquals(result1.getManufactureName(), result2.getManufactureName());
+        assertEquals(result1.getManufacturerName(), result2.getManufacturerName());
     }
 
     @Test
-    public void test3() {
+    public void test_parcelable002() {
         String manufactureName = "OMRON";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -53,7 +53,7 @@ public class ManufacturerNameStringTest {
     }
 
     @Test
-    public void test4() {
+    public void test_parcelable003() {
         String manufactureName = "OMRON";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);

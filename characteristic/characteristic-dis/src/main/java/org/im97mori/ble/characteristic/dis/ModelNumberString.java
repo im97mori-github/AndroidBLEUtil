@@ -12,7 +12,7 @@ import org.im97mori.ble.ByteArrayInterface;
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MODEL_NUMBER_STRING_CHARACTERISTIC;
 
 /**
- * Model number string (Characteristics UUID: 0x2A24)
+ * Model Number String (Characteristics UUID: 0x2A24)
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class ModelNumberString implements ByteArrayInterface, Parcelable {
@@ -53,7 +53,7 @@ public class ModelNumberString implements ByteArrayInterface, Parcelable {
     };
 
     /**
-     * Model number
+     * Model Number
      */
     private final String mModelNumber;
 
@@ -63,7 +63,8 @@ public class ModelNumberString implements ByteArrayInterface, Parcelable {
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A24
      */
     public ModelNumberString(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
-        mModelNumber = bluetoothGattCharacteristic.getStringValue(0);
+        byte[] values = bluetoothGattCharacteristic.getValue();
+        mModelNumber = new String(values);
     }
 
     /**
@@ -92,9 +93,8 @@ public class ModelNumberString implements ByteArrayInterface, Parcelable {
     }
 
     /**
-     * @return Model number
+     * @return Model Number
      */
-    @NonNull
     public String getModelNumber() {
         return mModelNumber;
     }

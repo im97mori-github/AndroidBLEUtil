@@ -98,7 +98,7 @@ public class BLEUtils {
      *
      * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
      * @param offset data offset
-     * @return signed 16-bit integer
+     * @return signed 24-bit integer
      */
     public static int createSInt24(@NonNull byte[] data, int offset) {
         return createByteBuffer(data, offset, 3, Integer.SIZE / 8).getInt() << 8 >> 8;
@@ -113,7 +113,7 @@ public class BLEUtils {
      *
      * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
      * @param offset data offset
-     * @return unsigned 16-bit integer
+     * @return unsigned 24-bit integer
      */
     public static int createUInt24(@NonNull byte[] data, int offset) {
         return createSInt24(data, offset) & 0x00ffffff;
@@ -128,7 +128,7 @@ public class BLEUtils {
      *
      * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
      * @param offset data offset
-     * @return signed 16-bit integer
+     * @return signed 32-bit integer
      */
     public static int createSInt32(@NonNull byte[] data, int offset) {
         return createByteBuffer(data, offset, 4, Integer.SIZE / 8).getInt();
@@ -143,10 +143,22 @@ public class BLEUtils {
      *
      * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
      * @param offset data offset
-     * @return unsigned 16-bit integer
+     * @return unsigned 32-bit integer
      */
     public static long createUInt32(@NonNull byte[] data, int offset) {
         return createSInt32(data, offset) & 0xffffffffL;
+    }
+
+    /**
+     * <p>
+     * create unsigned 40-bit integer
+     *
+     * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
+     * @param offset data offset
+     * @return unsigned 40-bit integer
+     */
+    public static long createUInt40(@NonNull byte[] data, int offset) {
+        return createByteBuffer(data, offset, 5, Long.SIZE / 8).getLong() & 0xffffffffffL;
     }
 
     /**
@@ -158,7 +170,7 @@ public class BLEUtils {
      *
      * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
      * @param offset data offset
-     * @return unsigned 16-bit integer
+     * @return unsigned 48-bit integer
      */
     public static long createSInt48(@NonNull byte[] data, int offset) {
         return createByteBuffer(data, offset, 6, Long.SIZE / 8).getLong() << 16 >> 16;
@@ -173,7 +185,7 @@ public class BLEUtils {
      *
      * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
      * @param offset data offset
-     * @return unsigned 16-bit integer
+     * @return unsigned 48-bit integer
      */
     public static long createUInt48(@NonNull byte[] data, int offset) {
         return createSInt48(data, offset) & 0xffffffffffffL;

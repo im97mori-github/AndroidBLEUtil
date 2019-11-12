@@ -14,29 +14,29 @@ import static org.junit.Assert.assertEquals;
 public class SerialNumberStringTest {
 
     @Test
-    public void test1() {
+    public void test_constructor001() {
         String serialNumber = "0000MY0000";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(serialNumber.getBytes(StandardCharsets.UTF_8));
 
-        SerialNumberString serialNumberString = new SerialNumberString(bluetoothGattCharacteristic);
-        assertEquals(serialNumber, serialNumberString.getSerialNumber());
+        SerialNumberString result1 = new SerialNumberString(bluetoothGattCharacteristic);
+        assertEquals(serialNumber, result1.getSerialNumber());
     }
 
     @Test
-    public void test2() {
+    public void test_constructor002() {
         String serialNumber = "39Z9MY9999";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(serialNumber.getBytes(StandardCharsets.UTF_8));
 
-        SerialNumberString serialNumberString = new SerialNumberString(bluetoothGattCharacteristic);
-        assertEquals(serialNumber, serialNumberString.getSerialNumber());
+        SerialNumberString result1 = new SerialNumberString(bluetoothGattCharacteristic);
+        assertEquals(serialNumber, result1.getSerialNumber());
     }
 
     @Test
-    public void test3() {
+    public void test_parcelable001() {
         String serialNumber = "0000MY0000";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -52,7 +52,7 @@ public class SerialNumberStringTest {
     }
 
     @Test
-    public void test4() {
+    public void test_parcelable002() {
         String serialNumber = "39Z9MY9999";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -68,7 +68,7 @@ public class SerialNumberStringTest {
     }
 
     @Test
-    public void test5() {
+    public void test_parcelable003() {
         String serialNumber = "39Z9MY9999";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -80,7 +80,7 @@ public class SerialNumberStringTest {
     }
 
     @Test
-    public void test6() {
+    public void test_parcelable004() {
         String serialNumber = "39Z9MY9999";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);

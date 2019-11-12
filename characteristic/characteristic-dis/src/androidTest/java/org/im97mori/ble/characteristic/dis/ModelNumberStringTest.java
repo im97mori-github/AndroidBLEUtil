@@ -14,18 +14,18 @@ import static org.junit.Assert.assertEquals;
 public class ModelNumberStringTest {
 
     @Test
-    public void test1() {
+    public void test_constructor001() {
         String modelNumber = "2JCIE-BU01";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(modelNumber.getBytes(StandardCharsets.UTF_8));
 
-        ModelNumberString modelNumberString = new ModelNumberString(bluetoothGattCharacteristic);
-        assertEquals(modelNumber, modelNumberString.getModelNumber());
+        ModelNumberString result1 = new ModelNumberString(bluetoothGattCharacteristic);
+        assertEquals(modelNumber, result1.getModelNumber());
     }
 
     @Test
-    public void test2() {
+    public void test_parcelable001() {
         String modelNumber = "2JCIE-BU01";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -42,7 +42,7 @@ public class ModelNumberStringTest {
 
 
     @Test
-    public void test3() {
+    public void test_parcelable002() {
         String modelNumber = "2JCIE-BU01";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -54,7 +54,7 @@ public class ModelNumberStringTest {
     }
 
     @Test
-    public void test4() {
+    public void test_parcelable003() {
         String modelNumber = "2JCIE-BU01";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);

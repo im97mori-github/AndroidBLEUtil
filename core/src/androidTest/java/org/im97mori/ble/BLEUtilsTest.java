@@ -285,6 +285,46 @@ public class BLEUtilsTest {
     }
 
     @Test
+    public void test_createUInt40_001() {
+        //@formatter:off
+        byte[] value = new byte[5];
+        value[ 0] = 0x01;
+        value[ 1] = 0x02;
+        value[ 2] = 0x03;
+        value[ 3] = 0x04;
+        value[ 4] = 0x05;
+        //@formatter:on
+        assertEquals(0x0504030201L, BLEUtils.createUInt40(value, 0));
+    }
+
+    @Test
+    public void test_createUInt40_002() {
+        //@formatter:off
+        byte[] value = new byte[5];
+        value[ 0] = (byte) 0x01;
+        value[ 1] = (byte) 0x02;
+        value[ 2] = (byte) 0x03;
+        value[ 3] = (byte) 0x04;
+        value[ 4] = (byte) 0xff;
+        //@formatter:on
+        assertEquals(0xff04030201L, BLEUtils.createUInt40(value, 0));
+    }
+
+    @Test
+    public void test_createUInt40_003() {
+        //@formatter:off
+        byte[] value = new byte[6];
+        value[ 0] = 0x01;
+        value[ 1] = 0x02;
+        value[ 2] = 0x03;
+        value[ 3] = 0x04;
+        value[ 4] = 0x05;
+        value[ 5] = 0x06;
+        //@formatter:on
+        assertEquals(0x0605040302L, BLEUtils.createUInt40(value, 1));
+    }
+
+    @Test
     public void test_createSInt48_001() {
         //@formatter:off
         byte[] value = new byte[6];

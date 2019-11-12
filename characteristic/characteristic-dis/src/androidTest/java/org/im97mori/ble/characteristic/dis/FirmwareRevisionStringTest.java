@@ -14,29 +14,29 @@ import static org.junit.Assert.assertEquals;
 public class FirmwareRevisionStringTest {
 
     @Test
-    public void test1() {
+    public void test_constructor001() {
         String firmwareRevision = "00.00";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes(StandardCharsets.UTF_8));
 
-        FirmwareRevisionString firmwareRevisionString = new FirmwareRevisionString(bluetoothGattCharacteristic);
-        assertEquals(firmwareRevision, firmwareRevisionString.getFirmwareRevision());
+        FirmwareRevisionString result1 = new FirmwareRevisionString(bluetoothGattCharacteristic);
+        assertEquals(firmwareRevision, result1.getFirmwareRevision());
     }
 
     @Test
-    public void test2() {
+    public void test_constructor002() {
         String firmwareRevision = "99.99";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes(StandardCharsets.UTF_8));
 
-        FirmwareRevisionString firmwareRevisionString = new FirmwareRevisionString(bluetoothGattCharacteristic);
-        assertEquals(firmwareRevision, firmwareRevisionString.getFirmwareRevision());
+        FirmwareRevisionString result1 = new FirmwareRevisionString(bluetoothGattCharacteristic);
+        assertEquals(firmwareRevision, result1.getFirmwareRevision());
     }
 
     @Test
-    public void test3() {
+    public void test_parcelable001() {
         String firmwareRevision = "00.00";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -52,7 +52,7 @@ public class FirmwareRevisionStringTest {
     }
 
     @Test
-    public void test4() {
+    public void test_parcelable002() {
         String firmwareRevision = "12.34";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -68,7 +68,7 @@ public class FirmwareRevisionStringTest {
     }
 
     @Test
-    public void test5() {
+    public void test_parcelable003() {
         String firmwareRevision = "12.34";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -80,7 +80,7 @@ public class FirmwareRevisionStringTest {
     }
 
     @Test
-    public void test6() {
+    public void test_parcelable004() {
         String firmwareRevision = "12.34";
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
