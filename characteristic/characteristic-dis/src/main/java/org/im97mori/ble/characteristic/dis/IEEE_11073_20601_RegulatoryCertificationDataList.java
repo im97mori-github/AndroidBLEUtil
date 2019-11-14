@@ -14,6 +14,8 @@ import java.nio.ByteOrder;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_CHARACTERISTIC;
 
+// TODO
+
 /**
  * IEEE 11073-20601 Regulatory Certification Data List (Characteristics UUID: 0x2A2A)
  */
