@@ -2390,6 +2390,11 @@ public class BLEConstants {
         public static final UUID GENERIC_ACCESS_SERVICE = UUID.fromString("00001800-0000-1000-8000-00805f9b34fb");
 
         /**
+         * Generic Attribute Service (Service UUID: 0x1801)
+         */
+        public static final UUID GENERIC_ATTRIBUTE_SERVICE = UUID.fromString("00001801-0000-1000-8000-00805f9b34fb");
+
+        /**
          * Device Information Service (Service UUID: 0x180A)
          */
         public static final UUID DEVICE_INFORMATION_SERVICE = UUID.fromString("0000180a-0000-1000-8000-00805f9b34fb");
@@ -2436,6 +2441,23 @@ public class BLEConstants {
          * Peripheral Privacy Flag (Characteristic UUID: 0x2A02)
          */
         public static final UUID PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC = UUID.fromString("00002A02-0000-1000-8000-00805f9b34fb");
+
+        // Generic Attribute (Service UUID: 0x1801)
+
+        /**
+         * Service Changed (Characteristic UUID: 0x2A05)
+         */
+        public static final UUID SERVICE_CHANGED_CHARACTERISTIC = UUID.fromString("00002A05-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Client Supported Features (Characteristic UUID: 0x2B29)
+         */
+        public static final UUID CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC = UUID.fromString("00002B29-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Database Hash (Characteristic UUID: 0x2B29)
+         */
+        public static final UUID DATABASE_HASH_CHARACTERISTIC = UUID.fromString("00002B29-0000-1000-8000-00805f9b34fb");
 
         // Device Information (Service UUID: 0x180A)
 

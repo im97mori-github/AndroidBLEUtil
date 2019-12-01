@@ -11,10 +11,16 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/jellybean_sample" />
-            <option value="$PROJECT_DIR$/library" />
-            <option value="$PROJECT_DIR$/lolipop_sample" />
-            <option value="$PROJECT_DIR$/peripheral_library" />
+            <option value="$PROJECT_DIR$/advertising" />
+            <option value="$PROJECT_DIR$/characteristic" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-dis" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-gas" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/descriptor" />
+            <option value="$PROJECT_DIR$/library-central" />
+            <option value="$PROJECT_DIR$/library-peripheral" />
+            <option value="$PROJECT_DIR$/sample-jellybean" />
+            <option value="$PROJECT_DIR$/sample-lolipop" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
