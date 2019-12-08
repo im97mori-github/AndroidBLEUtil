@@ -4,7 +4,8 @@ apply plugin: 'maven'
 
 def GROUP_ID = 'org.im97mori'
 def ARTIFACT_ID = 'ble-core'
-def VERSION_NAME = '0.1.4'
+def VERSION_CODE = coreVersionCode
+def VERSION_NAME = coreVersionName
 
 android {
     compileSdkVersion 29
@@ -13,7 +14,7 @@ android {
     defaultConfig {
         minSdkVersion 18
         targetSdkVersion 29
-        versionCode 5
+        versionCode VERSION_CODE
         versionName VERSION_NAME
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

@@ -4,7 +4,8 @@ apply plugin: 'maven'
 
 def GROUP_ID = 'org.im97mori'
 def ARTIFACT_ID = 'ble-peripheral'
-def VERSION_NAME = '0.1.10'
+def VERSION_CODE = peripheralVersionCode
+def VERSION_NAME = peripheralVersionName
 
 android {
     compileSdkVersion 29
@@ -13,7 +14,7 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 10
+        versionCode VERSION_CODE
         versionName VERSION_NAME
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -27,8 +28,8 @@ android {
 }
 
 dependencies {
-    api 'org.im97mori:ble-central:0.4.5'
-    api 'org.im97mori:ble-advertising:0.1.4'
+    api "org.im97mori:ble-central:$centralVersionName"
+    api "org.im97mori:ble-advertising:$advertisingVersionName"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:core:1.2.0'

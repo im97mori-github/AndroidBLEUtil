@@ -4,7 +4,8 @@ apply plugin: 'maven'
 
 def GROUP_ID = 'org.im97mori'
 def ARTIFACT_ID = 'ble-central'
-def VERSION_NAME = '0.4.5'
+def VERSION_CODE = centralVersionCode
+def VERSION_NAME = centralVersionName
 
 android {
     compileSdkVersion 29
@@ -13,7 +14,7 @@ android {
     defaultConfig {
         minSdkVersion 18
         targetSdkVersion 29
-        versionCode 15
+        versionCode VERSION_CODE
         versionName VERSION_NAME
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -28,8 +29,8 @@ android {
 }
 
 dependencies {
-    api 'org.im97mori:stacklog:0.0.2'
-    api 'org.im97mori:ble-descriptor:0.1.4'
+    api "org.im97mori:stacklog:$stacklogVersionName"
+    api "org.im97mori:ble-descriptor:$descriptorVersionName"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:core:1.2.0'
