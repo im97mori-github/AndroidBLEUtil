@@ -2398,6 +2398,12 @@ public class BLEConstants {
          * Device Information Service (Service UUID: 0x180A)
          */
         public static final UUID DEVICE_INFORMATION_SERVICE = UUID.fromString("0000180a-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Battery Service (Service UUID: 0x180f)
+         */
+        public static final UUID BATTERY_SERVICE = UUID.fromString("0000180F-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -2505,6 +2511,13 @@ public class BLEConstants {
          * PnP ID (Characteristic UUID: 0x2A50)
          */
         public static final UUID PNP_ID_CHARACTERISTIC = UUID.fromString("00002A50-0000-1000-8000-00805f9b34fb");
+
+        // Battery Service (Service UUID: 0x180F)
+
+        /**
+         * Battery Level (Characteristic UUID: 0x2A19)
+         */
+        public static final UUID BATTERY_LEVEL_CHARACTERISTIC = UUID.fromString("00002A19-0000-1000-8000-00805f9b34fb");
 
     }
 
