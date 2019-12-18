@@ -28,9 +28,9 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 public class ReadCharacteristicTask extends AbstractBLETask {
 
     /**
-     * Default timeout(millis) for read characteristic:5sec
+     * Default timeout(millis) for read characteristic:30sec
      */
-    public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 5;
+    public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 30;
 
     /**
      * create read characteristic success message

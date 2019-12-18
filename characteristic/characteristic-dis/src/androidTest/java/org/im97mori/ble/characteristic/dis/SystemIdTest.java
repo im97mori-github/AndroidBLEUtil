@@ -72,13 +72,14 @@ public class SystemIdTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        SoftwareRevisionString result1 = new SoftwareRevisionString(bluetoothGattCharacteristic);
+        SystemId result1 = new SystemId(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
-        SoftwareRevisionString result2 = SoftwareRevisionString.CREATOR.createFromParcel(parcel);
+        SystemId result2 = SystemId.CREATOR.createFromParcel(parcel);
 
-        assertEquals(result2.getSoftwareRevision(), result1.getSoftwareRevision());
+        assertEquals(result2.getManufacturerIdentifier(), result1.getManufacturerIdentifier());
+        assertEquals(result2.getOrganizationallyUniqueIdentifier(), result1.getOrganizationallyUniqueIdentifier());
     }
 
     @Test
@@ -98,7 +99,7 @@ public class SystemIdTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        SoftwareRevisionString result1 = new SoftwareRevisionString(bluetoothGattCharacteristic);
+        SystemId result1 = new SystemId(bluetoothGattCharacteristic);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -119,8 +120,8 @@ public class SystemIdTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        SoftwareRevisionString result1 = new SoftwareRevisionString(bluetoothGattCharacteristic);
-        SoftwareRevisionString result2 = SoftwareRevisionString.CREATOR.createFromByteArray(data);
+        SystemId result1 = new SystemId(bluetoothGattCharacteristic);
+        SystemId result2 = SystemId.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 }

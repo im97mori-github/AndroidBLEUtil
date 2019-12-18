@@ -30,9 +30,9 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 public class NotificationTask extends AbstractBLETask {
 
     /**
-     * Default timeout(millis) for read:5sec
+     * Default timeout(millis) for read:30sec
      */
-    public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 5;
+    public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 30;
 
     /**
      * create notification sent success message

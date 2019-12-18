@@ -22,9 +22,9 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 public class DiscoverServiceTask extends AbstractBLETask {
 
     /**
-     * Default timeout(millis) for discover service:5sec
+     * Default timeout(millis) for discover service:30sec
      */
-    public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 5;
+    public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 30;
 
     /**
      * create discover service success message

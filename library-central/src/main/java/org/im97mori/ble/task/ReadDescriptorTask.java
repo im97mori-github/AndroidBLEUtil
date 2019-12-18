@@ -29,9 +29,9 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 public class ReadDescriptorTask extends AbstractBLETask {
 
     /**
-     * Default timeout(millis) for read descriptor:5sec
+     * Default timeout(millis) for read descriptor:30sec
      */
-    public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 5;
+    public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 30;
 
     /**
      * create read descriptor success message

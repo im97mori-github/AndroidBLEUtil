@@ -24,9 +24,9 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
 public class AbortReliableWriteTask extends AbstractBLETask {
 
     /**
-     * Default timeout(millis) for request mtu:10sec
+     * Default timeout(millis) for request mtu:30sec
      */
-    public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 10;
+    public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 30;
 
     /**
      * task target {@link BLEConnection} instance

@@ -2402,7 +2402,12 @@ public class BLEConstants {
         /**
          * Battery Service (Service UUID: 0x180f)
          */
-        public static final UUID BATTERY_SERVICE = UUID.fromString("0000180F-0000-1000-8000-00805f9b34fb");
+        public static final UUID BATTERY_SERVICE = UUID.fromString("0000180f-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Current Time Service (Service UUID: 0x1805)
+         */
+        public static final UUID CURRENT_TIME_SERVICE = UUID.fromString("00001805-0000-1000-8000-00805f9b34fb");
 
     }
 
@@ -2519,6 +2524,22 @@ public class BLEConstants {
          */
         public static final UUID BATTERY_LEVEL_CHARACTERISTIC = UUID.fromString("00002A19-0000-1000-8000-00805f9b34fb");
 
+        // Current Time Service (Service UUID: 0x1805)
+
+        /**
+         * Current Time (Characteristic UUID: 0x2A2B)
+         */
+        public static final UUID CURRENT_TIME_CHARACTERISTIC = UUID.fromString("00002A2B-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Local Time Information (Characteristic UUID: 0x2A0F)
+         */
+        public static final UUID LOCAL_TIME_INFORMATION_CHARACTERISTIC = UUID.fromString("00002A0F-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Reference Time Information (Characteristic UUID: 0x2A14)
+         */
+        public static final UUID REFERENCE_TIME_INFORMATION_CHARACTERISTIC = UUID.fromString("00002A14-0000-1000-8000-00805f9b34fb");
     }
 
     /**
@@ -2721,6 +2742,10 @@ public class BLEConstants {
         public static final int VALUE_NOT_ALLOWED = 0x13;
 
         // Application Error
+
+        /**
+         * Data field ignored(Current Time Service v1.1.0 1.6)
+         */
         public static final int APPLICATION_ERROR_80 = 0x80;
         public static final int APPLICATION_ERROR_81 = 0x81;
         public static final int APPLICATION_ERROR_82 = 0x82;

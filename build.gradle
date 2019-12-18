@@ -36,26 +36,28 @@ archiveAll {
 
 ext.stacklogVersionName = "0.0.2"
 
-ext.coreVersionName = "0.1.5"
-ext.coreVersionCode = 6
+ext.coreVersionName = "0.1.6"
+ext.coreVersionCode = 7
 
-ext.advertisingVersionName = "0.1.5"
-ext.advertisingVersionCode = 6
+ext.advertisingVersionName = "0.1.6"
+ext.advertisingVersionCode = 7
 
-ext.disVersionName = "0.1.5"
-ext.disVersionCode = 6
-ext.gapsVersionName = "0.1.1"
-ext.gapsVersionCode = 2
-ext.gasVersionName = "0.1.5"
-ext.gasVersionCode = 6
-ext.basVersionName = "0.1.0"
-ext.basVersionCode = 1
+ext.disVersionName = "0.1.6"
+ext.disVersionCode = 7
+ext.gapsVersionName = "0.1.2"
+ext.gapsVersionCode = 3
+ext.gasVersionName = "0.1.6"
+ext.gasVersionCode = 7
+ext.basVersionName = "0.1.1"
+ext.basVersionCode = 2
+ext.ctsVersionName = "0.1.0"
+ext.ctsVersionCode = 1
 
-ext.descriptorVersionName = "0.1.5"
-ext.descriptorVersionCode = 6
+ext.descriptorVersionName = "0.1.6"
+ext.descriptorVersionCode = 7
 
-ext.centralVersionName = "0.4.6"
-ext.centralVersionCode = 16
+ext.centralVersionName = "0.4.7"
+ext.centralVersionCode = 17
 
-ext.peripheralVersionName = "0.1.11"
-ext.peripheralVersionCode = 11
+ext.peripheralVersionName = "0.1.12"
+ext.peripheralVersionCode = 12

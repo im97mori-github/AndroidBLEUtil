@@ -5,7 +5,6 @@ import android.bluetooth.BluetoothGatt;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
-import android.text.format.DateUtils;
 
 import androidx.annotation.NonNull;
 
@@ -26,9 +25,9 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 public class ConnectTask extends AbstractBLETask {
 
     /**
-     * Default timeout(millis) for connect:50sec
+     * Default timeout(millis) for connect:30 or 60sec
      */
-    public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 50;
+    public static final long TIMEOUT_MILLIS = DiscoverServiceTask.TIMEOUT_MILLIS + (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP ? 0 : RequestMtuTask.TIMEOUT_MILLIS);
 
     /**
      * create connect success message

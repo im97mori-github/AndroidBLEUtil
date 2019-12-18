@@ -24,9 +24,9 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
 public class SetPreferredPhyTask extends AbstractBLETask {
 
     /**
-     * Default timeout(millis) for set preferred phy:10sec
+     * Default timeout(millis) for set preferred phy:30sec
      */
-    public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 10;
+    public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 30;
 
     /**
      * create set preferred phy success message

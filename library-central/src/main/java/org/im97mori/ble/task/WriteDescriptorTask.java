@@ -30,9 +30,9 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 public class WriteDescriptorTask extends AbstractBLETask {
 
     /**
-     * Default timeout(millis) for write descriptor:10sec
+     * Default timeout(millis) for write descriptor:30sec
      */
-    public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 10;
+    public static final long TIMEOUT_MILLIS = DateUtils.SECOND_IN_MILLIS * 30;
 
     /**
      * create write descriptor success message
