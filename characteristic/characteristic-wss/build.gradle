@@ -3,9 +3,9 @@ apply plugin: 'maven-publish'
 apply plugin: 'maven'
 
 def GROUP_ID = 'org.im97mori'
-def ARTIFACT_ID = 'ble-characteristic-cts'
-def VERSION_CODE = ctsVersionCode
-def VERSION_NAME = ctsVersionName
+def ARTIFACT_ID = 'ble-characteristic-wss'
+def VERSION_CODE = wssVersionCode
+def VERSION_NAME = wssVersionName
 
 android {
     compileSdkVersion 29

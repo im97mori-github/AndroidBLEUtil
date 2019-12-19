@@ -2409,6 +2409,11 @@ public class BLEConstants {
          */
         public static final UUID CURRENT_TIME_SERVICE = UUID.fromString("00001805-0000-1000-8000-00805f9b34fb");
 
+        /**
+         * Weight Scale Service (Service UUID: 0x180d)
+         */
+        public static final UUID WEIGHT_SCALE_SERVICE = UUID.fromString("0000181d-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -2540,6 +2545,18 @@ public class BLEConstants {
          * Reference Time Information (Characteristic UUID: 0x2A14)
          */
         public static final UUID REFERENCE_TIME_INFORMATION_CHARACTERISTIC = UUID.fromString("00002A14-0000-1000-8000-00805f9b34fb");
+
+        // Weight Scale (Service UUID: 0x181D)
+
+        /**
+         * Weight Scale Feature (Characteristic UUID: 0x2A9E)
+         */
+        public static final UUID WEIGHT_SCALE_FEATURE_CHARACTERISTIC = UUID.fromString("00002A9E-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Weight Measurement (Characteristic UUID: 0x2A9D)
+         */
+        public static final UUID WEIGHT_MEASUREMENT_CHARACTERISTIC = UUID.fromString("00002A9D-0000-1000-8000-00805f9b34fb");
     }
 
     /**

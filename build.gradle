@@ -16,10 +16,10 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
-        jcenter()
         maven { url "https://github.com/im97mori-github/maven/raw/master" }
 //        maven { url System.getenv('MAVEN_REPOSITORY_URL') }
+        google()
+        jcenter()
     }
 }
 
@@ -27,37 +27,36 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-task archiveAll {
-}
-
-archiveAll {
-    dependsOn ":core:uploadArchives", ":advertising:uploadArchives", ":characteristic:characteristic-dis:uploadArchives", ":characteristic:characteristic-gas:uploadArchives", ":descriptor:uploadArchives", ":library-central:uploadArchives", ":library-peripheral:uploadArchives"
-}
-
 ext.stacklogVersionName = "0.0.2"
 
-ext.coreVersionName = "0.1.6"
-ext.coreVersionCode = 7
+ext.coreVersionName = "0.1.7"
+ext.coreVersionCode = 8
 
-ext.advertisingVersionName = "0.1.6"
-ext.advertisingVersionCode = 7
+ext.advertisingVersionName = "0.1.7"
+ext.advertisingVersionCode = 8
 
-ext.disVersionName = "0.1.6"
-ext.disVersionCode = 7
-ext.gapsVersionName = "0.1.2"
-ext.gapsVersionCode = 3
-ext.gasVersionName = "0.1.6"
-ext.gasVersionCode = 7
-ext.basVersionName = "0.1.1"
-ext.basVersionCode = 2
-ext.ctsVersionName = "0.1.0"
-ext.ctsVersionCode = 1
 
-ext.descriptorVersionName = "0.1.6"
-ext.descriptorVersionCode = 7
+ext.characteristicVersionName = "0.1.0"
+ext.characteristicVersionCode = 1
 
-ext.centralVersionName = "0.4.7"
-ext.centralVersionCode = 17
+ext.disVersionName = "0.1.7"
+ext.disVersionCode = 8
+ext.gapsVersionName = "0.1.3"
+ext.gapsVersionCode = 4
+ext.gasVersionName = "0.1.7"
+ext.gasVersionCode = 8
+ext.basVersionName = "0.1.2"
+ext.basVersionCode = 3
+ext.ctsVersionName = "0.1.1"
+ext.ctsVersionCode = 2
+ext.wssVersionName = "0.1.0"
+ext.wssVersionCode = 1
 
-ext.peripheralVersionName = "0.1.12"
-ext.peripheralVersionCode = 12
+ext.descriptorVersionName = "0.1.7"
+ext.descriptorVersionCode = 8
+
+ext.centralVersionName = "0.4.8"
+ext.centralVersionCode = 18
+
+ext.peripheralVersionName = "0.1.13"
+ext.peripheralVersionCode = 13

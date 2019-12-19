@@ -3,9 +3,9 @@ apply plugin: 'maven-publish'
 apply plugin: 'maven'
 
 def GROUP_ID = 'org.im97mori'
-def ARTIFACT_ID = 'ble-characteristic-cts'
-def VERSION_CODE = ctsVersionCode
-def VERSION_NAME = ctsVersionName
+def ARTIFACT_ID = 'ble-characteristic'
+def VERSION_CODE = characteristicVersionCode
+def VERSION_NAME = characteristicVersionName
 
 android {
     compileSdkVersion 29
@@ -30,8 +30,6 @@ android {
 }
 
 dependencies {
-    api "org.im97mori:ble-core:$coreVersionName"
-    api "org.im97mori:ble-characteristic:$characteristicVersionName"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:core:1.2.0'
