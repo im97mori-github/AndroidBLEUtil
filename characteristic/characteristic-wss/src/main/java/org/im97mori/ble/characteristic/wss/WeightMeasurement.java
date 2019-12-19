@@ -12,6 +12,7 @@ import org.im97mori.ble.ByteArrayInterface;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Arrays;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.WEIGHT_MEASUREMENT_CHARACTERISTIC;
 
@@ -222,19 +223,52 @@ public class WeightMeasurement implements ByteArrayInterface, Parcelable {
      */
     public WeightMeasurement(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         byte[] values = bluetoothGattCharacteristic.getValue();
-        mFlags = values[0];
-        mWeightSi = BLEUtils.createUInt16(values, 1);
-        mWeightImperial = BLEUtils.createUInt16(values, 3);
-        mYear = BLEUtils.createUInt16(values, 5);
-        mMonth = (values[7] & 0xff);
-        mDay = (values[8] & 0xff);
-        mHours = (values[9] & 0xff);
-        mMinutes = (values[10] & 0xff);
-        mSeconds = (values[11] & 0xff);
-        mUserId = (values[12] & 0xff);
-        mBmi = BLEUtils.createUInt16(values, 13);
-        mHeightSi = BLEUtils.createUInt16(values, 15);
-        mHeightImperial = BLEUtils.createUInt16(values, 17);
+        int index = 0;
+        mFlags = values[index++];
+        if (isFlagsMeasurementUnitSI()) {
+            mWeightSi = BLEUtils.createUInt16(values, index);
+            mWeightImperial = 0;
+        } else {
+            mWeightSi = 0;
+            mWeightImperial = BLEUtils.createUInt16(values, index);
+        }
+        index += 2;
+        if (isFlagsTimeStampPresent()) {
+            mYear = BLEUtils.createUInt16(values, index);
+            index += 2;
+            mMonth = (values[index++] & 0xff);
+            mDay = (values[index++] & 0xff);
+            mHours = (values[index++] & 0xff);
+            mMinutes = (values[index++] & 0xff);
+            mSeconds = (values[index++] & 0xff);
+        } else {
+            mYear = 0;
+            mMonth = 0;
+            mDay = 0;
+            mHours = 0;
+            mMinutes = 0;
+            mSeconds = 0;
+        }
+        if (isFlagsUserIdPresent()) {
+            mUserId = (values[index++] & 0xff);
+        } else {
+            mUserId = 0;
+        }
+        if (isFlagsBmiAndHeightPresent()) {
+            mBmi = BLEUtils.createUInt16(values, index);
+            index += 2;
+            if (isFlagsMeasurementUnitSI()) {
+                mHeightSi = BLEUtils.createUInt16(values, index);
+                mHeightImperial = 0;
+            } else {
+                mHeightSi = 0;
+                mHeightImperial = BLEUtils.createUInt16(values, index);
+            }
+        } else {
+            mBmi = 0;
+            mHeightSi = 0;
+            mHeightImperial = 0;
+        }
     }
 
     /**
@@ -374,7 +408,7 @@ public class WeightMeasurement implements ByteArrayInterface, Parcelable {
      * @return Weight(pounds)
      */
     public double getWeightImperialLb() {
-        return WEIGHT_IMPERIAL_RESOLUTION * mWeightSi;
+        return WEIGHT_IMPERIAL_RESOLUTION * mWeightImperial;
     }
 
     /**
@@ -484,22 +518,40 @@ public class WeightMeasurement implements ByteArrayInterface, Parcelable {
     @Override
     @NonNull
     public byte[] getBytes() {
-        byte[] data = new byte[19];
+        int length = 0;
+        byte[] data = new byte[15];
         ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);
         byteBuffer.put((byte) mFlags);
-        byteBuffer.putShort((short) mWeightSi);
-        byteBuffer.putShort((short) mWeightImperial);
-        byteBuffer.putShort((short) mYear);
-        byteBuffer.put((byte) mMonth);
-        byteBuffer.put((byte) mDay);
-        byteBuffer.put((byte) mHours);
-        byteBuffer.put((byte) mMinutes);
-        byteBuffer.put((byte) mSeconds);
-        byteBuffer.put((byte) mUserId);
-        byteBuffer.putShort((short) mBmi);
-        byteBuffer.putShort((short) mHeightSi);
-        byteBuffer.putShort((short) mHeightImperial);
-        return data;
+        length++;
+        if (isFlagsMeasurementUnitSI()) {
+            byteBuffer.putShort((short) mWeightSi);
+        } else {
+            byteBuffer.putShort((short) mWeightImperial);
+        }
+        length += 2;
+        if (isFlagsTimeStampPresent()) {
+            byteBuffer.putShort((short) mYear);
+            byteBuffer.put((byte) mMonth);
+            byteBuffer.put((byte) mDay);
+            byteBuffer.put((byte) mHours);
+            byteBuffer.put((byte) mMinutes);
+            byteBuffer.put((byte) mSeconds);
+            length += 7;
+        }
+        if (isFlagsUserIdPresent()) {
+            byteBuffer.put((byte) mUserId);
+            length++;
+        }
+        if (isFlagsBmiAndHeightPresent()) {
+            byteBuffer.putShort((short) mBmi);
+            if (isFlagsMeasurementUnitSI()) {
+                byteBuffer.putShort((short) mHeightSi);
+            } else {
+                byteBuffer.putShort((short) mHeightImperial);
+            }
+            length += 4;
+        }
+        return Arrays.copyOfRange(data, 0, length);
     }
 
     /**

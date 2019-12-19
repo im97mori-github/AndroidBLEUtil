@@ -49,8 +49,8 @@ ext.basVersionName = "0.1.2"
 ext.basVersionCode = 3
 ext.ctsVersionName = "0.1.1"
 ext.ctsVersionCode = 2
-ext.wssVersionName = "0.1.0"
-ext.wssVersionCode = 1
+ext.wssVersionName = "0.1.1"
+ext.wssVersionCode = 2
 
 ext.descriptorVersionName = "0.1.7"
 ext.descriptorVersionCode = 8
