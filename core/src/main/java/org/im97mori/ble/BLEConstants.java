@@ -2414,6 +2414,11 @@ public class BLEConstants {
          */
         public static final UUID WEIGHT_SCALE_SERVICE = UUID.fromString("0000181d-0000-1000-8000-00805f9b34fb");
 
+        /**
+         * User Data Service (Service UUID: 0x180c)
+         */
+        public static final UUID USER_DATA_SERVICE = UUID.fromString("0000181c-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -2557,6 +2562,164 @@ public class BLEConstants {
          * Weight Measurement (Characteristic UUID: 0x2A9D)
          */
         public static final UUID WEIGHT_MEASUREMENT_CHARACTERISTIC = UUID.fromString("00002A9D-0000-1000-8000-00805f9b34fb");
+
+        // User Data (Service UUID: 0x181C)
+
+        /**
+         * First Name (Characteristic UUID: 0x2A8A)
+         */
+        public static final UUID FIRST_NAME_CHARACTERISTIC = UUID.fromString("00002A8A-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Last Name (Characteristic UUID: 0x2A90)
+         */
+        public static final UUID LAST_NAME_CHARACTERISTIC = UUID.fromString("00002A90-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Email Address (Characteristic UUID: 0x2A87)
+         */
+        public static final UUID EMAIL_ADDRESS_CHARACTERISTIC = UUID.fromString("00002A87-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Age (Characteristic UUID: 0x2A80)
+         */
+        public static final UUID AGE_CHARACTERISTIC = UUID.fromString("00002A80-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Date of Birth (Characteristic UUID: 0x2A85)
+         */
+        public static final UUID DATE_OF_BIRTH_CHARACTERISTIC = UUID.fromString("00002A85-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Gender (Characteristic UUID: 0x2A8C)
+         */
+        public static final UUID GENDER_CHARACTERISTIC = UUID.fromString("00002A8C-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Weight (Characteristic UUID: 0x2A98)
+         */
+        public static final UUID WEIGHT_CHARACTERISTIC = UUID.fromString("00002A98-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Height (Characteristic UUID: 0x2A8E)
+         */
+        public static final UUID HEIGHT_CHARACTERISTIC = UUID.fromString("00002A8E-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * VO2 Max (Characteristic UUID: 0x2A96)
+         */
+        public static final UUID V_O2_MAX_CHARACTERISTIC = UUID.fromString("00002A96-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Heart Rate Max (Characteristic UUID: 0x2A8D)
+         */
+        public static final UUID HEART_RATE_MAX_CHARACTERISTIC = UUID.fromString("00002A8D-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Resting Heart Rate (Characteristic UUID: 0x2A92)
+         */
+        public static final UUID RESTING_HEART_RATE_CHARACTERISTIC = UUID.fromString("00002A92-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Maximum Recommended Heart Rate (Characteristic UUID: 0x2A91)
+         */
+        public static final UUID MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC = UUID.fromString("00002A91-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Aerobic Threshold (Characteristic UUID: 0x2A7F)
+         */
+        public static final UUID AEROBIC_THRESHOLD_CHARACTERISTIC = UUID.fromString("00002A7F-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Anaerobic Threshold (Characteristic UUID: 0x2A83)
+         */
+        public static final UUID ANAEROBIC_THRESHOLD_CHARACTERISTIC = UUID.fromString("00002A83-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Sport Type for Aerobic and Anaerobic Thresholds (Characteristic UUID: 0x2A93)
+         */
+        public static final UUID SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC = UUID.fromString("00002A93-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Date of Threshold Assessment (Characteristic UUID: 0x2A86)
+         */
+        public static final UUID DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC = UUID.fromString("00002A86-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Waist Circumference (Characteristic UUID: 0x2A97)
+         */
+        public static final UUID WAIST_CIRCUMFERENCE_CHARACTERISTIC = UUID.fromString("00002A97-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Hip Circumference (Characteristic UUID: 0x2A8F)
+         */
+        public static final UUID HIP_CIRCUMFERENCE_CHARACTERISTIC = UUID.fromString("00002A8F-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Fat Burn Heart Rate Lower Limit (Characteristic UUID: 0x2A88)
+         */
+        public static final UUID FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC = UUID.fromString("00002A88-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Fat Burn Heart Rate Upper Limit (Characteristic UUID: 0x2A89)
+         */
+        public static final UUID FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC = UUID.fromString("00002A89-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Aerobic Heart Rate Lower Limit (Characteristic UUID: 0x2A7E)
+         */
+        public static final UUID AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC = UUID.fromString("00002A7E-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Aerobic Heart Rate Upper Limit (Characteristic UUID: 0x2A84)
+         */
+        public static final UUID AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC = UUID.fromString("00002A84-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Anaerobic Heart Rate Lower Limit (Characteristic UUID: 0x2A81)
+         */
+        public static final UUID ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC = UUID.fromString("00002A81-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Anaerobic Heart Rate Upper Limit (Characteristic UUID: 0x2A82)
+         */
+        public static final UUID ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC = UUID.fromString("00002A82-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Five Zone Heart Rate Limits (Characteristic UUID: 0x2A8B)
+         */
+        public static final UUID FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC = UUID.fromString("00002A8B-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Three Zone Heart Rate Limits (Characteristic UUID: 0x2A94)
+         */
+        public static final UUID THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC = UUID.fromString("00002A94-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Two Zone Heart Rate Limit (Characteristic UUID: 0x2A95)
+         */
+        public static final UUID TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC = UUID.fromString("00002A95-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Database Change Increment (Characteristic UUID: 0x2A99)
+         */
+        public static final UUID DATABASE_CHANGE_INCREMENT_CHARACTERISTIC = UUID.fromString("00002A99-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * User Index (Characteristic UUID: 0x2A9A)
+         */
+        public static final UUID USER_INDEX_CHARACTERISTIC = UUID.fromString("00002A9A-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * User Control Point (Characteristic UUID: 0x2A9F)
+         */
+        public static final UUID USER_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002A9F-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Language (Characteristic UUID: 0x2AA2)
+         */
+        public static final UUID LANGUAGE_CHARACTERISTIC = UUID.fromString("00002AA2-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -2762,6 +2925,7 @@ public class BLEConstants {
 
         /**
          * Data field ignored(Current Time Service v1.1.0 1.6)
+         * User Data Access Not Permitted(User Data Service v1.1 1.6)
          */
         public static final int APPLICATION_ERROR_80 = 0x80;
         public static final int APPLICATION_ERROR_81 = 0x81;

@@ -97,11 +97,6 @@ public class WeightMeasurement implements ByteArrayInterface, Parcelable {
     public static final double WEIGHT_IMPERIAL_RESOLUTION = 0.01d;
 
     /**
-     * 255(0xff): The special value of 0xFF (255 Decimal) for User ID represents “unknown user”.
-     */
-    public static final int USER_ID_UNKNOWN_USER = 0xff;
-
-    /**
      * BMI Resolution Unit
      */
     public static final double BMI_RESOLUTION = 0.1d;
@@ -461,13 +456,6 @@ public class WeightMeasurement implements ByteArrayInterface, Parcelable {
      */
     public int getUserId() {
         return mUserId;
-    }
-
-    /**
-     * @return {@code true}:unknown user, {@code false}:not unknown user
-     */
-    public boolean isUserIdUnknownUser() {
-        return USER_ID_UNKNOWN_USER == mUserId;
     }
 
     /**

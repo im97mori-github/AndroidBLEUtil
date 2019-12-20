@@ -3,6 +3,7 @@ package org.im97mori.ble.characteristic;
 /**
  * Utility for org.bluetooth.characteristic.date_time(0x2A08) characteristic
  */
+@SuppressWarnings("WeakerAccess")
 public class DateTimeUtils {
 
     /**

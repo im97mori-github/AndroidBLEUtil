@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 
 import org.im97mori.ble.characteristic.DateTimeUtils;
+import org.im97mori.ble.characteristic.UserIndexUtils;
 import org.junit.Test;
 
 import static org.im97mori.ble.BLEConstants.BASE_UUID;
@@ -729,7 +730,7 @@ public class WeightMeasurementTest {
                     | WeightMeasurement.FLAG_BMI_AND_HEIGHT_PRESENT_FALSE;
         data[ 1] = 0;
         data[ 2] = 0;
-        data[ 3] = (byte) WeightMeasurement.USER_ID_UNKNOWN_USER;
+        data[ 3] = (byte) UserIndexUtils.USER_ID_UNKNOWN_USER;
         //@formatter:on
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
@@ -749,8 +750,7 @@ public class WeightMeasurementTest {
         assertTrue(result1.isFlagsUserIdPresent());
         assertTrue(result1.isFlagsBmiAndHeightNotPresent());
         assertFalse(result1.isFlagsBmiAndHeightPresent());
-        assertEquals(WeightMeasurement.USER_ID_UNKNOWN_USER, result1.getUserId());
-        assertTrue(result1.isUserIdUnknownUser());
+        assertEquals(UserIndexUtils.USER_ID_UNKNOWN_USER, result1.getUserId());
     }
 
     @Test
@@ -784,7 +784,6 @@ public class WeightMeasurementTest {
         assertTrue(result1.isFlagsBmiAndHeightNotPresent());
         assertFalse(result1.isFlagsBmiAndHeightPresent());
         assertEquals(0, result1.getUserId());
-        assertFalse(result1.isUserIdUnknownUser());
     }
 
     @Test
@@ -818,7 +817,6 @@ public class WeightMeasurementTest {
         assertTrue(result1.isFlagsBmiAndHeightNotPresent());
         assertFalse(result1.isFlagsBmiAndHeightPresent());
         assertEquals(254, result1.getUserId());
-        assertFalse(result1.isUserIdUnknownUser());
     }
 
     @Test
@@ -1697,7 +1695,6 @@ public class WeightMeasurementTest {
         assertEquals(result1.getMinutes(), result2.getMinutes());
         assertEquals(result1.getSeconds(), result2.getSeconds());
         assertEquals(result1.getUserId(), result2.getUserId());
-        assertEquals(result1.isUserIdUnknownUser(), result2.isUserIdUnknownUser());
         assertEquals(result1.getBmi(), result2.getBmi());
         assertEquals(result1.getBmiWithUnit(), result2.getBmiWithUnit(), 0);
         assertEquals(result1.getHeightSi(), result2.getHeightSi());
@@ -1746,7 +1743,6 @@ public class WeightMeasurementTest {
         assertEquals(result1.getMinutes(), result2.getMinutes());
         assertEquals(result1.getSeconds(), result2.getSeconds());
         assertEquals(result1.getUserId(), result2.getUserId());
-        assertEquals(result1.isUserIdUnknownUser(), result2.isUserIdUnknownUser());
         assertEquals(result1.getBmi(), result2.getBmi());
         assertEquals(result1.getBmiWithUnit(), result2.getBmiWithUnit(), 0);
         assertEquals(result1.getHeightSi(), result2.getHeightSi());
@@ -1802,7 +1798,6 @@ public class WeightMeasurementTest {
         assertEquals(result1.getMinutes(), result2.getMinutes());
         assertEquals(result1.getSeconds(), result2.getSeconds());
         assertEquals(result1.getUserId(), result2.getUserId());
-        assertEquals(result1.isUserIdUnknownUser(), result2.isUserIdUnknownUser());
         assertEquals(result1.getBmi(), result2.getBmi());
         assertEquals(result1.getBmiWithUnit(), result2.getBmiWithUnit(), 0);
         assertEquals(result1.getHeightSi(), result2.getHeightSi());
@@ -1858,7 +1853,6 @@ public class WeightMeasurementTest {
         assertEquals(result1.getMinutes(), result2.getMinutes());
         assertEquals(result1.getSeconds(), result2.getSeconds());
         assertEquals(result1.getUserId(), result2.getUserId());
-        assertEquals(result1.isUserIdUnknownUser(), result2.isUserIdUnknownUser());
         assertEquals(result1.getBmi(), result2.getBmi());
         assertEquals(result1.getBmiWithUnit(), result2.getBmiWithUnit(), 0);
         assertEquals(result1.getHeightSi(), result2.getHeightSi());
@@ -1908,7 +1902,6 @@ public class WeightMeasurementTest {
         assertEquals(result1.getMinutes(), result2.getMinutes());
         assertEquals(result1.getSeconds(), result2.getSeconds());
         assertEquals(result1.getUserId(), result2.getUserId());
-        assertEquals(result1.isUserIdUnknownUser(), result2.isUserIdUnknownUser());
         assertEquals(result1.getBmi(), result2.getBmi());
         assertEquals(result1.getBmiWithUnit(), result2.getBmiWithUnit(), 0);
         assertEquals(result1.getHeightSi(), result2.getHeightSi());
@@ -1958,7 +1951,6 @@ public class WeightMeasurementTest {
         assertEquals(result1.getMinutes(), result2.getMinutes());
         assertEquals(result1.getSeconds(), result2.getSeconds());
         assertEquals(result1.getUserId(), result2.getUserId());
-        assertEquals(result1.isUserIdUnknownUser(), result2.isUserIdUnknownUser());
         assertEquals(result1.getBmi(), result2.getBmi());
         assertEquals(result1.getBmiWithUnit(), result2.getBmiWithUnit(), 0);
         assertEquals(result1.getHeightSi(), result2.getHeightSi());
@@ -2015,7 +2007,6 @@ public class WeightMeasurementTest {
         assertEquals(result1.getMinutes(), result2.getMinutes());
         assertEquals(result1.getSeconds(), result2.getSeconds());
         assertEquals(result1.getUserId(), result2.getUserId());
-        assertEquals(result1.isUserIdUnknownUser(), result2.isUserIdUnknownUser());
         assertEquals(result1.getBmi(), result2.getBmi());
         assertEquals(result1.getBmiWithUnit(), result2.getBmiWithUnit(), 0);
         assertEquals(result1.getHeightSi(), result2.getHeightSi());
@@ -2072,7 +2063,6 @@ public class WeightMeasurementTest {
         assertEquals(result1.getMinutes(), result2.getMinutes());
         assertEquals(result1.getSeconds(), result2.getSeconds());
         assertEquals(result1.getUserId(), result2.getUserId());
-        assertEquals(result1.isUserIdUnknownUser(), result2.isUserIdUnknownUser());
         assertEquals(result1.getBmi(), result2.getBmi());
         assertEquals(result1.getBmiWithUnit(), result2.getBmiWithUnit(), 0);
         assertEquals(result1.getHeightSi(), result2.getHeightSi());
@@ -2125,7 +2115,6 @@ public class WeightMeasurementTest {
         assertEquals(result1.getMinutes(), result2.getMinutes());
         assertEquals(result1.getSeconds(), result2.getSeconds());
         assertEquals(result1.getUserId(), result2.getUserId());
-        assertEquals(result1.isUserIdUnknownUser(), result2.isUserIdUnknownUser());
         assertEquals(result1.getBmi(), result2.getBmi());
         assertEquals(result1.getBmiWithUnit(), result2.getBmiWithUnit(), 0);
         assertEquals(result1.getHeightSi(), result2.getHeightSi());
@@ -2178,7 +2167,6 @@ public class WeightMeasurementTest {
         assertEquals(result1.getMinutes(), result2.getMinutes());
         assertEquals(result1.getSeconds(), result2.getSeconds());
         assertEquals(result1.getUserId(), result2.getUserId());
-        assertEquals(result1.isUserIdUnknownUser(), result2.isUserIdUnknownUser());
         assertEquals(result1.getBmi(), result2.getBmi());
         assertEquals(result1.getBmiWithUnit(), result2.getBmiWithUnit(), 0);
         assertEquals(result1.getHeightSi(), result2.getHeightSi());
@@ -2238,7 +2226,6 @@ public class WeightMeasurementTest {
         assertEquals(result1.getMinutes(), result2.getMinutes());
         assertEquals(result1.getSeconds(), result2.getSeconds());
         assertEquals(result1.getUserId(), result2.getUserId());
-        assertEquals(result1.isUserIdUnknownUser(), result2.isUserIdUnknownUser());
         assertEquals(result1.getBmi(), result2.getBmi());
         assertEquals(result1.getBmiWithUnit(), result2.getBmiWithUnit(), 0);
         assertEquals(result1.getHeightSi(), result2.getHeightSi());
@@ -2298,7 +2285,6 @@ public class WeightMeasurementTest {
         assertEquals(result1.getMinutes(), result2.getMinutes());
         assertEquals(result1.getSeconds(), result2.getSeconds());
         assertEquals(result1.getUserId(), result2.getUserId());
-        assertEquals(result1.isUserIdUnknownUser(), result2.isUserIdUnknownUser());
         assertEquals(result1.getBmi(), result2.getBmi());
         assertEquals(result1.getBmiWithUnit(), result2.getBmiWithUnit(), 0);
         assertEquals(result1.getHeightSi(), result2.getHeightSi());
@@ -2352,7 +2338,6 @@ public class WeightMeasurementTest {
         assertEquals(result1.getMinutes(), result2.getMinutes());
         assertEquals(result1.getSeconds(), result2.getSeconds());
         assertEquals(result1.getUserId(), result2.getUserId());
-        assertEquals(result1.isUserIdUnknownUser(), result2.isUserIdUnknownUser());
         assertEquals(result1.getBmi(), result2.getBmi());
         assertEquals(result1.getBmiWithUnit(), result2.getBmiWithUnit(), 0);
         assertEquals(result1.getHeightSi(), result2.getHeightSi());
@@ -2406,7 +2391,6 @@ public class WeightMeasurementTest {
         assertEquals(result1.getMinutes(), result2.getMinutes());
         assertEquals(result1.getSeconds(), result2.getSeconds());
         assertEquals(result1.getUserId(), result2.getUserId());
-        assertEquals(result1.isUserIdUnknownUser(), result2.isUserIdUnknownUser());
         assertEquals(result1.getBmi(), result2.getBmi());
         assertEquals(result1.getBmiWithUnit(), result2.getBmiWithUnit(), 0);
         assertEquals(result1.getHeightSi(), result2.getHeightSi());
@@ -2467,7 +2451,6 @@ public class WeightMeasurementTest {
         assertEquals(result1.getMinutes(), result2.getMinutes());
         assertEquals(result1.getSeconds(), result2.getSeconds());
         assertEquals(result1.getUserId(), result2.getUserId());
-        assertEquals(result1.isUserIdUnknownUser(), result2.isUserIdUnknownUser());
         assertEquals(result1.getBmi(), result2.getBmi());
         assertEquals(result1.getBmiWithUnit(), result2.getBmiWithUnit(), 0);
         assertEquals(result1.getHeightSi(), result2.getHeightSi());
@@ -2528,7 +2511,6 @@ public class WeightMeasurementTest {
         assertEquals(result1.getMinutes(), result2.getMinutes());
         assertEquals(result1.getSeconds(), result2.getSeconds());
         assertEquals(result1.getUserId(), result2.getUserId());
-        assertEquals(result1.isUserIdUnknownUser(), result2.isUserIdUnknownUser());
         assertEquals(result1.getBmi(), result2.getBmi());
         assertEquals(result1.getBmiWithUnit(), result2.getBmiWithUnit(), 0);
         assertEquals(result1.getHeightSi(), result2.getHeightSi());
