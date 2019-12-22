@@ -146,7 +146,7 @@ public class EmailAddressTest {
         //@formatter:on
 
         EmailAddress result1 = new EmailAddress(registeredUsers);
-        EmailAddress result2 = EmailAddress.CREATOR.createFromRegisteredUsersArray(registeredUsers);
+        EmailAddress result2 = EmailAddress.CREATOR.createFromMultiplePacketArray(registeredUsers);
         assertEquals(result1.getEmailAddress(), result2.getEmailAddress());
     }
 

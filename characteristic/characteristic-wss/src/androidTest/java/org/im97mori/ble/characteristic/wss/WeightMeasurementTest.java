@@ -894,7 +894,7 @@ public class WeightMeasurementTest {
         assertEquals(0xffff, result1.getBmi());
         assertEquals(WeightMeasurement.BMI_RESOLUTION * 0xffff, result1.getBmiWithUnit(), 0);
         assertEquals(0xffff, result1.getHeightSi());
-        assertEquals(WeightMeasurement.HEIGHT_SI * 0xffff, result1.getHeightSiMeters(), 0);
+        assertEquals(WeightMeasurement.HEIGHT_SI_RESOLUTION * 0xffff, result1.getHeightSiMeters(), 0);
     }
 
     @Test
@@ -972,7 +972,7 @@ public class WeightMeasurementTest {
         assertEquals(0xffff, result1.getBmi());
         assertEquals(WeightMeasurement.BMI_RESOLUTION * 0xffff, result1.getBmiWithUnit(), 0);
         assertEquals(0xffff, result1.getHeightImperial());
-        assertEquals(WeightMeasurement.HEIGHT_IMPERIAL * 0xffff, result1.getHeightImperialInch(), 0);
+        assertEquals(WeightMeasurement.HEIGHT_IMPERIAL_RESOLUTION * 0xffff, result1.getHeightImperialInch(), 0);
     }
 
     @Test
@@ -1319,7 +1319,7 @@ public class WeightMeasurementTest {
         assertEquals(0x0c0b, result1.getBmi());
         assertEquals(WeightMeasurement.BMI_RESOLUTION * 0x0c0b, result1.getBmiWithUnit(), 0);
         assertEquals(0x0e0d, result1.getHeightSi());
-        assertEquals(WeightMeasurement.HEIGHT_SI * 0x0e0d, result1.getHeightSiMeters(), 0);
+        assertEquals(WeightMeasurement.HEIGHT_SI_RESOLUTION * 0x0e0d, result1.getHeightSiMeters(), 0);
     }
 
     @Test
@@ -1358,7 +1358,7 @@ public class WeightMeasurementTest {
         assertEquals(0x0c0b, result1.getBmi());
         assertEquals(WeightMeasurement.BMI_RESOLUTION * 0x0c0b, result1.getBmiWithUnit(), 0);
         assertEquals(0x0e0d, result1.getHeightImperial());
-        assertEquals(WeightMeasurement.HEIGHT_IMPERIAL * 0x0e0d, result1.getHeightImperialInch(), 0);
+        assertEquals(WeightMeasurement.HEIGHT_IMPERIAL_RESOLUTION * 0x0e0d, result1.getHeightImperialInch(), 0);
     }
 
     @Test
@@ -1410,7 +1410,7 @@ public class WeightMeasurementTest {
         assertEquals(0x0c0b, result1.getBmi());
         assertEquals(WeightMeasurement.BMI_RESOLUTION * 0x0c0b, result1.getBmiWithUnit(), 0);
         assertEquals(0x0e0d, result1.getHeightSi());
-        assertEquals(WeightMeasurement.HEIGHT_SI * 0x0e0d, result1.getHeightSiMeters(), 0);
+        assertEquals(WeightMeasurement.HEIGHT_SI_RESOLUTION * 0x0e0d, result1.getHeightSiMeters(), 0);
     }
 
     @Test
@@ -1462,7 +1462,7 @@ public class WeightMeasurementTest {
         assertEquals(0x0c0b, result1.getBmi());
         assertEquals(WeightMeasurement.BMI_RESOLUTION * 0x0c0b, result1.getBmiWithUnit(), 0);
         assertEquals(0x0e0d, result1.getHeightImperial());
-        assertEquals(WeightMeasurement.HEIGHT_IMPERIAL * 0x0e0d, result1.getHeightImperialInch(), 0);
+        assertEquals(WeightMeasurement.HEIGHT_IMPERIAL_RESOLUTION * 0x0e0d, result1.getHeightImperialInch(), 0);
     }
 
     @Test
@@ -1503,7 +1503,7 @@ public class WeightMeasurementTest {
         assertEquals(0x0c0b, result1.getBmi());
         assertEquals(WeightMeasurement.BMI_RESOLUTION * 0x0c0b, result1.getBmiWithUnit(), 0);
         assertEquals(0x0e0d, result1.getHeightSi());
-        assertEquals(WeightMeasurement.HEIGHT_SI * 0x0e0d, result1.getHeightSiMeters(), 0);
+        assertEquals(WeightMeasurement.HEIGHT_SI_RESOLUTION * 0x0e0d, result1.getHeightSiMeters(), 0);
     }
 
     @Test
@@ -1544,7 +1544,7 @@ public class WeightMeasurementTest {
         assertEquals(0x0c0b, result1.getBmi());
         assertEquals(WeightMeasurement.BMI_RESOLUTION * 0x0c0b, result1.getBmiWithUnit(), 0);
         assertEquals(0x0e0d, result1.getHeightImperial());
-        assertEquals(WeightMeasurement.HEIGHT_IMPERIAL * 0x0e0d, result1.getHeightImperialInch(), 0);
+        assertEquals(WeightMeasurement.HEIGHT_IMPERIAL_RESOLUTION * 0x0e0d, result1.getHeightImperialInch(), 0);
     }
 
     @Test
@@ -1598,7 +1598,7 @@ public class WeightMeasurementTest {
         assertEquals(0x0c0b, result1.getBmi());
         assertEquals(WeightMeasurement.BMI_RESOLUTION * 0x0c0b, result1.getBmiWithUnit(), 0);
         assertEquals(0x0e0d, result1.getHeightSi());
-        assertEquals(WeightMeasurement.HEIGHT_SI * 0x0e0d, result1.getHeightSiMeters(), 0);
+        assertEquals(WeightMeasurement.HEIGHT_SI_RESOLUTION * 0x0e0d, result1.getHeightSiMeters(), 0);
     }
 
     @Test
@@ -1652,7 +1652,7 @@ public class WeightMeasurementTest {
         assertEquals(0x0c0b, result1.getBmi());
         assertEquals(WeightMeasurement.BMI_RESOLUTION * 0x0c0b, result1.getBmiWithUnit(), 0);
         assertEquals(0x0e0d, result1.getHeightImperial());
-        assertEquals(WeightMeasurement.HEIGHT_IMPERIAL * 0x0e0d, result1.getHeightImperialInch(), 0);
+        assertEquals(WeightMeasurement.HEIGHT_IMPERIAL_RESOLUTION * 0x0e0d, result1.getHeightImperialInch(), 0);
     }
 
     @Test

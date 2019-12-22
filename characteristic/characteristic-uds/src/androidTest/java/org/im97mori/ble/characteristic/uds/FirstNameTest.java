@@ -146,7 +146,7 @@ public class FirstNameTest {
         //@formatter:on
 
         FirstName result1 = new FirstName(registeredUsers);
-        FirstName result2 = FirstName.CREATOR.createFromRegisteredUsersArray(registeredUsers);
+        FirstName result2 = FirstName.CREATOR.createFromMultiplePacketArray(registeredUsers);
         assertEquals(result1.getFirstName(), result2.getFirstName());
     }
 

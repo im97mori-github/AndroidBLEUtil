@@ -146,7 +146,7 @@ public class LastNameTest {
         //@formatter:on
 
         LastName result1 = new LastName(registeredUsers);
-        LastName result2 = LastName.CREATOR.createFromRegisteredUsersArray(registeredUsers);
+        LastName result2 = LastName.CREATOR.createFromMultiplePacketArray(registeredUsers);
         assertEquals(result1.getLastName(), result2.getLastName());
     }
 

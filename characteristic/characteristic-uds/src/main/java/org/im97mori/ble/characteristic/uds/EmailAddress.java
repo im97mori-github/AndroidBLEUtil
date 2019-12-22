@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.characteristic.MultiplePacketCreater;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.LinkedList;
@@ -17,9 +19,9 @@ import java.util.List;
 public class EmailAddress implements Parcelable {
 
     /**
-     * @see RegisteredUserCreater
+     * @see MultiplePacketCreater
      */
-    public static final RegisteredUserCreater<EmailAddress> CREATOR = new RegisteredUserCreater<EmailAddress>() {
+    public static final MultiplePacketCreater<EmailAddress, RegisteredUser> CREATOR = new MultiplePacketCreater<EmailAddress, RegisteredUser>() {
 
         /**
          * {@inheritDoc}
@@ -44,8 +46,8 @@ public class EmailAddress implements Parcelable {
          */
         @NonNull
         @Override
-        public EmailAddress createFromRegisteredUsersArray(@NonNull RegisteredUser[] registeredUsers) {
-            return new EmailAddress(registeredUsers);
+        public EmailAddress createFromMultiplePacketArray(@NonNull RegisteredUser[] multiplePacketArray) {
+            return new EmailAddress(multiplePacketArray);
         }
 
     };

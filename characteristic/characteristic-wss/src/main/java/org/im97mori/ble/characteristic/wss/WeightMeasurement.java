@@ -104,12 +104,12 @@ public class WeightMeasurement implements ByteArrayInterface, Parcelable {
     /**
      * Height - SI Unit 0.001 meters
      */
-    public static final double HEIGHT_SI = 0.001d;
+    public static final double HEIGHT_SI_RESOLUTION = 0.001d;
 
     /**
      * Height - Imerial Unit 0.1 inches
      */
-    public static final double HEIGHT_IMPERIAL = 0.1d;
+    public static final double HEIGHT_IMPERIAL_RESOLUTION = 0.1d;
 
     /**
      * @see ByteArrayCreater
@@ -483,7 +483,7 @@ public class WeightMeasurement implements ByteArrayInterface, Parcelable {
      * @return Height(meters)
      */
     public double getHeightSiMeters() {
-        return HEIGHT_SI * mHeightSi;
+        return HEIGHT_SI_RESOLUTION * mHeightSi;
     }
 
     /**
@@ -497,7 +497,7 @@ public class WeightMeasurement implements ByteArrayInterface, Parcelable {
      * @return Height(inches)
      */
     public double getHeightImperialInch() {
-        return HEIGHT_IMPERIAL * mHeightImperial;
+        return HEIGHT_IMPERIAL_RESOLUTION * mHeightImperial;
     }
 
     /**

@@ -2419,6 +2419,11 @@ public class BLEConstants {
          */
         public static final UUID USER_DATA_SERVICE = UUID.fromString("0000181c-0000-1000-8000-00805f9b34fb");
 
+        /**
+         * Body Composition Service (Service UUID: 0x181b)
+         */
+        public static final UUID BODY_COMPOSITION_SERVICE = UUID.fromString("0000181b-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -2719,6 +2724,18 @@ public class BLEConstants {
          * Language (Characteristic UUID: 0x2AA2)
          */
         public static final UUID LANGUAGE_CHARACTERISTIC = UUID.fromString("00002AA2-0000-1000-8000-00805f9b34fb");
+
+        // Body Composition (Service UUID: 0x181B)
+
+        /**
+         * Body Composition Feature (Characteristic UUID: 0x2A9B)
+         */
+        public static final UUID BODY_COMPOSITION_FEATURE_CHARACTERISTIC = UUID.fromString("00002A9B-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Body Composition Measurement (Characteristic UUID: 0x2A9C)
+         */
+        public static final UUID BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC = UUID.fromString("00002A9C-0000-1000-8000-00805f9b34fb");
 
     }
 
