@@ -6,6 +6,8 @@ import java.math.BigInteger;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class BLEUtilsTest {
 
@@ -496,6 +498,227 @@ public class BLEUtilsTest {
         assertEquals(0x09080706, BLEUtils.createUInt128(data, 1).shiftRight(32).intValue());
         assertEquals(0x0d0c0b0a, BLEUtils.createUInt128(data, 1).shiftRight(64).intValue());
         assertEquals(0x11100f0e, BLEUtils.createUInt128(data, 1).shiftRight(96).intValue());
+    }
+
+    @Test
+    public void test_createSfloat_001() {
+        //@formatter:off
+        byte[] data = new byte[2];
+        data[ 0] = (byte) 0xff;
+        data[ 1] = 0x07;
+        //@formatter:on
+
+        assertTrue(BLEUtils.isSfloatNan(data, 0));
+        assertFalse(BLEUtils.isSfloatNres(data, 0));
+        assertFalse(BLEUtils.isSfloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createSfloat_002() {
+        //@formatter:off
+        byte[] data = new byte[2];
+        data[ 0] = 0x00;
+        data[ 1] = 0x08;
+        //@formatter:on
+
+        assertFalse(BLEUtils.isSfloatNan(data, 0));
+        assertTrue(BLEUtils.isSfloatNres(data, 0));
+        assertFalse(BLEUtils.isSfloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createSfloat_003() {
+        //@formatter:off
+        byte[] data = new byte[2];
+        data[ 0] = (byte) 0xfe;
+        data[ 1] = 0x07;
+        //@formatter:on
+
+        assertFalse(BLEUtils.isSfloatNan(data, 0));
+        assertFalse(BLEUtils.isSfloatNres(data, 0));
+        assertTrue(BLEUtils.isSfloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createSfloat_004() {
+        //@formatter:off
+        byte[] data = new byte[2];
+        data[ 0] = 0x02;
+        data[ 1] = 0x08;
+        //@formatter:on
+
+        assertFalse(BLEUtils.isSfloatNan(data, 0));
+        assertFalse(BLEUtils.isSfloatNres(data, 0));
+        assertFalse(BLEUtils.isSfloatPositiveInfinity(data, 0));
+        assertTrue(BLEUtils.isSfloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createSfloat_005() {
+        //@formatter:off
+        byte[] data = new byte[2];
+        data[ 0] = 0x01;
+        data[ 1] = 0x08;
+        //@formatter:on
+
+        assertFalse(BLEUtils.isSfloatNan(data, 0));
+        assertFalse(BLEUtils.isSfloatNres(data, 0));
+        assertFalse(BLEUtils.isSfloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatNegativeInfinity(data, 0));
+        assertTrue(BLEUtils.isSfloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createSfloat_006() {
+        //@formatter:off
+        byte[] data = new byte[2];
+        data[ 0] = 0x01;
+        data[ 1] = 0x02;
+        //@formatter:on
+
+        assertEquals(0x0201, BLEUtils.createSfloatManitissa(data, 0));
+        assertFalse(BLEUtils.isSfloatNan(data, 0));
+        assertFalse(BLEUtils.isSfloatNres(data, 0));
+        assertFalse(BLEUtils.isSfloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createSfloat_007() {
+        //@formatter:off
+        byte[] data = new byte[2];
+        data[ 0] = 0x01;
+        data[ 1] = 0x0f;
+        //@formatter:on
+
+        assertEquals(0xffffff01, BLEUtils.createSfloatManitissa(data, 0));
+        assertFalse(BLEUtils.isSfloatNan(data, 0));
+        assertFalse(BLEUtils.isSfloatNres(data, 0));
+        assertFalse(BLEUtils.isSfloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createSfloat_008() {
+        //@formatter:off
+        byte[] data = new byte[3];
+        data[ 0] = 0x01;
+        data[ 1] = 0x02;
+        data[ 2] = 0x03;
+        //@formatter:on
+
+        assertEquals(0x0302, BLEUtils.createSfloatManitissa(data, 1));
+        assertFalse(BLEUtils.isSfloatNan(data, 0));
+        assertFalse(BLEUtils.isSfloatNres(data, 0));
+        assertFalse(BLEUtils.isSfloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createSfloat_009() {
+        //@formatter:off
+        byte[] data = new byte[2];
+        data[ 0] = 0x02;
+        data[ 1] = 0x10;
+        //@formatter:on
+
+        assertEquals(0x01, BLEUtils.createSfloatExponent(data, 0));
+        assertFalse(BLEUtils.isSfloatNan(data, 0));
+        assertFalse(BLEUtils.isSfloatNres(data, 0));
+        assertFalse(BLEUtils.isSfloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createSfloat_010() {
+        //@formatter:off
+        byte[] data = new byte[2];
+        data[ 0] = 0x02;
+        data[ 1] = (byte) 0xf0;
+        //@formatter:on
+
+        assertEquals(0xffffffff, BLEUtils.createSfloatExponent(data, 0));
+        assertFalse(BLEUtils.isSfloatNan(data, 0));
+        assertFalse(BLEUtils.isSfloatNres(data, 0));
+        assertFalse(BLEUtils.isSfloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createSfloat_011() {
+        //@formatter:off
+        byte[] data = new byte[3];
+        data[ 0] = 0x02;
+        data[ 1] = 0x03;
+        data[ 2] = 0x10;
+        //@formatter:on
+
+        assertEquals(0x01, BLEUtils.createSfloatExponent(data, 1));
+        assertFalse(BLEUtils.isSfloatNan(data, 0));
+        assertFalse(BLEUtils.isSfloatNres(data, 0));
+        assertFalse(BLEUtils.isSfloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createSfloat_012() {
+        //@formatter:off
+        byte[] data = new byte[2];
+        data[ 0] = 0x01;
+        data[ 1] = 0x02;
+        //@formatter:on
+
+        assertEquals(0x0201, BLEUtils.createSfloat(data, 0), 0);
+        assertFalse(BLEUtils.isSfloatNan(data, 0));
+        assertFalse(BLEUtils.isSfloatNres(data, 0));
+        assertFalse(BLEUtils.isSfloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createSfloat_013() {
+        //@formatter:off
+        byte[] data = new byte[2];
+        data[ 0] = 0x01;
+        data[ 1] = 0x72;
+        //@formatter:on
+
+        assertEquals(0x0201 * Math.pow(10, 7), BLEUtils.createSfloat(data, 0), 0);
+        assertFalse(BLEUtils.isSfloatNan(data, 0));
+        assertFalse(BLEUtils.isSfloatNres(data, 0));
+        assertFalse(BLEUtils.isSfloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createSfloat_014() {
+        //@formatter:off
+        byte[] data = new byte[2];
+        data[ 0] = 0x01;
+        data[ 1] = (byte) 0xf2;
+        //@formatter:on
+
+        assertEquals(0x0201 * Math.pow(10, -1), BLEUtils.createSfloat(data, 0), 0);
+        assertFalse(BLEUtils.isSfloatNan(data, 0));
+        assertFalse(BLEUtils.isSfloatNres(data, 0));
+        assertFalse(BLEUtils.isSfloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isSfloatRfu(data, 0));
     }
 
     @Test

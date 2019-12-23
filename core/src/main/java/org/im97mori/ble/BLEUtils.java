@@ -17,6 +17,31 @@ import java.util.Arrays;
 public class BLEUtils {
 
     /**
+     * ISO/IEEE Std. 11073-20601™-2008 SFLOAT NaN (Not a Number)
+     */
+    public static final int SFLOAT_NAN = 0x07ff;
+
+    /**
+     * ISO/IEEE Std. 11073-20601™-2008 SFLOAT NRes (Not at this Resolution)
+     */
+    public static final int SFLOAT_NRES = 0x0800;
+
+    /**
+     * ISO/IEEE Std. 11073-20601™-2008 SFLOAT + INFINITY
+     */
+    public static final int SFLOAT_POSITIVE_INFINITY = 0x07fe;
+
+    /**
+     * ISO/IEEE Std. 11073-20601™-2008 SFLOAT – INFINITY
+     */
+    public static final int SFLOAT_NEGATIVE_INFINITY = 0x0802;
+
+    /**
+     * ISO/IEEE Std. 11073-20601™-2008 SFLOAT Reserved for future use
+     */
+    public static final int SFLOAT_RFU = 0x0801;
+
+    /**
      * <p>
      * create signed 8-bit integer
      * <p>
@@ -206,6 +231,101 @@ public class BLEUtils {
      */
     public static BigInteger createUInt128(@NonNull byte[] data, int offset) {
         return createBigInteger(data, offset, 16);
+    }
+
+    /**
+     * <p>
+     * create IEEE-11073 16-bit SFLOAT manitissa
+     * <p>
+     * Core Specification v5.1 Vol 3 Part G 3.3.3.5.2 Format Table 3.16 (0x16)
+     * </p>
+     *
+     * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
+     * @param offset data offset
+     * @return IEEE-11073 16-bit SFLOAT manitissa
+     */
+    public static int createSfloatManitissa(@NonNull byte[] data, int offset) {
+        return createByteBuffer(data, offset, 2, Integer.SIZE / 8).getInt() << 20 >> 20;
+    }
+
+    /**
+     * <p>
+     * create IEEE-11073 16-bit SFLOAT exponent
+     * <p>
+     * Core Specification v5.1 Vol 3 Part G 3.3.3.5.2 Format Table 3.16 (0x16)
+     * </p>
+     *
+     * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
+     * @param offset data offset
+     * @return IEEE-11073 16-bit SFLOAT exponent
+     */
+    public static int createSfloatExponent(@NonNull byte[] data, int offset) {
+        return createByteBuffer(data, offset + 1, 1, Integer.SIZE / 8).getInt() << 24 >> 28;
+    }
+
+    /**
+     * <p>
+     * create IEEE-11073 16-bit SFLOAT
+     * <p>
+     * Core Specification v5.1 Vol 3 Part G 3.3.3.5.2 Format Table 3.16 (0x16)
+     * </p>
+     *
+     * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
+     * @param offset data offset
+     * @return IEEE-11073 16-bit SFLOAT
+     */
+    public static double createSfloat(@NonNull byte[] data, int offset) {
+        return createSfloatManitissa(data, offset) * Math.pow(10, createSfloatExponent(data, offset));
+    }
+
+    /**
+     * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
+     * @param offset data offset
+     * @return {@code true}:ISO/IEEE Std. 11073-20601™-2008 SFLOAT NaN (Not a Number), {@code false}:not ISO/IEEE Std. 11073-20601™-2008 SFLOAT NaN (Not a Number)
+     */
+    public static boolean isSfloatNan(@NonNull byte[] data, int offset) {
+        int sfloat = createByteBuffer(data, offset, 2, Integer.SIZE / 8).getInt();
+        return SFLOAT_NAN == sfloat;
+    }
+
+    /**
+     * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
+     * @param offset data offset
+     * @return {@code true}:ISO/IEEE Std. 11073-20601™-2008 SFLOAT NRes (Not at this Resolution), {@code false}:not ISO/IEEE Std. 11073-20601™-2008 SFLOAT NRes (Not at this Resolution)
+     */
+    public static boolean isSfloatNres(@NonNull byte[] data, int offset) {
+        int sfloat = createByteBuffer(data, offset, 2, Integer.SIZE / 8).getInt();
+        return SFLOAT_NRES == sfloat;
+    }
+
+    /**
+     * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
+     * @param offset data offset
+     * @return {@code true}:ISO/IEEE Std. 11073-20601™-2008 SFLOAT + INFINITY, {@code false}:not ISO/IEEE Std. 11073-20601™-2008 SFLOAT + INFINITY
+     */
+    public static boolean isSfloatPositiveInfinity(@NonNull byte[] data, int offset) {
+        int sfloat = createByteBuffer(data, offset, 2, Integer.SIZE / 8).getInt();
+        return SFLOAT_POSITIVE_INFINITY == sfloat;
+    }
+
+    /**
+     * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
+     * @param offset data offset
+     * @return {@code true}:ISO/IEEE Std. 11073-20601™-2008 SFLOAT – INFINITY, {@code false}:not ISO/IEEE Std. 11073-20601™-2008 SFLOAT – INFINITY
+     */
+    public static boolean isSfloatNegativeInfinity(@NonNull byte[] data, int offset) {
+        int sfloat = createByteBuffer(data, offset, 2, Integer.SIZE / 8).getInt();
+        return SFLOAT_NEGATIVE_INFINITY == sfloat;
+    }
+
+    /**
+     * @param data   byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
+     * @param offset data offset
+     * @return {@code true}:ISO/IEEE Std. 11073-20601™-2008 SFLOAT Reserved for future use, {@code false}:not ISO/IEEE Std. 11073-20601™-2008 SFLOAT Reserved for future use
+     */
+    public static boolean isSfloatRfu(@NonNull byte[] data, int offset) {
+        int sfloat = createByteBuffer(data, offset, 2, Integer.SIZE / 8).getInt();
+        return SFLOAT_RFU == sfloat;
     }
 
     /**

@@ -2424,6 +2424,11 @@ public class BLEConstants {
          */
         public static final UUID BODY_COMPOSITION_SERVICE = UUID.fromString("0000181b-0000-1000-8000-00805f9b34fb");
 
+        /**
+         * Blood Pressure Service (Service UUID: 0x1810)
+         */
+        public static final UUID BLOOD_PRESSURE_SERVICE = UUID.fromString("00001810-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -2736,6 +2741,23 @@ public class BLEConstants {
          * Body Composition Measurement (Characteristic UUID: 0x2A9C)
          */
         public static final UUID BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC = UUID.fromString("00002A9C-0000-1000-8000-00805f9b34fb");
+
+        // Blood Pressure (Service UUID: 0x1810)
+
+        /**
+         * Blood Pressure Measurement (Characteristic UUID: 0x2A35)
+         */
+        public static final UUID BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC = UUID.fromString("00002A35-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Intermediate Cuff Pressure (Characteristic UUID: 0x2A36)
+         */
+        public static final UUID INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC = UUID.fromString("00002A36-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Blood Pressure Feature (Characteristic UUID: 0x2A49)
+         */
+        public static final UUID BLOOD_PRESSURE_FEATURE_CHARACTERISTIC = UUID.fromString("00002A49-0000-1000-8000-00805f9b34fb");
 
     }
 
