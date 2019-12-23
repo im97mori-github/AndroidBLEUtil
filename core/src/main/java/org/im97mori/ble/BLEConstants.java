@@ -2429,6 +2429,11 @@ public class BLEConstants {
          */
         public static final UUID BLOOD_PRESSURE_SERVICE = UUID.fromString("00001810-0000-1000-8000-00805f9b34fb");
 
+        /**
+         * Heart Rate Service (Service UUID: 0x181d)
+         */
+        public static final UUID HEART_RATE_SERVICE = UUID.fromString("0000181d-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -2759,6 +2764,23 @@ public class BLEConstants {
          */
         public static final UUID BLOOD_PRESSURE_FEATURE_CHARACTERISTIC = UUID.fromString("00002A49-0000-1000-8000-00805f9b34fb");
 
+        // Heart Rate (Service UUID: 0x180D)
+
+        /**
+         * Heart Rate Measurement (Characteristic UUID: 0x2A37)
+         */
+        public static final UUID HEART_RATE_MEASUREMENT_CHARACTERISTIC = UUID.fromString("00002A37-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Body Sensor Location (Characteristic UUID: 0x2A38)
+         */
+        public static final UUID BODY_SENSOR_LOCATION_CHARACTERISTIC = UUID.fromString("00002A38-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Heart Rate Control Point (Characteristic UUID: 0x2A39)
+         */
+        public static final UUID HEART_RATE_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002A39-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -2965,6 +2987,7 @@ public class BLEConstants {
         /**
          * Data field ignored(Current Time Service v1.1.0 1.6)
          * User Data Access Not Permitted(User Data Service v1.1 1.6)
+         * Control Point value not supported(Heart Rate Service v1.0 1.6)
          */
         public static final int APPLICATION_ERROR_80 = 0x80;
         public static final int APPLICATION_ERROR_81 = 0x81;

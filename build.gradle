@@ -29,39 +29,44 @@ task clean(type: Delete) {
 
 ext.stacklogVersionName = "0.0.2"
 
-ext.coreVersionName = "0.1.10"
-ext.coreVersionCode = 11
+ext.coreVersionName = "0.1.11"
+ext.coreVersionCode = 12
 
-ext.advertisingVersionName = "0.1.10"
-ext.advertisingVersionCode = 11
+ext.coreVersionName = '0.1.11'
+ext.coreVersionCode = 12
 
-ext.characteristicVersionName = "0.1.3"
-ext.characteristicVersionCode = 4
+ext.advertisingVersionName = '0.1.11'
+ext.advertisingVersionCode = 12
 
-ext.disVersionName = "0.1.10"
-ext.disVersionCode = 11
-ext.gapsVersionName = "0.1.6"
-ext.gapsVersionCode = 7
-ext.gasVersionName = "0.1.10"
-ext.gasVersionCode = 11
-ext.basVersionName = "0.1.5"
-ext.basVersionCode = 6
-ext.ctsVersionName = "0.1.4"
-ext.ctsVersionCode = 5
-ext.wssVersionName = "0.1.4"
-ext.wssVersionCode = 5
-ext.udsVersionName = "0.1.2"
-ext.udsVersionCode = 3
-ext.bcsVersionName = "0.1.1"
-ext.bcsVersionCode = 2
-ext.blsVersionName = "0.1.0"
-ext.blsVersionCode = 1
+ext.characteristicVersionName = '0.1.4'
+ext.characteristicVersionCode = 5
 
-ext.descriptorVersionName = "0.1.10"
-ext.descriptorVersionCode = 11
+ext.disVersionName = '0.1.11'
+ext.disVersionCode = 12
+ext.gapsVersionName = '0.1.7'
+ext.gapsVersionCode = 8
+ext.gasVersionName = '0.1.11'
+ext.gasVersionCode = 12
+ext.basVersionName = '0.1.6'
+ext.basVersionCode = 7
+ext.ctsVersionName = '0.1.5'
+ext.ctsVersionCode = 6
+ext.wssVersionName = '0.1.5'
+ext.wssVersionCode = 6
+ext.udsVersionName = '0.1.3'
+ext.udsVersionCode = 4
+ext.bcsVersionName = '0.1.2'
+ext.bcsVersionCode = 3
+ext.blsVersionName = '0.1.1'
+ext.blsVersionCode = 2
+ext.hrsVersionName = '0.1.0'
+ext.hrsVersionCode = 1
 
-ext.centralVersionName = "0.4.11"
-ext.centralVersionCode = 21
+ext.descriptorVersionName = '0.1.11'
+ext.descriptorVersionCode = 12
 
-ext.peripheralVersionName = "0.1.16"
-ext.peripheralVersionCode = 16
+ext.centralVersionName = '0.4.12'
+ext.centralVersionCode = 22
+
+ext.peripheralVersionName = '0.1.17'
+ext.peripheralVersionCode = 17
