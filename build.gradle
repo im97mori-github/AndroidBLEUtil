@@ -16,8 +16,8 @@ buildscript {
 
 allprojects {
     repositories {
-        maven { url "https://github.com/im97mori-github/maven/raw/master" }
-//        maven { url System.getenv('MAVEN_REPOSITORY_URL') }
+//        maven { url "https://github.com/im97mori-github/maven/raw/master" }
+        maven { url System.getenv('MAVEN_REPOSITORY_URL') }
         google()
         jcenter()
     }
@@ -27,46 +27,155 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+ext.groupId = 'org.im97mori'
+
 ext.stacklogVersionName = "0.0.2"
 
-ext.coreVersionName = "0.1.11"
-ext.coreVersionCode = 12
+ext.artifactId = 'artifactId'
+ext.versionCode = 'versionCode'
+ext.versionName = 'versionName'
+ext.uploadVersionName = 'uploadVersionName'
 
-ext.coreVersionName = '0.1.11'
-ext.coreVersionCode = 12
+ext.core = [
+        artifactId         : 'ble-core'
+        , versionCode      : 12
+        , versionName      : '0.1.11'
+        , uploadVersionName: '0.1.11'
+]
 
-ext.advertisingVersionName = '0.1.11'
-ext.advertisingVersionCode = 12
+ext.advertising = [
+        artifactId         : 'ble-advertising'
+        , versionCode      : 12
+        , versionName      : '0.1.11'
+        , uploadVersionName: '0.1.11'
+]
 
-ext.characteristicVersionName = '0.1.4'
-ext.characteristicVersionCode = 5
+ext.characteristicCore = [
+        artifactId         : 'ble-characteristic-core'
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
 
 ext.disVersionName = '0.1.11'
 ext.disVersionCode = 12
+ext.characteristicDis = [
+        artifactId         : 'ble-characteristic-dis'
+        , versionCode      : 12
+        , versionName      : '0.1.11'
+        , uploadVersionName: '0.1.11'
+]
+
 ext.gapsVersionName = '0.1.7'
 ext.gapsVersionCode = 8
+ext.characteristicGaps = [
+        artifactId         : 'ble-characteristic-gaps'
+        , versionCode      : 8
+        , versionName      : '0.1.7'
+        , uploadVersionName: '0.1.7'
+]
+
 ext.gasVersionName = '0.1.11'
 ext.gasVersionCode = 12
+ext.characteristicGas = [
+        artifactId         : 'ble-characteristic-gas'
+        , versionCode      : 12
+        , versionName      : '0.1.11'
+        , uploadVersionName: '0.1.11'
+]
+
 ext.basVersionName = '0.1.6'
 ext.basVersionCode = 7
+ext.characteristicBas = [
+        artifactId         : 'ble-characteristic-bas'
+        , versionCode      : 7
+        , versionName      : '0.1.6'
+        , uploadVersionName: '0.1.6'
+]
+
 ext.ctsVersionName = '0.1.5'
 ext.ctsVersionCode = 6
+ext.characteristicCts = [
+        artifactId         : 'ble-characteristic-cts'
+        , versionCode      : 6
+        , versionName      : '0.1.5'
+        , uploadVersionName: '0.1.5'
+]
+
 ext.wssVersionName = '0.1.5'
 ext.wssVersionCode = 6
+ext.characteristicWss = [
+        artifactId         : 'ble-characteristic-wss'
+        , versionCode      : 6
+        , versionName      : '0.1.5'
+        , uploadVersionName: '0.1.5'
+]
+
 ext.udsVersionName = '0.1.3'
 ext.udsVersionCode = 4
+ext.characteristicUds = [
+        artifactId         : 'ble-characteristic-uds'
+        , versionCode      : 4
+        , versionName      : '0.1.3'
+        , uploadVersionName: '0.1.3'
+]
+
 ext.bcsVersionName = '0.1.2'
 ext.bcsVersionCode = 3
+ext.characteristicBcs = [
+        artifactId         : 'ble-characteristic-bcs'
+        , versionCode      : 3
+        , versionName      : '0.1.2'
+        , uploadVersionName: '0.1.2'
+]
+
 ext.blsVersionName = '0.1.1'
 ext.blsVersionCode = 2
+ext.characteristicBls = [
+        artifactId         : 'ble-characteristic-bls'
+        , versionCode      : 2
+        , versionName      : '0.1.1'
+        , uploadVersionName: '0.1.1'
+]
+
 ext.hrsVersionName = '0.1.0'
 ext.hrsVersionCode = 1
+ext.characteristicHrs = [
+        artifactId         : 'ble-characteristic-hrs'
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
 
 ext.descriptorVersionName = '0.1.11'
 ext.descriptorVersionCode = 12
+ext.descriptor = [
+        artifactId         : 'ble-descriptor'
+        , versionCode      : 12
+        , versionName      : '0.1.11'
+        , uploadVersionName: '0.1.11'
+]
 
 ext.centralVersionName = '0.4.12'
 ext.centralVersionCode = 22
+ext.central = [
+        artifactId         : 'ble-central'
+        , versionCode      :22
+        , versionName      : '0.4.12'
+        , uploadVersionName: '0.4.12'
+]
 
 ext.peripheralVersionName = '0.1.17'
 ext.peripheralVersionCode = 17
+ext.peripheral = [
+        artifactId         : 'ble-peripheral'
+        , versionCode      :17
+        , versionName      : '0.1.17'
+        , uploadVersionName: '0.1.17'
+]
+
+ext.apiCore = "${groupId}:${core.artifactId}:${core.versionName}"
+ext.apiCharacteristicCore = "${groupId}:${characteristicCore.artifactId}:${characteristicCore.versionName}"
+ext.apiDescriptor = "${groupId}:${descriptor.artifactId}:${descriptor.versionName}"
+ext.apiCentral = "${groupId}:${central.artifactId}:${central.versionName}"
+ext.apiAdvertising = "${groupId}:${advertising.artifactId}:${advertising.versionName}"

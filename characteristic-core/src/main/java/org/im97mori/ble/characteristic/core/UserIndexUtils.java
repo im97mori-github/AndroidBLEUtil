@@ -1,4 +1,4 @@
-package org.im97mori.ble.characteristic;
+package org.im97mori.ble.characteristic.core;
 
 /**
  * Utility for org.bluetooth.characteristic.user_index(0x2A9A) characteristic

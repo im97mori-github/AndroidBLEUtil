@@ -1,6 +1,7 @@
-package org.im97mori.ble.characteristic;
+package org.im97mori.ble.characteristic.core;
 
 import org.im97mori.ble.BLEUtils;
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -104,7 +105,7 @@ public class IEEE_11073_20601_SFLOATest {
 
         IEEE_11073_20601_SFLOAT result1 = new IEEE_11073_20601_SFLOAT(data, 0);
 
-        assertEquals(0x0201, BLEUtils.createSfloat(result1.getData(), 0), 0);
+        Assert.assertEquals(0x0201, BLEUtils.createSfloat(result1.getData(), 0), 0);
         assertFalse(BLEUtils.isSfloatNan(result1.getData(), 0));
         assertFalse(BLEUtils.isSfloatNres(result1.getData(), 0));
         assertFalse(BLEUtils.isSfloatPositiveInfinity(result1.getData(), 0));
@@ -159,7 +160,7 @@ public class IEEE_11073_20601_SFLOATest {
 
         IEEE_11073_20601_SFLOAT result1 = new IEEE_11073_20601_SFLOAT(data, 1);
 
-        assertEquals(0x0302, BLEUtils.createSfloat(result1.getData(), 0), 0);
+        Assert.assertEquals(0x0302, BLEUtils.createSfloat(result1.getData(), 0), 0);
         assertFalse(BLEUtils.isSfloatNan(result1.getData(), 0));
         assertFalse(BLEUtils.isSfloatNres(result1.getData(), 0));
         assertFalse(BLEUtils.isSfloatPositiveInfinity(result1.getData(), 0));

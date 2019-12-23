@@ -1,4 +1,4 @@
-package org.im97mori.ble.characteristic;
+package org.im97mori.ble.characteristic.core;
 
 import android.os.Parcelable;
 

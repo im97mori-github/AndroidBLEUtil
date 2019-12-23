@@ -1,4 +1,4 @@
-package org.im97mori.ble.characteristic;
+package org.im97mori.ble.characteristic.core;
 
 /**
  * Utility for org.bluetooth.characteristic.date_time(0x2A08) characteristic

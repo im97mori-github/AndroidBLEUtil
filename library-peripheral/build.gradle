@@ -2,10 +2,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 apply plugin: 'maven'
 
-def GROUP_ID = 'org.im97mori'
-def ARTIFACT_ID = 'ble-peripheral'
-def VERSION_CODE = peripheralVersionCode
-def VERSION_NAME = peripheralVersionName
+def target = central
+def GROUP_ID = groupId
+def ARTIFACT_ID = target[artifactId]
+def VERSION_CODE = target[versionCode]
+def VERSION_NAME = target[uploadVersionName]
 
 android {
     compileSdkVersion 29
@@ -28,8 +29,8 @@ android {
 }
 
 dependencies {
-    api "org.im97mori:ble-central:$centralVersionName"
-    api "org.im97mori:ble-advertising:$advertisingVersionName"
+    api apiCentral
+    api apiAdvertising
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:core:1.2.0'

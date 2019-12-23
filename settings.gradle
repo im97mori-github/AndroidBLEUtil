@@ -1,6 +1,6 @@
 include ':core'
 include ':advertising'
-include ':characteristic'
+include ':characteristic-core'
 include ':characteristic:characteristic-gas'
 include ':characteristic:characteristic-gaps'
 include ':characteristic:characteristic-dis'

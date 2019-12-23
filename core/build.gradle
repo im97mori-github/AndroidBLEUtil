@@ -2,10 +2,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 apply plugin: 'maven'
 
-def GROUP_ID = 'org.im97mori'
-def ARTIFACT_ID = 'ble-core'
-def VERSION_CODE = coreVersionCode
-def VERSION_NAME = coreVersionName
+def target = core
+def GROUP_ID = groupId
+def ARTIFACT_ID = target[artifactId]
+def VERSION_CODE = target[versionCode]
+def VERSION_NAME = target[uploadVersionName]
 
 android {
     compileSdkVersion 29
