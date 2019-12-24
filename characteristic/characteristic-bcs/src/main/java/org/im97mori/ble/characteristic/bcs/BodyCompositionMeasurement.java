@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.BLEUtils;
-import org.im97mori.ble.characteristic.MultiplePacketCreater;
+import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
 
 import java.util.Arrays;
 

@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
-import org.im97mori.ble.characteristic.IEEE_11073_20601_SFLOAT;
+import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
