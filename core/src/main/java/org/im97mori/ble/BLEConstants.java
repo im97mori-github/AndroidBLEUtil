@@ -2439,6 +2439,10 @@ public class BLEConstants {
          */
         public static final UUID HEALTH_THERMOMETER_SERVICE = UUID.fromString("00001809-0000-1000-8000-00805f9b34fb");
 
+        /**
+         * Link Loss Service (Service UUID: 0x1803)
+         */
+        public static final UUID LINK_LOSS_SERVICE = UUID.fromString("00001803-0000-1000-8000-00805f9b34fb");
     }
 
     /**
@@ -2807,6 +2811,13 @@ public class BLEConstants {
          * Measurement Interval (Characteristic UUID: 0x2A21)
          */
         public static final UUID MEASUREMENT_INTERVAL_CHARACTERISTIC = UUID.fromString("00002A21-0000-1000-8000-00805f9b34fb");
+
+        // Link Loss (Service UUID: 0x1803)
+
+        /**
+         * Alert Level (Characteristic UUID: 0x2A06)
+         */
+        public static final UUID ALERT_LEVEL_CHARACTERISTIC = UUID.fromString("00002A06-0000-1000-8000-00805f9b34fb");
 
     }
 
