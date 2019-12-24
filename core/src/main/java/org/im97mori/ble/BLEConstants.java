@@ -2434,6 +2434,11 @@ public class BLEConstants {
          */
         public static final UUID HEART_RATE_SERVICE = UUID.fromString("0000181d-0000-1000-8000-00805f9b34fb");
 
+        /**
+         * Health Thermometer Service (Service UUID: 0x1809)
+         */
+        public static final UUID HEALTH_THERMOMETER_SERVICE = UUID.fromString("00001809-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -2781,6 +2786,28 @@ public class BLEConstants {
          */
         public static final UUID HEART_RATE_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002A39-0000-1000-8000-00805f9b34fb");
 
+        // Health Thermometer (Service UUID: 0x1809)
+
+        /**
+         * Temperature Measurement (Characteristic UUID: 0x2A1C)
+         */
+        public static final UUID TEMPERATURE_MEASUREMENT_CHARACTERISTIC = UUID.fromString("00002A1C-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Temperature Type (Characteristic UUID: 0x2A1D)
+         */
+        public static final UUID TEMPERATURE_TYPE_CHARACTERISTIC = UUID.fromString("00002A1D-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Intermediate Temperature (Characteristic UUID: 0x2A1E)
+         */
+        public static final UUID INTERMEDIATE_TEMPERATURE_CHARACTERISTIC = UUID.fromString("00002A1E-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Measurement Interval (Characteristic UUID: 0x2A21)
+         */
+        public static final UUID MEASUREMENT_INTERVAL_CHARACTERISTIC = UUID.fromString("00002A21-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -2988,6 +3015,7 @@ public class BLEConstants {
          * Data field ignored(Current Time Service v1.1.0 1.6)
          * User Data Access Not Permitted(User Data Service v1.1 1.6)
          * Control Point value not supported(Heart Rate Service v1.0 1.6)
+         * Out of Range(Health Thermometer Service v1.0 1.6)
          */
         public static final int APPLICATION_ERROR_80 = 0x80;
         public static final int APPLICATION_ERROR_81 = 0x81;

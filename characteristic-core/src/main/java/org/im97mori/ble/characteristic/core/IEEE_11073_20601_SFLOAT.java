@@ -9,7 +9,7 @@ import java.util.Arrays;
 /**
  * 16-BIT FLOATING POINT DATA TYPE (SFLOAT-TYPE) (Personal Health Devices Transcoding 2.2.2)
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class IEEE_11073_20601_SFLOAT {
 
     /**

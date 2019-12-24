@@ -2,7 +2,7 @@ package org.im97mori.ble.characteristic.bcs;
 
 import android.os.Parcel;
 
-import org.im97mori.ble.characteristic.DateTimeUtils;
+import org.im97mori.ble.characteristic.core.DateTimeUtils;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;

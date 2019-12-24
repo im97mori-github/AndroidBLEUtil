@@ -3,7 +3,7 @@ package org.im97mori.ble.characteristic.uds;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 
-import org.im97mori.ble.characteristic.UserIndexUtils;
+import org.im97mori.ble.characteristic.core.UserIndexUtils;
 import org.junit.Test;
 
 import static org.im97mori.ble.BLEConstants.BASE_UUID;

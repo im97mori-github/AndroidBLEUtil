@@ -300,7 +300,7 @@ public class CurrentTime implements ByteArrayInterface, Parcelable {
 
     /**
      * @return Year
-     * @see org.im97mori.ble.characteristic.DateTimeUtils
+     * @see org.im97mori.ble.characteristic.core.DateTimeUtils
      */
     public int getYear() {
         return mYear;
@@ -308,7 +308,7 @@ public class CurrentTime implements ByteArrayInterface, Parcelable {
 
     /**
      * @return Month
-     * @see org.im97mori.ble.characteristic.DateTimeUtils
+     * @see org.im97mori.ble.characteristic.core.DateTimeUtils
      */
     public int getMonth() {
         return mMonth;
@@ -316,7 +316,7 @@ public class CurrentTime implements ByteArrayInterface, Parcelable {
 
     /**
      * @return Day
-     * @see org.im97mori.ble.characteristic.DateTimeUtils
+     * @see org.im97mori.ble.characteristic.core.DateTimeUtils
      */
     public int getDay() {
         return mDay;

@@ -7,9 +7,9 @@ import org.im97mori.ble.BLEUtils;
 import java.util.Arrays;
 
 /**
- * 16-BIT FLOATING POINT DATA TYPE (FLOAT-TYPE) (Personal Health Devices Transcoding 2.2.2)
+ * 32-BIT FLOATING POINT DATA TYPE (FLOAT-TYPE) (Personal Health Devices Transcoding 2.2.1)
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class IEEE_11073_20601_FLOAT {
 
     /**
@@ -18,33 +18,33 @@ public class IEEE_11073_20601_FLOAT {
     private final byte[] mData;
 
     /**
-     * SFLOAT (IEEE 754 format)
+     * FLOAT (IEEE 754 format)
      */
-    private final double mSfloat;
+    private final double mFloat;
 
     /**
      * Constructor from byte array
      *
-     * @param data   SFLOAT byte array
+     * @param data   FLOAT byte array
      * @param offset data offset
      */
     public IEEE_11073_20601_FLOAT(@NonNull byte[] data, int offset) {
-        mData = Arrays.copyOfRange(data, offset, offset + 2);
-        mSfloat = BLEUtils.createSfloat(data, offset);
+        mData = Arrays.copyOfRange(data, offset, offset + 4);
+        mFloat = BLEUtils.createFloat(data, offset);
     }
 
     /**
-     * @return SFLOAT byte array
+     * @return FLOAT byte array
      */
     public byte[] getData() {
         return mData;
     }
 
     /**
-     * @return SFLOAT
+     * @return FLOAT
      */
-    public double getSfloat() {
-        return mSfloat;
+    public double getFloat() {
+        return mFloat;
     }
 
 }

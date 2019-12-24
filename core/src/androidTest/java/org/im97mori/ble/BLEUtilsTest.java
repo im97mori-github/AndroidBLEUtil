@@ -722,6 +722,255 @@ public class BLEUtilsTest {
     }
 
     @Test
+    public void test_createFloat_001() {
+        //@formatter:off
+        byte[] data = new byte[4];
+        data[ 0] = (byte) 0xff;
+        data[ 1] = (byte) 0xff;
+        data[ 2] = (byte) 0x7f;
+        data[ 3] = (byte) 0x00;
+        //@formatter:on
+
+        assertTrue(BLEUtils.isFloatNan(data, 0));
+        assertFalse(BLEUtils.isFloatNres(data, 0));
+        assertFalse(BLEUtils.isFloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createFloat_002() {
+        //@formatter:off
+        byte[] data = new byte[4];
+        data[ 0] = (byte) 0x00;
+        data[ 1] = (byte) 0x00;
+        data[ 2] = (byte) 0x80;
+        data[ 3] = (byte) 0x00;
+        //@formatter:on
+
+        assertFalse(BLEUtils.isFloatNan(data, 0));
+        assertTrue(BLEUtils.isFloatNres(data, 0));
+        assertFalse(BLEUtils.isFloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createFloat_003() {
+        //@formatter:off
+        byte[] data = new byte[4];
+        data[ 0] = (byte) 0xfe;
+        data[ 1] = (byte) 0xff;
+        data[ 2] = (byte) 0x7f;
+        data[ 3] = (byte) 0x00;
+        //@formatter:on
+
+        assertFalse(BLEUtils.isFloatNan(data, 0));
+        assertFalse(BLEUtils.isFloatNres(data, 0));
+        assertTrue(BLEUtils.isFloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createFloat_004() {
+        //@formatter:off
+        byte[] data = new byte[4];
+        data[ 0] = (byte) 0x02;
+        data[ 1] = (byte) 0x00;
+        data[ 2] = (byte) 0x80;
+        data[ 3] = (byte) 0x00;
+        //@formatter:on
+
+        assertFalse(BLEUtils.isFloatNan(data, 0));
+        assertFalse(BLEUtils.isFloatNres(data, 0));
+        assertFalse(BLEUtils.isFloatPositiveInfinity(data, 0));
+        assertTrue(BLEUtils.isFloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createFloat_005() {
+        //@formatter:off
+        byte[] data = new byte[4];
+        data[ 0] = (byte) 0x01;
+        data[ 1] = (byte) 0x00;
+        data[ 2] = (byte) 0x80;
+        data[ 3] = (byte) 0x00;
+        //@formatter:on
+
+        assertFalse(BLEUtils.isFloatNan(data, 0));
+        assertFalse(BLEUtils.isFloatNres(data, 0));
+        assertFalse(BLEUtils.isFloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatNegativeInfinity(data, 0));
+        assertTrue(BLEUtils.isFloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createFloat_006() {
+        //@formatter:off
+        byte[] data = new byte[4];
+        data[ 0] = 0x01;
+        data[ 1] = 0x02;
+        data[ 2] = 0x03;
+        data[ 3] = 0x04;
+        //@formatter:on
+
+        assertEquals(0x030201, BLEUtils.createFloatManitissa(data, 0));
+        assertFalse(BLEUtils.isFloatNan(data, 0));
+        assertFalse(BLEUtils.isFloatNres(data, 0));
+        assertFalse(BLEUtils.isFloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createFloat_007() {
+        //@formatter:off
+        byte[] data = new byte[4];
+        data[ 0] = 0x01;
+        data[ 1] = 0x02;
+        data[ 2] = (byte) 0xff;
+        data[ 3] = 0x04;
+        //@formatter:on
+
+        assertEquals(0xffff0201, BLEUtils.createFloatManitissa(data, 0));
+        assertFalse(BLEUtils.isFloatNan(data, 0));
+        assertFalse(BLEUtils.isFloatNres(data, 0));
+        assertFalse(BLEUtils.isFloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createFloat_008() {
+        //@formatter:off
+        byte[] data = new byte[5];
+        data[ 0] = 0x01;
+        data[ 1] = 0x02;
+        data[ 2] = 0x03;
+        data[ 3] = 0x04;
+        data[ 4] = 0x05;
+        //@formatter:on
+
+        assertEquals(0x040302, BLEUtils.createFloatManitissa(data, 1));
+        assertFalse(BLEUtils.isFloatNan(data, 0));
+        assertFalse(BLEUtils.isFloatNres(data, 0));
+        assertFalse(BLEUtils.isFloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createFloat_009() {
+        //@formatter:off
+        byte[] data = new byte[4];
+        data[ 0] = 0x01;
+        data[ 1] = 0x02;
+        data[ 2] = 0x03;
+        data[ 3] = 0x04;
+        //@formatter:on
+
+        assertEquals(0x04, BLEUtils.createFloatExponent(data, 0));
+        assertFalse(BLEUtils.isFloatNan(data, 0));
+        assertFalse(BLEUtils.isFloatNres(data, 0));
+        assertFalse(BLEUtils.isFloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createFloat_010() {
+        //@formatter:off
+        byte[] data = new byte[4];
+        data[ 0] = 0x01;
+        data[ 1] = 0x02;
+        data[ 2] = 0x03;
+        data[ 3] = (byte) 0xff;
+        //@formatter:on
+
+        assertEquals(0xffffffff, BLEUtils.createFloatExponent(data, 0));
+        assertFalse(BLEUtils.isFloatNan(data, 0));
+        assertFalse(BLEUtils.isFloatNres(data, 0));
+        assertFalse(BLEUtils.isFloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createFloat_011() {
+        //@formatter:off
+        byte[] data = new byte[5];
+        data[ 0] = 0x01;
+        data[ 1] = 0x02;
+        data[ 2] = 0x03;
+        data[ 3] = 0x04;
+        data[ 4] = 0x05;
+        //@formatter:on
+
+        assertEquals(0x05, BLEUtils.createFloatExponent(data, 1));
+        assertFalse(BLEUtils.isFloatNan(data, 0));
+        assertFalse(BLEUtils.isFloatNres(data, 0));
+        assertFalse(BLEUtils.isFloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createFloat_012() {
+        //@formatter:off
+        byte[] data = new byte[4];
+        data[ 0] = 0x01;
+        data[ 1] = 0x02;
+        data[ 2] = 0x03;
+        data[ 3] = 0x00;
+        //@formatter:on
+
+        assertEquals(0x030201, BLEUtils.createFloat(data, 0), 0);
+        assertFalse(BLEUtils.isFloatNan(data, 0));
+        assertFalse(BLEUtils.isFloatNres(data, 0));
+        assertFalse(BLEUtils.isFloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createFloat_013() {
+        //@formatter:off
+        byte[] data = new byte[4];
+        data[ 0] = 0x01;
+        data[ 1] = 0x02;
+        data[ 2] = 0x03;
+        data[ 3] = 0x04;
+        //@formatter:on
+
+        assertEquals(0x030201 * Math.pow(10, 4), BLEUtils.createFloat(data, 0), 0);
+        assertFalse(BLEUtils.isFloatNan(data, 0));
+        assertFalse(BLEUtils.isFloatNres(data, 0));
+        assertFalse(BLEUtils.isFloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatRfu(data, 0));
+    }
+
+    @Test
+    public void test_createFloat_014() {
+        //@formatter:off
+        byte[] data = new byte[4];
+        data[ 0] = 0x01;
+        data[ 1] = 0x02;
+        data[ 2] = 0x03;
+        data[ 3] = (byte) 0xff;
+        //@formatter:on
+
+        assertEquals(0x030201 * Math.pow(10, -1), BLEUtils.createFloat(data, 0), 0);
+        assertFalse(BLEUtils.isFloatNan(data, 0));
+        assertFalse(BLEUtils.isFloatNres(data, 0));
+        assertFalse(BLEUtils.isFloatPositiveInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatNegativeInfinity(data, 0));
+        assertFalse(BLEUtils.isFloatRfu(data, 0));
+    }
+
+    @Test
     public void test_createBigInteger001() {
         //@formatter:off
         byte[] data = new byte[8];
