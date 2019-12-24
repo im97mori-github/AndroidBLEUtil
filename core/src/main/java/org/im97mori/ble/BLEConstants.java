@@ -2448,6 +2448,12 @@ public class BLEConstants {
          * Immediate Alert Service (Service UUID: 0x1802)
          */
         public static final UUID IMMEDIATE_ALERT_SERVICE = UUID.fromString("00001802-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Tx Power Service (Service UUID: 0x1804)
+         */
+        public static final UUID TX_POWER_SERVICE = UUID.fromString("00001804-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -2824,6 +2830,13 @@ public class BLEConstants {
          * Alert Level (Characteristic UUID: 0x2A06)
          */
         public static final UUID ALERT_LEVEL_CHARACTERISTIC = UUID.fromString("00002A06-0000-1000-8000-00805f9b34fb");
+
+        // Tx Power (Service UUID: 0x1804)
+
+        /**
+         * Tx Power Level (Characteristic UUID: 0x2A07)
+         */
+        public static final UUID TX_POWER_LEVEL_CHARACTERISTIC = UUID.fromString("00002A07-0000-1000-8000-00805f9b34fb");
 
     }
 
