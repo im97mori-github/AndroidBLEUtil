@@ -2459,6 +2459,11 @@ public class BLEConstants {
          */
         public static final UUID NEXT_DST_CHANGE_SERVICE = UUID.fromString("00001807-0000-1000-8000-00805f9b34fb");
 
+        /**
+         * // Reference Time Update Service (Service UUID: 0x1806)
+         */
+        public static final UUID REFERENCE_TIME_UPDATE_SERVICE = UUID.fromString("00001806-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -2849,6 +2854,18 @@ public class BLEConstants {
          * Time with DST (Characteristic UUID: 0x2A11)
          */
         public static final UUID TIME_WITH_DST_CHARACTERISTIC = UUID.fromString("00002A11-0000-1000-8000-00805f9b34fb");
+
+        // Reference Time Update Service (Service UUID: 0x1806)
+
+        /**
+         * Time Update Control Point (Characteristic UUID: 0x2A16)
+         */
+        public static final UUID TIME_UPDATE_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002A16-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Time Update State (Characteristic UUID: 0x2A17)
+         */
+        public static final UUID TIME_UPDATE_STATE_CHARACTERISTIC = UUID.fromString("00002A17-0000-1000-8000-00805f9b34fb");
 
     }
 

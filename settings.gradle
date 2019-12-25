@@ -1,4 +1,4 @@
-include ':core', ':characteristic:characteristic-ndcs'
+include ':core', ':characteristic:characteristic-ndcs', ':characteristic:characteristic-rtus'
 include ':advertising'
 include ':characteristic-core'
 include ':characteristic:characteristic-gas'
