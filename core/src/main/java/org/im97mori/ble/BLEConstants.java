@@ -2454,6 +2454,11 @@ public class BLEConstants {
          */
         public static final UUID TX_POWER_SERVICE = UUID.fromString("00001804-0000-1000-8000-00805f9b34fb");
 
+        /**
+         * // Next DST Change Service (Service UUID: 0x1807)
+         */
+        public static final UUID NEXT_DST_CHANGE_SERVICE = UUID.fromString("00001807-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -2837,6 +2842,13 @@ public class BLEConstants {
          * Tx Power Level (Characteristic UUID: 0x2A07)
          */
         public static final UUID TX_POWER_LEVEL_CHARACTERISTIC = UUID.fromString("00002A07-0000-1000-8000-00805f9b34fb");
+
+        // Next DST Change Service (Service UUID: 0x1807)
+
+        /**
+         * Time with DST (Characteristic UUID: 0x2A11)
+         */
+        public static final UUID TIME_WITH_DST_CHARACTERISTIC = UUID.fromString("00002A11-0000-1000-8000-00805f9b34fb");
 
     }
 
