@@ -611,7 +611,7 @@ public class BodyCompositionFeature implements ByteArrayInterface, Parcelable {
     }
 
     /**
-     * check Weight Scale Feature
+     * check Body Composition Feature
      *
      * @param mask   bitmask for expect
      * @param expect one of {@link #TIME_STAMP_SUPPORTED_FALSE}

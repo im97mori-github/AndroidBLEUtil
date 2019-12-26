@@ -2455,15 +2455,19 @@ public class BLEConstants {
         public static final UUID TX_POWER_SERVICE = UUID.fromString("00001804-0000-1000-8000-00805f9b34fb");
 
         /**
-         * // Next DST Change Service (Service UUID: 0x1807)
+         * Next DST Change Service (Service UUID: 0x1807)
          */
         public static final UUID NEXT_DST_CHANGE_SERVICE = UUID.fromString("00001807-0000-1000-8000-00805f9b34fb");
 
         /**
-         * // Reference Time Update Service (Service UUID: 0x1806)
+         * Reference Time Update Service (Service UUID: 0x1806)
          */
         public static final UUID REFERENCE_TIME_UPDATE_SERVICE = UUID.fromString("00001806-0000-1000-8000-00805f9b34fb");
 
+        /**
+         * Location and Navigation (Service UUID: 0x1819)
+         */
+        public static final UUID LOCATION_AND_NAVIGATION_SERVICE = UUID.fromString("00001819-0000-1000-8000-00805f9b34fb");
     }
 
     /**
@@ -2866,6 +2870,34 @@ public class BLEConstants {
          * Time Update State (Characteristic UUID: 0x2A17)
          */
         public static final UUID TIME_UPDATE_STATE_CHARACTERISTIC = UUID.fromString("00002A17-0000-1000-8000-00805f9b34fb");
+
+        // Location and Navigation (Service UUID: 0x1819)
+
+        /**
+         * LN Feature (Characteristic UUID: 0x2A6A)
+         */
+        public static final UUID LN_FEATURE_CHARACTERISTIC = UUID.fromString("00002A6A-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Location and Speed Characteristic (Characteristic UUID: 0x2A67)
+         */
+        public static final UUID LOCATION_AND_SPEED_CHARACTERISTIC = UUID.fromString("00002A67-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Position Quality (Characteristic UUID: 0x2A69)
+         */
+        public static final UUID POSITION_QUALITY_CHARACTERISTIC = UUID.fromString("00002A69-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * LN Control Point (Characteristic UUID: 0x2A6B)
+         */
+        public static final UUID LN_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002A6B-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Navigation (Characteristic UUID: 0x2A68)
+         */
+        public static final UUID NAVIGATION_CHARACTERISTIC = UUID.fromString("00002A68-0000-1000-8000-00805f9b34fb");
+
 
     }
 

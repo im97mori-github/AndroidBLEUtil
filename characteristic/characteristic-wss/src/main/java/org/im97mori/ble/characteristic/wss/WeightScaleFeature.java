@@ -23,132 +23,132 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.WEIGHT_SCALE_FEAT
 public class WeightScaleFeature implements ByteArrayInterface, Parcelable {
 
     /**
-     * @see #TIME_STAMP_SUPPORTED_FALSE
-     * @see #TIME_STAMP_SUPPORTED_TRUE
+     * @see #WEIGHT_SCALE_FEATURE_TIME_STAMP_SUPPORTED_FALSE
+     * @see #WEIGHT_SCALE_FEATURE_TIME_STAMP_SUPPORTED_TRUE
      */
-    public static final int TIME_STAMP_SUPPORTED_MASK = 0b00000001;
+    public static final int WEIGHT_SCALE_FEATURE_TIME_STAMP_SUPPORTED_MASK = 0b00000001;
 
     /**
      * 0: Time Stamp Supported False
      */
-    public static final int TIME_STAMP_SUPPORTED_FALSE = 0b00000000;
+    public static final int WEIGHT_SCALE_FEATURE_TIME_STAMP_SUPPORTED_FALSE = 0b00000000;
 
     /**
      * 1: Time Stamp Supported True
      */
-    public static final int TIME_STAMP_SUPPORTED_TRUE = 0b00000001;
+    public static final int WEIGHT_SCALE_FEATURE_TIME_STAMP_SUPPORTED_TRUE = 0b00000001;
 
     /**
-     * @see #MULTIPLE_USERS_SUPPORTED_FALSE
-     * @see #MULTIPLE_USERS_SUPPORTED_TRUE
+     * @see #WEIGHT_SCALE_FEATURE_MULTIPLE_USERS_SUPPORTED_FALSE
+     * @see #WEIGHT_SCALE_FEATURE_MULTIPLE_USERS_SUPPORTED_TRUE
      */
-    public static final int MULTIPLE_USERS_SUPPORTED_MASK = 0b00000010;
+    public static final int WEIGHT_SCALE_FEATURE_MULTIPLE_USERS_SUPPORTED_MASK = 0b00000010;
 
     /**
      * 0: Multiple Users Supported False
      */
-    public static final int MULTIPLE_USERS_SUPPORTED_FALSE = 0b00000000;
+    public static final int WEIGHT_SCALE_FEATURE_MULTIPLE_USERS_SUPPORTED_FALSE = 0b00000000;
 
     /**
      * 1: Multiple Users Supported True
      */
-    public static final int MULTIPLE_USERS_SUPPORTED_TRUE = 0b00000010;
+    public static final int WEIGHT_SCALE_FEATURE_MULTIPLE_USERS_SUPPORTED_TRUE = 0b00000010;
 
     /**
-     * @see #BMI_SUPPORTED_FALSE
-     * @see #BMI_SUPPORTED_TRUE
+     * @see #WEIGHT_SCALE_FEATURE_BMI_SUPPORTED_FALSE
+     * @see #WEIGHT_SCALE_FEATURE_BMI_SUPPORTED_TRUE
      */
-    public static final int BMI_SUPPORTED_MASK = 0b00000100;
+    public static final int WEIGHT_SCALE_FEATURE_BMI_SUPPORTED_MASK = 0b00000100;
 
     /**
      * 0: BMI Supported False
      */
-    public static final int BMI_SUPPORTED_FALSE = 0b00000000;
+    public static final int WEIGHT_SCALE_FEATURE_BMI_SUPPORTED_FALSE = 0b00000000;
 
     /**
      * 1: BMI Supported True
      */
-    public static final int BMI_SUPPORTED_TRUE = 0b00000100;
+    public static final int WEIGHT_SCALE_FEATURE_BMI_SUPPORTED_TRUE = 0b00000100;
 
     /**
-     * @see #WEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED
-     * @see #WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_5KG_OR_1LB
-     * @see #WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_2KG_OR_0_5LB
-     * @see #WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_1KG_OR_0_2LB
-     * @see #WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_05KG_OR_0_1B
-     * @see #WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_02KG_OR_0_05B
-     * @see #WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_01KG_OR_0_02B
-     * @see #WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005KG_OR_0_01B
+     * @see #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED
+     * @see #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_5KG_OR_1LB
+     * @see #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_2KG_OR_0_5LB
+     * @see #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_1KG_OR_0_2LB
+     * @see #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_05KG_OR_0_1B
+     * @see #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_02KG_OR_0_05B
+     * @see #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_01KG_OR_0_02B
+     * @see #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005KG_OR_0_01B
      */
-    public static final int WEIGHT_MEASUREMENT_RESOLUTION_MASK = 0b01111000;
+    public static final int WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_MASK = 0b01111000;
 
     /**
      * 0: Not Specified
      */
-    public static final int WEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED = 0b00000000;
+    public static final int WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED = 0b00000000;
 
     /**
      * 1: Resolution of 0.5 kg or 1 lb
      */
-    public static final int WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_5KG_OR_1LB = 0b00001000;
+    public static final int WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_5KG_OR_1LB = 0b00001000;
 
     /**
      * 2: Resolution of 0.2 kg or 0.5 lb
      */
-    public static final int WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_2KG_OR_0_5LB = 0b00010000;
+    public static final int WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_2KG_OR_0_5LB = 0b00010000;
 
     /**
      * 3: Resolution of 0.1 kg or 0.2 lb
      */
-    public static final int WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_1KG_OR_0_2LB = 0b00011000;
+    public static final int WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_1KG_OR_0_2LB = 0b00011000;
 
     /**
      * 4: Resolution of 0.05 kg or 0.1 lb
      */
-    public static final int WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_05KG_OR_0_1B = 0b00100000;
+    public static final int WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_05KG_OR_0_1B = 0b00100000;
 
     /**
      * 5: Resolution of 0.02 kg or 0.05 lb
      */
-    public static final int WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_02KG_OR_0_05B = 0b00101000;
+    public static final int WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_02KG_OR_0_05B = 0b00101000;
 
     /**
      * 6: Resolution of 0.01 kg or 0.02 lb
      */
-    public static final int WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_01KG_OR_0_02B = 0b00110000;
+    public static final int WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_01KG_OR_0_02B = 0b00110000;
 
     /**
      * 7: Resolution of 0.005 kg or 0.01 lb
      */
-    public static final int WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005KG_OR_0_01B = 0b00111000;
+    public static final int WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005KG_OR_0_01B = 0b00111000;
 
     /**
-     * @see #HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED
-     * @see #HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_01_METER_OR_1INCH
-     * @see #HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005METER_OR_0_5INCH
-     * @see #HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_001METER_OR_0_1INCH
+     * @see #WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED
+     * @see #WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_01_METER_OR_1INCH
+     * @see #WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005METER_OR_0_5INCH
+     * @see #WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_001METER_OR_0_1INCH
      */
-    public static final int HEIGHT_MEASUREMENT_RESOLUTION_MASK = 0b00000011_10000000;
+    public static final int WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_MASK = 0b00000011_10000000;
 
     /**
      * 0: Not Specified
      */
-    public static final int HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED = 0b00000000_00000000;
+    public static final int WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED = 0b00000000_00000000;
 
     /**
      * 1: Resolution of 0.01 meter or 1 inch
      */
-    public static final int HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_01_METER_OR_1INCH = 0b00000000_10000000;
+    public static final int WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_01_METER_OR_1INCH = 0b00000000_10000000;
 
     /**
      * 2: Resolution of 0.005 meter or 0.5 inch
      */
-    public static final int HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005METER_OR_0_5INCH = 0b0000001_00000000;
+    public static final int WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005METER_OR_0_5INCH = 0b0000001_00000000;
 
     /**
      * 3: Resolution of 0.001 meter or 0.1 inch
      */
-    public static final int HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_001METER_OR_0_1INCH = 0b0000001_10000000;
+    public static final int WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_001METER_OR_0_1INCH = 0b0000001_10000000;
 
     /**
      * @see ByteArrayCreater
@@ -236,127 +236,127 @@ public class WeightScaleFeature implements ByteArrayInterface, Parcelable {
     /**
      * @return {@code true}:Time Stamp Supported, {@code false}:Time Stamp not Supported
      */
-    public boolean isTimeStampSupported() {
-        return isFeatureMatched(TIME_STAMP_SUPPORTED_MASK, TIME_STAMP_SUPPORTED_TRUE);
+    public boolean isWeightScaleFeatureTimeStampSupported() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_TIME_STAMP_SUPPORTED_MASK, WEIGHT_SCALE_FEATURE_TIME_STAMP_SUPPORTED_TRUE);
     }
 
     /**
      * @return {@code true}:Time Stamp not Supported, {@code false}:Time Stamp Supported
      */
-    public boolean isTimeStampNotSupported() {
-        return isFeatureMatched(TIME_STAMP_SUPPORTED_MASK, TIME_STAMP_SUPPORTED_FALSE);
+    public boolean isWeightScaleFeatureTimeStampNotSupported() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_TIME_STAMP_SUPPORTED_MASK, WEIGHT_SCALE_FEATURE_TIME_STAMP_SUPPORTED_FALSE);
     }
 
     /**
      * @return {@code true}:Multiple Users Supported, {@code false}:Multiple Users not Supported
      */
-    public boolean isMultipleUsersSupported() {
-        return isFeatureMatched(MULTIPLE_USERS_SUPPORTED_MASK, MULTIPLE_USERS_SUPPORTED_TRUE);
+    public boolean isWeightScaleFeatureMultipleUsersSupported() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_MULTIPLE_USERS_SUPPORTED_MASK, WEIGHT_SCALE_FEATURE_MULTIPLE_USERS_SUPPORTED_TRUE);
     }
 
     /**
      * @return {@code true}:Multiple Users not Supported, {@code false}:Multiple Users Supported
      */
-    public boolean isMultipleUsersNotSupported() {
-        return isFeatureMatched(MULTIPLE_USERS_SUPPORTED_MASK, MULTIPLE_USERS_SUPPORTED_FALSE);
+    public boolean isWeightScaleFeatureMultipleUsersNotSupported() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_MULTIPLE_USERS_SUPPORTED_MASK, WEIGHT_SCALE_FEATURE_MULTIPLE_USERS_SUPPORTED_FALSE);
     }
 
     /**
      * @return {@code true}:BMI Supported, {@code false}:BMI not Supported
      */
-    public boolean isBmiSupported() {
-        return isFeatureMatched(BMI_SUPPORTED_MASK, BMI_SUPPORTED_TRUE);
+    public boolean isWeightScaleFeatureBmiSupported() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_BMI_SUPPORTED_MASK, WEIGHT_SCALE_FEATURE_BMI_SUPPORTED_TRUE);
     }
 
     /**
      * @return {@code true}:BMI not Supported, {@code false}:BMI Supported
      */
-    public boolean isBmiNotSupported() {
-        return isFeatureMatched(BMI_SUPPORTED_MASK, BMI_SUPPORTED_FALSE);
+    public boolean isWeightScaleFeatureBmiNotSupported() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_BMI_SUPPORTED_MASK, WEIGHT_SCALE_FEATURE_BMI_SUPPORTED_FALSE);
     }
 
     /**
      * @return {@code true}:Weight Measurement Resolution Not Specified, {@code false}:Weight Measurement Resolution Specified
      */
-    public boolean isWeightScaleMeasurementResolutionNotSpecified() {
-        return isFeatureMatched(WEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED);
+    public boolean isWeightScaleFeatureWeightScaleMeasurementResolutionNotSpecified() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED);
     }
 
     /**
      * @return {@code true}:Weight Measurement Resolution is 0.5 kg or 1 lb, {@code false}:Weight Measurement Resolution is not 0.5 kg or 1 lb
      */
-    public boolean isWeightScaleMeasurementResolution1() {
-        return isFeatureMatched(WEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_5KG_OR_1LB);
+    public boolean isWeightScaleFeatureWeightScaleMeasurementResolution1() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_5KG_OR_1LB);
     }
 
     /**
      * @return {@code true}:Weight Measurement Resolution is 0.2 kg or 0.5 lb, {@code false}:Weight Measurement Resolution is not 0.2 kg or 0.5 lb
      */
-    public boolean isWeightScaleMeasurementResolution2() {
-        return isFeatureMatched(WEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_2KG_OR_0_5LB);
+    public boolean isWeightScaleFeatureWeightScaleMeasurementResolution2() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_2KG_OR_0_5LB);
     }
 
     /**
      * @return {@code true}:Weight Measurement Resolution is 0.1 kg or 0.2 lb, {@code false}:Weight Measurement Resolution is not 0.1 kg or 0.2 lb
      */
-    public boolean isWeightScaleMeasurementResolution3() {
-        return isFeatureMatched(WEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_1KG_OR_0_2LB);
+    public boolean isWeightScaleFeatureWeightScaleMeasurementResolution3() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_1KG_OR_0_2LB);
     }
 
     /**
      * @return {@code true}:Weight Measurement Resolution is 0.05 kg or 0.1 lb, {@code false}:Weight Measurement Resolution is not 0.05 kg or 0.1 lb
      */
-    public boolean isWeightScaleMeasurementResolution4() {
-        return isFeatureMatched(WEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_05KG_OR_0_1B);
+    public boolean isWeightScaleFeatureWeightScaleMeasurementResolution4() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_05KG_OR_0_1B);
     }
 
     /**
      * @return {@code true}:Weight Measurement Resolution is 0.02 kg or 0.05 lb, {@code false}:Weight Measurement Resolution is not 0.02 kg or 0.05 lb
      */
-    public boolean isWeightScaleMeasurementResolution5() {
-        return isFeatureMatched(WEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_02KG_OR_0_05B);
+    public boolean isWeightScaleFeatureWeightScaleMeasurementResolution5() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_02KG_OR_0_05B);
     }
 
     /**
      * @return {@code true}:Weight Measurement Resolution is 0.01 kg or 0.02 lb, {@code false}:Weight Measurement Resolution is not 0.01 kg or 0.02 lb
      */
-    public boolean isWeightScaleMeasurementResolution6() {
-        return isFeatureMatched(WEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_01KG_OR_0_02B);
+    public boolean isWeightScaleFeatureWeightScaleMeasurementResolution6() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_01KG_OR_0_02B);
     }
 
     /**
      * @return {@code true}:Weight Measurement Resolution is 0.005 kg or 0.01 lb, {@code false}:Weight Measurement Resolution is not 0.005 kg or 0.01 lb
      */
-    public boolean isWeightScaleMeasurementResolution7() {
-        return isFeatureMatched(WEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005KG_OR_0_01B);
+    public boolean isWeightScaleFeatureWeightScaleMeasurementResolution7() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005KG_OR_0_01B);
     }
 
     /**
      * @return {@code true}:Height Resolution Not Specified, {@code false}:Height Resolution Specified
      */
-    public boolean isHeightMeasurementResolutionNotSpecified() {
-        return isFeatureMatched(HEIGHT_MEASUREMENT_RESOLUTION_MASK, HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED);
+    public boolean isWeightScaleFeatureHeightMeasurementResolutionNotSpecified() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED);
     }
 
     /**
      * @return {@code true}:Height Resolution is 0.01 meter or 1 inch, {@code false}:Height Resolution is not 0.01 meter or 1 inch
      */
-    public boolean isHeightMeasurementResolution1() {
-        return isFeatureMatched(HEIGHT_MEASUREMENT_RESOLUTION_MASK, HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_01_METER_OR_1INCH);
+    public boolean isWeightScaleFeatureHeightMeasurementResolution1() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_01_METER_OR_1INCH);
     }
 
     /**
      * @return {@code true}:Height Resolution is 0.005 meter or 0.5 inch, {@code false}:Height Resolution is not 0.005 meter or 0.5 inch
      */
-    public boolean isHeightMeasurementResolution2() {
-        return isFeatureMatched(HEIGHT_MEASUREMENT_RESOLUTION_MASK, HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005METER_OR_0_5INCH);
+    public boolean isWeightScaleFeatureHeightMeasurementResolution2() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005METER_OR_0_5INCH);
     }
 
     /**
      * @return {@code true}:Height Resolution is 0.001 meter or 0.1 inch, {@code false}:Height Resolution is not 0.001 meter or 0.1 inch
      */
-    public boolean isHeightMeasurementResolution3() {
-        return isFeatureMatched(HEIGHT_MEASUREMENT_RESOLUTION_MASK, HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_001METER_OR_0_1INCH);
+    public boolean isWeightScaleFeatureHeightMeasurementResolution3() {
+        return isFeatureMatched(WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_MASK, WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_001METER_OR_0_1INCH);
     }
 
     /**
@@ -375,24 +375,24 @@ public class WeightScaleFeature implements ByteArrayInterface, Parcelable {
      * check Weight Scale Feature
      *
      * @param mask   bitmask for expect
-     * @param expect one of {@link #TIME_STAMP_SUPPORTED_FALSE}
-     *               , {@link #TIME_STAMP_SUPPORTED_TRUE}
-     *               , {@link #MULTIPLE_USERS_SUPPORTED_FALSE}
-     *               , {@link #MULTIPLE_USERS_SUPPORTED_TRUE}
-     *               , {@link #BMI_SUPPORTED_FALSE}
-     *               , {@link #BMI_SUPPORTED_TRUE}
-     *               , {@link #WEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED}
-     *               , {@link #WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_5KG_OR_1LB}
-     *               , {@link #WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_2KG_OR_0_5LB}
-     *               , {@link #WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_1KG_OR_0_2LB}
-     *               , {@link #WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_05KG_OR_0_1B}
-     *               , {@link #WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_02KG_OR_0_05B}
-     *               , {@link #WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_01KG_OR_0_02B}
-     *               , {@link #WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005KG_OR_0_01B}
-     *               , {@link #HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED}
-     *               , {@link #HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_01_METER_OR_1INCH}
-     *               , {@link #HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005METER_OR_0_5INCH}
-     *               , {@link #HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_001METER_OR_0_1INCH}
+     * @param expect one of {@link #WEIGHT_SCALE_FEATURE_TIME_STAMP_SUPPORTED_FALSE}
+     *               , {@link #WEIGHT_SCALE_FEATURE_TIME_STAMP_SUPPORTED_TRUE}
+     *               , {@link #WEIGHT_SCALE_FEATURE_MULTIPLE_USERS_SUPPORTED_FALSE}
+     *               , {@link #WEIGHT_SCALE_FEATURE_MULTIPLE_USERS_SUPPORTED_TRUE}
+     *               , {@link #WEIGHT_SCALE_FEATURE_BMI_SUPPORTED_FALSE}
+     *               , {@link #WEIGHT_SCALE_FEATURE_BMI_SUPPORTED_TRUE}
+     *               , {@link #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED}
+     *               , {@link #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_5KG_OR_1LB}
+     *               , {@link #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_2KG_OR_0_5LB}
+     *               , {@link #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_1KG_OR_0_2LB}
+     *               , {@link #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_05KG_OR_0_1B}
+     *               , {@link #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_02KG_OR_0_05B}
+     *               , {@link #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_01KG_OR_0_02B}
+     *               , {@link #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005KG_OR_0_01B}
+     *               , {@link #WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED}
+     *               , {@link #WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_01_METER_OR_1INCH}
+     *               , {@link #WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005METER_OR_0_5INCH}
+     *               , {@link #WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_001METER_OR_0_1INCH}
      * @return {@code true}:same as expect, {@code false}:not match
      */
     private boolean isFeatureMatched(int mask, int expect) {

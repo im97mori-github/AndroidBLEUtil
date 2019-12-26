@@ -751,7 +751,7 @@ public class BloodPressureMeasurement implements ByteArrayInterface, Parcelable 
     }
 
     /**
-     * check Flags
+     * check Measurement Status
      *
      * @param mask   bitmask for expect
      * @param expect one of {@link #MEASUREMENT_STATUS_BODY_MOVEMENT_DETECTION_NO_BODY_MOVEMENT}
