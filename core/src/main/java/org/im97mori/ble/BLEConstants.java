@@ -2468,6 +2468,11 @@ public class BLEConstants {
          * Location and Navigation (Service UUID: 0x1819)
          */
         public static final UUID LOCATION_AND_NAVIGATION_SERVICE = UUID.fromString("00001819-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Phone Alert Status Service (Service UUID: 0x180E)
+         */
+        public static final UUID PHONE_ALERT_STATUS_SERVICE = UUID.fromString("0000180e-0000-1000-8000-00805f9b34fb");
     }
 
     /**
@@ -2898,6 +2903,22 @@ public class BLEConstants {
          */
         public static final UUID NAVIGATION_CHARACTERISTIC = UUID.fromString("00002A68-0000-1000-8000-00805f9b34fb");
 
+        // Phone Alert Status Service (Service UUID: 0x180E)
+
+        /**
+         * Alert Status (Characteristic UUID: 0x2A3F)
+         */
+        public static final UUID ALERT_STATUS_CHARACTERISTIC = UUID.fromString("00002A3F-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Ringer Setting (Characteristic UUID: 0x2A41)
+         */
+        public static final UUID RINGER_SETTING_CHARACTERISTIC = UUID.fromString("00002A41-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Ringer Control point (Characteristic UUID: 0x2A40)
+         */
+        public static final UUID RINGER_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002A40-0000-1000-8000-00805f9b34fb");
 
     }
 
