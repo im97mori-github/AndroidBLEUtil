@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 apply plugin: 'maven'
 
-def target = peripheral
+def target = characteristicAios
 def GROUP_ID = groupId
 def ARTIFACT_ID = target[artifactId]
 def VERSION_CODE = target[versionCode]
@@ -12,8 +12,9 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
+
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 18
         targetSdkVersion 29
         versionCode VERSION_CODE
         versionName VERSION_NAME
@@ -26,12 +27,11 @@ android {
             minifyEnabled false
         }
     }
+
 }
 
 dependencies {
-//    api apiCentral
-    implementation project(path: ':library-central')
-    api apiAdvertising
+    api apiCore
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:core:1.2.0'
@@ -48,7 +48,6 @@ publishing {
             groupId GROUP_ID
             artifactId ARTIFACT_ID
             version VERSION_NAME
-
             artifact(sourcesJar)
             artifact("$buildDir/outputs/aar/" + project.name + "-release.aar")
         }

@@ -496,22 +496,51 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     if (target != null) {
                         BLESyncConnection.BLEResult result = BLESyncConnection.createReadCharacteristicTask(target
                                 , DEFAULT_SERVICE_UUID
+                                , null
                                 , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                                , null
                                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                                 , null
                                 , false);
 
                         if (result == null) {
-                            mBLECallbackSample.onCharacteristicReadFailed(0, target.getBluetoothDevice(), DEFAULT_SERVICE_UUID, READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, BLEConstants.ErrorCodes.UNKNOWN, null);
+                            mBLECallbackSample.onCharacteristicReadFailed(0
+                                    , target.getBluetoothDevice()
+                                    , DEFAULT_SERVICE_UUID
+                                    , null
+                                    , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                                    , null
+                                    , BLEConstants.ErrorCodes.UNKNOWN
+                                    , null);
                         } else {
                             byte[] value = result.getValues();
                             if (RESULT_SUCCESS == result.getResultCode() && value != null) {
-                                mBLECallbackSample.onCharacteristicReadSuccess(0, target.getBluetoothDevice(), DEFAULT_SERVICE_UUID, READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, value, result.getArgument());
+                                mBLECallbackSample.onCharacteristicReadSuccess(0
+                                        , target.getBluetoothDevice()
+                                        , DEFAULT_SERVICE_UUID
+                                        , null
+                                        , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                                        , null
+                                        , value
+                                        , result.getArgument());
                             } else if (RESULT_FAILED == result.getResultCode()) {
-                                mBLECallbackSample.onCharacteristicReadFailed(0, target.getBluetoothDevice(), DEFAULT_SERVICE_UUID, READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, result.getStatus(), result.getArgument());
+                                mBLECallbackSample.onCharacteristicReadFailed(0
+                                        , target.getBluetoothDevice()
+                                        , DEFAULT_SERVICE_UUID
+                                        , null
+                                        , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                                        , null, result.getStatus()
+                                        , result.getArgument());
                             } else if (RESULT_TIMEOUT == result.getResultCode()) {
-                                mBLECallbackSample.onCharacteristicReadTimeout(0, target.getBluetoothDevice(), DEFAULT_SERVICE_UUID, READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, ReadCharacteristicTask.TIMEOUT_MILLIS, result.getArgument());
+                                mBLECallbackSample.onCharacteristicReadTimeout(0
+                                        , target.getBluetoothDevice()
+                                        , DEFAULT_SERVICE_UUID
+                                        , null
+                                        , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                                        , null
+                                        , ReadCharacteristicTask.TIMEOUT_MILLIS
+                                        , result.getArgument());
                             }
                         }
                     }

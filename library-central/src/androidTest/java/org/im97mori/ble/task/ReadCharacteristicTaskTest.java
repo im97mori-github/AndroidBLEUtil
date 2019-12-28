@@ -7,6 +7,7 @@ import android.os.Looper;
 import android.os.Message;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
@@ -28,7 +29,7 @@ public class ReadCharacteristicTaskTest {
     public void test_createInitialMessage001() {
         UUID serviceUUID = UUID.randomUUID();
         UUID characteristicUUID = UUID.randomUUID();
-        ReadCharacteristicTask task = new ReadCharacteristicTask(null, null, null, serviceUUID, characteristicUUID, ReadCharacteristicTask.TIMEOUT_MILLIS, null);
+        ReadCharacteristicTask task = new ReadCharacteristicTask(null, null, null, serviceUUID, null, characteristicUUID, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null);
         Message message = task.createInitialMessage();
 
         assertNotNull(message);
@@ -46,17 +47,23 @@ public class ReadCharacteristicTaskTest {
     @Test
     public void test_createReadCharacteristicSuccessMessage001() {
         UUID serviceUUID = UUID.randomUUID();
+        int serviceInstanceId = 1;
         UUID characteristicUUID = UUID.randomUUID();
+        int characteristicInstanceId = 2;
         byte[] original = new byte[0];
-        Message message = ReadCharacteristicTask.createReadCharacteristicSuccessMessage(serviceUUID, characteristicUUID, original);
+        Message message = ReadCharacteristicTask.createReadCharacteristicSuccessMessage(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, original);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
         assertEquals(serviceUUID, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
+        assertEquals(serviceInstanceId, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
+        assertEquals(characteristicInstanceId, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_VALUES));
         assertArrayEquals(original, bundle.getByteArray(AbstractBLETask.KEY_VALUES));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
@@ -66,17 +73,22 @@ public class ReadCharacteristicTaskTest {
     @Test
     public void test_createReadCharacteristicErrorMessage001() {
         UUID serviceUUID = UUID.randomUUID();
+        int serviceInstanceId = 1;
         UUID characteristicUUID = UUID.randomUUID();
+        int characteristicInstanceId = 2;
         int status = new Random().nextInt();
-        Message message = ReadCharacteristicTask.createReadCharacteristicErrorMessage(serviceUUID, characteristicUUID, status);
+        Message message = ReadCharacteristicTask.createReadCharacteristicErrorMessage(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
         assertEquals(serviceUUID, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
+        assertEquals(serviceInstanceId, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
+        assertEquals(characteristicInstanceId, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
         assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
@@ -94,7 +106,7 @@ public class ReadCharacteristicTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ReadCharacteristicTask task = new ReadCharacteristicTask(new MockBLEConnection(), null, mockTaskHandler, null, null, ReadCharacteristicTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ReadCharacteristicTask task = new ReadCharacteristicTask(new MockBLEConnection(), null, mockTaskHandler, null, null, null, null, ReadCharacteristicTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -114,7 +126,7 @@ public class ReadCharacteristicTaskTest {
             BaseBLECallback callback = new BaseBLECallback() {
 
                 @Override
-                public void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, Bundle argument) {
+                public void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, Bundle argument) {
                     result.set(true);
                 }
             };
@@ -127,7 +139,7 @@ public class ReadCharacteristicTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ReadCharacteristicTask task = new ReadCharacteristicTask(mockBleConnection, null, mockTaskHandler, null, null, ReadCharacteristicTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ReadCharacteristicTask task = new ReadCharacteristicTask(mockBleConnection, null, mockTaskHandler, null, null, null, null, ReadCharacteristicTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());

@@ -22,14 +22,29 @@ public abstract class AbstractBLETask {
     public static final String KEY_SERVICE_UUID = "KEY_SERVICE_UUID";
 
     /**
+     * KEY:SERVICE_INSTANCE_ID
+     */
+    public static final String KEY_SERVICE_INSTANCE_ID = "KEY_SERVICE_INSTANCE_ID";
+
+    /**
      * KEY:CHARACTERISTIC_UUID
      */
     public static final String KEY_CHARACTERISTIC_UUID = "KEY_CHARACTERISTIC_UUID";
 
     /**
+     * KEY:CHARACTERISTIC_INSTANCE_ID
+     */
+    public static final String KEY_CHARACTERISTIC_INSTANCE_ID = "KEY_CHARACTERISTIC_INSTANCE_ID";
+
+    /**
      * KEY:DESCRIPTOR_UUID
      */
     public static final String KEY_DESCRIPTOR_UUID = "KEY_DESCRIPTOR_UUID";
+
+    /**
+     * KEY:DESCRIPTOR_INSTANCE_ID
+     */
+    public static final String KEY_DESCRIPTOR_INSTANCE_ID = "KEY_DESCRIPTOR_INSTANCE_ID";
 
     /**
      * KEY:VALUES

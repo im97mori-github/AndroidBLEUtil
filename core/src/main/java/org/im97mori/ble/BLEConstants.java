@@ -2479,6 +2479,10 @@ public class BLEConstants {
          */
         public static final UUID ALERT_NOTIFICATION_SERVICE = UUID.fromString("00001811-0000-1000-8000-00805f9b34fb");
 
+        /**
+         * Automation IO (Service UUID: 0x1815)
+         */
+        public static final UUID AUTOMATION_IO_SERVICE = UUID.fromString("00001815-0000-1000-8000-00805f9b34fb");
     }
 
     /**
@@ -2953,6 +2957,23 @@ public class BLEConstants {
          */
         public static final UUID ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002A44-0000-1000-8000-00805f9b34fb");
 
+        // Automation IO (Service UUID: 0x1815)
+
+        /**
+         * Digital (Characteristic UUID: 0x2A56)
+         */
+        public static final UUID DIGITAL_CHARACTERISTIC = UUID.fromString("00002A56-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Analog (Characteristic UUID: 0x2A58)
+         */
+        public static final UUID ANALOG_CHARACTERISTIC = UUID.fromString("00002A58-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Aggregate (Characteristic UUID: 0x2A5A)
+         */
+        public static final UUID AGGREGATE_CHARACTERISTIC = UUID.fromString("00002A5A-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -3161,6 +3182,7 @@ public class BLEConstants {
          * User Data Access Not Permitted(User Data Service v1.1 1.6)
          * Control Point value not supported(Heart Rate Service v1.0 1.6)
          * Out of Range(Health Thermometer Service v1.0 1.6)
+         * Trigger condition value not supported(Automation IO Service v1.0.0 1.6)
          */
         public static final int APPLICATION_ERROR_80 = 0x80;
         public static final int APPLICATION_ERROR_81 = 0x81;

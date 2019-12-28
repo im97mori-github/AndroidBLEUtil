@@ -478,9 +478,9 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
         try {
             BluetoothGattService service = characteristic.getService();
             if (BluetoothGatt.GATT_SUCCESS == status) {
-                mTaskHandler.sendProcessingMessage(ReadCharacteristicTask.createReadCharacteristicSuccessMessage(service.getUuid(), characteristic.getUuid(), characteristic.getValue()));
+                mTaskHandler.sendProcessingMessage(ReadCharacteristicTask.createReadCharacteristicSuccessMessage(service.getUuid(), service.getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), characteristic.getValue()));
             } else {
-                mTaskHandler.sendProcessingMessage(ReadCharacteristicTask.createReadCharacteristicErrorMessage(service.getUuid(), characteristic.getUuid(), status));
+                mTaskHandler.sendProcessingMessage(ReadCharacteristicTask.createReadCharacteristicErrorMessage(service.getUuid(), service.getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), status));
             }
 
             // if characteristic / descriptor callbacked, clear busy status
@@ -751,35 +751,39 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     }
 
     /**
-     * @see #createReadCharacteristicTask(UUID, UUID, long, Bundle, BLECallback)
+     * @see #createReadCharacteristicTask(UUID, Integer, UUID, Integer, long, Bundle, BLECallback)
      */
     @Nullable
     public Integer createReadCharacteristicTask(@NonNull UUID serviceUUID
             , @NonNull UUID characteristicUUID
             , long timeout) {
-        return createReadCharacteristicTask(serviceUUID, characteristicUUID, timeout, null, null);
+        return createReadCharacteristicTask(serviceUUID, null, characteristicUUID, null, timeout, null, null);
     }
 
     /**
      * Create read characteristic task
      *
-     * @param serviceUUID        service {@link UUID}
-     * @param characteristicUUID characteristic {@link UUID}
-     * @param timeout            timeout(millis)
-     * @param argument           callback argument
-     * @param bleCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
+     * @param serviceUUID              service {@link UUID}
+     * @param serviceInstanceId        task target characteristic incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       characteristic {@link UUID}
+     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param timeout                  timeout(millis)
+     * @param argument                 callback argument
+     * @param bleCallback              {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
     @Nullable
     public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
             , long timeout
             , @Nullable Bundle argument
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         BluetoothGatt bluetoothGatt = mBluetoothGatt;
         if (bluetoothGatt != null) {
-            ReadCharacteristicTask task = new ReadCharacteristicTask(this, bluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            ReadCharacteristicTask task = new ReadCharacteristicTask(this, bluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
