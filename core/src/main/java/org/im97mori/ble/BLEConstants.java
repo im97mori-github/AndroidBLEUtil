@@ -2473,6 +2473,12 @@ public class BLEConstants {
          * Phone Alert Status Service (Service UUID: 0x180E)
          */
         public static final UUID PHONE_ALERT_STATUS_SERVICE = UUID.fromString("0000180e-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Alert Notification Service (Service UUID: 0x1811)
+         */
+        public static final UUID ALERT_NOTIFICATION_SERVICE = UUID.fromString("00001811-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -2920,6 +2926,33 @@ public class BLEConstants {
          */
         public static final UUID RINGER_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002A40-0000-1000-8000-00805f9b34fb");
 
+        // Alert Notification Service (Service UUID: 0x1811)
+
+        /**
+         * Supported New Alert Category (Characteristic UUID: 0x2A47)
+         */
+        public static final UUID SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC = UUID.fromString("00002A47-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * New Alert (Characteristic UUID: 0x2A46)
+         */
+        public static final UUID NEW_ALERT_CHARACTERISTIC = UUID.fromString("00002A46-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Supported Unread Alert Category (Characteristic UUID: 0x2A48)
+         */
+        public static final UUID SUPPORTED_UNREAD_ALERT_CATEGORY_CHARACTERISTIC = UUID.fromString("00002A48-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Unread Alert Status (Characteristic UUID: 0x2A45)
+         */
+        public static final UUID UNREAD_ALERT_STATUS_CHARACTERISTIC = UUID.fromString("00002A45-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Alert Notification Control Point (Characteristic UUID: 0x2A44)
+         */
+        public static final UUID ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002A44-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -3165,6 +3198,11 @@ public class BLEConstants {
         public static final int APPLICATION_ERROR_9D = 0x9d;
         public static final int APPLICATION_ERROR_9E = 0x9e;
         public static final int APPLICATION_ERROR_9F = 0x9f;
+
+        /**
+         * Command not supported(Alert Notification Service v1.0 1.6)
+         */
+        public static final int COMMAND_NOT_SUPPORTED = 0xa0;
 
         // Reserved for Future Use
 
