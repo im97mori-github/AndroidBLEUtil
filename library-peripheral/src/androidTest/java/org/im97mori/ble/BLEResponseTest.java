@@ -715,7 +715,9 @@ public class BLEResponseTest {
         mUntil = WriteCharacteristicTask_TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
+                , null
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                , null
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -731,7 +733,9 @@ public class BLEResponseTest {
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
+        assertNotNull(bleResult.getServiceInstanceId());
         assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
+        assertNotNull(bleResult.getCharacteristicInstanceId());
         assertArrayEquals(data, bleResult.getValues());
         assertNull(bleResult.getArgument());
         mNeedWait = false;
@@ -748,7 +752,9 @@ public class BLEResponseTest {
         mUntil = WriteCharacteristicTask_TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
+                , null
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                , null
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -764,7 +770,9 @@ public class BLEResponseTest {
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
+        assertNotNull(bleResult.getServiceInstanceId());
         assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
+        assertNotNull(bleResult.getCharacteristicInstanceId());
         assertArrayEquals(data, bleResult.getValues());
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
@@ -779,7 +787,9 @@ public class BLEResponseTest {
         mUntil = WriteCharacteristicTask_TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
+                , null
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_ERROR
+                , null
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -795,7 +805,9 @@ public class BLEResponseTest {
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
+        assertNotNull(bleResult.getServiceInstanceId());
         assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_ERROR, bleResult.getCharacteristicUUID());
+        assertNotNull(bleResult.getCharacteristicInstanceId());
         assertEquals(BLEConstants.ErrorCodes.APPLICATION_ERROR_9F, bleResult.getStatus());
         assertNull(bleResult.getArgument());
         mNeedWait = false;
@@ -812,8 +824,9 @@ public class BLEResponseTest {
         mUntil = WriteCharacteristicTask_TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
+                , null
                 , UNDIFINED_CHARACTERISTIC_UUID
-                , new ByteArrayInterface() {
+                , null, new ByteArrayInterface() {
                     @Override
                     @NonNull
                     public byte[] getBytes() {
@@ -828,7 +841,9 @@ public class BLEResponseTest {
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
+        assertNull(bleResult.getServiceInstanceId());
         assertEquals(UNDIFINED_CHARACTERISTIC_UUID, bleResult.getCharacteristicUUID());
+        assertNull(bleResult.getCharacteristicInstanceId());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
@@ -843,7 +858,9 @@ public class BLEResponseTest {
         mUntil = WriteCharacteristicTask_TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 UNDIFINED_SERVICE_UUID
+                , null
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                , null
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -859,7 +876,9 @@ public class BLEResponseTest {
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(UNDIFINED_SERVICE_UUID, bleResult.getServiceUUID());
+        assertNull(bleResult.getServiceInstanceId());
         assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
+        assertNull(bleResult.getCharacteristicInstanceId());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
         mNeedWait = false;
@@ -873,7 +892,9 @@ public class BLEResponseTest {
         mUntil = WriteCharacteristicTask_TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 UNDIFINED_SERVICE_UUID
+                , null
                 , UNDIFINED_CHARACTERISTIC_UUID
+                , null
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -889,7 +910,9 @@ public class BLEResponseTest {
         assertNotNull(bleResult);
         assertEquals(RESULT_FAILED, bleResult.getResultCode());
         assertEquals(UNDIFINED_SERVICE_UUID, bleResult.getServiceUUID());
+        assertNull(bleResult.getServiceInstanceId());
         assertEquals(UNDIFINED_CHARACTERISTIC_UUID, bleResult.getCharacteristicUUID());
+        assertNull(bleResult.getCharacteristicInstanceId());
         assertEquals(BLEConstants.ErrorCodes.UNKNOWN, bleResult.getStatus());
         assertNull(bleResult.getArgument());
         mNeedWait = false;
@@ -903,7 +926,9 @@ public class BLEResponseTest {
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
+                , null
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S
+                , null
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -919,7 +944,9 @@ public class BLEResponseTest {
         assertNotNull(bleResult);
         assertEquals(RESULT_TIMEOUT, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
+        assertNull(bleResult.getServiceInstanceId());
         assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S, bleResult.getCharacteristicUUID());
+        assertNull(bleResult.getCharacteristicInstanceId());
         assertNull(bleResult.getArgument());
     }
 
@@ -934,7 +961,9 @@ public class BLEResponseTest {
         final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
+                , null
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S
+                , null
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -950,7 +979,9 @@ public class BLEResponseTest {
         assertNotNull(bleResult);
         assertEquals(RESULT_TIMEOUT, bleResult.getResultCode());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
+        assertNull(bleResult.getServiceInstanceId());
         assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S, bleResult.getCharacteristicUUID());
+        assertNull(bleResult.getCharacteristicInstanceId());
         assertNotNull(bleResult.getArgument());
         assertEquals(randomLong, bleResult.getArgument().getLong("a"));
     }
@@ -963,7 +994,9 @@ public class BLEResponseTest {
         mUntil = WriteCharacteristicTask_TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
+                , null
                 , WRITABLE_NO_RESPONSE_CHARACTERISTIC_UUID
+                , null
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -978,8 +1011,10 @@ public class BLEResponseTest {
                 , true);
         assertNotNull(bleResult);
         assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertNotNull(bleResult.getServiceInstanceId());
         assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
         assertEquals(WRITABLE_NO_RESPONSE_CHARACTERISTIC_UUID, bleResult.getCharacteristicUUID());
+        assertNotNull(bleResult.getCharacteristicInstanceId());
         assertArrayEquals(data, bleResult.getValues());
         assertNull(bleResult.getArgument());
         mNeedWait = false;
@@ -994,8 +1029,371 @@ public class BLEResponseTest {
         BLESyncConnection.BLEResult bleResult = BLESyncConnection.createWriteCharacteristicTask(
                 BLE_CONNECTION
                 , DEFAULT_SERVICE_UUID
-                , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                , null, WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                , null, new ByteArrayInterface() {
+                    @Override
+                    @NonNull
+                    public byte[] getBytes() {
+                        return data;
+                    }
+                }
+                , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                , WriteCharacteristicTask_TIMEOUT_MILLIS
+                , DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertEquals(DEFAULT_SERVICE_UUID, bleResult.getServiceUUID());
+        assertEquals(WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT, bleResult.getCharacteristicUUID());
+        assertArrayEquals(data, bleResult.getValues());
+        assertNull(bleResult.getArgument());
+        mNeedWait = false;
+    }
+
+    @Test
+    public void test_createWriteCharacteristicTask101() {
+        assertNotNull(SERVICE_LIST);
+
+        UUID serviceUUID = DEFAULT_SERVICE_UUID;
+        UUID characteristicUUID = WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT;
+
+        Integer serviceInstanceId = null;
+        Integer characteristicInstanceId = null;
+        for (BluetoothGattService bluetoothGattService : SERVICE_LIST) {
+            if (serviceUUID.equals(bluetoothGattService.getUuid())) {
+                BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(characteristicUUID);
+                if (bluetoothGattCharacteristic != null) {
+                    serviceInstanceId = bluetoothGattService.getInstanceId();
+                    characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
+                    break;
+                }
+            }
+        }
+        assertNotNull(serviceInstanceId);
+        assertNotNull(characteristicInstanceId);
+
+        final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        mUntil = WriteCharacteristicTask_TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
+        BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
+                serviceUUID
+                , serviceInstanceId
+                , characteristicUUID
+                , characteristicInstanceId
                 , new ByteArrayInterface() {
+                    @Override
+                    @NonNull
+                    public byte[] getBytes() {
+                        return data;
+                    }
+                }
+                , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                , WriteCharacteristicTask_TIMEOUT_MILLIS
+                , DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertEquals(serviceUUID, bleResult.getServiceUUID());
+        assertNotNull(bleResult.getServiceInstanceId());
+        assertEquals(serviceInstanceId, bleResult.getServiceInstanceId());
+        assertEquals(characteristicUUID, bleResult.getCharacteristicUUID());
+        assertNotNull(bleResult.getCharacteristicInstanceId());
+        assertEquals(characteristicInstanceId, bleResult.getCharacteristicInstanceId());
+        assertArrayEquals(data, bleResult.getValues());
+        assertNull(bleResult.getArgument());
+        mNeedWait = false;
+    }
+
+    @Test
+    public void test_createWriteCharacteristicTask102() {
+        assertNotNull(SERVICE_LIST);
+
+        UUID serviceUUID = DEFAULT_SERVICE_UUID;
+        UUID characteristicUUID = WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT;
+
+        Integer serviceInstanceId = null;
+        Integer characteristicInstanceId = null;
+        for (BluetoothGattService bluetoothGattService : SERVICE_LIST) {
+            if (serviceUUID.equals(bluetoothGattService.getUuid())) {
+                BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(characteristicUUID);
+                if (bluetoothGattCharacteristic != null) {
+                    serviceInstanceId = bluetoothGattService.getInstanceId();
+                    characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
+                    break;
+                }
+            }
+        }
+        assertNotNull(serviceInstanceId);
+        assertNotNull(characteristicInstanceId);
+
+        long randomLong = new Random().nextLong();
+        Bundle bundle = new Bundle();
+        bundle.putLong("a", randomLong);
+        final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        mUntil = WriteCharacteristicTask_TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
+        BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
+                serviceUUID
+                , serviceInstanceId
+                , characteristicUUID
+                , characteristicInstanceId
+                , new ByteArrayInterface() {
+                    @Override
+                    @NonNull
+                    public byte[] getBytes() {
+                        return data;
+                    }
+                }
+                , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                , WriteCharacteristicTask_TIMEOUT_MILLIS
+                , DateUtils.MINUTE_IN_MILLIS
+                , bundle
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertEquals(serviceUUID, bleResult.getServiceUUID());
+        assertNotNull(bleResult.getServiceInstanceId());
+        assertEquals(serviceInstanceId, bleResult.getServiceInstanceId());
+        assertEquals(characteristicUUID, bleResult.getCharacteristicUUID());
+        assertNotNull(bleResult.getCharacteristicInstanceId());
+        assertEquals(characteristicInstanceId, bleResult.getCharacteristicInstanceId());
+        assertArrayEquals(data, bleResult.getValues());
+        assertNotNull(bleResult.getArgument());
+        assertEquals(randomLong, bleResult.getArgument().getLong("a"));
+        mNeedWait = false;
+    }
+
+    @Test
+    public void test_createWriteCharacteristicTask103() {
+        assertNotNull(SERVICE_LIST);
+
+        UUID serviceUUID = DEFAULT_SERVICE_UUID;
+        UUID characteristicUUID = WRITABLE_CHARACTERISTIC_UUID_WITH_ERROR;
+
+        Integer serviceInstanceId = null;
+        Integer characteristicInstanceId = null;
+        for (BluetoothGattService bluetoothGattService : SERVICE_LIST) {
+            if (serviceUUID.equals(bluetoothGattService.getUuid())) {
+                BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(characteristicUUID);
+                if (bluetoothGattCharacteristic != null) {
+                    serviceInstanceId = bluetoothGattService.getInstanceId();
+                    characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
+                    break;
+                }
+            }
+        }
+        assertNotNull(serviceInstanceId);
+        assertNotNull(characteristicInstanceId);
+
+        final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        mUntil = WriteCharacteristicTask_TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
+        BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
+                serviceUUID
+                , serviceInstanceId
+                , characteristicUUID
+                , characteristicInstanceId
+                , new ByteArrayInterface() {
+                    @Override
+                    @NonNull
+                    public byte[] getBytes() {
+                        return data;
+                    }
+                }
+                , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                , WriteCharacteristicTask_TIMEOUT_MILLIS
+                , DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_FAILED, bleResult.getResultCode());
+        assertEquals(serviceUUID, bleResult.getServiceUUID());
+        assertNotNull(bleResult.getServiceInstanceId());
+        assertEquals(serviceInstanceId, bleResult.getServiceInstanceId());
+        assertEquals(characteristicUUID, bleResult.getCharacteristicUUID());
+        assertNotNull(bleResult.getCharacteristicInstanceId());
+        assertEquals(characteristicInstanceId, bleResult.getCharacteristicInstanceId());
+        assertEquals(BLEConstants.ErrorCodes.APPLICATION_ERROR_9F, bleResult.getStatus());
+        assertNull(bleResult.getArgument());
+        mNeedWait = false;
+    }
+
+    @Test
+    public void test_createWriteCharacteristicTask107() {
+        assertNotNull(SERVICE_LIST);
+
+        UUID serviceUUID = DEFAULT_SERVICE_UUID;
+        UUID characteristicUUID = WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S;
+
+        Integer serviceInstanceId = null;
+        Integer characteristicInstanceId = null;
+        for (BluetoothGattService bluetoothGattService : SERVICE_LIST) {
+            if (serviceUUID.equals(bluetoothGattService.getUuid())) {
+                BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(characteristicUUID);
+                if (bluetoothGattCharacteristic != null) {
+                    serviceInstanceId = bluetoothGattService.getInstanceId();
+                    characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
+                    break;
+                }
+            }
+        }
+        assertNotNull(serviceInstanceId);
+        assertNotNull(characteristicInstanceId);
+
+        mUntil = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
+        final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+        BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
+                serviceUUID
+                , serviceInstanceId
+                , characteristicUUID
+                , characteristicInstanceId
+                , new ByteArrayInterface() {
+                    @Override
+                    @NonNull
+                    public byte[] getBytes() {
+                        return data;
+                    }
+                }
+                , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                , 0
+                , 0
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_TIMEOUT, bleResult.getResultCode());
+        assertEquals(serviceUUID, bleResult.getServiceUUID());
+        assertNotNull(bleResult.getServiceInstanceId());
+        assertEquals(serviceInstanceId, bleResult.getServiceInstanceId());
+        assertEquals(characteristicUUID, bleResult.getCharacteristicUUID());
+        assertNotNull(bleResult.getCharacteristicInstanceId());
+        assertEquals(characteristicInstanceId, bleResult.getCharacteristicInstanceId());
+        assertNull(bleResult.getArgument());
+    }
+
+    @Test
+    public void test_createWriteCharacteristicTask108() {
+        assertNotNull(SERVICE_LIST);
+
+        UUID serviceUUID = DEFAULT_SERVICE_UUID;
+        UUID characteristicUUID = WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_WAIT_10S;
+
+        Integer serviceInstanceId = null;
+        Integer characteristicInstanceId = null;
+        for (BluetoothGattService bluetoothGattService : SERVICE_LIST) {
+            if (serviceUUID.equals(bluetoothGattService.getUuid())) {
+                BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(characteristicUUID);
+                if (bluetoothGattCharacteristic != null) {
+                    serviceInstanceId = bluetoothGattService.getInstanceId();
+                    characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
+                    break;
+                }
+            }
+        }
+        assertNotNull(serviceInstanceId);
+        assertNotNull(characteristicInstanceId);
+
+        mUntil = DateUtils.SECOND_IN_MILLIS * 10 + SystemClock.elapsedRealtime();
+        long randomLong = new Random().nextLong();
+        Bundle bundle = new Bundle();
+        bundle.putLong("a", randomLong);
+        final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+        BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
+                serviceUUID
+                , serviceInstanceId
+                , characteristicUUID
+                , characteristicInstanceId
+                , new ByteArrayInterface() {
+                    @Override
+                    @NonNull
+                    public byte[] getBytes() {
+                        return data;
+                    }
+                }
+                , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                , 0
+                , 0
+                , bundle
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_TIMEOUT, bleResult.getResultCode());
+        assertEquals(serviceUUID, bleResult.getServiceUUID());
+        assertNotNull(bleResult.getServiceInstanceId());
+        assertEquals(serviceInstanceId, bleResult.getServiceInstanceId());
+        assertEquals(characteristicUUID, bleResult.getCharacteristicUUID());
+        assertNotNull(bleResult.getCharacteristicInstanceId());
+        assertEquals(characteristicInstanceId, bleResult.getCharacteristicInstanceId());
+        assertNotNull(bleResult.getArgument());
+        assertEquals(randomLong, bleResult.getArgument().getLong("a"));
+    }
+
+    @Test
+    public void test_createWriteCharacteristicTask109() {
+        assertNotNull(SERVICE_LIST);
+
+        UUID serviceUUID = DEFAULT_SERVICE_UUID;
+        UUID characteristicUUID = WRITABLE_NO_RESPONSE_CHARACTERISTIC_UUID;
+
+        Integer serviceInstanceId = null;
+        Integer characteristicInstanceId = null;
+        for (BluetoothGattService bluetoothGattService : SERVICE_LIST) {
+            if (serviceUUID.equals(bluetoothGattService.getUuid())) {
+                BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(characteristicUUID);
+                if (bluetoothGattCharacteristic != null) {
+                    serviceInstanceId = bluetoothGattService.getInstanceId();
+                    characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
+                    break;
+                }
+            }
+        }
+        assertNotNull(serviceInstanceId);
+        assertNotNull(characteristicInstanceId);
+
+        final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        mUntil = WriteCharacteristicTask_TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
+        BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
+                serviceUUID
+                , serviceInstanceId
+                , characteristicUUID
+                , characteristicInstanceId
+                , new ByteArrayInterface() {
+                    @Override
+                    @NonNull
+                    public byte[] getBytes() {
+                        return data;
+                    }
+                }
+                , BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE
+                , WriteCharacteristicTask_TIMEOUT_MILLIS
+                , DateUtils.MINUTE_IN_MILLIS
+                , null
+                , true);
+        assertNotNull(bleResult);
+        assertEquals(RESULT_SUCCESS, bleResult.getResultCode());
+        assertEquals(serviceUUID, bleResult.getServiceUUID());
+        assertNotNull(bleResult.getServiceInstanceId());
+        assertEquals(serviceInstanceId, bleResult.getServiceInstanceId());
+        assertEquals(characteristicUUID, bleResult.getCharacteristicUUID());
+        assertNotNull(bleResult.getCharacteristicInstanceId());
+        assertEquals(characteristicInstanceId, bleResult.getCharacteristicInstanceId());
+        assertArrayEquals(data, bleResult.getValues());
+        assertNull(bleResult.getArgument());
+        mNeedWait = false;
+    }
+
+    @Test
+    public void test_createWriteCharacteristicTask110() {
+        assertNotNull(BLE_CONNECTION);
+        final byte[] data = String.valueOf(SystemClock.elapsedRealtime()).getBytes();
+
+        mUntil = WriteCharacteristicTask_TIMEOUT_MILLIS + SystemClock.elapsedRealtime();
+        BLESyncConnection.BLEResult bleResult = BLESyncConnection.createWriteCharacteristicTask(
+                BLE_CONNECTION
+                , DEFAULT_SERVICE_UUID
+                , null, WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                , null, new ByteArrayInterface() {
                     @Override
                     @NonNull
                     public byte[] getBytes() {
@@ -2252,7 +2650,9 @@ public class BLEResponseTest {
         final String newMessage = UUID.randomUUID().toString();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
+                , null
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
+                , null
                 , new MockControl(DEFAULT_SERVICE_UUID
                         , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                         , MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
@@ -2292,7 +2692,9 @@ public class BLEResponseTest {
 
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
+                , null
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
+                , null
                 , new MockControl(DEFAULT_SERVICE_UUID
                         , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                         , MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
@@ -2331,7 +2733,9 @@ public class BLEResponseTest {
 
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
+                , null
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
+                , null
                 , new MockControl(MOCK_CONTROL_SERVICE_UUID
                         , MOCK_CONTROL_CHARACTERISTIC_UUID
                         , MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
@@ -2357,7 +2761,9 @@ public class BLEResponseTest {
 
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
+                , null
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
+                , null
                 , new MockControl(DEFAULT_SERVICE_UUID
                         , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                         , MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
@@ -2374,7 +2780,9 @@ public class BLEResponseTest {
 
         bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
+                , null
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
+                , null
                 , new MockControl(DEFAULT_SERVICE_UUID
                         , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                         , MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
@@ -2416,7 +2824,9 @@ public class BLEResponseTest {
         final String newMessage = UUID.randomUUID().toString();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
+                , null
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
+                , null
                 , new MockControl(DEFAULT_SERVICE_UUID
                         , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                         , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
@@ -2458,7 +2868,9 @@ public class BLEResponseTest {
 
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
+                , null
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
+                , null
                 , new MockControl(DEFAULT_SERVICE_UUID
                         , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                         , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
@@ -2499,7 +2911,9 @@ public class BLEResponseTest {
 
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
+                , null
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
+                , null
                 , new MockControl(MOCK_CONTROL_SERVICE_UUID
                         , MOCK_CONTROL_CHARACTERISTIC_UUID
                         , MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
@@ -2526,7 +2940,9 @@ public class BLEResponseTest {
         final String newMessage = UUID.randomUUID().toString();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
+                , null
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
+                , null
                 , new MockControl(DEFAULT_SERVICE_UUID
                         , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                         , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
@@ -2543,7 +2959,9 @@ public class BLEResponseTest {
 
         bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
+                , null
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
+                , null
                 , new MockControl(DEFAULT_SERVICE_UUID
                         , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
                         , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
@@ -2587,7 +3005,9 @@ public class BLEResponseTest {
         final String newMessage = UUID.randomUUID().toString();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
+                , null
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
+                , null
                 , new MockControl(DEFAULT_SERVICE_UUID
                         , NOTIFICATABLE_CHARACTERISTIC_UUID
                         , MOCK_CONTROL_TARGET_NOTIFICATION_UUID
@@ -2660,7 +3080,9 @@ public class BLEResponseTest {
         final String newMessage = UUID.randomUUID().toString();
         BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
+                , null
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
+                , null
                 , new MockControl(DEFAULT_SERVICE_UUID
                         , NOTIFICATABLE_CHARACTERISTIC_UUID
                         , MOCK_CONTROL_TARGET_NOTIFICATION_UUID
@@ -2677,7 +3099,9 @@ public class BLEResponseTest {
 
         bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 MOCK_CONTROL_SERVICE_UUID
+                , null
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
+                , null
                 , new MockControl(DEFAULT_SERVICE_UUID
                         , NOTIFICATABLE_CHARACTERISTIC_UUID
                         , MOCK_CONTROL_TARGET_NOTIFICATION_UUID
@@ -2785,7 +3209,9 @@ public class BLEResponseTest {
 
         bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
+                , null
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                , null
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -2832,7 +3258,9 @@ public class BLEResponseTest {
 
         bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
+                , null
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                , null
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -2878,7 +3306,9 @@ public class BLEResponseTest {
 
         bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
+                , null
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                , null
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull
@@ -2925,7 +3355,9 @@ public class BLEResponseTest {
 
         bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
                 DEFAULT_SERVICE_UUID
+                , null
                 , WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                , null
                 , new ByteArrayInterface() {
                     @Override
                     @NonNull

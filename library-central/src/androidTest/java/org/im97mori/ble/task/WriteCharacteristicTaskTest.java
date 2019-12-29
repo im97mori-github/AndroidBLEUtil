@@ -8,6 +8,7 @@ import android.os.Looper;
 import android.os.Message;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
@@ -29,7 +30,7 @@ public class WriteCharacteristicTaskTest {
     public void test_createInitialMessage001() {
         UUID serviceUUID = UUID.randomUUID();
         UUID characteristicUUID = UUID.randomUUID();
-        WriteCharacteristicTask task = new WriteCharacteristicTask(null, null, null, serviceUUID, characteristicUUID, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null);
+        WriteCharacteristicTask task = new WriteCharacteristicTask(null, null, null, serviceUUID, null, characteristicUUID, null, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null);
         Message message = task.createInitialMessage();
 
         assertNotNull(message);
@@ -47,17 +48,22 @@ public class WriteCharacteristicTaskTest {
     @Test
     public void test_createWriteCharacteristicSuccessMessage001() {
         UUID serviceUUID = UUID.randomUUID();
+        int serviceInstanceId = 1;
         UUID characteristicUUID = UUID.randomUUID();
+        int characteristicInstanceId = 2;
         byte[] original = new byte[0];
-        Message message = WriteCharacteristicTask.createWriteCharacteristicSuccessMessage(serviceUUID, characteristicUUID, original);
+        Message message = WriteCharacteristicTask.createWriteCharacteristicSuccessMessage(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, original);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
         assertEquals(serviceUUID, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
+        assertEquals(serviceInstanceId, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
+        assertEquals(characteristicInstanceId, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_VALUES));
         assertArrayEquals(original, bundle.getByteArray(AbstractBLETask.KEY_VALUES));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
@@ -67,17 +73,22 @@ public class WriteCharacteristicTaskTest {
     @Test
     public void test_createWriteCharacteristicErrorMessage001() {
         UUID serviceUUID = UUID.randomUUID();
+        int serviceInstanceId = 1;
         UUID characteristicUUID = UUID.randomUUID();
+        int characteristicInstanceId = 2;
         int status = new Random().nextInt();
-        Message message = WriteCharacteristicTask.createWriteCharacteristicErrorMessage(serviceUUID, characteristicUUID, status);
+        Message message = WriteCharacteristicTask.createWriteCharacteristicErrorMessage(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
         assertEquals(serviceUUID, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
+        assertEquals(serviceInstanceId, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
+        assertEquals(characteristicInstanceId, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
         assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
@@ -95,7 +106,7 @@ public class WriteCharacteristicTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            WriteCharacteristicTask task = new WriteCharacteristicTask(new MockBLEConnection(), null, mockTaskHandler, null, null, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteDescriptorTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            WriteCharacteristicTask task = new WriteCharacteristicTask(new MockBLEConnection(), null, mockTaskHandler, null, null, null, null, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteDescriptorTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -115,7 +126,7 @@ public class WriteCharacteristicTaskTest {
             BaseBLECallback callback = new BaseBLECallback() {
 
                 @Override
-                public void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, Bundle argument) {
+                public void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, Bundle argument) {
                     result.set(true);
                 }
             };
@@ -128,7 +139,7 @@ public class WriteCharacteristicTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            WriteCharacteristicTask task = new WriteCharacteristicTask(mockBleConnection, null, mockTaskHandler, null, null, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteDescriptorTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            WriteCharacteristicTask task = new WriteCharacteristicTask(mockBleConnection, null, mockTaskHandler, null, null, null, null, null, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteDescriptorTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());

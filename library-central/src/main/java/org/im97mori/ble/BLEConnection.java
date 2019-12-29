@@ -504,9 +504,9 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
         try {
             BluetoothGattService service = characteristic.getService();
             if (BluetoothGatt.GATT_SUCCESS == status) {
-                mTaskHandler.sendProcessingMessage(WriteCharacteristicTask.createWriteCharacteristicSuccessMessage(service.getUuid(), characteristic.getUuid(), characteristic.getValue()));
+                mTaskHandler.sendProcessingMessage(WriteCharacteristicTask.createWriteCharacteristicSuccessMessage(service.getUuid(), service.getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), characteristic.getValue()));
             } else {
-                mTaskHandler.sendProcessingMessage(WriteCharacteristicTask.createWriteCharacteristicErrorMessage(service.getUuid(), characteristic.getUuid(), status));
+                mTaskHandler.sendProcessingMessage(WriteCharacteristicTask.createWriteCharacteristicErrorMessage(service.getUuid(), service.getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), status));
             }
 
             // if characteristic / descriptor callbacked, clear busy status
@@ -791,18 +791,18 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     }
 
     /**
-     * @see #createWriteCharacteristicTask(UUID, UUID, ByteArrayInterface, int, long, Bundle, BLECallback)
+     * @see #createWriteCharacteristicTask(UUID, Integer, UUID, Integer, ByteArrayInterface, int, long, Bundle, BLECallback)
      */
     @Nullable
     public Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID
             , @NonNull UUID characteristicUUID
             , @NonNull ByteArrayInterface byteArrayInterface
             , long timeout) {
-        return createWriteCharacteristicTask(serviceUUID, characteristicUUID, byteArrayInterface, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, timeout, null, null);
+        return createWriteCharacteristicTask(serviceUUID, null, characteristicUUID, null, byteArrayInterface, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, timeout, null, null);
     }
 
     /**
-     * @see #createWriteCharacteristicTask(UUID, UUID, ByteArrayInterface, int, long, Bundle, BLECallback)
+     * @see #createWriteCharacteristicTask(UUID, Integer, UUID, Integer, ByteArrayInterface, int, long, Bundle, BLECallback)
      */
     @Nullable
     public Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID
@@ -810,24 +810,28 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @NonNull ByteArrayInterface byteArrayInterface
             , int writeType
             , long timeout) {
-        return createWriteCharacteristicTask(serviceUUID, characteristicUUID, byteArrayInterface, writeType, timeout, null, null);
+        return createWriteCharacteristicTask(serviceUUID, null, characteristicUUID, null, byteArrayInterface, writeType, timeout, null, null);
     }
 
     /**
      * Create write characteristic task
      *
-     * @param serviceUUID        service {@link UUID}
-     * @param characteristicUUID characteristic {@link UUID}
-     * @param byteArrayInterface write data
-     * @param writeType          one of {@link BluetoothGattCharacteristic#WRITE_TYPE_DEFAULT}, {@link BluetoothGattCharacteristic#WRITE_TYPE_NO_RESPONSE}, {@link BluetoothGattCharacteristic#WRITE_TYPE_SIGNED}
-     * @param timeout            timeout(millis)
-     * @param argument           callback argument
-     * @param bleCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
+     * @param serviceUUID              service {@link UUID}
+     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       characteristic {@link UUID}
+     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param byteArrayInterface       write data
+     * @param writeType                one of {@link BluetoothGattCharacteristic#WRITE_TYPE_DEFAULT}, {@link BluetoothGattCharacteristic#WRITE_TYPE_NO_RESPONSE}, {@link BluetoothGattCharacteristic#WRITE_TYPE_SIGNED}
+     * @param timeout                  timeout(millis)
+     * @param argument                 callback argument
+     * @param bleCallback              {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
     @Nullable
     public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
             , @NonNull ByteArrayInterface byteArrayInterface
             , int writeType
             , long timeout
@@ -835,7 +839,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (mBluetoothGatt != null) {
-            WriteCharacteristicTask task = new WriteCharacteristicTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, byteArrayInterface, writeType, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            WriteCharacteristicTask task = new WriteCharacteristicTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, byteArrayInterface, writeType, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
