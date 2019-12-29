@@ -25,6 +25,7 @@
     <string name="menu_read_remote_rssi_sync">Read Remote Rssi(Synchronous)</string>
     <string name="menu_read_characteristic">Read Characteristic</string>
     <string name="menu_write_characteristic">Write Characteristic</string>
+    <string name="menu_read_descriptor">Read Descriptor</string>
     <string name="menu_write_notification">Write CCCD Notification</string>
     <string name="menu_write_indication">Write CCCD Indication</string>
     <string name="menu_write_notification_stop">Write CCCD Notification stop</string>

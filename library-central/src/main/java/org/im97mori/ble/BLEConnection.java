@@ -563,9 +563,9 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
                     gatt.setCharacteristicNotification(descriptor.getCharacteristic(), isNotification);
                 }
                 // read decriptor task finished
-                mTaskHandler.sendProcessingMessage(ReadDescriptorTask.createReadDescriptorSuccessMessage(service.getUuid(), characteristicUUID, descriptorUUID, descriptor.getValue()));
+                mTaskHandler.sendProcessingMessage(ReadDescriptorTask.createReadDescriptorSuccessMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, descriptor.getValue()));
             } else {
-                mTaskHandler.sendProcessingMessage(ReadDescriptorTask.createReadDescriptorErrorMessage(service.getUuid(), characteristicUUID, descriptorUUID, status));
+                mTaskHandler.sendProcessingMessage(ReadDescriptorTask.createReadDescriptorErrorMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, status));
             }
 
             // if characteristic / descriptor callbacked, clear busy status
@@ -764,7 +764,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * Create read characteristic task
      *
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target characteristic incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
@@ -843,37 +843,41 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     }
 
     /**
-     * @see #createReadDescriptorTask(UUID, UUID, UUID, long, Bundle, BLECallback)
+     * @see #createReadDescriptorTask(UUID, Integer, UUID, Integer, UUID, long, Bundle, BLECallback)
      */
     @Nullable
     public Integer createReadDescriptorTask(@NonNull UUID serviceUUID
             , @NonNull UUID characteristicUUID
             , @NonNull UUID descriptorUUID
             , long timeout) {
-        return createReadDescriptorTask(serviceUUID, characteristicUUID, descriptorUUID, timeout, null, null);
+        return createReadDescriptorTask(serviceUUID, null, characteristicUUID, null, descriptorUUID, timeout, null, null);
     }
 
     /**
      * Create read descriptor task
      *
-     * @param serviceUUID        service {@link UUID}
-     * @param characteristicUUID characteristic {@link UUID}
-     * @param descriptorUUID     descriptor {@link UUID}
-     * @param timeout            timeout(millis)
-     * @param argument           callback argument
-     * @param bleCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
+     * @param serviceUUID              service {@link UUID}
+     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       characteristic {@link UUID}
+     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorUUID           descriptor {@link UUID}
+     * @param timeout                  timeout(millis)
+     * @param argument                 callback argument
+     * @param bleCallback              {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
     @Nullable
     public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
             , @NonNull UUID descriptorUUID
             , long timeout
             , @Nullable Bundle argument
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (mBluetoothGatt != null) {
-            ReadDescriptorTask task = new ReadDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, descriptorUUID, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            ReadDescriptorTask task = new ReadDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }

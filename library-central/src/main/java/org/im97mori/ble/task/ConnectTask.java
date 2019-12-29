@@ -25,9 +25,9 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 public class ConnectTask extends AbstractBLETask {
 
     /**
-     * Default timeout(millis) for connect:30 or 60sec
+     * Default timeout(millis) for connect:30sec
      */
-    public static final long TIMEOUT_MILLIS = DiscoverServiceTask.TIMEOUT_MILLIS + (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP ? 0 : RequestMtuTask.TIMEOUT_MILLIS);
+    public static final long TIMEOUT_MILLIS = DiscoverServiceTask.TIMEOUT_MILLIS;
 
     /**
      * create connect success message
@@ -91,7 +91,11 @@ public class ConnectTask extends AbstractBLETask {
             , @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
         mTaskHandler = taskHandler;
-        mTimeout = timeout;
+        if (Build.VERSION_CODES.LOLLIPOP <= Build.VERSION.SDK_INT && needMtuSetting) {
+            mTimeout = timeout + RequestMtuTask.TIMEOUT_MILLIS;
+        } else {
+            mTimeout = timeout;
+        }
         mNeedMtuSetting = needMtuSetting;
         mArgument = argument;
     }

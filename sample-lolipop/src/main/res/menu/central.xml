@@ -37,6 +37,9 @@
         android:id="@+id/write_characteristc"
         android:title="@string/menu_write_characteristic" />
     <item
+        android:id="@+id/read_descriptor"
+        android:title="@string/menu_read_descriptor" />
+    <item
         android:id="@+id/write_notification"
         android:title="@string/menu_write_notification" />
     <item

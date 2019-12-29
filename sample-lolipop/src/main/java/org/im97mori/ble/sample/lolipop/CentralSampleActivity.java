@@ -49,6 +49,7 @@ import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.DiscoverServiceTask;
 import org.im97mori.ble.task.ExecuteReliableWriteTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
+import org.im97mori.ble.task.ReadDescriptorTask;
 import org.im97mori.ble.task.ReadPhyTask;
 import org.im97mori.ble.task.ReadRemoteRssiTask;
 import org.im97mori.ble.task.RequestMtuTask;
@@ -60,6 +61,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
@@ -67,6 +69,7 @@ import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.DEFAULT_
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.INDICATABLE_CHARACTERISTIC_UUID;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.NOTIFICATABLE_CHARACTERISTIC_UUID;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT;
+import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.WRITABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT;
 import static org.im97mori.ble.BLEServerConnection.MOCK_CONTROL_CHARACTERISTIC_UUID;
 import static org.im97mori.ble.BLEServerConnection.MOCK_CONTROL_SERVICE_UUID;
@@ -299,7 +302,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                             mBLECallbackSample.onDiscoverServiceFailed(0, target.getBluetoothDevice(), BLEConstants.ErrorCodes.UNKNOWN, null);
                         } else {
                             if (RESULT_SUCCESS == result.getResultCode()) {
-                                mBLECallbackSample.onDiscoverServiceSuccess(0, target.getBluetoothDevice(), result.getServiceList(), result.getArgument());
+                                mBLECallbackSample.onDiscoverServiceSuccess(0, target.getBluetoothDevice(), Objects.requireNonNull(result.getServiceList()), result.getArgument());
                             } else if (RESULT_FAILED == result.getResultCode()) {
                                 mBLECallbackSample.onDiscoverServiceFailed(0, target.getBluetoothDevice(), result.getStatus(), result.getArgument());
                             } else if (RESULT_TIMEOUT == result.getResultCode()) {
@@ -339,33 +342,37 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                 }
             }.start();
         } else if (R.id.read_phy == item.getItemId()) {
-            mBleConnection.createReadPhyTask(ReadPhyTask.TIMEOUT_MILLIS, null, null);
+            if (Build.VERSION_CODES.O <= Build.VERSION.SDK_INT) {
+                mBleConnection.createReadPhyTask(ReadPhyTask.TIMEOUT_MILLIS, null, null);
+            }
         } else if (R.id.read_phy_sync == item.getItemId()) {
-            new Thread() {
-                @Override
-                public void run() {
-                    BLEConnection target = mBleConnection;
-                    if (target != null) {
-                        BLESyncConnection.BLEResult result = BLESyncConnection.createReadPhyTask(target
-                                , ReadPhyTask.TIMEOUT_MILLIS
-                                , ReadPhyTask.TIMEOUT_MILLIS
-                                , null
-                                , false);
+            if (Build.VERSION_CODES.O <= Build.VERSION.SDK_INT) {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        BLEConnection target = mBleConnection;
+                        if (target != null) {
+                            BLESyncConnection.BLEResult result = BLESyncConnection.createReadPhyTask(target
+                                    , ReadPhyTask.TIMEOUT_MILLIS
+                                    , ReadPhyTask.TIMEOUT_MILLIS
+                                    , null
+                                    , false);
 
-                        if (result == null) {
-                            mBLECallbackSample.onReadPhyFailed(0, target.getBluetoothDevice(), BLEConstants.ErrorCodes.UNKNOWN, null);
-                        } else {
-                            if (RESULT_SUCCESS == result.getResultCode()) {
-                                mBLECallbackSample.onReadPhySuccess(0, target.getBluetoothDevice(), result.getTxPhy(), result.getRxPhy(), result.getArgument());
-                            } else if (RESULT_FAILED == result.getResultCode()) {
-                                mBLECallbackSample.onReadPhyFailed(0, target.getBluetoothDevice(), result.getStatus(), result.getArgument());
-                            } else if (RESULT_TIMEOUT == result.getResultCode()) {
-                                mBLECallbackSample.onReadPhyTimeout(0, target.getBluetoothDevice(), RequestMtuTask.TIMEOUT_MILLIS, result.getArgument());
+                            if (result == null) {
+                                mBLECallbackSample.onReadPhyFailed(0, target.getBluetoothDevice(), BLEConstants.ErrorCodes.UNKNOWN, null);
+                            } else {
+                                if (RESULT_SUCCESS == result.getResultCode()) {
+                                    mBLECallbackSample.onReadPhySuccess(0, target.getBluetoothDevice(), result.getTxPhy(), result.getRxPhy(), result.getArgument());
+                                } else if (RESULT_FAILED == result.getResultCode()) {
+                                    mBLECallbackSample.onReadPhyFailed(0, target.getBluetoothDevice(), result.getStatus(), result.getArgument());
+                                } else if (RESULT_TIMEOUT == result.getResultCode()) {
+                                    mBLECallbackSample.onReadPhyTimeout(0, target.getBluetoothDevice(), RequestMtuTask.TIMEOUT_MILLIS, result.getArgument());
+                                }
                             }
                         }
                     }
-                }
-            }.start();
+                }.start();
+            }
         } else if (R.id.set_preferred_phy == item.getItemId()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 mBleConnection.createSetPreferredPhyTask(
@@ -448,6 +455,11 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                         }
                     }
                     , WriteCharacteristicTask.TIMEOUT_MILLIS);
+        } else if (R.id.read_descriptor == item.getItemId()) {
+            mBleConnection.createReadDescriptorTask(DEFAULT_SERVICE_UUID
+                    , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                    , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
+                    , ReadDescriptorTask.TIMEOUT_MILLIS);
         } else if (R.id.write_notification == item.getItemId()) {
             BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, 0);
             descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
