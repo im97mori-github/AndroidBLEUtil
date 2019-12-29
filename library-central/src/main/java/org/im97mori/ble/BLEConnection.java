@@ -605,9 +605,9 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
                     gatt.setCharacteristicNotification(descriptor.getCharacteristic(), isNotification);
                 }
                 // write decriptor task finished
-                mTaskHandler.sendProcessingMessage(WriteDescriptorTask.createWriteDescriptorSuccessMessage(service.getUuid(), characteristicUUID, descriptorUUID, descriptor.getValue()));
+                mTaskHandler.sendProcessingMessage(WriteDescriptorTask.createWriteDescriptorSuccessMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, descriptor.getValue()));
             } else {
-                mTaskHandler.sendProcessingMessage(WriteDescriptorTask.createWriteDescriptorErrorMessage(service.getUuid(), characteristicUUID, descriptorUUID, status));
+                mTaskHandler.sendProcessingMessage(WriteDescriptorTask.createWriteDescriptorErrorMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, status));
             }
 
             // if characteristic / descriptor callbacked, clear busy status
@@ -889,7 +889,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     }
 
     /**
-     * @see #createWriteDescriptorTask(UUID, UUID, UUID, ByteArrayInterface, long, Bundle, BLECallback)
+     * @see #createWriteDescriptorTask(UUID, Integer, UUID, Integer, UUID, ByteArrayInterface, long, Bundle, BLECallback)
      */
     @Nullable
     public Integer createWriteDescriptorTask(@NonNull UUID serviceUUID
@@ -897,24 +897,28 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @NonNull UUID descriptorUUID
             , @NonNull ByteArrayInterface byteArrayInterface
             , long timeout) {
-        return createWriteDescriptorTask(serviceUUID, characteristicUUID, descriptorUUID, byteArrayInterface, timeout, null, null);
+        return createWriteDescriptorTask(serviceUUID, null, characteristicUUID, null, descriptorUUID, byteArrayInterface, timeout, null, null);
     }
 
     /**
      * Create write descriptor task
      *
-     * @param serviceUUID        service {@link UUID}
-     * @param characteristicUUID characteristic {@link UUID}
-     * @param descriptorUUID     descriptor {@link UUID}
-     * @param byteArrayInterface write data
-     * @param timeout            timeout(millis)
-     * @param argument           callback argument
-     * @param bleCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
+     * @param serviceUUID              service {@link UUID}
+     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       characteristic {@link UUID}
+     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorUUID           descriptor {@link UUID}
+     * @param byteArrayInterface       write data
+     * @param timeout                  timeout(millis)
+     * @param argument                 callback argument
+     * @param bleCallback              {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
     @Nullable
     public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
             , @NonNull UUID descriptorUUID
             , @NonNull ByteArrayInterface byteArrayInterface
             , long timeout
@@ -922,7 +926,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (mBluetoothGatt != null) {
-            WriteDescriptorTask task = new WriteDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, characteristicUUID, descriptorUUID, byteArrayInterface, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            WriteDescriptorTask task = new WriteDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, byteArrayInterface, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }

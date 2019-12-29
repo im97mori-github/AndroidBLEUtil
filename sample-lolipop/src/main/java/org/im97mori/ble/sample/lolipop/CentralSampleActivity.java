@@ -531,26 +531,27 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                 mBLECallbackSample.onCharacteristicReadSuccess(0
                                         , target.getBluetoothDevice()
                                         , DEFAULT_SERVICE_UUID
-                                        , null
+                                        , Objects.requireNonNull(result.getServiceInstanceId())
                                         , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
-                                        , null
+                                        , Objects.requireNonNull(result.getCharacteristicInstanceId())
                                         , value
                                         , result.getArgument());
                             } else if (RESULT_FAILED == result.getResultCode()) {
                                 mBLECallbackSample.onCharacteristicReadFailed(0
                                         , target.getBluetoothDevice()
                                         , DEFAULT_SERVICE_UUID
-                                        , null
+                                        , result.getServiceInstanceId()
                                         , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
-                                        , null, result.getStatus()
+                                        , result.getServiceInstanceId()
+                                        , result.getStatus()
                                         , result.getArgument());
                             } else if (RESULT_TIMEOUT == result.getResultCode()) {
                                 mBLECallbackSample.onCharacteristicReadTimeout(0
                                         , target.getBluetoothDevice()
                                         , DEFAULT_SERVICE_UUID
-                                        , null
+                                        , result.getServiceInstanceId()
                                         , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
-                                        , null
+                                        , result.getServiceInstanceId()
                                         , ReadCharacteristicTask.TIMEOUT_MILLIS
                                         , result.getArgument());
                             }

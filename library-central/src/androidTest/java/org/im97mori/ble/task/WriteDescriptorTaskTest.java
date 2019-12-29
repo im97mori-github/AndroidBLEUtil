@@ -7,6 +7,7 @@ import android.os.Looper;
 import android.os.Message;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallbackDistributer;
 import org.im97mori.ble.BaseBLECallback;
@@ -29,14 +30,12 @@ public class WriteDescriptorTaskTest {
         UUID serviceUUID = UUID.randomUUID();
         UUID characteristicUUID = UUID.randomUUID();
         UUID descriptorUUID = UUID.randomUUID();
-        WriteDescriptorTask task = new WriteDescriptorTask(null, null, null, serviceUUID, characteristicUUID, descriptorUUID, null, WriteDescriptorTask.TIMEOUT_MILLIS, null);
+        WriteDescriptorTask task = new WriteDescriptorTask(null, null, null, serviceUUID, null, characteristicUUID, null, descriptorUUID, null, WriteDescriptorTask.TIMEOUT_MILLIS, null);
         Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_DESCRIPTOR_UUID));
@@ -49,18 +48,22 @@ public class WriteDescriptorTaskTest {
     @Test
     public void test_createWriteDescriptorSuccessMessage001() {
         UUID serviceUUID = UUID.randomUUID();
+        int serviceInstanceId = 1;
         UUID characteristicUUID = UUID.randomUUID();
+        int characteristicInstanceId = 2;
         UUID descriptorUUID = UUID.randomUUID();
         byte[] values = new byte[0];
-        Message message = WriteDescriptorTask.createWriteDescriptorSuccessMessage(serviceUUID, characteristicUUID, descriptorUUID, values);
+        Message message = WriteDescriptorTask.createWriteDescriptorSuccessMessage(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
+        assertEquals(serviceInstanceId, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
+        assertEquals(characteristicInstanceId, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_DESCRIPTOR_UUID));
         assertEquals(descriptorUUID, bundle.getSerializable(AbstractBLETask.KEY_DESCRIPTOR_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_VALUES));
@@ -72,18 +75,22 @@ public class WriteDescriptorTaskTest {
     @Test
     public void test_createWriteDescriptorErrorMessage001() {
         UUID serviceUUID = UUID.randomUUID();
+        int serviceInstanceId = 1;
         UUID characteristicUUID = UUID.randomUUID();
+        int characteristicInstanceId = 2;
         UUID descriptorUUID = UUID.randomUUID();
         int status = new Random().nextInt();
-        Message message = WriteDescriptorTask.createWriteDescriptorErrorMessage(serviceUUID, characteristicUUID, descriptorUUID, status);
+        Message message = WriteDescriptorTask.createWriteDescriptorErrorMessage(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
+        assertEquals(serviceInstanceId, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
+        assertEquals(characteristicInstanceId, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_DESCRIPTOR_UUID));
         assertEquals(descriptorUUID, bundle.getSerializable(AbstractBLETask.KEY_DESCRIPTOR_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
@@ -102,7 +109,7 @@ public class WriteDescriptorTaskTest {
             BaseBLECallback callback = new BaseBLECallback() {
 
                 @Override
-                public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull UUID descriptorUUID, int status, Bundle argument) {
+                public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, Bundle argument) {
                     result.set(true);
                 }
             };
@@ -115,7 +122,7 @@ public class WriteDescriptorTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            WriteDescriptorTask task = new WriteDescriptorTask(mockBleConnection, null, mockTaskHandler, null, null, null, null, WriteDescriptorTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            WriteDescriptorTask task = new WriteDescriptorTask(mockBleConnection, null, mockTaskHandler, null, null, null, null, null, null, WriteDescriptorTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());
