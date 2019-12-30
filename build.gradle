@@ -16,8 +16,8 @@ buildscript {
 
 allprojects {
     repositories {
-//        maven { url "https://github.com/im97mori-github/maven/raw/master" }
-        maven { url System.getenv('MAVEN_REPOSITORY_URL') }
+        maven { url "https://github.com/im97mori-github/maven/raw/master" }
+//        maven { url System.getenv('MAVEN_REPOSITORY_URL') }
         google()
         jcenter()
     }
@@ -45,6 +45,13 @@ ext.core = [
 
 ext.advertising = [
         artifactId         : 'ble-advertising'
+        , versionCode      : 22
+        , versionName      : '0.1.21'
+        , uploadVersionName: '0.1.21'
+]
+
+ext.descriptor = [
+        artifactId         : 'ble-descriptor'
         , versionCode      : 22
         , versionName      : '0.1.21'
         , uploadVersionName: '0.1.21'
@@ -197,13 +204,6 @@ ext.characteristicAios = [
         , uploadVersionName: '0.1.0'
 ]
 
-ext.descriptor = [
-        artifactId         : 'ble-descriptor'
-        , versionCode      : 22
-        , versionName      : '0.1.21'
-        , uploadVersionName: '0.1.21'
-]
-
 ext.central = [
         artifactId         : 'ble-central'
         , versionCode      : 32
@@ -219,7 +219,7 @@ ext.peripheral = [
 ]
 
 ext.apiCore = "${groupId}:${core.artifactId}:${core.versionName}"
-ext.apiCharacteristicCore = "${groupId}:${characteristicCore.artifactId}:${characteristicCore.versionName}"
 ext.apiDescriptor = "${groupId}:${descriptor.artifactId}:${descriptor.versionName}"
+ext.apiCharacteristicCore = "${groupId}:${characteristicCore.artifactId}:${characteristicCore.versionName}"
 ext.apiCentral = "${groupId}:${central.artifactId}:${central.versionName}"
 ext.apiAdvertising = "${groupId}:${advertising.artifactId}:${advertising.versionName}"

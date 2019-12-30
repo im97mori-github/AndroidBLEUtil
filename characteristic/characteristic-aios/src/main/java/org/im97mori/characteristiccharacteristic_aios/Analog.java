@@ -11,7 +11,6 @@ import org.im97mori.ble.ByteArrayInterface;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import org.im97mori.ble.BLEUtils;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ANALOG_CHARACTERISTIC;
 
@@ -59,7 +58,7 @@ public class Analog implements ByteArrayInterface, Parcelable {
     /**
      * Analog
      */
-    private final int mAnalog;
+    private final byte[] mAnalog;
 
     /**
      * Constructor from {@link BluetoothGattCharacteristic}
@@ -67,8 +66,7 @@ public class Analog implements ByteArrayInterface, Parcelable {
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A58
      */
     public Analog(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
-        byte[] values = bluetoothGattCharacteristic.getValue();
-        mAnalog = BLEUtils.createUInt16(values, 0);
+        mAnalog = bluetoothGattCharacteristic.getValue();
     }
 
     /**
@@ -77,7 +75,7 @@ public class Analog implements ByteArrayInterface, Parcelable {
      * @param in Parcel
      */
     private Analog(@NonNull Parcel in) {
-        mAnalog = in.readInt();
+        mAnalog = in.createByteArray();
     }
 
     /**
@@ -93,13 +91,13 @@ public class Analog implements ByteArrayInterface, Parcelable {
      */
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeInt(mAnalog);
+        dest.writeByteArray(mAnalog);
     }
 
     /**
      * @return Analog
      */
-    public int getAnalog() {
+    public byte[] getAnalog() {
         return mAnalog;
     }
 
@@ -111,7 +109,7 @@ public class Analog implements ByteArrayInterface, Parcelable {
     public byte[] getBytes() {
         byte[] data = new byte[2];
         ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);
-        byteBuffer.putShort((short) mAnalog);
+        byteBuffer.put(mAnalog);
         return data;
     }
 

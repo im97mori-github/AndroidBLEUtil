@@ -98,7 +98,7 @@ public class NotificationTask extends AbstractBLETask {
     /**
      * task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      */
-    private int mServiceInstanceId;
+    private final int mServiceInstanceId;
 
     /**
      * task target characteristic {@link UUID}
@@ -108,7 +108,7 @@ public class NotificationTask extends AbstractBLETask {
     /**
      * task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      */
-    private int mCharacteristicInstanceId;
+    private final int mCharacteristicInstanceId;
 
     /**
      * task target data class

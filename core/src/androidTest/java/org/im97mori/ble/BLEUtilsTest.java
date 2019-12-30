@@ -86,6 +86,68 @@ public class BLEUtilsTest {
     }
 
     @Test
+    public void test_createSInt12_001() {
+        //@formatter:off
+        byte[] data = new byte[2];
+        data[ 0] = 0x01;
+        data[ 1] = 0x32;
+        //@formatter:on
+        assertEquals(0x0201, BLEUtils.createSInt12(data, 0));
+    }
+
+    @Test
+    public void test_createSInt12_002() {
+        //@formatter:off
+        byte[] data = new byte[2];
+        data[ 0] = (byte) 0x01;
+        data[ 1] = (byte) 0x0f;
+        //@formatter:on
+        assertEquals(0xffffff01, BLEUtils.createSInt12(data, 0));
+    }
+
+    @Test
+    public void test_createSInt12_003() {
+        //@formatter:off
+        byte[] data = new byte[3];
+        data[ 0] = 0x01;
+        data[ 1] = 0x02;
+        data[ 2] = 0x43;
+        //@formatter:on
+        assertEquals(0x0302, BLEUtils.createSInt12(data, 1));
+    }
+
+    @Test
+    public void test_createUInt12_001() {
+        //@formatter:off
+        byte[] data = new byte[2];
+        data[ 0] = 0x01;
+        data[ 1] = 0x32;
+        //@formatter:on
+        assertEquals(0x0201, BLEUtils.createUInt12(data, 0));
+    }
+
+    @Test
+    public void test_createUInt12_002() {
+        //@formatter:off
+        byte[] data = new byte[2];
+        data[ 0] = (byte) 0x01;
+        data[ 1] = (byte) 0x0f;
+        //@formatter:on
+        assertEquals(0x00000f01, BLEUtils.createUInt12(data, 0));
+    }
+
+    @Test
+    public void test_createUInt12_003() {
+        //@formatter:off
+        byte[] data = new byte[3];
+        data[ 0] = 0x01;
+        data[ 1] = 0x02;
+        data[ 2] = 0x43;
+        //@formatter:on
+        assertEquals(0x0302, BLEUtils.createUInt12(data, 1));
+    }
+
+    @Test
     public void test_createSInt16_001() {
         //@formatter:off
         byte[] data = new byte[2];

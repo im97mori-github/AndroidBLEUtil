@@ -11,7 +11,7 @@ import org.im97mori.ble.ByteArrayInterface;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-
+import java.util.Arrays;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AGGREGATE_CHARACTERISTIC;
 
@@ -57,14 +57,9 @@ public class Aggregate implements ByteArrayInterface, Parcelable {
     };
 
     /**
-     * Input Bits
+     * Input Bits and Analog Input
      */
-    private final byte[] mInputBits;
-
-    /**
-     * Analog Input
-     */
-    private final byte[] mAnalogInput;
+    private final byte[] mInput;
 
     /**
      * Constructor from {@link BluetoothGattCharacteristic}
@@ -72,9 +67,7 @@ public class Aggregate implements ByteArrayInterface, Parcelable {
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A5A
      */
     public Aggregate(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
-        byte[] values = bluetoothGattCharacteristic.getValue();
-        mInputBits = values;
-        mAnalogInput = values;
+        mInput = bluetoothGattCharacteristic.getValue();
     }
 
     /**
@@ -83,8 +76,7 @@ public class Aggregate implements ByteArrayInterface, Parcelable {
      * @param in Parcel
      */
     private Aggregate(@NonNull Parcel in) {
-        mInputBits = in.createByteArray();
-        mAnalogInput = in.createByteArray();
+        mInput = in.createByteArray();
     }
 
     /**
@@ -100,24 +92,25 @@ public class Aggregate implements ByteArrayInterface, Parcelable {
      */
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeByteArray(mInputBits);
-        dest.writeByteArray(mAnalogInput);
+        dest.writeByteArray(mInput);
     }
 
     /**
+     * @param analogOffset start of analog data index
      * @return Input Bits
      */
     @NonNull
-    public byte[] getInputBits() {
-        return mInputBits;
+    public byte[] getInputBits(int analogOffset) {
+        return Arrays.copyOfRange(mInput, 0, analogOffset);
     }
 
     /**
+     * @param analogOffset start of analog data index
      * @return Analog Input
      */
     @NonNull
-    public byte[] getAnalogInput() {
-        return mAnalogInput;
+    public byte[] getAnalogInput(int analogOffset) {
+        return Arrays.copyOfRange(mInput, analogOffset, mInput.length);
     }
 
     /**
@@ -126,10 +119,9 @@ public class Aggregate implements ByteArrayInterface, Parcelable {
     @Override
     @NonNull
     public byte[] getBytes() {
-        byte[] data = new byte[mInputBits.length + mAnalogInput.length];
+        byte[] data = new byte[mInput.length];
         ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);
-        byteBuffer.put(mInputBits);
-        byteBuffer.put(mAnalogInput);
+        byteBuffer.put(mInput);
         return data;
     }
 

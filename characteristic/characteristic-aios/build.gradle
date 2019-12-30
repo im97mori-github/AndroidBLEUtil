@@ -31,7 +31,8 @@ android {
 }
 
 dependencies {
-    api apiCore
+    api apiDescriptor
+    api apiCharacteristicCore
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:core:1.2.0'

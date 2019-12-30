@@ -651,7 +651,16 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                                     , bluetoothGattCharacteristic.getInstanceId()
                                                     , ReadCharacteristicTask.TIMEOUT_MILLIS, ReadCharacteristicTask.TIMEOUT_MILLIS, null, true);
                                             if (result != null && RESULT_SUCCESS == result.getResultCode()) {
-                                                BLELogUtils.stackLog(result.getValues());
+                                                byte[] value = result.getValues();
+                                                mBLECallbackSample.onCharacteristicReadSuccess(0
+                                                        , target.getBluetoothDevice()
+                                                        , DEFAULT_SERVICE_UUID
+                                                        , Objects.requireNonNull(result.getServiceInstanceId())
+                                                        , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                                                        , Objects.requireNonNull(result.getCharacteristicInstanceId())
+                                                        , Objects.requireNonNull(value)
+                                                        , result.getArgument());
+
                                             }
                                         }
                                     }
