@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
+import android.bluetooth.BluetoothGattService;
 import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanResult;
@@ -67,6 +68,8 @@ import java.util.Set;
 import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.DEFAULT_SERVICE_UUID;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.INDICATABLE_CHARACTERISTIC_UUID;
+import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.MULTI_INSTANCE_CHARACTERISTIC_UUID;
+import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.MULTI_INSTANCE_SERVICE_UUID;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.NOTIFICATABLE_CHARACTERISTIC_UUID;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT;
 import static org.im97mori.ble.BLEServerConnection.DefaultServerSetting.READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT;
@@ -623,12 +626,49 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     }
                     , WriteCharacteristicTask.TIMEOUT_MILLIS);
             mBleConnection.createAbortReliableWriteTask(AbortReliableWriteTask.TIMEOUT_MILLIS, null, null);
+        } else if (R.id.read_multi_instance_characteristic == item.getItemId()) {
+            new Thread() {
+                @Override
+                public void run() {
+                    BLEConnection target = mBleConnection;
+                    if (target != null) {
+                        BLESyncConnection.BLEResult result = BLESyncConnection.createDiscoverServiceTask(target
+                                , DiscoverServiceTask.TIMEOUT_MILLIS
+                                , DiscoverServiceTask.TIMEOUT_MILLIS
+                                , null
+                                , false);
+
+                        if (result != null && RESULT_SUCCESS == result.getResultCode()) {
+                            List<BluetoothGattService> bluetoothGattServiceList = Objects.requireNonNull(result.getServiceList());
+                            for (BluetoothGattService bluetoothGattService : bluetoothGattServiceList) {
+                                if (MULTI_INSTANCE_SERVICE_UUID.equals(bluetoothGattService.getUuid())) {
+                                    for (BluetoothGattCharacteristic bluetoothGattCharacteristic : bluetoothGattService.getCharacteristics()) {
+                                        if (MULTI_INSTANCE_CHARACTERISTIC_UUID.equals(bluetoothGattCharacteristic.getUuid())) {
+                                            result = BLESyncConnection.createReadCharacteristicTask(target
+                                                    , bluetoothGattService.getUuid()
+                                                    , bluetoothGattService.getInstanceId()
+                                                    , bluetoothGattCharacteristic.getUuid()
+                                                    , bluetoothGattCharacteristic.getInstanceId()
+                                                    , ReadCharacteristicTask.TIMEOUT_MILLIS, ReadCharacteristicTask.TIMEOUT_MILLIS, null, true);
+                                            if (result != null && RESULT_SUCCESS == result.getResultCode()) {
+                                                BLELogUtils.stackLog(result.getValues());
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }.start();
         } else if (R.id.mock_characteristic == item.getItemId()) {
             mBleConnection.createWriteCharacteristicTask(MOCK_CONTROL_SERVICE_UUID
                     , MOCK_CONTROL_CHARACTERISTIC_UUID
                     , new MockControl(
                             DEFAULT_SERVICE_UUID
+                            , null
                             , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                            , null
                             , MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
                             , MockControl.TARGET_TYPE_CHARACTERISTIC
                             , BluetoothGatt.GATT_SUCCESS

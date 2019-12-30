@@ -94,52 +94,60 @@ public interface BLEServerCallback {
     /**
      * Notification(Indication) success callback
      *
-     * @param taskId              task id
-     * @param bluetoothGattServer {@link BluetoothGattServer} instance
-     * @param device              BLE device
-     * @param serviceUUID         service {@link UUID}
-     * @param characteristicUUID  characteristic {@link UUID}
-     * @param value               one of {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE}, {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}, {@link BluetoothGattDescriptor#DISABLE_NOTIFICATION_VALUE}
-     * @param argument            callback argument
+     * @param taskId                   task id
+     * @param bluetoothGattServer      {@link BluetoothGattServer} instance
+     * @param device                   BLE device
+     * @param serviceUUID              service {@link UUID}
+     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       characteristic {@link UUID}
+     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param value                    one of {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE}, {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}, {@link BluetoothGattDescriptor#DISABLE_NOTIFICATION_VALUE}
+     * @param argument                 callback argument
      */
-    void onNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] value, @Nullable Bundle argument);
+    void onNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull byte[] value, @Nullable Bundle argument);
 
     /**
      * Notification(Indication) error callback
      *
-     * @param taskId              task id
-     * @param bluetoothGattServer {@link BluetoothGattServer} instance
-     * @param device              BLE device
-     * @param serviceUUID         service {@link UUID}
-     * @param characteristicUUID  characteristic {@link UUID}
-     * @param status              one of {@link ErrorCodes#UNKNOWN}, {@link ErrorCodes#CANCEL}, {@link ErrorCodes#BUSY}
-     * @param argument            callback argument
+     * @param taskId                   task id
+     * @param bluetoothGattServer      {@link BluetoothGattServer} instance
+     * @param device                   BLE device
+     * @param serviceUUID              service {@link UUID}
+     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       characteristic {@link UUID}
+     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param status                   one of {@link ErrorCodes#UNKNOWN}, {@link ErrorCodes#CANCEL}, {@link ErrorCodes#BUSY}
+     * @param argument                 callback argument
      */
-    void onNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, @Nullable Bundle argument);
+    void onNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int status, @Nullable Bundle argument);
 
     /**
      * Notification(Indication) timeout callback
      *
-     * @param taskId              task id
-     * @param bluetoothGattServer {@link BluetoothGattServer} instance
-     * @param device              BLE device
-     * @param serviceUUID         service {@link UUID}
-     * @param characteristicUUID  characteristic {@link UUID}
-     * @param timeout             timeout(millis)
-     * @param argument            callback argument
+     * @param taskId                   task id
+     * @param bluetoothGattServer      {@link BluetoothGattServer} instance
+     * @param device                   BLE device
+     * @param serviceUUID              service {@link UUID}
+     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       characteristic {@link UUID}
+     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param timeout                  timeout(millis)
+     * @param argument                 callback argument
      */
-    void onNotificationTimeout(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, @Nullable Bundle argument);
+    void onNotificationTimeout(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, long timeout, @Nullable Bundle argument);
 
     /**
      * Client Characteristic Configuration (Descriptor UUID: 0x2902) updated callback
      *
-     * @param bluetoothGattServer {@link BluetoothGattServer} instance
-     * @param device              BLE device
-     * @param serviceUUID         service {@link UUID}
-     * @param characteristicUUID  characteristic {@link UUID}
-     * @param value               one of {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE}, {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}, {@link BluetoothGattDescriptor#DISABLE_NOTIFICATION_VALUE}
+     * @param bluetoothGattServer      {@link BluetoothGattServer} instance
+     * @param device                   BLE device
+     * @param serviceUUID              service {@link UUID}
+     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       characteristic {@link UUID}
+     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param value                    one of {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE}, {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}, {@link BluetoothGattDescriptor#DISABLE_NOTIFICATION_VALUE}
      */
-    void onClientCharacteristicConfigurationUpdated(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] value);
+    void onClientCharacteristicConfigurationUpdated(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull byte[] value);
 
     /**
      * Mock updated (Characterisitc UUID:{@link BLEServerConnection#MOCK_CONTROL_CHARACTERISTIC_UUID}) callback

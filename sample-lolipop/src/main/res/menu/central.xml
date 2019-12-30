@@ -64,6 +64,9 @@
         android:id="@+id/write_characteristc_reliable_abort"
         android:title="@string/menu_write_characteristic_reliable_abort" />
     <item
+        android:id="@+id/read_multi_instance_characteristic"
+        android:title="@string/menu_read_multi_instance_characteristic" />
+    <item
         android:id="@+id/mock_characteristic"
         android:title="@string/menu_mock_characteristic" />
     <item

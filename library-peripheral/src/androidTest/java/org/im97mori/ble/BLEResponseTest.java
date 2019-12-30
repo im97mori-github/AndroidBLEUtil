@@ -3053,8 +3053,8 @@ public class BLEResponseTest {
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
                 , null
                 , new MockControl(DEFAULT_SERVICE_UUID
-                        , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
-                        , MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
+                        , null, READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                        , null, MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
                         , MockControl.TARGET_TYPE_CHARACTERISTIC
                         , BluetoothGatt.GATT_SUCCESS
                         , newMessage.getBytes())
@@ -3095,8 +3095,8 @@ public class BLEResponseTest {
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
                 , null
                 , new MockControl(DEFAULT_SERVICE_UUID
-                        , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
-                        , MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
+                        , null, READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                        , null, MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
                         , MockControl.TARGET_TYPE_CHARACTERISTIC
                         , BLEConstants.ErrorCodes.OUT_OF_RANGE
                         , new byte[0])
@@ -3136,8 +3136,8 @@ public class BLEResponseTest {
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
                 , null
                 , new MockControl(MOCK_CONTROL_SERVICE_UUID
-                        , MOCK_CONTROL_CHARACTERISTIC_UUID
-                        , MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
+                        , null, MOCK_CONTROL_CHARACTERISTIC_UUID
+                        , null, MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
                         , MockControl.TARGET_TYPE_CHARACTERISTIC
                         , BLEConstants.ErrorCodes.OUT_OF_RANGE
                         , new byte[0])
@@ -3164,8 +3164,8 @@ public class BLEResponseTest {
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
                 , null
                 , new MockControl(DEFAULT_SERVICE_UUID
-                        , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
-                        , MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
+                        , null, READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                        , null, MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
                         , MockControl.TARGET_TYPE_CHARACTERISTIC
                         , BLEConstants.ErrorCodes.OUT_OF_RANGE
                         , new byte[0])
@@ -3183,8 +3183,8 @@ public class BLEResponseTest {
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
                 , null
                 , new MockControl(DEFAULT_SERVICE_UUID
-                        , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
-                        , MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
+                        , null, READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                        , null, MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
                         , MockControl.TARGET_CLEAR
                         , BLEConstants.ErrorCodes.OUT_OF_RANGE
                         , new byte[0])
@@ -3227,8 +3227,8 @@ public class BLEResponseTest {
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
                 , null
                 , new MockControl(DEFAULT_SERVICE_UUID
-                        , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
-                        , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
+                        , null, READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                        , null, READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                         , MockControl.TARGET_TYPE_DESCRIPTOR
                         , BluetoothGatt.GATT_SUCCESS
                         , newMessage.getBytes())
@@ -3271,8 +3271,8 @@ public class BLEResponseTest {
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
                 , null
                 , new MockControl(DEFAULT_SERVICE_UUID
-                        , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
-                        , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
+                        , null, READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                        , null, READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                         , MockControl.TARGET_TYPE_DESCRIPTOR
                         , BLEConstants.ErrorCodes.OUT_OF_RANGE
                         , new byte[0])
@@ -3314,8 +3314,8 @@ public class BLEResponseTest {
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
                 , null
                 , new MockControl(MOCK_CONTROL_SERVICE_UUID
-                        , MOCK_CONTROL_CHARACTERISTIC_UUID
-                        , MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
+                        , null, MOCK_CONTROL_CHARACTERISTIC_UUID
+                        , null, MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID
                         , MockControl.TARGET_TYPE_DESCRIPTOR
                         , BLEConstants.ErrorCodes.OUT_OF_RANGE
                         , new byte[0])
@@ -3343,8 +3343,8 @@ public class BLEResponseTest {
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
                 , null
                 , new MockControl(DEFAULT_SERVICE_UUID
-                        , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
-                        , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
+                        , null, READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                        , null, READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                         , MockControl.TARGET_TYPE_DESCRIPTOR
                         , BluetoothGatt.GATT_SUCCESS
                         , newMessage.getBytes())
@@ -3362,8 +3362,8 @@ public class BLEResponseTest {
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
                 , null
                 , new MockControl(DEFAULT_SERVICE_UUID
-                        , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
-                        , READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
+                        , null, READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT
+                        , null, READABLE_DESCRIPTOR_UUID_WITH_SUCCESS_NO_WAIT
                         , MockControl.TARGET_CLEAR
                         , BluetoothGatt.GATT_SUCCESS
                         , newMessage.getBytes())
@@ -3408,8 +3408,8 @@ public class BLEResponseTest {
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
                 , null
                 , new MockControl(DEFAULT_SERVICE_UUID
-                        , NOTIFICATABLE_CHARACTERISTIC_UUID
-                        , MOCK_CONTROL_TARGET_NOTIFICATION_UUID
+                        , null, NOTIFICATABLE_CHARACTERISTIC_UUID
+                        , null, MOCK_CONTROL_TARGET_NOTIFICATION_UUID
                         , MockControl.TARGET_TYPE_NOTIFICATION
                         , BluetoothGatt.GATT_SUCCESS
                         , newMessage.getBytes())
@@ -3487,8 +3487,8 @@ public class BLEResponseTest {
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
                 , null
                 , new MockControl(DEFAULT_SERVICE_UUID
-                        , NOTIFICATABLE_CHARACTERISTIC_UUID
-                        , MOCK_CONTROL_TARGET_NOTIFICATION_UUID
+                        , null, NOTIFICATABLE_CHARACTERISTIC_UUID
+                        , null, MOCK_CONTROL_TARGET_NOTIFICATION_UUID
                         , MockControl.TARGET_TYPE_NOTIFICATION
                         , BluetoothGatt.GATT_SUCCESS
                         , newMessage.getBytes())
@@ -3506,8 +3506,8 @@ public class BLEResponseTest {
                 , MOCK_CONTROL_CHARACTERISTIC_UUID
                 , null
                 , new MockControl(DEFAULT_SERVICE_UUID
-                        , NOTIFICATABLE_CHARACTERISTIC_UUID
-                        , MOCK_CONTROL_TARGET_NOTIFICATION_UUID
+                        , null, NOTIFICATABLE_CHARACTERISTIC_UUID
+                        , null, MOCK_CONTROL_TARGET_NOTIFICATION_UUID
                         , MockControl.TARGET_CLEAR
                         , BluetoothGatt.GATT_SUCCESS
                         , newMessage.getBytes())

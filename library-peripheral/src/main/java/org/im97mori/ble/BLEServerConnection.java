@@ -31,6 +31,8 @@ import org.im97mori.ble.BLEConstants.ErrorCodes;
 import org.im97mori.ble.characteristic.MockControl;
 import org.im97mori.ble.task.NotificationTask;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
@@ -173,6 +175,16 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
         public static final UUID WRITABLE_DESCRIPTOR_UUID_WITH_ERROR = UUID.fromString("0000000f-a087-4fa3-add4-3b8a7d5d4920");
 
         /**
+         * MULTI_INSTANCE_SERVICE
+         */
+        public static final UUID MULTI_INSTANCE_SERVICE_UUID = UUID.fromString("00000010-a087-4fa3-add4-3b8a7d5d4920");
+
+        /**
+         * MULTI_INSTANCE_CHARACTERISTIC
+         */
+        public static final UUID MULTI_INSTANCE_CHARACTERISTIC_UUID = UUID.fromString("00000011-a087-4fa3-add4-3b8a7d5d4920");
+
+        /**
          * UNDEFINED_DESCRIPTOR (for test)
          */
         public static final UUID UNDIFINED_DESCRIPTOR_UUID = UUID.fromString("fffffffd-a087-4fa3-add4-3b8a7d5d4920");
@@ -190,7 +202,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
         /**
          * response mock map
          */
-        private final Map<BluetoothDevice, Map<UUID, Map<UUID, Map<Pair<UUID, Integer>, MockControl>>>> mMockMap = new LinkedHashMap<>();
+        private final Map<BluetoothDevice, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, MockControl>>>> mMockMap = new LinkedHashMap<>();
 
         /**
          * newest {@link TaskHandler} instance
@@ -256,6 +268,18 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
             bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
 
             list.add(bluetoothGattService);
+
+            bluetoothGattService = new BluetoothGattService(MULTI_INSTANCE_SERVICE_UUID, BluetoothGattService.SERVICE_TYPE_PRIMARY);
+            bluetoothGattCharacteristic = new BluetoothGattCharacteristic(MULTI_INSTANCE_CHARACTERISTIC_UUID, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ);
+            bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
+
+            list.add(bluetoothGattService);
+
+            bluetoothGattService = new BluetoothGattService(MULTI_INSTANCE_SERVICE_UUID, BluetoothGattService.SERVICE_TYPE_PRIMARY);
+            bluetoothGattCharacteristic = new BluetoothGattCharacteristic(MULTI_INSTANCE_CHARACTERISTIC_UUID, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ);
+            bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
+
+            list.add(bluetoothGattService);
             return list;
         }
 
@@ -278,6 +302,13 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
                 bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, 0, MESSAGE_SUCCESS.getBytes());
             } else if (READABLE_CHARACTERISTIC_UUID_WITH_ERROR.equals(characteristic.getUuid())) {
                 bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, 0, null);
+            } else if (MULTI_INSTANCE_CHARACTERISTIC_UUID.equals(characteristic.getUuid())) {
+                BluetoothGattService bluetoothGattService = characteristic.getService();
+                byte[] data = new byte[8];
+                ByteBuffer bb = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);
+                bb.putInt(bluetoothGattService.getInstanceId());
+                bb.putInt(characteristic.getInstanceId());
+                bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, 0, data);
             }
         }
 
@@ -392,17 +423,17 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] value, @Nullable Bundle argument) {
-            createNotificationTask(bluetoothGattServer, device, serviceUUID, characteristicUUID);
+        public void onNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull byte[] value, @Nullable Bundle argument) {
+            createNotificationTask(bluetoothGattServer, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
         }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        public void onNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, @Nullable Bundle argument) {
+        public void onNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int status, @Nullable Bundle argument) {
             if (ErrorCodes.CANCEL != status) {
-                createNotificationTask(bluetoothGattServer, device, serviceUUID, characteristicUUID);
+                createNotificationTask(bluetoothGattServer, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
             }
         }
 
@@ -410,20 +441,20 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
          * {@inheritDoc}
          */
         @Override
-        public void onNotificationTimeout(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, @Nullable Bundle argument) {
-            createNotificationTask(bluetoothGattServer, device, serviceUUID, characteristicUUID);
+        public void onNotificationTimeout(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            createNotificationTask(bluetoothGattServer, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
         }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        public void onClientCharacteristicConfigurationUpdated(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] value) {
+        public void onClientCharacteristicConfigurationUpdated(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull byte[] value) {
             Pair<BluetoothDevice, UUID> pair = Pair.create(device, characteristicUUID);
             byte[] beforeValues = mCccdMap.put(pair, value);
             if ((beforeValues == null || Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, beforeValues))
                     && (Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, value) || Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, value))) {
-                createNotificationTask(bluetoothGattServer, device, serviceUUID, characteristicUUID);
+                createNotificationTask(bluetoothGattServer, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
             }
         }
 
@@ -432,20 +463,22 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
          */
         @Override
         public void onMockUpdated(@NonNull BluetoothDevice device, @NonNull MockControl mockControl) {
-            Map<UUID, Map<UUID, Map<Pair<UUID, Integer>, MockControl>>> deviceMap = mMockMap.get(device);
+            Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, MockControl>>> deviceMap = mMockMap.get(device);
             if (deviceMap == null) {
                 deviceMap = new LinkedHashMap<>();
                 mMockMap.put(device, deviceMap);
             }
-            Map<UUID, Map<Pair<UUID, Integer>, MockControl>> serviceMap = deviceMap.get(mockControl.getServiceUUID());
+            Pair<UUID, Integer> servicePair = Pair.create(mockControl.getServiceUUID(), mockControl.getServiceInstanceId());
+            Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, MockControl>> serviceMap = deviceMap.get(servicePair);
             if (serviceMap == null) {
                 serviceMap = new LinkedHashMap<>();
-                deviceMap.put(mockControl.getServiceUUID(), serviceMap);
+                deviceMap.put(servicePair, serviceMap);
             }
-            Map<Pair<UUID, Integer>, MockControl> characteristicMap = serviceMap.get(mockControl.getCharacteristicUUID());
+            Pair<UUID, Integer> characteristicPair = Pair.create(mockControl.getCharacteristicUUID(), mockControl.getCharacteristicInstanceId());
+            Map<Pair<UUID, Integer>, MockControl> characteristicMap = serviceMap.get(characteristicPair);
             if (characteristicMap == null) {
                 characteristicMap = new LinkedHashMap<>();
-                serviceMap.put(mockControl.getCharacteristicUUID(), characteristicMap);
+                serviceMap.put(characteristicPair, characteristicMap);
             }
 
             if (MockControl.TARGET_CLEAR == mockControl.getTargetType()) {
@@ -526,18 +559,25 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
         /**
          * create notification(indication) task
          *
-         * @param bluetoothGattServer {@link BluetoothGattServer} instance
-         * @param device              notification(indication) target device
-         * @param serviceUUID         service {@link UUID}
-         * @param characteristicUUID  characteristic {@link UUID}
+         * @param bluetoothGattServer      {@link BluetoothGattServer} instance
+         * @param device                   notification(indication) target device
+         * @param serviceUUID              service {@link UUID}
+         * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+         * @param characteristicUUID       characteristic {@link UUID}
+         * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
          */
-        private synchronized void createNotificationTask(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID) {
+        private synchronized void createNotificationTask(@NonNull BluetoothGattServer bluetoothGattServer
+                , @NonNull BluetoothDevice device
+                , @NonNull UUID serviceUUID
+                , int serviceInstanceId
+                , @NonNull UUID characteristicUUID
+                , int characteristicInstanceId) {
             if (mConnectedDeviceSet.contains(device)) {
                 Pair pair = Pair.create(device, characteristicUUID);
                 byte[] values = mCccdMap.get(pair);
                 boolean isIndication = Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, values);
                 if (isIndication || Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, values)) {
-                    MockControl mockControl = findMockControl(device, serviceUUID, characteristicUUID);
+                    MockControl mockControl = findMockControl(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
                     final byte[] value;
                     if (mockControl == null) {
                         value = new Date().toString().getBytes();
@@ -550,7 +590,9 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
                             , device
                             , mTaskHandler
                             , serviceUUID
+                            , serviceInstanceId
                             , characteristicUUID
+                            , characteristicInstanceId
                             , new ByteArrayInterface() {
 
                         @Override
@@ -570,20 +612,37 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
         /**
          * find matched {@link MockControl}
          *
-         * @param bluetoothDevice    central BLE device
-         * @param serviceUUID        target service UUID
-         * @param characteristicUUID target characteristic UUID
+         * @param bluetoothDevice          central BLE device
+         * @param serviceUUID              target service
+         * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+         * @param characteristicUUID       target characteristic
+         * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
          * @return matched {@link MockControl}
          */
-        private MockControl findMockControl(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID) {
+        private MockControl findMockControl(@NonNull BluetoothDevice bluetoothDevice
+                , @NonNull UUID serviceUUID
+                , int serviceInstanceId
+                , @NonNull UUID characteristicUUID
+                , int characteristicInstanceId) {
             MockControl mockControl = null;
-            Map<UUID, Map<UUID, Map<Pair<UUID, Integer>, MockControl>>> deviceMap = mMockMap.get(bluetoothDevice);
+
+            Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, MockControl>>> deviceMap = mMockMap.get(bluetoothDevice);
             if (deviceMap != null) {
-                Map<UUID, Map<Pair<UUID, Integer>, MockControl>> serviceMap = deviceMap.get(serviceUUID);
-                if (serviceMap != null) {
-                    Map<Pair<UUID, Integer>, MockControl> characteristicMap = serviceMap.get(characteristicUUID);
-                    if (characteristicMap != null) {
-                        mockControl = characteristicMap.get(Pair.create(MOCK_CONTROL_TARGET_NOTIFICATION_UUID, MockControl.TARGET_TYPE_NOTIFICATION));
+                for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, MockControl>>> serviceEntry : deviceMap.entrySet()) {
+                    Pair<UUID, Integer> servicePair = serviceEntry.getKey();
+                    if (servicePair.first.equals(serviceUUID) && (servicePair.second == null || (servicePair.second.equals(serviceInstanceId)))) {
+                        Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, MockControl>> serviceMap = serviceEntry.getValue();
+                        for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, MockControl>> characteristicEntry : serviceMap.entrySet()) {
+                            Pair<UUID, Integer> characteristicPair = characteristicEntry.getKey();
+                            if (characteristicPair.first.equals(characteristicUUID) && (characteristicPair.second == null || (characteristicPair.second.equals(characteristicInstanceId)))) {
+                                Map<Pair<UUID, Integer>, MockControl> characteristicMap = characteristicEntry.getValue();
+                                mockControl = characteristicMap.get(Pair.create(MOCK_CONTROL_TARGET_NOTIFICATION_UUID, MockControl.TARGET_TYPE_NOTIFICATION));
+                                break;
+                            }
+                        }
+                        if (mockControl != null) {
+                            break;
+                        }
                     }
                 }
             }
@@ -637,12 +696,12 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
     /**
      * Client Characteristic Configuration (Descriptor UUID: 0x2902) status map
      */
-    private final Map<Pair<BluetoothDevice, UUID>, byte[]> mCccdMap = new LinkedHashMap<>();
+    private final Map<Pair<BluetoothDevice, Pair<UUID, Integer>>, byte[]> mCccdMap = new LinkedHashMap<>();
 
     /**
      * response mock map
      */
-    private final Map<BluetoothDevice, Map<UUID, Map<UUID, Map<Pair<UUID, Integer>, MockControl>>>> mMockMap = new LinkedHashMap<>();
+    private final Map<BluetoothDevice, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, MockControl>>>> mMockMap = new LinkedHashMap<>();
 
     /**
      * {@link BLEServerCallback} instance
@@ -738,13 +797,14 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
             }
 
             // set current cccd status
-            for (Map.Entry<Pair<BluetoothDevice, UUID>, byte[]> entry : mCccdMap.entrySet()) {
+            for (Map.Entry<Pair<BluetoothDevice, Pair<UUID, Integer>>, byte[]> entry : mCccdMap.entrySet()) {
                 BluetoothDevice device = entry.getKey().first;
-                UUID characteristicUUID = entry.getKey().second;
+                Pair<UUID, Integer> characteristicPair = entry.getKey().second;
+                UUID characteristicUUID = characteristicPair.first;
 
                 for (BluetoothGattService service : mBluetoothGattServer.getServices()) {
                     if (service.getCharacteristic(characteristicUUID) != null) {
-                        mBLEServerCallback.onClientCharacteristicConfigurationUpdated(mBluetoothGattServer, device, service.getUuid(), characteristicUUID, entry.getValue());
+                        mBLEServerCallback.onClientCharacteristicConfigurationUpdated(mBluetoothGattServer, device, service.getUuid(), service.getInstanceId(), characteristicUUID, characteristicPair.second, entry.getValue());
                         break;
                     }
                 }
@@ -849,7 +909,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
             , int requestId
             , int offset
             , @NonNull BluetoothGattCharacteristic characteristic) {
-        MockControl mockControl = findMockControl(device, characteristic.getService().getUuid(), characteristic.getUuid(), MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID, MockControl.TARGET_TYPE_CHARACTERISTIC);
+        MockControl mockControl = findMockControl(device, characteristic.getService().getUuid(), characteristic.getService().getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID, MockControl.TARGET_TYPE_CHARACTERISTIC);
         if (mockControl == null) {
             mBLEServerCallback.onCharacteristicReadRequest(mBluetoothGattServer, device, requestId, offset, characteristic);
         } else {
@@ -885,20 +945,22 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
                 } else {
                     status = BluetoothGatt.GATT_SUCCESS;
 
-                    Map<UUID, Map<UUID, Map<Pair<UUID, Integer>, MockControl>>> deviceMap = mMockMap.get(device);
+                    Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, MockControl>>> deviceMap = mMockMap.get(device);
                     if (deviceMap == null) {
                         deviceMap = new LinkedHashMap<>();
                         mMockMap.put(device, deviceMap);
                     }
-                    Map<UUID, Map<Pair<UUID, Integer>, MockControl>> serviceMap = deviceMap.get(mockControl.getServiceUUID());
+                    Pair<UUID, Integer> servicePair = Pair.create(mockControl.getServiceUUID(), mockControl.getServiceInstanceId());
+                    Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, MockControl>> serviceMap = deviceMap.get(servicePair);
                     if (serviceMap == null) {
                         serviceMap = new LinkedHashMap<>();
-                        deviceMap.put(mockControl.getServiceUUID(), serviceMap);
+                        deviceMap.put(servicePair, serviceMap);
                     }
-                    Map<Pair<UUID, Integer>, MockControl> characteristicMap = serviceMap.get(mockControl.getCharacteristicUUID());
+                    Pair<UUID, Integer> characteristicPair = Pair.create(mockControl.getCharacteristicUUID(), mockControl.getCharacteristicInstanceId());
+                    Map<Pair<UUID, Integer>, MockControl> characteristicMap = serviceMap.get(characteristicPair);
                     if (characteristicMap == null) {
                         characteristicMap = new LinkedHashMap<>();
-                        serviceMap.put(mockControl.getCharacteristicUUID(), characteristicMap);
+                        serviceMap.put(characteristicPair, characteristicMap);
                     }
 
                     if (MockControl.TARGET_CLEAR == mockControl.getTargetType()) {
@@ -923,7 +985,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
                 mBluetoothGattServer.sendResponse(device, requestId, status, 0, null);
             }
         } else {
-            mockControl = findMockControl(device, characteristic.getService().getUuid(), characteristic.getUuid(), MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID, MockControl.TARGET_TYPE_CHARACTERISTIC);
+            mockControl = findMockControl(device, characteristic.getService().getUuid(), characteristic.getService().getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID, MockControl.TARGET_TYPE_CHARACTERISTIC);
             if (mockControl == null) {
                 mBLEServerCallback.onCharacteristicWriteRequest(mBluetoothGattServer, device, requestId, characteristic, preparedWrite, responseNeeded, offset, value);
             } else if (responseNeeded) {
@@ -940,7 +1002,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
             , int requestId
             , int offset
             , @NonNull BluetoothGattDescriptor descriptor) {
-        MockControl mockControl = findMockControl(device, descriptor.getCharacteristic().getService().getUuid(), descriptor.getCharacteristic().getUuid(), descriptor.getUuid(), MockControl.TARGET_TYPE_DESCRIPTOR);
+        MockControl mockControl = findMockControl(device, descriptor.getCharacteristic().getService().getUuid(), descriptor.getCharacteristic().getService().getInstanceId(), descriptor.getCharacteristic().getUuid(), descriptor.getCharacteristic().getInstanceId(), descriptor.getUuid(), MockControl.TARGET_TYPE_DESCRIPTOR);
         if (mockControl == null) {
             mBLEServerCallback.onDescriptorReadRequest(mBluetoothGattServer, device, requestId, offset, descriptor);
         } else {
@@ -959,7 +1021,9 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
             , boolean responseNeeded
             , int offset
             , @NonNull byte[] value) {
-        MockControl mockControl = findMockControl(device, descriptor.getCharacteristic().getService().getUuid(), descriptor.getCharacteristic().getUuid(), descriptor.getUuid(), MockControl.TARGET_TYPE_DESCRIPTOR);
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = descriptor.getCharacteristic();
+        BluetoothGattService bluetoothGattService = bluetoothGattCharacteristic.getService();
+        MockControl mockControl = findMockControl(device, descriptor.getCharacteristic().getService().getUuid(), descriptor.getCharacteristic().getService().getInstanceId(), bluetoothGattCharacteristic.getUuid(), bluetoothGattCharacteristic.getInstanceId(), descriptor.getUuid(), MockControl.TARGET_TYPE_DESCRIPTOR);
         if (mockControl == null) {
             mBLEServerCallback.onDescriptorWriteRequest(mBluetoothGattServer, device, requestId, descriptor, preparedWrite, responseNeeded, offset, value);
         } else if (responseNeeded) {
@@ -968,8 +1032,8 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
 
         // update cccd status
         if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptor.getUuid())) {
-            mCccdMap.put(Pair.create(device, descriptor.getCharacteristic().getUuid()), value);
-            mBLEServerCallback.onClientCharacteristicConfigurationUpdated(mBluetoothGattServer, device, descriptor.getCharacteristic().getService().getUuid(), descriptor.getCharacteristic().getUuid(), value);
+            mCccdMap.put(Pair.create(device, Pair.create(bluetoothGattCharacteristic.getUuid(), bluetoothGattCharacteristic.getInstanceId())), value);
+            mBLEServerCallback.onClientCharacteristicConfigurationUpdated(mBluetoothGattServer, device, bluetoothGattService.getUuid(), bluetoothGattService.getInstanceId(), bluetoothGattCharacteristic.getUuid(), bluetoothGattCharacteristic.getInstanceId(), value);
         }
     }
 
@@ -995,26 +1059,40 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
     /**
      * find matched {@link MockControl}
      *
-     * @param bluetoothDevice    central BLE device
-     * @param serviceUUID        target service UUID
-     * @param characteristicUUID target characteristic UUID
-     * @param descriptorUUID     target descriptor UUID
-     * @param targetType         {@link MockControl#TARGET_TYPE_CHARACTERISTIC} or {@link MockControl#TARGET_TYPE_DESCRIPTOR}
+     * @param bluetoothDevice          central BLE device
+     * @param serviceUUID              target service {@link UUID}
+     * @param serviceInstanceId        target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       target characteristic {@link UUID}
+     * @param characteristicInstanceId target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorUUID           target descriptor UUID
+     * @param targetType               {@link MockControl#TARGET_TYPE_CHARACTERISTIC} or {@link MockControl#TARGET_TYPE_DESCRIPTOR}
      * @return matched {@link MockControl}
      */
     private MockControl findMockControl(@NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
+            , int serviceInstanceId
             , @NonNull UUID characteristicUUID
+            , int characteristicInstanceId
             , @NonNull UUID descriptorUUID
             , int targetType) {
         MockControl mockControl = null;
-        Map<UUID, Map<UUID, Map<Pair<UUID, Integer>, MockControl>>> deviceMap = mMockMap.get(bluetoothDevice);
+        Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, MockControl>>> deviceMap = mMockMap.get(bluetoothDevice);
         if (deviceMap != null) {
-            Map<UUID, Map<Pair<UUID, Integer>, MockControl>> serviceMap = deviceMap.get(serviceUUID);
-            if (serviceMap != null) {
-                Map<Pair<UUID, Integer>, MockControl> characteristicMap = serviceMap.get(characteristicUUID);
-                if (characteristicMap != null) {
-                    mockControl = characteristicMap.get(Pair.create(descriptorUUID, targetType));
+            for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, MockControl>>> serviceEntry : deviceMap.entrySet()) {
+                Pair<UUID, Integer> servicePair = serviceEntry.getKey();
+                if (servicePair.first.equals(serviceUUID) && (servicePair.second == null || (servicePair.second.equals(serviceInstanceId)))) {
+                    Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, MockControl>> serviceMap = serviceEntry.getValue();
+                    for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, MockControl>> characteristicEntry : serviceMap.entrySet()) {
+                        Pair<UUID, Integer> characteristicPair = characteristicEntry.getKey();
+                        if (characteristicPair.first.equals(characteristicUUID) && (characteristicPair.second == null || (characteristicPair.second.equals(characteristicInstanceId)))) {
+                            Map<Pair<UUID, Integer>, MockControl> characteristicMap = characteristicEntry.getValue();
+                            mockControl = characteristicMap.get(Pair.create(descriptorUUID, targetType));
+                            break;
+                        }
+                    }
+                    if (mockControl != null) {
+                        break;
+                    }
                 }
             }
         }

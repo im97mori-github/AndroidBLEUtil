@@ -26,7 +26,18 @@ public class NotificationTaskTest {
 
     @Test
     public void test_createInitialMessage001() {
-        NotificationTask task = new NotificationTask(null, null, null, null, null, null, null, true, NotificationTask.TIMEOUT_MILLIS, null);
+        NotificationTask task = new NotificationTask(null
+                , null
+                , null
+                , null
+                , null
+                , 1
+                , null
+                , 2
+                , null
+                , true
+                , NotificationTask.TIMEOUT_MILLIS
+                , null);
         Message message = task.createInitialMessage();
 
         assertNotNull(message);
@@ -78,7 +89,18 @@ public class NotificationTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            NotificationTask task = new NotificationTask(new BaseBLEServerCallback(), null, null, null, null, null, null, false, NotificationTask.TIMEOUT_MILLIS, null);
+            NotificationTask task = new NotificationTask(new BaseBLEServerCallback()
+                    , null
+                    , null
+                    , null
+                    , null
+                    , 1
+                    , null
+                    , 2
+                    , null
+                    , false
+                    , NotificationTask.TIMEOUT_MILLIS
+                    , null);
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -95,7 +117,7 @@ public class NotificationTaskTest {
             BaseBLEServerCallback callback = new BaseBLEServerCallback() {
 
                 @Override
-                public void onNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, @Nullable Bundle argument) {
+                public void onNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int status, @Nullable Bundle argument) {
                     result.set(true);
                 }
             };
@@ -107,7 +129,18 @@ public class NotificationTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            NotificationTask task = new NotificationTask(callback, null, null, null, null, null, null, false, NotificationTask.TIMEOUT_MILLIS, null);
+            NotificationTask task = new NotificationTask(callback
+                    , null
+                    , null
+                    , null
+                    , null
+                    , 1
+                    , null
+                    , 2
+                    , null
+                    , false
+                    , NotificationTask.TIMEOUT_MILLIS
+                    , null);
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());

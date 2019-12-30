@@ -370,31 +370,31 @@ public class BLECallbackSample extends BLEServerConnection.DefaultServerSetting 
     }
 
     @Override
-    public void onNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] value, Bundle argument) {
+    public void onNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull byte[] value, Bundle argument) {
         if (NOTIFICATABLE_CHARACTERISTIC_UUID.equals(characteristicUUID) || INDICATABLE_CHARACTERISTIC_UUID.equals(characteristicUUID)) {
             callback(serviceUUID, characteristicUUID, new String(value));
         } else {
             callback(serviceUUID, characteristicUUID, Arrays.toString(value));
         }
-        super.onNotificationSuccess(taskId, bluetoothGattServer, device, serviceUUID, characteristicUUID, value, argument);
+        super.onNotificationSuccess(taskId, bluetoothGattServer, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, value, argument);
     }
 
     @Override
-    public void onNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, int status, Bundle argument) {
+    public void onNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int status, Bundle argument) {
         callback(device, serviceUUID, characteristicUUID, status);
-        super.onNotificationFailed(taskId, bluetoothGattServer, device, serviceUUID, characteristicUUID, status, argument);
+        super.onNotificationFailed(taskId, bluetoothGattServer, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
     }
 
     @Override
-    public void onNotificationTimeout(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, long timeout, @Nullable Bundle argument) {
+    public void onNotificationTimeout(@NonNull Integer taskId, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, long timeout, @Nullable Bundle argument) {
         callback(device, serviceUUID, characteristicUUID, timeout);
-        super.onNotificationTimeout(taskId, bluetoothGattServer, device, serviceUUID, characteristicUUID, timeout, argument);
+        super.onNotificationTimeout(taskId, bluetoothGattServer, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
     }
 
     @Override
-    public void onClientCharacteristicConfigurationUpdated(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] value) {
+    public void onClientCharacteristicConfigurationUpdated(@NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull byte[] value) {
         callback(device, characteristicUUID, Arrays.toString(value));
-        super.onClientCharacteristicConfigurationUpdated(bluetoothGattServer, device, serviceUUID, characteristicUUID, value);
+        super.onClientCharacteristicConfigurationUpdated(bluetoothGattServer, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, value);
     }
 
     @Override

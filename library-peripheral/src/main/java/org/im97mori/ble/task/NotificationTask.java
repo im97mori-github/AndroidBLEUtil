@@ -16,6 +16,7 @@ import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.TaskHandler;
 
+import java.util.List;
 import java.util.UUID;
 
 import static org.im97mori.ble.BLEConstants.ErrorCodes.BUSY;
@@ -95,9 +96,19 @@ public class NotificationTask extends AbstractBLETask {
     private final UUID mServiceUUID;
 
     /**
-     * characteristic {@link UUID}
+     * task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     */
+    private int mServiceInstanceId;
+
+    /**
+     * task target characteristic {@link UUID}
      */
     private final UUID mCharacteristicUUID;
+
+    /**
+     * task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     */
+    private int mCharacteristicInstanceId;
 
     /**
      * task target data class
@@ -120,24 +131,39 @@ public class NotificationTask extends AbstractBLETask {
     private final Bundle mArgument;
 
     /**
-     * @param bleServerCallback   {@link BLEServerCallback} instance
-     * @param bluetoothGattServer {@link BluetoothGattServer} instance
-     * @param bluetoothDevice     BLE device
-     * @param taskHandler         task target {@link TaskHandler} instance
-     * @param serviceUUID         service {@link UUID}
-     * @param characteristicUUID  characteristic {@link UUID}
-     * @param byteArrayInterface  task target data class
-     * @param isConfirm           {@code true}:indication, {@code false}:notification
-     * @param timeout             timeout(millis)
-     * @param argument            callback argument
+     * @param bleServerCallback        {@link BLEServerCallback} instance
+     * @param bluetoothGattServer      {@link BluetoothGattServer} instance
+     * @param bluetoothDevice          BLE device
+     * @param taskHandler              task target {@link TaskHandler} instance
+     * @param serviceUUID              task target service {@link UUID}
+     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       task target characteristic {@link UUID}
+     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param byteArrayInterface       task target data class
+     * @param isConfirm                {@code true}:indication, {@code false}:notification
+     * @param timeout                  timeout(millis)
+     * @param argument                 callback argument
      */
-    public NotificationTask(@NonNull BLEServerCallback bleServerCallback, @NonNull BluetoothGattServer bluetoothGattServer, @NonNull BluetoothDevice bluetoothDevice, @NonNull TaskHandler taskHandler, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull ByteArrayInterface byteArrayInterface, boolean isConfirm, long timeout, @Nullable Bundle argument) {
+    public NotificationTask(@NonNull BLEServerCallback bleServerCallback
+            , @NonNull BluetoothGattServer bluetoothGattServer
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull TaskHandler taskHandler
+            , @NonNull UUID serviceUUID
+            , int serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , int characteristicInstanceId
+            , @NonNull ByteArrayInterface byteArrayInterface
+            , boolean isConfirm
+            , long timeout
+            , @Nullable Bundle argument) {
         mBLEServerCallback = bleServerCallback;
         mBluetoothGattServer = bluetoothGattServer;
         mBluetoothDevice = bluetoothDevice;
         mTaskHandler = taskHandler;
         mServiceUUID = serviceUUID;
+        mServiceInstanceId = serviceInstanceId;
         mCharacteristicUUID = characteristicUUID;
+        mCharacteristicInstanceId = characteristicInstanceId;
         mByteArrayInterface = byteArrayInterface;
         mIsConfirm = isConfirm;
         mTimeout = timeout;
@@ -168,18 +194,31 @@ public class NotificationTask extends AbstractBLETask {
 
         // timeout
         if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
-            mBLEServerCallback.onNotificationTimeout(getTaskId(), mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mCharacteristicUUID, mTimeout, mArgument);
+            mBLEServerCallback.onNotificationTimeout(getTaskId(), mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mTimeout, mArgument);
             mCurrentProgress = nextProgress;
         } else if (AbstractBLETask.PROGRESS_INIT == mCurrentProgress) {
             // current:init, next:notification start
             if (this == message.obj && AbstractBLETask.PROGRESS_NOTIFICATION_START == nextProgress) {
                 BluetoothGattCharacteristic bluetoothGattCharacteristic = null;
                 boolean result = false;
-                BluetoothGattService bluetoothGattService = mBluetoothGattServer.getService(mServiceUUID);
-                byte[] values = mByteArrayInterface.getBytes();
+                BluetoothGattService bluetoothGattService = null;
+                List<BluetoothGattService> serviceList = mBluetoothGattServer.getServices();
+                for (BluetoothGattService targetBluetoothGattService : serviceList) {
+                    if (mServiceUUID.equals(targetBluetoothGattService.getUuid()) && mServiceInstanceId == targetBluetoothGattService.getInstanceId()) {
+                        bluetoothGattService = targetBluetoothGattService;
+                        break;
+                    }
+                }
                 if (bluetoothGattService != null) {
-                    bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(mCharacteristicUUID);
+                    List<BluetoothGattCharacteristic> characteristicList = bluetoothGattService.getCharacteristics();
+                    for (BluetoothGattCharacteristic targetBluetoothGattCharacteristic : characteristicList) {
+                        if (mCharacteristicUUID.equals(targetBluetoothGattCharacteristic.getUuid()) && mCharacteristicInstanceId == targetBluetoothGattCharacteristic.getInstanceId()) {
+                            bluetoothGattCharacteristic = targetBluetoothGattCharacteristic;
+                            break;
+                        }
+                    }
                     if (bluetoothGattCharacteristic != null) {
+                        byte[] values = mByteArrayInterface.getBytes();
                         bluetoothGattCharacteristic.setValue(values);
 
                         // notification(indication)
@@ -198,10 +237,10 @@ public class NotificationTask extends AbstractBLETask {
                 } else {
                     if (bluetoothGattCharacteristic == null) {
                         nextProgress = AbstractBLETask.PROGRESS_FINISHED;
-                        mBLEServerCallback.onNotificationFailed(getTaskId(), mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mCharacteristicUUID, UNKNOWN, mArgument);
+                        mBLEServerCallback.onNotificationFailed(getTaskId(), mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, UNKNOWN, mArgument);
                     } else {
                         nextProgress = AbstractBLETask.PROGRESS_BUSY;
-                        mBLEServerCallback.onNotificationFailed(getTaskId(), mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mCharacteristicUUID, BUSY, mArgument);
+                        mBLEServerCallback.onNotificationFailed(getTaskId(), mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, BUSY, mArgument);
                     }
                 }
 
@@ -211,11 +250,11 @@ public class NotificationTask extends AbstractBLETask {
             if (AbstractBLETask.PROGRESS_NOTIFICATION_SUCCESS == nextProgress) {
                 // current:notification start, next:notification success
 
-                mBLEServerCallback.onNotificationSuccess(getTaskId(), mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mCharacteristicUUID, mByteArrayInterface.getBytes(), mArgument);
+                mBLEServerCallback.onNotificationSuccess(getTaskId(), mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mByteArrayInterface.getBytes(), mArgument);
             } else if (AbstractBLETask.PROGRESS_NOTIFICATION_ERROR == nextProgress) {
                 // current:notification start, next:notification error
 
-                mBLEServerCallback.onNotificationFailed(getTaskId(), mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mCharacteristicUUID, bundle.getInt(KEY_STATUS), mArgument);
+                mBLEServerCallback.onNotificationFailed(getTaskId(), mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, bundle.getInt(KEY_STATUS), mArgument);
             }
 
             mCurrentProgress = PROGRESS_FINISHED;
@@ -240,6 +279,6 @@ public class NotificationTask extends AbstractBLETask {
     @Override
     public void cancel() {
         mCurrentProgress = AbstractBLETask.PROGRESS_FINISHED;
-        mBLEServerCallback.onNotificationFailed(getTaskId(), mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mCharacteristicUUID, CANCEL, mArgument);
+        mBLEServerCallback.onNotificationFailed(getTaskId(), mBluetoothGattServer, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, CANCEL, mArgument);
     }
 }
