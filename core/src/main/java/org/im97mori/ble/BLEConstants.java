@@ -2483,6 +2483,12 @@ public class BLEConstants {
          * Automation IO (Service UUID: 0x1815)
          */
         public static final UUID AUTOMATION_IO_SERVICE = UUID.fromString("00001815-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Cycling Power (Service UUID: 0x1818)
+         */
+        public static final UUID CYCLING_POWER_SERVICE = UUID.fromString("00001818-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -2974,6 +2980,33 @@ public class BLEConstants {
          */
         public static final UUID AGGREGATE_CHARACTERISTIC = UUID.fromString("00002A5A-0000-1000-8000-00805f9b34fb");
 
+        // Cycling Power (Service UUID: 0x1818)
+
+        /**
+         * Cycling Power Measurement (Characteristic UUID: 0x2A63)
+         */
+        public static final UUID CYCLING_POWER_MEASUREMENT_CHARACTERISTIC = UUID.fromString("00002A63-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Cycling Power Feature (Characteristic UUID: 0x2A65)
+         */
+        public static final UUID CYCLING_POWER_FEATURE_CHARACTERISTIC = UUID.fromString("00002A65-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Sensor Location (Characteristic UUID: 0x2A5D)
+         */
+        public static final UUID SENSOR_LOCATION_CHARACTERISTIC = UUID.fromString("00002A5D-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Cycling Power Vector (Characteristic UUID: 0x2A64)
+         */
+        public static final UUID CYCLING_POWER_VECTOR_CHARACTERISTIC = UUID.fromString("00002A64-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Cycling Power Control Point (Characteristic UUID: 0x2A66)
+         */
+        public static final UUID CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002A66-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -3183,6 +3216,7 @@ public class BLEConstants {
          * Control Point value not supported(Heart Rate Service v1.0 1.6)
          * Out of Range(Health Thermometer Service v1.0 1.6)
          * Trigger condition value not supported(Automation IO Service v1.0.0 1.6)
+         * Inappropriate Connection Parameters(Cycling Power Service v1.1 1.6)
          */
         public static final int APPLICATION_ERROR_80 = 0x80;
         public static final int APPLICATION_ERROR_81 = 0x81;

@@ -16,6 +16,6 @@ android {
 
 dependencies {
     implementation project(path: ':library-central')
-    implementation apiAdvertising
+    implementation project(path: ':advertising')
     implementation 'androidx.fragment:fragment:1.1.0'
 }

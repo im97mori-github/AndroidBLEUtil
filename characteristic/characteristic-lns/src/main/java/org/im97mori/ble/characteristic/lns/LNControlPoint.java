@@ -6,6 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
@@ -105,7 +106,7 @@ public class LNControlPoint implements ByteArrayInterface, Parcelable {
     /**
      * <p>
      * Mask Location and Speed Characteristic Content
-     * 1: Instantaneous Speed Turn off
+     * 1: Total Distance Turn off
      * </p>
      */
     public static final int PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_TOTAL_DISTANCE_TURN_OFF = 0b00000000_00000010;
@@ -223,7 +224,7 @@ public class LNControlPoint implements ByteArrayInterface, Parcelable {
     /**
      * <p>
      * Navigation Control
-     * 0: Stop Notificationof the Navigation characteristic.Stop Navigation
+     * 0: Stop Notification of the Navigation characteristic. Stop Navigation
      * </p>
      */
     public static final int PARAMETER_VALUE_NAVIGATION_CONTROL_00 = 0x00;
@@ -231,7 +232,7 @@ public class LNControlPoint implements ByteArrayInterface, Parcelable {
     /**
      * <p>
      * Navigation Control
-     * 1: Start Notificationof the Navigation characteristic.Start Navigationto the first waypoint on a route
+     * 1: Start Notification of the Navigation characteristic. Start Navigation to the first waypoint on a route
      * </p>
      */
     public static final int PARAMETER_VALUE_NAVIGATION_CONTROL_01 = 0x01;
@@ -239,7 +240,7 @@ public class LNControlPoint implements ByteArrayInterface, Parcelable {
     /**
      * <p>
      * Navigation Control
-     * 2: Stop Notificationof the Navigation characteristic.Pause Navigationkeeping the next waypointon the routein the memory for continuing the navigation later
+     * 2: Stop Notification of the Navigation characteristic. Pause Navigation keeping the next waypoint on the route in the memory for continuing the navigation later
      * </p>
      */
     public static final int PARAMETER_VALUE_NAVIGATION_CONTROL_02 = 0x02;
@@ -247,7 +248,7 @@ public class LNControlPoint implements ByteArrayInterface, Parcelable {
     /**
      * <p>
      * Navigation Control
-     * 3: Start Notificationof the Navigation characteristic.Continue Navigationfrom the point where navigation was paused to the next waypointon the route
+     * 3: Start Notification of the Navigation characteristic. Continue Navigation from the point where navigation was paused to the next waypoint on the route
      * </p>
      */
     public static final int PARAMETER_VALUE_NAVIGATION_CONTROL_03 = 0x03;
@@ -255,7 +256,7 @@ public class LNControlPoint implements ByteArrayInterface, Parcelable {
     /**
      * <p>
      * Navigation Control
-     * 4: Notificationof the Navigation characteristicnot affected. Skip Waypoint: disregard next waypoint and continue navigation to the waypoint following next waypoint on the route
+     * 4: Notification of the Navigation characteristic not affected. Skip Waypoint: disregard next waypoint and continue navigation to the waypoint following next waypoint on the route
      * </p>
      */
     public static final int PARAMETER_VALUE_NAVIGATION_CONTROL_04 = 0x04;
@@ -531,7 +532,7 @@ public class LNControlPoint implements ByteArrayInterface, Parcelable {
 
     /**
      * @param opCodes Op Code
-     * @return {@code true}:Response Code, {@code false}:not SResponse Code
+     * @return {@code true}:Response Code, {@code false}:not Response Code
      */
     public boolean isOpCodesResponseCode(int opCodes) {
         return OP_CODES_RESPONSE_CODE == opCodes;
@@ -543,6 +544,175 @@ public class LNControlPoint implements ByteArrayInterface, Parcelable {
     public byte[] getParameterValue() {
         return mParameterValue;
     }
+
+    /**
+     * @return {@code true}:Instantaneous Speed Leave as default, {@code false}:not Instantaneous Speed Leave as default
+     */
+    public boolean isParameterValueMaskLocationAndSpeedCharacteristicContentInstantaneousSpeedLeaveAsDefault() {
+        return isOpCodesMaskLocationAndSpeedCharacteristicContent(mOpCodes)
+                && isParameterValueMaskLocationAndSpeedCharacteristicContentMatched(PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_INSTANCE_SPEED_MASK
+                , PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_INSTANCE_SPEED_LEAVE_AS_DEFAULT);
+    }
+
+    /**
+     * @return {@code true}:Instantaneous Speed Turn off, {@code false}:not Instantaneous Speed Turn off
+     */
+    public boolean isParameterValueMaskLocationAndSpeedCharacteristicContentInstantaneousSpeedSpeedTurnOff() {
+        return isOpCodesMaskLocationAndSpeedCharacteristicContent(mOpCodes)
+                && isParameterValueMaskLocationAndSpeedCharacteristicContentMatched(PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_INSTANCE_SPEED_MASK
+                , PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_INSTANCE_SPEED_TURN_OFF);
+    }
+
+    /**
+     * @return {@code true}:Total Distance Leave as default, {@code false}:not Total Distance Leave as default
+     */
+    public boolean isParameterValueMaskLocationAndSpeedCharacteristicContentTotalDistanceLeaveAsDefault() {
+        return isOpCodesMaskLocationAndSpeedCharacteristicContent(mOpCodes)
+                && isParameterValueMaskLocationAndSpeedCharacteristicContentMatched(PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_TOTAL_DISTANCE_MASK
+                , PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_TOTAL_DISTANCE_LEAVE_AS_DEFAULT);
+    }
+
+    /**
+     * @return {@code true}:Total Distance Turn off, {@code false}:not Total Distance Turn off
+     */
+    public boolean isParameterValueMaskLocationAndSpeedCharacteristicContentITotalDistanceSpeedTurnOff() {
+        return isOpCodesMaskLocationAndSpeedCharacteristicContent(mOpCodes)
+                && isParameterValueMaskLocationAndSpeedCharacteristicContentMatched(PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_TOTAL_DISTANCE_MASK
+                , PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_TOTAL_DISTANCE_TURN_OFF);
+    }
+
+    /**
+     * @return {@code true}:Location Leave as default, {@code false}:not Location Leave as default
+     */
+    public boolean isParameterValueMaskLocationAndSpeedCharacteristicContentLocationLeaveAsDefault() {
+        return isOpCodesMaskLocationAndSpeedCharacteristicContent(mOpCodes)
+                && isParameterValueMaskLocationAndSpeedCharacteristicContentMatched(PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_LOCATION_MASK
+                , PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_LOCATION_LEAVE_AS_DEFAULT);
+    }
+
+    /**
+     * @return {@code true}:Location Turn off, {@code false}:not Location Turn off
+     */
+    public boolean isParameterValueMaskLocationAndSpeedCharacteristicContentLocationSpeedSpeedTurnOff() {
+        return isOpCodesMaskLocationAndSpeedCharacteristicContent(mOpCodes)
+                && isParameterValueMaskLocationAndSpeedCharacteristicContentMatched(PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_LOCATION_MASK
+                , PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_LOCATION_TURN_OFF);
+    }
+
+    /**
+     * @return {@code true}:Elevation Leave as default, {@code false}:not Elevation Leave as default
+     */
+    public boolean isParameterValueMaskLocationAndSpeedCharacteristicContentElevationLeaveAsDefault() {
+        return isOpCodesMaskLocationAndSpeedCharacteristicContent(mOpCodes)
+                && isParameterValueMaskLocationAndSpeedCharacteristicContentMatched(PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ELEVATION_MASK
+                , PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ELEVATION_LEAVE_AS_DEFAULT);
+    }
+
+    /**
+     * @return {@code true}:Elevation Turn off, {@code false}:not Elevation Turn off
+     */
+    public boolean isParameterValueMaskLocationAndSpeedCharacteristicContentElevationSpeedTurnOff() {
+        return isOpCodesMaskLocationAndSpeedCharacteristicContent(mOpCodes)
+                && isParameterValueMaskLocationAndSpeedCharacteristicContentMatched(PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ELEVATION_MASK
+                , PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ELEVATION_TURN_OFF);
+    }
+
+    /**
+     * @return {@code true}:Heading Leave as default, {@code false}:not Heading Leave as default
+     */
+    public boolean isParameterValueMaskLocationAndSpeedCharacteristicContentHeadingLeaveAsDefault() {
+        return isOpCodesMaskLocationAndSpeedCharacteristicContent(mOpCodes)
+                && isParameterValueMaskLocationAndSpeedCharacteristicContentMatched(PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_HEADING_MASK
+                , PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_HEADING_LEAVE_AS_DEFAULT);
+    }
+
+    /**
+     * @return {@code true}:Heading Turn off, {@code false}:not Heading Turn off
+     */
+    public boolean isParameterValueMaskLocationAndSpeedCharacteristicContentHeadingSpeedTurnOff() {
+        return isOpCodesMaskLocationAndSpeedCharacteristicContent(mOpCodes)
+                && isParameterValueMaskLocationAndSpeedCharacteristicContentMatched(PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_HEADING_MASK
+                , PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_HEADING_TURN_OFF);
+    }
+
+    /**
+     * @return {@code true}:Rolling Time Leave as default, {@code false}:not Rolling Time Leave as default
+     */
+    public boolean isParameterValueMaskLocationAndSpeedCharacteristicContentRollingTimeLeaveAsDefault() {
+        return isOpCodesMaskLocationAndSpeedCharacteristicContent(mOpCodes)
+                && isParameterValueMaskLocationAndSpeedCharacteristicContentMatched(PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ROLLING_TIME_MASK
+                , PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ROLLING_TIME_LEAVE_AS_DEFAULT);
+    }
+
+    /**
+     * @return {@code true}:Rolling Time Turn off, {@code false}:not Rolling Time Turn off
+     */
+    public boolean isParameterValueMaskLocationAndSpeedCharacteristicContentRollingTimeTurnOff() {
+        return isOpCodesMaskLocationAndSpeedCharacteristicContent(mOpCodes)
+                && isParameterValueMaskLocationAndSpeedCharacteristicContentMatched(PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ROLLING_TIME_MASK
+                , PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ROLLING_TIME_TURN_OFF);
+    }
+
+    /**
+     * @return {@code true}:UTC Time Leave as default, {@code false}:not UTC Time Leave as default
+     */
+    public boolean isParameterValueMaskLocationAndSpeedCharacteristicContentUtcTimeLeaveAsDefault() {
+        return isOpCodesMaskLocationAndSpeedCharacteristicContent(mOpCodes)
+                && isParameterValueMaskLocationAndSpeedCharacteristicContentMatched(PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_UTC_TIME_MASK
+                , PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_UTC_TIME_LEAVE_AS_DEFAULT);
+    }
+
+    /**
+     * @return {@code true}:UTC Time Turn off, {@code false}:not UTC Time Turn off
+     */
+    public boolean isParameterValueMaskLocationAndSpeedCharacteristicContentUtcTimeSpeedTurnOff() {
+        return isOpCodesMaskLocationAndSpeedCharacteristicContent(mOpCodes)
+                && isParameterValueMaskLocationAndSpeedCharacteristicContentMatched(PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_UTC_TIME_MASK
+                , PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_UTC_TIME_TURN_OFF);
+    }
+
+    /**
+     * @return {@code true}:Stop Notification of the Navigation characteristic. Stop Navigation, {@code false}:not Stop Notification of the Navigation characteristic. Stop Navigation
+     */
+    public boolean isParameterValueNavigationControll00() {
+        return isOpCodesNavigationControl(mOpCodes) && PARAMETER_VALUE_NAVIGATION_CONTROL_00 == BLEUtils.createUInt8(mParameterValue, 0);
+    }
+
+    /**
+     * @return {@code true}:Start Notification of the Navigation characteristic. Start Navigation to the first waypoint on a route, {@code false}:not Start Notification of the Navigation characteristic. Start Navigation to the first waypoint on a route
+     */
+    public boolean isParameterValueNavigationControll01() {
+        return isOpCodesNavigationControl(mOpCodes) && PARAMETER_VALUE_NAVIGATION_CONTROL_01 == BLEUtils.createUInt8(mParameterValue, 0);
+    }
+
+    /**
+     * @return {@code true}:Start Notification of the Navigation characteristic. Continue Navigation from the point where navigation was paused to the next waypoint on the route, {@code false}:not Start Notification of the Navigation characteristic. Continue Navigation from the point where navigation was paused to the next waypoint on the route
+     */
+    public boolean isParameterValueNavigationControll02() {
+        return isOpCodesNavigationControl(mOpCodes) && PARAMETER_VALUE_NAVIGATION_CONTROL_02 == BLEUtils.createUInt8(mParameterValue, 0);
+    }
+
+    /**
+     * @return {@code true}:Notification of the Navigation characteristic not affected. Skip Waypoint: disregard next waypoint and continue navigation to the waypoint following next waypoint on the route, {@code false}:not Notification of the Navigation characteristic not affected. Skip Waypoint: disregard next waypoint and continue navigation to the waypoint following next waypoint on the route
+     */
+    public boolean isParameterValueNavigationControll03() {
+        return isOpCodesNavigationControl(mOpCodes) && PARAMETER_VALUE_NAVIGATION_CONTROL_03 == BLEUtils.createUInt8(mParameterValue, 0);
+    }
+
+    /**
+     * @return {@code true}:Start Notificationof the Navigation characteristic. Select Nearest Waypoint on a Route: measure the distance to all waypoints on the route, and startnavigation to the closest or optimal waypoint on the route (left to the implementation) and from there to waypoints following next waypoint along the route, {@code false}:not Start Notificationof the Navigation characteristic. Select Nearest Waypoint on a Route: measure the distance to all waypoints on the route, and startnavigation to the closest or optimal waypoint on the route (left to the implementation) and from there to waypoints following next waypoint along the route
+     */
+    public boolean isParameterValueNavigationControll04() {
+        return isOpCodesNavigationControl(mOpCodes) && PARAMETER_VALUE_NAVIGATION_CONTROL_04 == BLEUtils.createUInt8(mParameterValue, 0);
+    }
+
+    /**
+     * @return {@code true}:Start Notificationof the Navigation characteristic. Select Nearest Waypoint on a Route: measure the distance to all waypoints on the route, and startnavigation to the closest or optimal waypoint on the route (left to the implementation) and from there to waypoints following next waypoint along the route, {@code false}:not Start Notificationof the Navigation characteristic. Select Nearest Waypoint on a Route: measure the distance to all waypoints on the route, and startnavigation to the closest or optimal waypoint on the route (left to the implementation) and from there to waypoints following next waypoint along the route
+     */
+    public boolean isParameterValueNavigationControll05() {
+        return isOpCodesNavigationControl(mOpCodes) && PARAMETER_VALUE_NAVIGATION_CONTROL_05 == BLEUtils.createUInt8(mParameterValue, 0);
+    }
+
 
     /**
      * @return Request Op Code
@@ -624,4 +794,29 @@ public class LNControlPoint implements ByteArrayInterface, Parcelable {
         }
         return Arrays.copyOfRange(data, 0, length);
     }
+
+    /**
+     * check Parameter Value for Mask Location and Speed Characteristic Content
+     *
+     * @param mask   bitmask for expect
+     * @param expect one of {@link #PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_INSTANCE_SPEED_LEAVE_AS_DEFAULT}
+     *               , {@link #PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_INSTANCE_SPEED_TURN_OFF}
+     *               , {@link #PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_TOTAL_DISTANCE_LEAVE_AS_DEFAULT}
+     *               , {@link #PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_TOTAL_DISTANCE_TURN_OFF}
+     *               , {@link #PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_LOCATION_LEAVE_AS_DEFAULT}
+     *               , {@link #PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_LOCATION_TURN_OFF}
+     *               , {@link #PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ELEVATION_LEAVE_AS_DEFAULT}
+     *               , {@link #PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ELEVATION_TURN_OFF}
+     *               , {@link #PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_HEADING_LEAVE_AS_DEFAULT}
+     *               , {@link #PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_HEADING_TURN_OFF}
+     *               , {@link #PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ROLLING_TIME_LEAVE_AS_DEFAULT}
+     *               , {@link #PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ROLLING_TIME_TURN_OFF}
+     *               , {@link #PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_UTC_TIME_LEAVE_AS_DEFAULT}
+     *               , {@link #PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_UTC_TIME_TURN_OFF}
+     * @return {@code true}:same as expect, {@code false}:not match
+     */
+    private boolean isParameterValueMaskLocationAndSpeedCharacteristicContentMatched(int mask, int expect) {
+        return (mask & BLEUtils.createUInt16(mParameterValue, 0)) == expect;
+    }
+
 }

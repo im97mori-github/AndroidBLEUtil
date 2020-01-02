@@ -117,6 +117,40 @@ public class BLEUtilsTest {
     }
 
     @Test
+    public void test_createSInt12_004() {
+        //@formatter:off
+        byte[] data = new byte[3];
+        data[ 0] = 0x00;
+        data[ 1] = 0x10;
+        data[ 2] = 0x20;
+        //@formatter:on
+        assertEquals(0x0201, BLEUtils.createSInt12(data, 0, 12));
+    }
+
+    @Test
+    public void test_createSInt12_005() {
+        //@formatter:off
+        byte[] data = new byte[3];
+        data[ 0] = (byte) 0x00;
+        data[ 1] = (byte) 0x10;
+        data[ 2] = (byte) 0xf0;
+        //@formatter:on
+        assertEquals(0xffffff01, BLEUtils.createSInt12(data, 0, 12));
+    }
+
+    @Test
+    public void test_createSInt12_006() {
+        //@formatter:off
+        byte[] data = new byte[4];
+        data[ 0] = 0x00;
+        data[ 1] = 0x00;
+        data[ 2] = 0x20;
+        data[ 3] = 0x30;
+        //@formatter:on
+        assertEquals(0x0302, BLEUtils.createSInt12(data, 1, 12));
+    }
+
+    @Test
     public void test_createUInt12_001() {
         //@formatter:off
         byte[] data = new byte[2];
@@ -145,6 +179,40 @@ public class BLEUtilsTest {
         data[ 2] = 0x43;
         //@formatter:on
         assertEquals(0x0302, BLEUtils.createUInt12(data, 1));
+    }
+
+    @Test
+    public void test_createUInt12_004() {
+        //@formatter:off
+        byte[] data = new byte[3];
+        data[ 0] = 0x00;
+        data[ 1] = 0x10;
+        data[ 2] = 0x20;
+        //@formatter:on
+        assertEquals(0x0201, BLEUtils.createUInt12(data, 0, 12));
+    }
+
+    @Test
+    public void test_createUInt12_005() {
+        //@formatter:off
+        byte[] data = new byte[3];
+        data[ 0] = (byte) 0x00;
+        data[ 1] = (byte) 0x10;
+        data[ 2] = (byte) 0xf0;
+        //@formatter:on
+        assertEquals(0x00000f01, BLEUtils.createUInt12(data, 0, 12));
+    }
+
+    @Test
+    public void test_createUInt12_006() {
+        //@formatter:off
+        byte[] data = new byte[4];
+        data[ 0] = 0x00;
+        data[ 1] = 0x00;
+        data[ 2] = 0x20;
+        data[ 3] = 0x30;
+        //@formatter:on
+        assertEquals(0x0302, BLEUtils.createUInt12(data, 1, 12));
     }
 
     @Test

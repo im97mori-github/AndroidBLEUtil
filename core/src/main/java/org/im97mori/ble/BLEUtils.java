@@ -123,7 +123,23 @@ public class BLEUtils {
      * @return signed 12-bit integer
      */
     public static int createSInt12(@NonNull byte[] data, int offset) {
-        return createByteBuffer(data, offset, 2, Short.SIZE / 8).getShort() << 20 >> 20;
+        return createSInt12(data, offset, 0);
+    }
+
+    /**
+     * <p>
+     * create signed 12-bit integer
+     * <p>
+     * Core Specification v5.1 Vol 3 Part G 3.3.3.5.2 Format Table 3.16 (0x0D)
+     * </p>
+     *
+     * @param data        byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
+     * @param offset      data offset
+     * @param shiftOffset shift offset
+     * @return signed 12-bit integer
+     */
+    public static int createSInt12(@NonNull byte[] data, int offset, int shiftOffset) {
+        return createByteBuffer(data, offset + (shiftOffset / 8), 2, Short.SIZE / 8).getShort() << (20 - shiftOffset % 8) >> 20;
     }
 
     /**
@@ -138,7 +154,23 @@ public class BLEUtils {
      * @return unsigned 12-bit integer
      */
     public static int createUInt12(@NonNull byte[] data, int offset) {
-        return createSInt12(data, offset) & 0x00000fff;
+        return createUInt12(data, offset, 0);
+    }
+
+    /**
+     * <p>
+     * create unsigned 12-bit integer
+     * <p>
+     * Core Specification v5.1 Vol 3 Part G 3.3.3.5.2 Format Table 3.16 (0x05)
+     * </p>
+     *
+     * @param data        byte array from {@link BluetoothGattCharacteristic#getValue()} or {@link BluetoothGattDescriptor#getValue()}
+     * @param offset      data offset
+     * @param shiftOffset shift offset
+     * @return unsigned 12-bit integer
+     */
+    public static int createUInt12(@NonNull byte[] data, int offset, int shiftOffset) {
+        return createSInt12(data, offset, shiftOffset) & 0x00000fff;
     }
 
     /**

@@ -16,7 +16,6 @@ android {
 }
 
 dependencies {
-//    implementation project(path: ':library-central')
     implementation project(path: ':library-peripheral')
     implementation 'androidx.fragment:fragment:1.1.0'
 }

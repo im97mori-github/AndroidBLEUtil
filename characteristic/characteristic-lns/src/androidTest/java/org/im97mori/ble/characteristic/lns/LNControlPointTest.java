@@ -48,6 +48,8 @@ public class LNControlPointTest {
         LNControlPoint result1 = new LNControlPoint(bluetoothGattCharacteristic);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
+        assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentInstantaneousSpeedLeaveAsDefault());
+        assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentInstantaneousSpeedSpeedTurnOff());
     }
 
     @Test
@@ -65,6 +67,8 @@ public class LNControlPointTest {
         LNControlPoint result1 = new LNControlPoint(bluetoothGattCharacteristic);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
+        assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentInstantaneousSpeedLeaveAsDefault());
+        assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentInstantaneousSpeedSpeedTurnOff());
     }
 
     @Test
@@ -82,6 +86,8 @@ public class LNControlPointTest {
         LNControlPoint result1 = new LNControlPoint(bluetoothGattCharacteristic);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
+        assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentTotalDistanceLeaveAsDefault());
+        assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentITotalDistanceSpeedTurnOff());
     }
 
     @Test
@@ -99,7 +105,8 @@ public class LNControlPointTest {
         LNControlPoint result1 = new LNControlPoint(bluetoothGattCharacteristic);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
-    }
+        assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentTotalDistanceLeaveAsDefault());
+        assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentITotalDistanceSpeedTurnOff());    }
 
     @Test
     public void test_constructor006() {
@@ -116,6 +123,8 @@ public class LNControlPointTest {
         LNControlPoint result1 = new LNControlPoint(bluetoothGattCharacteristic);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
+        assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentLocationLeaveAsDefault());
+        assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentLocationSpeedSpeedTurnOff());
     }
 
     @Test
@@ -133,6 +142,8 @@ public class LNControlPointTest {
         LNControlPoint result1 = new LNControlPoint(bluetoothGattCharacteristic);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
+        assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentLocationLeaveAsDefault());
+        assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentLocationSpeedSpeedTurnOff());
     }
 
     @Test
@@ -150,6 +161,8 @@ public class LNControlPointTest {
         LNControlPoint result1 = new LNControlPoint(bluetoothGattCharacteristic);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
+        assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentElevationLeaveAsDefault());
+        assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentElevationSpeedTurnOff());
     }
 
     @Test
@@ -167,6 +180,8 @@ public class LNControlPointTest {
         LNControlPoint result1 = new LNControlPoint(bluetoothGattCharacteristic);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
+        assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentElevationLeaveAsDefault());
+        assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentElevationSpeedTurnOff());
     }
 
     @Test
@@ -184,6 +199,8 @@ public class LNControlPointTest {
         LNControlPoint result1 = new LNControlPoint(bluetoothGattCharacteristic);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
+        assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentHeadingLeaveAsDefault());
+        assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentHeadingSpeedTurnOff());
     }
 
     @Test
@@ -201,6 +218,8 @@ public class LNControlPointTest {
         LNControlPoint result1 = new LNControlPoint(bluetoothGattCharacteristic);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
+        assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentHeadingLeaveAsDefault());
+        assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentHeadingSpeedTurnOff());
     }
 
     @Test
@@ -218,6 +237,8 @@ public class LNControlPointTest {
         LNControlPoint result1 = new LNControlPoint(bluetoothGattCharacteristic);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
+        assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentRollingTimeLeaveAsDefault());
+        assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentRollingTimeTurnOff());
     }
 
     @Test
@@ -235,6 +256,8 @@ public class LNControlPointTest {
         LNControlPoint result1 = new LNControlPoint(bluetoothGattCharacteristic);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
+        assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentRollingTimeLeaveAsDefault());
+        assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentRollingTimeTurnOff());
     }
 
     @Test
@@ -252,6 +275,8 @@ public class LNControlPointTest {
         LNControlPoint result1 = new LNControlPoint(bluetoothGattCharacteristic);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
+        assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentUtcTimeLeaveAsDefault());
+        assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentUtcTimeSpeedTurnOff());
     }
 
     @Test
@@ -269,6 +294,8 @@ public class LNControlPointTest {
         LNControlPoint result1 = new LNControlPoint(bluetoothGattCharacteristic);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
+        assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentUtcTimeLeaveAsDefault());
+        assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentUtcTimeSpeedTurnOff());
     }
 
     @Test

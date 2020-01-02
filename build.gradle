@@ -38,167 +38,174 @@ ext.uploadVersionName = 'uploadVersionName'
 
 ext.core = [
         artifactId         : 'ble-core'
-        , versionCode      : 22
-        , versionName      : '0.1.21'
-        , uploadVersionName: '0.1.21'
+        , versionCode      : 23
+        , versionName      : '0.1.22'
+        , uploadVersionName: '0.1.22'
 ]
 
 ext.advertising = [
         artifactId         : 'ble-advertising'
-        , versionCode      : 22
-        , versionName      : '0.1.21'
-        , uploadVersionName: '0.1.21'
+        , versionCode      : 23
+        , versionName      : '0.1.22'
+        , uploadVersionName: '0.1.22'
 ]
 
 ext.descriptor = [
         artifactId         : 'ble-descriptor'
-        , versionCode      : 22
-        , versionName      : '0.1.21'
-        , uploadVersionName: '0.1.21'
+        , versionCode      : 23
+        , versionName      : '0.1.22'
+        , uploadVersionName: '0.1.22'
 ]
 
 ext.characteristicCore = [
         artifactId         : 'ble-characteristic-core'
-        , versionCode      : 10
-        , versionName      : '0.1.9'
-        , uploadVersionName: '0.1.9'
-]
-
-ext.characteristicDis = [
-        artifactId         : 'ble-characteristic-dis'
-        , versionCode      : 22
-        , versionName      : '0.1.21'
-        , uploadVersionName: '0.1.21'
-]
-
-ext.characteristicGaps = [
-        artifactId         : 'ble-characteristic-gaps'
-        , versionCode      : 18
-        , versionName      : '0.1.17'
-        , uploadVersionName: '0.1.17'
-]
-
-ext.characteristicGas = [
-        artifactId         : 'ble-characteristic-gas'
-        , versionCode      : 22
-        , versionName      : '0.1.21'
-        , uploadVersionName: '0.1.21'
-]
-
-ext.characteristicBas = [
-        artifactId         : 'ble-characteristic-bas'
-        , versionCode      : 17
-        , versionName      : '0.1.16'
-        , uploadVersionName: '0.1.16'
-]
-
-ext.characteristicCts = [
-        artifactId         : 'ble-characteristic-cts'
-        , versionCode      : 16
-        , versionName      : '0.1.15'
-        , uploadVersionName: '0.1.15'
-]
-
-ext.characteristicWss = [
-        artifactId         : 'ble-characteristic-wss'
-        , versionCode      : 16
-        , versionName      : '0.1.15'
-        , uploadVersionName: '0.1.15'
-]
-
-ext.characteristicUds = [
-        artifactId         : 'ble-characteristic-uds'
-        , versionCode      : 14
-        , versionName      : '0.1.13'
-        , uploadVersionName: '0.1.13'
-]
-
-ext.characteristicBcs = [
-        artifactId         : 'ble-characteristic-bcs'
-        , versionCode      : 13
-        , versionName      : '0.1.12'
-        , uploadVersionName: '0.1.12'
-]
-
-ext.characteristicBls = [
-        artifactId         : 'ble-characteristic-bls'
-        , versionCode      : 12
-        , versionName      : '0.1.11'
-        , uploadVersionName: '0.1.11'
-]
-
-ext.characteristicHrs = [
-        artifactId         : 'ble-characteristic-hrs'
         , versionCode      : 11
         , versionName      : '0.1.10'
         , uploadVersionName: '0.1.10'
 ]
 
+ext.characteristicDis = [
+        artifactId         : 'ble-characteristic-dis'
+        , versionCode      : 23
+        , versionName      : '0.1.22'
+        , uploadVersionName: '0.1.22'
+]
+
+ext.characteristicGaps = [
+        artifactId         : 'ble-characteristic-gaps'
+        , versionCode      : 19
+        , versionName      : '0.1.18'
+        , uploadVersionName: '0.1.18'
+]
+
+ext.characteristicGas = [
+        artifactId         : 'ble-characteristic-gas'
+        , versionCode      : 23
+        , versionName      : '0.1.22'
+        , uploadVersionName: '0.1.22'
+]
+
+ext.characteristicBas = [
+        artifactId         : 'ble-characteristic-bas'
+        , versionCode      : 18
+        , versionName      : '0.1.17'
+        , uploadVersionName: '0.1.17'
+]
+
+ext.characteristicCts = [
+        artifactId         : 'ble-characteristic-cts'
+        , versionCode      : 17
+        , versionName      : '0.1.16'
+        , uploadVersionName: '0.1.16'
+]
+
+ext.characteristicWss = [
+        artifactId         : 'ble-characteristic-wss'
+        , versionCode      : 17
+        , versionName      : '0.1.16'
+        , uploadVersionName: '0.1.16'
+]
+
+ext.characteristicUds = [
+        artifactId         : 'ble-characteristic-uds'
+        , versionCode      : 15
+        , versionName      : '0.1.14'
+        , uploadVersionName: '0.1.14'
+]
+
+ext.characteristicBcs = [
+        artifactId         : 'ble-characteristic-bcs'
+        , versionCode      : 14
+        , versionName      : '0.1.13'
+        , uploadVersionName: '0.1.13'
+]
+
+ext.characteristicBls = [
+        artifactId         : 'ble-characteristic-bls'
+        , versionCode      : 13
+        , versionName      : '0.1.12'
+        , uploadVersionName: '0.1.12'
+]
+
+ext.characteristicHrs = [
+        artifactId         : 'ble-characteristic-hrs'
+        , versionCode      : 12
+        , versionName      : '0.1.11'
+        , uploadVersionName: '0.1.11'
+]
+
 ext.characteristicHts = [
         artifactId         : 'ble-characteristic-hts'
+        , versionCode      : 11
+        , versionName      : '0.1.10'
+        , uploadVersionName: '0.1.10'
+]
+
+ext.characteristicLls = [
+        artifactId         : 'ble-characteristic-lls'
         , versionCode      : 10
         , versionName      : '0.1.9'
         , uploadVersionName: '0.1.9'
 ]
 
-ext.characteristicLls = [
-        artifactId         : 'ble-characteristic-lls'
+ext.characteristicIas = [
+        artifactId         : 'ble-characteristic-ias'
         , versionCode      : 9
         , versionName      : '0.1.8'
         , uploadVersionName: '0.1.8'
 ]
 
-ext.characteristicIas = [
-        artifactId         : 'ble-characteristic-ias'
+ext.characteristicTps = [
+        artifactId         : 'ble-characteristic-tps'
         , versionCode      : 8
         , versionName      : '0.1.7'
         , uploadVersionName: '0.1.7'
 ]
 
-ext.characteristicTps = [
-        artifactId         : 'ble-characteristic-tps'
+ext.characteristicNdcs = [
+        artifactId         : 'ble-characteristic-ndcs'
         , versionCode      : 7
         , versionName      : '0.1.6'
         , uploadVersionName: '0.1.6'
 ]
 
-ext.characteristicNdcs = [
-        artifactId         : 'ble-characteristic-ndcs'
+ext.characteristicRtus = [
+        artifactId         : 'ble-characteristic-rtus'
         , versionCode      : 6
         , versionName      : '0.1.5'
         , uploadVersionName: '0.1.5'
 ]
 
-ext.characteristicRtus = [
-        artifactId         : 'ble-characteristic-rtus'
+ext.characteristicLns = [
+        artifactId         : 'ble-characteristic-lns'
         , versionCode      : 5
         , versionName      : '0.1.4'
         , uploadVersionName: '0.1.4'
 ]
 
-ext.characteristicLns = [
-        artifactId         : 'ble-characteristic-lns'
+ext.characteristicPass = [
+        artifactId         : 'ble-characteristic-pass'
         , versionCode      : 4
         , versionName      : '0.1.3'
         , uploadVersionName: '0.1.3'
 ]
 
-ext.characteristicPass = [
-        artifactId         : 'ble-characteristic-pass'
+ext.characteristicAns = [
+        artifactId         : 'ble-characteristic-ans'
         , versionCode      : 3
         , versionName      : '0.1.2'
         , uploadVersionName: '0.1.2'
 ]
 
-ext.characteristicAns = [
-        artifactId         : 'ble-characteristic-ans'
+ext.characteristicAios = [
+        artifactId         : 'ble-characteristic-aios'
         , versionCode      : 2
         , versionName      : '0.1.1'
         , uploadVersionName: '0.1.1'
 ]
 
-ext.characteristicAios = [
-        artifactId         : 'ble-characteristic-aios'
+ext.characteristicCps = [
+        artifactId         : 'ble-characteristic-cps'
         , versionCode      : 1
         , versionName      : '0.1.0'
         , uploadVersionName: '0.1.0'
@@ -206,16 +213,16 @@ ext.characteristicAios = [
 
 ext.central = [
         artifactId         : 'ble-central'
-        , versionCode      : 32
-        , versionName      : '0.5.0'
-        , uploadVersionName: '0.5.0'
+        , versionCode      : 33
+        , versionName      : '0.5.1'
+        , uploadVersionName: '0.5.1'
 ]
 
 ext.peripheral = [
         artifactId         : 'ble-peripheral'
-        , versionCode      : 27
-        , versionName      : '0.2.0'
-        , uploadVersionName: '0.2.0'
+        , versionCode      : 28
+        , versionName      : '0.2.1'
+        , uploadVersionName: '0.2.1'
 ]
 
 ext.apiCore = "${groupId}:${core.artifactId}:${core.versionName}"
