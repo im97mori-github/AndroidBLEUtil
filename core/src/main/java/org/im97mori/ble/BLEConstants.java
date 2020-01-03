@@ -2493,6 +2493,11 @@ public class BLEConstants {
          * Cycling Speed and Cadence (Service UUID: 0x1816)
          */
         public static final UUID CYCLING_SPEED_AND_CADENCE_SERVICE = UUID.fromString("00001816-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Running Speed and Cadence (Service UUID: 0x1814)
+         */
+        public static final UUID RUNNING_SPEED_AND_CADENCE_SERVICE = UUID.fromString("00001814-0000-1000-8000-00805f9b34fb");
     }
 
     /**
@@ -3028,6 +3033,18 @@ public class BLEConstants {
          */
         public static final UUID SC_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002A55-0000-1000-8000-00805f9b34fb");
 
+        // Running Speed and Cadence (Service UUID: 0x1814)
+
+        /**
+         * RSC Measurement (Characteristic UUID: 0x2A53)
+         */
+        public static final UUID R_S_C_MEASUREMENT_CHARACTERISTIC = UUID.fromString("00002A53-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * RSC Feature (Characteristic UUID: 0x2A54)
+         */
+        public static final UUID R_S_C_FEATURE_CHARACTERISTIC = UUID.fromString("00002A54-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -3238,8 +3255,15 @@ public class BLEConstants {
          * Out of Range(Health Thermometer Service v1.0 1.6)
          * Trigger condition value not supported(Automation IO Service v1.0.0 1.6)
          * Inappropriate Connection Parameters(Cycling Power Service v1.1 1.6)
+         * Procedure Already in Progress(Cycling Speed and Cadence Service v1.1 1.6)
+         * Procedure Already in Progress(Running Speed and Cadence Service v1.1 1.6)
          */
         public static final int APPLICATION_ERROR_80 = 0x80;
+
+        /**
+         * Client Characteristic Configuration descriptor improperly configured(Cycling Speed and Cadence Service v1.1 1.6)
+         * Client Characteristic Configuration descriptor improperly configured(Running Speed and Cadence Service v1.1 1.6)
+         */
         public static final int APPLICATION_ERROR_81 = 0x81;
         public static final int APPLICATION_ERROR_82 = 0x82;
         public static final int APPLICATION_ERROR_83 = 0x83;
