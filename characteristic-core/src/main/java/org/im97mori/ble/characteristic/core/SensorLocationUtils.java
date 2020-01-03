@@ -1,4 +1,4 @@
-package org.im97mori.ble.characteristic.cps;
+package org.im97mori.ble.characteristic.core;
 
 /**
  * Utility for org.bluetooth.characteristic.sensor_location(0x2A5D) characteristic

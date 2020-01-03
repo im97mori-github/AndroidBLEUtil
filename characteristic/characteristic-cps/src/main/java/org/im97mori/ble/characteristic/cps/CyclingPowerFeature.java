@@ -813,4 +813,5 @@ public class CyclingPowerFeature implements ByteArrayInterface, Parcelable {
     private boolean isFeatureMatched(int mask, int expect) {
         return (mask & BLEUtils.createSInt32(mCyclingPowerFeature, 0)) == expect;
     }
+
 }

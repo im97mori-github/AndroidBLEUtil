@@ -2489,6 +2489,10 @@ public class BLEConstants {
          */
         public static final UUID CYCLING_POWER_SERVICE = UUID.fromString("00001818-0000-1000-8000-00805f9b34fb");
 
+        /**
+         * Cycling Speed and Cadence (Service UUID: 0x1816)
+         */
+        public static final UUID CYCLING_SPEED_AND_CADENCE_SERVICE = UUID.fromString("00001816-0000-1000-8000-00805f9b34fb");
     }
 
     /**
@@ -3006,6 +3010,23 @@ public class BLEConstants {
          * Cycling Power Control Point (Characteristic UUID: 0x2A66)
          */
         public static final UUID CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002A66-0000-1000-8000-00805f9b34fb");
+
+        // Cycling Speed and Cadence (Service UUID: 0x1816)
+
+        /**
+         * CSC Measurement (Characteristic UUID: 0x2A5B)
+         */
+        public static final UUID CSC_MEASUREMENT_CHARACTERISTIC = UUID.fromString("00002A5B-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * CSC Feature (Characteristic UUID: 0x2A5C)
+         */
+        public static final UUID CSC_FEATURE_CHARACTERISTIC = UUID.fromString("00002A5C-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * SC Control Point (Characteristic UUID: 0x2A55)
+         */
+        public static final UUID SC_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002A55-0000-1000-8000-00805f9b34fb");
 
     }
 

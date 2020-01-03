@@ -5,6 +5,7 @@ import android.os.Parcel;
 
 import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.characteristic.core.DateTimeUtils;
+import org.im97mori.ble.characteristic.core.SensorLocationUtils;
 import org.junit.Test;
 
 import java.util.Arrays;

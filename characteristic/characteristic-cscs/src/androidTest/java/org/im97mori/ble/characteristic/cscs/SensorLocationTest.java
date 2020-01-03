@@ -1,4 +1,4 @@
-package org.im97mori.ble.characteristic.cps;
+package org.im97mori.ble.characteristic.cscs;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;

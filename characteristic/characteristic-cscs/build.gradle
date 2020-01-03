@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 apply plugin: 'maven'
 
-def target = characteristicCps
+def target = characteristicCscs
 def GROUP_ID = groupId
 def ARTIFACT_ID = target[artifactId]
 def VERSION_CODE = target[versionCode]
@@ -31,10 +31,11 @@ android {
 }
 
 dependencies {
-    api apiCharacteristicCore
+    api apiCore
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:core:1.2.0'
+    androidTestImplementation apiCharacteristicCore
 }
 
 task sourcesJar(type: Jar) {

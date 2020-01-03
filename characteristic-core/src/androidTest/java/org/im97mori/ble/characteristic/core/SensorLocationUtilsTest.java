@@ -1,4 +1,4 @@
-package org.im97mori.ble.characteristic.cps;
+package org.im97mori.ble.characteristic.core;
 
 import org.junit.Test;
 
