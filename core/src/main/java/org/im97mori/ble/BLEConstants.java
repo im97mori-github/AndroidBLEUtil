@@ -2504,6 +2504,10 @@ public class BLEConstants {
          */
         public static final UUID FITNESS_MACHINE_SERVICE = UUID.fromString("00001826-0000-1000-8000-00805f9b34fb");
 
+        /**
+         *  Human Interface Device (Service UUID: 0x1812)
+         */
+        public static final UUID HUMAN_INTERFACE_SERVICE = UUID.fromString("00001812-0000-1000-8000-00805f9b34fb");
     }
 
     /**
@@ -3128,6 +3132,47 @@ public class BLEConstants {
          */
         public static final UUID FITNESS_MACHINE_STATUS_CHARACTERISTIC = UUID.fromString("00002ADA-0000-1000-8000-00805f9b34fb");
 
+        // Human Interface Device (Service UUID: 0x1812)
+
+        /**
+         * Protocol Mode (Characteristic UUID: 0x2A4E)
+         */
+        public static final UUID PROTOCOL_MODE_CHARACTERISTIC = UUID.fromString("00002A4E-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Report (Characteristic UUID: 0x2A4D)
+         */
+        public static final UUID REPORT_CHARACTERISTIC = UUID.fromString("00002A4D-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Report Map (Characteristic UUID: 0x2A4B)
+         */
+        public static final UUID REPORT_MAP_CHARACTERISTIC = UUID.fromString("00002A4B-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Boot Keyboard Input Report (Characteristic UUID: 0x2A22)
+         */
+        public static final UUID BOOT_KEYBOARD_INPUT_REPORT_CHARACTERISTIC = UUID.fromString("00002A22-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Boot Keyboard Output Report (Characteristic UUID: 0x2A32)
+         */
+        public static final UUID BOOT_KEYBOARD_OUTPUT_REPORT_CHARACTERISTIC = UUID.fromString("00002A32-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Boot Mouse Input Report (Characteristic UUID: 0x2A33)
+         */
+        public static final UUID BOOT_MOUSE_INPUT_REPORT_CHARACTERISTIC = UUID.fromString("00002A33-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * HID Information (Characteristic UUID: 0x2A4A)
+         */
+        public static final UUID HID_INFORMATION_CHARACTERISTIC = UUID.fromString("00002A4A-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * HID Control Point (Characteristic UUID: 0x2A4C)
+         */
+        public static final UUID HID_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002A4C-0000-1000-8000-00805f9b34fb");
     }
 
     /**
