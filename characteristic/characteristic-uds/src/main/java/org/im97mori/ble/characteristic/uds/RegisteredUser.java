@@ -16,6 +16,9 @@ import java.util.Arrays;
 
 import static org.im97mori.ble.BLEConstants.BASE_UUID;
 
+/**
+ * User data for multiple packet characteristic
+ */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class RegisteredUser implements ByteArrayInterface, Parcelable {
 

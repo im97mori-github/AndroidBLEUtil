@@ -97,7 +97,7 @@ public class WeightMeasurement implements ByteArrayInterface, Parcelable {
     public static final double WEIGHT_IMPERIAL_RESOLUTION = 0.01d;
 
     /**
-     * BMI Resolution Unit
+     * BMI Resolution Unit 0.1
      */
     public static final double BMI_RESOLUTION = 0.1d;
 

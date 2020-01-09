@@ -230,82 +230,82 @@ public class BodyCompositionMeasurement implements Parcelable {
     public static final int FLAG_MULTIPLE_PACKET_MEASUREMENT_TRUE = 0b00010000_00000000;
 
     /**
-     * Body Fat Percentage Resolution Unit
+     * Body Fat Percentage Resolution Unit 0.1 percent
      */
     public static final double BODY_FAT_PERCENTAGE_RESOLUTION = 0.1d;
 
     /**
-     * Basal Metabolism Resolution Unit
+     * Basal Metabolism Resolution Unit kilo Joules
      */
     public static final double BASAL_METABOLISM_RESOLUTION = 1000d;
 
     /**
-     * Muscle Percentage Resolution Unit
+     * Muscle Percentage Resolution Unit 0.1 percentage
      */
     public static final double MUSCLE_PERCENTAGE_RESOLUTION = 0.1d;
 
     /**
-     * Muscle Mass - SI Resolution Unit
+     * Muscle Mass - SI Resolution Unit 0.005 kilograms
      */
     public static final double MUSCLE_MASS_SI_RESOLUTION = 0.005d;
 
     /**
-     * Muscle Mass - Imperial Resolution Unit
+     * Muscle Mass - Imperial Resolution Unit 0.01 pounds
      */
     public static final double MUSCLE_MASS_IMPERIAL_RESOLUTION = 0.01d;
 
     /**
-     * Fat Free Mass - SI Resolution Unit
+     * Fat Free Mass - SI Resolution Unit 0.005 kilograms
      */
     public static final double FAT_FREE_MASS_SI_RESOLUTION = 0.005d;
 
     /**
-     * Fat Free Mass - Imperial Resolution Unit
+     * Fat Free Mass - Imperial Resolution Unit 0.01 pounds
      */
     public static final double FAT_FREE_MASS_IMPERIAL_RESOLUTION = 0.01d;
 
     /**
-     * Soft Lean Mass - SI Resolution Unit
+     * Soft Lean Mass - SI Resolution Unit 0.005 kilograms
      */
     public static final double SOFT_LEAN_MASS_SI_RESOLUTION = 0.005d;
 
     /**
-     * Soft Lean Mass - Imperial Resolution Unit
+     * Soft Lean Mass - Imperial Resolution Unit 0.01 pounds
      */
     public static final double SOFT_LEAN_MASS_IMPERIAL_RESOLUTION = 0.01d;
 
     /**
-     * Body Water Mass - SI Resolution Unit
+     * Body Water Mass - SI Resolution Unit 0.005 kilograms
      */
     public static final double BODY_WATER_MASS_SI_RESOLUTION = 0.005d;
 
     /**
-     * Body Water Mass - Imperial Resolution Unit
+     * Body Water Mass - Imperial Resolution Unit 0.01 pounds
      */
     public static final double BODY_WATER_MASS_IMPERIAL_RESOLUTION = 0.01d;
 
     /**
-     * Impedance Resolution Unit
+     * Impedance Resolution Unit 0.1 Ohms
      */
     public static final double IMPEDANCE_RESOLUTION = 0.1d;
 
     /**
-     * Weight - SI Resolution Unit
+     * Weight - SI Resolution Unit 0.005 kilograms
      */
     public static final double WEIGHT_SI_RESOLUTION = 0.005d;
 
     /**
-     * Weight - Imperial Resolution Unit
+     * Weight - Imperial Resolution Unit 0.01 pounds
      */
     public static final double WEIGHT_IMPERIAL_RESOLUTION = 0.01d;
 
     /**
-     * Height - SI Resolution Unit
+     * Height - SI Resolution Unit 0.001 meters
      */
     public static final double HEIGHT_SI_RESOLUTION = 0.001d;
 
     /**
-     * Height - Imperial Resolution Unit
+     * Height - Imperial Resolution Unit 0.1 meters
      */
     public static final double HEIGHT_IMPERIAL_RESOLUTION = 0.1d;
 

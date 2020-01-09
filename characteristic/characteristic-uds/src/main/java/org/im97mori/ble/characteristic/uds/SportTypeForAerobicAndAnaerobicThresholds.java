@@ -41,7 +41,7 @@ public class SportTypeForAerobicAndAnaerobicThresholds implements ByteArrayInter
     public static final int SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_ROWING = 3;
 
     /**
-     * 4: Cross Training (Elliptical)"
+     * 4: Cross Training (Elliptical)
      */
     public static final int SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CROSS_TRAINING = 4;
 

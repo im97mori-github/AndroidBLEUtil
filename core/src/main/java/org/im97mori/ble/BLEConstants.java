@@ -2498,6 +2498,12 @@ public class BLEConstants {
          * Running Speed and Cadence (Service UUID: 0x1814)
          */
         public static final UUID RUNNING_SPEED_AND_CADENCE_SERVICE = UUID.fromString("00001814-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Fitness Machine (Service UUID: 0x1826)
+         */
+        public static final UUID FITNESS_MACHINE_SERVICE = UUID.fromString("00001826-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -3044,6 +3050,83 @@ public class BLEConstants {
          * RSC Feature (Characteristic UUID: 0x2A54)
          */
         public static final UUID R_S_C_FEATURE_CHARACTERISTIC = UUID.fromString("00002A54-0000-1000-8000-00805f9b34fb");
+
+        // Fitness Machine (Service UUID: 0x1826)
+
+        /**
+         * Fitness Machine Feature (Characteristic UUID: 0x2ACC)
+         */
+        public static final UUID FITNESS_MACHINE_FEATURE_CHARACTERISTIC = UUID.fromString("00002ACC-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Treadmill Data (Characteristic UUID: 0x2ACD)
+         */
+        public static final UUID TREADMILL_DATA_CHARACTERISTIC = UUID.fromString("00002ACD-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Cross Trainer Data (Characteristic UUID: 0x2ACE)
+         */
+        public static final UUID CROSS_TRAINER_DATA_CHARACTERISTIC = UUID.fromString("00002ACE-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Step Climber Data (Characteristic UUID: 0x2ACF)
+         */
+        public static final UUID STEP_CLIMBER_DATA_CHARACTERISTIC = UUID.fromString("00002ACF-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Stair Climber Data (Characteristic UUID: 0x2AD0)
+         */
+        public static final UUID STAIR_CLIMBER_DATA_CHARACTERISTIC = UUID.fromString("00002AD0-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Rower Data (Characteristic UUID: 0x2AD1)
+         */
+        public static final UUID ROWER_DATA_CHARACTERISTIC = UUID.fromString("00002AD1-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Indoor Bike Data (Characteristic UUID: 0x2AD2)
+         */
+        public static final UUID INDOOR_BIKE_DATA_CHARACTERISTIC = UUID.fromString("00002AD2-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Training Status (Characteristic UUID: 0x2AD3)
+         */
+        public static final UUID TRAINING_STATUS_CHARACTERISTIC = UUID.fromString("00002AD3-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Supported Speed Range (Characteristic UUID: 0x2AD4)
+         */
+        public static final UUID SUPPORTED_SPEED_RANGE_CHARACTERISTIC = UUID.fromString("00002AD4-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Supported Inclination Range (Characteristic UUID: 0x2AD5)
+         */
+        public static final UUID SUPPORTED_INCLINATION_RANGE_CHARACTERISTIC = UUID.fromString("00002AD5-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Supported Resistance Level Range (Characteristic UUID: 0x2AD6)
+         */
+        public static final UUID SUPPORTED_RESISTANCE_LEVEL_RANGE_CHARACTERISTIC = UUID.fromString("00002AD6-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Supported Power Range (Characteristic UUID: 0x2AD8)
+         */
+        public static final UUID SUPPORTED_POWER_RANGE_CHARACTERISTIC = UUID.fromString("00002AD8-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Supported Heart Rate Range (Characteristic UUID: 0x2AD7)
+         */
+        public static final UUID SUPPORTED_HEART_RATE_RANGE_CHARACTERISTIC = UUID.fromString("00002AD7-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Fitness Machine Control Point (Characteristic UUID: 0x2AD9)
+         */
+        public static final UUID FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002AD9-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Fitness Machine Status (Characteristic UUID: 0x2ADA)
+         */
+        public static final UUID FITNESS_MACHINE_STATUS_CHARACTERISTIC = UUID.fromString("00002ADA-0000-1000-8000-00805f9b34fb");
 
     }
 
