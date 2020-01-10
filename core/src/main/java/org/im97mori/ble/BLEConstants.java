@@ -2505,9 +2505,14 @@ public class BLEConstants {
         public static final UUID FITNESS_MACHINE_SERVICE = UUID.fromString("00001826-0000-1000-8000-00805f9b34fb");
 
         /**
-         *  Human Interface Device (Service UUID: 0x1812)
+         * Human Interface Device (Service UUID: 0x1812)
          */
-        public static final UUID HUMAN_INTERFACE_SERVICE = UUID.fromString("00001812-0000-1000-8000-00805f9b34fb");
+        public static final UUID HUMAN_INTERFACE_DEVICE_SERVICE = UUID.fromString("00001812-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Scan Parameters (Service UUID: 0x1813)
+         */
+        public static final UUID SCAN_PARAMETERS_SERVICE = UUID.fromString("00001813-0000-1000-8000-00805f9b34fb");
     }
 
     /**
@@ -3173,6 +3178,19 @@ public class BLEConstants {
          * HID Control Point (Characteristic UUID: 0x2A4C)
          */
         public static final UUID HID_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002A4C-0000-1000-8000-00805f9b34fb");
+
+        // Scan Parameters (Service UUID: 0x1813)
+
+        /**
+         * Scan Interval Window (Characteristic UUID: 0x2A4F)
+         */
+        public static final UUID SCAN_INTERVAL_WINDOW_CHARACTERISTIC = UUID.fromString("00002A4F-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Scan Refresh (Characteristic UUID: 0x2A31)
+         */
+        public static final UUID SCAN_REFRESH_CHARACTERISTIC = UUID.fromString("00002A31-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
