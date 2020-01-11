@@ -175,6 +175,10 @@ public class AdvertisingDataConstants {
          */
         public static final int DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER = 0x24;
 
+        /**
+         * Indoor Positioning
+         */
+        public static final int DATA_TYPE_INDOOR_POSITIONING = 0x25;
 
         // 1.19 LE SUPPORTED FEATURES
 

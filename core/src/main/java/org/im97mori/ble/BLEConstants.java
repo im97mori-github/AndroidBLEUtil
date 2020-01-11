@@ -2513,6 +2513,11 @@ public class BLEConstants {
          * Scan Parameters (Service UUID: 0x1813)
          */
         public static final UUID SCAN_PARAMETERS_SERVICE = UUID.fromString("00001813-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Indoor Positioning (Service UUID: 0x1821)
+         */
+        public static final UUID INDOOR_POSITIONING_SERVICE = UUID.fromString("00001821-0000-1000-8000-00805f9b34fb");
     }
 
     /**
@@ -3191,6 +3196,53 @@ public class BLEConstants {
          */
         public static final UUID SCAN_REFRESH_CHARACTERISTIC = UUID.fromString("00002A31-0000-1000-8000-00805f9b34fb");
 
+        // Indoor Positioning (Service UUID: 0x1821)
+
+        /**
+         * Indoor Positioning Configuration (Characteristic UUID: 0x2AAD)
+         */
+        public static final UUID INDOOR_POSITIONING_CONFIGURATION_CHARACTERISTIC = UUID.fromString("00002AAD-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Latitude (Characteristic UUID: 0x2AAE)
+         */
+        public static final UUID LATITUDE_CHARACTERISTIC = UUID.fromString("00002AAE-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Longitude (Characteristic UUID: 0x2AAF)
+         */
+        public static final UUID LONGITUDE_CHARACTERISTIC = UUID.fromString("00002AAF-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Local North Coordinate (Characteristic UUID: 0x2AB0)
+         */
+        public static final UUID LOCAL_NORTH_COORDINATE_CHARACTERISTIC = UUID.fromString("00002AB0-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Local East Coordinate (Characteristic UUID: 0x2AB1)
+         */
+        public static final UUID LOCAL_EAST_COORDINATE_CHARACTERISTIC = UUID.fromString("00002AB1-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Floor Number (Characteristic UUID: 0x2AB2)
+         */
+        public static final UUID FLOOR_NUMBER_CHARACTERISTIC = UUID.fromString("00002AB2-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Altitude (Characteristic UUID: 0x2AB3)
+         */
+        public static final UUID ALTITUDE_CHARACTERISTIC = UUID.fromString("00002AB3-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Uncertainty (Characteristic UUID: 0x2AB4)
+         */
+        public static final UUID UNCERTAINTY_CHARACTERISTIC = UUID.fromString("00002AB4-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Location Name (Characteristic UUID: 0x2AB5)
+         */
+        public static final UUID LOCATION_NAME_CHARACTERISTIC = UUID.fromString("00002AB5-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -3403,6 +3455,7 @@ public class BLEConstants {
          * Inappropriate Connection Parameters(Cycling Power Service v1.1 1.6)
          * Procedure Already in Progress(Cycling Speed and Cadence Service v1.1 1.6)
          * Procedure Already in Progress(Running Speed and Cadence Service v1.1 1.6)
+         * Invalid Value(Indoor Positioning Service v1.0.0 1.6)
          */
         public static final int APPLICATION_ERROR_80 = 0x80;
 

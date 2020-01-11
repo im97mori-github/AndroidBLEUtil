@@ -1,8 +1,9 @@
-package org.im97mori.characteristiccharacteristic_aios;
+package org.im97mori.ble.characteristic.aios;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 
+import org.im97mori.ble.characteristic.aios.Aggregate;
 import org.im97mori.ble.characteristic.core.AutomationIoUtils;
 import org.junit.Test;
 

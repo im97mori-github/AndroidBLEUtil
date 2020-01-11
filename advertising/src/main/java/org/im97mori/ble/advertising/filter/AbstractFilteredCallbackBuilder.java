@@ -18,6 +18,7 @@ import org.im97mori.ble.advertising.Flags;
 import org.im97mori.ble.advertising.IncompleteListOf128BitServiceUUIDs;
 import org.im97mori.ble.advertising.IncompleteListOf16BitServiceUUIDs;
 import org.im97mori.ble.advertising.IncompleteListOf32BitServiceUUIDs;
+import org.im97mori.ble.advertising.IndoorPositioning;
 import org.im97mori.ble.advertising.LeSupportedFeatures;
 import org.im97mori.ble.advertising.ListOf128BitServiceSolicitationUUIDs;
 import org.im97mori.ble.advertising.ListOf16BitServiceSolicitationUUIDs;
@@ -592,6 +593,43 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addIncompleteListOf128BitServiceUUIDsFilter(@NonNull List<IncompleteListOf128BitServiceUUIDs> expectList) {
         mFilterList.add(new IncompleteListOf128BitServiceUUIDsFilter(expectList));
+        return this;
+    }
+
+    /**
+     * add Indoor Positioning filter
+     *
+     * @param data Flags data array
+     * @return myself
+     * @see ByteArrayCreater#createFromByteArray(byte[])
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addIndoorPositioningFilter(@NonNull byte[] data) {
+        return addIndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(data));
+    }
+
+    /**
+     * add Indoor Positioning filter
+     *
+     * @param data   {@link IndoorPositioning#IndoorPositioning(byte[], int, int)} 1st parameter
+     * @param offset {@link IndoorPositioning#IndoorPositioning(byte[], int, int)} 2nd parameter
+     * @param length {@link IndoorPositioning#IndoorPositioning(byte[], int, int)} 3rd parameter
+     * @return myself
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addIndoorPositioningFilter(@NonNull byte[] data, int offset, int length) {
+        return addIndoorPositioningFilter(new IndoorPositioning(data, offset, length));
+    }
+
+    /**
+     * add Indoor Positioning filter
+     *
+     * @param expect {@link Flags} instance
+     * @return myself
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addIndoorPositioningFilter(@NonNull IndoorPositioning expect) {
+        mFilterList.add(new IndoorPositioningFilter(expect));
         return this;
     }
 

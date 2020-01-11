@@ -1,4 +1,4 @@
-package org.im97mori.characteristiccharacteristic_aios;
+package org.im97mori.ble.characteristic.ips;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
@@ -6,32 +6,33 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.ByteArrayCreater;
 import org.im97mori.ble.ByteArrayInterface;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ANALOG_CHARACTERISTIC;
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ALTITUDE_CHARACTERISTIC;
 
 /**
- * Analog (Characteristics UUID: 0x2A58)
+ * Altitude (Characteristics UUID: 0x2AB3)
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class Analog implements ByteArrayInterface, Parcelable {
+public class Altitude implements ByteArrayInterface, Parcelable {
 
     /**
      * @see ByteArrayCreater
      */
-    public static final ByteArrayCreater<Analog> CREATOR = new ByteArrayCreater<Analog>() {
+    public static final ByteArrayCreater<Altitude> CREATOR = new ByteArrayCreater<Altitude>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public Analog createFromParcel(@NonNull Parcel in) {
-            return new Analog(in);
+        public Altitude createFromParcel(@NonNull Parcel in) {
+            return new Altitude(in);
         }
 
         /**
@@ -39,34 +40,35 @@ public class Analog implements ByteArrayInterface, Parcelable {
          */
         @Override
         @NonNull
-        public Analog[] newArray(int size) {
-            return new Analog[size];
+        public Altitude[] newArray(int size) {
+            return new Altitude[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public Analog createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ANALOG_CHARACTERISTIC, 0, 0);
+        public Altitude createFromByteArray(@NonNull byte[] values) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ALTITUDE_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
-            return new Analog(bluetoothGattCharacteristic);
+            return new Altitude(bluetoothGattCharacteristic);
         }
 
     };
 
     /**
-     * Analog
+     * Altitude
      */
-    private final byte[] mAnalog;
+    private final int mAltitude;
 
     /**
      * Constructor from {@link BluetoothGattCharacteristic}
      *
-     * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A58
+     * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AB3
      */
-    public Analog(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
-        mAnalog = bluetoothGattCharacteristic.getValue();
+    public Altitude(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+        byte[] values = bluetoothGattCharacteristic.getValue();
+        mAltitude = BLEUtils.createUInt16(values, 0);
     }
 
     /**
@@ -74,8 +76,8 @@ public class Analog implements ByteArrayInterface, Parcelable {
      *
      * @param in Parcel
      */
-    private Analog(@NonNull Parcel in) {
-        mAnalog = in.createByteArray();
+    private Altitude(@NonNull Parcel in) {
+        mAltitude = in.readInt();
     }
 
     /**
@@ -91,14 +93,14 @@ public class Analog implements ByteArrayInterface, Parcelable {
      */
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeByteArray(mAnalog);
+        dest.writeInt(mAltitude);
     }
 
     /**
-     * @return Analog
+     * @return Altitude
      */
-    public byte[] getAnalog() {
-        return mAnalog;
+    public int getAltitude() {
+        return mAltitude;
     }
 
     /**
@@ -109,7 +111,7 @@ public class Analog implements ByteArrayInterface, Parcelable {
     public byte[] getBytes() {
         byte[] data = new byte[2];
         ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);
-        byteBuffer.put(mAnalog);
+        byteBuffer.putShort((short) mAltitude);
         return data;
     }
 

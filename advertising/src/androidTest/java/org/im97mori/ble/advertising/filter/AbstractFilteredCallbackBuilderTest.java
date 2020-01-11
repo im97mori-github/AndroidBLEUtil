@@ -14,6 +14,7 @@ import org.im97mori.ble.advertising.Flags;
 import org.im97mori.ble.advertising.IncompleteListOf128BitServiceUUIDs;
 import org.im97mori.ble.advertising.IncompleteListOf16BitServiceUUIDs;
 import org.im97mori.ble.advertising.IncompleteListOf32BitServiceUUIDs;
+import org.im97mori.ble.advertising.IndoorPositioning;
 import org.im97mori.ble.advertising.LeSupportedFeatures;
 import org.im97mori.ble.advertising.ListOf128BitServiceSolicitationUUIDs;
 import org.im97mori.ble.advertising.ListOf16BitServiceSolicitationUUIDs;
@@ -48,6 +49,7 @@ import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingD
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INDOOR_POSITIONING;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_LE_SUPPORTED_FEATURES;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
@@ -855,6 +857,42 @@ public class AbstractFilteredCallbackBuilderTest {
         List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIncompleteListOf128BitServiceUUIDsFilter(Collections.singletonList(IncompleteListOf128BitServiceUUIDs.CREATOR.createFromByteArray(data))).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof IncompleteListOf128BitServiceUUIDsFilter);
+    }
+
+    @Test
+    public void addIndoorPositioningFilterTest_001() {
+        byte[] data = new byte[2];
+        data[0] = 1;
+        data[1] = DATA_TYPE_INDOOR_POSITIONING;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIndoorPositioningFilter(data).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof IndoorPositioningFilter);
+    }
+
+    @Test
+    public void addIndoorPositioningFilterTest_002() {
+        byte[] data = new byte[2];
+        data[0] = 1;
+        data[1] = DATA_TYPE_INDOOR_POSITIONING;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIndoorPositioningFilter(data, 0, 1).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof IndoorPositioningFilter);
+    }
+
+    @Test
+    public void addIndoorPositioningFilterTest_003() {
+        byte[] data = new byte[2];
+        data[0] = 1;
+        data[1] = DATA_TYPE_INDOOR_POSITIONING;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(data)).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof IndoorPositioningFilter);
     }
 
     @Test

@@ -25,6 +25,7 @@ import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingD
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INCOMPLETE_LIST_OF_128_BIT_SERVICE_UUIDS;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
+import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INDOOR_POSITIONING;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_LE_SUPPORTED_FEATURES;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS;
@@ -85,6 +86,7 @@ public class AdvertisingDataParser {
             set.add(DATA_TYPE_RANDOM_TARGET_ADDRESS);
             set.add(DATA_TYPE_ADVERTISING_INTERVAL);
             set.add(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER);
+            set.add(DATA_TYPE_INDOOR_POSITIONING);
             set.add(DATA_TYPE_LE_SUPPORTED_FEATURES);
             set.add(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION);
 
@@ -392,6 +394,11 @@ public class AdvertisingDataParser {
          * All URI List
          */
         private final List<UniformRsourceIdentifier> mUniformRsourceIdentifierList = new ArrayList<>();
+
+        /**
+         * Indoor Positioning
+         */
+        private IndoorPositioning mIndoorPositioning;
 
         /**
          * LE Supported Features
@@ -770,6 +777,14 @@ public class AdvertisingDataParser {
         }
 
         /**
+         * @return Indoor Positioning
+         */
+        @Nullable
+        public IndoorPositioning getIndoorPositioning() {
+            return mIndoorPositioning;
+        }
+
+        /**
          * @return LE Supported Features
          */
         @Nullable
@@ -852,6 +867,8 @@ public class AdvertisingDataParser {
                 } else if (data instanceof UniformRsourceIdentifier) {
                     mUniformRsourceIdentifier = (UniformRsourceIdentifier) data;
                     mUniformRsourceIdentifierList.add(mUniformRsourceIdentifier);
+                } else if (data instanceof IndoorPositioning) {
+                    mIndoorPositioning = (IndoorPositioning) data;
                 } else if (data instanceof LeSupportedFeatures) {
                     mLeSupportedFeatures = (LeSupportedFeatures) data;
                 } else if (data instanceof ChannelMapUpdateIndication) {
@@ -949,6 +966,8 @@ public class AdvertisingDataParser {
                         resultList.add(new AdvertisingInterval(data, i, dataLength));
                     } else if (DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER == dataType) {
                         resultList.add(new UniformRsourceIdentifier(data, i, dataLength));
+                    } else if (DATA_TYPE_INDOOR_POSITIONING == dataType) {
+                        resultList.add(new IndoorPositioning(data, i, dataLength));
                     } else if (DATA_TYPE_LE_SUPPORTED_FEATURES == dataType) {
                         resultList.add(new LeSupportedFeatures(data, i, dataLength));
                     } else if (DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION == dataType) {
