@@ -109,7 +109,7 @@ public class LocationName implements ByteArrayInterface, Parcelable {
     @Override
     @NonNull
     public byte[] getBytes() {
-        byte[] data = new byte[0 + mLocationName.getBytes().length];
+        byte[] data = new byte[mLocationName.getBytes().length];
         ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN);
         byteBuffer.put(mLocationName.getBytes());
         return data;

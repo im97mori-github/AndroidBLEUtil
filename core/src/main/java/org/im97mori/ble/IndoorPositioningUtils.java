@@ -13,6 +13,7 @@ package org.im97mori.ble;
  * org.bluetooth.characteristic.uncertainty(0x2AB4) characteristic
  * </p>
  */
+@SuppressWarnings("WeakerAccess")
 public class IndoorPositioningUtils {
 
     /**

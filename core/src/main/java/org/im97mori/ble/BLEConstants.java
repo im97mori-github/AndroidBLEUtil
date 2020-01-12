@@ -2518,6 +2518,11 @@ public class BLEConstants {
          * Indoor Positioning (Service UUID: 0x1821)
          */
         public static final UUID INDOOR_POSITIONING_SERVICE = UUID.fromString("00001821-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * HTTP Proxy (Service UUID: 0x1823)
+         */
+        public static final UUID HTTP_PROXY_SERVICE = UUID.fromString("00001823-0000-1000-8000-00805f9b34fb");
     }
 
     /**
@@ -3243,6 +3248,39 @@ public class BLEConstants {
          */
         public static final UUID LOCATION_NAME_CHARACTERISTIC = UUID.fromString("00002AB5-0000-1000-8000-00805f9b34fb");
 
+        // HTTP Proxy (Service UUID: 0x1823)
+
+        /**
+         * URI (Characteristic UUID: 0x2AB6)
+         */
+        public static final UUID URI_CHARACTERISTIC = UUID.fromString("00002AB6-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * HTTP Headers (Characteristic UUID: 0x2AB7)
+         */
+        public static final UUID HTTP_HEADERS_CHARACTERISTIC = UUID.fromString("00002AB7-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * HTTP Entity Body (Characteristic UUID: 0x2AB9)
+         */
+        public static final UUID HTTP_ENTITY_BODY_CHARACTERISTIC = UUID.fromString("00002AB9-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * HTTP Control Point (Characteristic UUID: 0x2ABA)
+         */
+        public static final UUID HTTP_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002ABA-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * HTTP Status Code (Characteristic UUID: 0x2AB8)
+         */
+        public static final UUID HTTP_STATUS_CODE_CHARACTERISTIC = UUID.fromString("00002AB8-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * HTTPS Security (Characteristic UUID: 0x2ABB)
+         */
+        public static final UUID HTTPS_SECURITY_CHARACTERISTIC = UUID.fromString("00002ABB-0000-1000-8000-00805f9b34fb");
+
+
     }
 
     /**
@@ -3462,8 +3500,13 @@ public class BLEConstants {
         /**
          * Client Characteristic Configuration descriptor improperly configured(Cycling Speed and Cadence Service v1.1 1.6)
          * Client Characteristic Configuration descriptor improperly configured(Running Speed and Cadence Service v1.1 1.6)
+         * Invalid Request(HTTP Proxy Service v1.0 1.6)
          */
         public static final int APPLICATION_ERROR_81 = 0x81;
+
+        /**
+         * Network Not Available(HTTP Proxy Service v1.0 1.6)
+         */
         public static final int APPLICATION_ERROR_82 = 0x82;
         public static final int APPLICATION_ERROR_83 = 0x83;
         public static final int APPLICATION_ERROR_84 = 0x84;
