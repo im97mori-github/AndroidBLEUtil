@@ -2523,6 +2523,11 @@ public class BLEConstants {
          * HTTP Proxy (Service UUID: 0x1823)
          */
         public static final UUID HTTP_PROXY_SERVICE = UUID.fromString("00001823-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Bond Management Service (Service UUID: 0x181E)
+         */
+        public static final UUID BOND_MANAGEMENT_SERVICE = UUID.fromString("0000181E-0000-1000-8000-00805f9b34fb");
     }
 
     /**
@@ -3280,6 +3285,17 @@ public class BLEConstants {
          */
         public static final UUID HTTPS_SECURITY_CHARACTERISTIC = UUID.fromString("00002ABB-0000-1000-8000-00805f9b34fb");
 
+        // Bond Management Service (Service UUID: 0x181E)
+
+        /**
+         * Bond Management Control Point (Characteristic UUID: 0x2AA4)
+         */
+        public static final UUID BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002AA4-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Bond Management Features (Characteristic UUID: 0x2AA5)
+         */
+        public static final UUID BOND_MANAGEMENT_FEATURES_CHARACTERISTIC = UUID.fromString("00002AA5-0000-1000-8000-00805f9b34fb");
 
     }
 
@@ -3494,6 +3510,7 @@ public class BLEConstants {
          * Procedure Already in Progress(Cycling Speed and Cadence Service v1.1 1.6)
          * Procedure Already in Progress(Running Speed and Cadence Service v1.1 1.6)
          * Invalid Value(Indoor Positioning Service v1.0.0 1.6)
+         * Op Code not supported(Bond Management Service v1.0.0 1.7)
          */
         public static final int APPLICATION_ERROR_80 = 0x80;
 
@@ -3501,6 +3518,7 @@ public class BLEConstants {
          * Client Characteristic Configuration descriptor improperly configured(Cycling Speed and Cadence Service v1.1 1.6)
          * Client Characteristic Configuration descriptor improperly configured(Running Speed and Cadence Service v1.1 1.6)
          * Invalid Request(HTTP Proxy Service v1.0 1.6)
+         * Operation failed(Bond Management Service v1.0.0 1.7)
          */
         public static final int APPLICATION_ERROR_81 = 0x81;
 

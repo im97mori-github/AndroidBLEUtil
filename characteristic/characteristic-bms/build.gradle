@@ -1,0 +1,79 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+apply plugin: 'maven'
+
+def target = characteristicBms
+def GROUP_ID = groupId
+def ARTIFACT_ID = target[artifactId]
+def VERSION_CODE = target[versionCode]
+def VERSION_NAME = target[uploadVersionName]
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 29
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+}
+
+dependencies {
+    api apiCore
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:core:1.2.0'
+}
+
+task sourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from android.sourceSets.main.java.srcDirs
+}
+
+publishing {
+    publications {
+        bar(MavenPublication) {
+            groupId GROUP_ID
+            artifactId ARTIFACT_ID
+            version VERSION_NAME
+            artifact(sourcesJar)
+            artifact("$buildDir/outputs/aar/" + project.name + "-release.aar")
+        }
+    }
+    repositories {
+        maven {
+            url System.getenv('MAVEN_REPOSITORY_URL')
+        }
+    }
+}
+
+publish {
+    dependsOn assemble
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: System.getenv('MAVEN_REPOSITORY_URL'))
+            pom.groupId = GROUP_ID
+            pom.artifactId = ARTIFACT_ID
+            pom.version = VERSION_NAME
+        }
+    }
+}
+
+uploadArchives {
+    dependsOn publish
+}
