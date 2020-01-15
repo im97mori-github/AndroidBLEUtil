@@ -2533,6 +2533,11 @@ public class BLEConstants {
          * Reconnection Configuration (Service UUID: 0x1829)
          */
         public static final UUID RECONNECTION_CONFIGURATION_SERVICE = UUID.fromString("00001829-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Transport Discovery (Service UUID: 0x1824)
+         */
+        public static final UUID TRANSPORT_DISCOVERY_SERVICE = UUID.fromString("00001824-0000-1000-8000-00805f9b34fb");
     }
 
     /**
@@ -3318,6 +3323,13 @@ public class BLEConstants {
          * Reconnection Configuration Control Point (Characteristic UUID: 0x2B1F)
          */
         public static final UUID RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002B1F-0000-1000-8000-00805f9b34fb");
+
+        // Transport Discovery (Service UUID: 0x1824)
+
+        /**
+         * TDS Control Point (Characteristic UUID: 0x2ABC)
+         */
+        public static final UUID TDS_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002ABC-0000-1000-8000-00805f9b34fb");
 
     }
 

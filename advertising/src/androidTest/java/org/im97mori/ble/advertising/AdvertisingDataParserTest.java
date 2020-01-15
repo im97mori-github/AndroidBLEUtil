@@ -2,6 +2,7 @@ package org.im97mori.ble.advertising;
 
 import android.os.Parcel;
 
+import org.im97mori.ble.TransportDiscoveryServiceUtils;
 import org.junit.Test;
 
 import java.net.URI;
@@ -37,6 +38,7 @@ import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingD
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SHORTENED_LOCAL_NAME;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_TX_POWER_LEVEL;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.SLAVE_CONNECTION_INTERVAL_RANGE_UNIT_MILLIS;
@@ -83,6 +85,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -127,6 +130,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -171,6 +175,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -217,6 +222,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -263,6 +269,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -321,6 +328,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -379,6 +387,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -424,6 +433,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -469,6 +479,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -512,6 +523,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -557,6 +569,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -600,6 +613,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -646,6 +660,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -690,6 +705,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -736,6 +752,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -794,6 +811,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -838,6 +856,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -884,6 +903,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -942,6 +962,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -988,6 +1009,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1039,6 +1061,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1090,6 +1113,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1134,6 +1158,7 @@ public class AdvertisingDataParserTest {
         assertNotNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1182,6 +1207,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNotNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1224,12 +1250,59 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNotNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
 
     @Test
     public void builderTest0026() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[5];
+        data[0] = 4;
+        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
+        data[3] = 0;
+        data[4] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(1, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNotNull(result.getTransportDiscoveryData());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0027() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
         AdvertisingDataParser parser = builder.build();
 
@@ -1267,12 +1340,13 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNotNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
 
     @Test
-    public void builderTest0027() {
+    public void builderTest0028() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
         AdvertisingDataParser parser = builder.build();
 
@@ -1316,6 +1390,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNotNull(result.getChannelMapUpdateIndication());
     }
@@ -1360,6 +1435,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1406,6 +1482,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1454,6 +1531,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1502,6 +1580,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1562,6 +1641,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1622,6 +1702,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1669,6 +1750,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1716,6 +1798,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1761,6 +1844,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1808,6 +1892,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1853,6 +1938,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1901,6 +1987,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1947,6 +2034,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -1995,6 +2083,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2055,6 +2144,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2101,6 +2191,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2149,6 +2240,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2209,6 +2301,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2257,6 +2350,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2310,6 +2404,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2363,6 +2458,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2409,6 +2505,7 @@ public class AdvertisingDataParserTest {
         assertNotNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2459,6 +2556,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNotNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2503,12 +2601,61 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNotNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
 
     @Test
     public void builderTest0126() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        builder.exclude(DATA_TYPE_TRANSPORT_DISCOVERY_DATA);
+        builder.include(DATA_TYPE_TRANSPORT_DISCOVERY_DATA);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[5];
+        data[0] = 4;
+        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
+        data[3] = 0;
+        data[4] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(1, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNotNull(result.getTransportDiscoveryData());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0127() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
         builder.exclude(DATA_TYPE_LE_SUPPORTED_FEATURES);
         builder.include(DATA_TYPE_LE_SUPPORTED_FEATURES);
@@ -2548,12 +2695,13 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNotNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
 
     @Test
-    public void builderTest0127() {
+    public void builderTest0128() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
         builder.exclude(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION);
         builder.include(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION);
@@ -2598,6 +2746,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNotNull(result.getChannelMapUpdateIndication());
     }
@@ -2643,6 +2792,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2688,6 +2838,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2735,6 +2886,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2782,6 +2934,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2841,6 +2994,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2900,6 +3054,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2946,6 +3101,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -2992,6 +3148,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3036,6 +3193,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3082,6 +3240,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3126,6 +3285,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3173,6 +3333,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3218,6 +3379,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3265,6 +3427,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3324,6 +3487,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3369,6 +3533,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3416,6 +3581,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3475,6 +3641,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3522,6 +3689,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3574,6 +3742,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3626,6 +3795,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3671,6 +3841,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3720,6 +3891,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3764,12 +3936,60 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
 
     @Test
     public void builderTest0226() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
+        builder.exclude(DATA_TYPE_TRANSPORT_DISCOVERY_DATA);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[5];
+        data[0] = 4;
+        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
+        data[3] = 0;
+        data[4] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(0, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0227() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
         builder.exclude(DATA_TYPE_LE_SUPPORTED_FEATURES);
         AdvertisingDataParser parser = builder.build();
@@ -3808,12 +4028,13 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
 
     @Test
-    public void builderTest0227() {
+    public void builderTest0228() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
         builder.exclude(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION);
         AdvertisingDataParser parser = builder.build();
@@ -3857,6 +4078,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3897,6 +4119,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3941,6 +4164,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -3985,6 +4209,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4031,6 +4256,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4077,6 +4303,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4135,6 +4362,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4193,6 +4421,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4238,6 +4467,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4283,6 +4513,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4326,6 +4557,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4371,6 +4603,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4414,6 +4647,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4460,6 +4694,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4504,6 +4739,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4550,6 +4786,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4608,6 +4845,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4652,6 +4890,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4698,6 +4937,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4756,6 +4996,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4802,6 +5043,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4853,6 +5095,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4904,6 +5147,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4948,6 +5192,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -4996,6 +5241,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5039,12 +5285,59 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
 
     @Test
     public void builderTest0326() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[5];
+        data[0] = 4;
+        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
+        data[3] = 0;
+        data[4] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(0, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0327() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
         AdvertisingDataParser parser = builder.build();
 
@@ -5082,12 +5375,13 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
 
     @Test
-    public void builderTest0327() {
+    public void builderTest0328() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
         AdvertisingDataParser parser = builder.build();
 
@@ -5130,6 +5424,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5176,6 +5471,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5222,6 +5518,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5270,6 +5567,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5318,6 +5616,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5379,6 +5678,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
         assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getChannelMapUpdateIndication());
     }
 
@@ -5438,6 +5738,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5485,6 +5786,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5532,6 +5834,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5577,6 +5880,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5624,6 +5928,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5669,6 +5974,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5717,6 +6023,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5763,6 +6070,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5811,6 +6119,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5871,6 +6180,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5917,6 +6227,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -5965,6 +6276,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6025,6 +6337,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6073,6 +6386,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6126,6 +6440,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6179,6 +6494,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6225,6 +6541,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6275,6 +6592,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6320,12 +6638,61 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
 
     @Test
     public void builderTest0426() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
+        builder.include(DATA_TYPE_INDOOR_POSITIONING);
+        builder.exclude(DATA_TYPE_INDOOR_POSITIONING);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[5];
+        data[0] = 4;
+        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
+        data[3] = 0;
+        data[4] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(0, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0427() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
         builder.include(DATA_TYPE_LE_SUPPORTED_FEATURES);
         builder.exclude(DATA_TYPE_LE_SUPPORTED_FEATURES);
@@ -6365,12 +6732,13 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
 
     @Test
-    public void builderTest0427() {
+    public void builderTest0428() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
         builder.include(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION);
         builder.exclude(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION);
@@ -6415,6 +6783,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6461,6 +6830,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6506,6 +6876,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6553,6 +6924,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6600,6 +6972,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6659,6 +7032,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6718,6 +7092,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6764,6 +7139,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6810,6 +7186,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6854,6 +7231,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6900,6 +7278,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6944,6 +7323,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -6991,6 +7371,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -7036,6 +7417,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -7083,6 +7465,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -7142,6 +7525,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -7187,6 +7571,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -7234,6 +7619,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -7293,6 +7679,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -7340,6 +7727,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -7392,6 +7780,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -7444,6 +7833,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -7489,6 +7879,7 @@ public class AdvertisingDataParserTest {
         assertNotNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -7538,6 +7929,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNotNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -7581,12 +7973,60 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNotNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
 
     @Test
     public void builderTest0526() {
+        AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
+        builder.include(DATA_TYPE_TRANSPORT_DISCOVERY_DATA);
+        AdvertisingDataParser parser = builder.build();
+
+        byte[] data = new byte[5];
+        data[0] = 4;
+        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
+        data[3] = 0;
+        data[4] = 0;
+
+        AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
+
+        assertNotNull(result);
+        assertNotNull(result.getResultList());
+        assertEquals(1, result.getResultList().size());
+        assertNull(result.getIncompleteListOf16BitServiceUUIDs());
+        assertNull(result.getCompleteListOf16BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf32BitServiceUUIDs());
+        assertNull(result.getCompleteListOf32BitServiceUUIDs());
+        assertNull(result.getIncompleteListOf128BitServiceUUIDs());
+        assertNull(result.getCompleteListOf128BitServiceUUIDs());
+        assertNull(result.getShortenedLocalName());
+        assertNull(result.getCompleteLocalName());
+        assertNull(result.getFlags());
+        assertNull(result.getManufacturerSpecificData());
+        assertNull(result.getTxPowerLevel());
+        assertNull(result.getSlaveConnectionIntervalRange());
+        assertNull(result.getListOf16BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf32BitServiceSolicitationUUIDs());
+        assertNull(result.getListOf128BitServiceSolicitationUUIDs());
+        assertNull(result.getServiceData16BitUUID());
+        assertNull(result.getServiceData32BitUUID());
+        assertNull(result.getServiceData128BitUUID());
+        assertNull(result.getAppearance());
+        assertNull(result.getPublicTargetAddress());
+        assertNull(result.getRandomTargetAddress());
+        assertNull(result.getAdvertisingInterval());
+        assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNotNull(result.getTransportDiscoveryData());
+        assertNull(result.getLeSupportedFeatures());
+        assertNull(result.getChannelMapUpdateIndication());
+    }
+
+    @Test
+    public void builderTest0527() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
         builder.include(DATA_TYPE_LE_SUPPORTED_FEATURES);
         AdvertisingDataParser parser = builder.build();
@@ -7625,12 +8065,13 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNotNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
 
     @Test
-    public void builderTest0527() {
+    public void builderTest0528() {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(false);
         builder.include(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION);
         AdvertisingDataParser parser = builder.build();
@@ -7674,6 +8115,7 @@ public class AdvertisingDataParserTest {
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
         assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNotNull(result.getChannelMapUpdateIndication());
     }
@@ -7683,7 +8125,7 @@ public class AdvertisingDataParserTest {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
         AdvertisingDataParser parser = builder.build();
 
-        byte[] data = new byte[192];
+        byte[] data = new byte[197];
         data[0] = 3;
         data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
         data[2] = 0;
@@ -7888,25 +8330,31 @@ public class AdvertisingDataParserTest {
         data[178] = DATA_TYPE_INDOOR_POSITIONING;
         data[179] = 0b00000001;
 
-        data[180] = 2;
-        data[181] = DATA_TYPE_LE_SUPPORTED_FEATURES;
-        data[182] = 0b00000001;
+        data[180] = 4;
+        data[181] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[182] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
+        data[183] = 0;
+        data[184] = 0;
 
-        data[183] = 8;
-        data[184] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
-        data[185] = (byte) 0b11111110;
-        data[186] = (byte) 0b11111111;
-        data[187] = (byte) 0b11111111;
-        data[188] = (byte) 0b11111111;
-        data[189] = (byte) 0b11111111;
-        data[190] = 0b00000000;
-        data[191] = 0b00000000;
+        data[185] = 2;
+        data[186] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[187] = 0b00000001;
+
+        data[188] = 8;
+        data[189] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[190] = (byte) 0b11111110;
+        data[191] = (byte) 0b11111111;
+        data[192] = (byte) 0b11111111;
+        data[193] = (byte) 0b11111111;
+        data[194] = (byte) 0b11111111;
+        data[195] = 0b00000000;
+        data[196] = 0b00000000;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
         assertNotNull(result);
         assertNotNull(result.getResultList());
-        assertEquals(26, result.getResultList().size());
+        assertEquals(27, result.getResultList().size());
         assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result.getResultList().get(0).getDataType());
         assertEquals(DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result.getResultList().get(1).getDataType());
         assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS, result.getResultList().get(2).getDataType());
@@ -7931,8 +8379,9 @@ public class AdvertisingDataParserTest {
         assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result.getResultList().get(21).getDataType());
         assertEquals(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER, result.getResultList().get(22).getDataType());
         assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getResultList().get(23).getDataType());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result.getResultList().get(24).getDataType());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result.getResultList().get(25).getDataType());
+        assertEquals(DATA_TYPE_TRANSPORT_DISCOVERY_DATA, result.getResultList().get(24).getDataType());
+        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result.getResultList().get(25).getDataType());
+        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result.getResultList().get(26).getDataType());
         assertNotNull(result.getIncompleteListOf16BitServiceUUIDs());
         assertNotNull(result.getCompleteListOf16BitServiceUUIDs());
         assertNotNull(result.getIncompleteListOf32BitServiceUUIDs());
@@ -7957,6 +8406,7 @@ public class AdvertisingDataParserTest {
         assertNotNull(result.getAdvertisingInterval());
         assertNotNull(result.getUniformRsourceIdentifier());
         assertNotNull(result.getIndoorPositioning());
+        assertNotNull(result.getTransportDiscoveryData());
         assertNotNull(result.getLeSupportedFeatures());
         assertNotNull(result.getChannelMapUpdateIndication());
     }
@@ -7966,7 +8416,7 @@ public class AdvertisingDataParserTest {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
         AdvertisingDataParser parser = builder.build();
 
-        byte[] data = new byte[192];
+        byte[] data = new byte[197];
         data[0] = 3;
         data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
         data[2] = 0;
@@ -8171,25 +8621,31 @@ public class AdvertisingDataParserTest {
         data[178] = DATA_TYPE_INDOOR_POSITIONING;
         data[179] = 0b00000001;
 
-        data[180] = 8;
-        data[181] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
-        data[182] = (byte) 0b11111110;
-        data[183] = (byte) 0b11111111;
-        data[184] = (byte) 0b11111111;
-        data[185] = (byte) 0b11111111;
-        data[186] = (byte) 0b11111111;
-        data[187] = 0b00000000;
-        data[188] = 0b00000000;
+        data[180] = 4;
+        data[181] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[182] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
+        data[183] = 0;
+        data[184] = 0;
 
-        data[189] = 2;
-        data[190] = DATA_TYPE_LE_SUPPORTED_FEATURES;
-        data[191] = 0b00000001;
+        data[185] = 2;
+        data[186] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[187] = 0b00000001;
+
+        data[188] = 8;
+        data[189] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[190] = (byte) 0b11111110;
+        data[191] = (byte) 0b11111111;
+        data[192] = (byte) 0b11111111;
+        data[193] = (byte) 0b11111111;
+        data[194] = (byte) 0b11111111;
+        data[195] = 0b00000000;
+        data[196] = 0b00000000;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
         assertNotNull(result);
         assertNotNull(result.getResultList());
-        assertEquals(26, result.getResultList().size());
+        assertEquals(27, result.getResultList().size());
         assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result.getResultList().get(0).getDataType());
         assertEquals(DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result.getResultList().get(1).getDataType());
         assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS, result.getResultList().get(2).getDataType());
@@ -8214,8 +8670,9 @@ public class AdvertisingDataParserTest {
         assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result.getResultList().get(21).getDataType());
         assertEquals(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER, result.getResultList().get(22).getDataType());
         assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getResultList().get(23).getDataType());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result.getResultList().get(24).getDataType());
+        assertEquals(DATA_TYPE_TRANSPORT_DISCOVERY_DATA, result.getResultList().get(24).getDataType());
         assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result.getResultList().get(25).getDataType());
+        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result.getResultList().get(26).getDataType());
         assertNotNull(result.getIncompleteListOf16BitServiceUUIDs());
         assertNotNull(result.getCompleteListOf16BitServiceUUIDs());
         assertNotNull(result.getIncompleteListOf32BitServiceUUIDs());
@@ -8240,6 +8697,7 @@ public class AdvertisingDataParserTest {
         assertNotNull(result.getAdvertisingInterval());
         assertNotNull(result.getUniformRsourceIdentifier());
         assertNotNull(result.getIndoorPositioning());
+        assertNotNull(result.getTransportDiscoveryData());
         assertNotNull(result.getLeSupportedFeatures());
         assertNotNull(result.getChannelMapUpdateIndication());
     }
@@ -8249,7 +8707,7 @@ public class AdvertisingDataParserTest {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
         AdvertisingDataParser parser = builder.excludeAll().includeAll().build();
 
-        byte[] data = new byte[192];
+        byte[] data = new byte[197];
         data[0] = 3;
         data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
         data[2] = 0;
@@ -8454,25 +8912,31 @@ public class AdvertisingDataParserTest {
         data[178] = DATA_TYPE_INDOOR_POSITIONING;
         data[179] = 0b00000001;
 
-        data[180] = 8;
-        data[181] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
-        data[182] = (byte) 0b11111110;
-        data[183] = (byte) 0b11111111;
-        data[184] = (byte) 0b11111111;
-        data[185] = (byte) 0b11111111;
-        data[186] = (byte) 0b11111111;
-        data[187] = 0b00000000;
-        data[188] = 0b00000000;
+        data[180] = 4;
+        data[181] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[182] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
+        data[183] = 0;
+        data[184] = 0;
 
-        data[189] = 2;
-        data[190] = DATA_TYPE_LE_SUPPORTED_FEATURES;
-        data[191] = 0b00000001;
+        data[185] = 2;
+        data[186] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[187] = 0b00000001;
+
+        data[188] = 8;
+        data[189] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[190] = (byte) 0b11111110;
+        data[191] = (byte) 0b11111111;
+        data[192] = (byte) 0b11111111;
+        data[193] = (byte) 0b11111111;
+        data[194] = (byte) 0b11111111;
+        data[195] = 0b00000000;
+        data[196] = 0b00000000;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
         assertNotNull(result);
         assertNotNull(result.getResultList());
-        assertEquals(26, result.getResultList().size());
+        assertEquals(27, result.getResultList().size());
         assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result.getResultList().get(0).getDataType());
         assertEquals(DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result.getResultList().get(1).getDataType());
         assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS, result.getResultList().get(2).getDataType());
@@ -8497,8 +8961,9 @@ public class AdvertisingDataParserTest {
         assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result.getResultList().get(21).getDataType());
         assertEquals(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER, result.getResultList().get(22).getDataType());
         assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getResultList().get(23).getDataType());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result.getResultList().get(24).getDataType());
+        assertEquals(DATA_TYPE_TRANSPORT_DISCOVERY_DATA, result.getResultList().get(24).getDataType());
         assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result.getResultList().get(25).getDataType());
+        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result.getResultList().get(26).getDataType());
         assertNotNull(result.getIncompleteListOf16BitServiceUUIDs());
         assertNotNull(result.getCompleteListOf16BitServiceUUIDs());
         assertNotNull(result.getIncompleteListOf32BitServiceUUIDs());
@@ -8523,6 +8988,7 @@ public class AdvertisingDataParserTest {
         assertNotNull(result.getAdvertisingInterval());
         assertNotNull(result.getUniformRsourceIdentifier());
         assertNotNull(result.getIndoorPositioning());
+        assertNotNull(result.getTransportDiscoveryData());
         assertNotNull(result.getLeSupportedFeatures());
         assertNotNull(result.getChannelMapUpdateIndication());
     }
@@ -8533,7 +8999,7 @@ public class AdvertisingDataParserTest {
         builder.excludeAll();
         AdvertisingDataParser parser = builder.build();
 
-        byte[] data = new byte[192];
+        byte[] data = new byte[197];
         data[0] = 3;
         data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
         data[2] = 0;
@@ -8738,19 +9204,25 @@ public class AdvertisingDataParserTest {
         data[178] = DATA_TYPE_INDOOR_POSITIONING;
         data[179] = 0b00000001;
 
-        data[180] = 8;
-        data[181] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
-        data[182] = (byte) 0b11111110;
-        data[183] = (byte) 0b11111111;
-        data[184] = (byte) 0b11111111;
-        data[185] = (byte) 0b11111111;
-        data[186] = (byte) 0b11111111;
-        data[187] = 0b00000000;
-        data[188] = 0b00000000;
+        data[180] = 4;
+        data[181] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[182] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
+        data[183] = 0;
+        data[184] = 0;
 
-        data[189] = 2;
-        data[190] = DATA_TYPE_LE_SUPPORTED_FEATURES;
-        data[191] = 0b00000001;
+        data[185] = 2;
+        data[186] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[187] = 0b00000001;
+
+        data[188] = 8;
+        data[189] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[190] = (byte) 0b11111110;
+        data[191] = (byte) 0b11111111;
+        data[192] = (byte) 0b11111111;
+        data[193] = (byte) 0b11111111;
+        data[194] = (byte) 0b11111111;
+        data[195] = 0b00000000;
+        data[196] = 0b00000000;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
 
@@ -8830,6 +9302,8 @@ public class AdvertisingDataParserTest {
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -8879,6 +9353,8 @@ public class AdvertisingDataParserTest {
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -8932,6 +9408,8 @@ public class AdvertisingDataParserTest {
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -8985,6 +9463,8 @@ public class AdvertisingDataParserTest {
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -9062,6 +9542,8 @@ public class AdvertisingDataParserTest {
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -9139,6 +9621,8 @@ public class AdvertisingDataParserTest {
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -9189,6 +9673,8 @@ public class AdvertisingDataParserTest {
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -9236,6 +9722,8 @@ public class AdvertisingDataParserTest {
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -9292,6 +9780,8 @@ public class AdvertisingDataParserTest {
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -9341,6 +9831,8 @@ public class AdvertisingDataParserTest {
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -9394,6 +9886,8 @@ public class AdvertisingDataParserTest {
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -9471,6 +9965,8 @@ public class AdvertisingDataParserTest {
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -9520,6 +10016,8 @@ public class AdvertisingDataParserTest {
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -9573,6 +10071,8 @@ public class AdvertisingDataParserTest {
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -9650,6 +10150,8 @@ public class AdvertisingDataParserTest {
         assertNull(result.getRandomTargetAddress());
         assertNull(result.getAdvertisingInterval());
         assertNull(result.getUniformRsourceIdentifier());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -9714,6 +10216,8 @@ public class AdvertisingDataParserTest {
         assertEquals(2, result.getUniformRsourceIdentifierList().size());
         assertEquals(result.getUniformRsourceIdentifier(), result.getUniformRsourceIdentifierList().get(1));
         assertEquals(URI.create(URI_SCHEME_NAME_STRING_MAPPING.get(0xb9) + new String(data, 15, 8)), result.getUniformRsourceIdentifier().getUri());
+        assertNull(result.getIndoorPositioning());
+        assertNull(result.getTransportDiscoveryData());
         assertNull(result.getLeSupportedFeatures());
         assertNull(result.getChannelMapUpdateIndication());
     }
@@ -9723,7 +10227,7 @@ public class AdvertisingDataParserTest {
         AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
         AdvertisingDataParser parser = builder.build();
 
-        byte[] data = new byte[190];
+        byte[] data = new byte[197];
         data[0] = 3;
         data[1] = DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS;
         data[2] = 0;
@@ -9925,18 +10429,28 @@ public class AdvertisingDataParserTest {
         data[176] = '/';
 
         data[177] = 2;
-        data[178] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[178] = DATA_TYPE_INDOOR_POSITIONING;
         data[179] = 0b00000001;
 
-        data[180] = 8;
-        data[181] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
-        data[182] = (byte) 0b11111110;
-        data[183] = (byte) 0b11111111;
-        data[184] = (byte) 0b11111111;
-        data[185] = (byte) 0b11111111;
-        data[186] = (byte) 0b11111111;
-        data[187] = 0b00000000;
-        data[188] = 0b00000000;
+        data[180] = 4;
+        data[181] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[182] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
+        data[183] = 0;
+        data[184] = 0;
+
+        data[185] = 2;
+        data[186] = DATA_TYPE_LE_SUPPORTED_FEATURES;
+        data[187] = 0b00000001;
+
+        data[188] = 8;
+        data[189] = DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION;
+        data[190] = (byte) 0b11111110;
+        data[191] = (byte) 0b11111111;
+        data[192] = (byte) 0b11111111;
+        data[193] = (byte) 0b11111111;
+        data[194] = (byte) 0b11111111;
+        data[195] = 0b00000000;
+        data[196] = 0b00000000;
 
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(data);
         Parcel parcel = Parcel.obtain();
@@ -9946,7 +10460,7 @@ public class AdvertisingDataParserTest {
 
         assertNotNull(result2);
         assertNotNull(result2.getResultList());
-        assertEquals(25, result2.getResultList().size());
+        assertEquals(27, result2.getResultList().size());
         assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result2.getResultList().get(0).getDataType());
         assertEquals(DATA_TYPE_COMPLETE_LIST_OF_16_BIT_SERVICE_UUIDS, result2.getResultList().get(1).getDataType());
         assertEquals(DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS, result2.getResultList().get(2).getDataType());
@@ -9970,8 +10484,10 @@ public class AdvertisingDataParserTest {
         assertEquals(DATA_TYPE_RANDOM_TARGET_ADDRESS, result2.getResultList().get(20).getDataType());
         assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result2.getResultList().get(21).getDataType());
         assertEquals(DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER, result2.getResultList().get(22).getDataType());
-        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result2.getResultList().get(23).getDataType());
-        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result2.getResultList().get(24).getDataType());
+        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result2.getResultList().get(23).getDataType());
+        assertEquals(DATA_TYPE_TRANSPORT_DISCOVERY_DATA, result2.getResultList().get(24).getDataType());
+        assertEquals(DATA_TYPE_LE_SUPPORTED_FEATURES, result2.getResultList().get(25).getDataType());
+        assertEquals(DATA_TYPE_CHANNEL_MAP_UPDATE_INDICATION, result2.getResultList().get(26).getDataType());
         assertNotNull(result2.getIncompleteListOf16BitServiceUUIDs());
         assertNotNull(result2.getCompleteListOf16BitServiceUUIDs());
         assertNotNull(result2.getIncompleteListOf32BitServiceUUIDs());
@@ -9995,6 +10511,8 @@ public class AdvertisingDataParserTest {
         assertNotNull(result2.getRandomTargetAddress());
         assertNotNull(result2.getAdvertisingInterval());
         assertNotNull(result2.getUniformRsourceIdentifier());
+        assertNotNull(result.getIndoorPositioning());
+        assertNotNull(result.getTransportDiscoveryData());
         assertNotNull(result2.getLeSupportedFeatures());
         assertNotNull(result2.getChannelMapUpdateIndication());
     }

@@ -31,6 +31,7 @@ import org.im97mori.ble.advertising.ServiceData16BitUUID;
 import org.im97mori.ble.advertising.ServiceData32BitUUID;
 import org.im97mori.ble.advertising.ShortenedLocalName;
 import org.im97mori.ble.advertising.SlaveConnectionIntervalRange;
+import org.im97mori.ble.advertising.TransportDiscoveryData;
 import org.im97mori.ble.advertising.TxPowerLevel;
 import org.im97mori.ble.advertising.UniformRsourceIdentifier;
 
@@ -599,7 +600,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
     /**
      * add Indoor Positioning filter
      *
-     * @param data Flags data array
+     * @param data Indoor Positioning data array
      * @return myself
      * @see ByteArrayCreater#createFromByteArray(byte[])
      */
@@ -624,7 +625,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
     /**
      * add Indoor Positioning filter
      *
-     * @param expect {@link Flags} instance
+     * @param expect {@link IndoorPositioning} instance
      * @return myself
      */
     @NonNull
@@ -1205,6 +1206,43 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addSlaveConnectionIntervalRangeFilter(@NonNull List<SlaveConnectionIntervalRange> expectList) {
         mFilterList.add(new SlaveConnectionIntervalRangeFilter(expectList));
+        return this;
+    }
+
+    /**
+     * add Transport Discovery Data filter
+     *
+     * @param data Transport Discovery Data data array
+     * @return myself
+     * @see ByteArrayCreater#createFromByteArray(byte[])
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addTransportDiscoveryDataFilter(@NonNull byte[] data) {
+        return addTransportDiscoveryDataFilter(TransportDiscoveryData.CREATOR.createFromByteArray(data));
+    }
+
+    /**
+     * add Indoor Positioning filter
+     *
+     * @param data   {@link TransportDiscoveryData#TransportDiscoveryData(byte[], int, int)} 1st parameter
+     * @param offset {@link TransportDiscoveryData#TransportDiscoveryData(byte[], int, int)} 2nd parameter
+     * @param length {@link TransportDiscoveryData#TransportDiscoveryData(byte[], int, int)} 3rd parameter
+     * @return myself
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addTransportDiscoveryDataFilter(@NonNull byte[] data, int offset, int length) {
+        return addTransportDiscoveryDataFilter(new TransportDiscoveryData(data, offset, length));
+    }
+
+    /**
+     * add Indoor Positioning filter
+     *
+     * @param expect {@link Flags} instance
+     * @return myself
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addTransportDiscoveryDataFilter(@NonNull TransportDiscoveryData expect) {
+        mFilterList.add(new TransportDiscoveryDataFilter(expect));
         return this;
     }
 

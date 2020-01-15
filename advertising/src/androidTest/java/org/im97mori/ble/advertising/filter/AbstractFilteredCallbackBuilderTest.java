@@ -2,6 +2,7 @@ package org.im97mori.ble.advertising.filter;
 
 import androidx.annotation.NonNull;
 
+import org.im97mori.ble.TransportDiscoveryServiceUtils;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.AdvertisingInterval;
 import org.im97mori.ble.advertising.Appearance;
@@ -27,6 +28,7 @@ import org.im97mori.ble.advertising.ServiceData16BitUUID;
 import org.im97mori.ble.advertising.ServiceData32BitUUID;
 import org.im97mori.ble.advertising.ShortenedLocalName;
 import org.im97mori.ble.advertising.SlaveConnectionIntervalRange;
+import org.im97mori.ble.advertising.TransportDiscoveryData;
 import org.im97mori.ble.advertising.TxPowerLevel;
 import org.im97mori.ble.advertising.UniformRsourceIdentifier;
 import org.junit.Test;
@@ -62,6 +64,7 @@ import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingD
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SERVICE_DATA_32_BIT_UUID;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SHORTENED_LOCAL_NAME;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_SLAVE_CONNECTION_INTERVAL_RANGE;
+import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_TX_POWER_LEVEL;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_UNIFORM_RESOURCE_IDENTIFIER;
 import static org.junit.Assert.assertEquals;
@@ -1695,6 +1698,51 @@ public class AbstractFilteredCallbackBuilderTest {
         List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addSlaveConnectionIntervalRangeFilter(Collections.singletonList(SlaveConnectionIntervalRange.CREATOR.createFromByteArray(data))).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof SlaveConnectionIntervalRangeFilter);
+    }
+
+    @Test
+    public void addTransportDiscoveryDataFilterTest_001() {
+        byte[] data = new byte[5];
+        data[0] = 4;
+        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
+        data[3] = 0;
+        data[4] = 0;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addTransportDiscoveryDataFilter(data).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof TransportDiscoveryDataFilter);
+    }
+
+    @Test
+    public void addTransportDiscoveryDataFilterTest_002() {
+        byte[] data = new byte[5];
+        data[0] = 4;
+        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
+        data[3] = 0;
+        data[4] = 0;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addTransportDiscoveryDataFilter(data, 0, 1).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof TransportDiscoveryDataFilter);
+    }
+
+    @Test
+    public void addTransportDiscoveryDataFilterTest_003() {
+        byte[] data = new byte[5];
+        data[0] = 4;
+        data[1] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;
+        data[2] = TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG;
+        data[3] = 0;
+        data[4] = 0;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addTransportDiscoveryDataFilter(TransportDiscoveryData.CREATOR.createFromByteArray(data)).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof TransportDiscoveryDataFilter);
     }
 
     @Test

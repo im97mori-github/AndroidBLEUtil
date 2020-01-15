@@ -180,6 +180,11 @@ public class AdvertisingDataConstants {
          */
         public static final int DATA_TYPE_INDOOR_POSITIONING = 0x25;
 
+        /**
+         * Transport Discovery Data
+         */
+        public static final int DATA_TYPE_TRANSPORT_DISCOVERY_DATA = 0x26;
+
         // 1.19 LE SUPPORTED FEATURES
 
         /**
