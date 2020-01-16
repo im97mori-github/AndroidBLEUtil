@@ -21,6 +21,7 @@ import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingD
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
+@SuppressWarnings("WeakerAccess")
 public class TransportDiscoveryData extends AbstractAdvertisingData {
 
     /**

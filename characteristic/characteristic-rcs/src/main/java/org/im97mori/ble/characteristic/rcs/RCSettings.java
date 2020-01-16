@@ -18,6 +18,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.R_C_SETTINGS_CHAR
 /**
  * RC Settings (Characteristics UUID: 0x2B1E)
  */
+@SuppressWarnings("WeakerAccess")
 public class RCSettings implements ByteArrayInterface, Parcelable {
 
     /**

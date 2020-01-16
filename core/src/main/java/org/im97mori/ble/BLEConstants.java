@@ -2538,6 +2538,11 @@ public class BLEConstants {
          * Transport Discovery (Service UUID: 0x1824)
          */
         public static final UUID TRANSPORT_DISCOVERY_SERVICE = UUID.fromString("00001824-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Environmental Sensing (Service UUID: 0x181A)
+         */
+        public static final UUID ENVIRONMENTAL_SENSING_SERVICE = UUID.fromString("0000181A-0000-1000-8000-00805f9b34fb");
     }
 
     /**
@@ -3331,6 +3336,113 @@ public class BLEConstants {
          */
         public static final UUID TDS_CONTROL_POINT_CHARACTERISTIC = UUID.fromString("00002ABC-0000-1000-8000-00805f9b34fb");
 
+        // Environmental Sensing (Service UUID: 0x181A)
+
+        /**
+         * Descriptor Value Changed (Characteristic UUID: 0x2A7D)
+         */
+        public static final UUID DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC = UUID.fromString("00002A7D-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Apparent Wind Direction (Characteristic UUID: 0x2A73)
+         */
+        public static final UUID APPARENT_WIND_DIRECTION_CHARACTERISTIC = UUID.fromString("00002A73-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Apparent Wind Speed (Characteristic UUID: 0x2A72)
+         */
+        public static final UUID APPARENT_WIND_SPEED_CHARACTERISTIC = UUID.fromString("00002A72-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Dew Point (Characteristic UUID: 0x2A7B)
+         */
+        public static final UUID DEW_POINT_CHARACTERISTIC = UUID.fromString("00002A7B-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Elevation (Characteristic UUID: 0x2A6C)
+         */
+        public static final UUID ELEVATION_CHARACTERISTIC = UUID.fromString("00002A6C-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Gust Factor (Characteristic UUID: 0x2A74)
+         */
+        public static final UUID GUST_FACTOR_CHARACTERISTIC = UUID.fromString("00002A74-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Heat Index (Characteristic UUID: 0x2A7A)
+         */
+        public static final UUID HEAT_INDEX_CHARACTERISTIC = UUID.fromString("00002A7A-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Humidity (Characteristic UUID: 0x2A6F)
+         */
+        public static final UUID HUMIDITY_CHARACTERISTIC = UUID.fromString("00002A6F-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Irradiance (Characteristic UUID: 0x2A77)
+         */
+        public static final UUID IRRADIANCE_CHARACTERISTIC = UUID.fromString("00002A77-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Pollen Concentration (Characteristic UUID: 0x2A75)
+         */
+        public static final UUID POLLEN_CONCENTRATION_CHARACTERISTIC = UUID.fromString("00002A75-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Rainfall (Characteristic UUID: 0x2A78)
+         */
+        public static final UUID RAINFALL_CHARACTERISTIC = UUID.fromString("00002A78-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Pressure (Characteristic UUID: 0x2A6D)
+         */
+        public static final UUID PRESSURE_CHARACTERISTIC = UUID.fromString("00002A6D-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Temperature (Characteristic UUID: 0x2A6E)
+         */
+        public static final UUID TEMPERATURE_CHARACTERISTIC = UUID.fromString("00002A6E-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * True Wind Direction (Characteristic UUID: 0x2A71)
+         */
+        public static final UUID TRUE_WIND_DIRECTION_CHARACTERISTIC = UUID.fromString("00002A71-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * True Wind Speed (Characteristic UUID: 0x2A70)
+         */
+        public static final UUID TRUE_WIND_SPEED_CHARACTERISTIC = UUID.fromString("00002A70-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * UV Index (Characteristic UUID: 0x2A76)
+         */
+        public static final UUID UV_INDEX_CHARACTERISTIC = UUID.fromString("00002A76-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Wind Chill (Characteristic UUID: 0x2A79)
+         */
+        public static final UUID WIND_CHILL_CHARACTERISTIC = UUID.fromString("00002A79-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Barometric Pressure Trend (Characteristic UUID: 0x2AA3)
+         */
+        public static final UUID BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC = UUID.fromString("00002AA3-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Magnetic Declination (Characteristic UUID: 0x2A2C)
+         */
+        public static final UUID MAGNETIC_DECLINATION_CHARACTERISTIC = UUID.fromString("00002A2C-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Magnetic Flux Density - 2D (Characteristic UUID: 0x2AA0)
+         */
+        public static final UUID MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC = UUID.fromString("00002AA0-0000-1000-8000-00805f9b34fb");
+
+        /**
+         * Magnetic Flux Density - 3D (Characteristic UUID: 0x2AA1)
+         */
+        public static final UUID MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC = UUID.fromString("00002AA1-0000-1000-8000-00805f9b34fb");
+
     }
 
     /**
@@ -3546,6 +3658,7 @@ public class BLEConstants {
          * Invalid Value(Indoor Positioning Service v1.0.0 1.6)
          * Op Code not supported(Bond Management Service v1.0.0 1.7)
          * Missing CRC(Reconnection Configuration Service v1.0 1.7)
+         * Write Request Rejected(Environmental Sensing Service  v1.0.0 1.6)
          */
         public static final int APPLICATION_ERROR_80 = 0x80;
 
@@ -3555,6 +3668,7 @@ public class BLEConstants {
          * Invalid Request(HTTP Proxy Service v1.0 1.6)
          * Operation failed(Bond Management Service v1.0.0 1.7)
          * Invalid CRC(Reconnection Configuration Service v1.0 1.7)
+         * Condition not supported(Environmental Sensing Service  v1.0.0 1.6)
          */
         public static final int APPLICATION_ERROR_81 = 0x81;
 
