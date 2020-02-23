@@ -3,8 +3,8 @@ package org.im97mori.ble.characteristic.core;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.BLEUtils;
-import org.im97mori.ble.descriptor.CharacteristicPresentationFormat;
-import org.im97mori.ble.descriptor.NumberOfDigitals;
+import org.im97mori.ble.descriptor.u2909.NumberOfDigitals;
+import org.im97mori.ble.descriptor.u2904.CharacteristicPresentationFormat;
 
 /**
  * Utility for org.bluetooth.service.automation_io(0x1815) service

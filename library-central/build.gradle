@@ -31,7 +31,8 @@ android {
 
 dependencies {
     api "org.im97mori:stacklog:$stacklogVersionName"
-    api apiDescriptor
+    api apiCoreAndroid
+    api "${groupId}:${descriptorU2902.artifactId}:${descriptorU2902.versionName}"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:core:1.2.0'

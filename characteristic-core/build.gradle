@@ -31,8 +31,9 @@ android {
 }
 
 dependencies {
-    api apiCore
-    api apiDescriptor
+    api apiCoreAndroid
+    api descriptorU2904[baseModule]
+    api descriptorU2909[baseModule]
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:core:1.2.0'

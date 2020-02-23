@@ -8,7 +8,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.3'
-
+        classpath 'digital.wup:android-maven-publish:3.6.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -16,8 +16,8 @@ buildscript {
 
 allprojects {
     repositories {
-        maven { url "https://github.com/im97mori-github/maven/raw/master" }
-//        maven { url System.getenv('MAVEN_REPOSITORY_URL') }
+//        maven { url "https://github.com/im97mori-github/maven/raw/master" }
+        maven { url System.getenv('MAVEN_REPOSITORY_URL') }
         google()
         jcenter()
     }
@@ -27,20 +27,32 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-ext.groupId = 'org.im97mori'
+ext.globalCompileSdkVersion = 29
+ext.globalBuildToolsVersion = "29.0.3"
+ext.globalMinSdkVersion = 18
+ext.globalTargetSdkVersion = 29
 
 ext.stacklogVersionName = "0.0.2"
 
+ext.groupId = 'org.im97mori'
 ext.artifactId = 'artifactId'
 ext.versionCode = 'versionCode'
 ext.versionName = 'versionName'
 ext.uploadVersionName = 'uploadVersionName'
+ext.baseArtifactId = 'baseArtifactId'
+ext.baseVersionName = 'baseVersionName'
+ext.baseModule = 'baseModule'
 
 ext.core = [
-        artifactId         : 'ble-core'
-        , versionCode      : 34
-        , versionName      : '0.1.33'
-        , uploadVersionName: '0.1.33'
+        artifactId   : 'ble-core'
+        , versionName: '0.2.0'
+]
+
+ext.coreAndroid = [
+        artifactId         : 'ble-core-android'
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
 ]
 
 ext.advertising = [
@@ -50,11 +62,124 @@ ext.advertising = [
         , uploadVersionName: '0.1.33'
 ]
 
-ext.descriptor = [
-        artifactId         : 'ble-descriptor'
-        , versionCode      : 34
-        , versionName      : '0.1.33'
-        , uploadVersionName: '0.1.33'
+ext.descriptorU2900 = [
+        artifactId         : "ble-descriptor-u2900-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-descriptor-u2900:0.1.0"
+]
+
+ext.descriptorU2901 = [
+        artifactId         : "ble-descriptor-u2901-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-descriptor-u2901:0.1.0"
+]
+
+ext.descriptorU2902 = [
+        artifactId         : "ble-descriptor-u2902-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-descriptor-u2902:0.1.0"
+]
+
+ext.descriptorU2903 = [
+        artifactId         : "ble-descriptor-u2903-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-descriptor-u2903:0.1.0"
+]
+
+ext.descriptorU2904 = [
+        artifactId         : "ble-descriptor-u2904-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-descriptor-u2904:0.1.0"
+]
+
+ext.descriptorU2905 = [
+        artifactId         : "ble-descriptor-u2905-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-descriptor-u2905:0.1.0"
+]
+
+ext.descriptorU2906 = [
+        artifactId         : "ble-descriptor-u2906-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-descriptor-u2906:0.1.0"
+]
+
+ext.descriptorU2907 = [
+        artifactId         : "ble-descriptor-u2907-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-descriptor-u2907:0.1.0"
+]
+
+ext.descriptorU2908 = [
+        artifactId         : "ble-descriptor-u2908-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-descriptor-u2908:0.1.0"
+]
+
+ext.descriptorU2909 = [
+        artifactId         : "ble-descriptor-u2909-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-descriptor-u2909:0.1.0"
+]
+
+ext.descriptorU290a = [
+        artifactId         : "ble-descriptor-u290a-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-descriptor-u290a:0.1.0"
+]
+
+ext.descriptorU290b = [
+        artifactId         : "ble-descriptor-u290b-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-descriptor-u290b:0.1.0"
+]
+
+ext.descriptorU290c = [
+        artifactId         : "ble-descriptor-u290c-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-descriptor-u290c:0.1.0"
+]
+
+ext.descriptorU290d = [
+        artifactId         : "ble-descriptor-u290d-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-descriptor-u290d:0.1.0"
+]
+
+ext.descriptorU290e = [
+        artifactId         : "ble-descriptor-u290e-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-descriptor-u290e:0.1.0"
 ]
 
 ext.characteristicCore = [
@@ -302,8 +427,10 @@ ext.peripheral = [
         , uploadVersionName: '0.2.12'
 ]
 
-ext.apiCore = "${groupId}:${core.artifactId}:${core.versionName}"
-ext.apiDescriptor = "${groupId}:${descriptor.artifactId}:${descriptor.versionName}"
+ext.apiCoreAndroid = "${groupId}:${coreAndroid.artifactId}:${coreAndroid.versionName}"
 ext.apiCharacteristicCore = "${groupId}:${characteristicCore.artifactId}:${characteristicCore.versionName}"
 ext.apiCentral = "${groupId}:${central.artifactId}:${central.versionName}"
 ext.apiAdvertising = "${groupId}:${advertising.artifactId}:${advertising.versionName}"
+ext.androidxAnnotation = 'androidx.annotation:annotation:1.1.0'
+ext.androidxTestRunner = 'androidx.test:runner:1.2.0'
+ext.androidxTestCore = 'androidx.test:core:1.2.0'
