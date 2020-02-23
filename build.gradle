@@ -198,6 +198,46 @@ ext.characteristicCoreAndroid = [
         , baseModule       : "${groupId}:ble-characteristic-core:0.1.0"
 ]
 
+ext.characteristicU2a44 = [
+        artifactId         : "ble-characteristic-u2a44-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a44:0.1.0"
+]
+
+ext.characteristicU2a45 = [
+        artifactId         : "ble-characteristic-u2a45-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a45:0.1.0"
+]
+
+ext.characteristicU2a46 = [
+        artifactId         : "ble-characteristic-u2a46-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a46:0.1.0"
+]
+
+ext.characteristicU2a47 = [
+        artifactId         : "ble-characteristic-u2a47-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a47:0.1.0"
+]
+
+ext.characteristicU2a48 = [
+        artifactId         : "ble-characteristic-u2a48-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a48:0.1.0"
+]
+
 ext.characteristicU2a56 = [
         artifactId         : "ble-characteristic-u2a56-android"
         , versionCode      : 1
@@ -346,13 +386,6 @@ ext.characteristicPass = [
         , versionCode      : 15
         , versionName      : '0.1.14'
         , uploadVersionName: '0.1.14'
-]
-
-ext.characteristicAns = [
-        artifactId         : 'ble-characteristic-ans'
-        , versionCode      : 14
-        , versionName      : '0.1.13'
-        , uploadVersionName: '0.1.13'
 ]
 
 ext.characteristicCps = [
