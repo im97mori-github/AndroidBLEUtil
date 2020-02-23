@@ -1,4 +1,4 @@
-package org.im97mori.ble.characteristic.bas;
+package org.im97mori.ble.characteristic.u2a19;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
@@ -9,7 +9,7 @@ import static org.im97mori.ble.BLEConstants.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-public class BatteryLevelTest {
+public class BatteryLevelAndroidTest {
 
     @Test
     public void test_constructor001() {
@@ -20,7 +20,7 @@ public class BatteryLevelTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        BatteryLevel result1 = new BatteryLevel(bluetoothGattCharacteristic);
+        BatteryLevelAndroid result1 = new BatteryLevelAndroid(bluetoothGattCharacteristic);
         assertEquals(0x00, result1.getLevel());
     }
 
@@ -34,7 +34,7 @@ public class BatteryLevelTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        BatteryLevel result1 = new BatteryLevel(bluetoothGattCharacteristic);
+        BatteryLevelAndroid result1 = new BatteryLevelAndroid(bluetoothGattCharacteristic);
         assertEquals(0x64, result1.getLevel());
     }
 
@@ -48,11 +48,11 @@ public class BatteryLevelTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        BatteryLevel result1 = new BatteryLevel(bluetoothGattCharacteristic);
+        BatteryLevelAndroid result1 = new BatteryLevelAndroid(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
-        BatteryLevel result2 = BatteryLevel.CREATOR.createFromParcel(parcel);
+        BatteryLevelAndroid result2 = BatteryLevelAndroid.CREATOR.createFromParcel(parcel);
 
         assertEquals(result2.getLevel(), result1.getLevel());
     }
@@ -67,7 +67,7 @@ public class BatteryLevelTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        BatteryLevel result1 = new BatteryLevel(bluetoothGattCharacteristic);
+        BatteryLevelAndroid result1 = new BatteryLevelAndroid(bluetoothGattCharacteristic);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -81,8 +81,8 @@ public class BatteryLevelTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        BatteryLevel result1 = new BatteryLevel(bluetoothGattCharacteristic);
-        BatteryLevel result2 = BatteryLevel.CREATOR.createFromByteArray(data);
+        BatteryLevelAndroid result1 = new BatteryLevelAndroid(bluetoothGattCharacteristic);
+        BatteryLevelAndroid result2 = BatteryLevelAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 
