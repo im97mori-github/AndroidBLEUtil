@@ -182,11 +182,44 @@ ext.descriptorU290e = [
         , baseModule       : "${groupId}:ble-descriptor-u290e:0.1.0"
 ]
 
+// TODO delete
 ext.characteristicCore = [
         artifactId         : 'ble-characteristic-core'
         , versionCode      : 22
         , versionName      : '0.1.21'
         , uploadVersionName: '0.1.21'
+]
+
+ext.characteristicCoreAndroid = [
+        artifactId         : 'ble-characteristic-core-android'
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-core:0.1.0"
+]
+
+ext.characteristicU2a56 = [
+        artifactId         : "ble-characteristic-u2a56-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a56:0.1.0"
+]
+
+ext.characteristicU2a58 = [
+        artifactId         : "ble-characteristic-u2a58-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a58:0.1.0"
+]
+
+ext.characteristicU2a5a = [
+        artifactId         : "ble-characteristic-u2a5a-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a5a:0.1.0"
 ]
 
 ext.characteristicDis = [
@@ -322,13 +355,6 @@ ext.characteristicAns = [
         , uploadVersionName: '0.1.13'
 ]
 
-ext.characteristicAios = [
-        artifactId         : 'ble-characteristic-aios'
-        , versionCode      : 13
-        , versionName      : '0.1.12'
-        , uploadVersionName: '0.1.12'
-]
-
 ext.characteristicCps = [
         artifactId         : 'ble-characteristic-cps'
         , versionCode      : 12
@@ -429,6 +455,7 @@ ext.peripheral = [
 
 ext.apiCoreAndroid = "${groupId}:${coreAndroid.artifactId}:${coreAndroid.versionName}"
 ext.apiCharacteristicCore = "${groupId}:${characteristicCore.artifactId}:${characteristicCore.versionName}"
+ext.apiCharacteristicCoreAndroid = "${groupId}:${characteristicCoreAndroid.artifactId}:${characteristicCoreAndroid.versionName}"
 ext.apiCentral = "${groupId}:${central.artifactId}:${central.versionName}"
 ext.apiAdvertising = "${groupId}:${advertising.artifactId}:${advertising.versionName}"
 ext.androidxAnnotation = 'androidx.annotation:annotation:1.1.0'
