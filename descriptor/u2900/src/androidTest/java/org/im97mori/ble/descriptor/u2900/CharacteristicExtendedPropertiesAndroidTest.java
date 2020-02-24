@@ -52,14 +52,14 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     //@formatter:on
 
     private byte[] getData() {
-        int index = 1;
+        int index = -1;
         byte[] data = null;
 
         StackTraceElement[] stackTraceElementArray = Thread.currentThread().getStackTrace();
         for (int i = 0; i < stackTraceElementArray.length; i++) {
             StackTraceElement stackTraceElement = stackTraceElementArray[i];
-            if (stackTraceElementArray[2].getMethodName().equals(stackTraceElement.getMethodName())) {
-                index += i;
+            if ("getData".equals(stackTraceElement.getMethodName())) {
+                index = i + 1;
                 break;
             }
         }
