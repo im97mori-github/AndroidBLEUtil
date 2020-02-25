@@ -7,7 +7,7 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:3.6.0'
         classpath 'digital.wup:android-maven-publish:3.6.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -206,6 +206,22 @@ ext.characteristicU2a19 = [
         , baseModule       : "${groupId}:ble-characteristic-u2a19:0.1.0"
 ]
 
+ext.characteristicU2a35 = [
+        artifactId         : "ble-characteristic-u2a35-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a35:0.1.0"
+]
+
+ext.characteristicU2a36 = [
+        artifactId         : "ble-characteristic-u2a36-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a36:0.1.0"
+]
+
 ext.characteristicU2a44 = [
         artifactId         : "ble-characteristic-u2a44-android"
         , versionCode      : 1
@@ -244,6 +260,14 @@ ext.characteristicU2a48 = [
         , versionName      : '0.1.0'
         , uploadVersionName: '0.1.0'
         , baseModule       : "${groupId}:ble-characteristic-u2a48:0.1.0"
+]
+
+ext.characteristicU2a49 = [
+        artifactId         : "ble-characteristic-u2a49-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a49:0.1.0"
 ]
 
 ext.characteristicU2a56 = [
@@ -326,13 +350,6 @@ ext.characteristicUds = [
         , versionCode      : 26
         , versionName      : '0.1.25'
         , uploadVersionName: '0.1.25'
-]
-
-ext.characteristicBls = [
-        artifactId         : 'ble-characteristic-bls'
-        , versionCode      : 24
-        , versionName      : '0.1.23'
-        , uploadVersionName: '0.1.23'
 ]
 
 ext.characteristicHrs = [

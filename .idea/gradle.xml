@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <compositeConfiguration>
-          <compositeBuild compositeDefinitionSource="SCRIPT" />
-        </compositeConfiguration>
+        <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="PLATFORM" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
@@ -13,10 +13,65 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/advertising" />
             <option value="$PROJECT_DIR$/characteristic" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-bms" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-cps" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-cscs" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-cts" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-dis" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-ess" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-ftms" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-gaps" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-gas" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-hids" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-hps" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-hrs" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-hts" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-ias" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-ips" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-lls" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-lns" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-ndcs" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-pass" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-rcs" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-rscs" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-rtus" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-scps" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-tds" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-tps" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-uds" />
+            <option value="$PROJECT_DIR$/characteristic/characteristic-wss" />
+            <option value="$PROJECT_DIR$/characteristic/core" />
+            <option value="$PROJECT_DIR$/characteristic/u2a19" />
+            <option value="$PROJECT_DIR$/characteristic/u2a35" />
+            <option value="$PROJECT_DIR$/characteristic/u2a36" />
+            <option value="$PROJECT_DIR$/characteristic/u2a44" />
+            <option value="$PROJECT_DIR$/characteristic/u2a45" />
+            <option value="$PROJECT_DIR$/characteristic/u2a46" />
+            <option value="$PROJECT_DIR$/characteristic/u2a47" />
+            <option value="$PROJECT_DIR$/characteristic/u2a48" />
+            <option value="$PROJECT_DIR$/characteristic/u2a49" />
+            <option value="$PROJECT_DIR$/characteristic/u2a56" />
+            <option value="$PROJECT_DIR$/characteristic/u2a58" />
+            <option value="$PROJECT_DIR$/characteristic/u2a5a" />
+            <option value="$PROJECT_DIR$/characteristic/u2a9b" />
+            <option value="$PROJECT_DIR$/characteristic/u2a9c" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/descriptor" />
+            <option value="$PROJECT_DIR$/descriptor/u2900" />
+            <option value="$PROJECT_DIR$/descriptor/u2901" />
+            <option value="$PROJECT_DIR$/descriptor/u2902" />
+            <option value="$PROJECT_DIR$/descriptor/u2903" />
+            <option value="$PROJECT_DIR$/descriptor/u2904" />
+            <option value="$PROJECT_DIR$/descriptor/u2905" />
+            <option value="$PROJECT_DIR$/descriptor/u2906" />
+            <option value="$PROJECT_DIR$/descriptor/u2907" />
+            <option value="$PROJECT_DIR$/descriptor/u2908" />
+            <option value="$PROJECT_DIR$/descriptor/u2909" />
+            <option value="$PROJECT_DIR$/descriptor/u290a" />
+            <option value="$PROJECT_DIR$/descriptor/u290b" />
+            <option value="$PROJECT_DIR$/descriptor/u290c" />
+            <option value="$PROJECT_DIR$/descriptor/u290d" />
+            <option value="$PROJECT_DIR$/descriptor/u290e" />
             <option value="$PROJECT_DIR$/library-central" />
             <option value="$PROJECT_DIR$/library-peripheral" />
             <option value="$PROJECT_DIR$/sample-jellybean" />
@@ -24,7 +79,6 @@
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
-        <option name="testRunner" value="PLATFORM" />
       </GradleProjectSettings>
     </option>
   </component>
