@@ -294,6 +294,46 @@ ext.characteristicU2a5a = [
         , baseModule       : "${groupId}:ble-characteristic-u2a5a:0.1.0"
 ]
 
+ext.characteristicU2a5d = [
+        artifactId         : "ble-characteristic-u2a5d-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a5d:0.1.0"
+]
+
+ext.characteristicU2a63 = [
+        artifactId         : "ble-characteristic-u2a63-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a63:0.1.0"
+]
+
+ext.characteristicU2a64 = [
+        artifactId         : "ble-characteristic-u2a64-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a64:0.1.0"
+]
+
+ext.characteristicU2a65 = [
+        artifactId         : "ble-characteristic-u2a65-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a65:0.1.0"
+]
+
+ext.characteristicU2a66 = [
+        artifactId         : "ble-characteristic-u2a66-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a66:0.1.0"
+]
+
 ext.characteristicU2a9b = [
         artifactId         : "ble-characteristic-u2a9b-android"
         , versionCode      : 1
@@ -429,13 +469,6 @@ ext.characteristicPass = [
         , versionCode      : 15
         , versionName      : '0.1.14'
         , uploadVersionName: '0.1.14'
-]
-
-ext.characteristicCps = [
-        artifactId         : 'ble-characteristic-cps'
-        , versionCode      : 12
-        , versionName      : '0.1.11'
-        , uploadVersionName: '0.1.11'
 ]
 
 ext.characteristicCscs = [
