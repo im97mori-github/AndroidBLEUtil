@@ -7,7 +7,6 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
-import org.im97mori.ble.ByteArrayInterface;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BLOOD_PRESSURE_FEATURE_CHARACTERISTIC;
 
@@ -15,7 +14,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BLOOD_PRESSURE_FE
  * Blood Pressure Feature (Characteristics UUID: 0x2A49)
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class BloodPressureFeatureAndroid extends BloodPressureFeature implements ByteArrayInterface, Parcelable {
+public class BloodPressureFeatureAndroid extends BloodPressureFeature implements Parcelable {
 
     /**
      * @see ByteArrayCreater

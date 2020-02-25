@@ -7,7 +7,6 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
-import org.im97mori.ble.ByteArrayInterface;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
 
@@ -15,7 +14,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.INTERMEDIATE_CUFF
  * Intermediate Cuff Pressure (Characteristics UUID: 0x2A36)
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class IntermediateCuffPressureAndroid extends IntermediateCuffPressure implements ByteArrayInterface, Parcelable {
+public class IntermediateCuffPressureAndroid extends IntermediateCuffPressure implements Parcelable {
 
     /**
      * @see ByteArrayCreater
