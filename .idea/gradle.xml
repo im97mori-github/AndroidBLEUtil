@@ -14,7 +14,6 @@
             <option value="$PROJECT_DIR$/advertising" />
             <option value="$PROJECT_DIR$/characteristic" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-ftms" />
-            <option value="$PROJECT_DIR$/characteristic/characteristic-hids" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-hps" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-hrs" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-hts" />
@@ -42,6 +41,7 @@
             <option value="$PROJECT_DIR$/characteristic/u2a0f" />
             <option value="$PROJECT_DIR$/characteristic/u2a14" />
             <option value="$PROJECT_DIR$/characteristic/u2a19" />
+            <option value="$PROJECT_DIR$/characteristic/u2a22" />
             <option value="$PROJECT_DIR$/characteristic/u2a23" />
             <option value="$PROJECT_DIR$/characteristic/u2a24" />
             <option value="$PROJECT_DIR$/characteristic/u2a25" />
@@ -52,6 +52,8 @@
             <option value="$PROJECT_DIR$/characteristic/u2a2a" />
             <option value="$PROJECT_DIR$/characteristic/u2a2b" />
             <option value="$PROJECT_DIR$/characteristic/u2a2c" />
+            <option value="$PROJECT_DIR$/characteristic/u2a32" />
+            <option value="$PROJECT_DIR$/characteristic/u2a33" />
             <option value="$PROJECT_DIR$/characteristic/u2a35" />
             <option value="$PROJECT_DIR$/characteristic/u2a36" />
             <option value="$PROJECT_DIR$/characteristic/u2a44" />
@@ -60,6 +62,11 @@
             <option value="$PROJECT_DIR$/characteristic/u2a47" />
             <option value="$PROJECT_DIR$/characteristic/u2a48" />
             <option value="$PROJECT_DIR$/characteristic/u2a49" />
+            <option value="$PROJECT_DIR$/characteristic/u2a4a" />
+            <option value="$PROJECT_DIR$/characteristic/u2a4b" />
+            <option value="$PROJECT_DIR$/characteristic/u2a4c" />
+            <option value="$PROJECT_DIR$/characteristic/u2a4d" />
+            <option value="$PROJECT_DIR$/characteristic/u2a4e" />
             <option value="$PROJECT_DIR$/characteristic/u2a50" />
             <option value="$PROJECT_DIR$/characteristic/u2a55" />
             <option value="$PROJECT_DIR$/characteristic/u2a56" />
