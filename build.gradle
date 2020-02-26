@@ -198,6 +198,14 @@ ext.characteristicCoreAndroid = [
         , baseModule       : "${groupId}:ble-characteristic-core:0.1.0"
 ]
 
+ext.characteristicU2a05 = [
+        artifactId         : "ble-characteristic-u2a05-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a05:0.1.0"
+]
+
 ext.characteristicU2a0f = [
         artifactId         : "ble-characteristic-u2a0f-android"
         , versionCode      : 1
@@ -654,18 +662,27 @@ ext.characteristicU2aa5 = [
         , baseModule       : "${groupId}:ble-characteristic-u2aa5:0.1.0"
 ]
 
+ext.characteristicU2b29 = [
+        artifactId         : "ble-characteristic-u2b29-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2b29:0.1.0"
+]
+
+ext.characteristicU2b2a = [
+        artifactId         : "ble-characteristic-u2b2a-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2b2a:0.1.0"
+]
+
 ext.characteristicGas = [
         artifactId         : 'ble-characteristic-gas'
         , versionCode      : 34
         , versionName      : '0.1.33'
         , uploadVersionName: '0.1.33'
-]
-
-ext.characteristicGaps = [
-        artifactId         : 'ble-characteristic-gaps'
-        , versionCode      : 30
-        , versionName      : '0.1.29'
-        , uploadVersionName: '0.1.29'
 ]
 
 ext.characteristicWss = [
