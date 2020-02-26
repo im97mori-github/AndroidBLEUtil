@@ -15,7 +15,6 @@
             <option value="$PROJECT_DIR$/characteristic" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-ftms" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-ips" />
-            <option value="$PROJECT_DIR$/characteristic/characteristic-lls" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-lns" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-ndcs" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-pass" />

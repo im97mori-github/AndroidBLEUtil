@@ -924,13 +924,6 @@ ext.characteristicUds = [
         , uploadVersionName: '0.1.25'
 ]
 
-ext.characteristicLls = [
-        artifactId         : 'ble-characteristic-lls'
-        , versionCode      : 21
-        , versionName      : '0.1.20'
-        , uploadVersionName: '0.1.20'
-]
-
 ext.characteristicTps = [
         artifactId         : 'ble-characteristic-tps'
         , versionCode      : 19
