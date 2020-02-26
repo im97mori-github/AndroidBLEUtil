@@ -1,4 +1,4 @@
-package org.im97mori.ble.characteristic.las;
+package org.im97mori.ble.characteristic.u2a06;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class AlertLevelTest {
+public class AlertLevelAndroidTest {
 
     @Test
     public void test_constructor001() {
@@ -23,7 +23,7 @@ public class AlertLevelTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        AlertLevel result1 = new AlertLevel(bluetoothGattCharacteristic);
+        AlertLevelAndroid result1 = new AlertLevelAndroid(bluetoothGattCharacteristic);
         assertEquals(AlertLevel.ALERT_LEVEL_NO_ALERT, result1.getAlertLevel());
         assertTrue(result1.isAlertLevelNoAlert());
         assertFalse(result1.isAlertLevelMildAlert());
@@ -40,7 +40,7 @@ public class AlertLevelTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        AlertLevel result1 = new AlertLevel(bluetoothGattCharacteristic);
+        AlertLevelAndroid result1 = new AlertLevelAndroid(bluetoothGattCharacteristic);
         assertEquals(AlertLevel.ALERT_LEVEL_MILD_ALERT, result1.getAlertLevel());
         assertFalse(result1.isAlertLevelNoAlert());
         assertTrue(result1.isAlertLevelMildAlert());
@@ -57,7 +57,7 @@ public class AlertLevelTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        AlertLevel result1 = new AlertLevel(bluetoothGattCharacteristic);
+        AlertLevelAndroid result1 = new AlertLevelAndroid(bluetoothGattCharacteristic);
         assertEquals(AlertLevel.ALERT_LEVEL_HIGH_ALERT, result1.getAlertLevel());
         assertFalse(result1.isAlertLevelNoAlert());
         assertFalse(result1.isAlertLevelMildAlert());
@@ -74,11 +74,11 @@ public class AlertLevelTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        AlertLevel result1 = new AlertLevel(bluetoothGattCharacteristic);
+        AlertLevelAndroid result1 = new AlertLevelAndroid(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
-        AlertLevel result2 = AlertLevel.CREATOR.createFromParcel(parcel);
+        AlertLevelAndroid result2 = AlertLevelAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getAlertLevel(), result2.getAlertLevel());
     }
 
@@ -93,7 +93,7 @@ public class AlertLevelTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        AlertLevel result1 = new AlertLevel(bluetoothGattCharacteristic);
+        AlertLevelAndroid result1 = new AlertLevelAndroid(bluetoothGattCharacteristic);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -107,8 +107,8 @@ public class AlertLevelTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        AlertLevel result1 = new AlertLevel(bluetoothGattCharacteristic);
-        AlertLevel result2 = AlertLevel.CREATOR.createFromByteArray(data);
+        AlertLevelAndroid result1 = new AlertLevelAndroid(bluetoothGattCharacteristic);
+        AlertLevelAndroid result2 = AlertLevelAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 }
