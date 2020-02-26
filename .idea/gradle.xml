@@ -15,7 +15,6 @@
             <option value="$PROJECT_DIR$/characteristic" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-ftms" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-hrs" />
-            <option value="$PROJECT_DIR$/characteristic/characteristic-hts" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-ias" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-ips" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-lls" />
@@ -40,6 +39,10 @@
             <option value="$PROJECT_DIR$/characteristic/u2a0f" />
             <option value="$PROJECT_DIR$/characteristic/u2a14" />
             <option value="$PROJECT_DIR$/characteristic/u2a19" />
+            <option value="$PROJECT_DIR$/characteristic/u2a1c" />
+            <option value="$PROJECT_DIR$/characteristic/u2a1d" />
+            <option value="$PROJECT_DIR$/characteristic/u2a1e" />
+            <option value="$PROJECT_DIR$/characteristic/u2a21" />
             <option value="$PROJECT_DIR$/characteristic/u2a22" />
             <option value="$PROJECT_DIR$/characteristic/u2a23" />
             <option value="$PROJECT_DIR$/characteristic/u2a24" />
