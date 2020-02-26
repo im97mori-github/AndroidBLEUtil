@@ -1,4 +1,4 @@
-package org.im97mori.ble.characteristic.ndcs;
+package org.im97mori.ble.characteristic.u2a11;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
@@ -11,7 +11,7 @@ import static org.im97mori.ble.BLEConstants.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-public class TimeWithDstTest {
+public class TimeWithDstAndroidTest {
 
     @Test
     public void test_constructor001() {
@@ -30,7 +30,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertEquals(DateTimeUtils.YEAR_IS_NOT_KNOWN, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_IS_NOT_KNOWN, result1.getMonth());
         assertEquals(DateTimeUtils.DAY_OF_MONTH_IS_NOT_KNOWN, result1.getDay());
@@ -57,7 +57,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertEquals(1582, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_JANUARY, result1.getMonth());
         assertEquals(1, result1.getDay());
@@ -84,7 +84,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_FEBRUARY, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -111,7 +111,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_MARCH, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -138,7 +138,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_APRIL, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -165,7 +165,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_MAY, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -192,7 +192,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_JUNE, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -219,7 +219,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_JULY, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -246,7 +246,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_AUGUST, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -273,7 +273,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_SEPTEMBER, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -300,7 +300,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_OCTOBER, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -327,7 +327,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_NOVEMBER, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -354,7 +354,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_DECEMBER, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -381,7 +381,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_DECEMBER, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -408,7 +408,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_DECEMBER, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -435,7 +435,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_DECEMBER, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -462,11 +462,11 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
-        TimeWithDst result2 = TimeWithDst.CREATOR.createFromParcel(parcel);
+        TimeWithDstAndroid result2 = TimeWithDstAndroid.CREATOR.createFromParcel(parcel);
 
         assertEquals(result2.getYear(), result1.getYear());
         assertEquals(result2.getMonth(), result1.getMonth());
@@ -494,7 +494,7 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -515,8 +515,8 @@ public class TimeWithDstTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        TimeWithDst result1 = new TimeWithDst(bluetoothGattCharacteristic);
-        TimeWithDst result2 = TimeWithDst.CREATOR.createFromByteArray(data);
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(bluetoothGattCharacteristic);
+        TimeWithDstAndroid result2 = TimeWithDstAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 }
