@@ -654,6 +654,46 @@ ext.characteristicU2a66 = [
         , baseModule       : "${groupId}:ble-characteristic-u2a66:0.1.0"
 ]
 
+ext.characteristicU2a67 = [
+        artifactId         : "ble-characteristic-u2a67-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a67:0.1.0"
+]
+
+ext.characteristicU2a68 = [
+        artifactId         : "ble-characteristic-u2a68-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a68:0.1.0"
+]
+
+ext.characteristicU2a69 = [
+        artifactId         : "ble-characteristic-u2a69-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a69:0.1.0"
+]
+
+ext.characteristicU2a6a = [
+        artifactId         : "ble-characteristic-u2a6a-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a6a:0.1.0"
+]
+
+ext.characteristicU2a6b = [
+        artifactId         : "ble-characteristic-u2a6b-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a6b:0.1.0"
+]
+
 ext.characteristicU2a6c = [
         artifactId         : "ble-characteristic-u2a6c-android"
         , versionCode      : 1
@@ -1017,13 +1057,6 @@ ext.characteristicRtus = [
         , versionCode      : 17
         , versionName      : '0.1.16'
         , uploadVersionName: '0.1.16'
-]
-
-ext.characteristicLns = [
-        artifactId         : 'ble-characteristic-lns'
-        , versionCode      : 16
-        , versionName      : '0.1.15'
-        , uploadVersionName: '0.1.15'
 ]
 
 ext.characteristicPass = [
