@@ -918,6 +918,22 @@ ext.characteristicU2a9c = [
         , baseModule       : "${groupId}:ble-characteristic-u2a9c:0.1.0"
 ]
 
+ext.characteristicU2a9d = [
+        artifactId         : "ble-characteristic-u2a9d-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a9d:0.1.0"
+]
+
+ext.characteristicU2a9e = [
+        artifactId         : "ble-characteristic-u2a9e-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2a9e:0.1.0"
+]
+
 ext.characteristicU2aa0 = [
         artifactId         : "ble-characteristic-u2aa0-android"
         , versionCode      : 1
@@ -1140,13 +1156,6 @@ ext.characteristicU2b2a = [
         , versionName      : '0.1.0'
         , uploadVersionName: '0.1.0'
         , baseModule       : "${groupId}:ble-characteristic-u2b2a:0.1.0"
-]
-
-ext.characteristicWss = [
-        artifactId         : 'ble-characteristic-wss'
-        , versionCode      : 28
-        , versionName      : '0.1.27'
-        , uploadVersionName: '0.1.27'
 ]
 
 ext.characteristicUds = [
