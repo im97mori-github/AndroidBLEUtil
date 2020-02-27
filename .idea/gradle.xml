@@ -14,7 +14,6 @@
             <option value="$PROJECT_DIR$/advertising" />
             <option value="$PROJECT_DIR$/characteristic" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-ftms" />
-            <option value="$PROJECT_DIR$/characteristic/characteristic-ips" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-lns" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-pass" />
             <option value="$PROJECT_DIR$/characteristic/characteristic-rcs" />
@@ -107,6 +106,15 @@
             <option value="$PROJECT_DIR$/characteristic/u2aa4" />
             <option value="$PROJECT_DIR$/characteristic/u2aa5" />
             <option value="$PROJECT_DIR$/characteristic/u2aa6" />
+            <option value="$PROJECT_DIR$/characteristic/u2aad" />
+            <option value="$PROJECT_DIR$/characteristic/u2aae" />
+            <option value="$PROJECT_DIR$/characteristic/u2aaf" />
+            <option value="$PROJECT_DIR$/characteristic/u2ab0" />
+            <option value="$PROJECT_DIR$/characteristic/u2ab1" />
+            <option value="$PROJECT_DIR$/characteristic/u2ab2" />
+            <option value="$PROJECT_DIR$/characteristic/u2ab3" />
+            <option value="$PROJECT_DIR$/characteristic/u2ab4" />
+            <option value="$PROJECT_DIR$/characteristic/u2ab5" />
             <option value="$PROJECT_DIR$/characteristic/u2ab6" />
             <option value="$PROJECT_DIR$/characteristic/u2ab7" />
             <option value="$PROJECT_DIR$/characteristic/u2ab8" />

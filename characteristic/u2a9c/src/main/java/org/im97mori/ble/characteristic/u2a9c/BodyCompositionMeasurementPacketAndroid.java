@@ -7,7 +7,6 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
-import org.im97mori.ble.ByteArrayInterface;
 
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
 
@@ -15,7 +14,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BODY_COMPOSITION_
  * Body Composition Measurement packet (Characteristics UUID: 0x2A9C)
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class BodyCompositionMeasurementPacketAndroid extends BodyCompositionMeasurementPacket implements ByteArrayInterface, Parcelable {
+public class BodyCompositionMeasurementPacketAndroid extends BodyCompositionMeasurementPacket implements Parcelable {
 
     /**
      * @see ByteArrayCreater
