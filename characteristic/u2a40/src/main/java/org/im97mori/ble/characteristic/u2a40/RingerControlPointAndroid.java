@@ -1,0 +1,89 @@
+package org.im97mori.ble.characteristic.u2a40;
+
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+import org.im97mori.ble.ByteArrayCreater;
+
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RINGER_CONTROL_POINT_CHARACTERISTIC;
+
+/**
+ * Ringer Control point (Characteristics UUID: 0x2A40)
+ */
+@SuppressWarnings({"WeakerAccess", "unused"})
+public class RingerControlPointAndroid extends RingerControlPoint implements Parcelable {
+
+    /**
+     * @see ByteArrayCreater
+     */
+    public static final ByteArrayCreater<RingerControlPointAndroid> CREATOR = new ByteArrayCreater<RingerControlPointAndroid>() {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        @NonNull
+        public RingerControlPointAndroid createFromParcel(@NonNull Parcel in) {
+            return new RingerControlPointAndroid(in);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        @NonNull
+        public RingerControlPointAndroid[] newArray(int size) {
+            return new RingerControlPointAndroid[size];
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @NonNull
+        public RingerControlPointAndroid createFromByteArray(@NonNull byte[] values) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RINGER_CONTROL_POINT_CHARACTERISTIC, 0, 0);
+            bluetoothGattCharacteristic.setValue(values);
+            return new RingerControlPointAndroid(bluetoothGattCharacteristic);
+        }
+
+    };
+
+    /**
+     * Constructor from {@link BluetoothGattCharacteristic}
+     *
+     * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A40
+     */
+    public RingerControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+        super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from {@link Parcel}
+     *
+     * @param in Parcel
+     */
+    @SuppressWarnings("ConstantConditions")
+    private RingerControlPointAndroid(@NonNull Parcel in) {
+        super(in.createByteArray());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeByteArray(getBytes());
+    }
+
+}
