@@ -1,4 +1,4 @@
-package org.im97mori.ble.characteristic.scps;
+package org.im97mori.ble.characteristic.u2a4f;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
@@ -8,16 +8,18 @@ import org.junit.Test;
 import static org.im97mori.ble.BLEConstants.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings({"unused", "ConstantConditions"})
-public class ScanRefreshTest {
+@SuppressWarnings("unused")
+public class ScanIntervalWindowAndroidTest {
 
     //@formatter:off
     private static final byte[] data_00001;
     static {
-        byte[] data = new byte[1];
-        data[ 0] = ScanRefresh.SCAN_REFRESH_VALUE_SERVER_REQUIRES_REFRESH;
+        byte[] data = new byte[4];
+        data[ 0] = 0x01;
+        data[ 1] = 0x02;
+        data[ 2] = 0x03;
+        data[ 3] = 0x04;
         data_00001 = data;
     }
     //@formatter:on
@@ -55,9 +57,11 @@ public class ScanRefreshTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        ScanRefresh result1 = new ScanRefresh(bluetoothGattCharacteristic);
-        assertEquals(ScanRefresh.SCAN_REFRESH_VALUE_SERVER_REQUIRES_REFRESH, result1.getScanRefreshValue());
-        assertTrue(result1.isScanRefreshValueServerRequiresRefresh());
+        ScanIntervalWindowAndroid result1 = new ScanIntervalWindowAndroid(bluetoothGattCharacteristic);
+        assertEquals(0x0201, result1.getLeScanInterval());
+        assertEquals(ScanIntervalWindow.LE_SCAN_INTERVAL_RESOLUTION * 0x0201, result1.getLeScanIntervalMs(), 0);
+        assertEquals(0x0403, result1.getLeScanWindow());
+        assertEquals(ScanIntervalWindow.LE_SCAN_WINDOW_RESOLUTION * 0x0403, result1.getLeScanWindowMs(), 0);
     }
 
     @Test
@@ -67,12 +71,13 @@ public class ScanRefreshTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        ScanRefresh result1 = new ScanRefresh(bluetoothGattCharacteristic);
+        ScanIntervalWindowAndroid result1 = new ScanIntervalWindowAndroid(bluetoothGattCharacteristic);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
-        ScanRefresh result2 = ScanRefresh.CREATOR.createFromParcel(parcel);
-        assertEquals(result1.getScanRefreshValue(), result2.getScanRefreshValue());
+        ScanIntervalWindowAndroid result2 = ScanIntervalWindowAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLeScanInterval(), result2.getLeScanInterval());
+        assertEquals(result1.getLeScanWindow(), result2.getLeScanWindow());
     }
 
     @Test
@@ -82,7 +87,7 @@ public class ScanRefreshTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        ScanRefresh result1 = new ScanRefresh(bluetoothGattCharacteristic);
+        ScanIntervalWindowAndroid result1 = new ScanIntervalWindowAndroid(bluetoothGattCharacteristic);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -93,8 +98,8 @@ public class ScanRefreshTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
         bluetoothGattCharacteristic.setValue(data);
 
-        ScanRefresh result1 = new ScanRefresh(bluetoothGattCharacteristic);
-        ScanRefresh result2 = ScanRefresh.CREATOR.createFromByteArray(data);
+        ScanIntervalWindowAndroid result1 = new ScanIntervalWindowAndroid(bluetoothGattCharacteristic);
+        ScanIntervalWindowAndroid result2 = ScanIntervalWindowAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 
