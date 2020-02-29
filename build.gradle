@@ -7,7 +7,7 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.0'
+        classpath 'com.android.tools.build:gradle:3.6.1'
         classpath 'digital.wup:android-maven-publish:3.6.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -28,11 +28,11 @@ task clean(type: Delete) {
 }
 
 ext.globalCompileSdkVersion = 29
-ext.globalBuildToolsVersion = "29.0.3"
+ext.globalBuildToolsVersion = '29.0.3'
 ext.globalMinSdkVersion = 18
 ext.globalTargetSdkVersion = 29
 
-ext.stacklogVersionName = "0.0.2"
+ext.stacklogVersionName = '0.0.2'
 
 ext.groupId = 'org.im97mori'
 ext.artifactId = 'artifactId'
@@ -180,14 +180,6 @@ ext.descriptorU290e = [
         , versionName      : '0.1.0'
         , uploadVersionName: '0.1.0'
         , baseModule       : "${groupId}:ble-descriptor-u290e:0.1.0"
-]
-
-// TODO delete
-ext.characteristicCore = [
-        artifactId         : 'ble-characteristic-core'
-        , versionCode      : 22
-        , versionName      : '0.1.21'
-        , uploadVersionName: '0.1.21'
 ]
 
 ext.characteristicCoreAndroid = [
@@ -1372,6 +1364,126 @@ ext.characteristicU2ac9 = [
         , baseModule       : "${groupId}:ble-characteristic-u2ac9:0.1.0"
 ]
 
+ext.characteristicU2acc = [
+        artifactId         : "ble-characteristic-u2acc-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2acc:0.1.0"
+]
+
+ext.characteristicU2acd = [
+        artifactId         : "ble-characteristic-u2acd-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2acd:0.1.0"
+]
+
+ext.characteristicU2ace = [
+        artifactId         : "ble-characteristic-u2ace-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2ace:0.1.0"
+]
+
+ext.characteristicU2acf = [
+        artifactId         : "ble-characteristic-u2acf-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2acf:0.1.0"
+]
+
+ext.characteristicU2ad0 = [
+        artifactId         : "ble-characteristic-u2ad0-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2ad0:0.1.0"
+]
+
+ext.characteristicU2ad1 = [
+        artifactId         : "ble-characteristic-u2ad1-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2ad1:0.1.0"
+]
+
+ext.characteristicU2ad2 = [
+        artifactId         : "ble-characteristic-u2ad2-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2ad2:0.1.0"
+]
+
+ext.characteristicU2ad3 = [
+        artifactId         : "ble-characteristic-u2ad3-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2ad3:0.1.0"
+]
+
+ext.characteristicU2ad4 = [
+        artifactId         : "ble-characteristic-u2ad4-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2ad4:0.1.0"
+]
+
+ext.characteristicU2ad5 = [
+        artifactId         : "ble-characteristic-u2ad5-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2ad5:0.1.0"
+]
+
+ext.characteristicU2ad6 = [
+        artifactId         : "ble-characteristic-u2ad6-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2ad6:0.1.0"
+]
+
+ext.characteristicU2ad7 = [
+        artifactId         : "ble-characteristic-u2ad7-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2ad7:0.1.0"
+]
+
+ext.characteristicU2ad8 = [
+        artifactId         : "ble-characteristic-u2ad8-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2ad8:0.1.0"
+]
+
+ext.characteristicU2ad9 = [
+        artifactId         : "ble-characteristic-u2ad9-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2ad9:0.1.0"
+]
+
+ext.characteristicU2ada = [
+        artifactId         : "ble-characteristic-u2ada-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+        , baseModule       : "${groupId}:ble-characteristic-u2ada:0.1.0"
+]
+
 ext.characteristicU2b1d = [
         artifactId         : "ble-characteristic-u2b1d-android"
         , versionCode      : 1
@@ -1412,13 +1524,6 @@ ext.characteristicU2b2a = [
         , baseModule       : "${groupId}:ble-characteristic-u2b2a:0.1.0"
 ]
 
-ext.characteristicFtms = [
-        artifactId         : 'ble-characteristic-ftms'
-        , versionCode      : 9
-        , versionName      : '0.1.8'
-        , uploadVersionName: '0.1.8'
-]
-
 ext.central = [
         artifactId         : 'ble-central'
         , versionCode      : 44
@@ -1434,7 +1539,6 @@ ext.peripheral = [
 ]
 
 ext.apiCoreAndroid = "${groupId}:${coreAndroid.artifactId}:${coreAndroid.versionName}"
-ext.apiCharacteristicCore = "${groupId}:${characteristicCore.artifactId}:${characteristicCore.versionName}"
 ext.apiCharacteristicCoreAndroid = "${groupId}:${characteristicCoreAndroid.artifactId}:${characteristicCoreAndroid.versionName}"
 ext.apiCentral = "${groupId}:${central.artifactId}:${central.versionName}"
 ext.apiAdvertising = "${groupId}:${advertising.artifactId}:${advertising.versionName}"

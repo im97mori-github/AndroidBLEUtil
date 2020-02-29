@@ -89,15 +89,4 @@ public class IEEE_11073_20601_RegulatoryCertificationDataListAndroid extends IEE
         dest.writeByteArray(getBytes());
     }
 
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @NonNull
-    public byte[] getBytes() {
-        byte[] data = new byte[0];
-        return data;
-    }
-
 }

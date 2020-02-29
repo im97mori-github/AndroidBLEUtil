@@ -9,8 +9,8 @@ def VERSION_CODE = target[versionCode]
 def VERSION_NAME = target[uploadVersionName]
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion globalCompileSdkVersion
+    buildToolsVersion globalBuildToolsVersion
 
     defaultConfig {
         minSdkVersion 21
@@ -30,11 +30,10 @@ android {
 
 dependencies {
     api apiCentral
-//    implementation project(path: ':library-central')
     api apiAdvertising
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test:core:1.2.0'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation androidxTestRunner
+    androidTestImplementation androidxTestCore
 }
 
 task sourcesJar(type: Jar) {

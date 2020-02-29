@@ -8,11 +8,6 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
 import org.im97mori.ble.characteristic.core.RegisteredUser;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  * Email Address (Characteristics UUID: 0x2A87)
  */

@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion globalCompileSdkVersion
+    buildToolsVersion globalBuildToolsVersion
 
     defaultConfig {
         applicationId "org.im97mori.ble.sample.jellybean"
@@ -17,5 +17,5 @@ android {
 dependencies {
     implementation project(path: ':library-central')
     implementation project(path: ':advertising')
-    implementation 'androidx.fragment:fragment:1.1.0'
+    implementation 'androidx.fragment:fragment:1.2.2'
 }

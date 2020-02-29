@@ -1735,7 +1735,7 @@ public class BLESyncConnection implements BLECallback {
             , long bleTimeout
             , @Nullable Bundle argument
             , boolean isBroadcast) {
-        taskTimeout = taskTimeout < bleTimeout ? bleTimeout : taskTimeout;
+        taskTimeout = Math.max(taskTimeout, bleTimeout);
         long end = taskTimeout + SystemClock.elapsedRealtime();
 
         // create lock

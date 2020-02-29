@@ -31,7 +31,7 @@ android {
 dependencies {
     api apiCoreAndroid
     api BASE_MODULE
-    androidTestImplementation apiCharacteristicCore
+    androidTestImplementation apiCharacteristicCoreAndroid
     androidTestImplementation androidxTestRunner
     androidTestImplementation androidxTestCore
 }
