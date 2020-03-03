@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'digital.wup.android-maven-publish'
 
-def target = characteristicU2aa1
+def target = characteristicU2aa1Android
 def GROUP_ID = groupId
 def ARTIFACT_ID = target[artifactId]
 def VERSION_CODE = target[versionCode]

@@ -1,0 +1,229 @@
+apply plugin: 'com.android.library'
+apply plugin: 'digital.wup.android-maven-publish'
+
+def target = characteristicAndroid
+def GROUP_ID = groupId
+def ARTIFACT_ID = target[artifactId]
+def VERSION_CODE = target[versionCode]
+def VERSION_NAME = target[uploadVersionName]
+
+android {
+    compileSdkVersion globalCompileSdkVersion
+    buildToolsVersion globalBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion globalMinSdkVersion
+        targetSdkVersion globalTargetSdkVersion
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    api "${groupId}:${characteristicU2a00Android.artifactId}:${characteristicU2a00Android.versionName}"
+    api "${groupId}:${characteristicU2a01Android.artifactId}:${characteristicU2a01Android.versionName}"
+    api "${groupId}:${characteristicU2a02Android.artifactId}:${characteristicU2a02Android.versionName}"
+    api "${groupId}:${characteristicU2a03Android.artifactId}:${characteristicU2a03Android.versionName}"
+    api "${groupId}:${characteristicU2a04Android.artifactId}:${characteristicU2a04Android.versionName}"
+    api "${groupId}:${characteristicU2a05Android.artifactId}:${characteristicU2a05Android.versionName}"
+    api "${groupId}:${characteristicU2a06Android.artifactId}:${characteristicU2a06Android.versionName}"
+    api "${groupId}:${characteristicU2a07Android.artifactId}:${characteristicU2a07Android.versionName}"
+    api "${groupId}:${characteristicU2a0fAndroid.artifactId}:${characteristicU2a0fAndroid.versionName}"
+    api "${groupId}:${characteristicU2a11Android.artifactId}:${characteristicU2a11Android.versionName}"
+    api "${groupId}:${characteristicU2a14Android.artifactId}:${characteristicU2a14Android.versionName}"
+    api "${groupId}:${characteristicU2a16Android.artifactId}:${characteristicU2a16Android.versionName}"
+    api "${groupId}:${characteristicU2a17Android.artifactId}:${characteristicU2a17Android.versionName}"
+    api "${groupId}:${characteristicU2a19Android.artifactId}:${characteristicU2a19Android.versionName}"
+    api "${groupId}:${characteristicU2a1cAndroid.artifactId}:${characteristicU2a1cAndroid.versionName}"
+    api "${groupId}:${characteristicU2a1dAndroid.artifactId}:${characteristicU2a1dAndroid.versionName}"
+    api "${groupId}:${characteristicU2a1eAndroid.artifactId}:${characteristicU2a1eAndroid.versionName}"
+    api "${groupId}:${characteristicU2a21Android.artifactId}:${characteristicU2a21Android.versionName}"
+    api "${groupId}:${characteristicU2a22Android.artifactId}:${characteristicU2a22Android.versionName}"
+    api "${groupId}:${characteristicU2a23Android.artifactId}:${characteristicU2a23Android.versionName}"
+    api "${groupId}:${characteristicU2a24Android.artifactId}:${characteristicU2a24Android.versionName}"
+    api "${groupId}:${characteristicU2a25Android.artifactId}:${characteristicU2a25Android.versionName}"
+    api "${groupId}:${characteristicU2a26Android.artifactId}:${characteristicU2a26Android.versionName}"
+    api "${groupId}:${characteristicU2a27Android.artifactId}:${characteristicU2a27Android.versionName}"
+    api "${groupId}:${characteristicU2a28Android.artifactId}:${characteristicU2a28Android.versionName}"
+    api "${groupId}:${characteristicU2a29Android.artifactId}:${characteristicU2a29Android.versionName}"
+    api "${groupId}:${characteristicU2a2aAndroid.artifactId}:${characteristicU2a2aAndroid.versionName}"
+    api "${groupId}:${characteristicU2a2bAndroid.artifactId}:${characteristicU2a2bAndroid.versionName}"
+    api "${groupId}:${characteristicU2a2cAndroid.artifactId}:${characteristicU2a2cAndroid.versionName}"
+    api "${groupId}:${characteristicU2a31Android.artifactId}:${characteristicU2a31Android.versionName}"
+    api "${groupId}:${characteristicU2a32Android.artifactId}:${characteristicU2a32Android.versionName}"
+    api "${groupId}:${characteristicU2a33Android.artifactId}:${characteristicU2a33Android.versionName}"
+    api "${groupId}:${characteristicU2a35Android.artifactId}:${characteristicU2a35Android.versionName}"
+    api "${groupId}:${characteristicU2a36Android.artifactId}:${characteristicU2a36Android.versionName}"
+    api "${groupId}:${characteristicU2a37Android.artifactId}:${characteristicU2a37Android.versionName}"
+    api "${groupId}:${characteristicU2a38Android.artifactId}:${characteristicU2a38Android.versionName}"
+    api "${groupId}:${characteristicU2a39Android.artifactId}:${characteristicU2a39Android.versionName}"
+    api "${groupId}:${characteristicU2a3fAndroid.artifactId}:${characteristicU2a3fAndroid.versionName}"
+    api "${groupId}:${characteristicU2a40Android.artifactId}:${characteristicU2a40Android.versionName}"
+    api "${groupId}:${characteristicU2a41Android.artifactId}:${characteristicU2a41Android.versionName}"
+    api "${groupId}:${characteristicU2a44Android.artifactId}:${characteristicU2a44Android.versionName}"
+    api "${groupId}:${characteristicU2a45Android.artifactId}:${characteristicU2a45Android.versionName}"
+    api "${groupId}:${characteristicU2a46Android.artifactId}:${characteristicU2a46Android.versionName}"
+    api "${groupId}:${characteristicU2a47Android.artifactId}:${characteristicU2a47Android.versionName}"
+    api "${groupId}:${characteristicU2a48Android.artifactId}:${characteristicU2a48Android.versionName}"
+    api "${groupId}:${characteristicU2a49Android.artifactId}:${characteristicU2a49Android.versionName}"
+    api "${groupId}:${characteristicU2a4aAndroid.artifactId}:${characteristicU2a4aAndroid.versionName}"
+    api "${groupId}:${characteristicU2a4bAndroid.artifactId}:${characteristicU2a4bAndroid.versionName}"
+    api "${groupId}:${characteristicU2a4cAndroid.artifactId}:${characteristicU2a4cAndroid.versionName}"
+    api "${groupId}:${characteristicU2a4dAndroid.artifactId}:${characteristicU2a4dAndroid.versionName}"
+    api "${groupId}:${characteristicU2a4eAndroid.artifactId}:${characteristicU2a4eAndroid.versionName}"
+    api "${groupId}:${characteristicU2a4fAndroid.artifactId}:${characteristicU2a4fAndroid.versionName}"
+    api "${groupId}:${characteristicU2a50Android.artifactId}:${characteristicU2a50Android.versionName}"
+    api "${groupId}:${characteristicU2a53Android.artifactId}:${characteristicU2a53Android.versionName}"
+    api "${groupId}:${characteristicU2a54Android.artifactId}:${characteristicU2a54Android.versionName}"
+    api "${groupId}:${characteristicU2a55Android.artifactId}:${characteristicU2a55Android.versionName}"
+    api "${groupId}:${characteristicU2a56Android.artifactId}:${characteristicU2a56Android.versionName}"
+    api "${groupId}:${characteristicU2a58Android.artifactId}:${characteristicU2a58Android.versionName}"
+    api "${groupId}:${characteristicU2a5aAndroid.artifactId}:${characteristicU2a5aAndroid.versionName}"
+    api "${groupId}:${characteristicU2a5bAndroid.artifactId}:${characteristicU2a5bAndroid.versionName}"
+    api "${groupId}:${characteristicU2a5cAndroid.artifactId}:${characteristicU2a5cAndroid.versionName}"
+    api "${groupId}:${characteristicU2a5dAndroid.artifactId}:${characteristicU2a5dAndroid.versionName}"
+    api "${groupId}:${characteristicU2a63Android.artifactId}:${characteristicU2a63Android.versionName}"
+    api "${groupId}:${characteristicU2a64Android.artifactId}:${characteristicU2a64Android.versionName}"
+    api "${groupId}:${characteristicU2a65Android.artifactId}:${characteristicU2a65Android.versionName}"
+    api "${groupId}:${characteristicU2a66Android.artifactId}:${characteristicU2a66Android.versionName}"
+    api "${groupId}:${characteristicU2a67Android.artifactId}:${characteristicU2a67Android.versionName}"
+    api "${groupId}:${characteristicU2a68Android.artifactId}:${characteristicU2a68Android.versionName}"
+    api "${groupId}:${characteristicU2a69Android.artifactId}:${characteristicU2a69Android.versionName}"
+    api "${groupId}:${characteristicU2a6aAndroid.artifactId}:${characteristicU2a6aAndroid.versionName}"
+    api "${groupId}:${characteristicU2a6bAndroid.artifactId}:${characteristicU2a6bAndroid.versionName}"
+    api "${groupId}:${characteristicU2a6cAndroid.artifactId}:${characteristicU2a6cAndroid.versionName}"
+    api "${groupId}:${characteristicU2a6dAndroid.artifactId}:${characteristicU2a6dAndroid.versionName}"
+    api "${groupId}:${characteristicU2a6eAndroid.artifactId}:${characteristicU2a6eAndroid.versionName}"
+    api "${groupId}:${characteristicU2a6fAndroid.artifactId}:${characteristicU2a6fAndroid.versionName}"
+    api "${groupId}:${characteristicU2a70Android.artifactId}:${characteristicU2a70Android.versionName}"
+    api "${groupId}:${characteristicU2a71Android.artifactId}:${characteristicU2a71Android.versionName}"
+    api "${groupId}:${characteristicU2a72Android.artifactId}:${characteristicU2a72Android.versionName}"
+    api "${groupId}:${characteristicU2a73Android.artifactId}:${characteristicU2a73Android.versionName}"
+    api "${groupId}:${characteristicU2a74Android.artifactId}:${characteristicU2a74Android.versionName}"
+    api "${groupId}:${characteristicU2a75Android.artifactId}:${characteristicU2a75Android.versionName}"
+    api "${groupId}:${characteristicU2a76Android.artifactId}:${characteristicU2a76Android.versionName}"
+    api "${groupId}:${characteristicU2a77Android.artifactId}:${characteristicU2a77Android.versionName}"
+    api "${groupId}:${characteristicU2a78Android.artifactId}:${characteristicU2a78Android.versionName}"
+    api "${groupId}:${characteristicU2a79Android.artifactId}:${characteristicU2a79Android.versionName}"
+    api "${groupId}:${characteristicU2a7aAndroid.artifactId}:${characteristicU2a7aAndroid.versionName}"
+    api "${groupId}:${characteristicU2a7bAndroid.artifactId}:${characteristicU2a7bAndroid.versionName}"
+    api "${groupId}:${characteristicU2a7dAndroid.artifactId}:${characteristicU2a7dAndroid.versionName}"
+    api "${groupId}:${characteristicU2a7eAndroid.artifactId}:${characteristicU2a7eAndroid.versionName}"
+    api "${groupId}:${characteristicU2a7fAndroid.artifactId}:${characteristicU2a7fAndroid.versionName}"
+    api "${groupId}:${characteristicU2a80Android.artifactId}:${characteristicU2a80Android.versionName}"
+    api "${groupId}:${characteristicU2a81Android.artifactId}:${characteristicU2a81Android.versionName}"
+    api "${groupId}:${characteristicU2a82Android.artifactId}:${characteristicU2a82Android.versionName}"
+    api "${groupId}:${characteristicU2a83Android.artifactId}:${characteristicU2a83Android.versionName}"
+    api "${groupId}:${characteristicU2a84Android.artifactId}:${characteristicU2a84Android.versionName}"
+    api "${groupId}:${characteristicU2a85Android.artifactId}:${characteristicU2a85Android.versionName}"
+    api "${groupId}:${characteristicU2a86Android.artifactId}:${characteristicU2a86Android.versionName}"
+    api "${groupId}:${characteristicU2a87Android.artifactId}:${characteristicU2a87Android.versionName}"
+    api "${groupId}:${characteristicU2a88Android.artifactId}:${characteristicU2a88Android.versionName}"
+    api "${groupId}:${characteristicU2a89Android.artifactId}:${characteristicU2a89Android.versionName}"
+    api "${groupId}:${characteristicU2a8aAndroid.artifactId}:${characteristicU2a8aAndroid.versionName}"
+    api "${groupId}:${characteristicU2a8bAndroid.artifactId}:${characteristicU2a8bAndroid.versionName}"
+    api "${groupId}:${characteristicU2a8cAndroid.artifactId}:${characteristicU2a8cAndroid.versionName}"
+    api "${groupId}:${characteristicU2a8dAndroid.artifactId}:${characteristicU2a8dAndroid.versionName}"
+    api "${groupId}:${characteristicU2a8eAndroid.artifactId}:${characteristicU2a8eAndroid.versionName}"
+    api "${groupId}:${characteristicU2a8fAndroid.artifactId}:${characteristicU2a8fAndroid.versionName}"
+    api "${groupId}:${characteristicU2a90Android.artifactId}:${characteristicU2a90Android.versionName}"
+    api "${groupId}:${characteristicU2a91Android.artifactId}:${characteristicU2a91Android.versionName}"
+    api "${groupId}:${characteristicU2a92Android.artifactId}:${characteristicU2a92Android.versionName}"
+    api "${groupId}:${characteristicU2a93Android.artifactId}:${characteristicU2a93Android.versionName}"
+    api "${groupId}:${characteristicU2a94Android.artifactId}:${characteristicU2a94Android.versionName}"
+    api "${groupId}:${characteristicU2a95Android.artifactId}:${characteristicU2a95Android.versionName}"
+    api "${groupId}:${characteristicU2a96Android.artifactId}:${characteristicU2a96Android.versionName}"
+    api "${groupId}:${characteristicU2a97Android.artifactId}:${characteristicU2a97Android.versionName}"
+    api "${groupId}:${characteristicU2a98Android.artifactId}:${characteristicU2a98Android.versionName}"
+    api "${groupId}:${characteristicU2a99Android.artifactId}:${characteristicU2a99Android.versionName}"
+    api "${groupId}:${characteristicU2a9aAndroid.artifactId}:${characteristicU2a9aAndroid.versionName}"
+    api "${groupId}:${characteristicU2a9bAndroid.artifactId}:${characteristicU2a9bAndroid.versionName}"
+    api "${groupId}:${characteristicU2a9cAndroid.artifactId}:${characteristicU2a9cAndroid.versionName}"
+    api "${groupId}:${characteristicU2a9dAndroid.artifactId}:${characteristicU2a9dAndroid.versionName}"
+    api "${groupId}:${characteristicU2a9eAndroid.artifactId}:${characteristicU2a9eAndroid.versionName}"
+    api "${groupId}:${characteristicU2a9fAndroid.artifactId}:${characteristicU2a9fAndroid.versionName}"
+    api "${groupId}:${characteristicU2aa0Android.artifactId}:${characteristicU2aa0Android.versionName}"
+    api "${groupId}:${characteristicU2aa1Android.artifactId}:${characteristicU2aa1Android.versionName}"
+    api "${groupId}:${characteristicU2aa2Android.artifactId}:${characteristicU2aa2Android.versionName}"
+    api "${groupId}:${characteristicU2aa3Android.artifactId}:${characteristicU2aa3Android.versionName}"
+    api "${groupId}:${characteristicU2aa4Android.artifactId}:${characteristicU2aa4Android.versionName}"
+    api "${groupId}:${characteristicU2aa5Android.artifactId}:${characteristicU2aa5Android.versionName}"
+    api "${groupId}:${characteristicU2aa6Android.artifactId}:${characteristicU2aa6Android.versionName}"
+    api "${groupId}:${characteristicU2aadAndroid.artifactId}:${characteristicU2aadAndroid.versionName}"
+    api "${groupId}:${characteristicU2aaeAndroid.artifactId}:${characteristicU2aaeAndroid.versionName}"
+    api "${groupId}:${characteristicU2aafAndroid.artifactId}:${characteristicU2aafAndroid.versionName}"
+    api "${groupId}:${characteristicU2ab0Android.artifactId}:${characteristicU2ab0Android.versionName}"
+    api "${groupId}:${characteristicU2ab1Android.artifactId}:${characteristicU2ab1Android.versionName}"
+    api "${groupId}:${characteristicU2ab2Android.artifactId}:${characteristicU2ab2Android.versionName}"
+    api "${groupId}:${characteristicU2ab3Android.artifactId}:${characteristicU2ab3Android.versionName}"
+    api "${groupId}:${characteristicU2ab4Android.artifactId}:${characteristicU2ab4Android.versionName}"
+    api "${groupId}:${characteristicU2ab5Android.artifactId}:${characteristicU2ab5Android.versionName}"
+    api "${groupId}:${characteristicU2ab6Android.artifactId}:${characteristicU2ab6Android.versionName}"
+    api "${groupId}:${characteristicU2ab7Android.artifactId}:${characteristicU2ab7Android.versionName}"
+    api "${groupId}:${characteristicU2ab8Android.artifactId}:${characteristicU2ab8Android.versionName}"
+    api "${groupId}:${characteristicU2ab9Android.artifactId}:${characteristicU2ab9Android.versionName}"
+    api "${groupId}:${characteristicU2abaAndroid.artifactId}:${characteristicU2abaAndroid.versionName}"
+    api "${groupId}:${characteristicU2abbAndroid.artifactId}:${characteristicU2abbAndroid.versionName}"
+    api "${groupId}:${characteristicU2abcAndroid.artifactId}:${characteristicU2abcAndroid.versionName}"
+    api "${groupId}:${characteristicU2ac9Android.artifactId}:${characteristicU2ac9Android.versionName}"
+    api "${groupId}:${characteristicU2accAndroid.artifactId}:${characteristicU2accAndroid.versionName}"
+    api "${groupId}:${characteristicU2acdAndroid.artifactId}:${characteristicU2acdAndroid.versionName}"
+    api "${groupId}:${characteristicU2aceAndroid.artifactId}:${characteristicU2aceAndroid.versionName}"
+    api "${groupId}:${characteristicU2acfAndroid.artifactId}:${characteristicU2acfAndroid.versionName}"
+    api "${groupId}:${characteristicU2ad0Android.artifactId}:${characteristicU2ad0Android.versionName}"
+    api "${groupId}:${characteristicU2ad1Android.artifactId}:${characteristicU2ad1Android.versionName}"
+    api "${groupId}:${characteristicU2ad2Android.artifactId}:${characteristicU2ad2Android.versionName}"
+    api "${groupId}:${characteristicU2ad3Android.artifactId}:${characteristicU2ad3Android.versionName}"
+    api "${groupId}:${characteristicU2ad4Android.artifactId}:${characteristicU2ad4Android.versionName}"
+    api "${groupId}:${characteristicU2ad5Android.artifactId}:${characteristicU2ad5Android.versionName}"
+    api "${groupId}:${characteristicU2ad6Android.artifactId}:${characteristicU2ad6Android.versionName}"
+    api "${groupId}:${characteristicU2ad7Android.artifactId}:${characteristicU2ad7Android.versionName}"
+    api "${groupId}:${characteristicU2ad8Android.artifactId}:${characteristicU2ad8Android.versionName}"
+    api "${groupId}:${characteristicU2ad9Android.artifactId}:${characteristicU2ad9Android.versionName}"
+    api "${groupId}:${characteristicU2adaAndroid.artifactId}:${characteristicU2adaAndroid.versionName}"
+    api "${groupId}:${characteristicU2b29Android.artifactId}:${characteristicU2b29Android.versionName}"
+    api "${groupId}:${characteristicU2b1dAndroid.artifactId}:${characteristicU2b1dAndroid.versionName}"
+    api "${groupId}:${characteristicU2b1eAndroid.artifactId}:${characteristicU2b1eAndroid.versionName}"
+    api "${groupId}:${characteristicU2b1fAndroid.artifactId}:${characteristicU2b1fAndroid.versionName}"
+    api "${groupId}:${characteristicU2b2aAndroid.artifactId}:${characteristicU2b2aAndroid.versionName}"
+}
+
+publishing {
+    publications {
+        mavenAar(MavenPublication) {
+            groupId GROUP_ID
+            artifactId ARTIFACT_ID
+            version VERSION_NAME
+            from components.android
+            pom {
+                name = 'BLE Core Utility for Android'
+                url = 'https://github.com/im97mori-github/AndroidBLEUtil'
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                        distribution = 'repo'
+                    }
+                }
+                developers {
+                    developer {
+                        email = 'github@im97mori.org'
+                    }
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            url System.getenv('MAVEN_REPOSITORY_URL')
+        }
+    }
+}

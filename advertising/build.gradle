@@ -27,11 +27,6 @@ android {
     }
 }
 
-def defaultEncoding = 'UTF-8'
-tasks.withType(JavaCompile) {
-    options.encoding = defaultEncoding
-}
-
 dependencies {
     api "org.im97mori:stacklog:$stacklogVersionName"
     api apiCoreAndroid

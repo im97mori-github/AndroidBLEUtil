@@ -18,8 +18,8 @@ project/build.gradle
 project/module/build.gradle
 
     dependencies {
-        implementation 'org.im97mori:ble:0.5.12' // central feature
-        implementation 'org.im97mori:ble_peripheral:0.2.12' // peripheral feature
+        implementation 'org.im97mori:ble:0.5.13' // central feature
+        implementation 'org.im97mori:ble_peripheral:0.2.13' // peripheral feature
     }
 
 ## Features
@@ -54,8 +54,8 @@ ex) Callback only when Advertising data Shortend local name is "DeviceName".
  
 #### Jelly Bean(API 18)
     BluetoothAdapter.getDefaultAdapter().startLeScan(new FilteredLeScanCallback.Builder().addShortenedLocalNameFilter(new byte[]{
-            0
-            , 0
+            11 // length of data
+            , 8 // Shortened Local Name Data Type
             , 68 // D
             , 101 // e
             , 118 // v
@@ -70,8 +70,8 @@ ex) Callback only when Advertising data Shortend local name is "DeviceName".
 
 #### Lolipop(API 21)
     BluetoothAdapter.getDefaultAdapter().getBluetoothLeScanner().startScan(new FilteredScanCallback.Builder().addShortenedLocalNameFilter(new byte[]{
-                    0
-                    , 0
+                    11 // length of data
+                    , 8 // Shortened Local Name Data Type
                     , 68 // D
                     , 101 // e
                     , 118 // v

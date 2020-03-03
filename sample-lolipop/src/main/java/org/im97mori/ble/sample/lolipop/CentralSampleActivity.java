@@ -44,7 +44,7 @@ import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.advertising.filter.FlagsFilter;
 import org.im97mori.ble.advertising.filter.OrFilter;
 import org.im97mori.ble.characteristic.MockControl;
-import org.im97mori.ble.descriptor.ClientCharacteristicConfiguration;
+import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
 import org.im97mori.ble.task.AbortReliableWriteTask;
 import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.DiscoverServiceTask;
@@ -470,7 +470,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     DEFAULT_SERVICE_UUID
                     , NOTIFICATABLE_CHARACTERISTIC_UUID
                     , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
-                    , new ClientCharacteristicConfiguration(descriptor)
+                    , new ClientCharacteristicConfigurationAndroid(descriptor)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
             );
         } else if (R.id.write_indication == item.getItemId()) {
@@ -480,7 +480,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     DEFAULT_SERVICE_UUID
                     , INDICATABLE_CHARACTERISTIC_UUID
                     , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
-                    , new ClientCharacteristicConfiguration(descriptor)
+                    , new ClientCharacteristicConfigurationAndroid(descriptor)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
             );
         } else if (R.id.write_notification_stop == item.getItemId()) {
@@ -490,7 +490,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     DEFAULT_SERVICE_UUID
                     , NOTIFICATABLE_CHARACTERISTIC_UUID
                     , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
-                    , new ClientCharacteristicConfiguration(descriptor)
+                    , new ClientCharacteristicConfigurationAndroid(descriptor)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
             );
         } else if (R.id.write_indication_stop == item.getItemId()) {
@@ -500,7 +500,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     DEFAULT_SERVICE_UUID
                     , INDICATABLE_CHARACTERISTIC_UUID
                     , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
-                    , new ClientCharacteristicConfiguration(descriptor)
+                    , new ClientCharacteristicConfigurationAndroid(descriptor)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
             );
         } else if (R.id.read_characteristic_sync == item.getItemId()) {

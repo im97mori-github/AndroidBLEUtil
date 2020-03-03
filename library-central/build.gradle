@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
-apply plugin: 'maven'
+apply plugin: 'digital.wup.android-maven-publish'
 
 def target = central
 def GROUP_ID = groupId
@@ -13,8 +12,8 @@ android {
     buildToolsVersion globalBuildToolsVersion
 
     defaultConfig {
-        minSdkVersion 18
-        targetSdkVersion 29
+        minSdkVersion globalMinSdkVersion
+        targetSdkVersion globalTargetSdkVersion
         versionCode VERSION_CODE
         versionName VERSION_NAME
 
@@ -26,13 +25,11 @@ android {
             minifyEnabled false
         }
     }
-
 }
 
 dependencies {
     api "org.im97mori:stacklog:$stacklogVersionName"
-    api apiCoreAndroid
-    api "${groupId}:${descriptorU2902.artifactId}:${descriptorU2902.versionName}"
+    api "${groupId}:${descriptorU2902Android.artifactId}:${descriptorU2902Android.versionName}"
     testImplementation 'junit:junit:4.13'
     androidTestImplementation androidxTestRunner
     androidTestImplementation androidxTestCore
@@ -45,12 +42,28 @@ task sourcesJar(type: Jar) {
 
 publishing {
     publications {
-        bar(MavenPublication) {
+        mavenAar(MavenPublication) {
             groupId GROUP_ID
             artifactId ARTIFACT_ID
             version VERSION_NAME
             artifact(sourcesJar)
-            artifact("$buildDir/outputs/aar/" + project.name + "-release.aar")
+            from components.android
+            pom {
+                name = 'BLE Core Utility for Android'
+                url = 'https://github.com/im97mori-github/AndroidBLEUtil'
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                        distribution = 'repo'
+                    }
+                }
+                developers {
+                    developer {
+                        email = 'github@im97mori.org'
+                    }
+                }
+            }
         }
     }
     repositories {
@@ -58,23 +71,4 @@ publishing {
             url System.getenv('MAVEN_REPOSITORY_URL')
         }
     }
-}
-
-publish {
-    dependsOn assemble
-}
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: System.getenv('MAVEN_REPOSITORY_URL'))
-            pom.groupId = GROUP_ID
-            pom.artifactId = ARTIFACT_ID
-            pom.version = VERSION_NAME
-        }
-    }
-}
-
-uploadArchives {
-    dependsOn publish
 }
