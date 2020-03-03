@@ -26,30 +26,30 @@ import androidx.fragment.app.FragmentManager;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.AdvertisingInterval;
-import org.im97mori.ble.advertising.Appearance;
-import org.im97mori.ble.advertising.ChannelMapUpdateIndication;
-import org.im97mori.ble.advertising.CompleteListOf128BitServiceUUIDs;
-import org.im97mori.ble.advertising.CompleteListOf16BitServiceUUIDs;
-import org.im97mori.ble.advertising.CompleteListOf32BitServiceUUIDs;
-import org.im97mori.ble.advertising.CompleteLocalName;
-import org.im97mori.ble.advertising.Flags;
-import org.im97mori.ble.advertising.IncompleteListOf128BitServiceUUIDs;
-import org.im97mori.ble.advertising.IncompleteListOf16BitServiceUUIDs;
-import org.im97mori.ble.advertising.IncompleteListOf32BitServiceUUIDs;
-import org.im97mori.ble.advertising.LeSupportedFeatures;
-import org.im97mori.ble.advertising.ListOf128BitServiceSolicitationUUIDs;
-import org.im97mori.ble.advertising.ListOf16BitServiceSolicitationUUIDs;
-import org.im97mori.ble.advertising.ListOf32BitServiceSolicitationUUIDs;
-import org.im97mori.ble.advertising.ManufacturerSpecificData;
-import org.im97mori.ble.advertising.PublicTargetAddress;
-import org.im97mori.ble.advertising.RandomTargetAddress;
-import org.im97mori.ble.advertising.ServiceData128BitUUID;
-import org.im97mori.ble.advertising.ServiceData16BitUUID;
-import org.im97mori.ble.advertising.ServiceData32BitUUID;
-import org.im97mori.ble.advertising.ShortenedLocalName;
-import org.im97mori.ble.advertising.SlaveConnectionIntervalRange;
-import org.im97mori.ble.advertising.TxPowerLevel;
-import org.im97mori.ble.advertising.UniformRsourceIdentifier;
+import org.im97mori.ble.advertising.AppearanceAndroid;
+import org.im97mori.ble.advertising.ChannelMapUpdateIndicationAndroid;
+import org.im97mori.ble.advertising.CompleteListOf128BitServiceUUIDsAndroid;
+import org.im97mori.ble.advertising.CompleteListOf16BitServiceUUIDsAndroid;
+import org.im97mori.ble.advertising.CompleteListOf32BitServiceUUIDsAndroid;
+import org.im97mori.ble.advertising.CompleteLocalNameAndroid;
+import org.im97mori.ble.advertising.FlagsAndroid;
+import org.im97mori.ble.advertising.IncompleteListOf128BitServiceUUIDsAndroid;
+import org.im97mori.ble.advertising.IncompleteListOf16BitServiceUUIDsAndroid;
+import org.im97mori.ble.advertising.IncompleteListOf32BitServiceUUIDsAndroid;
+import org.im97mori.ble.advertising.LeSupportedFeaturesAndroid;
+import org.im97mori.ble.advertising.ListOf128BitServiceSolicitationUUIDsAndroid;
+import org.im97mori.ble.advertising.ListOf16BitServiceSolicitationUUIDsAndroid;
+import org.im97mori.ble.advertising.ListOf32BitServiceSolicitationUUIDsAndroid;
+import org.im97mori.ble.advertising.ManufacturerSpecificDataAndroid;
+import org.im97mori.ble.advertising.PublicTargetAddressAndroid;
+import org.im97mori.ble.advertising.RandomTargetAddressAndroid;
+import org.im97mori.ble.advertising.ServiceData128BitUUIDAndroid;
+import org.im97mori.ble.advertising.ServiceData16BitUUIDAndroid;
+import org.im97mori.ble.advertising.ServiceData32BitUUIDAndroid;
+import org.im97mori.ble.advertising.ShortenedLocalNameAndroid;
+import org.im97mori.ble.advertising.SlaveConnectionIntervalRangeAndroid;
+import org.im97mori.ble.advertising.TxPowerLevelAndroid;
+import org.im97mori.ble.advertising.UniformRsourceIdentifierAndroid;
 import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
 
 import java.text.SimpleDateFormat;
@@ -88,7 +88,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             sb.append('\n');
             sb.append('\n');
 
-            IncompleteListOf16BitServiceUUIDs incompleteListOf16BitServiceUUIDs = result.getIncompleteListOf16BitServiceUUIDs();
+            IncompleteListOf16BitServiceUUIDsAndroid incompleteListOf16BitServiceUUIDs = result.getIncompleteListOf16BitServiceUUIDs();
             if (incompleteListOf16BitServiceUUIDs != null) {
                 sb.append("Incomplete List of 16-bit Service Class UUIDs");
                 sb.append("\nuuid list\n");
@@ -97,7 +97,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            CompleteListOf16BitServiceUUIDs completeListOf16BitServiceUUIDs = result.getCompleteListOf16BitServiceUUIDs();
+            CompleteListOf16BitServiceUUIDsAndroid completeListOf16BitServiceUUIDs = result.getCompleteListOf16BitServiceUUIDs();
             if (completeListOf16BitServiceUUIDs != null) {
                 sb.append("Complete List of 16-bit Service Class UUIDs");
                 sb.append("\nuuid list\n");
@@ -106,7 +106,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            IncompleteListOf32BitServiceUUIDs incompleteListOf32BitServiceUUIDs = result.getIncompleteListOf32BitServiceUUIDs();
+            IncompleteListOf32BitServiceUUIDsAndroid incompleteListOf32BitServiceUUIDs = result.getIncompleteListOf32BitServiceUUIDs();
             if (incompleteListOf32BitServiceUUIDs != null) {
                 sb.append("Incomplete List of 32-bit Service Class UUIDs");
                 sb.append("\nuuid list\n");
@@ -115,7 +115,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            CompleteListOf32BitServiceUUIDs completeListOf32BitServiceUUIDs = result.getCompleteListOf32BitServiceUUIDs();
+            CompleteListOf32BitServiceUUIDsAndroid completeListOf32BitServiceUUIDs = result.getCompleteListOf32BitServiceUUIDs();
             if (completeListOf32BitServiceUUIDs != null) {
                 sb.append("Complete List of 32-bit Service Class UUIDs");
                 sb.append("\nuuid list\n");
@@ -124,7 +124,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            IncompleteListOf128BitServiceUUIDs incompleteListOf128BitServiceUUIDs = result.getIncompleteListOf128BitServiceUUIDs();
+            IncompleteListOf128BitServiceUUIDsAndroid incompleteListOf128BitServiceUUIDs = result.getIncompleteListOf128BitServiceUUIDs();
             if (incompleteListOf128BitServiceUUIDs != null) {
                 sb.append("Incomplete List of 128-bit Service Class UUIDs");
                 sb.append("\nuuid list\n");
@@ -133,7 +133,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            CompleteListOf128BitServiceUUIDs completeListOf128BitServiceUUIDs = result.getCompleteListOf128BitServiceUUIDs();
+            CompleteListOf128BitServiceUUIDsAndroid completeListOf128BitServiceUUIDs = result.getCompleteListOf128BitServiceUUIDs();
             if (completeListOf128BitServiceUUIDs != null) {
                 sb.append("Complete List of 128-bit Service Class UUIDs");
                 sb.append("\nuuid list\n");
@@ -142,7 +142,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            ShortenedLocalName shortenedLocalName = result.getShortenedLocalName();
+            ShortenedLocalNameAndroid shortenedLocalName = result.getShortenedLocalName();
             if (shortenedLocalName != null) {
                 sb.append("Shortened Local Name");
                 sb.append('\n');
@@ -151,7 +151,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            CompleteLocalName completeLocalName = result.getCompleteLocalName();
+            CompleteLocalNameAndroid completeLocalName = result.getCompleteLocalName();
             if (completeLocalName != null) {
                 sb.append("Complete Local Name");
                 sb.append('\n');
@@ -160,7 +160,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            Flags flags = result.getFlags();
+            FlagsAndroid flags = result.getFlags();
             if (flags != null) {
                 sb.append("Flags");
                 sb.append("\nflag list\n");
@@ -169,7 +169,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            ManufacturerSpecificData manufacturerSpecificData = result.getManufacturerSpecificData();
+            ManufacturerSpecificDataAndroid manufacturerSpecificData = result.getManufacturerSpecificData();
             if (manufacturerSpecificData != null) {
                 sb.append("Manufacturer Specific Data");
                 sb.append("\nCompany Identifier Code\n");
@@ -184,7 +184,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            TxPowerLevel txPowerLevel = result.getTxPowerLevel();
+            TxPowerLevelAndroid txPowerLevel = result.getTxPowerLevel();
             if (txPowerLevel != null) {
                 sb.append("Tx Power Level");
                 sb.append('\n');
@@ -193,7 +193,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            SlaveConnectionIntervalRange slaveConnectionIntervalRange = result.getSlaveConnectionIntervalRange();
+            SlaveConnectionIntervalRangeAndroid slaveConnectionIntervalRange = result.getSlaveConnectionIntervalRange();
             if (slaveConnectionIntervalRange != null) {
                 sb.append("Slave Connection Interval Range");
                 if (slaveConnectionIntervalRange.hasMaximum()) {
@@ -208,7 +208,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            ListOf16BitServiceSolicitationUUIDs listOf16BitServiceSolicitationUUIDs = result.getListOf16BitServiceSolicitationUUIDs();
+            ListOf16BitServiceSolicitationUUIDsAndroid listOf16BitServiceSolicitationUUIDs = result.getListOf16BitServiceSolicitationUUIDs();
             if (listOf16BitServiceSolicitationUUIDs != null) {
                 sb.append("List of 16-bit Service Solicitation UUIDs");
                 sb.append("\nuuid list\n");
@@ -217,7 +217,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            ListOf32BitServiceSolicitationUUIDs listOf32BitServiceSolicitationUUIDs = result.getListOf32BitServiceSolicitationUUIDs();
+            ListOf32BitServiceSolicitationUUIDsAndroid listOf32BitServiceSolicitationUUIDs = result.getListOf32BitServiceSolicitationUUIDs();
             if (listOf32BitServiceSolicitationUUIDs != null) {
                 sb.append("List of 32-bit Service Solicitation UUIDs");
                 sb.append("\nuuid list\n");
@@ -226,7 +226,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            ListOf128BitServiceSolicitationUUIDs listOf128BitServiceSolicitationUUIDs = result.getListOf128BitServiceSolicitationUUIDs();
+            ListOf128BitServiceSolicitationUUIDsAndroid listOf128BitServiceSolicitationUUIDs = result.getListOf128BitServiceSolicitationUUIDs();
             if (listOf128BitServiceSolicitationUUIDs != null) {
                 sb.append("List of 128-bit Service Solicitation UUIDs");
                 sb.append("\nuuid list\n");
@@ -235,7 +235,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            ServiceData16BitUUID serviceData16BitUUID = result.getServiceData16BitUUID();
+            ServiceData16BitUUIDAndroid serviceData16BitUUID = result.getServiceData16BitUUID();
             if (serviceData16BitUUID != null) {
                 sb.append("Service Data - 16-bit UUID");
                 sb.append("\nuuid\n");
@@ -248,7 +248,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            ServiceData32BitUUID serviceData32BitUUID = result.getServiceData32BitUUID();
+            ServiceData32BitUUIDAndroid serviceData32BitUUID = result.getServiceData32BitUUID();
             if (serviceData32BitUUID != null) {
                 sb.append("Service Data - 32-bit UUID");
                 sb.append("\nuuid\n");
@@ -261,7 +261,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            ServiceData128BitUUID serviceData128BitUUID = result.getServiceData128BitUUID();
+            ServiceData128BitUUIDAndroid serviceData128BitUUID = result.getServiceData128BitUUID();
             if (serviceData128BitUUID != null) {
                 sb.append("Service Data - 128-bit UUID");
                 sb.append("\nuuid\n");
@@ -274,7 +274,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            Appearance appearance = result.getAppearance();
+            AppearanceAndroid appearance = result.getAppearance();
             if (appearance != null) {
                 sb.append("Appearance");
                 sb.append("\nkey\n");
@@ -287,7 +287,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            PublicTargetAddress publicTargetAddress = result.getPublicTargetAddress();
+            PublicTargetAddressAndroid publicTargetAddress = result.getPublicTargetAddress();
             if (publicTargetAddress != null) {
                 sb.append("Public Target Address");
                 sb.append("\nPublic Target Address list\n");
@@ -296,7 +296,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            RandomTargetAddress randomTargetAddress = result.getRandomTargetAddress();
+            RandomTargetAddressAndroid randomTargetAddress = result.getRandomTargetAddress();
             if (randomTargetAddress != null) {
                 sb.append("Random Target Address");
                 sb.append("\nRandom Target Address list\n");
@@ -316,7 +316,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            UniformRsourceIdentifier uniformRsourceIdentifier = result.getUniformRsourceIdentifier();
+            UniformRsourceIdentifierAndroid uniformRsourceIdentifier = result.getUniformRsourceIdentifier();
             if (uniformRsourceIdentifier != null) {
                 sb.append("URI");
                 sb.append('\n');
@@ -327,7 +327,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            LeSupportedFeatures leSupportedFeatures = result.getLeSupportedFeatures();
+            LeSupportedFeaturesAndroid leSupportedFeatures = result.getLeSupportedFeatures();
             if (leSupportedFeatures != null) {
                 sb.append("LE Supported Features");
                 sb.append("\nLE Supported Features size\n");
@@ -422,7 +422,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sb.append('\n');
             }
 
-            ChannelMapUpdateIndication channelMapUpdateIndication = result.getChannelMapUpdateIndication();
+            ChannelMapUpdateIndicationAndroid channelMapUpdateIndication = result.getChannelMapUpdateIndication();
             if (channelMapUpdateIndication != null) {
                 sb.append("Channel Map Update Indication");
                 sb.append("\nChM size\n");

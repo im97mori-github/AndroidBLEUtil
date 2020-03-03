@@ -19,7 +19,7 @@ public class ServiceData16BitUUIDFilter implements AdvertisingDataFilter<Adverti
     /**
      * expected List of {@link ServiceData16BitUUID} in Advertising data
      */
-    private final List<ServiceData16BitUUID> mExpect;
+    private final List<? extends ServiceData16BitUUID> mExpect;
 
     /**
      * bitmask
@@ -32,7 +32,7 @@ public class ServiceData16BitUUIDFilter implements AdvertisingDataFilter<Adverti
      * @param expect      expected List of {@link ServiceData16BitUUID} in Advertising data
      * @param bitmaskList bitmask
      */
-    public ServiceData16BitUUIDFilter(@NonNull List<ServiceData16BitUUID> expect, @Nullable List<byte[]> bitmaskList) {
+    public ServiceData16BitUUIDFilter(@NonNull List<? extends ServiceData16BitUUID> expect, @Nullable List<byte[]> bitmaskList) {
         mExpect = expect;
         mBitmaskList = bitmaskList;
     }
@@ -50,7 +50,7 @@ public class ServiceData16BitUUIDFilter implements AdvertisingDataFilter<Adverti
     @Override
     public boolean isMatched(@NonNull AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
         boolean result = false;
-        List<ServiceData16BitUUID> actual = advertisingDataParseResult.getServiceData16BitUUIDList();
+        List<? extends ServiceData16BitUUID> actual = advertisingDataParseResult.getServiceData16BitUUIDList();
         if (mExpect.isEmpty()) {
             if (actual.isEmpty()) {
                 result = true;

@@ -19,7 +19,7 @@ public class ManufacturerSpecificDataFilter implements AdvertisingDataFilter<Adv
     /**
      * expected List of {@link ManufacturerSpecificData} in Advertising data
      */
-    private final List<ManufacturerSpecificData> mExpect;
+    private final List<? extends ManufacturerSpecificData> mExpect;
 
     /**
      * bitmask
@@ -32,7 +32,7 @@ public class ManufacturerSpecificDataFilter implements AdvertisingDataFilter<Adv
      * @param expect      expected List of {@link ManufacturerSpecificData} in Advertising data
      * @param bitmaskList bitmask
      */
-    public ManufacturerSpecificDataFilter(@NonNull List<ManufacturerSpecificData> expect, @Nullable List<byte[]> bitmaskList) {
+    public ManufacturerSpecificDataFilter(@NonNull List<? extends ManufacturerSpecificData> expect, @Nullable List<byte[]> bitmaskList) {
         mExpect = expect;
         mBitmaskList = bitmaskList;
     }
@@ -50,7 +50,7 @@ public class ManufacturerSpecificDataFilter implements AdvertisingDataFilter<Adv
     @Override
     public boolean isMatched(@NonNull AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
         boolean result = false;
-        List<ManufacturerSpecificData> actual = advertisingDataParseResult.getManufacturerSpecificDataList();
+        List<? extends ManufacturerSpecificData> actual = advertisingDataParseResult.getManufacturerSpecificDataList();
         if (mExpect.isEmpty()) {
             if (actual.isEmpty()) {
                 result = true;

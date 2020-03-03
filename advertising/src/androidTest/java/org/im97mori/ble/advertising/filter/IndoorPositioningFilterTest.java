@@ -2,7 +2,7 @@ package org.im97mori.ble.advertising.filter;
 
 import org.im97mori.ble.IndoorPositioningUtils;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
-import org.im97mori.ble.advertising.IndoorPositioning;
+import org.im97mori.ble.advertising.IndoorPositioningAndroid;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -34,7 +34,7 @@ public class IndoorPositioningFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(expectData));
         assertFalse(filter.isMatched(result));
     }
 
@@ -60,7 +60,7 @@ public class IndoorPositioningFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 
@@ -85,7 +85,7 @@ public class IndoorPositioningFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 
@@ -117,7 +117,7 @@ public class IndoorPositioningFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 
@@ -145,7 +145,7 @@ public class IndoorPositioningFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 
@@ -170,7 +170,7 @@ public class IndoorPositioningFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 
@@ -196,7 +196,7 @@ public class IndoorPositioningFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 
@@ -221,7 +221,7 @@ public class IndoorPositioningFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 
@@ -246,7 +246,7 @@ public class IndoorPositioningFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 
@@ -271,7 +271,7 @@ public class IndoorPositioningFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 
@@ -296,7 +296,7 @@ public class IndoorPositioningFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 
@@ -321,7 +321,7 @@ public class IndoorPositioningFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 
@@ -346,7 +346,7 @@ public class IndoorPositioningFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 
@@ -371,7 +371,7 @@ public class IndoorPositioningFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 
@@ -396,7 +396,7 @@ public class IndoorPositioningFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new IndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 

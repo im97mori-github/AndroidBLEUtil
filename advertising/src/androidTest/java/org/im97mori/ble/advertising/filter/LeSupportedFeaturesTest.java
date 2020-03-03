@@ -1,7 +1,7 @@
 package org.im97mori.ble.advertising.filter;
 
 import org.im97mori.ble.advertising.AdvertisingDataParser;
-import org.im97mori.ble.advertising.LeSupportedFeatures;
+import org.im97mori.ble.advertising.LeSupportedFeaturesAndroid;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -33,7 +33,7 @@ public class LeSupportedFeaturesTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new LeSupportedFeaturesFilter(LeSupportedFeatures.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new LeSupportedFeaturesFilter(LeSupportedFeaturesAndroid.CREATOR.createFromByteArray(expectData));
         assertFalse(filter.isMatched(result));
     }
 
@@ -61,7 +61,7 @@ public class LeSupportedFeaturesTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new LeSupportedFeaturesFilter(LeSupportedFeatures.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new LeSupportedFeaturesFilter(LeSupportedFeaturesAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 

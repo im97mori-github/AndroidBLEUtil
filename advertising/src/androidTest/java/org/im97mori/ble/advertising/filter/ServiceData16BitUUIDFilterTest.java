@@ -1,7 +1,7 @@
 package org.im97mori.ble.advertising.filter;
 
 import org.im97mori.ble.advertising.AdvertisingDataParser;
-import org.im97mori.ble.advertising.ServiceData16BitUUID;
+import org.im97mori.ble.advertising.ServiceData16BitUUIDAndroid;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class ServiceData16BitUUIDFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(new ArrayList<ServiceData16BitUUID>(), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(new ArrayList<ServiceData16BitUUIDAndroid>(), null);
         assertTrue(filter.isMatched(result));
     }
 
@@ -36,7 +36,7 @@ public class ServiceData16BitUUIDFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(ServiceData16BitUUID.CREATOR.createFromByteArray(expectData), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(ServiceData16BitUUIDAndroid.CREATOR.createFromByteArray(expectData), null);
         assertFalse(filter.isMatched(result));
     }
 
@@ -50,7 +50,7 @@ public class ServiceData16BitUUIDFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(new ArrayList<ServiceData16BitUUID>(), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(new ArrayList<ServiceData16BitUUIDAndroid>(), null);
         assertFalse(filter.isMatched(result));
     }
 
@@ -66,7 +66,7 @@ public class ServiceData16BitUUIDFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(ServiceData16BitUUID.CREATOR.createFromByteArray(expectData), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(ServiceData16BitUUIDAndroid.CREATOR.createFromByteArray(expectData), null);
         assertTrue(filter.isMatched(result));
     }
 
@@ -87,8 +87,8 @@ public class ServiceData16BitUUIDFilterTest {
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
         AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(
-                Arrays.asList(new ServiceData16BitUUID(expectData, 0, expectData.length / 2 - 1)
-                        , new ServiceData16BitUUID(expectData, expectData.length / 2, expectData.length / 2 - 1))
+                Arrays.asList(new ServiceData16BitUUIDAndroid(expectData, 0, expectData.length / 2 - 1)
+                        , new ServiceData16BitUUIDAndroid(expectData, expectData.length / 2, expectData.length / 2 - 1))
                 , null
         );
         assertFalse(filter.isMatched(result));
@@ -111,7 +111,7 @@ public class ServiceData16BitUUIDFilterTest {
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
         AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(
-                new ServiceData16BitUUID(expectData, 0, expectData.length - 1), null
+                new ServiceData16BitUUIDAndroid(expectData, 0, expectData.length - 1), null
         );
         assertFalse(filter.isMatched(result));
     }
@@ -133,8 +133,8 @@ public class ServiceData16BitUUIDFilterTest {
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
         AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(
-                Arrays.asList(new ServiceData16BitUUID(expectData, 0, expectData.length / 2 - 1)
-                        , new ServiceData16BitUUID(expectData, expectData.length / 2, expectData.length / 2 - 1))
+                Arrays.asList(new ServiceData16BitUUIDAndroid(expectData, 0, expectData.length / 2 - 1)
+                        , new ServiceData16BitUUIDAndroid(expectData, expectData.length / 2, expectData.length / 2 - 1))
                 , null
         );
         assertTrue(filter.isMatched(result));
@@ -160,7 +160,7 @@ public class ServiceData16BitUUIDFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(new ServiceData16BitUUID(expectData, 0, expectData.length - 1), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(new ServiceData16BitUUIDAndroid(expectData, 0, expectData.length - 1), null);
         assertFalse(filter.isMatched(result));
     }
 
@@ -184,7 +184,7 @@ public class ServiceData16BitUUIDFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(new ServiceData16BitUUID(expectData, 0, expectData.length - 1), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(new ServiceData16BitUUIDAndroid(expectData, 0, expectData.length - 1), null);
         assertFalse(filter.isMatched(result));
     }
 
@@ -205,7 +205,7 @@ public class ServiceData16BitUUIDFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(new ServiceData16BitUUID(expectData, 0, expectData.length - 1), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(new ServiceData16BitUUIDAndroid(expectData, 0, expectData.length - 1), null);
         assertTrue(filter.isMatched(result));
     }
 
@@ -226,7 +226,7 @@ public class ServiceData16BitUUIDFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(ServiceData16BitUUID.CREATOR.createFromByteArray(expectData), new byte[0]);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(ServiceData16BitUUIDAndroid.CREATOR.createFromByteArray(expectData), new byte[0]);
         assertFalse(filter.isMatched(result));
     }
 
@@ -249,7 +249,7 @@ public class ServiceData16BitUUIDFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(ServiceData16BitUUID.CREATOR.createFromByteArray(expectData), bitmask);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(ServiceData16BitUUIDAndroid.CREATOR.createFromByteArray(expectData), bitmask);
         assertTrue(filter.isMatched(result));
     }
 
@@ -274,7 +274,7 @@ public class ServiceData16BitUUIDFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(ServiceData16BitUUID.CREATOR.createFromByteArray(expectData), bitmask);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(ServiceData16BitUUIDAndroid.CREATOR.createFromByteArray(expectData), bitmask);
         assertTrue(filter.isMatched(result));
     }
 
@@ -298,7 +298,7 @@ public class ServiceData16BitUUIDFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(ServiceData16BitUUID.CREATOR.createFromByteArray(expectData), bitmask);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(ServiceData16BitUUIDAndroid.CREATOR.createFromByteArray(expectData), bitmask);
         assertTrue(filter.isMatched(result));
     }
 
@@ -324,7 +324,7 @@ public class ServiceData16BitUUIDFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(ServiceData16BitUUID.CREATOR.createFromByteArray(expectData), bitmask);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(ServiceData16BitUUIDAndroid.CREATOR.createFromByteArray(expectData), bitmask);
         assertFalse(filter.isMatched(result));
     }
 
@@ -350,7 +350,7 @@ public class ServiceData16BitUUIDFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(ServiceData16BitUUID.CREATOR.createFromByteArray(expectData), bitmask);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(ServiceData16BitUUIDAndroid.CREATOR.createFromByteArray(expectData), bitmask);
         assertFalse(filter.isMatched(result));
     }
 
@@ -373,7 +373,7 @@ public class ServiceData16BitUUIDFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(new ServiceData16BitUUID(expectData, 0, expectData.length - 1), bitmask);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(new ServiceData16BitUUIDAndroid(expectData, 0, expectData.length - 1), bitmask);
         assertFalse(filter.isMatched(result));
     }
 
@@ -396,7 +396,7 @@ public class ServiceData16BitUUIDFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(Collections.singletonList(new ServiceData16BitUUID(expectData, 0, expectData.length - 1)), Collections.singletonList(bitmask));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(Collections.singletonList(new ServiceData16BitUUIDAndroid(expectData, 0, expectData.length - 1)), Collections.singletonList(bitmask));
         assertTrue(filter.isMatched(result));
     }
 
@@ -422,7 +422,7 @@ public class ServiceData16BitUUIDFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(Collections.singletonList(new ServiceData16BitUUID(expectData, 0, expectData.length - 1)), Arrays.asList(bitmask, bitmask));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ServiceData16BitUUIDFilter(Collections.singletonList(new ServiceData16BitUUIDAndroid(expectData, 0, expectData.length - 1)), Arrays.asList(bitmask, bitmask));
         assertFalse(filter.isMatched(result));
     }
 }

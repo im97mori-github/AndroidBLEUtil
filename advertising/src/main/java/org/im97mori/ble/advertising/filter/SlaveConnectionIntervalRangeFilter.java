@@ -17,12 +17,12 @@ public class SlaveConnectionIntervalRangeFilter implements AdvertisingDataFilter
     /**
      * expected List of {@link SlaveConnectionIntervalRange} in Advertising data
      */
-    private final List<SlaveConnectionIntervalRange> mExpect;
+    private final List<? extends SlaveConnectionIntervalRange> mExpect;
 
     /**
      * @param expect expected List of {@link SlaveConnectionIntervalRange} in Advertising data
      */
-    public SlaveConnectionIntervalRangeFilter(@NonNull List<SlaveConnectionIntervalRange> expect) {
+    public SlaveConnectionIntervalRangeFilter(@NonNull List<? extends SlaveConnectionIntervalRange> expect) {
         mExpect = expect;
     }
 
@@ -39,7 +39,7 @@ public class SlaveConnectionIntervalRangeFilter implements AdvertisingDataFilter
     @Override
     public boolean isMatched(@NonNull AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
         boolean result = false;
-        List<SlaveConnectionIntervalRange> actual = advertisingDataParseResult.getSlaveConnectionIntervalRangeList();
+        List<? extends SlaveConnectionIntervalRange> actual = advertisingDataParseResult.getSlaveConnectionIntervalRangeList();
         if (mExpect.isEmpty()) {
             if (actual.isEmpty()) {
                 result = true;

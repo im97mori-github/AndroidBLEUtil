@@ -10,163 +10,425 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("unused")
 public class FlagsTest {
 
-    @Test
-    public void constructTest1() {
+    //@formatter:off
+    private static final byte[] data_00001;
+    static {
         byte[] data = new byte[3];
         data[0] = 2;
         data[1] = DATA_TYPE_FLAGS;
         data[2] = 0b00000001;
-
-        Flags result = new Flags(data, 0, data[0]);
-        assertEquals(2, result.getLength());
-        assertEquals(DATA_TYPE_FLAGS, result.getDataType());
-        assertEquals(1, result.getFlagsList().size());
-        assertEquals(0b00000001, result.getFlagsList().get(0).intValue());
-        assertTrue(result.isLeLimitedDiscoverableMode());
-        assertFalse(result.isLeGeneralDiscoverableMode());
-        assertFalse(result.isBrEdrNotSupported());
-        assertFalse(result.isSimultaneousController());
-        assertFalse(result.isSimultaneousHost());
+        data_00001 = data;
     }
 
-    @Test
-    public void constructTest2() {
+    private static final byte[] data_00002;
+    static {
         byte[] data = new byte[3];
         data[0] = 2;
         data[1] = DATA_TYPE_FLAGS;
         data[2] = 0b00000010;
-        Flags result = new Flags(data, 0, data[0]);
-        assertEquals(2, result.getLength());
-        assertEquals(DATA_TYPE_FLAGS, result.getDataType());
-        assertEquals(1, result.getFlagsList().size());
-        assertEquals(0b00000010, result.getFlagsList().get(0).intValue());
-        assertFalse(result.isLeLimitedDiscoverableMode());
-        assertTrue(result.isLeGeneralDiscoverableMode());
-        assertFalse(result.isBrEdrNotSupported());
-        assertFalse(result.isSimultaneousController());
-        assertFalse(result.isSimultaneousHost());
+        data_00002 = data;
     }
 
-    @Test
-    public void constructTest3() {
+    private static final byte[] data_00003;
+    static {
         byte[] data = new byte[3];
         data[0] = 2;
         data[1] = DATA_TYPE_FLAGS;
         data[2] = 0b00000100;
-        Flags result = new Flags(data, 0, data[0]);
-        assertEquals(2, result.getLength());
-        assertEquals(DATA_TYPE_FLAGS, result.getDataType());
-        assertEquals(1, result.getFlagsList().size());
-        assertEquals(0b00000100, result.getFlagsList().get(0).intValue());
-        assertFalse(result.isLeLimitedDiscoverableMode());
-        assertFalse(result.isLeGeneralDiscoverableMode());
-        assertTrue(result.isBrEdrNotSupported());
-        assertFalse(result.isSimultaneousController());
-        assertFalse(result.isSimultaneousHost());
+        data_00003 = data;
     }
 
-    @Test
-    public void constructTest4() {
+    private static final byte[] data_00004;
+    static {
         byte[] data = new byte[3];
         data[0] = 2;
         data[1] = DATA_TYPE_FLAGS;
         data[2] = 0b00001000;
-        Flags result = new Flags(data, 0, data[0]);
-        assertEquals(2, result.getLength());
-        assertEquals(DATA_TYPE_FLAGS, result.getDataType());
-        assertEquals(1, result.getFlagsList().size());
-        assertEquals(0b00001000, result.getFlagsList().get(0).intValue());
-        assertFalse(result.isLeLimitedDiscoverableMode());
-        assertFalse(result.isLeGeneralDiscoverableMode());
-        assertFalse(result.isBrEdrNotSupported());
-        assertTrue(result.isSimultaneousController());
-        assertFalse(result.isSimultaneousHost());
+        data_00004 = data;
     }
 
-    @Test
-    public void constructTest5() {
+    private static final byte[] data_00005;
+    static {
         byte[] data = new byte[3];
         data[0] = 2;
         data[1] = DATA_TYPE_FLAGS;
         data[2] = 0b00010000;
-        Flags result = new Flags(data, 0, data[0]);
-        assertEquals(2, result.getLength());
-        assertEquals(DATA_TYPE_FLAGS, result.getDataType());
-        assertEquals(1, result.getFlagsList().size());
-        assertEquals(0b00010000, result.getFlagsList().get(0).intValue());
-        assertFalse(result.isLeLimitedDiscoverableMode());
-        assertFalse(result.isLeGeneralDiscoverableMode());
-        assertFalse(result.isBrEdrNotSupported());
-        assertFalse(result.isSimultaneousController());
-        assertTrue(result.isSimultaneousHost());
+        data_00005 = data;
     }
 
-    @Test
-    public void constructTest6() {
+    private static final byte[] data_00006;
+    static {
         byte[] data = new byte[3];
         data[0] = 2;
         data[1] = DATA_TYPE_FLAGS;
         data[2] = (byte) 0b11111111;
-        Flags result = new Flags(data, 0, data[0]);
-        assertEquals(2, result.getLength());
-        assertEquals(DATA_TYPE_FLAGS, result.getDataType());
-        assertEquals(1, result.getFlagsList().size());
-        assertEquals(0b11111111, result.getFlagsList().get(0).intValue());
-        assertTrue(result.isLeLimitedDiscoverableMode());
-        assertTrue(result.isLeGeneralDiscoverableMode());
-        assertTrue(result.isBrEdrNotSupported());
-        assertTrue(result.isSimultaneousController());
-        assertTrue(result.isSimultaneousHost());
+        data_00006 = data;
     }
 
-    @Test
-    public void constructTest7() {
+    private static final byte[] data_00007;
+    static {
         byte[] data = new byte[2];
         data[0] = 1;
         data[1] = DATA_TYPE_FLAGS;
-        Flags result = new Flags(data, 0, data[0]);
-        assertEquals(1, result.getLength());
-        assertEquals(DATA_TYPE_FLAGS, result.getDataType());
-        assertEquals(0, result.getFlagsList().size());
-        assertFalse(result.isLeLimitedDiscoverableMode());
-        assertFalse(result.isLeGeneralDiscoverableMode());
-        assertFalse(result.isBrEdrNotSupported());
-        assertFalse(result.isSimultaneousController());
-        assertFalse(result.isSimultaneousHost());
+        data_00007 = data;
+    }
+    //@formatter:on
+
+    private byte[] getData() {
+        int index = -1;
+        byte[] data = null;
+
+        StackTraceElement[] stackTraceElementArray = Thread.currentThread().getStackTrace();
+        for (int i = 0; i < stackTraceElementArray.length; i++) {
+            StackTraceElement stackTraceElement = stackTraceElementArray[i];
+            if ("getData".equals(stackTraceElement.getMethodName())) {
+                index = i + 1;
+                break;
+            }
+        }
+        if (index >= 0 && index < stackTraceElementArray.length) {
+            StackTraceElement stackTraceElement = stackTraceElementArray[index];
+            String[] splitted = stackTraceElement.getMethodName().split("_");
+            try {
+                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return data;
     }
 
     @Test
-    public void constructTest8() {
-        byte[] data = new byte[2];
-        data[0] = 1;
-        data[1] = DATA_TYPE_FLAGS;
+    public void test_constructor_00001() {
+        byte[] data = getData();
 
-        Flags result1 = new Flags(data, 0, data[0]);
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        assertEquals(2, result1.getLength());
+        assertEquals(DATA_TYPE_FLAGS, result1.getDataType());
+        assertEquals(1, result1.getFlagsList().size());
+        assertEquals(0b00000001, result1.getFlagsList().get(0).intValue());
+        assertTrue(result1.isLeLimitedDiscoverableMode());
+        assertFalse(result1.isLeGeneralDiscoverableMode());
+        assertFalse(result1.isBrEdrNotSupported());
+        assertFalse(result1.isSimultaneousController());
+        assertFalse(result1.isSimultaneousHost());
+    }
+
+    @Test
+    public void test_constructor_00002() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        assertEquals(2, result1.getLength());
+        assertEquals(DATA_TYPE_FLAGS, result1.getDataType());
+        assertEquals(1, result1.getFlagsList().size());
+        assertEquals(0b00000010, result1.getFlagsList().get(0).intValue());
+        assertFalse(result1.isLeLimitedDiscoverableMode());
+        assertTrue(result1.isLeGeneralDiscoverableMode());
+        assertFalse(result1.isBrEdrNotSupported());
+        assertFalse(result1.isSimultaneousController());
+        assertFalse(result1.isSimultaneousHost());
+    }
+
+    @Test
+    public void test_constructor_00003() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        assertEquals(2, result1.getLength());
+        assertEquals(DATA_TYPE_FLAGS, result1.getDataType());
+        assertEquals(1, result1.getFlagsList().size());
+        assertEquals(0b00000100, result1.getFlagsList().get(0).intValue());
+        assertFalse(result1.isLeLimitedDiscoverableMode());
+        assertFalse(result1.isLeGeneralDiscoverableMode());
+        assertTrue(result1.isBrEdrNotSupported());
+        assertFalse(result1.isSimultaneousController());
+        assertFalse(result1.isSimultaneousHost());
+    }
+
+    @Test
+    public void test_constructor_00004() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        assertEquals(2, result1.getLength());
+        assertEquals(DATA_TYPE_FLAGS, result1.getDataType());
+        assertEquals(1, result1.getFlagsList().size());
+        assertEquals(0b00001000, result1.getFlagsList().get(0).intValue());
+        assertFalse(result1.isLeLimitedDiscoverableMode());
+        assertFalse(result1.isLeGeneralDiscoverableMode());
+        assertFalse(result1.isBrEdrNotSupported());
+        assertTrue(result1.isSimultaneousController());
+        assertFalse(result1.isSimultaneousHost());
+    }
+
+    @Test
+    public void test_constructor_00005() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        assertEquals(2, result1.getLength());
+        assertEquals(DATA_TYPE_FLAGS, result1.getDataType());
+        assertEquals(1, result1.getFlagsList().size());
+        assertEquals(0b00010000, result1.getFlagsList().get(0).intValue());
+        assertFalse(result1.isLeLimitedDiscoverableMode());
+        assertFalse(result1.isLeGeneralDiscoverableMode());
+        assertFalse(result1.isBrEdrNotSupported());
+        assertFalse(result1.isSimultaneousController());
+        assertTrue(result1.isSimultaneousHost());
+    }
+
+    @Test
+    public void test_constructor_00006() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        assertEquals(2, result1.getLength());
+        assertEquals(DATA_TYPE_FLAGS, result1.getDataType());
+        assertEquals(1, result1.getFlagsList().size());
+        assertEquals(0b11111111, result1.getFlagsList().get(0).intValue());
+        assertTrue(result1.isLeLimitedDiscoverableMode());
+        assertTrue(result1.isLeGeneralDiscoverableMode());
+        assertTrue(result1.isBrEdrNotSupported());
+        assertTrue(result1.isSimultaneousController());
+        assertTrue(result1.isSimultaneousHost());
+    }
+
+    @Test
+    public void test_constructor_00007() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        assertEquals(1, result1.getLength());
+        assertEquals(DATA_TYPE_FLAGS, result1.getDataType());
+        assertEquals(0, result1.getFlagsList().size());
+        assertFalse(result1.isLeLimitedDiscoverableMode());
+        assertFalse(result1.isLeGeneralDiscoverableMode());
+        assertFalse(result1.isBrEdrNotSupported());
+        assertFalse(result1.isSimultaneousController());
+        assertFalse(result1.isSimultaneousHost());
+    }
+
+    @Test
+    public void test_parcelable_1_00001() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
-        Flags result2 = Flags.CREATOR.createFromParcel(parcel);
-
+        FlagsAndroid result2 = FlagsAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
-        assertArrayEquals(result1.getFlagsList().toArray(), result2.getFlagsList().toArray());
+        assertArrayEquals(result1.getFlagsList().toArray(), result1.getFlagsList().toArray());
     }
 
     @Test
-    public void constructTest9() {
-        byte[] data = new byte[3];
-        data[0] = 2;
-        data[1] = DATA_TYPE_FLAGS;
-        data[2] = 0b00000001;
+    public void test_parcelable_1_00002() {
+        byte[] data = getData();
 
-        Flags result1 = new Flags(data, 0, data[0]);
-        Flags result2 = Flags.CREATOR.createFromByteArray(data);
-
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        FlagsAndroid result2 = FlagsAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
-        assertArrayEquals(result1.getFlagsList().toArray(), result2.getFlagsList().toArray());
+        assertArrayEquals(result1.getFlagsList().toArray(), result1.getFlagsList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00003() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        FlagsAndroid result2 = FlagsAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getFlagsList().toArray(), result1.getFlagsList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00004() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        FlagsAndroid result2 = FlagsAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getFlagsList().toArray(), result1.getFlagsList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00005() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        FlagsAndroid result2 = FlagsAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getFlagsList().toArray(), result1.getFlagsList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00006() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        FlagsAndroid result2 = FlagsAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getFlagsList().toArray(), result1.getFlagsList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00007() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        FlagsAndroid result2 = FlagsAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getFlagsList().toArray(), result1.getFlagsList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_2_00001() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00002() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00003() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00004() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00005() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00006() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00007() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00001() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        FlagsAndroid result2 = FlagsAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00002() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        FlagsAndroid result2 = FlagsAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00003() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        FlagsAndroid result2 = FlagsAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00004() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        FlagsAndroid result2 = FlagsAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00005() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        FlagsAndroid result2 = FlagsAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00006() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        FlagsAndroid result2 = FlagsAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00007() {
+        byte[] data = getData();
+
+        FlagsAndroid result1 = new FlagsAndroid(data, 0, data[0]);
+        FlagsAndroid result2 = FlagsAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 
 }

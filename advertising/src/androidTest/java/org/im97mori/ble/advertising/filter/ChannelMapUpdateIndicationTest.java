@@ -1,7 +1,7 @@
 package org.im97mori.ble.advertising.filter;
 
 import org.im97mori.ble.advertising.AdvertisingDataParser;
-import org.im97mori.ble.advertising.ChannelMapUpdateIndication;
+import org.im97mori.ble.advertising.ChannelMapUpdateIndicationAndroid;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -39,7 +39,7 @@ public class ChannelMapUpdateIndicationTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ChannelMapUpdateIndicationFilter(ChannelMapUpdateIndication.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ChannelMapUpdateIndicationFilter(ChannelMapUpdateIndicationAndroid.CREATOR.createFromByteArray(expectData));
         assertFalse(filter.isMatched(result));
     }
 
@@ -79,7 +79,7 @@ public class ChannelMapUpdateIndicationTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ChannelMapUpdateIndicationFilter(ChannelMapUpdateIndication.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ChannelMapUpdateIndicationFilter(ChannelMapUpdateIndicationAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 

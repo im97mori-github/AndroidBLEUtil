@@ -1,7 +1,7 @@
 package org.im97mori.ble.advertising.filter;
 
 import org.im97mori.ble.advertising.AdvertisingDataParser;
-import org.im97mori.ble.advertising.SlaveConnectionIntervalRange;
+import org.im97mori.ble.advertising.SlaveConnectionIntervalRangeAndroid;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -36,7 +36,7 @@ public class SlaveConnectionIntervalRangeTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new SlaveConnectionIntervalRangeFilter(SlaveConnectionIntervalRange.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new SlaveConnectionIntervalRangeFilter(SlaveConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(expectData));
         assertFalse(filter.isMatched(result));
     }
 
@@ -70,7 +70,7 @@ public class SlaveConnectionIntervalRangeTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new SlaveConnectionIntervalRangeFilter(SlaveConnectionIntervalRange.CREATOR.createFromByteArray(expectData));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new SlaveConnectionIntervalRangeFilter(SlaveConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(expectData));
         assertTrue(filter.isMatched(result));
     }
 
@@ -95,8 +95,8 @@ public class SlaveConnectionIntervalRangeTest {
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
         AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new SlaveConnectionIntervalRangeFilter(
-                new SlaveConnectionIntervalRange(expectData, 0, expectData.length / 2 - 1)
-                , new SlaveConnectionIntervalRange(expectData, expectData.length / 2, expectData.length / 2 - 1)
+                new SlaveConnectionIntervalRangeAndroid(expectData, 0, expectData.length / 2 - 1)
+                , new SlaveConnectionIntervalRangeAndroid(expectData, expectData.length / 2, expectData.length / 2 - 1)
         );
         assertFalse(filter.isMatched(result));
     }
@@ -122,7 +122,7 @@ public class SlaveConnectionIntervalRangeTest {
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
         AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new SlaveConnectionIntervalRangeFilter(
-                new SlaveConnectionIntervalRange(expectData, 0, expectData.length - 1)
+                new SlaveConnectionIntervalRangeAndroid(expectData, 0, expectData.length - 1)
         );
         assertFalse(filter.isMatched(result));
     }
@@ -148,8 +148,8 @@ public class SlaveConnectionIntervalRangeTest {
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
         AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new SlaveConnectionIntervalRangeFilter(
-                new SlaveConnectionIntervalRange(expectData, 0, expectData.length / 2 - 1)
-                , new SlaveConnectionIntervalRange(expectData, expectData.length / 2, expectData.length / 2 - 1)
+                new SlaveConnectionIntervalRangeAndroid(expectData, 0, expectData.length / 2 - 1)
+                , new SlaveConnectionIntervalRangeAndroid(expectData, expectData.length / 2, expectData.length / 2 - 1)
         );
         assertTrue(filter.isMatched(result));
     }

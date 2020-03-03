@@ -127,7 +127,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addAdvertisingIntervalFilter(@NonNull byte[] data) {
-        return addAdvertisingIntervalFilter(AdvertisingInterval.CREATOR.createFromByteArray(data));
+        return addAdvertisingIntervalFilter(data, 0, data[0]);
     }
 
     /**
@@ -164,7 +164,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addAppearanceFilter(@NonNull byte[] data) {
-        return addAppearanceFilter(Appearance.CREATOR.createFromByteArray(data));
+        return addAppearanceFilter(data, 0, data[0]);
     }
 
     /**
@@ -201,7 +201,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addChannelMapUpdateIndicationFilter(@NonNull byte[] data) {
-        return addChannelMapUpdateIndicationFilter(ChannelMapUpdateIndication.CREATOR.createFromByteArray(data));
+        return addChannelMapUpdateIndicationFilter(data, 0, data.length);
     }
 
     /**
@@ -238,7 +238,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addCompleteListOf16BitServiceUUIDsFilter(@NonNull byte[] data) {
-        return addCompleteListOf16BitServiceUUIDsFilter(CompleteListOf16BitServiceUUIDs.CREATOR.createFromByteArray(data));
+        return addCompleteListOf16BitServiceUUIDsFilter(data, 0, data[0]);
     }
 
     /**
@@ -273,7 +273,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addCompleteListOf16BitServiceUUIDsFilter(@NonNull List<CompleteListOf16BitServiceUUIDs> expectList) {
+    public AbstractFilteredCallbackBuilder<T> addCompleteListOf16BitServiceUUIDsFilter(@NonNull List<? extends CompleteListOf16BitServiceUUIDs> expectList) {
         mFilterList.add(new CompleteListOf16BitServiceUUIDsFilter(expectList));
         return this;
     }
@@ -287,7 +287,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addCompleteListOf32BitServiceUUIDsFilter(@NonNull byte[] data) {
-        return addCompleteListOf32BitServiceUUIDsFilter(CompleteListOf32BitServiceUUIDs.CREATOR.createFromByteArray(data));
+        return addCompleteListOf32BitServiceUUIDsFilter(data, 0, data[0]);
     }
 
     /**
@@ -322,7 +322,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addCompleteListOf32BitServiceUUIDsFilter(@NonNull List<CompleteListOf32BitServiceUUIDs> expectList) {
+    public AbstractFilteredCallbackBuilder<T> addCompleteListOf32BitServiceUUIDsFilter(@NonNull List<? extends CompleteListOf32BitServiceUUIDs> expectList) {
         mFilterList.add(new CompleteListOf32BitServiceUUIDsFilter(expectList));
         return this;
     }
@@ -336,7 +336,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addCompleteListOf128BitServiceUUIDsFilter(@NonNull byte[] data) {
-        return addCompleteListOf128BitServiceUUIDsFilter(CompleteListOf128BitServiceUUIDs.CREATOR.createFromByteArray(data));
+        return addCompleteListOf128BitServiceUUIDsFilter(data, 0, data[0]);
     }
 
     /**
@@ -371,7 +371,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addCompleteListOf128BitServiceUUIDsFilter(@NonNull List<CompleteListOf128BitServiceUUIDs> expectList) {
+    public AbstractFilteredCallbackBuilder<T> addCompleteListOf128BitServiceUUIDsFilter(@NonNull List<? extends CompleteListOf128BitServiceUUIDs> expectList) {
         mFilterList.add(new CompleteListOf128BitServiceUUIDsFilter(expectList));
         return this;
     }
@@ -385,7 +385,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addCompleteLocalNameFilter(@NonNull byte[] data) {
-        return addCompleteLocalNameFilter(CompleteLocalName.CREATOR.createFromByteArray(data));
+        return addCompleteLocalNameFilter(data, 0, data[0]);
     }
 
     /**
@@ -422,7 +422,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addFlagsFilter(@NonNull byte[] data) {
-        return addFlagsFilter(Flags.CREATOR.createFromByteArray(data));
+        return addFlagsFilter(data, 0, data[0]);
     }
 
     /**
@@ -459,7 +459,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addIncompleteListOf16BitServiceUUIDsFilter(@NonNull byte[] data) {
-        return addIncompleteListOf16BitServiceUUIDsFilter(IncompleteListOf16BitServiceUUIDs.CREATOR.createFromByteArray(data));
+        return addIncompleteListOf16BitServiceUUIDsFilter(data, 0, data[0]);
     }
 
     /**
@@ -494,7 +494,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addIncompleteListOf16BitServiceUUIDsFilter(@NonNull List<IncompleteListOf16BitServiceUUIDs> expectList) {
+    public AbstractFilteredCallbackBuilder<T> addIncompleteListOf16BitServiceUUIDsFilter(@NonNull List<? extends IncompleteListOf16BitServiceUUIDs> expectList) {
         mFilterList.add(new IncompleteListOf16BitServiceUUIDsFilter(expectList));
         return this;
     }
@@ -508,7 +508,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addIncompleteListOf32BitServiceUUIDsFilter(@NonNull byte[] data) {
-        return addIncompleteListOf32BitServiceUUIDsFilter(IncompleteListOf32BitServiceUUIDs.CREATOR.createFromByteArray(data));
+        return addIncompleteListOf32BitServiceUUIDsFilter(data, 0, data[0]);
     }
 
     /**
@@ -543,7 +543,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addIncompleteListOf32BitServiceUUIDsFilter(@NonNull List<IncompleteListOf32BitServiceUUIDs> expectList) {
+    public AbstractFilteredCallbackBuilder<T> addIncompleteListOf32BitServiceUUIDsFilter(@NonNull List<? extends IncompleteListOf32BitServiceUUIDs> expectList) {
         mFilterList.add(new IncompleteListOf32BitServiceUUIDsFilter(expectList));
         return this;
     }
@@ -557,7 +557,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addIncompleteListOf128BitServiceUUIDsFilter(@NonNull byte[] data) {
-        return addIncompleteListOf128BitServiceUUIDsFilter(IncompleteListOf128BitServiceUUIDs.CREATOR.createFromByteArray(data));
+        return addIncompleteListOf128BitServiceUUIDsFilter(data, 0, data[0]);
     }
 
     /**
@@ -592,7 +592,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addIncompleteListOf128BitServiceUUIDsFilter(@NonNull List<IncompleteListOf128BitServiceUUIDs> expectList) {
+    public AbstractFilteredCallbackBuilder<T> addIncompleteListOf128BitServiceUUIDsFilter(@NonNull List<? extends IncompleteListOf128BitServiceUUIDs> expectList) {
         mFilterList.add(new IncompleteListOf128BitServiceUUIDsFilter(expectList));
         return this;
     }
@@ -606,7 +606,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addIndoorPositioningFilter(@NonNull byte[] data) {
-        return addIndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(data));
+        return addIndoorPositioningFilter(data, 0, data[0]);
     }
 
     /**
@@ -643,7 +643,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addLeSupportedFeaturesFilter(@NonNull byte[] data) {
-        return addLeSupportedFeaturesFilter(LeSupportedFeatures.CREATOR.createFromByteArray(data));
+        return addLeSupportedFeaturesFilter(data, 0, data[0]);
     }
 
     /**
@@ -680,7 +680,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addListOf16BitServiceSolicitationUUIDsFilter(@NonNull byte[] data) {
-        return addListOf16BitServiceSolicitationUUIDsFilter(ListOf16BitServiceSolicitationUUIDs.CREATOR.createFromByteArray(data));
+        return addListOf16BitServiceSolicitationUUIDsFilter(data, 0, data[0]);
     }
 
     /**
@@ -715,7 +715,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addListOf16BitServiceSolicitationUUIDsFilter(@NonNull List<ListOf16BitServiceSolicitationUUIDs> expectList) {
+    public AbstractFilteredCallbackBuilder<T> addListOf16BitServiceSolicitationUUIDsFilter(@NonNull List<? extends ListOf16BitServiceSolicitationUUIDs> expectList) {
         mFilterList.add(new ListOf16BitServiceSolicitationUUIDsFilter(expectList));
         return this;
     }
@@ -729,7 +729,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addListOf32BitServiceSolicitationUUIDsFilter(@NonNull byte[] data) {
-        return addListOf32BitServiceSolicitationUUIDsFilter(ListOf32BitServiceSolicitationUUIDs.CREATOR.createFromByteArray(data));
+        return addListOf32BitServiceSolicitationUUIDsFilter(data, 0, data[0]);
     }
 
     /**
@@ -764,7 +764,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addListOf32BitServiceSolicitationUUIDsFilter(@NonNull List<ListOf32BitServiceSolicitationUUIDs> expectList) {
+    public AbstractFilteredCallbackBuilder<T> addListOf32BitServiceSolicitationUUIDsFilter(@NonNull List<? extends ListOf32BitServiceSolicitationUUIDs> expectList) {
         mFilterList.add(new ListOf32BitServiceSolicitationUUIDsFilter(expectList));
         return this;
     }
@@ -778,7 +778,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addListOf128BitServiceSolicitationUUIDsFilter(@NonNull byte[] data) {
-        return addListOf128BitServiceSolicitationUUIDsFilter(ListOf128BitServiceSolicitationUUIDs.CREATOR.createFromByteArray(data));
+        return addListOf128BitServiceSolicitationUUIDsFilter(data, 0, data[0]);
     }
 
     /**
@@ -813,7 +813,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addListOf128BitServiceSolicitationUUIDsFilter(@NonNull List<ListOf128BitServiceSolicitationUUIDs> expectList) {
+    public AbstractFilteredCallbackBuilder<T> addListOf128BitServiceSolicitationUUIDsFilter(@NonNull List<? extends ListOf128BitServiceSolicitationUUIDs> expectList) {
         mFilterList.add(new ListOf128BitServiceSolicitationUUIDsFilter(expectList));
         return this;
     }
@@ -829,7 +829,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addManufacturerSpecificDataFilter(@NonNull byte[] data, @Nullable byte[] bitmask) {
-        return addManufacturerSpecificDataFilter(ManufacturerSpecificData.CREATOR.createFromByteArray(data), bitmask);
+        return addManufacturerSpecificDataFilter(data, 0, data[0], bitmask);
     }
 
     /**
@@ -870,7 +870,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @see android.bluetooth.le.ScanFilter.Builder#setManufacturerData(int, byte[], byte[])
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addManufacturerSpecificDataFilter(@NonNull List<ManufacturerSpecificData> expectList, @Nullable List<byte[]> bitmaskList) {
+    public AbstractFilteredCallbackBuilder<T> addManufacturerSpecificDataFilter(@NonNull List<? extends ManufacturerSpecificData> expectList, @Nullable List<byte[]> bitmaskList) {
         mFilterList.add(new ManufacturerSpecificDataFilter(expectList, bitmaskList));
         return this;
     }
@@ -885,7 +885,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addPublicTargetAddressFilter(@NonNull byte[] data, @Nullable List<byte[]> bitmaskList) {
-        return addPublicTargetAddressFilter(PublicTargetAddress.CREATOR.createFromByteArray(data), bitmaskList);
+        return addPublicTargetAddressFilter(data, 0, data.length, bitmaskList);
     }
 
     /**
@@ -923,7 +923,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addRandomTargetAddressFilter(@NonNull byte[] data, @Nullable List<byte[]> bitmaskList) {
-        return addRandomTargetAddressFilter(RandomTargetAddress.CREATOR.createFromByteArray(data), bitmaskList);
+        return addRandomTargetAddressFilter(data, 0, data.length, bitmaskList);
     }
 
     /**
@@ -963,7 +963,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addServiceData16BitUUIDFilter(@NonNull byte[] data, @Nullable byte[] bitmask) {
-        return addServiceData16BitUUIDFilter(ServiceData16BitUUID.CREATOR.createFromByteArray(data), bitmask);
+        return addServiceData16BitUUIDFilter(data, 0, data[0], bitmask);
     }
 
     /**
@@ -1004,7 +1004,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @see android.bluetooth.le.ScanFilter.Builder#setServiceData(ParcelUuid, byte[], byte[])
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addServiceData16BitUUIDFilter(@NonNull List<ServiceData16BitUUID> expectList, @Nullable List<byte[]> bitmaskList) {
+    public AbstractFilteredCallbackBuilder<T> addServiceData16BitUUIDFilter(@NonNull List<? extends ServiceData16BitUUID> expectList, @Nullable List<byte[]> bitmaskList) {
         mFilterList.add(new ServiceData16BitUUIDFilter(expectList, bitmaskList));
         return this;
     }
@@ -1020,7 +1020,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addServiceData32BitUUIDFilter(@NonNull byte[] data, @Nullable byte[] bitmask) {
-        return addServiceData32BitUUIDFilter(ServiceData32BitUUID.CREATOR.createFromByteArray(data), bitmask);
+        return addServiceData32BitUUIDFilter(data, 0, data[0], bitmask);
     }
 
     /**
@@ -1061,7 +1061,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @see android.bluetooth.le.ScanFilter.Builder#setServiceData(ParcelUuid, byte[], byte[])
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addServiceData32BitUUIDFilter(@NonNull List<ServiceData32BitUUID> expectList, @Nullable List<byte[]> bitmaskList) {
+    public AbstractFilteredCallbackBuilder<T> addServiceData32BitUUIDFilter(@NonNull List<? extends ServiceData32BitUUID> expectList, @Nullable List<byte[]> bitmaskList) {
         mFilterList.add(new ServiceData32BitUUIDFilter(expectList, bitmaskList));
         return this;
     }
@@ -1077,7 +1077,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addServiceData128BitUUIDFilter(@NonNull byte[] data, @Nullable byte[] bitmask) {
-        return addServiceData128BitUUIDFilter(ServiceData128BitUUID.CREATOR.createFromByteArray(data), bitmask);
+        return addServiceData128BitUUIDFilter(data, 0, data[0], bitmask);
     }
 
     /**
@@ -1118,7 +1118,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @see android.bluetooth.le.ScanFilter.Builder#setServiceData(ParcelUuid, byte[], byte[])
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addServiceData128BitUUIDFilter(@NonNull List<ServiceData128BitUUID> expectList, @Nullable List<byte[]> bitmaskList) {
+    public AbstractFilteredCallbackBuilder<T> addServiceData128BitUUIDFilter(@NonNull List<? extends ServiceData128BitUUID> expectList, @Nullable List<byte[]> bitmaskList) {
         mFilterList.add(new ServiceData128BitUUIDFilter(expectList, bitmaskList));
         return this;
     }
@@ -1132,7 +1132,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addShortenedLocalNameFilter(@NonNull byte[] data) {
-        return addShortenedLocalNameFilter(ShortenedLocalName.CREATOR.createFromByteArray(data));
+        return addShortenedLocalNameFilter(data, 0, data[0]);
     }
 
     /**
@@ -1169,7 +1169,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addSlaveConnectionIntervalRangeFilter(@NonNull byte[] data) {
-        return addSlaveConnectionIntervalRangeFilter(SlaveConnectionIntervalRange.CREATOR.createFromByteArray(data));
+        return addSlaveConnectionIntervalRangeFilter(data, 0, data[0]);
     }
 
     /**
@@ -1204,7 +1204,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addSlaveConnectionIntervalRangeFilter(@NonNull List<SlaveConnectionIntervalRange> expectList) {
+    public AbstractFilteredCallbackBuilder<T> addSlaveConnectionIntervalRangeFilter(@NonNull List<? extends SlaveConnectionIntervalRange> expectList) {
         mFilterList.add(new SlaveConnectionIntervalRangeFilter(expectList));
         return this;
     }
@@ -1218,7 +1218,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addTransportDiscoveryDataFilter(@NonNull byte[] data) {
-        return addTransportDiscoveryDataFilter(TransportDiscoveryData.CREATOR.createFromByteArray(data));
+        return addTransportDiscoveryDataFilter(data, 0, data.length);
     }
 
     /**
@@ -1255,7 +1255,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addTxPowerLevelFilter(@NonNull byte[] data) {
-        return addTxPowerLevelFilter(TxPowerLevel.CREATOR.createFromByteArray(data));
+        return addTxPowerLevelFilter(data, 0, data.length);
     }
 
     /**
@@ -1290,7 +1290,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addTxPowerLevelFilter(@NonNull List<TxPowerLevel> expectList) {
+    public AbstractFilteredCallbackBuilder<T> addTxPowerLevelFilter(@NonNull List<? extends TxPowerLevel> expectList) {
         mFilterList.add(new TxPowerLevelFilter(expectList));
         return this;
     }
@@ -1304,7 +1304,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addUniformRsourceIdentifier(@NonNull byte[] data) {
-        return addUniformRsourceIdentifier(UniformRsourceIdentifier.CREATOR.createFromByteArray(data));
+        return addUniformRsourceIdentifier(data, 0, data[0]);
     }
 
     /**
@@ -1339,7 +1339,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @return myself
      */
     @NonNull
-    public AbstractFilteredCallbackBuilder<T> addUniformRsourceIdentifier(@NonNull List<UniformRsourceIdentifier> expectList) {
+    public AbstractFilteredCallbackBuilder<T> addUniformRsourceIdentifier(@NonNull List<? extends UniformRsourceIdentifier> expectList) {
         mFilterList.add(new UniformRsourceIdentifierFilter(expectList));
         return this;
     }

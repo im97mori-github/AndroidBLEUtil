@@ -18,12 +18,12 @@ public class UniformRsourceIdentifierFilter implements AdvertisingDataFilter<Adv
     /**
      * expected List of {@link UniformRsourceIdentifier} in Advertising data
      */
-    private final List<UniformRsourceIdentifier> mExpect;
+    private final List<? extends UniformRsourceIdentifier> mExpect;
 
     /**
      * @param expect expected List of {@link UniformRsourceIdentifier} in Advertising data
      */
-    public UniformRsourceIdentifierFilter(@NonNull List<UniformRsourceIdentifier> expect) {
+    public UniformRsourceIdentifierFilter(@NonNull List<? extends UniformRsourceIdentifier> expect) {
         mExpect = expect;
     }
 
@@ -40,7 +40,7 @@ public class UniformRsourceIdentifierFilter implements AdvertisingDataFilter<Adv
     @Override
     public boolean isMatched(@NonNull AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
         boolean result = false;
-        List<UniformRsourceIdentifier> actual = advertisingDataParseResult.getUniformRsourceIdentifierList();
+        List<? extends UniformRsourceIdentifier> actual = advertisingDataParseResult.getUniformRsourceIdentifierList();
         if (mExpect.isEmpty()) {
             if (actual.isEmpty()) {
                 result = true;

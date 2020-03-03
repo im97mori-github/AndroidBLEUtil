@@ -18,12 +18,12 @@ public class ListOf32BitServiceSolicitationUUIDsFilter implements AdvertisingDat
     /**
      * expected List of {@link ListOf32BitServiceSolicitationUUIDs} in Advertising data
      */
-    private final List<ListOf32BitServiceSolicitationUUIDs> mExpect;
+    private final List<? extends ListOf32BitServiceSolicitationUUIDs> mExpect;
 
     /**
      * @param expect expected List of {@link ListOf32BitServiceSolicitationUUIDs} in Advertising data
      */
-    public ListOf32BitServiceSolicitationUUIDsFilter(@NonNull List<ListOf32BitServiceSolicitationUUIDs> expect) {
+    public ListOf32BitServiceSolicitationUUIDsFilter(@NonNull List<? extends ListOf32BitServiceSolicitationUUIDs> expect) {
         mExpect = expect;
     }
 
@@ -40,7 +40,7 @@ public class ListOf32BitServiceSolicitationUUIDsFilter implements AdvertisingDat
     @Override
     public boolean isMatched(@NonNull AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
         boolean result = false;
-        List<ListOf32BitServiceSolicitationUUIDs> actual = advertisingDataParseResult.getListOf32BitServiceSolicitationUUIDsList();
+        List<? extends ListOf32BitServiceSolicitationUUIDs> actual = advertisingDataParseResult.getListOf32BitServiceSolicitationUUIDsList();
         if (mExpect.isEmpty()) {
             if (actual.isEmpty()) {
                 result = true;

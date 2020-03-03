@@ -1,9 +1,12 @@
 package org.im97mori.ble.advertising;
 
+import android.os.Parcel;
+
 import org.im97mori.ble.IndoorPositioningUtils;
 import org.junit.Test;
 
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INDOOR_POSITIONING;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 @SuppressWarnings({"unused", "ConstantConditions"})
@@ -280,154 +283,700 @@ public class IndoorPositioningTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        IndoorPositioning result = new IndoorPositioning(data, 0, data[0]);
-        assertEquals(data[0], result.getLength());
-        assertEquals(0, result.getIndoorPositioningConfiguration());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getDataType());
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(0, result1.getIndoorPositioningConfiguration());
+        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result1.getDataType());
     }
 
     @Test
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        IndoorPositioning result = new IndoorPositioning(data, 0, data[0]);
-        assertEquals(data[0], result.getLength());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getDataType());
-        assertEquals(data[2], result.getIndoorPositioningConfiguration());
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result1.getDataType());
+        assertEquals(data[2], result1.getIndoorPositioningConfiguration());
     }
 
     @Test
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        IndoorPositioning result = new IndoorPositioning(data, 0, data[0]);
-        assertEquals(data[0], result.getLength());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getDataType());
-        assertEquals(data[2], result.getIndoorPositioningConfiguration());
-        assertEquals(0x04030201, result.getGlobalCoorinatesLatitude());
-        assertEquals(0x08070605, result.getGlobalCoorinatesLongitude());
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result1.getDataType());
+        assertEquals(data[2], result1.getIndoorPositioningConfiguration());
+        assertEquals(0x04030201, result1.getGlobalCoorinatesLatitude());
+        assertEquals(0x08070605, result1.getGlobalCoorinatesLongitude());
     }
 
     @Test
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        IndoorPositioning result = new IndoorPositioning(data, 0, data[0]);
-        assertEquals(data[0], result.getLength());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getDataType());
-        assertEquals(data[2], result.getIndoorPositioningConfiguration());
-        assertEquals(0x0201, result.getLocalCoordinatesNorth());
-        assertEquals(0x0403, result.getLocalCoordinatesEast());
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result1.getDataType());
+        assertEquals(data[2], result1.getIndoorPositioningConfiguration());
+        assertEquals(0x0201, result1.getLocalCoordinatesNorth());
+        assertEquals(0x0403, result1.getLocalCoordinatesEast());
     }
 
     @Test
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        IndoorPositioning result = new IndoorPositioning(data, 0, data[0]);
-        assertEquals(data[0], result.getLength());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getDataType());
-        assertEquals(data[2], result.getIndoorPositioningConfiguration());
-        assertEquals(0x01, result.getTxPower());
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result1.getDataType());
+        assertEquals(data[2], result1.getIndoorPositioningConfiguration());
+        assertEquals(0x01, result1.getTxPower());
     }
 
     @Test
     public void test_constructor_00301() {
         byte[] data = getData();
 
-        IndoorPositioning result = new IndoorPositioning(data, 0, data[0]);
-        assertEquals(data[0], result.getLength());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getDataType());
-        assertEquals(data[2], result.getIndoorPositioningConfiguration());
-        assertEquals(0x0201, result.getAltitude());
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result1.getDataType());
+        assertEquals(data[2], result1.getIndoorPositioningConfiguration());
+        assertEquals(0x0201, result1.getAltitude());
     }
 
     @Test
     public void test_constructor_00401() {
         byte[] data = getData();
 
-        IndoorPositioning result = new IndoorPositioning(data, 0, data[0]);
-        assertEquals(data[0], result.getLength());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getDataType());
-        assertEquals(data[2], result.getIndoorPositioningConfiguration());
-        assertEquals(0x01, result.getFloorNumber());
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result1.getDataType());
+        assertEquals(data[2], result1.getIndoorPositioningConfiguration());
+        assertEquals(0x01, result1.getFloorNumber());
     }
 
     @Test
     public void test_constructor_00501() {
         byte[] data = getData();
 
-        IndoorPositioning result = new IndoorPositioning(data, 0, data[0]);
-        assertEquals(data[0], result.getLength());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getDataType());
-        assertEquals(data[2], result.getIndoorPositioningConfiguration());
-        assertEquals(IndoorPositioningUtils.UNCERTAINTY_PRECISION_IDEAL, result.getUncertainty());
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result1.getDataType());
+        assertEquals(data[2], result1.getIndoorPositioningConfiguration());
+        assertEquals(IndoorPositioningUtils.UNCERTAINTY_PRECISION_IDEAL, result1.getUncertainty());
     }
 
     @Test
     public void test_constructor_00502() {
         byte[] data = getData();
 
-        IndoorPositioning result = new IndoorPositioning(data, 0, data[0]);
-        assertEquals(data[0], result.getLength());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getDataType());
-        assertEquals(data[2], result.getIndoorPositioningConfiguration());
-        assertEquals(IndoorPositioningUtils.UNCERTAINTY_PRECISION_EXCELLENT, result.getUncertainty());
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result1.getDataType());
+        assertEquals(data[2], result1.getIndoorPositioningConfiguration());
+        assertEquals(IndoorPositioningUtils.UNCERTAINTY_PRECISION_EXCELLENT, result1.getUncertainty());
     }
 
     @Test
     public void test_constructor_00503() {
         byte[] data = getData();
 
-        IndoorPositioning result = new IndoorPositioning(data, 0, data[0]);
-        assertEquals(data[0], result.getLength());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getDataType());
-        assertEquals(data[2], result.getIndoorPositioningConfiguration());
-        assertEquals(IndoorPositioningUtils.UNCERTAINTY_PRECISION_GOOD, result.getUncertainty());
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result1.getDataType());
+        assertEquals(data[2], result1.getIndoorPositioningConfiguration());
+        assertEquals(IndoorPositioningUtils.UNCERTAINTY_PRECISION_GOOD, result1.getUncertainty());
     }
 
     @Test
     public void test_constructor_00504() {
         byte[] data = getData();
 
-        IndoorPositioning result = new IndoorPositioning(data, 0, data[0]);
-        assertEquals(data[0], result.getLength());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getDataType());
-        assertEquals(data[2], result.getIndoorPositioningConfiguration());
-        assertEquals(IndoorPositioningUtils.UNCERTAINTY_PRECISION_MODERATE, result.getUncertainty());
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result1.getDataType());
+        assertEquals(data[2], result1.getIndoorPositioningConfiguration());
+        assertEquals(IndoorPositioningUtils.UNCERTAINTY_PRECISION_MODERATE, result1.getUncertainty());
     }
 
     @Test
     public void test_constructor_00505() {
         byte[] data = getData();
 
-        IndoorPositioning result = new IndoorPositioning(data, 0, data[0]);
-        assertEquals(data[0], result.getLength());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getDataType());
-        assertEquals(data[2], result.getIndoorPositioningConfiguration());
-        assertEquals(IndoorPositioningUtils.UNCERTAINTY_PRECISION_FAIR, result.getUncertainty());
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result1.getDataType());
+        assertEquals(data[2], result1.getIndoorPositioningConfiguration());
+        assertEquals(IndoorPositioningUtils.UNCERTAINTY_PRECISION_FAIR, result1.getUncertainty());
     }
 
     @Test
     public void test_constructor_00506() {
         byte[] data = getData();
 
-        IndoorPositioning result = new IndoorPositioning(data, 0, data[0]);
-        assertEquals(data[0], result.getLength());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getDataType());
-        assertEquals(data[2], result.getIndoorPositioningConfiguration());
-        assertEquals(IndoorPositioningUtils.UNCERTAINTY_PRECISION_POOR, result.getUncertainty());
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result1.getDataType());
+        assertEquals(data[2], result1.getIndoorPositioningConfiguration());
+        assertEquals(IndoorPositioningUtils.UNCERTAINTY_PRECISION_POOR, result1.getUncertainty());
     }
 
     @Test
     public void test_constructor_00507() {
         byte[] data = getData();
 
-        IndoorPositioning result = new IndoorPositioning(data, 0, data[0]);
-        assertEquals(data[0], result.getLength());
-        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result.getDataType());
-        assertEquals(data[2], result.getIndoorPositioningConfiguration());
-        assertEquals(IndoorPositioningUtils.UNCERTAINTY_PRECISION_USELESS, result.getUncertainty());
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertEquals(data[0], result1.getLength());
+        assertEquals(DATA_TYPE_INDOOR_POSITIONING, result1.getDataType());
+        assertEquals(data[2], result1.getIndoorPositioningConfiguration());
+        assertEquals(IndoorPositioningUtils.UNCERTAINTY_PRECISION_USELESS, result1.getUncertainty());
+    }
+
+    @Test
+    public void test_parcelable_1_00001() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
+        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
+        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
+        assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
+        assertEquals(result1.getTxPower(), result2.getTxPower());
+        assertEquals(result1.getFloorNumber(), result2.getFloorNumber());
+        assertEquals(result1.getAltitude(), result2.getAltitude());
+        assertEquals(result1.getUncertainty(), result2.getUncertainty());
+    }
+
+    @Test
+    public void test_parcelable_1_00002() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
+        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
+        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
+        assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
+        assertEquals(result1.getTxPower(), result2.getTxPower());
+        assertEquals(result1.getFloorNumber(), result2.getFloorNumber());
+        assertEquals(result1.getAltitude(), result2.getAltitude());
+        assertEquals(result1.getUncertainty(), result2.getUncertainty());
+    }
+
+    @Test
+    public void test_parcelable_1_00101() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
+        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
+        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
+        assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
+        assertEquals(result1.getTxPower(), result2.getTxPower());
+        assertEquals(result1.getFloorNumber(), result2.getFloorNumber());
+        assertEquals(result1.getAltitude(), result2.getAltitude());
+        assertEquals(result1.getUncertainty(), result2.getUncertainty());
+    }
+
+    @Test
+    public void test_parcelable_1_00102() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
+        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
+        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
+        assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
+        assertEquals(result1.getTxPower(), result2.getTxPower());
+        assertEquals(result1.getFloorNumber(), result2.getFloorNumber());
+        assertEquals(result1.getAltitude(), result2.getAltitude());
+        assertEquals(result1.getUncertainty(), result2.getUncertainty());
+    }
+
+    @Test
+    public void test_parcelable_1_00201() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
+        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
+        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
+        assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
+        assertEquals(result1.getTxPower(), result2.getTxPower());
+        assertEquals(result1.getFloorNumber(), result2.getFloorNumber());
+        assertEquals(result1.getAltitude(), result2.getAltitude());
+        assertEquals(result1.getUncertainty(), result2.getUncertainty());
+    }
+
+    @Test
+    public void test_parcelable_1_00301() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
+        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
+        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
+        assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
+        assertEquals(result1.getTxPower(), result2.getTxPower());
+        assertEquals(result1.getFloorNumber(), result2.getFloorNumber());
+        assertEquals(result1.getAltitude(), result2.getAltitude());
+        assertEquals(result1.getUncertainty(), result2.getUncertainty());
+    }
+
+    @Test
+    public void test_parcelable_1_00401() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
+        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
+        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
+        assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
+        assertEquals(result1.getTxPower(), result2.getTxPower());
+        assertEquals(result1.getFloorNumber(), result2.getFloorNumber());
+        assertEquals(result1.getAltitude(), result2.getAltitude());
+        assertEquals(result1.getUncertainty(), result2.getUncertainty());
+    }
+
+    @Test
+    public void test_parcelable_1_00501() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
+        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
+        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
+        assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
+        assertEquals(result1.getTxPower(), result2.getTxPower());
+        assertEquals(result1.getFloorNumber(), result2.getFloorNumber());
+        assertEquals(result1.getAltitude(), result2.getAltitude());
+        assertEquals(result1.getUncertainty(), result2.getUncertainty());
+    }
+
+    @Test
+    public void test_parcelable_1_00502() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
+        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
+        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
+        assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
+        assertEquals(result1.getTxPower(), result2.getTxPower());
+        assertEquals(result1.getFloorNumber(), result2.getFloorNumber());
+        assertEquals(result1.getAltitude(), result2.getAltitude());
+        assertEquals(result1.getUncertainty(), result2.getUncertainty());
+    }
+
+    @Test
+    public void test_parcelable_1_00503() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
+        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
+        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
+        assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
+        assertEquals(result1.getTxPower(), result2.getTxPower());
+        assertEquals(result1.getFloorNumber(), result2.getFloorNumber());
+        assertEquals(result1.getAltitude(), result2.getAltitude());
+        assertEquals(result1.getUncertainty(), result2.getUncertainty());
+    }
+
+    @Test
+    public void test_parcelable_1_00504() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
+        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
+        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
+        assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
+        assertEquals(result1.getTxPower(), result2.getTxPower());
+        assertEquals(result1.getFloorNumber(), result2.getFloorNumber());
+        assertEquals(result1.getAltitude(), result2.getAltitude());
+        assertEquals(result1.getUncertainty(), result2.getUncertainty());
+    }
+
+    @Test
+    public void test_parcelable_1_00505() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
+        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
+        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
+        assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
+        assertEquals(result1.getTxPower(), result2.getTxPower());
+        assertEquals(result1.getFloorNumber(), result2.getFloorNumber());
+        assertEquals(result1.getAltitude(), result2.getAltitude());
+        assertEquals(result1.getUncertainty(), result2.getUncertainty());
+    }
+
+    @Test
+    public void test_parcelable_1_00506() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
+        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
+        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
+        assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
+        assertEquals(result1.getTxPower(), result2.getTxPower());
+        assertEquals(result1.getFloorNumber(), result2.getFloorNumber());
+        assertEquals(result1.getAltitude(), result2.getAltitude());
+        assertEquals(result1.getUncertainty(), result2.getUncertainty());
+    }
+
+    @Test
+    public void test_parcelable_1_00507() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
+        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
+        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
+        assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
+        assertEquals(result1.getTxPower(), result2.getTxPower());
+        assertEquals(result1.getFloorNumber(), result2.getFloorNumber());
+        assertEquals(result1.getAltitude(), result2.getAltitude());
+        assertEquals(result1.getUncertainty(), result2.getUncertainty());
+    }
+
+    @Test
+    public void test_parcelable_2_00001() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00002() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00101() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00102() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00201() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00301() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00401() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00501() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00502() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00503() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00504() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00505() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00506() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00507() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00001() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00002() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00101() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00102() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00201() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00301() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00401() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00501() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00502() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00503() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00504() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00505() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00506() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00507() {
+        byte[] data = getData();
+
+        IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(data, 0, data[0]);
+        IndoorPositioningAndroid result2 = IndoorPositioningAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 
 }

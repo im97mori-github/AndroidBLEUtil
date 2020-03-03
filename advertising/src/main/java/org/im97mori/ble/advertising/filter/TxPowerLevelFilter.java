@@ -17,12 +17,12 @@ public class TxPowerLevelFilter implements AdvertisingDataFilter<AdvertisingData
     /**
      * expected List of {@link TxPowerLevel} in Advertising data
      */
-    private final List<TxPowerLevel> mExpect;
+    private final List<? extends TxPowerLevel> mExpect;
 
     /**
      * @param expect expected List of {@link TxPowerLevel} in Advertising data
      */
-    public TxPowerLevelFilter(@NonNull List<TxPowerLevel> expect) {
+    public TxPowerLevelFilter(@NonNull List<? extends TxPowerLevel> expect) {
         mExpect = expect;
     }
 
@@ -39,7 +39,7 @@ public class TxPowerLevelFilter implements AdvertisingDataFilter<AdvertisingData
     @Override
     public boolean isMatched(@NonNull AdvertisingDataParser.AdvertisingDataParseResult advertisingDataParseResult) {
         boolean result = false;
-        List<TxPowerLevel> actual = advertisingDataParseResult.getTxPowerLevelList();
+        List<? extends TxPowerLevel> actual = advertisingDataParseResult.getTxPowerLevelList();
         if (mExpect.isEmpty()) {
             if (actual.isEmpty()) {
                 result = true;

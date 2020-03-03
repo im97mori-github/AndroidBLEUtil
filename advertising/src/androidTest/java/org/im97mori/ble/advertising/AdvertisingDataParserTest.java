@@ -2,6 +2,7 @@ package org.im97mori.ble.advertising;
 
 import android.os.Parcel;
 
+import org.im97mori.ble.IndoorPositioningUtils;
 import org.im97mori.ble.TransportDiscoveryServiceUtils;
 import org.junit.Test;
 
@@ -10430,7 +10431,7 @@ public class AdvertisingDataParserTest {
 
         data[177] = 2;
         data[178] = DATA_TYPE_INDOOR_POSITIONING;
-        data[179] = 0b00000001;
+        data[179] = IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_COORDINATES_IN_ADVERTISING_PACKETS_COORDINATES_ARE_NOT_PRESENT;
 
         data[180] = 4;
         data[181] = DATA_TYPE_TRANSPORT_DISCOVERY_DATA;

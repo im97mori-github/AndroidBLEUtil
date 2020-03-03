@@ -1,7 +1,7 @@
 package org.im97mori.ble.advertising.filter;
 
 import org.im97mori.ble.advertising.AdvertisingDataParser;
-import org.im97mori.ble.advertising.PublicTargetAddress;
+import org.im97mori.ble.advertising.PublicTargetAddressAndroid;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -43,7 +43,7 @@ public class PublicTargetAddressFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddress.CREATOR.createFromByteArray(expectData), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddressAndroid.CREATOR.createFromByteArray(expectData), null);
         assertFalse(filter.isMatched(result));
     }
 
@@ -87,7 +87,7 @@ public class PublicTargetAddressFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddress.CREATOR.createFromByteArray(expectData), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddressAndroid.CREATOR.createFromByteArray(expectData), null);
         assertTrue(filter.isMatched(result));
     }
 
@@ -119,7 +119,7 @@ public class PublicTargetAddressFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(new PublicTargetAddress(expectData, 0, expectData.length - 1), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(new PublicTargetAddressAndroid(expectData, 0, expectData.length - 1), null);
         assertFalse(filter.isMatched(result));
     }
 
@@ -151,7 +151,7 @@ public class PublicTargetAddressFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(new PublicTargetAddress(expectData, 0, expectData.length - 1), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(new PublicTargetAddressAndroid(expectData, 0, expectData.length - 1), null);
         assertFalse(filter.isMatched(result));
     }
 
@@ -180,7 +180,7 @@ public class PublicTargetAddressFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(new PublicTargetAddress(expectData, 0, expectData.length - 1), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(new PublicTargetAddressAndroid(expectData, 0, expectData.length - 1), null);
         assertTrue(filter.isMatched(result));
     }
 
@@ -203,7 +203,7 @@ public class PublicTargetAddressFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddress.CREATOR.createFromByteArray(expectData), new LinkedList<byte[]>());
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddressAndroid.CREATOR.createFromByteArray(expectData), new LinkedList<byte[]>());
         assertFalse(filter.isMatched(result));
     }
 
@@ -226,7 +226,7 @@ public class PublicTargetAddressFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddress.CREATOR.createFromByteArray(expectData), Collections.singletonList(new byte[0]));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddressAndroid.CREATOR.createFromByteArray(expectData), Collections.singletonList(new byte[0]));
         assertFalse(filter.isMatched(result));
     }
 
@@ -251,7 +251,7 @@ public class PublicTargetAddressFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddress.CREATOR.createFromByteArray(expectData), Collections.singletonList(bitmask));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddressAndroid.CREATOR.createFromByteArray(expectData), Collections.singletonList(bitmask));
         assertTrue(filter.isMatched(result));
     }
 
@@ -278,7 +278,7 @@ public class PublicTargetAddressFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddress.CREATOR.createFromByteArray(expectData), Collections.singletonList(bitmask));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddressAndroid.CREATOR.createFromByteArray(expectData), Collections.singletonList(bitmask));
         assertTrue(filter.isMatched(result));
     }
 
@@ -304,7 +304,7 @@ public class PublicTargetAddressFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddress.CREATOR.createFromByteArray(expectData), Collections.singletonList(bitmask));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddressAndroid.CREATOR.createFromByteArray(expectData), Collections.singletonList(bitmask));
         assertTrue(filter.isMatched(result));
     }
 
@@ -332,7 +332,7 @@ public class PublicTargetAddressFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddress.CREATOR.createFromByteArray(expectData), Collections.singletonList(bitmask));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(PublicTargetAddressAndroid.CREATOR.createFromByteArray(expectData), Collections.singletonList(bitmask));
         assertFalse(filter.isMatched(result));
     }
 
@@ -363,7 +363,7 @@ public class PublicTargetAddressFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(new PublicTargetAddress(expectData, 0, expectData.length - 1), Collections.singletonList(bitmask));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(new PublicTargetAddressAndroid(expectData, 0, expectData.length - 1), Collections.singletonList(bitmask));
         assertFalse(filter.isMatched(result));
     }
 
@@ -394,7 +394,7 @@ public class PublicTargetAddressFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(new PublicTargetAddress(expectData, 0, expectData.length - 1), Arrays.asList(bitmask, bitmask));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(new PublicTargetAddressAndroid(expectData, 0, expectData.length - 1), Arrays.asList(bitmask, bitmask));
         assertTrue(filter.isMatched(result));
     }
 
@@ -428,7 +428,7 @@ public class PublicTargetAddressFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(new PublicTargetAddress(expectData, 0, expectData.length - 1), Arrays.asList(bitmask, bitmask));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new PublicTargetAddressFilter(new PublicTargetAddressAndroid(expectData, 0, expectData.length - 1), Arrays.asList(bitmask, bitmask));
         assertFalse(filter.isMatched(result));
     }
 }

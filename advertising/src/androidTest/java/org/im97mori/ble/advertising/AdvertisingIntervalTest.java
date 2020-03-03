@@ -6,142 +6,402 @@ import org.junit.Test;
 
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.ADVERTISING_INTERVAL_UNIT_MILLIS;
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_ADVERTISING_INTERVAL;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
+@SuppressWarnings("unused")
 public class AdvertisingIntervalTest {
 
-    @Test
-    public void constructTest1() {
+    //@formatter:off
+    private static final byte[] data_00001;
+    static {
         byte[] data = new byte[4];
         data[0] = 3;
         data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
         data[2] = 0x00;
         data[3] = 0x00;
-
-        AdvertisingInterval result = new AdvertisingInterval(data, 0, data[0]);
-        assertEquals(3, result.getLength());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result.getDataType());
-        assertEquals(0, result.getAdvertisingInterval());
-        assertEquals(0 * ADVERTISING_INTERVAL_UNIT_MILLIS, result.getAdvertisingIntervalMillis(), 0);
+        data_00001 = data;
     }
 
-    @Test
-    public void constructTest2() {
+    private static final byte[] data_00002;
+    static {
         byte[] data = new byte[4];
         data[0] = 3;
         data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
         data[2] = 0x7f;
         data[3] = 0x7f;
-        AdvertisingInterval result = new AdvertisingInterval(data, 0, data[0]);
-        assertEquals(3, result.getLength());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result.getDataType());
-        assertEquals(0x7f7f, result.getAdvertisingInterval());
-        assertEquals(0x7f7f * ADVERTISING_INTERVAL_UNIT_MILLIS, result.getAdvertisingIntervalMillis(), 0);
+        data_00002 = data;
     }
 
-    @Test
-    public void constructTest3() {
+    private static final byte[] data_00003;
+    static {
         byte[] data = new byte[4];
         data[0] = 3;
         data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
         data[2] = 0x00;
         data[3] = 0x7f;
-        AdvertisingInterval result = new AdvertisingInterval(data, 0, data[0]);
-        assertEquals(3, result.getLength());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result.getDataType());
-        assertEquals(0x7f00, result.getAdvertisingInterval());
-        assertEquals(0x7f00 * ADVERTISING_INTERVAL_UNIT_MILLIS, result.getAdvertisingIntervalMillis(), 0);
+        data_00003 = data;
     }
 
-    @Test
-    public void constructTest4() {
+    private static final byte[] data_00004;
+    static {
         byte[] data = new byte[4];
         data[0] = 3;
         data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
         data[2] = 0x7f;
         data[3] = 0x00;
-        AdvertisingInterval result = new AdvertisingInterval(data, 0, data[0]);
-        assertEquals(3, result.getLength());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result.getDataType());
-        assertEquals(0x007f, result.getAdvertisingInterval());
-        assertEquals(0x007f * ADVERTISING_INTERVAL_UNIT_MILLIS, result.getAdvertisingIntervalMillis(), 0);
+        data_00004 = data;
     }
 
-    @Test
-    public void constructTest5() {
+    private static final byte[] data_00005;
+    static {
         byte[] data = new byte[4];
         data[0] = 3;
         data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
         data[2] = (byte) 0b11111111;
         data[3] = (byte) 0b11111111;
-        AdvertisingInterval result = new AdvertisingInterval(data, 0, data[0]);
-        assertEquals(3, result.getLength());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result.getDataType());
-        assertEquals(0xffff, result.getAdvertisingInterval());
-        assertEquals(0xffff * ADVERTISING_INTERVAL_UNIT_MILLIS, result.getAdvertisingIntervalMillis(), 0);
+        data_00005 = data;
     }
 
-    @Test
-    public void constructTest6() {
+    private static final byte[] data_00006;
+    static {
         byte[] data = new byte[4];
         data[0] = 3;
         data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
         data[2] = 0;
         data[3] = (byte) 0b11111111;
-        AdvertisingInterval result = new AdvertisingInterval(data, 0, data[0]);
-        assertEquals(3, result.getLength());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result.getDataType());
-        assertEquals(0xff00, result.getAdvertisingInterval());
-        assertEquals(0xff00 * ADVERTISING_INTERVAL_UNIT_MILLIS, result.getAdvertisingIntervalMillis(), 0);
+        data_00006 = data;
     }
 
-    @Test
-    public void constructTest7() {
+    private static final byte[] data_00007;
+    static {
         byte[] data = new byte[4];
         data[0] = 3;
         data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
         data[2] = (byte) 0b11111111;
         data[3] = 0;
-        AdvertisingInterval result = new AdvertisingInterval(data, 0, data[0]);
-        assertEquals(3, result.getLength());
-        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result.getDataType());
-        assertEquals(0x00ff, result.getAdvertisingInterval());
-        assertEquals(0x00ff * ADVERTISING_INTERVAL_UNIT_MILLIS, result.getAdvertisingIntervalMillis(), 0);
+        data_00007 = data;
+    }
+    //@formatter:on
+
+    private byte[] getData() {
+        int index = -1;
+        byte[] data = null;
+
+        StackTraceElement[] stackTraceElementArray = Thread.currentThread().getStackTrace();
+        for (int i = 0; i < stackTraceElementArray.length; i++) {
+            StackTraceElement stackTraceElement = stackTraceElementArray[i];
+            if ("getData".equals(stackTraceElement.getMethodName())) {
+                index = i + 1;
+                break;
+            }
+        }
+        if (index >= 0 && index < stackTraceElementArray.length) {
+            StackTraceElement stackTraceElement = stackTraceElementArray[index];
+            String[] splitted = stackTraceElement.getMethodName().split("_");
+            try {
+                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return data;
     }
 
     @Test
-    public void constructTest8() {
-        byte[] data = new byte[4];
-        data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
-        data[2] = (byte) 0b11111111;
-        data[3] = 0;
+    public void test_constructor_00001() {
+        byte[] data = getData();
 
-        AdvertisingInterval result1 = new AdvertisingInterval(data, 0, data[0]);
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        assertEquals(3, result1.getLength());
+        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result1.getDataType());
+        assertEquals(0, result1.getAdvertisingInterval());
+        assertEquals(0 * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_00002() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        assertEquals(3, result1.getLength());
+        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result1.getDataType());
+        assertEquals(0x7f7f, result1.getAdvertisingInterval());
+        assertEquals(0x7f7f * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_00003() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        assertEquals(3, result1.getLength());
+        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result1.getDataType());
+        assertEquals(0x7f00, result1.getAdvertisingInterval());
+        assertEquals(0x7f00 * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_00004() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        assertEquals(3, result1.getLength());
+        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result1.getDataType());
+        assertEquals(0x007f, result1.getAdvertisingInterval());
+        assertEquals(0x007f * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_00005() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        assertEquals(3, result1.getLength());
+        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result1.getDataType());
+        assertEquals(0xffff, result1.getAdvertisingInterval());
+        assertEquals(0xffff * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_00006() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        assertEquals(3, result1.getLength());
+        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result1.getDataType());
+        assertEquals(0xff00, result1.getAdvertisingInterval());
+        assertEquals(0xff00 * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_constructor_00007() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        assertEquals(3, result1.getLength());
+        assertEquals(DATA_TYPE_ADVERTISING_INTERVAL, result1.getDataType());
+        assertEquals(0x00ff, result1.getAdvertisingInterval());
+        assertEquals(0x00ff * ADVERTISING_INTERVAL_UNIT_MILLIS, result1.getAdvertisingIntervalMillis(), 0);
+    }
+
+    @Test
+    public void test_parcelable_1_00001() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
-        AdvertisingInterval result2 = AdvertisingInterval.CREATOR.createFromParcel(parcel);
-
+        AdvertisingIntervalAndroid result2 = AdvertisingIntervalAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getAdvertisingInterval(), result2.getAdvertisingInterval());
     }
 
     @Test
-    public void constructTest9() {
-        byte[] data = new byte[4];
-        data[0] = 3;
-        data[1] = DATA_TYPE_ADVERTISING_INTERVAL;
-        data[2] = 0x00;
-        data[3] = 0x00;
+    public void test_parcelable_1_00002() {
+        byte[] data = getData();
 
-        AdvertisingInterval result1 = new AdvertisingInterval(data, 0, data[0]);
-        AdvertisingInterval result2 = AdvertisingInterval.CREATOR.createFromByteArray(data);
-
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        AdvertisingIntervalAndroid result2 = AdvertisingIntervalAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getAdvertisingInterval(), result2.getAdvertisingInterval());
+    }
+
+    @Test
+    public void test_parcelable_1_00003() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        AdvertisingIntervalAndroid result2 = AdvertisingIntervalAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getAdvertisingInterval(), result2.getAdvertisingInterval());
+    }
+
+    @Test
+    public void test_parcelable_1_00004() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        AdvertisingIntervalAndroid result2 = AdvertisingIntervalAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getAdvertisingInterval(), result2.getAdvertisingInterval());
+    }
+
+    @Test
+    public void test_parcelable_1_00005() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        AdvertisingIntervalAndroid result2 = AdvertisingIntervalAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getAdvertisingInterval(), result2.getAdvertisingInterval());
+    }
+
+    @Test
+    public void test_parcelable_1_00006() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        AdvertisingIntervalAndroid result2 = AdvertisingIntervalAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getAdvertisingInterval(), result2.getAdvertisingInterval());
+    }
+
+    @Test
+    public void test_parcelable_1_00007() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        AdvertisingIntervalAndroid result2 = AdvertisingIntervalAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertEquals(result1.getAdvertisingInterval(), result2.getAdvertisingInterval());
+    }
+
+    @Test
+    public void test_parcelable_2_00001() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00002() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00003() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00004() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00005() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00006() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00007() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00001() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        AdvertisingIntervalAndroid result2 = AdvertisingIntervalAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00002() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        AdvertisingIntervalAndroid result2 = AdvertisingIntervalAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00003() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        AdvertisingIntervalAndroid result2 = AdvertisingIntervalAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00004() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        AdvertisingIntervalAndroid result2 = AdvertisingIntervalAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00005() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        AdvertisingIntervalAndroid result2 = AdvertisingIntervalAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00006() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        AdvertisingIntervalAndroid result2 = AdvertisingIntervalAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00007() {
+        byte[] data = getData();
+
+        AdvertisingIntervalAndroid result1 = new AdvertisingIntervalAndroid(data, 0, data[0]);
+        AdvertisingIntervalAndroid result2 = AdvertisingIntervalAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 
 }

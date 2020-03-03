@@ -5,32 +5,33 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.TransportDiscoveryServiceUtils;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.AdvertisingInterval;
-import org.im97mori.ble.advertising.Appearance;
-import org.im97mori.ble.advertising.ChannelMapUpdateIndication;
-import org.im97mori.ble.advertising.CompleteListOf128BitServiceUUIDs;
-import org.im97mori.ble.advertising.CompleteListOf16BitServiceUUIDs;
-import org.im97mori.ble.advertising.CompleteListOf32BitServiceUUIDs;
-import org.im97mori.ble.advertising.CompleteLocalName;
-import org.im97mori.ble.advertising.Flags;
-import org.im97mori.ble.advertising.IncompleteListOf128BitServiceUUIDs;
-import org.im97mori.ble.advertising.IncompleteListOf16BitServiceUUIDs;
-import org.im97mori.ble.advertising.IncompleteListOf32BitServiceUUIDs;
-import org.im97mori.ble.advertising.IndoorPositioning;
-import org.im97mori.ble.advertising.LeSupportedFeatures;
-import org.im97mori.ble.advertising.ListOf128BitServiceSolicitationUUIDs;
-import org.im97mori.ble.advertising.ListOf16BitServiceSolicitationUUIDs;
-import org.im97mori.ble.advertising.ListOf32BitServiceSolicitationUUIDs;
-import org.im97mori.ble.advertising.ManufacturerSpecificData;
-import org.im97mori.ble.advertising.PublicTargetAddress;
-import org.im97mori.ble.advertising.RandomTargetAddress;
-import org.im97mori.ble.advertising.ServiceData128BitUUID;
-import org.im97mori.ble.advertising.ServiceData16BitUUID;
-import org.im97mori.ble.advertising.ServiceData32BitUUID;
-import org.im97mori.ble.advertising.ShortenedLocalName;
-import org.im97mori.ble.advertising.SlaveConnectionIntervalRange;
-import org.im97mori.ble.advertising.TransportDiscoveryData;
-import org.im97mori.ble.advertising.TxPowerLevel;
-import org.im97mori.ble.advertising.UniformRsourceIdentifier;
+import org.im97mori.ble.advertising.AdvertisingIntervalAndroid;
+import org.im97mori.ble.advertising.AppearanceAndroid;
+import org.im97mori.ble.advertising.ChannelMapUpdateIndicationAndroid;
+import org.im97mori.ble.advertising.CompleteListOf128BitServiceUUIDsAndroid;
+import org.im97mori.ble.advertising.CompleteListOf16BitServiceUUIDsAndroid;
+import org.im97mori.ble.advertising.CompleteListOf32BitServiceUUIDsAndroid;
+import org.im97mori.ble.advertising.CompleteLocalNameAndroid;
+import org.im97mori.ble.advertising.FlagsAndroid;
+import org.im97mori.ble.advertising.IncompleteListOf128BitServiceUUIDsAndroid;
+import org.im97mori.ble.advertising.IncompleteListOf16BitServiceUUIDsAndroid;
+import org.im97mori.ble.advertising.IncompleteListOf32BitServiceUUIDsAndroid;
+import org.im97mori.ble.advertising.IndoorPositioningAndroid;
+import org.im97mori.ble.advertising.LeSupportedFeaturesAndroid;
+import org.im97mori.ble.advertising.ListOf128BitServiceSolicitationUUIDsAndroid;
+import org.im97mori.ble.advertising.ListOf16BitServiceSolicitationUUIDsAndroid;
+import org.im97mori.ble.advertising.ListOf32BitServiceSolicitationUUIDsAndroid;
+import org.im97mori.ble.advertising.ManufacturerSpecificDataAndroid;
+import org.im97mori.ble.advertising.PublicTargetAddressAndroid;
+import org.im97mori.ble.advertising.RandomTargetAddressAndroid;
+import org.im97mori.ble.advertising.ServiceData128BitUUIDAndroid;
+import org.im97mori.ble.advertising.ServiceData16BitUUIDAndroid;
+import org.im97mori.ble.advertising.ServiceData32BitUUIDAndroid;
+import org.im97mori.ble.advertising.ShortenedLocalNameAndroid;
+import org.im97mori.ble.advertising.SlaveConnectionIntervalRangeAndroid;
+import org.im97mori.ble.advertising.TransportDiscoveryDataAndroid;
+import org.im97mori.ble.advertising.TxPowerLevelAndroid;
+import org.im97mori.ble.advertising.UniformRsourceIdentifierAndroid;
 import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
@@ -204,7 +205,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[3] = 0x02;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addAdvertisingIntervalFilter(AdvertisingInterval.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addAdvertisingIntervalFilter(AdvertisingIntervalAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof AdvertisingIntervalFilter);
     }
@@ -252,7 +253,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[3] = (byte) ((key >> 8) & 0x00ff);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addAppearanceFilter(Appearance.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addAppearanceFilter(AppearanceAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof AppearanceFilter);
     }
@@ -309,7 +310,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[8] = 0b00000000;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addChannelMapUpdateIndicationFilter(ChannelMapUpdateIndication.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addChannelMapUpdateIndicationFilter(ChannelMapUpdateIndicationAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof ChannelMapUpdateIndicationFilter);
     }
@@ -351,7 +352,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[3] = 0;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addCompleteListOf16BitServiceUUIDsFilter(CompleteListOf16BitServiceUUIDs.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addCompleteListOf16BitServiceUUIDsFilter(CompleteListOf16BitServiceUUIDsAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof CompleteListOf16BitServiceUUIDsFilter);
     }
@@ -365,7 +366,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[3] = 0;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addCompleteListOf16BitServiceUUIDsFilter(Collections.singletonList(CompleteListOf16BitServiceUUIDs.CREATOR.createFromByteArray(data))).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addCompleteListOf16BitServiceUUIDsFilter(Collections.singletonList(CompleteListOf16BitServiceUUIDsAndroid.CREATOR.createFromByteArray(data))).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof CompleteListOf16BitServiceUUIDsFilter);
     }
@@ -413,7 +414,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[5] = 0x00;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addCompleteListOf32BitServiceUUIDsFilter(CompleteListOf32BitServiceUUIDs.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addCompleteListOf32BitServiceUUIDsFilter(CompleteListOf32BitServiceUUIDsAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof CompleteListOf32BitServiceUUIDsFilter);
     }
@@ -429,7 +430,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[5] = 0x00;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addCompleteListOf32BitServiceUUIDsFilter(Collections.singletonList(CompleteListOf32BitServiceUUIDs.CREATOR.createFromByteArray(data))).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addCompleteListOf32BitServiceUUIDsFilter(Collections.singletonList(CompleteListOf32BitServiceUUIDsAndroid.CREATOR.createFromByteArray(data))).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof CompleteListOf32BitServiceUUIDsFilter);
     }
@@ -513,7 +514,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[17] = 0x00;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addCompleteListOf128BitServiceUUIDsFilter(CompleteListOf128BitServiceUUIDs.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addCompleteListOf128BitServiceUUIDsFilter(CompleteListOf128BitServiceUUIDsAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof CompleteListOf128BitServiceUUIDsFilter);
     }
@@ -541,7 +542,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[17] = 0x00;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addCompleteListOf128BitServiceUUIDsFilter(Collections.singletonList(CompleteListOf128BitServiceUUIDs.CREATOR.createFromByteArray(data))).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addCompleteListOf128BitServiceUUIDsFilter(Collections.singletonList(CompleteListOf128BitServiceUUIDsAndroid.CREATOR.createFromByteArray(data))).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof CompleteListOf128BitServiceUUIDsFilter);
     }
@@ -586,7 +587,7 @@ public class AbstractFilteredCallbackBuilderTest {
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addCompleteLocalNameFilter(CompleteLocalName.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addCompleteLocalNameFilter(CompleteLocalNameAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof CompleteLocalNameFilter);
     }
@@ -625,7 +626,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[2] = 0b00000001;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addFlagsFilter(Flags.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addFlagsFilter(FlagsAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof FlagsFilter);
     }
@@ -667,7 +668,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[3] = 0;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIncompleteListOf16BitServiceUUIDsFilter(IncompleteListOf16BitServiceUUIDs.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIncompleteListOf16BitServiceUUIDsFilter(IncompleteListOf16BitServiceUUIDsAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof IncompleteListOf16BitServiceUUIDsFilter);
     }
@@ -681,7 +682,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[3] = 0;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIncompleteListOf16BitServiceUUIDsFilter(Collections.singletonList(IncompleteListOf16BitServiceUUIDs.CREATOR.createFromByteArray(data))).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIncompleteListOf16BitServiceUUIDsFilter(Collections.singletonList(IncompleteListOf16BitServiceUUIDsAndroid.CREATOR.createFromByteArray(data))).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof IncompleteListOf16BitServiceUUIDsFilter);
     }
@@ -729,7 +730,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[5] = 0x00;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIncompleteListOf32BitServiceUUIDsFilter(IncompleteListOf32BitServiceUUIDs.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIncompleteListOf32BitServiceUUIDsFilter(IncompleteListOf32BitServiceUUIDsAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof IncompleteListOf32BitServiceUUIDsFilter);
     }
@@ -745,7 +746,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[5] = 0x00;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIncompleteListOf32BitServiceUUIDsFilter(Collections.singletonList(IncompleteListOf32BitServiceUUIDs.CREATOR.createFromByteArray(data))).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIncompleteListOf32BitServiceUUIDsFilter(Collections.singletonList(IncompleteListOf32BitServiceUUIDsAndroid.CREATOR.createFromByteArray(data))).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof IncompleteListOf32BitServiceUUIDsFilter);
     }
@@ -829,7 +830,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[17] = 0x00;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIncompleteListOf128BitServiceUUIDsFilter(IncompleteListOf128BitServiceUUIDs.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIncompleteListOf128BitServiceUUIDsFilter(IncompleteListOf128BitServiceUUIDsAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof IncompleteListOf128BitServiceUUIDsFilter);
     }
@@ -857,7 +858,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[17] = 0x00;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIncompleteListOf128BitServiceUUIDsFilter(Collections.singletonList(IncompleteListOf128BitServiceUUIDs.CREATOR.createFromByteArray(data))).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIncompleteListOf128BitServiceUUIDsFilter(Collections.singletonList(IncompleteListOf128BitServiceUUIDsAndroid.CREATOR.createFromByteArray(data))).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof IncompleteListOf128BitServiceUUIDsFilter);
     }
@@ -893,7 +894,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[1] = DATA_TYPE_INDOOR_POSITIONING;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIndoorPositioningFilter(IndoorPositioning.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addIndoorPositioningFilter(IndoorPositioningAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof IndoorPositioningFilter);
     }
@@ -932,7 +933,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[2] = 0b00000001;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addLeSupportedFeaturesFilter(LeSupportedFeatures.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addLeSupportedFeaturesFilter(LeSupportedFeaturesAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof LeSupportedFeaturesFilter);
     }
@@ -974,7 +975,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[3] = 0;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addListOf16BitServiceSolicitationUUIDsFilter(ListOf16BitServiceSolicitationUUIDs.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addListOf16BitServiceSolicitationUUIDsFilter(ListOf16BitServiceSolicitationUUIDsAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof ListOf16BitServiceSolicitationUUIDsFilter);
     }
@@ -988,7 +989,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[3] = 0;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addListOf16BitServiceSolicitationUUIDsFilter(Collections.singletonList(ListOf16BitServiceSolicitationUUIDs.CREATOR.createFromByteArray(data))).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addListOf16BitServiceSolicitationUUIDsFilter(Collections.singletonList(ListOf16BitServiceSolicitationUUIDsAndroid.CREATOR.createFromByteArray(data))).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof ListOf16BitServiceSolicitationUUIDsFilter);
     }
@@ -1036,7 +1037,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[5] = 0x00;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addListOf32BitServiceSolicitationUUIDsFilter(ListOf32BitServiceSolicitationUUIDs.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addListOf32BitServiceSolicitationUUIDsFilter(ListOf32BitServiceSolicitationUUIDsAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof ListOf32BitServiceSolicitationUUIDsFilter);
     }
@@ -1052,7 +1053,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[5] = 0x00;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addListOf32BitServiceSolicitationUUIDsFilter(Collections.singletonList(ListOf32BitServiceSolicitationUUIDs.CREATOR.createFromByteArray(data))).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addListOf32BitServiceSolicitationUUIDsFilter(Collections.singletonList(ListOf32BitServiceSolicitationUUIDsAndroid.CREATOR.createFromByteArray(data))).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof ListOf32BitServiceSolicitationUUIDsFilter);
     }
@@ -1133,7 +1134,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[16] = 0x00;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addListOf128BitServiceSolicitationUUIDsFilter(ListOf128BitServiceSolicitationUUIDs.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addListOf128BitServiceSolicitationUUIDsFilter(ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof ListOf128BitServiceSolicitationUUIDsFilter);
     }
@@ -1160,7 +1161,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[16] = 0x00;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addListOf128BitServiceSolicitationUUIDsFilter(Collections.singletonList(ListOf128BitServiceSolicitationUUIDs.CREATOR.createFromByteArray(data))).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addListOf128BitServiceSolicitationUUIDsFilter(Collections.singletonList(ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromByteArray(data))).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof ListOf128BitServiceSolicitationUUIDsFilter);
     }
@@ -1211,7 +1212,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addManufacturerSpecificDataFilter(ManufacturerSpecificData.CREATOR.createFromByteArray(data), null).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addManufacturerSpecificDataFilter(ManufacturerSpecificDataAndroid.CREATOR.createFromByteArray(data), null).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof ManufacturerSpecificDataFilter);
     }
@@ -1228,7 +1229,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[3] = (byte) ((companyId >> 8) & 0x0000ff);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addManufacturerSpecificDataFilter(Collections.singletonList(ManufacturerSpecificData.CREATOR.createFromByteArray(data)), null).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addManufacturerSpecificDataFilter(Collections.singletonList(ManufacturerSpecificDataAndroid.CREATOR.createFromByteArray(data)), null).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof ManufacturerSpecificDataFilter);
     }
@@ -1291,7 +1292,7 @@ public class AbstractFilteredCallbackBuilderTest {
         System.arraycopy(address, 0, data, 2, address.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addPublicTargetAddressFilter(PublicTargetAddress.CREATOR.createFromByteArray(data), null).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addPublicTargetAddressFilter(PublicTargetAddressAndroid.CREATOR.createFromByteArray(data), null).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof PublicTargetAddressFilter);
     }
@@ -1354,7 +1355,7 @@ public class AbstractFilteredCallbackBuilderTest {
         System.arraycopy(address, 0, data, 2, address.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addRandomTargetAddressFilter(RandomTargetAddress.CREATOR.createFromByteArray(data), null).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addRandomTargetAddressFilter(RandomTargetAddressAndroid.CREATOR.createFromByteArray(data), null).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof RandomTargetAddressFilter);
     }
@@ -1396,7 +1397,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[3] = 0;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addServiceData16BitUUIDFilter(ServiceData16BitUUID.CREATOR.createFromByteArray(data), null).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addServiceData16BitUUIDFilter(ServiceData16BitUUIDAndroid.CREATOR.createFromByteArray(data), null).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof ServiceData16BitUUIDFilter);
     }
@@ -1410,7 +1411,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[3] = 0;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addServiceData16BitUUIDFilter(Collections.singletonList(ServiceData16BitUUID.CREATOR.createFromByteArray(data)), null).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addServiceData16BitUUIDFilter(Collections.singletonList(ServiceData16BitUUIDAndroid.CREATOR.createFromByteArray(data)), null).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof ServiceData16BitUUIDFilter);
     }
@@ -1458,7 +1459,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[5] = 0x00;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addServiceData32BitUUIDFilter(ServiceData32BitUUID.CREATOR.createFromByteArray(data), null).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addServiceData32BitUUIDFilter(ServiceData32BitUUIDAndroid.CREATOR.createFromByteArray(data), null).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof ServiceData32BitUUIDFilter);
     }
@@ -1474,7 +1475,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[5] = 0x00;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addServiceData32BitUUIDFilter(Collections.singletonList(ServiceData32BitUUID.CREATOR.createFromByteArray(data)), null).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addServiceData32BitUUIDFilter(Collections.singletonList(ServiceData32BitUUIDAndroid.CREATOR.createFromByteArray(data)), null).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof ServiceData32BitUUIDFilter);
     }
@@ -1558,7 +1559,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[17] = 0x00;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addServiceData128BitUUIDFilter(ServiceData128BitUUID.CREATOR.createFromByteArray(data), null).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addServiceData128BitUUIDFilter(ServiceData128BitUUIDAndroid.CREATOR.createFromByteArray(data), null).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof ServiceData128BitUUIDFilter);
     }
@@ -1586,7 +1587,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[17] = 0x00;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addServiceData128BitUUIDFilter(Collections.singletonList(ServiceData128BitUUID.CREATOR.createFromByteArray(data)), null).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addServiceData128BitUUIDFilter(Collections.singletonList(ServiceData128BitUUIDAndroid.CREATOR.createFromByteArray(data)), null).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof ServiceData128BitUUIDFilter);
     }
@@ -1631,7 +1632,7 @@ public class AbstractFilteredCallbackBuilderTest {
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addShortenedLocalNameFilter(ShortenedLocalName.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addShortenedLocalNameFilter(ShortenedLocalNameAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof ShortenedLocalNameFilter);
     }
@@ -1679,7 +1680,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[5] = (byte) 0xff;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addSlaveConnectionIntervalRangeFilter(SlaveConnectionIntervalRange.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addSlaveConnectionIntervalRangeFilter(SlaveConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof SlaveConnectionIntervalRangeFilter);
     }
@@ -1695,7 +1696,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[5] = (byte) 0xff;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addSlaveConnectionIntervalRangeFilter(Collections.singletonList(SlaveConnectionIntervalRange.CREATOR.createFromByteArray(data))).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addSlaveConnectionIntervalRangeFilter(Collections.singletonList(SlaveConnectionIntervalRangeAndroid.CREATOR.createFromByteArray(data))).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof SlaveConnectionIntervalRangeFilter);
     }
@@ -1740,7 +1741,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[4] = 0;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addTransportDiscoveryDataFilter(TransportDiscoveryData.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addTransportDiscoveryDataFilter(TransportDiscoveryDataAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof TransportDiscoveryDataFilter);
     }
@@ -1779,7 +1780,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[2] = -127;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addTxPowerLevelFilter(TxPowerLevel.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addTxPowerLevelFilter(TxPowerLevelAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof TxPowerLevelFilter);
     }
@@ -1792,7 +1793,7 @@ public class AbstractFilteredCallbackBuilderTest {
         data[2] = -127;
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addTxPowerLevelFilter(Collections.singletonList(TxPowerLevel.CREATOR.createFromByteArray(data))).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addTxPowerLevelFilter(Collections.singletonList(TxPowerLevelAndroid.CREATOR.createFromByteArray(data))).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof TxPowerLevelFilter);
     }
@@ -1849,7 +1850,7 @@ public class AbstractFilteredCallbackBuilderTest {
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addUniformRsourceIdentifier(UniformRsourceIdentifier.CREATOR.createFromByteArray(data)).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addUniformRsourceIdentifier(UniformRsourceIdentifierAndroid.CREATOR.createFromByteArray(data)).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof UniformRsourceIdentifierFilter);
     }
@@ -1868,7 +1869,7 @@ public class AbstractFilteredCallbackBuilderTest {
         System.arraycopy(utf8data, 0, data, 2, utf8data.length);
 
         MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
-        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addUniformRsourceIdentifier(Collections.singletonList(UniformRsourceIdentifier.CREATOR.createFromByteArray(data))).build();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addUniformRsourceIdentifier(Collections.singletonList(UniformRsourceIdentifierAndroid.CREATOR.createFromByteArray(data))).build();
         assertEquals(1, result.size());
         assertTrue(result.get(0) instanceof UniformRsourceIdentifierFilter);
     }

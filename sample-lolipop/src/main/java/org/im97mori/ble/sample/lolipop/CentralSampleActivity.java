@@ -37,8 +37,8 @@ import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.BLESyncConnection;
 import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
-import org.im97mori.ble.advertising.CompleteListOf128BitServiceUUIDs;
-import org.im97mori.ble.advertising.Flags;
+import org.im97mori.ble.advertising.CompleteListOf128BitServiceUUIDsAndroid;
+import org.im97mori.ble.advertising.FlagsAndroid;
 import org.im97mori.ble.advertising.filter.AdvertisingDataFilter;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.advertising.filter.FlagsFilter;
@@ -738,9 +738,9 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                     bb.putLong(MOCK_CONTROL_SERVICE_UUID.getMostSignificantBits());
                                     mTestScanCallback = new TestScanCallback.Builder(CentralSampleActivity.this)
                                             .addFilter(new OrFilter<>(
-                                                    new FlagsFilter(Flags.CREATOR.createFromByteArray(new byte[]{0, 0, 1}))
-                                                    , new FlagsFilter(Flags.CREATOR.createFromByteArray(new byte[]{0, 0, 2}))))
-                                            .addCompleteListOf128BitServiceUUIDsFilter(CompleteListOf128BitServiceUUIDs.CREATOR.createFromByteArray(bytes))
+                                                    new FlagsFilter(FlagsAndroid.CREATOR.createFromByteArray(new byte[]{0, 0, 1}))
+                                                    , new FlagsFilter(FlagsAndroid.CREATOR.createFromByteArray(new byte[]{0, 0, 2}))))
+                                            .addCompleteListOf128BitServiceUUIDsFilter(CompleteListOf128BitServiceUUIDsAndroid.CREATOR.createFromByteArray(bytes))
                                             .build();
                                     mBluetoothLeScanner.startScan(mTestScanCallback);
                                 }

@@ -1,7 +1,7 @@
 package org.im97mori.ble.advertising.filter;
 
 import org.im97mori.ble.advertising.AdvertisingDataParser;
-import org.im97mori.ble.advertising.ManufacturerSpecificData;
+import org.im97mori.ble.advertising.ManufacturerSpecificDataAndroid;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(new ArrayList<ManufacturerSpecificData>(), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(new ArrayList<ManufacturerSpecificDataAndroid>(), null);
         assertTrue(filter.isMatched(result));
     }
 
@@ -38,7 +38,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(ManufacturerSpecificData.CREATOR.createFromByteArray(expectData), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(ManufacturerSpecificDataAndroid.CREATOR.createFromByteArray(expectData), null);
         assertFalse(filter.isMatched(result));
     }
 
@@ -54,7 +54,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(new ArrayList<ManufacturerSpecificData>(), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(new ArrayList<ManufacturerSpecificDataAndroid>(), null);
         assertFalse(filter.isMatched(result));
     }
 
@@ -72,7 +72,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(ManufacturerSpecificData.CREATOR.createFromByteArray(expectData), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(ManufacturerSpecificDataAndroid.CREATOR.createFromByteArray(expectData), null);
         assertTrue(filter.isMatched(result));
     }
 
@@ -95,8 +95,8 @@ public class ManufacturerSpecificDataFilterTest {
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
         AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(
-                Arrays.asList(new ManufacturerSpecificData(expectData, 0, expectData.length / 2 - 1)
-                        , new ManufacturerSpecificData(expectData, expectData.length / 2, expectData.length / 2 - 1))
+                Arrays.asList(new ManufacturerSpecificDataAndroid(expectData, 0, expectData.length / 2 - 1)
+                        , new ManufacturerSpecificDataAndroid(expectData, expectData.length / 2, expectData.length / 2 - 1))
                 , null
         );
         assertFalse(filter.isMatched(result));
@@ -121,7 +121,7 @@ public class ManufacturerSpecificDataFilterTest {
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
         AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(
-                new ManufacturerSpecificData(expectData, 0, expectData.length - 1), null
+                new ManufacturerSpecificDataAndroid(expectData, 0, expectData.length - 1), null
         );
         assertFalse(filter.isMatched(result));
     }
@@ -145,8 +145,8 @@ public class ManufacturerSpecificDataFilterTest {
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
         AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(
-                Arrays.asList(new ManufacturerSpecificData(expectData, 0, expectData.length / 2 - 1)
-                        , new ManufacturerSpecificData(expectData, expectData.length / 2, expectData.length / 2 - 1))
+                Arrays.asList(new ManufacturerSpecificDataAndroid(expectData, 0, expectData.length / 2 - 1)
+                        , new ManufacturerSpecificDataAndroid(expectData, expectData.length / 2, expectData.length / 2 - 1))
                 , null
         );
         assertTrue(filter.isMatched(result));
@@ -174,7 +174,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(new ManufacturerSpecificData(expectData, 0, expectData.length - 1), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(new ManufacturerSpecificDataAndroid(expectData, 0, expectData.length - 1), null);
         assertFalse(filter.isMatched(result));
     }
 
@@ -200,7 +200,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(new ManufacturerSpecificData(expectData, 0, expectData.length - 1), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(new ManufacturerSpecificDataAndroid(expectData, 0, expectData.length - 1), null);
         assertFalse(filter.isMatched(result));
     }
 
@@ -223,7 +223,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(new ManufacturerSpecificData(expectData, 0, expectData.length - 1), null);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(new ManufacturerSpecificDataAndroid(expectData, 0, expectData.length - 1), null);
         assertTrue(filter.isMatched(result));
     }
 
@@ -246,7 +246,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(ManufacturerSpecificData.CREATOR.createFromByteArray(expectData), new byte[0]);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(ManufacturerSpecificDataAndroid.CREATOR.createFromByteArray(expectData), new byte[0]);
         assertFalse(filter.isMatched(result));
     }
 
@@ -271,7 +271,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(ManufacturerSpecificData.CREATOR.createFromByteArray(expectData), bitmask);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(ManufacturerSpecificDataAndroid.CREATOR.createFromByteArray(expectData), bitmask);
         assertTrue(filter.isMatched(result));
     }
 
@@ -298,7 +298,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(ManufacturerSpecificData.CREATOR.createFromByteArray(expectData), bitmask);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(ManufacturerSpecificDataAndroid.CREATOR.createFromByteArray(expectData), bitmask);
         assertTrue(filter.isMatched(result));
     }
 
@@ -324,7 +324,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(ManufacturerSpecificData.CREATOR.createFromByteArray(expectData), bitmask);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(ManufacturerSpecificDataAndroid.CREATOR.createFromByteArray(expectData), bitmask);
         assertTrue(filter.isMatched(result));
     }
 
@@ -352,7 +352,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(ManufacturerSpecificData.CREATOR.createFromByteArray(expectData), bitmask);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(ManufacturerSpecificDataAndroid.CREATOR.createFromByteArray(expectData), bitmask);
         assertFalse(filter.isMatched(result));
     }
 
@@ -380,7 +380,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(ManufacturerSpecificData.CREATOR.createFromByteArray(expectData), bitmask);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(ManufacturerSpecificDataAndroid.CREATOR.createFromByteArray(expectData), bitmask);
         assertFalse(filter.isMatched(result));
     }
 
@@ -405,7 +405,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(new ManufacturerSpecificData(expectData, 0, expectData.length - 1), bitmask);
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(new ManufacturerSpecificDataAndroid(expectData, 0, expectData.length - 1), bitmask);
         assertFalse(filter.isMatched(result));
     }
 
@@ -430,7 +430,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(Collections.singletonList(new ManufacturerSpecificData(expectData, 0, expectData.length - 1)), Collections.singletonList(bitmask));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(Collections.singletonList(new ManufacturerSpecificDataAndroid(expectData, 0, expectData.length - 1)), Collections.singletonList(bitmask));
         assertTrue(filter.isMatched(result));
     }
 
@@ -458,7 +458,7 @@ public class ManufacturerSpecificDataFilterTest {
 
         AdvertisingDataParser parser = new AdvertisingDataParser.Builder(true).build();
         AdvertisingDataParser.AdvertisingDataParseResult result = parser.parse(actualData);
-        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(Collections.singletonList(new ManufacturerSpecificData(expectData, 0, expectData.length - 1)), Arrays.asList(bitmask, bitmask));
+        AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> filter = new ManufacturerSpecificDataFilter(Collections.singletonList(new ManufacturerSpecificDataAndroid(expectData, 0, expectData.length - 1)), Arrays.asList(bitmask, bitmask));
         assertFalse(filter.isMatched(result));
     }
 }

@@ -7,8 +7,6 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_TX_POWER_LEVEL;
-
 /**
  * <p>
  * Tx Power Level
@@ -16,20 +14,20 @@ import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingD
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-public class TxPowerLevel extends AbstractAdvertisingData {
+public class TxPowerLevelAndroid extends TxPowerLevel implements AdvertisingDataInterfaceAndroid {
 
     /**
      * @see ByteArrayCreater
      */
-    public static final ByteArrayCreater<TxPowerLevel> CREATOR = new ByteArrayCreater<TxPowerLevel>() {
+    public static final ByteArrayCreater<TxPowerLevelAndroid> CREATOR = new ByteArrayCreater<TxPowerLevelAndroid>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public TxPowerLevel createFromParcel(@NonNull Parcel in) {
-            return new TxPowerLevel(in);
+        public TxPowerLevelAndroid createFromParcel(@NonNull Parcel in) {
+            return new TxPowerLevelAndroid(in);
         }
 
         /**
@@ -37,8 +35,8 @@ public class TxPowerLevel extends AbstractAdvertisingData {
          */
         @Override
         @NonNull
-        public TxPowerLevel[] newArray(int size) {
-            return new TxPowerLevel[size];
+        public TxPowerLevelAndroid[] newArray(int size) {
+            return new TxPowerLevelAndroid[size];
         }
 
         /**
@@ -46,16 +44,11 @@ public class TxPowerLevel extends AbstractAdvertisingData {
          */
         @NonNull
         @Override
-        public TxPowerLevel createFromByteArray(@NonNull byte[] values) {
-            return new TxPowerLevel(values, 0, values.length - 1);
+        public TxPowerLevelAndroid createFromByteArray(@NonNull byte[] values) {
+            return new TxPowerLevelAndroid(values, 0, values.length - 1);
         }
 
     };
-
-    /**
-     * Tx Power Level
-     */
-    private final byte mTxPowerLevel;
 
     /**
      * Constructor for Tx Power Level
@@ -64,12 +57,10 @@ public class TxPowerLevel extends AbstractAdvertisingData {
      * @param offset data offset
      * @param length 1st octed of Advertising Data
      */
-    public TxPowerLevel(@NonNull byte[] data
+    public TxPowerLevelAndroid(@NonNull byte[] data
             , int offset
             , int length) {
-        super(length);
-
-        mTxPowerLevel = data[offset + 2];
+        super(data, offset, length);
     }
 
     /**
@@ -77,9 +68,9 @@ public class TxPowerLevel extends AbstractAdvertisingData {
      *
      * @param in Parcel
      */
-    private TxPowerLevel(@NonNull Parcel in) {
-        super(in.readInt());
-        mTxPowerLevel = in.readByte();
+    @SuppressWarnings("ConstantConditions")
+    private TxPowerLevelAndroid(@NonNull Parcel in) {
+        super(in.createByteArray(), 0, in.readInt());
     }
 
     /**
@@ -95,23 +86,8 @@ public class TxPowerLevel extends AbstractAdvertisingData {
      */
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeInt(mLength);
-        dest.writeByte(mTxPowerLevel);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int getDataType() {
-        return DATA_TYPE_TX_POWER_LEVEL;
-    }
-
-    /**
-     * @return Tx Power Level
-     */
-    public byte getTxPowerLevel() {
-        return mTxPowerLevel;
+        dest.writeByteArray(getBytes());
+        dest.writeInt(getLength());
     }
 
 }

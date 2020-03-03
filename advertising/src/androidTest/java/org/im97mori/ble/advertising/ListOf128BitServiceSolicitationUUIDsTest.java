@@ -7,12 +7,15 @@ import org.junit.Test;
 import java.util.UUID;
 
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
+@SuppressWarnings("unused")
 public class ListOf128BitServiceSolicitationUUIDsTest {
 
-    @Test
-    public void constructTest1() {
+    //@formatter:off
+    private static final byte[] data_00001;
+    static {
         byte[] data = new byte[18];
         data[0] = 17;
         data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
@@ -32,15 +35,11 @@ public class ListOf128BitServiceSolicitationUUIDsTest {
         data[15] = 0x00;
         data[16] = 0x00;
         data[17] = 0x00;
-
-        ListOf128BitServiceSolicitationUUIDs result = new ListOf128BitServiceSolicitationUUIDs(data, 0, data[0]);
-        assertEquals(17, result.getLength());
-        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result.getDataType());
-        assertEquals(UUID.fromString("00000000-0000-0000-0000-000000000000"), result.getUuidList().get(0));
+        data_00001 = data;
     }
 
-    @Test
-    public void constructTest2() {
+    private static final byte[] data_00002;
+    static {
         byte[] data = new byte[18];
         data[0] = 17;
         data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
@@ -60,14 +59,11 @@ public class ListOf128BitServiceSolicitationUUIDsTest {
         data[15] = 127;
         data[16] = 127;
         data[17] = 127;
-        ListOf128BitServiceSolicitationUUIDs result = new ListOf128BitServiceSolicitationUUIDs(data, 0, data[0]);
-        assertEquals(17, result.getLength());
-        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result.getDataType());
-        assertEquals(UUID.fromString("7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"), result.getUuidList().get(0));
+        data_00002 = data;
     }
 
-    @Test
-    public void constructTest3() {
+    private static final byte[] data_00003;
+    static {
         byte[] data = new byte[18];
         data[0] = 17;
         data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
@@ -87,14 +83,11 @@ public class ListOf128BitServiceSolicitationUUIDsTest {
         data[15] = 0;
         data[16] = 0;
         data[17] = 127;
-        ListOf128BitServiceSolicitationUUIDs result = new ListOf128BitServiceSolicitationUUIDs(data, 0, data[0]);
-        assertEquals(17, result.getLength());
-        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result.getDataType());
-        assertEquals(UUID.fromString("7f000000-0000-0000-0000-000000000000"), result.getUuidList().get(0));
+        data_00003 = data;
     }
 
-    @Test
-    public void constructTest4() {
+    private static final byte[] data_00004;
+    static {
         byte[] data = new byte[18];
         data[0] = 17;
         data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
@@ -114,14 +107,11 @@ public class ListOf128BitServiceSolicitationUUIDsTest {
         data[15] = 0;
         data[16] = 0;
         data[17] = 0;
-        ListOf128BitServiceSolicitationUUIDs result = new ListOf128BitServiceSolicitationUUIDs(data, 0, data[0]);
-        assertEquals(17, result.getLength());
-        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result.getDataType());
-        assertEquals(UUID.fromString("00000000-0000-0000-0000-00000000007f"), result.getUuidList().get(0));
+        data_00004 = data;
     }
 
-    @Test
-    public void constructTest5() {
+    private static final byte[] data_00005;
+    static {
         byte[] data = new byte[18];
         data[0] = 17;
         data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
@@ -141,14 +131,11 @@ public class ListOf128BitServiceSolicitationUUIDsTest {
         data[15] = (byte) 0b11111111;
         data[16] = (byte) 0b11111111;
         data[17] = (byte) 0b11111111;
-        ListOf128BitServiceSolicitationUUIDs result = new ListOf128BitServiceSolicitationUUIDs(data, 0, data[0]);
-        assertEquals(17, result.getLength());
-        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result.getDataType());
-        assertEquals(UUID.fromString("ffffffff-ffff-ffff-ffff-ffffffffffff"), result.getUuidList().get(0));
+        data_00005 = data;
     }
 
-    @Test
-    public void constructTest6() {
+    private static final byte[] data_00006;
+    static {
         byte[] data = new byte[18];
         data[0] = 17;
         data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
@@ -168,14 +155,11 @@ public class ListOf128BitServiceSolicitationUUIDsTest {
         data[15] = 0;
         data[16] = 0;
         data[17] = (byte) 0b11111111;
-        ListOf128BitServiceSolicitationUUIDs result = new ListOf128BitServiceSolicitationUUIDs(data, 0, data[0]);
-        assertEquals(17, result.getLength());
-        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result.getDataType());
-        assertEquals(UUID.fromString("ff000000-0000-0000-0000-000000000000"), result.getUuidList().get(0));
+        data_00006 = data;
     }
 
-    @Test
-    public void constructTest7() {
+    private static final byte[] data_00007;
+    static {
         byte[] data = new byte[18];
         data[0] = 17;
         data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
@@ -195,25 +179,19 @@ public class ListOf128BitServiceSolicitationUUIDsTest {
         data[15] = 0;
         data[16] = 0;
         data[17] = 0;
-        ListOf128BitServiceSolicitationUUIDs result = new ListOf128BitServiceSolicitationUUIDs(data, 0, data[0]);
-        assertEquals(17, result.getLength());
-        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result.getDataType());
-        assertEquals(UUID.fromString("00000000-0000-0000-0000-0000000000ff"), result.getUuidList().get(0));
+        data_00007 = data;
     }
 
-    @Test
-    public void constructTest8() {
+    private static final byte[] data_00008;
+    static {
         byte[] data = new byte[2];
         data[0] = 1;
         data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
-        ListOf128BitServiceSolicitationUUIDs result = new ListOf128BitServiceSolicitationUUIDs(data, 0, data[0]);
-        assertEquals(1, result.getLength());
-        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result.getDataType());
-        assertEquals(0, result.getUuidList().size());
+        data_00008 = data;
     }
 
-    @Test
-    public void constructTest9() {
+    private static final byte[] data_00009;
+    static {
         byte[] data = new byte[34];
         data[0] = 33;
         data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
@@ -249,77 +227,405 @@ public class ListOf128BitServiceSolicitationUUIDsTest {
         data[31] = 0x1e;
         data[32] = 0x1f;
         data[33] = 0x20;
-        ListOf128BitServiceSolicitationUUIDs result = new ListOf128BitServiceSolicitationUUIDs(data, 0, data[0]);
-        assertEquals(33, result.getLength());
-        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result.getDataType());
-        assertEquals(2, result.getUuidList().size());
-        assertEquals(UUID.fromString("100f0e0d-0c0b-0a09-0807-060504030201"), result.getUuidList().get(0));
-        assertEquals(UUID.fromString("201f1e1d-1c1b-1a19-1817-161514131211"), result.getUuidList().get(1));
+        data_00009 = data;
+    }
+    //@formatter:on
+
+    private byte[] getData() {
+        int index = -1;
+        byte[] data = null;
+
+        StackTraceElement[] stackTraceElementArray = Thread.currentThread().getStackTrace();
+        for (int i = 0; i < stackTraceElementArray.length; i++) {
+            StackTraceElement stackTraceElement = stackTraceElementArray[i];
+            if ("getData".equals(stackTraceElement.getMethodName())) {
+                index = i + 1;
+                break;
+            }
+        }
+        if (index >= 0 && index < stackTraceElementArray.length) {
+            StackTraceElement stackTraceElement = stackTraceElementArray[index];
+            String[] splitted = stackTraceElement.getMethodName().split("_");
+            try {
+                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return data;
     }
 
     @Test
-    public void constructTest10() {
-        byte[] data = new byte[18];
-        data[0] = 17;
-        data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
-        data[2] = 0x01;
-        data[3] = 0x02;
-        data[4] = 0x03;
-        data[5] = 0x04;
-        data[6] = 0x05;
-        data[7] = 0x06;
-        data[8] = 0x07;
-        data[9] = 0x08;
-        data[10] = 0x09;
-        data[11] = 0x0a;
-        data[12] = 0x0b;
-        data[13] = 0x0c;
-        data[14] = 0x0d;
-        data[15] = 0x0e;
-        data[16] = 0x0f;
-        data[17] = 0x10;
+    public void test_constructor_00001() {
+        byte[] data = getData();
 
-        ListOf128BitServiceSolicitationUUIDs result1 = new ListOf128BitServiceSolicitationUUIDs(data, 0, data[0]);
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertEquals(17, result1.getLength());
+        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result1.getDataType());
+        assertEquals(UUID.fromString("00000000-0000-0000-0000-000000000000"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_00002() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertEquals(17, result1.getLength());
+        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result1.getDataType());
+        assertEquals(UUID.fromString("7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_00003() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertEquals(17, result1.getLength());
+        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result1.getDataType());
+        assertEquals(UUID.fromString("7f000000-0000-0000-0000-000000000000"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_00004() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertEquals(17, result1.getLength());
+        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result1.getDataType());
+        assertEquals(UUID.fromString("00000000-0000-0000-0000-00000000007f"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_00005() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertEquals(17, result1.getLength());
+        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result1.getDataType());
+        assertEquals(UUID.fromString("ffffffff-ffff-ffff-ffff-ffffffffffff"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_00006() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertEquals(17, result1.getLength());
+        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result1.getDataType());
+        assertEquals(UUID.fromString("ff000000-0000-0000-0000-000000000000"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_00007() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertEquals(17, result1.getLength());
+        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result1.getDataType());
+        assertEquals(UUID.fromString("00000000-0000-0000-0000-0000000000ff"), result1.getUuidList().get(0));
+    }
+
+    @Test
+    public void test_constructor_00008() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertEquals(1, result1.getLength());
+        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result1.getDataType());
+        assertEquals(0, result1.getUuidList().size());
+    }
+
+    @Test
+    public void test_constructor_00009() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertEquals(33, result1.getLength());
+        assertEquals(DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS, result1.getDataType());
+        assertEquals(2, result1.getUuidList().size());
+        assertEquals(UUID.fromString("100f0e0d-0c0b-0a09-0807-060504030201"), result1.getUuidList().get(0));
+        assertEquals(UUID.fromString("201f1e1d-1c1b-1a19-1817-161514131211"), result1.getUuidList().get(1));
+    }
+
+    @Test
+    public void test_parcelable_1_00001() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
-        ListOf128BitServiceSolicitationUUIDs result2 = ListOf128BitServiceSolicitationUUIDs.CREATOR.createFromParcel(parcel);
-
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
-        assertEquals(result1.getUuidList().size(), result2.getUuidList().size());
-        assertEquals(result1.getUuidList().get(0), result2.getUuidList().get(0));
+        assertArrayEquals(result1.getUuidList().toArray(), result2.getUuidList().toArray());
     }
 
     @Test
-    public void constructTest11() {
-        byte[] data = new byte[18];
-        data[0] = 17;
-        data[1] = DATA_TYPE_LIST_OF_128_BIT_SERVICE_SOLICITATION_UUIDS;
-        data[2] = 0x00;
-        data[3] = 0x00;
-        data[4] = 0x00;
-        data[5] = 0x00;
-        data[6] = 0x00;
-        data[7] = 0x00;
-        data[8] = 0x00;
-        data[9] = 0x00;
-        data[10] = 0x00;
-        data[11] = 0x00;
-        data[12] = 0x00;
-        data[13] = 0x00;
-        data[14] = 0x00;
-        data[15] = 0x00;
-        data[16] = 0x00;
-        data[17] = 0x00;
+    public void test_parcelable_1_00002() {
+        byte[] data = getData();
 
-        ListOf128BitServiceSolicitationUUIDs result1 = new ListOf128BitServiceSolicitationUUIDs(data, 0, data[0]);
-        ListOf128BitServiceSolicitationUUIDs result2 = ListOf128BitServiceSolicitationUUIDs.CREATOR.createFromByteArray(data);
-
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
-        assertEquals(result1.getUuidList().size(), result2.getUuidList().size());
-        assertEquals(result1.getUuidList().get(0), result2.getUuidList().get(0));
+        assertArrayEquals(result1.getUuidList().toArray(), result2.getUuidList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00003() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getUuidList().toArray(), result2.getUuidList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00004() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getUuidList().toArray(), result2.getUuidList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00005() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getUuidList().toArray(), result2.getUuidList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00006() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getUuidList().toArray(), result2.getUuidList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00007() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getUuidList().toArray(), result2.getUuidList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00008() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getUuidList().toArray(), result2.getUuidList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_1_00009() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromParcel(parcel);
+        assertEquals(result1.getLength(), result2.getLength());
+        assertEquals(result1.getDataType(), result2.getDataType());
+        assertArrayEquals(result1.getUuidList().toArray(), result2.getUuidList().toArray());
+    }
+
+    @Test
+    public void test_parcelable_2_00001() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00002() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00003() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00004() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00005() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00006() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00007() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00008() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_2_00009() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        assertArrayEquals(data, result1.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00001() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00002() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00003() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00004() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00005() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00006() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00007() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00008() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
+    }
+
+    @Test
+    public void test_parcelable_3_00009() {
+        byte[] data = getData();
+
+        ListOf128BitServiceSolicitationUUIDsAndroid result1 = new ListOf128BitServiceSolicitationUUIDsAndroid(data, 0, data[0]);
+        ListOf128BitServiceSolicitationUUIDsAndroid result2 = ListOf128BitServiceSolicitationUUIDsAndroid.CREATOR.createFromByteArray(data);
+        assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
 
 }

@@ -57,9 +57,14 @@ ext.coreAndroid = [
 
 ext.advertising = [
         artifactId         : 'ble-advertising'
-        , versionCode      : 34
-        , versionName      : '0.1.33'
-        , uploadVersionName: '0.1.33'
+        , versionName      : '0.2.0'
+]
+
+ext.advertisingAndroid = [
+        artifactId         : 'ble-advertising-android'
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
 ]
 
 ext.descriptorU2900 = [
@@ -1539,9 +1544,10 @@ ext.peripheral = [
 ]
 
 ext.apiCoreAndroid = "${groupId}:${coreAndroid.artifactId}:${coreAndroid.versionName}"
+ext.apiAdvertising = "${groupId}:${advertising.artifactId}:${advertising.versionName}"
+ext.apiAdvertisingAndroid = "${groupId}:${advertisingAndroid.artifactId}:${advertisingAndroid.versionName}"
 ext.apiCharacteristicCoreAndroid = "${groupId}:${characteristicCoreAndroid.artifactId}:${characteristicCoreAndroid.versionName}"
 ext.apiCentral = "${groupId}:${central.artifactId}:${central.versionName}"
-ext.apiAdvertising = "${groupId}:${advertising.artifactId}:${advertising.versionName}"
 ext.androidxAnnotation = 'androidx.annotation:annotation:1.1.0'
 ext.androidxTestRunner = 'androidx.test:runner:1.2.0'
 ext.androidxTestCore = 'androidx.test:core:1.2.0'
