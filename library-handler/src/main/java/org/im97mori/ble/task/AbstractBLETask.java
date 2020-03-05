@@ -393,4 +393,12 @@ public abstract class AbstractBLETask {
         return mTaskId;
     }
 
+    /**
+     * @return {@code true}:ignore busy status on {@link org.im97mori.ble.TaskHandler}, {@code false}:wait until busy status clears(default)
+     */
+    @SuppressWarnings("SameReturnValue")
+    public boolean isIgnoreBusy() {
+        return false;
+    }
+
 }

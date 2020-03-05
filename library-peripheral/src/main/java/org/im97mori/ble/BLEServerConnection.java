@@ -61,7 +61,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback {
      * Default server setting
      */
     @SuppressWarnings("WeakerAccess")
-    public static abstract class DefaultServerSetting implements BLECallback, BLEServerCallback {
+    public static abstract class DefaultServerSetting implements BLEServerCallback {
 
         /**
          * Default response message

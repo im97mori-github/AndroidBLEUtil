@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'digital.wup.android-maven-publish'
 
-def target = central
+def target = handler
 def GROUP_ID = groupId
 def ARTIFACT_ID = target[artifactId]
 def VERSION_CODE = target[versionCode]
@@ -28,9 +28,7 @@ android {
 }
 
 dependencies {
-    api "org.im97mori:stacklog:$stacklogVersionName"
-    api "${groupId}:${descriptorU2902Android.artifactId}:${descriptorU2902Android.versionName}"
-    api apiHandler
+    api androidxAnnotation
     testImplementation 'junit:junit:4.13'
     androidTestImplementation androidxTestRunner
     androidTestImplementation androidxTestCore

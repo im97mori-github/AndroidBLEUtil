@@ -12,6 +12,7 @@ import android.util.Pair;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.characteristic.MockControl;
 
@@ -23,7 +24,7 @@ import java.util.Locale;
 import java.util.UUID;
 
 @SuppressWarnings("unused")
-public class BLECallbackSample extends BLEServerConnection.DefaultServerSetting {
+public class BLECallbackSample extends BLEServerConnection.DefaultServerSetting implements BLECallback {
 
     private final SimpleDateFormat format = new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US);
 

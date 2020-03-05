@@ -9,7 +9,6 @@ import android.text.format.DateUtils;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.task.AbstractBLETask;
-import org.im97mori.ble.task.DisconnectTask;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -167,7 +166,7 @@ public class TaskHandler extends Handler {
                             if (hasMessages(MESSAGE_TASK_CANCEL, task.getTaskId())) {
                                 task.cancel();
                                 removeMessages(MESSAGE_TASK_CANCEL, task.getTaskId());
-                            } else if (mWaitForBusy < SystemClock.elapsedRealtime() || task instanceof DisconnectTask) {
+                            } else if (mWaitForBusy < SystemClock.elapsedRealtime() || task.isIgnoreBusy()) {
                                 // Disconnect task ignore busy status
 
                                 mCurrentTask = task;
@@ -189,7 +188,7 @@ public class TaskHandler extends Handler {
                 }
             }
         } catch (Exception e) {
-            BLELogUtils.stackLog(e);
+//            BLELogUtils.stackLog(e);
         }
     }
 

@@ -25,7 +25,6 @@ public class BLEPeripheralLogUtils {
     public static void verbose() {
         VERBOSE = true;
         BLEAdvertisingLogUtils.verbose();
-        BLELogUtils.verbose();
     }
 
     /**
@@ -34,7 +33,6 @@ public class BLEPeripheralLogUtils {
     public static void mute() {
         VERBOSE = false;
         BLEAdvertisingLogUtils.mute();
-        BLELogUtils.mute();
     }
 
     /**

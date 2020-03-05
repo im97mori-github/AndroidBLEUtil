@@ -1,5 +1,6 @@
 package org.im97mori.ble.task;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.os.Build;
@@ -117,6 +118,7 @@ public class ConnectTask extends AbstractBLETask {
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("ObsoleteSdkInt")
     @Override
     public boolean doProcess(@NonNull Message message) {
         // if connected, finish task

@@ -125,4 +125,12 @@ public class DisconnectTask extends AbstractBLETask {
         mBLEConnection.onDisconnected(getTaskId(), mBluetoothGatt, CANCEL, mArgument);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isIgnoreBusy() {
+        return true;
+    }
+
 }

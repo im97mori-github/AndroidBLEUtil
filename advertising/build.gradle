@@ -6,6 +6,7 @@ def GROUP_ID = groupId
 def ARTIFACT_ID = target[artifactId]
 def VERSION_CODE = target[versionCode]
 def VERSION_NAME = target[uploadVersionName]
+def BASE_MODULE = target[baseModule]
 
 android {
     compileSdkVersion globalCompileSdkVersion
@@ -30,7 +31,7 @@ android {
 dependencies {
     api "org.im97mori:stacklog:$stacklogVersionName"
     api apiCoreAndroid
-    api apiAdvertising
+    api BASE_MODULE
     androidTestImplementation androidxTestRunner
     androidTestImplementation androidxTestCore
 }

@@ -68,6 +68,7 @@ public class IncompleteListOf16BitServiceUUIDsAndroid extends IncompleteListOf16
      *
      * @param in Parcel
      */
+    @SuppressWarnings("ConstantConditions")
     private IncompleteListOf16BitServiceUUIDsAndroid(@NonNull Parcel in) {
         super(in.createByteArray(), 0, in.readInt());
     }

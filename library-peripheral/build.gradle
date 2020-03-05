@@ -28,8 +28,8 @@ android {
 }
 
 dependencies {
-    api apiCentral
     api apiAdvertisingAndroid
+    api apiHandler
     testImplementation 'junit:junit:4.13'
     androidTestImplementation androidxTestRunner
     androidTestImplementation androidxTestCore
