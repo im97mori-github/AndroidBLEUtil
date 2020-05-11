@@ -258,7 +258,7 @@ Feature list
 - Start / Stop Gatt server from peripheral
 - Advertising with Incomplete List of 128-bit Service Class UUIDs for find, bonding, connect from central
 - Mock peripheral's response
-  - Change characteristic / descriptor / notification / indication response from central
+  - ~~Change characteristic / descriptor / notification / indication response from central~~(not available now)
   - Change response and Service / Characteristic / Descriptor setting from peripheral
 
 #### Start / Stop Gatt server from peripheral
@@ -271,8 +271,8 @@ Feature list
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             
-            mBLEServerConnection = new BLEServerConnection(this, new BLECallbackSample(this));
-            mBLEServerConnection.start();
+            mBLEServerConnection = new BLEServerConnection(this);
+            mBLEServerConnection.attach(new BLECallbackSample(this));
         }
         
         @Override
@@ -286,26 +286,7 @@ Advertising automaticaly start when gatt server started.
 Advertising data include custom "00000000-a087-4fa3-add4-3b8a7d5d491f" Incomplete List of 128-bit Service Class UUIDs.
 
 #### Mock peripheral's response
-Gatt server has Custom Service UUID "00000000-a087-4fa3-add4-3b8a7d5d491f" and writable characteristic "00000001-a087-4fa3-add4-3b8a7d5d491f" for change response from central.
-
-Example1(Characteristic response change from central)
-
-    final String newMessage = UUID.randomUUID().toString();
-    BLESyncConnection.BLEResult bleResult = BLE_SYNC_CONNECTION.createWriteCharacteristicTask(
-            MOCK_CONTROL_SERVICE_UUID                                   // <-- Custom Service UUID for mock response
-            , MOCK_CONTROL_CHARACTERISTIC_UUID                          // <-- Custom Characteristic UUID for mock response
-            , new MockControl(DEFAULT_SERVICE_UUID                      // <-- Mock target Service UUID
-                    , READABLE_CHARACTERISTIC_UUID_WITH_SUCCESS_NO_WAIT // <-- Mock target Characteristic UUID
-                    , MOCK_CONTROL_TARGET_CHARACTERISTIC_UUID           // <-- Mock type Characterisitic read response (or notification / indication response)
-                    , MockControl.TARGET_TYPE_CHARACTERISTIC            // <-- Mock target Characterisitic (or descritpor / notification / indication / clear mock)
-                    , BluetoothGatt.GATT_SUCCESS                        // <-- Mock response status
-                    , newMessage.getBytes())                            // <-- Mock response value byte array
-            , BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
-            , WriteCharacteristicTask.TIMEOUT_MILLIS
-            , DateUtils.MINUTE_IN_MILLIS
-            , null);
-
-Example1(All setting change from peripheral)
+Example(All setting change from peripheral)
 
 
     public class PeripheralSampleActivity extends BaseActivity implements View.OnClickListener {
@@ -316,25 +297,14 @@ Example1(All setting change from peripheral)
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             
-            mBLEServerConnection = new BLEServerConnection(this, new BLECallbackSample(this));
-            mBLEServerConnection.start();
+            mBLEServerConnection = new BLEServerConnection(this);
+            mBLEServerConnection.attach(new BLECallbackSample(this));
         }
         
         @Override
         public void onClick(View v) {
-            mBLEServerConnection.updateServerCallback(new BLEServerCallback() {
-                @Override
-                public void onServerStarted() {
-                    
-                }
-    
-                ...
-    
-                @Override
-                public void onMockUpdated(BluetoothDevice device, MockControl mockControl) {
-    
-                }
-            });
+            mBLEServerConnection.start();
+            mBLEServerConnection.startAdvertising();
         }
         
         @Override
@@ -342,6 +312,175 @@ Example1(All setting change from peripheral)
             mBLEServerConnection.quit();
             super.onDestroy();
         }
+    }
+    
+    public class BLECallbackSample extends BaseMockCallback implements BLECallback {
+    
+        BLECallbackSample(SampleCallback sampleCallback) {
+            super(new SampleMockData.Builder().build(), true);
+            mSampleCallback = sampleCallback;
+        }
+        
+        ...
+    }
+    
+    public class SampleMockData extends MockData {
+    
+        public static final UUID SAMPLE_PRIMARY_SERVICE_1 = UUID.fromString("00000001-a087-4fa3-add4-3b8a7d5d4921");
+    
+        public static final UUID SAMPLE_READABLE_CHARACTERISTIC = UUID.fromString("00000010-a087-4fa3-add4-3b8a7d5d4921");
+    
+        public static final UUID SAMPLE_READABLE_DESCRIPTOR = UUID.fromString("00000100-a087-4fa3-add4-3b8a7d5d4921");
+    
+        public static final UUID SAMPLE_WRITABLE_CHARACTERISTIC = UUID.fromString("00000020-a087-4fa3-add4-3b8a7d5d4921");
+    
+        public static final UUID SAMPLE_WRITABLE_DESCRIPTOR = UUID.fromString("00000200-a087-4fa3-add4-3b8a7d5d4921");
+    
+        public static final UUID SAMPLE_NOTIFICATABLE_CHARACTERISTIC = UUID.fromString("00000030-a087-4fa3-add4-3b8a7d5d4921");
+    
+        public static final UUID SAMPLE_INDICATABLE_CHARACTERISTIC = UUID.fromString("00000040-a087-4fa3-add4-3b8a7d5d4921");
+    
+        public static final UUID SAMPLE_WRITE_CHARACTERISTIC_RELIABLE = UUID.fromString("00000050-a087-4fa3-add4-3b8a7d5d4921");
+    
+        public static final UUID SAMPLE_PRIMARY_SERVICE_2 = UUID.fromString("00000002-a087-4fa3-add4-3b8a7d5d4922");
+    
+        public static final UUID SAMPLE_READABLE_CHARACTERISTIC_2 = UUID.fromString("00000060-a087-4fa3-add4-3b8a7d5d4921");
+    
+    
+        public static class Builder {
+    
+            private final List<ServiceData> mServiceDataList = new LinkedList<>();
+    
+            public Builder() {
+                ServiceData serviceData;
+                CharacteristicData characteristicData;
+                List<CharacteristicData> characteristicDataList;
+                DescriptorData descriptorData;
+                List<DescriptorData> descriptorDataList;
+    
+                characteristicDataList = new LinkedList<>();
+                descriptorDataList = new LinkedList<>();
+                descriptorData = new DescriptorData();
+                descriptorData.uuid = SAMPLE_READABLE_DESCRIPTOR;
+                descriptorData.permission = BluetoothGattDescriptor.PERMISSION_READ;
+                descriptorData.responseCode = BluetoothGatt.GATT_SUCCESS;
+                descriptorData.delay = 0;
+                descriptorData.data = SAMPLE_READABLE_DESCRIPTOR.toString().getBytes();
+                descriptorDataList.add(descriptorData);
+                characteristicData = new CharacteristicData();
+                characteristicData.uuid = SAMPLE_READABLE_CHARACTERISTIC;
+                characteristicData.property = BluetoothGattCharacteristic.PROPERTY_READ;
+                characteristicData.permission = BluetoothGattCharacteristic.PERMISSION_READ;
+                characteristicData.descriptorDataList = descriptorDataList;
+                characteristicData.responseCode = BluetoothGatt.GATT_SUCCESS;
+                characteristicData.delay = 0;
+                characteristicData.data = SAMPLE_READABLE_CHARACTERISTIC.toString().getBytes();
+                characteristicDataList.add(characteristicData);
+    
+                descriptorDataList = new LinkedList<>();
+                descriptorData = new DescriptorData();
+                descriptorData.uuid = SAMPLE_WRITABLE_DESCRIPTOR;
+                descriptorData.permission = BluetoothGattDescriptor.PERMISSION_WRITE;
+                descriptorData.responseCode = BluetoothGatt.GATT_SUCCESS;
+                descriptorData.delay = 0;
+                descriptorData.data = null;
+                descriptorDataList.add(descriptorData);
+                characteristicData = new CharacteristicData();
+                characteristicData.uuid = SAMPLE_WRITABLE_CHARACTERISTIC;
+                characteristicData.property = BluetoothGattCharacteristic.PROPERTY_WRITE;
+                characteristicData.permission = BluetoothGattCharacteristic.PERMISSION_WRITE;
+                characteristicData.descriptorDataList = descriptorDataList;
+                characteristicData.responseCode = BluetoothGatt.GATT_SUCCESS;
+                characteristicData.delay = 0;
+                characteristicData.data = null;
+                characteristicDataList.add(characteristicData);
+    
+                descriptorDataList = new LinkedList<>();
+                descriptorData = new DescriptorData();
+                descriptorData.uuid = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+                descriptorData.permission = BluetoothGattDescriptor.PERMISSION_WRITE;
+                descriptorData.responseCode = BluetoothGatt.GATT_SUCCESS;
+                descriptorData.delay = 0;
+                descriptorData.data = null;
+                descriptorDataList.add(descriptorData);
+                characteristicData = new CharacteristicData();
+                characteristicData.uuid = SAMPLE_NOTIFICATABLE_CHARACTERISTIC;
+                characteristicData.property = BluetoothGattCharacteristic.PROPERTY_NOTIFY;
+                characteristicData.permission = 0;
+                characteristicData.descriptorDataList = descriptorDataList;
+                characteristicData.responseCode = BluetoothGatt.GATT_SUCCESS;
+                characteristicData.delay = 0;
+                characteristicData.data = SAMPLE_NOTIFICATABLE_CHARACTERISTIC.toString().getBytes();
+                characteristicDataList.add(characteristicData);
+    
+                descriptorDataList = new LinkedList<>();
+                descriptorData = new DescriptorData();
+                descriptorData.uuid = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+                descriptorData.permission = BluetoothGattDescriptor.PERMISSION_WRITE;
+                descriptorData.responseCode = BluetoothGatt.GATT_SUCCESS;
+                descriptorData.delay = 0;
+                descriptorData.data = null;
+                descriptorDataList.add(descriptorData);
+                characteristicData = new CharacteristicData();
+                characteristicData.uuid = SAMPLE_INDICATABLE_CHARACTERISTIC;
+                characteristicData.property = BluetoothGattCharacteristic.PROPERTY_INDICATE;
+                characteristicData.permission = 0;
+                characteristicData.descriptorDataList = descriptorDataList;
+                characteristicData.responseCode = BluetoothGatt.GATT_SUCCESS;
+                characteristicData.delay = 0;
+                characteristicData.data = SAMPLE_INDICATABLE_CHARACTERISTIC.toString().getBytes();
+                characteristicDataList.add(characteristicData);
+    
+                descriptorDataList = new LinkedList<>();
+                characteristicData = new CharacteristicData();
+                characteristicData.uuid = SAMPLE_WRITE_CHARACTERISTIC_RELIABLE;
+                characteristicData.property = BluetoothGattCharacteristic.PROPERTY_WRITE;
+                characteristicData.permission = BluetoothGattCharacteristic.PERMISSION_WRITE;
+                characteristicData.descriptorDataList = descriptorDataList;
+                characteristicData.responseCode = BluetoothGatt.GATT_SUCCESS;
+                characteristicData.delay = 0;
+                characteristicData.data = null;
+                characteristicDataList.add(characteristicData);
+                serviceData = new ServiceData();
+                serviceData.uuid = SAMPLE_PRIMARY_SERVICE_1;
+                serviceData.type = BluetoothGattService.SERVICE_TYPE_PRIMARY;
+                serviceData.characteristicDataList = characteristicDataList;
+                mServiceDataList.add(serviceData);
+    
+                characteristicDataList = new LinkedList<>();
+                characteristicData = new CharacteristicData();
+                characteristicData.uuid = SAMPLE_READABLE_CHARACTERISTIC_2;
+                characteristicData.property = BluetoothGattCharacteristic.PROPERTY_READ;
+                characteristicData.permission = BluetoothGattCharacteristic.PERMISSION_READ;
+                characteristicData.descriptorDataList = descriptorDataList;
+                characteristicData.responseCode = BluetoothGatt.GATT_SUCCESS;
+                characteristicData.delay = 0;
+                characteristicData.data = SAMPLE_READABLE_CHARACTERISTIC_2.toString().getBytes();
+                characteristicDataList.add(characteristicData);
+                characteristicData = new CharacteristicData();
+                characteristicData.uuid = SAMPLE_READABLE_CHARACTERISTIC_2;
+                characteristicData.property = BluetoothGattCharacteristic.PROPERTY_READ;
+                characteristicData.permission = BluetoothGattCharacteristic.PERMISSION_READ;
+                characteristicData.descriptorDataList = descriptorDataList;
+                characteristicData.responseCode = BluetoothGatt.GATT_SUCCESS;
+                characteristicData.delay = 0;
+                characteristicData.data = SAMPLE_READABLE_CHARACTERISTIC_2.toString().getBytes();
+                characteristicDataList.add(characteristicData);
+                serviceData = new ServiceData();
+                serviceData.uuid = SAMPLE_PRIMARY_SERVICE_2;
+                serviceData.type = BluetoothGattService.SERVICE_TYPE_PRIMARY;
+                serviceData.characteristicDataList = characteristicDataList;
+                mServiceDataList.add(serviceData);
+            }
+    
+            public SampleMockData build() {
+                SampleMockData sampleMockData = new SampleMockData();
+                sampleMockData.serviceDataList = mServiceDataList;
+                return sampleMockData;
+            }
+        }
+    
+    }
 
 **Warning** change peripheral's service / characteristic / descriptor setting after bonded, central's 
 [BluetoothGattCallback#onConnectionStateChange](https://developer.android.com/reference/android/bluetooth/BluetoothGattCallback.html#onConnectionStateChange(android.bluetooth.BluetoothGatt,%20int,%20int)) return 133 error.  
