@@ -15,10 +15,12 @@ import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.TaskHandler;
+import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
 
 import java.util.List;
 import java.util.UUID;
 
+import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.BLEConstants.ErrorCodes.BUSY;
 import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
 import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
@@ -257,6 +259,13 @@ public class WriteDescriptorTask extends AbstractBLETask {
                             mCharacteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
                             try {
                                 result = mBluetoothGatt.writeDescriptor(bluetoothGattDescriptor);
+
+                                if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
+                                    ClientCharacteristicConfigurationAndroid clientCharacteristicConfiguration = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+                                    mBluetoothGatt.setCharacteristicNotification(bluetoothGattCharacteristic
+                                            , clientCharacteristicConfiguration.isPropertiesNotificationsEnabled()
+                                                    || clientCharacteristicConfiguration.isPropertiesIndicationsEnabled());
+                                }
                             } catch (Exception e) {
                                 BLELogUtils.stackLog(e);
                             }

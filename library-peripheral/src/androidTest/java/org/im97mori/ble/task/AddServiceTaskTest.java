@@ -1,7 +1,6 @@
 package org.im97mori.ble.task;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.os.Looper;
@@ -20,13 +19,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Random;
-import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class NotificationTaskTest {
+public class AddServiceTaskTest {
 
     private MockBLEServerConnection MOCK_BLE_SERVER_CONNECTION;
 
@@ -45,56 +43,48 @@ public class NotificationTaskTest {
 
     @Test
     public void test_createInitialMessage001() {
-        NotificationTask task = new NotificationTask(null
+        MOCK_BLE_SERVER_CONNECTION.start();
+        AddServiceTask task = new AddServiceTask(MOCK_BLE_SERVER_CONNECTION
                 , null
                 , null
-                , null
-                , null
-                , 1
-                , null
-                , 2
-                , null
-                , true
-                , NotificationTask.TIMEOUT_MILLIS
+                , AddServiceTask.TIMEOUT_MILLIS
                 , null);
         Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertEquals(AbstractBLETask.PROGRESS_NOTIFICATION_START, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_ADD_SERVICE, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
     @Test
-    public void test_createNotificationSentSuccessMessage001() {
-        BluetoothDevice bluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:BB");
-        Message message = NotificationTask.createNotificationSentSuccessMessage(bluetoothDevice);
+    public void test_createAddServiceSuccessMessage001() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(null, 0);
+        Message message = AddServiceTask.createAddServiceSuccessMessage(bluetoothGattService);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_BLUETOOTH_DEVICE));
-        assertEquals(bluetoothDevice, bundle.getParcelable(AbstractBLETask.KEY_BLUETOOTH_DEVICE));
+        assertEquals(bluetoothGattService, message.obj);
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_NOTIFICATION_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_ADD_SERVICE_SUCCESS, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 
     @Test
-    public void test_createNotificationSentErrorMessage001() {
-        BluetoothDevice bluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:BB");
+    public void test_createAddServiceErrorMessage001() {
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(null, 0);
         int status = new Random().nextInt();
-        Message message = NotificationTask.createNotificationSentErrorMessage(bluetoothDevice, status);
+        Message message = AddServiceTask.createAddServiceErrorMessage(bluetoothGattService, status);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(AbstractBLETask.KEY_BLUETOOTH_DEVICE));
-        assertEquals(bluetoothDevice, bundle.getParcelable(AbstractBLETask.KEY_BLUETOOTH_DEVICE));
+        assertEquals(bluetoothGattService, message.obj);
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
         assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
-        assertEquals(AbstractBLETask.PROGRESS_NOTIFICATION_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
+        assertEquals(AbstractBLETask.PROGRESS_ADD_SERVICE_ERROR, bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS));
     }
 
     @Test
@@ -108,17 +98,10 @@ public class NotificationTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            NotificationTask task = new NotificationTask(MOCK_BLE_SERVER_CONNECTION
-                    , null
-                    , null
+            AddServiceTask task = new AddServiceTask(new MockBLEServerConnection()
                     , mockTaskHandler
                     , null
-                    , 1
-                    , null
-                    , 2
-                    , null
-                    , false
-                    , NotificationTask.TIMEOUT_MILLIS
+                    , AddServiceTask.TIMEOUT_MILLIS
                     , BLEServerCallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
@@ -127,41 +110,10 @@ public class NotificationTaskTest {
                 looper.quit();
             }
         }
-
     }
 
     @Test
     public void test_cancel002() {
-//        BaseBLEServerCallback callback = new BaseBLEServerCallback() {
-//
-//            @Override
-//            public void onNotificationFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int status, @Nullable Bundle argument) {
-//                result.set(true);
-//            }
-//        };
-//
-//        MockBLEServerConnection bleServerConnection = new MockBLEServerConnection();
-//        bleServerConnection.attach(callback);
-//
-//        Message message = Message.obtain();
-//        message.setData(Bundle.EMPTY);
-//
-//        NotificationTask task = new NotificationTask(bleServerConnection
-//                , null
-//                , null
-//                , null
-//                , null
-//                , 1
-//                , null
-//                , 2
-//                , null
-//                , false
-//                , NotificationTask.TIMEOUT_MILLIS
-//                , BLEServerCallbackDistributer.wrapArgument(null, null));
-//        task.cancel();
-//        assertTrue(task.doProcess(message));
-//        assertTrue(callback.result.get());
-
         Looper looper = null;
         try {
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
@@ -174,9 +126,10 @@ public class NotificationTaskTest {
             BaseBLEServerCallback callback = new BaseBLEServerCallback() {
 
                 @Override
-                public void onNotificationTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                public void onServiceAddTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument) {
                     result.set(true);
                 }
+
             };
             MOCK_BLE_SERVER_CONNECTION.attach(callback);
 
@@ -192,6 +145,6 @@ public class NotificationTaskTest {
                 looper.quit();
             }
         }
-
     }
+
 }

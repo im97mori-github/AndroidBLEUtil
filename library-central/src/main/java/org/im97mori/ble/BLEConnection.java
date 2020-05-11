@@ -43,7 +43,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC
  * <p>
  * Asynchronous
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess", "unused", "UnusedReturnValue"})
 public class BLEConnection extends BluetoothGattCallback implements BLECallbackDistributer.SubscriberInterface {
 
     /**
@@ -57,18 +57,9 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     protected final BluetoothDevice mBluetoothDevice;
 
     /**
-     * callback for {@link #mBluetoothDevice}
+     * for {@link BLECallbackDistributer.SubscriberInterface#getSubscriberCallbackSet()}
      */
     protected final Set<BLECallback> mAttachedBLECallbackSet = new HashSet<>();
-
-    /**
-     * <p>
-     * current notification status
-     * <p>
-     * if {@link Set#contains(Object)} return true, target UUID(characteristic) is {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE} status
-     * </p>
-     */
-    protected final Set<UUID> mNotificationSet = new HashSet<>();
 
     /**
      * {@link BLECallbackDistributer} instance
@@ -366,7 +357,6 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
                 mTaskHandler.quit();
                 mTaskHandler = null;
             }
-            mNotificationSet.clear();
 
             getBLECallback().onBLEDisconnected(taskId, mBluetoothDevice, status, argument);
         }
@@ -552,15 +542,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             if (BluetoothGatt.GATT_SUCCESS == status) {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
                     ClientCharacteristicConfigurationAndroid clientCharacteristicConfiguration = new ClientCharacteristicConfigurationAndroid(descriptor);
-                    boolean isNotification = clientCharacteristicConfiguration.isPropertiesNotificationsEnabled() || clientCharacteristicConfiguration.isPropertiesIndicationsEnabled();
-
-                    // set notification status
-                    if (isNotification) {
-                        mNotificationSet.add(characteristicUUID);
-                    } else {
-                        mNotificationSet.remove(characteristicUUID);
-                    }
-                    gatt.setCharacteristicNotification(descriptor.getCharacteristic(), isNotification);
+                    gatt.setCharacteristicNotification(descriptor.getCharacteristic(), clientCharacteristicConfiguration.isPropertiesNotificationsEnabled() || clientCharacteristicConfiguration.isPropertiesIndicationsEnabled());
                 }
                 // read decriptor task finished
                 mTaskHandler.sendProcessingMessage(ReadDescriptorTask.createReadDescriptorSuccessMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, descriptor.getValue()));
@@ -592,18 +574,6 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             BluetoothGattService service = characteristic.getService();
             UUID descriptorUUID = descriptor.getUuid();
             if (BluetoothGatt.GATT_SUCCESS == status) {
-                if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                    ClientCharacteristicConfigurationAndroid clientCharacteristicConfiguration = new ClientCharacteristicConfigurationAndroid(descriptor);
-                    boolean isNotification = clientCharacteristicConfiguration.isPropertiesNotificationsEnabled() || clientCharacteristicConfiguration.isPropertiesIndicationsEnabled();
-
-                    // set notification status
-                    if (isNotification) {
-                        mNotificationSet.add(characteristicUUID);
-                    } else {
-                        mNotificationSet.remove(characteristicUUID);
-                    }
-                    gatt.setCharacteristicNotification(descriptor.getCharacteristic(), isNotification);
-                }
                 // write decriptor task finished
                 mTaskHandler.sendProcessingMessage(WriteDescriptorTask.createWriteDescriptorSuccessMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, descriptor.getValue()));
             } else {

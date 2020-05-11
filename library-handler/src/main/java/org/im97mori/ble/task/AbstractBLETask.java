@@ -307,9 +307,39 @@ public abstract class AbstractBLETask {
     public static final int PROGRESS_ABORT_RELIABLE_WRITE_START = PROGRESS_EXECUTE_RELIABLE_WRITE_ERROR + 1;
 
     /**
+     * PROGRESS:ADD_SERVICE
+     */
+    public static final int PROGRESS_ADD_SERVICE = PROGRESS_EXECUTE_RELIABLE_WRITE_ERROR + 1;
+
+    /**
+     * PROGRESS:ADD_SERVICE_SUCCESS
+     */
+    public static final int PROGRESS_ADD_SERVICE_SUCCESS = PROGRESS_ADD_SERVICE + 1;
+
+    /**
+     * PROGRESS:ADD_SERVICE_ERROR
+     */
+    public static final int PROGRESS_ADD_SERVICE_ERROR = PROGRESS_ADD_SERVICE_SUCCESS + 1;
+
+    /**
+     * PROGRESS:REMOVE_SERVICE
+     */
+    public static final int PROGRESS_REMOVE_SERVICE = PROGRESS_ADD_SERVICE_ERROR + 1;
+
+    /**
+     * PROGRESS:REMOVE_SERVICE_SUCCESS
+     */
+    public static final int PROGRESS_REMOVE_SERVICE_SUCCESS = PROGRESS_REMOVE_SERVICE + 1;
+
+    /**
+     * PROGRESS:REMOVE_SERVICE_ERROR
+     */
+    public static final int PROGRESS_REMOVE_SERVICE_ERROR = PROGRESS_REMOVE_SERVICE_SUCCESS + 1;
+
+    /**
      * For user defined progress
      */
-    public static final int PROGRESS_FIRST_USER = PROGRESS_ABORT_RELIABLE_WRITE_START + 1;
+    public static final int PROGRESS_FIRST_USER = PROGRESS_REMOVE_SERVICE_ERROR + 1;
 
     /**
      * create timeout message

@@ -1,0 +1,19 @@
+{
+  "service_data_list": [
+    {
+      "uuid": "5b9ad509-2065-431c-b257-79edec44ddbe",
+      "type": 5,
+      "characteristic_data_list": [
+        {
+          "uuid": "3a7b43a2-5f9d-4ac8-a64e-9dd07ef0b8c2",
+          "property": 1,
+          "permission": 2,
+          "descriptor_data_list": [],
+          "response_code": 3,
+          "delay": 4,
+          "data": []
+        }
+      ]
+    }
+  ]
+}

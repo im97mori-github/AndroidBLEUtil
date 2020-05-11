@@ -35,7 +35,6 @@
     <string name="menu_write_characteristic_reliable">Write Characteristic(Reliable)</string>
     <string name="menu_write_characteristic_reliable_abort">Write Characteristic(Reliable abort)</string>
     <string name="menu_read_multi_instance_characteristic">Read Multi Instance Characteristic</string>
-    <string name="menu_mock_characteristic">Mock Characteristic</string>
 
     <string name="menu_clear">Clear</string>
 </resources>

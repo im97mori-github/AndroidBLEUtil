@@ -56,7 +56,8 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
-        mBLEServerConnection = new BLEServerConnection(this, new BLECallbackSample(this));
+        mBLEServerConnection = new BLEServerConnection(this);
+        mBLEServerConnection.attach(new BLECallbackSample(this));
     }
 
     @Override
@@ -87,7 +88,6 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
         }
 
         invalidateOptionsMenu();
-
     }
 
     @Override
@@ -97,6 +97,7 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
                 mBLEServerConnection.quit();
             } else {
                 mBLEServerConnection.start();
+                mBLEServerConnection.startAdvertising();
             }
             updateLayout();
         } else {
@@ -113,6 +114,10 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
                 mListView.smoothScrollToPosition(mAdapter.getCount());
 
                 updateLayout();
+
+                if ("onDeviceConnected".equals(log.first)) {
+                    mBLEServerConnection.stopAdvertising();
+                }
             }
         });
     }
