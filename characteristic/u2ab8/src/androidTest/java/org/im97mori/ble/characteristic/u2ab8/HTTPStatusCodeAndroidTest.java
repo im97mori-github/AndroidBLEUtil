@@ -250,6 +250,15 @@ public class HTTPStatusCodeAndroidTest {
         assertTrue(result1.isDataStatusBodysTruncated());
     }
 
+    @Test
+    public void test_constructor_00303() {
+        int statusCode = 1;
+        int dataStatus = 2;
+
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(statusCode, dataStatus);
+        assertEquals(statusCode, result1.getStatusCode());
+        assertEquals(dataStatus, result1.getDataStatus());
+    }
 
     @Test
     public void test_parcelable_1_00001() {

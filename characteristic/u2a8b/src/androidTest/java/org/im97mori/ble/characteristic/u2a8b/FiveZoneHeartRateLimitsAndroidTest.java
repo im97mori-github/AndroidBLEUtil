@@ -52,6 +52,20 @@ public class FiveZoneHeartRateLimitsAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int fiveZoneHeartRateLimitsVeryLightLightLimit = 1;
+        int fiveZoneHeartRateLimitsLightModerateLimit = 2;
+        int fiveZoneHeartRateLimitsModerateHardLimit = 3;
+        int fiveZoneHeartRateLimitsHardMaximumLimit = 4;
+
+        FiveZoneHeartRateLimitsAndroid result1 = new FiveZoneHeartRateLimitsAndroid(fiveZoneHeartRateLimitsVeryLightLightLimit, fiveZoneHeartRateLimitsLightModerateLimit, fiveZoneHeartRateLimitsModerateHardLimit, fiveZoneHeartRateLimitsHardMaximumLimit);
+        assertEquals(fiveZoneHeartRateLimitsVeryLightLightLimit, result1.getFiveZoneHeartRateLimitsVeryLightLightLimit());
+        assertEquals(fiveZoneHeartRateLimitsLightModerateLimit, result1.getFiveZoneHeartRateLimitsLightModerateLimit());
+        assertEquals(fiveZoneHeartRateLimitsModerateHardLimit, result1.getFiveZoneHeartRateLimitsModerateHardLimit());
+        assertEquals(fiveZoneHeartRateLimitsHardMaximumLimit, result1.getFiveZoneHeartRateLimitsHardMaximumLimit());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[4];

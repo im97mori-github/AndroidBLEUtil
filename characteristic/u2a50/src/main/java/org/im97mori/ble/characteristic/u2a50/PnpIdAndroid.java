@@ -61,6 +61,18 @@ public class PnpIdAndroid extends PnpId implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param vendorIdSource Vendor ID Source
+     * @param vendorId       Vendor ID
+     * @param productId      Product ID
+     * @param productVersion Product Version
+     */
+    public PnpIdAndroid(int vendorIdSource, int vendorId, int productId, int productVersion) {
+        super(vendorIdSource, vendorId, productId, productVersion);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

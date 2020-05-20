@@ -26,6 +26,14 @@ public class NumberOfDigitalsAndroidTest {
     }
 
     @Test
+    public void test_constructor002() {
+        int noOfDigitals = 1;
+
+        NumberOfDigitalsAndroid result = new NumberOfDigitalsAndroid(noOfDigitals);
+        assertEquals(noOfDigitals, result.getNoOfDigitals());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] value = new byte[1];

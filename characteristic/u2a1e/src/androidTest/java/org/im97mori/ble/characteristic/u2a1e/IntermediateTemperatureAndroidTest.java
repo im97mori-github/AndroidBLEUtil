@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 
 import org.im97mori.ble.characteristic.core.DateTimeUtils;
+import org.im97mori.ble.characteristic.core.IEEE_11073_20601_FLOAT;
 import org.im97mori.ble.characteristic.core.TemperatureMeasurementUtils;
 import org.im97mori.ble.characteristic.core.TemperatureTypeUtils;
 import org.junit.Test;
@@ -908,6 +909,32 @@ public class IntermediateTemperatureAndroidTest {
         assertFalse(TemperatureTypeUtils.isTemperatureTextDescriptionTypeRectum(result1.getTemperatureTextDescription()));
         assertFalse(TemperatureTypeUtils.isTemperatureTextDescriptionTypeToe(result1.getTemperatureTextDescription()));
         assertTrue(TemperatureTypeUtils.isTemperatureTextDescriptionTypeTympanumEarDrum(result1.getTemperatureTextDescription()));
+    }
+
+    @Test
+    public void test_constructor211() {
+        int flags = 1;
+        IEEE_11073_20601_FLOAT temperatureMeasurementValueCelsius = new IEEE_11073_20601_FLOAT(new byte[]{2, 3, 4, 5}, 0);
+        IEEE_11073_20601_FLOAT temperatureMeasurementValueFahrenheit = new IEEE_11073_20601_FLOAT(new byte[]{6, 7, 8, 9}, 0);
+        int year = 10;
+        int month = 11;
+        int day = 12;
+        int hours = 13;
+        int minutes = 14;
+        int seconds = 15;
+        int temperatureTextDescription = 16;
+
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(flags, temperatureMeasurementValueCelsius, temperatureMeasurementValueFahrenheit, year, month, day, hours, minutes, seconds, temperatureTextDescription);
+        assertEquals(flags, result1.getFlags());
+        assertEquals(temperatureMeasurementValueCelsius, result1.getTemperatureMeasurementValueCelsius());
+        assertEquals(temperatureMeasurementValueFahrenheit, result1.getTemperatureMeasurementValueFahrenheit());
+        assertEquals(year, result1.getYear());
+        assertEquals(month, result1.getMonth());
+        assertEquals(day, result1.getDay());
+        assertEquals(hours, result1.getHours());
+        assertEquals(minutes, result1.getMinutes());
+        assertEquals(seconds, result1.getSeconds());
+        assertEquals(temperatureTextDescription, result1.getTemperatureTextDescription());
     }
 
     @Test

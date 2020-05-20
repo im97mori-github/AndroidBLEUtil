@@ -61,6 +61,17 @@ public class SupportedUnreadAlertCategoryAndroid extends SupportedUnreadAlertCat
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param categoryIdBitMask0    Category ID Bit Mask 0
+     * @param hasCategoryIdBitMask1 no Category ID Bit Mask 1, 1: has Category ID Bit Mask 1
+     * @param categoryIdBitMask1    Category ID Bit Mask 1
+     */
+    public SupportedUnreadAlertCategoryAndroid(int categoryIdBitMask0, int hasCategoryIdBitMask1, int categoryIdBitMask1) {
+        super(categoryIdBitMask0, hasCategoryIdBitMask1, categoryIdBitMask1);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

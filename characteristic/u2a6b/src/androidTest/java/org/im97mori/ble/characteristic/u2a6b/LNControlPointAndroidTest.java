@@ -1043,6 +1043,22 @@ public class LNControlPointAndroidTest {
     }
 
     @Test
+    public void test_constructor058() {
+        int opCodes = 1;
+        byte[] parameterValue = new byte[] { 2 };
+        int requestOpCode = 3;
+        int responseValue = 4;
+        byte[] responseParameter = new byte[] { 5 };
+
+        LNControlPointAndroid result1 = new LNControlPointAndroid(opCodes, parameterValue, requestOpCode, responseValue, responseParameter);
+        assertEquals(opCodes, result1.getOpCodes());
+        assertArrayEquals(parameterValue, result1.getParameterValue());
+        assertEquals(requestOpCode, result1.getRequestOpCode());
+        assertEquals(responseValue, result1.getResponseValue());
+        assertArrayEquals(responseParameter, result1.getResponseParameter());
+    }
+
+    @Test
     public void test_opCodes001() {
         //@formatter:off
         byte[] data = new byte[4];

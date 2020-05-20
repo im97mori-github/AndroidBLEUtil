@@ -61,6 +61,17 @@ public class DateOfThresholdAssessmentAndroid extends DateOfThresholdAssessment 
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param year  Year
+     * @param month Month
+     * @param day   Day
+     */
+    public DateOfThresholdAssessmentAndroid(int year, int month, int day) {
+        super(year, month, day);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

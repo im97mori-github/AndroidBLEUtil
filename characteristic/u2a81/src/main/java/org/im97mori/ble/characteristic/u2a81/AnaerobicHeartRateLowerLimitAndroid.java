@@ -61,6 +61,15 @@ public class AnaerobicHeartRateLowerLimitAndroid extends AnaerobicHeartRateLower
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param anaerobicHeartRateUpperLimit Anaerobic Heart Rate Upper Limit
+     */
+    public AnaerobicHeartRateLowerLimitAndroid(int anaerobicHeartRateUpperLimit) {
+        super(anaerobicHeartRateUpperLimit);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -59,6 +59,14 @@ public class HeatIndexAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int heatIndex = 1;
+
+        HeatIndexAndroid result1 = new HeatIndexAndroid(heatIndex);
+        assertEquals(heatIndex, result1.getHeatIndex());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

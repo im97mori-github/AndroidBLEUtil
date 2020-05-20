@@ -61,6 +61,28 @@ public class LocationAndSpeedAndroid extends LocationAndSpeed implements Parcela
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param flags              Flags
+     * @param instantaneousSpeed Instantaneous Speed
+     * @param totalDistance      Total Distance
+     * @param locationLatitude   Location - Latitude
+     * @param locationLongitude  Location - Longitude
+     * @param elevation          Elevation
+     * @param heading            Heading
+     * @param rollingTime        Rolling Time
+     * @param year               Year
+     * @param month              Month
+     * @param day                Day
+     * @param hours              Hours
+     * @param minutes            Minutes
+     * @param seconds            Seconds
+     */
+    public LocationAndSpeedAndroid(@NonNull byte[] flags, int instantaneousSpeed, int totalDistance, int locationLatitude, int locationLongitude, int elevation, int heading, int rollingTime, int year, int month, int day, int hours, int minutes, int seconds) {
+        super(flags, instantaneousSpeed, totalDistance, locationLatitude, locationLongitude, elevation, heading, rollingTime, year, month, day, hours, minutes, seconds);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

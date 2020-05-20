@@ -61,6 +61,14 @@ public class ApparentWindDirectionAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int apparentWindDirection = 1;
+
+        ApparentWindDirectionAndroid result1 = new ApparentWindDirectionAndroid(apparentWindDirection);
+        assertEquals(apparentWindDirection, result1.getApparentWindDirection());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

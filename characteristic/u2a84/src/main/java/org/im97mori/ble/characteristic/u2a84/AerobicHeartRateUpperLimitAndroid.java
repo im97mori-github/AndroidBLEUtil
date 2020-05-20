@@ -62,6 +62,15 @@ public class AerobicHeartRateUpperLimitAndroid extends AerobicHeartRateUpperLimi
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param aerobicHeartRateUpperLimit Aerobic Heart Rate Upper Limit
+     */
+    public AerobicHeartRateUpperLimitAndroid(int aerobicHeartRateUpperLimit) {
+        super(aerobicHeartRateUpperLimit);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

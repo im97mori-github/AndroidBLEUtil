@@ -2375,6 +2375,24 @@ public class EnvironmentalSensingMeasurementAndroidTest {
     }
 
     @Test
+    public void test_constructor050() {
+        byte[] flags = new byte[]{1};
+        int samplingFunction = 2;
+        int measurementPeriod = 3;
+        int internalUpdateInterva = 4;
+        int application = 5;
+        int measurementUncertainty = 6;
+
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(flags, samplingFunction, measurementPeriod, internalUpdateInterva, application, measurementUncertainty);
+        assertArrayEquals(flags, result.getFlags());
+        assertEquals(samplingFunction, result.getSamplingFunction());
+        assertEquals(measurementPeriod, result.getMeasurementPeriod());
+        assertEquals(internalUpdateInterva, result.getInternalUpdateInterval());
+        assertEquals(application, result.getApplication());
+        assertEquals(measurementUncertainty, result.getMeasurementUncertainty());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] value = new byte[11];

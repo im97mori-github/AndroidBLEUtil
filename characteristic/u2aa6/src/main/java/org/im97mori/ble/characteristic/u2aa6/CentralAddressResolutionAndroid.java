@@ -61,6 +61,15 @@ public class CentralAddressResolutionAndroid extends CentralAddressResolution im
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param centralAddressResolutionSupport Central Address Resolution Support
+     */
+    public CentralAddressResolutionAndroid(int centralAddressResolutionSupport) {
+        super(centralAddressResolutionSupport);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

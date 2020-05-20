@@ -64,6 +64,20 @@ public class PnpIdAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int vendorIdSource = 1;
+        int vendorId = 2;
+        int productId = 3;
+        int productVersion = 4;
+
+        PnpIdAndroid result1 = new PnpIdAndroid(vendorIdSource, vendorId, productId, productVersion);
+        assertEquals(vendorIdSource, result1.getVendorIdSource());
+        assertEquals(vendorId, result1.getVendorId());
+        assertEquals(productId, result1.getProductId());
+        assertEquals(productVersion, result1.getProductVersion());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[7];

@@ -59,6 +59,16 @@ public class ValidRangeAndroid extends ValidRange implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param lowerInclusiveValue Lower inclusive value
+     * @param upperInclusiveValue Upper inclusive value
+     */
+    public ValidRangeAndroid(@NonNull byte[] lowerInclusiveValue, @NonNull byte[] upperInclusiveValue) {
+        super(lowerInclusiveValue, upperInclusiveValue);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

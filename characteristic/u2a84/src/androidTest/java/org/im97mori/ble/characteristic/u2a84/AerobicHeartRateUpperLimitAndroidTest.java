@@ -39,6 +39,14 @@ public class AerobicHeartRateUpperLimitAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int aerobicHeartRateUpperLimit = 1;
+
+        AerobicHeartRateUpperLimitAndroid result1 = new AerobicHeartRateUpperLimitAndroid(aerobicHeartRateUpperLimit);
+        assertEquals(aerobicHeartRateUpperLimit, result1.getAerobicHeartRateUpperLimit());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

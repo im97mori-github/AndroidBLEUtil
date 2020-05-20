@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.im97mori.ble.ByteArrayCreater;
 
@@ -58,6 +59,17 @@ public class TrainingStatusAndroid extends TrainingStatus implements Parcelable 
      */
     public TrainingStatusAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param flags                Flags
+     * @param trainingStatus       Training Status
+     * @param trainingStatusString Training Status String
+     */
+    public TrainingStatusAndroid(int flags, int trainingStatus, @Nullable String trainingStatusString) {
+        super(flags, trainingStatus, trainingStatusString);
     }
 
     /**

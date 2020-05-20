@@ -61,6 +61,15 @@ public class AlertLevelAndroid extends AlertLevel implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param alertLevel Alert Level
+     */
+    public AlertLevelAndroid(int alertLevel) {
+        super(alertLevel);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

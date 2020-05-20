@@ -59,6 +59,16 @@ public class ReportReferenceAndroid extends ReportReference implements Parcelabl
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param reportId   Report ID
+     * @param reportType Report Type
+     */
+    public ReportReferenceAndroid(int reportId, int reportType) {
+        super(reportId, reportType);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

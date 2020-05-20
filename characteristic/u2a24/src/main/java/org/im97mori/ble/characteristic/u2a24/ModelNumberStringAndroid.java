@@ -61,6 +61,15 @@ public class ModelNumberStringAndroid extends ModelNumberString implements Parce
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param modelNumber Model Number
+     */
+    public ModelNumberStringAndroid(@NonNull String modelNumber) {
+        super(modelNumber);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

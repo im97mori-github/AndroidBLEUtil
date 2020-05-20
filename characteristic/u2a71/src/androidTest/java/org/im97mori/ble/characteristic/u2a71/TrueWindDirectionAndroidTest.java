@@ -61,6 +61,14 @@ public class TrueWindDirectionAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int trueWindDirection = 1;
+
+        TrueWindDirectionAndroid result1 = new TrueWindDirectionAndroid(trueWindDirection);
+        assertEquals(trueWindDirection, result1.getTrueWindDirection());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

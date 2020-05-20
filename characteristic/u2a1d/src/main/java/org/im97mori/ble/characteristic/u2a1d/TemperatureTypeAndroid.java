@@ -61,6 +61,15 @@ public class TemperatureTypeAndroid extends TemperatureType implements Parcelabl
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param temperatureTextDescription Temperature Text Description
+     */
+    public TemperatureTypeAndroid(int temperatureTextDescription) {
+        super(temperatureTextDescription);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

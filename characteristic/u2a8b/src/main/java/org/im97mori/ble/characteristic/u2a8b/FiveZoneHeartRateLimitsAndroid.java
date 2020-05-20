@@ -61,6 +61,18 @@ public class FiveZoneHeartRateLimitsAndroid extends FiveZoneHeartRateLimits impl
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param fiveZoneHeartRateLimitsVeryLightLightLimit Five Zone Heart Rate Limits - Very light / Light Limit
+     * @param fiveZoneHeartRateLimitsLightModerateLimit  Five Zone Heart Rate Limits - Light / Moderate Limit
+     * @param fiveZoneHeartRateLimitsModerateHardLimit   Five Zone Heart Rate Limits - Moderate / Hard Limit
+     * @param fiveZoneHeartRateLimitsHardMaximumLimit    Five Zone Heart Rate Limits - Hard / Maximum Limit
+     */
+    public FiveZoneHeartRateLimitsAndroid(int fiveZoneHeartRateLimitsVeryLightLightLimit, int fiveZoneHeartRateLimitsLightModerateLimit, int fiveZoneHeartRateLimitsModerateHardLimit, int fiveZoneHeartRateLimitsHardMaximumLimit) {
+        super(fiveZoneHeartRateLimitsVeryLightLightLimit, fiveZoneHeartRateLimitsLightModerateLimit, fiveZoneHeartRateLimitsModerateHardLimit, fiveZoneHeartRateLimitsHardMaximumLimit);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

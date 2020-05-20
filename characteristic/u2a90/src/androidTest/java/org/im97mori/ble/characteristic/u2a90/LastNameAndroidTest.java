@@ -103,6 +103,14 @@ public class LastNameAndroidTest {
     }
 
     @Test
+    public void test_constructor_00004() {
+        String LastName = "a";
+
+        LastNameAndroid result1 = new LastNameAndroid(LastName);
+        assertEquals(LastName, result1.getLastName());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] emailAddress = "github@im97mori.org".getBytes();
 

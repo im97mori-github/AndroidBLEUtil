@@ -61,6 +61,15 @@ public class PollenConcentrationAndroid extends PollenConcentration implements P
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param pollenConcentration Pollen Concentration
+     */
+    public PollenConcentrationAndroid(int pollenConcentration) {
+        super(pollenConcentration);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

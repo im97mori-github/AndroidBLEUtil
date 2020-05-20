@@ -61,6 +61,15 @@ public class HeightAndroid extends Height implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param height Height
+     */
+    public HeightAndroid(int height) {
+        super(height);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

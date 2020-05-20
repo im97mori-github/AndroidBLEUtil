@@ -14,7 +14,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AEROBIC_HEART_RAT
  * Aerobic Heart Rate Lower Limit (Characteristics UUID: 0x2A7E)
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class AerobicHeartRateLowerLimitAndroid extends AerobicHeartRateLowerLimit implements  Parcelable {
+public class AerobicHeartRateLowerLimitAndroid extends AerobicHeartRateLowerLimit implements Parcelable {
 
     /**
      * @see ByteArrayCreater
@@ -58,6 +58,15 @@ public class AerobicHeartRateLowerLimitAndroid extends AerobicHeartRateLowerLimi
      */
     public AerobicHeartRateLowerLimitAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param aerobicHeartRateLowerLimit Aerobic Heart Rate Lower Limit
+     */
+    public AerobicHeartRateLowerLimitAndroid(int aerobicHeartRateLowerLimit) {
+        super(aerobicHeartRateLowerLimit);
     }
 
     /**

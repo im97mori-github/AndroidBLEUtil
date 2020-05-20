@@ -58,6 +58,31 @@ public class RowerDataAndroid extends RowerData implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param flags               Flags
+     * @param strokeRate          Stroke Rate
+     * @param strokeCount         Stroke Count
+     * @param averageStrokeRate   Average Stroke Rate
+     * @param totalDistance       Total Distance
+     * @param instantaneousPace   Instantaneous Pace
+     * @param averagePace         Average Pace
+     * @param instantaneousPower  Instantaneous Power
+     * @param averagePower        Average Power
+     * @param resistanceLevel     Resistance Level
+     * @param totalEnergy         Total Energy
+     * @param energyPerHour       Energy Per Hour
+     * @param energyPerMinute     Energy Per Minute
+     * @param heartRate           Heart Rate
+     * @param metabolicEquivalent Metabolic Equivalent
+     * @param elapsedTime         Elapsed Time
+     * @param remainingTime       Remaining Time
+     */
+    public RowerDataAndroid(@NonNull byte[] flags, int strokeRate, int strokeCount, int averageStrokeRate, int totalDistance, int instantaneousPace, int averagePace, int instantaneousPower, int averagePower, int resistanceLevel, int totalEnergy, int energyPerHour, int energyPerMinute, int heartRate, int metabolicEquivalent, int elapsedTime, int remainingTime) {
+        super(flags, strokeRate, strokeCount, averageStrokeRate, totalDistance, instantaneousPace, averagePace, instantaneousPower, averagePower, resistanceLevel, totalEnergy, energyPerHour, energyPerMinute, heartRate, metabolicEquivalent, elapsedTime, remainingTime);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

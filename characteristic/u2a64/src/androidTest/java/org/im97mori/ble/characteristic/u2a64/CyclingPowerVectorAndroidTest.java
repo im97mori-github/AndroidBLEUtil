@@ -729,6 +729,24 @@ public class CyclingPowerVectorAndroidTest {
     }
 
     @Test
+    public void test_constructor_00405() {
+        int flags = 1;
+        int crankRevolutionDataCumulativeCrankRevolutions = 2;
+        int crankRevolutionDataLastCrankEventTime = 3;
+        int firstCrankMeasurementAngle = 4;
+        int[] instantaneousForceMagnitudeArray = new int[]{5};
+        int[] instantaneousTorqueMagnitudeArray = new int[]{6};
+
+        CyclingPowerVectorAndroid result1 = new CyclingPowerVectorAndroid(flags, crankRevolutionDataCumulativeCrankRevolutions, crankRevolutionDataLastCrankEventTime, firstCrankMeasurementAngle, instantaneousForceMagnitudeArray, instantaneousTorqueMagnitudeArray);
+        assertEquals(flags, result1.getFlags());
+        assertEquals(crankRevolutionDataCumulativeCrankRevolutions, result1.getCrankRevolutionDataCumulativeCrankRevolutions());
+        assertEquals(crankRevolutionDataLastCrankEventTime, result1.getCrankRevolutionDataLastCrankEventTime());
+        assertEquals(firstCrankMeasurementAngle, result1.getFirstCrankMeasurementAngle());
+        assertArrayEquals(instantaneousForceMagnitudeArray, result1.getInstantaneousForceMagnitudeArray());
+        assertArrayEquals(instantaneousTorqueMagnitudeArray, result1.getInstantaneousTorqueMagnitudeArray());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

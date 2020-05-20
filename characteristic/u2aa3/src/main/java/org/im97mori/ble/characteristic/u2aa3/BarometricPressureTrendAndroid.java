@@ -61,6 +61,15 @@ public class BarometricPressureTrendAndroid extends BarometricPressureTrend impl
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param barometricPressureTrend Barometric Pressure Trend
+     */
+    public BarometricPressureTrendAndroid(int barometricPressureTrend) {
+        super(barometricPressureTrend);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

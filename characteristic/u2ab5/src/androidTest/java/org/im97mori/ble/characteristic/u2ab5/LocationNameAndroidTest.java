@@ -78,6 +78,14 @@ public class LocationNameAndroidTest {
     }
 
     @Test
+    public void test_constructor_00003() {
+        String locationName = "1";
+
+        LocationNameAndroid result1 = new LocationNameAndroid(locationName);
+        assertEquals(locationName, result1.getLocationName());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

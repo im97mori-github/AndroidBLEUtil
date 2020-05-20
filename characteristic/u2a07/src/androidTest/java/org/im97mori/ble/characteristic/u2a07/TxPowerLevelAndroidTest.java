@@ -40,6 +40,14 @@ public class TxPowerLevelAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int txPower = 1;
+
+        TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(txPower);
+        assertEquals(txPower, result1.getTxPower());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

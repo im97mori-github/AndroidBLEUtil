@@ -61,6 +61,16 @@ public class HTTPStatusCodeAndroid extends HTTPStatusCode implements Parcelable 
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param statusCode Status Code
+     * @param dataStatus Data Status
+     */
+    public HTTPStatusCodeAndroid(int statusCode, int dataStatus) {
+        super(statusCode, dataStatus);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

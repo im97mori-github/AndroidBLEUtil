@@ -61,6 +61,19 @@ public class CSCMeasurementAndroid extends CSCMeasurement implements Parcelable 
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param flags                      Flags
+     * @param cumulativeWheelRevolutions Cumulative Wheel Revolutions
+     * @param lastWheelEventTime         Last Wheel Event Time
+     * @param cumulativeCrankRevolutions Cumulative Crank Revolutions
+     * @param lastCrankEventTime         Last Crank Event Time
+     */
+    public CSCMeasurementAndroid(int flags, long cumulativeWheelRevolutions, int lastWheelEventTime, int cumulativeCrankRevolutions, int lastCrankEventTime) {
+        super(flags, cumulativeWheelRevolutions, lastWheelEventTime, cumulativeCrankRevolutions, lastCrankEventTime);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

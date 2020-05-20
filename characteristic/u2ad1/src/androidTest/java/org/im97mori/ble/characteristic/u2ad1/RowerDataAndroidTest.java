@@ -786,6 +786,47 @@ private static final byte[] data_00001;
     }
 
     @Test
+    public void test_constructor_00003() {
+        byte[] flags = new byte[] { 1 };
+        int strokeRate = 2;
+        int strokeCount = 3;
+        int averageStrokeRate = 4;
+        int totalDistance = 5;
+        int instantaneousPace = 6;
+        int averagePace = 7;
+        int instantaneousPower = 8;
+        int averagePower = 9;
+        int resistanceLevel = 10;
+        int totalEnergy = 11;
+        int energyPerHour = 12;
+        int energyPerMinute = 13;
+        int heartRate = 14;
+        int metabolicEquivalent = 15;
+        int elapsedTime = 16;
+        int remainingTime = 17;
+
+        RowerDataAndroid result1 = new RowerDataAndroid(flags, strokeRate, strokeCount, averageStrokeRate, totalDistance, instantaneousPace, averagePace, instantaneousPower, averagePower, resistanceLevel, totalEnergy, energyPerHour, energyPerMinute, heartRate, metabolicEquivalent, elapsedTime, remainingTime);
+        assertArrayEquals(flags, result1.getFlags());
+        assertEquals(strokeRate, result1.getStrokeRate());
+        assertEquals(strokeCount, result1.getStrokeCount());
+        assertEquals(averageStrokeRate, result1.getAverageStrokeRate());
+        assertEquals(totalDistance, result1.getTotalDistance());
+        assertEquals(instantaneousPace, result1.getInstantaneousPace());
+        assertEquals(averagePace, result1.getAveragePace());
+        assertEquals(instantaneousPower, result1.getInstantaneousPower());
+        assertEquals(averagePower, result1.getAveragePower());
+        assertEquals(resistanceLevel, result1.getResistanceLevel());
+        assertEquals(totalEnergy, result1.getTotalEnergy());
+        assertEquals(energyPerHour, result1.getEnergyPerHour());
+        assertEquals(energyPerMinute, result1.getEnergyPerMinute());
+        assertEquals(heartRate, result1.getHeartRate());
+        assertEquals(metabolicEquivalent, result1.getMetabolicEquivalent());
+        assertEquals(elapsedTime, result1.getElapsedTime());
+        assertEquals(remainingTime, result1.getRemainingTime());
+    }
+
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

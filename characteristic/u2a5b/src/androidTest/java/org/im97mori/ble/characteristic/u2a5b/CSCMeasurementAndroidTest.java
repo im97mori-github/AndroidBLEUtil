@@ -147,6 +147,22 @@ public class CSCMeasurementAndroidTest {
     }
 
     @Test
+    public void test_constructor_00103() {
+        int flags = 1;
+        long cumulativeWheelRevolutions = 2;
+        int lastWheelEventTime = 3;
+        int cumulativeCrankRevolutions = 4;
+        int lastCrankEventTime = 5;
+
+        CSCMeasurementAndroid result1 = new CSCMeasurementAndroid(flags, cumulativeWheelRevolutions, lastWheelEventTime, cumulativeCrankRevolutions, lastCrankEventTime);
+        assertEquals(flags, result1.getFlags());
+        assertEquals(cumulativeWheelRevolutions, result1.getCumulativeWheelRevolutions());
+        assertEquals(lastWheelEventTime, result1.getLastWheelEventTime());
+        assertEquals(cumulativeCrankRevolutions, result1.getCumulativeCrankRevolutions());
+        assertEquals(lastCrankEventTime, result1.getLastCrankEventTime());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

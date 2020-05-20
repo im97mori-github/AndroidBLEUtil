@@ -61,6 +61,15 @@ public class HTTPEntityBodyAndroid extends HTTPEntityBody implements Parcelable 
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param httpEntityBody HTTP Entity Body
+     */
+    public HTTPEntityBodyAndroid(@NonNull String httpEntityBody) {
+        super(httpEntityBody);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -558,6 +558,16 @@ public class BondManagementControlPointAndroidTest {
     }
 
     @Test
+    public void test_constructor_00803() {
+        int opCode = 1;
+        String operand = "2";
+
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(opCode, operand);
+        assertEquals(opCode, result1.getOpCode());
+        assertEquals(operand, result1.getOperand());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

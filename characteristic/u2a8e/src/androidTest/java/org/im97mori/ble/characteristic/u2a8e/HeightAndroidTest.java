@@ -44,6 +44,14 @@ public class HeightAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int height = 1;
+
+        HeightAndroid result1 = new HeightAndroid(height);
+        assertEquals(height, result1.getHeight());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[2];

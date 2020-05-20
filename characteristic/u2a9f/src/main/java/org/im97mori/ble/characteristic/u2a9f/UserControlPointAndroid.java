@@ -61,6 +61,20 @@ public class UserControlPointAndroid extends UserControlPoint implements Parcela
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param opCode        Op Code
+     * @param userIndex     User Index
+     * @param consentCode   Consent Code
+     * @param requestOpCode Request Op Code
+     * @param responseValue Response Value
+     * @param numberOfUsers Number of users
+     */
+    public UserControlPointAndroid(int opCode, int userIndex, int consentCode, int requestOpCode, int responseValue, int numberOfUsers) {
+        super(opCode, userIndex, consentCode, requestOpCode, responseValue, numberOfUsers);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

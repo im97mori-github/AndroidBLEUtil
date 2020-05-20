@@ -59,6 +59,14 @@ public class UVIndexAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int UVIndex = 1;
+
+        UVIndexAndroid result1 = new UVIndexAndroid(UVIndex);
+        assertEquals(UVIndex, result1.getUVIndex());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

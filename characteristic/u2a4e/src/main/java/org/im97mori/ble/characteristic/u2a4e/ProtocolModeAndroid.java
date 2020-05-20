@@ -61,6 +61,15 @@ public class ProtocolModeAndroid extends ProtocolMode implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param protocolModeValues Protocol Mode Value
+     */
+    public ProtocolModeAndroid(int protocolModeValues) {
+        super(protocolModeValues);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -194,6 +194,16 @@ public class ValidRangeAndroidTest {
     }
 
     @Test
+    public void test_constructor009() {
+        byte[] lowerInclusiveValue = new byte[]{0};
+        byte[] upperInclusiveValue = new byte[]{1};
+
+        ValidRangeAndroid result = new ValidRangeAndroid(lowerInclusiveValue, upperInclusiveValue);
+        assertArrayEquals(lowerInclusiveValue, result.getLowerInclusiveValue());
+        assertArrayEquals(upperInclusiveValue, result.getUpperInclusiveValue());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] value = new byte[2];

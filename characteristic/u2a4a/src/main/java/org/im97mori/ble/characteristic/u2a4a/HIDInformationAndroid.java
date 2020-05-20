@@ -61,6 +61,17 @@ public class HIDInformationAndroid extends HIDInformation implements Parcelable 
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param bcdhid       bcdHID
+     * @param bcountrycode bCountryCode
+     * @param flags        Flags
+     */
+    public HIDInformationAndroid(int bcdhid, int bcountrycode, int flags) {
+        super(bcdhid, bcountrycode, flags);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

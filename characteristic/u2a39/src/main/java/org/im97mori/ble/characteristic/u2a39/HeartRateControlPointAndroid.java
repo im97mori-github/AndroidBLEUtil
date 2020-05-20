@@ -61,6 +61,15 @@ public class HeartRateControlPointAndroid extends HeartRateControlPoint implemen
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param heartRateControlPoint Heart Rate Control Point
+     */
+    public HeartRateControlPointAndroid(int heartRateControlPoint) {
+        super(heartRateControlPoint);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

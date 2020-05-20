@@ -61,6 +61,15 @@ public class LocationNameAndroid extends LocationName implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param locationName Location Name
+     */
+    public LocationNameAndroid(@NonNull String locationName) {
+        super(locationName);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

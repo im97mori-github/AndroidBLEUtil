@@ -61,6 +61,15 @@ public class LongitudeAndroid extends Longitude implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param longitude Longitude
+     */
+    public LongitudeAndroid(int longitude) {
+        super(longitude);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -61,6 +61,15 @@ public class UserIndexAndroid extends UserIndex implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param userIndex User Index
+     */
+    public UserIndexAndroid(int userIndex) {
+        super(userIndex);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

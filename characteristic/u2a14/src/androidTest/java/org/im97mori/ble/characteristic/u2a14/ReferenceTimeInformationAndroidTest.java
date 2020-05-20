@@ -288,6 +288,21 @@ public class ReferenceTimeInformationAndroidTest {
     }
 
     @Test
+    public void test_constructor008() {
+        int timeSource = 1;
+        int accuracy = 2;
+        int daysSinceUpdate = 3;
+        int hoursSinceUpdate = 4;
+
+        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(timeSource, accuracy, daysSinceUpdate, hoursSinceUpdate);
+        assertEquals(timeSource, result1.getTimeSource());
+        assertEquals(accuracy, result1.getAccuracy());
+        assertEquals(daysSinceUpdate, result1.getDaysSinceUpdate());
+        assertFalse(result1.isDaysSinceUpdate255OrMoreDays());
+        assertEquals(hoursSinceUpdate, result1.getHoursSinceUpdate());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[4];

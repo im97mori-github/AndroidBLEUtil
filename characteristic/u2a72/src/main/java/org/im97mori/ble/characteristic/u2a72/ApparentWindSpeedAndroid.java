@@ -61,6 +61,15 @@ public class ApparentWindSpeedAndroid extends ApparentWindSpeed implements Parce
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param apparentWindSpeed Apparent Wind Speed
+     */
+    public ApparentWindSpeedAndroid(int apparentWindSpeed) {
+        super(apparentWindSpeed);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

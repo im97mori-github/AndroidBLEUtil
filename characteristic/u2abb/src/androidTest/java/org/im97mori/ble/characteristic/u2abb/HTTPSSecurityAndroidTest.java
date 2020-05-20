@@ -83,6 +83,14 @@ public class HTTPSSecurityAndroidTest {
     }
 
     @Test
+    public void test_constructor_00003() {
+        int httpsSecurity = 1;
+
+        HTTPSSecurityAndroid result1 = new HTTPSSecurityAndroid(httpsSecurity);
+        assertEquals(httpsSecurity, result1.getHttpsSecurity());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

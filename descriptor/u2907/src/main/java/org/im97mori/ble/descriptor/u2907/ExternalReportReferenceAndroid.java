@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
+import java.util.UUID;
+
 import static org.im97mori.ble.BLEConstants.DescriptorUUID.EXTERNAL_REPORT_REFERENCE_DESCRIPTOR;
 
 /**
@@ -56,6 +58,16 @@ public class ExternalReportReferenceAndroid extends ExternalReportReference impl
      */
     public ExternalReportReferenceAndroid(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
         super(bluetoothGattDescriptor.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param externalReportReference External Report Reference
+     * @param uuid                    External Report Reference UUID
+     */
+    public ExternalReportReferenceAndroid(@NonNull byte[] externalReportReference, @NonNull UUID uuid) {
+        super(externalReportReference, uuid);
     }
 
     /**

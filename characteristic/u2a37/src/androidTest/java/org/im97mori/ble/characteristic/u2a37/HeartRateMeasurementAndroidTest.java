@@ -447,6 +447,22 @@ public class HeartRateMeasurementAndroidTest {
     }
 
     @Test
+    public void test_constructor306() {
+        int flags = 1;
+        int heartRateMeasurementValueUint8 = 2;
+        int heartRateMeasurementValueUint16 = 3;
+        int energyExpended = 4;
+        int[] rrInterval = new int[]{5};
+
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(flags, heartRateMeasurementValueUint8, heartRateMeasurementValueUint16, energyExpended, rrInterval);
+        assertEquals(flags, result1.getFlags());
+        assertEquals(heartRateMeasurementValueUint8, result1.getHeartRateMeasurementValueUint8());
+        assertEquals(heartRateMeasurementValueUint16, result1.getHeartRateMeasurementValueUint16());
+        assertEquals(energyExpended, result1.getEnergyExpended());
+        assertArrayEquals(rrInterval, result1.getRrInterval());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[2];

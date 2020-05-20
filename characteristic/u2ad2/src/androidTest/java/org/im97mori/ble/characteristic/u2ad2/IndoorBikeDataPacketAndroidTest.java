@@ -973,6 +973,44 @@ public class IndoorBikeDataPacketAndroidTest {
     }
 
     @Test
+    public void test_constructor_01203() {
+        byte[] flags = new byte[] { 1 };
+        int instantaneousSpeed = 2;
+        int averageSpeed = 3;
+        int instantaneousCadence = 4;
+        int averageCadence = 5;
+        int totalDistance = 6;
+        int resistanceLevel = 7;
+        int instantaneousPower = 8;
+        int averagePower = 9;
+        int totalEnergy = 10;
+        int energyPerHour = 11;
+        int energyPerMinute = 12;
+        int heartRate = 13;
+        int metabolicEquivalent = 14;
+        int elapsedTime = 15;
+        int remainingTime = 16;
+
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(flags, instantaneousSpeed, averageSpeed, instantaneousCadence, averageCadence, totalDistance, resistanceLevel, instantaneousPower, averagePower, totalEnergy, energyPerHour, energyPerMinute, heartRate, metabolicEquivalent, elapsedTime, remainingTime);
+        assertArrayEquals(flags, result1.getFlags());
+        assertEquals(instantaneousSpeed, result1.getInstantaneousSpeed());
+        assertEquals(averageSpeed, result1.getAverageSpeed());
+        assertEquals(instantaneousCadence, result1.getInstantaneousCadence());
+        assertEquals(averageCadence, result1.getAverageCadence());
+        assertEquals(totalDistance, result1.getTotalDistance());
+        assertEquals(resistanceLevel, result1.getResistanceLevel());
+        assertEquals(instantaneousPower, result1.getInstantaneousPower());
+        assertEquals(averagePower, result1.getAveragePower());
+        assertEquals(totalEnergy, result1.getTotalEnergy());
+        assertEquals(energyPerHour, result1.getEnergyPerHour());
+        assertEquals(energyPerMinute, result1.getEnergyPerMinute());
+        assertEquals(heartRate, result1.getHeartRate());
+        assertEquals(metabolicEquivalent, result1.getMetabolicEquivalent());
+        assertEquals(elapsedTime, result1.getElapsedTime());
+        assertEquals(remainingTime, result1.getRemainingTime());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

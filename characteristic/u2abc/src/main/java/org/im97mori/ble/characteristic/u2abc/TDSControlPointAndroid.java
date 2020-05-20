@@ -61,6 +61,17 @@ public class TDSControlPointAndroid extends TDSControlPoint implements Parcelabl
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param opCode         Op Code
+     * @param organizationId Organization ID
+     * @param parameter      Parameter
+     */
+    public TDSControlPointAndroid(int opCode, int organizationId, @NonNull byte[] parameter) {
+        super(opCode, organizationId, parameter);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

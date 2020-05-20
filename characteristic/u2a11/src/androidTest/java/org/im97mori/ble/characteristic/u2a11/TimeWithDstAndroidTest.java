@@ -446,6 +446,26 @@ public class TimeWithDstAndroidTest {
     }
 
     @Test
+    public void test_constructor017() {
+        int year = 1;
+        int month = 2;
+        int day = 3;
+        int hours = 4;
+        int minutes = 5;
+        int seconds = 6;
+        int dstOffset = 7;
+
+        TimeWithDstAndroid result1 = new TimeWithDstAndroid(year, month, day, hours, minutes, seconds, dstOffset);
+        assertEquals(year, result1.getYear());
+        assertEquals(month, result1.getMonth());
+        assertEquals(day, result1.getDay());
+        assertEquals(hours, result1.getHours());
+        assertEquals(minutes, result1.getMinutes());
+        assertEquals(seconds, result1.getSeconds());
+        assertEquals(dstOffset, result1.getDstOffset());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[8];

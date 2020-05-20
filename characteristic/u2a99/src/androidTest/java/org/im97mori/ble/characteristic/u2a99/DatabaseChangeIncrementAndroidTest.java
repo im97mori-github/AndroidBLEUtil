@@ -46,6 +46,14 @@ public class DatabaseChangeIncrementAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        long databaseChangeIncrement = 1;
+
+        DatabaseChangeIncrementAndroid result1 = new DatabaseChangeIncrementAndroid(databaseChangeIncrement);
+        assertEquals(databaseChangeIncrement, result1.getDatabaseChangeIncrement());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[4];

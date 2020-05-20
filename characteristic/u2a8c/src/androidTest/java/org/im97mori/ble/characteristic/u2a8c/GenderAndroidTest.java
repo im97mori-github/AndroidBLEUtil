@@ -65,6 +65,14 @@ public class GenderAndroidTest {
     }
 
     @Test
+    public void test_constructor004() {
+        int gender = 1;
+
+        GenderAndroid result1 = new GenderAndroid(gender);
+        assertEquals(gender, result1.getGender());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

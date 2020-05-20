@@ -61,6 +61,15 @@ public class HeatIndexAndroid extends HeatIndex implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param heatIndex Heat Index
+     */
+    public HeatIndexAndroid(int heatIndex) {
+        super(heatIndex);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

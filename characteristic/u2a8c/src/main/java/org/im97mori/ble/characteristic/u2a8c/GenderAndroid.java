@@ -61,6 +61,15 @@ public class GenderAndroid extends Gender implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param gender Gender
+     */
+    public GenderAndroid(int gender) {
+        super(gender);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

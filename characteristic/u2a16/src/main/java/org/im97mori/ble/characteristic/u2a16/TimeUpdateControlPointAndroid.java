@@ -61,6 +61,15 @@ public class TimeUpdateControlPointAndroid extends TimeUpdateControlPoint implem
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param timeUpdateControlPoint Time Update Control Point
+     */
+    public TimeUpdateControlPointAndroid(int timeUpdateControlPoint) {
+        super(timeUpdateControlPoint);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

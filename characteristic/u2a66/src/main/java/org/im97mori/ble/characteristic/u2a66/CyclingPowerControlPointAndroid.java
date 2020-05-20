@@ -61,6 +61,19 @@ public class CyclingPowerControlPointAndroid extends CyclingPowerControlPoint im
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param opCodes           Op Codes
+     * @param parameterValue    Parameter Value
+     * @param requestOpCode     Request Op Code
+     * @param responseValue     Response Value
+     * @param responseParameter Response Parameter
+     */
+    public CyclingPowerControlPointAndroid(int opCodes, @NonNull byte[] parameterValue, int requestOpCode, int responseValue, @NonNull byte[] responseParameter) {
+        super(opCodes, parameterValue, requestOpCode, responseValue, responseParameter);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

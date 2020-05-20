@@ -473,6 +473,14 @@ public class BarometricPressureTrendAndroidTest {
     }
 
     @Test
+    public void test_constructor_00011() {
+        int barometricPressureTrend = 1;
+
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(barometricPressureTrend);
+        assertEquals(barometricPressureTrend, result1.getBarometricPressureTrend());
+    }
+
+    @Test
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 

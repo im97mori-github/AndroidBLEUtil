@@ -61,6 +61,15 @@ public class HTTPControlPointAndroid extends HTTPControlPoint implements Parcela
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param opCode Op Code
+     */
+    public HTTPControlPointAndroid(int opCode) {
+        super(opCode);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

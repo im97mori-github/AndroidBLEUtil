@@ -46,6 +46,14 @@ public class PeripheralPrivacyFlagAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int flag = 1;
+
+        PeripheralPrivacyFlagAndroid result1 = new PeripheralPrivacyFlagAndroid(flag);
+        assertEquals(flag, result1.getFlag());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

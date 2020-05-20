@@ -110,6 +110,16 @@ public class LocalTimeInformationAndroidTest {
     }
 
     @Test
+    public void test_constructor006() {
+        int timeZone = 1;
+        int dstOffset = 2;
+
+        LocalTimeInformationAndroid result1 = new LocalTimeInformationAndroid(timeZone, dstOffset);
+        assertEquals(timeZone, result1.getTimeZone());
+        assertEquals(dstOffset, result1.getDstOffset());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[2];

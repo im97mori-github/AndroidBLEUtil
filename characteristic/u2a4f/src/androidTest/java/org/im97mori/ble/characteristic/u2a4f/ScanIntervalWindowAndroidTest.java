@@ -65,6 +65,16 @@ public class ScanIntervalWindowAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int leScanInterval = 1;
+        int leScanWindow = 2;
+
+        ScanIntervalWindowAndroid result1 = new ScanIntervalWindowAndroid(leScanInterval, leScanWindow);
+        assertEquals(leScanInterval, result1.getLeScanInterval());
+        assertEquals(leScanWindow, result1.getLeScanWindow());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

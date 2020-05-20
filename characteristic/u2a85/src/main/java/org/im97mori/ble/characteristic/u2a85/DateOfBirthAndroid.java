@@ -61,6 +61,17 @@ public class DateOfBirthAndroid extends DateOfBirth implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param year  Year
+     * @param month Month
+     * @param day   Day
+     */
+    public DateOfBirthAndroid(int year, int month, int day) {
+        super(year, month, day);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

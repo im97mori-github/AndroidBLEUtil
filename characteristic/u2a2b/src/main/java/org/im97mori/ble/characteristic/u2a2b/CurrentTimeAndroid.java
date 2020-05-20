@@ -61,6 +61,23 @@ public class CurrentTimeAndroid extends CurrentTime implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param year         Year
+     * @param month        Month
+     * @param day          Day
+     * @param hours        Hours
+     * @param minutes      Minutes
+     * @param seconds      Seconds
+     * @param dayOfWeek    Day of Week
+     * @param fractions256 Fractions256
+     * @param adjustReason Adjust Reason
+     */
+    public CurrentTimeAndroid(int year, int month, int day, int hours, int minutes, int seconds, int dayOfWeek, int fractions256, int adjustReason) {
+        super(year, month, day, hours, minutes, seconds, dayOfWeek, fractions256, adjustReason);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

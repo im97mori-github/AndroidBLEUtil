@@ -46,6 +46,14 @@ public class RingerSettingAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int ringerSetting = 1;
+
+        RingerSettingAndroid result1 = new RingerSettingAndroid(ringerSetting);
+        assertEquals(ringerSetting, result1.getRingerSetting());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

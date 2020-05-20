@@ -44,6 +44,14 @@ public class WaistCircumferenceAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int waistCircumference = 1;
+
+        WaistCircumferenceAndroid result1 = new WaistCircumferenceAndroid(waistCircumference);
+        assertEquals(waistCircumference, result1.getWaistCircumference());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[2];

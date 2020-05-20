@@ -65,6 +65,14 @@ public class AlertLevelAndroidTest {
     }
 
     @Test
+    public void test_constructor004() {
+        int alertLevel = 1;
+
+        AlertLevelAndroid result1 = new AlertLevelAndroid(alertLevel);
+        assertEquals(alertLevel, result1.getAlertLevel());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

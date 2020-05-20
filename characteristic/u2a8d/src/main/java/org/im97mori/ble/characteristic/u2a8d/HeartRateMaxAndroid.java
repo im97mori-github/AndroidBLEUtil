@@ -61,6 +61,15 @@ public class HeartRateMaxAndroid extends HeartRateMax implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param heartRateMax Heart Rate Max
+     */
+    public HeartRateMaxAndroid(int heartRateMax) {
+        super(heartRateMax);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

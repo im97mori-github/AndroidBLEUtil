@@ -62,6 +62,15 @@ public class SportTypeForAerobicAndAnaerobicThresholdsAndroid extends SportTypeF
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param sportTypeForAerobicAndAnaerobicThresholds Sport Type for Aerobic and Anaerobic Thresholds
+     */
+    public SportTypeForAerobicAndAnaerobicThresholdsAndroid(int sportTypeForAerobicAndAnaerobicThresholds) {
+        super(sportTypeForAerobicAndAnaerobicThresholds);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

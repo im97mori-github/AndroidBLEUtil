@@ -62,6 +62,14 @@ public class LatitudeAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int latitude = 1;
+
+        LatitudeAndroid result1 = new LatitudeAndroid(latitude);
+        assertEquals(latitude, result1.getLatitude());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

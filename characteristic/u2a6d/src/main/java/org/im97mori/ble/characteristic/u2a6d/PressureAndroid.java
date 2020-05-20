@@ -61,6 +61,15 @@ public class PressureAndroid extends Pressure implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param pressure Pressure
+     */
+    public PressureAndroid(long pressure) {
+        super(pressure);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

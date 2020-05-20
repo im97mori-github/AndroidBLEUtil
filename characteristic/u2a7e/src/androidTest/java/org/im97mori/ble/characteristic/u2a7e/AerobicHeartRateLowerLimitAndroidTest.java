@@ -39,6 +39,14 @@ public class AerobicHeartRateLowerLimitAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int aerobicHeartRateLowerLimit = 1;
+
+        AerobicHeartRateLowerLimitAndroid result1 = new AerobicHeartRateLowerLimitAndroid(aerobicHeartRateLowerLimit);
+        assertEquals(aerobicHeartRateLowerLimit, result1.getAerobicHeartRateLowerLimit());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

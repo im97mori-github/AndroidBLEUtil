@@ -78,6 +78,14 @@ public class HTTPEntityBodyAndroidTest {
     }
 
     @Test
+    public void test_constructor_00003() {
+        String httpEntityBody = "1";
+
+        HTTPEntityBodyAndroid result1 = new HTTPEntityBodyAndroid(httpEntityBody);
+        assertEquals(httpEntityBody, result1.getHttpEntityBody());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

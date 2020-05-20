@@ -56,6 +56,16 @@ public class SystemIdAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        long manufacturerIdentifier = 1;
+        int organizationallyUniqueIdentifier = 2;
+
+        SystemIdAndroid result1 = new SystemIdAndroid(manufacturerIdentifier, organizationallyUniqueIdentifier);
+        assertEquals(manufacturerIdentifier, result1.getManufacturerIdentifier());
+        assertEquals(organizationallyUniqueIdentifier, result1.getOrganizationallyUniqueIdentifier());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[8];

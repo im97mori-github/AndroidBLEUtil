@@ -59,6 +59,19 @@ public class CharacteristicPresentationFormatAndroid extends CharacteristicPrese
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param format      Format
+     * @param exponent    Exponent
+     * @param unit        Unit
+     * @param namespace   Namespace
+     * @param description Description
+     */
+    public CharacteristicPresentationFormatAndroid(int format, int exponent, int unit, int namespace, @NonNull byte[] description) {
+        super(format, exponent, unit, namespace, description);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

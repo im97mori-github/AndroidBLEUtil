@@ -61,6 +61,16 @@ public class FitnessMachineStatusAndroid extends FitnessMachineStatus implements
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param opCode    Op Code
+     * @param parameter Parameter
+     */
+    public FitnessMachineStatusAndroid(int opCode, @NonNull byte[] parameter) {
+        super(opCode, parameter);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

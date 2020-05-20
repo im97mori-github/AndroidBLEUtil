@@ -259,6 +259,14 @@ public class IndoorPositioningConfigurationAndroidTest {
     }
 
     @Test
+    public void test_constructor_00008() {
+        int indoorPositioningConfiguration = 1;
+
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(indoorPositioningConfiguration);
+        assertEquals(indoorPositioningConfiguration, result1.getIndoorPositioningConfiguration());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
@@ -272,7 +280,6 @@ public class IndoorPositioningConfigurationAndroidTest {
         IndoorPositioningConfigurationAndroid result2 = IndoorPositioningConfigurationAndroid.CREATOR.createFromParcel(parcel);
         assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
     }
-
 
     @Test
     public void test_parcelable_1_00002() {

@@ -48,6 +48,16 @@ public class ServiceChangedAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int startOfAffectedAttributeHandleRange = 1;
+        int endOfAffectedAttributeHandleRange = 2;
+
+        ServiceChangedAndroid result1 = new ServiceChangedAndroid(startOfAffectedAttributeHandleRange, endOfAffectedAttributeHandleRange);
+        assertEquals(startOfAffectedAttributeHandleRange, result1.getStartOfAffectedAttributeHandleRange());
+        assertEquals(endOfAffectedAttributeHandleRange, result1.getEndOfAffectedAttributeHandleRange());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[4];

@@ -2408,6 +2408,54 @@ public class CrossTrainerDataPacketAndroidTest {
     }
 
     @Test
+    public void test_constructor_01503() {
+        byte[] flags = new byte[] { 1 };
+        int instantaneousSpeed = 2;
+        int averageSpeed = 3;
+        int totalDistance = 4;
+        int stepPerMinute = 5;
+        int averageStepRate = 6;
+        int strideCount = 7;
+        int positiveElevationGain = 8;
+        int negativeElevationGain = 9;
+        int inclination = 10;
+        int rampAngleSetting = 11;
+        int resistanceLevel = 12;
+        int instantaneousPower = 13;
+        int averagePower = 14;
+        int totalEnergy = 15;
+        int energyPerHour = 16;
+        int energyPerMinute = 17;
+        int heartRate = 18;
+        int metabolicEquivalent = 19;
+        int elapsedTime = 20;
+        int remainingTime = 21;
+
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(flags, instantaneousSpeed, averageSpeed, totalDistance, stepPerMinute, averageStepRate, strideCount, positiveElevationGain, negativeElevationGain, inclination, rampAngleSetting, resistanceLevel, instantaneousPower, averagePower, totalEnergy, energyPerHour, energyPerMinute, heartRate, metabolicEquivalent, elapsedTime, remainingTime);
+        assertArrayEquals(flags, result1.getFlags());
+        assertEquals(instantaneousSpeed, result1.getInstantaneousSpeed());
+        assertEquals(averageSpeed, result1.getAverageSpeed());
+        assertEquals(totalDistance, result1.getTotalDistance());
+        assertEquals(stepPerMinute, result1.getStepPerMinute());
+        assertEquals(averageStepRate, result1.getAverageStepRate());
+        assertEquals(strideCount, result1.getStrideCount());
+        assertEquals(positiveElevationGain, result1.getPositiveElevationGain());
+        assertEquals(negativeElevationGain, result1.getNegativeElevationGain());
+        assertEquals(inclination, result1.getInclination());
+        assertEquals(rampAngleSetting, result1.getRampAngleSetting());
+        assertEquals(resistanceLevel, result1.getResistanceLevel());
+        assertEquals(instantaneousPower, result1.getInstantaneousPower());
+        assertEquals(averagePower, result1.getAveragePower());
+        assertEquals(totalEnergy, result1.getTotalEnergy());
+        assertEquals(energyPerHour, result1.getEnergyPerHour());
+        assertEquals(energyPerMinute, result1.getEnergyPerMinute());
+        assertEquals(heartRate, result1.getHeartRate());
+        assertEquals(metabolicEquivalent, result1.getMetabolicEquivalent());
+        assertEquals(elapsedTime, result1.getElapsedTime());
+        assertEquals(remainingTime, result1.getRemainingTime());
+    }
+
+    @Test
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 

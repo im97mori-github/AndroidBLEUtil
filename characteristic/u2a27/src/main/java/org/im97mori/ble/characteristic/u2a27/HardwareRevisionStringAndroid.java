@@ -61,6 +61,15 @@ public class HardwareRevisionStringAndroid extends HardwareRevisionString implem
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param hardwareRevision Hardware Revision
+     */
+    public HardwareRevisionStringAndroid(@NonNull String hardwareRevision) {
+        super(hardwareRevision);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

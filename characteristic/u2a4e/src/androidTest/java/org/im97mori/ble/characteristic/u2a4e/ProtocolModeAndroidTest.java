@@ -83,6 +83,14 @@ public class ProtocolModeAndroidTest {
     }
 
     @Test
+    public void test_constructor_00003() {
+        int protocolModeValues = 1;
+
+        ProtocolModeAndroid result1 = new ProtocolModeAndroid(protocolModeValues);
+        assertEquals(ProtocolMode.PROTOCOL_MODE_VALUE_REPORT_PROTOCOL_MODE, result1.getProtocolModeValue());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

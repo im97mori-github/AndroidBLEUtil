@@ -65,6 +65,16 @@ public class MagneticFluxDensity2DAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int magneticFluxDensityXAxis = 1;
+        int magneticFluxDensityYAxis = 2;
+
+        MagneticFluxDensity2DAndroid result1 = new MagneticFluxDensity2DAndroid(magneticFluxDensityXAxis, magneticFluxDensityYAxis);
+        assertEquals(magneticFluxDensityXAxis, result1.getMagneticFluxDensityXAxis());
+        assertEquals(magneticFluxDensityYAxis, result1.getMagneticFluxDensityYAxis());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

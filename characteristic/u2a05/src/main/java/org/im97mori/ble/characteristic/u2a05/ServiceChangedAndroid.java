@@ -61,6 +61,16 @@ public class ServiceChangedAndroid extends ServiceChanged implements Parcelable 
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param startOfAffectedAttributeHandleRange Start of Affected Attribute Handle Range
+     * @param endOfAffectedAttributeHandleRange   End of Affected Attribute Handle Range
+     */
+    public ServiceChangedAndroid(int startOfAffectedAttributeHandleRange, int endOfAffectedAttributeHandleRange) {
+        super(startOfAffectedAttributeHandleRange, endOfAffectedAttributeHandleRange);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

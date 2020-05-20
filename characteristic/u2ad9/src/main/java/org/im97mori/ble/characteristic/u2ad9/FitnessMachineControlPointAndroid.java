@@ -61,6 +61,19 @@ public class FitnessMachineControlPointAndroid extends FitnessMachineControlPoin
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param opCode            Op Code
+     * @param parameter         Parameter
+     * @param requestOpCode     Request Op Code
+     * @param resultCode        Result Code
+     * @param responseParameter Response Parameter
+     */
+    public FitnessMachineControlPointAndroid(int opCode, @NonNull byte[] parameter, int requestOpCode, int resultCode, @NonNull byte[] responseParameter) {
+        super(opCode, parameter, requestOpCode, resultCode, responseParameter);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

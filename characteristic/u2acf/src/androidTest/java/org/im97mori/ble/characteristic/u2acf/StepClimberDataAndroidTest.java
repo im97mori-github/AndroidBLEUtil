@@ -504,6 +504,38 @@ public class StepClimberDataAndroidTest {
     }
 
     @Test
+    public void test_constructor_00003() {
+        byte[] flags = new byte[] { 1 };
+        int floors = 2;
+        int stepCount = 3;
+        int stepPerMinute = 4;
+        int averageStepRate = 5;
+        int positiveElevationGain = 6;
+        int totalEnergy = 7;
+        int energyPerHour = 8;
+        int energyPerMinute = 9;
+        int heartRate = 10;
+        int metabolicEquivalent = 11;
+        int elapsedTime = 12;
+        int remainingTime = 13;
+
+        StepClimberDataAndroid result1 = new StepClimberDataAndroid(flags, floors, stepCount, stepPerMinute, averageStepRate, positiveElevationGain, totalEnergy, energyPerHour, energyPerMinute, heartRate, metabolicEquivalent, elapsedTime, remainingTime);
+        assertArrayEquals(flags, result1.getFlags());
+        assertEquals(floors, result1.getFloors());
+        assertEquals(stepCount, result1.getStepCount());
+        assertEquals(stepPerMinute, result1.getStepPerMinute());
+        assertEquals(averageStepRate, result1.getAverageStepRate());
+        assertEquals(positiveElevationGain, result1.getPositiveElevationGain());
+        assertEquals(totalEnergy, result1.getTotalEnergy());
+        assertEquals(energyPerHour, result1.getEnergyPerHour());
+        assertEquals(energyPerMinute, result1.getEnergyPerMinute());
+        assertEquals(heartRate, result1.getHeartRate());
+        assertEquals(metabolicEquivalent, result1.getMetabolicEquivalent());
+        assertEquals(elapsedTime, result1.getElapsedTime());
+        assertEquals(remainingTime, result1.getRemainingTime());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

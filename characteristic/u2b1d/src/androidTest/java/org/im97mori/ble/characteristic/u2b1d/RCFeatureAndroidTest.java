@@ -1726,6 +1726,16 @@ public class RCFeatureAndroidTest {
     }
 
     @Test
+    public void test_constructor_01903() {
+        int e2eCrc = 1;
+        byte[] rcFeatures = new byte[] { 2 };
+
+        RCFeatureAndroid result1 = new RCFeatureAndroid(e2eCrc, rcFeatures);
+        assertEquals(e2eCrc, result1.getE2eCrc());
+        assertArrayEquals(rcFeatures, result1.getRcFeatures());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

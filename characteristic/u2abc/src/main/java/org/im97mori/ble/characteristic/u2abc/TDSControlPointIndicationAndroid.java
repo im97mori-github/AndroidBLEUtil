@@ -61,6 +61,17 @@ public class TDSControlPointIndicationAndroid extends TDSControlPointIndication 
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param requestedOpCode   Requested Op Code
+     * @param resultCode        Result Code
+     * @param responseParameter Response Parameter
+     */
+    public TDSControlPointIndicationAndroid(int requestedOpCode, int resultCode, @NonNull byte[] responseParameter) {
+        super(requestedOpCode, resultCode, responseParameter);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -25,6 +25,14 @@ public class DeviceNameAndroidTest {
     }
 
     @Test
+    public void test_constructor002() {
+        String name = "Rbt-Sensor";
+
+        DeviceNameAndroid result1 = new DeviceNameAndroid(name);
+        assertEquals(name, result1.getName());
+    }
+
+    @Test
     public void test_parcelable001() {
         String name = "Rbt-Sensor";
 

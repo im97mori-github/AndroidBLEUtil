@@ -61,6 +61,16 @@ public class SystemIdAndroid extends SystemId implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param manufacturerIdentifier           Manufacturer Identifier
+     * @param organizationallyUniqueIdentifier Organizationally Unique Identifier
+     */
+    public SystemIdAndroid(long manufacturerIdentifier, int organizationallyUniqueIdentifier) {
+        super(manufacturerIdentifier, organizationallyUniqueIdentifier);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

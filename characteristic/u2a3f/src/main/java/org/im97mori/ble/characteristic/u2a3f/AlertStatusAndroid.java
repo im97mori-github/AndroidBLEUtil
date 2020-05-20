@@ -61,6 +61,15 @@ public class AlertStatusAndroid extends AlertStatus implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param alertStatus Alert Status
+     */
+    public AlertStatusAndroid(int alertStatus) {
+        super(alertStatus);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

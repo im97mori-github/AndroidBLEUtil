@@ -58,6 +58,15 @@ public class FirstNameAndroid extends FirstName implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param firstName First Name
+     */
+    public FirstNameAndroid(@NonNull String firstName) {
+        super(firstName);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

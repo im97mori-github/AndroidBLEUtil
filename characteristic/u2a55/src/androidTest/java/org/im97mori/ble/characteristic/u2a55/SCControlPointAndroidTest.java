@@ -777,6 +777,24 @@ public class SCControlPointAndroidTest {
     }
 
     @Test
+    public void test_constructor_00706() {
+        int opCode = 1;
+        long cumulativeValue = 2;
+        int sensorLocationValue = 3;
+        int requestOpCode = 4;
+        int responseValue = 5;
+        byte[] responseParameter = new byte[]{6};
+
+        SCControlPointAndroid result1 = new SCControlPointAndroid(opCode, cumulativeValue, sensorLocationValue, requestOpCode, responseValue, responseParameter);
+        assertEquals(opCode, result1.getOpCode());
+        assertEquals(cumulativeValue, result1.getCumulativeValue());
+        assertEquals(sensorLocationValue, result1.getSensorLocationValue());
+        assertEquals(requestOpCode, result1.getRequestOpCode());
+        assertEquals(responseValue, result1.getResponseValue());
+        assertArrayEquals(responseParameter, result1.getResponseParameter());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

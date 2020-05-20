@@ -172,6 +172,16 @@ public class UnreadAlertAndroidTest {
     }
 
     @Test
+    public void test_constructor011() {
+        int categoryId = 1;
+        int unreadCount = 2;
+
+        UnreadAlertStatusAndroid result1 = new UnreadAlertStatusAndroid(categoryId, unreadCount);
+        assertEquals(categoryId, result1.getCategoryId());
+        assertEquals(unreadCount, result1.getUnreadCount());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[2];

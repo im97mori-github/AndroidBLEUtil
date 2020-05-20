@@ -61,6 +61,15 @@ public class TemperatureAndroid extends Temperature implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param temperature Temperature
+     */
+    public TemperatureAndroid(int temperature) {
+        super(temperature);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -61,6 +61,15 @@ public class HipCircumferenceAndroid extends HipCircumference implements Parcela
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param hipCircumference Hip Circumference
+     */
+    public HipCircumferenceAndroid(int hipCircumference) {
+        super(hipCircumference);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

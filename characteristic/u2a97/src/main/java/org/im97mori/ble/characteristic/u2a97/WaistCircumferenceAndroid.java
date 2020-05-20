@@ -66,6 +66,15 @@ public class WaistCircumferenceAndroid extends WaistCircumference implements Par
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param waistCircumference Waist Circumference
+     */
+    public WaistCircumferenceAndroid(int waistCircumference) {
+        super(waistCircumference);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

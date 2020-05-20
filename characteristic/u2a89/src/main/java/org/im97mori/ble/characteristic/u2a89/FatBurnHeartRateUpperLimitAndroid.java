@@ -61,6 +61,15 @@ public class FatBurnHeartRateUpperLimitAndroid extends FatBurnHeartRateUpperLimi
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param fatBurnHeartRateUpperLimit Fat Burn Heart Rate Upper Limit
+     */
+    public FatBurnHeartRateUpperLimitAndroid(int fatBurnHeartRateUpperLimit) {
+        super(fatBurnHeartRateUpperLimit);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -60,6 +60,14 @@ public class LocalNorthCoordinateAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int localNorthCoordinate = 1;
+
+        LocalNorthCoordinateAndroid result1 = new LocalNorthCoordinateAndroid(localNorthCoordinate);
+        assertEquals(localNorthCoordinate, result1.getLocalNorthCoordinate());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

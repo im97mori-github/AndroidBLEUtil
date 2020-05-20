@@ -208,6 +208,18 @@ public class NewAlertAndroidTest {
     }
 
     @Test
+    public void test_constructor011() {
+        int categoryId = 1;
+        int numberOfNewAlert = 2;
+        String textStringInformation = "3";
+
+        NewAlertAndroid result1 = new NewAlertAndroid(categoryId, numberOfNewAlert, textStringInformation);
+        assertEquals(categoryId, result1.getCategoryId());
+        assertEquals(numberOfNewAlert, result1.getNumberOfNewAlert());
+        assertEquals(textStringInformation, result1.getTextStringInformation());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[2];

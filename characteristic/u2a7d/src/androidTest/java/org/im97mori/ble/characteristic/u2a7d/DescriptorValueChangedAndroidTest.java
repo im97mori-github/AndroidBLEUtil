@@ -411,6 +411,16 @@ public class DescriptorValueChangedAndroidTest {
     }
 
     @Test
+    public void test_constructor_50003() {
+        int flags = 1;
+        byte[] characteristicUUID = new byte[] { 1 };
+
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(flags, characteristicUUID);
+        assertEquals(flags, result1.getFlags());
+        assertArrayEquals(characteristicUUID, result1.getCharacteristicUUID());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

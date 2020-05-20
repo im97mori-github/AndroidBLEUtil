@@ -83,6 +83,14 @@ public class HIDControlPointAndroidTest {
     }
 
     @Test
+    public void test_constructor_00003() {
+        int hidControlPointCommand = 1;
+
+        HIDControlPointAndroid result1 = new HIDControlPointAndroid(hidControlPointCommand);
+        assertEquals(HIDControlPoint.HID_CONTROL_POINT_COMMAND_EXIT_SUSPEND, result1.getHidControlPointCommand());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

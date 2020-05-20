@@ -61,6 +61,19 @@ public class RSCMeasurementAndroid extends RSCMeasurement implements Parcelable 
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param flags                     Flags
+     * @param instantaneousSpeed        Instantaneous Speed
+     * @param instantaneousCadence      Instantaneous Cadence
+     * @param instantaneousStrideLength Instantaneous Stride Length
+     * @param totalDistance             Total Distance
+     */
+    public RSCMeasurementAndroid(int flags, int instantaneousSpeed, int instantaneousCadence, int instantaneousStrideLength, long totalDistance) {
+        super(flags, instantaneousSpeed, instantaneousCadence, instantaneousStrideLength, totalDistance);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

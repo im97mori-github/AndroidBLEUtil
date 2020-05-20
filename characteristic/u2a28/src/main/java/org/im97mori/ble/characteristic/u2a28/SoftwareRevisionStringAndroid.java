@@ -61,6 +61,15 @@ public class SoftwareRevisionStringAndroid extends SoftwareRevisionString implem
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param softwareRevision Software Revision
+     */
+    public SoftwareRevisionStringAndroid(@NonNull String softwareRevision) {
+        super(softwareRevision);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

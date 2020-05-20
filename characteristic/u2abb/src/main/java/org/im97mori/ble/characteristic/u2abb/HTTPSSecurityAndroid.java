@@ -61,6 +61,15 @@ public class HTTPSSecurityAndroid extends HTTPSSecurity implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param httpsSecurity HTTPS Security
+     */
+    public HTTPSSecurityAndroid(int httpsSecurity) {
+        super(httpsSecurity);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

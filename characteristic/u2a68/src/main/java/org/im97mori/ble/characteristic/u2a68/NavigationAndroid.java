@@ -61,6 +61,25 @@ public class NavigationAndroid extends Navigation implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param flags                     Flags
+     * @param bearing                   Bearing
+     * @param heading                   Heading
+     * @param remainingDistance         Remaining Distance
+     * @param remainingVerticalDistance Remaining Vertical Distance
+     * @param year                      Year
+     * @param month                     Month
+     * @param day                       Day
+     * @param hours                     Hours
+     * @param minutes                   Minutes
+     * @param seconds                   Seconds
+     */
+    public NavigationAndroid(@NonNull byte[] flags, int bearing, int heading, int remainingDistance, int remainingVerticalDistance, int year, int month, int day, int hours, int minutes, int seconds) {
+        super(flags, bearing, heading, remainingDistance, remainingVerticalDistance, year, month, day, hours, minutes, seconds);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

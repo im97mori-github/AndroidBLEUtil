@@ -62,6 +62,14 @@ public class LongitudeAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int longitude = 1;
+
+        LongitudeAndroid result1 = new LongitudeAndroid(longitude);
+        assertEquals(longitude, result1.getLongitude());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

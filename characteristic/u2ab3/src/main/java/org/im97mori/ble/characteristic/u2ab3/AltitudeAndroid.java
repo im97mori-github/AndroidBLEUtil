@@ -61,6 +61,15 @@ public class AltitudeAndroid extends Altitude implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param altitude Altitude
+     */
+    public AltitudeAndroid(int altitude) {
+        super(altitude);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -93,6 +93,14 @@ public class HTTPHeadersAndroidTest {
     }
 
     @Test
+    public void test_constructor_00003() {
+        String httpHeaders = "1";
+
+        HTTPHeadersAndroid result1 = new HTTPHeadersAndroid(httpHeaders);
+        assertEquals(httpHeaders, result1.getHttpHeaders());
+    }
+
+    @Test
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 

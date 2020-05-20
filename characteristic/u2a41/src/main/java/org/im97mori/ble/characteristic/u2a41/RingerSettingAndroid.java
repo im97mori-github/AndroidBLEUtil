@@ -61,6 +61,15 @@ public class RingerSettingAndroid extends RingerSetting implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param ringerSetting Ringer SettingRinger Setting
+     */
+    public RingerSettingAndroid(int ringerSetting) {
+        super(ringerSetting);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

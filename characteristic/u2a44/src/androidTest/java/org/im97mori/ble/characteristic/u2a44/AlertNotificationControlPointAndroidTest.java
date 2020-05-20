@@ -235,6 +235,16 @@ public class AlertNotificationControlPointAndroidTest {
     }
 
     @Test
+    public void test_constructor011() {
+        int commandId = 1;
+        int categoryId = 2;
+
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(commandId, categoryId);
+        assertEquals(commandId, result1.getCommandId());
+        assertEquals(categoryId, result1.getCategoryId());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[2];

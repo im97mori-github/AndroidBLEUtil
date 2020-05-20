@@ -1326,6 +1326,22 @@ public class CharacteristicPresentationFormatAndroidTest {
     }
 
     @Test
+    public void test_constructor031() {
+        int format = 0;
+        int exponent = 1;
+        int unit = 2;
+        int namespace = 3;
+        byte[] description = new byte[]{4};
+
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(format, exponent, unit, namespace, description);
+        assertEquals(format, result.getFormat());
+        assertEquals(exponent, result.getExponent());
+        assertEquals(unit, result.getUnit());
+        assertEquals(namespace, result.getNamespace());
+        assertArrayEquals(description, result.getDescription());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] value = new byte[7];

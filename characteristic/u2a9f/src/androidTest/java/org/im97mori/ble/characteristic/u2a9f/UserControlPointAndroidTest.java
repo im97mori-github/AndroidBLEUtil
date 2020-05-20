@@ -334,6 +334,23 @@ public class UserControlPointAndroidTest {
     }
 
     @Test
+    public void test_constructor503() {
+        int opCode = 1;
+        int userIndex = 2;
+        int consentCode = 3;
+        int requestOpCode = 4;
+        int responseValue = 5;
+        int numberOfUsers = 6;
+
+        UserControlPointAndroid result1 = new UserControlPointAndroid(opCode, userIndex, consentCode, requestOpCode, responseValue, numberOfUsers);
+        assertEquals(opCode, result1.getOpCode());
+        assertEquals(userIndex, result1.getUserIndex());
+        assertEquals(requestOpCode, result1.getRequestOpCode());
+        assertEquals(responseValue, result1.getResponseValue());
+        assertEquals(numberOfUsers, result1.getNumberOfUsers());
+    }
+
+    @Test
     public void test_opCode001() {
         //@formatter:off
         byte[] data = new byte[3];

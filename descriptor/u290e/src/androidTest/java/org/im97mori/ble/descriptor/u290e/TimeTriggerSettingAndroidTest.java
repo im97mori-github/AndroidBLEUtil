@@ -129,6 +129,20 @@ public class TimeTriggerSettingAndroidTest {
     }
 
     @Test
+    public void test_constructor007() {
+        int condition = 1;
+        int valueNone = 2;
+        int valueTimerInterval = 3;
+        int valueCount = 4;
+
+        TimeTriggerSettingAndroid result = new TimeTriggerSettingAndroid(condition, valueNone, valueTimerInterval, valueCount);
+        assertEquals(condition, result.getCondition());
+        assertEquals(valueNone, result.getValueNone());
+        assertEquals(valueTimerInterval, result.getValueTimeInterval());
+        assertEquals(valueCount, result.getValueCount());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] value = new byte[7];

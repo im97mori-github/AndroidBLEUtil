@@ -61,6 +61,14 @@ public class TemperatureAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int temperature = 1;
+
+        TemperatureAndroid result1 = new TemperatureAndroid(temperature);
+        assertEquals(temperature, result1.getTemperature());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

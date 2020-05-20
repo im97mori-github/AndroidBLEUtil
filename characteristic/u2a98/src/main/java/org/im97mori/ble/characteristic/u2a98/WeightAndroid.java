@@ -61,6 +61,15 @@ public class WeightAndroid extends Weight implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param weight Weight
+     */
+    public WeightAndroid(int weight) {
+        super(weight);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

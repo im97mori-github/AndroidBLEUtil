@@ -363,6 +363,14 @@ public class HTTPControlPointAndroidTest {
     }
 
     @Test
+    public void test_constructor_00012() {
+        int opCode = 1;
+
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(opCode);
+        assertEquals(opCode, result1.getOpCode());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

@@ -59,6 +59,15 @@ public class EnvironmentalSensingConfigurationAndroid extends EnvironmentalSensi
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param triggerLogicValue Trigger Logic Value
+     */
+    public EnvironmentalSensingConfigurationAndroid(int triggerLogicValue) {
+        super(triggerLogicValue);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

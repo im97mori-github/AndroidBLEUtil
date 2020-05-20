@@ -61,6 +61,21 @@ public class TimeWithDstAndroid extends TimeWithDst implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param year      Year
+     * @param month     Month
+     * @param day       Day
+     * @param hours     Hours
+     * @param minutes   Minutes
+     * @param seconds   Seconds
+     * @param dstOffset DST Offset
+     */
+    public TimeWithDstAndroid(int year, int month, int day, int hours, int minutes, int seconds, int dstOffset) {
+        super(year, month, day, hours, minutes, seconds, dstOffset);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

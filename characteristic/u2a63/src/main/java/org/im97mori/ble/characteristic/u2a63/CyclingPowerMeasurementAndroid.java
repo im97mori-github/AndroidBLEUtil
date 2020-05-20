@@ -61,6 +61,30 @@ public class CyclingPowerMeasurementAndroid extends CyclingPowerMeasurement impl
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param flags                                         Flags
+     * @param instantaneousPower                            Instantaneous Power
+     * @param pedalPowerBalance                             Pedal Power Balance
+     * @param accumulatedTorque                             Accumulated Torque
+     * @param wheelRevolutionDataCumulativeWheelRevolutions Wheel Revolution Data - Cumulative Wheel Revolutions
+     * @param wheelRevolutionDataLastWheelEventTime         Wheel Revolution Data - Last Wheel Event Time
+     * @param crankRevolutionDataCumulativeCrankRevolutions Crank Revolution Data- Cumulative Crank Revolutions
+     * @param crankRevolutionDataLastCrankEventTime         Crank Revolution Data- Last Crank Event Time
+     * @param extremeForceMagnitudesMaximumForceMagnitude   Extreme Force Magnitudes - Maximum Force Magnitude
+     * @param extremeForceMagnitudesMinimumForceMagnitude   Extreme Force Magnitudes - Minimum Force Magnitude
+     * @param extremeTorqueMagnitudesMaximumTorqueMagnitude Extreme Torque Magnitudes- Maximum Torque Magnitude
+     * @param extremeTorqueMagnitudesMinimumTorqueMagnitude Extreme Torque Magnitudes- Minimum Torque Magnitude
+     * @param extremeAnglesMaximumAngle                     Extreme Angles - Maximum Angle
+     * @param extremeAnglesMinimumAngle                     Extreme Angles - Minimum Angle
+     * @param topDeadSpotAngle                              Top Dead Spot Angle Bottom Dead Spot Angle
+     * @param bottomDeadSpotAngle                           Accumulated Energy
+     */
+    public CyclingPowerMeasurementAndroid(@NonNull byte[] flags, int instantaneousPower, int pedalPowerBalance, int accumulatedTorque, long wheelRevolutionDataCumulativeWheelRevolutions, int wheelRevolutionDataLastWheelEventTime, int crankRevolutionDataCumulativeCrankRevolutions, int crankRevolutionDataLastCrankEventTime, int extremeForceMagnitudesMaximumForceMagnitude, int extremeForceMagnitudesMinimumForceMagnitude, int extremeTorqueMagnitudesMaximumTorqueMagnitude, int extremeTorqueMagnitudesMinimumTorqueMagnitude, int extremeAnglesMaximumAngle, int extremeAnglesMinimumAngle, int topDeadSpotAngle, int bottomDeadSpotAngle, int accumulatedEnergy) {
+        super(flags, instantaneousPower, pedalPowerBalance, accumulatedTorque, wheelRevolutionDataCumulativeWheelRevolutions, wheelRevolutionDataLastWheelEventTime, crankRevolutionDataCumulativeCrankRevolutions, crankRevolutionDataLastCrankEventTime, extremeForceMagnitudesMaximumForceMagnitude, extremeForceMagnitudesMinimumForceMagnitude, extremeTorqueMagnitudesMaximumTorqueMagnitude, extremeTorqueMagnitudesMinimumTorqueMagnitude, extremeAnglesMaximumAngle, extremeAnglesMinimumAngle, topDeadSpotAngle, bottomDeadSpotAngle, accumulatedEnergy);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

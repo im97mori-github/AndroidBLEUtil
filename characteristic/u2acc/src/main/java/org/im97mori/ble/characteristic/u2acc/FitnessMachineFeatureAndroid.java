@@ -61,6 +61,16 @@ public class FitnessMachineFeatureAndroid extends FitnessMachineFeature implemen
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param fitnessMachineFeatures Fitness Machine Features
+     * @param targetSettingFeatures  Target Setting Features
+     */
+    public FitnessMachineFeatureAndroid(@NonNull byte[] fitnessMachineFeatures, @NonNull byte[] targetSettingFeatures) {
+        super(fitnessMachineFeatures, targetSettingFeatures);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

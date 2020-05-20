@@ -59,6 +59,15 @@ public class EnvironmentalSensingTriggerSettingAndroid extends EnvironmentalSens
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param conditions Conditions
+     */
+    public EnvironmentalSensingTriggerSettingAndroid(int conditions) {
+        super(conditions);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -61,6 +61,15 @@ public class DeviceNameAndroid extends DeviceName implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param name Name
+     */
+    public DeviceNameAndroid(@NonNull String name) {
+        super(name);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

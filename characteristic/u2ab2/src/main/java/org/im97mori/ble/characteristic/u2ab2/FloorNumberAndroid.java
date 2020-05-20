@@ -61,6 +61,15 @@ public class FloorNumberAndroid extends FloorNumber implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param floorNumber Floor Number
+     */
+    public FloorNumberAndroid(int floorNumber) {
+        super(floorNumber);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

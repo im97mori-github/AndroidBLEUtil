@@ -61,6 +61,15 @@ public class RingerControlPointAndroid extends RingerControlPoint implements Par
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param ringerControlPoint Ringer Control Point
+     */
+    public RingerControlPointAndroid(int ringerControlPoint) {
+        super(ringerControlPoint);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

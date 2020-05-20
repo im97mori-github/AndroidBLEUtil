@@ -61,6 +61,27 @@ public class WeightMeasurementAndroid extends WeightMeasurement implements Parce
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param flags          Flags
+     * @param weightSi       Weight - SI
+     * @param weightImperial Weight - Imperial
+     * @param year           Year
+     * @param month          Month
+     * @param day            Day
+     * @param hours          Hours
+     * @param minutes        Minutes
+     * @param seconds        Seconds
+     * @param userId         User ID
+     * @param bmi            BMI
+     * @param heightSi       Height - SI
+     * @param heightImperial Height - Imperial
+     */
+    public WeightMeasurementAndroid(int flags, int weightSi, int weightImperial, int year, int month, int day, int hours, int minutes, int seconds, int userId, int bmi, int heightSi, int heightImperial) {
+        super(flags, weightSi, weightImperial, year, month, day, hours, minutes, seconds, userId, bmi, heightSi, heightImperial);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

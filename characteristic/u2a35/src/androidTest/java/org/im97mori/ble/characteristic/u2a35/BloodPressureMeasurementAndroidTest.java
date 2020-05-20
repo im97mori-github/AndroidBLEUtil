@@ -5,6 +5,7 @@ import android.os.Parcel;
 
 import org.im97mori.ble.characteristic.core.BloodPressureMeasurementUtils;
 import org.im97mori.ble.characteristic.core.DateTimeUtils;
+import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 import org.im97mori.ble.characteristic.core.UserIndexUtils;
 import org.junit.Test;
 
@@ -1328,6 +1329,44 @@ public class BloodPressureMeasurementAndroidTest {
         assertEquals(10, result1.getPulseRate().getSfloat(), 0);
         assertEquals(0x0b, result1.getUserId());
         assertArrayEquals(Arrays.copyOfRange(data, 17, 19), result1.getMeasurementStatus());
+    }
+
+    @Test
+    public void test_constructor503() {
+        int flags = 1;
+        IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
+        IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{6, 7, 8, 9}, 0);
+        IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{10, 11, 12, 13}, 0);
+        IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{14, 15, 16, 17}, 0);
+        IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{18, 19, 20, 21}, 0);
+        IEEE_11073_20601_SFLOAT bloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{22, 23, 24, 25}, 0);
+        int year = 26;
+        int month = 27;
+        int day = 28;
+        int hours = 29;
+        int minutes = 30;
+        int seconds = 31;
+        IEEE_11073_20601_SFLOAT pulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{32, 33, 34, 35}, 0);
+        int userId = 36;
+        byte[] measurementStatus = new byte[]{37};
+
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(flags, bloodPressureMeasurementCompoundValueSystolicMmhg, bloodPressureMeasurementCompoundValueDiastolicMmhg, bloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bloodPressureMeasurementCompoundValueSystolicKpa, bloodPressureMeasurementCompoundValueDiastolicKpa, bloodPressureMeasurementCompoundValueMeanArterialPressureKpa, year, month, day, hours, minutes, seconds, pulseRate, userId, measurementStatus);
+        assertEquals(flags, result1.getFlags());
+        assertEquals(bloodPressureMeasurementCompoundValueSystolicMmhg, result1.getBloodPressureMeasurementCompoundValueSystolicMmhg());
+        assertEquals(bloodPressureMeasurementCompoundValueDiastolicMmhg, result1.getBloodPressureMeasurementCompoundValueDiastolicMmhg());
+        assertEquals(bloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg());
+        assertEquals(bloodPressureMeasurementCompoundValueSystolicKpa, result1.getBloodPressureMeasurementCompoundValueSystolicKpa());
+        assertEquals(bloodPressureMeasurementCompoundValueDiastolicKpa, result1.getBloodPressureMeasurementCompoundValueDiastolicKpa());
+        assertEquals(bloodPressureMeasurementCompoundValueMeanArterialPressureKpa, result1.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa());
+        assertEquals(year, result1.getYear());
+        assertEquals(month, result1.getMonth());
+        assertEquals(day, result1.getDay());
+        assertEquals(hours, result1.getHours());
+        assertEquals(minutes, result1.getMinutes());
+        assertEquals(seconds, result1.getSeconds());
+        assertEquals(pulseRate, result1.getPulseRate());
+        assertEquals(userId, result1.getUserId());
+        assertArrayEquals(measurementStatus, result1.getMeasurementStatus());
     }
 
     @Test

@@ -61,6 +61,15 @@ public class LanguageAndroid extends Language implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param language Language
+     */
+    public LanguageAndroid(@NonNull String language) {
+        super(language);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

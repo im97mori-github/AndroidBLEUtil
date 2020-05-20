@@ -61,6 +61,17 @@ public class RCSettingsAndroid extends RCSettings implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param length   Length
+     * @param settings Settings
+     * @param e2eCrc   E2E-CRC
+     */
+    public RCSettingsAndroid(int length, int settings, int e2eCrc) {
+        super(length, settings, e2eCrc);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -61,6 +61,15 @@ public class TwoZoneHeartRateLimitAndroid extends TwoZoneHeartRateLimit implemen
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param twoZoneHeartRateLimitFatBurnFitnessLimit
+     */
+    public TwoZoneHeartRateLimitAndroid(int twoZoneHeartRateLimitFatBurnFitnessLimit) {
+        super(twoZoneHeartRateLimitFatBurnFitnessLimit);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

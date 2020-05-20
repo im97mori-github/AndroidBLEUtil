@@ -61,6 +61,15 @@ public class HTTPHeadersAndroid extends HTTPHeaders implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param httpHeaders HTTP Headers
+     */
+    public HTTPHeadersAndroid(@NonNull String httpHeaders) {
+        super(httpHeaders);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

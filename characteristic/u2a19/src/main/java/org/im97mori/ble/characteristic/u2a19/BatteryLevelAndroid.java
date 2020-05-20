@@ -61,6 +61,15 @@ public class BatteryLevelAndroid extends BatteryLevel implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param level Level
+     */
+    public BatteryLevelAndroid(int level) {
+        super(level);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

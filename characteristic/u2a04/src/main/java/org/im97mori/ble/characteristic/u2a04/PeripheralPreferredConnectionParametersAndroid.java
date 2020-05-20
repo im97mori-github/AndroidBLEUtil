@@ -61,6 +61,18 @@ public class PeripheralPreferredConnectionParametersAndroid extends PeripheralPr
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param minimumConnectionInterval              Minimum Connection Interval
+     * @param maximumConnectionInterval              Maximum Connection Interval
+     * @param slaveLatency                           Slave Latency
+     * @param connectionSupervisionTimeoutMultiplier Connection Supervision Timeout Multiplier
+     */
+    public PeripheralPreferredConnectionParametersAndroid(int minimumConnectionInterval, int maximumConnectionInterval, int slaveLatency, int connectionSupervisionTimeoutMultiplier) {
+        super(minimumConnectionInterval, maximumConnectionInterval, slaveLatency, connectionSupervisionTimeoutMultiplier);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

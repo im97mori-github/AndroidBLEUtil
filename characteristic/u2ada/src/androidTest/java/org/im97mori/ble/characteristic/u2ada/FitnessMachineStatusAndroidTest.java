@@ -1202,6 +1202,16 @@ public class FitnessMachineStatusAndroidTest {
     }
 
     @Test
+    public void test_constructor_02102() {
+        int opCode = 1;
+        byte[] parameter = new byte[] { 2 };
+
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(opCode, parameter);
+        assertEquals(opCode, result1.getOpCode());
+        assertArrayEquals(parameter, result1.getParameter());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

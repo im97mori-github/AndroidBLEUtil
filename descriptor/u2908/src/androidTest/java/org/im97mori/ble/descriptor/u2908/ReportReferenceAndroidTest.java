@@ -81,6 +81,16 @@ public class ReportReferenceAndroidTest {
     }
 
     @Test
+    public void test_constructor005() {
+        int reportId = 0;
+        int reportType = 1;
+
+        ReportReferenceAndroid result = new ReportReferenceAndroid(reportId, reportType);
+        assertEquals(reportId, result.getReportId());
+        assertEquals(reportType, result.getReportType());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] value = new byte[2];

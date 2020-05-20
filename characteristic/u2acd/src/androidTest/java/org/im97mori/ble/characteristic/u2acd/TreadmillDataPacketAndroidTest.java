@@ -1110,6 +1110,50 @@ public class TreadmillDataPacketAndroidTest {
     }
 
     @Test
+    public void test_constructor_01203() {
+        byte[] flags = new byte[] { 1 };
+        int instantaneousSpeed = 2;
+        int averageSpeed = 3;
+        int totalDistance = 4;
+        int inclination = 5;
+        int rampAngleSetting = 6;
+        int positiveElevationGain = 7;
+        int negativeElevationGain = 8;
+        int instantaneousPace = 9;
+        int averagePace = 10;
+        int totalEnergy = 11;
+        int energyPerHour = 12;
+        int energyPerMinute = 13;
+        int heartRate = 14;
+        int metabolicEquivalent = 15;
+        int elapsedTime = 16;
+        int remainingTime = 17;
+        int forceOnBelt = 18;
+        int powerOutput = 19;
+
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(flags, instantaneousSpeed, averageSpeed, totalDistance, inclination, rampAngleSetting, positiveElevationGain, negativeElevationGain, instantaneousPace, averagePace, totalEnergy, energyPerHour, energyPerMinute, heartRate, metabolicEquivalent, elapsedTime, remainingTime, forceOnBelt, powerOutput);
+        assertArrayEquals(flags, result1.getFlags());
+        assertEquals(instantaneousSpeed, result1.getInstantaneousSpeed());
+        assertEquals(averageSpeed, result1.getAverageSpeed());
+        assertEquals(totalDistance, result1.getTotalDistance());
+        assertEquals(inclination, result1.getInclination());
+        assertEquals(rampAngleSetting, result1.getRampAngleSetting());
+        assertEquals(positiveElevationGain, result1.getPositiveElevationGain());
+        assertEquals(negativeElevationGain, result1.getNegativeElevationGain());
+        assertEquals(instantaneousPace, result1.getInstantaneousPace());
+        assertEquals(averagePace, result1.getAveragePace());
+        assertEquals(totalEnergy, result1.getTotalEnergy());
+        assertEquals(energyPerHour, result1.getEnergyPerHour());
+        assertEquals(energyPerMinute, result1.getEnergyPerMinute());
+        assertEquals(heartRate, result1.getHeartRate());
+        assertEquals(metabolicEquivalent, result1.getMetabolicEquivalent());
+        assertEquals(elapsedTime, result1.getElapsedTime());
+        assertEquals(remainingTime, result1.getRemainingTime());
+        assertEquals(forceOnBelt, result1.getForceOnBelt());
+        assertEquals(powerOutput, result1.getPowerOutput());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

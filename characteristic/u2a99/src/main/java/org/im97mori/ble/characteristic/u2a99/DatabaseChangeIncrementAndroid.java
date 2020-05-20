@@ -61,6 +61,15 @@ public class DatabaseChangeIncrementAndroid extends DatabaseChangeIncrement impl
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param databaseChangeIncrement Database Change Increment
+     */
+    public DatabaseChangeIncrementAndroid(long databaseChangeIncrement) {
+        super(databaseChangeIncrement);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

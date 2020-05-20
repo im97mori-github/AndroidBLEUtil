@@ -61,6 +61,15 @@ public class RainfallAndroid extends Rainfall implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param rainfall Rainfall
+     */
+    public RainfallAndroid(int rainfall) {
+        super(rainfall);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -69,6 +69,20 @@ public class EnvironmentalSensingMeasurementAndroid extends EnvironmentalSensing
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param flags                  Flags
+     * @param samplingFunction       Sampling Function
+     * @param measurementPeriod      Measurement Period
+     * @param internalUpdateInterval Internal Update Interval
+     * @param application            Application
+     * @param measurementUncertainty Measurement Uncertainty
+     */
+    public EnvironmentalSensingMeasurementAndroid(@NonNull byte[] flags, int samplingFunction, int measurementPeriod, int internalUpdateInterval, int application, int measurementUncertainty) {
+        super(flags, samplingFunction, measurementPeriod, internalUpdateInterval, application, measurementUncertainty);
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override

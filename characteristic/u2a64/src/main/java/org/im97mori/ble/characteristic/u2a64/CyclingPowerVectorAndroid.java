@@ -61,6 +61,20 @@ public class CyclingPowerVectorAndroid extends CyclingPowerVector implements Par
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param flags                                         Flags
+     * @param crankRevolutionDataCumulativeCrankRevolutions Crank Revolution Data - Cumulative Crank Revolutions
+     * @param crankRevolutionDataLastCrankEventTime         Crank Revolution Data - Last Crank Event Time
+     * @param firstCrankMeasurementAngle                    First Crank Measurement Angle
+     * @param instantaneousForceMagnitudeArray              Instantaneous Force Magnitude Array
+     * @param instantaneousTorqueMagnitudeArray             Instantaneous Torque Magnitude Array
+     */
+    public CyclingPowerVectorAndroid(int flags, int crankRevolutionDataCumulativeCrankRevolutions, int crankRevolutionDataLastCrankEventTime, int firstCrankMeasurementAngle, @NonNull int[] instantaneousForceMagnitudeArray, @NonNull int[] instantaneousTorqueMagnitudeArray) {
+        super(flags, crankRevolutionDataCumulativeCrankRevolutions, crankRevolutionDataLastCrankEventTime, firstCrankMeasurementAngle, instantaneousForceMagnitudeArray, instantaneousTorqueMagnitudeArray);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

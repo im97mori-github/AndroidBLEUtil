@@ -63,6 +63,14 @@ public class PressureAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        long pressure = 1;
+
+        PressureAndroid result1 = new PressureAndroid(pressure);
+        assertEquals(pressure, result1.getPressure());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

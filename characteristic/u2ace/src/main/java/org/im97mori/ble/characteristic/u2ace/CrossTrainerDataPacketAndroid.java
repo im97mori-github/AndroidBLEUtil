@@ -61,6 +61,35 @@ public class CrossTrainerDataPacketAndroid extends CrossTrainerDataPacket implem
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param flags                 Flags
+     * @param instantaneousSpeed    Instantaneous Speed
+     * @param averageSpeed          Average Speed
+     * @param totalDistance         Total Distance
+     * @param stepPerMinute         Step Per Minute
+     * @param averageStepRate       Average Step Rate
+     * @param strideCount           Stride Count
+     * @param positiveElevationGain Positive Elevation Gain
+     * @param negativeElevationGain Negative Elevation Gain
+     * @param inclination           Inclination
+     * @param rampAngleSetting      Ramp Angle Setting
+     * @param resistanceLevel       Resistance Level
+     * @param instantaneousPower    Instantaneous Power
+     * @param averagePower          Average Power
+     * @param totalEnergy           Total Energy
+     * @param energyPerHour         Energy Per Hour
+     * @param energyPerMinute       Energy Per Minute
+     * @param heartRate             Heart Rate
+     * @param metabolicEquivalent   Metabolic Equivalent
+     * @param elapsedTime           Elapsed Time
+     * @param remainingTime         Remaining Time
+     */
+    public CrossTrainerDataPacketAndroid(@NonNull byte[] flags, int instantaneousSpeed, int averageSpeed, int totalDistance, int stepPerMinute, int averageStepRate, int strideCount, int positiveElevationGain, int negativeElevationGain, int inclination, int rampAngleSetting, int resistanceLevel, int instantaneousPower, int averagePower, int totalEnergy, int energyPerHour, int energyPerMinute, int heartRate, int metabolicEquivalent, int elapsedTime, int remainingTime) {
+        super(flags, instantaneousSpeed, averageSpeed, totalDistance, stepPerMinute, averageStepRate, strideCount, positiveElevationGain, negativeElevationGain, inclination, rampAngleSetting, resistanceLevel, instantaneousPower, averagePower, totalEnergy, energyPerHour, energyPerMinute, heartRate, metabolicEquivalent, elapsedTime, remainingTime);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

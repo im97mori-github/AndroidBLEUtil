@@ -27,7 +27,7 @@ public class FirstNameAndroidTest {
 
         System.arraycopy(additionalData, 0, data, data.length - additionalData.length, additionalData.length);
 
-        RegisteredUser[] registeredUsers = new RegisteredUser[] { new RegisteredUser(data) };
+        RegisteredUser[] registeredUsers = new RegisteredUser[]{new RegisteredUser(data)};
 
         FirstNameAndroid result1 = new FirstNameAndroid(registeredUsers);
         assertEquals(new String(emailAddress), result1.getFirstName());
@@ -56,7 +56,7 @@ public class FirstNameAndroidTest {
                 | (0x02 << 2));
         System.arraycopy(emailAddress2, 0, data2, data2.length - emailAddress2.length, emailAddress2.length);
 
-        RegisteredUser[] registeredUsers = new RegisteredUser[] {
+        RegisteredUser[] registeredUsers = new RegisteredUser[]{
                 new RegisteredUser(data1), new RegisteredUser(data2)
         };
 
@@ -94,12 +94,20 @@ public class FirstNameAndroidTest {
                 | (0x03 << 2));
         System.arraycopy(emailAddress3, 0, data3, data3.length - emailAddress3.length, emailAddress3.length);
 
-        RegisteredUser[] registeredUsers = new RegisteredUser[] {
+        RegisteredUser[] registeredUsers = new RegisteredUser[]{
                 new RegisteredUser(data1), new RegisteredUser(data2), new RegisteredUser(data3)
         };
 
         FirstNameAndroid result1 = new FirstNameAndroid(registeredUsers);
         assertEquals(new String(emailAddress1) + new String(emailAddress2) + new String(emailAddress3), result1.getFirstName());
+    }
+
+    @Test
+    public void test_constructor_00004() {
+        String firstName = "a";
+
+        FirstNameAndroid result1 = new FirstNameAndroid(firstName);
+        assertEquals(firstName, result1.getFirstName());
     }
 
     @Test
@@ -118,7 +126,7 @@ public class FirstNameAndroidTest {
                 | (0x02 << 2));
         System.arraycopy(additionalData, 0, data, data.length - additionalData.length, additionalData.length);
 
-        RegisteredUser[] registeredUsers = new RegisteredUser[] { new RegisteredUser(data) };
+        RegisteredUser[] registeredUsers = new RegisteredUser[]{new RegisteredUser(data)};
 
         FirstNameAndroid result1 = new FirstNameAndroid(registeredUsers);
         Parcel parcel = Parcel.obtain();
@@ -151,7 +159,7 @@ public class FirstNameAndroidTest {
                 | (0x02 << 2));
         System.arraycopy(emailAddress2, 0, data2, data2.length - emailAddress2.length, emailAddress2.length);
 
-        RegisteredUser[] registeredUsers = new RegisteredUser[] {
+        RegisteredUser[] registeredUsers = new RegisteredUser[]{
                 new RegisteredUser(data1), new RegisteredUser(data2)
         };
 
@@ -193,7 +201,7 @@ public class FirstNameAndroidTest {
                 | (0x03 << 2));
         System.arraycopy(emailAddress3, 0, data3, data3.length - emailAddress3.length, emailAddress3.length);
 
-        RegisteredUser[] registeredUsers = new RegisteredUser[] {
+        RegisteredUser[] registeredUsers = new RegisteredUser[]{
                 new RegisteredUser(data1), new RegisteredUser(data2), new RegisteredUser(data3)
         };
 
@@ -221,7 +229,7 @@ public class FirstNameAndroidTest {
                 | (0x02 << 2));
         System.arraycopy(additionalData, 0, data, data.length - additionalData.length, additionalData.length);
 
-        RegisteredUser[] registeredUsers = new RegisteredUser[] { new RegisteredUser(data) };
+        RegisteredUser[] registeredUsers = new RegisteredUser[]{new RegisteredUser(data)};
 
         byte[] merged = new byte[3 + emailAddress.length];
         merged[0] = (byte) (RegisteredUser.SEGMENTATION_HEADER_FIRST_SEGMENT_TRUE | RegisteredUser.SEGMENTATION_HEADER_LAST_SEGMENT_TRUE);
@@ -256,7 +264,7 @@ public class FirstNameAndroidTest {
                 | (0x02 << 2));
         System.arraycopy(emailAddress2, 0, data2, data2.length - emailAddress2.length, emailAddress2.length);
 
-        RegisteredUser[] registeredUsers = new RegisteredUser[] {
+        RegisteredUser[] registeredUsers = new RegisteredUser[]{
                 new RegisteredUser(data1), new RegisteredUser(data2)
         };
 
@@ -301,7 +309,7 @@ public class FirstNameAndroidTest {
                 | (0x03 << 2));
         System.arraycopy(emailAddress3, 0, data3, data3.length - emailAddress3.length, emailAddress3.length);
 
-        RegisteredUser[] registeredUsers = new RegisteredUser[] {
+        RegisteredUser[] registeredUsers = new RegisteredUser[]{
                 new RegisteredUser(data1), new RegisteredUser(data2), new RegisteredUser(data3)
         };
 
@@ -333,7 +341,7 @@ public class FirstNameAndroidTest {
                 | (0x02 << 2));
         System.arraycopy(additionalData, 0, data, data.length - additionalData.length, additionalData.length);
 
-        RegisteredUser[] registeredUsers = new RegisteredUser[] { new RegisteredUser(data) };
+        RegisteredUser[] registeredUsers = new RegisteredUser[]{new RegisteredUser(data)};
 
         FirstNameAndroid result1 = new FirstNameAndroid(registeredUsers);
         FirstNameAndroid result2 = FirstNameAndroid.CREATOR.createFromMultiplePacketArray(registeredUsers);
@@ -363,7 +371,7 @@ public class FirstNameAndroidTest {
                 | (0x02 << 2));
         System.arraycopy(emailAddress2, 0, data2, data2.length - emailAddress2.length, emailAddress2.length);
 
-        RegisteredUser[] registeredUsers = new RegisteredUser[] {
+        RegisteredUser[] registeredUsers = new RegisteredUser[]{
                 new RegisteredUser(data1), new RegisteredUser(data2)
         };
 
@@ -402,7 +410,7 @@ public class FirstNameAndroidTest {
                 | (0x03 << 2));
         System.arraycopy(emailAddress3, 0, data3, data3.length - emailAddress3.length, emailAddress3.length);
 
-        RegisteredUser[] registeredUsers = new RegisteredUser[] {
+        RegisteredUser[] registeredUsers = new RegisteredUser[]{
                 new RegisteredUser(data1), new RegisteredUser(data2), new RegisteredUser(data3)
         };
 

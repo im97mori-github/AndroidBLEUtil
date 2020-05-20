@@ -61,6 +61,15 @@ public class UncertaintyAndroid extends Uncertainty implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param uncertainty Uncertainty
+     */
+    public UncertaintyAndroid(int uncertainty) {
+        super(uncertainty);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -46,6 +46,15 @@ public class TimeUpdateControlPointAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int timeUpdateControlPoint = 1;
+
+        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(timeUpdateControlPoint);
+        assertEquals(timeUpdateControlPoint, result1.getTimeUpdateControlPoint());
+    }
+
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

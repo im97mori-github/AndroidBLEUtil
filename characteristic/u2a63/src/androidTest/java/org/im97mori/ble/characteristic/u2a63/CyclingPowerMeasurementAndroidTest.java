@@ -1059,6 +1059,46 @@ public class CyclingPowerMeasurementAndroidTest {
     }
 
     @Test
+    public void test_constructor_01203() {
+        byte[] flags = new byte[]{1};
+        int instantaneousPower = 2;
+        int pedalPowerBalance = 3;
+        int accumulatedTorque = 4;
+        long wheelRevolutionDataCumulativeWheelRevolutions = 5;
+        int wheelRevolutionDataLastWheelEventTime = 6;
+        int crankRevolutionDataCumulativeCrankRevolutions = 7;
+        int crankRevolutionDataLastCrankEventTime = 8;
+        int extremeForceMagnitudesMaximumForceMagnitude = 9;
+        int extremeForceMagnitudesMinimumForceMagnitude = 10;
+        int extremeTorqueMagnitudesMaximumTorqueMagnitude = 11;
+        int extremeTorqueMagnitudesMinimumTorqueMagnitude = 12;
+        int extremeAnglesMaximumAngle = 13;
+        int extremeAnglesMinimumAngle = 14;
+        int topDeadSpotAngle = 15;
+        int bottomDeadSpotAngle = 16;
+        int accumulatedEnergy = 17;
+
+        CyclingPowerMeasurementAndroid result1 = new CyclingPowerMeasurementAndroid(flags, instantaneousPower, pedalPowerBalance, accumulatedTorque, wheelRevolutionDataCumulativeWheelRevolutions, wheelRevolutionDataLastWheelEventTime, crankRevolutionDataCumulativeCrankRevolutions, crankRevolutionDataLastCrankEventTime, extremeForceMagnitudesMaximumForceMagnitude, extremeForceMagnitudesMinimumForceMagnitude, extremeTorqueMagnitudesMaximumTorqueMagnitude, extremeTorqueMagnitudesMinimumTorqueMagnitude, extremeAnglesMaximumAngle, extremeAnglesMinimumAngle, topDeadSpotAngle, bottomDeadSpotAngle, accumulatedEnergy);
+        assertArrayEquals(flags, result1.getFlags());
+        assertEquals(instantaneousPower, result1.getInstantaneousPower());
+        assertEquals(pedalPowerBalance, result1.getPedalPowerBalance());
+        assertEquals(accumulatedTorque, result1.getAccumulatedTorque());
+        assertEquals(wheelRevolutionDataCumulativeWheelRevolutions, result1.getWheelRevolutionDataCumulativeWheelRevolutions());
+        assertEquals(wheelRevolutionDataLastWheelEventTime, result1.getWheelRevolutionDataLastWheelEventTime());
+        assertEquals(crankRevolutionDataCumulativeCrankRevolutions, result1.getCrankRevolutionDataCumulativeCrankRevolutions());
+        assertEquals(crankRevolutionDataLastCrankEventTime, result1.getCrankRevolutionDataLastCrankEventTime());
+        assertEquals(extremeForceMagnitudesMaximumForceMagnitude, result1.getExtremeForceMagnitudesMaximumForceMagnitude());
+        assertEquals(extremeForceMagnitudesMinimumForceMagnitude, result1.getExtremeForceMagnitudesMinimumForceMagnitude());
+        assertEquals(extremeTorqueMagnitudesMaximumTorqueMagnitude, result1.getExtremeTorqueMagnitudesMaximumTorqueMagnitude());
+        assertEquals(extremeTorqueMagnitudesMinimumTorqueMagnitude, result1.getExtremeTorqueMagnitudesMinimumTorqueMagnitude());
+        assertEquals(extremeAnglesMaximumAngle, result1.getExtremeAnglesMaximumAngle());
+        assertEquals(extremeAnglesMinimumAngle, result1.getExtremeAnglesMinimumAngle());
+        assertEquals(topDeadSpotAngle, result1.getTopDeadSpotAngle());
+        assertEquals(bottomDeadSpotAngle, result1.getBottomDeadSpotAngle());
+        assertEquals(accumulatedEnergy, result1.getAccumulatedEnergy());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

@@ -60,6 +60,15 @@ public class ReconnectionAddressAndroid extends ReconnectionAddress implements P
         super(bluetoothGattCharacteristic.getValue());
     }
 
+    /***
+     * Constructor from parameters
+     *
+     * @param address Address
+     */
+    public ReconnectionAddressAndroid(long address) {
+        super(address);
+    }
+
     /**
      * Constructor from {@link Parcel}
      *

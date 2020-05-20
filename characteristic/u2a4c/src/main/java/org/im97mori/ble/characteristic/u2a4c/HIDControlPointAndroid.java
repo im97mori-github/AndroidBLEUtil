@@ -61,6 +61,15 @@ public class HIDControlPointAndroid extends HIDControlPoint implements Parcelabl
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param hidControlPointCommand HID Control Point Command
+     */
+    public HIDControlPointAndroid(int hidControlPointCommand) {
+        super(hidControlPointCommand);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -61,6 +61,15 @@ public class WindChillAndroid extends WindChill implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param windChill Wind Chill
+     */
+    public WindChillAndroid(int windChill) {
+        super(windChill);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

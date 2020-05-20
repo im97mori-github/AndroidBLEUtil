@@ -110,6 +110,17 @@ public class TDSControlPointAndroidTest {
         assertArrayEquals(Arrays.copyOfRange(data, 2, 4), result1.getParameter());
     }
 
+    public void test_constructor_00004() {
+        int opCode = 1;
+        int organizationId = 2;
+        byte[] parameter = new byte[]{3};
+
+        TDSControlPointAndroid result1 = new TDSControlPointAndroid(opCode, organizationId, parameter);
+        assertEquals(opCode, result1.getOpCode());
+        assertEquals(organizationId, result1.getOrganizationId());
+        assertArrayEquals(parameter, result1.getParameter());
+    }
+
     @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();

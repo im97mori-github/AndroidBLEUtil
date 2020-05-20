@@ -62,6 +62,17 @@ public class SupportedResistanceLevelRangeAndroid extends SupportedResistanceLev
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param minimumResistanceLevel Minimum Inclination
+     * @param maximumResistanceLevel Maximum Resistance Level
+     * @param minimumIncrement       Minimum Increment
+     */
+    public SupportedResistanceLevelRangeAndroid(int minimumResistanceLevel, int maximumResistanceLevel, int minimumIncrement) {
+        super(minimumResistanceLevel, maximumResistanceLevel, minimumIncrement);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -313,6 +313,20 @@ public class ValueTriggerSettingAndroidTest {
     }
 
     @Test
+    public void test_constructor012() {
+        int condition = 0;
+        int valueAnalog = 1;
+        byte[] valueBitMask = new byte[] { 2 };
+        long valueAnalogInterval = 3;
+
+        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(condition, valueAnalog, valueBitMask, valueAnalogInterval);
+        assertEquals(condition, result.getCondition());
+        assertEquals(valueAnalog, result.getValueAnalog());
+        assertArrayEquals(valueBitMask, result.getValueBitMask());
+        assertEquals(valueAnalogInterval, result.getValueAnalogInterval());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] value = new byte[8];

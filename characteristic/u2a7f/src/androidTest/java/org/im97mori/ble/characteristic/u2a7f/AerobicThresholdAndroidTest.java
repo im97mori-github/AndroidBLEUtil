@@ -39,6 +39,14 @@ public class AerobicThresholdAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int aerobicThreshold = 1;
+
+        AerobicThresholdAndroid result1 = new AerobicThresholdAndroid(aerobicThreshold);
+        assertEquals(aerobicThreshold, result1.getAerobicThreshold());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

@@ -5465,6 +5465,21 @@ public class FitnessMachineControlPointAndroidTest {
         assertTrue(result1.isResultCodeControlNotPermitted());
     }
 
+    @Test
+    public void test_constructor_04108() {
+        int opCode = 1;
+        byte[] parameter = new byte[] { 2 };
+        int requestOpCode = 3;
+        int resultCode = 4;
+        byte[] responseParameter = new byte[] { 5 };
+
+        FitnessMachineControlPointAndroid result1 = new FitnessMachineControlPointAndroid(opCode, parameter, requestOpCode, resultCode, responseParameter);
+        assertEquals(opCode, result1.getOpCode());
+        assertArrayEquals(parameter, result1.getParameter());
+        assertEquals(requestOpCode, result1.getRequestOpCode());
+        assertEquals(resultCode, result1.getResultCode());
+        assertArrayEquals(responseParameter, result1.getResponseParameter());
+    }
 
     @Test
     public void test_parcelable_1_00001() {

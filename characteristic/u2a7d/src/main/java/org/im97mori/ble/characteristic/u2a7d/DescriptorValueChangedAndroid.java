@@ -61,6 +61,16 @@ public class DescriptorValueChangedAndroid extends DescriptorValueChanged implem
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param flags              Flags
+     * @param characteristicUUID Characteristic UUID
+     */
+    public DescriptorValueChangedAndroid(int flags, @NonNull byte[] characteristicUUID) {
+        super(flags, characteristicUUID);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

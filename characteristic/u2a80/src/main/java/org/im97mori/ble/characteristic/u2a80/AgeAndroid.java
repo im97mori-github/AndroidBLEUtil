@@ -61,6 +61,15 @@ public class AgeAndroid extends Age implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param age Age
+     */
+    public AgeAndroid(int age) {
+        super(age);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

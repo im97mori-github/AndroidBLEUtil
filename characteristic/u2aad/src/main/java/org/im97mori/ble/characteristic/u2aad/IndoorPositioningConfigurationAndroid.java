@@ -61,6 +61,15 @@ public class IndoorPositioningConfigurationAndroid extends IndoorPositioningConf
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param indoorPositioningConfiguration Indoor Positioning Configuration
+     */
+    public IndoorPositioningConfigurationAndroid(int indoorPositioningConfiguration) {
+        super(indoorPositioningConfiguration);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

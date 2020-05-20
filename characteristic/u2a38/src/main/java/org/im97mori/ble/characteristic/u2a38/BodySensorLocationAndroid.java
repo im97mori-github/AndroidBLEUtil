@@ -61,6 +61,15 @@ public class BodySensorLocationAndroid extends BodySensorLocation implements Par
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param bodySensorLocation Body Sensor Location
+     */
+    public BodySensorLocationAndroid(int bodySensorLocation) {
+        super(bodySensorLocation);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

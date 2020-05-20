@@ -61,6 +61,15 @@ public class PeripheralPrivacyFlagAndroid extends PeripheralPrivacyFlag implemen
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param flag Flag
+     */
+    public PeripheralPrivacyFlagAndroid(int flag) {
+        super(flag);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

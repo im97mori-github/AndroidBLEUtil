@@ -61,6 +61,15 @@ public class MagneticDeclinationAndroid extends MagneticDeclination implements P
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param magneticDeclination Magnetic Declination
+     */
+    public MagneticDeclinationAndroid(int magneticDeclination) {
+        super(magneticDeclination);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

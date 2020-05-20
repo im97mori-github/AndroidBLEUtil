@@ -40,6 +40,14 @@ public class TwoZoneHeartRateLimitAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int twoZoneHeartRateLimitFatBurnFitnessLimit = 1;
+
+        TwoZoneHeartRateLimitAndroid result1 = new TwoZoneHeartRateLimitAndroid(twoZoneHeartRateLimitFatBurnFitnessLimit);
+        assertEquals(twoZoneHeartRateLimitFatBurnFitnessLimit, result1.getTwoZoneHeartRateLimitFatBurnFitnessLimit());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

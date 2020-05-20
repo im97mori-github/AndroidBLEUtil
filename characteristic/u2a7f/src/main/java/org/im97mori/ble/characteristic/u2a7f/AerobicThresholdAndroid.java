@@ -61,6 +61,15 @@ public class AerobicThresholdAndroid extends AerobicThreshold implements Parcela
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param aerobicThreshold Aerobic Threshold
+     */
+    public AerobicThresholdAndroid(int aerobicThreshold) {
+        super(aerobicThreshold);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

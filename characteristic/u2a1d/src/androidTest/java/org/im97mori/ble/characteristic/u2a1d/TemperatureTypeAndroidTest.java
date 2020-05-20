@@ -222,6 +222,14 @@ public class TemperatureTypeAndroidTest {
     }
 
     @Test
+    public void test_constructor010() {
+        int temperatureTextDescription = 1;
+
+        TemperatureTypeAndroid result1 = new TemperatureTypeAndroid(temperatureTextDescription);
+        assertEquals(temperatureTextDescription, result1.getTemperatureTextDescription());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

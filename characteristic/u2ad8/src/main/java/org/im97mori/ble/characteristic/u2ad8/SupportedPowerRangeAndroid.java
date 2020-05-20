@@ -61,6 +61,17 @@ public class SupportedPowerRangeAndroid extends SupportedPowerRange implements P
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param minimumPower     Minimum Power
+     * @param maximumPower     Maximum Power
+     * @param minimumIncrement Minimum Increment
+     */
+    public SupportedPowerRangeAndroid(int minimumPower, int maximumPower, int minimumIncrement) {
+        super(minimumPower, maximumPower, minimumIncrement);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

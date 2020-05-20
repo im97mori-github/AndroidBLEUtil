@@ -39,6 +39,14 @@ public class BatteryLevelAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int level = 1;
+
+        BatteryLevelAndroid result1 = new BatteryLevelAndroid(level);
+        assertEquals(level, result1.getLevel());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

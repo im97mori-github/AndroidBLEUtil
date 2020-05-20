@@ -39,6 +39,14 @@ public class VO2MaxAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int vo2Max = 1;
+
+        VO2MaxAndroid result1 = new VO2MaxAndroid(vo2Max);
+        assertEquals(vo2Max, result1.getVo2Max());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

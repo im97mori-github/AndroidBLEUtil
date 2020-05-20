@@ -61,6 +61,15 @@ public class ManufacturerNameStringAndroid extends ManufacturerNameString implem
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param manufacturerName Manufacturer Name
+     */
+    public ManufacturerNameStringAndroid(@NonNull String manufacturerName) {
+        super(manufacturerName);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

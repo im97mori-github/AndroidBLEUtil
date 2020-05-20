@@ -61,6 +61,15 @@ public class ResolvablePrivateAddressOnlyAndroid extends ResolvablePrivateAddres
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param resolvablePrivateAddress Resolvable Private Address
+     */
+    public ResolvablePrivateAddressOnlyAndroid(int resolvablePrivateAddress) {
+        super(resolvablePrivateAddress);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

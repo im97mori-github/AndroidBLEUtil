@@ -109,6 +109,17 @@ public class SupportedNewAlertCategoryAndroidTest {
     }
 
     @Test
+    public void test_constructor103() {
+        int categoryIdBitMask0 = 1;
+        int hasCategoryIdBitMask1 = 2;
+        int categoryIdBitMask1 = 3;
+
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(categoryIdBitMask0, hasCategoryIdBitMask1, categoryIdBitMask1);
+        assertEquals(categoryIdBitMask0, result1.getCategoryIdBitMask0());
+        assertEquals(categoryIdBitMask1, result1.getCategoryIdBitMask1());
+    }
+
+    @Test
     public void test_parcelable001() {
         int flags1 = AlertCategoryIdBitMaskUtils.CATEGORY_ID_BIT_MASK_0_SIMPLE_ALERT_NOT_SUPPORTED
                 | AlertCategoryIdBitMaskUtils.CATEGORY_ID_BIT_MASK_0_EMAIL_NOT_SUPPORTED

@@ -61,6 +61,17 @@ public class SupportedInclinationRangeAndroid extends SupportedInclinationRange 
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param minimumInclination Minimum Inclination
+     * @param maximumInclination Maximum Inclination
+     * @param minimumIncrement   Minimum Increment
+     */
+    public SupportedInclinationRangeAndroid(int minimumInclination, int maximumInclination, int minimumIncrement) {
+        super(minimumInclination, maximumInclination, minimumIncrement);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

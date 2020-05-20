@@ -61,6 +61,18 @@ public class ReferenceTimeInformationAndroid extends ReferenceTimeInformation im
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param timeSource       Time Source
+     * @param accuracy         Accuracy
+     * @param daysSinceUpdate  mDaysSinceUpdate
+     * @param hoursSinceUpdate mHoursSinceUpdate
+     */
+    public ReferenceTimeInformationAndroid(int timeSource, int accuracy, int daysSinceUpdate, int hoursSinceUpdate) {
+        super(timeSource, accuracy, daysSinceUpdate, hoursSinceUpdate);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

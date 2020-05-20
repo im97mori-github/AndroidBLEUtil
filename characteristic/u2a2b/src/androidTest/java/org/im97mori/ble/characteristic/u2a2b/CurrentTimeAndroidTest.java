@@ -927,6 +927,31 @@ public class CurrentTimeAndroidTest {
     }
 
     @Test
+    public void test_constructor017() {
+        int year = 1;
+        int month = 2;
+        int day = 3;
+        int hours = 4;
+        int minutes = 5;
+        int seconds = 6;
+        int dayOfWeek = 7;
+        int fractions256 = 8;
+        int adjustReason = 9;
+
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(year, month, day, hours, minutes, seconds, dayOfWeek, fractions256, adjustReason);
+        assertEquals(year, result1.getYear());
+        assertEquals(month, result1.getMonth());
+        assertEquals(day, result1.getDay());
+        assertEquals(hours, result1.getHours());
+        assertEquals(minutes, result1.getMinutes());
+        assertEquals(seconds, result1.getSeconds());
+        assertEquals(dayOfWeek, result1.getDayOfWeek());
+        assertEquals(fractions256, result1.getFractions256());
+        assertFalse(result1.isFractions256Supported());
+        assertEquals(adjustReason, result1.getAdjustReason());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[10];

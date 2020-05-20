@@ -61,6 +61,17 @@ public class SupportedHeartRateRangeAndroid extends SupportedHeartRateRange impl
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param minimumHeartRate Minimum Heart Rate
+     * @param maximumHeartRate Maximum Heart Rate
+     * @param minimumIncrement Minimum Increment
+     */
+    public SupportedHeartRateRangeAndroid(int minimumHeartRate, int maximumHeartRate, int minimumIncrement) {
+        super(minimumHeartRate, maximumHeartRate, minimumIncrement);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -61,6 +61,15 @@ public class ElevationAndroid extends Elevation implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param elevation Elevation
+     */
+    public ElevationAndroid(int elevation) {
+        super(elevation);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

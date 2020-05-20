@@ -61,6 +61,15 @@ public class IrradianceAndroid extends Irradiance implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param irradiance Irradiance
+     */
+    public IrradianceAndroid(int irradiance) {
+        super(irradiance);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

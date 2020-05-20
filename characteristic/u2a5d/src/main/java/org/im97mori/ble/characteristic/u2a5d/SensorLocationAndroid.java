@@ -61,6 +61,15 @@ public class SensorLocationAndroid extends SensorLocation implements Parcelable 
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param sensorLocation Sensor Location
+     */
+    public SensorLocationAndroid(int sensorLocation) {
+        super(sensorLocation);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

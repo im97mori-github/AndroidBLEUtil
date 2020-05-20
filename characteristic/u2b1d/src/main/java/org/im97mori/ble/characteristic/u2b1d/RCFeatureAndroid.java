@@ -61,6 +61,16 @@ public class RCFeatureAndroid extends RCFeature implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param e2eCrc     E2E-CRC
+     * @param rcFeatures RC Features
+     */
+    public RCFeatureAndroid(int e2eCrc, @NonNull byte[] rcFeatures) {
+        super(e2eCrc, rcFeatures);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

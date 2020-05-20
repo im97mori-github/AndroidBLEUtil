@@ -61,6 +61,14 @@ public class RainfallAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int rainfall = 1;
+
+        RainfallAndroid result1 = new RainfallAndroid(rainfall);
+        assertEquals(rainfall, result1.getRainfall());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

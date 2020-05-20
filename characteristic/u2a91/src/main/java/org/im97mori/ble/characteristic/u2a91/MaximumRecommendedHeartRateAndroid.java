@@ -61,6 +61,15 @@ public class MaximumRecommendedHeartRateAndroid extends MaximumRecommendedHeartR
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param maximumRecommendedHeartRate Maximum Recommended Heart Rate
+     */
+    public MaximumRecommendedHeartRateAndroid(int maximumRecommendedHeartRate) {
+        super(maximumRecommendedHeartRate);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

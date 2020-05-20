@@ -70,6 +70,15 @@ public class LocalNorthCoordinateAndroid extends LocalNorthCoordinate implements
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param localNorthCoordinate Local North Coordinate
+     */
+    public LocalNorthCoordinateAndroid(int localNorthCoordinate) {
+        super(localNorthCoordinate);
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override

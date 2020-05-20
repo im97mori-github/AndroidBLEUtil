@@ -61,6 +61,15 @@ public class LocalEastCoordinateAndroid extends LocalEastCoordinate implements P
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param localEastCoordinate Local East Coordinate
+     */
+    public LocalEastCoordinateAndroid(int localEastCoordinate) {
+        super(localEastCoordinate);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

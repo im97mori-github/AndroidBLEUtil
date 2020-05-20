@@ -62,6 +62,14 @@ public class ElevationAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int elevation = 1;
+
+        ElevationAndroid result1 = new ElevationAndroid(elevation);
+        assertEquals(elevation, result1.getElevation());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

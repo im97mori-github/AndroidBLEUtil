@@ -61,6 +61,15 @@ public class DewPointAndroid extends DewPoint implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param dewPoint Dew Point
+     */
+    public DewPointAndroid(int dewPoint) {
+        super(dewPoint);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

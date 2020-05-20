@@ -61,6 +61,16 @@ public class UnreadAlertStatusAndroid extends UnreadAlertStatus implements Parce
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param categoryId  Category ID
+     * @param unreadCount Unread count
+     */
+    public UnreadAlertStatusAndroid(int categoryId, int unreadCount) {
+        super(categoryId, unreadCount);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

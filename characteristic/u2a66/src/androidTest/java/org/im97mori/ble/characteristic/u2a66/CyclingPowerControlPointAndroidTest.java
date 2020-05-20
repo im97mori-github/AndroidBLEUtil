@@ -5808,6 +5808,22 @@ public class CyclingPowerControlPointAndroidTest {
     }
 
     @Test
+    public void test_constructor_03209() {
+        int opCodes = 1;
+        byte[] parameterValue = new byte[] { 2 };
+        int requestOpCode = 3;
+        int responseValue = 4;
+        byte[] responseParameter = new byte[] { 5 };
+
+        CyclingPowerControlPointAndroid result1 = new CyclingPowerControlPointAndroid(opCodes, parameterValue, requestOpCode, responseValue, responseParameter);
+        assertEquals(opCodes, result1.getOpCodes());
+        assertArrayEquals(parameterValue, result1.getParameterValue());
+        assertEquals(requestOpCode, result1.getRequestOpCode());
+        assertEquals(responseValue, result1.getResponseValue());
+        assertArrayEquals(responseParameter, result1.getResponseParameter());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

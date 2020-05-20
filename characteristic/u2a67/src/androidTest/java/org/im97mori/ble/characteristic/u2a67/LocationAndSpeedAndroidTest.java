@@ -1299,6 +1299,40 @@ public class LocationAndSpeedAndroidTest {
     }
 
     @Test
+    public void test_constructor039() {
+        byte[] flags = new byte[]{1};
+        int instantaneousSpeed = 2;
+        int totalDistance = 3;
+        int locationLatitude = 4;
+        int locationLongitude = 5;
+        int elevation = 6;
+        int heading = 7;
+        int rollingTime = 8;
+        int year = 9;
+        int month = 10;
+        int day = 11;
+        int hours = 12;
+        int minutes = 13;
+        int seconds = 14;
+
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(flags, instantaneousSpeed, totalDistance, locationLatitude, locationLongitude, elevation, heading, rollingTime, year, month, day, hours, minutes, seconds);
+        assertArrayEquals(flags, result1.getFlags());
+        assertEquals(instantaneousSpeed, result1.getInstantaneousSpeed());
+        assertEquals(totalDistance, result1.getTotalDistance());
+        assertEquals(locationLatitude, result1.getLocationLatitude());
+        assertEquals(locationLongitude, result1.getLocationLongitude());
+        assertEquals(elevation, result1.getElevation());
+        assertEquals(heading, result1.getHeading());
+        assertEquals(rollingTime, result1.getRollingTime());
+        assertEquals(year, result1.getYear());
+        assertEquals(month, result1.getMonth());
+        assertEquals(day, result1.getDay());
+        assertEquals(hours, result1.getHours());
+        assertEquals(minutes, result1.getMinutes());
+        assertEquals(seconds, result1.getSeconds());
+    }
+
+    @Test
     public void test_parcelable001() {
         int flags = LocationAndSpeed.FLAGS_INSTANTANEOUS_SPEED_PRESENT_FALSE
                 | LocationAndSpeed.FLAGS_TOTAL_DISTANCE_PRESENT_FALSE

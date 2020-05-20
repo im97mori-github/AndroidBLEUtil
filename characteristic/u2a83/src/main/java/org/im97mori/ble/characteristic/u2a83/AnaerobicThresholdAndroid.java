@@ -62,6 +62,15 @@ public class AnaerobicThresholdAndroid extends AnaerobicThreshold implements Par
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param anaerobicThreshold Anaerobic Threshold
+     */
+    public AnaerobicThresholdAndroid(int anaerobicThreshold) {
+        super(anaerobicThreshold);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

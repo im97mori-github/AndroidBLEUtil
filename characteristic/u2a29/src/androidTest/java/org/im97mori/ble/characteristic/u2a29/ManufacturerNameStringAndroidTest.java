@@ -25,6 +25,14 @@ public class ManufacturerNameStringAndroidTest {
     }
 
     @Test
+    public void test_constructor002() {
+        String manufactureName = "OMRON";
+
+        ManufacturerNameStringAndroid result1 = new ManufacturerNameStringAndroid(manufactureName);
+        assertEquals(manufactureName, result1.getManufacturerName());
+    }
+
+    @Test
     public void test_parcelable001() {
         String manufactureName = "OMRON";
 

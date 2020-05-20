@@ -61,6 +61,15 @@ public class GustFactorAndroid extends GustFactor implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param gustFactor Gust Factor
+     */
+    public GustFactorAndroid(int gustFactor) {
+        super(gustFactor);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

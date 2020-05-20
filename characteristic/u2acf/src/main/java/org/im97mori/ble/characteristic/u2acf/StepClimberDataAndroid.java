@@ -68,6 +68,27 @@ public class StepClimberDataAndroid extends StepClimberData implements Parcelabl
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param flags                 Flags
+     * @param floors                Floors
+     * @param stepCount             Step Count
+     * @param stepPerMinute         Step Per Minute
+     * @param averageStepRate       Average Step Rate
+     * @param positiveElevationGain Positive Elevation Gain
+     * @param totalEnergy           Total Energy
+     * @param energyPerHour         Energy Per Hour
+     * @param energyPerMinute       Energy Per Minute
+     * @param heartRate             Heart Rate
+     * @param metabolicEquivalent   Metabolic Equivalent
+     * @param elapsedTime           Elapsed Time
+     * @param remainingTime         Remaining Time
+     */
+    public StepClimberDataAndroid(@NonNull byte[] flags, int floors, int stepCount, int stepPerMinute, int averageStepRate, int positiveElevationGain, int totalEnergy, int energyPerHour, int energyPerMinute, int heartRate, int metabolicEquivalent, int elapsedTime, int remainingTime) {
+        super(flags, floors, stepCount, stepPerMinute, averageStepRate, positiveElevationGain, totalEnergy, energyPerHour, energyPerMinute, heartRate, metabolicEquivalent, elapsedTime, remainingTime);
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override

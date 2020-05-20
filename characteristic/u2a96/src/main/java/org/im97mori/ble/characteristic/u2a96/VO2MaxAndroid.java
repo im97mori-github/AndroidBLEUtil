@@ -61,6 +61,15 @@ public class VO2MaxAndroid extends VO2Max implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param vo2Max VO2 Max
+     */
+    public VO2MaxAndroid(int vo2Max) {
+        super(vo2Max);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

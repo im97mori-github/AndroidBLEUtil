@@ -61,6 +61,15 @@ public class LatitudeAndroid extends Latitude implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param latitude Latitude
+     */
+    public LatitudeAndroid(int latitude) {
+        super(latitude);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

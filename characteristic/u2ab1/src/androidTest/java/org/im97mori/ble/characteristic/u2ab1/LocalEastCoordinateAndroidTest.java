@@ -60,6 +60,14 @@ public class LocalEastCoordinateAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int localEastCoordinate = 1;
+
+        LocalEastCoordinateAndroid result1 = new LocalEastCoordinateAndroid(localEastCoordinate);
+        assertEquals(localEastCoordinate, result1.getLocalEastCoordinate());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

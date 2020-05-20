@@ -61,6 +61,15 @@ public class ScanRefreshAndroid extends ScanRefresh implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param scanRefreshValue Scan Refresh Value
+     */
+    public ScanRefreshAndroid(int scanRefreshValue) {
+        super(scanRefreshValue);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

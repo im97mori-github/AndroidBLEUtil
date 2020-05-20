@@ -1656,6 +1656,38 @@ public class WeightMeasurementAndroidTest {
     }
 
     @Test
+    public void test_constructor417() {
+        int flags = 1;
+        int weightSi = 2;
+        int weightImperial = 3;
+        int year = 4;
+        int month = 5;
+        int day = 6;
+        int hours = 7;
+        int minutes = 8;
+        int seconds = 9;
+        int userId = 10;
+        int bmi = 11;
+        int heightSi = 12;
+        int heightImperial = 13;
+
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(flags, weightSi, weightImperial, year, month, day, hours, minutes, seconds, userId, bmi, heightSi, heightImperial);
+        assertEquals(flags, result1.getFlags());
+        assertEquals(weightSi, result1.getWeightSi());
+        assertEquals(weightImperial, result1.getWeightImperial());
+        assertEquals(year, result1.getYear());
+        assertEquals(month, result1.getMonth());
+        assertEquals(day, result1.getDay());
+        assertEquals(hours, result1.getHours());
+        assertEquals(minutes, result1.getMinutes());
+        assertEquals(seconds, result1.getSeconds());
+        assertEquals(userId, result1.getUserId());
+        assertEquals(bmi, result1.getBmi());
+        assertEquals(heightSi, result1.getHeightSi());
+        assertEquals(heightImperial, result1.getHeightImperial());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[3];

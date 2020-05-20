@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.im97mori.ble.ByteArrayCreater;
 
@@ -59,6 +60,20 @@ public class ReconnectionConfigurationControlPointAndroid extends ReconnectionCo
      */
     public ReconnectionConfigurationControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param opcode          Opcode
+     * @param operand         Operand
+     * @param e2eCrc          E2E-CRC
+     * @param requestOpcodes  Request Opcode
+     * @param resultCode      Result Codes
+     * @param resultParameter Result Parameter
+     */
+    public ReconnectionConfigurationControlPointAndroid(int opcode, @NonNull byte[] operand, @Nullable Integer e2eCrc, int requestOpcodes, int resultCode, @NonNull byte[] resultParameter) {
+        super(opcode, operand, e2eCrc, requestOpcodes, resultCode, resultParameter);
     }
 
     /**

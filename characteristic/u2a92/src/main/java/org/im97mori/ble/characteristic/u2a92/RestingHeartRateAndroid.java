@@ -51,7 +51,6 @@ public class RestingHeartRateAndroid extends RestingHeartRate implements Parcela
 
     };
 
-
     /**
      * Constructor from {@link BluetoothGattCharacteristic}
      *
@@ -59,6 +58,15 @@ public class RestingHeartRateAndroid extends RestingHeartRate implements Parcela
      */
     public RestingHeartRateAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param restingHeartRate Resting Heart Rate
+     */
+    public RestingHeartRateAndroid(int restingHeartRate) {
+        super(restingHeartRate);
     }
 
     /**

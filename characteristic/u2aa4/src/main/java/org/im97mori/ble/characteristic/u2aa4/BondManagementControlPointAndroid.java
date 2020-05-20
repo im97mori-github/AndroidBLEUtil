@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.im97mori.ble.ByteArrayCreater;
 
@@ -58,6 +59,16 @@ public class BondManagementControlPointAndroid extends BondManagementControlPoin
      */
     public BondManagementControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param opCode  Op Code
+     * @param operand Operand
+     */
+    public BondManagementControlPointAndroid(int opCode, @Nullable String operand) {
+        super(opCode, operand);
     }
 
     /**

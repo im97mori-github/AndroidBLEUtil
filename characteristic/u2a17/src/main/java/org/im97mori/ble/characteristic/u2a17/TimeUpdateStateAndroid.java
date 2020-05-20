@@ -61,6 +61,16 @@ public class TimeUpdateStateAndroid extends TimeUpdateState implements Parcelabl
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param currentState Current State
+     * @param result       Result
+     */
+    public TimeUpdateStateAndroid(int currentState, int result) {
+        super(currentState, result);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

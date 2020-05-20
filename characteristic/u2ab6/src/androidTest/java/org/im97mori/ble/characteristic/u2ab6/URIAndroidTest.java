@@ -78,6 +78,14 @@ public class URIAndroidTest {
     }
 
     @Test
+    public void test_constructor_00003() {
+        String uri = "1";
+
+        URIAndroid result1 = new URIAndroid(uri);
+        assertEquals(uri, result1.getUri());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

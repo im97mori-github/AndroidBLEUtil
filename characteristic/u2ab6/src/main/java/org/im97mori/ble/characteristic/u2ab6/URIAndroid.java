@@ -61,6 +61,15 @@ public class URIAndroid extends URI implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param uri URI
+     */
+    public URIAndroid(@NonNull String uri) {
+        super(uri);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

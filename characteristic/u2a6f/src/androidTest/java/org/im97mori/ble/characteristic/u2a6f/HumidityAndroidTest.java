@@ -61,6 +61,14 @@ public class HumidityAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int humidity = 1;
+
+        HumidityAndroid result1 = new HumidityAndroid(humidity);
+        assertEquals(humidity, result1.getHumidity());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

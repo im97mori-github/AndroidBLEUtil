@@ -39,6 +39,14 @@ public class UserIndexAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int userIndex = 1;
+
+        UserIndexAndroid result1 = new UserIndexAndroid(userIndex);
+        assertEquals(userIndex, result1.getUserIndex());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

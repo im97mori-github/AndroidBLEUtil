@@ -59,6 +59,14 @@ public class UncertaintyAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int uncertainty = 1;
+
+        UncertaintyAndroid result1 = new UncertaintyAndroid(uncertainty);
+        assertEquals(uncertainty, result1.getUncertainty());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

@@ -61,6 +61,14 @@ public class TrueWindSpeedAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int trueWindSpeed = 1;
+
+        TrueWindSpeedAndroid result1 = new TrueWindSpeedAndroid(trueWindSpeed);
+        assertEquals(trueWindSpeed, result1.getTrueWindSpeed());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

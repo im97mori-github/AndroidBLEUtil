@@ -61,6 +61,17 @@ public class SupportedSpeedRangeAndroid extends SupportedSpeedRange implements P
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param minimumSpeed     Minimum Speed
+     * @param maximumSpeed     Maximum Speed
+     * @param minimumIncrement Minimum Increment
+     */
+    public SupportedSpeedRangeAndroid(int minimumSpeed, int maximumSpeed, int minimumIncrement) {
+        super(minimumSpeed, maximumSpeed, minimumIncrement);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

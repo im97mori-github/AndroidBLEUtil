@@ -39,6 +39,14 @@ public class RestingHeartRateAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int restingHeartRate = 1;
+
+        RestingHeartRateAndroid result1 = new RestingHeartRateAndroid(restingHeartRate);
+        assertEquals(restingHeartRate, result1.getRestingHeartRate());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

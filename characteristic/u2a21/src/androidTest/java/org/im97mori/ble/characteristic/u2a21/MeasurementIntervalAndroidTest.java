@@ -46,6 +46,14 @@ public class MeasurementIntervalAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int measurementInterval = 1;
+
+        MeasurementIntervalAndroid result1 = new MeasurementIntervalAndroid(measurementInterval);
+        assertEquals(measurementInterval, result1.getMeasurementInterval());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[2];

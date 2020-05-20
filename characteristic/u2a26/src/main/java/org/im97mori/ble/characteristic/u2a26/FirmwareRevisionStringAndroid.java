@@ -61,6 +61,15 @@ public class FirmwareRevisionStringAndroid extends FirmwareRevisionString implem
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param firmwareRevision Firmware Revision
+     */
+    public FirmwareRevisionStringAndroid(@NonNull String firmwareRevision) {
+        super(firmwareRevision);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

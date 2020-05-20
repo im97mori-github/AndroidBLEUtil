@@ -61,6 +61,15 @@ public class MeasurementIntervalAndroid extends MeasurementInterval implements P
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param measurementInterval Measurement Interval
+     */
+    public MeasurementIntervalAndroid(int measurementInterval) {
+        super(measurementInterval);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -58,6 +58,15 @@ public class EmailAddressAndroid extends EmailAddress implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param emailAddress Email Address
+     */
+    public EmailAddressAndroid(@NonNull String emailAddress) {
+        super(emailAddress);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

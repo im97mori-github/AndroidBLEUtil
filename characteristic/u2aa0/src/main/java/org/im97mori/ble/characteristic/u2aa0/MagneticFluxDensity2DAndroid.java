@@ -61,6 +61,16 @@ public class MagneticFluxDensity2DAndroid extends MagneticFluxDensity2D implemen
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param magneticFluxDensityXAxis Magnetic Flux Density: X-Axis
+     * @param magneticFluxDensityYAxis Magnetic Flux Density: Y-Axis
+     */
+    public MagneticFluxDensity2DAndroid(int magneticFluxDensityXAxis, int magneticFluxDensityYAxis) {
+        super(magneticFluxDensityXAxis, magneticFluxDensityYAxis);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

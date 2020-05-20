@@ -39,6 +39,14 @@ public class FatBurnHeartRateLowerLimitAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int fatBurnHeartRateLowerLimit = 1;
+
+        FatBurnHeartRateLowerLimitAndroid result1 = new FatBurnHeartRateLowerLimitAndroid(fatBurnHeartRateLowerLimit);
+        assertEquals(fatBurnHeartRateLowerLimit, result1.getFatBurnHeartRateLowerLimit());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

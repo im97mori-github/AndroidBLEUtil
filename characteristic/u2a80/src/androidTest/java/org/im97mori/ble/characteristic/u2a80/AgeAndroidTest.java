@@ -39,6 +39,14 @@ public class AgeAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int age = 1;
+
+        AgeAndroid result1 = new AgeAndroid(age);
+        assertEquals(age, result1.getAge());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

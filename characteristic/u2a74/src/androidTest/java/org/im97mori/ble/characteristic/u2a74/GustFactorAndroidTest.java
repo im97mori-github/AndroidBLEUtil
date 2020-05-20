@@ -60,6 +60,14 @@ public class GustFactorAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int gustFactor = 1;
+
+        GustFactorAndroid result1 = new GustFactorAndroid(gustFactor);
+        assertEquals(gustFactor, result1.getGustFactor());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

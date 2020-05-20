@@ -4260,6 +4260,16 @@ public class FitnessMachineFeatureAndroidTest {
     }
 
     @Test
+    public void test_constructor_11603() {
+        byte[] fitnessMachineFeatures = new byte[] { 1 };
+        byte[] targetSettingFeatures = new byte[] { 2 };
+
+        FitnessMachineFeatureAndroid result1 = new FitnessMachineFeatureAndroid(fitnessMachineFeatures, targetSettingFeatures);
+        assertArrayEquals(fitnessMachineFeatures, result1.getFitnessMachineFeatures());
+        assertArrayEquals(targetSettingFeatures, result1.getTargetSettingFeatures());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

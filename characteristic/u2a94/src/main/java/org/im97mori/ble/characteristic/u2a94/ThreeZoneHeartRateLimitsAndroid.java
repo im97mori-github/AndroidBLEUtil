@@ -61,6 +61,16 @@ public class ThreeZoneHeartRateLimitsAndroid extends ThreeZoneHeartRateLimits im
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param threeZoneHeartRateLimitsLightFatBurnModerateAerobicLimit  Three zone Heart Rate Limits - Light (Fat burn) / Moderate (Aerobic) Limit
+     * @param threeZoneHeartRateLimitsModerateAerobicHardAnaerobicLimit Three zone Heart Rate Limits - Moderate (Aerobic) / Hard (Anaerobic) Limit
+     */
+    public ThreeZoneHeartRateLimitsAndroid(int threeZoneHeartRateLimitsLightFatBurnModerateAerobicLimit, int threeZoneHeartRateLimitsModerateAerobicHardAnaerobicLimit) {
+        super(threeZoneHeartRateLimitsLightFatBurnModerateAerobicLimit, threeZoneHeartRateLimitsModerateAerobicHardAnaerobicLimit);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

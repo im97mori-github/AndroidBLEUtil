@@ -36,6 +36,14 @@ public class SoftwareRevisionStringAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        String softwareRevision = "99.99";
+
+        SoftwareRevisionStringAndroid result1 = new SoftwareRevisionStringAndroid(softwareRevision);
+        assertEquals(softwareRevision, result1.getSoftwareRevision());
+    }
+
+    @Test
     public void test_parcelable001() {
         String firmwareRevision = "00.00";
 

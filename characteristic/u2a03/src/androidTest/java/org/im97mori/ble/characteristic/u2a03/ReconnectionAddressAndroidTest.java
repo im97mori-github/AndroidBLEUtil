@@ -50,6 +50,14 @@ public class ReconnectionAddressAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        long address = 1;
+
+        ReconnectionAddressAndroid result1 = new ReconnectionAddressAndroid(address);
+        assertEquals(address, result1.getAddress());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[6];

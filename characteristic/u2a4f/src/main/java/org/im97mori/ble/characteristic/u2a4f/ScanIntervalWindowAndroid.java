@@ -61,6 +61,16 @@ public class ScanIntervalWindowAndroid extends ScanIntervalWindow implements Par
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param leScanInterval LE_Scan_Interval
+     * @param leScanWindow   LE_Scan_Window
+     */
+    public ScanIntervalWindowAndroid(int leScanInterval, int leScanWindow) {
+        super(leScanInterval, leScanWindow);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

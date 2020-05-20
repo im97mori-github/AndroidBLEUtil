@@ -61,6 +61,27 @@ public class StairClimberDataPacketAndroid extends StairClimberDataPacket implem
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param flags                 Flags
+     * @param floors                Floors
+     * @param stepPerMinute         Step Per Minute
+     * @param averageStepRate       Average Step Rate
+     * @param positiveElevationGain Positive Elevation Gain
+     * @param strideCount           Stride Count
+     * @param totalEnergy           Total Energy
+     * @param energyPerHour         Energy Per Hour
+     * @param energyPerMinute       Energy Per Minute
+     * @param heartRate             Heart Rate
+     * @param metabolicEquivalent   Metabolic Equivalent
+     * @param elapsedTime           Elapsed Time
+     * @param remainingTime         Remaining Time
+     */
+    public StairClimberDataPacketAndroid(@NonNull byte[] flags, int floors, int stepPerMinute, int averageStepRate, int positiveElevationGain, int strideCount, int totalEnergy, int energyPerHour, int energyPerMinute, int heartRate, int metabolicEquivalent, int elapsedTime, int remainingTime) {
+        super(flags, floors, stepPerMinute, averageStepRate, positiveElevationGain, strideCount, totalEnergy, energyPerHour, energyPerMinute, heartRate, metabolicEquivalent, elapsedTime, remainingTime);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

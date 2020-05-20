@@ -61,6 +61,15 @@ public class HumidityAndroid extends Humidity implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param humidity Humidity
+     */
+    public HumidityAndroid(int humidity) {
+        super(humidity);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

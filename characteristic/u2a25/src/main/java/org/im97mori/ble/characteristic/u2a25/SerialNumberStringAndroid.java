@@ -61,6 +61,15 @@ public class SerialNumberStringAndroid extends SerialNumberString implements Par
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param serialNumber Serial Number
+     */
+    public SerialNumberStringAndroid(@NonNull String serialNumber) {
+        super(serialNumber);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

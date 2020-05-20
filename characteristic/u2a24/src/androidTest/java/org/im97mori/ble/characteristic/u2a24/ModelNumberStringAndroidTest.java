@@ -25,6 +25,14 @@ public class ModelNumberStringAndroidTest {
     }
 
     @Test
+    public void test_constructor002() {
+        String modelNumber = "2JCIE-BU01";
+
+        ModelNumberStringAndroid result1 = new ModelNumberStringAndroid(modelNumber);
+        assertEquals(modelNumber, result1.getModelNumber());
+    }
+
+    @Test
     public void test_parcelable001() {
         String modelNumber = "2JCIE-BU01";
 

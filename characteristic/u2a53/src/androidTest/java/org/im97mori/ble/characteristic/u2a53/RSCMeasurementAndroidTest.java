@@ -213,6 +213,22 @@ public class RSCMeasurementAndroidTest {
     }
 
     @Test
+    public void test_constructor_00203() {
+        int flags = 1;
+        int instantaneousSpeed = 2;
+        int instantaneousCadence = 3;
+        int instantaneousStrideLength = 4;
+        long totalDistance = 5;
+
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(flags, instantaneousSpeed, instantaneousCadence, instantaneousStrideLength, totalDistance);
+        assertEquals(flags, result1.getFlags());
+        assertEquals(instantaneousSpeed, result1.getInstantaneousSpeed());
+        assertEquals(instantaneousCadence, result1.getInstantaneousCadence());
+        assertEquals(instantaneousStrideLength, result1.getInstantaneousStrideLength());
+        assertEquals(totalDistance, result1.getTotalDistance());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

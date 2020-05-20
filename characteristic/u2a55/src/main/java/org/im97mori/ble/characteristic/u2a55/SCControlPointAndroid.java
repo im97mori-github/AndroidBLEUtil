@@ -61,6 +61,21 @@ public class SCControlPointAndroid extends SCControlPoint implements Parcelable 
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param opCode              Op Code
+     * @param cumulativeValue     Cumulative Value
+     * @param sensorLocationValue Sensor Location Value
+     * @param requestOpCode       Request Op Code
+     * @param responseValue       Response Value
+     * @param responseParameter   Response Parameter
+     */
+    public SCControlPointAndroid(int opCode, long cumulativeValue, int sensorLocationValue, int requestOpCode, int responseValue, byte[] responseParameter) {
+        super(opCode, cumulativeValue, sensorLocationValue, requestOpCode, responseValue, responseParameter);
+    }
+
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

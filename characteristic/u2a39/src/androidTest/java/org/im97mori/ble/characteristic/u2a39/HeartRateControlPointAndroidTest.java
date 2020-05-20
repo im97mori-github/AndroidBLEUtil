@@ -44,6 +44,14 @@ public class HeartRateControlPointAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int heartRateControlPoint = 1;
+
+        HeartRateControlPointAndroid result1 = new HeartRateControlPointAndroid(heartRateControlPoint);
+        assertEquals(heartRateControlPoint, result1.getHeartRateControlPoint());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

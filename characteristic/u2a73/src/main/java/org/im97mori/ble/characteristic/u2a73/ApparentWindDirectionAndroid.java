@@ -61,6 +61,15 @@ public class ApparentWindDirectionAndroid extends ApparentWindDirection implemen
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param apparentWindDirection Apparent Wind Direction
+     */
+    public ApparentWindDirectionAndroid(int apparentWindDirection) {
+        super(apparentWindDirection);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -59,6 +59,18 @@ public class TimeTriggerSettingAndroid extends TimeTriggerSetting implements Par
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param condition          Condition
+     * @param valueNone          Value (None)
+     * @param valueTimerInterval Value (Time Interval)
+     * @param valueCount         Value (Count)
+     */
+    public TimeTriggerSettingAndroid(int condition, int valueNone, int valueTimerInterval, int valueCount) {
+        super(condition, valueNone, valueTimerInterval, valueCount);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

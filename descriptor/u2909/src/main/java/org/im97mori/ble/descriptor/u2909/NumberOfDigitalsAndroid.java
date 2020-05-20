@@ -59,6 +59,15 @@ public class NumberOfDigitalsAndroid extends NumberOfDigitals implements Parcela
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param noOfDigitals No of Digitals
+     */
+    public NumberOfDigitalsAndroid(int noOfDigitals) {
+        super(noOfDigitals);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

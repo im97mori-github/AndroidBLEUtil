@@ -60,6 +60,15 @@ public class UVIndexAndroid extends UVIndex implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param UVIndex UV Index
+     */
+    public UVIndexAndroid(int UVIndex) {
+        super(UVIndex);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

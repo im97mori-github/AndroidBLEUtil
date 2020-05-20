@@ -61,6 +61,15 @@ public class TrueWindDirectionAndroid extends TrueWindDirection implements Parce
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param trueWindDirection True Wind Direction
+     */
+    public TrueWindDirectionAndroid(int trueWindDirection) {
+        super(trueWindDirection);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -61,6 +61,15 @@ public class TrueWindSpeedAndroid extends TrueWindSpeed implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param trueWindSpeed True Wind Speed
+     */
+    public TrueWindSpeedAndroid(int trueWindSpeed) {
+        super(trueWindSpeed);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

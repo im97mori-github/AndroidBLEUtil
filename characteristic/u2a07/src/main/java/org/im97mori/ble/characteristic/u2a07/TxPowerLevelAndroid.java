@@ -61,6 +61,15 @@ public class TxPowerLevelAndroid extends TxPowerLevel implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param txPower Tx Power
+     */
+    public TxPowerLevelAndroid(int txPower) {
+        super(txPower);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

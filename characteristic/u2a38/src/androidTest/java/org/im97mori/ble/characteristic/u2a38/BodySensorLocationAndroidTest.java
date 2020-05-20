@@ -161,6 +161,14 @@ public class BodySensorLocationAndroidTest {
     }
 
     @Test
+    public void test_constructor008() {
+        int bodySensorLocation = 1;
+
+        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(bodySensorLocation);
+        assertEquals(bodySensorLocation, result1.getBodySensorLocation());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

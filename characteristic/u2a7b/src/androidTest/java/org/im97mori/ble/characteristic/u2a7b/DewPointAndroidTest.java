@@ -59,6 +59,14 @@ public class DewPointAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int dewPoint = 1;
+
+        DewPointAndroid result1 = new DewPointAndroid(dewPoint);
+        assertEquals(0x01, result1.getDewPoint());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

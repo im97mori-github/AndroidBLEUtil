@@ -46,6 +46,14 @@ public class CentralAddressResolutionAndroidTest {
     }
 
     @Test
+    public void test_constructor003() {
+        int centralAddressResolutionSupport = 1;
+
+        CentralAddressResolutionAndroid result1 = new CentralAddressResolutionAndroid(centralAddressResolutionSupport);
+        assertEquals(centralAddressResolutionSupport, result1.getCentralAddressResolutionSupport());
+    }
+
+    @Test
     public void test_parcelable001() {
         //@formatter:off
         byte[] data = new byte[1];

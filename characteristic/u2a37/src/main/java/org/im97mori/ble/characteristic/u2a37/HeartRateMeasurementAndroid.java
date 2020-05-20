@@ -61,6 +61,19 @@ public class HeartRateMeasurementAndroid extends HeartRateMeasurement implements
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param flags                           Flags
+     * @param heartRateMeasurementValueUint8  Heart Rate Measurement Value (uint8)
+     * @param heartRateMeasurementValueUint16 Heart Rate Measurement Value (uint16)
+     * @param energyExpended                  Energy Expended
+     * @param rrInterval                      RR-Interval
+     */
+    public HeartRateMeasurementAndroid(int flags, int heartRateMeasurementValueUint8, int heartRateMeasurementValueUint16, int energyExpended, @NonNull int[] rrInterval) {
+        super(flags, heartRateMeasurementValueUint8, heartRateMeasurementValueUint16, energyExpended, rrInterval);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -61,6 +61,16 @@ public class AlertNotificationControlPointAndroid extends AlertNotificationContr
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param commandId  Command ID
+     * @param categoryId Category ID
+     */
+    public AlertNotificationControlPointAndroid(int commandId, int categoryId) {
+        super(commandId, categoryId);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

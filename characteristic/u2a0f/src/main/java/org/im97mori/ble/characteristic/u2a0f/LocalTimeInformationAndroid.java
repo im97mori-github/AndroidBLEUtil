@@ -61,6 +61,16 @@ public class LocalTimeInformationAndroid extends LocalTimeInformation implements
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param timeZone  Time Zone
+     * @param dstOffset DST Offset
+     */
+    public LocalTimeInformationAndroid(int timeZone, int dstOffset) {
+        super(timeZone, dstOffset);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

@@ -61,6 +61,17 @@ public class NewAlertAndroid extends NewAlert implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param categoryId            Category ID
+     * @param numberOfNewAlert      Number of New Alert
+     * @param textStringInformation Text String Information
+     */
+    public NewAlertAndroid(int categoryId, int numberOfNewAlert, @NonNull String textStringInformation) {
+        super(categoryId, numberOfNewAlert, textStringInformation);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

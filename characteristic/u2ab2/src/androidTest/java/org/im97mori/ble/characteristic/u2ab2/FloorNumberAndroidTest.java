@@ -74,6 +74,14 @@ public class FloorNumberAndroidTest {
     }
 
     @Test
+    public void test_constructor_00002() {
+        int floorNumber = 1;
+
+        FloorNumberAndroid result1 = new FloorNumberAndroid(floorNumber);
+        assertEquals(floorNumber, result1.getFloorNumber());
+    }
+
+    @Test
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
