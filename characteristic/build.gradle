@@ -189,10 +189,10 @@ dependencies {
     api "${groupId}:${characteristicU2ad8Android.artifactId}:${characteristicU2ad8Android.versionName}"
     api "${groupId}:${characteristicU2ad9Android.artifactId}:${characteristicU2ad9Android.versionName}"
     api "${groupId}:${characteristicU2adaAndroid.artifactId}:${characteristicU2adaAndroid.versionName}"
-    api "${groupId}:${characteristicU2b29Android.artifactId}:${characteristicU2b29Android.versionName}"
     api "${groupId}:${characteristicU2b1dAndroid.artifactId}:${characteristicU2b1dAndroid.versionName}"
     api "${groupId}:${characteristicU2b1eAndroid.artifactId}:${characteristicU2b1eAndroid.versionName}"
     api "${groupId}:${characteristicU2b1fAndroid.artifactId}:${characteristicU2b1fAndroid.versionName}"
+    api "${groupId}:${characteristicU2b29Android.artifactId}:${characteristicU2b29Android.versionName}"
     api "${groupId}:${characteristicU2b2aAndroid.artifactId}:${characteristicU2b2aAndroid.versionName}"
 }
 
