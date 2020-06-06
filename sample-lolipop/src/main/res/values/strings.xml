@@ -12,6 +12,8 @@
     <string name="label_advertising">Advertising sample</string>
     <string name="label_peripheral">Peripheral sample</string>
     <string name="label_central">Central sample</string>
+    <string name="label_dis_peripheral">DIS Peripheral sample</string>
+    <string name="label_dis_central">DIS Central sample</string>
 
     <string name="menu_discover_service">Discover Service</string>
     <string name="menu_discover_service_sync">Discover Service(Synchronous)</string>
@@ -35,6 +37,16 @@
     <string name="menu_write_characteristic_reliable">Write Characteristic(Reliable)</string>
     <string name="menu_write_characteristic_reliable_abort">Write Characteristic(Reliable abort)</string>
     <string name="menu_read_multi_instance_characteristic">Read Multi Instance Characteristic</string>
+
+    <string name="menu_read_manufacturer_name">Read Manufacturer Name</string>
+    <string name="menu_read_model_number">Read Model Number</string>
+    <string name="menu_read_serial_number">Read Serial Number</string>
+    <string name="menu_read_hardware_revision">Read Hardware Revision</string>
+    <string name="menu_read_firmware_revision">Read Firmware Revision</string>
+    <string name="menu_read_software_revision">Read Software Revision</string>
+    <string name="menu_read_system_id">Read System Id</string>
+    <string name="menu_read_ieee_11073_20601_regulatory_certification_data_list">Read IEEE 11073 20601 RegulatoryCertificationDataList</string>
+    <string name="menu_read_pnp_id">Read Pnp Id</string>
 
     <string name="menu_clear">Clear</string>
 </resources>

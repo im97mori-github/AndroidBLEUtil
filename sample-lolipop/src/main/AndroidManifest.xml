@@ -30,6 +30,12 @@
         <activity
             android:name=".CentralSampleActivity"
             android:label="@string/label_central" />
+        <activity
+            android:name=".DISPeripheralSampleActivity"
+            android:label="@string/label_dis_peripheral" />
+        <activity
+            android:name=".DISCentralSampleActivity"
+            android:label="@string/label_dis_central" />
     </application>
 
 </manifest>

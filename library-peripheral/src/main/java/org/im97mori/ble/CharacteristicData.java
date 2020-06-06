@@ -17,7 +17,7 @@ import java.util.UUID;
 /**
  * Characteristic data class
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class CharacteristicData implements Parcelable, ByteArrayInterface {
 
     /**

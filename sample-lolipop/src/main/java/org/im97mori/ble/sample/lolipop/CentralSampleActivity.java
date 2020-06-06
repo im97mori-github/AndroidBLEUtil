@@ -15,7 +15,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.ParcelUuid;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -80,6 +79,8 @@ import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_WRITABLE_CHA
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class CentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
+
+    private static final String KEY_LATEST_DEVICE = "KEY_LATEST_DEVICE";
 
     private static class TestScanCallback extends FilteredScanCallback {
 
@@ -152,6 +153,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                             if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
                                                 int state = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE);
                                                 if (BluetoothDevice.BOND_BONDED == state) {
+                                                    mActivity.getPreferences(Context.MODE_PRIVATE).edit().putString(KEY_LATEST_DEVICE, scanResult.getDevice().getAddress()).apply();
                                                     mActivity.mBleConnection = BLEConnectionHolder.getInstance(scanResult.getDevice());
                                                     if (mActivity.mBleConnection == null) {
                                                         mActivity.mBleConnection = new BLEConnection(mActivity, scanResult.getDevice(), null);
@@ -803,20 +805,19 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
 
     private BluetoothDevice findDevice() {
         BluetoothDevice target = null;
-        Set<BluetoothDevice> bluetoothDeviceSet = mBluetoothAdapter.getBondedDevices();
-        if (bluetoothDeviceSet != null) {
-            for (BluetoothDevice device : bluetoothDeviceSet) {
-                ParcelUuid[] parcelUuids = device.getUuids();
-                if (parcelUuids != null) {
-                    for (ParcelUuid parcelUuid : parcelUuids) {
-                        if (MOCK_CONTROL_SERVICE_UUID.equals(parcelUuid.getUuid())) {
-                            target = device;
-                            break;
-                        }
+        String latestAddress = getPreferences(MODE_PRIVATE).getString(KEY_LATEST_DEVICE, null);
+        if (latestAddress != null) {
+            Set<BluetoothDevice> bluetoothDeviceSet = mBluetoothAdapter.getBondedDevices();
+            if (bluetoothDeviceSet != null) {
+                for (BluetoothDevice device : bluetoothDeviceSet) {
+                    if (latestAddress.equals(device.getAddress())) {
+                        target = device;
+                        break;
                     }
                 }
             }
         }
         return target;
     }
+
 }

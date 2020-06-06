@@ -7,7 +7,7 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.3'
+        classpath 'com.android.tools.build:gradle:4.0.0'
         classpath 'digital.wup:android-maven-publish:3.6.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -1546,16 +1546,65 @@ ext.central = [
 
 ext.peripheral = [
         artifactId         : 'ble-peripheral'
-        , versionCode      : 41
-        , versionName      : '0.2.14'
-        , uploadVersionName: '0.2.14'
+        , versionCode      : 42
+        , versionName      : '0.2.15'
+        , uploadVersionName: '0.2.15'
 ]
+
+ext.serviceAndroid = [
+        artifactId         : "ble-service-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.serviceCentralAndroid = [
+        artifactId         : "ble-service-central-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.servicePeripheralAndroid = [
+        artifactId         : "ble-service-peripheral-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.serviceBasAndroid = [
+        artifactId         : "ble-service-bas-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.serviceDisAndroid = [
+        artifactId         : "ble-service-dis-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.serviceDisCentralAndroid = [
+        artifactId         : "ble-service-dis-cental-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.serviceDisPeripheralAndroid = [
+        artifactId         : "ble-service-dis-peripheral-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
 
 ext.apiCoreAndroid = "${groupId}:${coreAndroid.artifactId}:${coreAndroid.versionName}"
 ext.apiAdvertisingAndroid = "${groupId}:${advertisingAndroid.artifactId}:${advertisingAndroid.versionName}"
 ext.apiCharacteristicCoreAndroid = "${groupId}:${characteristicCoreAndroid.artifactId}:${characteristicCoreAndroid.versionName}"
 ext.apiHandler = "${groupId}:${handler.artifactId}:${handler.versionName}"
-ext.apiCentral = "${groupId}:${central.artifactId}:${central.versionName}"
 ext.androidxAnnotation = 'androidx.annotation:annotation:1.1.0'
 ext.androidxTestRunner = 'androidx.test:runner:1.2.0'
 ext.androidxTestCore = 'androidx.test:core:1.2.0'

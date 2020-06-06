@@ -38,7 +38,7 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.APPLICATION_ERROR_9F;
 /**
  * MockCallback base class
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public abstract class BaseMockCallback implements BLEServerCallback {
 
     /**
@@ -101,9 +101,11 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                         characteristicData.uuid
                         , characteristicData.property
                         , characteristicData.permission);
+                bluetoothGattCharacteristic.setValue(characteristicData.data);
                 for (DescriptorData descriptorData : characteristicData.descriptorDataList) {
                     bluetoothGattDescriptor = new BluetoothGattDescriptor(descriptorData.uuid
                             , descriptorData.permission);
+                    bluetoothGattDescriptor.setValue(descriptorData.data);
                     bluetoothGattCharacteristic.addDescriptor(bluetoothGattDescriptor);
                 }
                 bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);

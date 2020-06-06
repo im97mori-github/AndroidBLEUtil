@@ -113,7 +113,7 @@ public class BLECallbackSample extends BaseMockCallback implements BLECallback {
         if (characteristicLineNumber == 0) {
             sb.append(serviceUUID.toString().substring(4, 8));
         } else {
-            sb.append(serviceUUID.toString().substring(4, 8));
+            sb.append("    ");
         }
         sb.append('\t');
 
@@ -121,7 +121,7 @@ public class BLECallbackSample extends BaseMockCallback implements BLECallback {
             if (descriptorLineNumber == 0) {
                 sb.append(characteristicUUID.toString().substring(4, 8));
             } else {
-                sb.append(characteristicUUID.toString().substring(4, 8));
+                sb.append("    ");
             }
             sb.append('\t');
 

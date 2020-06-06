@@ -29,7 +29,6 @@ android {
 
 dependencies {
     api androidxAnnotation
-    testImplementation 'junit:junit:4.13'
     androidTestImplementation androidxTestRunner
     androidTestImplementation androidxTestCore
 }
