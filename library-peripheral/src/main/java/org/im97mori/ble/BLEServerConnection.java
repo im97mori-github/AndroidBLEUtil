@@ -422,7 +422,9 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      * @param byteArrayInterface       task target data class
      * @param isConfirm                {@code true}:indication, {@code false}:notification
      * @param timeout                  timeout(millis)
+     * @param delay                    delay(millis)
      * @param argument                 callback argument
+     * @param bleServerCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
      * @return task id. if {@code null} returned, task was not registed
      */
     public synchronized Integer createNotificationTask(@NonNull BluetoothDevice device
@@ -433,7 +435,9 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
             , @NonNull ByteArrayInterface byteArrayInterface
             , boolean isConfirm
             , long timeout
-            , @Nullable Bundle argument) {
+            , long delay
+            , @Nullable Bundle argument
+            , @Nullable BLEServerCallback bleServerCallback) {
         Integer taskId = null;
         if (mBluetoothGattServer != null) {
             NotificationTask task = new NotificationTask(this
@@ -447,8 +451,8 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
                     , byteArrayInterface
                     , isConfirm
                     , timeout
-                    , argument);
-            mTaskHandler.addTask(task);
+                    , BLEServerCallbackDistributer.wrapArgument(argument, bleServerCallback));
+            mTaskHandler.addTaskDelayed(task, delay);
             taskId = task.getTaskId();
         }
         return taskId;

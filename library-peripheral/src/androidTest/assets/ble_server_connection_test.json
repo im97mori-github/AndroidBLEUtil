@@ -11,7 +11,8 @@
           "descriptor_data_list": [],
           "response_code": 3,
           "delay": 4,
-          "data": []
+          "data": [],
+          "notification_count" : 1
         }
       ]
     }

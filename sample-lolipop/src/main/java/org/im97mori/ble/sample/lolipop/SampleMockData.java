@@ -104,6 +104,7 @@ public class SampleMockData extends MockData {
             characteristicData.responseCode = BluetoothGatt.GATT_SUCCESS;
             characteristicData.delay = 0;
             characteristicData.data = SAMPLE_NOTIFICATABLE_CHARACTERISTIC.toString().getBytes();
+            characteristicData.notificationCount = 10;
             characteristicDataList.add(characteristicData);
 
             descriptorDataList = new LinkedList<>();
@@ -122,6 +123,7 @@ public class SampleMockData extends MockData {
             characteristicData.responseCode = BluetoothGatt.GATT_SUCCESS;
             characteristicData.delay = 0;
             characteristicData.data = SAMPLE_INDICATABLE_CHARACTERISTIC.toString().getBytes();
+            characteristicData.notificationCount = 10;
             characteristicDataList.add(characteristicData);
 
             descriptorDataList = new LinkedList<>();

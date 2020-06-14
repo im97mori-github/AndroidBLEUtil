@@ -63,7 +63,8 @@ public class AbortReliableWriteTask extends AbstractBLETask {
     public AbortReliableWriteTask(@NonNull BLEConnection bleConnection
             , @NonNull BluetoothGatt bluetoothGatt
             , @NonNull TaskHandler taskHandler
-            , long timeout, @NonNull Bundle argument) {
+            , long timeout
+            , @NonNull Bundle argument) {
         mBLEConnection = bleConnection;
         mBluetoothGatt = bluetoothGatt;
         mTaskHandler = taskHandler;

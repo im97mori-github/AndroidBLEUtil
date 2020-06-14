@@ -311,12 +311,14 @@ public interface BLECallback {
     /**
      * Notification characteristic callback
      *
-     * @param bluetoothDevice    BLE device
-     * @param serviceUUID        service {@link UUID}
-     * @param characteristicUUID characteristic {@link UUID}
-     * @param values             {@link BluetoothGattCharacteristic#getValue()}
+     * @param bluetoothDevice          BLE device
+     * @param serviceUUID              service {@link UUID}
+     * @param serviceInstanceId        service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       characteristic {@link UUID}
+     * @param characteristicInstanceId characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param values                   {@link BluetoothGattCharacteristic#getValue()}
      */
-    void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values);
+    void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values);
 
     /**
      * Read phy success callback

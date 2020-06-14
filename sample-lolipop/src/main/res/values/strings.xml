@@ -14,6 +14,8 @@
     <string name="label_central">Central sample</string>
     <string name="label_dis_peripheral">DIS Peripheral sample</string>
     <string name="label_dis_central">DIS Central sample</string>
+    <string name="label_bas_peripheral">BAS Peripheral sample</string>
+    <string name="label_bas_central">BAS Central sample</string>
 
     <string name="menu_discover_service">Discover Service</string>
     <string name="menu_discover_service_sync">Discover Service(Synchronous)</string>
@@ -34,6 +36,7 @@
     <string name="menu_write_indication_stop">Write CCCD Indication stop</string>
     <string name="menu_read_characteristic_sync">Read Characteristic(Synchronous)</string>
     <string name="menu_write_characteristic_sync">Write Characteristic(Synchronous)</string>
+    <string name="menu_write_notification_sync">Write CCCD Notification(Synchronous)</string>
     <string name="menu_write_characteristic_reliable">Write Characteristic(Reliable)</string>
     <string name="menu_write_characteristic_reliable_abort">Write Characteristic(Reliable abort)</string>
     <string name="menu_read_multi_instance_characteristic">Read Multi Instance Characteristic</string>
@@ -47,6 +50,10 @@
     <string name="menu_read_system_id">Read System Id</string>
     <string name="menu_read_ieee_11073_20601_regulatory_certification_data_list">Read IEEE 11073 20601 RegulatoryCertificationDataList</string>
     <string name="menu_read_pnp_id">Read Pnp Id</string>
+
+    <string name="menu_read_battery_level">Read Battery Level</string>
+    <string name="menu_notify_battery_level_start">Notify Battery Level start</string>
+    <string name="menu_notify_battery_level_stop">Notify Battery Level stop</string>
 
     <string name="menu_clear">Clear</string>
 </resources>

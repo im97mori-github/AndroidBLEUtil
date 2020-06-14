@@ -517,7 +517,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             return;
         }
         try {
-            getBLECallback().onCharacteristicNotified(mBluetoothDevice, characteristic.getService().getUuid(), characteristic.getUuid(), characteristic.getValue());
+            getBLECallback().onCharacteristicNotified(mBluetoothDevice, characteristic.getService().getUuid(), characteristic.getService().getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), characteristic.getValue());
         } catch (Exception e) {
             BLELogUtils.stackLog(e);
         }

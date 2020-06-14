@@ -58,7 +58,6 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
      * {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_WRITE}
      * {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
      * {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_INDICATE}
-     * {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_INDICATE}
      */
     @SerializedName("property")
     public int property;
@@ -96,6 +95,13 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
     public byte[] data;
 
     /**
+     * notification / indication count
+     * {@code -1} is infinit
+     */
+    @SerializedName("notification_count")
+    public int notificationCount = -1;
+
+    /**
      * Constructor
      */
     public CharacteristicData() {
@@ -109,7 +115,6 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
      *                           {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_WRITE}
      *                           {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
      *                           {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_INDICATE}
-     *                           {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_INDICATE}
      * @param permission         combination of
      *                           {@link android.bluetooth.BluetoothGattCharacteristic#PERMISSION_READ}
      *                           {@link android.bluetooth.BluetoothGattCharacteristic#PERMISSION_WRITE}
@@ -117,8 +122,9 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
      * @param responseCode       response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
      * @param delay              responce delay(millis)
      * @param data               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+     * @param notificationCount  notification / indication count
      */
-    public CharacteristicData(@NonNull UUID uuid, int property, int permission, @NonNull List<DescriptorData> descriptorDataList, int responseCode, long delay, @Nullable byte[] data) {
+    public CharacteristicData(@NonNull UUID uuid, int property, int permission, @NonNull List<DescriptorData> descriptorDataList, int responseCode, long delay, @Nullable byte[] data, int notificationCount) {
         this.uuid = uuid;
         this.property = property;
         this.permission = permission;
@@ -126,6 +132,7 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
         this.responseCode = responseCode;
         this.delay = delay;
         this.data = data;
+        this.notificationCount = notificationCount;
     }
 
     /**
@@ -141,6 +148,7 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
         responseCode = in.readInt();
         delay = in.readLong();
         data = in.createByteArray();
+        notificationCount = in.readInt();
     }
 
     /**
@@ -173,8 +181,12 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
         dest.writeInt(responseCode);
         dest.writeLong(delay);
         dest.writeByteArray(data);
+        dest.writeInt(notificationCount);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int hashCode() {
         return uuid.hashCode()
@@ -183,7 +195,8 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
                 ^ Arrays.hashCode(descriptorDataList.toArray())
                 ^ Integer.valueOf(responseCode).hashCode()
                 ^ Long.valueOf(delay).hashCode()
-                ^ Arrays.hashCode(data);
+                ^ Arrays.hashCode(data)
+                ^ Integer.valueOf(notificationCount).hashCode();
     }
 
     /**
@@ -200,7 +213,8 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
                     && Arrays.equals(descriptorDataList.toArray(), target.descriptorDataList.toArray())
                     && responseCode == target.responseCode
                     && delay == target.delay
-                    && Arrays.equals(data, target.data);
+                    && Arrays.equals(data, target.data)
+                    && notificationCount == target.notificationCount;
         }
         return result;
     }

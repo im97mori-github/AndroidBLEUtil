@@ -59,6 +59,10 @@
         android:title="@string/menu_write_characteristic_sync" />
 
     <item
+        android:id="@+id/write_notification_sync"
+        android:title="@string/menu_write_notification_sync" />
+
+    <item
         android:id="@+id/write_characteristc_reliable"
         android:title="@string/menu_write_characteristic_reliable" />
     <item

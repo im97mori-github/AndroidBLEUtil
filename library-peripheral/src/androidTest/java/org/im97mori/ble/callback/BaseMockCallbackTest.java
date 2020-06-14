@@ -25,8 +25,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class BaseMockCallbackTest {
@@ -116,11 +119,12 @@ public class BaseMockCallbackTest {
         int characteristicResponseCode = 4;
         long characteristicDelay = 5;
         byte[] characteristicDataArray = new byte[]{6};
+        int notificationCount = 7;
         UUID descriptorUUID = UUID.randomUUID();
-        int descriptorPermission = 7;
-        int descriptorResponseCode = 8;
-        long descriptorDelay = 9;
-        byte[] descriptorDataArray = new byte[]{10};
+        int descriptorPermission = 8;
+        int descriptorResponseCode = 9;
+        long descriptorDelay = 10;
+        byte[] descriptorDataArray = new byte[]{11};
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
@@ -142,7 +146,8 @@ public class BaseMockCallbackTest {
                 , Collections.singletonList(descriptorData)
                 , characteristicResponseCode
                 , characteristicDelay
-                , characteristicDataArray);
+                , characteristicDataArray
+                , notificationCount);
         ServiceData serviceData = new ServiceData(serviceUUID
                 , serviceType
                 , Collections.singletonList(characteristicData));
@@ -175,11 +180,12 @@ public class BaseMockCallbackTest {
         int characteristicResponseCode = 4;
         long characteristicDelay = 5;
         byte[] characteristicDataArray = new byte[]{6};
+        int notificationCount = 7;
         UUID descriptorUUID = UUID.randomUUID();
-        int descriptorPermission = 7;
-        int descriptorResponseCode = 8;
-        long descriptorDelay = 9;
-        byte[] descriptorDataArray = new byte[]{10};
+        int descriptorPermission = 8;
+        int descriptorResponseCode = 9;
+        long descriptorDelay = 10;
+        byte[] descriptorDataArray = new byte[]{11};
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
@@ -202,7 +208,8 @@ public class BaseMockCallbackTest {
                 , Collections.singletonList(descriptorData)
                 , characteristicResponseCode
                 , characteristicDelay
-                , characteristicDataArray);
+                , characteristicDataArray
+                , notificationCount);
         ServiceData serviceData = new ServiceData(serviceUUID
                 , serviceType
                 , Collections.singletonList(characteristicData));
@@ -233,11 +240,12 @@ public class BaseMockCallbackTest {
         int characteristicResponseCode = 4;
         long characteristicDelay = 5;
         byte[] characteristicDataArray = new byte[]{6};
+        int notificationCount = 7;
         UUID descriptorUUID = UUID.randomUUID();
-        int descriptorPermission = 7;
-        int descriptorResponseCode = 8;
-        long descriptorDelay = 9;
-        byte[] descriptorDataArray = new byte[]{10};
+        int descriptorPermission = 8;
+        int descriptorResponseCode = 9;
+        long descriptorDelay = 10;
+        byte[] descriptorDataArray = new byte[]{11};
 
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection();
 
@@ -252,7 +260,8 @@ public class BaseMockCallbackTest {
                 , Collections.singletonList(descriptorData)
                 , characteristicResponseCode
                 , characteristicDelay
-                , characteristicDataArray);
+                , characteristicDataArray
+                , notificationCount);
         ServiceData serviceData = new ServiceData(serviceUUID
                 , serviceType
                 , Collections.singletonList(characteristicData));
@@ -280,11 +289,12 @@ public class BaseMockCallbackTest {
         int characteristicResponseCode = 4;
         long characteristicDelay = 5;
         byte[] characteristicDataArray = new byte[]{6};
+        int notificationCount = 7;
         UUID descriptorUUID = UUID.randomUUID();
-        int descriptorPermission = 7;
-        int descriptorResponseCode = 8;
-        long descriptorDelay = 9;
-        byte[] descriptorDataArray = new byte[]{10};
+        int descriptorPermission = 8;
+        int descriptorResponseCode = 9;
+        long descriptorDelay = 10;
+        byte[] descriptorDataArray = new byte[]{11};
 
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection();
 
@@ -299,7 +309,8 @@ public class BaseMockCallbackTest {
                 , Collections.singletonList(descriptorData)
                 , characteristicResponseCode
                 , characteristicDelay
-                , characteristicDataArray);
+                , characteristicDataArray
+                , notificationCount);
         ServiceData serviceData = new ServiceData(serviceUUID
                 , serviceType
                 , Collections.singletonList(characteristicData));
@@ -328,11 +339,12 @@ public class BaseMockCallbackTest {
         int characteristicResponseCode = 4;
         long characteristicDelay = 5;
         byte[] characteristicDataArray = new byte[]{6};
+        int notificationCount = 7;
         UUID descriptorUUID = UUID.randomUUID();
-        int descriptorPermission = 7;
-        int descriptorResponseCode = 8;
-        long descriptorDelay = 9;
-        byte[] descriptorDataArray = new byte[]{10};
+        int descriptorPermission = 8;
+        int descriptorResponseCode = 9;
+        long descriptorDelay = 10;
+        byte[] descriptorDataArray = new byte[]{11};
 
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection();
 
@@ -347,7 +359,8 @@ public class BaseMockCallbackTest {
                 , Collections.singletonList(descriptorData)
                 , characteristicResponseCode
                 , characteristicDelay
-                , characteristicDataArray);
+                , characteristicDataArray
+                , notificationCount);
         ServiceData serviceData = new ServiceData(serviceUUID
                 , serviceType
                 , new ArrayList<CharacteristicData>());
@@ -375,11 +388,12 @@ public class BaseMockCallbackTest {
         int characteristicResponseCode = 4;
         long characteristicDelay = 5;
         byte[] characteristicDataArray = new byte[]{6};
+        int notificationCount = 7;
         UUID descriptorUUID = UUID.randomUUID();
-        int descriptorPermission = 7;
-        int descriptorResponseCode = 8;
-        long descriptorDelay = 9;
-        byte[] descriptorDataArray = new byte[]{10};
+        int descriptorPermission = 8;
+        int descriptorResponseCode = 9;
+        long descriptorDelay = 10;
+        byte[] descriptorDataArray = new byte[]{11};
 
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection();
 
@@ -394,7 +408,8 @@ public class BaseMockCallbackTest {
                 , Collections.singletonList(descriptorData)
                 , characteristicResponseCode
                 , characteristicDelay
-                , characteristicDataArray);
+                , characteristicDataArray
+                , notificationCount);
         ServiceData serviceData = new ServiceData(serviceUUID
                 , serviceType
                 , Collections.singletonList(characteristicData));
@@ -412,6 +427,62 @@ public class BaseMockCallbackTest {
         assertTrue(baseMockCallback.onServiceAddSuccess(null, mockBLEServerConnection, bluetoothGattService, bundle));
         baseMockCallback.onServiceRemoveSuccess(null, mockBLEServerConnection, bluetoothGattService, bundle);
         assertTrue(baseMockCallback.onServiceAddSuccess(null, mockBLEServerConnection, bluetoothGattService, bundle));
+    }
+
+    @Test
+    public void test_getCharacteristicData_001() {
+        UUID serviceUUID = UUID.randomUUID();
+        int serviceInstanceId = 1;
+        UUID characteristicUUID = UUID.randomUUID();
+        int characteristicInstanceId = 2;
+
+        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(new MockData(Collections.<ServiceData>emptyList()), false);
+
+        assertNull(baseMockCallback.getCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId));
+    }
+
+    @Test
+    public void test_getCharacteristicData_002() {
+        UUID serviceUUID = UUID.randomUUID();
+        int serviceInstanceId = 1;
+        UUID characteristicUUID = UUID.randomUUID();
+        int characteristicInstanceId = 2;
+        byte[] data = new byte[]{3};
+
+        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(new MockData(Collections.<ServiceData>emptyList()), false);
+        baseMockCallback.setCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, baseMockCallback.mCurrentCharacteristicDataMap, data);
+
+        assertNotNull(baseMockCallback.getCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId));
+        assertArrayEquals(data, baseMockCallback.getCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId));
+    }
+
+    @Test
+    public void test_setCharacteristicData_001() {
+        UUID serviceUUID = UUID.randomUUID();
+        int serviceInstanceId = 1;
+        UUID characteristicUUID = UUID.randomUUID();
+        int characteristicInstanceId = 2;
+        byte[] data = new byte[]{3};
+
+        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(new MockData(Collections.<ServiceData>emptyList()), false);
+        baseMockCallback.setCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, baseMockCallback.mCurrentCharacteristicDataMap, data);
+
+        assertNotNull(baseMockCallback.getCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId));
+        assertArrayEquals(data, baseMockCallback.getCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId));
+    }
+
+    @Test
+    public void test_setCharacteristicData_002() {
+        UUID serviceUUID = UUID.randomUUID();
+        int serviceInstanceId = 1;
+        UUID characteristicUUID = UUID.randomUUID();
+        int characteristicInstanceId = 2;
+        byte[] data = new byte[]{3};
+
+        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(new MockData(Collections.<ServiceData>emptyList()), false);
+        baseMockCallback.setCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, baseMockCallback.mTemporaryCharacteristicDataMap, data);
+
+        assertNull(baseMockCallback.getCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId));
     }
 
     @Test

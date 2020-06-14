@@ -1,6 +1,8 @@
 package org.im97mori.ble.sample.lolipop;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
@@ -14,12 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.characteristic.u2a2a.IEEE_11073_20601_RegulatoryCertificationDataList;
-import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
+import org.im97mori.ble.bas.peripheral.BatteryServiceMockCallback;
 
 import java.util.LinkedList;
 
-public class DISPeripheralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
+public class BasPeripheralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
     private Button mConnectDisconnectButton;
 
@@ -59,19 +60,11 @@ public class DISPeripheralSampleActivity extends BaseActivity implements View.On
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         mBLEServerConnection = new BLEServerConnection(this);
-        DeviceInformationServiceMockCallback deviceInformationServiceMockCallback
-                = new DisMockCallbackSample.Builder(this)
-                .addManufacturerNameString("ManufacturerNameString")
-                .addModelNumberString("ModelNumberString")
-                .addSerialNumberString("SerialNumberString")
-                .addHardwareRevisionString("HardwareRevisionString")
-                .addFirmwareRevisionString("FirmwareRevisionString")
-                .addSoftwareRevisionString("SoftwareRevisionString")
-                .addSystemId(1, 2)
-                .addIEEE_11073_20601_RegulatoryCertificationDataList(new IEEE_11073_20601_RegulatoryCertificationDataList(new byte[]{3}))
-                .addPnpId(4, 5, 6, 7)
+        BatteryServiceMockCallback batteryServiceMockCallback
+                = new BasMockCallbackSample.Builder(this)
+                .addBatteryLevel(0, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGatt.GATT_SUCCESS, 0, new byte[]{30}, -1)
                 .build();
-        mBLEServerConnection.attach(deviceInformationServiceMockCallback);
+        mBLEServerConnection.attach(batteryServiceMockCallback);
     }
 
     @Override

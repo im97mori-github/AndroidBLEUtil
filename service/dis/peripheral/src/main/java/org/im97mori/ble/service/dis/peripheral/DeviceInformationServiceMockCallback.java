@@ -102,6 +102,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * @see #addManufacturerNameString(ManufacturerNameString)
          */
+        @NonNull
         public Builder<T> addManufacturerNameString(@NonNull String manufacturerName) {
             return addManufacturerNameString(new ManufacturerNameString(manufacturerName));
         }
@@ -109,6 +110,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * @see #addManufacturerNameString(byte[])
          */
+        @NonNull
         public Builder<T> addManufacturerNameString(@NonNull ManufacturerNameString manufacturerNameString) {
             return addManufacturerNameString(manufacturerNameString.getBytes());
         }
@@ -116,6 +118,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * @see #addManufacturerNameString(int, long, byte[])
          */
+        @NonNull
         public Builder<T> addManufacturerNameString(@NonNull byte[] value) {
             return addManufacturerNameString(BluetoothGatt.GATT_SUCCESS
                     , 0
@@ -130,6 +133,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
          * @param value        data array for  for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
+        @NonNull
         public Builder<T> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
             mManufacturerNameStringCharacteristicData = new CharacteristicData(MANUFACTURER_NAME_STRING_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
@@ -137,7 +141,8 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
                     , Collections.<DescriptorData>emptyList()
                     , responceCode
                     , delay
-                    , value);
+                    , value
+                    , 0);
             return this;
         }
 
@@ -146,6 +151,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
          *
          * @return {@link Builder} instance
          */
+        @NonNull
         public Builder<T> removeManufacturerNameString() {
             mManufacturerNameStringCharacteristicData = null;
             return this;
@@ -154,6 +160,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * @see #addModelNumberString(ModelNumberString)
          */
+        @NonNull
         public Builder<T> addModelNumberString(@NonNull String modelNumber) {
             return addModelNumberString(new ModelNumberString(modelNumber));
         }
@@ -161,6 +168,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * @see #addModelNumberString(byte[])
          */
+        @NonNull
         public Builder<T> addModelNumberString(ModelNumberString modelNumberString) {
             return addModelNumberString(modelNumberString.getBytes());
         }
@@ -168,6 +176,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * @see #addModelNumberString(int, long, byte[])
          */
+        @NonNull
         public Builder<T> addModelNumberString(@NonNull byte[] value) {
             return addModelNumberString(BluetoothGatt.GATT_SUCCESS
                     , 0
@@ -182,6 +191,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
          * @param value        data array for  for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
+        @NonNull
         public Builder<T> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
             mModelNumberStringCharacteristicData = new CharacteristicData(MODEL_NUMBER_STRING_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
@@ -189,7 +199,8 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
                     , Collections.<DescriptorData>emptyList()
                     , responceCode
                     , delay
-                    , value);
+                    , value
+                    , 0);
             return this;
         }
 
@@ -198,6 +209,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
          *
          * @return {@link Builder} instance
          */
+        @NonNull
         public Builder<T> removeModelNumberString() {
             mModelNumberStringCharacteristicData = null;
             return this;
@@ -206,6 +218,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * @see #addSerialNumberString(SerialNumberString)
          */
+        @NonNull
         public Builder<T> addSerialNumberString(@NonNull String serialNumber) {
             return addSerialNumberString(new SerialNumberString(serialNumber));
         }
@@ -213,6 +226,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * @see #addSerialNumberString(byte[])
          */
+        @NonNull
         public Builder<T> addSerialNumberString(SerialNumberString serialNumberString) {
             return addSerialNumberString(serialNumberString.getBytes());
         }
@@ -220,6 +234,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * @see #addSerialNumberString(int, long, byte[])
          */
+        @NonNull
         public Builder<T> addSerialNumberString(@NonNull byte[] value) {
             return addSerialNumberString(BluetoothGatt.GATT_SUCCESS
                     , 0
@@ -234,6 +249,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
          * @param value        data array for  for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
+        @NonNull
         public Builder<T> addSerialNumberString(int responceCode, long delay, @NonNull byte[] value) {
             mSerialNumberStringCharacteristicData = new CharacteristicData(SERIAL_NUMBER_STRING_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
@@ -241,7 +257,8 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
                     , Collections.<DescriptorData>emptyList()
                     , responceCode
                     , delay
-                    , value);
+                    , value
+                    , 0);
             return this;
         }
 
@@ -250,6 +267,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
          *
          * @return {@link Builder} instance
          */
+        @NonNull
         public Builder<T> removeSerialNumberString() {
             mSerialNumberStringCharacteristicData = null;
             return this;
@@ -258,6 +276,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * @see #addHardwareRevisionString(HardwareRevisionString)
          */
+        @NonNull
         public Builder<T> addHardwareRevisionString(@NonNull String hardwareRevision) {
             return addHardwareRevisionString(new HardwareRevisionString(hardwareRevision));
         }
@@ -265,6 +284,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * @see #addHardwareRevisionString(byte[])
          */
+        @NonNull
         public Builder<T> addHardwareRevisionString(HardwareRevisionString hardwareRevisionString) {
             return addHardwareRevisionString(hardwareRevisionString.getBytes());
         }
@@ -272,6 +292,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * @see #addHardwareRevisionString(int, long, byte[])
          */
+        @NonNull
         public Builder<T> addHardwareRevisionString(@NonNull byte[] value) {
             return addHardwareRevisionString(BluetoothGatt.GATT_SUCCESS
                     , 0
@@ -286,6 +307,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
          * @param value        data array for  for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
+        @NonNull
         public Builder<T> addHardwareRevisionString(int responceCode, long delay, @NonNull byte[] value) {
             mHardwareRevisionStringCharacteristicData = new CharacteristicData(HARDWARE_REVISION_STRING_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
@@ -293,7 +315,8 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
                     , Collections.<DescriptorData>emptyList()
                     , responceCode
                     , delay
-                    , value);
+                    , value
+                    , 0);
             return this;
         }
 
@@ -345,7 +368,8 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
                     , Collections.<DescriptorData>emptyList()
                     , responceCode
                     , delay
-                    , value);
+                    , value
+                    , 0);
             return this;
         }
 
@@ -397,7 +421,8 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
                     , Collections.<DescriptorData>emptyList()
                     , responceCode
                     , delay
-                    , value);
+                    , value
+                    , 0);
             return this;
         }
 
@@ -449,7 +474,8 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
                     , Collections.<DescriptorData>emptyList()
                     , responceCode
                     , delay
-                    , value);
+                    , value
+                    , 0);
             return this;
         }
 
@@ -494,7 +520,8 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
                     , Collections.<DescriptorData>emptyList()
                     , responceCode
                     , delay
-                    , value);
+                    , value
+                    , 0);
             return this;
         }
 
@@ -546,7 +573,8 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
                     , Collections.<DescriptorData>emptyList()
                     , responceCode
                     , delay
-                    , value);
+                    , value
+                    , 0);
             return this;
         }
 
@@ -564,6 +592,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public MockData createMockData() {
             List<CharacteristicData> characteristicList = new ArrayList<>();
 
@@ -602,6 +631,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
          * {@inheritDoc}
          */
         @Override
+        @NonNull
         public DeviceInformationServiceMockCallback build() {
             return new DeviceInformationServiceMockCallback(createMockData(), false);
         }

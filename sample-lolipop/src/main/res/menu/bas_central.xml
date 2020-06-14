@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/read_battery_level"
+        android:title="@string/menu_read_battery_level" />
+    <item
+        android:id="@+id/start_notify_battery_level"
+        android:title="@string/menu_notify_battery_level_start" />
+    <item
+        android:id="@+id/stop_notify_battery_level"
+        android:title="@string/menu_notify_battery_level_stop" />
+</menu>

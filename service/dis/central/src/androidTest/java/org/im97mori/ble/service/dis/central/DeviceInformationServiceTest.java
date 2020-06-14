@@ -2059,7 +2059,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getManufacturerNameString_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public boolean isStarted() {
                 return true;
@@ -2071,7 +2071,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getManufacturerNameString_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasManufacturerNameString() {
                 return true;
@@ -2087,13 +2087,13 @@ public class DeviceInformationServiceTest {
 
     @Test
     public void test_getManufacturerNameString_00004() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection(){
+        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
             }
         };
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasManufacturerNameString() {
                 return true;
@@ -2117,7 +2117,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getModelNumberString_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public boolean isStarted() {
                 return true;
@@ -2129,7 +2129,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getModelNumberString_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasModelNumberString() {
                 return true;
@@ -2145,13 +2145,13 @@ public class DeviceInformationServiceTest {
 
     @Test
     public void test_getModelNumberString_00004() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection(){
+        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
             }
         };
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasModelNumberString() {
                 return true;
@@ -2175,7 +2175,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getSerialNumberString_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public boolean isStarted() {
                 return true;
@@ -2187,7 +2187,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getSerialNumberString_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasSerialNumberString() {
                 return true;
@@ -2203,13 +2203,13 @@ public class DeviceInformationServiceTest {
 
     @Test
     public void test_getSerialNumberString_00004() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection(){
+        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
             }
         };
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasSerialNumberString() {
                 return true;
@@ -2233,7 +2233,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getHardwareRevisionString_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public boolean isStarted() {
                 return true;
@@ -2245,7 +2245,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getHardwareRevisionString_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasHardwareRevisionString() {
                 return true;
@@ -2261,13 +2261,13 @@ public class DeviceInformationServiceTest {
 
     @Test
     public void test_getHardwareRevisionString_00004() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection(){
+        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
             }
         };
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasHardwareRevisionString() {
                 return true;
@@ -2291,7 +2291,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getFirmwareRevisionString_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public boolean isStarted() {
                 return true;
@@ -2303,7 +2303,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getFirmwareRevisionString_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasFirmwareRevisionString() {
                 return true;
@@ -2319,13 +2319,13 @@ public class DeviceInformationServiceTest {
 
     @Test
     public void test_getFirmwareRevisionString_00004() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection(){
+        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
             }
         };
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasFirmwareRevisionString() {
                 return true;
@@ -2349,7 +2349,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getSoftwareRevisionString_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public boolean isStarted() {
                 return true;
@@ -2361,7 +2361,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getSoftwareRevisionString_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasSoftwareRevisionString() {
                 return true;
@@ -2377,13 +2377,13 @@ public class DeviceInformationServiceTest {
 
     @Test
     public void test_getSoftwareRevisionString_00004() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection(){
+        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
             }
         };
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasSoftwareRevisionString() {
                 return true;
@@ -2407,7 +2407,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getSystemId_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public boolean isStarted() {
                 return true;
@@ -2419,7 +2419,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getSystemId_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasSystemId() {
                 return true;
@@ -2435,13 +2435,13 @@ public class DeviceInformationServiceTest {
 
     @Test
     public void test_getSystemId_00004() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection(){
+        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
             }
         };
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasSystemId() {
                 return true;
@@ -2465,7 +2465,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getIEEE_11073_20601_RegulatoryCertificationDataList_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public boolean isStarted() {
                 return true;
@@ -2477,7 +2477,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getIEEE_11073_20601_RegulatoryCertificationDataList_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasIEEE_11073_20601_RegulatoryCertificationDataList() {
                 return true;
@@ -2493,13 +2493,13 @@ public class DeviceInformationServiceTest {
 
     @Test
     public void test_getIEEE_11073_20601_RegulatoryCertificationDataList_00004() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection(){
+        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
             }
         };
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasIEEE_11073_20601_RegulatoryCertificationDataList() {
                 return true;
@@ -2523,7 +2523,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getPnpId_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public boolean isStarted() {
                 return true;
@@ -2535,7 +2535,7 @@ public class DeviceInformationServiceTest {
     @Test
     public void test_getPnpId_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasPnpId() {
                 return true;
@@ -2551,13 +2551,13 @@ public class DeviceInformationServiceTest {
 
     @Test
     public void test_getPnpId_00004() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection(){
+        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
             }
         };
-        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null){
+        DeviceInformationService deviceInformationService = new DeviceInformationService(mockBLEConnection, new MockDeviceInformationServiceCallback(), null) {
             @Override
             public synchronized boolean hasPnpId() {
                 return true;

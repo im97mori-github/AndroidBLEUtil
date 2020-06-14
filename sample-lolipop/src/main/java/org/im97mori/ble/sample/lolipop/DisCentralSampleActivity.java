@@ -46,7 +46,7 @@ import java.util.Set;
 import static org.im97mori.ble.BLEServerConnection.MOCK_CONTROL_SERVICE_UUID;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-public class DISCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
+public class DisCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
     private static final String KEY_LATEST_DEVICE = "KEY_LATEST_DEVICE";
 
@@ -54,23 +54,23 @@ public class DISCentralSampleActivity extends BaseActivity implements View.OnCli
 
         private static class Builder extends FilteredScanCallback.Builder {
 
-            private final DISCentralSampleActivity mActivity;
+            private final DisCentralSampleActivity mActivity;
 
-            Builder(@NonNull DISCentralSampleActivity activity) {
+            Builder(@NonNull DisCentralSampleActivity activity) {
                 mActivity = activity;
             }
 
             @NonNull
             @Override
             public FilteredScanCallback build() {
-                return new DISCentralSampleActivity.TestScanCallback(mFilterList, mAdvertisingDataParser, mScanCallback, mActivity);
+                return new DisCentralSampleActivity.TestScanCallback(mFilterList, mAdvertisingDataParser, mScanCallback, mActivity);
             }
 
         }
 
-        final DISCentralSampleActivity mActivity;
+        final DisCentralSampleActivity mActivity;
 
-        private TestScanCallback(@NonNull List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> filterList, @Nullable AdvertisingDataParser parser, @Nullable ScanCallback scanCallback, @NonNull DISCentralSampleActivity advertisingDataSampleActivity) {
+        private TestScanCallback(@NonNull List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> filterList, @Nullable AdvertisingDataParser parser, @Nullable ScanCallback scanCallback, @NonNull DisCentralSampleActivity advertisingDataSampleActivity) {
             super(filterList, parser, scanCallback);
             mActivity = advertisingDataSampleActivity;
         }
@@ -101,7 +101,7 @@ public class DISCentralSampleActivity extends BaseActivity implements View.OnCli
                     public void run() {
                         try {
                             if (mActivity.mTestScanCallback != null) {
-                                mActivity.mBluetoothLeScanner.stopScan(DISCentralSampleActivity.TestScanCallback.this);
+                                mActivity.mBluetoothLeScanner.stopScan(DisCentralSampleActivity.TestScanCallback.this);
                                 mActivity.mTestScanCallback = null;
                                 BluetoothDevice device = scanResult.getDevice();
                                 if (BluetoothDevice.BOND_BONDED == device.getBondState()) {
@@ -315,7 +315,7 @@ public class DISCentralSampleActivity extends BaseActivity implements View.OnCli
                                     bb.position(2);
                                     bb.putLong(MOCK_CONTROL_SERVICE_UUID.getLeastSignificantBits());
                                     bb.putLong(MOCK_CONTROL_SERVICE_UUID.getMostSignificantBits());
-                                    mTestScanCallback = new TestScanCallback.Builder(DISCentralSampleActivity.this)
+                                    mTestScanCallback = new TestScanCallback.Builder(DisCentralSampleActivity.this)
                                             .addFilter(new OrFilter<>(
                                                     new FlagsFilter(FlagsAndroid.CREATOR.createFromByteArray(new byte[]{0, 0, 1}))
                                                     , new FlagsFilter(FlagsAndroid.CREATOR.createFromByteArray(new byte[]{0, 0, 2}))))

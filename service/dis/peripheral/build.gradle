@@ -12,7 +12,7 @@ android {
     buildToolsVersion globalBuildToolsVersion
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion globalPeripheralMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
         versionCode VERSION_CODE
         versionName VERSION_NAME

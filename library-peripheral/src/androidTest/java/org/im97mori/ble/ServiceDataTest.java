@@ -35,7 +35,7 @@ public class ServiceDataTest {
     @Test
     public void test_constructor_00002() {
         List<CharacteristicData> characteristicDataList = new ArrayList<>();
-        characteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null));
+        characteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null, 5));
 
         ServiceData result1 = new ServiceData(UUID.randomUUID(), 1, characteristicDataList);
 
@@ -52,7 +52,7 @@ public class ServiceDataTest {
     @Test
     public void test_setUuid_00001() {
         List<CharacteristicData> characteristicDataList = new ArrayList<>();
-        characteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null));
+        characteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null, 5));
 
         UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
         ServiceData serviceData = new ServiceData(firstUUID, 1, characteristicDataList);
@@ -66,7 +66,7 @@ public class ServiceDataTest {
     @Test
     public void test_setType_00001() {
         List<CharacteristicData> characteristicDataList = new ArrayList<>();
-        characteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null));
+        characteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null, 5));
 
         int firstType = 1;
         ServiceData serviceData = new ServiceData(UUID.randomUUID(), firstType, characteristicDataList);
@@ -81,13 +81,13 @@ public class ServiceDataTest {
     @Test
     public void test_setCharacteristicDataList_00001() {
         List<CharacteristicData> firstCharacteristicDataList = new ArrayList<>();
-        firstCharacteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null));
+        firstCharacteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null, 5));
 
         ServiceData serviceData = new ServiceData(UUID.randomUUID(), 1, firstCharacteristicDataList);
         assertArrayEquals(firstCharacteristicDataList.toArray(), serviceData.characteristicDataList.toArray());
 
         List<CharacteristicData> secondCharacteristicDataList = new ArrayList<>();
-        secondCharacteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 11, 22, new ArrayList<DescriptorData>(), 33, 44, null));
+        secondCharacteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 11, 22, new ArrayList<DescriptorData>(), 33, 44, null, 5));
         serviceData.characteristicDataList = secondCharacteristicDataList;
         assertArrayEquals(secondCharacteristicDataList.toArray(), serviceData.characteristicDataList.toArray());
     }
@@ -95,7 +95,7 @@ public class ServiceDataTest {
     @Test
     public void test_parcelable_00001() {
         List<CharacteristicData> characteristicDataList = new ArrayList<>();
-        characteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null));
+        characteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null, 5));
         ServiceData result1 = new ServiceData(UUID.randomUUID(), 1, characteristicDataList);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -116,7 +116,7 @@ public class ServiceDataTest {
         UUID uuid = UUID.randomUUID();
         int type = 1;
         List<CharacteristicData> characteristicDataList = new ArrayList<>();
-        characteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null));
+        characteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null, 5));
 
         ServiceData result1 = new ServiceData(uuid, type, characteristicDataList);
         assertEquals(uuid.hashCode()
@@ -130,7 +130,7 @@ public class ServiceDataTest {
         UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
         int firstType = 1;
         List<CharacteristicData> firstCharacteristicDataList = new ArrayList<>();
-        firstCharacteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null));
+        firstCharacteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null, 5));
 
         ServiceData result1 = new ServiceData(firstUUID, firstType, firstCharacteristicDataList);
         ServiceData result2 = new ServiceData(firstUUID, firstType, firstCharacteristicDataList);
@@ -142,7 +142,7 @@ public class ServiceDataTest {
         UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
         int firstType = 1;
         List<CharacteristicData> firstCharacteristicDataList = new ArrayList<>();
-        firstCharacteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null));
+        firstCharacteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null, 5));
 
         UUID secondUUID = UUID.fromString("00000000-0000-0000-0000-000000000001");
 
@@ -156,7 +156,7 @@ public class ServiceDataTest {
         UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
         int firstType = 1;
         List<CharacteristicData> firstCharacteristicDataList = new ArrayList<>();
-        firstCharacteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null));
+        firstCharacteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null, 5));
 
         int secondType = 11;
 
@@ -170,10 +170,10 @@ public class ServiceDataTest {
         UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
         int firstType = 1;
         List<CharacteristicData> firstCharacteristicDataList = new ArrayList<>();
-        firstCharacteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null));
+        firstCharacteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<DescriptorData>(), 3, 4, null, 5));
 
         List<CharacteristicData> secondCharacteristicDataList = new ArrayList<>();
-        secondCharacteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 11, 22, new ArrayList<DescriptorData>(), 33, 44, null));
+        secondCharacteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 11, 22, new ArrayList<DescriptorData>(), 33, 44, null, 55));
 
         ServiceData result1 = new ServiceData(firstUUID, firstType, firstCharacteristicDataList);
         ServiceData result2 = new ServiceData(firstUUID, firstType, secondCharacteristicDataList);

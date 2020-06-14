@@ -203,6 +203,9 @@
             <option value="$PROJECT_DIR$/sample-jellybean" />
             <option value="$PROJECT_DIR$/sample-lolipop" />
             <option value="$PROJECT_DIR$/service" />
+            <option value="$PROJECT_DIR$/service/bas" />
+            <option value="$PROJECT_DIR$/service/bas/central" />
+            <option value="$PROJECT_DIR$/service/bas/peripheral" />
             <option value="$PROJECT_DIR$/service/central" />
             <option value="$PROJECT_DIR$/service/dis" />
             <option value="$PROJECT_DIR$/service/dis/central" />

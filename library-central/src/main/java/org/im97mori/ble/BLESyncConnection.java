@@ -447,7 +447,7 @@ public class BLESyncConnection implements BLECallback {
     /**
      * notification(indication) listner map
      */
-    protected final Map<Pair<UUID, UUID>, List<List<byte[]>>> mNotificationListenerMap = new LinkedHashMap<>();
+    protected final Map<Pair<Pair<UUID, Integer>, Pair<UUID, Integer>>, List<List<byte[]>>> mNotificationListenerMap = new LinkedHashMap<>();
 
     /**
      * {@link BLEConnection} instance
@@ -922,15 +922,17 @@ public class BLESyncConnection implements BLECallback {
      * @param duration           listen duration(millis)
      * @return notification or indication value list
      */
-    @Nullable
+    @NonNull
     public List<byte[]> listen(@NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
             , long duration) {
         List<byte[]> listener = new LinkedList<>();
 
         try {
             mBLEConnection.attach(this);
-            Pair<UUID, UUID> pair = Pair.create(serviceUUID, characteristicUUID);
+            Pair<Pair<UUID, Integer>, Pair<UUID, Integer>> pair = Pair.create(Pair.create(serviceUUID, serviceInstanceId), Pair.create(characteristicUUID, characteristicInstanceId));
             List<List<byte[]>> listenerList;
             synchronized (mNotificationListenerMap) {
                 listenerList = mNotificationListenerMap.get(pair);
@@ -964,18 +966,33 @@ public class BLESyncConnection implements BLECallback {
     /**
      * instant listen notification or indication
      *
-     * @see #listen(UUID, UUID, long)
+     * @see #listen(BLEConnection, UUID, Integer, UUID, Integer, long)
      */
     @Nullable
     public static List<byte[]> listen(@NonNull BLEConnection bleConnection
             , @NonNull UUID serviceUUID
             , @NonNull UUID characteristicUUID
             , long duration) {
+        return listen(bleConnection, serviceUUID, null, characteristicUUID, null, duration);
+    }
+
+    /**
+     * instant listen notification or indication
+     *
+     * @see #listen(UUID, Integer, UUID, Integer, long)
+     */
+    @Nullable
+    public static List<byte[]> listen(@NonNull BLEConnection bleConnection
+            , @NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
+            , long duration) {
         List<byte[]> listener = null;
         if (bleConnection.isConnected()) {
             BLESyncConnection bleSyncConnection = new BLESyncConnection();
             bleSyncConnection.mBLEConnection = bleConnection;
-            listener = bleSyncConnection.listen(serviceUUID, characteristicUUID, duration);
+            listener = bleSyncConnection.listen(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, duration);
         }
         return listener;
     }
@@ -1493,13 +1510,22 @@ public class BLESyncConnection implements BLECallback {
     @Override
     public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
+            , @NonNull Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
+            , @NonNull Integer characteristicInstanceId
             , @NonNull byte[] values) {
         synchronized (mNotificationListenerMap) {
-            List<List<byte[]>> list = mNotificationListenerMap.get(Pair.create(serviceUUID, characteristicUUID));
-            //noinspection ConstantConditions
-            for (List<byte[]> listener : list) {
-                listener.add(values);
+            List<List<byte[]>> list = mNotificationListenerMap.get(Pair.create(Pair.create(serviceUUID, serviceInstanceId), Pair.create(characteristicUUID, characteristicInstanceId)));
+            if (list != null) {
+                for (List<byte[]> listener : list) {
+                    listener.add(values);
+                }
+            }
+            list = mNotificationListenerMap.get(Pair.create(Pair.create(serviceUUID, null), Pair.create(characteristicUUID, null)));
+            if (list != null) {
+                for (List<byte[]> listener : list) {
+                    listener.add(values);
+                }
             }
             mNotificationListenerMap.notifyAll();
         }

@@ -599,6 +599,25 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     }
                 }
             }.start();
+        } else if (R.id.write_notification_sync == item.getItemId()) {
+            new Thread() {
+                @Override
+                public void run() {
+                    BLEConnection target = mBleConnection;
+                    if (target != null) {
+                        List<byte[]> valueList = BLESyncConnection.listen(target
+                                , SAMPLE_PRIMARY_SERVICE_1
+                                , SAMPLE_INDICATABLE_CHARACTERISTIC
+                                , WriteDescriptorTask.TIMEOUT_MILLIS);
+
+                        if (valueList != null) {
+                            for (byte[] value : valueList) {
+                                mBLECallbackSample.onCharacteristicNotified(mBleConnection.getBluetoothDevice(), SAMPLE_PRIMARY_SERVICE_1, 1, SAMPLE_NOTIFICATABLE_CHARACTERISTIC, 2, value);
+                            }
+                        }
+                    }
+                }
+            }.start();
         } else if (R.id.write_characteristc_reliable == item.getItemId()) {
             mBleConnection.createBeginReliableWriteTask(null, null);
             mBleConnection.createWriteCharacteristicTask(SAMPLE_PRIMARY_SERVICE_1

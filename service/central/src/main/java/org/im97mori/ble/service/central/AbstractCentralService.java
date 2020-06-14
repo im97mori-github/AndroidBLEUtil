@@ -327,9 +327,9 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values) {
+    public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values) {
         if (mBLECallback != null) {
-            mBLECallback.onCharacteristicNotified(bluetoothDevice, serviceUUID, characteristicUUID, values);
+            mBLECallback.onCharacteristicNotified(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, values);
         }
     }
 

@@ -691,10 +691,10 @@ public class BLECallbackDistributer implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values) {
+    public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values) {
         for (BLECallback bleCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
             try {
-                bleCallback.onCharacteristicNotified(bluetoothDevice, serviceUUID, characteristicUUID, values);
+                bleCallback.onCharacteristicNotified(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, values);
             } catch (Exception e) {
                 BLELogUtils.stackLog(e);
             }
