@@ -16,6 +16,8 @@
     <string name="label_dis_central">DIS Central sample</string>
     <string name="label_bas_peripheral">BAS Peripheral sample</string>
     <string name="label_bas_central">BAS Central sample</string>
+    <string name="label_bls_peripheral">BLS Peripheral sample</string>
+    <string name="label_bls_central">BLS Central sample</string>
 
     <string name="menu_discover_service">Discover Service</string>
     <string name="menu_discover_service_sync">Discover Service(Synchronous)</string>
@@ -54,6 +56,12 @@
     <string name="menu_read_battery_level">Read Battery Level</string>
     <string name="menu_notify_battery_level_start">Notify Battery Level start</string>
     <string name="menu_notify_battery_level_stop">Notify Battery Level stop</string>
+
+    <string name="menu_indicate_blood_pressure_start">Indicate Blood Pressure start</string>
+    <string name="menu_indicate_blood_pressure_stop">Indicate Blood Pressure stop</string>
+    <string name="menu_notify_intermediate_cuff_pressure_start">Notify Intermediate Cuff Pressure start</string>
+    <string name="menu_notify_intermediate_cuff_pressure_stop">Notify Intermediate Cuff Pressure stop</string>
+    <string name="menu_read_blood_pressure_feature">Read Blood Pressure Feature</string>
 
     <string name="menu_clear">Clear</string>
 </resources>

@@ -28,10 +28,12 @@ android {
 }
 
 dependencies {
-    api "${groupId}:${serviceDisCentralAndroid.artifactId}:${serviceDisCentralAndroid.versionName}"
     api "${groupId}:${serviceDisPeripheralAndroid.artifactId}:${serviceDisPeripheralAndroid.versionName}"
-    api "${groupId}:${serviceBasCentralAndroid.artifactId}:${serviceBasCentralAndroid.versionName}"
+    api "${groupId}:${serviceDisCentralAndroid.artifactId}:${serviceDisCentralAndroid.versionName}"
     api "${groupId}:${serviceBasPeripheralAndroid.artifactId}:${serviceBasPeripheralAndroid.versionName}"
+    api "${groupId}:${serviceBasCentralAndroid.artifactId}:${serviceBasCentralAndroid.versionName}"
+    api "${groupId}:${serviceBlsPeripheralAndroid.artifactId}:${serviceBlsPeripheralAndroid.versionName}"
+    api "${groupId}:${serviceBlsCentralAndroid.artifactId}:${serviceBlsCentralAndroid.versionName}"
 }
 
 task sourcesJar(type: Jar) {

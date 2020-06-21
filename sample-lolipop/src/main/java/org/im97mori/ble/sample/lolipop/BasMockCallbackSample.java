@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.MockData;
-import org.im97mori.ble.bas.peripheral.BatteryServiceMockCallback;
+import org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback;
 import org.im97mori.ble.characteristic.u2a19.BatteryLevelAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
 import org.im97mori.ble.descriptor.u2904.CharacteristicPresentationFormatAndroid;

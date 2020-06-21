@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.bas.peripheral.BatteryServiceMockCallback;
+import org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback;
 
 import java.util.LinkedList;
 

@@ -1,4 +1,4 @@
-package org.im97mori.ble.bas.peripheral;
+package org.im97mori.ble.service.bas.peripheral;
 
 import androidx.test.core.app.ApplicationProvider;
 

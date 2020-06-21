@@ -160,9 +160,9 @@ public class DeviceInformationServiceMockCallbackBuilderTest {
                 return null;
             }
         };
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> builder = new DeviceInformationServiceMockCallback.Builder<>();
-        builder.removeManufacturerNameString();
-        DeviceInformationServiceMockCallback callback = builder.build();
+        DeviceInformationServiceMockCallback callback = new DeviceInformationServiceMockCallback.Builder<>()
+                .removeManufacturerNameString()
+                .build();
         callback.setup(mockBLEServerConnection);
         BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
 
@@ -292,10 +292,10 @@ public class DeviceInformationServiceMockCallbackBuilderTest {
                 return null;
             }
         };
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> builder = new DeviceInformationServiceMockCallback.Builder<>();
-        builder.addModelNumberString(modelNumber);
-        builder.removeModelNumberString();
-        DeviceInformationServiceMockCallback callback = builder.build();
+        DeviceInformationServiceMockCallback callback = new DeviceInformationServiceMockCallback.Builder<>()
+                .addModelNumberString(modelNumber)
+                .removeModelNumberString()
+                .build();
         callback.setup(mockBLEServerConnection);
         BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
 
@@ -425,10 +425,10 @@ public class DeviceInformationServiceMockCallbackBuilderTest {
                 return null;
             }
         };
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> builder = new DeviceInformationServiceMockCallback.Builder<>();
-        builder.addSerialNumberString(serialNumber);
-        builder.removeSerialNumberString();
-        DeviceInformationServiceMockCallback callback = builder.build();
+        DeviceInformationServiceMockCallback callback = new DeviceInformationServiceMockCallback.Builder<>()
+                .addSerialNumberString(serialNumber)
+                .removeSerialNumberString()
+                .build();
         callback.setup(mockBLEServerConnection);
         BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
 
@@ -558,10 +558,10 @@ public class DeviceInformationServiceMockCallbackBuilderTest {
                 return null;
             }
         };
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> builder = new DeviceInformationServiceMockCallback.Builder<>();
-        builder.addHardwareRevisionString(hardwareRevision);
-        builder.removeHardwareRevisionString();
-        DeviceInformationServiceMockCallback callback = builder.build();
+        DeviceInformationServiceMockCallback callback = new DeviceInformationServiceMockCallback.Builder<>()
+                .addHardwareRevisionString(hardwareRevision)
+                .removeHardwareRevisionString()
+                .build();
         callback.setup(mockBLEServerConnection);
         BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
 
@@ -691,10 +691,10 @@ public class DeviceInformationServiceMockCallbackBuilderTest {
                 return null;
             }
         };
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> builder = new DeviceInformationServiceMockCallback.Builder<>();
-        builder.addFirmwareRevisionString(firmwareRevision);
-        builder.removeFirmwareRevisionString();
-        DeviceInformationServiceMockCallback callback = builder.build();
+        DeviceInformationServiceMockCallback callback = new DeviceInformationServiceMockCallback.Builder<>()
+                .addFirmwareRevisionString(firmwareRevision)
+                .removeFirmwareRevisionString()
+                .build();
         callback.setup(mockBLEServerConnection);
         BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
 
@@ -824,10 +824,10 @@ public class DeviceInformationServiceMockCallbackBuilderTest {
                 return null;
             }
         };
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> builder = new DeviceInformationServiceMockCallback.Builder<>();
-        builder.addSoftwareRevisionString(softwareRevision);
-        builder.removeSoftwareRevisionString();
-        DeviceInformationServiceMockCallback callback = builder.build();
+        DeviceInformationServiceMockCallback callback = new DeviceInformationServiceMockCallback.Builder<>()
+                .addSoftwareRevisionString(softwareRevision)
+                .removeSoftwareRevisionString()
+                .build();
         callback.setup(mockBLEServerConnection);
         BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
 
@@ -962,10 +962,10 @@ public class DeviceInformationServiceMockCallbackBuilderTest {
                 return null;
             }
         };
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> builder = new DeviceInformationServiceMockCallback.Builder<>();
-        builder.addSystemId(manufacturerIdentifier, organizationallyUniqueIdentifier);
-        builder.removeSystemId();
-        DeviceInformationServiceMockCallback callback = builder.build();
+        DeviceInformationServiceMockCallback callback = new DeviceInformationServiceMockCallback.Builder<>()
+                .addSystemId(manufacturerIdentifier, organizationallyUniqueIdentifier)
+                .removeSystemId()
+                .build();
         callback.setup(mockBLEServerConnection);
         BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
 
@@ -1065,10 +1065,10 @@ public class DeviceInformationServiceMockCallbackBuilderTest {
                 return null;
             }
         };
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> builder = new DeviceInformationServiceMockCallback.Builder<>();
-        builder.addIEEE_11073_20601_RegulatoryCertificationDataList(new byte[0]);
-        builder.removeIEEE_11073_20601_RegulatoryCertificationDataList();
-        DeviceInformationServiceMockCallback callback = builder.build();
+        DeviceInformationServiceMockCallback callback = new DeviceInformationServiceMockCallback.Builder<>()
+                .addIEEE_11073_20601_RegulatoryCertificationDataList(new byte[0])
+                .removeIEEE_11073_20601_RegulatoryCertificationDataList()
+                .build();
         callback.setup(mockBLEServerConnection);
         BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
 
@@ -1213,10 +1213,10 @@ public class DeviceInformationServiceMockCallbackBuilderTest {
                 return null;
             }
         };
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> builder = new DeviceInformationServiceMockCallback.Builder<>();
-        builder.addPnpId(vendorIdSource, vendorId, productId, productVersion);
-        builder.removePnpId();
-        DeviceInformationServiceMockCallback callback = builder.build();
+        DeviceInformationServiceMockCallback callback = new DeviceInformationServiceMockCallback.Builder<>()
+                .addPnpId(vendorIdSource, vendorId, productId, productVersion)
+                .removePnpId()
+                .build();
         callback.setup(mockBLEServerConnection);
         BluetoothGattService bluetoothGattService = bluetoothGattServiceAtomicReference.get();
 

@@ -43,7 +43,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SYSTEM_ID_CHARACT
 import static org.im97mori.ble.BLEConstants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
 
 /**
- * Device Information Service Peripheral Service
+ * Device Information Service (Service UUID: 0x180A) for Peripheral
  */
 public class DeviceInformationServiceMockCallback extends AbstractServiceMockCallback {
 

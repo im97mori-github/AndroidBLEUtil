@@ -16,9 +16,11 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':service:dis:central')
     implementation project(path: ':service:dis:peripheral')
-    implementation project(path: ':service:bas:central')
+    implementation project(path: ':service:dis:central')
     implementation project(path: ':service:bas:peripheral')
+    implementation project(path: ':service:bas:central')
+    implementation project(path: ':service:bls:peripheral')
+    implementation project(path: ':service:bls:central')
     implementation 'androidx.fragment:fragment:1.2.5'
 }

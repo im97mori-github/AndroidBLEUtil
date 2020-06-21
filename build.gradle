@@ -453,10 +453,10 @@ ext.characteristicU2a33Android = [
 
 ext.characteristicU2a35Android = [
         artifactId         : "ble-characteristic-u2a35-android"
-        , versionCode      : 2
-        , versionName      : '0.2.0'
-        , uploadVersionName: '0.2.0'
-        , baseModule       : "${groupId}:ble-characteristic-u2a35:0.2.0"
+        , versionCode      : 3
+        , versionName      : '0.2.1'
+        , uploadVersionName: '0.2.1'
+        , baseModule       : "${groupId}:ble-characteristic-u2a35:0.2.1"
 ]
 
 ext.characteristicU2a36Android = [
@@ -557,10 +557,10 @@ ext.characteristicU2a48Android = [
 
 ext.characteristicU2a49Android = [
         artifactId         : "ble-characteristic-u2a49-android"
-        , versionCode      : 2
-        , versionName      : '0.2.0'
-        , uploadVersionName: '0.2.0'
-        , baseModule       : "${groupId}:ble-characteristic-u2a49:0.2.0"
+        , versionCode      : 3
+        , versionName      : '0.2.1'
+        , uploadVersionName: '0.2.1'
+        , baseModule       : "${groupId}:ble-characteristic-u2a49:0.2.1"
 ]
 
 ext.characteristicU2a4aAndroid = [
@@ -1547,9 +1547,9 @@ ext.central = [
 
 ext.peripheral = [
         artifactId         : 'ble-peripheral'
-        , versionCode      : 43
-        , versionName      : '0.2.16'
-        , uploadVersionName: '0.2.16'
+        , versionCode      : 44
+        , versionName      : '0.2.17'
+        , uploadVersionName: '0.2.17'
 ]
 
 ext.serviceCentralAndroid = [
@@ -1573,15 +1573,15 @@ ext.serviceDisAndroid = [
         , uploadVersionName: '0.1.0'
 ]
 
-ext.serviceDisCentralAndroid = [
-        artifactId         : "ble-service-dis-cental-android"
+ext.serviceDisPeripheralAndroid = [
+        artifactId         : "ble-service-dis-peripheral-android"
         , versionCode      : 3
         , versionName      : '0.1.2'
         , uploadVersionName: '0.1.2'
 ]
 
-ext.serviceDisPeripheralAndroid = [
-        artifactId         : "ble-service-dis-peripheral-android"
+ext.serviceDisCentralAndroid = [
+        artifactId         : "ble-service-dis-cental-android"
         , versionCode      : 3
         , versionName      : '0.1.2'
         , uploadVersionName: '0.1.2'
@@ -1594,15 +1594,36 @@ ext.serviceBasAndroid = [
         , uploadVersionName: '0.1.0'
 ]
 
+ext.serviceBasPeripheralAndroid = [
+        artifactId         : "ble-service-bas-peripheral-android"
+        , versionCode      : 2
+        , versionName      : '0.1.1'
+        , uploadVersionName: '0.1.1'
+]
+
 ext.serviceBasCentralAndroid = [
         artifactId         : "ble-service-bas-cental-android"
+        , versionCode      : 2
+        , versionName      : '0.1.1'
+        , uploadVersionName: '0.1.1'
+]
+
+ext.serviceBlsAndroid = [
+        artifactId         : "ble-service-bls-android"
         , versionCode      : 1
         , versionName      : '0.1.0'
         , uploadVersionName: '0.1.0'
 ]
 
-ext.serviceBasPeripheralAndroid = [
-        artifactId         : "ble-service-bas-peripheral-android"
+ext.serviceBlsPeripheralAndroid = [
+        artifactId         : "ble-service-bls-peripheral-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.serviceBlsCentralAndroid = [
+        artifactId         : "ble-service-bls-central-android"
         , versionCode      : 1
         , versionName      : '0.1.0'
         , uploadVersionName: '0.1.0'
@@ -1610,9 +1631,9 @@ ext.serviceBasPeripheralAndroid = [
 
 ext.serviceAndroid = [
         artifactId         : "ble-service-android"
-        , versionCode      : 1
-        , versionName      : '0.1.0'
-        , uploadVersionName: '0.1.0'
+        , versionCode      : 2
+        , versionName      : '0.1.1'
+        , uploadVersionName: '0.1.1'
 ]
 
 

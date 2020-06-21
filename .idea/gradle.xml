@@ -206,6 +206,9 @@
             <option value="$PROJECT_DIR$/service/bas" />
             <option value="$PROJECT_DIR$/service/bas/central" />
             <option value="$PROJECT_DIR$/service/bas/peripheral" />
+            <option value="$PROJECT_DIR$/service/bls" />
+            <option value="$PROJECT_DIR$/service/bls/central" />
+            <option value="$PROJECT_DIR$/service/bls/peripheral" />
             <option value="$PROJECT_DIR$/service/central" />
             <option value="$PROJECT_DIR$/service/dis" />
             <option value="$PROJECT_DIR$/service/dis/central" />

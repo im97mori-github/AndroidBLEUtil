@@ -692,7 +692,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                             , characteristicInstanceId
                             , characteristicData
                             , isConfirm
-                            , NotificationTask.PROGRESS_TIMEOUT
+                            , NotificationTask.TIMEOUT_MILLIS
                             , delay
                             , bundle
                             , this);
@@ -807,6 +807,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                             characteristicKey = characteristicEntry.getKey();
                             descriptorMap = characteristicMap.get(characteristicKey);
                             if (descriptorMap == null) {
+                                descriptorMap = new HashMap<>();
                                 characteristicMap.put(characteristicKey, descriptorMap);
                             } else {
                                 Map<Pair<UUID, Integer>, CharacteristicData> characteristicDataMap;

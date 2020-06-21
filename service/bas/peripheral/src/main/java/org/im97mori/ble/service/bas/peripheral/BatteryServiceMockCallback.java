@@ -1,4 +1,4 @@
-package org.im97mori.ble.bas.peripheral;
+package org.im97mori.ble.service.bas.peripheral;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -32,7 +32,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC
 import static org.im97mori.ble.BLEConstants.ServiceUUID.BATTERY_SERVICE;
 
 /**
- * Battery Service Peripheral Service
+ * Device Information Service (Service UUID: 0x180A) for Peripheral
  */
 public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
 

@@ -196,7 +196,7 @@ public class BatteryServiceTest {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
         final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
-        final UUID originalServiceUUID = BATTERY_LEVEL_CHARACTERISTIC;
+        final UUID originalServiceUUID = BATTERY_SERVICE;
         final Integer originalServiceInstanceId = 0;
         final UUID originalCharacteristicUUID = CURRENT_TIME_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 0;

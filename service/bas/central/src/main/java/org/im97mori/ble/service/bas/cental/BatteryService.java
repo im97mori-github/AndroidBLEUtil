@@ -73,6 +73,17 @@ public class BatteryService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
+    public synchronized void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+        if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
+            mBatteryServiceList.clear();
+        }
+        super.onBLEDisconnected(taskId, bluetoothDevice, status, argument);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public synchronized void onDiscoverServiceSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull List<BluetoothGattService> serviceList, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
             for (BluetoothGattService bluetoothGattService : serviceList) {
