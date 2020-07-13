@@ -459,11 +459,20 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     }
 
     /**
-     * start advertising
-     *
-     * @return {@code true}:advertising started, {@code false}:advertising not started(allready started)
+     * @see #startAdvertising(boolean, UUID)
      */
     public synchronized boolean startAdvertising() {
+        return startAdvertising(false, null);
+    }
+
+    /**
+     * start advertising
+     *
+     * @param includeDeviceName flag for {@link android.bluetooth.le.AdvertiseData.Builder#setIncludeDeviceName(boolean)}
+     * @param serviceUUID       UUID for {@link android.bluetooth.le.AdvertiseData.Builder#addServiceUuid(ParcelUuid)}
+     * @return {@code true}:advertising started, {@code false}:advertising not started(allready started)
+     */
+    public synchronized boolean startAdvertising(boolean includeDeviceName, @Nullable UUID serviceUUID) {
         boolean result = false;
         if (mBluetoothLeAdvertiser == null) {
             mBluetoothLeAdvertiser = mBluetoothAdapter.getBluetoothLeAdvertiser();
@@ -474,8 +483,8 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
                 asBuilder.setTxPowerLevel(ADVERTISE_TX_POWER_HIGH);
                 asBuilder.setTimeout(0);
                 AdvertiseData.Builder adBuilder = new AdvertiseData.Builder();
-                adBuilder.setIncludeDeviceName(false);
-                adBuilder.addServiceUuid(new ParcelUuid(MOCK_CONTROL_SERVICE_UUID));
+                adBuilder.setIncludeDeviceName(includeDeviceName);
+                adBuilder.addServiceUuid(new ParcelUuid(serviceUUID == null ? MOCK_CONTROL_SERVICE_UUID : serviceUUID));
 
                 mAdvertiseCallback = new AdvertiseCallback() {
 

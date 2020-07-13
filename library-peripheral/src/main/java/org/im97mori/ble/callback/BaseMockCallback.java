@@ -27,8 +27,10 @@ import org.im97mori.ble.task.NotificationTask;
 import org.im97mori.ble.task.RemoveServiceTask;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -116,9 +118,21 @@ public abstract class BaseMockCallback implements BLEServerCallback {
     /**
      * @param mockData   {@link MockData} instance
      * @param isFallback fallback flag
+     * @see BaseMockCallback#BaseMockCallback(List, boolean)
      */
     public BaseMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        mMockData = mockData;
+        this(Collections.singletonList(mockData), isFallback);
+    }
+
+    /**
+     * @param mockDataList {@link MockData} instance list
+     * @param isFallback   fallback flag
+     */
+    public BaseMockCallback(@NonNull List<MockData> mockDataList, boolean isFallback) {
+        mMockData = new MockData();
+        for (MockData mockData : mockDataList) {
+            mMockData.serviceDataList.addAll(mockData.serviceDataList);
+        }
         mIsFallback = isFallback;
     }
 
@@ -319,6 +333,10 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                             , Arrays.copyOfRange(data, offset, data.length));
                 }
             }
+
+            if (force && !result) {
+                result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
+            }
         }
 
         return result;
@@ -367,7 +385,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
             int serviceInstanceId = bluetoothGattService.getInstanceId();
             Map<Pair<UUID, Integer>, CharacteristicData> characteristicMap = mRemappedServiceCharacteristicMap.get(Pair.create(serviceUUID, serviceInstanceId));
             if (characteristicMap == null) {
-                if (responseNeeded) {
+                if (force && responseNeeded) {
                     result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
                 }
             } else {
@@ -405,6 +423,10 @@ public abstract class BaseMockCallback implements BLEServerCallback {
 
                         setCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, targetMap, value);
                     }
+                }
+
+                if (force && !result && responseNeeded) {
+                    result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
                 }
             }
         }
@@ -490,6 +512,10 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                             , Arrays.copyOfRange(data, offset, data.length));
                 }
             }
+
+            if (force && !result) {
+                result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
+            }
         }
         return result;
     }
@@ -536,65 +562,68 @@ public abstract class BaseMockCallback implements BLEServerCallback {
 
         long now = SystemClock.elapsedRealtime();
         BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattDescriptor.getCharacteristic();
-        BluetoothGattService bluetoothGattService = bluetoothGattCharacteristic.getService();
-        UUID serviceUUID = bluetoothGattService.getUuid();
-        int serviceInstanceId = bluetoothGattService.getInstanceId();
-        UUID characteristicUUID = bluetoothGattCharacteristic.getUuid();
-        int characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
-        Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
-        if (descriptorDataMap != null) {
-            UUID descriptorUUID = bluetoothGattDescriptor.getUuid();
-            Parcel parcel = Parcel.obtain();
-            bluetoothGattDescriptor.writeToParcel(parcel, 0);
-            parcel.setDataPosition(0);
-            parcel.readParcelable(getClass().getClassLoader());
-            int descriptorInstanceId = parcel.readInt();
-            parcel.recycle();
-            Pair<UUID, Integer> descriptorPair = Pair.create(descriptorUUID, descriptorInstanceId);
 
-            DescriptorData descriptorData = descriptorDataMap.get(descriptorPair);
-            if (descriptorData != null) {
-                long delay = descriptorData.delay;
-                do {
-                    long delta = SystemClock.elapsedRealtime() - now;
-                    if (delta < delay) {
-                        try {
-                            Thread.sleep(delay - delta);
-                        } catch (InterruptedException e) {
-                            BLEPeripheralLogUtils.stackLog(e);
+        if (bluetoothGattServer != null) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattDescriptor.getCharacteristic();
+            BluetoothGattService bluetoothGattService = bluetoothGattCharacteristic.getService();
+            UUID serviceUUID = bluetoothGattService.getUuid();
+            int serviceInstanceId = bluetoothGattService.getInstanceId();
+            UUID characteristicUUID = bluetoothGattCharacteristic.getUuid();
+            int characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
+            Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
+            if (descriptorDataMap != null) {
+                UUID descriptorUUID = bluetoothGattDescriptor.getUuid();
+                Parcel parcel = Parcel.obtain();
+                bluetoothGattDescriptor.writeToParcel(parcel, 0);
+                parcel.setDataPosition(0);
+                parcel.readParcelable(getClass().getClassLoader());
+                int descriptorInstanceId = parcel.readInt();
+                parcel.recycle();
+                Pair<UUID, Integer> descriptorPair = Pair.create(descriptorUUID, descriptorInstanceId);
+
+                DescriptorData descriptorData = descriptorDataMap.get(descriptorPair);
+                if (descriptorData != null) {
+                    long delay = descriptorData.delay;
+                    do {
+                        long delta = SystemClock.elapsedRealtime() - now;
+                        if (delta < delay) {
+                            try {
+                                Thread.sleep(delay - delta);
+                            } catch (InterruptedException e) {
+                                BLEPeripheralLogUtils.stackLog(e);
+                            }
                         }
-                    }
-                } while (now + delay > SystemClock.elapsedRealtime());
+                    } while (now + delay > SystemClock.elapsedRealtime());
 
 
-                if (responseNeeded && bluetoothGattServer != null) {
-                    result = bluetoothGattServer.sendResponse(device, requestId, descriptorData.responseCode, offset, null);
-                } else {
-                    result = true;
-                }
-
-                if (result && BluetoothGatt.GATT_SUCCESS == descriptorData.responseCode) {
-                    mIsReliable |= preparedWrite;
-
-                    Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>>> targetMap;
-                    if (mIsReliable) {
-                        targetMap = mTemporaryDescriptorDataMap;
+                    if (responseNeeded) {
+                        result = bluetoothGattServer.sendResponse(device, requestId, descriptorData.responseCode, offset, null);
                     } else {
-                        targetMap = mCurrentDescriptorDataMap;
+                        result = true;
                     }
 
-                    setDescriptorData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, targetMap, value);
-                }
+                    if (result && BluetoothGatt.GATT_SUCCESS == descriptorData.responseCode) {
+                        mIsReliable |= preparedWrite;
 
-                if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && !mIsReliable) {
-                    startNotification(bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, 0, null);
+                        Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>>> targetMap;
+                        if (mIsReliable) {
+                            targetMap = mTemporaryDescriptorDataMap;
+                        } else {
+                            targetMap = mCurrentDescriptorDataMap;
+                        }
+
+                        setDescriptorData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, targetMap, value);
+                    }
+
+                    if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && !mIsReliable) {
+                        startNotification(bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, 0, null);
+                    }
                 }
             }
-        }
 
-        if (responseNeeded && !result && bluetoothGattServer != null) {
-            result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
+            if (force && !result && responseNeeded) {
+                result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
+            }
         }
         return result;
     }

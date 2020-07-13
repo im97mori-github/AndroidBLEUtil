@@ -18,6 +18,7 @@ android {
         versionCode VERSION_CODE
         versionName VERSION_NAME
 
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

@@ -44,6 +44,7 @@ import org.im97mori.ble.advertising.SlaveConnectionIntervalRange;
 import org.im97mori.ble.advertising.TxPowerLevel;
 import org.im97mori.ble.advertising.UniformRsourceIdentifier;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
+import org.im97mori.ble.advertising.filter.FilteredScanCallbackInterface;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -54,7 +55,7 @@ import java.util.Locale;
 
 public class AdvertisingDataSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback {
 
-    private static class TestScanCallback extends ScanCallback {
+    private static class TestScanCallback extends ScanCallback implements FilteredScanCallbackInterface {
 
 
         final AdvertisingDataSampleActivity mAdvertisingDataSampleActivity;
@@ -68,7 +69,7 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
         }
 
         @Override
-        public void onScanResult(int callbackType, ScanResult result) {
+        public void onFilteredScanResult(int callbackType, @NonNull ScanResult result, @NonNull AdvertisingDataParser.AdvertisingDataParseResult parseResult) {
             ScanRecord scanRecord = result.getScanRecord();
             if (scanRecord != null) {
                 parse(scanRecord.getBytes());
@@ -76,8 +77,8 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
         }
 
         @Override
-        public void onBatchScanResults(List<ScanResult> results) {
-            if (results != null && !results.isEmpty()) {
+        public void onFilteredBatchScanResults(@NonNull List<ScanResult> results, @NonNull List<AdvertisingDataParser.AdvertisingDataParseResult> parseResults) {
+            if (!results.isEmpty()) {
                 ScanRecord scanRecord = results.get(0).getScanRecord();
                 if (scanRecord != null) {
                     parse(scanRecord.getBytes());
@@ -561,7 +562,8 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
             if (mBluetoothLeScanner != null) {
                 if (mFilteredScanCallback == null) {
                     if (hasPermission()) {
-                        mFilteredScanCallback = new FilteredScanCallback.Builder().setScanCallback(new TestScanCallback(this)).build();
+                        TestScanCallback testScanCallback = new TestScanCallback(this);
+                        mFilteredScanCallback = new FilteredScanCallback.Builder(testScanCallback, testScanCallback).build();
                         mBluetoothLeScanner.startScan(mFilteredScanCallback);
                     }
                 } else {

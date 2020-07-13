@@ -48,6 +48,12 @@
         <activity
             android:name=".BlsCentralSampleActivity"
             android:label="@string/label_bls_central" />
+        <activity
+            android:name=".BlpPeripheralSampleActivity"
+            android:label="@string/label_blp_peripheral" />
+        <activity
+            android:name=".BlpCentralSampleActivity"
+            android:label="@string/label_blp_central" />
     </application>
 
 </manifest>

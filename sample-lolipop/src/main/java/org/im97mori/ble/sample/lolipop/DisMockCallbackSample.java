@@ -34,10 +34,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_INDICATABLE_CHARACTERISTIC;
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_NOTIFICATABLE_CHARACTERISTIC;
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_READABLE_CHARACTERISTIC;
-
 @SuppressWarnings("unused")
 public class DisMockCallbackSample extends DeviceInformationServiceMockCallback implements DeviceInformationServiceCallback, BLECallback {
 
@@ -186,11 +182,7 @@ public class DisMockCallbackSample extends DeviceInformationServiceMockCallback 
 
     @Override
     public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
-        if (SAMPLE_READABLE_CHARACTERISTIC.equals(characteristicUUID)) {
-            callback(characteristicUUID, new String(values), argument);
-        } else {
-            callback(characteristicUUID, Arrays.toString(values), argument);
-        }
+        callback(characteristicUUID, Arrays.toString(values), argument);
     }
 
     @Override
@@ -250,11 +242,7 @@ public class DisMockCallbackSample extends DeviceInformationServiceMockCallback 
 
     @Override
     public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values) {
-        if (SAMPLE_NOTIFICATABLE_CHARACTERISTIC.equals(characteristicUUID) || SAMPLE_INDICATABLE_CHARACTERISTIC.equals(characteristicUUID)) {
-            callback(serviceUUID, characteristicUUID, new String(values));
-        } else {
-            callback(serviceUUID, characteristicUUID, Arrays.toString(values));
-        }
+        callback(serviceUUID, characteristicUUID, Arrays.toString(values));
     }
 
     @Override
@@ -365,8 +353,11 @@ public class DisMockCallbackSample extends DeviceInformationServiceMockCallback 
 
     @Override
     public boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
-        callback(bluetoothGattService.getUuid());
-        return super.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, argument);
+        boolean result = super.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, argument);
+        if (result) {
+            callback(bluetoothGattService.getUuid());
+        }
+        return result;
     }
 
     @Override
@@ -397,26 +388,38 @@ public class DisMockCallbackSample extends DeviceInformationServiceMockCallback 
 
     @Override
     public boolean onCharacteristicReadRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean force) {
-        callback(device, bluetoothGattCharacteristic.getUuid());
-        return super.onCharacteristicReadRequest(bleServerConnection, device, requestId, offset, bluetoothGattCharacteristic, force);
+        boolean result = super.onCharacteristicReadRequest(bleServerConnection, device, requestId, offset, bluetoothGattCharacteristic, force);
+        if (result) {
+            callback(device, bluetoothGattCharacteristic.getUuid(), requestId, offset);
+        }
+        return result;
     }
 
     @Override
     public boolean onCharacteristicWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value, boolean force) {
-        callback(device, bluetoothGattCharacteristic.getUuid());
-        return super.onCharacteristicWriteRequest(bleServerConnection, device, requestId, bluetoothGattCharacteristic, preparedWrite, responseNeeded, offset, value, force);
+        boolean result = super.onCharacteristicWriteRequest(bleServerConnection, device, requestId, bluetoothGattCharacteristic, preparedWrite, responseNeeded, offset, value, force);
+        if (result) {
+            callback(device, bluetoothGattCharacteristic.getUuid(), requestId, offset);
+        }
+        return result;
     }
 
     @Override
     public boolean onDescriptorReadRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattDescriptor bluetoothGattDescriptor, boolean force) {
-        callback(device, bluetoothGattDescriptor.getUuid());
-        return super.onDescriptorReadRequest(bleServerConnection, device, requestId, offset, bluetoothGattDescriptor, false);
+        boolean result = super.onDescriptorReadRequest(bleServerConnection, device, requestId, offset, bluetoothGattDescriptor, false);
+        if (result) {
+            callback(device, bluetoothGattDescriptor.getUuid(), requestId, offset);
+        }
+        return result;
     }
 
     @Override
     public boolean onDescriptorWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattDescriptor bluetoothGattDescriptor, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value, boolean force) {
-        callback(device, bluetoothGattDescriptor.getUuid());
-        return super.onDescriptorWriteRequest(bleServerConnection, device, requestId, bluetoothGattDescriptor, preparedWrite, responseNeeded, offset, value, force);
+        boolean result = super.onDescriptorWriteRequest(bleServerConnection, device, requestId, bluetoothGattDescriptor, preparedWrite, responseNeeded, offset, value, force);
+        if (result) {
+            callback(device, bluetoothGattDescriptor.getUuid(), requestId, offset);
+        }
+        return result;
     }
 
     @Override
@@ -439,8 +442,11 @@ public class DisMockCallbackSample extends DeviceInformationServiceMockCallback 
 
     @Override
     public boolean onExecuteWrite(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, boolean execute, boolean force) {
-        callback(device, execute);
-        return super.onExecuteWrite(bleServerConnection, device, requestId, execute, force);
+        boolean result = super.onExecuteWrite(bleServerConnection, device, requestId, execute, force);
+        if (result) {
+            callback(device, execute);
+        }
+        return result;
     }
 
     @Override

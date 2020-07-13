@@ -28,17 +28,22 @@ public class FilteredScanCallback extends ScanCallback {
     public static class Builder extends AbstractFilteredCallbackBuilder<FilteredScanCallback> {
 
         /**
-         * {@link ScanCallback} instance, used at the same time {@link #onFilteredScanResult(int, ScanResult, AdvertisingDataParser.AdvertisingDataParseResult)} or {@link #onFilteredBatchScanResults(List, List)}
+         * {@link FilteredScanCallbackInterface} instance
          */
-        protected ScanCallback mScanCallback;
+        protected final FilteredScanCallbackInterface mFilteredScanCallbackInterface;
 
         /**
-         * @param scanCallback {@link ScanCallback} instance, used at the same time {@link #onFilteredScanResult(int, ScanResult, AdvertisingDataParser.AdvertisingDataParseResult)} or {@link #onFilteredBatchScanResults(List, List)}
-         * @return myself
+         * {@link ScanCallback} instance, used at the same time {@link FilteredScanCallbackInterface#onFilteredScanResult(int, ScanResult, AdvertisingDataParser.AdvertisingDataParseResult)} or {@link FilteredScanCallbackInterface#onFilteredBatchScanResults(List, List)}
          */
-        public Builder setScanCallback(ScanCallback scanCallback) {
+        protected final ScanCallback mScanCallback;
+
+        /**
+         * @param filteredScanCallbackInterface {@link FilteredScanCallbackInterface} instance
+         * @param scanCallback                  {@link ScanCallback} instance, used at the same time {@link FilteredScanCallbackInterface#onFilteredScanResult(int, ScanResult, AdvertisingDataParser.AdvertisingDataParseResult)} or {@link FilteredScanCallbackInterface#onFilteredBatchScanResults(List, List)}
+         */
+        public Builder(@NonNull FilteredScanCallbackInterface filteredScanCallbackInterface, @Nullable ScanCallback scanCallback) {
+            mFilteredScanCallbackInterface = filteredScanCallbackInterface;
             mScanCallback = scanCallback;
-            return this;
         }
 
         /**
@@ -47,13 +52,13 @@ public class FilteredScanCallback extends ScanCallback {
         @Override
         @NonNull
         public FilteredScanCallback build() {
-            return new FilteredScanCallback(mFilterList, mAdvertisingDataParser, mScanCallback);
+            return new FilteredScanCallback(mFilterList, mAdvertisingDataParser, mFilteredScanCallbackInterface, mScanCallback);
         }
 
     }
 
     /**
-     * {@link AndFilter} from {@link #FilteredScanCallback(List, AdvertisingDataParser, ScanCallback)} 1st parameter
+     * {@link AndFilter} from {@link #FilteredScanCallback(List, AdvertisingDataParser, FilteredScanCallbackInterface, ScanCallback)} 1st parameter
      */
     private final AndFilter<AdvertisingDataParser.AdvertisingDataParseResult> mAndFilter;
 
@@ -63,22 +68,29 @@ public class FilteredScanCallback extends ScanCallback {
     private final AdvertisingDataParser mAdvertisingDataParser;
 
     /**
-     * {@link ScanCallback} instance, used at the same time {@link #onFilteredScanResult(int, ScanResult, AdvertisingDataParser.AdvertisingDataParseResult)} or {@link #onFilteredBatchScanResults(List, List)}
+     * {@link FilteredScanCallbackInterface} instance
+     */
+    private final FilteredScanCallbackInterface mFilteredScanCallbackInterface;
+
+    /**
+     * {@link ScanCallback} instance, used at the same time {@link FilteredScanCallbackInterface#onFilteredScanResult(int, ScanResult, AdvertisingDataParser.AdvertisingDataParseResult)} or {@link FilteredScanCallbackInterface#onFilteredBatchScanResults(List, List)}
      */
     private final ScanCallback mScanCallback;
 
     /**
-     * @param filterList   used for {@link AndFilter}
-     * @param parser       {@link AdvertisingDataParser} instance
-     * @param scanCallback {@link ScanCallback} instance, used at the same time {@link #onFilteredScanResult(int, ScanResult, AdvertisingDataParser.AdvertisingDataParseResult)} or {@link #onFilteredBatchScanResults(List, List)}
+     * @param filterList                    used for {@link AndFilter}
+     * @param parser                        {@link AdvertisingDataParser} instance
+     * @param filteredScanCallbackInterface {@link FilteredScanCallbackInterface} instance
+     * @param scanCallback                  {@link ScanCallback} instance, used at the same time {@link FilteredScanCallbackInterface#onFilteredScanResult(int, ScanResult, AdvertisingDataParser.AdvertisingDataParseResult)} or {@link FilteredScanCallbackInterface#onFilteredBatchScanResults(List, List)}
      */
-    protected FilteredScanCallback(@NonNull List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> filterList, @Nullable AdvertisingDataParser parser, @Nullable ScanCallback scanCallback) {
+    protected FilteredScanCallback(@NonNull List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> filterList, @Nullable AdvertisingDataParser parser, @NonNull FilteredScanCallbackInterface filteredScanCallbackInterface, @Nullable ScanCallback scanCallback) {
         mAndFilter = new AndFilter<>(filterList);
         if (parser == null) {
             mAdvertisingDataParser = new AdvertisingDataParser.Builder(true).build();
         } else {
             mAdvertisingDataParser = parser;
         }
+        mFilteredScanCallbackInterface = filteredScanCallbackInterface;
         mScanCallback = scanCallback;
     }
 
@@ -91,7 +103,7 @@ public class FilteredScanCallback extends ScanCallback {
         if (scanRecord != null) {
             AdvertisingDataParser.AdvertisingDataParseResult parseResult = mAdvertisingDataParser.parse(scanRecord.getBytes());
             if (mAndFilter.isMatched(parseResult)) {
-                onFilteredScanResult(callbackType, result, parseResult);
+                mFilteredScanCallbackInterface.onFilteredScanResult(callbackType, result, parseResult);
                 if (mScanCallback != null) {
                     mScanCallback.onScanResult(callbackType, result);
                 }
@@ -99,17 +111,6 @@ public class FilteredScanCallback extends ScanCallback {
                 BLEAdvertisingLogUtils.stackLog("not matched", result.getDevice(), scanRecord);
             }
         }
-    }
-
-    /**
-     * Filtered {@link #onScanResult(int, ScanResult)}
-     *
-     * @param callbackType {@link #onScanResult(int, ScanResult)} 1st parameter
-     * @param result       {@link #onScanResult(int, ScanResult)} 2nd parameter
-     * @param parseResult  {@link org.im97mori.ble.advertising.AdvertisingDataParser.AdvertisingDataParseResult} instance, created from result
-     */
-    @SuppressWarnings("EmptyMethod")
-    public void onFilteredScanResult(int callbackType, @NonNull ScanResult result, @NonNull AdvertisingDataParser.AdvertisingDataParseResult parseResult) {
     }
 
     /**
@@ -132,7 +133,7 @@ public class FilteredScanCallback extends ScanCallback {
             }
         }
         if (!filteredResults.isEmpty()) {
-            onFilteredBatchScanResults(filteredResults, parseResults);
+            mFilteredScanCallbackInterface.onFilteredBatchScanResults(filteredResults, parseResults);
             if (mScanCallback != null) {
                 mScanCallback.onBatchScanResults(results);
             }
@@ -140,13 +141,14 @@ public class FilteredScanCallback extends ScanCallback {
     }
 
     /**
-     * Filtered {@link #onBatchScanResults(List)}
-     *
-     * @param results      {@link #onBatchScanResults(List)} 1st paramerter
-     * @param parseResults List of {@link org.im97mori.ble.advertising.AdvertisingDataParser.AdvertisingDataParseResult} instance, created from results
+     * {@inheritDoc}
      */
-    @SuppressWarnings("EmptyMethod")
-    public void onFilteredBatchScanResults(@NonNull List<ScanResult> results, @NonNull List<AdvertisingDataParser.AdvertisingDataParseResult> parseResults) {
+    @Override
+    public void onScanFailed(int errorCode) {
+        mFilteredScanCallbackInterface.onScanFailed(errorCode);
+        if (mScanCallback != null) {
+            mScanCallback.onScanFailed(errorCode);
+        }
     }
 
 }

@@ -3,6 +3,7 @@
     <string name="get_permission">Get Permission</string>
     <string name="scan_start">Scan Start</string>
     <string name="scan_stop">Scan Stop</string>
+    <string name="bond">Bond</string>
     <string name="connect">Connect</string>
     <string name="disconnect">Disconnect</string>
     <string name="start">Start</string>
@@ -18,6 +19,8 @@
     <string name="label_bas_central">BAS Central sample</string>
     <string name="label_bls_peripheral">BLS Peripheral sample</string>
     <string name="label_bls_central">BLS Central sample</string>
+    <string name="label_blp_peripheral">BLP Peripheral sample</string>
+    <string name="label_blp_central">BLP Central sample</string>
 
     <string name="menu_discover_service">Discover Service</string>
     <string name="menu_discover_service_sync">Discover Service(Synchronous)</string>
@@ -62,6 +65,9 @@
     <string name="menu_notify_intermediate_cuff_pressure_start">Notify Intermediate Cuff Pressure start</string>
     <string name="menu_notify_intermediate_cuff_pressure_stop">Notify Intermediate Cuff Pressure stop</string>
     <string name="menu_read_blood_pressure_feature">Read Blood Pressure Feature</string>
+
+    <string name="menu_load_bonded_device">Load Bonded Device</string>
+    <string name="menu_clear_bonded_history">Clear Bonded History</string>
 
     <string name="menu_clear">Clear</string>
 </resources>

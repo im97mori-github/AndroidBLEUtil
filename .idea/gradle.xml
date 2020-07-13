@@ -200,6 +200,12 @@
             <option value="$PROJECT_DIR$/library-central" />
             <option value="$PROJECT_DIR$/library-handler" />
             <option value="$PROJECT_DIR$/library-peripheral" />
+            <option value="$PROJECT_DIR$/profile" />
+            <option value="$PROJECT_DIR$/profile/blp" />
+            <option value="$PROJECT_DIR$/profile/blp/central" />
+            <option value="$PROJECT_DIR$/profile/blp/peripheral" />
+            <option value="$PROJECT_DIR$/profile/central" />
+            <option value="$PROJECT_DIR$/profile/peripheral" />
             <option value="$PROJECT_DIR$/sample-jellybean" />
             <option value="$PROJECT_DIR$/sample-lolipop" />
             <option value="$PROJECT_DIR$/service" />

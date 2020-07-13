@@ -337,6 +337,36 @@ public abstract class AbstractBLETask {
     public static final int PROGRESS_REMOVE_SERVICE_ERROR = PROGRESS_REMOVE_SERVICE_SUCCESS + 1;
 
     /**
+     * PROGRESS:SCAN_START
+     */
+    public static final int PROGRESS_SCAN_START = PROGRESS_REMOVE_SERVICE_ERROR + 1;
+
+    /**
+     * PROGRESS:SCAN_FINISHED
+     */
+    public static final int PROGRESS_SCAN_FINISHED = PROGRESS_SCAN_START + 1;
+
+    /**
+     * PROGRESS:SCAN_ERROR
+     */
+    public static final int PROGRESS_SCAN_ERROR = PROGRESS_SCAN_FINISHED + 1;
+
+    /**
+     * PROGRESS:BOND_START
+     */
+    public static final int PROGRESS_BOND_START = PROGRESS_SCAN_ERROR + 1;
+
+    /**
+     * PROGRESS:BOND_SUCCESS
+     */
+    public static final int PROGRESS_BOND_SUCCESS = PROGRESS_BOND_START + 1;
+
+    /**
+     * PROGRESS:BOND_ERROR
+     */
+    public static final int PROGRESS_BOND_ERROR = PROGRESS_BOND_SUCCESS + 1;
+
+    /**
      * For user defined progress
      */
     public static final int PROGRESS_FIRST_USER = PROGRESS_REMOVE_SERVICE_ERROR + 1;

@@ -24,17 +24,22 @@ public class FilteredLeScanCallback implements BluetoothAdapter.LeScanCallback {
     public static class Builder extends AbstractFilteredCallbackBuilder<FilteredLeScanCallback> {
 
         /**
-         * {@link android.bluetooth.BluetoothAdapter.LeScanCallback} instance, used at the same time {@link #onFilteredLeScan(BluetoothDevice, int, byte[], AdvertisingDataParser.AdvertisingDataParseResult)}
+         * {@link FilteredLeScanCallbackInterface} instance
          */
-        protected BluetoothAdapter.LeScanCallback mLeScanCallback;
+        protected final FilteredLeScanCallbackInterface mFilteredLeScanCallbackInterface;
 
         /**
-         * @param leScanCallback {@link android.bluetooth.BluetoothAdapter.LeScanCallback} instance, used at the same time {@link #onFilteredLeScan(BluetoothDevice, int, byte[], AdvertisingDataParser.AdvertisingDataParseResult)}
-         * @return myself
+         * {@link android.bluetooth.BluetoothAdapter.LeScanCallback} instance, used at the same time {@link FilteredLeScanCallbackInterface#onFilteredLeScan(BluetoothDevice, int, byte[], AdvertisingDataParser.AdvertisingDataParseResult)}
          */
-        public Builder setScanCallback(BluetoothAdapter.LeScanCallback leScanCallback) {
+        protected final BluetoothAdapter.LeScanCallback mLeScanCallback;
+
+        /**
+         * @param filteredLeScanCallbackInterface {@link FilteredLeScanCallbackInterface} instance
+         * @param leScanCallback                  {@link android.bluetooth.BluetoothAdapter.LeScanCallback} instance, used at the same time {@link FilteredLeScanCallbackInterface#onFilteredLeScan(BluetoothDevice, int, byte[], AdvertisingDataParser.AdvertisingDataParseResult)}
+         */
+        public Builder(@NonNull FilteredLeScanCallbackInterface filteredLeScanCallbackInterface, @Nullable BluetoothAdapter.LeScanCallback leScanCallback) {
+            mFilteredLeScanCallbackInterface = filteredLeScanCallbackInterface;
             mLeScanCallback = leScanCallback;
-            return this;
         }
 
         /**
@@ -43,13 +48,13 @@ public class FilteredLeScanCallback implements BluetoothAdapter.LeScanCallback {
         @Override
         @NonNull
         public FilteredLeScanCallback build() {
-            return new FilteredLeScanCallback(mFilterList, mAdvertisingDataParser, mLeScanCallback);
+            return new FilteredLeScanCallback(mFilterList, mAdvertisingDataParser, mFilteredLeScanCallbackInterface, mLeScanCallback);
         }
 
     }
 
     /**
-     * {@link AndFilter} from {@link #FilteredLeScanCallback(List, AdvertisingDataParser, BluetoothAdapter.LeScanCallback)} 1st parameter
+     * {@link AndFilter} from {@link #FilteredLeScanCallback(List, AdvertisingDataParser, FilteredLeScanCallbackInterface, BluetoothAdapter.LeScanCallback)} 1st parameter
      */
     private final AndFilter<AdvertisingDataParser.AdvertisingDataParseResult> mAndFilter;
 
@@ -59,22 +64,29 @@ public class FilteredLeScanCallback implements BluetoothAdapter.LeScanCallback {
     private final AdvertisingDataParser mAdvertisingDataParser;
 
     /**
-     * {@link android.bluetooth.BluetoothAdapter.LeScanCallback} instance, used at the same time {@link #onFilteredLeScan(BluetoothDevice, int, byte[], AdvertisingDataParser.AdvertisingDataParseResult)}
+     * {@link FilteredLeScanCallbackInterface} instance
+     */
+    private final FilteredLeScanCallbackInterface mFilteredLeScanCallbackInterface;
+
+    /**
+     * {@link android.bluetooth.BluetoothAdapter.LeScanCallback} instance, used at the same time {@link FilteredLeScanCallbackInterface#onFilteredLeScan(BluetoothDevice, int, byte[], AdvertisingDataParser.AdvertisingDataParseResult)}
      */
     private final BluetoothAdapter.LeScanCallback mLeScanCallback;
 
     /**
-     * @param filterList     used for {@link AndFilter}
-     * @param parser         {@link AdvertisingDataParser} instance
-     * @param leScanCallback {@link android.bluetooth.BluetoothAdapter.LeScanCallback} instance, used at the same time {@link #onFilteredLeScan(BluetoothDevice, int, byte[], AdvertisingDataParser.AdvertisingDataParseResult)}
+     * @param filterList                      used for {@link AndFilter}
+     * @param parser                          {@link AdvertisingDataParser} instance
+     * @param filteredLeScanCallbackInterface {@link FilteredLeScanCallbackInterface} instance
+     * @param leScanCallback                  {@link android.bluetooth.BluetoothAdapter.LeScanCallback} instance, used at the same time {@link FilteredLeScanCallbackInterface#onFilteredLeScan(BluetoothDevice, int, byte[], AdvertisingDataParser.AdvertisingDataParseResult)}
      */
-    protected FilteredLeScanCallback(@NonNull List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> filterList, @Nullable AdvertisingDataParser parser, @Nullable BluetoothAdapter.LeScanCallback leScanCallback) {
+    protected FilteredLeScanCallback(@NonNull List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> filterList, @Nullable AdvertisingDataParser parser, @NonNull FilteredLeScanCallbackInterface filteredLeScanCallbackInterface, @Nullable BluetoothAdapter.LeScanCallback leScanCallback) {
         mAndFilter = new AndFilter<>(filterList);
         if (parser == null) {
             mAdvertisingDataParser = new AdvertisingDataParser.Builder(true).build();
         } else {
             mAdvertisingDataParser = parser;
         }
+        mFilteredLeScanCallbackInterface = filteredLeScanCallbackInterface;
         mLeScanCallback = leScanCallback;
     }
 
@@ -85,25 +97,13 @@ public class FilteredLeScanCallback implements BluetoothAdapter.LeScanCallback {
     public final void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
         AdvertisingDataParser.AdvertisingDataParseResult result = mAdvertisingDataParser.parse(scanRecord);
         if (mAndFilter.isMatched(result)) {
-            onFilteredLeScan(device, rssi, scanRecord, result);
+            mFilteredLeScanCallbackInterface.onFilteredLeScan(device, rssi, scanRecord, result);
             if (mLeScanCallback != null) {
                 mLeScanCallback.onLeScan(device, rssi, scanRecord);
             }
         } else {
             BLEAdvertisingLogUtils.stackLog("not matched", device, Arrays.toString(scanRecord));
         }
-    }
-
-    /**
-     * Filtered {@link #onLeScan(BluetoothDevice, int, byte[])}
-     *
-     * @param device     {@link #onLeScan(BluetoothDevice, int, byte[])} 1st parameter
-     * @param rssi       {@link #onLeScan(BluetoothDevice, int, byte[])} 2nd parameter
-     * @param scanRecord {@link #onLeScan(BluetoothDevice, int, byte[])} 3rd parameter
-     * @param result     {@link org.im97mori.ble.advertising.AdvertisingDataParser.AdvertisingDataParseResult} instance, created from scanRecord byte array
-     */
-    @SuppressWarnings("EmptyMethod")
-    public void onFilteredLeScan(@NonNull BluetoothDevice device, int rssi, @NonNull byte[] scanRecord, @NonNull AdvertisingDataParser.AdvertisingDataParseResult result) {
     }
 
 }

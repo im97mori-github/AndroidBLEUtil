@@ -47,21 +47,22 @@ public class BloodPressureServiceMockCallback extends AbstractServiceMockCallbac
         /**
          * Blood Pressure Measurement data
          */
-        private CharacteristicData mBloodPressureMeasurementData;
+        protected CharacteristicData mBloodPressureMeasurementData;
 
         /**
          * Intermediate Cuff Pressure data
          */
-        private CharacteristicData mIntermediateCuffPressure;
+        protected CharacteristicData mIntermediateCuffPressure;
 
         /**
          * Blood Pressure Feature data
          */
-        private CharacteristicData mBloodPressureFeature;
+        protected CharacteristicData mBloodPressureFeature;
 
         /**
          * @see #addBloodPressureMeasurement(int, long, byte[], int, int, long, byte[])
          */
+        @NonNull
         public Builder<T> addBloodPressureMeasurement(@NonNull BloodPressureMeasurement bloodPressureMeasurement, @NonNull ClientCharacteristicConfiguration clientCharacteristicConfiguration) {
             return addBloodPressureMeasurement(BluetoothGatt.GATT_SUCCESS, 0, bloodPressureMeasurement.getBytes(), -1, BluetoothGatt.GATT_SUCCESS, 0, clientCharacteristicConfiguration.getBytes());
         }
@@ -78,6 +79,7 @@ public class BloodPressureServiceMockCallback extends AbstractServiceMockCallbac
          * @param descriptorValue            descriptor data array for  for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
+        @NonNull
         public Builder<T> addBloodPressureMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
             mBloodPressureMeasurementData = new CharacteristicData(BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_INDICATE
@@ -99,6 +101,7 @@ public class BloodPressureServiceMockCallback extends AbstractServiceMockCallbac
          *
          * @return {@link Builder} instance
          */
+        @NonNull
         public Builder<T> removeBloodPressureMeasurement() {
             mBloodPressureMeasurementData = null;
             return this;
@@ -107,6 +110,7 @@ public class BloodPressureServiceMockCallback extends AbstractServiceMockCallbac
         /**
          * @see #addIntermediateCuffPressure(int, long, byte[], int, int, long, byte[])
          */
+        @NonNull
         public Builder<T> addIntermediateCuffPressure(@NonNull IntermediateCuffPressure intermediateCuffPressure, @NonNull ClientCharacteristicConfiguration clientCharacteristicConfiguration) {
             return addIntermediateCuffPressure(BluetoothGatt.GATT_SUCCESS, 0, intermediateCuffPressure.getBytes(), -1, BluetoothGatt.GATT_SUCCESS, 0, clientCharacteristicConfiguration.getBytes());
         }
@@ -123,6 +127,7 @@ public class BloodPressureServiceMockCallback extends AbstractServiceMockCallbac
          * @param descriptorValue            descriptor data array for  for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
+        @NonNull
         public Builder<T> addIntermediateCuffPressure(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
             mIntermediateCuffPressure = new CharacteristicData(INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_NOTIFY
@@ -144,6 +149,7 @@ public class BloodPressureServiceMockCallback extends AbstractServiceMockCallbac
          *
          * @return {@link Builder} instance
          */
+        @NonNull
         public Builder<T> removeIntermediateCuffPressure() {
             mIntermediateCuffPressure = null;
             return this;
@@ -152,6 +158,7 @@ public class BloodPressureServiceMockCallback extends AbstractServiceMockCallbac
         /**
          * @see #addBloodPressureFeature(int, long, byte[])
          */
+        @NonNull
         public Builder<T> addBloodPressureFeature(@NonNull BloodPressureFeature bloodPressureFeature) {
             return addBloodPressureFeature(BluetoothGatt.GATT_SUCCESS, 0, bloodPressureFeature.getBytes());
         }
@@ -164,6 +171,7 @@ public class BloodPressureServiceMockCallback extends AbstractServiceMockCallbac
          * @param value        data array for  for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
+        @NonNull
         public Builder<T> addBloodPressureFeature(int responceCode, long delay, @NonNull byte[] value) {
             mBloodPressureFeature = new CharacteristicData(BLOOD_PRESSURE_FEATURE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
@@ -181,6 +189,7 @@ public class BloodPressureServiceMockCallback extends AbstractServiceMockCallbac
          *
          * @return {@link Builder} instance
          */
+        @NonNull
         public Builder<T> removeBloodPressureFeature() {
             mBloodPressureFeature = null;
             return this;

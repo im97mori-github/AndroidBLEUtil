@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/pre_connected">
+        <item
+            android:id="@+id/load_bonded_device"
+            android:title="@string/menu_load_bonded_device" />
+
+        <item
+            android:id="@+id/clear_bondec_history"
+            android:title="@string/menu_clear_bonded_history" />
+    </group>
+    <group android:id="@+id/connected">
+        <item
+            android:id="@+id/read_manufacturer_name"
+            android:title="@string/menu_read_manufacturer_name" />
+        <item
+            android:id="@+id/read_model_number"
+            android:title="@string/menu_read_model_number" />
+        <item
+            android:id="@+id/start_indicate_blood_pressure_mesurement"
+            android:title="@string/menu_indicate_blood_pressure_start" />
+        <item
+            android:id="@+id/stop_indicate_blood_pressure_mesurement"
+            android:title="@string/menu_indicate_blood_pressure_stop" />
+        <item
+            android:id="@+id/start_notificate_intermediate_cuff_pressure"
+            android:title="@string/menu_notify_intermediate_cuff_pressure_start" />
+        <item
+            android:id="@+id/stop_notificate_intermediate_cuff_pressure"
+            android:title="@string/menu_notify_intermediate_cuff_pressure_stop" />
+        <item
+            android:id="@+id/read_blood_pressure_feature"
+            android:title="@string/menu_read_blood_pressure_feature" />
+    </group>
+</menu>

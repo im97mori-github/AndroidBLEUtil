@@ -15,11 +15,11 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.MockData;
-import org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback;
 import org.im97mori.ble.characteristic.u2a19.BatteryLevelAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
 import org.im97mori.ble.descriptor.u2904.CharacteristicPresentationFormatAndroid;
 import org.im97mori.ble.service.bas.cental.BatteryServiceCallback;
+import org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -27,10 +27,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
-
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_INDICATABLE_CHARACTERISTIC;
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_NOTIFICATABLE_CHARACTERISTIC;
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_READABLE_CHARACTERISTIC;
 
 @SuppressWarnings("unused")
 public class BasMockCallbackSample extends BatteryServiceMockCallback implements BatteryServiceCallback, BLECallback {
@@ -179,11 +175,7 @@ public class BasMockCallbackSample extends BatteryServiceMockCallback implements
 
     @Override
     public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
-        if (SAMPLE_READABLE_CHARACTERISTIC.equals(characteristicUUID)) {
-            callback(characteristicUUID, new String(values), argument);
-        } else {
-            callback(characteristicUUID, Arrays.toString(values), argument);
-        }
+        callback(characteristicUUID, Arrays.toString(values), argument);
     }
 
     @Override
@@ -243,11 +235,7 @@ public class BasMockCallbackSample extends BatteryServiceMockCallback implements
 
     @Override
     public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values) {
-        if (SAMPLE_NOTIFICATABLE_CHARACTERISTIC.equals(characteristicUUID) || SAMPLE_INDICATABLE_CHARACTERISTIC.equals(characteristicUUID)) {
-            callback(serviceUUID, characteristicUUID, new String(values));
-        } else {
-            callback(serviceUUID, characteristicUUID, Arrays.toString(values));
-        }
+        callback(serviceUUID, characteristicUUID, Arrays.toString(values));
     }
 
     @Override

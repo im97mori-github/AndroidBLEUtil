@@ -19,9 +19,11 @@ import org.junit.Test;
 
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class BLEServerConnectionTest {
@@ -677,6 +679,46 @@ public class BLEServerConnectionTest {
         };
 
         check(firstCallback, secondCallback, task, false);
+    }
+
+    @Test
+    public void test_startAdvertising_001() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(true);
+        final AtomicReference<UUID> atomicReference = new AtomicReference<>(UUID.randomUUID());
+        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
+
+            @Override
+            public synchronized boolean startAdvertising(boolean includeDeviceName, @Nullable UUID serviceUUID) {
+                atomicBoolean.set(includeDeviceName);
+                atomicReference.set(serviceUUID);
+                return false;
+            }
+        };
+
+        mockBLEServerConnection.startAdvertising();
+        assertFalse(atomicBoolean.get());
+        assertNull(atomicReference.get());
+    }
+
+    @Test
+    public void test_startAdvertising_002() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(true);
+        UUID firstUUID = UUID.randomUUID();
+        UUID secondUUID = UUID.randomUUID();
+        final AtomicReference<UUID> atomicReference = new AtomicReference<>(firstUUID);
+        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
+
+            @Override
+            public synchronized boolean startAdvertising(boolean includeDeviceName, @Nullable UUID serviceUUID) {
+                atomicBoolean.set(includeDeviceName);
+                atomicReference.set(serviceUUID);
+                return false;
+            }
+        };
+
+        mockBLEServerConnection.startAdvertising(false, secondUUID);
+        assertFalse(atomicBoolean.get());
+        assertEquals(secondUUID, atomicReference.get());
     }
 
     @Test

@@ -28,7 +28,7 @@ task clean(type: Delete) {
 }
 
 ext.globalCompileSdkVersion = 29
-ext.globalBuildToolsVersion = '30.0.0'
+ext.globalBuildToolsVersion = '30.0.1'
 ext.globalMinSdkVersion = 18
 ext.globalPeripheralMinSdkVersion = 21
 ext.globalTargetSdkVersion = 29
@@ -46,18 +46,18 @@ ext.baseModule = 'baseModule'
 
 ext.coreAndroid = [
         artifactId         : 'ble-core-android'
-        , versionCode      : 1
-        , versionName      : '0.1.0'
-        , uploadVersionName: '0.1.0'
+        , versionCode      : 2
+        , versionName      : '0.1.1'
+        , uploadVersionName: '0.1.1'
         , baseModule       : "${groupId}:ble-core:0.2.0"
 ]
 
 ext.advertisingAndroid = [
         artifactId         : 'ble-advertising-android'
-        , versionCode      : 1
-        , versionName      : '0.1.0'
-        , uploadVersionName: '0.1.0'
-        , baseModule       : "${groupId}:ble-advertising:0.2.0"
+        , versionCode      : 2
+        , versionName      : '0.1.1'
+        , uploadVersionName: '0.1.1'
+        , baseModule       : "${groupId}:ble-advertising:0.2.1"
 ]
 
 ext.descriptorU2900Android = [
@@ -1533,9 +1533,9 @@ ext.characteristicAndroid = [
 
 ext.handler = [
         artifactId         : 'ble-handler'
-        , versionCode      : 1
-        , versionName      : '0.1.0'
-        , uploadVersionName: '0.1.0'
+        , versionCode      : 2
+        , versionName      : '0.1.1'
+        , uploadVersionName: '0.1.1'
 ]
 
 ext.central = [
@@ -1547,9 +1547,9 @@ ext.central = [
 
 ext.peripheral = [
         artifactId         : 'ble-peripheral'
-        , versionCode      : 44
-        , versionName      : '0.2.17'
-        , uploadVersionName: '0.2.17'
+        , versionCode      : 46
+        , versionName      : '0.2.19'
+        , uploadVersionName: '0.2.19'
 ]
 
 ext.serviceCentralAndroid = [
@@ -1617,9 +1617,9 @@ ext.serviceBlsAndroid = [
 
 ext.serviceBlsPeripheralAndroid = [
         artifactId         : "ble-service-bls-peripheral-android"
-        , versionCode      : 1
-        , versionName      : '0.1.0'
-        , uploadVersionName: '0.1.0'
+        , versionCode      : 2
+        , versionName      : '0.1.1'
+        , uploadVersionName: '0.1.1'
 ]
 
 ext.serviceBlsCentralAndroid = [
@@ -1636,6 +1636,47 @@ ext.serviceAndroid = [
         , uploadVersionName: '0.1.1'
 ]
 
+ext.profileAndroid = [
+        artifactId         : "ble-profile-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.profilePeripheralAndroid = [
+        artifactId         : "ble-profile-peripheral-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.profileCentralAndroid = [
+        artifactId         : "ble-profile-central-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.profileBlpAndroid = [
+        artifactId         : "ble-profile-blp-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.profileBlpPeripheralAndroid = [
+        artifactId         : "ble-profile-blp-peripheral-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.profileBlpCentralAndroid = [
+        artifactId         : "ble-profile-blp-central-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
 
 ext.apiCoreAndroid = "${groupId}:${coreAndroid.artifactId}:${coreAndroid.versionName}"
 ext.apiAdvertisingAndroid = "${groupId}:${advertisingAndroid.artifactId}:${advertisingAndroid.versionName}"

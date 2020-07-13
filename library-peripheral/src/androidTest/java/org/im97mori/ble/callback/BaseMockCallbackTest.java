@@ -20,6 +20,7 @@ import org.im97mori.ble.ServiceData;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -41,6 +42,10 @@ public class BaseMockCallbackTest {
          */
         BaseMockCallbackInner(@NonNull MockData mockData, boolean isFallback) {
             super(mockData, isFallback);
+        }
+
+        public BaseMockCallbackInner(@NonNull List<MockData> mockDataList, boolean isFallback) {
+            super(mockDataList, isFallback);
         }
 
         @Override
@@ -107,6 +112,71 @@ public class BaseMockCallbackTest {
         public void onAdvertisingFinished() {
 
         }
+    }
+
+    @Test
+    public void test_constructor_001() {
+        UUID serviceUUID1 = UUID.randomUUID();
+        int serviceType1 = 1;
+        ServiceData serviceData1 = new ServiceData(serviceUUID1
+                , serviceType1
+                , new ArrayList<CharacteristicData>());
+        MockData mockData1 = new MockData(Collections.singletonList(serviceData1));
+
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
+            @Override
+            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
+                bluetoothGattServiceList.add(bluetoothGattService);
+                return 0;
+            }
+        };
+
+        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(mockData1, true);
+        baseMockCallback.setup(mockBLEServerConnection);
+
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+        assertEquals(serviceUUID1, bluetoothGattService.getUuid());
+        assertEquals(serviceType1, bluetoothGattService.getType());
+        assertEquals(0, bluetoothGattService.getCharacteristics().size());
+    }
+
+    @Test
+    public void test_constructor_002() {
+        UUID serviceUUID1 = UUID.randomUUID();
+        int serviceType1 = 1;
+        ServiceData serviceData1 = new ServiceData(serviceUUID1
+                , serviceType1
+                , new ArrayList<CharacteristicData>());
+        MockData mockData1 = new MockData(Collections.singletonList(serviceData1));
+
+        UUID serviceUUID2 = UUID.randomUUID();
+        int serviceType2 = 2;
+        ServiceData serviceData2 = new ServiceData(serviceUUID2
+                , serviceType2
+                , new ArrayList<CharacteristicData>());
+        MockData mockData2 = new MockData(Collections.singletonList(serviceData2));
+
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
+            @Override
+            public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
+                bluetoothGattServiceList.add(bluetoothGattService);
+                return 0;
+            }
+        };
+
+        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(Arrays.asList(mockData1, mockData2), true);
+        baseMockCallback.setup(mockBLEServerConnection);
+
+        assertEquals(2, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+        assertEquals(serviceUUID1, bluetoothGattService.getUuid());
+        assertEquals(serviceType1, bluetoothGattService.getType());
+        bluetoothGattService = bluetoothGattServiceList.get(1);
+        assertEquals(serviceUUID2, bluetoothGattService.getUuid());
+        assertEquals(serviceType2, bluetoothGattService.getType());
     }
 
     @Test
@@ -488,14 +558,14 @@ public class BaseMockCallbackTest {
     @Test
     public void test_isFallback_001() {
         boolean isFallback = true;
-        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(null, isFallback);
+        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(new MockData(), isFallback);
         assertEquals(isFallback, baseMockCallback.isFallback());
     }
 
     @Test
     public void test_isFallback_002() {
         boolean isFallback = false;
-        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(null, isFallback);
+        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(new MockData(), isFallback);
         assertEquals(isFallback, baseMockCallback.isFallback());
     }
 

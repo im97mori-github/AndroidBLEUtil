@@ -51,6 +51,7 @@ import org.im97mori.ble.advertising.SlaveConnectionIntervalRangeAndroid;
 import org.im97mori.ble.advertising.TxPowerLevelAndroid;
 import org.im97mori.ble.advertising.UniformRsourceIdentifierAndroid;
 import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
+import org.im97mori.ble.advertising.filter.FilteredLeScanCallbackInterface;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -58,405 +59,391 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.Locale;
 
-public class MainActivity extends FragmentActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback {
+public class MainActivity extends FragmentActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, FilteredLeScanCallbackInterface {
 
     private static final int REQUEST_PERMISSION_COARSE_LOCATION = 0;
     private static final String FRAGMENT_TAG_ALERT_DIALOG = "FRAGMENT_TAG_ALERT_DIALOG";
 
-    private static final class TestLeScanCallback implements BluetoothAdapter.LeScanCallback {
+    @Override
+    public void onFilteredLeScan(@NonNull BluetoothDevice device, int rssi, @NonNull byte[] scanRecord, @NonNull AdvertisingDataParser.AdvertisingDataParseResult result) {
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US);
+        String now = format.format(new Date());
 
-        final MainActivity mMainActivity;
-        final AdvertisingDataParser mAdvertisingDataParser;
+        final StringBuilder sb = new StringBuilder();
 
+        sb.append("data count:");
+        sb.append(result.getResultList().size());
+        sb.append('\n');
+        sb.append('\n');
 
-        private TestLeScanCallback(MainActivity mainActivity) {
-            mMainActivity = mainActivity;
-            AdvertisingDataParser.Builder builder = new AdvertisingDataParser.Builder(true);
-            mAdvertisingDataParser = builder.build();
-        }
-
-        @Override
-        public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
-            SimpleDateFormat format = new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US);
-            String now = format.format(new Date());
-
-            AdvertisingDataParser.AdvertisingDataParseResult result = mAdvertisingDataParser.parse(scanRecord);
-            final StringBuilder sb = new StringBuilder();
-
-            sb.append("data count:");
-            sb.append(result.getResultList().size());
+        IncompleteListOf16BitServiceUUIDsAndroid incompleteListOf16BitServiceUUIDs = result.getIncompleteListOf16BitServiceUUIDs();
+        if (incompleteListOf16BitServiceUUIDs != null) {
+            sb.append("Incomplete List of 16-bit Service Class UUIDs");
+            sb.append("\nuuid list\n");
+            sb.append(Arrays.toString(incompleteListOf16BitServiceUUIDs.getUuidList().toArray()));
             sb.append('\n');
             sb.append('\n');
-
-            IncompleteListOf16BitServiceUUIDsAndroid incompleteListOf16BitServiceUUIDs = result.getIncompleteListOf16BitServiceUUIDs();
-            if (incompleteListOf16BitServiceUUIDs != null) {
-                sb.append("Incomplete List of 16-bit Service Class UUIDs");
-                sb.append("\nuuid list\n");
-                sb.append(Arrays.toString(incompleteListOf16BitServiceUUIDs.getUuidList().toArray()));
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            CompleteListOf16BitServiceUUIDsAndroid completeListOf16BitServiceUUIDs = result.getCompleteListOf16BitServiceUUIDs();
-            if (completeListOf16BitServiceUUIDs != null) {
-                sb.append("Complete List of 16-bit Service Class UUIDs");
-                sb.append("\nuuid list\n");
-                sb.append(Arrays.toString(completeListOf16BitServiceUUIDs.getUuidList().toArray()));
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            IncompleteListOf32BitServiceUUIDsAndroid incompleteListOf32BitServiceUUIDs = result.getIncompleteListOf32BitServiceUUIDs();
-            if (incompleteListOf32BitServiceUUIDs != null) {
-                sb.append("Incomplete List of 32-bit Service Class UUIDs");
-                sb.append("\nuuid list\n");
-                sb.append(Arrays.toString(incompleteListOf32BitServiceUUIDs.getUuidList().toArray()));
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            CompleteListOf32BitServiceUUIDsAndroid completeListOf32BitServiceUUIDs = result.getCompleteListOf32BitServiceUUIDs();
-            if (completeListOf32BitServiceUUIDs != null) {
-                sb.append("Complete List of 32-bit Service Class UUIDs");
-                sb.append("\nuuid list\n");
-                sb.append(Arrays.toString(completeListOf32BitServiceUUIDs.getUuidList().toArray()));
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            IncompleteListOf128BitServiceUUIDsAndroid incompleteListOf128BitServiceUUIDs = result.getIncompleteListOf128BitServiceUUIDs();
-            if (incompleteListOf128BitServiceUUIDs != null) {
-                sb.append("Incomplete List of 128-bit Service Class UUIDs");
-                sb.append("\nuuid list\n");
-                sb.append(Arrays.toString(incompleteListOf128BitServiceUUIDs.getUuidList().toArray()));
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            CompleteListOf128BitServiceUUIDsAndroid completeListOf128BitServiceUUIDs = result.getCompleteListOf128BitServiceUUIDs();
-            if (completeListOf128BitServiceUUIDs != null) {
-                sb.append("Complete List of 128-bit Service Class UUIDs");
-                sb.append("\nuuid list\n");
-                sb.append(Arrays.toString(completeListOf128BitServiceUUIDs.getUuidList().toArray()));
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            ShortenedLocalNameAndroid shortenedLocalName = result.getShortenedLocalName();
-            if (shortenedLocalName != null) {
-                sb.append("Shortened Local Name");
-                sb.append('\n');
-                sb.append(shortenedLocalName.getShortenedLocalName());
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            CompleteLocalNameAndroid completeLocalName = result.getCompleteLocalName();
-            if (completeLocalName != null) {
-                sb.append("Complete Local Name");
-                sb.append('\n');
-                sb.append(completeLocalName.getCompleteLocalName());
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            FlagsAndroid flags = result.getFlags();
-            if (flags != null) {
-                sb.append("Flags");
-                sb.append("\nflag list\n");
-                sb.append(Arrays.toString(flags.getFlagsList().toArray()));
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            ManufacturerSpecificDataAndroid manufacturerSpecificData = result.getManufacturerSpecificData();
-            if (manufacturerSpecificData != null) {
-                sb.append("Manufacturer Specific Data");
-                sb.append("\nCompany Identifier Code\n");
-                sb.append(manufacturerSpecificData.getCompanyIdentifier());
-                sb.append("\nCompany Name\n");
-                sb.append(manufacturerSpecificData.getCompanyName());
-                sb.append("\nManufacturer Specific Data size\n");
-                sb.append(manufacturerSpecificData.getManufacturerSpecificData().length);
-                sb.append("\nManufacturer Specific Data list\n");
-                sb.append(Arrays.toString(manufacturerSpecificData.getManufacturerSpecificData()));
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            TxPowerLevelAndroid txPowerLevel = result.getTxPowerLevel();
-            if (txPowerLevel != null) {
-                sb.append("Tx Power Level");
-                sb.append('\n');
-                sb.append(txPowerLevel.getTxPowerLevel());
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            SlaveConnectionIntervalRangeAndroid slaveConnectionIntervalRange = result.getSlaveConnectionIntervalRange();
-            if (slaveConnectionIntervalRange != null) {
-                sb.append("Slave Connection Interval Range");
-                if (slaveConnectionIntervalRange.hasMaximum()) {
-                    sb.append("\nhas maximum\n");
-                    sb.append(slaveConnectionIntervalRange.getMaximumValueMillis());
-                }
-                if (slaveConnectionIntervalRange.hasMinimum()) {
-                    sb.append("\nhas minimum\n");
-                    sb.append(slaveConnectionIntervalRange.getMinimumValueMillis());
-                }
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            ListOf16BitServiceSolicitationUUIDsAndroid listOf16BitServiceSolicitationUUIDs = result.getListOf16BitServiceSolicitationUUIDs();
-            if (listOf16BitServiceSolicitationUUIDs != null) {
-                sb.append("List of 16-bit Service Solicitation UUIDs");
-                sb.append("\nuuid list\n");
-                sb.append(Arrays.toString(listOf16BitServiceSolicitationUUIDs.getUuidList().toArray()));
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            ListOf32BitServiceSolicitationUUIDsAndroid listOf32BitServiceSolicitationUUIDs = result.getListOf32BitServiceSolicitationUUIDs();
-            if (listOf32BitServiceSolicitationUUIDs != null) {
-                sb.append("List of 32-bit Service Solicitation UUIDs");
-                sb.append("\nuuid list\n");
-                sb.append(Arrays.toString(listOf32BitServiceSolicitationUUIDs.getUuidList().toArray()));
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            ListOf128BitServiceSolicitationUUIDsAndroid listOf128BitServiceSolicitationUUIDs = result.getListOf128BitServiceSolicitationUUIDs();
-            if (listOf128BitServiceSolicitationUUIDs != null) {
-                sb.append("List of 128-bit Service Solicitation UUIDs");
-                sb.append("\nuuid list\n");
-                sb.append(Arrays.toString(listOf128BitServiceSolicitationUUIDs.getUuidList().toArray()));
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            ServiceData16BitUUIDAndroid serviceData16BitUUID = result.getServiceData16BitUUID();
-            if (serviceData16BitUUID != null) {
-                sb.append("Service Data - 16-bit UUID");
-                sb.append("\nuuid\n");
-                sb.append(serviceData16BitUUID.getUuid());
-                sb.append("\nAdditional service data size\n");
-                sb.append(serviceData16BitUUID.getAdditionalServiceData().length);
-                sb.append("\nAdditional service data list\n");
-                sb.append(Arrays.toString(serviceData16BitUUID.getAdditionalServiceData()));
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            ServiceData32BitUUIDAndroid serviceData32BitUUID = result.getServiceData32BitUUID();
-            if (serviceData32BitUUID != null) {
-                sb.append("Service Data - 32-bit UUID");
-                sb.append("\nuuid\n");
-                sb.append(serviceData32BitUUID.getUuid());
-                sb.append("\nAdditional service data size\n");
-                sb.append(serviceData32BitUUID.getAdditionalServiceData().length);
-                sb.append("\nAdditional service data list\n");
-                sb.append(Arrays.toString(serviceData32BitUUID.getAdditionalServiceData()));
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            ServiceData128BitUUIDAndroid serviceData128BitUUID = result.getServiceData128BitUUID();
-            if (serviceData128BitUUID != null) {
-                sb.append("Service Data - 128-bit UUID");
-                sb.append("\nuuid\n");
-                sb.append(serviceData128BitUUID.getUuid());
-                sb.append("\nAdditional service data size\n");
-                sb.append(serviceData128BitUUID.getAdditionalServiceData().length);
-                sb.append("\nAdditional service data list\n");
-                sb.append(Arrays.toString(serviceData128BitUUID.getAdditionalServiceData()));
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            AppearanceAndroid appearance = result.getAppearance();
-            if (appearance != null) {
-                sb.append("Appearance");
-                sb.append("\nkey\n");
-                sb.append(appearance.getAppearanceKey());
-                sb.append("\nvalue\n");
-                sb.append(appearance.getAppearanceValue());
-                sb.append("\ndescription\n");
-                sb.append(appearance.getAppearanceDescription());
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            PublicTargetAddressAndroid publicTargetAddress = result.getPublicTargetAddress();
-            if (publicTargetAddress != null) {
-                sb.append("Public Target Address");
-                sb.append("\nPublic Target Address list\n");
-                sb.append(Arrays.toString(publicTargetAddress.getAddressList().toArray()));
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            RandomTargetAddressAndroid randomTargetAddress = result.getRandomTargetAddress();
-            if (randomTargetAddress != null) {
-                sb.append("Random Target Address");
-                sb.append("\nRandom Target Address list\n");
-                sb.append(Arrays.toString(randomTargetAddress.getAddressList().toArray()));
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            AdvertisingInterval advertisingInterval = result.getAdvertisingInterval();
-            if (advertisingInterval != null) {
-                sb.append("Advertising Interval");
-                sb.append('\n');
-                sb.append(advertisingInterval.getAdvertisingInterval());
-                sb.append("\nAdvertising Interval(millis)\n");
-                sb.append(advertisingInterval.getAdvertisingIntervalMillis());
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            UniformRsourceIdentifierAndroid uniformRsourceIdentifier = result.getUniformRsourceIdentifier();
-            if (uniformRsourceIdentifier != null) {
-                sb.append("URI");
-                sb.append('\n');
-                sb.append(uniformRsourceIdentifier.getUri());
-                sb.append("\nURI text\n");
-                sb.append(uniformRsourceIdentifier.getUriString());
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            LeSupportedFeaturesAndroid leSupportedFeatures = result.getLeSupportedFeatures();
-            if (leSupportedFeatures != null) {
-                sb.append("LE Supported Features");
-                sb.append("\nLE Supported Features size\n");
-                sb.append(leSupportedFeatures.getLeSupportedFeaturesList().size());
-                sb.append("\nLE Supported Features list\n");
-                sb.append(Arrays.toString(leSupportedFeatures.getLeSupportedFeaturesList().toArray()));
-                if (leSupportedFeatures.isLeEncryptionSupported()) {
-                    sb.append("LE Encryption\n");
-                }
-                if (leSupportedFeatures.isConnectionParametersRequestProcedureSupported()) {
-                    sb.append("Connection Parameters Request Procedure\n");
-                }
-                if (leSupportedFeatures.isExtendedRejectIndicationSupported()) {
-                    sb.append("Extended Reject Indication\n");
-                }
-                if (leSupportedFeatures.isSlaveInitiatedFeaturesExchangeSupported()) {
-                    sb.append("Slave-initiated Features Exchange\n");
-                }
-                if (leSupportedFeatures.isLePingSupported()) {
-                    sb.append("LE Ping\n");
-                }
-                if (leSupportedFeatures.isLeDataPacketLengthExtensionSupported()) {
-                    sb.append("LE Data Packet Length Extension\n");
-                }
-                if (leSupportedFeatures.isLlPrivacySupported()) {
-                    sb.append("LL Privacy\n");
-                }
-                if (leSupportedFeatures.isExtendedScannerFilterPoliciesSupported()) {
-                    sb.append("Extended Scanner Filter Policies\n");
-                }
-                if (leSupportedFeatures.isLe2mPhySupported()) {
-                    sb.append("LE 2M PHY\n");
-                }
-                if (leSupportedFeatures.isStableModulationIndexTransmitterSupported()) {
-                    sb.append("Stable Modulation Index - Transmitter\n");
-                }
-                if (leSupportedFeatures.isStableModulationIndexReceiverSupported()) {
-                    sb.append("Stable Modulation Index - Receiver\n");
-                }
-                if (leSupportedFeatures.isLeCodedPhySupported()) {
-                    sb.append("LE Coded PHY\n");
-                }
-                if (leSupportedFeatures.isLeExtendedAdvertisingSupported()) {
-                    sb.append("LE Extended Advertising\n");
-                }
-                if (leSupportedFeatures.isLePeriodicAdvertisingSupported()) {
-                    sb.append("LE Periodic Advertising\n");
-                }
-                if (leSupportedFeatures.isChannelSelectionAlgorithm2Supported()) {
-                    sb.append("Channel Selection Algorithm #2\n");
-                }
-                if (leSupportedFeatures.isLePowerClass1Supported()) {
-                    sb.append("LE Power Class 1\n");
-                }
-                if (leSupportedFeatures.isMinimumNumberOfUsedChannelsProcedureSupported()) {
-                    sb.append("Minimum Number of Used Channels Procedure\n");
-                }
-                if (leSupportedFeatures.isConnectionCteRequestSupported()) {
-                    sb.append("Connection CTE Request\n");
-                }
-                if (leSupportedFeatures.isConnectionCteResponseSupported()) {
-                    sb.append("Connection CTE Response\n");
-                }
-                if (leSupportedFeatures.isConnectionlessCteTransmitterSupported()) {
-                    sb.append("Connectionless CTE Transmitter\n");
-                }
-                if (leSupportedFeatures.isConnectionlessCteReceiverSupported()) {
-                    sb.append("Connectionless CTE Receiver\n");
-                }
-                if (leSupportedFeatures.isAntennaSwitchingDuringCteTransmissionAodSupported()) {
-                    sb.append("Antenna Switching During CTE Transmission (AoD)\n");
-                }
-                if (leSupportedFeatures.isAntennaSwitchingDuringCteReceptionAoaSupported()) {
-                    sb.append("Antenna Switching During CTE Reception (AoA)\n");
-                }
-                if (leSupportedFeatures.isReceivingConstantToneExtensionsSupported()) {
-                    sb.append("Receiving Constant Tone Extensions\n");
-                }
-                if (leSupportedFeatures.isPeriodicAdvertisingSyncTransferSenderSupported()) {
-                    sb.append("Periodic Advertising Sync Transfer - Sender\n");
-                }
-                if (leSupportedFeatures.isPeriodicAdvertisingSyncTransferRecipientSupported()) {
-                    sb.append("Periodic Advertising Sync Transfer - Recipient\n");
-                }
-                if (leSupportedFeatures.isSleepClockAccuracyUpdatesSupported()) {
-                    sb.append("Sleep Clock Accuracy Updates\n");
-                }
-                if (leSupportedFeatures.isRemotePublicKeyValidationSupported()) {
-                    sb.append("Remote Public Key Validation\n");
-                }
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            ChannelMapUpdateIndicationAndroid channelMapUpdateIndication = result.getChannelMapUpdateIndication();
-            if (channelMapUpdateIndication != null) {
-                sb.append("Channel Map Update Indication");
-                sb.append("\nChM size\n");
-                sb.append(channelMapUpdateIndication.getChmList().size());
-                sb.append("\nChM list\n");
-                sb.append(Arrays.toString(channelMapUpdateIndication.getChmList().toArray()));
-                sb.append("\nunused PHY Channel size\n");
-                sb.append(channelMapUpdateIndication.getUnusedPhyChannelList().size());
-                sb.append("\nunused PHY Channel list\n");
-                sb.append(Arrays.toString(channelMapUpdateIndication.getUnusedPhyChannelList().toArray()));
-                sb.append("\nunused RF Center Frequency(MHz) size\n");
-                sb.append(channelMapUpdateIndication.getUnusedPhyChannelRfCenterFrequencyList().size());
-                sb.append("\nunused RF Center Frequency(MHz) list\n");
-                sb.append(Arrays.toString(channelMapUpdateIndication.getUnusedPhyChannelRfCenterFrequencyList().toArray()));
-                sb.append("\nInstant\n");
-                sb.append(channelMapUpdateIndication.getInstant());
-                sb.append('\n');
-                sb.append('\n');
-            }
-
-            final Pair<String, String> log = Pair.create(now, sb.toString());
-
-            mMainActivity.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        mMainActivity.mAdapter.add(log);
-                        mMainActivity.mListView.smoothScrollToPosition(mMainActivity.mAdapter.getCount());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
         }
+
+        CompleteListOf16BitServiceUUIDsAndroid completeListOf16BitServiceUUIDs = result.getCompleteListOf16BitServiceUUIDs();
+        if (completeListOf16BitServiceUUIDs != null) {
+            sb.append("Complete List of 16-bit Service Class UUIDs");
+            sb.append("\nuuid list\n");
+            sb.append(Arrays.toString(completeListOf16BitServiceUUIDs.getUuidList().toArray()));
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        IncompleteListOf32BitServiceUUIDsAndroid incompleteListOf32BitServiceUUIDs = result.getIncompleteListOf32BitServiceUUIDs();
+        if (incompleteListOf32BitServiceUUIDs != null) {
+            sb.append("Incomplete List of 32-bit Service Class UUIDs");
+            sb.append("\nuuid list\n");
+            sb.append(Arrays.toString(incompleteListOf32BitServiceUUIDs.getUuidList().toArray()));
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        CompleteListOf32BitServiceUUIDsAndroid completeListOf32BitServiceUUIDs = result.getCompleteListOf32BitServiceUUIDs();
+        if (completeListOf32BitServiceUUIDs != null) {
+            sb.append("Complete List of 32-bit Service Class UUIDs");
+            sb.append("\nuuid list\n");
+            sb.append(Arrays.toString(completeListOf32BitServiceUUIDs.getUuidList().toArray()));
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        IncompleteListOf128BitServiceUUIDsAndroid incompleteListOf128BitServiceUUIDs = result.getIncompleteListOf128BitServiceUUIDs();
+        if (incompleteListOf128BitServiceUUIDs != null) {
+            sb.append("Incomplete List of 128-bit Service Class UUIDs");
+            sb.append("\nuuid list\n");
+            sb.append(Arrays.toString(incompleteListOf128BitServiceUUIDs.getUuidList().toArray()));
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        CompleteListOf128BitServiceUUIDsAndroid completeListOf128BitServiceUUIDs = result.getCompleteListOf128BitServiceUUIDs();
+        if (completeListOf128BitServiceUUIDs != null) {
+            sb.append("Complete List of 128-bit Service Class UUIDs");
+            sb.append("\nuuid list\n");
+            sb.append(Arrays.toString(completeListOf128BitServiceUUIDs.getUuidList().toArray()));
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        ShortenedLocalNameAndroid shortenedLocalName = result.getShortenedLocalName();
+        if (shortenedLocalName != null) {
+            sb.append("Shortened Local Name");
+            sb.append('\n');
+            sb.append(shortenedLocalName.getShortenedLocalName());
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        CompleteLocalNameAndroid completeLocalName = result.getCompleteLocalName();
+        if (completeLocalName != null) {
+            sb.append("Complete Local Name");
+            sb.append('\n');
+            sb.append(completeLocalName.getCompleteLocalName());
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        FlagsAndroid flags = result.getFlags();
+        if (flags != null) {
+            sb.append("Flags");
+            sb.append("\nflag list\n");
+            sb.append(Arrays.toString(flags.getFlagsList().toArray()));
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        ManufacturerSpecificDataAndroid manufacturerSpecificData = result.getManufacturerSpecificData();
+        if (manufacturerSpecificData != null) {
+            sb.append("Manufacturer Specific Data");
+            sb.append("\nCompany Identifier Code\n");
+            sb.append(manufacturerSpecificData.getCompanyIdentifier());
+            sb.append("\nCompany Name\n");
+            sb.append(manufacturerSpecificData.getCompanyName());
+            sb.append("\nManufacturer Specific Data size\n");
+            sb.append(manufacturerSpecificData.getManufacturerSpecificData().length);
+            sb.append("\nManufacturer Specific Data list\n");
+            sb.append(Arrays.toString(manufacturerSpecificData.getManufacturerSpecificData()));
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        TxPowerLevelAndroid txPowerLevel = result.getTxPowerLevel();
+        if (txPowerLevel != null) {
+            sb.append("Tx Power Level");
+            sb.append('\n');
+            sb.append(txPowerLevel.getTxPowerLevel());
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        SlaveConnectionIntervalRangeAndroid slaveConnectionIntervalRange = result.getSlaveConnectionIntervalRange();
+        if (slaveConnectionIntervalRange != null) {
+            sb.append("Slave Connection Interval Range");
+            if (slaveConnectionIntervalRange.hasMaximum()) {
+                sb.append("\nhas maximum\n");
+                sb.append(slaveConnectionIntervalRange.getMaximumValueMillis());
+            }
+            if (slaveConnectionIntervalRange.hasMinimum()) {
+                sb.append("\nhas minimum\n");
+                sb.append(slaveConnectionIntervalRange.getMinimumValueMillis());
+            }
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        ListOf16BitServiceSolicitationUUIDsAndroid listOf16BitServiceSolicitationUUIDs = result.getListOf16BitServiceSolicitationUUIDs();
+        if (listOf16BitServiceSolicitationUUIDs != null) {
+            sb.append("List of 16-bit Service Solicitation UUIDs");
+            sb.append("\nuuid list\n");
+            sb.append(Arrays.toString(listOf16BitServiceSolicitationUUIDs.getUuidList().toArray()));
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        ListOf32BitServiceSolicitationUUIDsAndroid listOf32BitServiceSolicitationUUIDs = result.getListOf32BitServiceSolicitationUUIDs();
+        if (listOf32BitServiceSolicitationUUIDs != null) {
+            sb.append("List of 32-bit Service Solicitation UUIDs");
+            sb.append("\nuuid list\n");
+            sb.append(Arrays.toString(listOf32BitServiceSolicitationUUIDs.getUuidList().toArray()));
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        ListOf128BitServiceSolicitationUUIDsAndroid listOf128BitServiceSolicitationUUIDs = result.getListOf128BitServiceSolicitationUUIDs();
+        if (listOf128BitServiceSolicitationUUIDs != null) {
+            sb.append("List of 128-bit Service Solicitation UUIDs");
+            sb.append("\nuuid list\n");
+            sb.append(Arrays.toString(listOf128BitServiceSolicitationUUIDs.getUuidList().toArray()));
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        ServiceData16BitUUIDAndroid serviceData16BitUUID = result.getServiceData16BitUUID();
+        if (serviceData16BitUUID != null) {
+            sb.append("Service Data - 16-bit UUID");
+            sb.append("\nuuid\n");
+            sb.append(serviceData16BitUUID.getUuid());
+            sb.append("\nAdditional service data size\n");
+            sb.append(serviceData16BitUUID.getAdditionalServiceData().length);
+            sb.append("\nAdditional service data list\n");
+            sb.append(Arrays.toString(serviceData16BitUUID.getAdditionalServiceData()));
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        ServiceData32BitUUIDAndroid serviceData32BitUUID = result.getServiceData32BitUUID();
+        if (serviceData32BitUUID != null) {
+            sb.append("Service Data - 32-bit UUID");
+            sb.append("\nuuid\n");
+            sb.append(serviceData32BitUUID.getUuid());
+            sb.append("\nAdditional service data size\n");
+            sb.append(serviceData32BitUUID.getAdditionalServiceData().length);
+            sb.append("\nAdditional service data list\n");
+            sb.append(Arrays.toString(serviceData32BitUUID.getAdditionalServiceData()));
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        ServiceData128BitUUIDAndroid serviceData128BitUUID = result.getServiceData128BitUUID();
+        if (serviceData128BitUUID != null) {
+            sb.append("Service Data - 128-bit UUID");
+            sb.append("\nuuid\n");
+            sb.append(serviceData128BitUUID.getUuid());
+            sb.append("\nAdditional service data size\n");
+            sb.append(serviceData128BitUUID.getAdditionalServiceData().length);
+            sb.append("\nAdditional service data list\n");
+            sb.append(Arrays.toString(serviceData128BitUUID.getAdditionalServiceData()));
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        AppearanceAndroid appearance = result.getAppearance();
+        if (appearance != null) {
+            sb.append("Appearance");
+            sb.append("\nkey\n");
+            sb.append(appearance.getAppearanceKey());
+            sb.append("\nvalue\n");
+            sb.append(appearance.getAppearanceValue());
+            sb.append("\ndescription\n");
+            sb.append(appearance.getAppearanceDescription());
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        PublicTargetAddressAndroid publicTargetAddress = result.getPublicTargetAddress();
+        if (publicTargetAddress != null) {
+            sb.append("Public Target Address");
+            sb.append("\nPublic Target Address list\n");
+            sb.append(Arrays.toString(publicTargetAddress.getAddressList().toArray()));
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        RandomTargetAddressAndroid randomTargetAddress = result.getRandomTargetAddress();
+        if (randomTargetAddress != null) {
+            sb.append("Random Target Address");
+            sb.append("\nRandom Target Address list\n");
+            sb.append(Arrays.toString(randomTargetAddress.getAddressList().toArray()));
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        AdvertisingInterval advertisingInterval = result.getAdvertisingInterval();
+        if (advertisingInterval != null) {
+            sb.append("Advertising Interval");
+            sb.append('\n');
+            sb.append(advertisingInterval.getAdvertisingInterval());
+            sb.append("\nAdvertising Interval(millis)\n");
+            sb.append(advertisingInterval.getAdvertisingIntervalMillis());
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        UniformRsourceIdentifierAndroid uniformRsourceIdentifier = result.getUniformRsourceIdentifier();
+        if (uniformRsourceIdentifier != null) {
+            sb.append("URI");
+            sb.append('\n');
+            sb.append(uniformRsourceIdentifier.getUri());
+            sb.append("\nURI text\n");
+            sb.append(uniformRsourceIdentifier.getUriString());
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        LeSupportedFeaturesAndroid leSupportedFeatures = result.getLeSupportedFeatures();
+        if (leSupportedFeatures != null) {
+            sb.append("LE Supported Features");
+            sb.append("\nLE Supported Features size\n");
+            sb.append(leSupportedFeatures.getLeSupportedFeaturesList().size());
+            sb.append("\nLE Supported Features list\n");
+            sb.append(Arrays.toString(leSupportedFeatures.getLeSupportedFeaturesList().toArray()));
+            if (leSupportedFeatures.isLeEncryptionSupported()) {
+                sb.append("LE Encryption\n");
+            }
+            if (leSupportedFeatures.isConnectionParametersRequestProcedureSupported()) {
+                sb.append("Connection Parameters Request Procedure\n");
+            }
+            if (leSupportedFeatures.isExtendedRejectIndicationSupported()) {
+                sb.append("Extended Reject Indication\n");
+            }
+            if (leSupportedFeatures.isSlaveInitiatedFeaturesExchangeSupported()) {
+                sb.append("Slave-initiated Features Exchange\n");
+            }
+            if (leSupportedFeatures.isLePingSupported()) {
+                sb.append("LE Ping\n");
+            }
+            if (leSupportedFeatures.isLeDataPacketLengthExtensionSupported()) {
+                sb.append("LE Data Packet Length Extension\n");
+            }
+            if (leSupportedFeatures.isLlPrivacySupported()) {
+                sb.append("LL Privacy\n");
+            }
+            if (leSupportedFeatures.isExtendedScannerFilterPoliciesSupported()) {
+                sb.append("Extended Scanner Filter Policies\n");
+            }
+            if (leSupportedFeatures.isLe2mPhySupported()) {
+                sb.append("LE 2M PHY\n");
+            }
+            if (leSupportedFeatures.isStableModulationIndexTransmitterSupported()) {
+                sb.append("Stable Modulation Index - Transmitter\n");
+            }
+            if (leSupportedFeatures.isStableModulationIndexReceiverSupported()) {
+                sb.append("Stable Modulation Index - Receiver\n");
+            }
+            if (leSupportedFeatures.isLeCodedPhySupported()) {
+                sb.append("LE Coded PHY\n");
+            }
+            if (leSupportedFeatures.isLeExtendedAdvertisingSupported()) {
+                sb.append("LE Extended Advertising\n");
+            }
+            if (leSupportedFeatures.isLePeriodicAdvertisingSupported()) {
+                sb.append("LE Periodic Advertising\n");
+            }
+            if (leSupportedFeatures.isChannelSelectionAlgorithm2Supported()) {
+                sb.append("Channel Selection Algorithm #2\n");
+            }
+            if (leSupportedFeatures.isLePowerClass1Supported()) {
+                sb.append("LE Power Class 1\n");
+            }
+            if (leSupportedFeatures.isMinimumNumberOfUsedChannelsProcedureSupported()) {
+                sb.append("Minimum Number of Used Channels Procedure\n");
+            }
+            if (leSupportedFeatures.isConnectionCteRequestSupported()) {
+                sb.append("Connection CTE Request\n");
+            }
+            if (leSupportedFeatures.isConnectionCteResponseSupported()) {
+                sb.append("Connection CTE Response\n");
+            }
+            if (leSupportedFeatures.isConnectionlessCteTransmitterSupported()) {
+                sb.append("Connectionless CTE Transmitter\n");
+            }
+            if (leSupportedFeatures.isConnectionlessCteReceiverSupported()) {
+                sb.append("Connectionless CTE Receiver\n");
+            }
+            if (leSupportedFeatures.isAntennaSwitchingDuringCteTransmissionAodSupported()) {
+                sb.append("Antenna Switching During CTE Transmission (AoD)\n");
+            }
+            if (leSupportedFeatures.isAntennaSwitchingDuringCteReceptionAoaSupported()) {
+                sb.append("Antenna Switching During CTE Reception (AoA)\n");
+            }
+            if (leSupportedFeatures.isReceivingConstantToneExtensionsSupported()) {
+                sb.append("Receiving Constant Tone Extensions\n");
+            }
+            if (leSupportedFeatures.isPeriodicAdvertisingSyncTransferSenderSupported()) {
+                sb.append("Periodic Advertising Sync Transfer - Sender\n");
+            }
+            if (leSupportedFeatures.isPeriodicAdvertisingSyncTransferRecipientSupported()) {
+                sb.append("Periodic Advertising Sync Transfer - Recipient\n");
+            }
+            if (leSupportedFeatures.isSleepClockAccuracyUpdatesSupported()) {
+                sb.append("Sleep Clock Accuracy Updates\n");
+            }
+            if (leSupportedFeatures.isRemotePublicKeyValidationSupported()) {
+                sb.append("Remote Public Key Validation\n");
+            }
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        ChannelMapUpdateIndicationAndroid channelMapUpdateIndication = result.getChannelMapUpdateIndication();
+        if (channelMapUpdateIndication != null) {
+            sb.append("Channel Map Update Indication");
+            sb.append("\nChM size\n");
+            sb.append(channelMapUpdateIndication.getChmList().size());
+            sb.append("\nChM list\n");
+            sb.append(Arrays.toString(channelMapUpdateIndication.getChmList().toArray()));
+            sb.append("\nunused PHY Channel size\n");
+            sb.append(channelMapUpdateIndication.getUnusedPhyChannelList().size());
+            sb.append("\nunused PHY Channel list\n");
+            sb.append(Arrays.toString(channelMapUpdateIndication.getUnusedPhyChannelList().toArray()));
+            sb.append("\nunused RF Center Frequency(MHz) size\n");
+            sb.append(channelMapUpdateIndication.getUnusedPhyChannelRfCenterFrequencyList().size());
+            sb.append("\nunused RF Center Frequency(MHz) list\n");
+            sb.append(Arrays.toString(channelMapUpdateIndication.getUnusedPhyChannelRfCenterFrequencyList().toArray()));
+            sb.append("\nInstant\n");
+            sb.append(channelMapUpdateIndication.getInstant());
+            sb.append('\n');
+            sb.append('\n');
+        }
+
+        final Pair<String, String> log = Pair.create(now, sb.toString());
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    mAdapter.add(log);
+                    mListView.smoothScrollToPosition(mAdapter.getCount());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private Button mGetPermissionButton;
@@ -535,7 +522,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 if (mFilteredLeScanCallback == null) {
                     if (hasPermission()) {
                         mConnectDisconnectButton.setText(R.string.scan_stop);
-                        mFilteredLeScanCallback = new FilteredLeScanCallback.Builder().setScanCallback(new TestLeScanCallback(this)).build();
+                        mFilteredLeScanCallback = new FilteredLeScanCallback.Builder(this, null).build();
                         mBluetoothAdapter.startLeScan(mFilteredLeScanCallback);
                     }
                 } else {

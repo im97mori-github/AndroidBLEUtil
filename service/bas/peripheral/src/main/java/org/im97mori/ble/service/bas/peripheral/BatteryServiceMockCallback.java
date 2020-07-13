@@ -46,17 +46,17 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * Battery Level characteristic map
          */
-        private final Map<Integer, CharacteristicData> mCharacteristicDataMap = new HashMap<>();
+        protected final Map<Integer, CharacteristicData> mCharacteristicDataMap = new HashMap<>();
 
         /**
          * Client Characteristic Configuration map
          */
-        private final Map<Integer, DescriptorData> mClientCharacteristicConfigurationMap = new HashMap<>();
+        protected final Map<Integer, DescriptorData> mClientCharacteristicConfigurationMap = new HashMap<>();
 
         /**
          * Characteristic Presentation Format map
          */
-        private final Map<Integer, DescriptorData> mCharacteristicPresentationFormatMap = new HashMap<>();
+        protected final Map<Integer, DescriptorData> mCharacteristicPresentationFormatMap = new HashMap<>();
 
         /**
          * add Battery Level characteristic
