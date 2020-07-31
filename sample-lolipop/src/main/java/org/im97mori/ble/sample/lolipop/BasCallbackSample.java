@@ -15,12 +15,11 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.MockData;
-import org.im97mori.ble.characteristic.u2a35.BloodPressureMeasurementAndroid;
-import org.im97mori.ble.characteristic.u2a36.IntermediateCuffPressureAndroid;
-import org.im97mori.ble.characteristic.u2a49.BloodPressureFeatureAndroid;
+import org.im97mori.ble.characteristic.u2a19.BatteryLevelAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
-import org.im97mori.ble.service.bls.central.BloodPressureServiceCallback;
-import org.im97mori.ble.service.bls.peripheral.BloodPressureServiceMockCallback;
+import org.im97mori.ble.descriptor.u2904.CharacteristicPresentationFormatAndroid;
+import org.im97mori.ble.service.bas.cental.BatteryServiceCallback;
+import org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -30,9 +29,9 @@ import java.util.Locale;
 import java.util.UUID;
 
 @SuppressWarnings("unused")
-public class BlsMockCallbackSample extends BloodPressureServiceMockCallback implements BloodPressureServiceCallback, BLECallback {
+public class BasCallbackSample extends BatteryServiceMockCallback implements BatteryServiceCallback, BLECallback {
 
-    public static class Builder extends BloodPressureServiceMockCallback.Builder<BlsMockCallbackSample> {
+    public static class Builder extends BatteryServiceMockCallback.Builder<BasCallbackSample> {
 
         private SampleCallback mSampleCallback;
 
@@ -42,8 +41,8 @@ public class BlsMockCallbackSample extends BloodPressureServiceMockCallback impl
 
         @NonNull
         @Override
-        public BlsMockCallbackSample build() {
-            return new BlsMockCallbackSample(createMockData(), false, mSampleCallback);
+        public BasCallbackSample build() {
+            return new BasCallbackSample(createMockData(), false, mSampleCallback);
         }
     }
 
@@ -51,7 +50,7 @@ public class BlsMockCallbackSample extends BloodPressureServiceMockCallback impl
 
     private final SampleCallback mSampleCallback;
 
-    BlsMockCallbackSample(@NonNull MockData mockData, boolean isFallback, SampleCallback sampleCallback) {
+    BasCallbackSample(@NonNull MockData mockData, boolean isFallback, SampleCallback sampleCallback) {
         super(mockData, isFallback);
         mSampleCallback = sampleCallback;
     }
@@ -61,7 +60,7 @@ public class BlsMockCallbackSample extends BloodPressureServiceMockCallback impl
         StackTraceElement[] stackTraceElementArray = Thread.currentThread().getStackTrace();
         for (int i = 0; i < stackTraceElementArray.length; i++) {
             StackTraceElement stackTraceElement = stackTraceElementArray[i];
-            if (BlsMockCallbackSample.class.getName().equals(stackTraceElement.getClassName())
+            if (BasCallbackSample.class.getName().equals(stackTraceElement.getClassName())
                     && "callback".equals(stackTraceElement.getMethodName())) {
                 index = i + 1;
                 break;
@@ -347,11 +346,8 @@ public class BlsMockCallbackSample extends BloodPressureServiceMockCallback impl
 
     @Override
     public boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
-        boolean result = super.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, argument);
-        if (result) {
-            callback(bluetoothGattService.getUuid());
-        }
-        return result;
+        callback(bluetoothGattService.getUuid());
+        return super.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, argument);
     }
 
     @Override
@@ -382,38 +378,26 @@ public class BlsMockCallbackSample extends BloodPressureServiceMockCallback impl
 
     @Override
     public boolean onCharacteristicReadRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean force) {
-        boolean result = super.onCharacteristicReadRequest(bleServerConnection, device, requestId, offset, bluetoothGattCharacteristic, force);
-        if (result) {
-            callback(device, bluetoothGattCharacteristic.getUuid());
-        }
-        return result;
+        callback(device, bluetoothGattCharacteristic.getUuid());
+        return super.onCharacteristicReadRequest(bleServerConnection, device, requestId, offset, bluetoothGattCharacteristic, force);
     }
 
     @Override
     public boolean onCharacteristicWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value, boolean force) {
-        boolean result = super.onCharacteristicWriteRequest(bleServerConnection, device, requestId, bluetoothGattCharacteristic, preparedWrite, responseNeeded, offset, value, force);
-        if (result) {
-            callback(device, bluetoothGattCharacteristic.getUuid());
-        }
-        return result;
+        callback(device, bluetoothGattCharacteristic.getUuid());
+        return super.onCharacteristicWriteRequest(bleServerConnection, device, requestId, bluetoothGattCharacteristic, preparedWrite, responseNeeded, offset, value, force);
     }
 
     @Override
     public boolean onDescriptorReadRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattDescriptor bluetoothGattDescriptor, boolean force) {
-        boolean result = super.onDescriptorReadRequest(bleServerConnection, device, requestId, offset, bluetoothGattDescriptor, false);
-        if (result) {
-            callback(device, bluetoothGattDescriptor.getUuid());
-        }
-        return result;
+        callback(device, bluetoothGattDescriptor.getUuid());
+        return super.onDescriptorReadRequest(bleServerConnection, device, requestId, offset, bluetoothGattDescriptor, false);
     }
 
     @Override
     public boolean onDescriptorWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattDescriptor bluetoothGattDescriptor, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value, boolean force) {
-        boolean result = super.onDescriptorWriteRequest(bleServerConnection, device, requestId, bluetoothGattDescriptor, preparedWrite, responseNeeded, offset, value, force);
-        if (result) {
-            callback(device, bluetoothGattDescriptor.getUuid());
-        }
-        return result;
+        callback(device, bluetoothGattDescriptor.getUuid());
+        return super.onDescriptorWriteRequest(bleServerConnection, device, requestId, bluetoothGattDescriptor, preparedWrite, responseNeeded, offset, value, force);
     }
 
     @Override
@@ -474,148 +458,83 @@ public class BlsMockCallbackSample extends BloodPressureServiceMockCallback impl
     }
 
     @Override
-    public void onBloodPressureMeasurementClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, Arrays.toString(clientCharacteristicConfigurationAndroid.getBytes()));
+    public void onBatteryLevelReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull BatteryLevelAndroid batteryLevelAndroid, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, batteryLevelAndroid.getLevel());
     }
 
     @Override
-    public void onBloodPressureMeasurementClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
+    public void onBatteryLevelReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, status);
     }
 
     @Override
-    public void onBloodPressureMeasurementClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
+    public void onBatteryLevelReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, timeout);
     }
 
     @Override
-    public void onBloodPressureMeasurementIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID);
+    public void onClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, Arrays.toString(clientCharacteristicConfigurationAndroid.getProperties()));
     }
 
     @Override
-    public void onBloodPressureMeasurementIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
+    public void onClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, status);
     }
 
     @Override
-    public void onBloodPressureMeasurementIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
+    public void onClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, timeout);
     }
 
     @Override
-    public void onBloodPressureMeasurementIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
+    public void onCharacteristicPresentationFormatReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicPresentationFormatAndroid characteristicPresentationFormatAndroid, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, characteristicPresentationFormatAndroid.getFormat(), characteristicPresentationFormatAndroid.getExponent(), characteristicPresentationFormatAndroid.getUnit(), characteristicPresentationFormatAndroid.getNamespace(), characteristicPresentationFormatAndroid.getDescription());
     }
 
     @Override
-    public void onBloodPressureMeasurementIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
+    public void onCharacteristicPresentationFormatReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, status);
     }
 
     @Override
-    public void onBloodPressureMeasurementIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
+    public void onCharacteristicPresentationFormatReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, timeout);
     }
 
     @Override
-    public void onBloodPressureMeasurementIndicated(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull BloodPressureMeasurementAndroid bloodPressureMeasurementAndroid) {
-        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId
-                , bloodPressureMeasurementAndroid.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat()
-                , bloodPressureMeasurementAndroid.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat()
-                , bloodPressureMeasurementAndroid.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat()
-                , bloodPressureMeasurementAndroid.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat()
-                , bloodPressureMeasurementAndroid.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat()
-                , bloodPressureMeasurementAndroid.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat()
-                , bloodPressureMeasurementAndroid.getYear()
-                , bloodPressureMeasurementAndroid.getMonth()
-                , bloodPressureMeasurementAndroid.getDay()
-                , bloodPressureMeasurementAndroid.getHours()
-                , bloodPressureMeasurementAndroid.getMinutes()
-                , bloodPressureMeasurementAndroid.getSeconds()
-                , bloodPressureMeasurementAndroid.getPulseRate().getSfloat()
-                , bloodPressureMeasurementAndroid.getUserId()
-                , Arrays.toString(bloodPressureMeasurementAndroid.getMeasurementStatus()));
+    public void onBatteryLevelNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index);
     }
 
     @Override
-    public void onIntermediateCuffPressureClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, Arrays.toString(clientCharacteristicConfigurationAndroid.getBytes()));
+    public void onBatteryLevelNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index);
     }
 
     @Override
-    public void onIntermediateCuffPressureClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
+    public void onBatteryLevelNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index);
     }
 
     @Override
-    public void onIntermediateCuffPressureClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
+    public void onBatteryLevelNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index);
     }
 
     @Override
-    public void onIntermediateCuffPressureNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
+    public void onBatteryLevelNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index);
     }
 
     @Override
-    public void onIntermediateCuffPressureNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
+    public void onBatteryLevelNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index);
     }
 
     @Override
-    public void onIntermediateCuffPressureNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
-    }
-
-    @Override
-    public void onIntermediateCuffPressureNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
-    }
-
-    @Override
-    public void onIntermediateCuffPressureNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
-    }
-
-    @Override
-    public void onIntermediateCuffPressureNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
-    }
-
-    @Override
-    public void onIntermediateCuffPressureNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull IntermediateCuffPressureAndroid intermediateCuffPressureAndroid) {
-        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueSystolicMmhg().getSfloat()
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueDiastolicMmhg().getSfloat()
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg().getSfloat()
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueSystolicKpa().getSfloat()
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueDiastolicKpa().getSfloat()
-                , intermediateCuffPressureAndroid.getBloodPressureMeasurementCompoundValueMeanArterialPressureKpa().getSfloat()
-                , intermediateCuffPressureAndroid.getYear()
-                , intermediateCuffPressureAndroid.getMonth()
-                , intermediateCuffPressureAndroid.getDay()
-                , intermediateCuffPressureAndroid.getHours()
-                , intermediateCuffPressureAndroid.getMinutes()
-                , intermediateCuffPressureAndroid.getSeconds()
-                , intermediateCuffPressureAndroid.getPulseRate().getSfloat()
-                , intermediateCuffPressureAndroid.getUserId()
-                , Arrays.toString(intermediateCuffPressureAndroid.getMeasurementStatus()));
-    }
-
-    @Override
-    public void onBloodPressureFeatureReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull BloodPressureFeatureAndroid bloodPressureFeatureAndroid, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, Arrays.toString(bloodPressureFeatureAndroid.getBytes()));
-    }
-
-    @Override
-    public void onBloodPressureFeatureReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
-    }
-
-    @Override
-    public void onBloodPressureFeatureReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
+    public void onBatteryLevelNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull BatteryLevelAndroid batteryLevelAndroid) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, batteryLevelAndroid.getLevel());
     }
 
 }

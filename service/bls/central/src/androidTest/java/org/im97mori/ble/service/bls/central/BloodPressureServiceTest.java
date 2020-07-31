@@ -42,6 +42,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("UnnecessaryLocalVariable")
 public class BloodPressureServiceTest {
 
     @Test
@@ -2916,6 +2917,20 @@ public class BloodPressureServiceTest {
         bloodPressureService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(bloodPressureService.isIntermediateCuffPressureSupported());
+    }
+
+    @Test
+    public void test_isIntermediateCuffPressureSupported_00003() {
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null);
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(BLOOD_PRESSURE_SERVICE, 0);
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
+        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
+        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
+        bloodPressureService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        bloodPressureService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0 , null);
+
+        assertFalse(bloodPressureService.isIntermediateCuffPressureSupported());
     }
 
     @Test

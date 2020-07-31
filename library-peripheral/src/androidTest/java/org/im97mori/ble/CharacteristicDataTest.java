@@ -157,7 +157,49 @@ public class CharacteristicDataTest {
     }
 
     @Test
-    public void test_setNotificationCou8nt_00001() {
+    public void test_getBytes_00001() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+
+        byte[] firstData = new byte[0];
+        CharacteristicData characteristicData = new CharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, firstData, 5);
+        assertArrayEquals(firstData, characteristicData.getBytes());
+
+        byte[] secondData = new byte[1];
+        characteristicData.data = secondData;
+        assertArrayEquals(secondData, characteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00002() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+
+        byte[] firstData = new byte[0];
+        CharacteristicData characteristicData = new CharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, firstData, 5);
+        assertArrayEquals(firstData, characteristicData.getBytes());
+
+        byte[] secondData = new byte[1];
+        characteristicData.currentData = secondData;
+        assertArrayEquals(secondData, characteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00003() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+
+        byte[] firstData = new byte[0];
+        CharacteristicData characteristicData = new CharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, firstData, 5);
+        assertArrayEquals(firstData, characteristicData.getBytes());
+
+        byte[] secondData = new byte[1];
+        characteristicData.temporaryData = secondData;
+        assertArrayEquals(firstData, characteristicData.getBytes());
+    }
+
+    @Test
+    public void test_setNotificationCount_00001() {
         List<DescriptorData> descriptorDataList = new ArrayList<>();
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
 
@@ -191,6 +233,36 @@ public class CharacteristicDataTest {
         assertEquals(result1.responseCode, result2.responseCode);
         assertEquals(result1.delay, result2.delay);
         assertArrayEquals(result1.data, result2.data);
+        assertArrayEquals(result1.currentData, result2.currentData);
+        assertArrayEquals(result1.temporaryData, result2.temporaryData);
+        assertEquals(result1.notificationCount, result2.notificationCount);
+    }
+
+    @Test
+    public void test_parcelable_00002() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, new byte[]{5, 6}, 7);
+        result1.currentData = new byte[]{8};
+        result1.temporaryData = new byte[]{9};
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        CharacteristicData result2 = CharacteristicData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(result1.uuid, result2.uuid);
+        assertEquals(result1.property, result2.property);
+        assertEquals(result1.permission, result2.permission);
+        assertNotNull(result2.descriptorDataList);
+        assertEquals(result1.descriptorDataList.size(), result2.descriptorDataList.size());
+        assertArrayEquals(result1.descriptorDataList.toArray(), result2.descriptorDataList.toArray());
+        result1.descriptorDataList.clear();
+        assertNotEquals(result1.descriptorDataList.size(), result2.descriptorDataList.size());
+        assertEquals(result1.responseCode, result2.responseCode);
+        assertEquals(result1.delay, result2.delay);
+        assertArrayEquals(result1.data, result2.data);
+        assertArrayEquals(result1.currentData, result2.currentData);
+        assertArrayEquals(result1.temporaryData, result2.temporaryData);
         assertEquals(result1.notificationCount, result2.notificationCount);
     }
 
@@ -214,6 +286,38 @@ public class CharacteristicDataTest {
                         ^ Integer.valueOf(responseCode).hashCode()
                         ^ Long.valueOf(delay).hashCode()
                         ^ Arrays.hashCode(data)
+                        ^ Arrays.hashCode((byte[]) null)
+                        ^ Arrays.hashCode((byte[]) null)
+                        ^ Integer.valueOf(notificationCount).hashCode()
+                , result1.hashCode());
+    }
+
+    @Test
+    public void test_hashCode_00002() {
+        UUID uuid = UUID.randomUUID();
+        int property = 1;
+        int permission = 2;
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        int responseCode = 3;
+        long delay = 4;
+        byte[] data = new byte[]{5, 6};
+        byte[] currentData = new byte[]{7, 8};
+        byte[] temporaryData = new byte[]{9, 10};
+        int notificationCount = 11;
+
+        CharacteristicData result1 = new CharacteristicData(uuid, property, permission, descriptorDataList, responseCode, delay, data, notificationCount);
+        result1.currentData = currentData;
+        result1.temporaryData = temporaryData;
+        assertEquals(uuid.hashCode()
+                        ^ Integer.valueOf(property).hashCode()
+                        ^ Integer.valueOf(permission).hashCode()
+                        ^ Arrays.hashCode(descriptorDataList.toArray())
+                        ^ Integer.valueOf(responseCode).hashCode()
+                        ^ Long.valueOf(delay).hashCode()
+                        ^ Arrays.hashCode(data)
+                        ^ Arrays.hashCode(currentData)
+                        ^ Arrays.hashCode(temporaryData)
                         ^ Integer.valueOf(notificationCount).hashCode()
                 , result1.hashCode());
     }
@@ -401,6 +505,301 @@ public class CharacteristicDataTest {
         int firstNotificationCount = 7;
 
         CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        assertNotEquals(null, result1);
+    }
+
+    @Test
+    public void test_equals_00101() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstProperty = 1;
+        int firstPermission = 2;
+        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        int firstResponseCode = 3;
+        long firstDelay = 4;
+        byte[] firstData = new byte[]{5, 6};
+        byte[] firstCurrentData = new byte[]{7, 8};
+        byte[] firstTemporaryData = new byte[]{9, 10};
+        int firstNotificationCount = 11;
+
+        CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = firstTemporaryData;
+        assertEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00102() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstProperty = 1;
+        int firstPermission = 2;
+        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        int firstResponseCode = 3;
+        long firstDelay = 4;
+        byte[] firstData = new byte[]{5, 6};
+        byte[] firstCurrentData = new byte[]{7, 8};
+        byte[] firstTemporaryData = new byte[]{9, 10};
+        int firstNotificationCount = 11;
+
+        UUID secondUUID = UUID.fromString("00000000-0000-0000-0000-000000000001");
+
+        CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        CharacteristicData result2 = new CharacteristicData(secondUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = firstTemporaryData;
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00103() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstProperty = 1;
+        int firstPermission = 2;
+        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        int firstResponseCode = 3;
+        long firstDelay = 4;
+        byte[] firstData = new byte[]{5, 6};
+        byte[] firstCurrentData = new byte[]{7, 8};
+        byte[] firstTemporaryData = new byte[]{9, 10};
+        int firstNotificationCount = 11;
+
+        int secondProperty = 12;
+
+        CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        CharacteristicData result2 = new CharacteristicData(firstUUID, secondProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = firstTemporaryData;
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00104() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstProperty = 1;
+        int firstPermission = 2;
+        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        int firstResponseCode = 3;
+        long firstDelay = 4;
+        byte[] firstData = new byte[]{5, 6};
+        byte[] firstCurrentData = new byte[]{7, 8};
+        byte[] firstTemporaryData = new byte[]{9, 10};
+        int firstNotificationCount = 11;
+
+        int secondPermission = 22;
+
+        CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, secondPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = firstTemporaryData;
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00105() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstProperty = 1;
+        int firstPermission = 2;
+        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        int firstResponseCode = 3;
+        long firstDelay = 4;
+        byte[] firstData = new byte[]{5, 6};
+        byte[] firstCurrentData = new byte[]{7, 8};
+        byte[] firstTemporaryData = new byte[]{9, 10};
+        int firstNotificationCount = 11;
+
+
+        List<DescriptorData> secondDescriptorDataList = new ArrayList<>();
+        secondDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 111, 222, 333, null));
+
+        CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, secondDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = firstTemporaryData;
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00106() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstProperty = 1;
+        int firstPermission = 2;
+        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        int firstResponseCode = 3;
+        long firstDelay = 4;
+        byte[] firstData = new byte[]{5, 6};
+        byte[] firstCurrentData = new byte[]{7, 8};
+        byte[] firstTemporaryData = new byte[]{9, 10};
+        int firstNotificationCount = 11;
+
+        int secondResponseCode = 33;
+
+        CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, secondResponseCode, firstDelay, firstData, firstNotificationCount);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = firstTemporaryData;
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00107() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstProperty = 1;
+        int firstPermission = 2;
+        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        int firstResponseCode = 3;
+        long firstDelay = 4;
+        byte[] firstData = new byte[]{5, 6};
+        byte[] firstCurrentData = new byte[]{7, 8};
+        byte[] firstTemporaryData = new byte[]{9, 10};
+        int firstNotificationCount = 11;
+
+        long secondDelay = 44;
+
+        CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, secondDelay, firstData, firstNotificationCount);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = firstTemporaryData;
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00108() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstProperty = 1;
+        int firstPermission = 2;
+        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        int firstResponseCode = 3;
+        long firstDelay = 4;
+        byte[] firstData = new byte[]{5, 6};
+        byte[] firstCurrentData = new byte[]{7, 8};
+        byte[] firstTemporaryData = new byte[]{9, 10};
+        int firstNotificationCount = 11;
+
+        byte[] secondData = new byte[]{55, 66};
+
+        CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, secondData, firstNotificationCount);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = firstTemporaryData;
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00109() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstProperty = 1;
+        int firstPermission = 2;
+        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        int firstResponseCode = 3;
+        long firstDelay = 4;
+        byte[] firstData = new byte[]{5, 6};
+        byte[] firstCurrentData = new byte[]{7, 8};
+        byte[] firstTemporaryData = new byte[]{9, 10};
+        int firstNotificationCount = 11;
+
+        byte[] secondCurrentData = new byte[]{77, 88};
+
+        CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result2.currentData = secondCurrentData;
+        result2.temporaryData = firstTemporaryData;
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00110() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstProperty = 1;
+        int firstPermission = 2;
+        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        int firstResponseCode = 3;
+        long firstDelay = 4;
+        byte[] firstData = new byte[]{5, 6};
+        byte[] firstCurrentData = new byte[]{7, 8};
+        byte[] firstTemporaryData = new byte[]{9, 10};
+        int firstNotificationCount = 11;
+
+        byte[] secondTemporaryData = new byte[]{99, 110};
+
+        CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = secondTemporaryData;
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00111() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstProperty = 1;
+        int firstPermission = 2;
+        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        int firstResponseCode = 3;
+        long firstDelay = 4;
+        byte[] firstData = new byte[]{5, 6};
+        byte[] firstCurrentData = new byte[]{7, 8};
+        byte[] firstTemporaryData = new byte[]{9, 10};
+        int firstNotificationCount = 11;
+
+        int secondNotificationCount = 77;
+
+        CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        CharacteristicData result2 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, secondNotificationCount);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = firstTemporaryData;
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00112() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstProperty = 1;
+        int firstPermission = 2;
+        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        int firstResponseCode = 3;
+        long firstDelay = 4;
+        byte[] firstData = new byte[]{5, 6};
+        byte[] firstCurrentData = new byte[]{7, 8};
+        byte[] firstTemporaryData = new byte[]{9, 10};
+        int firstNotificationCount = 11;
+
+        CharacteristicData result1 = new CharacteristicData(firstUUID, firstProperty, firstPermission, firstDescriptorDataList, firstResponseCode, firstDelay, firstData, firstNotificationCount);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
         assertNotEquals(null, result1);
     }
 

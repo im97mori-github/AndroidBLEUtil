@@ -16,6 +16,7 @@ import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
 import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
+import org.im97mori.ble.characteristic.u2a19.BatteryLevel;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.descriptor.u2904.CharacteristicPresentationFormat;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
@@ -59,6 +60,14 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
         protected final Map<Integer, DescriptorData> mCharacteristicPresentationFormatMap = new HashMap<>();
 
         /**
+         * @see #addBatteryLevel(int, int, int, long, byte[], int)
+         */
+        @NonNull
+        public Builder<T> addBatteryLevel(int index, @NonNull BatteryLevel batteryLevel) {
+            return addBatteryLevel(index, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 0, batteryLevel.getBytes(), -1);
+        }
+
+        /**
          * add Battery Level characteristic
          *
          * @param index             Battery Service index
@@ -90,17 +99,25 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
         }
 
         /**
+         * @see #setCharacteristicPresentationFormat(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setCharacteristicPresentationFormat(int index, CharacteristicPresentationFormat characteristicPresentationFormat) {
+            return setCharacteristicPresentationFormat(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicPresentationFormat.getBytes());
+        }
+
+        /**
          * add Battery Level characteristic's Characteristic Presentation Format descriptor
          *
-         * @param index                            Battery Service index
-         * @param responceCode                     response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay                            responce delay(millis)
-         * @param characteristicPresentationFormat {@link CharacteristicPresentationFormat} instance
+         * @param index        Battery Service index
+         * @param responceCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        responce delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> setCharacteristicPresentationFormat(int index, int responceCode, long delay, CharacteristicPresentationFormat characteristicPresentationFormat) {
-            mCharacteristicPresentationFormatMap.put(index, new DescriptorData(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responceCode, delay, characteristicPresentationFormat.getBytes()));
+        public Builder<T> setCharacteristicPresentationFormat(int index, int responceCode, long delay, @NonNull byte[] value) {
+            mCharacteristicPresentationFormatMap.put(index, new DescriptorData(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responceCode, delay, value));
             return this;
         }
 
@@ -117,17 +134,24 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
         }
 
         /**
+         * @see #setClientCharacteristicConfiguration(int, int, long, byte[])
+         */
+        public Builder<T> setClientCharacteristicConfiguration(int index, ClientCharacteristicConfiguration clientCharacteristicConfiguration) {
+            return setClientCharacteristicConfiguration(index, BluetoothGatt.GATT_SUCCESS, 0, clientCharacteristicConfiguration.getBytes());
+        }
+
+        /**
          * add Battery Level characteristic's Client Characteristic Configuration descriptor
          *
-         * @param index                             Battery Service index
-         * @param responceCode                      response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay                             responce delay(millis)
-         * @param clientCharacteristicConfiguration {@link ClientCharacteristicConfiguration} instance
+         * @param index        Battery Service index
+         * @param responceCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        responce delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> setClientCharacteristicConfiguration(int index, int responceCode, long delay, ClientCharacteristicConfiguration clientCharacteristicConfiguration) {
-            mClientCharacteristicConfigurationMap.put(index, new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, responceCode, delay, clientCharacteristicConfiguration.getBytes()));
+        public Builder<T> setClientCharacteristicConfiguration(int index, int responceCode, long delay, @NonNull byte[] value) {
+            mClientCharacteristicConfigurationMap.put(index, new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, responceCode, delay, value));
             return this;
         }
 

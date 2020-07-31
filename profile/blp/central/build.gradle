@@ -29,7 +29,6 @@ android {
 
 dependencies {
     api "${groupId}:${profileCentralAndroid.artifactId}:${profileCentralAndroid.versionName}"
-    api "${groupId}:${profileBlpAndroid.artifactId}:${profileBlpAndroid.versionName}"
     api "${groupId}:${serviceDisCentralAndroid.artifactId}:${serviceDisCentralAndroid.versionName}"
     api "${groupId}:${serviceBlsCentralAndroid.artifactId}:${serviceBlsCentralAndroid.versionName}"
     androidTestImplementation androidxTestRunner

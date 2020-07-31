@@ -99,6 +99,39 @@ public class DescriptorDataTest {
     }
 
     @Test
+    public void test_getBytes_00001() {
+        byte[] firstData = new byte[0];
+        DescriptorData descriptorData = new DescriptorData(UUID.randomUUID(), 1, 2, 3, firstData);
+        assertArrayEquals(firstData, descriptorData.data);
+
+        byte[] secondData = new byte[1];
+        descriptorData.data = secondData;
+        assertEquals(secondData, descriptorData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00002() {
+        byte[] firstData = new byte[0];
+        DescriptorData descriptorData = new DescriptorData(UUID.randomUUID(), 1, 2, 3, firstData);
+        assertArrayEquals(firstData, descriptorData.data);
+
+        byte[] secondData = new byte[1];
+        descriptorData.currentData = secondData;
+        assertEquals(secondData, descriptorData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00003() {
+        byte[] firstData = new byte[0];
+        DescriptorData descriptorData = new DescriptorData(UUID.randomUUID(), 1, 2, 3, firstData);
+        assertArrayEquals(firstData, descriptorData.data);
+
+        byte[] secondData = new byte[1];
+        descriptorData.temporaryData = secondData;
+        assertEquals(firstData, descriptorData.getBytes());
+    }
+
+    @Test
     public void test_parcelable_00001() {
         DescriptorData result1 = new DescriptorData(UUID.randomUUID(), 1, 2, 3, new byte[]{4, 5});
         Parcel parcel = Parcel.obtain();
@@ -111,6 +144,27 @@ public class DescriptorDataTest {
         assertEquals(result1.responseCode, result2.responseCode);
         assertEquals(result1.delay, result2.delay);
         assertArrayEquals(result1.data, result2.data);
+        assertArrayEquals(result1.currentData, result2.currentData);
+        assertArrayEquals(result1.temporaryData, result2.temporaryData);
+    }
+
+    @Test
+    public void test_parcelable_00002() {
+        DescriptorData result1 = new DescriptorData(UUID.randomUUID(), 1, 2, 3, new byte[]{4, 5});
+        result1.currentData = new byte[]{6};
+        result1.temporaryData = new byte[]{7};
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        DescriptorData result2 = DescriptorData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(result1.uuid, result2.uuid);
+        assertEquals(result1.permission, result2.permission);
+        assertEquals(result1.responseCode, result2.responseCode);
+        assertEquals(result1.delay, result2.delay);
+        assertArrayEquals(result1.data, result2.data);
+        assertArrayEquals(result1.currentData, result2.currentData);
+        assertArrayEquals(result1.temporaryData, result2.temporaryData);
     }
 
     @Test
@@ -122,7 +176,35 @@ public class DescriptorDataTest {
         byte[] data = new byte[]{4, 5};
 
         DescriptorData result1 = new DescriptorData(uuid, permission, responseCode, delay, data);
-        assertEquals(uuid.hashCode() ^ Integer.valueOf(permission).hashCode() ^ Integer.valueOf(responseCode).hashCode() ^ Long.valueOf(delay).hashCode() ^ Arrays.hashCode(data), result1.hashCode());
+        assertEquals(uuid.hashCode()
+                ^ Integer.valueOf(permission).hashCode()
+                ^ Integer.valueOf(responseCode).hashCode()
+                ^ Long.valueOf(delay).hashCode()
+                ^ Arrays.hashCode(data), result1.hashCode()
+                ^ Arrays.hashCode((byte[]) null)
+                ^ Arrays.hashCode((byte[]) null));
+    }
+
+    @Test
+    public void test_hashCode_00002() {
+        UUID uuid = UUID.randomUUID();
+        int permission = 1;
+        int responseCode = 2;
+        long delay = 3;
+        byte[] data = new byte[]{4, 5};
+        byte[] currentData = new byte[]{6, 7};
+        byte[] temporaryData = new byte[]{8, 9};
+
+        DescriptorData result1 = new DescriptorData(uuid, permission, responseCode, delay, data);
+        result1.currentData = currentData;
+        result1.temporaryData = temporaryData;
+        assertEquals(uuid.hashCode()
+                ^ Integer.valueOf(permission).hashCode()
+                ^ Integer.valueOf(responseCode).hashCode()
+                ^ Long.valueOf(delay).hashCode()
+                ^ Arrays.hashCode(data), result1.hashCode()
+                ^ Arrays.hashCode(currentData)
+                ^ Arrays.hashCode(temporaryData));
     }
 
     @Test
@@ -225,5 +307,187 @@ public class DescriptorDataTest {
         assertNotEquals(null, result1);
     }
 
+    @Test
+    public void test_equals_00101() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstPermission = 1;
+        int firstResponseCode = 2;
+        long firstDelay = 3;
+        byte[] firstData = new byte[]{4, 5};
+        byte[] firstCurrentData = new byte[]{6, 7};
+        byte[] firstTemporaryData = new byte[]{8, 9};
+
+        DescriptorData result1 = new DescriptorData(firstUUID, firstPermission, firstResponseCode, firstDelay, firstData);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        DescriptorData result2 = new DescriptorData(firstUUID, firstPermission, firstResponseCode, firstDelay, firstData);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = firstTemporaryData;
+        assertEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00102() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstPermission = 1;
+        int firstResponseCode = 2;
+        long firstDelay = 3;
+        byte[] firstData = new byte[]{4, 5};
+        byte[] firstCurrentData = new byte[]{6, 7};
+        byte[] firstTemporaryData = new byte[]{8, 9};
+
+        UUID secondUUID = UUID.fromString("00000000-0000-0000-0000-000000000001");
+
+        DescriptorData result1 = new DescriptorData(firstUUID, firstPermission, firstResponseCode, firstDelay, firstData);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        DescriptorData result2 = new DescriptorData(secondUUID, firstPermission, firstResponseCode, firstDelay, firstData);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = firstTemporaryData;
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00103() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstPermission = 1;
+        int firstResponseCode = 2;
+        long firstDelay = 3;
+        byte[] firstData = new byte[]{4, 5};
+        byte[] firstCurrentData = new byte[]{6, 7};
+        byte[] firstTemporaryData = new byte[]{8, 9};
+
+        int secondPermission = 11;
+
+        DescriptorData result1 = new DescriptorData(firstUUID, firstPermission, firstResponseCode, firstDelay, firstData);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        DescriptorData result2 = new DescriptorData(firstUUID, secondPermission, firstResponseCode, firstDelay, firstData);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = firstTemporaryData;
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00104() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstPermission = 1;
+        int firstResponseCode = 2;
+        long firstDelay = 3;
+        byte[] firstData = new byte[]{4, 5};
+        byte[] firstCurrentData = new byte[]{6, 7};
+        byte[] firstTemporaryData = new byte[]{8, 9};
+
+        int secondResponseCode = 22;
+
+        DescriptorData result1 = new DescriptorData(firstUUID, firstPermission, firstResponseCode, firstDelay, firstData);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        DescriptorData result2 = new DescriptorData(firstUUID, firstPermission, secondResponseCode, firstDelay, firstData);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = firstTemporaryData;
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00105() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstPermission = 1;
+        int firstResponseCode = 2;
+        long firstDelay = 3;
+        byte[] firstData = new byte[]{4, 5};
+        byte[] firstCurrentData = new byte[]{6, 7};
+        byte[] firstTemporaryData = new byte[]{8, 9};
+
+        long secondDelay = 33;
+
+        DescriptorData result1 = new DescriptorData(firstUUID, firstPermission, firstResponseCode, firstDelay, firstData);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        DescriptorData result2 = new DescriptorData(firstUUID, firstPermission, firstResponseCode, secondDelay, firstData);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = firstTemporaryData;
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00106() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstPermission = 1;
+        int firstResponseCode = 2;
+        long firstDelay = 3;
+        byte[] firstData = new byte[]{4, 5};
+        byte[] firstCurrentData = new byte[]{6, 7};
+        byte[] firstTemporaryData = new byte[]{8, 9};
+
+        byte[] secondData = new byte[]{44, 55};
+
+        DescriptorData result1 = new DescriptorData(firstUUID, firstPermission, firstResponseCode, firstDelay, firstData);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        DescriptorData result2 = new DescriptorData(firstUUID, firstPermission, firstResponseCode, firstDelay, secondData);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = firstTemporaryData;
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00107() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstPermission = 1;
+        int firstResponseCode = 2;
+        long firstDelay = 3;
+        byte[] firstData = new byte[]{4, 5};
+        byte[] firstCurrentData = new byte[]{6, 7};
+        byte[] firstTemporaryData = new byte[]{8, 9};
+
+        byte[] secondCurrentData = new byte[]{110, 111};
+
+        DescriptorData result1 = new DescriptorData(firstUUID, firstPermission, firstResponseCode, firstDelay, firstData);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        DescriptorData result2 = new DescriptorData(firstUUID, firstPermission, firstResponseCode, firstDelay, firstData);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = secondCurrentData;
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00108() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstPermission = 1;
+        int firstResponseCode = 2;
+        long firstDelay = 3;
+        byte[] firstData = new byte[]{4, 5};
+        byte[] firstCurrentData = new byte[]{6, 7};
+        byte[] firstTemporaryData = new byte[]{8, 9};
+
+        byte[] secondTemporaryData = new byte[]{110, 111};
+
+        DescriptorData result1 = new DescriptorData(firstUUID, firstPermission, firstResponseCode, firstDelay, firstData);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        DescriptorData result2 = new DescriptorData(firstUUID, firstPermission, firstResponseCode, firstDelay, firstData);
+        result2.currentData = firstCurrentData;
+        result2.temporaryData = secondTemporaryData;
+        assertNotEquals(result1, result2);
+    }
+
+
+    @Test
+    public void test_equals_00109() {
+        UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        int firstPermission = 1;
+        int firstResponseCode = 2;
+        long firstDelay = 3;
+        byte[] firstData = new byte[]{4, 5};
+        byte[] firstCurrentData = new byte[]{6, 7};
+        byte[] firstTemporaryData = new byte[]{8, 9};
+
+        DescriptorData result1 = new DescriptorData(firstUUID, firstPermission, firstResponseCode, firstDelay, firstData);
+        result1.currentData = firstCurrentData;
+        result1.temporaryData = firstTemporaryData;
+        assertNotEquals(null, result1);
+    }
 
 }

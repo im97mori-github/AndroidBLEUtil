@@ -21,23 +21,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class BloodPressureProfileMockCallbackBuilderTest {
 
     @Test
     public void test_constructor_00001() {
-        Context context = ApplicationProvider.getApplicationContext();
-        BaseBuilder baseBuilder = new BaseBuilder(context);
-
-        assertEquals(context, baseBuilder.mContext);
-        assertNotNull(baseBuilder.mDeviceInformationServiceMockCallbackBuilder);
-        assertNotNull(baseBuilder.mBloodPressureServiceMockCallbackBuilder);
-    }
-
-    @Test
-    public void test_constructor_00002() {
         Context context = ApplicationProvider.getApplicationContext();
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
         BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> bloodPressureServiceMockCallbackBuilder = new BloodPressureServiceMockCallback.Builder<>();

@@ -7,7 +7,7 @@
             android:title="@string/menu_load_bonded_device" />
 
         <item
-            android:id="@+id/clear_bondec_history"
+            android:id="@+id/clear_bonded_history"
             android:title="@string/menu_clear_bonded_history" />
     </group>
     <group android:id="@+id/connected">

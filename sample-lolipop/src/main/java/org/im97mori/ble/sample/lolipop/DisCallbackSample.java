@@ -35,10 +35,10 @@ import java.util.Locale;
 import java.util.UUID;
 
 @SuppressWarnings("unused")
-public class DisMockCallbackSample extends DeviceInformationServiceMockCallback implements DeviceInformationServiceCallback, BLECallback {
+public class DisCallbackSample extends DeviceInformationServiceMockCallback implements DeviceInformationServiceCallback, BLECallback {
 
 
-    public static class Builder extends DeviceInformationServiceMockCallback.Builder<DisMockCallbackSample> {
+    public static class Builder extends DeviceInformationServiceMockCallback.Builder<DisCallbackSample> {
 
         private SampleCallback mSampleCallback;
 
@@ -48,8 +48,8 @@ public class DisMockCallbackSample extends DeviceInformationServiceMockCallback 
 
         @NonNull
         @Override
-        public DisMockCallbackSample build() {
-            return new DisMockCallbackSample(createMockData(), false, mSampleCallback);
+        public DisCallbackSample build() {
+            return new DisCallbackSample(createMockData(), false, mSampleCallback);
         }
     }
 
@@ -57,7 +57,7 @@ public class DisMockCallbackSample extends DeviceInformationServiceMockCallback 
 
     private final SampleCallback mSampleCallback;
 
-    DisMockCallbackSample(@NonNull MockData mockData, boolean isFallback, SampleCallback sampleCallback) {
+    DisCallbackSample(@NonNull MockData mockData, boolean isFallback, SampleCallback sampleCallback) {
         super(mockData, isFallback);
         mSampleCallback = sampleCallback;
     }
@@ -67,7 +67,7 @@ public class DisMockCallbackSample extends DeviceInformationServiceMockCallback 
         StackTraceElement[] stackTraceElementArray = Thread.currentThread().getStackTrace();
         for (int i = 0; i < stackTraceElementArray.length; i++) {
             StackTraceElement stackTraceElement = stackTraceElementArray[i];
-            if (DisMockCallbackSample.class.getName().equals(stackTraceElement.getClassName())
+            if (DisCallbackSample.class.getName().equals(stackTraceElement.getClassName())
                     && "callback".equals(stackTraceElement.getMethodName())) {
                 index = i + 1;
                 break;

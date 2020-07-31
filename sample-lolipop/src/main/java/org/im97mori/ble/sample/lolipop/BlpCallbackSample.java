@@ -41,20 +41,20 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
 
-public class BlpProfileCallbackSample extends BloodPressureProfileMockCallback implements BloodPressureProfileCallback, BLEServerCallback {
+public class BlpCallbackSample extends BloodPressureProfileMockCallback implements BloodPressureProfileCallback, BLEServerCallback {
 
-    public static class Builder extends BloodPressureProfileMockCallback.Builder<BlpProfileCallbackSample> {
+    public static class Builder extends BloodPressureProfileMockCallback.Builder<BlpCallbackSample> {
 
         private final SampleCallback mSampleCallback;
 
         public Builder(@NonNull Context context, SampleCallback sampleCallback) {
-            super(context, new DisMockCallbackSample.Builder(sampleCallback), new BlsMockCallbackSample.Builder(sampleCallback));
+            super(context, new DisCallbackSample.Builder(sampleCallback), new BlsCallbackSample.Builder(sampleCallback));
             mSampleCallback = sampleCallback;
         }
 
         @Override
         public BloodPressureProfileMockCallback build() {
-            return new BlpProfileCallbackSample(mContext, mDeviceInformationServiceMockCallbackBuilder.build(), mBloodPressureServiceMockCallbackBuilder.build(), mSampleCallback);
+            return new BlpCallbackSample(mContext, mDeviceInformationServiceMockCallbackBuilder.build(), mBloodPressureServiceMockCallbackBuilder.build(), mSampleCallback);
         }
     }
 
@@ -62,10 +62,11 @@ public class BlpProfileCallbackSample extends BloodPressureProfileMockCallback i
 
     private final SampleCallback mSampleCallback;
 
-    public BlpProfileCallbackSample(Context context, SampleCallback sampleCallback) {
+    public BlpCallbackSample(Context context, SampleCallback sampleCallback) {
         this(context, null, null, sampleCallback);
     }
-    public BlpProfileCallbackSample(Context context, DeviceInformationServiceMockCallback deviceInformationServiceMockCallback, BloodPressureServiceMockCallback bloodPressureServiceMockCallback, SampleCallback sampleCallback) {
+
+    public BlpCallbackSample(Context context, DeviceInformationServiceMockCallback deviceInformationServiceMockCallback, BloodPressureServiceMockCallback bloodPressureServiceMockCallback, SampleCallback sampleCallback) {
         super(context, deviceInformationServiceMockCallback, bloodPressureServiceMockCallback);
         mSampleCallback = sampleCallback;
     }
@@ -75,7 +76,7 @@ public class BlpProfileCallbackSample extends BloodPressureProfileMockCallback i
         StackTraceElement[] stackTraceElementArray = Thread.currentThread().getStackTrace();
         for (int i = 0; i < stackTraceElementArray.length; i++) {
             StackTraceElement stackTraceElement = stackTraceElementArray[i];
-            if (BlpProfileCallbackSample.class.getName().equals(stackTraceElement.getClassName())
+            if (BlpCallbackSample.class.getName().equals(stackTraceElement.getClassName())
                     && "callback".equals(stackTraceElement.getMethodName())) {
                 index = i + 1;
                 break;

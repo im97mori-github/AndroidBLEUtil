@@ -24,6 +24,21 @@ import java.util.UUID;
 public abstract class AbstractCentralService implements BLECallback {
 
     /**
+     * KEY:STATUS
+     */
+    protected static final String KEY_STATUS = "KEY_STATUS";
+
+    /**
+     * STATUS:START
+     */
+    protected static final int STATUS_START = 0;
+
+    /**
+     * STATUS:STOP
+     */
+    protected static final int STATUS_STOP = 1;
+
+    /**
      * {@link BLEConnection} instance
      */
     protected final BLEConnection mBLEConnection;

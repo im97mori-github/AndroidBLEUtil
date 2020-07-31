@@ -37,21 +37,6 @@ import static org.im97mori.ble.BLEConstants.ServiceUUID.BLOOD_PRESSURE_SERVICE;
 public class BloodPressureService extends AbstractCentralService {
 
     /**
-     * KEY:STATUS
-     */
-    private static final String KEY_STATUS = "KEY_STATUS";
-
-    /**
-     * STATUS:START
-     */
-    private static final int STATUS_START = 0;
-
-    /**
-     * STATUS:STOP
-     */
-    private static final int STATUS_STOP = 1;
-
-    /**
      * {@link BloodPressureServiceCallback} instance
      */
     private final BloodPressureServiceCallback mBloodPressureServiceCallback;
@@ -280,7 +265,7 @@ public class BloodPressureService extends AbstractCentralService {
     /**
      * get Blood Pressure Measurement's Client Characteristic Configuration
      *
-     * @return task id. if {@code null} returned, service is not ready or index is out of range
+     * @return task id. if {@code null} returned, service is not ready
      * @see BloodPressureServiceCallback#onBloodPressureMeasurementClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
      * @see BloodPressureServiceCallback#onBloodPressureMeasurementClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see BloodPressureServiceCallback#onBloodPressureMeasurementClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
@@ -297,7 +282,7 @@ public class BloodPressureService extends AbstractCentralService {
     /**
      * start Blood Pressure Measurement indication
      *
-     * @return task id. if {@code null} returned, service is not ready or index is out of range
+     * @return task id. if {@code null} returned, service is not ready
      * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
      * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
@@ -316,7 +301,7 @@ public class BloodPressureService extends AbstractCentralService {
     /**
      * stop Blood Pressure Measurement indication
      *
-     * @return task id. if {@code null} returned, service is not ready or index is out of range
+     * @return task id. if {@code null} returned, service is not ready
      * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
      * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
@@ -335,7 +320,7 @@ public class BloodPressureService extends AbstractCentralService {
     /**
      * get Intermediate Cuff Pressure's Client Characteristic Configuration
      *
-     * @return task id. if {@code null} returned, service is not ready or index is out of range
+     * @return task id. if {@code null} returned, service is not ready
      * @see BloodPressureServiceCallback#onIntermediateCuffPressureClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
      * @see BloodPressureServiceCallback#onIntermediateCuffPressureClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see BloodPressureServiceCallback#onIntermediateCuffPressureClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
@@ -352,7 +337,7 @@ public class BloodPressureService extends AbstractCentralService {
     /**
      * start Intermediate Cuff Pressure notification
      *
-     * @return task id. if {@code null} returned, service is not ready or index is out of range
+     * @return task id. if {@code null} returned, service is not ready
      * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
      * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
@@ -371,7 +356,7 @@ public class BloodPressureService extends AbstractCentralService {
     /**
      * stop Intermediate Cuff Pressure notification
      *
-     * @return task id. if {@code null} returned, service is not ready or index is out of range
+     * @return task id. if {@code null} returned, service is not ready
      * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
      * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
@@ -390,7 +375,7 @@ public class BloodPressureService extends AbstractCentralService {
     /**
      * get Blood Pressure Feature
      *
-     * @return task id. if {@code null} returned, service is not ready or index is out of range
+     * @return task id. if {@code null} returned, service is not ready
      * @see BloodPressureServiceCallback#onBloodPressureFeatureReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, BloodPressureFeatureAndroid, Bundle)
      * @see BloodPressureServiceCallback#onBloodPressureFeatureReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see BloodPressureServiceCallback#onBloodPressureFeatureReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)

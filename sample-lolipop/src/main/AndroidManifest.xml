@@ -30,30 +30,36 @@
         <activity
             android:name=".CentralSampleActivity"
             android:label="@string/label_central" />
-        <activity
-            android:name=".DisPeripheralSampleActivity"
-            android:label="@string/label_dis_peripheral" />
-        <activity
-            android:name=".DisCentralSampleActivity"
-            android:label="@string/label_dis_central" />
-        <activity
-            android:name=".BasPeripheralSampleActivity"
-            android:label="@string/label_bas_peripheral" />
-        <activity
-            android:name=".BasCentralSampleActivity"
-            android:label="@string/label_bas_central" />
-        <activity
-            android:name=".BlsPeripheralSampleActivity"
-            android:label="@string/label_bls_peripheral" />
-        <activity
-            android:name=".BlsCentralSampleActivity"
-            android:label="@string/label_bls_central" />
+        <!--        <activity
+                    android:name=".DisPeripheralSampleActivity"
+                    android:label="@string/label_dis_peripheral" />
+                <activity
+                    android:name=".DisCentralSampleActivity"
+                    android:label="@string/label_dis_central" />-->
+        <!--        <activity
+                    android:name=".BasPeripheralSampleActivity"
+                    android:label="@string/label_bas_peripheral" />
+                <activity
+                    android:name=".BasCentralSampleActivity"
+                    android:label="@string/label_bas_central" />-->
+        <!--        <activity
+                    android:name=".BlsPeripheralSampleActivity"
+                    android:label="@string/label_bls_peripheral" />
+                <activity
+                    android:name=".BlsCentralSampleActivity"
+                    android:label="@string/label_bls_central" />-->
         <activity
             android:name=".BlpPeripheralSampleActivity"
             android:label="@string/label_blp_peripheral" />
         <activity
             android:name=".BlpCentralSampleActivity"
             android:label="@string/label_blp_central" />
+        <activity
+            android:name=".LnpPeripheralSampleActivity"
+            android:label="@string/label_lnp_peripheral" />
+        <activity
+            android:name=".LnpCentralSampleActivity"
+            android:label="@string/label_lnp_central" />
     </application>
 
 </manifest>

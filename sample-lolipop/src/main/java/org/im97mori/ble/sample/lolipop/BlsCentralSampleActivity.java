@@ -62,7 +62,7 @@ public class BlsCentralSampleActivity extends BaseActivity implements View.OnCli
     private ArrayAdapter<Pair<String, String>> mAdapter;
     private ListView mListView;
 
-    private BlsMockCallbackSample mBlsMockCallbackSample;
+    private BlsCallbackSample mBlsCallbackSample;
 
     private BroadcastReceiver mReceiver;
 
@@ -71,7 +71,7 @@ public class BlsCentralSampleActivity extends BaseActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mBlsMockCallbackSample = new BlsMockCallbackSample(new MockData(), false, this);
+        mBlsCallbackSample = new BlsCallbackSample(new MockData(), false, this);
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
         mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {
@@ -224,7 +224,7 @@ public class BlsCentralSampleActivity extends BaseActivity implements View.OnCli
                     if (mBloodPressureService == null) {
                         BLEConnection bleConnection = new BLEConnection(this, target, null);
                         BLEConnectionHolder.addInstance(bleConnection, true);
-                        mBloodPressureService = new BloodPressureService(bleConnection, mBlsMockCallbackSample, mBlsMockCallbackSample);
+                        mBloodPressureService = new BloodPressureService(bleConnection, mBlsCallbackSample, mBlsCallbackSample);
                     }
                     if (!mBloodPressureService.isStarted()) {
                         mBloodPressureService.start();
@@ -308,7 +308,7 @@ public class BlsCentralSampleActivity extends BaseActivity implements View.OnCli
                                 if (bleConnection == null) {
                                     bleConnection = new BLEConnection(BlsCentralSampleActivity.this, device, null);
                                     BLEConnectionHolder.addInstance(bleConnection, true);
-                                    BlsCentralSampleActivity.this.mBloodPressureService = new BloodPressureService(bleConnection, BlsCentralSampleActivity.this.mBlsMockCallbackSample, BlsCentralSampleActivity.this.mBlsMockCallbackSample);
+                                    BlsCentralSampleActivity.this.mBloodPressureService = new BloodPressureService(bleConnection, BlsCentralSampleActivity.this.mBlsCallbackSample, BlsCentralSampleActivity.this.mBlsCallbackSample);
                                 }
                                 BlsCentralSampleActivity.this.mBloodPressureService.start();
                             } else {
@@ -326,7 +326,7 @@ public class BlsCentralSampleActivity extends BaseActivity implements View.OnCli
                                                     if (bleConnection == null) {
                                                         bleConnection = new BLEConnection(BlsCentralSampleActivity.this, scanResult.getDevice(), null);
                                                         BLEConnectionHolder.addInstance(bleConnection, true);
-                                                        BlsCentralSampleActivity.this.mBloodPressureService = new BloodPressureService(bleConnection, BlsCentralSampleActivity.this.mBlsMockCallbackSample, BlsCentralSampleActivity.this.mBlsMockCallbackSample);
+                                                        BlsCentralSampleActivity.this.mBloodPressureService = new BloodPressureService(bleConnection, BlsCentralSampleActivity.this.mBlsCallbackSample, BlsCentralSampleActivity.this.mBlsCallbackSample);
                                                     }
                                                     BlsCentralSampleActivity.this.mBloodPressureService.start();
                                                     BlsCentralSampleActivity.this.unregisterReceiver(BlsCentralSampleActivity.this.mReceiver);

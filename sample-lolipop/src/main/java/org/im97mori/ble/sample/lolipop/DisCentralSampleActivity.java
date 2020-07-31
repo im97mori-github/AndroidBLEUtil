@@ -61,7 +61,7 @@ public class DisCentralSampleActivity extends BaseActivity implements View.OnCli
     private ArrayAdapter<Pair<String, String>> mAdapter;
     private ListView mListView;
 
-    private DisMockCallbackSample mDisMockCallbackSample;
+    private DisCallbackSample mDisCallbackSample;
 
     private BroadcastReceiver mReceiver;
 
@@ -69,7 +69,7 @@ public class DisCentralSampleActivity extends BaseActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mDisMockCallbackSample = new DisMockCallbackSample.Builder(this).build();
+        mDisCallbackSample = new DisCallbackSample.Builder(this).build();
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
         mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {
@@ -230,7 +230,7 @@ public class DisCentralSampleActivity extends BaseActivity implements View.OnCli
                     if (mDeviceInformationService == null) {
                         BLEConnection bleConnection = new BLEConnection(this, target, null);
                         BLEConnectionHolder.addInstance(bleConnection, true);
-                        mDeviceInformationService = new DeviceInformationService(bleConnection, mDisMockCallbackSample, mDisMockCallbackSample);
+                        mDeviceInformationService = new DeviceInformationService(bleConnection, mDisCallbackSample, mDisCallbackSample);
                     }
                     if (!mDeviceInformationService.isStarted()) {
                         mDeviceInformationService.start();
@@ -313,7 +313,7 @@ public class DisCentralSampleActivity extends BaseActivity implements View.OnCli
                                 if (bleConnection == null) {
                                     bleConnection = new BLEConnection(DisCentralSampleActivity.this, device, null);
                                     BLEConnectionHolder.addInstance(bleConnection, true);
-                                    DisCentralSampleActivity.this.mDeviceInformationService = new DeviceInformationService(bleConnection, DisCentralSampleActivity.this.mDisMockCallbackSample, DisCentralSampleActivity.this.mDisMockCallbackSample);
+                                    DisCentralSampleActivity.this.mDeviceInformationService = new DeviceInformationService(bleConnection, DisCentralSampleActivity.this.mDisCallbackSample, DisCentralSampleActivity.this.mDisCallbackSample);
                                 }
                                 DisCentralSampleActivity.this.mDeviceInformationService.start();
                             } else {
@@ -331,7 +331,7 @@ public class DisCentralSampleActivity extends BaseActivity implements View.OnCli
                                                     if (bleConnection == null) {
                                                         bleConnection = new BLEConnection(DisCentralSampleActivity.this, scanResult.getDevice(), null);
                                                         BLEConnectionHolder.addInstance(bleConnection, true);
-                                                        DisCentralSampleActivity.this.mDeviceInformationService = new DeviceInformationService(bleConnection, DisCentralSampleActivity.this.mDisMockCallbackSample, DisCentralSampleActivity.this.mDisMockCallbackSample);
+                                                        DisCentralSampleActivity.this.mDeviceInformationService = new DeviceInformationService(bleConnection, DisCentralSampleActivity.this.mDisCallbackSample, DisCentralSampleActivity.this.mDisCallbackSample);
                                                     }
                                                     DisCentralSampleActivity.this.mDeviceInformationService.start();
                                                     DisCentralSampleActivity.this.unregisterReceiver(DisCentralSampleActivity.this.mReceiver);

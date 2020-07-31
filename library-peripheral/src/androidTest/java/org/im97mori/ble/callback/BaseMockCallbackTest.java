@@ -26,11 +26,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class BaseMockCallbackTest {
@@ -497,62 +494,6 @@ public class BaseMockCallbackTest {
         assertTrue(baseMockCallback.onServiceAddSuccess(null, mockBLEServerConnection, bluetoothGattService, bundle));
         baseMockCallback.onServiceRemoveSuccess(null, mockBLEServerConnection, bluetoothGattService, bundle);
         assertTrue(baseMockCallback.onServiceAddSuccess(null, mockBLEServerConnection, bluetoothGattService, bundle));
-    }
-
-    @Test
-    public void test_getCharacteristicData_001() {
-        UUID serviceUUID = UUID.randomUUID();
-        int serviceInstanceId = 1;
-        UUID characteristicUUID = UUID.randomUUID();
-        int characteristicInstanceId = 2;
-
-        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(new MockData(Collections.<ServiceData>emptyList()), false);
-
-        assertNull(baseMockCallback.getCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId));
-    }
-
-    @Test
-    public void test_getCharacteristicData_002() {
-        UUID serviceUUID = UUID.randomUUID();
-        int serviceInstanceId = 1;
-        UUID characteristicUUID = UUID.randomUUID();
-        int characteristicInstanceId = 2;
-        byte[] data = new byte[]{3};
-
-        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(new MockData(Collections.<ServiceData>emptyList()), false);
-        baseMockCallback.setCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, baseMockCallback.mCurrentCharacteristicDataMap, data);
-
-        assertNotNull(baseMockCallback.getCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId));
-        assertArrayEquals(data, baseMockCallback.getCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId));
-    }
-
-    @Test
-    public void test_setCharacteristicData_001() {
-        UUID serviceUUID = UUID.randomUUID();
-        int serviceInstanceId = 1;
-        UUID characteristicUUID = UUID.randomUUID();
-        int characteristicInstanceId = 2;
-        byte[] data = new byte[]{3};
-
-        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(new MockData(Collections.<ServiceData>emptyList()), false);
-        baseMockCallback.setCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, baseMockCallback.mCurrentCharacteristicDataMap, data);
-
-        assertNotNull(baseMockCallback.getCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId));
-        assertArrayEquals(data, baseMockCallback.getCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId));
-    }
-
-    @Test
-    public void test_setCharacteristicData_002() {
-        UUID serviceUUID = UUID.randomUUID();
-        int serviceInstanceId = 1;
-        UUID characteristicUUID = UUID.randomUUID();
-        int characteristicInstanceId = 2;
-        byte[] data = new byte[]{3};
-
-        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(new MockData(Collections.<ServiceData>emptyList()), false);
-        baseMockCallback.setCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, baseMockCallback.mTemporaryCharacteristicDataMap, data);
-
-        assertNull(baseMockCallback.getCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId));
     }
 
     @Test

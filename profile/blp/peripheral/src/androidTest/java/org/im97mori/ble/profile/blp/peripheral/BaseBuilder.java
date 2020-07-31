@@ -9,10 +9,6 @@ import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallb
 
 public class BaseBuilder extends BloodPressureProfileMockCallback.Builder<BloodPressureProfileMockCallback> {
 
-    public BaseBuilder(@NonNull Context context) {
-        super(context);
-    }
-
     public BaseBuilder(@NonNull Context context, @NonNull DeviceInformationServiceMockCallback.Builder<? extends DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder, @NonNull BloodPressureServiceMockCallback.Builder<? extends BloodPressureServiceMockCallback> bloodPressureServiceMockCallbackBuilder) {
         super(context, deviceInformationServiceMockCallbackBuilder, bloodPressureServiceMockCallbackBuilder);
     }

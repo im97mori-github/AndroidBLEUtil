@@ -61,7 +61,7 @@ public class BasPeripheralSampleActivity extends BaseActivity implements View.On
 
         mBLEServerConnection = new BLEServerConnection(this);
         BatteryServiceMockCallback batteryServiceMockCallback
-                = new BasMockCallbackSample.Builder(this)
+                = new BasCallbackSample.Builder(this)
                 .addBatteryLevel(0, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGatt.GATT_SUCCESS, 0, new byte[]{30}, -1)
                 .build();
         mBLEServerConnection.attach(batteryServiceMockCallback);

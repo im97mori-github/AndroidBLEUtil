@@ -34,7 +34,7 @@ public class BlpCentralSampleActivity extends BaseActivity implements View.OnCli
     private ArrayAdapter<Pair<String, String>> mAdapter;
     private ListView mListView;
 
-    private BlpProfileCallbackSample mBlpProfileCallbackSample;
+    private BlpCallbackSample mBlpCallbackSample;
     private BloodPressureProfile mBloodPressureProfile;
     BluetoothDevice mBluetoothDevice;
 
@@ -42,8 +42,8 @@ public class BlpCentralSampleActivity extends BaseActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mBlpProfileCallbackSample = new BlpProfileCallbackSample(this, this);
-        mBloodPressureProfile = new BloodPressureProfile(this, mBlpProfileCallbackSample);
+        mBlpCallbackSample = new BlpCallbackSample(this, this);
+        mBloodPressureProfile = new BloodPressureProfile(this, mBlpCallbackSample);
         mBloodPressureProfile.start();
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
@@ -117,7 +117,7 @@ public class BlpCentralSampleActivity extends BaseActivity implements View.OnCli
                 mBluetoothDevice = bluetoothDeviceSet.iterator().next();
             }
             updateLayout();
-        } else if (R.id.clear_bondec_history == item.getItemId()) {
+        } else if (R.id.clear_bonded_history == item.getItemId()) {
             mBloodPressureProfile.syncBondedDevice();
             mBluetoothDevice = null;
             updateLayout();
@@ -164,12 +164,12 @@ public class BlpCentralSampleActivity extends BaseActivity implements View.OnCli
     public void onClick(View v) {
         if (R.id.connectDisconnectButton == v.getId()) {
             if (mBloodPressureProfile == null) {
-                mBloodPressureProfile = new BloodPressureProfile(this, mBlpProfileCallbackSample);
+                mBloodPressureProfile = new BloodPressureProfile(this, mBlpCallbackSample);
                 mBloodPressureProfile.start();
             }
             if (mBloodPressureProfile.isConnected()) {
                 mBloodPressureProfile.disconnect();
-                mBlpProfileCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
+                mBlpCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
                 mBluetoothDevice = null;
             } else {
                 if (mBluetoothDevice == null) {

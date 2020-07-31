@@ -207,7 +207,7 @@ public class BloodPressureProfile extends AbstractCentralProfile {
     }
 
     /**
-     * create {@link android.bluetooth.BluetoothClass.Device} and {@link BloodPressureService}
+     * create {@link DeviceInformationService} and {@link BloodPressureService}
      *
      * @see #connect(BluetoothDevice)
      */

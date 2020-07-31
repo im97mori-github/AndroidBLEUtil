@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">sample-lolipop</string>
     <string name="get_permission">Get Permission</string>
     <string name="scan_start">Scan Start</string>
@@ -13,14 +13,16 @@
     <string name="label_advertising">Advertising sample</string>
     <string name="label_peripheral">Peripheral sample</string>
     <string name="label_central">Central sample</string>
-    <string name="label_dis_peripheral">DIS Peripheral sample</string>
-    <string name="label_dis_central">DIS Central sample</string>
-    <string name="label_bas_peripheral">BAS Peripheral sample</string>
-    <string name="label_bas_central">BAS Central sample</string>
-    <string name="label_bls_peripheral">BLS Peripheral sample</string>
-    <string name="label_bls_central">BLS Central sample</string>
+    <string name="label_dis_peripheral" tools:keep="@string/label_dis_peripheral">DIS Peripheral sample</string>
+    <string name="label_dis_central" tools:keep="@string/label_dis_central">DIS Central sample</string>
+    <string name="label_bas_peripheral" tools:keep="@string/label_bas_peripheral">BAS Peripheral sample</string>
+    <string name="label_bas_central" tools:keep="@string/label_bas_central">BAS Central sample</string>
+    <string name="label_bls_peripheral" tools:keep="@string/label_bls_peripheral">BLS Peripheral sample</string>
+    <string name="label_bls_central" tools:keep="@string/label_bls_central">BLS Central sample</string>
     <string name="label_blp_peripheral">BLP Peripheral sample</string>
     <string name="label_blp_central">BLP Central sample</string>
+    <string name="label_lnp_peripheral">LNP Peripheral sample</string>
+    <string name="label_lnp_central">LNP Central sample</string>
 
     <string name="menu_discover_service">Discover Service</string>
     <string name="menu_discover_service_sync">Discover Service(Synchronous)</string>
@@ -57,6 +59,8 @@
     <string name="menu_read_pnp_id">Read Pnp Id</string>
 
     <string name="menu_read_battery_level">Read Battery Level</string>
+    <string name="menu_read_battery_level_1">Read Battery Level(1)</string>
+    <string name="menu_read_battery_level_2">Read Battery Level(2)</string>
     <string name="menu_notify_battery_level_start">Notify Battery Level start</string>
     <string name="menu_notify_battery_level_stop">Notify Battery Level stop</string>
 
@@ -68,6 +72,23 @@
 
     <string name="menu_load_bonded_device">Load Bonded Device</string>
     <string name="menu_clear_bonded_history">Clear Bonded History</string>
+
+    <string name="menu_read_ln_feature">Read LN Feature</string>
+    <string name="menu_notify_location_and_speed_start">Notify Location and Speed start</string>
+    <string name="menu_notify_location_and_speed_stop">Notify Location and Speed stop</string>
+    <string name="menu_read_position_quality">Read Position Quality</string>
+    <string name="menu_write_ln_control_point_1">Write LN Control Point(1)</string>
+    <string name="menu_write_ln_control_point_2">Write LN Control Point(2)</string>
+    <string name="menu_write_ln_control_point_3">Write LN Control Point(3)</string>
+    <string name="menu_write_ln_control_point_4">Write LN Control Point(4)</string>
+    <string name="menu_write_ln_control_point_5">Write LN Control Point(5)</string>
+    <string name="menu_write_ln_control_point_6">Write LN Control Point(6)</string>
+    <string name="menu_write_ln_control_point_7">Write LN Control Point(7)</string>
+    <string name="menu_write_ln_control_point_8">Write LN Control Point(8)</string>
+    <string name="menu_indicate_ln_control_point_start">Indicate LN Control Point start</string>
+    <string name="menu_indicate_ln_control_point_stop">Indicate LN Control Point stop</string>
+    <string name="menu_notify_navigation_start">Notify Navigation start</string>
+    <string name="menu_notify_navigation_stop">Notify Navigation stop</string>
 
     <string name="menu_clear">Clear</string>
 </resources>

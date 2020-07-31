@@ -13,4 +13,5 @@ public class BloodPressureProfileMockCallbackTest {
     public void test_getServiceUUID_00001() {
         assertEquals(BLOOD_PRESSURE_SERVICE, new BloodPressureProfileMockCallback(ApplicationProvider.getApplicationContext(), null, null).getServiceUUID());
     }
+
 }

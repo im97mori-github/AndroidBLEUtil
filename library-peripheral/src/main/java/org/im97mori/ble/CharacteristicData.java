@@ -1,6 +1,7 @@
 package org.im97mori.ble;
 
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -95,6 +96,16 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
     public byte[] data;
 
     /**
+     * overwritten data with {@link android.bluetooth.BluetoothGattServerCallback#onCharacteristicWriteRequest(BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[])}
+     */
+    public byte[] currentData;
+
+    /**
+     * temporary(preparedWrite) data with {@link android.bluetooth.BluetoothGattServerCallback#onCharacteristicWriteRequest(BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[])}
+     */
+    public byte[] temporaryData;
+
+    /**
      * notification / indication count
      * {@code -1} is infinit
      */
@@ -148,6 +159,8 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
         responseCode = in.readInt();
         delay = in.readLong();
         data = in.createByteArray();
+        currentData = in.createByteArray();
+        temporaryData = in.createByteArray();
         notificationCount = in.readInt();
     }
 
@@ -157,7 +170,13 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
     @NonNull
     @Override
     public byte[] getBytes() {
-        return data;
+        byte[] result;
+        if (currentData != null) {
+            result = currentData;
+        } else {
+            result = data;
+        }
+        return result;
     }
 
     /**
@@ -181,6 +200,8 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
         dest.writeInt(responseCode);
         dest.writeLong(delay);
         dest.writeByteArray(data);
+        dest.writeByteArray(currentData);
+        dest.writeByteArray(temporaryData);
         dest.writeInt(notificationCount);
     }
 
@@ -196,6 +217,8 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
                 ^ Integer.valueOf(responseCode).hashCode()
                 ^ Long.valueOf(delay).hashCode()
                 ^ Arrays.hashCode(data)
+                ^ Arrays.hashCode(currentData)
+                ^ Arrays.hashCode(temporaryData)
                 ^ Integer.valueOf(notificationCount).hashCode();
     }
 
@@ -214,6 +237,8 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
                     && responseCode == target.responseCode
                     && delay == target.delay
                     && Arrays.equals(data, target.data)
+                    && Arrays.equals(currentData, target.currentData)
+                    && Arrays.equals(temporaryData, target.temporaryData)
                     && notificationCount == target.notificationCount;
         }
         return result;

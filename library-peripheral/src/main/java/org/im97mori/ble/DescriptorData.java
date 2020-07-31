@@ -1,6 +1,7 @@
 package org.im97mori.ble;
 
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -77,6 +78,16 @@ public class DescriptorData implements Parcelable, ByteArrayInterface {
     public byte[] data;
 
     /**
+     * overwritten data with {@link android.bluetooth.BluetoothGattServerCallback#onCharacteristicWriteRequest(BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[])}
+     */
+    public byte[] currentData;
+
+    /**
+     * temporary(preparedWrite) data with {@link android.bluetooth.BluetoothGattServerCallback#onCharacteristicWriteRequest(BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[])}
+     */
+    public byte[] temporaryData;
+
+    /**
      * Constructor
      */
     public DescriptorData() {
@@ -110,6 +121,8 @@ public class DescriptorData implements Parcelable, ByteArrayInterface {
         responseCode = in.readInt();
         delay = in.readLong();
         data = in.createByteArray();
+        currentData = in.createByteArray();
+        temporaryData = in.createByteArray();
     }
 
     /**
@@ -118,7 +131,13 @@ public class DescriptorData implements Parcelable, ByteArrayInterface {
     @NonNull
     @Override
     public byte[] getBytes() {
-        return data;
+        byte[] result;
+        if (currentData != null) {
+            result = currentData;
+        } else {
+            result = data;
+        }
+        return result;
     }
 
     /**
@@ -139,6 +158,8 @@ public class DescriptorData implements Parcelable, ByteArrayInterface {
         dest.writeInt(responseCode);
         dest.writeLong(delay);
         dest.writeByteArray(data);
+        dest.writeByteArray(currentData);
+        dest.writeByteArray(temporaryData);
     }
 
     /**
@@ -150,7 +171,9 @@ public class DescriptorData implements Parcelable, ByteArrayInterface {
                 ^ Integer.valueOf(permission).hashCode()
                 ^ Integer.valueOf(responseCode).hashCode()
                 ^ Long.valueOf(delay).hashCode()
-                ^ Arrays.hashCode(data);
+                ^ Arrays.hashCode(data)
+                ^ Arrays.hashCode(currentData)
+                ^ Arrays.hashCode(temporaryData);
     }
 
     /**
@@ -165,7 +188,9 @@ public class DescriptorData implements Parcelable, ByteArrayInterface {
                     && permission == target.permission
                     && responseCode == target.responseCode
                     && delay == target.delay
-                    && Arrays.equals(data, target.data);
+                    && Arrays.equals(data, target.data)
+                    && Arrays.equals(currentData, target.currentData)
+                    && Arrays.equals(temporaryData, target.temporaryData);
         }
         return result;
     }

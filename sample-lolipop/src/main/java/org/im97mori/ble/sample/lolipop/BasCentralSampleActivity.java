@@ -61,7 +61,7 @@ public class BasCentralSampleActivity extends BaseActivity implements View.OnCli
     private ArrayAdapter<Pair<String, String>> mAdapter;
     private ListView mListView;
 
-    private BasMockCallbackSample mBasMockCallbackSample;
+    private BasCallbackSample mBasCallbackSample;
 
     private BroadcastReceiver mReceiver;
 
@@ -69,7 +69,7 @@ public class BasCentralSampleActivity extends BaseActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mBasMockCallbackSample = new BasMockCallbackSample.Builder(this).build();
+        mBasCallbackSample = new BasCallbackSample.Builder(this).build();
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
         mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {
@@ -219,7 +219,7 @@ public class BasCentralSampleActivity extends BaseActivity implements View.OnCli
                     if (mBatteryService == null) {
                         BLEConnection bleConnection = new BLEConnection(this, target, null);
                         BLEConnectionHolder.addInstance(bleConnection, true);
-                        mBatteryService = new BatteryService(bleConnection, mBasMockCallbackSample, mBasMockCallbackSample);
+                        mBatteryService = new BatteryService(bleConnection, mBasCallbackSample, mBasCallbackSample);
                     }
                     if (!mBatteryService.isStarted()) {
                         mBatteryService.start();
@@ -302,7 +302,7 @@ public class BasCentralSampleActivity extends BaseActivity implements View.OnCli
                                 if (bleConnection == null) {
                                     bleConnection = new BLEConnection(BasCentralSampleActivity.this, device, null);
                                     BLEConnectionHolder.addInstance(bleConnection, true);
-                                    BasCentralSampleActivity.this.mBatteryService = new BatteryService(bleConnection, BasCentralSampleActivity.this.mBasMockCallbackSample, BasCentralSampleActivity.this.mBasMockCallbackSample);
+                                    BasCentralSampleActivity.this.mBatteryService = new BatteryService(bleConnection, BasCentralSampleActivity.this.mBasCallbackSample, BasCentralSampleActivity.this.mBasCallbackSample);
                                 }
                                 BasCentralSampleActivity.this.mBatteryService.start();
                             } else {
@@ -320,7 +320,7 @@ public class BasCentralSampleActivity extends BaseActivity implements View.OnCli
                                                     if (bleConnection == null) {
                                                         bleConnection = new BLEConnection(BasCentralSampleActivity.this, scanResult.getDevice(), null);
                                                         BLEConnectionHolder.addInstance(bleConnection, true);
-                                                        BasCentralSampleActivity.this.mBatteryService = new BatteryService(bleConnection, BasCentralSampleActivity.this.mBasMockCallbackSample, BasCentralSampleActivity.this.mBasMockCallbackSample);
+                                                        BasCentralSampleActivity.this.mBatteryService = new BatteryService(bleConnection, BasCentralSampleActivity.this.mBasCallbackSample, BasCentralSampleActivity.this.mBasCallbackSample);
                                                     }
                                                     BasCentralSampleActivity.this.mBatteryService.start();
                                                     BasCentralSampleActivity.this.unregisterReceiver(BasCentralSampleActivity.this.mReceiver);

@@ -62,9 +62,9 @@ public class BlpPeripheralSampleActivity extends BaseActivity implements View.On
 
         Calendar calendar = Calendar.getInstance();
 
-        mBloodPressureProfileMockCallback = new BlpProfileCallbackSample.Builder(this, this)
-                .addManufacturerNameString("Manufacturer Name String data")
-                .addModelNumberString("Model Number String data")
+        mBloodPressureProfileMockCallback = new BlpCallbackSample.Builder(this, this)
+                .addManufacturerNameString("Manufacturer Name String data blp")
+                .addModelNumberString("Model Number String data blp")
                 .addBloodPressureMeasurement(new BloodPressureMeasurement(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_PRESENT | BloodPressureMeasurementUtils.FLAG_USER_ID_NOT_PRESENT | BloodPressureMeasurementUtils.FLAG_MEASUREMENT_STATUS_NOT_PRESENT
                                 , new IEEE_11073_20601_SFLOAT(new byte[]{0x6e, 0x00}, 0)
                                 , new IEEE_11073_20601_SFLOAT(new byte[]{0x5a, 0x00}, 0)
@@ -119,7 +119,9 @@ public class BlpPeripheralSampleActivity extends BaseActivity implements View.On
 
     @Override
     protected void onDestroy() {
-        mBloodPressureProfileMockCallback.quit();
+        if (mBloodPressureProfileMockCallback != null) {
+            mBloodPressureProfileMockCallback.quit();
+        }
         super.onDestroy();
     }
 

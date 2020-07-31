@@ -30,6 +30,8 @@ android {
 dependencies {
     api "${groupId}:${profileBlpPeripheralAndroid.artifactId}:${profileBlpPeripheralAndroid.versionName}"
     api "${groupId}:${profileBlpCentralAndroid.artifactId}:${profileBlpCentralAndroid.versionName}"
+    api "${groupId}:${profileLnpPeripheralAndroid.artifactId}:${profileLnpPeripheralAndroid.versionName}"
+    api "${groupId}:${profileLnpCentralAndroid.artifactId}:${profileLnpCentralAndroid.versionName}"
 }
 
 task sourcesJar(type: Jar) {

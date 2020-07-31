@@ -60,7 +60,7 @@ public class DisPeripheralSampleActivity extends BaseActivity implements View.On
 
         mBLEServerConnection = new BLEServerConnection(this);
         DeviceInformationServiceMockCallback deviceInformationServiceMockCallback
-                = new DisMockCallbackSample.Builder(this)
+                = new DisCallbackSample.Builder(this)
                 .addManufacturerNameString("ManufacturerNameString")
                 .addModelNumberString("ModelNumberString")
                 .addSerialNumberString("SerialNumberString")

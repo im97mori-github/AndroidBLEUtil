@@ -90,26 +90,6 @@ public abstract class BaseMockCallback implements BLEServerCallback {
     protected final Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, DescriptorData>> mRemappedCharacteristicDescriptorMap = new HashMap<>();
 
     /**
-     * current characteristic data(overwrited by write characteristic)
-     */
-    protected final Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>> mCurrentCharacteristicDataMap = new HashMap<>();
-
-    /**
-     * current descriptor data(overwrited by write descriptor)
-     */
-    protected final Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>>> mCurrentDescriptorDataMap = new HashMap<>();
-
-    /**
-     * temporary characteristic data(in reliable write)
-     */
-    protected final Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>> mTemporaryCharacteristicDataMap = new HashMap<>();
-
-    /**
-     * temporary descriptor data(in reliable write)
-     */
-    protected final Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>>> mTemporaryDescriptorDataMap = new HashMap<>();
-
-    /**
      * reliable write status
      * {@code true}:in reliable write
      */
@@ -153,11 +133,13 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         for (ServiceData serviceData : mMockData.serviceDataList) {
             bluetoothGattService = new BluetoothGattService(serviceData.uuid, serviceData.type);
             for (CharacteristicData characteristicData : serviceData.characteristicDataList) {
+                characteristicData.currentData = null;
+                characteristicData.temporaryData = null;
                 bluetoothGattCharacteristic = new BluetoothGattCharacteristic(
                         characteristicData.uuid
                         , characteristicData.property
                         , characteristicData.permission);
-                bluetoothGattCharacteristic.setValue(characteristicData.data);
+                bluetoothGattCharacteristic.setValue(characteristicData.getBytes());
                 for (DescriptorData descriptorData : characteristicData.descriptorDataList) {
                     bluetoothGattDescriptor = new BluetoothGattDescriptor(descriptorData.uuid
                             , descriptorData.permission);
@@ -184,10 +166,6 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         mRemappedServiceCharacteristicMap.clear();
         mRemappedCharacteristicDescriptorMap.clear();
         mAvailableServiceMap.clear();
-        mCurrentCharacteristicDataMap.clear();
-        mCurrentDescriptorDataMap.clear();
-        mTemporaryCharacteristicDataMap.clear();
-        mTemporaryDescriptorDataMap.clear();
         mIsReliable = false;
     }
 
@@ -322,10 +300,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                         }
                     } while (now + delay > SystemClock.elapsedRealtime());
 
-                    byte[] data = getCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
-                    if (data == null) {
-                        data = characteristicData.data;
-                    }
+                    byte[] data = characteristicData.getBytes();
                     result = bluetoothGattServer.sendResponse(device
                             , requestId
                             , characteristicData.responseCode
@@ -340,26 +315,6 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         }
 
         return result;
-    }
-
-    /**
-     * get current characteristic data
-     *
-     * @param serviceUUID              target service {@link UUID} instance
-     * @param serviceInstanceId        {@link BluetoothGattService#getInstanceId()}
-     * @param characteristicUUID       target characteristic {@link UUID} instance
-     * @param characteristicInstanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @return current characteristic data or {@code null}
-     */
-    @Nullable
-    protected synchronized byte[] getCharacteristicData(@NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId) {
-        byte[] data = null;
-        Pair<UUID, Integer> serviceKey = Pair.create(serviceUUID, serviceInstanceId);
-        Map<Pair<UUID, Integer>, byte[]> characteristicDataMap = mCurrentCharacteristicDataMap.get(serviceKey);
-        if (characteristicDataMap != null) {
-            data = characteristicDataMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
-        }
-        return data;
     }
 
     /**
@@ -414,14 +369,11 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                     if (result && BluetoothGatt.GATT_SUCCESS == characteristicData.responseCode) {
                         mIsReliable |= preparedWrite;
 
-                        Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>> targetMap;
                         if (mIsReliable) {
-                            targetMap = mTemporaryCharacteristicDataMap;
+                            characteristicData.temporaryData = value;
                         } else {
-                            targetMap = mCurrentCharacteristicDataMap;
+                            characteristicData.currentData = value;
                         }
-
-                        setCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, targetMap, value);
                     }
                 }
 
@@ -431,27 +383,6 @@ public abstract class BaseMockCallback implements BLEServerCallback {
             }
         }
         return result;
-    }
-
-    /**
-     * set characteristic data
-     *
-     * @param serviceUUID              target service {@link UUID} instance
-     * @param serviceInstanceId        {@link BluetoothGattService#getInstanceId()}
-     * @param characteristicUUID       target characteristic {@link UUID} instance
-     * @param characteristicInstanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param targetMap                {@link #mCurrentCharacteristicDataMap} or {@link #mTemporaryCharacteristicDataMap}
-     * @param data                     characteristic data
-     */
-    protected synchronized void setCharacteristicData(@NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>> targetMap, @NonNull byte[] data) {
-        Pair<UUID, Integer> key = Pair.create(serviceUUID, serviceInstanceId);
-        Map<Pair<UUID, Integer>, byte[]> characteristicDataMap = targetMap.get(key);
-        if (characteristicDataMap == null) {
-            characteristicDataMap = new HashMap<>();
-            targetMap.put(key, characteristicDataMap);
-        }
-
-        characteristicDataMap.put(Pair.create(characteristicUUID, characteristicInstanceId), data);
     }
 
     /**
@@ -470,9 +401,6 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         if (bluetoothGattServer != null) {
             long now = SystemClock.elapsedRealtime();
             BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattDescriptor.getCharacteristic();
-            BluetoothGattService bluetoothGattService = bluetoothGattCharacteristic.getService();
-            UUID serviceUUID = bluetoothGattService.getUuid();
-            int serviceInstanceId = bluetoothGattService.getInstanceId();
             UUID characteristicUUID = bluetoothGattCharacteristic.getUuid();
             int characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
             Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
@@ -501,10 +429,8 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                             }
                         }
                     } while (now + delay > SystemClock.elapsedRealtime());
-                    byte[] data = getDescriptorData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId);
-                    if (data == null) {
-                        data = descriptorData.data;
-                    }
+
+                    byte[] data = descriptorData.getBytes();
                     result = bluetoothGattServer.sendResponse(device
                             , requestId
                             , descriptorData.responseCode
@@ -518,31 +444,6 @@ public abstract class BaseMockCallback implements BLEServerCallback {
             }
         }
         return result;
-    }
-
-    /**
-     * get current descriptor data
-     *
-     * @param serviceUUID              target service {@link UUID} instance
-     * @param serviceInstanceId        {@link BluetoothGattService#getInstanceId()}
-     * @param characteristicUUID       target characteristic {@link UUID} instance
-     * @param characteristicInstanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorUUID           target descriptor {@link UUID} instance
-     * @param descriptorInstanceId     target descriptor instance id
-     * @return current descriptor data or {@code null}
-     */
-    @Nullable
-    protected synchronized byte[] getDescriptorData(@NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull @SuppressWarnings("SameParameterValue") UUID descriptorUUID, int descriptorInstanceId) {
-        byte[] data = null;
-        Pair<UUID, Integer> serviceKey = Pair.create(serviceUUID, serviceInstanceId);
-        Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>> characteristicDataMap = mCurrentDescriptorDataMap.get(serviceKey);
-        if (characteristicDataMap != null) {
-            Map<Pair<UUID, Integer>, byte[]> descriptorDataMap = characteristicDataMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
-            if (descriptorDataMap != null) {
-                data = descriptorDataMap.get(Pair.create(descriptorUUID, descriptorInstanceId));
-            }
-        }
-        return data;
     }
 
     /**
@@ -605,18 +506,15 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                     if (result && BluetoothGatt.GATT_SUCCESS == descriptorData.responseCode) {
                         mIsReliable |= preparedWrite;
 
-                        Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>>> targetMap;
                         if (mIsReliable) {
-                            targetMap = mTemporaryDescriptorDataMap;
+                            descriptorData.temporaryData = value;
                         } else {
-                            targetMap = mCurrentDescriptorDataMap;
+                            descriptorData.currentData = value;
+
+                            if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
+                                startNotification(bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, 0, null);
+                            }
                         }
-
-                        setDescriptorData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, targetMap, value);
-                    }
-
-                    if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && !mIsReliable) {
-                        startNotification(bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, 0, null);
                     }
                 }
             }
@@ -626,43 +524,6 @@ public abstract class BaseMockCallback implements BLEServerCallback {
             }
         }
         return result;
-    }
-
-    /**
-     * set descriptor data
-     *
-     * @param serviceUUID              target service {@link UUID} instance
-     * @param serviceInstanceId        {@link BluetoothGattService#getInstanceId()}
-     * @param characteristicUUID       target characteristic {@link UUID} instance
-     * @param characteristicInstanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorUUID           target descriptor {@link UUID} instance
-     * @param descriptorInstanceId     target descriptor instance id
-     * @param targetMap                {@link #mCurrentDescriptorDataMap} or {@link #mTemporaryDescriptorDataMap}
-     * @param data                     descriptor data
-     */
-    protected synchronized void setDescriptorData(@NonNull UUID serviceUUID
-            , int serviceInstanceId
-            , @NonNull UUID characteristicUUID
-            , int characteristicInstanceId
-            , @NonNull @SuppressWarnings("SameParameterValue") UUID descriptorUUID
-            , int descriptorInstanceId
-            , @NonNull Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>>> targetMap
-            , @NonNull byte[] data) {
-        Pair<UUID, Integer> serviceKey = Pair.create(serviceUUID, serviceInstanceId);
-        Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>> characteristicDataMap = targetMap.get(serviceKey);
-        if (characteristicDataMap == null) {
-            characteristicDataMap = new HashMap<>();
-            targetMap.put(serviceKey, characteristicDataMap);
-        }
-
-        Pair<UUID, Integer> characteristicKey = Pair.create(characteristicUUID, characteristicInstanceId);
-        Map<Pair<UUID, Integer>, byte[]> descriptorMap = characteristicDataMap.get(characteristicKey);
-        if (descriptorMap == null) {
-            descriptorMap = new HashMap<>();
-            characteristicDataMap.put(characteristicKey, descriptorMap);
-        }
-
-        descriptorMap.put(Pair.create(descriptorUUID, descriptorInstanceId), data);
     }
 
     /**
@@ -697,20 +558,21 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         if (characteristicMap != null) {
             CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
             if (characteristicData != null) {
-                byte[] data = getCharacteristicData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
-                if (data != null) {
-                    characteristicData.data = data;
-                }
                 Bundle bundle = new Bundle();
                 bundle.putInt(KEY_NOTIFICATION_COUNT, notificationCount == null ? characteristicData.notificationCount : notificationCount);
                 bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
 
-                byte[] descriptorData = getDescriptorData(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, descriptorInstanceId);
                 Boolean isConfirm = null;
-                if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, descriptorData)) {
-                    isConfirm = false;
-                } else if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, descriptorData)) {
-                    isConfirm = true;
+                Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
+                if (descriptorDataMap != null) {
+                    DescriptorData descriptorData = descriptorDataMap.get(Pair.create(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, descriptorInstanceId));
+                    if (descriptorData != null) {
+                        if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
+                            isConfirm = false;
+                        } else if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, descriptorData.getBytes())) {
+                            isConfirm = true;
+                        }
+                    }
                 }
 
                 if (isConfirm != null) {
@@ -742,11 +604,10 @@ public abstract class BaseMockCallback implements BLEServerCallback {
             CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
             if (characteristicData != null && argument != null && argument.containsKey(KEY_NOTIFICATION_COUNT)) {
                 int notificationCount = argument.getInt(KEY_NOTIFICATION_COUNT);
+                if (notificationCount > 0) {
+                    notificationCount--;
+                }
                 if (notificationCount != 0) {
-                    if (notificationCount > 0) {
-                        notificationCount--;
-                    }
-
                     int descriptorInstanceId = argument.getInt(KEY_DESCRIPTOR_INSTANCE_ID, -1);
                     startNotification(bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, NOTIFICATION_INTERVAL, notificationCount);
                 }
@@ -810,59 +671,44 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         boolean result = false;
         BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
         if (bluetoothGattServer != null) {
-            if (execute) {
-                Pair<UUID, Integer> serviceKey;
-                Pair<UUID, Integer> characteristicKey;
-                for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>> serviceEntry : mTemporaryCharacteristicDataMap.entrySet()) {
-                    serviceKey = serviceEntry.getKey();
-                    Map<Pair<UUID, Integer>, byte[]> characteristicMap = mCurrentCharacteristicDataMap.get(serviceKey);
-                    if (characteristicMap == null) {
-                        mCurrentCharacteristicDataMap.put(serviceKey, serviceEntry.getValue());
-                    } else {
-                        characteristicMap.putAll(serviceEntry.getValue());
-                    }
-                }
 
-                for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>>> serviceEntry : mTemporaryDescriptorDataMap.entrySet()) {
-                    serviceKey = serviceEntry.getKey();
-                    Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>> characteristicMap = mCurrentDescriptorDataMap.get(serviceKey);
-                    Map<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>> temporaryCharacteristicMap = serviceEntry.getValue();
-                    if (characteristicMap == null) {
-                        mCurrentDescriptorDataMap.put(serviceKey, temporaryCharacteristicMap);
-                    } else {
-                        Map<Pair<UUID, Integer>, byte[]> descriptorMap;
-                        Map<Pair<UUID, Integer>, byte[]> temporaryDescriptorMap;
-                        for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, byte[]>> characteristicEntry : temporaryCharacteristicMap.entrySet()) {
-                            characteristicKey = characteristicEntry.getKey();
-                            descriptorMap = characteristicMap.get(characteristicKey);
-                            if (descriptorMap == null) {
-                                descriptorMap = new HashMap<>();
-                                characteristicMap.put(characteristicKey, descriptorMap);
-                            } else {
-                                Map<Pair<UUID, Integer>, CharacteristicData> characteristicDataMap;
-                                for (Map.Entry<Pair<UUID, Integer>, byte[]> descriptorEntry : descriptorMap.entrySet()) {
-                                    Pair<UUID, Integer> descriptorKey = descriptorEntry.getKey();
-                                    if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorKey.first)
-                                            && !Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorEntry.getValue())
-                                            && Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorMap.get(descriptorKey))) {
-                                        characteristicDataMap = mRemappedServiceCharacteristicMap.get(serviceKey);
-                                        if (characteristicDataMap != null) {
-                                            CharacteristicData characteristicData = characteristicDataMap.get(characteristicKey);
-                                            if (characteristicData != null) {
-                                                startNotification(bleServerConnection, device, serviceKey.first, serviceKey.second, characteristicKey.first, characteristicKey.second, descriptorKey.second, 0, characteristicData.notificationCount);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+            for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, CharacteristicData>> serviceEntry : mRemappedServiceCharacteristicMap.entrySet()) {
+                for (Map.Entry<Pair<UUID, Integer>, CharacteristicData> characteristicEntry : serviceEntry.getValue().entrySet()) {
+                    CharacteristicData characteristicData = characteristicEntry.getValue();
+                    if (execute) {
+                        if (characteristicData.temporaryData != null) {
+                            characteristicData.currentData = characteristicData.temporaryData;
                         }
                     }
+                    characteristicData.temporaryData = null;
                 }
             }
 
+            for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, DescriptorData>> characteristicEntry : mRemappedCharacteristicDescriptorMap.entrySet()) {
+                Pair<UUID, Integer> characteristicKey = characteristicEntry.getKey();
+                for (Map.Entry<Pair<UUID, Integer>, DescriptorData> descriptorEntry : characteristicEntry.getValue().entrySet()) {
+                    Pair<UUID, Integer> descriptorKey = descriptorEntry.getKey();
+                    DescriptorData descriptorData = descriptorEntry.getValue();
+                    if (execute) {
+                        if (descriptorData.temporaryData != null) {
+                            if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorData.uuid)
+                                    && !Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.temporaryData)
+                                    && Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
+                                for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, CharacteristicData>> serviceEntry : mRemappedServiceCharacteristicMap.entrySet()) {
+                                    CharacteristicData characteristicData = serviceEntry.getValue().get(characteristicKey);
+                                    if (characteristicData != null) {
+                                        startNotification(bleServerConnection, device, serviceEntry.getKey().first, serviceEntry.getKey().second, characteristicKey.first, characteristicKey.second, descriptorKey.second, 0, characteristicData.notificationCount);
+                                    }
+                                }
+                            }
+                            descriptorData.currentData = descriptorData.temporaryData;
+                        }
+                    }
+
+                    descriptorData.temporaryData = null;
+                }
+            }
             mIsReliable = false;
-            mTemporaryCharacteristicDataMap.clear();
-            mTemporaryDescriptorDataMap.clear();
             result = bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, 0, null);
         }
         return result;

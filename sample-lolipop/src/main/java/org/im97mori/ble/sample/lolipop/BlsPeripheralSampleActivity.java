@@ -68,7 +68,7 @@ public class BlsPeripheralSampleActivity extends BaseActivity implements View.On
         mBLEServerConnection = new BLEServerConnection(this);
         Calendar calendar = Calendar.getInstance();
         BloodPressureServiceMockCallback bloodPressureServiceMockCallback
-                = new BlsMockCallbackSample.Builder(this)
+                = new BlsCallbackSample.Builder(this)
                 .addBloodPressureMeasurement(new BloodPressureMeasurement(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_PRESENT | BloodPressureMeasurementUtils.FLAG_USER_ID_NOT_PRESENT | BloodPressureMeasurementUtils.FLAG_MEASUREMENT_STATUS_NOT_PRESENT
                                 , new IEEE_11073_20601_SFLOAT(new byte[]{0x6e, 0x00}, 0)
                                 , new IEEE_11073_20601_SFLOAT(new byte[]{0x5a, 0x00}, 0)
