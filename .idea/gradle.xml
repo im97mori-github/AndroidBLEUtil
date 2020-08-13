@@ -205,6 +205,9 @@
             <option value="$PROJECT_DIR$/profile/blp/central" />
             <option value="$PROJECT_DIR$/profile/blp/peripheral" />
             <option value="$PROJECT_DIR$/profile/central" />
+            <option value="$PROJECT_DIR$/profile/fmp" />
+            <option value="$PROJECT_DIR$/profile/fmp/central" />
+            <option value="$PROJECT_DIR$/profile/fmp/peripheral" />
             <option value="$PROJECT_DIR$/profile/lnp" />
             <option value="$PROJECT_DIR$/profile/lnp/central" />
             <option value="$PROJECT_DIR$/profile/lnp/peripheral" />
@@ -222,6 +225,9 @@
             <option value="$PROJECT_DIR$/service/dis" />
             <option value="$PROJECT_DIR$/service/dis/central" />
             <option value="$PROJECT_DIR$/service/dis/peripheral" />
+            <option value="$PROJECT_DIR$/service/ias" />
+            <option value="$PROJECT_DIR$/service/ias/central" />
+            <option value="$PROJECT_DIR$/service/ias/peripheral" />
             <option value="$PROJECT_DIR$/service/lns" />
             <option value="$PROJECT_DIR$/service/lns/central" />
             <option value="$PROJECT_DIR$/service/lns/peripheral" />

@@ -19,7 +19,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class BaseBLEServerCallback implements BLEServerCallback {
 
     public AtomicBoolean result = new AtomicBoolean(false);
-    public AtomicBoolean isProccesing = new AtomicBoolean(true);
 
     @Override
     public void onServerStarted() {

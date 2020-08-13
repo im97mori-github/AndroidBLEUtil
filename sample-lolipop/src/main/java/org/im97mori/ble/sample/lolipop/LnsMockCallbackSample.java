@@ -63,7 +63,7 @@ public class LnsMockCallbackSample extends LocationAndNavigationServiceMockCallb
         StackTraceElement[] stackTraceElementArray = Thread.currentThread().getStackTrace();
         for (int i = 0; i < stackTraceElementArray.length; i++) {
             StackTraceElement stackTraceElement = stackTraceElementArray[i];
-            if (LnsMockCallbackSample.class.getName().equals(stackTraceElement.getClassName())
+            if (this.getClass().getName().equals(stackTraceElement.getClassName())
                     && "callback".equals(stackTraceElement.getMethodName())) {
                 index = i + 1;
                 break;

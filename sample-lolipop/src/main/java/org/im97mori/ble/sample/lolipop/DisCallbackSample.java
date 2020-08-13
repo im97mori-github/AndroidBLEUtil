@@ -67,7 +67,7 @@ public class DisCallbackSample extends DeviceInformationServiceMockCallback impl
         StackTraceElement[] stackTraceElementArray = Thread.currentThread().getStackTrace();
         for (int i = 0; i < stackTraceElementArray.length; i++) {
             StackTraceElement stackTraceElement = stackTraceElementArray[i];
-            if (DisCallbackSample.class.getName().equals(stackTraceElement.getClassName())
+            if (this.getClass().getName().equals(stackTraceElement.getClassName())
                     && "callback".equals(stackTraceElement.getMethodName())) {
                 index = i + 1;
                 break;

@@ -60,6 +60,12 @@
         <activity
             android:name=".LnpCentralSampleActivity"
             android:label="@string/label_lnp_central" />
+        <activity
+            android:name=".FmpPeripheralSampleActivity"
+            android:label="@string/label_fmp_peripheral" />
+        <activity
+            android:name=".FmpCentralSampleActivity"
+            android:label="@string/label_fmp_central" />
     </application>
 
 </manifest>

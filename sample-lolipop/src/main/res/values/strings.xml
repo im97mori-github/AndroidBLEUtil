@@ -23,6 +23,8 @@
     <string name="label_blp_central">BLP Central sample</string>
     <string name="label_lnp_peripheral">LNP Peripheral sample</string>
     <string name="label_lnp_central">LNP Central sample</string>
+    <string name="label_fmp_peripheral">FMP Peripheral sample</string>
+    <string name="label_fmp_central">FMP Central sample</string>
 
     <string name="menu_discover_service">Discover Service</string>
     <string name="menu_discover_service_sync">Discover Service(Synchronous)</string>
@@ -89,6 +91,10 @@
     <string name="menu_indicate_ln_control_point_stop">Indicate LN Control Point stop</string>
     <string name="menu_notify_navigation_start">Notify Navigation start</string>
     <string name="menu_notify_navigation_stop">Notify Navigation stop</string>
+
+    <string name="menu_write_alert_level_no">Write Alert Level(No)</string>
+    <string name="menu_write_alert_level_mild">Write Alert Level(Mild)</string>
+    <string name="menu_write_alert_level_high">Write Alert Level(High)</string>
 
     <string name="menu_clear">Clear</string>
 </resources>

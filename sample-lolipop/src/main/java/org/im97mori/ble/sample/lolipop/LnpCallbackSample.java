@@ -81,7 +81,7 @@ public class LnpCallbackSample extends LocationAndNavigationProfileMockCallback 
         StackTraceElement[] stackTraceElementArray = Thread.currentThread().getStackTrace();
         for (int i = 0; i < stackTraceElementArray.length; i++) {
             StackTraceElement stackTraceElement = stackTraceElementArray[i];
-            if (LnpCallbackSample.class.getName().equals(stackTraceElement.getClassName())
+            if (this.getClass().getName().equals(stackTraceElement.getClassName())
                     && "callback".equals(stackTraceElement.getMethodName())) {
                 index = i + 1;
                 break;
@@ -538,7 +538,6 @@ public class LnpCallbackSample extends LocationAndNavigationProfileMockCallback 
     public void onNavigationNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull NavigationAndroid navigationAndroid) {
         callback(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, Arrays.toString(navigationAndroid.getBytes()));
     }
-
 
     @Override
     public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {

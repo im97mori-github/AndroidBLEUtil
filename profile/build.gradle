@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'digital.wup.android-maven-publish'
 
-def target = profileBlpAndroid
+def target = profileAndroid
 def GROUP_ID = groupId
 def ARTIFACT_ID = target[artifactId]
 def VERSION_CODE = target[versionCode]
@@ -32,6 +32,8 @@ dependencies {
     api "${groupId}:${profileBlpCentralAndroid.artifactId}:${profileBlpCentralAndroid.versionName}"
     api "${groupId}:${profileLnpPeripheralAndroid.artifactId}:${profileLnpPeripheralAndroid.versionName}"
     api "${groupId}:${profileLnpCentralAndroid.artifactId}:${profileLnpCentralAndroid.versionName}"
+    api "${groupId}:${profileFmpPeripheralAndroid.artifactId}:${profileFmpPeripheralAndroid.versionName}"
+    api "${groupId}:${profileFmpCentralAndroid.artifactId}:${profileFmpCentralAndroid.versionName}"
 }
 
 task sourcesJar(type: Jar) {

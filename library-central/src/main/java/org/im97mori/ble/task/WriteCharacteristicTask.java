@@ -255,14 +255,8 @@ public class WriteCharacteristicTask extends AbstractBLETask {
                 }
 
                 if (result) {
-                    // with response
-                    if (BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT == mWriteType) {
-                        // set timeout message
-                        mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
-                    } else {
-                        // with no response
-                        mBLEConnection.getBLECallback().onCharacteristicWriteSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mbyteArrayInterface.getBytes(), mArgumemnt);
-                    }
+                    // set timeout message
+                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                 } else {
                     if (bluetoothGattCharacteristic == null) {
                         nextProgress = PROGRESS_FINISHED;

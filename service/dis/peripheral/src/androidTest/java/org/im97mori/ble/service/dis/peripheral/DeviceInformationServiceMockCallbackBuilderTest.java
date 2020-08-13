@@ -150,6 +150,7 @@ public class DeviceInformationServiceMockCallbackBuilderTest {
 
     @Test
     public void test_removeManufacturerNameString_00001() {
+        String manufacturerName = "manufacturerName";
         final AtomicReference<BluetoothGattService> bluetoothGattServiceAtomicReference = new AtomicReference<>();
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
             @Override
@@ -159,6 +160,7 @@ public class DeviceInformationServiceMockCallbackBuilderTest {
             }
         };
         DeviceInformationServiceMockCallback callback = new DeviceInformationServiceMockCallback.Builder<>()
+                .addManufacturerNameString(manufacturerName)
                 .removeManufacturerNameString()
                 .build();
         callback.setup(mockBLEServerConnection);
