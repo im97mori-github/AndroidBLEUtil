@@ -79,17 +79,9 @@ public class LocationAndNavigationProfileTest {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
 
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
-        locationAndNavigationProfile.mDeviceInformationService = new DeviceInformationService(bleConnection, locationAndNavigationProfile.mLocationAndNavigationProfileCallback, null);
+        locationAndNavigationProfile.mDeviceInformationService = new DeviceInformationService(new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null), locationAndNavigationProfile.mLocationAndNavigationProfileCallback, null);
         assertNotNull(locationAndNavigationProfile.hasDeviceInformationService());
     }
 
@@ -104,17 +96,9 @@ public class LocationAndNavigationProfileTest {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
-        BLEConnectionHolder.clearInstance();
-        BLEConnectionHolder.addInstance(bleConnection, true);
 
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
-        locationAndNavigationProfile.mBatteryService = new BatteryService(bleConnection, locationAndNavigationProfile.mLocationAndNavigationProfileCallback, null);
+        locationAndNavigationProfile.mBatteryService = new BatteryService(new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null), locationAndNavigationProfile.mLocationAndNavigationProfileCallback, null);
         assertNotNull(locationAndNavigationProfile.hasBatteryService());
     }
 

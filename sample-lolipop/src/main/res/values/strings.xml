@@ -25,6 +25,8 @@
     <string name="label_lnp_central">LNP Central sample</string>
     <string name="label_fmp_peripheral">FMP Peripheral sample</string>
     <string name="label_fmp_central">FMP Central sample</string>
+    <string name="label_pxp_peripheral">PXP Peripheral sample</string>
+    <string name="label_pxp_central">PXP Central sample</string>
 
     <string name="menu_discover_service">Discover Service</string>
     <string name="menu_discover_service_sync">Discover Service(Synchronous)</string>
@@ -95,6 +97,15 @@
     <string name="menu_write_alert_level_no">Write Alert Level(No)</string>
     <string name="menu_write_alert_level_mild">Write Alert Level(Mild)</string>
     <string name="menu_write_alert_level_high">Write Alert Level(High)</string>
+
+    <string name="menu_read_alert_level">Read Alert Level</string>
+    <string name="menu_lls_write_alert_level_no">Write LLS Alert Level(No)</string>
+    <string name="menu_lls_write_alert_level_mild">Write LLS Alert Level(Mild)</string>
+    <string name="menu_lls_write_alert_level_high">Write LLS Alert Level(High)</string>
+    <string name="menu_ias_write_alert_level_no">Write IAS Alert Level(No)</string>
+    <string name="menu_ias_write_alert_level_mild">Write IAS Alert Level(Mild)</string>
+    <string name="menu_ias_write_alert_level_high">Write IAS Alert Level(High)</string>
+    <string name="menu_read_tx_power_level">Read Tx Power Level</string>
 
     <string name="menu_clear">Clear</string>
 </resources>

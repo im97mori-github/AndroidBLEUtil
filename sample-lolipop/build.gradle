@@ -20,5 +20,7 @@ dependencies {
     implementation project(path: ':profile:lnp:central')
     implementation project(path: ':profile:fmp:peripheral')
     implementation project(path: ':profile:fmp:central')
+    implementation project(path: ':profile:pxp:peripheral')
+    implementation project(path: ':profile:pxp:central')
     implementation 'androidx.fragment:fragment:1.2.5'
 }

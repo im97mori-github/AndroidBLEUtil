@@ -28,7 +28,7 @@ task clean(type: Delete) {
 }
 
 ext.globalCompileSdkVersion = 29
-ext.globalBuildToolsVersion = '30.0.1'
+ext.globalBuildToolsVersion = '30.0.2'
 ext.globalMinSdkVersion = 18
 ext.globalPeripheralMinSdkVersion = 21
 ext.globalTargetSdkVersion = 29
@@ -1671,11 +1671,53 @@ ext.serviceIasCentralAndroid = [
         , uploadVersionName: '0.1.0'
 ]
 
+ext.serviceLlsAndroid = [
+        artifactId         : "ble-service-lls-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.serviceLlsPeripheralAndroid = [
+        artifactId         : "ble-service-lls-peripheral-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.serviceLlsCentralAndroid = [
+        artifactId         : "ble-service-lls-central-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.serviceTpsAndroid = [
+        artifactId         : "ble-service-tps-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.serviceTpsPeripheralAndroid = [
+        artifactId         : "ble-service-tps-peripheral-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.serviceTpsCentralAndroid = [
+        artifactId         : "ble-service-tps-central-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
 ext.serviceAndroid = [
         artifactId         : "ble-service-android"
-        , versionCode      : 5
-        , versionName      : '0.1.4'
-        , uploadVersionName: '0.1.4'
+        , versionCode      : 6
+        , versionName      : '0.1.5'
+        , uploadVersionName: '0.1.5'
 ]
 
 ext.profilePeripheralAndroid = [
@@ -1750,17 +1792,37 @@ ext.profileFmpPeripheralAndroid = [
 
 ext.profileFmpCentralAndroid = [
         artifactId         : "ble-profile-fmp-central-android"
+        , versionCode      : 2
+        , versionName      : '0.1.1'
+        , uploadVersionName: '0.1.1'
+]
+
+ext.profilePxpAndroid = [
+        artifactId         : "ble-profile-pxp-android"
         , versionCode      : 1
         , versionName      : '0.1.0'
         , uploadVersionName: '0.1.0'
 ]
 
+ext.profilePxpPeripheralAndroid = [
+        artifactId         : "ble-profile-pxp-peripheral-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.profilePxpCentralAndroid = [
+        artifactId         : "ble-profile-pxp-central-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
 
 ext.profileAndroid = [
         artifactId         : "ble-profile-android"
-        , versionCode      : 4
-        , versionName      : '0.1.3'
-        , uploadVersionName: '0.1.3'
+        , versionCode      : 5
+        , versionName      : '0.1.4'
+        , uploadVersionName: '0.1.4'
 ]
 
 ext.apiCoreAndroid = "${groupId}:${coreAndroid.artifactId}:${coreAndroid.versionName}"

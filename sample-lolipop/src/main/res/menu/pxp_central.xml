@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/pre_connected">
+        <item
+            android:id="@+id/load_bonded_device"
+            android:title="@string/menu_load_bonded_device" />
+
+        <item
+            android:id="@+id/clear_bonded_history"
+            android:title="@string/menu_clear_bonded_history" />
+    </group>
+    <group android:id="@+id/connected">
+        <item
+            android:id="@+id/read_alert_level"
+            android:title="@string/menu_read_alert_level" />
+        <item
+            android:id="@+id/write_lls_alert_level_no"
+            android:title="@string/menu_lls_write_alert_level_no" />
+        <item
+            android:id="@+id/write_lls_alert_level_mild"
+            android:title="@string/menu_lls_write_alert_level_mild" />
+        <item
+            android:id="@+id/write_lls_alert_level_high"
+            android:title="@string/menu_lls_write_alert_level_high" />
+        <item
+            android:id="@+id/write_ias_alert_level_no"
+            android:title="@string/menu_ias_write_alert_level_no" />
+        <item
+            android:id="@+id/write_ias_alert_level_mild"
+            android:title="@string/menu_ias_write_alert_level_mild" />
+        <item
+            android:id="@+id/write_ias_alert_level_high"
+            android:title="@string/menu_ias_write_alert_level_high" />
+        <item
+            android:id="@+id/read_tx_power_level"
+            android:title="@string/menu_read_tx_power_level" />
+    </group>
+</menu>

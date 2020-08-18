@@ -34,6 +34,8 @@ dependencies {
     api "${groupId}:${profileLnpCentralAndroid.artifactId}:${profileLnpCentralAndroid.versionName}"
     api "${groupId}:${profileFmpPeripheralAndroid.artifactId}:${profileFmpPeripheralAndroid.versionName}"
     api "${groupId}:${profileFmpCentralAndroid.artifactId}:${profileFmpCentralAndroid.versionName}"
+    api "${groupId}:${profilePxpPeripheralAndroid.artifactId}:${profilePxpPeripheralAndroid.versionName}"
+    api "${groupId}:${profilePxpCentralAndroid.artifactId}:${profilePxpCentralAndroid.versionName}"
 }
 
 task sourcesJar(type: Jar) {

@@ -295,7 +295,7 @@ public class ImmediateAlertServiceTest {
     }
 
     @Test
-    public void test_startBloodPressureMeasurementIndication_000002() {
+    public void test_setAlertLevel_000002() {
         ImmediateAlertService immediateAlertService = new ImmediateAlertService(new MockBLEConnection(), new MockImmediateAlertServiceCallback(), null) {
 
             @Override
@@ -309,7 +309,7 @@ public class ImmediateAlertServiceTest {
     }
 
     @Test
-    public void test_startBloodPressureMeasurementIndication_000003() {
+    public void test_setAlertLevel_000003() {
         final Integer originalTaskId = 1;
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 

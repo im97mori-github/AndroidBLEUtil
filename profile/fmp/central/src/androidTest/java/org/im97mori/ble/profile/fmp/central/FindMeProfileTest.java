@@ -104,7 +104,7 @@ public class FindMeProfileTest {
     @Test
     public void test_createServices_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        FindMeProfile bloodPressureProfile = new FindMeProfile(ApplicationProvider.getApplicationContext(), new BaseFindMeProfileCallback()) {
+        FindMeProfile findMeProfile = new FindMeProfile(ApplicationProvider.getApplicationContext(), new BaseFindMeProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 super.createServices();
@@ -114,20 +114,20 @@ public class FindMeProfileTest {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        bloodPressureProfile.connect(MOCK_DEVICE);
-        assertNotNull(bloodPressureProfile.mImmediateAlertService);
+        findMeProfile.connect(MOCK_DEVICE);
+        assertNotNull(findMeProfile.mImmediateAlertService);
         assertTrue(atomicBoolean.get());
     }
 
     @Test
     public void test_quit_00001() {
-        FindMeProfile bloodPressureProfile = new FindMeProfile(ApplicationProvider.getApplicationContext(), new BaseFindMeProfileCallback());
+        FindMeProfile findMeProfile = new FindMeProfile(ApplicationProvider.getApplicationContext(), new BaseFindMeProfileCallback());
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        bloodPressureProfile.connect(MOCK_DEVICE);
-        bloodPressureProfile.quit();
-        assertNull(bloodPressureProfile.mImmediateAlertService);
+        findMeProfile.connect(MOCK_DEVICE);
+        findMeProfile.quit();
+        assertNull(findMeProfile.mImmediateAlertService);
     }
 
 }

@@ -53,7 +53,7 @@ public class LnpCallbackSample extends LocationAndNavigationProfileMockCallback 
         private final SampleCallback mSampleCallback;
 
         public Builder(@NonNull Context context, SampleCallback sampleCallback) {
-            super(context, new DisCallbackSample.Builder(sampleCallback), new BasCallbackSample.Builder(sampleCallback), new LnsMockCallbackSample.Builder(sampleCallback));
+            super(context, new DisCallbackSample.Builder(sampleCallback), new BasCallbackSample.Builder(sampleCallback), new LnsCallbackSample.Builder(sampleCallback));
             mSampleCallback = sampleCallback;
         }
 

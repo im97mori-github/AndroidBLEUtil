@@ -40,7 +40,7 @@ public class FindMeProfile extends AbstractCentralProfile {
     }
 
     /**
-     * find Location and Navigation Profile device
+     * find Find Me Profile device
      *
      * @param argument callback argument
      * @return task id. if {@code null} returned, task was not registed

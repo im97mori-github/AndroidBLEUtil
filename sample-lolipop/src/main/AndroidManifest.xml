@@ -66,6 +66,12 @@
         <activity
             android:name=".FmpCentralSampleActivity"
             android:label="@string/label_fmp_central" />
+        <activity
+            android:name=".PxpPeripheralSampleActivity"
+            android:label="@string/label_pxp_peripheral" />
+        <activity
+            android:name=".PxpCentralSampleActivity"
+            android:label="@string/label_pxp_central" />
     </application>
 
 </manifest>

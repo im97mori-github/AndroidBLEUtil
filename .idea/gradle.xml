@@ -212,6 +212,9 @@
             <option value="$PROJECT_DIR$/profile/lnp/central" />
             <option value="$PROJECT_DIR$/profile/lnp/peripheral" />
             <option value="$PROJECT_DIR$/profile/peripheral" />
+            <option value="$PROJECT_DIR$/profile/pxp" />
+            <option value="$PROJECT_DIR$/profile/pxp/central" />
+            <option value="$PROJECT_DIR$/profile/pxp/peripheral" />
             <option value="$PROJECT_DIR$/sample-jellybean" />
             <option value="$PROJECT_DIR$/sample-lolipop" />
             <option value="$PROJECT_DIR$/service" />
@@ -228,10 +231,16 @@
             <option value="$PROJECT_DIR$/service/ias" />
             <option value="$PROJECT_DIR$/service/ias/central" />
             <option value="$PROJECT_DIR$/service/ias/peripheral" />
+            <option value="$PROJECT_DIR$/service/lls" />
+            <option value="$PROJECT_DIR$/service/lls/central" />
+            <option value="$PROJECT_DIR$/service/lls/peripheral" />
             <option value="$PROJECT_DIR$/service/lns" />
             <option value="$PROJECT_DIR$/service/lns/central" />
             <option value="$PROJECT_DIR$/service/lns/peripheral" />
             <option value="$PROJECT_DIR$/service/peripheral" />
+            <option value="$PROJECT_DIR$/service/tps" />
+            <option value="$PROJECT_DIR$/service/tps/central" />
+            <option value="$PROJECT_DIR$/service/tps/peripheral" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
