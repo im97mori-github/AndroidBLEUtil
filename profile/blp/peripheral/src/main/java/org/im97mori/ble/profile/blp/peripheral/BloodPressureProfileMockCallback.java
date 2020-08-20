@@ -47,6 +47,16 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
         protected final BloodPressureServiceMockCallback.Builder<? extends BloodPressureServiceMockCallback> mBloodPressureServiceMockCallbackBuilder;
 
         /**
+         * flag for Manufacturer Name String data
+         */
+        protected boolean mHasManufacturerNameString;
+
+        /**
+         * flag for Model Number String data
+         */
+        protected boolean mHasModelNumberString;
+
+        /**
          * @param context                                     {@link Context} instance
          * @param deviceInformationServiceMockCallbackBuilder {@link org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder} instance
          * @param bloodPressureServiceMockCallbackBuilder     {@link org.im97mori.ble.service.bls.peripheral.BloodPressureServiceMockCallback.Builder} instance
@@ -64,6 +74,7 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> addManufacturerNameString(@NonNull String manufacturerName) {
+            mHasManufacturerNameString = true;
             return addManufacturerNameString(new ManufacturerNameString(manufacturerName));
         }
 
@@ -72,6 +83,7 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> addManufacturerNameString(@NonNull ManufacturerNameString manufacturerNameString) {
+            mHasManufacturerNameString = true;
             return addManufacturerNameString(manufacturerNameString.getBytes());
         }
 
@@ -80,6 +92,7 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> addManufacturerNameString(@NonNull byte[] value) {
+            mHasManufacturerNameString = true;
             return addManufacturerNameString(BluetoothGatt.GATT_SUCCESS
                     , 0
                     , value);
@@ -90,6 +103,7 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+            mHasManufacturerNameString = true;
             mDeviceInformationServiceMockCallbackBuilder.addManufacturerNameString(responceCode, delay, value);
             return this;
         }
@@ -99,6 +113,7 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> removeManufacturerNameString() {
+            mHasManufacturerNameString = false;
             mDeviceInformationServiceMockCallbackBuilder.removeManufacturerNameString();
             return this;
         }
@@ -108,6 +123,7 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> addModelNumberString(@NonNull String modelNumber) {
+            mHasModelNumberString = true;
             return addModelNumberString(new ModelNumberString(modelNumber));
         }
 
@@ -116,6 +132,7 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> addModelNumberString(ModelNumberString modelNumberString) {
+            mHasModelNumberString = true;
             return addModelNumberString(modelNumberString.getBytes());
         }
 
@@ -124,6 +141,7 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> addModelNumberString(@NonNull byte[] value) {
+            mHasModelNumberString = true;
             return addModelNumberString(BluetoothGatt.GATT_SUCCESS
                     , 0
                     , value);
@@ -134,6 +152,7 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+            mHasModelNumberString = true;
             mDeviceInformationServiceMockCallbackBuilder.addModelNumberString(responceCode, delay, value);
             return this;
         }
@@ -143,6 +162,7 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> removeModelNumberString() {
+            mHasModelNumberString = false;
             mDeviceInformationServiceMockCallbackBuilder.removeModelNumberString();
             return this;
         }
@@ -229,6 +249,12 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          * @return {@link BloodPressureProfileMockCallback} instance
          */
         public BloodPressureProfileMockCallback build() {
+            if (!mHasManufacturerNameString) {
+                throw new RuntimeException("no Manufacturer Name String data");
+            }
+            if (!mHasModelNumberString) {
+                throw new RuntimeException("no Model Number String data");
+            }
             return new BloodPressureProfileMockCallback(mContext, mDeviceInformationServiceMockCallbackBuilder.build(), mBloodPressureServiceMockCallbackBuilder.build());
         }
 

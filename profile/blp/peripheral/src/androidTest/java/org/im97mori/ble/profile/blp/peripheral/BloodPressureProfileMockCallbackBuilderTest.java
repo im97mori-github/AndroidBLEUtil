@@ -21,8 +21,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class BloodPressureProfileMockCallbackBuilderTest {
 
     @Test
@@ -581,6 +584,185 @@ public class BloodPressureProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeBloodPressureFeature());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_build_00001() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>()).build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Manufacturer Name String data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00101() {
+        Exception exception = null;
+        try {
+            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
+            baseBuilder.addManufacturerNameString("");
+            baseBuilder.build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Model Number String data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00102() {
+        Exception exception = null;
+        try {
+            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
+            baseBuilder.addManufacturerNameString(new ManufacturerNameString(""));
+            baseBuilder.build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Model Number String data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00103() {
+        Exception exception = null;
+        try {
+            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
+            baseBuilder.addManufacturerNameString(new ManufacturerNameString("").getBytes());
+            baseBuilder.build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Model Number String data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00104() {
+        Exception exception = null;
+        try {
+            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
+            baseBuilder.addManufacturerNameString(0, 0, new ManufacturerNameString("").getBytes());
+            baseBuilder.build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Model Number String data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00201() {
+        Exception exception = null;
+        try {
+            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
+            baseBuilder.addModelNumberString("");
+            baseBuilder.build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Manufacturer Name String data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00202() {
+        Exception exception = null;
+        try {
+            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
+            baseBuilder.addModelNumberString(new ModelNumberString(""));
+            baseBuilder.build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Manufacturer Name String data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00203() {
+        Exception exception = null;
+        try {
+            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
+            baseBuilder.addModelNumberString(new ModelNumberString("").getBytes());
+            baseBuilder.build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Manufacturer Name String data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00204() {
+        Exception exception = null;
+        try {
+            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
+            baseBuilder.addModelNumberString(0, 0, new ModelNumberString("").getBytes());
+            baseBuilder.build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+        assertEquals("no Manufacturer Name String data", exception.getMessage());
+    }
+
+    @Test
+    public void test_build_00301() {
+        int bpmflags = 1;
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3, 4, 5}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{6, 7, 8, 9}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{10, 11, 12, 13}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{14, 15, 16, 17}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{18, 19, 20, 21}, 0);
+        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{22, 23, 24, 25}, 0);
+        int bpmyear = 26;
+        int bpmmonth = 27;
+        int bpmday = 28;
+        int bpmhours = 29;
+        int bpmminutes = 30;
+        int bpmseconds = 31;
+        IEEE_11073_20601_SFLOAT bpmpulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{32, 33, 34, 35}, 0);
+        int bpmuserId = 36;
+        byte[] bpmmeasurementStatus = new byte[]{37};
+        BloodPressureMeasurement bloodPressureMeasurement = new BloodPressureMeasurement(bpmflags, bpmbloodPressureMeasurementCompoundValueSystolicMmhg, bpmbloodPressureMeasurementCompoundValueDiastolicMmhg, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bpmbloodPressureMeasurementCompoundValueSystolicKpa, bpmbloodPressureMeasurementCompoundValueDiastolicKpa, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, bpmyear, bpmmonth, bpmday, bpmhours, bpmminutes, bpmseconds, bpmpulseRate, bpmuserId, bpmmeasurementStatus);
+
+        byte[] bpmdescriptorValue = BluetoothGattDescriptor.ENABLE_INDICATION_VALUE;
+        ClientCharacteristicConfiguration bpmclientCharacteristicConfiguration = new ClientCharacteristicConfiguration(bpmdescriptorValue);
+
+        boolean isBodyMovementDetectionFeatureSupported = false;
+        boolean isCuffFitDetectionSupported = false;
+        boolean isIrregularPulseDetectionSupported = false;
+        boolean isPulseRateRangeDetectionSupported = false;
+        boolean isMeasurementPositionDetectionSupported = false;
+        boolean isMultipleBondDetectionSupported = false;
+        BloodPressureFeature bloodPressureFeature = new BloodPressureFeature(isBodyMovementDetectionFeatureSupported, isCuffFitDetectionSupported, isIrregularPulseDetectionSupported, isPulseRateRangeDetectionSupported, isMeasurementPositionDetectionSupported, isMultipleBondDetectionSupported);
+
+        Exception exception = null;
+        try {
+            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
+            baseBuilder.addManufacturerNameString("");
+            baseBuilder.addModelNumberString("");
+            baseBuilder.addBloodPressureMeasurement(bloodPressureMeasurement, bpmclientCharacteristicConfiguration);
+            baseBuilder.addBloodPressureFeature(bloodPressureFeature);
+            baseBuilder.build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
 }
