@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LN_CONTROL_POINT_
 /**
  * LN Control Point (Characteristics UUID: 0x2A6B)
  */
-@SuppressWarnings({"unused", "WeakerAccess"})
+@SuppressWarnings({"WeakerAccess"})
 public class LNControlPointAndroid extends LNControlPoint implements Parcelable {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.NUMBEROF_DIGITALS_DES
 /**
  * Number of Digitals (Descriptor UUID: 0x2909)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class NumberOfDigitalsAndroid extends NumberOfDigitals implements Parcelable {
 
     /**

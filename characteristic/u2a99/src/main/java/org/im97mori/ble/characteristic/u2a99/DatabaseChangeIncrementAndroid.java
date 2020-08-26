@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DATABASE_CHANGE_I
 /**
  * Database Change Increment (Characteristics UUID: 0x2A99)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class DatabaseChangeIncrementAndroid extends DatabaseChangeIncrement implements Parcelable {
 
     /**

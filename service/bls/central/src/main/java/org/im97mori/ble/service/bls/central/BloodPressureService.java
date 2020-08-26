@@ -328,7 +328,7 @@ public class BloodPressureService extends AbstractCentralService {
     @Nullable
     public Integer getIntermediateCuffPressureClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted()) {
+        if (isStarted() && isIntermediateCuffPressureSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(BLOOD_PRESSURE_SERVICE, null, INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -345,7 +345,7 @@ public class BloodPressureService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startIntermediateCuffPressureNotification() {
         Integer taskId = null;
-        if (isStarted()) {
+        if (isStarted() && isIntermediateCuffPressureSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(BLOOD_PRESSURE_SERVICE, null, INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -364,7 +364,7 @@ public class BloodPressureService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopIntermediateCuffPressureNotification() {
         Integer taskId = null;
-        if (isStarted()) {
+        if (isStarted() && isIntermediateCuffPressureSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(BLOOD_PRESSURE_SERVICE, null, INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);

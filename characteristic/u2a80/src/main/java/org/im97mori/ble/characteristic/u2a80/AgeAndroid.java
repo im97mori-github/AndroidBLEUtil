@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AGE_CHARACTERISTI
 /**
  * Age (Characteristics UUID: 0x2A80)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class AgeAndroid extends Age implements Parcelable {
 
     /**

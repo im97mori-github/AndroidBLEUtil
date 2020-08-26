@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SERIAL_NUMBER_STR
 /**
  * Serial Number String (Characteristics UUID: 0x2A25)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class SerialNumberStringAndroid extends SerialNumberString implements Parcelable {
 
     /**

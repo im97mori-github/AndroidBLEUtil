@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.UV_INDEX_CHARACTE
 /**
  * UV Index (Characteristics UUID: 0x2A76)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class UVIndexAndroid extends UVIndex implements Parcelable {
 
     /**

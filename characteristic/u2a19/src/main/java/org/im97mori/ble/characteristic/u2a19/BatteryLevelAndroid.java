@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BATTERY_LEVEL_CHA
 /**
  * Battery Level (Characteristics UUID: 0x2A19)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class BatteryLevelAndroid extends BatteryLevel implements Parcelable {
 
     /**

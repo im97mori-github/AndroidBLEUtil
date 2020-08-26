@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.WEIGHT_SCALE_FEAT
 /**
  * Weight Scale Feature (Characteristics UUID: 0x2A9E)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class WeightScaleFeatureAndroid extends WeightScaleFeature implements Parcelable {
 
     /**

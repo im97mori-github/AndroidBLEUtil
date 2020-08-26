@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LATITUDE_CHARACTE
 /**
  * Latitude (Characteristics UUID: 0x2AAE)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class LatitudeAndroid extends Latitude implements Parcelable {
 
     /**

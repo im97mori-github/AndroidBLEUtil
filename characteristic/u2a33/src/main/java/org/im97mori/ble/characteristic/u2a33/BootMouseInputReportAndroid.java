@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BOOT_MOUSE_INPUT_
 /**
  * Boot Mouse Input Report (Characteristics UUID: 0x2A33)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class BootMouseInputReportAndroid extends BootMouseInputReport implements Parcelable {
 
     /**

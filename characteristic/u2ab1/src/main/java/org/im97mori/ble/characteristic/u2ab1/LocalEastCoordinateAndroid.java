@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LOCAL_EAST_COORDI
 /**
  * Local East Coordinate (Characteristics UUID: 0x2AB1)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class LocalEastCoordinateAndroid extends LocalEastCoordinate implements Parcelable {
 
     /**

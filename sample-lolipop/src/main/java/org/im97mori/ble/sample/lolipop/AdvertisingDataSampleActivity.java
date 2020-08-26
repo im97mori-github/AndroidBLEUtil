@@ -57,10 +57,8 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
 
     private static class TestScanCallback extends ScanCallback implements FilteredScanCallbackInterface {
 
-
         final AdvertisingDataSampleActivity mAdvertisingDataSampleActivity;
         final AdvertisingDataParser mAdvertisingDataParser;
-
 
         private TestScanCallback(AdvertisingDataSampleActivity advertisingDataSampleActivity) {
             mAdvertisingDataSampleActivity = advertisingDataSampleActivity;

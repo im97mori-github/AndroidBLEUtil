@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AGGREGATE_CHARACT
 /**
  * Aggregate (Characteristics UUID: 0x2A5A)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class AggregateAndroid extends Aggregate implements Parcelable {
 
     /**

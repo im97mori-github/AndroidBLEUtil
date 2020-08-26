@@ -2,82 +2,210 @@
 <project version="4">
   <component name="CMakeSettings">
     <configurations>
-      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+      <configuration CONFIG_NAME="Debug" PROFILE_NAME="Debug" />
     </configurations>
   </component>
   <component name="EntryPointsManager">
     <entry_points version="2.0">
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.AdvertisingInterval$1 org.im97mori.ble.ad.AdvertisingInterval createFromByteArray(byte[] values)" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.AdvertisingInterval CREATOR" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.Appearance$1 org.im97mori.ble.ad.Appearance createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.characteristic.Appearance$1 org.im97mori.ble.characteristic.Appearance createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.characteristic.CentralAddressResolution$1 org.im97mori.ble.characteristic.CentralAddressResolution createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.ChannelMapUpdateIndication$1 org.im97mori.ble.ad.ChannelMapUpdateIndication createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.descriptor.ClientCharacteristicConfiguration$1 org.im97mori.ble.descriptor.ClientCharacteristicConfiguration createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.CompleteListOf128BitServiceUUIDs$1 org.im97mori.ble.ad.CompleteListOf128BitServiceUUIDs createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.CompleteListOf16BitServiceUUIDs$1 org.im97mori.ble.ad.CompleteListOf16BitServiceUUIDs createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.CompleteListOf32BitServiceUUIDs$1 org.im97mori.ble.ad.CompleteListOf32BitServiceUUIDs createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.CompleteLocalName$1 org.im97mori.ble.ad.CompleteLocalName createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.characteristic.DeviceName$1 org.im97mori.ble.characteristic.DeviceName createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.characteristic.FirmwareRevisionString$1 org.im97mori.ble.characteristic.FirmwareRevisionString createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.Flags$1 org.im97mori.ble.ad.Flags createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.characteristic.HardwareRevisionString$1 org.im97mori.ble.characteristic.HardwareRevisionString createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.IncompleteListOf128BitServiceUUIDs$1 org.im97mori.ble.ad.IncompleteListOf128BitServiceUUIDs createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.IncompleteListOf16BitServiceUUIDs$1 org.im97mori.ble.ad.IncompleteListOf16BitServiceUUIDs createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.IncompleteListOf32BitServiceUUIDs$1 org.im97mori.ble.ad.IncompleteListOf32BitServiceUUIDs createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.LeSupportedFeatures$1 org.im97mori.ble.ad.LeSupportedFeatures createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.ListOf128BitServiceSolicitationUUIDs$1 org.im97mori.ble.ad.ListOf128BitServiceSolicitationUUIDs createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.ListOf16BitServiceSolicitationUUIDs$1 org.im97mori.ble.ad.ListOf16BitServiceSolicitationUUIDs createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.ListOf32BitServiceSolicitationUUIDs$1 org.im97mori.ble.ad.ListOf32BitServiceSolicitationUUIDs createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.characteristic.ManufacturerNameString$1 org.im97mori.ble.characteristic.ManufacturerNameString createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.ManufacturerSpecificData$1 org.im97mori.ble.ad.ManufacturerSpecificData createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.characteristic.ModelNumberString$1 org.im97mori.ble.characteristic.ModelNumberString createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.characteristic.PeripheralPreferredConnectionParameters$1 org.im97mori.ble.characteristic.PeripheralPreferredConnectionParameters createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.PublicTargetAddress$1 org.im97mori.ble.ad.PublicTargetAddress createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.RandomTargetAddress$1 org.im97mori.ble.ad.RandomTargetAddress createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.characteristic.SerialNumberString$1 org.im97mori.ble.characteristic.SerialNumberString createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.ServiceData128BitUUID$1 org.im97mori.ble.ad.ServiceData128BitUUID createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.ServiceData16BitUUID$1 org.im97mori.ble.ad.ServiceData16BitUUID createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.ServiceData32BitUUID$1 org.im97mori.ble.ad.ServiceData32BitUUID createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.ShortenedLocalName$1 org.im97mori.ble.ad.ShortenedLocalName createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.SlaveConnectionIntervalRange$1 org.im97mori.ble.ad.SlaveConnectionIntervalRange createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.TxPowerLevel$1 org.im97mori.ble.ad.TxPowerLevel createFromByteArray(byte[] values)" />
-      <entry_point TYPE="method" FQNAME="org.im97mori.ble.ad.UniformRsourceIdentifier$1 org.im97mori.ble.ad.UniformRsourceIdentifier createFromByteArray(byte[] values)" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.Appearance CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.characteristic.Appearance CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.characteristic.CentralAddressResolution CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.ChannelMapUpdateIndication CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.descriptor.ClientCharacteristicConfiguration CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.CompleteListOf128BitServiceUUIDs CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.CompleteListOf16BitServiceUUIDs CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.CompleteListOf32BitServiceUUIDs CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.CompleteLocalName CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.characteristic.DeviceName CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.characteristic.FirmwareRevisionString CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.Flags CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.characteristic.HardwareRevisionString CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.IncompleteListOf128BitServiceUUIDs CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.IncompleteListOf16BitServiceUUIDs CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.IncompleteListOf32BitServiceUUIDs CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.LeSupportedFeatures CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.ListOf128BitServiceSolicitationUUIDs CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.ListOf16BitServiceSolicitationUUIDs CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.ListOf32BitServiceSolicitationUUIDs CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.characteristic.ManufacturerNameString CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.ManufacturerSpecificData CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.characteristic.ModelNumberString CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.characteristic.PeripheralPreferredConnectionParameters CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.PublicTargetAddress CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.RandomTargetAddress CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.characteristic.SerialNumberString CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.ServiceData128BitUUID CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.ServiceData16BitUUID CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.ServiceData32BitUUID CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.ShortenedLocalName CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.SlaveConnectionIntervalRange CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.TxPowerLevel CREATOR" />
-      <entry_point TYPE="field" FQNAME="org.im97mori.ble.ad.UniformRsourceIdentifier CREATOR" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.service.central.AbstractCentralService KEY_STATUS" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.service.central.AbstractCentralService STATUS_START" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.service.central.AbstractCentralService STATUS_STOP" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask KEY_BLUETOOTH_DEVICE" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask KEY_CHARACTERISTIC_INSTANCE_ID" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask KEY_CHARACTERISTIC_UUID" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask KEY_DESCRIPTOR_INSTANCE_ID" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask KEY_DESCRIPTOR_UUID" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask KEY_MTU" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask KEY_PHY_OPTIONS" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask KEY_RSSI" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask KEY_RX_PHY" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask KEY_SERVICE_INSTANCE_ID" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask KEY_SERVICE_UUID" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask KEY_STATUS" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask KEY_TX_PHY" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask KEY_VALUES" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask mCurrentProgress" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask PROGRESS_ABORT_RELIABLE_WRITE_START" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask PROGRESS_BOND_ERROR" />
+      <entry_point TYPE="field" FQNAME="org.im97mori.ble.task.AbstractBLETask PROGRESS_FIRST_USER" />
     </entry_points>
+    <pattern value="org.im97mori.ble.advertising.filter.AdvertisingIntervalFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.AppearanceFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.ChannelMapUpdateIndicationFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.CompleteListOf128BitServiceUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.CompleteListOf16BitServiceUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.CompleteListOf32BitServiceUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.CompleteLocalNameFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.FlagsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.IncompleteListOf128BitServiceUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.IncompleteListOf16BitServiceUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.IncompleteListOf32BitServiceUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.IndoorPositioningFilter" />
+    <pattern value="org.im97mori.ble.advertising.filter.IndoorPositioningFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.LeSupportedFeaturesFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.ListOf128BitServiceSolicitationUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.ListOf16BitServiceSolicitationUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.ListOf32BitServiceSolicitationUUIDsFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.ManufacturerSpecificDataFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.OrFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.PublicTargetAddressFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.RandomTargetAddressFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.ServiceData128BitUUIDFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.ServiceData16BitUUIDFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.ServiceData32BitUUIDFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.ShortenedLocalNameFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.SlaveConnectionIntervalRangeFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.TransportDiscoveryDataFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.TxPowerLevelFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.advertising.filter.UniformRsourceIdentifierFilter" method="isMatched" />
+    <pattern value="org.im97mori.ble.callback.BaseMockCallback" method="setup" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onAbortReliableWriteFailed" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onAbortReliableWriteSuccess" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onAbortReliableWriteTimeout" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onBeginReliableWriteFailed" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onBeginReliableWriteSuccess" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onBLEConnected" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onBLEConnectFailed" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onBLEConnectTimeout" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onBLEDisconnected" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onCharacteristicNotified" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onCharacteristicReadFailed" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onCharacteristicReadSuccess" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onCharacteristicReadTimeout" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onCharacteristicWriteFailed" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onCharacteristicWriteSuccess" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onCharacteristicWriteTimeout" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onDescriptorReadFailed" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onDescriptorReadSuccess" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onDescriptorReadTimeout" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onDescriptorWriteFailed" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onDescriptorWriteSuccess" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onDescriptorWriteTimeout" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onDiscoverServiceFailed" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onDiscoverServiceSuccess" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onDiscoverServiceTimeout" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onExecuteReliableWriteFailed" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onExecuteReliableWriteSuccess" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onExecuteReliableWriteTimeout" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onReadPhyFailed" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onReadPhySuccess" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onReadPhyTimeout" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onReadRemoteRssiFailed" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onReadRemoteRssiSuccess" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onReadRemoteRssiTimeout" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onRequestMtuFailed" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onRequestMtuSuccess" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onRequestMtuTimeout" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onSetPreferredPhyFailed" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onSetPreferredPhySuccess" />
+    <pattern value="org.im97mori.ble.BLECallbackDistributer" method="onSetPreferredPhyTimeout" />
+    <pattern value="org.im97mori.ble.BLEConnectionHolder" />
+    <pattern value="org.im97mori.ble.BLEConnectionHolder" method="clearInstance" />
+    <pattern value="org.im97mori.ble.BLEConnectionHolder" method="removeInstance" />
+    <pattern value="org.im97mori.ble.DescriptorData" method="DescriptorData" />
+    <pattern value="org.im97mori.ble.CharacteristicData" method="CharacteristicData" />
+    <pattern value="org.im97mori.ble.ServiceData" method="ServiceData" />
+    <pattern value="org.im97mori.ble.BLEServerConnection" method="isStarted" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="BLEResult" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="BLESyncConnection" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="connect" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="createAbortReliableWriteTask" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="createBeginReliableWriteTask" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="createDiscoverServiceTask" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="createExecuteReliableWriteTask" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="createReadCharacteristicTask" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="createReadDescriptorTask" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="createReadPhyTask" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="createReadRemoteRssiTask" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="createRequestMtuTask" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="createSetPreferredPhyTask" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="createWriteCharacteristicTask" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="createWriteDescriptorTask" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getArgument" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getCharacteristicInstanceId" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getCharacteristicUUID" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getDescriptorUUID" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getMtu" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getPhyOptions" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getResultCode" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getRssi" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getRxPhy" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getServiceInstanceId" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getServiceList" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getServiceUUID" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getStatus" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getTaskId" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getTxPhy" />
+    <pattern value="org.im97mori.ble.BLESyncConnection.BLEResult" method="getValues" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="listen" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onAbortReliableWriteFailed" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onAbortReliableWriteSuccess" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onAbortReliableWriteTimeout" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onBeginReliableWriteFailed" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onBeginReliableWriteSuccess" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onBLEConnected" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onBLEConnectFailed" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onBLEConnectTimeout" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onBLEDisconnected" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onCharacteristicNotified" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onCharacteristicReadFailed" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onCharacteristicReadSuccess" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onCharacteristicReadTimeout" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onCharacteristicWriteFailed" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onCharacteristicWriteSuccess" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onCharacteristicWriteTimeout" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onDescriptorReadFailed" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onDescriptorReadSuccess" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onDescriptorReadTimeout" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onDescriptorWriteFailed" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onDescriptorWriteSuccess" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onDescriptorWriteTimeout" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onDiscoverServiceFailed" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onDiscoverServiceSuccess" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onDiscoverServiceTimeout" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onExecuteReliableWriteFailed" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onExecuteReliableWriteSuccess" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onExecuteReliableWriteTimeout" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onReadPhyFailed" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onReadPhySuccess" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onReadPhyTimeout" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onReadRemoteRssiFailed" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onReadRemoteRssiSuccess" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onReadRemoteRssiTimeout" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onRequestMtuFailed" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onRequestMtuSuccess" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onRequestMtuTimeout" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onSetPreferredPhyFailed" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onSetPreferredPhySuccess" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="onSetPreferredPhyTimeout" />
+    <pattern value="org.im97mori.ble.BLESyncConnection" method="quit" />
+    <pattern value="org.im97mori.ble.BLELogUtils" />
+    <pattern value="org.im97mori.ble.BLEPeripheralLogUtils" />
+    <pattern value="org.im97mori.ble.BLEServerCallbackDistributer" method="setup" />
+    <pattern value="org.im97mori.ble.characteristic.core.MultiplePacketCreater" method="createFromMultiplePacketArray" />
+    <pattern value="org.im97mori.ble.service.central.AbstractCentralService" />
+    <pattern value="org.im97mori.ble.service.peripheral.AbstractServiceMockCallback" />
+    <pattern value="org.im97mori.ble.service.peripheral.AbstractServiceMockCallback" method="AbstractServiceMockCallback" />
+    <pattern value="org.im97mori.ble.service.peripheral.AbstractServiceMockCallback.Builder" method="build" />
+    <pattern value="org.im97mori.ble.service.peripheral.AbstractServiceMockCallback.Builder" />
+    <pattern value="org.im97mori.ble.service.peripheral.AbstractServiceMockCallback.Builder" method="createMockData" />
+    <pattern value="org.im97mori.ble.TaskHandler" method="sendProcessingMessage" />
+    <pattern value="org.im97mori.ble.BLELogUtils" method="mute" />
+    <pattern value="org.im97mori.ble.BLEPeripheralLogUtils" method="mute" />
+    <pattern value="org.im97mori.ble.BLEPeripheralLogUtils" method="stackLog" />
+    <pattern value="org.im97mori.ble.BLEPeripheralLogUtils" method="verbose" />
+    <pattern value="org.im97mori.ble.ByteArrayCreater" />
+    <pattern value="org.im97mori.ble.ByteArrayCreater" method="createFromByteArray" />
+    <pattern value="org.im97mori.ble.advertising.filter.FilteredScanCallback.Builder" method="build" />
+    <pattern value="org.im97mori.ble.advertising.BLEAdvertisingLogUtils" />
+    <pattern value="org.im97mori.ble.advertising.BLEAdvertisingLogUtils" method="mute" />
+    <pattern value="org.im97mori.ble.advertising.BLEAdvertisingLogUtils" method="stackLog" />
+    <pattern value="org.im97mori.ble.advertising.BLEAdvertisingLogUtils" method="verbose" />
+    <pattern value="org.im97mori.ble.task.AbstractBLETask" />
+    <pattern value="org.im97mori.ble.task.AbstractBLETask" method="createTimeoutMessage" />
   </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="F:/a" />

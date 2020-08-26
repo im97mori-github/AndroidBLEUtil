@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TX_POWER_LEVEL_CH
 /**
  * Tx Power Level (Characteristics UUID: 0x2A07)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class TxPowerLevelAndroid extends TxPowerLevel implements Parcelable {
 
     /**

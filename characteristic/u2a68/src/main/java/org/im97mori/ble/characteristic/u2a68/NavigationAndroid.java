@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.NAVIGATION_CHARAC
 /**
  * Navigation (Characteristics UUID: 0x2A68)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class NavigationAndroid extends Navigation implements Parcelable {
 
     /**

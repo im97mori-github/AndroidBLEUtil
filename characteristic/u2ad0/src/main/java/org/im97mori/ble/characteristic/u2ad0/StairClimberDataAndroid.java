@@ -11,7 +11,7 @@ import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
 /**
  * Stair Climber Data (Characteristics UUID: 0x2AD0)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class StairClimberDataAndroid extends StairClimberData implements Parcelable {
 
     /**

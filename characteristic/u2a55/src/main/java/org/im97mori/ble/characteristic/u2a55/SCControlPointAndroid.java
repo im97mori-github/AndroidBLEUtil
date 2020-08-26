@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SC_CONTROL_POINT_
 /**
  * SC Control Point (Characteristics UUID: 0x2A55)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class SCControlPointAndroid extends SCControlPoint implements Parcelable {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SERVICE_CHANGED_C
 /**
  * Service Changed (Characteristics UUID: 0x2A05)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ServiceChangedAndroid extends ServiceChanged implements Parcelable {
 
     /**

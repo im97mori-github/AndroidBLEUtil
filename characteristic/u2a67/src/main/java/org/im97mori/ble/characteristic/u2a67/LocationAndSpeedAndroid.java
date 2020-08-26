@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LOCATION_AND_SPEE
 /**
  * Location and Speed Characteristic (Characteristics UUID: 0x2A67)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class LocationAndSpeedAndroid extends LocationAndSpeed implements Parcelable {
 
     /**

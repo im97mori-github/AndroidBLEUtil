@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.UNCERTAINTY_CHARA
 /**
  * Uncertainty (Characteristics UUID: 0x2AB4)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class UncertaintyAndroid extends Uncertainty implements Parcelable {
 
     /**

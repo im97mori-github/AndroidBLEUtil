@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.CHARACTERISTIC_EXTEND
 /**
  * Characteristic Extended Properties (Descriptor UUID: 0x2900)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class CharacteristicExtendedPropertiesAndroid extends CharacteristicExtendedProperties implements Parcelable {
 
     /**

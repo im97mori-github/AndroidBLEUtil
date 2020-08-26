@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HEART_RATE_MEASUR
 /**
  * Heart Rate Measurement (Characteristics UUID: 0x2A37)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class HeartRateMeasurementAndroid extends HeartRateMeasurement implements Parcelable {
 
     /**

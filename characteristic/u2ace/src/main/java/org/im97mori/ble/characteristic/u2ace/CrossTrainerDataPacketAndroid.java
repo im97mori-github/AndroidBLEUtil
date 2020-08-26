@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CROSS_TRAINER_DAT
 /**
  * Cross Trainer Data packet (Characteristics UUID: 0x2ACE)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class CrossTrainerDataPacketAndroid extends CrossTrainerDataPacket implements Parcelable {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SUPPORTED_POWER_R
 /**
  * Supported Power Range (Characteristics UUID: 0x2AD8)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class SupportedPowerRangeAndroid extends SupportedPowerRange implements Parcelable {
 
     /**

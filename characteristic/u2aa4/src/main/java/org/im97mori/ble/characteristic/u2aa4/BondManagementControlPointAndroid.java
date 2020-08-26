@@ -14,7 +14,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BOND_MANAGEMENT_C
 /**
  * Bond Management Control Point (Characteristics UUID: 0x2AA4)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class BondManagementControlPointAndroid extends BondManagementControlPoint implements Parcelable {
 
     /**

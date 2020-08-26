@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.ENVIRONMENTAL_SENSING
 /**
  * Environmental Sensing Measurement (Descriptor UUID: 0x290C)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class EnvironmentalSensingMeasurementAndroid extends EnvironmentalSensingMeasurement implements  Parcelable {
 
     /**

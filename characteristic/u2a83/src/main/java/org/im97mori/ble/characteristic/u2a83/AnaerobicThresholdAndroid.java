@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ANAEROBIC_THRESHO
 /**
  * Anaerobic Threshold (Characteristics UUID: 0x2A83)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class AnaerobicThresholdAndroid extends AnaerobicThreshold implements Parcelable {
 
     /**

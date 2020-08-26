@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ALTITUDE_CHARACTE
 /**
  * Altitude (Characteristics UUID: 0x2AB3)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class AltitudeAndroid extends Altitude implements Parcelable {
 
     /**

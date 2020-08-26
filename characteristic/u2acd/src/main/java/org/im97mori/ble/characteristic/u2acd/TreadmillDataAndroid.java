@@ -10,7 +10,7 @@ import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
 /**
  * Treadmill Data (Characteristics UUID: 0x2ACD)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class TreadmillDataAndroid extends TreadmillData implements Parcelable {
 
     /**

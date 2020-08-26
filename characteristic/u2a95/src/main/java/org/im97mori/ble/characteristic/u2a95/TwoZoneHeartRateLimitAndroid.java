@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TWO_ZONE_HEART_RA
 /**
  * Two Zone Heart Rate Limit (Characteristics UUID: 0x2A95)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class TwoZoneHeartRateLimitAndroid extends TwoZoneHeartRateLimit implements Parcelable {
 
     /**

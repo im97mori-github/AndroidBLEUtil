@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.CHARACTERISTIC_AGGREG
 /**
  * Characteristic Aggregate Format (Descriptor UUID: 0x2905)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class CharacteristicAggregateFormatAndroid extends CharacteristicAggregateFormat implements Parcelable {
 
     /**

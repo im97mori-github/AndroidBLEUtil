@@ -41,7 +41,7 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.APPLICATION_ERROR_9F;
 /**
  * MockCallback base class
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public abstract class BaseMockCallback implements BLEServerCallback {
 
     /**

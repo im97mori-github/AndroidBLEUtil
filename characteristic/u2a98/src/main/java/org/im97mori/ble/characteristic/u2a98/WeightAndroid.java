@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.WEIGHT_CHARACTERI
 /**
  * Weight (Characteristics UUID: 0x2A98)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class WeightAndroid extends Weight implements Parcelable {
 
     /**

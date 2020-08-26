@@ -14,7 +14,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TRAINING_STATUS_C
 /**
  * Training Status (Characteristics UUID: 0x2AD3)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class TrainingStatusAndroid extends TrainingStatus implements Parcelable {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ANALOG_CHARACTERI
 /**
  * Analog (Characteristics UUID: 0x2A58)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class AnalogAndroid extends Analog implements Parcelable {
 
     /**

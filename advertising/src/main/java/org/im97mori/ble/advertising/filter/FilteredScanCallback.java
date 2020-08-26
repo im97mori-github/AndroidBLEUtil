@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * {@link ScanCallback} with filter function
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class FilteredScanCallback extends ScanCallback {
 

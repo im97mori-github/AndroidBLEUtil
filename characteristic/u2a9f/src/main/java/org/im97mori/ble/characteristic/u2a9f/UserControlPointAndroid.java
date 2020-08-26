@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.USER_CONTROL_POIN
 /**
  * User Control Point (Characteristics UUID: 0x2A9F)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class UserControlPointAndroid extends UserControlPoint implements Parcelable {
 
     /**

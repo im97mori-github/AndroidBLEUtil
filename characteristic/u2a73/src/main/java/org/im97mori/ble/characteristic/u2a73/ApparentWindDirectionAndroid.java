@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.APPARENT_WIND_DIR
 /**
  * Apparent Wind Direction (Characteristics UUID: 0x2A73)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ApparentWindDirectionAndroid extends ApparentWindDirection implements Parcelable {
 
     /**

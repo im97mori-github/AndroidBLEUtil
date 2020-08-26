@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
  *
  * @param <T> T must have constructor with {@link BluetoothGattCharacteristic}
  */
-@SuppressWarnings("unused")
 public interface ByteArrayCreater<T> extends Parcelable.Creator<T> {
 
     /**

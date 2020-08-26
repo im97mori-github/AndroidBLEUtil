@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * {@link android.bluetooth.BluetoothAdapter.LeScanCallback} with filter function
  */
-@SuppressWarnings({"unused", "WeakerAccess"})
+@SuppressWarnings({"WeakerAccess"})
 public class FilteredLeScanCallback implements BluetoothAdapter.LeScanCallback {
 
     /**

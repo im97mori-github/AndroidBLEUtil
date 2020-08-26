@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ALERT_LEVEL_CHARA
 /**
  * Alert Level (Characteristics UUID: 0x2A06)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class AlertLevelAndroid extends AlertLevel implements Parcelable {
 
     /**

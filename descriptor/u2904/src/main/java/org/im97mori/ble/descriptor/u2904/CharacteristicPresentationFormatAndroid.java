@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.CHARACTERISTIC_PRESEN
 /**
  * Characteristic Presentation Format (Descriptor UUID: 0x2904)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class CharacteristicPresentationFormatAndroid extends CharacteristicPresentationFormat implements Parcelable {
 
     /**

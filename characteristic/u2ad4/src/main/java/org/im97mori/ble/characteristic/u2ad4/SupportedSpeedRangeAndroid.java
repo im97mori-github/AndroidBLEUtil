@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SUPPORTED_SPEED_R
 /**
  * Supported Speed Range (Characteristics UUID: 0x2AD4)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class SupportedSpeedRangeAndroid extends SupportedSpeedRange implements Parcelable {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.PNP_ID_CHARACTERI
 /**
  * PnP ID (Characteristics UUID: 0x2A50)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class PnpIdAndroid extends PnpId implements Parcelable {
 
     /**

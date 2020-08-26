@@ -15,7 +15,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.INTERMEDIATE_TEMP
 /**
  * Intermediate Temperature (Characteristics UUID: 0x2A1E)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class IntermediateTemperatureAndroid extends IntermediateTemperature implements Parcelable {
 
     /**

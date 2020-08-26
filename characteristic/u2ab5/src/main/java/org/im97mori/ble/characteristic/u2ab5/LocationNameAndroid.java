@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LOCATION_NAME_CHA
 /**
  * Location Name (Characteristics UUID: 0x2AB5)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class LocationNameAndroid extends LocationName implements Parcelable {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SUPPORTED_UNREAD_
 /**
  * Supported Unread Alert Category (Characteristics UUID: 0x2A48)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class SupportedUnreadAlertCategoryAndroid extends SupportedUnreadAlertCategory implements Parcelable {
 
     /**

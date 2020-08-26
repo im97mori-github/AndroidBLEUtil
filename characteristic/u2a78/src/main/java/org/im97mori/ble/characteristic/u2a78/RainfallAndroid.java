@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RAINFALL_CHARACTE
 /**
  * Rainfall (Characteristics UUID: 0x2A78)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class RainfallAndroid extends Rainfall implements Parcelable {
 
     /**

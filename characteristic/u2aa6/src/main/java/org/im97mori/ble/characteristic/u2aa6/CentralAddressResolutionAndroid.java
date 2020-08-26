@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CENTRAL_ADDRESS_R
 /**
  * Central Address Resolution (Characteristics UUID: 0x2AA6)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class CentralAddressResolutionAndroid extends CentralAddressResolution implements Parcelable {
 
     /**

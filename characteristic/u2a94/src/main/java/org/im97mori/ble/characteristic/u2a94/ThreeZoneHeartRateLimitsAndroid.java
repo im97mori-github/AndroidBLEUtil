@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.THREE_ZONE_HEART_
 /**
  * Three Zone Heart Rate Limits (Characteristics UUID: 0x2A94)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ThreeZoneHeartRateLimitsAndroid extends ThreeZoneHeartRateLimits implements Parcelable {
 
     /**

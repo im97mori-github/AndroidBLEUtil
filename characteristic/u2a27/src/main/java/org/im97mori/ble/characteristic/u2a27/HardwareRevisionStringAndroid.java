@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HARDWARE_REVISION
 /**
  * Hardware Revision String (Characteristics UUID: 0x2A27)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class HardwareRevisionStringAndroid extends HardwareRevisionString implements Parcelable {
 
     /**

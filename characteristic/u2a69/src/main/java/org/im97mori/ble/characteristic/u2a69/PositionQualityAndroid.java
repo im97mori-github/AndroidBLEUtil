@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.POSITION_QUALITY_
 /**
  * Position Quality (Characteristics UUID: 0x2A69)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class PositionQualityAndroid extends PositionQuality implements Parcelable {
 
     /**

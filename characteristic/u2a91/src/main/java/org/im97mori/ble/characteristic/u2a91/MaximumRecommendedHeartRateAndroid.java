@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MAXIMUM_RECOMMEND
 /**
  * Maximum Recommended Heart Rate (Characteristics UUID: 0x2A91)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class MaximumRecommendedHeartRateAndroid extends MaximumRecommendedHeartRate implements Parcelable {
 
     /**

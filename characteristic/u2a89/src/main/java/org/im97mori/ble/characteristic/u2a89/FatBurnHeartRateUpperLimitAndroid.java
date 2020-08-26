@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FAT_BURN_HEART_RA
 /**
  * Fat Burn Heart Rate Upper Limit (Characteristics UUID: 0x2A89)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class FatBurnHeartRateUpperLimitAndroid extends FatBurnHeartRateUpperLimit implements Parcelable {
 
     /**

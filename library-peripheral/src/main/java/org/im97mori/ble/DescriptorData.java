@@ -16,7 +16,7 @@ import java.util.UUID;
 /**
  * Descriptor data class
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class DescriptorData implements Parcelable, ByteArrayInterface {
 
     /**

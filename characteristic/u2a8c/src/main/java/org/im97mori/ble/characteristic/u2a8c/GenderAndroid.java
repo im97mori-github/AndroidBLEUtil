@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.GENDER_CHARACTERI
 /**
  * Gender (Characteristics UUID: 0x2A8C)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class GenderAndroid extends Gender implements Parcelable {
 
     /**

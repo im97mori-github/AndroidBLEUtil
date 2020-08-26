@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DEW_POINT_CHARACT
 /**
  * Dew Point (Characteristics UUID: 0x2A7B)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class DewPointAndroid extends DewPoint implements Parcelable {
 
     /**

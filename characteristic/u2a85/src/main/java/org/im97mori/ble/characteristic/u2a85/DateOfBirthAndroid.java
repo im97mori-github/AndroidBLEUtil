@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DATE_OF_BIRTH_CHA
 /**
  * Date of Birth (Characteristics UUID: 0x2A85)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class DateOfBirthAndroid extends DateOfBirth implements Parcelable {
 
     /**

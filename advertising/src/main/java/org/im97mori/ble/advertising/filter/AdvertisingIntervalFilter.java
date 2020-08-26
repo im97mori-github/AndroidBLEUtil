@@ -9,7 +9,7 @@ import org.im97mori.ble.advertising.AdvertisingInterval;
 /**
  * filter for {@link AdvertisingInterval}
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class AdvertisingIntervalFilter implements AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> {
 
     /**

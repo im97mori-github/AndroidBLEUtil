@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SUPPORTED_INCLINA
 /**
  * Supported Inclination Range (Characteristics UUID: 0x2AD5)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class SupportedInclinationRangeAndroid extends SupportedInclinationRange implements Parcelable {
 
     /**

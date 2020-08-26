@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RINGER_CONTROL_PO
 /**
  * Ringer Control point (Characteristics UUID: 0x2A40)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class RingerControlPointAndroid extends RingerControlPoint implements Parcelable {
 
     /**

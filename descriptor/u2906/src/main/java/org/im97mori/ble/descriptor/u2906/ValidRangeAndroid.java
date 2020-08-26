@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.VALID_RANGE_DESCRIPTO
 /**
  * Valid Range (Descriptor UUID: 0x2906)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ValidRangeAndroid extends ValidRange implements Parcelable {
 
     /**

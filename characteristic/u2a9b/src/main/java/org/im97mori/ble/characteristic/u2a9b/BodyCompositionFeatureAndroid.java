@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BODY_COMPOSITION_
 /**
  * Body Composition Feature (Characteristics UUID: 0x2A9B)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class BodyCompositionFeatureAndroid extends BodyCompositionFeature implements Parcelable {
 
     /**

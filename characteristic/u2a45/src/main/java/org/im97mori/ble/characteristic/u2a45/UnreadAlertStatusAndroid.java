@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.UNREAD_ALERT_STAT
 /**
  * Unread Alert Status (Characteristics UUID: 0x2A45)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class UnreadAlertStatusAndroid extends UnreadAlertStatus implements Parcelable {
 
     /**

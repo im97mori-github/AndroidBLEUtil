@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.WIND_CHILL_CHARAC
 /**
  * Wind Chill (Characteristics UUID: 0x2A79)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class WindChillAndroid extends WindChill implements Parcelable {
 
     /**

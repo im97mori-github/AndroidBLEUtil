@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.PERIPHERAL_PRIVAC
 /**
  * Peripheral Privacy Flag (Characteristics UUID: 0x2A02)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class PeripheralPrivacyFlagAndroid extends PeripheralPrivacyFlag implements Parcelable {
 
     /**

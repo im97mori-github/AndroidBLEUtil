@@ -8,7 +8,6 @@ import org.im97mori.ble.callback.BaseMockCallback;
 /**
  * Core Peripheral Service
  */
-@SuppressWarnings("unused")
 public abstract class AbstractServiceMockCallback extends BaseMockCallback {
 
     /**

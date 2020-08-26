@@ -34,13 +34,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-@SuppressWarnings("unused")
 public class DisCallbackSample extends DeviceInformationServiceMockCallback implements DeviceInformationServiceCallback, BLECallback {
-
 
     public static class Builder extends DeviceInformationServiceMockCallback.Builder<DisCallbackSample> {
 
-        private SampleCallback mSampleCallback;
+        private final SampleCallback mSampleCallback;
 
         public Builder(SampleCallback sampleCallback) {
             mSampleCallback = sampleCallback;
@@ -49,7 +47,7 @@ public class DisCallbackSample extends DeviceInformationServiceMockCallback impl
         @NonNull
         @Override
         public DisCallbackSample build() {
-            return new DisCallbackSample(createMockData(), false, mSampleCallback);
+            return new DisCallbackSample(createMockData(), mSampleCallback);
         }
     }
 
@@ -57,8 +55,8 @@ public class DisCallbackSample extends DeviceInformationServiceMockCallback impl
 
     private final SampleCallback mSampleCallback;
 
-    DisCallbackSample(@NonNull MockData mockData, boolean isFallback, SampleCallback sampleCallback) {
-        super(mockData, isFallback);
+    DisCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
+        super(mockData, false);
         mSampleCallback = sampleCallback;
     }
 

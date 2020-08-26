@@ -11,7 +11,7 @@ import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
 /**
  * Rower Data (Characteristics UUID: 0x2AD1)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class RowerDataAndroid extends RowerData implements Parcelable {
 
     /**

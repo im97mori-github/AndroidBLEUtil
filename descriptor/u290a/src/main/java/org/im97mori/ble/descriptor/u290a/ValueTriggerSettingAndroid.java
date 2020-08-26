@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.VALUE_TRIGGER_SETTING
 /**
  * Value Trigger Setting (Descriptor UUID: 0x290A)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ValueTriggerSettingAndroid extends ValueTriggerSetting implements Parcelable {
 
     /**

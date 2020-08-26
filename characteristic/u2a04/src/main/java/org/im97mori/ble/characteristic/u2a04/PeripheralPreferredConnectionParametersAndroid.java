@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.PERIPHERAL_PREFER
 /**
  * Peripheral Preferred Connection Parameters (Characteristics UUID: 0x2A04)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class PeripheralPreferredConnectionParametersAndroid extends PeripheralPreferredConnectionParameters implements Parcelable {
 
     /**

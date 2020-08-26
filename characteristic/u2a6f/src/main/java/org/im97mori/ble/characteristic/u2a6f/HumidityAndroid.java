@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HUMIDITY_CHARACTE
 /**
  * Humidity (Characteristics UUID: 0x2A6F)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class HumidityAndroid extends Humidity implements Parcelable {
 
     /**

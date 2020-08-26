@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CLIENT_SUPPORTED_
 /**
  * Client Supported Features (Characteristics UUID: 0x2B29)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ClientSupportedFeaturesAndroid extends ClientSupportedFeatures implements Parcelable {
 
     /**

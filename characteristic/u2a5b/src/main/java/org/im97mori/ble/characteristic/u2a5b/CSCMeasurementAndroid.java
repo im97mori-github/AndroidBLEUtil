@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CSC_MEASUREMENT_C
 /**
  * CSC Measurement (Characteristics UUID: 0x2A5B)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class CSCMeasurementAndroid extends CSCMeasurement implements Parcelable {
 
     /**

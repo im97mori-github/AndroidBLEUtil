@@ -13,13 +13,8 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.WAIST_CIRCUMFEREN
 /**
  * Waist Circumference (Characteristics UUID: 0x2A97)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class WaistCircumferenceAndroid extends WaistCircumference implements Parcelable {
-
-    /**
-     * Waist Circumference Unit 0.01 meters
-     */
-    public static final double WAIST_CIRCUMFERENCE_RESOLUTION = 0.01;
 
     /**
      * @see ByteArrayCreater

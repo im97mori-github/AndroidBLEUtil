@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HID_INFORMATION_C
 /**
  * HID Information (Characteristics UUID: 0x2A4A)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class HIDInformationAndroid extends HIDInformation implements Parcelable {
 
     /**

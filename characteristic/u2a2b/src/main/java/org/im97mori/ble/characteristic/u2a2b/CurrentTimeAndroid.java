@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CURRENT_TIME_CHAR
 /**
  * Current Time (Characteristics UUID: 0x2A2B)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class CurrentTimeAndroid extends CurrentTime implements Parcelable {
 
     /**

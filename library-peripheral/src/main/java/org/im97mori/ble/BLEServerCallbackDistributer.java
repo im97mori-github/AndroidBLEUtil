@@ -19,7 +19,7 @@ import java.util.UUID;
 /**
  * BLEServerCallback wrapper for distribute
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class BLEServerCallbackDistributer implements BLEServerCallback {
 
     /**

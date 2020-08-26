@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ELEVATION_CHARACT
 /**
  * Elevation (Characteristics UUID: 0x2A6C)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ElevationAndroid extends Elevation implements Parcelable {
 
     /**

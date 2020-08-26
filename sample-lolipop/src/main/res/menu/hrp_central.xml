@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/pre_connected">
+        <item
+            android:id="@+id/load_bonded_device"
+            android:title="@string/menu_load_bonded_device" />
+
+        <item
+            android:id="@+id/clear_bonded_history"
+            android:title="@string/menu_clear_bonded_history" />
+    </group>
+    <group android:id="@+id/connected">
+        <item
+            android:id="@+id/read_manufacturer_name"
+            android:title="@string/menu_read_manufacturer_name" />
+        <item
+            android:id="@+id/start_notify_heart_rate_measurement"
+            android:title="@string/menu_notify_heart_rate_measurement_start" />
+        <item
+            android:id="@+id/stop_notify_heart_rate_measurement"
+            android:title="@string/menu_notify_heart_rate_measurement_stop" />
+        <item
+            android:id="@+id/read_body_sensor_location"
+            android:title="@string/menu_read_body_sensor_location" />
+        <item
+            android:id="@+id/write_heart_rate_control_point"
+            android:title="@string/menu_read_heart_rate_control_point" />
+    </group>
+</menu>

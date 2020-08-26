@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HEIGHT_CHARACTERI
 /**
  * Height (Characteristics UUID: 0x2A8E)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class HeightAndroid extends Height implements Parcelable {
 
     /**

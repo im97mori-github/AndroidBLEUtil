@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.POLLEN_CONCENTRAT
 /**
  * Pollen Concentration (Characteristics UUID: 0x2A75)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class PollenConcentrationAndroid extends PollenConcentration implements Parcelable {
 
     /**

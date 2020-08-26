@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AEROBIC_THRESHOLD
 /**
  * Aerobic Threshold (Characteristics UUID: 0x2A7F)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class AerobicThresholdAndroid extends AerobicThreshold implements Parcelable {
 
     /**

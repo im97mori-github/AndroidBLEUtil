@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.INDOOR_BIKE_DATA_
 /**
  * Indoor Bike Data packet (Characteristics UUID: 0x2AD2)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class IndoorBikeDataPacketAndroid extends IndoorBikeDataPacket implements Parcelable {
 
     /**

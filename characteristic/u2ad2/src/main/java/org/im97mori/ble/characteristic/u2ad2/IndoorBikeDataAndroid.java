@@ -11,7 +11,7 @@ import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
 /**
  * Indoor Bike Data (Characteristics UUID: 0x2AD2)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class IndoorBikeDataAndroid extends IndoorBikeData implements Parcelable {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HEART_RATE_MAX_CH
 /**
  * Heart Rate Max (Characteristics UUID: 0x2A8D)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class HeartRateMaxAndroid extends HeartRateMax implements Parcelable {
 
     /**

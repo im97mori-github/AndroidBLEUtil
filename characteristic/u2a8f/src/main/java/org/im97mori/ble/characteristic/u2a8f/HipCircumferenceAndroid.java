@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HIP_CIRCUMFERENCE
 /**
  * Hip Circumference (Characteristics UUID: 0x2A8F)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class HipCircumferenceAndroid extends HipCircumference implements Parcelable {
 
     /**

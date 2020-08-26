@@ -27,7 +27,6 @@ import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_INDICATABLE_
 import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_NOTIFICATABLE_CHARACTERISTIC;
 import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_READABLE_CHARACTERISTIC;
 
-@SuppressWarnings("unused")
 public class BLECallbackSample extends BaseMockCallback implements BLECallback {
 
     private final SimpleDateFormat format = new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US);

@@ -26,7 +26,6 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
  * <p>
  * for central role
  */
-@SuppressWarnings("unused")
 public class ReadCharacteristicTask extends AbstractBLETask {
 
     /**

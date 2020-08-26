@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BODY_SENSOR_LOCAT
 /**
  * Body Sensor Location (Characteristics UUID: 0x2A38)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class BodySensorLocationAndroid extends BodySensorLocation implements Parcelable {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TDS_CONTROL_POINT
 /**
  * TDS Control Point (Characteristics UUID: 0x2ABC)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class TDSControlPointAndroid extends TDSControlPoint implements Parcelable {
 
     /**

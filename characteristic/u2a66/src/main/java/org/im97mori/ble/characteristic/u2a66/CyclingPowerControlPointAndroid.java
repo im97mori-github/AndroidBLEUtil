@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CYCLING_POWER_CON
 /**
  * Cycling Power Control Point (Characteristics UUID: 0x2A66)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class CyclingPowerControlPointAndroid extends CyclingPowerControlPoint implements Parcelable {
 
     /**

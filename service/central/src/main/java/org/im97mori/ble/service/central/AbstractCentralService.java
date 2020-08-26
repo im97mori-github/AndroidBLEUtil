@@ -20,7 +20,6 @@ import java.util.UUID;
 /**
  * Core Central Service
  */
-@SuppressWarnings("unused")
 public abstract class AbstractCentralService implements BLECallback {
 
     /**

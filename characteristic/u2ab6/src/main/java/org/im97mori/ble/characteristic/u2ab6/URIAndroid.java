@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.URI_CHARACTERISTI
 /**
  * URI (Characteristics UUID: 0x2AB6)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class URIAndroid extends URI implements Parcelable {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.PROTOCOL_MODE_CHA
 /**
  * Protocol Mode (Characteristics UUID: 0x2A4E)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ProtocolModeAndroid extends ProtocolMode implements Parcelable {
 
     /**

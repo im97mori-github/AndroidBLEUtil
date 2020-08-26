@@ -11,7 +11,7 @@ import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
 /**
  * Cross Trainer Data (Characteristics UUID: 0x2ACE)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class CrossTrainerDataAndroid extends CrossTrainerData implements Parcelable {
 
     /**

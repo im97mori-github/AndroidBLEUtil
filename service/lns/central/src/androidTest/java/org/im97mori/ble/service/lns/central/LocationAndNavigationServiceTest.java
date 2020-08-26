@@ -47,6 +47,46 @@ import static org.junit.Assert.assertTrue;
 public class LocationAndNavigationServiceTest {
 
     @Test
+    public void test_onBLEDisconnected_00001() {
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null);
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(POSITION_QUALITY_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
+        locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
+
+        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupporeted());
+    }
+
+    @Test
+    public void test_onBLEDisconnected_00101() {
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null);
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LN_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
+        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, 0));
+        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
+        locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
+
+        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupporeted());
+    }
+
+    @Test
+    public void test_onBLEDisconnected_00201() {
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null);
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(NAVIGATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
+        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, 0));
+        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
+        locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+        locationAndNavigationService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
+
+        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupporeted());
+    }
+
+    @Test
     public void test_onDiscoverServiceSuccess_00001() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null);

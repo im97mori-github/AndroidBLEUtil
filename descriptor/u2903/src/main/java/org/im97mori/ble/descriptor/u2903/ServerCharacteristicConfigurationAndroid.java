@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.SERVER_CHARACTERISTIC
 /**
  * Server Characteristic Configuration (Descriptor UUID: 0x2903)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ServerCharacteristicConfigurationAndroid extends ServerCharacteristicConfiguration implements Parcelable {
 
     /**

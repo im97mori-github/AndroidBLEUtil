@@ -11,7 +11,7 @@ import org.im97mori.ble.characteristic.core.RegisteredUser;
 /**
  * First Name (Characteristics UUID: 0x2A8A)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class FirstNameAndroid extends FirstName implements Parcelable {
 
     /**

@@ -20,7 +20,6 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
  * for central role
  */
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-@SuppressWarnings("unused")
 public class AbortReliableWriteTask extends AbstractBLETask {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.CHARACTERISTIC_USER_D
 /**
  * Characteristic User Description (Descriptor UUID: 0x2901)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class CharacteristicUserDescriptionAndroid extends CharacteristicUserDescription implements Parcelable {
 
     /**

@@ -26,12 +26,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-@SuppressWarnings("unused")
 public class IasCallbackSample extends ImmediateAlertServiceMockCallback implements ImmediateAlertServiceCallback, BLECallback {
 
     public static class Builder extends ImmediateAlertServiceMockCallback.Builder<IasCallbackSample> {
 
-        private SampleCallback mSampleCallback;
+        private final SampleCallback mSampleCallback;
 
         public Builder(SampleCallback sampleCallback) {
             mSampleCallback = sampleCallback;
@@ -40,7 +39,7 @@ public class IasCallbackSample extends ImmediateAlertServiceMockCallback impleme
         @NonNull
         @Override
         public IasCallbackSample build() {
-            return new IasCallbackSample(createMockData(), false, mSampleCallback);
+            return new IasCallbackSample(createMockData(), mSampleCallback);
         }
     }
 
@@ -48,8 +47,8 @@ public class IasCallbackSample extends ImmediateAlertServiceMockCallback impleme
 
     private final SampleCallback mSampleCallback;
 
-    IasCallbackSample(@NonNull MockData mockData, boolean isFallback, SampleCallback sampleCallback) {
-        super(mockData, isFallback);
+    IasCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
+        super(mockData, false);
         mSampleCallback = sampleCallback;
     }
 

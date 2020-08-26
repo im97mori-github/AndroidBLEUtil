@@ -14,7 +14,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.INTERMEDIATE_CUFF
 /**
  * Intermediate Cuff Pressure (Characteristics UUID: 0x2A36)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class IntermediateCuffPressureAndroid extends IntermediateCuffPressure implements Parcelable {
 
     /**

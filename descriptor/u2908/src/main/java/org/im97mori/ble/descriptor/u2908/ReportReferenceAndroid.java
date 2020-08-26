@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.REPORT_REFERENCE_DESC
 /**
  * Report Reference (Descriptor UUID: 0x2908)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ReportReferenceAndroid extends ReportReference implements Parcelable {
 
     /**

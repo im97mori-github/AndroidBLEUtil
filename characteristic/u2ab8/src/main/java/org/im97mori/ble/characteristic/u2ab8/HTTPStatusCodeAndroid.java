@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HTTP_STATUS_CODE_
 /**
  * HTTP Status Code (Characteristics UUID: 0x2AB8)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class HTTPStatusCodeAndroid extends HTTPStatusCode implements Parcelable {
 
     /**

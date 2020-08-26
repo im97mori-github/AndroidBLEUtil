@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DEVICE_NAME_CHARA
 /**
  * Device Name (Characteristics UUID: 0x2A00)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class DeviceNameAndroid extends DeviceName implements Parcelable {
 
     /**

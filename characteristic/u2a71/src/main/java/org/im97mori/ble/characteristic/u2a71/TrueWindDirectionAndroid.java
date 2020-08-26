@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TRUE_WIND_DIRECTI
 /**
  * True Wind Direction (Characteristics UUID: 0x2A71)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class TrueWindDirectionAndroid extends TrueWindDirection implements Parcelable {
 
     /**

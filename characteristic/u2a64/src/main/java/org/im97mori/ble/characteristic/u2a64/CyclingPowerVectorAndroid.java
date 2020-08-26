@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CYCLING_POWER_VEC
 /**
  * Cycling Power Vector (Characteristics UUID: 0x2A64)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class CyclingPowerVectorAndroid extends CyclingPowerVector implements Parcelable {
 
     /**

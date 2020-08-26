@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SENSOR_LOCATION_C
 /**
  * Sensor Location (Characteristics UUID: 0x2A5D)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class SensorLocationAndroid extends SensorLocation implements Parcelable {
 
     /**

@@ -14,7 +14,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SUPPORTED_RESISTA
 /**
  * Supported Resistance Level Range (Characteristics UUID: 0x2AD6)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class SupportedResistanceLevelRangeAndroid extends SupportedResistanceLevelRange implements ByteArrayInterface, Parcelable {
 
     /**

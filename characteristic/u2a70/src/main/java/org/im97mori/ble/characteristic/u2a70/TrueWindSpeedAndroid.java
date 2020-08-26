@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TRUE_WIND_SPEED_C
 /**
  * True Wind Speed (Characteristics UUID: 0x2A70)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class TrueWindSpeedAndroid extends TrueWindSpeed implements Parcelable {
 
     /**

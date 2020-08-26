@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
  *
  * @param <T1> T1 must have constructor with T2 array
  */
-@SuppressWarnings("unused")
 public interface MultiplePacketCreater<T1, T2> extends Parcelable.Creator<T1> {
 
     /**

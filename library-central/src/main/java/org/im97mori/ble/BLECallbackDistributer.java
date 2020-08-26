@@ -14,7 +14,7 @@ import java.util.UUID;
 /**
  * BLECallback wrapper for distribute
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class BLECallbackDistributer implements BLECallback {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FIVE_ZONE_HEART_R
 /**
  * Five Zone Heart Rate Limits (Characteristics UUID: 0x2A8B)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class FiveZoneHeartRateLimitsAndroid extends FiveZoneHeartRateLimits implements Parcelable {
 
     /**

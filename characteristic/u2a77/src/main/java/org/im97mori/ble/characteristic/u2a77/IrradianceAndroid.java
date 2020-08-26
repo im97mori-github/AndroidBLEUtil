@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.IRRADIANCE_CHARAC
 /**
  * Irradiance (Characteristics UUID: 0x2A77)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class IrradianceAndroid extends Irradiance implements Parcelable {
 
     /**

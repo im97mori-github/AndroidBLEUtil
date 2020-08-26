@@ -14,7 +14,6 @@ import org.im97mori.ble.ByteArrayCreater;
  * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
  * </p>
  */
-@SuppressWarnings({"unused"})
 public class IndoorPositioningAndroid extends IndoorPositioning implements AdvertisingDataInterfaceAndroid {
 
     /**

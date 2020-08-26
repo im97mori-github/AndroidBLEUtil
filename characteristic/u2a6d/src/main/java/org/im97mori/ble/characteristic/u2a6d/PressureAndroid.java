@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.PRESSURE_CHARACTE
 /**
  * Pressure (Characteristics UUID: 0x2A6D)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class PressureAndroid extends Pressure implements Parcelable {
 
     /**

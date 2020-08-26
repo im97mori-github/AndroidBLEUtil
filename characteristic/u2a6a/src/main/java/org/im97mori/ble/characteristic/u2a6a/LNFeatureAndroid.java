@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LN_FEATURE_CHARAC
 /**
  * LN Feature (Characteristics UUID: 0x2A6A)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class LNFeatureAndroid extends LNFeature implements Parcelable {
 
     /**

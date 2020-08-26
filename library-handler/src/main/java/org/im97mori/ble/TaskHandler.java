@@ -16,7 +16,7 @@ import java.util.LinkedList;
 /**
  * Single queue task handler
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class TaskHandler extends Handler {
 
     /**
@@ -268,7 +268,6 @@ public class TaskHandler extends Handler {
      *
      * @return {@code true}:busy, {@code false}:not busy
      */
-    @SuppressWarnings("unused")
     public boolean isBusy() {
         return mWaitForBusy > SystemClock.elapsedRealtime();
     }

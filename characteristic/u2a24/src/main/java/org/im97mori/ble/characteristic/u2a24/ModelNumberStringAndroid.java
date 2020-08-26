@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MODEL_NUMBER_STRI
 /**
  * Model Number String (Characteristics UUID: 0x2A24)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ModelNumberStringAndroid extends ModelNumberString implements Parcelable {
 
     /**

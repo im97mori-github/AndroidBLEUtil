@@ -43,7 +43,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC
  * <p>
  * Asynchronous
  */
-@SuppressWarnings({"WeakerAccess", "unused", "UnusedReturnValue"})
+@SuppressWarnings("ALL")
 public class BLEConnection extends BluetoothGattCallback implements BLECallbackDistributer.SubscriberInterface {
 
     /**

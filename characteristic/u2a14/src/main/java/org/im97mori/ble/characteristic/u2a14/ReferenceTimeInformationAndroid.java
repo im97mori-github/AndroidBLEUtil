@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.REFERENCE_TIME_IN
 /**
  * Reference Time Information (Characteristics UUID: 0x2A14)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ReferenceTimeInformationAndroid extends ReferenceTimeInformation implements Parcelable {
 
     /**

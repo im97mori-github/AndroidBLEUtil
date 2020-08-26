@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.R_S_C_MEASUREMENT
 /**
  * RSC Measurement (Characteristics UUID: 0x2A53)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class RSCMeasurementAndroid extends RSCMeasurement implements Parcelable {
 
     /**

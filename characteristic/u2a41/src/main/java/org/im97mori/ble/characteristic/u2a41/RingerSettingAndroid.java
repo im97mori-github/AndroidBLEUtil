@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RINGER_SETTING_CH
 /**
  * Ringer Setting (Characteristics UUID: 0x2A41)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class RingerSettingAndroid extends RingerSetting implements Parcelable {
 
     /**

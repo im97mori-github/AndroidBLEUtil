@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SUPPORTED_NEW_ALE
 /**
  * Supported New Alert Category (Characteristics UUID: 0x2A47)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class SupportedNewAlertCategoryAndroid extends SupportedNewAlertCategory implements Parcelable {
 
     /**

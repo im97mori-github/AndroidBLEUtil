@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.V_O2_MAX_CHARACTE
 /**
  * VO2 Max (Characteristics UUID: 0x2A96)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class VO2MaxAndroid extends VO2Max implements Parcelable {
 
     /**

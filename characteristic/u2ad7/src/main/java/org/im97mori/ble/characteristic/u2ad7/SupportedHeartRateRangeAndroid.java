@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SUPPORTED_HEART_R
 /**
  * Supported Heart Rate Range (Characteristics UUID: 0x2AD7)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class SupportedHeartRateRangeAndroid extends SupportedHeartRateRange implements Parcelable {
 
     /**

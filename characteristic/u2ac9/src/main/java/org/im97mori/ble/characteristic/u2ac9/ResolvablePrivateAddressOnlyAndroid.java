@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RESOLVABLE_PRIVAT
 /**
  * Resolvable Private Address Only (Characteristics UUID: 0x2AC9)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ResolvablePrivateAddressOnlyAndroid extends ResolvablePrivateAddressOnly implements Parcelable {
 
     /**

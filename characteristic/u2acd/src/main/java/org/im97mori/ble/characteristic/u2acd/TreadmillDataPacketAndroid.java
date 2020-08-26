@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TREADMILL_DATA_CH
 /**
  * Treadmill Data packet (Characteristics UUID: 0x2ACD)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class TreadmillDataPacketAndroid extends TreadmillDataPacket implements Parcelable {
 
     /**

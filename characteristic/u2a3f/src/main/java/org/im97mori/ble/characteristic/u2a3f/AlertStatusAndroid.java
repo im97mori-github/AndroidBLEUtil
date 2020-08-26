@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ALERT_STATUS_CHAR
 /**
  * Alert Status (Characteristics UUID: 0x2A3F)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class AlertStatusAndroid extends AlertStatus implements Parcelable {
 
     /**

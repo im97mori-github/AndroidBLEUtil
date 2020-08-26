@@ -15,7 +15,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.EXTERNAL_REPORT_REFER
 /**
  * External Report Reference (Descriptor UUID: 0x2907)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ExternalReportReferenceAndroid extends ExternalReportReference implements Parcelable {
 
     /**

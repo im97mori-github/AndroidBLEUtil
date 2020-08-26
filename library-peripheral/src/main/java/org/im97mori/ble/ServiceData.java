@@ -17,7 +17,7 @@ import java.util.UUID;
 /**
  * Service data class
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ServiceData implements Parcelable {
 
     /**

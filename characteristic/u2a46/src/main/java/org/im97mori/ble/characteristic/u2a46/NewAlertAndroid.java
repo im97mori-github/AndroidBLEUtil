@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.NEW_ALERT_CHARACT
 /**
  * New Alert (Characteristics UUID: 0x2A46)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class NewAlertAndroid extends NewAlert implements Parcelable {
 
     /**

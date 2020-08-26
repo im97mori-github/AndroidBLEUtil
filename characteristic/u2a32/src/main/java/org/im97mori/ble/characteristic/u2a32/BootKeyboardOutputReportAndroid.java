@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BOOT_KEYBOARD_OUT
 /**
  * Boot Keyboard Output Report (Characteristics UUID: 0x2A32)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class BootKeyboardOutputReportAndroid extends BootKeyboardOutputReport implements Parcelable {
 
     /**

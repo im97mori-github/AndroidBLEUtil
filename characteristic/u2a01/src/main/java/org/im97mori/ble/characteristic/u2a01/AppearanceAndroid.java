@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.APPEARANCE_CHARAC
 /**
  * Appearance (Characteristics UUID: 0x2A01)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class AppearanceAndroid extends Appearance implements Parcelable {
 
     /**

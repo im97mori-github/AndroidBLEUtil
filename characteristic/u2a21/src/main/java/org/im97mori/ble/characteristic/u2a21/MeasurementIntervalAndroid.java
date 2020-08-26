@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MEASUREMENT_INTER
 /**
  * Measurement Interval (Characteristics UUID: 0x2A21)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class MeasurementIntervalAndroid extends MeasurementInterval implements Parcelable {
 
     /**

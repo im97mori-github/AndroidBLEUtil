@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HID_CONTROL_POINT
 /**
  * HID Control Point (Characteristics UUID: 0x2A4C)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class HIDControlPointAndroid extends HIDControlPoint implements Parcelable {
 
     /**

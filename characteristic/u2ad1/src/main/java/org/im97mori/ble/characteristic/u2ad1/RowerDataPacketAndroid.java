@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ROWER_DATA_CHARAC
 /**
  * Rower Data packet (Characteristics UUID: 0x2AD1)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class RowerDataPacketAndroid extends RowerDataPacket implements Parcelable {
 
     /**

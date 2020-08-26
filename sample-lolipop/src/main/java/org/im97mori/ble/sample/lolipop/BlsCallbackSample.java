@@ -29,12 +29,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-@SuppressWarnings("unused")
 public class BlsCallbackSample extends BloodPressureServiceMockCallback implements BloodPressureServiceCallback, BLECallback {
 
     public static class Builder extends BloodPressureServiceMockCallback.Builder<BlsCallbackSample> {
 
-        private SampleCallback mSampleCallback;
+        private final SampleCallback mSampleCallback;
 
         public Builder(SampleCallback sampleCallback) {
             mSampleCallback = sampleCallback;
@@ -43,7 +42,7 @@ public class BlsCallbackSample extends BloodPressureServiceMockCallback implemen
         @NonNull
         @Override
         public BlsCallbackSample build() {
-            return new BlsCallbackSample(createMockData(), false, mSampleCallback);
+            return new BlsCallbackSample(createMockData(), mSampleCallback);
         }
     }
 
@@ -51,8 +50,8 @@ public class BlsCallbackSample extends BloodPressureServiceMockCallback implemen
 
     private final SampleCallback mSampleCallback;
 
-    BlsCallbackSample(@NonNull MockData mockData, boolean isFallback, SampleCallback sampleCallback) {
-        super(mockData, isFallback);
+    BlsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
+        super(mockData, false);
         mSampleCallback = sampleCallback;
     }
 

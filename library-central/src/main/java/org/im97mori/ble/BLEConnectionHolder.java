@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * application global {@link BLEConnection} instance cache
  */
-@SuppressWarnings({"WeakerAccess", "UnusedReturnValue", "unchecked", "unused"})
+@SuppressWarnings({"WeakerAccess", "UnusedReturnValue", "unchecked"})
 public class BLEConnectionHolder {
 
     /**

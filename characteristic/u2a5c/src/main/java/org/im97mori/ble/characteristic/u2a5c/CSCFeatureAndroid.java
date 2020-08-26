@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CSC_FEATURE_CHARA
 /**
  * CSC Feature (Characteristics UUID: 0x2A5C)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class CSCFeatureAndroid extends CSCFeature implements Parcelable {
 
     /**

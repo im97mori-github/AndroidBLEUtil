@@ -31,12 +31,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-@SuppressWarnings("unused")
 public class LnsCallbackSample extends LocationAndNavigationServiceMockCallback implements LocationAndNavigationServiceCallback, BLECallback {
 
     public static class Builder extends LocationAndNavigationServiceMockCallback.Builder<LnsCallbackSample> {
 
-        private SampleCallback mSampleCallback;
+        private final SampleCallback mSampleCallback;
 
         public Builder(SampleCallback sampleCallback) {
             mSampleCallback = sampleCallback;
@@ -45,7 +44,7 @@ public class LnsCallbackSample extends LocationAndNavigationServiceMockCallback 
         @NonNull
         @Override
         public LnsCallbackSample build() {
-            return new LnsCallbackSample(createMockData(), false, mSampleCallback);
+            return new LnsCallbackSample(createMockData(), mSampleCallback);
         }
     }
 
@@ -53,8 +52,8 @@ public class LnsCallbackSample extends LocationAndNavigationServiceMockCallback 
 
     private final SampleCallback mSampleCallback;
 
-    LnsCallbackSample(@NonNull MockData mockData, boolean isFallback, SampleCallback sampleCallback) {
-        super(mockData, isFallback);
+    LnsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
+        super(mockData, false);
         mSampleCallback = sampleCallback;
     }
 

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BAROMETRIC_PRESSU
 /**
  * Barometric Pressure Trend (Characteristics UUID: 0x2AA3)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class BarometricPressureTrendAndroid extends BarometricPressureTrend implements Parcelable {
 
     /**

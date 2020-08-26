@@ -28,12 +28,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-@SuppressWarnings("unused")
 public class BasCallbackSample extends BatteryServiceMockCallback implements BatteryServiceCallback, BLECallback {
 
     public static class Builder extends BatteryServiceMockCallback.Builder<BasCallbackSample> {
 
-        private SampleCallback mSampleCallback;
+        private final SampleCallback mSampleCallback;
 
         public Builder(SampleCallback sampleCallback) {
             mSampleCallback = sampleCallback;
@@ -42,7 +41,7 @@ public class BasCallbackSample extends BatteryServiceMockCallback implements Bat
         @NonNull
         @Override
         public BasCallbackSample build() {
-            return new BasCallbackSample(createMockData(), false, mSampleCallback);
+            return new BasCallbackSample(createMockData(), mSampleCallback);
         }
     }
 
@@ -50,8 +49,8 @@ public class BasCallbackSample extends BatteryServiceMockCallback implements Bat
 
     private final SampleCallback mSampleCallback;
 
-    BasCallbackSample(@NonNull MockData mockData, boolean isFallback, SampleCallback sampleCallback) {
-        super(mockData, isFallback);
+    BasCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
+        super(mockData, false);
         mSampleCallback = sampleCallback;
     }
 

@@ -45,7 +45,6 @@ import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingD
 /**
  * Parser for {@link ScanRecord#getBytes()}
  */
-@SuppressWarnings({"unused"})
 public class AdvertisingDataParser {
 
     /**

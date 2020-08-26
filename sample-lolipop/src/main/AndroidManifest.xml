@@ -72,6 +72,12 @@
         <activity
             android:name=".PxpCentralSampleActivity"
             android:label="@string/label_pxp_central" />
+        <activity
+            android:name=".HrpPeripheralSampleActivity"
+            android:label="@string/label_hrp_peripheral" />
+        <activity
+            android:name=".HrpCentralSampleActivity"
+            android:label="@string/label_hrp_central" />
     </application>
 
 </manifest>

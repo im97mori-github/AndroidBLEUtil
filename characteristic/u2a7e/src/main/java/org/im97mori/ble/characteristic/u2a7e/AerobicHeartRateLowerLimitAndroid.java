@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.AEROBIC_HEART_RAT
 /**
  * Aerobic Heart Rate Lower Limit (Characteristics UUID: 0x2A7E)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class AerobicHeartRateLowerLimitAndroid extends AerobicHeartRateLowerLimit implements Parcelable {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MAGNETIC_DECLINAT
 /**
  * Magnetic Declination (Characteristics UUID: 0x2A2C)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class MagneticDeclinationAndroid extends MagneticDeclination implements Parcelable {
 
     /**

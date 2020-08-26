@@ -11,7 +11,7 @@ import org.im97mori.ble.characteristic.core.RegisteredUser;
 /**
  * Email Address (Characteristics UUID: 0x2A87)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class EmailAddressAndroid extends EmailAddress implements Parcelable {
 
     /**

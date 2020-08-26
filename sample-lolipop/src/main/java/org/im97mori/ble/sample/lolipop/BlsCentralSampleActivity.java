@@ -66,12 +66,11 @@ public class BlsCentralSampleActivity extends BaseActivity implements View.OnCli
 
     private BroadcastReceiver mReceiver;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mBlsCallbackSample = new BlsCallbackSample(new MockData(), false, this);
+        mBlsCallbackSample = new BlsCallbackSample(new MockData(), this);
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
         mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MAGNETIC_FLUX_DEN
 /**
  * Magnetic Flux Density - 3D (Characteristics UUID: 0x2AA1)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class MagneticFluxDensity3DAndroid extends MagneticFluxDensity3D implements Parcelable {
 
     /**

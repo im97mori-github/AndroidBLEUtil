@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TEMPERATURE_TYPE_
 /**
  * Temperature Type (Characteristics UUID: 0x2A1D)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class TemperatureTypeAndroid extends TemperatureType implements Parcelable {
 
     /**

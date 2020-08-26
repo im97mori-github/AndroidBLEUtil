@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.INDOOR_POSITIONIN
 /**
  * Indoor Positioning Configuration (Characteristics UUID: 0x2AAD)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class IndoorPositioningConfigurationAndroid extends IndoorPositioningConfiguration implements Parcelable {
 
     /**

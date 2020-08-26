@@ -27,6 +27,8 @@
     <string name="label_fmp_central">FMP Central sample</string>
     <string name="label_pxp_peripheral">PXP Peripheral sample</string>
     <string name="label_pxp_central">PXP Central sample</string>
+    <string name="label_hrp_peripheral">HRP Peripheral sample</string>
+    <string name="label_hrp_central">HRP Central sample</string>
 
     <string name="menu_discover_service">Discover Service</string>
     <string name="menu_discover_service_sync">Discover Service(Synchronous)</string>
@@ -106,6 +108,11 @@
     <string name="menu_ias_write_alert_level_mild">Write IAS Alert Level(Mild)</string>
     <string name="menu_ias_write_alert_level_high">Write IAS Alert Level(High)</string>
     <string name="menu_read_tx_power_level">Read Tx Power Level</string>
+
+    <string name="menu_notify_heart_rate_measurement_start">Notify Heart RateMeasurement start</string>
+    <string name="menu_notify_heart_rate_measurement_stop">Notify Heart RateMeasurement stop</string>
+    <string name="menu_read_body_sensor_location">Read Heart Rate Measurement</string>
+    <string name="menu_read_heart_rate_control_point">Write Heart Rate Control Point</string>
 
     <string name="menu_clear">Clear</string>
 </resources>

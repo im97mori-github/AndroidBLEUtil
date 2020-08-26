@@ -17,7 +17,6 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
  * <p>
  * for central role
  */
-@SuppressWarnings("unused")
 public class DisconnectTask extends AbstractBLETask {
 
     /**

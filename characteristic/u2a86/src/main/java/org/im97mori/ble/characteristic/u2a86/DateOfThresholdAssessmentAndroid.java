@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DATE_OF_THRESHOLD
 /**
  * Date of Threshold Assessment (Characteristics UUID: 0x2A86)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class DateOfThresholdAssessmentAndroid extends DateOfThresholdAssessment implements Parcelable {
 
     /**

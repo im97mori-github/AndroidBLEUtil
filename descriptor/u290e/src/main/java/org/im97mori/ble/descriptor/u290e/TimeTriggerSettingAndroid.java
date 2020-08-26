@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.TIME_TRIGGER_SETTING_
 /**
  * Time Trigger Setting (Descriptor UUID: 0x290E)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class TimeTriggerSettingAndroid extends TimeTriggerSetting implements Parcelable {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HTTP_CONTROL_POIN
 /**
  * HTTP Control Point (Characteristics UUID: 0x2ABA)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class HTTPControlPointAndroid extends HTTPControlPoint implements Parcelable {
 
     /**

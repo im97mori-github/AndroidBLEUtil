@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RECONNECTION_ADDR
 /**
  * Reconnection Address (Characteristics UUID: 0x2A03)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ReconnectionAddressAndroid extends ReconnectionAddress implements Parcelable {
 
     /**

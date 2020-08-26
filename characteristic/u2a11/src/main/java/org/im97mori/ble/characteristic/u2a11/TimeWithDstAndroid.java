@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TIME_WITH_DST_CHA
 /**
  * Time with DST (Characteristics UUID: 0x2A11)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class TimeWithDstAndroid extends TimeWithDst implements Parcelable {
 
     /**

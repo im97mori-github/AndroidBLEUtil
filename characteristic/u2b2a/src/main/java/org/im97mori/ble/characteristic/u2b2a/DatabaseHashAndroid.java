@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DATABASE_HASH_CHA
 /**
  * Database Hash (Characteristics UUID: 0x2B2A)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class DatabaseHashAndroid extends DatabaseHash implements Parcelable {
 
     /**

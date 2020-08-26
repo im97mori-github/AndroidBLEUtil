@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LONGITUDE_CHARACT
 /**
  * Longitude (Characteristics UUID: 0x2AAF)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class LongitudeAndroid extends Longitude implements Parcelable {
 
     /**

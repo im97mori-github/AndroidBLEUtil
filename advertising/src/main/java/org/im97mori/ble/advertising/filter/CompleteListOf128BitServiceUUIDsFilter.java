@@ -12,7 +12,7 @@ import java.util.UUID;
 /**
  * filter for {@link CompleteListOf128BitServiceUUIDs}
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class CompleteListOf128BitServiceUUIDsFilter implements AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> {
 
     /**

@@ -26,12 +26,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-@SuppressWarnings("unused")
 public class LlsCallbackSample extends LinkLossServiceMockCallback implements LinkLossServiceCallback, BLECallback {
 
     public static class Builder extends LinkLossServiceMockCallback.Builder<LlsCallbackSample> {
 
-        private SampleCallback mSampleCallback;
+        private final SampleCallback mSampleCallback;
 
         public Builder(SampleCallback sampleCallback) {
             mSampleCallback = sampleCallback;
@@ -40,7 +39,7 @@ public class LlsCallbackSample extends LinkLossServiceMockCallback implements Li
         @NonNull
         @Override
         public LlsCallbackSample build() {
-            return new LlsCallbackSample(createMockData(), false, mSampleCallback);
+            return new LlsCallbackSample(createMockData(), mSampleCallback);
         }
     }
 
@@ -48,8 +47,8 @@ public class LlsCallbackSample extends LinkLossServiceMockCallback implements Li
 
     private final SampleCallback mSampleCallback;
 
-    LlsCallbackSample(@NonNull MockData mockData, boolean isFallback, SampleCallback sampleCallback) {
-        super(mockData, isFallback);
+    LlsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
+        super(mockData, false);
         mSampleCallback = sampleCallback;
     }
 

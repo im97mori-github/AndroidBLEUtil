@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LANGUAGE_CHARACTE
 /**
  * Language (Characteristics UUID: 0x2AA2)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class LanguageAndroid extends Language implements Parcelable {
 
     /**

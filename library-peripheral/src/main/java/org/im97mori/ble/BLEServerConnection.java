@@ -41,7 +41,7 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.APPLICATION_ERROR_9F;
 /**
  * BLE Connection(peripheral role)
  */
-@SuppressWarnings({"WeakerAccess", "unused", "UnusedReturnValue"})
+@SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class BLEServerConnection extends BluetoothGattServerCallback implements BLEServerCallbackDistributer.SubscriberInterface {
 

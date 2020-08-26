@@ -19,7 +19,6 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.CANCEL;
  * <p>
  * for central role
  */
-@SuppressWarnings("unused")
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class SetPreferredPhyTask extends AbstractBLETask {
 

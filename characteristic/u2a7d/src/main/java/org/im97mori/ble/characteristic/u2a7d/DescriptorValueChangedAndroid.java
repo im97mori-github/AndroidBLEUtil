@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DESCRIPTOR_VALUE_
 /**
  * Descriptor Value Changed (Characteristics UUID: 0x2A7D)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class DescriptorValueChangedAndroid extends DescriptorValueChanged implements Parcelable {
 
     /**

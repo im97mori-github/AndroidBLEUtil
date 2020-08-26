@@ -9,7 +9,7 @@ import org.im97mori.ble.advertising.IndoorPositioning;
 /**
  * filter for {@link IndoorPositioning}
  */
-@SuppressWarnings({"unused", "WeakerAccess"})
+@SuppressWarnings({"WeakerAccess"})
 public class IndoorPositioningFilter implements AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> {
 
     /**

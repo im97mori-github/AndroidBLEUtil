@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * filter for {@link UniformRsourceIdentifierFilter}
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class UniformRsourceIdentifierFilter implements AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> {
 
     /**

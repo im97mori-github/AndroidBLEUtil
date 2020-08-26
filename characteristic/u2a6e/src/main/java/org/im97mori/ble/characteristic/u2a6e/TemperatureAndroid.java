@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TEMPERATURE_CHARA
 /**
  * Temperature (Characteristics UUID: 0x2A6E)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class TemperatureAndroid extends Temperature implements Parcelable {
 
     /**

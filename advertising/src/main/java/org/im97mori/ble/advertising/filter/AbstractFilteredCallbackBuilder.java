@@ -44,7 +44,7 @@ import java.util.List;
  *
  * @param <T> instance of {@link FilteredLeScanCallback} or {@link FilteredLeScanCallback}
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public abstract class AbstractFilteredCallbackBuilder<T> {
 
     /**

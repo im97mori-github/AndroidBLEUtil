@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HTTPS_SECURITY_CH
 /**
  * HTTPS Security (Characteristics UUID: 0x2ABB)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class HTTPSSecurityAndroid extends HTTPSSecurity implements Parcelable {
 
     /**

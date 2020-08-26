@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.R_S_C_FEATURE_CHA
 /**
  * RSC Feature (Characteristics UUID: 0x2A54)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class RSCFeatureAndroid extends RSCFeature implements Parcelable {
 
     /**

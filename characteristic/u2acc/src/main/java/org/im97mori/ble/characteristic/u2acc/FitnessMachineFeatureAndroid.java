@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FITNESS_MACHINE_F
 /**
  * Fitness Machine Feature (Characteristics UUID: 0x2ACC)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class FitnessMachineFeatureAndroid extends FitnessMachineFeature implements Parcelable {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LOCAL_TIME_INFORM
 /**
  * Local Time Information (Characteristics UUID: 0x2A0F)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class LocalTimeInformationAndroid extends LocalTimeInformation implements Parcelable {
 
     /**

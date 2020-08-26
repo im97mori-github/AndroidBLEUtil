@@ -21,7 +21,6 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
  * for central role
  */
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-@SuppressWarnings("unused")
 public class RequestMtuTask extends AbstractBLETask {
 
     /**

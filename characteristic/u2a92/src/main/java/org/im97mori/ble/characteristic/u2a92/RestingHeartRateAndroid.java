@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RESTING_HEART_RAT
 /**
  * Resting Heart Rate (Characteristics UUID: 0x2A92)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class RestingHeartRateAndroid extends RestingHeartRate implements Parcelable {
 
     /**

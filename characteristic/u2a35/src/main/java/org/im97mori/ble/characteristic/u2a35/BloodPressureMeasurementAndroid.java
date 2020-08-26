@@ -14,7 +14,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BLOOD_PRESSURE_ME
 /**
  * Blood Pressure Measurement (Characteristics UUID: 0x2A35)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class BloodPressureMeasurementAndroid extends BloodPressureMeasurement implements Parcelable {
 
     /**

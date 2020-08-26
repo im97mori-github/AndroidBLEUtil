@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.MANUFACTURER_NAME
 /**
  * Manufacturer Name String (Characteristics UUID: 0x2A29)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ManufacturerNameStringAndroid extends ManufacturerNameString implements Parcelable {
 
     /**

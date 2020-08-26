@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.FLOOR_NUMBER_CHAR
 /**
  * Floor Number (Characteristics UUID: 0x2AB2)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class FloorNumberAndroid extends FloorNumber implements Parcelable {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.USER_INDEX_CHARAC
 /**
  * User Index (Characteristics UUID: 0x2A9A)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class UserIndexAndroid extends UserIndex implements Parcelable {
 
     /**

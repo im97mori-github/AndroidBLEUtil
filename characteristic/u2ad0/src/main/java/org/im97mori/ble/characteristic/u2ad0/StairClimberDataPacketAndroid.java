@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.STAIR_CLIMBER_DAT
 /**
  * Stair Climber Data packet (Characteristics UUID: 0x2AD0)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class StairClimberDataPacketAndroid extends StairClimberDataPacket implements Parcelable {
 
     /**

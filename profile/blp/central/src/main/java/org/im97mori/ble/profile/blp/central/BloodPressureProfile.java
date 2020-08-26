@@ -15,7 +15,7 @@ import org.im97mori.ble.service.bls.central.BloodPressureService;
 import org.im97mori.ble.service.dis.central.DeviceInformationService;
 
 /**
- * Battery Pressure Profile for Central
+ * Blood Pressure Profile for Central
  */
 public class BloodPressureProfile extends AbstractCentralProfile {
 

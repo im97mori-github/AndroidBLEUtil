@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SCAN_INTERVAL_WIN
 /**
  * Scan Interval Window (Characteristics UUID: 0x2A4F)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ScanIntervalWindowAndroid extends ScanIntervalWindow implements Parcelable {
 
     /**

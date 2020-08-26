@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HTTP_ENTITY_BODY_
 /**
  * HTTP Entity Body (Characteristics UUID: 0x2AB9)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class HTTPEntityBodyAndroid extends HTTPEntityBody implements Parcelable {
 
     /**

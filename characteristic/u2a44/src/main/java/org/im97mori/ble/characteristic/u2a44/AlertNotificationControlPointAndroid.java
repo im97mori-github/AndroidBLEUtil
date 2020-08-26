@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.ALERT_NOTIFICATIO
 /**
  * Alert Notification Control Point (Characteristics UUID: 0x2A44)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class AlertNotificationControlPointAndroid extends AlertNotificationControlPoint implements Parcelable {
 
     /**

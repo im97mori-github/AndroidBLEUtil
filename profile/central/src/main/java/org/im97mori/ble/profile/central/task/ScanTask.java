@@ -33,7 +33,6 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
  * <p>
  * for central role
  */
-@SuppressWarnings("unused")
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 @SuppressLint("MissingPermission")
 public class ScanTask extends AbstractBLETask {

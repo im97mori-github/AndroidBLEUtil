@@ -128,6 +128,14 @@ public class AlertStatusAndroidTest {
     }
 
     @Test
+    public void test_constructor007() {
+        int alertStatus = 1;
+
+        AlertStatusAndroid result1 = new AlertStatusAndroid(alertStatus);
+        assertEquals(alertStatus, result1.getAlertStatus());
+    }
+
+    @Test
     public void test_parcelable001() {
         int flags = AlertStatus.ALERT_STATUS_RINGER_STATE_NOT_ACTIVE
                 | AlertStatus.ALERT_STATUS_VIBRATE_STATE_NOT_ACTIVE

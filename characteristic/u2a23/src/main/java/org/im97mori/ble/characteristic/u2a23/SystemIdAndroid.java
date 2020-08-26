@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SYSTEM_ID_CHARACT
 /**
  * System ID (Characteristics UUID: 0x2A23)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class SystemIdAndroid extends SystemId implements Parcelable {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.GUST_FACTOR_CHARA
 /**
  * Gust Factor (Characteristics UUID: 0x2A74)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class GustFactorAndroid extends GustFactor implements Parcelable {
 
     /**

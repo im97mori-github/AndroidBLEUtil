@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.REPORT_CHARACTERI
 /**
  * Report (Characteristics UUID: 0x2A4D)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ReportAndroid extends Report implements Parcelable {
 
     /**

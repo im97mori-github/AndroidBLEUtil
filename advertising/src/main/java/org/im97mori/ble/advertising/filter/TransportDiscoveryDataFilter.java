@@ -11,7 +11,6 @@ import java.util.Arrays;
 /**
  * filter for {@link TransportDiscoveryData}
  */
-@SuppressWarnings({"unused"})
 public class TransportDiscoveryDataFilter implements AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> {
 
     /**

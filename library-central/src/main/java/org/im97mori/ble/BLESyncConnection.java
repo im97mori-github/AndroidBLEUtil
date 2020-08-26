@@ -51,7 +51,7 @@ import static org.im97mori.ble.BLESyncConnection.BLEResult.RESULT_TIMEOUT;
  * <p>
  * Synchronous
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class BLESyncConnection implements BLECallback {
 
     /**
@@ -96,7 +96,6 @@ public class BLESyncConnection implements BLECallback {
      * @see #onReadRemoteRssiFailed(Integer, BluetoothDevice, int, Bundle)
      * @see #onReadRemoteRssiTimeout(Integer, BluetoothDevice, long, Bundle)
      */
-    @SuppressWarnings("unused")
     public static class BLEResult {
 
         /**

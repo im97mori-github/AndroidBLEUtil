@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SPORT_TYPE_FOR_AE
 /**
  * Sport Type for Aerobic and Anaerobic Thresholds (Characteristics UUID: 0x2A93)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class SportTypeForAerobicAndAnaerobicThresholdsAndroid extends SportTypeForAerobicAndAnaerobicThresholds implements Parcelable {
 
     /**

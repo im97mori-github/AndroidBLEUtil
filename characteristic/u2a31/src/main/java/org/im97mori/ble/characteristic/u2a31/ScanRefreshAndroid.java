@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SCAN_REFRESH_CHAR
 /**
  * Scan Refresh (Characteristics UUID: 0x2A31)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ScanRefreshAndroid extends ScanRefresh implements Parcelable {
 
     /**

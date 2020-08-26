@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.CYCLING_POWER_MEA
 /**
  * Cycling Power Measurement (Characteristics UUID: 0x2A63)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class CyclingPowerMeasurementAndroid extends CyclingPowerMeasurement implements Parcelable {
 
     /**

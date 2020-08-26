@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HTTP_HEADERS_CHAR
 /**
  * HTTP Headers (Characteristics UUID: 0x2AB7)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class HTTPHeadersAndroid extends HTTPHeaders implements Parcelable {
 
     /**

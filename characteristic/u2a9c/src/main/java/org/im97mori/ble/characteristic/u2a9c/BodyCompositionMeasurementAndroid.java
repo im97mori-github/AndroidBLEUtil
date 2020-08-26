@@ -10,7 +10,7 @@ import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
 /**
  * Body Composition Measurement (Characteristics UUID: 0x2A9C)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class BodyCompositionMeasurementAndroid extends BodyCompositionMeasurement implements Parcelable {
 
     /**

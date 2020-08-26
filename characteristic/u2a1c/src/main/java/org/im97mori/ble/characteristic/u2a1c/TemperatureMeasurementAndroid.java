@@ -14,7 +14,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TEMPERATURE_MEASU
 /**
  * Temperature Measurement (Characteristics UUID: 0x2A1C)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class TemperatureMeasurementAndroid extends TemperatureMeasurement implements Parcelable {
 
     /**

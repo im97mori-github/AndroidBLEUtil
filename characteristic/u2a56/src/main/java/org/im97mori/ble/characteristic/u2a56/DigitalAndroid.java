@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.DIGITAL_CHARACTER
 /**
  * Digital (Characteristics UUID: 0x2A56)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class DigitalAndroid extends Digital implements Parcelable {
 
     /**

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.TIME_UPDATE_STATE
 /**
  * Time Update State (Characteristics UUID: 0x2A17)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class TimeUpdateStateAndroid extends TimeUpdateState implements Parcelable {
 
     /**

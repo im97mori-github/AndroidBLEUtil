@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * filter for {@link SlaveConnectionIntervalRange}
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class SlaveConnectionIntervalRangeFilter implements AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult> {
 
     /**

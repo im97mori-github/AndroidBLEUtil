@@ -2928,7 +2928,7 @@ public class BloodPressureServiceTest {
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         bloodPressureService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        bloodPressureService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0 , null);
+        bloodPressureService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
         assertFalse(bloodPressureService.isIntermediateCuffPressureSupported());
     }
@@ -3112,6 +3112,34 @@ public class BloodPressureServiceTest {
 
         };
 
+        assertNull(bloodPressureService.getIntermediateCuffPressureClientCharacteristicConfiguration());
+    }
+
+    @Test
+    public void test_getIntermediateCuffPressureClientCharacteristicConfiguration_000004() {
+        final Integer originalTaskId = 1;
+        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
+
+            @Override
+            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+                return originalTaskId;
+            }
+
+        };
+        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null) {
+
+            @Override
+            public boolean isIntermediateCuffPressureSupported() {
+                return true;
+            }
+
+            @Override
+            public boolean isStarted() {
+                return true;
+            }
+
+        };
+
         Integer taskId = bloodPressureService.getIntermediateCuffPressureClientCharacteristicConfiguration();
         assertNotNull(taskId);
         assertEquals(originalTaskId, taskId);
@@ -3158,6 +3186,34 @@ public class BloodPressureServiceTest {
 
         };
 
+        assertNull(bloodPressureService.startIntermediateCuffPressureNotification());
+    }
+
+    @Test
+    public void test_startIntermediateCuffPressureNotification_000004() {
+        final Integer originalTaskId = 1;
+        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
+
+            @Override
+            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+                return originalTaskId;
+            }
+
+        };
+        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null) {
+
+            @Override
+            public boolean isIntermediateCuffPressureSupported() {
+                return true;
+            }
+
+            @Override
+            public boolean isStarted() {
+                return true;
+            }
+
+        };
+
         Integer taskId = bloodPressureService.startIntermediateCuffPressureNotification();
         assertNotNull(taskId);
         assertEquals(originalTaskId, taskId);
@@ -3196,6 +3252,34 @@ public class BloodPressureServiceTest {
 
         };
         BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null) {
+
+            @Override
+            public boolean isStarted() {
+                return true;
+            }
+
+        };
+
+        assertNull(bloodPressureService.stopIntermediateCuffPressureNotification());
+    }
+
+    @Test
+    public void test_stopIntermediateCuffPressureNotification_000004() {
+        final Integer originalTaskId = 1;
+        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
+
+            @Override
+            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+                return originalTaskId;
+            }
+
+        };
+        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null) {
+
+            @Override
+            public boolean isIntermediateCuffPressureSupported() {
+                return true;
+            }
 
             @Override
             public boolean isStarted() {

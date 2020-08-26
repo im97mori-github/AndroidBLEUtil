@@ -15,7 +15,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.IEEE_11073_20601_
 /**
  * IEEE 11073-20601 Regulatory Certification Data List (Characteristics UUID: 0x2A2A)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class IEEE_11073_20601_RegulatoryCertificationDataListAndroid extends IEEE_11073_20601_RegulatoryCertificationDataList implements Parcelable {
 
     /**

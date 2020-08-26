@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.SOFTWARE_REVISION
 /**
  * Software Revision String (Characteristics UUID: 0x2A28)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class SoftwareRevisionStringAndroid extends SoftwareRevisionString implements Parcelable {
 
     /**

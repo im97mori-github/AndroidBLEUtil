@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.APPARENT_WIND_SPE
 /**
  * Apparent Wind Speed (Characteristics UUID: 0x2A72)
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess"})
 public class ApparentWindSpeedAndroid extends ApparentWindSpeed implements Parcelable {
 
     /**

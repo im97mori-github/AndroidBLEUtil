@@ -26,12 +26,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-@SuppressWarnings("unused")
 public class TpsCallbackSample extends TxPowerServiceMockCallback implements TxPowerServiceCallback, BLECallback {
 
     public static class Builder extends TxPowerServiceMockCallback.Builder<TpsCallbackSample> {
 
-        private SampleCallback mSampleCallback;
+        private final SampleCallback mSampleCallback;
 
         public Builder(SampleCallback sampleCallback) {
             mSampleCallback = sampleCallback;
@@ -40,7 +39,7 @@ public class TpsCallbackSample extends TxPowerServiceMockCallback implements TxP
         @NonNull
         @Override
         public TpsCallbackSample build() {
-            return new TpsCallbackSample(createMockData(), false, mSampleCallback);
+            return new TpsCallbackSample(createMockData(), mSampleCallback);
         }
     }
 
@@ -48,8 +47,8 @@ public class TpsCallbackSample extends TxPowerServiceMockCallback implements TxP
 
     private final SampleCallback mSampleCallback;
 
-    TpsCallbackSample(@NonNull MockData mockData, boolean isFallback, SampleCallback sampleCallback) {
-        super(mockData, isFallback);
+    TpsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
+        super(mockData, false);
         mSampleCallback = sampleCallback;
     }
 

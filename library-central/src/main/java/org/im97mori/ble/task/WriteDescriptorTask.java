@@ -30,7 +30,6 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
  * <p>
  * for central role
  */
-@SuppressWarnings("unused")
 public class WriteDescriptorTask extends AbstractBLETask {
 
     /**
@@ -289,7 +288,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
                 mCurrentProgress = nextProgress;
             }
         } else if (PROGRESS_DESCRIPTOR_WRITE_START == mCurrentProgress) {
-            if (mServiceUUID.equals(serviceUUID) && mCharacteristicUUID.equals(characteristicUUID) || mDescriptorUUID.equals(descriptorUUID)) {
+            if (mServiceUUID.equals(serviceUUID) && mServiceInstanceId == serviceInstanceId && mCharacteristicUUID.equals(characteristicUUID) && mDescriptorUUID.equals(descriptorUUID) && mCharacteristicInstanceId == characteristicInstanceId) {
                 // current:write descriptor start, next:write descriptor success
                 if (PROGRESS_DESCRIPTOR_WRITE_SUCCESS == nextProgress) {
                     byte[] value = bundle.getByteArray(KEY_VALUES);
