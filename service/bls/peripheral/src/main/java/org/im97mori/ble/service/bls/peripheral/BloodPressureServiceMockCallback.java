@@ -75,7 +75,7 @@ public class BloodPressureServiceMockCallback extends AbstractServiceMockCallbac
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Blood Pressure Measurement indication count
          * @param descriptorResponceCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            characteristic response delay(millis)
+         * @param descriptorDelay            descritptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -123,7 +123,7 @@ public class BloodPressureServiceMockCallback extends AbstractServiceMockCallbac
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Intermediate Cuff Pressure notification count
          * @param descriptorResponceCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            characteristic response delay(millis)
+         * @param descriptorDelay            descritptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -244,22 +244,6 @@ public class BloodPressureServiceMockCallback extends AbstractServiceMockCallbac
      */
     @Override
     public void onServerStarted() {
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onDeviceConnected(BluetoothDevice device) {
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onDeviceDisconnected(BluetoothDevice device) {
 
     }
 

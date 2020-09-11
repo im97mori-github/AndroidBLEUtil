@@ -17,13 +17,15 @@ import org.junit.Test;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class DiscoverServiceTaskTest {
 
     @Test
-    public void test_createInitialMessage001() {
+    public void test_createInitialMessage_00001() {
         DiscoverServiceTask task = new DiscoverServiceTask(null, null, null, DiscoverServiceTask.TIMEOUT_MILLIS, null);
         Message message = task.createInitialMessage();
 
@@ -36,7 +38,7 @@ public class DiscoverServiceTaskTest {
     }
 
     @Test
-    public void test_createServiceDiscoverSuccessMessage001() {
+    public void test_createServiceDiscoverSuccessMessage_00001() {
         Object object = new Object();
         Message message = DiscoverServiceTask.createDiscoverServiceSuccessMessage(object);
 
@@ -49,7 +51,7 @@ public class DiscoverServiceTaskTest {
     }
 
     @Test
-    public void test_createServiceDiscoverErrorMessage001() {
+    public void test_createServiceDiscoverErrorMessage_00001() {
         Object object = new Object();
         int status = new Random().nextInt();
         Message message = DiscoverServiceTask.createDiscoverServiceErrorMessage(object, status);
@@ -65,7 +67,13 @@ public class DiscoverServiceTaskTest {
     }
 
     @Test
-    public void test_cancel001() {
+    public void test_doProcess_00001() {
+        DiscoverServiceTask task = new DiscoverServiceTask(null, null, null, DiscoverServiceTask.TIMEOUT_MILLIS, null);
+        assertFalse(task.doProcess(new Message()));
+    }
+
+    @Test
+    public void test_cancel_00001() {
         Looper looper = null;
         try {
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
@@ -86,7 +94,7 @@ public class DiscoverServiceTaskTest {
     }
 
     @Test
-    public void test_cancel002() {
+    public void test_cancel_00002() {
         MockBLEConnection mockBleConnection = new MockBLEConnection();
         Looper looper = null;
         try {
@@ -118,4 +126,5 @@ public class DiscoverServiceTaskTest {
             mockBleConnection.quit();
         }
     }
+
 }

@@ -13,13 +13,15 @@ import org.im97mori.ble.MockBLEConnection;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class BeginReliableWriteTaskTest {
 
     @Test
-    public void test_createInitialMessage001() {
+    public void test_createInitialMessage_00001() {
         BeginReliableWriteTask task = new BeginReliableWriteTask(null, null, null);
         Message message = task.createInitialMessage();
 
@@ -32,7 +34,13 @@ public class BeginReliableWriteTaskTest {
     }
 
     @Test
-    public void test_cancel001() {
+    public void test_doProcess_00001() {
+        BeginReliableWriteTask task = new BeginReliableWriteTask(null, null, null);
+        assertFalse(task.doProcess(new Message()));
+    }
+
+    @Test
+    public void test_cancel_00001() {
         Message message = Message.obtain();
         message.setData(Bundle.EMPTY);
 
@@ -42,7 +50,7 @@ public class BeginReliableWriteTaskTest {
     }
 
     @Test
-    public void test_cancel002() {
+    public void test_cancel_00002() {
         MockBLEConnection mockBleConnection = new MockBLEConnection();
         try {
             mockBleConnection.start();
@@ -66,4 +74,5 @@ public class BeginReliableWriteTaskTest {
             mockBleConnection.quit();
         }
     }
+
 }

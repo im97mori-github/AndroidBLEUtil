@@ -149,33 +149,35 @@ public class SetPreferredPhyTask extends AbstractBLETask {
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
-        int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+        if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
+            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
 
-        // timeout
-        if (message.obj == this && PROGRESS_TIMEOUT == nextProgress) {
-            mBLEConnection.getBLECallback().onSetPreferredPhyTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mTimeout, mArgumemnt);
-            mCurrentProgress = nextProgress;
-        } else if (PROGRESS_INIT == mCurrentProgress) {
-            if (message.obj == this && PROGRESS_SET_PREFERRED_PHY_START == nextProgress) {
-                // current:init, next:set preferred phy start
-                mBluetoothGatt.setPreferredPhy(mTxPhy, mRxPhy, mPhyOptions);
-
-                // set timeout message
-                mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
+            // timeout
+            if (message.obj == this && PROGRESS_TIMEOUT == nextProgress) {
+                mBLEConnection.getBLECallback().onSetPreferredPhyTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mTimeout, mArgumemnt);
                 mCurrentProgress = nextProgress;
-            }
-        } else if (PROGRESS_SET_PREFERRED_PHY_START == mCurrentProgress) {
-            // current:set preferred phy start, next:set preferred phy success
-            if (PROGRESS_SET_PREFERRED_PHY_SUCCESS == nextProgress) {
-                mBLEConnection.getBLECallback().onSetPreferredPhySuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), bundle.getInt(KEY_TX_PHY), bundle.getInt(KEY_RX_PHY), bundle.getInt(KEY_PHY_OPTIONS), mArgumemnt);
-            } else if (PROGRESS_SET_PREFERRED_PHY_ERROR == nextProgress) {
-                // current:set preferred phy start, next:set preferred phy error
-                mBLEConnection.getBLECallback().onSetPreferredPhyFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), bundle.getInt(KEY_STATUS), mArgumemnt);
-            }
+            } else if (PROGRESS_INIT == mCurrentProgress) {
+                if (message.obj == this && PROGRESS_SET_PREFERRED_PHY_START == nextProgress) {
+                    // current:init, next:set preferred phy start
+                    mBluetoothGatt.setPreferredPhy(mTxPhy, mRxPhy, mPhyOptions);
 
-            mCurrentProgress = PROGRESS_FINISHED;
-            // remove timeout message
-            mTaskHandler.removeCallbacksAndMessages(this);
+                    // set timeout message
+                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
+                    mCurrentProgress = nextProgress;
+                }
+            } else if (PROGRESS_SET_PREFERRED_PHY_START == mCurrentProgress) {
+                // current:set preferred phy start, next:set preferred phy success
+                if (PROGRESS_SET_PREFERRED_PHY_SUCCESS == nextProgress) {
+                    mBLEConnection.getBLECallback().onSetPreferredPhySuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), bundle.getInt(KEY_TX_PHY), bundle.getInt(KEY_RX_PHY), bundle.getInt(KEY_PHY_OPTIONS), mArgumemnt);
+                } else if (PROGRESS_SET_PREFERRED_PHY_ERROR == nextProgress) {
+                    // current:set preferred phy start, next:set preferred phy error
+                    mBLEConnection.getBLECallback().onSetPreferredPhyFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), bundle.getInt(KEY_STATUS), mArgumemnt);
+                }
+
+                mCurrentProgress = PROGRESS_FINISHED;
+                // remove timeout message
+                mTaskHandler.removeCallbacksAndMessages(this);
+            }
         }
 
         return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;

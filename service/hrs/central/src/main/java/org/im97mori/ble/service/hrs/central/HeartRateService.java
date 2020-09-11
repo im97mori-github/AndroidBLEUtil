@@ -250,7 +250,7 @@ public class HeartRateService extends AbstractCentralService {
     @Override
     public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && HEART_RATE_SERVICE.equals(serviceUUID) && HEART_RATE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
-            mHeartRateServiceCallback.onHeartRateMeasurementNotificated(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, HeartRateMeasurementAndroid.CREATOR.createFromByteArray(values));
+            mHeartRateServiceCallback.onHeartRateMeasurementNotified(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, HeartRateMeasurementAndroid.CREATOR.createFromByteArray(values));
         }
         super.onCharacteristicNotified(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, values);
     }

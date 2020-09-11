@@ -125,38 +125,40 @@ public class ReadPhyTask extends AbstractBLETask {
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
-        int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+        if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
+            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
 
-        // timeout
-        if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
-            mBLEConnection.getBLECallback().onReadPhyTimeout(getTaskId(), mBluetoothGatt.getDevice(), mTimeout, mArgument);
-            mCurrentProgress = nextProgress;
-        } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
-            if (PROGRESS_READ_PHY_START == nextProgress) {
-                // current:init, next:read phy start
-
-                mBluetoothGatt.readPhy();
-
-                // set timeout message
-                mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
+            // timeout
+            if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+                mBLEConnection.getBLECallback().onReadPhyTimeout(getTaskId(), mBluetoothGatt.getDevice(), mTimeout, mArgument);
                 mCurrentProgress = nextProgress;
+            } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
+                if (PROGRESS_READ_PHY_START == nextProgress) {
+                    // current:init, next:read phy start
+
+                    mBluetoothGatt.readPhy();
+
+                    // set timeout message
+                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
+                    mCurrentProgress = nextProgress;
+                }
+            } else if (PROGRESS_READ_PHY_START == mCurrentProgress) {
+                if (PROGRESS_READ_PHY_SUCCESS == nextProgress) {
+                    // current:read phy start, next:read phy success
+
+                    // callback
+                    mBLEConnection.getBLECallback().onReadPhySuccess(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_TX_PHY), bundle.getInt(KEY_RX_PHY), mArgument);
+                } else if (PROGRESS_READ_PHY_ERROR == nextProgress) {
+                    // current:read phy start, next:read phy failed
+
+                    mBLEConnection.getBLECallback().onReadPhyFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
+                }
+
+                // remove timeout message
+                mTaskHandler.removeCallbacksAndMessages(this);
+
+                mCurrentProgress = PROGRESS_FINISHED;
             }
-        } else if (PROGRESS_READ_PHY_START == mCurrentProgress) {
-            if (PROGRESS_READ_PHY_SUCCESS == nextProgress) {
-                // current:read phy start, next:read phy success
-
-                // callback
-                mBLEConnection.getBLECallback().onReadPhySuccess(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_TX_PHY), bundle.getInt(KEY_RX_PHY), mArgument);
-            } else if (PROGRESS_READ_PHY_ERROR == nextProgress) {
-                // current:read phy start, next:read phy failed
-
-                mBLEConnection.getBLECallback().onReadPhyFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
-            }
-
-            // remove timeout message
-            mTaskHandler.removeCallbacksAndMessages(this);
-
-            mCurrentProgress = PROGRESS_FINISHED;
         }
 
         return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;

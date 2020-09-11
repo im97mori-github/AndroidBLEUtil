@@ -24,6 +24,7 @@ import org.im97mori.ble.BLEConnectionHolder;
 import org.im97mori.ble.BLELogUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class IndexActivity extends Activity implements AdapterView.OnItemClickListener {
@@ -75,6 +76,7 @@ public class IndexActivity extends Activity implements AdapterView.OnItemClickLi
                     list.add(activityInfo);
                 }
             }
+            Collections.reverse(list);
             listView.setAdapter(new IndexAdapter(this, list));
             listView.setOnItemClickListener(this);
         }

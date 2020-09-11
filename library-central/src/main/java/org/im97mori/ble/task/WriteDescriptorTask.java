@@ -203,107 +203,109 @@ public class WriteDescriptorTask extends AbstractBLETask {
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
-        UUID serviceUUID = (UUID) bundle.getSerializable(KEY_SERVICE_UUID);
-        int serviceInstanceId = bundle.getInt(KEY_SERVICE_INSTANCE_ID);
-        UUID characteristicUUID = (UUID) bundle.getSerializable(KEY_CHARACTERISTIC_UUID);
-        int characteristicInstanceId = bundle.getInt(KEY_CHARACTERISTIC_INSTANCE_ID);
-        UUID descriptorUUID = (UUID) bundle.getSerializable(KEY_DESCRIPTOR_UUID);
-        int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+        if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
+            UUID serviceUUID = (UUID) bundle.getSerializable(KEY_SERVICE_UUID);
+            int serviceInstanceId = bundle.getInt(KEY_SERVICE_INSTANCE_ID);
+            UUID characteristicUUID = (UUID) bundle.getSerializable(KEY_CHARACTERISTIC_UUID);
+            int characteristicInstanceId = bundle.getInt(KEY_CHARACTERISTIC_INSTANCE_ID);
+            UUID descriptorUUID = (UUID) bundle.getSerializable(KEY_DESCRIPTOR_UUID);
+            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
 
-        // timeout
-        if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
-            mBLEConnection.getBLECallback().onDescriptorWriteTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, mTimeout, mArgumemnt);
-            mCurrentProgress = PROGRESS_TIMEOUT;
-        } else if (PROGRESS_INIT == mCurrentProgress) {
-            // current:init, next:write descriptor start
-            if (message.obj == this && PROGRESS_DESCRIPTOR_WRITE_START == nextProgress) {
+            // timeout
+            if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+                mBLEConnection.getBLECallback().onDescriptorWriteTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, mTimeout, mArgumemnt);
+                mCurrentProgress = PROGRESS_TIMEOUT;
+            } else if (PROGRESS_INIT == mCurrentProgress) {
+                // current:init, next:write descriptor start
+                if (message.obj == this && PROGRESS_DESCRIPTOR_WRITE_START == nextProgress) {
 
-                BluetoothGattDescriptor bluetoothGattDescriptor = null;
-                boolean result = false;
-                BluetoothGattService bluetoothGattService = null;
-                if (mServiceInstanceId == null) {
-                    bluetoothGattService = mBluetoothGatt.getService(mServiceUUID);
-                } else {
-                    // multiple service
-                    List<BluetoothGattService> serviceList = mBluetoothGatt.getServices();
-                    for (BluetoothGattService targetBluetoothGattService : serviceList) {
-                        if (mServiceUUID.equals(targetBluetoothGattService.getUuid()) && mServiceInstanceId == targetBluetoothGattService.getInstanceId()) {
-                            bluetoothGattService = targetBluetoothGattService;
-                            break;
-                        }
-                    }
-                }
-                if (bluetoothGattService != null) {
-                    BluetoothGattCharacteristic bluetoothGattCharacteristic = null;
-                    if (mCharacteristicInstanceId == null) {
-                        bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(mCharacteristicUUID);
+                    BluetoothGattDescriptor bluetoothGattDescriptor = null;
+                    boolean result = false;
+                    BluetoothGattService bluetoothGattService = null;
+                    if (mServiceInstanceId == null) {
+                        bluetoothGattService = mBluetoothGatt.getService(mServiceUUID);
                     } else {
-                        // multiple characteristic
-                        List<BluetoothGattCharacteristic> characteristicList = bluetoothGattService.getCharacteristics();
-                        for (BluetoothGattCharacteristic targetBluetoothGattCharacteristic : characteristicList) {
-                            if (mCharacteristicUUID.equals(targetBluetoothGattCharacteristic.getUuid()) && mCharacteristicInstanceId == targetBluetoothGattCharacteristic.getInstanceId()) {
-                                bluetoothGattCharacteristic = targetBluetoothGattCharacteristic;
+                        // multiple service
+                        List<BluetoothGattService> serviceList = mBluetoothGatt.getServices();
+                        for (BluetoothGattService targetBluetoothGattService : serviceList) {
+                            if (mServiceUUID.equals(targetBluetoothGattService.getUuid()) && mServiceInstanceId == targetBluetoothGattService.getInstanceId()) {
+                                bluetoothGattService = targetBluetoothGattService;
                                 break;
                             }
                         }
                     }
-                    if (bluetoothGattCharacteristic != null) {
-                        bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(mDescriptorUUID);
-                        if (bluetoothGattDescriptor != null) {
-                            byte[] bytes = mByteArrayInterface.getBytes();
-                            bluetoothGattDescriptor.setValue(bytes);
-
-                            // write descriptor
-                            mServiceInstanceId = bluetoothGattService.getInstanceId();
-                            mCharacteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
-                            try {
-                                result = mBluetoothGatt.writeDescriptor(bluetoothGattDescriptor);
-
-                                if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                                    ClientCharacteristicConfigurationAndroid clientCharacteristicConfiguration = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
-                                    mBluetoothGatt.setCharacteristicNotification(bluetoothGattCharacteristic
-                                            , clientCharacteristicConfiguration.isPropertiesNotificationsEnabled()
-                                                    || clientCharacteristicConfiguration.isPropertiesIndicationsEnabled());
+                    if (bluetoothGattService != null) {
+                        BluetoothGattCharacteristic bluetoothGattCharacteristic = null;
+                        if (mCharacteristicInstanceId == null) {
+                            bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(mCharacteristicUUID);
+                        } else {
+                            // multiple characteristic
+                            List<BluetoothGattCharacteristic> characteristicList = bluetoothGattService.getCharacteristics();
+                            for (BluetoothGattCharacteristic targetBluetoothGattCharacteristic : characteristicList) {
+                                if (mCharacteristicUUID.equals(targetBluetoothGattCharacteristic.getUuid()) && mCharacteristicInstanceId == targetBluetoothGattCharacteristic.getInstanceId()) {
+                                    bluetoothGattCharacteristic = targetBluetoothGattCharacteristic;
+                                    break;
                                 }
-                            } catch (Exception e) {
-                                BLELogUtils.stackLog(e);
                             }
+                        }
+                        if (bluetoothGattCharacteristic != null) {
+                            bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(mDescriptorUUID);
+                            if (bluetoothGattDescriptor != null) {
+                                byte[] bytes = mByteArrayInterface.getBytes();
+                                bluetoothGattDescriptor.setValue(bytes);
 
+                                // write descriptor
+                                mServiceInstanceId = bluetoothGattService.getInstanceId();
+                                mCharacteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
+                                try {
+                                    result = mBluetoothGatt.writeDescriptor(bluetoothGattDescriptor);
+
+                                    if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
+                                        ClientCharacteristicConfigurationAndroid clientCharacteristicConfiguration = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+                                        mBluetoothGatt.setCharacteristicNotification(bluetoothGattCharacteristic
+                                                , clientCharacteristicConfiguration.isPropertiesNotificationsEnabled()
+                                                        || clientCharacteristicConfiguration.isPropertiesIndicationsEnabled());
+                                    }
+                                } catch (Exception e) {
+                                    BLELogUtils.stackLog(e);
+                                }
+
+                            }
                         }
                     }
-                }
 
-                if (result) {
-                    // set timeout message
-                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
-                } else {
-                    if (bluetoothGattDescriptor == null) {
-                        nextProgress = PROGRESS_FINISHED;
-                        mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, UNKNOWN, mArgumemnt);
+                    if (result) {
+                        // set timeout message
+                        mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                     } else {
-                        nextProgress = PROGRESS_BUSY;
-                        mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, BUSY, mArgumemnt);
+                        if (bluetoothGattDescriptor == null) {
+                            nextProgress = PROGRESS_FINISHED;
+                            mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, UNKNOWN, mArgumemnt);
+                        } else {
+                            nextProgress = PROGRESS_BUSY;
+                            mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, BUSY, mArgumemnt);
+                        }
                     }
+                    mCurrentProgress = nextProgress;
                 }
-                mCurrentProgress = nextProgress;
-            }
-        } else if (PROGRESS_DESCRIPTOR_WRITE_START == mCurrentProgress) {
-            if (mServiceUUID.equals(serviceUUID) && mServiceInstanceId == serviceInstanceId && mCharacteristicUUID.equals(characteristicUUID) && mDescriptorUUID.equals(descriptorUUID) && mCharacteristicInstanceId == characteristicInstanceId) {
-                // current:write descriptor start, next:write descriptor success
-                if (PROGRESS_DESCRIPTOR_WRITE_SUCCESS == nextProgress) {
-                    byte[] value = bundle.getByteArray(KEY_VALUES);
-                    if (value == null) {
-                        mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, UNKNOWN, mArgumemnt);
-                    } else {
-                        mBLEConnection.getBLECallback().onDescriptorWriteSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, value, mArgumemnt);
+            } else if (PROGRESS_DESCRIPTOR_WRITE_START == mCurrentProgress) {
+                if (mServiceUUID.equals(serviceUUID) && mServiceInstanceId == serviceInstanceId && mCharacteristicUUID.equals(characteristicUUID) && mDescriptorUUID.equals(descriptorUUID) && mCharacteristicInstanceId == characteristicInstanceId) {
+                    // current:write descriptor start, next:write descriptor success
+                    if (PROGRESS_DESCRIPTOR_WRITE_SUCCESS == nextProgress) {
+                        byte[] value = bundle.getByteArray(KEY_VALUES);
+                        if (value == null) {
+                            mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, UNKNOWN, mArgumemnt);
+                        } else {
+                            mBLEConnection.getBLECallback().onDescriptorWriteSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, value, mArgumemnt);
+                        }
+                    } else if (PROGRESS_DESCRIPTOR_WRITE_ERROR == nextProgress) {
+                        // current:write descriptor start, next:write descriptor error
+                        mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, bundle.getInt(KEY_STATUS), mArgumemnt);
                     }
-                } else if (PROGRESS_DESCRIPTOR_WRITE_ERROR == nextProgress) {
-                    // current:write descriptor start, next:write descriptor error
-                    mBLEConnection.getBLECallback().onDescriptorWriteFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mDescriptorUUID, bundle.getInt(KEY_STATUS), mArgumemnt);
+                    mCurrentProgress = PROGRESS_FINISHED;
+                    // remove timeout message
+                    mTaskHandler.removeCallbacksAndMessages(this);
                 }
-                mCurrentProgress = PROGRESS_FINISHED;
-                // remove timeout message
-                mTaskHandler.removeCallbacksAndMessages(this);
             }
         }
 

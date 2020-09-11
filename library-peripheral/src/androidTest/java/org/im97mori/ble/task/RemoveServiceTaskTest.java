@@ -19,9 +19,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class RemoveServiceTaskTest {
 
     private MockBLEServerConnection MOCK_BLE_SERVER_CONNECTION;
@@ -40,7 +42,7 @@ public class RemoveServiceTaskTest {
     }
 
     @Test
-    public void test_createInitialMessage001() {
+    public void test_createInitialMessage_00001() {
         MOCK_BLE_SERVER_CONNECTION.start();
         RemoveServiceTask task = new RemoveServiceTask(MOCK_BLE_SERVER_CONNECTION
                 , null
@@ -57,7 +59,17 @@ public class RemoveServiceTaskTest {
     }
 
     @Test
-    public void test_cancel001() {
+    public void test_doProcess_00001() {
+        RemoveServiceTask task = new RemoveServiceTask(new MockBLEServerConnection()
+                , null
+                , null
+                , RemoveServiceTask.TIMEOUT_MILLIS
+                , null);
+        assertFalse(task.doProcess(new Message()));
+    }
+
+    @Test
+    public void test_cancel_00001() {
         Looper looper = null;
         try {
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
@@ -82,7 +94,7 @@ public class RemoveServiceTaskTest {
     }
 
     @Test
-    public void test_cancel002() {
+    public void test_cancel_00002() {
         Looper looper = null;
         try {
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
@@ -115,5 +127,5 @@ public class RemoveServiceTaskTest {
             }
         }
     }
-    
+
 }

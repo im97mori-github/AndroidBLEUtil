@@ -44,7 +44,6 @@ public class DescriptorData implements Parcelable, ByteArrayInterface {
 
     };
 
-
     /**
      * {@link UUID} instance
      */

@@ -126,122 +126,124 @@ public class ConnectTask extends AbstractBLETask {
             mCurrentProgress = PROGRESS_FINISHED;
         } else {
             Bundle bundle = message.getData();
-            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+            if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
+                int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
 
-            // timeout
-            if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+                // timeout
+                if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
 
-                // disconnect current target
-                if (mBluetoothGatt != null) {
-                    try {
-                        mBluetoothGatt.disconnect();
-                    } catch (Exception e) {
-                        BLELogUtils.stackLog(e);
-                    }
-                    try {
-                        mBluetoothGatt.close();
-                    } catch (Exception e) {
-                        BLELogUtils.stackLog(e);
-                    }
-                }
-
-                mBLEConnection.onConnectTimeout(getTaskId(), mArgument);
-
-                mCurrentProgress = nextProgress;
-            } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
-                // current:init, next:connect
-                if (PROGRESS_CONNECT == nextProgress) {
-
-                    // create gatt connection
-                    try {
-                        mBluetoothGatt = mBLEConnection.getBluetoothDevice().connectGatt(mBLEConnection.getContext(), false, mBLEConnection);
-                    } catch (Exception e) {
-                        BLELogUtils.stackLog(e);
+                    // disconnect current target
+                    if (mBluetoothGatt != null) {
+                        try {
+                            mBluetoothGatt.disconnect();
+                        } catch (Exception e) {
+                            BLELogUtils.stackLog(e);
+                        }
+                        try {
+                            mBluetoothGatt.close();
+                        } catch (Exception e) {
+                            BLELogUtils.stackLog(e);
+                        }
                     }
 
-                    // connect failed
-                    if (mBluetoothGatt == null) {
-                        mBLEConnection.onConnectFailed(getTaskId(), UNKNOWN, mArgument);
-                        mCurrentProgress = PROGRESS_FINISHED;
-                    } else {
-                        // connecting
+                    mBLEConnection.onConnectTimeout(getTaskId(), mArgument);
 
-                        // set timeout message
-                        mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
+                    mCurrentProgress = nextProgress;
+                } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
+                    // current:init, next:connect
+                    if (PROGRESS_CONNECT == nextProgress) {
+
+                        // create gatt connection
+                        try {
+                            mBluetoothGatt = mBLEConnection.getBluetoothDevice().connectGatt(mBLEConnection.getContext(), false, mBLEConnection);
+                        } catch (Exception e) {
+                            BLELogUtils.stackLog(e);
+                        }
+
+                        // connect failed
+                        if (mBluetoothGatt == null) {
+                            mBLEConnection.onConnectFailed(getTaskId(), UNKNOWN, mArgument);
+                            mCurrentProgress = PROGRESS_FINISHED;
+                        } else {
+                            // connecting
+
+                            // set timeout message
+                            mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
+                            mCurrentProgress = nextProgress;
+                        }
+                    }
+                } else if (PROGRESS_CONNECT == mCurrentProgress) {
+                    if (mBluetoothGatt == message.obj && PROGRESS_CONNECT_SUCCESS == nextProgress) {
+                        // current:connect, next:discover service
+
+                        // start discover services
+                        if (!mBluetoothGatt.discoverServices()) {
+                            // failed
+
+                            mBLEConnection.onConnectFailed(getTaskId(), UNKNOWN, mArgument);
+                            // remove timeout message
+                            mTaskHandler.removeCallbacksAndMessages(this);
+
+                            // add disconnect task
+                            DisconnectTask task = new DisconnectTask(mBLEConnection, mBluetoothGatt, UNKNOWN, mArgument);
+                            mTaskHandler.addTask(task);
+
+                            nextProgress = PROGRESS_FINISHED;
+                        }
                         mCurrentProgress = nextProgress;
                     }
-                }
-            } else if (PROGRESS_CONNECT == mCurrentProgress) {
-                if (mBluetoothGatt == message.obj && PROGRESS_CONNECT_SUCCESS == nextProgress) {
-                    // current:connect, next:discover service
+                } else if (PROGRESS_CONNECT_SUCCESS == mCurrentProgress) {
+                    if (mBluetoothGatt == message.obj && PROGRESS_DISCOVER_SERVICE_SUCCESS == nextProgress) {
+                        // current:connect, next:service discovered
 
-                    // start discover services
-                    if (!mBluetoothGatt.discoverServices()) {
+                        // auto mtu setting
+                        if (mNeedMtuSetting) {
+                            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP || !mBluetoothGatt.requestMtu(BLEConstants.MAXIMUM_MTU)) {
+                                nextProgress = PROGRESS_FINISHED;
+                            }
+                        } else {
+                            nextProgress = PROGRESS_FINISHED;
+                        }
+
+                        if (PROGRESS_FINISHED == nextProgress) {
+                            // callback
+                            mBLEConnection.onConnected(getTaskId(), mBluetoothGatt, mArgument);
+
+                            // remove timeout message
+                            mTaskHandler.removeCallbacksAndMessages(this);
+                        }
+                        mCurrentProgress = nextProgress;
+                    } else if (mBluetoothGatt == message.obj && PROGRESS_DISCOVER_SERVICE_ERROR == nextProgress) {
                         // failed
 
-                        mBLEConnection.onConnectFailed(getTaskId(), UNKNOWN, mArgument);
+                        int status = bundle.getInt(KEY_STATUS);
+                        mBLEConnection.onConnectFailed(getTaskId(), status, mArgument);
+
                         // remove timeout message
                         mTaskHandler.removeCallbacksAndMessages(this);
 
                         // add disconnect task
-                        DisconnectTask task = new DisconnectTask(mBLEConnection, mBluetoothGatt, UNKNOWN, mArgument);
+                        DisconnectTask task = new DisconnectTask(mBLEConnection, mBluetoothGatt, status, mArgument);
                         mTaskHandler.addTask(task);
-
-                        nextProgress = PROGRESS_FINISHED;
                     }
-                    mCurrentProgress = nextProgress;
-                }
-            } else if (PROGRESS_CONNECT_SUCCESS == mCurrentProgress) {
-                if (mBluetoothGatt == message.obj && PROGRESS_DISCOVER_SERVICE_SUCCESS == nextProgress) {
-                    // current:connect, next:service discovered
+                } else if (PROGRESS_DISCOVER_SERVICE_SUCCESS == mCurrentProgress) {
+                    if (mBluetoothGatt == message.obj && PROGRESS_REQUEST_MTU_SUCCESS == nextProgress) {
+                        // current:service discovered, next:finish(connected)
 
-                    // auto mtu setting
-                    if (mNeedMtuSetting) {
-                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP || !mBluetoothGatt.requestMtu(BLEConstants.MAXIMUM_MTU)) {
-                            nextProgress = PROGRESS_FINISHED;
-                        }
-                    } else {
-                        nextProgress = PROGRESS_FINISHED;
-                    }
-
-                    if (PROGRESS_FINISHED == nextProgress) {
                         // callback
                         mBLEConnection.onConnected(getTaskId(), mBluetoothGatt, mArgument);
 
-                        // remove timeout message
-                        mTaskHandler.removeCallbacksAndMessages(this);
-                    }
-                    mCurrentProgress = nextProgress;
-                } else if (mBluetoothGatt == message.obj && PROGRESS_DISCOVER_SERVICE_ERROR == nextProgress) {
-                    // failed
+                    } else if (mBluetoothGatt == message.obj && PROGRESS_REQUEST_MTU_ERROR == nextProgress) {
+                        // failed
 
-                    int status = bundle.getInt(KEY_STATUS);
-                    mBLEConnection.onConnectFailed(getTaskId(), status, mArgument);
+                        mBLEConnection.onConnectFailed(getTaskId(), bundle.getInt(KEY_STATUS), mArgument);
+                    }
 
                     // remove timeout message
                     mTaskHandler.removeCallbacksAndMessages(this);
 
-                    // add disconnect task
-                    DisconnectTask task = new DisconnectTask(mBLEConnection, mBluetoothGatt, status, mArgument);
-                    mTaskHandler.addTask(task);
+                    mCurrentProgress = PROGRESS_FINISHED;
                 }
-            } else if (PROGRESS_DISCOVER_SERVICE_SUCCESS == mCurrentProgress) {
-                if (mBluetoothGatt == message.obj && PROGRESS_REQUEST_MTU_SUCCESS == nextProgress) {
-                    // current:service discovered, next:finish(connected)
-
-                    // callback
-                    mBLEConnection.onConnected(getTaskId(), mBluetoothGatt, mArgument);
-
-                } else if (mBluetoothGatt == message.obj && PROGRESS_REQUEST_MTU_ERROR == nextProgress) {
-                    // failed
-
-                    mBLEConnection.onConnectFailed(getTaskId(), bundle.getInt(KEY_STATUS), mArgument);
-                }
-
-                // remove timeout message
-                mTaskHandler.removeCallbacksAndMessages(this);
-
-                mCurrentProgress = PROGRESS_FINISHED;
             }
         }
 

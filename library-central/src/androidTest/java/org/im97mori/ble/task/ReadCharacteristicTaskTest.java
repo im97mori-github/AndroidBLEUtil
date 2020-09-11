@@ -20,13 +20,15 @@ import java.util.UUID;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class ReadCharacteristicTaskTest {
 
     @Test
-    public void test_createInitialMessage001() {
+    public void test_createInitialMessage_00001() {
         UUID serviceUUID = UUID.randomUUID();
         UUID characteristicUUID = UUID.randomUUID();
         ReadCharacteristicTask task = new ReadCharacteristicTask(null, null, null, serviceUUID, null, characteristicUUID, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null);
@@ -45,7 +47,7 @@ public class ReadCharacteristicTaskTest {
     }
 
     @Test
-    public void test_createReadCharacteristicSuccessMessage001() {
+    public void test_createReadCharacteristicSuccessMessage_00001() {
         UUID serviceUUID = UUID.randomUUID();
         int serviceInstanceId = 1;
         UUID characteristicUUID = UUID.randomUUID();
@@ -71,7 +73,7 @@ public class ReadCharacteristicTaskTest {
     }
 
     @Test
-    public void test_createReadCharacteristicErrorMessage001() {
+    public void test_createReadCharacteristicErrorMessage_00001() {
         UUID serviceUUID = UUID.randomUUID();
         int serviceInstanceId = 1;
         UUID characteristicUUID = UUID.randomUUID();
@@ -96,7 +98,15 @@ public class ReadCharacteristicTaskTest {
     }
 
     @Test
-    public void test_cancel001() {
+    public void test_doProcess_00001() {
+        UUID serviceUUID = UUID.randomUUID();
+        UUID characteristicUUID = UUID.randomUUID();
+        ReadCharacteristicTask task = new ReadCharacteristicTask(null, null, null, serviceUUID, null, characteristicUUID, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null);
+        assertFalse(task.doProcess(new Message()));
+    }
+
+    @Test
+    public void test_cancel_00001() {
         Looper looper = null;
         try {
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
@@ -117,7 +127,7 @@ public class ReadCharacteristicTaskTest {
     }
 
     @Test
-    public void test_cancel002() {
+    public void test_cancel_00002() {
         MockBLEConnection mockBleConnection = new MockBLEConnection();
         Looper looper = null;
         try {
@@ -150,4 +160,5 @@ public class ReadCharacteristicTaskTest {
             mockBleConnection.quit();
         }
     }
+
 }

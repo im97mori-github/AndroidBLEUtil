@@ -274,7 +274,7 @@ public interface LocationAndNavigationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Location and Speed notificated callback
+     * Location and Speed notified callback
      *
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
@@ -806,7 +806,7 @@ public interface LocationAndNavigationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Navigation notificated callback
+     * Navigation notified callback
      *
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}

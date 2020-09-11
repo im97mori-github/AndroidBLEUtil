@@ -18,13 +18,15 @@ import org.junit.Test;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class RequestMtuTaskTest {
 
     @Test
-    public void test_createInitialMessage001() {
+    public void test_createInitialMessage_00001() {
         int mtu = new Random().nextInt();
         RequestMtuTask task = new RequestMtuTask(null, null, null, mtu, RequestMtuTask.TIMEOUT_MILLIS, null);
         Message message = task.createInitialMessage();
@@ -38,7 +40,7 @@ public class RequestMtuTaskTest {
     }
 
     @Test
-    public void test_createServiceDiscoverSuccessMessage001() {
+    public void test_createServiceDiscoverSuccessMessage_00001() {
         int mtu = new Random().nextInt();
         Message message = RequestMtuTask.createRequestMtuSuccessMessage(mtu);
 
@@ -52,7 +54,7 @@ public class RequestMtuTaskTest {
     }
 
     @Test
-    public void test_createServiceDiscoverErrorMessage001() {
+    public void test_createServiceDiscoverErrorMessage_00001() {
         Object object = new Object();
         int status = new Random().nextInt();
         Message message = RequestMtuTask.createRequestMtuErrorMessage(object, status);
@@ -68,7 +70,14 @@ public class RequestMtuTaskTest {
     }
 
     @Test
-    public void test_cancel001() {
+    public void test_doProcess_00001() {
+        int mtu = new Random().nextInt();
+        RequestMtuTask task = new RequestMtuTask(null, null, null, mtu, RequestMtuTask.TIMEOUT_MILLIS, null);
+        assertFalse(task.doProcess(new Message()));
+    }
+
+    @Test
+    public void test_cancel_00001() {
         Looper looper = null;
         try {
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
@@ -89,7 +98,7 @@ public class RequestMtuTaskTest {
     }
 
     @Test
-    public void test_cancel002() {
+    public void test_cancel_00002() {
         MockBLEConnection mockBleConnection = new MockBLEConnection();
         Looper looper = null;
         try {

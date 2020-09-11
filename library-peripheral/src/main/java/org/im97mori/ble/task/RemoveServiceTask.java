@@ -97,37 +97,39 @@ public class RemoveServiceTask extends AbstractBLETask {
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
-        BluetoothGattService bluetoothGattService/* = (BluetoothGattService) message.obj*/;
-        int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+        if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
+            BluetoothGattService bluetoothGattService;
+            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
 
-        // timeout
-        if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
-            mBLEServerConnection.getBLEServerCallback().onServiceRemoveTimeout(getTaskId(), mBLEServerConnection, mBluetoothGattService, mTimeout, mArgument);
-            mCurrentProgress = nextProgress;
-        } else if (PROGRESS_INIT == mCurrentProgress) {
-            // current:init, next:remove service start
-            if (this == message.obj && PROGRESS_REMOVE_SERVICE == nextProgress) {
-                if (mBluetoothGattServer.removeService(mBluetoothGattService)) {
-                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
-                } else {
-                    nextProgress = PROGRESS_FINISHED;
-                    mBLEServerConnection.getBLEServerCallback().onServiceRemoveFailed(getTaskId(), mBLEServerConnection, mBluetoothGattService, UNKNOWN, mArgument);
-                }
+            // timeout
+            if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+                mBLEServerConnection.getBLEServerCallback().onServiceRemoveTimeout(getTaskId(), mBLEServerConnection, mBluetoothGattService, mTimeout, mArgument);
                 mCurrentProgress = nextProgress;
-            }
-        } else if (PROGRESS_REMOVE_SERVICE == mCurrentProgress) {
-            bluetoothGattService = (BluetoothGattService) message.obj;
-            if (mBluetoothGattService.getUuid().equals(bluetoothGattService.getUuid()) && mBluetoothGattService.getType() == bluetoothGattService.getType()) {
-                // current:remove service start, next:remove service success
-                if (PROGRESS_REMOVE_SERVICE_SUCCESS == nextProgress) {
-                    mBLEServerConnection.getBLEServerCallback().onServiceRemoveSuccess(getTaskId(), mBLEServerConnection, bluetoothGattService, mArgument);
-                } else if (PROGRESS_REMOVE_SERVICE_ERROR == nextProgress) {
-                    // current:remove service start, next:remove service error
-                    mBLEServerConnection.getBLEServerCallback().onServiceRemoveFailed(getTaskId(), mBLEServerConnection, mBluetoothGattService, bundle.getInt(KEY_STATUS), mArgument);
+            } else if (PROGRESS_INIT == mCurrentProgress) {
+                // current:init, next:remove service start
+                if (this == message.obj && PROGRESS_REMOVE_SERVICE == nextProgress) {
+                    if (mBluetoothGattServer.removeService(mBluetoothGattService)) {
+                        mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
+                    } else {
+                        nextProgress = PROGRESS_FINISHED;
+                        mBLEServerConnection.getBLEServerCallback().onServiceRemoveFailed(getTaskId(), mBLEServerConnection, mBluetoothGattService, UNKNOWN, mArgument);
+                    }
+                    mCurrentProgress = nextProgress;
                 }
-                mCurrentProgress = PROGRESS_FINISHED;
-                // remove timeout message
-                mTaskHandler.removeCallbacksAndMessages(this);
+            } else if (PROGRESS_REMOVE_SERVICE == mCurrentProgress) {
+                bluetoothGattService = (BluetoothGattService) message.obj;
+                if (mBluetoothGattService.getUuid().equals(bluetoothGattService.getUuid()) && mBluetoothGattService.getType() == bluetoothGattService.getType()) {
+                    // current:remove service start, next:remove service success
+                    if (PROGRESS_REMOVE_SERVICE_SUCCESS == nextProgress) {
+                        mBLEServerConnection.getBLEServerCallback().onServiceRemoveSuccess(getTaskId(), mBLEServerConnection, bluetoothGattService, mArgument);
+                    } else if (PROGRESS_REMOVE_SERVICE_ERROR == nextProgress) {
+                        // current:remove service start, next:remove service error
+                        mBLEServerConnection.getBLEServerCallback().onServiceRemoveFailed(getTaskId(), mBLEServerConnection, mBluetoothGattService, bundle.getInt(KEY_STATUS), mArgument);
+                    }
+                    mCurrentProgress = PROGRESS_FINISHED;
+                    // remove timeout message
+                    mTaskHandler.removeCallbacksAndMessages(this);
+                }
             }
         }
 

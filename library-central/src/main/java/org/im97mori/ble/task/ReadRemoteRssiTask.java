@@ -122,47 +122,49 @@ public class ReadRemoteRssiTask extends AbstractBLETask {
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
-        int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+        if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
+            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
 
-        // timeout
-        if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
-            mBLEConnection.getBLECallback().onReadRemoteRssiTimeout(getTaskId(), mBluetoothGatt.getDevice(), mTimeout, mArgument);
-            mCurrentProgress = nextProgress;
-        } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
-            if (PROGRESS_READ_REMOTE_RSSI_START == nextProgress) {
-                // current:init, next:read remote rssi start
+            // timeout
+            if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+                mBLEConnection.getBLECallback().onReadRemoteRssiTimeout(getTaskId(), mBluetoothGatt.getDevice(), mTimeout, mArgument);
+                mCurrentProgress = nextProgress;
+            } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
+                if (PROGRESS_READ_REMOTE_RSSI_START == nextProgress) {
+                    // current:init, next:read remote rssi start
 
-                if (mBluetoothGatt.readRemoteRssi()) {
-                    // success
+                    if (mBluetoothGatt.readRemoteRssi()) {
+                        // success
 
-                    // set timeout message
-                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
-                    mCurrentProgress = nextProgress;
-                } else {
-                    // failed
+                        // set timeout message
+                        mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
+                        mCurrentProgress = nextProgress;
+                    } else {
+                        // failed
 
-                    mBLEConnection.getBLECallback().onReadRemoteRssiFailed(getTaskId(), mBluetoothGatt.getDevice(), UNKNOWN, mArgument);
-                    mCurrentProgress = PROGRESS_BUSY;
+                        mBLEConnection.getBLECallback().onReadRemoteRssiFailed(getTaskId(), mBluetoothGatt.getDevice(), UNKNOWN, mArgument);
+                        mCurrentProgress = PROGRESS_BUSY;
+                    }
                 }
+            } else if (PROGRESS_READ_REMOTE_RSSI_START == mCurrentProgress) {
+                if (PROGRESS_READ_REMOTE_RSSI_SUCCESS == nextProgress) {
+                    // current:read remote rssi start, next:read remote rssi success
+
+                    // callback
+                    mBLEConnection.getBLECallback().onReadRemoteRssiSuccess(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_RSSI), mArgument);
+
+
+                } else if (PROGRESS_READ_REMOTE_RSSI_ERROR == nextProgress) {
+                    // current:read remote rssi start, next:read remote rssi failed
+
+                    mBLEConnection.getBLECallback().onReadRemoteRssiFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
+                }
+
+                // remove timeout message
+                mTaskHandler.removeCallbacksAndMessages(this);
+
+                mCurrentProgress = PROGRESS_FINISHED;
             }
-        } else if (PROGRESS_READ_REMOTE_RSSI_START == mCurrentProgress) {
-            if (PROGRESS_READ_REMOTE_RSSI_SUCCESS == nextProgress) {
-                // current:read remote rssi start, next:read remote rssi success
-
-                // callback
-                mBLEConnection.getBLECallback().onReadRemoteRssiSuccess(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_RSSI), mArgument);
-
-
-            } else if (PROGRESS_READ_REMOTE_RSSI_ERROR == nextProgress) {
-                // current:read remote rssi start, next:read remote rssi failed
-
-                mBLEConnection.getBLECallback().onReadRemoteRssiFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
-            }
-
-            // remove timeout message
-            mTaskHandler.removeCallbacksAndMessages(this);
-
-            mCurrentProgress = PROGRESS_FINISHED;
         }
 
         return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_BUSY == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;

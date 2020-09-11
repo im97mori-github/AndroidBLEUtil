@@ -411,7 +411,7 @@ public interface BloodPressureServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Intermediate Cuff Pressure notificated callback
+     * Intermediate Cuff Pressure notified callback
      *
      * @param bluetoothDevice                 BLE device
      * @param serviceUUID                     service {@link UUID}

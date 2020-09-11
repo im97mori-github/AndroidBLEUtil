@@ -337,11 +337,13 @@ public class HrsCallbackSample extends HeartRateServiceMockCallback implements H
     @Override
     public void onDeviceConnected(BluetoothDevice device) {
         callback(device);
+        super.onDeviceConnected(device);
     }
 
     @Override
     public void onDeviceDisconnected(BluetoothDevice device) {
         callback(device);
+        super.onDeviceDisconnected(device);
     }
 
     @Override
@@ -503,7 +505,7 @@ public class HrsCallbackSample extends HeartRateServiceMockCallback implements H
     }
 
     @Override
-    public void onHeartRateMeasurementNotificated(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull HeartRateMeasurementAndroid heartRateMeasurementAndroid) {
+    public void onHeartRateMeasurementNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull HeartRateMeasurementAndroid heartRateMeasurementAndroid) {
         callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, heartRateMeasurementAndroid.getEnergyExpended());
     }
 

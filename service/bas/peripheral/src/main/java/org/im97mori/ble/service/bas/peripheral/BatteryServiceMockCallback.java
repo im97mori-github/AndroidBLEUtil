@@ -232,22 +232,6 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDeviceConnected(BluetoothDevice device) {
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onDeviceDisconnected(BluetoothDevice device) {
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public void onServiceAddFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument) {
 
     }

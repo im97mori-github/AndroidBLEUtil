@@ -30,6 +30,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class BaseMockCallbackTest {
 
     static class BaseMockCallbackInner extends BaseMockCallback {
@@ -403,10 +404,6 @@ public class BaseMockCallbackTest {
         UUID characteristicUUID = UUID.randomUUID();
         int characteristicProperty = 2;
         int characteristicPermission = 3;
-        int characteristicResponseCode = 4;
-        long characteristicDelay = 5;
-        byte[] characteristicDataArray = new byte[]{6};
-        int notificationCount = 7;
         UUID descriptorUUID = UUID.randomUUID();
         int descriptorPermission = 8;
         int descriptorResponseCode = 9;
@@ -420,14 +417,6 @@ public class BaseMockCallbackTest {
                 , descriptorResponseCode
                 , descriptorDelay
                 , descriptorDataArray);
-        CharacteristicData characteristicData = new CharacteristicData(characteristicUUID
-                , characteristicProperty
-                , characteristicPermission
-                , Collections.singletonList(descriptorData)
-                , characteristicResponseCode
-                , characteristicDelay
-                , characteristicDataArray
-                , notificationCount);
         ServiceData serviceData = new ServiceData(serviceUUID
                 , serviceType
                 , new ArrayList<CharacteristicData>());

@@ -342,11 +342,13 @@ public class DisCallbackSample extends DeviceInformationServiceMockCallback impl
     @Override
     public void onDeviceConnected(BluetoothDevice device) {
         callback(device);
+        super.onDeviceConnected(device);
     }
 
     @Override
     public void onDeviceDisconnected(BluetoothDevice device) {
         callback(device);
+        super.onDeviceDisconnected(device);
     }
 
     @Override

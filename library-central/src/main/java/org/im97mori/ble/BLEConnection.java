@@ -594,7 +594,6 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     public void onReliableWriteCompleted(BluetoothGatt gatt
             , int status) {
         // gatt instance is not matched
-        BLELogUtils.stackLog(status);
         if (gatt != mBluetoothGatt) {
             return;
         }

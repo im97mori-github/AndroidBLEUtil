@@ -13,13 +13,15 @@ import org.im97mori.ble.MockBLEConnection;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class DisconnectTaskTest {
 
     @Test
-    public void test_createInitialMessage001() {
+    public void test_createInitialMessage_00001() {
         DisconnectTask task = new DisconnectTask(null, null, BLEConstants.ErrorCodes.UNKNOWN, null);
         Message message = task.createInitialMessage();
 
@@ -32,7 +34,19 @@ public class DisconnectTaskTest {
     }
 
     @Test
-    public void test_doProcess001() {
+    public void test_doProcess_00001() {
+        MockBLEConnection mockBleConnection = new MockBLEConnection() {
+            @Override
+            public boolean isConnected() {
+                return true;
+            }
+        };
+        DisconnectTask task = new DisconnectTask(mockBleConnection, null, BLEConstants.ErrorCodes.UNKNOWN, null);
+        assertFalse(task.doProcess(new Message()));
+    }
+
+    @Test
+    public void test_doProcess_00101() {
         MockBLEConnection mockBleConnection = new MockBLEConnection() {
             @Override
             public boolean isConnected() {
@@ -46,7 +60,7 @@ public class DisconnectTaskTest {
     }
 
     @Test
-    public void test_cancel001() {
+    public void test_cancel_00001() {
         MockBLEConnection mockBleConnection = new MockBLEConnection() {
             @Override
             public boolean isConnected() {
@@ -63,7 +77,7 @@ public class DisconnectTaskTest {
     }
 
     @Test
-    public void test_cancel002() {
+    public void test_cancel_00002() {
         MockBLEConnection mockBleConnection = new MockBLEConnection() {
             @Override
             public boolean isConnected() {

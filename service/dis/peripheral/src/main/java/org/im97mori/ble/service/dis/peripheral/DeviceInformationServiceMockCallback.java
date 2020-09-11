@@ -658,22 +658,6 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
      * {@inheritDoc}
      */
     @Override
-    public void onDeviceConnected(BluetoothDevice device) {
-        // do nothing
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onDeviceDisconnected(BluetoothDevice device) {
-        // do nothing
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public void onServiceAddFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument) {
         // do nothing
     }

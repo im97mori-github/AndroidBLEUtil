@@ -1660,7 +1660,6 @@ public class BLESyncConnection implements BLECallback {
     public void onExecuteReliableWriteSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
-        BLELogUtils.stackLog(taskId);
         unlock(argument, new BLEResult(taskId, RESULT_SUCCESS, null, null, null, null, null, null, 0, 0, 0, 0, 0, BluetoothGatt.GATT_SUCCESS, null, argument.getBundle(KEY_WRAPPED)));
     }
 
@@ -1672,7 +1671,6 @@ public class BLESyncConnection implements BLECallback {
             , @NonNull BluetoothDevice bluetoothDevice
             , int status
             , @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
-        BLELogUtils.stackLog(taskId);
         unlock(argument, new BLEResult(taskId, RESULT_FAILED, null, null, null, null, null, null, 0, 0, 0, 0, 0, status, null, argument.getBundle(KEY_WRAPPED)));
     }
 

@@ -136,7 +136,7 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Location and Speed notification count
          * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            characteristic response delay(millis)
+         * @param descriptorDelay            descritptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -472,7 +472,7 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
                                     int descriptorInstanceId = parcel.readInt();
                                     parcel.recycle();
 
-                                    startNotification(bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, characteristicData.delay, characteristicData.notificationCount);
+                                    startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, characteristicData.delay, characteristicData.notificationCount);
                                 }
                             }
                         }
@@ -542,7 +542,7 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
                             descriptorData.currentData = value;
 
                             if (!LN_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                                startNotification(bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, 0, null);
+                                startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, 0, null);
                             }
                         }
                     }
@@ -561,22 +561,6 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
      */
     @Override
     public void onServerStarted() {
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onDeviceConnected(BluetoothDevice device) {
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onDeviceDisconnected(BluetoothDevice device) {
 
     }
 

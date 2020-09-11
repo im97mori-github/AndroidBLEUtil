@@ -20,13 +20,15 @@ import java.util.UUID;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class WriteDescriptorTaskTest {
 
     @Test
-    public void test_createInitialMessage001() {
+    public void test_createInitialMessage_00001() {
         UUID serviceUUID = UUID.randomUUID();
         UUID characteristicUUID = UUID.randomUUID();
         UUID descriptorUUID = UUID.randomUUID();
@@ -46,7 +48,7 @@ public class WriteDescriptorTaskTest {
     }
 
     @Test
-    public void test_createWriteDescriptorSuccessMessage001() {
+    public void test_createWriteDescriptorSuccessMessage_00001() {
         UUID serviceUUID = UUID.randomUUID();
         int serviceInstanceId = 1;
         UUID characteristicUUID = UUID.randomUUID();
@@ -73,7 +75,7 @@ public class WriteDescriptorTaskTest {
     }
 
     @Test
-    public void test_createWriteDescriptorErrorMessage001() {
+    public void test_createWriteDescriptorErrorMessage_00001() {
         UUID serviceUUID = UUID.randomUUID();
         int serviceInstanceId = 1;
         UUID characteristicUUID = UUID.randomUUID();
@@ -100,7 +102,16 @@ public class WriteDescriptorTaskTest {
     }
 
     @Test
-    public void test_cancel001() {
+    public void test_doProcess_00001() {
+        UUID serviceUUID = UUID.randomUUID();
+        UUID characteristicUUID = UUID.randomUUID();
+        UUID descriptorUUID = UUID.randomUUID();
+        WriteDescriptorTask task = new WriteDescriptorTask(null, null, null, serviceUUID, null, characteristicUUID, null, descriptorUUID, null, WriteDescriptorTask.TIMEOUT_MILLIS, null);
+        assertFalse(task.doProcess(new Message()));
+    }
+
+    @Test
+    public void test_cancel_00001() {
         MockBLEConnection mockBleConnection = new MockBLEConnection();
         Looper looper = null;
         try {
@@ -132,6 +143,7 @@ public class WriteDescriptorTaskTest {
             }
             mockBleConnection.quit();
         }
+
     }
 
 }

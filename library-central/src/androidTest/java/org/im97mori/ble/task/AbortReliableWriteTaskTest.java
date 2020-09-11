@@ -16,13 +16,15 @@ import org.im97mori.ble.TaskHandler;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class AbortReliableWriteTaskTest {
 
     @Test
-    public void test_createInitialMessage001() {
+    public void test_createInitialMessage_00001() {
         AbortReliableWriteTask task = new AbortReliableWriteTask(null, null, null, AbortReliableWriteTask.TIMEOUT_MILLIS, null);
         Message message = task.createInitialMessage();
 
@@ -35,7 +37,13 @@ public class AbortReliableWriteTaskTest {
     }
 
     @Test
-    public void test_cancel001() {
+    public void test_doProcess_00001() {
+        AbortReliableWriteTask task = new AbortReliableWriteTask(null, null, null, AbortReliableWriteTask.TIMEOUT_MILLIS, null);
+        assertFalse(task.doProcess(new Message()));
+    }
+
+    @Test
+    public void test_cancel_00001() {
         Looper looper = null;
         try {
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
@@ -56,7 +64,7 @@ public class AbortReliableWriteTaskTest {
     }
 
     @Test
-    public void test_cancel002() {
+    public void test_cancel_00002() {
         MockBLEConnection mockBleConnection = new MockBLEConnection();
         Looper looper = null;
         try {
@@ -89,4 +97,5 @@ public class AbortReliableWriteTaskTest {
             mockBleConnection.quit();
         }
     }
+
 }

@@ -80,9 +80,9 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
          * @param characteristicResponceCode characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @param notificationCount          Blood Pressure Measurement indication count
+         * @param notificationCount          Heart Rate Measurement notification count
          * @param descriptorResponceCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            characteristic response delay(millis)
+         * @param descriptorDelay            descritptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -244,6 +244,9 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
         super(mockData, isFallback);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public synchronized boolean onCharacteristicWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value, boolean force) {
         boolean result = false;
@@ -305,22 +308,6 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
      */
     @Override
     public void onServerStarted() {
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onDeviceConnected(BluetoothDevice device) {
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onDeviceDisconnected(BluetoothDevice device) {
 
     }
 

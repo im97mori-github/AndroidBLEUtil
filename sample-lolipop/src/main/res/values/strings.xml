@@ -29,6 +29,8 @@
     <string name="label_pxp_central">PXP Central sample</string>
     <string name="label_hrp_peripheral">HRP Peripheral sample</string>
     <string name="label_hrp_central">HRP Central sample</string>
+    <string name="label_htp_peripheral">HTP Peripheral sample</string>
+    <string name="label_htp_central">HTP Central sample</string>
 
     <string name="menu_discover_service">Discover Service</string>
     <string name="menu_discover_service_sync">Discover Service(Synchronous)</string>
@@ -113,6 +115,20 @@
     <string name="menu_notify_heart_rate_measurement_stop">Notify Heart RateMeasurement stop</string>
     <string name="menu_read_body_sensor_location">Read Heart Rate Measurement</string>
     <string name="menu_read_heart_rate_control_point">Write Heart Rate Control Point</string>
+
+    <string name="menu_indicate_temperature_measurement_start">Indicate Temperature Measurement start</string>
+    <string name="menu_indicate_temperature_measurement_stop">Indicate Temperature Measurement stop</string>
+    <string name="menu_read_temperature_type">Read Temperature Type</string>
+    <string name="menu_notify_intermediate_temperature_start">Notify Intermediate Temperature start</string>
+    <string name="menu_notify_intermediate_temperature_stop">Notify Intermediate Temperature stop</string>
+    <string name="menu_read_measurement_interval">Read Measurement Interval</string>
+    <string name="menu_write_measurement_interval_0">Write Measurement Interval(0)</string>
+    <string name="menu_write_measurement_interval_1">Write Measurement Interval(1)</string>
+    <string name="menu_write_measurement_interval_5">Write Measurement Interval(5)</string>
+    <string name="menu_write_measurement_interval_10">Write Measurement Interval(10)</string>
+    <string name="menu_indicate_measurement_interval_start">Indicate Measurement Interval start</string>
+    <string name="menu_indicate_measurement_interval_stop">Indicate Measurement Interval stop</string>
+    <string name="menu_read_measurement_interval_valid_range">Read Measurement Interval Valid Range</string>
 
     <string name="menu_clear">Clear</string>
 </resources>

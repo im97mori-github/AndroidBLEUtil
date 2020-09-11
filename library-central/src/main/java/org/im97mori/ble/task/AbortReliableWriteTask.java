@@ -91,40 +91,42 @@ public class AbortReliableWriteTask extends AbstractBLETask {
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
-        int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+        if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
+            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
 
-        // timeout
-        if (message.obj == this && PROGRESS_TIMEOUT == nextProgress) {
-            mBLEConnection.getBLECallback().onAbortReliableWriteTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mTimeout, mArgument);
-            mCurrentProgress = nextProgress;
-        } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
-            if (PROGRESS_ABORT_RELIABLE_WRITE_START == nextProgress) {
-                // current:init, next:abort reliable write start
-
-                mBluetoothGatt.abortReliableWrite();
-
-                // set timeout message
-                mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
-
+            // timeout
+            if (message.obj == this && PROGRESS_TIMEOUT == nextProgress) {
+                mBLEConnection.getBLECallback().onAbortReliableWriteTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mTimeout, mArgument);
                 mCurrentProgress = nextProgress;
+            } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
+                if (PROGRESS_ABORT_RELIABLE_WRITE_START == nextProgress) {
+                    // current:init, next:abort reliable write start
+
+                    mBluetoothGatt.abortReliableWrite();
+
+                    // set timeout message
+                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
+
+                    mCurrentProgress = nextProgress;
+                }
+            } else if (PROGRESS_ABORT_RELIABLE_WRITE_START == mCurrentProgress) {
+                if (PROGRESS_EXECUTE_RELIABLE_WRITE_SUCCESS == nextProgress) {
+                    // current:abort reliable write start, next:abort reliable write success
+
+                    // callback
+                    mBLEConnection.getBLECallback().onAbortReliableWriteSuccess(getTaskId(), mBluetoothGatt.getDevice(), mArgument);
+
+                } else if (PROGRESS_EXECUTE_RELIABLE_WRITE_ERROR == nextProgress) {
+                    // current:abort reliable write start, next:abort reliable write failed
+
+                    mBLEConnection.getBLECallback().onAbortReliableWriteFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
+                }
+
+                // remove timeout message
+                mTaskHandler.removeCallbacksAndMessages(this);
+
+                mCurrentProgress = PROGRESS_FINISHED;
             }
-        } else if (PROGRESS_ABORT_RELIABLE_WRITE_START == mCurrentProgress) {
-            if (PROGRESS_EXECUTE_RELIABLE_WRITE_SUCCESS == nextProgress) {
-                // current:abort reliable write start, next:abort reliable write success
-
-                // callback
-                mBLEConnection.getBLECallback().onAbortReliableWriteSuccess(getTaskId(), mBluetoothGatt.getDevice(), mArgument);
-
-            } else if (PROGRESS_EXECUTE_RELIABLE_WRITE_ERROR == nextProgress) {
-                // current:abort reliable write start, next:abort reliable write failed
-
-                mBLEConnection.getBLECallback().onAbortReliableWriteFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
-            }
-
-            // remove timeout message
-            mTaskHandler.removeCallbacksAndMessages(this);
-
-            mCurrentProgress = PROGRESS_FINISHED;
         }
 
         return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;

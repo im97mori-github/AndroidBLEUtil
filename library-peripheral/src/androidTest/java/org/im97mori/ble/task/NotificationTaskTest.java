@@ -23,9 +23,11 @@ import java.util.Random;
 import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class NotificationTaskTest {
 
     private MockBLEServerConnection MOCK_BLE_SERVER_CONNECTION;
@@ -44,7 +46,7 @@ public class NotificationTaskTest {
     }
 
     @Test
-    public void test_createInitialMessage001() {
+    public void test_createInitialMessage_00001() {
         NotificationTask task = new NotificationTask(null
                 , null
                 , null
@@ -67,7 +69,7 @@ public class NotificationTaskTest {
     }
 
     @Test
-    public void test_createNotificationSentSuccessMessage001() {
+    public void test_createNotificationSentSuccessMessage_00001() {
         BluetoothDevice bluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:BB");
         Message message = NotificationTask.createNotificationSentSuccessMessage(bluetoothDevice);
 
@@ -81,7 +83,7 @@ public class NotificationTaskTest {
     }
 
     @Test
-    public void test_createNotificationSentErrorMessage001() {
+    public void test_createNotificationSentErrorMessage_00001() {
         BluetoothDevice bluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:BB");
         int status = new Random().nextInt();
         Message message = NotificationTask.createNotificationSentErrorMessage(bluetoothDevice, status);
@@ -98,7 +100,24 @@ public class NotificationTaskTest {
     }
 
     @Test
-    public void test_cancel001() {
+    public void test_doProcess_00001() {
+        NotificationTask task = new NotificationTask(null
+                , null
+                , null
+                , null
+                , null
+                , 1
+                , null
+                , 2
+                , null
+                , true
+                , NotificationTask.TIMEOUT_MILLIS
+                , null);
+        assertFalse(task.doProcess(new Message()));
+    }
+
+    @Test
+    public void test_cancel_00001() {
         Looper looper = null;
         try {
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
@@ -131,37 +150,7 @@ public class NotificationTaskTest {
     }
 
     @Test
-    public void test_cancel002() {
-//        BaseBLEServerCallback callback = new BaseBLEServerCallback() {
-//
-//            @Override
-//            public void onNotificationFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int status, @Nullable Bundle argument) {
-//                result.set(true);
-//            }
-//        };
-//
-//        MockBLEServerConnection bleServerConnection = new MockBLEServerConnection();
-//        bleServerConnection.attach(callback);
-//
-//        Message message = Message.obtain();
-//        message.setData(Bundle.EMPTY);
-//
-//        NotificationTask task = new NotificationTask(bleServerConnection
-//                , null
-//                , null
-//                , null
-//                , null
-//                , 1
-//                , null
-//                , 2
-//                , null
-//                , false
-//                , NotificationTask.TIMEOUT_MILLIS
-//                , BLEServerCallbackDistributer.wrapArgument(null, null));
-//        task.cancel();
-//        assertTrue(task.doProcess(message));
-//        assertTrue(callback.result.get());
-
+    public void test_cancel_00002() {
         Looper looper = null;
         try {
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
@@ -192,6 +181,6 @@ public class NotificationTaskTest {
                 looper.quit();
             }
         }
-
     }
+
 }

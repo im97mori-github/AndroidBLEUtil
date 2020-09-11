@@ -61,7 +61,7 @@ public class MockHeartRateServiceCallback implements HeartRateServiceCallback {
     }
 
     @Override
-    public void onHeartRateMeasurementNotificated(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull HeartRateMeasurementAndroid heartRateMeasurementAndroid) {
+    public void onHeartRateMeasurementNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull HeartRateMeasurementAndroid heartRateMeasurementAndroid) {
 
     }
 

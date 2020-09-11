@@ -134,47 +134,49 @@ public class RequestMtuTask extends AbstractBLETask {
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
-        int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+        if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
+            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
 
-        // timeout
-        if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+            // timeout
+            if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
 
-            mBLEConnection.getBLECallback().onRequestMtuTimeout(getTaskId(), mBluetoothGatt.getDevice(), mTimeout, mArgument);
-
-            mCurrentProgress = nextProgress;
-        } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
-            if (PROGRESS_REQUEST_MTU_START == nextProgress) {
-                // current:init, next:request mtu start
-
-                // success
-                if (mBluetoothGatt.requestMtu(mMtu)) {
-                    // set timeout message
-                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
-                } else {
-                    // failed
-                    mBLEConnection.getBLECallback().onRequestMtuFailed(getTaskId(), mBluetoothGatt.getDevice(), UNKNOWN, mArgument);
-                    nextProgress = PROGRESS_BUSY;
-                }
+                mBLEConnection.getBLECallback().onRequestMtuTimeout(getTaskId(), mBluetoothGatt.getDevice(), mTimeout, mArgument);
 
                 mCurrentProgress = nextProgress;
+            } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
+                if (PROGRESS_REQUEST_MTU_START == nextProgress) {
+                    // current:init, next:request mtu start
+
+                    // success
+                    if (mBluetoothGatt.requestMtu(mMtu)) {
+                        // set timeout message
+                        mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
+                    } else {
+                        // failed
+                        mBLEConnection.getBLECallback().onRequestMtuFailed(getTaskId(), mBluetoothGatt.getDevice(), UNKNOWN, mArgument);
+                        nextProgress = PROGRESS_BUSY;
+                    }
+
+                    mCurrentProgress = nextProgress;
+                }
+            } else if (PROGRESS_REQUEST_MTU_START == mCurrentProgress) {
+                if (PROGRESS_REQUEST_MTU_SUCCESS == nextProgress) {
+                    // current:request mtu start, next:request mtu success
+
+                    // callback
+                    mBLEConnection.getBLECallback().onRequestMtuSuccess(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_MTU), mArgument);
+
+                } else if (PROGRESS_REQUEST_MTU_ERROR == nextProgress) {
+                    // current:request mtu start, next:request mtu failed
+
+                    mBLEConnection.getBLECallback().onRequestMtuFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
+                }
+
+                // remove timeout message
+                mTaskHandler.removeCallbacksAndMessages(this);
+
+                mCurrentProgress = PROGRESS_FINISHED;
             }
-        } else if (PROGRESS_REQUEST_MTU_START == mCurrentProgress) {
-            if (PROGRESS_REQUEST_MTU_SUCCESS == nextProgress) {
-                // current:request mtu start, next:request mtu success
-
-                // callback
-                mBLEConnection.getBLECallback().onRequestMtuSuccess(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_MTU), mArgument);
-
-            } else if (PROGRESS_REQUEST_MTU_ERROR == nextProgress) {
-                // current:request mtu start, next:request mtu failed
-
-                mBLEConnection.getBLECallback().onRequestMtuFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
-            }
-
-            // remove timeout message
-            mTaskHandler.removeCallbacksAndMessages(this);
-
-            mCurrentProgress = PROGRESS_FINISHED;
         }
 
         return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_BUSY == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;

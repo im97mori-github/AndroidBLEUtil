@@ -17,9 +17,11 @@ import org.im97mori.ble.TaskHandler;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class ConnectTaskTest {
 
     @Test
@@ -49,7 +51,19 @@ public class ConnectTaskTest {
     }
 
     @Test
-    public void test_doProcess001() {
+    public void test_doProcess_00001() {
+        MockBLEConnection mockBleConnection = new MockBLEConnection() {
+            @Override
+            public boolean isConnected() {
+                return false;
+            }
+        };
+        ConnectTask task = new ConnectTask(mockBleConnection, null, false, ConnectTask.TIMEOUT_MILLIS, null);
+        assertFalse(task.doProcess(new Message()));
+    }
+
+    @Test
+    public void test_doProcess_00101() {
         BLEConnection mockBleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), null, null) {
             @Override
             public boolean isConnected() {
@@ -73,8 +87,9 @@ public class ConnectTaskTest {
         }
     }
 
+
     @Test
-    public void test_cancel001() {
+    public void test_cancel_00001() {
         MockBLEConnection mockBleConnection = new MockBLEConnection() {
             @Override
             public boolean isConnected() {
@@ -101,7 +116,7 @@ public class ConnectTaskTest {
     }
 
     @Test
-    public void test_cancel002() {
+    public void test_cancel_00002() {
         MockBLEConnection mockBleConnection = new MockBLEConnection() {
             @Override
             public boolean isConnected() {
@@ -129,7 +144,7 @@ public class ConnectTaskTest {
     }
 
     @Test
-    public void test_cancel003() {
+    public void test_cancel_00003() {
         MockBLEConnection mockBleConnection = new MockBLEConnection() {
             @Override
             public boolean isConnected() {
@@ -167,4 +182,5 @@ public class ConnectTaskTest {
             mockBleConnection.quit();
         }
     }
+
 }

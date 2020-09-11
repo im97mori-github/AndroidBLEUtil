@@ -18,13 +18,15 @@ import org.junit.Test;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class ExecuteReliableWriteTaskTest {
 
     @Test
-    public void test_createInitialMessage001() {
+    public void test_createInitialMessage_00001() {
         ExecuteReliableWriteTask task = new ExecuteReliableWriteTask(null, null, null, ExecuteReliableWriteTask.TIMEOUT_MILLIS, null);
         Message message = task.createInitialMessage();
 
@@ -37,7 +39,7 @@ public class ExecuteReliableWriteTaskTest {
     }
 
     @Test
-    public void test_createExecuteReliableWriteSuccessMessage001() {
+    public void test_createExecuteReliableWriteSuccessMessage_00001() {
         Message message = ExecuteReliableWriteTask.createExecuteReliableWriteSuccessMessage();
 
         assertNotNull(message);
@@ -48,7 +50,7 @@ public class ExecuteReliableWriteTaskTest {
     }
 
     @Test
-    public void test_createWriteCharacteristicErrorMessage001() {
+    public void test_createWriteCharacteristicErrorMessage_00001() {
         int status = new Random().nextInt();
         Message message = ExecuteReliableWriteTask.createExecuteReliableWriteErrorMessage(status);
 
@@ -62,7 +64,13 @@ public class ExecuteReliableWriteTaskTest {
     }
 
     @Test
-    public void test_cancel001() {
+    public void test_doProcess_00001() {
+        ExecuteReliableWriteTask task = new ExecuteReliableWriteTask(null, null, null, ExecuteReliableWriteTask.TIMEOUT_MILLIS, null);
+        assertFalse(task.doProcess(new Message()));
+    }
+
+    @Test
+    public void test_cancel_00001() {
         Looper looper = null;
         try {
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
@@ -83,7 +91,7 @@ public class ExecuteReliableWriteTaskTest {
     }
 
     @Test
-    public void test_cancel002() {
+    public void test_cancel_00002() {
         MockBLEConnection mockBleConnection = new MockBLEConnection();
         Looper looper = null;
         try {
@@ -116,4 +124,5 @@ public class ExecuteReliableWriteTaskTest {
             mockBleConnection.quit();
         }
     }
+
 }

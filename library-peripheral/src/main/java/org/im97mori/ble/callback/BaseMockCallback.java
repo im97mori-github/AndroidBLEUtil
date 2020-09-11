@@ -30,6 +30,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -47,22 +48,22 @@ public abstract class BaseMockCallback implements BLEServerCallback {
     /**
      * KEY:SERVICE_DATA
      */
-    private static final String KEY_SERVICE_DATA = "KEY_SERVICE_DATA";
+    protected static final String KEY_SERVICE_DATA = "KEY_SERVICE_DATA";
 
     /**
      * KEY:NOTIFICATION_COUNT
      */
-    private static final String KEY_NOTIFICATION_COUNT = "KEY_NOTIFICATION_COUNT";
+    protected static final String KEY_NOTIFICATION_COUNT = "KEY_NOTIFICATION_COUNT";
 
     /**
      * KEY:DESCRIPTOR_INSTANCE_ID
      */
-    private static final String KEY_DESCRIPTOR_INSTANCE_ID = "KEY_DESCRIPTOR_INSTANCE_ID";
+    protected static final String KEY_DESCRIPTOR_INSTANCE_ID = "KEY_DESCRIPTOR_INSTANCE_ID";
 
     /**
      * notification interval:1s
      */
-    private static final long NOTIFICATION_INTERVAL = 1000L;
+    protected static final long NOTIFICATION_INTERVAL = 1000L;
 
     /**
      * {@link MockData} callback
@@ -94,6 +95,16 @@ public abstract class BaseMockCallback implements BLEServerCallback {
      * {@code true}:in reliable write
      */
     protected boolean mIsReliable = false;
+
+    /**
+     * connected central devices
+     */
+    protected final Set<BluetoothDevice> mConnectedDeviceSet = new HashSet<>();
+
+    /**
+     * activated notification or indication map
+     */
+    protected final Hashtable<NotificationData, Integer> mActivatedNotificationMap = new Hashtable<>();
 
     /**
      * @param mockData   {@link MockData} instance
@@ -169,6 +180,11 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         mIsReliable = false;
     }
 
+    @Override
+    public void onServerStarted() {
+
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -177,6 +193,24 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         mRemappedServiceCharacteristicMap.clear();
         mRemappedCharacteristicDescriptorMap.clear();
         mAvailableServiceMap.clear();
+        mConnectedDeviceSet.clear();
+        mActivatedNotificationMap.clear();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public synchronized void onDeviceConnected(BluetoothDevice device) {
+        mConnectedDeviceSet.add(device);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public synchronized void onDeviceDisconnected(BluetoothDevice device) {
+        mConnectedDeviceSet.remove(device);
     }
 
     /**
@@ -404,9 +438,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
             UUID characteristicUUID = bluetoothGattCharacteristic.getUuid();
             int characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
             Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
-            if (descriptorDataMap == null) {
-                result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
-            } else {
+            if (descriptorDataMap != null) {
                 UUID descriptorUUID = bluetoothGattDescriptor.getUuid();
                 Parcel parcel = Parcel.obtain();
                 bluetoothGattDescriptor.writeToParcel(parcel, 0);
@@ -509,10 +541,17 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                         if (mIsReliable) {
                             descriptorData.temporaryData = value;
                         } else {
+                            byte[] oldData = descriptorData.getBytes();
                             descriptorData.currentData = value;
 
                             if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                                startNotification(bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, 0, null);
+                                if (!Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.currentData)
+                                        && Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, oldData)) {
+                                    startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, 0, null);
+                                } else if (Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.currentData)
+                                        && !Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, oldData)) {
+                                    mActivatedNotificationMap.remove(new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId));
+                                }
                             }
                         }
                     }
@@ -529,6 +568,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
     /**
      * start notification / indication
      *
+     * @param taskId                   task id
      * @param bleServerConnection      {@link BLEServerConnection} instance
      * @param device                   BLE device
      * @param serviceUUID              target service {@link UUID} instance
@@ -538,12 +578,11 @@ public abstract class BaseMockCallback implements BLEServerCallback {
      * @param descriptorInstanceId     target descriptor instance id
      * @param delay                    notification delay(millis)
      * @param notificationCount        notification / indication count. if {@code null}, default notification count is used
-     * @return task id
      * @see BLEServerConnection#createNotificationTask(BluetoothDevice, UUID, int, UUID, int, ByteArrayInterface, boolean, long, long, Bundle, BLEServerCallback)
      */
-    @SuppressWarnings("UnusedReturnValue")
-    protected synchronized Integer startNotification(@NonNull BLEServerConnection bleServerConnection
-            , @NonNull BluetoothDevice device
+    protected synchronized void startNotification(@Nullable Integer taskId
+            , @NonNull BLEServerConnection bleServerConnection
+            , @Nullable BluetoothDevice device
             , @NonNull UUID serviceUUID
             , int serviceInstanceId
             , @NonNull UUID characteristicUUID
@@ -551,8 +590,6 @@ public abstract class BaseMockCallback implements BLEServerCallback {
             , int descriptorInstanceId
             , long delay
             , @Nullable Integer notificationCount) {
-
-        Integer taskId = null;
 
         Map<Pair<UUID, Integer>, CharacteristicData> characteristicMap = mRemappedServiceCharacteristicMap.get(Pair.create(serviceUUID, serviceInstanceId));
         if (characteristicMap != null) {
@@ -576,29 +613,69 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                 }
 
                 if (isConfirm != null) {
-                    taskId = bleServerConnection.createNotificationTask(device
-                            , serviceUUID
-                            , serviceInstanceId
-                            , characteristicUUID
-                            , characteristicInstanceId
-                            , characteristicData
-                            , isConfirm
-                            , NotificationTask.TIMEOUT_MILLIS
-                            , delay
-                            , bundle
-                            , this);
+                    NotificationData notificationData;
+                    if (device == null) {
+                        for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
+                            notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
+                            if (!mActivatedNotificationMap.containsKey(notificationData)) {
+                                Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
+                                        , serviceUUID
+                                        , serviceInstanceId
+                                        , characteristicUUID
+                                        , characteristicInstanceId
+                                        , characteristicData
+                                        , isConfirm
+                                        , NotificationTask.TIMEOUT_MILLIS
+                                        , delay
+                                        , bundle
+                                        , this);
+                                if (newTaskId != null) {
+                                    mActivatedNotificationMap.put(notificationData, newTaskId);
+                                }
+                            }
+                        }
+                    } else {
+                        notificationData = new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
+                        if (mConnectedDeviceSet.contains(device)) {
+                            Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
+                            if (currentTaskId == null || currentTaskId.equals(taskId)) {
+                                Integer newTaskId = bleServerConnection.createNotificationTask(device
+                                        , serviceUUID
+                                        , serviceInstanceId
+                                        , characteristicUUID
+                                        , characteristicInstanceId
+                                        , characteristicData
+                                        , isConfirm
+                                        , NotificationTask.TIMEOUT_MILLIS
+                                        , delay
+                                        , bundle
+                                        , this);
+                                if (newTaskId != null) {
+                                    mActivatedNotificationMap.put(notificationData, newTaskId);
+                                }
+                            }
+                        } else {
+                            mActivatedNotificationMap.remove(notificationData);
+                        }
+                    }
                 }
             }
         }
-
-        return taskId;
     }
 
     /**
-     * {@inheritDoc}
+     * repeat notification or indication
+     *
+     * @param taskId                   task id
+     * @param bleServerConnection      {@link BLEServerConnection} instance
+     * @param device                   BLE device
+     * @param serviceUUID              service {@link UUID}
+     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       characteristic {@link UUID}
+     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param argument                 callback argument
      */
-    @Override
-    public void onNotificationSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull byte[] value, @Nullable Bundle argument) {
+    protected synchronized void repeatNotification(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @Nullable Bundle argument) {
         Map<Pair<UUID, Integer>, CharacteristicData> characteristicMap = mRemappedServiceCharacteristicMap.get(Pair.create(serviceUUID, serviceInstanceId));
         if (characteristicMap != null) {
             CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
@@ -607,9 +684,11 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                 if (notificationCount > 0) {
                     notificationCount--;
                 }
-                if (notificationCount != 0) {
+                if (notificationCount == 0) {
+                    mActivatedNotificationMap.remove(new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId));
+                } else {
                     int descriptorInstanceId = argument.getInt(KEY_DESCRIPTOR_INSTANCE_ID, -1);
-                    startNotification(bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, NOTIFICATION_INTERVAL, notificationCount);
+                    startNotification(taskId, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, NOTIFICATION_INTERVAL, notificationCount);
                 }
             }
         }
@@ -619,44 +698,24 @@ public abstract class BaseMockCallback implements BLEServerCallback {
      * {@inheritDoc}
      */
     @Override
-    public void onNotificationFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int status, @Nullable Bundle argument) {
-        Map<Pair<UUID, Integer>, CharacteristicData> characteristicMap = mRemappedServiceCharacteristicMap.get(Pair.create(serviceUUID, serviceInstanceId));
-        if (characteristicMap != null) {
-            CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
-            if (characteristicData != null && argument != null && argument.containsKey(KEY_NOTIFICATION_COUNT)) {
-                int notificationCount = argument.getInt(KEY_NOTIFICATION_COUNT);
-                if (notificationCount != 0) {
-                    if (notificationCount > 0) {
-                        notificationCount--;
-                    }
-
-                    int descriptorInstanceId = argument.getInt(KEY_DESCRIPTOR_INSTANCE_ID, -1);
-                    startNotification(bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, NOTIFICATION_INTERVAL, notificationCount);
-                }
-            }
-        }
+    public synchronized void onNotificationSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull byte[] value, @Nullable Bundle argument) {
+        repeatNotification(taskId, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void onNotificationTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        Map<Pair<UUID, Integer>, CharacteristicData> characteristicMap = mRemappedServiceCharacteristicMap.get(Pair.create(serviceUUID, serviceInstanceId));
-        if (characteristicMap != null) {
-            CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
-            if (characteristicData != null && argument != null && argument.containsKey(KEY_NOTIFICATION_COUNT)) {
-                int notificationCount = argument.getInt(KEY_NOTIFICATION_COUNT);
-                if (notificationCount != 0) {
-                    if (notificationCount > 0) {
-                        notificationCount--;
-                    }
+    public synchronized void onNotificationFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int status, @Nullable Bundle argument) {
+        repeatNotification(taskId, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+    }
 
-                    int descriptorInstanceId = argument.getInt(KEY_DESCRIPTOR_INSTANCE_ID, -1);
-                    startNotification(bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, NOTIFICATION_INTERVAL, notificationCount);
-                }
-            }
-        }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public synchronized void onNotificationTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+        repeatNotification(taskId, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
     }
 
     /**
@@ -691,13 +750,17 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                     DescriptorData descriptorData = descriptorEntry.getValue();
                     if (execute) {
                         if (descriptorData.temporaryData != null) {
-                            if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorData.uuid)
-                                    && !Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.temporaryData)
-                                    && Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
+                            if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorData.uuid)) {
                                 for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, CharacteristicData>> serviceEntry : mRemappedServiceCharacteristicMap.entrySet()) {
                                     CharacteristicData characteristicData = serviceEntry.getValue().get(characteristicKey);
                                     if (characteristicData != null) {
-                                        startNotification(bleServerConnection, device, serviceEntry.getKey().first, serviceEntry.getKey().second, characteristicKey.first, characteristicKey.second, descriptorKey.second, 0, characteristicData.notificationCount);
+                                        if (!Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.temporaryData)
+                                                && Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
+                                            startNotification(null, bleServerConnection, null, serviceEntry.getKey().first, serviceEntry.getKey().second, characteristicKey.first, characteristicKey.second, descriptorKey.second, 0, characteristicData.notificationCount);
+                                        } else if (Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.temporaryData)
+                                                && !Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
+                                            mActivatedNotificationMap.remove(new NotificationData(device, serviceEntry.getKey().first, serviceEntry.getKey().second, characteristicKey.first, characteristicKey.second));
+                                        }
                                     }
                                 }
                             }

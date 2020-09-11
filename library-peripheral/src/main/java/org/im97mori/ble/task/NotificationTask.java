@@ -131,7 +131,7 @@ public class NotificationTask extends AbstractBLETask {
     private final Bundle mArgument;
 
     /**
-     * @param bleServerConnection        {@link BLEServerConnection} instance
+     * @param bleServerConnection      {@link BLEServerConnection} instance
      * @param bluetoothGattServer      {@link BluetoothGattServer} instance
      * @param bluetoothDevice          BLE device
      * @param taskHandler              task target {@link TaskHandler} instance
@@ -190,76 +190,78 @@ public class NotificationTask extends AbstractBLETask {
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
-        int nextProgress = bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS);
+        if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
+            int nextProgress = bundle.getInt(AbstractBLETask.KEY_NEXT_PROGRESS);
 
-        // timeout
-        if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
-            mBLEServerConnection.getBLEServerCallback().onNotificationTimeout(getTaskId(), mBLEServerConnection, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mTimeout, mArgument);
-            mCurrentProgress = nextProgress;
-        } else if (AbstractBLETask.PROGRESS_INIT == mCurrentProgress) {
-            // current:init, next:notification start
-            if (this == message.obj && AbstractBLETask.PROGRESS_NOTIFICATION_START == nextProgress) {
-                BluetoothGattCharacteristic bluetoothGattCharacteristic = null;
-                boolean result = false;
-                BluetoothGattService bluetoothGattService = null;
-                List<BluetoothGattService> serviceList = mBluetoothGattServer.getServices();
-                for (BluetoothGattService targetBluetoothGattService : serviceList) {
-                    if (mServiceUUID.equals(targetBluetoothGattService.getUuid()) && mServiceInstanceId == targetBluetoothGattService.getInstanceId()) {
-                        bluetoothGattService = targetBluetoothGattService;
-                        break;
-                    }
-                }
-                if (bluetoothGattService != null) {
-                    List<BluetoothGattCharacteristic> characteristicList = bluetoothGattService.getCharacteristics();
-                    for (BluetoothGattCharacteristic targetBluetoothGattCharacteristic : characteristicList) {
-                        if (mCharacteristicUUID.equals(targetBluetoothGattCharacteristic.getUuid()) && mCharacteristicInstanceId == targetBluetoothGattCharacteristic.getInstanceId()) {
-                            bluetoothGattCharacteristic = targetBluetoothGattCharacteristic;
+            // timeout
+            if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+                mBLEServerConnection.getBLEServerCallback().onNotificationTimeout(getTaskId(), mBLEServerConnection, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mTimeout, mArgument);
+                mCurrentProgress = nextProgress;
+            } else if (AbstractBLETask.PROGRESS_INIT == mCurrentProgress) {
+                // current:init, next:notification start
+                if (this == message.obj && AbstractBLETask.PROGRESS_NOTIFICATION_START == nextProgress) {
+                    BluetoothGattCharacteristic bluetoothGattCharacteristic = null;
+                    boolean result = false;
+                    BluetoothGattService bluetoothGattService = null;
+                    List<BluetoothGattService> serviceList = mBluetoothGattServer.getServices();
+                    for (BluetoothGattService targetBluetoothGattService : serviceList) {
+                        if (mServiceUUID.equals(targetBluetoothGattService.getUuid()) && mServiceInstanceId == targetBluetoothGattService.getInstanceId()) {
+                            bluetoothGattService = targetBluetoothGattService;
                             break;
                         }
                     }
-                    if (bluetoothGattCharacteristic != null) {
-                        byte[] values = mByteArrayInterface.getBytes();
-                        bluetoothGattCharacteristic.setValue(values);
+                    if (bluetoothGattService != null) {
+                        List<BluetoothGattCharacteristic> characteristicList = bluetoothGattService.getCharacteristics();
+                        for (BluetoothGattCharacteristic targetBluetoothGattCharacteristic : characteristicList) {
+                            if (mCharacteristicUUID.equals(targetBluetoothGattCharacteristic.getUuid()) && mCharacteristicInstanceId == targetBluetoothGattCharacteristic.getInstanceId()) {
+                                bluetoothGattCharacteristic = targetBluetoothGattCharacteristic;
+                                break;
+                            }
+                        }
+                        if (bluetoothGattCharacteristic != null) {
+                            byte[] values = mByteArrayInterface.getBytes();
+                            bluetoothGattCharacteristic.setValue(values);
 
-                        // notification(indication)
-                        try {
-                            result = mBluetoothGattServer.notifyCharacteristicChanged(mBluetoothDevice, bluetoothGattCharacteristic, mIsConfirm);
-                        } catch (Exception e) {
-                            BLEPeripheralLogUtils.stackLog(e);
+                            // notification(indication)
+                            try {
+                                result = mBluetoothGattServer.notifyCharacteristicChanged(mBluetoothDevice, bluetoothGattCharacteristic, mIsConfirm);
+                            } catch (Exception e) {
+                                BLEPeripheralLogUtils.stackLog(e);
+                            }
                         }
                     }
-                }
 
-                if (result) {
-                    // set timeout message
-                    Message timeoutMessage = createTimeoutMessage(this);
-                    mTaskHandler.sendProcessingMessage(timeoutMessage, mTimeout);
-                } else {
-                    if (bluetoothGattCharacteristic == null) {
-                        nextProgress = AbstractBLETask.PROGRESS_FINISHED;
-                        mBLEServerConnection.getBLEServerCallback().onNotificationFailed(getTaskId(), mBLEServerConnection, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, UNKNOWN, mArgument);
+                    if (result) {
+                        // set timeout message
+                        Message timeoutMessage = createTimeoutMessage(this);
+                        mTaskHandler.sendProcessingMessage(timeoutMessage, mTimeout);
                     } else {
-                        nextProgress = AbstractBLETask.PROGRESS_BUSY;
-                        mBLEServerConnection.getBLEServerCallback().onNotificationFailed(getTaskId(), mBLEServerConnection, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, BUSY, mArgument);
+                        if (bluetoothGattCharacteristic == null) {
+                            nextProgress = AbstractBLETask.PROGRESS_FINISHED;
+                            mBLEServerConnection.getBLEServerCallback().onNotificationFailed(getTaskId(), mBLEServerConnection, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, UNKNOWN, mArgument);
+                        } else {
+                            nextProgress = AbstractBLETask.PROGRESS_BUSY;
+                            mBLEServerConnection.getBLEServerCallback().onNotificationFailed(getTaskId(), mBLEServerConnection, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, BUSY, mArgument);
+                        }
                     }
+
+                    mCurrentProgress = nextProgress;
+                }
+            } else if (PROGRESS_NOTIFICATION_START == mCurrentProgress) {
+                if (AbstractBLETask.PROGRESS_NOTIFICATION_SUCCESS == nextProgress) {
+                    // current:notification start, next:notification success
+
+                    mBLEServerConnection.getBLEServerCallback().onNotificationSuccess(getTaskId(), mBLEServerConnection, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mByteArrayInterface.getBytes(), mArgument);
+                } else if (AbstractBLETask.PROGRESS_NOTIFICATION_ERROR == nextProgress) {
+                    // current:notification start, next:notification error
+
+                    mBLEServerConnection.getBLEServerCallback().onNotificationFailed(getTaskId(), mBLEServerConnection, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, bundle.getInt(KEY_STATUS), mArgument);
                 }
 
-                mCurrentProgress = nextProgress;
+                mCurrentProgress = PROGRESS_FINISHED;
+                // remove timeout message
+                mTaskHandler.removeCallbacksAndMessages(this);
             }
-        } else if (PROGRESS_NOTIFICATION_START == mCurrentProgress) {
-            if (AbstractBLETask.PROGRESS_NOTIFICATION_SUCCESS == nextProgress) {
-                // current:notification start, next:notification success
-
-                mBLEServerConnection.getBLEServerCallback().onNotificationSuccess(getTaskId(), mBLEServerConnection, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mByteArrayInterface.getBytes(), mArgument);
-            } else if (AbstractBLETask.PROGRESS_NOTIFICATION_ERROR == nextProgress) {
-                // current:notification start, next:notification error
-
-                mBLEServerConnection.getBLEServerCallback().onNotificationFailed(getTaskId(), mBLEServerConnection, mBluetoothDevice, mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, bundle.getInt(KEY_STATUS), mArgument);
-            }
-
-            mCurrentProgress = PROGRESS_FINISHED;
-            // remove timeout message
-            mTaskHandler.removeCallbacksAndMessages(this);
         }
 
         return AbstractBLETask.PROGRESS_FINISHED == mCurrentProgress || AbstractBLETask.PROGRESS_BUSY == mCurrentProgress;

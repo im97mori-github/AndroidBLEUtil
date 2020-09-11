@@ -80,26 +80,28 @@ public class DisconnectTask extends AbstractBLETask {
             mCurrentProgress = PROGRESS_FINISHED;
         } else {
             Bundle bundle = message.getData();
-            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+            if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
+                int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
 
-            // current:init, next:disconnect
-            if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
-                if (PROGRESS_DISCONNECT == nextProgress) {
-                    // target is newest one
-                    if (mBLEConnection.isCurrentConnectionTarget(mBluetoothGatt)) {
-                        try {
-                            mBluetoothGatt.disconnect();
-                        } catch (Exception e) {
-                            BLELogUtils.stackLog(e);
+                // current:init, next:disconnect
+                if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
+                    if (PROGRESS_DISCONNECT == nextProgress) {
+                        // target is newest one
+                        if (mBLEConnection.isCurrentConnectionTarget(mBluetoothGatt)) {
+                            try {
+                                mBluetoothGatt.disconnect();
+                            } catch (Exception e) {
+                                BLELogUtils.stackLog(e);
+                            }
+                            try {
+                                mBluetoothGatt.close();
+                            } catch (Exception e) {
+                                BLELogUtils.stackLog(e);
+                            }
+                            mBLEConnection.onDisconnected(getTaskId(), mBluetoothGatt, bundle.getInt(KEY_STATUS), mArgument);
                         }
-                        try {
-                            mBluetoothGatt.close();
-                        } catch (Exception e) {
-                            BLELogUtils.stackLog(e);
-                        }
-                        mBLEConnection.onDisconnected(getTaskId(), mBluetoothGatt, bundle.getInt(KEY_STATUS), mArgument);
+                        mCurrentProgress = nextProgress;
                     }
-                    mCurrentProgress = nextProgress;
                 }
             }
         }

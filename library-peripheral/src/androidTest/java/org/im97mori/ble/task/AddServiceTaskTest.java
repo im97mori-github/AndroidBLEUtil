@@ -21,9 +21,11 @@ import org.junit.Test;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 public class AddServiceTaskTest {
 
     private MockBLEServerConnection MOCK_BLE_SERVER_CONNECTION;
@@ -42,7 +44,7 @@ public class AddServiceTaskTest {
     }
 
     @Test
-    public void test_createInitialMessage001() {
+    public void test_createInitialMessage_00001() {
         MOCK_BLE_SERVER_CONNECTION.start();
         AddServiceTask task = new AddServiceTask(MOCK_BLE_SERVER_CONNECTION
                 , null
@@ -59,7 +61,7 @@ public class AddServiceTaskTest {
     }
 
     @Test
-    public void test_createAddServiceSuccessMessage001() {
+    public void test_createAddServiceSuccessMessage_00001() {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(null, 0);
         Message message = AddServiceTask.createAddServiceSuccessMessage(bluetoothGattService);
 
@@ -72,7 +74,7 @@ public class AddServiceTaskTest {
     }
 
     @Test
-    public void test_createAddServiceErrorMessage001() {
+    public void test_createAddServiceErrorMessage_00001() {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(null, 0);
         int status = new Random().nextInt();
         Message message = AddServiceTask.createAddServiceErrorMessage(bluetoothGattService, status);
@@ -88,7 +90,17 @@ public class AddServiceTaskTest {
     }
 
     @Test
-    public void test_cancel001() {
+    public void test_doProcess_00001() {
+        AddServiceTask task = new AddServiceTask(new MockBLEServerConnection()
+                , null
+                , null
+                , AddServiceTask.TIMEOUT_MILLIS
+                , null);
+        assertFalse(task.doProcess(new Message()));
+    }
+
+    @Test
+    public void test_cancel_00001() {
         Looper looper = null;
         try {
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());
@@ -113,7 +125,7 @@ public class AddServiceTaskTest {
     }
 
     @Test
-    public void test_cancel002() {
+    public void test_cancel_00002() {
         Looper looper = null;
         try {
             HandlerThread thread = new HandlerThread(this.getClass().getSimpleName());

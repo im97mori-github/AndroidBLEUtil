@@ -206,6 +206,7 @@
     <pattern value="org.im97mori.ble.advertising.BLEAdvertisingLogUtils" method="verbose" />
     <pattern value="org.im97mori.ble.task.AbstractBLETask" />
     <pattern value="org.im97mori.ble.task.AbstractBLETask" method="createTimeoutMessage" />
+    <pattern value="org.im97mori.ble.BLELogUtils" method="stackLog" />
   </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="F:/a" />

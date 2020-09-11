@@ -123,46 +123,48 @@ public class DiscoverServiceTask extends AbstractBLETask {
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
-        int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+        if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
+            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
 
-        // timeout
-        if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
-            mBLEConnection.getBLECallback().onDiscoverServiceTimeout(getTaskId(), mBluetoothGatt.getDevice(), mTimeout, mArgument);
-            mCurrentProgress = nextProgress;
-        } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
-            if (PROGRESS_DISCOVER_SERVICE_START == nextProgress) {
-                // current:init, next:discover service start
+            // timeout
+            if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+                mBLEConnection.getBLECallback().onDiscoverServiceTimeout(getTaskId(), mBluetoothGatt.getDevice(), mTimeout, mArgument);
+                mCurrentProgress = nextProgress;
+            } else if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
+                if (PROGRESS_DISCOVER_SERVICE_START == nextProgress) {
+                    // current:init, next:discover service start
 
-                if (mBluetoothGatt.discoverServices()) {
-                    // success
-                    // set timeout message
-                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
-                    mCurrentProgress = nextProgress;
-                } else {
-                    // failed
+                    if (mBluetoothGatt.discoverServices()) {
+                        // success
+                        // set timeout message
+                        mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
+                        mCurrentProgress = nextProgress;
+                    } else {
+                        // failed
 
-                    mBLEConnection.getBLECallback().onDiscoverServiceFailed(getTaskId(), mBluetoothGatt.getDevice(), UNKNOWN, mArgument);
-                    mCurrentProgress = PROGRESS_BUSY;
+                        mBLEConnection.getBLECallback().onDiscoverServiceFailed(getTaskId(), mBluetoothGatt.getDevice(), UNKNOWN, mArgument);
+                        mCurrentProgress = PROGRESS_BUSY;
+                    }
                 }
+            } else if (PROGRESS_DISCOVER_SERVICE_START == mCurrentProgress) {
+                if (PROGRESS_DISCOVER_SERVICE_SUCCESS == nextProgress) {
+                    // current:discover service start, next:discover service success
+
+                    // callback
+                    mBLEConnection.getBLECallback().onDiscoverServiceSuccess(getTaskId(), mBluetoothGatt.getDevice(), mBluetoothGatt.getServices(), mArgument);
+
+
+                } else if (PROGRESS_DISCOVER_SERVICE_ERROR == nextProgress) {
+                    // current:discover service start, next:discover service failed
+
+                    mBLEConnection.getBLECallback().onDiscoverServiceFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
+                }
+
+                // remove timeout message
+                mTaskHandler.removeCallbacksAndMessages(this);
+
+                mCurrentProgress = PROGRESS_FINISHED;
             }
-        } else if (PROGRESS_DISCOVER_SERVICE_START == mCurrentProgress) {
-            if (PROGRESS_DISCOVER_SERVICE_SUCCESS == nextProgress) {
-                // current:discover service start, next:discover service success
-
-                // callback
-                mBLEConnection.getBLECallback().onDiscoverServiceSuccess(getTaskId(), mBluetoothGatt.getDevice(), mBluetoothGatt.getServices(), mArgument);
-
-
-            } else if (PROGRESS_DISCOVER_SERVICE_ERROR == nextProgress) {
-                // current:discover service start, next:discover service failed
-
-                mBLEConnection.getBLECallback().onDiscoverServiceFailed(getTaskId(), mBluetoothGatt.getDevice(), bundle.getInt(KEY_STATUS), mArgument);
-            }
-
-            // remove timeout message
-            mTaskHandler.removeCallbacksAndMessages(this);
-
-            mCurrentProgress = PROGRESS_FINISHED;
         }
 
         return PROGRESS_FINISHED == mCurrentProgress || PROGRESS_BUSY == mCurrentProgress || PROGRESS_TIMEOUT == mCurrentProgress;

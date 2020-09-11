@@ -66,20 +66,22 @@ public class BeginReliableWriteTask extends AbstractBLETask {
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
-        int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+        if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
+            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
 
-        if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
-            if (PROGRESS_BEGIN_RELIABLE_WRITE_START == nextProgress) {
-                // current:init, next:begin reliable write start
+            if (this == message.obj && PROGRESS_INIT == mCurrentProgress) {
+                if (PROGRESS_BEGIN_RELIABLE_WRITE_START == nextProgress) {
+                    // current:init, next:begin reliable write start
 
-                // success
-                if (mBluetoothGatt.beginReliableWrite()) {
-                    mBLEConnection.getBLECallback().onBeginReliableWriteSuccess(getTaskId(), mBluetoothGatt.getDevice(), mArgument);
-                } else {
-                    mBLEConnection.getBLECallback().onBeginReliableWriteFailed(getTaskId(), mBluetoothGatt.getDevice(), UNKNOWN, mArgument);
+                    // success
+                    if (mBluetoothGatt.beginReliableWrite()) {
+                        mBLEConnection.getBLECallback().onBeginReliableWriteSuccess(getTaskId(), mBluetoothGatt.getDevice(), mArgument);
+                    } else {
+                        mBLEConnection.getBLECallback().onBeginReliableWriteFailed(getTaskId(), mBluetoothGatt.getDevice(), UNKNOWN, mArgument);
+                    }
+
+                    mCurrentProgress = PROGRESS_FINISHED;
                 }
-
-                mCurrentProgress = PROGRESS_FINISHED;
             }
         }
 

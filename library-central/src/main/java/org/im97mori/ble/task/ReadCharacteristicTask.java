@@ -179,91 +179,93 @@ public class ReadCharacteristicTask extends AbstractBLETask {
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
-        UUID serviceUUID = (UUID) bundle.getSerializable(KEY_SERVICE_UUID);
-        int serviceInstanceId = bundle.getInt(KEY_SERVICE_INSTANCE_ID);
-        UUID characteristicUUID = (UUID) bundle.getSerializable(KEY_CHARACTERISTIC_UUID);
-        int characteristicInstanceId = bundle.getInt(KEY_CHARACTERISTIC_INSTANCE_ID);
-        int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
+        if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
+            UUID serviceUUID = (UUID) bundle.getSerializable(KEY_SERVICE_UUID);
+            int serviceInstanceId = bundle.getInt(KEY_SERVICE_INSTANCE_ID);
+            UUID characteristicUUID = (UUID) bundle.getSerializable(KEY_CHARACTERISTIC_UUID);
+            int characteristicInstanceId = bundle.getInt(KEY_CHARACTERISTIC_INSTANCE_ID);
+            int nextProgress = bundle.getInt(KEY_NEXT_PROGRESS);
 
-        // timeout
-        if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
-            mBLEConnection.getBLECallback().onCharacteristicReadTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mTimeout, mArgument);
-            mCurrentProgress = nextProgress;
-        } else if (PROGRESS_INIT == mCurrentProgress) {
-            // current:init, next:read characteristic start
-            if (this == message.obj && PROGRESS_CHARACTERISTIC_READ_START == nextProgress) {
+            // timeout
+            if (this == message.obj && PROGRESS_TIMEOUT == nextProgress) {
+                mBLEConnection.getBLECallback().onCharacteristicReadTimeout(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, mTimeout, mArgument);
+                mCurrentProgress = nextProgress;
+            } else if (PROGRESS_INIT == mCurrentProgress) {
+                // current:init, next:read characteristic start
+                if (this == message.obj && PROGRESS_CHARACTERISTIC_READ_START == nextProgress) {
 
-                BluetoothGattCharacteristic bluetoothGattCharacteristic = null;
-                boolean result = false;
-                BluetoothGattService bluetoothGattService = null;
-                if (mServiceInstanceId == null) {
-                    bluetoothGattService = mBluetoothGatt.getService(mServiceUUID);
-                } else {
-                    // multiple service
-                    List<BluetoothGattService> serviceList = mBluetoothGatt.getServices();
-                    for (BluetoothGattService targetBluetoothGattService : serviceList) {
-                        if (mServiceUUID.equals(targetBluetoothGattService.getUuid()) && mServiceInstanceId == targetBluetoothGattService.getInstanceId()) {
-                            bluetoothGattService = targetBluetoothGattService;
-                            break;
-                        }
-                    }
-                }
-                if (bluetoothGattService != null) {
-                    if (mCharacteristicInstanceId == null) {
-                        bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(mCharacteristicUUID);
+                    BluetoothGattCharacteristic bluetoothGattCharacteristic = null;
+                    boolean result = false;
+                    BluetoothGattService bluetoothGattService = null;
+                    if (mServiceInstanceId == null) {
+                        bluetoothGattService = mBluetoothGatt.getService(mServiceUUID);
                     } else {
-                        // multiple characteristic
-                        List<BluetoothGattCharacteristic> characteristicList = bluetoothGattService.getCharacteristics();
-                        for (BluetoothGattCharacteristic targetBluetoothGattCharacteristic : characteristicList) {
-                            if (mCharacteristicUUID.equals(targetBluetoothGattCharacteristic.getUuid()) && mCharacteristicInstanceId == targetBluetoothGattCharacteristic.getInstanceId()) {
-                                bluetoothGattCharacteristic = targetBluetoothGattCharacteristic;
+                        // multiple service
+                        List<BluetoothGattService> serviceList = mBluetoothGatt.getServices();
+                        for (BluetoothGattService targetBluetoothGattService : serviceList) {
+                            if (mServiceUUID.equals(targetBluetoothGattService.getUuid()) && mServiceInstanceId == targetBluetoothGattService.getInstanceId()) {
+                                bluetoothGattService = targetBluetoothGattService;
                                 break;
                             }
                         }
                     }
-                    if (bluetoothGattCharacteristic != null) {
-                        // read characteristic
-                        mServiceInstanceId = bluetoothGattService.getInstanceId();
-                        mCharacteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
-                        try {
-                            result = mBluetoothGatt.readCharacteristic(bluetoothGattCharacteristic);
-                        } catch (Exception e) {
-                            BLELogUtils.stackLog(e);
+                    if (bluetoothGattService != null) {
+                        if (mCharacteristicInstanceId == null) {
+                            bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(mCharacteristicUUID);
+                        } else {
+                            // multiple characteristic
+                            List<BluetoothGattCharacteristic> characteristicList = bluetoothGattService.getCharacteristics();
+                            for (BluetoothGattCharacteristic targetBluetoothGattCharacteristic : characteristicList) {
+                                if (mCharacteristicUUID.equals(targetBluetoothGattCharacteristic.getUuid()) && mCharacteristicInstanceId == targetBluetoothGattCharacteristic.getInstanceId()) {
+                                    bluetoothGattCharacteristic = targetBluetoothGattCharacteristic;
+                                    break;
+                                }
+                            }
+                        }
+                        if (bluetoothGattCharacteristic != null) {
+                            // read characteristic
+                            mServiceInstanceId = bluetoothGattService.getInstanceId();
+                            mCharacteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
+                            try {
+                                result = mBluetoothGatt.readCharacteristic(bluetoothGattCharacteristic);
+                            } catch (Exception e) {
+                                BLELogUtils.stackLog(e);
+                            }
                         }
                     }
-                }
 
-                if (result) {
-                    // set timeout message
-                    mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
-                } else {
-                    if (bluetoothGattCharacteristic == null) {
-                        nextProgress = PROGRESS_FINISHED;
-                        mBLEConnection.getBLECallback().onCharacteristicReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, UNKNOWN, mArgument);
+                    if (result) {
+                        // set timeout message
+                        mTaskHandler.sendProcessingMessage(createTimeoutMessage(this), mTimeout);
                     } else {
-                        nextProgress = PROGRESS_BUSY;
-                        mBLEConnection.getBLECallback().onCharacteristicReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, BUSY, mArgument);
+                        if (bluetoothGattCharacteristic == null) {
+                            nextProgress = PROGRESS_FINISHED;
+                            mBLEConnection.getBLECallback().onCharacteristicReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, UNKNOWN, mArgument);
+                        } else {
+                            nextProgress = PROGRESS_BUSY;
+                            mBLEConnection.getBLECallback().onCharacteristicReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, BUSY, mArgument);
+                        }
                     }
+                    mCurrentProgress = nextProgress;
                 }
-                mCurrentProgress = nextProgress;
-            }
-        } else if (PROGRESS_CHARACTERISTIC_READ_START == mCurrentProgress) {
-            if (mServiceUUID.equals(serviceUUID) && mServiceInstanceId == serviceInstanceId && mCharacteristicUUID.equals(characteristicUUID) && mCharacteristicInstanceId == characteristicInstanceId) {
-                // current:read characteristic start, next:read characteristic success
-                if (PROGRESS_CHARACTERISTIC_READ_SUCCESS == nextProgress) {
-                    byte[] value = bundle.getByteArray(KEY_VALUES);
-                    if (value == null) {
-                        mBLEConnection.getBLECallback().onCharacteristicReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, UNKNOWN, mArgument);
-                    } else {
-                        mBLEConnection.getBLECallback().onCharacteristicReadSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, value, mArgument);
+            } else if (PROGRESS_CHARACTERISTIC_READ_START == mCurrentProgress) {
+                if (mServiceUUID.equals(serviceUUID) && mServiceInstanceId == serviceInstanceId && mCharacteristicUUID.equals(characteristicUUID) && mCharacteristicInstanceId == characteristicInstanceId) {
+                    // current:read characteristic start, next:read characteristic success
+                    if (PROGRESS_CHARACTERISTIC_READ_SUCCESS == nextProgress) {
+                        byte[] value = bundle.getByteArray(KEY_VALUES);
+                        if (value == null) {
+                            mBLEConnection.getBLECallback().onCharacteristicReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, UNKNOWN, mArgument);
+                        } else {
+                            mBLEConnection.getBLECallback().onCharacteristicReadSuccess(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, value, mArgument);
+                        }
+                    } else if (PROGRESS_CHARACTERISTIC_READ_ERROR == nextProgress) {
+                        // current:read characteristic start, next:read characteristic error
+                        mBLEConnection.getBLECallback().onCharacteristicReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, bundle.getInt(KEY_STATUS), mArgument);
                     }
-                } else if (PROGRESS_CHARACTERISTIC_READ_ERROR == nextProgress) {
-                    // current:read characteristic start, next:read characteristic error
-                    mBLEConnection.getBLECallback().onCharacteristicReadFailed(getTaskId(), mBLEConnection.getBluetoothDevice(), mServiceUUID, mServiceInstanceId, mCharacteristicUUID, mCharacteristicInstanceId, bundle.getInt(KEY_STATUS), mArgument);
+                    mCurrentProgress = PROGRESS_FINISHED;
+                    // remove timeout message
+                    mTaskHandler.removeCallbacksAndMessages(this);
                 }
-                mCurrentProgress = PROGRESS_FINISHED;
-                // remove timeout message
-                mTaskHandler.removeCallbacksAndMessages(this);
             }
         }
 

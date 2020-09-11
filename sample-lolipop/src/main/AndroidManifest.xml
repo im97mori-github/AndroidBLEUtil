@@ -78,6 +78,12 @@
         <activity
             android:name=".HrpCentralSampleActivity"
             android:label="@string/label_hrp_central" />
+        <activity
+            android:name=".HtpPeripheralSampleActivity"
+            android:label="@string/label_htp_peripheral" />
+        <activity
+            android:name=".HtpCentralSampleActivity"
+            android:label="@string/label_htp_central" />
     </application>
 
 </manifest>

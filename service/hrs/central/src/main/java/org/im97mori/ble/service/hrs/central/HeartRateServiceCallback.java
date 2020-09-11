@@ -209,7 +209,7 @@ public interface HeartRateServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Heart Rate Measurement notificated callback
+     * Heart Rate Measurement notified callback
      *
      * @param bluetoothDevice             BLE device
      * @param serviceUUID                 service {@link UUID}
@@ -218,7 +218,7 @@ public interface HeartRateServiceCallback {
      * @param characteristicInstanceId    task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param heartRateMeasurementAndroid {@link org.im97mori.ble.characteristic.u2a37.HeartRateMeasurementAndroid}
      */
-    void onHeartRateMeasurementNotificated(@NonNull BluetoothDevice bluetoothDevice
+    void onHeartRateMeasurementNotified(@NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @NonNull Integer serviceInstanceId
             , @NonNull UUID characteristicUUID

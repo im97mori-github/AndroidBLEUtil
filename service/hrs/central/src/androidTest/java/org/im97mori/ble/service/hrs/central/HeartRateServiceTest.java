@@ -1,5 +1,6 @@
 package org.im97mori.ble.service.hrs.central;
 
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
@@ -10,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.ByteArrayInterface;
+import org.im97mori.ble.characteristic.u2a37.HeartRateMeasurementAndroid;
 import org.im97mori.ble.characteristic.u2a38.BodySensorLocationAndroid;
 import org.im97mori.ble.characteristic.u2a39.HeartRateControlPoint;
 import org.im97mori.ble.characteristic.u2a39.HeartRateControlPointAndroid;
@@ -24,11 +26,14 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BLOOD_PRESSURE_ME
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.BODY_SENSOR_LOCATION_CHARACTERISTIC;
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HEART_RATE_CONTROL_POINT_CHARACTERISTIC;
 import static org.im97mori.ble.BLEConstants.CharacteristicUUID.HEART_RATE_MEASUREMENT_CHARACTERISTIC;
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LN_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LOCATION_AND_SPEED_CHARACTERISTIC;
 import static org.im97mori.ble.BLEConstants.DescriptorUUID.CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
 import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.GENERIC_ACCESS_SERVICE;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.GENERIC_ATTRIBUTE_SERVICE;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.HEART_RATE_SERVICE;
+import static org.im97mori.ble.BLEConstants.ServiceUUID.LOCATION_AND_NAVIGATION_SERVICE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -184,7 +189,7 @@ public class HeartRateServiceTest {
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
-        final byte[] originalValues = new byte[]{4, 5};
+        final byte[] originalValues = new byte[]{4};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
@@ -210,7 +215,7 @@ public class HeartRateServiceTest {
         final Integer originalServiceInstanceId = 2;
         final UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
-        final byte[] originalValues = new byte[]{4, 5};
+        final byte[] originalValues = new byte[]{4};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
@@ -1301,8 +1306,8 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService bloodPressureService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
-        bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        heartRateService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1421,8 +1426,8 @@ public class HeartRateServiceTest {
             }
 
         };
-        HeartRateService bloodPressureService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
-        bloodPressureService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        heartRateService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1719,6 +1724,115 @@ public class HeartRateServiceTest {
         };
         HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
         heartRateService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    public void test_onCharacteristicNotified_00001() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = HEART_RATE_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = HEART_RATE_MEASUREMENT_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final byte[] originalValues = new byte[]{0, 0};
+
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
+
+            @Override
+            public void onHeartRateMeasurementNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull HeartRateMeasurementAndroid heartRateMeasurementAndroid) {
+                assertEquals(originalBluetoothDevice, bluetoothDevice);
+                assertEquals(originalServiceUUID, serviceUUID);
+                assertEquals(originalServiceInstanceId, serviceInstanceId);
+                assertEquals(originalCharacteristicUUID, characteristicUUID);
+                assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertArrayEquals(originalValues, heartRateMeasurementAndroid.getBytes());
+                isCalled.set(true);
+            }
+
+        };
+
+        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        heartRateService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
+
+        assertTrue(isCalled.get());
+    }
+
+    @Test
+    public void test_onCharacteristicNotified_00002() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final BluetoothDevice originalBluetoothDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice("00:11:22:33:AA:CC");
+        final UUID originalServiceUUID = HEART_RATE_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final byte[] originalValues = new byte[]{0, 0};
+
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
+
+            @Override
+            public void onHeartRateMeasurementNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull HeartRateMeasurementAndroid heartRateMeasurementAndroid) {
+                isCalled.set(true);
+            }
+
+        };
+
+        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        heartRateService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    public void test_onCharacteristicNotified_00003() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final byte[] originalValues = new byte[]{0, 0};
+
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
+
+            @Override
+            public void onHeartRateMeasurementNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull HeartRateMeasurementAndroid heartRateMeasurementAndroid) {
+                isCalled.set(true);
+            }
+
+        };
+
+        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        heartRateService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    public void test_onCharacteristicNotified_00004() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = LOCATION_AND_NAVIGATION_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final byte[] originalValues = new byte[]{0, 0};
+
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHeartRateServiceCallback mockHeartRateServiceCallback = new MockHeartRateServiceCallback() {
+
+            @Override
+            public void onHeartRateMeasurementNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull HeartRateMeasurementAndroid heartRateMeasurementAndroid) {
+                isCalled.set(true);
+            }
+
+        };
+        HeartRateService heartRateService = new HeartRateService(mockBLEConnection, mockHeartRateServiceCallback, null);
+        heartRateService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues);
 
         assertFalse(isCalled.get());
     }

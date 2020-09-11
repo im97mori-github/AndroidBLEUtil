@@ -42,6 +42,8 @@ dependencies {
     api "${groupId}:${serviceTpsCentralAndroid.artifactId}:${serviceTpsCentralAndroid.versionName}"
     api "${groupId}:${serviceHrsPeripheralAndroid.artifactId}:${serviceHrsPeripheralAndroid.versionName}"
     api "${groupId}:${serviceHrsCentralAndroid.artifactId}:${serviceHrsCentralAndroid.versionName}"
+    api "${groupId}:${serviceHtsPeripheralAndroid.artifactId}:${serviceHtsPeripheralAndroid.versionName}"
+    api "${groupId}:${serviceHtsCentralAndroid.artifactId}:${serviceHtsCentralAndroid.versionName}"
 }
 
 task sourcesJar(type: Jar) {
