@@ -793,6 +793,92 @@ public class HealthThermometerServiceTest {
     }
 
     @Test
+    public void test_onCharacteristicReadTimeout_00101() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = HEALTH_THERMOMETER_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = MEASUREMENT_INTERVAL_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final long originalTimeout = 4;
+        final Bundle originalBundle = new Bundle();
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHealthThermometerServiceCallback mockHealthThermometerServiceCallback = new MockHealthThermometerServiceCallback() {
+
+            @Override
+            public void onMeasurementIntervalReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                assertEquals(originalTaskId, taskId);
+                assertEquals(originalBluetoothDevice, bluetoothDevice);
+                assertEquals(originalServiceUUID, serviceUUID);
+                assertEquals(originalServiceInstanceId, serviceInstanceId);
+                assertEquals(originalCharacteristicUUID, characteristicUUID);
+                assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalTimeout, timeout);
+                assertEquals(originalBundle, argument);
+                isCalled.set(true);
+            }
+
+        };
+        HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, mockHealthThermometerServiceCallback, null);
+        healthThermometerService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
+
+        assertTrue(isCalled.get());
+    }
+
+    @Test
+    public void test_onCharacteristicReadTimeout_00102() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = MEASUREMENT_INTERVAL_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final long originalTimeout = 4;
+        final Bundle originalBundle = new Bundle();
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHealthThermometerServiceCallback mockHealthThermometerServiceCallback = new MockHealthThermometerServiceCallback() {
+
+            @Override
+            public void onMeasurementIntervalReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                isCalled.set(true);
+            }
+
+        };
+        HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, mockHealthThermometerServiceCallback, null);
+        healthThermometerService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    public void test_onCharacteristicReadTimeout_00103() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = HEALTH_THERMOMETER_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        UUID originalCharacteristicUUID = BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final long originalTimeout = 4;
+        final Bundle originalBundle = new Bundle();
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHealthThermometerServiceCallback mockHealthThermometerServiceCallback = new MockHealthThermometerServiceCallback() {
+
+            @Override
+            public void onMeasurementIntervalReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                isCalled.set(true);
+            }
+
+        };
+        HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, mockHealthThermometerServiceCallback, null);
+        healthThermometerService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
     public void test_onCharacteristicWriteSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -2084,6 +2170,354 @@ public class HealthThermometerServiceTest {
 
             @Override
             public void onTemperatureMeasurementClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                isCalled.set(true);
+            }
+
+        };
+        HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, mockHealthThermometerServiceCallback, null);
+        healthThermometerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    public void test_onDescriptorReadTimeout_00101() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = HEALTH_THERMOMETER_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = INTERMEDIATE_TEMPERATURE_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final long originalTimeout = 4;
+        final Bundle originalBundle = new Bundle();
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHealthThermometerServiceCallback mockHealthThermometerServiceCallback = new MockHealthThermometerServiceCallback() {
+
+            @Override
+            public void onIntermediateTemperatureClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                assertEquals(originalTaskId, taskId);
+                assertEquals(originalBluetoothDevice, bluetoothDevice);
+                assertEquals(originalServiceUUID, serviceUUID);
+                assertEquals(originalServiceInstanceId, serviceInstanceId);
+                assertEquals(originalCharacteristicUUID, characteristicUUID);
+                assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalTimeout, timeout);
+                assertEquals(originalBundle, argument);
+                isCalled.set(true);
+            }
+
+        };
+        HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, mockHealthThermometerServiceCallback, null);
+        healthThermometerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+
+        assertTrue(isCalled.get());
+    }
+
+    @Test
+    public void test_onDescriptorReadTimeout_00102() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = INTERMEDIATE_TEMPERATURE_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final long originalTimeout = 4;
+        final Bundle originalBundle = new Bundle();
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHealthThermometerServiceCallback mockHealthThermometerServiceCallback = new MockHealthThermometerServiceCallback() {
+
+            @Override
+            public void onIntermediateTemperatureClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                isCalled.set(true);
+            }
+
+        };
+        HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, mockHealthThermometerServiceCallback, null);
+        healthThermometerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    public void test_onDescriptorReadTimeout_00103() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = HEALTH_THERMOMETER_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final long originalTimeout = 4;
+        final Bundle originalBundle = new Bundle();
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHealthThermometerServiceCallback mockHealthThermometerServiceCallback = new MockHealthThermometerServiceCallback() {
+
+            @Override
+            public void onIntermediateTemperatureClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                isCalled.set(true);
+            }
+
+        };
+        HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, mockHealthThermometerServiceCallback, null);
+        healthThermometerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    public void test_onDescriptorReadTimeout_00104() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = HEALTH_THERMOMETER_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = INTERMEDIATE_TEMPERATURE_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
+        final long originalTimeout = 4;
+        final Bundle originalBundle = new Bundle();
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHealthThermometerServiceCallback mockHealthThermometerServiceCallback = new MockHealthThermometerServiceCallback() {
+
+            @Override
+            public void onIntermediateTemperatureClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                isCalled.set(true);
+            }
+
+        };
+        HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, mockHealthThermometerServiceCallback, null);
+        healthThermometerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    public void test_onDescriptorReadTimeout_00201() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = HEALTH_THERMOMETER_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = MEASUREMENT_INTERVAL_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final long originalTimeout = 4;
+        final Bundle originalBundle = new Bundle();
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHealthThermometerServiceCallback mockHealthThermometerServiceCallback = new MockHealthThermometerServiceCallback() {
+
+            @Override
+            public void onMeasurementIntervalClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                assertEquals(originalTaskId, taskId);
+                assertEquals(originalBluetoothDevice, bluetoothDevice);
+                assertEquals(originalServiceUUID, serviceUUID);
+                assertEquals(originalServiceInstanceId, serviceInstanceId);
+                assertEquals(originalCharacteristicUUID, characteristicUUID);
+                assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalTimeout, timeout);
+                assertEquals(originalBundle, argument);
+                isCalled.set(true);
+            }
+
+        };
+        HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, mockHealthThermometerServiceCallback, null);
+        healthThermometerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+
+        assertTrue(isCalled.get());
+    }
+
+    @Test
+    public void test_onDescriptorReadTimeout_00202() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = MEASUREMENT_INTERVAL_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final long originalTimeout = 4;
+        final Bundle originalBundle = new Bundle();
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHealthThermometerServiceCallback mockHealthThermometerServiceCallback = new MockHealthThermometerServiceCallback() {
+
+            @Override
+            public void onMeasurementIntervalClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                isCalled.set(true);
+            }
+
+        };
+        HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, mockHealthThermometerServiceCallback, null);
+        healthThermometerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    public void test_onDescriptorReadTimeout_00203() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = HEALTH_THERMOMETER_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final long originalTimeout = 4;
+        final Bundle originalBundle = new Bundle();
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHealthThermometerServiceCallback mockHealthThermometerServiceCallback = new MockHealthThermometerServiceCallback() {
+
+            @Override
+            public void onMeasurementIntervalClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                isCalled.set(true);
+            }
+
+        };
+        HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, mockHealthThermometerServiceCallback, null);
+        healthThermometerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    public void test_onDescriptorReadTimeout_00204() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = HEALTH_THERMOMETER_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = MEASUREMENT_INTERVAL_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
+        final long originalTimeout = 4;
+        final Bundle originalBundle = new Bundle();
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHealthThermometerServiceCallback mockHealthThermometerServiceCallback = new MockHealthThermometerServiceCallback() {
+
+            @Override
+            public void onMeasurementIntervalClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                isCalled.set(true);
+            }
+
+        };
+        HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, mockHealthThermometerServiceCallback, null);
+        healthThermometerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    public void test_onDescriptorReadTimeout_00301() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = HEALTH_THERMOMETER_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = MEASUREMENT_INTERVAL_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final UUID originalDescriptorUUID = VALID_RANGE_DESCRIPTOR;
+        final long originalTimeout = 4;
+        final Bundle originalBundle = new Bundle();
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHealthThermometerServiceCallback mockHealthThermometerServiceCallback = new MockHealthThermometerServiceCallback() {
+
+            @Override
+            public void onMeasurementIntervalValidRangeReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                assertEquals(originalTaskId, taskId);
+                assertEquals(originalBluetoothDevice, bluetoothDevice);
+                assertEquals(originalServiceUUID, serviceUUID);
+                assertEquals(originalServiceInstanceId, serviceInstanceId);
+                assertEquals(originalCharacteristicUUID, characteristicUUID);
+                assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalTimeout, timeout);
+                assertEquals(originalBundle, argument);
+                isCalled.set(true);
+            }
+
+        };
+        HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, mockHealthThermometerServiceCallback, null);
+        healthThermometerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+
+        assertTrue(isCalled.get());
+    }
+
+    @Test
+    public void test_onDescriptorReadTimeout_00302() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = GENERIC_ATTRIBUTE_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = MEASUREMENT_INTERVAL_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final UUID originalDescriptorUUID = VALID_RANGE_DESCRIPTOR;
+        final long originalTimeout = 4;
+        final Bundle originalBundle = new Bundle();
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHealthThermometerServiceCallback mockHealthThermometerServiceCallback = new MockHealthThermometerServiceCallback() {
+
+            @Override
+            public void onMeasurementIntervalValidRangeReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                isCalled.set(true);
+            }
+
+        };
+        HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, mockHealthThermometerServiceCallback, null);
+        healthThermometerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    public void test_onDescriptorReadTimeout_00303() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = HEALTH_THERMOMETER_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = BODY_SENSOR_LOCATION_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final UUID originalDescriptorUUID = VALID_RANGE_DESCRIPTOR;
+        final long originalTimeout = 4;
+        final Bundle originalBundle = new Bundle();
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHealthThermometerServiceCallback mockHealthThermometerServiceCallback = new MockHealthThermometerServiceCallback() {
+
+            @Override
+            public void onMeasurementIntervalValidRangeReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                isCalled.set(true);
+            }
+
+        };
+        HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, mockHealthThermometerServiceCallback, null);
+        healthThermometerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+
+        assertFalse(isCalled.get());
+    }
+
+    @Test
+    public void test_onDescriptorReadTimeout_00304() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = HEALTH_THERMOMETER_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = MEASUREMENT_INTERVAL_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
+        final long originalTimeout = 4;
+        final Bundle originalBundle = new Bundle();
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        MockHealthThermometerServiceCallback mockHealthThermometerServiceCallback = new MockHealthThermometerServiceCallback() {
+
+            @Override
+            public void onMeasurementIntervalValidRangeReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -4899,14 +5333,14 @@ public class HealthThermometerServiceTest {
     }
 
     @Test
-    public void test_stopHeartRateMeasurementNotification_000001() {
+    public void test_stopHeartRateMeasurementIndication_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(new MockBLEConnection(), new MockHealthThermometerServiceCallback(), null);
 
-        assertNull(healthThermometerService.stopHeartRateMeasurementNotification());
+        assertNull(healthThermometerService.stopHeartRateMeasurementIndication());
     }
 
     @Test
-    public void test_stopHeartRateMeasurementNotification_000002() {
+    public void test_stopHeartRateMeasurementIndication_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(new MockBLEConnection(), new MockHealthThermometerServiceCallback(), null) {
 
             @Override
@@ -4916,11 +5350,11 @@ public class HealthThermometerServiceTest {
 
         };
 
-        assertNull(healthThermometerService.stopHeartRateMeasurementNotification());
+        assertNull(healthThermometerService.stopHeartRateMeasurementIndication());
     }
 
     @Test
-    public void test_stopHeartRateMeasurementNotification_000003() {
+    public void test_stopHeartRateMeasurementIndication_000003() {
         final Integer originalTaskId = 1;
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
@@ -4939,7 +5373,7 @@ public class HealthThermometerServiceTest {
 
         };
 
-        Integer taskId = healthThermometerService.stopHeartRateMeasurementNotification();
+        Integer taskId = healthThermometerService.stopHeartRateMeasurementIndication();
         assertNotNull(taskId);
         assertEquals(originalTaskId, taskId);
     }

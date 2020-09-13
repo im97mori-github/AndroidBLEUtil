@@ -253,6 +253,9 @@
             <option value="$PROJECT_DIR$/service/tps" />
             <option value="$PROJECT_DIR$/service/tps/central" />
             <option value="$PROJECT_DIR$/service/tps/peripheral" />
+            <option value="$PROJECT_DIR$/service/wss" />
+            <option value="$PROJECT_DIR$/service/wss/central" />
+            <option value="$PROJECT_DIR$/service/wss/peripheral" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

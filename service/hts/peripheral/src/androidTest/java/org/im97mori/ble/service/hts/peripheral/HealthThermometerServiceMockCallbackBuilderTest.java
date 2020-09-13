@@ -161,7 +161,7 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_removeTemperatureMeasurement_00101() {
+    public void test_removeTemperatureMeasurement_00001() {
         IEEE_11073_20601_FLOAT temperatureMeasurementValueCelsius = new IEEE_11073_20601_FLOAT(new byte[]{20, 0, 0, 0}, 0);
         IEEE_11073_20601_FLOAT valueFahrenheit = new IEEE_11073_20601_FLOAT(new byte[]{0, 0, 0, 0}, 0);
 
@@ -184,7 +184,6 @@ public class HealthThermometerServiceMockCallbackBuilderTest {
         } catch (RuntimeException e) {
             exception = e;
         }
-
 
         assertNotNull(exception);
         assertEquals("no Temperature Measurement data", exception.getMessage());

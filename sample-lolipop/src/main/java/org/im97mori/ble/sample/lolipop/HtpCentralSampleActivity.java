@@ -131,7 +131,7 @@ public class HtpCentralSampleActivity extends BaseActivity implements View.OnCli
         } else if (R.id.start_indicate_temperature_measurement == item.getItemId()) {
             mHealthThermometerProfile.startTemperatureMeasurementIndication();
         } else if (R.id.stop_indicate_temperature_measurement == item.getItemId()) {
-            mHealthThermometerProfile.stopHeartRateMeasurementNotification();
+            mHealthThermometerProfile.stopHeartRateMeasurementIndication();
         } else if (R.id.read_temperature_type == item.getItemId()) {
             mHealthThermometerProfile.getTemperatureType();
         } else if (R.id.start_notify_intermediate_temperature == item.getItemId()) {

@@ -469,7 +469,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * @see HealthThermometerServiceCallback#onTemperatureMeasurementIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public synchronized Integer stopHeartRateMeasurementNotification() {
+    public synchronized Integer stopHeartRateMeasurementIndication() {
         Integer taskId = null;
         if (isStarted()) {
             Bundle bundle = new Bundle();

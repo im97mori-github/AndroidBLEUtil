@@ -173,13 +173,13 @@ public class HealthThermometerProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see HealthThermometerService#stopHeartRateMeasurementNotification()
+     * @see HealthThermometerService#stopHeartRateMeasurementIndication()
      */
     @Nullable
-    public synchronized Integer stopHeartRateMeasurementNotification() {
+    public synchronized Integer stopHeartRateMeasurementIndication() {
         Integer taskId = null;
         if (mHealthThermometerService != null) {
-            taskId = mHealthThermometerService.stopHeartRateMeasurementNotification();
+            taskId = mHealthThermometerService.stopHeartRateMeasurementIndication();
         }
         return taskId;
     }

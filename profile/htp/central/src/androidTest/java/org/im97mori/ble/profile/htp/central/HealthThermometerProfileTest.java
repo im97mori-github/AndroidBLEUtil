@@ -383,13 +383,13 @@ public class HealthThermometerProfileTest {
     }
 
     @Test
-    public void test_stopHeartRateMeasurementNotification_00001() {
+    public void test_stopHeartRateMeasurementIndication_00001() {
         HealthThermometerProfile heartRateProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        assertNull(heartRateProfile.stopHeartRateMeasurementNotification());
+        assertNull(heartRateProfile.stopHeartRateMeasurementIndication());
     }
 
     @Test
-    public void test_stopHeartRateMeasurementNotification_00002() {
+    public void test_stopHeartRateMeasurementIndication_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -422,7 +422,7 @@ public class HealthThermometerProfileTest {
             }
         };
         heartRateProfile.connect(MOCK_DEVICE);
-        assertNotNull(heartRateProfile.stopHeartRateMeasurementNotification());
+        assertNotNull(heartRateProfile.stopHeartRateMeasurementIndication());
         heartRateProfile.disconnect();
     }
 
