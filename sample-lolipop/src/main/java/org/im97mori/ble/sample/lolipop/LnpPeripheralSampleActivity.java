@@ -80,7 +80,6 @@ public class LnpPeripheralSampleActivity extends BaseActivity implements View.On
                 .addPositionQuality(new PositionQuality(new byte[]{0, 0}))
                 .addLNControlPoint(BluetoothGatt.GATT_SUCCESS
                         , 0
-                        , new byte[]{LNControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, 5, 6, 7}
                         , LNControlPoint.RESPONSE_VALUE_SUCCESS
                         , LNControlPoint.RESPONSE_VALUE_SUCCESS
                         , LNControlPoint.RESPONSE_VALUE_SUCCESS

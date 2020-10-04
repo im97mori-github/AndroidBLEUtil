@@ -29,7 +29,6 @@ public class LNControlPointCharacteristicDataTest {
                 , new ArrayList<DescriptorData>()
                 , 3
                 , 4
-                , new byte[]{5}
                 , 6
                 , 7
                 , 8
@@ -75,7 +74,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 3
                 , 4
-                , new byte[]{5}
                 , 6
                 , 7
                 , 8
@@ -126,7 +124,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 0
                 , 0
-                , new byte[0]
                 , 0
                 , firstCumulativeValueResponceValue
                 , 0
@@ -157,7 +154,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 0
                 , 0
-                , new byte[0]
                 , 0
                 , 0
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -188,7 +184,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 0
                 , 0
-                , new byte[0]
                 , 0
                 , 0
                 , 0
@@ -219,7 +214,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 0
                 , 0
-                , new byte[0]
                 , 0
                 , 0
                 , 0
@@ -250,7 +244,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 0
                 , 0
-                , new byte[0]
                 , 0
                 , 0
                 , 0
@@ -281,7 +274,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 0
                 , 0
-                , new byte[0]
                 , 0
                 , 0
                 , 0
@@ -312,7 +304,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 0
                 , 0
-                , new byte[0]
                 , 0
                 , 0
                 , 0
@@ -343,7 +334,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 0
                 , 0
-                , new byte[0]
                 , 0
                 , 0
                 , 0
@@ -374,7 +364,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 0
                 , 0
-                , new byte[0]
                 , 0
                 , 0
                 , 0
@@ -405,7 +394,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 0
                 , 0
-                , new byte[0]
                 , 0
                 , 0
                 , 0
@@ -433,7 +421,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 3
                 , 4
-                , new byte[]{5}
                 , 6
                 , 7
                 , 8
@@ -483,7 +470,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 3
                 , 4
-                , new byte[]{5}
                 , 6
                 , 7
                 , 8
@@ -532,7 +518,6 @@ public class LNControlPointCharacteristicDataTest {
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int responseCode = 3;
         long delay = 4;
-        byte[] data = new byte[]{5, 6};
         int notificationCount = 7;
         int setCumulativeValueResponceValue = 8;
         int maskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -551,7 +536,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , data
                 , notificationCount
                 , setCumulativeValueResponceValue
                 , maskLocationAndSpeedCharacteristicContentResponceValue
@@ -569,7 +553,7 @@ public class LNControlPointCharacteristicDataTest {
                         ^ Arrays.hashCode(descriptorDataList.toArray())
                         ^ Integer.valueOf(responseCode).hashCode()
                         ^ Long.valueOf(delay).hashCode()
-                        ^ Arrays.hashCode(data)
+                        ^ Arrays.hashCode(new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_RESPONSE_CODE, LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes())
                         ^ Integer.valueOf(notificationCount).hashCode()
                         ^ Arrays.hashCode((byte[]) null)
                         ^ Arrays.hashCode((byte[]) null)
@@ -594,7 +578,6 @@ public class LNControlPointCharacteristicDataTest {
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int responseCode = 3;
         long delay = 4;
-        byte[] data = new byte[]{5, 6};
         byte[] currentData = new byte[]{7, 8};
         byte[] temporaryData = new byte[]{9, 10};
         int notificationCount = 11;
@@ -615,7 +598,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , data
                 , notificationCount
                 , setCumulativeValueResponceValue
                 , maskLocationAndSpeedCharacteristicContentResponceValue
@@ -635,7 +617,7 @@ public class LNControlPointCharacteristicDataTest {
                         ^ Arrays.hashCode(descriptorDataList.toArray())
                         ^ Integer.valueOf(responseCode).hashCode()
                         ^ Long.valueOf(delay).hashCode()
-                        ^ Arrays.hashCode(data)
+                        ^ Arrays.hashCode(new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_RESPONSE_CODE, LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes())
                         ^ Integer.valueOf(notificationCount).hashCode()
                         ^ Arrays.hashCode(currentData)
                         ^ Arrays.hashCode(temporaryData)
@@ -660,7 +642,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -678,7 +659,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -696,7 +676,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -720,7 +699,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -740,7 +718,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -758,7 +735,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -782,7 +758,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -802,7 +777,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -820,7 +794,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -844,7 +817,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -865,7 +837,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -883,7 +854,6 @@ public class LNControlPointCharacteristicDataTest {
                 , secondDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -907,7 +877,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -927,7 +896,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -945,7 +913,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , secondResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -969,7 +936,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -989,7 +955,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1007,7 +972,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , secondResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1031,7 +995,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -1051,7 +1014,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1069,69 +1031,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , secondDelay
-                , firstData
-                , firstNotificationCount
-                , firstSetCumulativeValueResponceValue
-                , firstMaskLocationAndSpeedCharacteristicContentResponceValue
-                , firstNavigationControlResponceValue
-                , firstRequestNumberOfRoutesResponceValue
-                , firstRequestNumberOfRoutesResponceParameter
-                , firstRequestNameOfRouteResponceValue
-                , firstRequestNameOfRouteResponceParameter
-                , firstSelectRouteResponceValue
-                , firstSetFixRateResponceValue
-                , firstSetElevationResponceValue
-        );
-        assertNotEquals(result1, result2);
-    }
-
-    @Test
-    public void test_equals_00008() {
-        int firstProperty = 1;
-        int firstPermission = 2;
-        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
-        int firstResponseCode = 3;
-        long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponceValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
-        int firstNavigationControlResponceValue = 10;
-        int firstRequestNumberOfRoutesResponceValue = 11;
-        byte[] firstRequestNumberOfRoutesResponceParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponceValue = 13;
-        byte[] firstRequestNameOfRouteResponceParameter = new byte[]{14};
-        int firstSelectRouteResponceValue = 15;
-        int firstSetFixRateResponceValue = 16;
-        int firstSetElevationResponceValue = 17;
-
-        byte[] secondData = new byte[]{55, 66};
-
-        LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(firstProperty
-                , firstPermission
-                , firstDescriptorDataList
-                , firstResponseCode
-                , firstDelay
-                , firstData
-                , firstNotificationCount
-                , firstSetCumulativeValueResponceValue
-                , firstMaskLocationAndSpeedCharacteristicContentResponceValue
-                , firstNavigationControlResponceValue
-                , firstRequestNumberOfRoutesResponceValue
-                , firstRequestNumberOfRoutesResponceParameter
-                , firstRequestNameOfRouteResponceValue
-                , firstRequestNameOfRouteResponceParameter
-                , firstSelectRouteResponceValue
-                , firstSetFixRateResponceValue
-                , firstSetElevationResponceValue
-        );
-        LNControlPointCharacteristicData result2 = new LNControlPointCharacteristicData(firstProperty
-                , firstPermission
-                , firstDescriptorDataList
-                , firstResponseCode
-                , firstDelay
-                , secondData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1155,7 +1054,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -1175,7 +1073,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1193,7 +1090,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , secondNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1217,7 +1113,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -1237,7 +1132,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1255,7 +1149,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , secondSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1279,7 +1172,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -1299,7 +1191,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1317,7 +1208,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , secondMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1341,7 +1231,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -1361,7 +1250,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1379,7 +1267,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1403,7 +1290,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -1423,7 +1309,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1441,7 +1326,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1465,7 +1349,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -1485,7 +1368,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1503,7 +1385,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1527,7 +1408,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -1547,7 +1427,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1565,7 +1444,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1589,7 +1467,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -1609,7 +1486,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1627,7 +1503,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1651,7 +1526,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -1671,7 +1545,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1689,7 +1562,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1713,7 +1585,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -1733,7 +1604,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1751,7 +1621,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1775,7 +1644,6 @@ public class LNControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        byte[] firstData = new byte[]{5, 6};
         int firstNotificationCount = 7;
         int firstSetCumulativeValueResponceValue = 8;
         int firstMaskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -1795,7 +1663,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1813,7 +1680,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstData
                 , firstNotificationCount
                 , firstSetCumulativeValueResponceValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponceValue
@@ -1856,7 +1722,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , data
                 , notificationCount
                 , setCumulativeValueResponceValue
                 , maskLocationAndSpeedCharacteristicContentResponceValue
@@ -1868,6 +1733,7 @@ public class LNControlPointCharacteristicDataTest {
                 , selectRouteResponceValue
                 , setFixRateResponceValue
                 , setElevationResponceValue);
+        result1.currentData = data;
 
         byte[] result2 = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, setCumulativeValueResponceValue, new byte[0]).getBytes();
         assertArrayEquals(result2, result1.getBytes());
@@ -1900,7 +1766,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , data
                 , notificationCount
                 , setCumulativeValueResponceValue
                 , maskLocationAndSpeedCharacteristicContentResponceValue
@@ -1912,6 +1777,7 @@ public class LNControlPointCharacteristicDataTest {
                 , selectRouteResponceValue
                 , setFixRateResponceValue
                 , setElevationResponceValue);
+        result1.currentData = data;
 
         byte[] result2 = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, maskLocationAndSpeedCharacteristicContentResponceValue, new byte[0]).getBytes();
         assertArrayEquals(result2, result1.getBytes());
@@ -1944,7 +1810,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , data
                 , notificationCount
                 , setCumulativeValueResponceValue
                 , maskLocationAndSpeedCharacteristicContentResponceValue
@@ -1956,6 +1821,7 @@ public class LNControlPointCharacteristicDataTest {
                 , selectRouteResponceValue
                 , setFixRateResponceValue
                 , setElevationResponceValue);
+        result1.currentData = data;
 
         byte[] result2 = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_NAVIGATION_CONTROL, navigationControlResponceValue, new byte[0]).getBytes();
         assertArrayEquals(result2, result1.getBytes());
@@ -1988,7 +1854,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , data
                 , notificationCount
                 , setCumulativeValueResponceValue
                 , maskLocationAndSpeedCharacteristicContentResponceValue
@@ -2000,6 +1865,7 @@ public class LNControlPointCharacteristicDataTest {
                 , selectRouteResponceValue
                 , setFixRateResponceValue
                 , setElevationResponceValue);
+        result1.currentData = data;
 
         byte[] result2 = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_REQUEST_NUMBER_OF_ROUTES, requestNumberOfRoutesResponceValue, requestNumberOfRoutesResponceParameter).getBytes();
         assertArrayEquals(result2, result1.getBytes());
@@ -2032,7 +1898,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , data
                 , notificationCount
                 , setCumulativeValueResponceValue
                 , maskLocationAndSpeedCharacteristicContentResponceValue
@@ -2044,6 +1909,7 @@ public class LNControlPointCharacteristicDataTest {
                 , selectRouteResponceValue
                 , setFixRateResponceValue
                 , setElevationResponceValue);
+        result1.currentData = data;
 
         byte[] result2 = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_REQUEST_NAME_OF_ROUTE, requestNameOfRouteResponceValue, requestNameOfRouteResponceParameter).getBytes();
         assertArrayEquals(result2, result1.getBytes());
@@ -2076,7 +1942,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , data
                 , notificationCount
                 , setCumulativeValueResponceValue
                 , maskLocationAndSpeedCharacteristicContentResponceValue
@@ -2088,6 +1953,7 @@ public class LNControlPointCharacteristicDataTest {
                 , selectRouteResponceValue
                 , setFixRateResponceValue
                 , setElevationResponceValue);
+        result1.currentData = data;
 
         byte[] result2 = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_SELECT_ROUTE, selectRouteResponceValue, new byte[0]).getBytes();
         assertArrayEquals(result2, result1.getBytes());
@@ -2120,7 +1986,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , data
                 , notificationCount
                 , setCumulativeValueResponceValue
                 , maskLocationAndSpeedCharacteristicContentResponceValue
@@ -2132,6 +1997,7 @@ public class LNControlPointCharacteristicDataTest {
                 , selectRouteResponceValue
                 , setFixRateResponceValue
                 , setElevationResponceValue);
+        result1.currentData = data;
 
         byte[] result2 = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_SET_FIX_RATE, setFixRateResponceValue, new byte[0]).getBytes();
         assertArrayEquals(result2, result1.getBytes());
@@ -2164,7 +2030,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , data
                 , notificationCount
                 , setCumulativeValueResponceValue
                 , maskLocationAndSpeedCharacteristicContentResponceValue
@@ -2176,6 +2041,7 @@ public class LNControlPointCharacteristicDataTest {
                 , selectRouteResponceValue
                 , setFixRateResponceValue
                 , setElevationResponceValue);
+        result1.currentData = data;
 
         byte[] result2 = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_SET_ELEVATION, setElevationResponceValue, new byte[0]).getBytes();
         assertArrayEquals(result2, result1.getBytes());
@@ -2208,7 +2074,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , data
                 , notificationCount
                 , setCumulativeValueResponceValue
                 , maskLocationAndSpeedCharacteristicContentResponceValue
@@ -2220,6 +2085,7 @@ public class LNControlPointCharacteristicDataTest {
                 , selectRouteResponceValue
                 , setFixRateResponceValue
                 , setElevationResponceValue);
+        result1.currentData = data;
 
         byte[] result2 = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_RESPONSE_CODE, LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes();
         assertArrayEquals(result2, result1.getBytes());
@@ -2233,7 +2099,6 @@ public class LNControlPointCharacteristicDataTest {
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int responseCode = 3;
         long delay = 4;
-        byte[] data = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], 0, 0, new byte[0]).getBytes();
         int notificationCount = 7;
         int setCumulativeValueResponceValue = 8;
         int maskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -2252,7 +2117,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , data
                 , notificationCount
                 , setCumulativeValueResponceValue
                 , maskLocationAndSpeedCharacteristicContentResponceValue
@@ -2297,7 +2161,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , data
                 , notificationCount
                 , setCumulativeValueResponceValue
                 , maskLocationAndSpeedCharacteristicContentResponceValue
@@ -2309,6 +2172,7 @@ public class LNControlPointCharacteristicDataTest {
                 , selectRouteResponceValue
                 , setFixRateResponceValue
                 , setElevationResponceValue);
+        result1.currentData = data;
 
         byte[] result2 = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], -1, LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes();
         assertArrayEquals(result2, result1.getBytes());
@@ -2322,7 +2186,6 @@ public class LNControlPointCharacteristicDataTest {
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         int responseCode = 3;
         long delay = 4;
-        byte[] data = new LNControlPoint(LNControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, new byte[0], 0, 0, new byte[0]).getBytes();
         int notificationCount = 7;
         int setCumulativeValueResponceValue = 8;
         int maskLocationAndSpeedCharacteristicContentResponceValue = 9;
@@ -2341,7 +2204,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , data
                 , notificationCount
                 , setCumulativeValueResponceValue
                 , maskLocationAndSpeedCharacteristicContentResponceValue

@@ -111,11 +111,11 @@ public class HealthThermometerService extends AbstractCentralService {
             for (BluetoothGattService bluetoothGattService : serviceList) {
                 if (HEALTH_THERMOMETER_SERVICE.equals(bluetoothGattService.getUuid())) {
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(TEMPERATURE_TYPE_CHARACTERISTIC);
-                    if (bluetoothGattCharacteristic != null && (BluetoothGattCharacteristic.PROPERTY_READ & bluetoothGattCharacteristic.getProperties()) != 0) {
+                    if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
                         mIsTemperatureTypeCharacteristicSupporeted = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(INTERMEDIATE_TEMPERATURE_CHARACTERISTIC);
-                    if (bluetoothGattCharacteristic != null && (BluetoothGattCharacteristic.PROPERTY_NOTIFY & bluetoothGattCharacteristic.getProperties()) != 0) {
+                    if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_NOTIFY == bluetoothGattCharacteristic.getProperties()) {
                         mIsIntermediateTemperatureCharacteristicSupporeted = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(MEASUREMENT_INTERVAL_CHARACTERISTIC);

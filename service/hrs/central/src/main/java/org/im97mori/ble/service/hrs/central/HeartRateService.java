@@ -86,11 +86,11 @@ public class HeartRateService extends AbstractCentralService {
             for (BluetoothGattService bluetoothGattService : serviceList) {
                 if (HEART_RATE_SERVICE.equals(bluetoothGattService.getUuid())) {
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(BODY_SENSOR_LOCATION_CHARACTERISTIC);
-                    if (bluetoothGattCharacteristic != null && (BluetoothGattCharacteristic.PROPERTY_READ & bluetoothGattCharacteristic.getProperties()) != 0) {
+                    if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
                         mIsBodySensorLocationCharacteristicSupporeted = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(HEART_RATE_CONTROL_POINT_CHARACTERISTIC);
-                    if (bluetoothGattCharacteristic != null && (BluetoothGattCharacteristic.PROPERTY_WRITE & bluetoothGattCharacteristic.getProperties()) != 0) {
+                    if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_WRITE == bluetoothGattCharacteristic.getProperties()) {
                         mIsHeartRateControlPointCharacteristicSupporeted = true;
                     }
                 }

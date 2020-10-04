@@ -44,6 +44,10 @@ dependencies {
     api "${groupId}:${serviceHrsCentralAndroid.artifactId}:${serviceHrsCentralAndroid.versionName}"
     api "${groupId}:${serviceHtsPeripheralAndroid.artifactId}:${serviceHtsPeripheralAndroid.versionName}"
     api "${groupId}:${serviceHtsCentralAndroid.artifactId}:${serviceHtsCentralAndroid.versionName}"
+    api "${groupId}:${serviceWssPeripheralAndroid.artifactId}:${serviceWssPeripheralAndroid.versionName}"
+    api "${groupId}:${serviceWssCentralAndroid.artifactId}:${serviceWssCentralAndroid.versionName}"
+    api "${groupId}:${serviceUdsPeripheralAndroid.artifactId}:${serviceUdsPeripheralAndroid.versionName}"
+    api "${groupId}:${serviceUdsCentralAndroid.artifactId}:${serviceUdsCentralAndroid.versionName}"
 }
 
 task sourcesJar(type: Jar) {

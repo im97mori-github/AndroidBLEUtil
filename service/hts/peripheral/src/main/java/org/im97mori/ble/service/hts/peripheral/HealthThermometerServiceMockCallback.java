@@ -16,7 +16,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEConstants;
-import org.im97mori.ble.BLEPeripheralLogUtils;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
@@ -383,17 +382,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
                 int characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
                 CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
                 if (characteristicData != null) {
-                    long delay = characteristicData.delay;
-                    do {
-                        long delta = SystemClock.elapsedRealtime() - now;
-                        if (delta < delay) {
-                            try {
-                                Thread.sleep(delay - delta);
-                            } catch (InterruptedException e) {
-                                BLEPeripheralLogUtils.stackLog(e);
-                            }
-                        }
-                    } while (now + delay > SystemClock.elapsedRealtime());
+                    delay(now, characteristicData.delay);
 
                     int responseCode = characteristicData.responseCode;
                     MeasurementInterval measurementInterval = new MeasurementInterval(value);
@@ -435,7 +424,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
                                                         , descriptorDataEntry.getKey().second
                                                         , 0
                                                         , null
-                                                );
+                                                        , null);
                                             }
                                             break;
                                         }
@@ -459,7 +448,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
                                             , descriptorDataEntry.getKey().second
                                             , 0
                                             , null
-                                    );
+                                            , null);
                                     break;
                                 }
                             }
@@ -510,13 +499,14 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
                                             , characteristicInstanceId
                                             , descriptorInstanceId
                                             , measurementInterval.getMeasurementInterval() * DateUtils.SECOND_IN_MILLIS
-                                            , notificationCount);
+                                            , notificationCount
+                                            , null);
                                 }
                                 break;
                             }
                         }
                     } else {
-                        startNotification(taskId, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, NOTIFICATION_INTERVAL, notificationCount);
+                        startNotification(taskId, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, NOTIFICATION_INTERVAL, notificationCount, null);
                     }
                 }
             }

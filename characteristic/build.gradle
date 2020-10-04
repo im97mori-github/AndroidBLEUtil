@@ -194,6 +194,7 @@ dependencies {
     api "${groupId}:${characteristicU2b1fAndroid.artifactId}:${characteristicU2b1fAndroid.versionName}"
     api "${groupId}:${characteristicU2b29Android.artifactId}:${characteristicU2b29Android.versionName}"
     api "${groupId}:${characteristicU2b2aAndroid.artifactId}:${characteristicU2b2aAndroid.versionName}"
+    api "${groupId}:${characteristicU2b37Android.artifactId}:${characteristicU2b37Android.versionName}"
 }
 
 publishing {

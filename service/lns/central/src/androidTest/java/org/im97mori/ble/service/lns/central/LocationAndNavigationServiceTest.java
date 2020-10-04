@@ -4623,8 +4623,7 @@ public class LocationAndNavigationServiceTest {
 
     @Test
     public void test_isPositionQualityCharacteristicSupporeted_00002() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null);
+        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(POSITION_QUALITY_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
@@ -4634,8 +4633,7 @@ public class LocationAndNavigationServiceTest {
 
     @Test
     public void test_isPositionQualityCharacteristicSupporeted_00003() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null);
+        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(POSITION_QUALITY_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
@@ -4653,8 +4651,7 @@ public class LocationAndNavigationServiceTest {
 
     @Test
     public void test_isLNControlPointCharacteristicSupporeted_00002() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null);
+        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LN_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
@@ -4666,8 +4663,7 @@ public class LocationAndNavigationServiceTest {
 
     @Test
     public void test_isLNControlPointCharacteristicSupporeted_00003() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null);
+        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LN_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
@@ -4687,8 +4683,7 @@ public class LocationAndNavigationServiceTest {
 
     @Test
     public void test_isNavigationCharacteristicSupporeted_00002() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null);
+        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(NAVIGATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
@@ -4700,8 +4695,7 @@ public class LocationAndNavigationServiceTest {
 
     @Test
     public void test_isNavigationCharacteristicSupporeted_00003() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null);
+        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(NAVIGATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
@@ -5036,6 +5030,52 @@ public class LocationAndNavigationServiceTest {
         LNControlPoint lnControlPoint = new LNControlPoint(new byte[]{0});
 
         Integer taskId = locationAndNavigationService.setLNControlPoint(lnControlPoint);
+        assertNotNull(taskId);
+        assertEquals(originalTaskId, taskId);
+    }
+
+    @Test
+    public void test_getLNControlPointClientCharacteristicConfiguration_000001() {
+        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null);
+
+        assertNull(locationAndNavigationService.getLNControlPointClientCharacteristicConfiguration());
+    }
+
+    @Test
+    public void test_getLNControlPointClientCharacteristicConfiguration_000002() {
+        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null) {
+
+            @Override
+            public boolean isStarted() {
+                return true;
+            }
+
+        };
+
+        assertNull(locationAndNavigationService.getLNControlPointClientCharacteristicConfiguration());
+    }
+
+    @Test
+    public void test_getLNControlPointClientCharacteristicConfiguration_000003() {
+        final Integer originalTaskId = 1;
+        MockBLEConnection mockBLEConnection = new MockBLEConnection() {
+
+            @Override
+            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+                return originalTaskId;
+            }
+
+        };
+        LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null) {
+
+            @Override
+            public boolean isStarted() {
+                return true;
+            }
+
+        };
+
+        Integer taskId = locationAndNavigationService.getLNControlPointClientCharacteristicConfiguration();
         assertNotNull(taskId);
         assertEquals(originalTaskId, taskId);
     }

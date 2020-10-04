@@ -15,7 +15,6 @@ import android.util.Pair;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEPeripheralLogUtils;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
@@ -213,17 +212,16 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
          *
          * @param characteristicResponseCode                             characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay                                    characteristic response delay(millis)
-         * @param characteristicValue                                    characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @param setCumulativeValueResponseValue                        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Cumulative Value response)
-         * @param maskLocationAndSpeedCharacteristicContentResponseValue characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Mask Location and Speed Characteristic Content response)
-         * @param navigationControlResponseValue                         characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Navigation Control response)
-         * @param requestNumberOfRoutesResponseValue                     part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Number of Routes response)
+         * @param setCumulativeValueResponseValue                        characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Cumulative Value response)
+         * @param maskLocationAndSpeedCharacteristicContentResponseValue characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Mask Location and Speed Characteristic Content response)
+         * @param navigationControlResponseValue                         characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Navigation Control response)
+         * @param requestNumberOfRoutesResponseValue                     characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Number of Routes response)
          * @param requestNumberOfRoutesResponseParameter                 part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Number of Routes)
-         * @param requestNameOfRouteResponseValue                        part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Name of Route response)
+         * @param requestNameOfRouteResponseValue                        characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Name of Route response)
          * @param requestNameOfRouteResponseParameter                    part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Name of Route)
-         * @param selectRouteResponseValue                               characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Select Route response)
-         * @param setFixRateResponseValue                                characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Fix Rate response)
-         * @param setElevationResponseValue                              characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Elevation response)
+         * @param selectRouteResponseValue                               characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Select Route response)
+         * @param setFixRateResponseValue                                characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Fix Rate response)
+         * @param setElevationResponseValue                              characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Elevation response)
          * @param descriptorResponseCode                                 descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay                                        characteristic response delay(millis)
          * @param descriptorValue                                        descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
@@ -232,7 +230,6 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
         @NonNull
         public Builder<T> addLNControlPoint(int characteristicResponseCode
                 , long characteristicDelay
-                , @NonNull byte[] characteristicValue
                 , int setCumulativeValueResponseValue
                 , int maskLocationAndSpeedCharacteristicContentResponseValue
                 , int navigationControlResponseValue
@@ -255,7 +252,6 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
                     , descriptorValue))
                     , characteristicResponseCode
                     , characteristicDelay
-                    , characteristicValue
                     , 1
                     , setCumulativeValueResponseValue
                     , maskLocationAndSpeedCharacteristicContentResponseValue
@@ -436,17 +432,7 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
                 int characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
                 CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
                 if (characteristicData != null) {
-                    long delay = characteristicData.delay;
-                    do {
-                        long delta = SystemClock.elapsedRealtime() - now;
-                        if (delta < delay) {
-                            try {
-                                Thread.sleep(delay - delta);
-                            } catch (InterruptedException e) {
-                                BLEPeripheralLogUtils.stackLog(e);
-                            }
-                        }
-                    } while (now + delay > SystemClock.elapsedRealtime());
+                    delay(now, characteristicData.delay);
 
                     if (responseNeeded) {
                         result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, null);
@@ -472,7 +458,7 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
                                     int descriptorInstanceId = parcel.readInt();
                                     parcel.recycle();
 
-                                    startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, characteristicData.delay, characteristicData.notificationCount);
+                                    startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, characteristicData.delay, characteristicData.notificationCount, null);
                                 }
                             }
                         }
@@ -514,18 +500,7 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
 
                 DescriptorData descriptorData = descriptorDataMap.get(descriptorPair);
                 if (descriptorData != null) {
-                    long delay = descriptorData.delay;
-                    do {
-                        long delta = SystemClock.elapsedRealtime() - now;
-                        if (delta < delay) {
-                            try {
-                                Thread.sleep(delay - delta);
-                            } catch (InterruptedException e) {
-                                BLEPeripheralLogUtils.stackLog(e);
-                            }
-                        }
-                    } while (now + delay > SystemClock.elapsedRealtime());
-
+                    delay(now, descriptorData.delay);
 
                     if (responseNeeded) {
                         result = bluetoothGattServer.sendResponse(device, requestId, descriptorData.responseCode, offset, null);
@@ -542,7 +517,7 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
                             descriptorData.currentData = value;
 
                             if (!LN_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                                startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, 0, null);
+                                startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, 0, null, null);
                             }
                         }
                     }

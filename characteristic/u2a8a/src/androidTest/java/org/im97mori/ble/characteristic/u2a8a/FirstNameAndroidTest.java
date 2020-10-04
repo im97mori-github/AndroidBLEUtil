@@ -2,7 +2,7 @@ package org.im97mori.ble.characteristic.u2a8a;
 
 import android.os.Parcel;
 
-import org.im97mori.ble.characteristic.core.RegisteredUser;
+import org.im97mori.ble.characteristic.u2b37.RegisteredUser;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;

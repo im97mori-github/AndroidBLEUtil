@@ -61,6 +61,11 @@ public abstract class BaseMockCallback implements BLEServerCallback {
     protected static final String KEY_DESCRIPTOR_INSTANCE_ID = "KEY_DESCRIPTOR_INSTANCE_ID";
 
     /**
+     * KEY:ORIGINAL_ARGUMENT
+     */
+    protected static final String KEY_ORIGINAL_ARGUMENT = "KEY_ORIGINAL_ARGUMENT";
+
+    /**
      * notification interval:1s
      */
     protected static final long NOTIFICATION_INTERVAL = 1000L;
@@ -322,17 +327,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                 int characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
                 CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
                 if (characteristicData != null) {
-                    long delay = characteristicData.delay;
-                    do {
-                        long delta = SystemClock.elapsedRealtime() - now;
-                        if (delta < delay) {
-                            try {
-                                Thread.sleep(delay - delta);
-                            } catch (InterruptedException e) {
-                                BLEPeripheralLogUtils.stackLog(e);
-                            }
-                        }
-                    } while (now + delay > SystemClock.elapsedRealtime());
+                    delay(now, characteristicData.delay);
 
                     byte[] data = characteristicData.getBytes();
                     result = bluetoothGattServer.sendResponse(device
@@ -382,17 +377,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                 int characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
                 CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
                 if (characteristicData != null) {
-                    long delay = characteristicData.delay;
-                    do {
-                        long delta = SystemClock.elapsedRealtime() - now;
-                        if (delta < delay) {
-                            try {
-                                Thread.sleep(delay - delta);
-                            } catch (InterruptedException e) {
-                                BLEPeripheralLogUtils.stackLog(e);
-                            }
-                        }
-                    } while (now + delay > SystemClock.elapsedRealtime());
+                    delay(now, characteristicData.delay);
 
                     if (responseNeeded) {
                         result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, null);
@@ -450,17 +435,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
 
                 DescriptorData descriptorData = descriptorDataMap.get(descriptorPair);
                 if (descriptorData != null) {
-                    long delay = descriptorData.delay;
-                    do {
-                        long delta = SystemClock.elapsedRealtime() - now;
-                        if (delta < delay) {
-                            try {
-                                Thread.sleep(delay - delta);
-                            } catch (InterruptedException e) {
-                                BLEPeripheralLogUtils.stackLog(e);
-                            }
-                        }
-                    } while (now + delay > SystemClock.elapsedRealtime());
+                    delay(now, descriptorData.delay);
 
                     byte[] data = descriptorData.getBytes();
                     result = bluetoothGattServer.sendResponse(device
@@ -516,18 +491,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
 
                 DescriptorData descriptorData = descriptorDataMap.get(descriptorPair);
                 if (descriptorData != null) {
-                    long delay = descriptorData.delay;
-                    do {
-                        long delta = SystemClock.elapsedRealtime() - now;
-                        if (delta < delay) {
-                            try {
-                                Thread.sleep(delay - delta);
-                            } catch (InterruptedException e) {
-                                BLEPeripheralLogUtils.stackLog(e);
-                            }
-                        }
-                    } while (now + delay > SystemClock.elapsedRealtime());
-
+                    delay(now, descriptorData.delay);
 
                     if (responseNeeded) {
                         result = bluetoothGattServer.sendResponse(device, requestId, descriptorData.responseCode, offset, null);
@@ -547,7 +511,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                             if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
                                 if (!Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.currentData)
                                         && Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, oldData)) {
-                                    startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, 0, null);
+                                    startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, 0, null, null);
                                 } else if (Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.currentData)
                                         && !Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, oldData)) {
                                     mActivatedNotificationMap.remove(new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId));
@@ -578,6 +542,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
      * @param descriptorInstanceId     target descriptor instance id
      * @param delay                    notification delay(millis)
      * @param notificationCount        notification / indication count. if {@code null}, default notification count is used
+     * @param argument                 callback argument
      * @see BLEServerConnection#createNotificationTask(BluetoothDevice, UUID, int, UUID, int, ByteArrayInterface, boolean, long, long, Bundle, BLEServerCallback)
      */
     protected synchronized void startNotification(@Nullable Integer taskId
@@ -589,7 +554,8 @@ public abstract class BaseMockCallback implements BLEServerCallback {
             , int characteristicInstanceId
             , int descriptorInstanceId
             , long delay
-            , @Nullable Integer notificationCount) {
+            , @Nullable Integer notificationCount
+            , @SuppressWarnings("SameParameterValue") @Nullable Bundle argument) {
 
         Map<Pair<UUID, Integer>, CharacteristicData> characteristicMap = mRemappedServiceCharacteristicMap.get(Pair.create(serviceUUID, serviceInstanceId));
         if (characteristicMap != null) {
@@ -598,6 +564,9 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                 Bundle bundle = new Bundle();
                 bundle.putInt(KEY_NOTIFICATION_COUNT, notificationCount == null ? characteristicData.notificationCount : notificationCount);
                 bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
+                if (argument != null) {
+                    bundle.putBundle(KEY_ORIGINAL_ARGUMENT, argument);
+                }
 
                 Boolean isConfirm = null;
                 Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
@@ -688,7 +657,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                     mActivatedNotificationMap.remove(new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId));
                 } else {
                     int descriptorInstanceId = argument.getInt(KEY_DESCRIPTOR_INSTANCE_ID, -1);
-                    startNotification(taskId, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, NOTIFICATION_INTERVAL, notificationCount);
+                    startNotification(taskId, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, NOTIFICATION_INTERVAL, notificationCount, null);
                 }
             }
         }
@@ -756,7 +725,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                                     if (characteristicData != null) {
                                         if (!Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.temporaryData)
                                                 && Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
-                                            startNotification(null, bleServerConnection, null, serviceEntry.getKey().first, serviceEntry.getKey().second, characteristicKey.first, characteristicKey.second, descriptorKey.second, 0, characteristicData.notificationCount);
+                                            startNotification(null, bleServerConnection, null, serviceEntry.getKey().first, serviceEntry.getKey().second, characteristicKey.first, characteristicKey.second, descriptorKey.second, 0, characteristicData.notificationCount, null);
                                         } else if (Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.temporaryData)
                                                 && !Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
                                             mActivatedNotificationMap.remove(new NotificationData(device, serviceEntry.getKey().first, serviceEntry.getKey().second, characteristicKey.first, characteristicKey.second));
@@ -783,6 +752,19 @@ public abstract class BaseMockCallback implements BLEServerCallback {
     @Override
     public boolean isFallback() {
         return mIsFallback;
+    }
+
+    protected void delay(long start, long duration) {
+        do {
+            long delta = SystemClock.elapsedRealtime() - start;
+            if (delta < duration) {
+                try {
+                    Thread.sleep(duration - delta);
+                } catch (InterruptedException e) {
+                    BLEPeripheralLogUtils.stackLog(e);
+                }
+            }
+        } while (start + duration > SystemClock.elapsedRealtime());
     }
 
 }

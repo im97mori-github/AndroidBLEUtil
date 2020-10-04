@@ -98,18 +98,18 @@ public class LocationAndNavigationService extends AbstractCentralService {
             for (BluetoothGattService bluetoothGattService : serviceList) {
                 if (LOCATION_AND_NAVIGATION_SERVICE.equals(bluetoothGattService.getUuid())) {
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(POSITION_QUALITY_CHARACTERISTIC);
-                    if (bluetoothGattCharacteristic != null && (BluetoothGattCharacteristic.PROPERTY_READ & bluetoothGattCharacteristic.getProperties()) != 0) {
+                    if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
                         mIsPositionQualityCharacteristicSupporeted = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(LN_CONTROL_POINT_CHARACTERISTIC);
-                    if (bluetoothGattCharacteristic != null && (BluetoothGattCharacteristic.PROPERTY_INDICATE & bluetoothGattCharacteristic.getProperties()) != 0) {
+                    if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_INDICATE == bluetoothGattCharacteristic.getProperties()) {
                         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
                         if (bluetoothGattDescriptor != null) {
                             mIsLNControlPointCharacteristicSupporeted = true;
                         }
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(NAVIGATION_CHARACTERISTIC);
-                    if (bluetoothGattCharacteristic != null && (BluetoothGattCharacteristic.PROPERTY_NOTIFY & bluetoothGattCharacteristic.getProperties()) != 0) {
+                    if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_NOTIFY == bluetoothGattCharacteristic.getProperties()) {
                         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
                         if (bluetoothGattDescriptor != null) {
                             mIsNavigationCharacteristicSupporeted = true;
@@ -483,6 +483,23 @@ public class LocationAndNavigationService extends AbstractCentralService {
         Integer taskId = null;
         if (isStarted() && isLNControlPointCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(LOCATION_AND_NAVIGATION_SERVICE, null, LN_CONTROL_POINT_CHARACTERISTIC, null, lnControlPoint, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
+        }
+        return taskId;
+    }
+
+    /**
+     * get LN Control Point's Client Characteristic Configuration
+     *
+     * @return task id. if {@code null} returned, service is not ready
+     * @see LocationAndNavigationServiceCallback#onLNControlPointClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see LocationAndNavigationServiceCallback#onLNControlPointClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
+     * @see LocationAndNavigationServiceCallback#onLNControlPointClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     */
+    @Nullable
+    public Integer getLNControlPointClientCharacteristicConfiguration() {
+        Integer taskId = null;
+        if (isStarted()) {
+            taskId = mBLEConnection.createReadDescriptorTask(LOCATION_AND_NAVIGATION_SERVICE, null, LN_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }

@@ -316,12 +316,11 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
         }
 
         /**
-         * @see org.im97mori.ble.service.lns.peripheral.LocationAndNavigationServiceMockCallback.Builder#addLNControlPoint(int, long, byte[], int, int, int, int, byte[], int, byte[], int, int, int, int, long, byte[])
+         * @see org.im97mori.ble.service.lns.peripheral.LocationAndNavigationServiceMockCallback.Builder#addLNControlPoint(int, long, int, int, int, int, byte[], int, byte[], int, int, int, int, long, byte[])
          */
         @NonNull
         public Builder<T> addLNControlPoint(int characteristicResponceCode
                 , long characteristicDelay
-                , @NonNull byte[] characteristicValue
                 , int setCumulativeValueResponceValue
                 , int maskLocationAndSpeedCharacteristicContentResponceValue
                 , int navigationControlResponceValue
@@ -337,7 +336,6 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
                 , @NonNull byte[] descriptorValue) {
             mLocationAndNavigationServiceMockCallbackBuilder.addLNControlPoint(characteristicResponceCode
                     , characteristicDelay
-                    , characteristicValue
                     , setCumulativeValueResponceValue
                     , maskLocationAndSpeedCharacteristicContentResponceValue
                     , navigationControlResponceValue

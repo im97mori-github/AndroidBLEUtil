@@ -1532,7 +1532,6 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
 
         ClientCharacteristicConfiguration navigationClientCharacteristicConfiguration = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
 
-        LNControlPoint lnControlPoint = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, LNControlPoint.RESPONSE_VALUE_SUCCESS, new byte[0]);
         int lnControlPointResponseCode = 1;
         long lnControlPointDelay = 2;
 
@@ -1557,7 +1556,6 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                     .addNavigation(navigation, navigationClientCharacteristicConfiguration)
                     .addLNControlPoint(lnControlPointResponseCode
                             , lnControlPointDelay
-                            , lnControlPoint.getBytes()
                             , LNControlPoint.RESPONSE_VALUE_SUCCESS
                             , LNControlPoint.RESPONSE_VALUE_SUCCESS
                             , LNControlPoint.RESPONSE_VALUE_SUCCESS
@@ -1659,7 +1657,6 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
         int navigationClientCharacteristicConfigurationResponseCode = 4;
         long navigationClientCharacteristicConfigurationDelay = 5;
 
-        LNControlPoint lnControlPoint = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, LNControlPoint.RESPONSE_VALUE_SUCCESS, new byte[0]);
         int lnControlPointResponseCode = 1;
         long lnControlPointDelay = 2;
 
@@ -1684,7 +1681,6 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                     .addNavigation(navigationResponseCode, navigationDelay, navigation.getBytes(), navigationNotificationCount, navigationClientCharacteristicConfigurationResponseCode, navigationClientCharacteristicConfigurationDelay, navigationClientCharacteristicConfiguration.getBytes())
                     .addLNControlPoint(lnControlPointResponseCode
                             , lnControlPointDelay
-                            , lnControlPoint.getBytes()
                             , LNControlPoint.RESPONSE_VALUE_SUCCESS
                             , LNControlPoint.RESPONSE_VALUE_SUCCESS
                             , LNControlPoint.RESPONSE_VALUE_SUCCESS
@@ -2231,7 +2227,6 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
 
         ClientCharacteristicConfiguration locationAndSpeedClientCharacteristicConfiguration = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
 
-        LNControlPoint lnControlPoint = new LNControlPoint(LNControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, new byte[0], 0, 0, new byte[0]);
         int lnControlPointResponseCode = 1;
         long lnControlPointDelay = 2;
 
@@ -2239,7 +2234,7 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
         int lnControlPointClientCharacteristicConfigurationResponseCode = 3;
         long lnControlPointClientCharacteristicConfigurationDelay = 4;
 
-        LNControlPoint resultLnControlPoint = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, LNControlPoint.RESPONSE_VALUE_SUCCESS, new byte[0]);
+        LNControlPoint resultLnControlPoint = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_RESPONSE_CODE, LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
@@ -2257,7 +2252,6 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                     .addLocationAndSpeed(locationAndSpeed, locationAndSpeedClientCharacteristicConfiguration)
                     .addLNControlPoint(lnControlPointResponseCode
                             , lnControlPointDelay
-                            , lnControlPoint.getBytes()
                             , LNControlPoint.RESPONSE_VALUE_SUCCESS
                             , LNControlPoint.RESPONSE_VALUE_SUCCESS
                             , LNControlPoint.RESPONSE_VALUE_SUCCESS
@@ -2359,7 +2353,6 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
         int navigationClientCharacteristicConfigurationResponseCode = 4;
         long navigationClientCharacteristicConfigurationDelay = 5;
 
-        LNControlPoint lnControlPoint = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, LNControlPoint.RESPONSE_VALUE_SUCCESS, new byte[0]);
         int lnControlPointResponseCode = 1;
         long lnControlPointDelay = 2;
 
@@ -2375,7 +2368,6 @@ public class LocationAndNavigationServiceMockCallbackBuilderTest {
                     .addNavigation(navigationResponseCode, navigationDelay, navigation.getBytes(), navigationNotificationCount, navigationClientCharacteristicConfigurationResponseCode, navigationClientCharacteristicConfigurationDelay, navigationClientCharacteristicConfiguration.getBytes())
                     .addLNControlPoint(lnControlPointResponseCode
                             , lnControlPointDelay
-                            , lnControlPoint.getBytes()
                             , LNControlPoint.RESPONSE_VALUE_SUCCESS
                             , LNControlPoint.RESPONSE_VALUE_SUCCESS
                             , LNControlPoint.RESPONSE_VALUE_SUCCESS

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
-import org.im97mori.ble.characteristic.core.RegisteredUser;
+import org.im97mori.ble.characteristic.u2b37.RegisteredUser;
 
 /**
  * Email Address (Characteristics UUID: 0x2A87)

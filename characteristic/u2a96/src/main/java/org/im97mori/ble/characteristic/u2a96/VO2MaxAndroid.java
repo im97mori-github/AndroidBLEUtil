@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.V_O2_MAX_CHARACTERISTIC;
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.VO2_MAX_CHARACTERISTIC;
 
 /**
  * VO2 Max (Characteristics UUID: 0x2A96)
@@ -44,7 +44,7 @@ public class VO2MaxAndroid extends VO2Max implements Parcelable {
          */
         @NonNull
         public VO2MaxAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(V_O2_MAX_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(VO2_MAX_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new VO2MaxAndroid(bluetoothGattCharacteristic);
         }
