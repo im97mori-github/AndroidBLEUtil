@@ -48,6 +48,8 @@ dependencies {
     api "${groupId}:${serviceWssCentralAndroid.artifactId}:${serviceWssCentralAndroid.versionName}"
     api "${groupId}:${serviceUdsPeripheralAndroid.artifactId}:${serviceUdsPeripheralAndroid.versionName}"
     api "${groupId}:${serviceUdsCentralAndroid.artifactId}:${serviceUdsCentralAndroid.versionName}"
+    api "${groupId}:${serviceBcsPeripheralAndroid.artifactId}:${serviceBcsPeripheralAndroid.versionName}"
+    api "${groupId}:${serviceBcsCentralAndroid.artifactId}:${serviceBcsCentralAndroid.versionName}"
 }
 
 task sourcesJar(type: Jar) {
