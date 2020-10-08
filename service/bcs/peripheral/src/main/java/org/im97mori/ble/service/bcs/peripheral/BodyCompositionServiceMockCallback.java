@@ -148,7 +148,6 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
             return this;
         }
 
-
         /**
          * {@inheritDoc}
          */

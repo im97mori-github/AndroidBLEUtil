@@ -21,6 +21,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("UnnecessaryLocalVariable")
 public class UDSCharacteristicDataTest {
 
     @Test

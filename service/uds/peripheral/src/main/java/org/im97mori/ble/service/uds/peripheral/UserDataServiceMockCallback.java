@@ -2525,7 +2525,8 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                     CharacteristicData characteristicData = udsCharacteristicData.getUserData(currentUserIndex);
 
                     if (characteristicData != null) {
-                        result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, characteristicData.getBytes());
+                        byte[] data = characteristicData.getBytes();
+                        result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, Arrays.copyOfRange(data, offset, data.length));
                     }
                 } else {
                     result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, null);

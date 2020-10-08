@@ -7,7 +7,7 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'com.android.tools.build:gradle:4.0.2'
         classpath 'digital.wup:android-maven-publish:3.6.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -1793,9 +1793,9 @@ ext.serviceUdsAndroid = [
 
 ext.serviceUdsPeripheralAndroid = [
         artifactId         : "ble-service-uds-peripheral-android"
-        , versionCode      : 1
-        , versionName      : '0.1.0'
-        , uploadVersionName: '0.1.0'
+        , versionCode      : 2
+        , versionName      : '0.1.1'
+        , uploadVersionName: '0.1.1'
 ]
 
 ext.serviceUdsCentralAndroid = [
@@ -1826,11 +1826,32 @@ ext.serviceBcsCentralAndroid = [
         , uploadVersionName: '0.1.0'
 ]
 
+ext.serviceCtsAndroid = [
+        artifactId         : "ble-service-cts-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.serviceCtsPeripheralAndroid = [
+        artifactId         : "ble-service-cts-peripheral-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.serviceCtsCentralAndroid = [
+        artifactId         : "ble-service-bcs-central-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
 ext.serviceAndroid = [
         artifactId         : "ble-service-android"
-        , versionCode      : 10
+        , versionCode      : 11
         , versionName      : '0.1.9'
-        , uploadVersionName: '0.1.9'
+        , uploadVersionName: '0.1.10'
 ]
 
 ext.profilePeripheralAndroid = [
