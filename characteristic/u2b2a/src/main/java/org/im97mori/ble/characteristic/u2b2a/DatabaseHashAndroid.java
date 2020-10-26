@@ -65,7 +65,6 @@ public class DatabaseHashAndroid extends DatabaseHash implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private DatabaseHashAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

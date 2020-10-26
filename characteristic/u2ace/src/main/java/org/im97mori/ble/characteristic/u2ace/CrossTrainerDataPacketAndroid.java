@@ -94,7 +94,6 @@ public class CrossTrainerDataPacketAndroid extends CrossTrainerDataPacket implem
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private CrossTrainerDataPacketAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

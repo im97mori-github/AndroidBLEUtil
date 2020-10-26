@@ -74,7 +74,6 @@ public class WindChillAndroid extends WindChill implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private WindChillAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

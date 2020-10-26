@@ -754,11 +754,16 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         return mIsFallback;
     }
 
+    /**
+     * @param start    {@link SystemClock#elapsedRealtime()}
+     * @param duration wait duration
+     */
     protected void delay(long start, long duration) {
         do {
             long delta = SystemClock.elapsedRealtime() - start;
             if (delta < duration) {
                 try {
+                    //noinspection BusyWait
                     Thread.sleep(duration - delta);
                 } catch (InterruptedException e) {
                     BLEPeripheralLogUtils.stackLog(e);

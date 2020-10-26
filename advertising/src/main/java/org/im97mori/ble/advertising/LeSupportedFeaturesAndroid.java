@@ -69,7 +69,6 @@ public class LeSupportedFeaturesAndroid extends LeSupportedFeatures implements A
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private LeSupportedFeaturesAndroid(Parcel in) {
         super(in.createByteArray(), 0, in.readInt());
     }

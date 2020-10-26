@@ -75,7 +75,6 @@ public class MagneticFluxDensity2DAndroid extends MagneticFluxDensity2D implemen
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private MagneticFluxDensity2DAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

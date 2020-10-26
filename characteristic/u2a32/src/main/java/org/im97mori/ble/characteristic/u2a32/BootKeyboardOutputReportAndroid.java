@@ -65,7 +65,6 @@ public class BootKeyboardOutputReportAndroid extends BootKeyboardOutputReport im
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private BootKeyboardOutputReportAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

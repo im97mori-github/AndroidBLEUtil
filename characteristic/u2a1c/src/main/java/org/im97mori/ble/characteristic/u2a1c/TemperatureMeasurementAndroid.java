@@ -84,7 +84,6 @@ public class TemperatureMeasurementAndroid extends TemperatureMeasurement implem
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private TemperatureMeasurementAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

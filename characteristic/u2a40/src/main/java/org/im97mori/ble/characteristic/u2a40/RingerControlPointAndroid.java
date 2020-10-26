@@ -74,7 +74,6 @@ public class RingerControlPointAndroid extends RingerControlPoint implements Par
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private RingerControlPointAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

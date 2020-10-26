@@ -74,7 +74,6 @@ public class RainfallAndroid extends Rainfall implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private RainfallAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

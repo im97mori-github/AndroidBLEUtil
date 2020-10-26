@@ -75,7 +75,6 @@ public class AnaerobicThresholdAndroid extends AnaerobicThreshold implements Par
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private AnaerobicThresholdAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

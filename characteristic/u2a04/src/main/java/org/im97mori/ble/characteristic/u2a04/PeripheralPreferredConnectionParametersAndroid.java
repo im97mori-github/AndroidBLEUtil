@@ -77,7 +77,6 @@ public class PeripheralPreferredConnectionParametersAndroid extends PeripheralPr
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private PeripheralPreferredConnectionParametersAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

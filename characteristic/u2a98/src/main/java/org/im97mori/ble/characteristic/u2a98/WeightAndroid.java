@@ -74,7 +74,6 @@ public class WeightAndroid extends Weight implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private WeightAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

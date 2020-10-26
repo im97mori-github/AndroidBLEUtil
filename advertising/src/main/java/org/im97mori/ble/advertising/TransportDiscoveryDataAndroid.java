@@ -68,7 +68,6 @@ public class TransportDiscoveryDataAndroid extends TransportDiscoveryData implem
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private TransportDiscoveryDataAndroid(@NonNull Parcel in) {
         super(in.createByteArray(), 0, in.readInt());
     }

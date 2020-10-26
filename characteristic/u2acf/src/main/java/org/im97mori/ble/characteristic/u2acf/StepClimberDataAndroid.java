@@ -62,7 +62,6 @@ public class StepClimberDataAndroid extends StepClimberData implements Parcelabl
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private StepClimberDataAndroid(@NonNull Parcel in) {
         super(new StepClimberDataPacketAndroid[]{StepClimberDataPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
     }

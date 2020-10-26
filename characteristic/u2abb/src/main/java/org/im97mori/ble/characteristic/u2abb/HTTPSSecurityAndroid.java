@@ -74,7 +74,6 @@ public class HTTPSSecurityAndroid extends HTTPSSecurity implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private HTTPSSecurityAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

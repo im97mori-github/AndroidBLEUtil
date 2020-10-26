@@ -74,7 +74,6 @@ public class WaistCircumferenceAndroid extends WaistCircumference implements Par
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private WaistCircumferenceAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

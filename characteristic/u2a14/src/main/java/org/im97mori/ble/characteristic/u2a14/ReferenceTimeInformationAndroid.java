@@ -77,7 +77,6 @@ public class ReferenceTimeInformationAndroid extends ReferenceTimeInformation im
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ReferenceTimeInformationAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

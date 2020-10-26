@@ -74,7 +74,6 @@ public class AlertLevelAndroid extends AlertLevel implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private AlertLevelAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

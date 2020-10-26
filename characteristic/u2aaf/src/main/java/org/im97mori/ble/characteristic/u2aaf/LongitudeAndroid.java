@@ -74,7 +74,6 @@ public class LongitudeAndroid extends Longitude implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private LongitudeAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

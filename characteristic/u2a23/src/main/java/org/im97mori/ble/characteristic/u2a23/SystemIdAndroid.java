@@ -75,7 +75,6 @@ public class SystemIdAndroid extends SystemId implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private SystemIdAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

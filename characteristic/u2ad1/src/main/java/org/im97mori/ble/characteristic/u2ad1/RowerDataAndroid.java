@@ -87,7 +87,6 @@ public class RowerDataAndroid extends RowerData implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private RowerDataAndroid(@NonNull Parcel in) {
         super(new RowerDataPacketAndroid[]{RowerDataPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
     }

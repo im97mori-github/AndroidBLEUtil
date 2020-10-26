@@ -77,7 +77,6 @@ public class FiveZoneHeartRateLimitsAndroid extends FiveZoneHeartRateLimits impl
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private FiveZoneHeartRateLimitsAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

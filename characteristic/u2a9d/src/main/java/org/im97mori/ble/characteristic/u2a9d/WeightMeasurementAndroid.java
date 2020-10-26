@@ -86,7 +86,6 @@ public class WeightMeasurementAndroid extends WeightMeasurement implements Parce
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private WeightMeasurementAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

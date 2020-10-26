@@ -78,7 +78,6 @@ public class FitnessMachineControlPointAndroid extends FitnessMachineControlPoin
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private FitnessMachineControlPointAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

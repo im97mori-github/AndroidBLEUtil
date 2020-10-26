@@ -195,20 +195,20 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
         }
 
         /**
-         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#removeBatteryLevel(int)
+         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#setBatteryLevelCharacteristicPresentationFormat(int, int, long, byte[])
          */
         @NonNull
         public Builder<T> setBatteryLevelCharacteristicPresentationFormat(int index, int responceCode, long delay, @NonNull byte[] value) {
-            mBatteryServiceMockCallbackBuilder.setCharacteristicPresentationFormat(index, responceCode, delay, value);
+            mBatteryServiceMockCallbackBuilder.setBatteryLevelCharacteristicPresentationFormat(index, responceCode, delay, value);
             return this;
         }
 
         /**
-         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#removeCharacteristicPresentationFormat(int)
+         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#removeBatteryLevelCharacteristicPresentationFormat(int)
          */
         @NonNull
         public Builder<T> removeBatteryLevelCharacteristicPresentationFormat(int index) {
-            mBatteryServiceMockCallbackBuilder.removeCharacteristicPresentationFormat(index);
+            mBatteryServiceMockCallbackBuilder.removeBatteryLevelCharacteristicPresentationFormat(index);
             return this;
         }
 
@@ -220,20 +220,20 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
         }
 
         /**
-         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#setClientCharacteristicConfiguration(int, int, long, byte[])
+         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#setBatteryLevelClientCharacteristicConfiguration(int, int, long, byte[])
          */
         @NonNull
         public Builder<T> setBatteryLevelClientCharacteristicConfiguration(int index, int responceCode, long delay, @NonNull byte[] value) {
-            mBatteryServiceMockCallbackBuilder.setClientCharacteristicConfiguration(index, responceCode, delay, value);
+            mBatteryServiceMockCallbackBuilder.setBatteryLevelClientCharacteristicConfiguration(index, responceCode, delay, value);
             return this;
         }
 
         /**
-         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#removeClientCharacteristicConfiguration(int)
+         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#removeBatteryLevelClientCharacteristicConfiguration(int)
          */
         @NonNull
         public Builder<T> removeBatteryLevelClientCharacteristicConfiguration(int index) {
-            mBatteryServiceMockCallbackBuilder.removeClientCharacteristicConfiguration(index);
+            mBatteryServiceMockCallbackBuilder.removeBatteryLevelClientCharacteristicConfiguration(index);
             return this;
         }
 

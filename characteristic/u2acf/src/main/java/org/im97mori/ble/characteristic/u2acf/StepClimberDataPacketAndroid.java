@@ -86,7 +86,6 @@ public class StepClimberDataPacketAndroid extends StepClimberDataPacket implemen
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private StepClimberDataPacketAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

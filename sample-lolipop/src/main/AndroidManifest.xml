@@ -49,41 +49,47 @@
                     android:name=".BlsCentralSampleActivity"
                     android:label="@string/label_bls_central" />-->
         <activity
-            android:name=".BlpPeripheralSampleActivity"
+            android:name=".blp.BlpPeripheralSampleActivity"
             android:label="@string/label_blp_peripheral" />
         <activity
-            android:name=".BlpCentralSampleActivity"
+            android:name=".blp.BlpCentralSampleActivity"
             android:label="@string/label_blp_central" />
         <activity
-            android:name=".LnpPeripheralSampleActivity"
+            android:name=".lnp.LnpPeripheralSampleActivity"
             android:label="@string/label_lnp_peripheral" />
         <activity
-            android:name=".LnpCentralSampleActivity"
+            android:name=".lnp.LnpCentralSampleActivity"
             android:label="@string/label_lnp_central" />
         <activity
-            android:name=".FmpPeripheralSampleActivity"
+            android:name=".fmp.FmpPeripheralSampleActivity"
             android:label="@string/label_fmp_peripheral" />
         <activity
-            android:name=".FmpCentralSampleActivity"
+            android:name=".fmp.FmpCentralSampleActivity"
             android:label="@string/label_fmp_central" />
         <activity
-            android:name=".PxpPeripheralSampleActivity"
+            android:name=".pxp.PxpPeripheralSampleActivity"
             android:label="@string/label_pxp_peripheral" />
         <activity
-            android:name=".PxpCentralSampleActivity"
+            android:name=".pxp.PxpCentralSampleActivity"
             android:label="@string/label_pxp_central" />
         <activity
-            android:name=".HrpPeripheralSampleActivity"
+            android:name=".hrp.HrpPeripheralSampleActivity"
             android:label="@string/label_hrp_peripheral" />
         <activity
-            android:name=".HrpCentralSampleActivity"
+            android:name=".hrp.HrpCentralSampleActivity"
             android:label="@string/label_hrp_central" />
         <activity
-            android:name=".HtpPeripheralSampleActivity"
+            android:name=".htp.HtpPeripheralSampleActivity"
             android:label="@string/label_htp_peripheral" />
         <activity
-            android:name=".HtpCentralSampleActivity"
+            android:name=".htp.HtpCentralSampleActivity"
             android:label="@string/label_htp_central" />
+        <activity
+            android:name=".wsp.WspPeripheralSampleActivity"
+            android:label="@string/label_wsp_peripheral" />
+        <activity
+            android:name=".wsp.WspCentralSampleActivity"
+            android:label="@string/label_wsp_central" />
     </application>
 
 </manifest>

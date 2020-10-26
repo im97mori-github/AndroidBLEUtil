@@ -68,7 +68,6 @@ public class TxPowerLevelAndroid extends TxPowerLevel implements AdvertisingData
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private TxPowerLevelAndroid(@NonNull Parcel in) {
         super(in.createByteArray(), 0, in.readInt());
     }

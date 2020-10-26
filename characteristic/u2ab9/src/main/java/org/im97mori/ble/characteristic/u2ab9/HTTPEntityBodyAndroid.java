@@ -74,7 +74,6 @@ public class HTTPEntityBodyAndroid extends HTTPEntityBody implements Parcelable 
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private HTTPEntityBodyAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

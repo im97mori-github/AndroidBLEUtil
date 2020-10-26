@@ -76,7 +76,6 @@ public class DateOfBirthAndroid extends DateOfBirth implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private DateOfBirthAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

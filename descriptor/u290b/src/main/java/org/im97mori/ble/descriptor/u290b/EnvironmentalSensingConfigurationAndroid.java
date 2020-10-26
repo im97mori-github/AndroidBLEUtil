@@ -72,7 +72,6 @@ public class EnvironmentalSensingConfigurationAndroid extends EnvironmentalSensi
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private EnvironmentalSensingConfigurationAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

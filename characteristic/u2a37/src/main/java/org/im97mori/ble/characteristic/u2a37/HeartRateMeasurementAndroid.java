@@ -78,7 +78,6 @@ public class HeartRateMeasurementAndroid extends HeartRateMeasurement implements
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private HeartRateMeasurementAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

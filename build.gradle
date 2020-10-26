@@ -7,7 +7,7 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.2'
+        classpath 'com.android.tools.build:gradle:4.1.0'
         classpath 'digital.wup:android-maven-publish:3.6.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -1134,10 +1134,10 @@ ext.characteristicU2a9aAndroid = [
 
 ext.characteristicU2a9bAndroid = [
         artifactId         : "ble-characteristic-u2a9b-android"
-        , versionCode      : 3
-        , versionName      : '0.1.2'
-        , uploadVersionName: '0.1.2'
-        , baseModule       : "${groupId}:ble-characteristic-u2a9b:0.1.2"
+        , versionCode      : 4
+        , versionName      : '0.1.3'
+        , uploadVersionName: '0.1.3'
+        , baseModule       : "${groupId}:ble-characteristic-u2a9b:0.1.3"
 ]
 
 ext.characteristicU2a9cAndroid = [
@@ -1534,9 +1534,9 @@ ext.characteristicU2b37Android = [
 
 ext.characteristicAndroid = [
         artifactId         : "ble-characteristic-android"
-        , versionCode      : 6
-        , versionName      : '0.2.4'
-        , uploadVersionName: '0.2.4'
+        , versionCode      : 7
+        , versionName      : '0.2.5'
+        , uploadVersionName: '0.2.5'
 ]
 
 ext.handler = [
@@ -1555,9 +1555,9 @@ ext.central = [
 
 ext.peripheral = [
         artifactId         : 'ble-peripheral'
-        , versionCode      : 50
-        , versionName      : '0.2.23'
-        , uploadVersionName: '0.2.23'
+        , versionCode      : 51
+        , versionName      : '0.2.24'
+        , uploadVersionName: '0.2.24'
 ]
 
 ext.serviceCentralAndroid = [
@@ -1569,9 +1569,9 @@ ext.serviceCentralAndroid = [
 
 ext.servicePeripheralAndroid = [
         artifactId         : "ble-service-peripheral-android"
-        , versionCode      : 6
-        , versionName      : '0.1.5'
-        , uploadVersionName: '0.1.5'
+        , versionCode      : 7
+        , versionName      : '0.1.6'
+        , uploadVersionName: '0.1.6'
 ]
 
 ext.serviceDisAndroid = [
@@ -1583,9 +1583,9 @@ ext.serviceDisAndroid = [
 
 ext.serviceDisPeripheralAndroid = [
         artifactId         : "ble-service-dis-peripheral-android"
-        , versionCode      : 7
-        , versionName      : '0.1.6'
-        , uploadVersionName: '0.1.6'
+        , versionCode      : 8
+        , versionName      : '0.1.7'
+        , uploadVersionName: '0.1.7'
 ]
 
 ext.serviceDisCentralAndroid = [
@@ -1604,16 +1604,16 @@ ext.serviceBasAndroid = [
 
 ext.serviceBasPeripheralAndroid = [
         artifactId         : "ble-service-bas-peripheral-android"
-        , versionCode      : 7
-        , versionName      : '0.1.6'
-        , uploadVersionName: '0.1.6'
+        , versionCode      : 8
+        , versionName      : '0.1.7'
+        , uploadVersionName: '0.1.7'
 ]
 
 ext.serviceBasCentralAndroid = [
         artifactId         : "ble-service-bas-cental-android"
-        , versionCode      : 7
-        , versionName      : '0.1.6'
-        , uploadVersionName: '0.1.6'
+        , versionCode      : 8
+        , versionName      : '0.1.7'
+        , uploadVersionName: '0.1.7'
 ]
 
 ext.serviceBlsAndroid = [
@@ -1625,9 +1625,9 @@ ext.serviceBlsAndroid = [
 
 ext.serviceBlsPeripheralAndroid = [
         artifactId         : "ble-service-bls-peripheral-android"
-        , versionCode      : 7
-        , versionName      : '0.1.6'
-        , uploadVersionName: '0.1.6'
+        , versionCode      : 8
+        , versionName      : '0.1.7'
+        , uploadVersionName: '0.1.7'
 ]
 
 ext.serviceBlsCentralAndroid = [
@@ -1646,9 +1646,9 @@ ext.serviceLnsAndroid = [
 
 ext.serviceLnsPeripheralAndroid = [
         artifactId         : "ble-service-lns-peripheral-android"
-        , versionCode      : 5
-        , versionName      : '0.1.4'
-        , uploadVersionName: '0.1.4'
+        , versionCode      : 6
+        , versionName      : '0.1.5'
+        , uploadVersionName: '0.1.5'
 ]
 
 ext.serviceLnsCentralAndroid = [
@@ -1667,9 +1667,9 @@ ext.serviceIasAndroid = [
 
 ext.serviceIasPeripheralAndroid = [
         artifactId         : "ble-service-ias-peripheral-android"
-        , versionCode      : 4
-        , versionName      : '0.1.3'
-        , uploadVersionName: '0.1.3'
+        , versionCode      : 5
+        , versionName      : '0.1.4'
+        , uploadVersionName: '0.1.4'
 ]
 
 ext.serviceIasCentralAndroid = [
@@ -1688,16 +1688,16 @@ ext.serviceLlsAndroid = [
 
 ext.serviceLlsPeripheralAndroid = [
         artifactId         : "ble-service-lls-peripheral-android"
-        , versionCode      : 4
-        , versionName      : '0.1.3'
-        , uploadVersionName: '0.1.3'
+        , versionCode      : 5
+        , versionName      : '0.1.4'
+        , uploadVersionName: '0.1.4'
 ]
 
 ext.serviceLlsCentralAndroid = [
         artifactId         : "ble-service-lls-central-android"
-        , versionCode      : 4
-        , versionName      : '0.1.3'
-        , uploadVersionName: '0.1.3'
+        , versionCode      : 5
+        , versionName      : '0.1.4'
+        , uploadVersionName: '0.1.4'
 ]
 
 ext.serviceTpsAndroid = [
@@ -1709,9 +1709,9 @@ ext.serviceTpsAndroid = [
 
 ext.serviceTpsPeripheralAndroid = [
         artifactId         : "ble-service-tps-peripheral-android"
-        , versionCode      : 4
-        , versionName      : '0.1.3'
-        , uploadVersionName: '0.1.3'
+        , versionCode      : 5
+        , versionName      : '0.1.4'
+        , uploadVersionName: '0.1.4'
 ]
 
 ext.serviceTpsCentralAndroid = [
@@ -1730,9 +1730,9 @@ ext.serviceHrsAndroid = [
 
 ext.serviceHrsPeripheralAndroid = [
         artifactId         : "ble-service-hrs-peripheral-android"
-        , versionCode      : 3
-        , versionName      : '0.1.2'
-        , uploadVersionName: '0.1.2'
+        , versionCode      : 4
+        , versionName      : '0.1.3'
+        , uploadVersionName: '0.1.3'
 ]
 
 ext.serviceHrsCentralAndroid = [
@@ -1751,9 +1751,9 @@ ext.serviceHtsAndroid = [
 
 ext.serviceHtsPeripheralAndroid = [
         artifactId         : "ble-service-hts-peripheral-android"
-        , versionCode      : 2
-        , versionName      : '0.1.1'
-        , uploadVersionName: '0.1.1'
+        , versionCode      : 3
+        , versionName      : '0.1.2'
+        , uploadVersionName: '0.1.2'
 ]
 
 ext.serviceHtsCentralAndroid = [
@@ -1772,9 +1772,9 @@ ext.serviceWssAndroid = [
 
 ext.serviceWssPeripheralAndroid = [
         artifactId         : "ble-service-wss-peripheral-android"
-        , versionCode      : 2
-        , versionName      : '0.1.1'
-        , uploadVersionName: '0.1.1'
+        , versionCode      : 3
+        , versionName      : '0.1.2'
+        , uploadVersionName: '0.1.2'
 ]
 
 ext.serviceWssCentralAndroid = [
@@ -1793,9 +1793,9 @@ ext.serviceUdsAndroid = [
 
 ext.serviceUdsPeripheralAndroid = [
         artifactId         : "ble-service-uds-peripheral-android"
-        , versionCode      : 2
-        , versionName      : '0.1.1'
-        , uploadVersionName: '0.1.1'
+        , versionCode      : 3
+        , versionName      : '0.1.2'
+        , uploadVersionName: '0.1.2'
 ]
 
 ext.serviceUdsCentralAndroid = [
@@ -1814,16 +1814,16 @@ ext.serviceBcsAndroid = [
 
 ext.serviceBcsPeripheralAndroid = [
         artifactId         : "ble-service-bcs-peripheral-android"
-        , versionCode      : 1
-        , versionName      : '0.1.0'
-        , uploadVersionName: '0.1.0'
+        , versionCode      : 2
+        , versionName      : '0.1.1'
+        , uploadVersionName: '0.1.1'
 ]
 
 ext.serviceBcsCentralAndroid = [
         artifactId         : "ble-service-bcs-central-android"
-        , versionCode      : 1
-        , versionName      : '0.1.0'
-        , uploadVersionName: '0.1.0'
+        , versionCode      : 2
+        , versionName      : '0.1.1'
+        , uploadVersionName: '0.1.1'
 ]
 
 ext.serviceCtsAndroid = [
@@ -1835,13 +1835,13 @@ ext.serviceCtsAndroid = [
 
 ext.serviceCtsPeripheralAndroid = [
         artifactId         : "ble-service-cts-peripheral-android"
-        , versionCode      : 1
-        , versionName      : '0.1.0'
-        , uploadVersionName: '0.1.0'
+        , versionCode      : 2
+        , versionName      : '0.1.1'
+        , uploadVersionName: '0.1.1'
 ]
 
 ext.serviceCtsCentralAndroid = [
-        artifactId         : "ble-service-bcs-central-android"
+        artifactId         : "ble-service-cts-central-android"
         , versionCode      : 1
         , versionName      : '0.1.0'
         , uploadVersionName: '0.1.0'
@@ -1849,16 +1849,16 @@ ext.serviceCtsCentralAndroid = [
 
 ext.serviceAndroid = [
         artifactId         : "ble-service-android"
-        , versionCode      : 11
-        , versionName      : '0.1.9'
-        , uploadVersionName: '0.1.10'
+        , versionCode      : 12
+        , versionName      : '0.1.11'
+        , uploadVersionName: '0.1.11'
 ]
 
 ext.profilePeripheralAndroid = [
         artifactId         : "ble-profile-peripheral-android"
-        , versionCode      : 5
-        , versionName      : '0.1.4'
-        , uploadVersionName: '0.1.4'
+        , versionCode      : 6
+        , versionName      : '0.1.5'
+        , uploadVersionName: '0.1.5'
 ]
 
 ext.profileCentralAndroid = [
@@ -1877,9 +1877,9 @@ ext.profileBlpAndroid = [
 
 ext.profileBlpPeripheralAndroid = [
         artifactId         : "ble-profile-blp-peripheral-android"
-        , versionCode      : 7
-        , versionName      : '0.1.6'
-        , uploadVersionName: '0.1.6'
+        , versionCode      : 8
+        , versionName      : '0.1.7'
+        , uploadVersionName: '0.1.7'
 ]
 
 ext.profileBlpCentralAndroid = [
@@ -1898,16 +1898,16 @@ ext.profileLnpAndroid = [
 
 ext.profileLnpPeripheralAndroid = [
         artifactId         : "ble-profile-lnp-peripheral-android"
-        , versionCode      : 5
-        , versionName      : '0.1.4'
-        , uploadVersionName: '0.1.4'
+        , versionCode      : 6
+        , versionName      : '0.1.5'
+        , uploadVersionName: '0.1.5'
 ]
 
 ext.profileLnpCentralAndroid = [
         artifactId         : "ble-profile-lnp-central-android"
-        , versionCode      : 6
-        , versionName      : '0.1.5'
-        , uploadVersionName: '0.1.5'
+        , versionCode      : 7
+        , versionName      : '0.1.6'
+        , uploadVersionName: '0.1.6'
 ]
 
 ext.profileFmpAndroid = [
@@ -1919,9 +1919,9 @@ ext.profileFmpAndroid = [
 
 ext.profileFmpPeripheralAndroid = [
         artifactId         : "ble-profile-fmp-peripheral-android"
-        , versionCode      : 4
-        , versionName      : '0.1.3'
-        , uploadVersionName: '0.1.3'
+        , versionCode      : 5
+        , versionName      : '0.1.4'
+        , uploadVersionName: '0.1.4'
 ]
 
 ext.profileFmpCentralAndroid = [
@@ -1940,9 +1940,9 @@ ext.profilePxpAndroid = [
 
 ext.profilePxpPeripheralAndroid = [
         artifactId         : "ble-profile-pxp-peripheral-android"
-        , versionCode      : 4
-        , versionName      : '0.1.3'
-        , uploadVersionName: '0.1.3'
+        , versionCode      : 5
+        , versionName      : '0.1.4'
+        , uploadVersionName: '0.1.4'
 ]
 
 ext.profilePxpCentralAndroid = [
@@ -1961,9 +1961,9 @@ ext.profileHrpAndroid = [
 
 ext.profileHrpPeripheralAndroid = [
         artifactId         : "ble-profile-hrp-peripheral-android"
-        , versionCode      : 3
-        , versionName      : '0.1.2'
-        , uploadVersionName: '0.1.2'
+        , versionCode      : 4
+        , versionName      : '0.1.3'
+        , uploadVersionName: '0.1.3'
 ]
 
 ext.profileHrpCentralAndroid = [
@@ -1982,9 +1982,9 @@ ext.profileHtpAndroid = [
 
 ext.profileHtpPeripheralAndroid = [
         artifactId         : "ble-profile-htp-peripheral-android"
-        , versionCode      : 2
-        , versionName      : '0.1.1'
-        , uploadVersionName: '0.1.1'
+        , versionCode      : 3
+        , versionName      : '0.1.2'
+        , uploadVersionName: '0.1.2'
 ]
 
 ext.profileHtpCentralAndroid = [
@@ -1994,11 +1994,32 @@ ext.profileHtpCentralAndroid = [
         , uploadVersionName: '0.1.2'
 ]
 
+ext.profileWspAndroid = [
+        artifactId         : "ble-profile-wsp-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.profileWspPeripheralAndroid = [
+        artifactId         : "ble-profile-wsp-peripheral-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.profileWspCentralAndroid = [
+        artifactId         : "ble-profile-wsp-central-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
 ext.profileAndroid = [
         artifactId         : "ble-profile-android"
-        , versionCode      : 10
-        , versionName      : '0.1.9'
-        , uploadVersionName: '0.1.9'
+        , versionCode      : 11
+        , versionName      : '0.1.10'
+        , uploadVersionName: '0.1.10'
 ]
 
 ext.apiCoreAndroid = "${groupId}:${coreAndroid.artifactId}:${coreAndroid.versionName}"

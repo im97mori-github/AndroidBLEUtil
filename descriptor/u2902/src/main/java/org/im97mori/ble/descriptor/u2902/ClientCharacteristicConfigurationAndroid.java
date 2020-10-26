@@ -63,7 +63,6 @@ public class ClientCharacteristicConfigurationAndroid extends ClientCharacterist
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ClientCharacteristicConfigurationAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -75,7 +75,6 @@ public class TimeTriggerSettingAndroid extends TimeTriggerSetting implements Par
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private TimeTriggerSettingAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -80,7 +80,6 @@ public class SCControlPointAndroid extends SCControlPoint implements Parcelable 
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private SCControlPointAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

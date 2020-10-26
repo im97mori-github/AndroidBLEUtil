@@ -195,6 +195,15 @@ public class HeartRateProfile extends AbstractCentralProfile {
     }
 
     /**
+     * {@inheritDoc}
+     */
+    @Override
+    public synchronized void disconnect() {
+        mHasDeviceInformationService = false;
+        super.disconnect();
+    }
+
+    /**
      * create {@link DeviceInformationService} and {@link HeartRateService}
      *
      * @see #connect(BluetoothDevice)

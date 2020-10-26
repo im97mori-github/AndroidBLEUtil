@@ -68,7 +68,6 @@ public class IncompleteListOf128BitServiceUUIDsAndroid extends IncompleteListOf1
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private IncompleteListOf128BitServiceUUIDsAndroid(Parcel in) {
         super(in.createByteArray(), 0, in.readInt());
     }

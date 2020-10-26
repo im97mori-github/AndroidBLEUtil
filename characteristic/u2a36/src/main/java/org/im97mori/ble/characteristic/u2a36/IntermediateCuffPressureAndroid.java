@@ -90,7 +90,6 @@ public class IntermediateCuffPressureAndroid extends IntermediateCuffPressure im
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private IntermediateCuffPressureAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

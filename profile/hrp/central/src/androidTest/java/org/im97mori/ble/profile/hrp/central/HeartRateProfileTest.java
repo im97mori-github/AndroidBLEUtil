@@ -20,12 +20,16 @@ import org.im97mori.ble.service.dis.central.DeviceInformationService;
 import org.im97mori.ble.service.hrs.central.HeartRateService;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.im97mori.ble.BLEConstants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
+import static org.im97mori.ble.BLEConstants.ServiceUUID.GENERIC_ACCESS_SERVICE;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -72,6 +76,147 @@ public class HeartRateProfileTest {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         heartRateProfile.connect(MOCK_DEVICE);
         assertNotNull(heartRateProfile.hasDeviceInformationService());
+        heartRateProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasDeviceInformationService_00101() {
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        int taskId = 1;
+        List<BluetoothGattService> serviceList = new ArrayList<BluetoothGattService>();
+
+        HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
+        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
+        Boolean hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
+        assertNotNull(hasDeviceInformationService);
+        assertFalse(hasDeviceInformationService);
+        heartRateProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasDeviceInformationService_00102() {
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        int taskId = 1;
+        List<BluetoothGattService> serviceList = new ArrayList<BluetoothGattService>();
+        serviceList.add(new BluetoothGattService(GENERIC_ACCESS_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
+
+        HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
+        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
+        Boolean hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
+        assertNotNull(hasDeviceInformationService);
+        assertFalse(hasDeviceInformationService);
+        heartRateProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasDeviceInformationService_00103() {
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        int taskId = 1;
+        List<BluetoothGattService> serviceList = new ArrayList<BluetoothGattService>();
+        serviceList.add(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
+
+        HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
+        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
+        Boolean hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
+        assertNotNull(hasDeviceInformationService);
+        assertTrue(hasDeviceInformationService);
+        heartRateProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasDeviceInformationService_00104() {
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        int taskId = 1;
+        List<BluetoothGattService> serviceList = new ArrayList<BluetoothGattService>();
+        serviceList.add(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
+
+        HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
+        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
+        Boolean hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
+        assertNotNull(hasDeviceInformationService);
+        assertTrue(hasDeviceInformationService);
+        heartRateProfile.disconnect();
+        hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
+        assertNotNull(hasDeviceInformationService);
+        assertFalse(hasDeviceInformationService);
+    }
+
+    @Test
+    public void test_hasDeviceInformationService_00105() {
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        int taskId = 1;
+        List<BluetoothGattService> serviceList = new ArrayList<BluetoothGattService>();
+        serviceList.add(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
+
+        HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
+        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
+        Boolean hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
+        assertNotNull(hasDeviceInformationService);
+        assertTrue(hasDeviceInformationService);
+        heartRateProfile.disconnect();
+        hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
+        assertNotNull(hasDeviceInformationService);
+        assertFalse(hasDeviceInformationService);
+
+        serviceList.clear();
+        serviceList.add(new BluetoothGattService(GENERIC_ACCESS_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
+        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
+        hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
+        assertNotNull(hasDeviceInformationService);
+        assertFalse(hasDeviceInformationService);
+        heartRateProfile.disconnect();
+    }
+
+    @Test
+    public void test_hasDeviceInformationService_00106() {
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        int taskId = 1;
+        List<BluetoothGattService> serviceList = new ArrayList<BluetoothGattService>();
+        serviceList.add(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
+
+        HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
+        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
+        Boolean hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
+        assertNotNull(hasDeviceInformationService);
+        assertTrue(hasDeviceInformationService);
+        heartRateProfile.disconnect();
+        hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
+        assertNotNull(hasDeviceInformationService);
+        serviceList.clear();
+        serviceList.add(new BluetoothGattService(GENERIC_ACCESS_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
+        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
+        hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
+        assertNotNull(hasDeviceInformationService);
+        assertFalse(hasDeviceInformationService);
+        heartRateProfile.disconnect();
+
+        serviceList.clear();
+        serviceList.add(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
+        heartRateProfile.connect(MOCK_DEVICE);
+        heartRateProfile.onDiscoverServiceSuccess(taskId, MOCK_DEVICE, serviceList, null);
+        hasDeviceInformationService = heartRateProfile.hasDeviceInformationService();
+        assertNotNull(hasDeviceInformationService);
+        assertTrue(hasDeviceInformationService);
         heartRateProfile.disconnect();
     }
 

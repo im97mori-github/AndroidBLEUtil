@@ -68,7 +68,6 @@ public class AppearanceAndroid extends Appearance implements AdvertisingDataInte
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private AppearanceAndroid(@NonNull Parcel in) {
         super(in.createByteArray(), 0, in.readInt());
     }

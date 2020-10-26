@@ -69,7 +69,6 @@ public class ChannelMapUpdateIndicationAndroid extends ChannelMapUpdateIndicatio
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ChannelMapUpdateIndicationAndroid(@NonNull Parcel in) {
         super(in.createByteArray(), 0, in.readInt());
     }

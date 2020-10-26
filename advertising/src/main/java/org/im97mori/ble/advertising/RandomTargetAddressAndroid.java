@@ -68,7 +68,6 @@ public class RandomTargetAddressAndroid extends RandomTargetAddress implements A
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private RandomTargetAddressAndroid(@NonNull Parcel in) {
         super(in.createByteArray(), 0, in.readInt());
     }

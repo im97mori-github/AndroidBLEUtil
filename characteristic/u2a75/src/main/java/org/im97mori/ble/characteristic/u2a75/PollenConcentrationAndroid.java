@@ -74,7 +74,6 @@ public class PollenConcentrationAndroid extends PollenConcentration implements P
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private PollenConcentrationAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

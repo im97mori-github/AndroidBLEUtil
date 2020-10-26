@@ -456,7 +456,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
                     }
                 }
 
-                if (force && !result) {
+            if (force && !result && responseNeeded) {
                     result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
                 }
             }

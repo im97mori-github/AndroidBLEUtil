@@ -74,7 +74,6 @@ public class TxPowerLevelAndroid extends TxPowerLevel implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private TxPowerLevelAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

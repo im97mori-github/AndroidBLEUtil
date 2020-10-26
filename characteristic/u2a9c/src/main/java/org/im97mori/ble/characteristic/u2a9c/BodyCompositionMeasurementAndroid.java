@@ -93,7 +93,6 @@ public class BodyCompositionMeasurementAndroid extends BodyCompositionMeasuremen
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private BodyCompositionMeasurementAndroid(@NonNull Parcel in) {
         super(new BodyCompositionMeasurementPacketAndroid[]{BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
     }

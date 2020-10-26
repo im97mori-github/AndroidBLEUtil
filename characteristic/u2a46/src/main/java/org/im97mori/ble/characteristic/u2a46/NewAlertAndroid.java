@@ -76,7 +76,6 @@ public class NewAlertAndroid extends NewAlert implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private NewAlertAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

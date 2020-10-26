@@ -83,7 +83,6 @@ public class StairClimberDataAndroid extends StairClimberData implements Parcela
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private StairClimberDataAndroid(@NonNull Parcel in) {
         super(new StairClimberDataPacketAndroid[]{StairClimberDataPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
     }

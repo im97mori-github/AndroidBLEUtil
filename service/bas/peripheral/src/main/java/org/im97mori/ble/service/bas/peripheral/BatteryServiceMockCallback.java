@@ -99,11 +99,11 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
         }
 
         /**
-         * @see #setCharacteristicPresentationFormat(int, int, long, byte[])
+         * @see #setBatteryLevelCharacteristicPresentationFormat(int, int, long, byte[])
          */
         @NonNull
-        public Builder<T> setCharacteristicPresentationFormat(int index, CharacteristicPresentationFormat characteristicPresentationFormat) {
-            return setCharacteristicPresentationFormat(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicPresentationFormat.getBytes());
+        public Builder<T> setBatteryLevelCharacteristicPresentationFormat(int index, CharacteristicPresentationFormat characteristicPresentationFormat) {
+            return setBatteryLevelCharacteristicPresentationFormat(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicPresentationFormat.getBytes());
         }
 
         /**
@@ -116,7 +116,7 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> setCharacteristicPresentationFormat(int index, int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> setBatteryLevelCharacteristicPresentationFormat(int index, int responceCode, long delay, @NonNull byte[] value) {
             mCharacteristicPresentationFormatMap.put(index, new DescriptorData(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responceCode, delay, value));
             return this;
         }
@@ -128,16 +128,16 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> removeCharacteristicPresentationFormat(int index) {
+        public Builder<T> removeBatteryLevelCharacteristicPresentationFormat(int index) {
             mCharacteristicPresentationFormatMap.remove(index);
             return this;
         }
 
         /**
-         * @see #setClientCharacteristicConfiguration(int, int, long, byte[])
+         * @see #setBatteryLevelClientCharacteristicConfiguration(int, int, long, byte[])
          */
-        public Builder<T> setClientCharacteristicConfiguration(int index, ClientCharacteristicConfiguration clientCharacteristicConfiguration) {
-            return setClientCharacteristicConfiguration(index, BluetoothGatt.GATT_SUCCESS, 0, clientCharacteristicConfiguration.getBytes());
+        public Builder<T> setBatteryLevelClientCharacteristicConfiguration(int index, ClientCharacteristicConfiguration clientCharacteristicConfiguration) {
+            return setBatteryLevelClientCharacteristicConfiguration(index, BluetoothGatt.GATT_SUCCESS, 0, clientCharacteristicConfiguration.getBytes());
         }
 
         /**
@@ -150,7 +150,7 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> setClientCharacteristicConfiguration(int index, int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> setBatteryLevelClientCharacteristicConfiguration(int index, int responceCode, long delay, @NonNull byte[] value) {
             mClientCharacteristicConfigurationMap.put(index, new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, responceCode, delay, value));
             return this;
         }
@@ -162,7 +162,7 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> removeClientCharacteristicConfiguration(int index) {
+        public Builder<T> removeBatteryLevelClientCharacteristicConfiguration(int index) {
             mClientCharacteristicConfigurationMap.remove(index);
             return this;
         }

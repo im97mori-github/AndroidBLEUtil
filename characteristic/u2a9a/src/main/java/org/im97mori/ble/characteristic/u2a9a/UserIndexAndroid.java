@@ -74,7 +74,6 @@ public class UserIndexAndroid extends UserIndex implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private UserIndexAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

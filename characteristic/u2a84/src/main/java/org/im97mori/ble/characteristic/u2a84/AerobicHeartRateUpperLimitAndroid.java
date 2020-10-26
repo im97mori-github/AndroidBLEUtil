@@ -75,7 +75,6 @@ public class AerobicHeartRateUpperLimitAndroid extends AerobicHeartRateUpperLimi
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private AerobicHeartRateUpperLimitAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

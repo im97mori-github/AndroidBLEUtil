@@ -872,15 +872,19 @@ public class AbstractCentralServiceTest {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
         final UUID originalServiceUUID = UUID.randomUUID();
+        final Integer originalServiceInstanceId = 1;
         final UUID originalCharactersticUUID = UUID.randomUUID();
+        final Integer originalCharacteristicInstanceId = 2;
         final byte[] originalValues = new byte[]{4};
         MockBLECallback bleCallback = new MockBLECallback() {
 
             @Override
-            public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull byte[] values) {
+            public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values) {
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
+                assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharactersticUUID, characteristicUUID);
+                assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertArrayEquals(originalValues, values);
                 isCalled.set(true);
             }
@@ -889,7 +893,7 @@ public class AbstractCentralServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
 
-        testCentralService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalCharactersticUUID, originalValues);
+        testCentralService.onCharacteristicNotified(originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalValues);
         assertTrue(isCalled.get());
     }
 

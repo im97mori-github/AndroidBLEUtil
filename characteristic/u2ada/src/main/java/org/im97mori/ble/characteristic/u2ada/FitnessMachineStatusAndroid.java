@@ -75,7 +75,6 @@ public class FitnessMachineStatusAndroid extends FitnessMachineStatus implements
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private FitnessMachineStatusAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -374,6 +374,49 @@ public class BloodPressureProfileTest {
             }
         };
         bloodPressureProfile.connect(MOCK_DEVICE);
+        assertNull(bloodPressureProfile.getIntermediateCuffPressureClientCharacteristicConfiguration());
+        bloodPressureProfile.disconnect();
+    }
+
+    @Test
+    public void test_getIntermediateCuffPressureClientCharacteristicConfiguration_00003() {
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+
+            @Override
+            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+                return 1;
+            }
+        };
+        BLEConnectionHolder.clearInstance();
+        BLEConnectionHolder.addInstance(bleConnection, true);
+
+        BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()) {
+            @Override
+            public synchronized void createServices() {
+                if (mDeviceInformationService == null) {
+                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mBloodPressureProfileCallback, null);
+                }
+                if (mBloodPressureService == null) {
+                    mBloodPressureService = new BloodPressureService(mBLEConnection, mBloodPressureProfileCallback, null) {
+
+                        @Override
+                        public boolean isIntermediateCuffPressureSupported() {
+                            return true;
+                        }
+
+                        @Override
+                        public boolean isStarted() {
+                            return true;
+                        }
+
+                    };
+                }
+            }
+        };
+        bloodPressureProfile.connect(MOCK_DEVICE);
         assertNotNull(bloodPressureProfile.getIntermediateCuffPressureClientCharacteristicConfiguration());
         bloodPressureProfile.disconnect();
     }
@@ -418,6 +461,49 @@ public class BloodPressureProfileTest {
             }
         };
         bloodPressureProfile.connect(MOCK_DEVICE);
+        assertNull(bloodPressureProfile.startIntermediateCuffPressureNotification());
+        bloodPressureProfile.disconnect();
+    }
+
+    @Test
+    public void test_startIntermediateCuffPressureNotification_00003() {
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+
+            @Override
+            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+                return 1;
+            }
+        };
+        BLEConnectionHolder.clearInstance();
+        BLEConnectionHolder.addInstance(bleConnection, true);
+
+        BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()) {
+            @Override
+            public synchronized void createServices() {
+                if (mDeviceInformationService == null) {
+                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mBloodPressureProfileCallback, null);
+                }
+                if (mBloodPressureService == null) {
+                    mBloodPressureService = new BloodPressureService(mBLEConnection, mBloodPressureProfileCallback, null) {
+
+                        @Override
+                        public boolean isIntermediateCuffPressureSupported() {
+                            return true;
+                        }
+
+                        @Override
+                        public boolean isStarted() {
+                            return true;
+                        }
+
+                    };
+                }
+            }
+        };
+        bloodPressureProfile.connect(MOCK_DEVICE);
         assertNotNull(bloodPressureProfile.startIntermediateCuffPressureNotification());
         bloodPressureProfile.disconnect();
     }
@@ -451,6 +537,49 @@ public class BloodPressureProfileTest {
                 }
                 if (mBloodPressureService == null) {
                     mBloodPressureService = new BloodPressureService(mBLEConnection, mBloodPressureProfileCallback, null) {
+
+                        @Override
+                        public boolean isStarted() {
+                            return true;
+                        }
+
+                    };
+                }
+            }
+        };
+        bloodPressureProfile.connect(MOCK_DEVICE);
+        assertNull(bloodPressureProfile.stopIntermediateCuffPressureNotification());
+        bloodPressureProfile.disconnect();
+    }
+
+    @Test
+    public void test_stopIntermediateCuffPressureNotification_00003() {
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+
+            @Override
+            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+                return 1;
+            }
+        };
+        BLEConnectionHolder.clearInstance();
+        BLEConnectionHolder.addInstance(bleConnection, true);
+
+        BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()) {
+            @Override
+            public synchronized void createServices() {
+                if (mDeviceInformationService == null) {
+                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mBloodPressureProfileCallback, null);
+                }
+                if (mBloodPressureService == null) {
+                    mBloodPressureService = new BloodPressureService(mBLEConnection, mBloodPressureProfileCallback, null) {
+
+                        @Override
+                        public boolean isIntermediateCuffPressureSupported() {
+                            return true;
+                        }
 
                         @Override
                         public boolean isStarted() {

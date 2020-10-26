@@ -65,7 +65,6 @@ public class ReportMapAndroid extends ReportMap implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ReportMapAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

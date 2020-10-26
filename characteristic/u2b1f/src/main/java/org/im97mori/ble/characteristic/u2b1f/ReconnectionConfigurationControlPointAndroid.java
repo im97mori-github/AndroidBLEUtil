@@ -81,7 +81,6 @@ public class ReconnectionConfigurationControlPointAndroid extends ReconnectionCo
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ReconnectionConfigurationControlPointAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

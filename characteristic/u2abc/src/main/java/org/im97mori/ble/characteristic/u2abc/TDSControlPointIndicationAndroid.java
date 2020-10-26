@@ -76,7 +76,6 @@ public class TDSControlPointIndicationAndroid extends TDSControlPointIndication 
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private TDSControlPointIndicationAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

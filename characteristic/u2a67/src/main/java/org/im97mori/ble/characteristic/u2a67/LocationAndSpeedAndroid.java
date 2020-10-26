@@ -87,7 +87,6 @@ public class LocationAndSpeedAndroid extends LocationAndSpeed implements Parcela
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private LocationAndSpeedAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

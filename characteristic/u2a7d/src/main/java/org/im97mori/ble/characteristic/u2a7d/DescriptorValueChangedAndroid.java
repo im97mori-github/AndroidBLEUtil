@@ -75,7 +75,6 @@ public class DescriptorValueChangedAndroid extends DescriptorValueChanged implem
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private DescriptorValueChangedAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

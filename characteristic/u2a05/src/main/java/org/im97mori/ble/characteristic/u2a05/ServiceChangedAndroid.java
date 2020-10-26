@@ -75,7 +75,6 @@ public class ServiceChangedAndroid extends ServiceChanged implements Parcelable 
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ServiceChangedAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

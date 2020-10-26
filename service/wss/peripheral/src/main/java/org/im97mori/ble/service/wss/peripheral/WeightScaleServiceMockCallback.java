@@ -118,6 +118,7 @@ public class WeightScaleServiceMockCallback extends AbstractServiceMockCallback 
          * @param characteristicResponceCode characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @param notificationCount          notification / indication count
          * @param descriptorResponceCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay            descritptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter

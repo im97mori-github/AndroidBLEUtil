@@ -76,7 +76,6 @@ public class BondManagementControlPointAndroid extends BondManagementControlPoin
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private BondManagementControlPointAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -76,7 +76,6 @@ public class SupportedNewAlertCategoryAndroid extends SupportedNewAlertCategory 
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private SupportedNewAlertCategoryAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -65,7 +65,6 @@ public class BodyCompositionFeatureAndroid extends BodyCompositionFeature implem
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private BodyCompositionFeatureAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

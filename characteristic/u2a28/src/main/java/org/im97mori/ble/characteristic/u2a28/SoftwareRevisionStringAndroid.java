@@ -74,7 +74,6 @@ public class SoftwareRevisionStringAndroid extends SoftwareRevisionString implem
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private SoftwareRevisionStringAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

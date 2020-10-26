@@ -74,7 +74,6 @@ public class FirmwareRevisionStringAndroid extends FirmwareRevisionString implem
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private FirmwareRevisionStringAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

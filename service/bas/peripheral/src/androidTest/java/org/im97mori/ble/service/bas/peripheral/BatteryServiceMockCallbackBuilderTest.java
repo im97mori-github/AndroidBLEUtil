@@ -209,7 +209,7 @@ public class BatteryServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_setCharacteristicPresentationFormat_00001() {
+    public void test_setBatteryLevelCharacteristicPresentationFormat_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
         CharacteristicPresentationFormat characteristicPresentationFormat = new CharacteristicPresentationFormat(4, 5, 6, CharacteristicPresentationFormat.NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS, new byte[]{7, 8});
@@ -222,7 +222,7 @@ public class BatteryServiceMockCallbackBuilderTest {
         };
         BatteryServiceMockCallback callback = new BatteryServiceMockCallback.Builder<>()
                 .addBatteryLevel(index1, BluetoothGattCharacteristic.PROPERTY_READ, 3, 4, new byte[]{5}, 6)
-                .setCharacteristicPresentationFormat(index1, characteristicPresentationFormat)
+                .setBatteryLevelCharacteristicPresentationFormat(index1, characteristicPresentationFormat)
                 .build();
         callback.setup(mockBLEServerConnection);
 
@@ -233,7 +233,7 @@ public class BatteryServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_setCharacteristicPresentationFormat_00002() {
+    public void test_setBatteryLevelCharacteristicPresentationFormat_00002() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
         int index2 = 11;
@@ -248,7 +248,7 @@ public class BatteryServiceMockCallbackBuilderTest {
         BatteryServiceMockCallback callback = new BatteryServiceMockCallback.Builder<>()
                 .addBatteryLevel(index1, BluetoothGattCharacteristic.PROPERTY_READ, 3, 4, new byte[]{5}, 6)
                 .addBatteryLevel(index2, BluetoothGattCharacteristic.PROPERTY_READ, 33, 44, new byte[]{55}, 66)
-                .setCharacteristicPresentationFormat(index1, characteristicPresentationFormat)
+                .setBatteryLevelCharacteristicPresentationFormat(index1, characteristicPresentationFormat)
                 .build();
         callback.setup(mockBLEServerConnection);
 
@@ -271,7 +271,7 @@ public class BatteryServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_setCharacteristicPresentationFormat_00101() {
+    public void test_setBatteryLevelCharacteristicPresentationFormat_00101() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
         CharacteristicPresentationFormat characteristicPresentationFormat = new CharacteristicPresentationFormat(4, 5, 6, CharacteristicPresentationFormat.NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS, new byte[]{7, 8});
@@ -284,7 +284,7 @@ public class BatteryServiceMockCallbackBuilderTest {
         };
         BatteryServiceMockCallback callback = new BatteryServiceMockCallback.Builder<>()
                 .addBatteryLevel(index1, BluetoothGattCharacteristic.PROPERTY_READ, 3, 4, new byte[]{5}, 6)
-                .setCharacteristicPresentationFormat(index1, 2, 3, characteristicPresentationFormat.getBytes())
+                .setBatteryLevelCharacteristicPresentationFormat(index1, 2, 3, characteristicPresentationFormat.getBytes())
                 .build();
         callback.setup(mockBLEServerConnection);
 
@@ -295,7 +295,7 @@ public class BatteryServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_setCharacteristicPresentationFormat_00102() {
+    public void test_setBatteryLevelCharacteristicPresentationFormat_00102() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
         int index2 = 11;
@@ -310,7 +310,7 @@ public class BatteryServiceMockCallbackBuilderTest {
         BatteryServiceMockCallback callback = new BatteryServiceMockCallback.Builder<>()
                 .addBatteryLevel(index1, BluetoothGattCharacteristic.PROPERTY_READ, 3, 4, new byte[]{5}, 6)
                 .addBatteryLevel(index2, BluetoothGattCharacteristic.PROPERTY_READ, 33, 44, new byte[]{55}, 66)
-                .setCharacteristicPresentationFormat(index1, 2, 3, characteristicPresentationFormat.getBytes())
+                .setBatteryLevelCharacteristicPresentationFormat(index1, 2, 3, characteristicPresentationFormat.getBytes())
                 .build();
         callback.setup(mockBLEServerConnection);
 
@@ -333,7 +333,7 @@ public class BatteryServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_removeCharacteristicPresentationFormat_00001() {
+    public void test_removeBatteryLevelCharacteristicPresentationFormat_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
         int index2 = 11;
@@ -348,8 +348,8 @@ public class BatteryServiceMockCallbackBuilderTest {
         BatteryServiceMockCallback callback = new BatteryServiceMockCallback.Builder<>()
                 .addBatteryLevel(index1, BluetoothGattCharacteristic.PROPERTY_READ, 3, 4, new byte[]{5}, 6)
                 .addBatteryLevel(index2, BluetoothGattCharacteristic.PROPERTY_READ, 33, 44, new byte[]{55}, 66)
-                .setCharacteristicPresentationFormat(index1, characteristicPresentationFormat)
-                .removeCharacteristicPresentationFormat(index1)
+                .setBatteryLevelCharacteristicPresentationFormat(index1, characteristicPresentationFormat)
+                .removeBatteryLevelCharacteristicPresentationFormat(index1)
                 .build();
         callback.setup(mockBLEServerConnection);
 
@@ -372,7 +372,7 @@ public class BatteryServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_setClientCharacteristicConfiguration_00001() {
+    public void test_setBatteryLevelClientCharacteristicConfiguration_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
         ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
@@ -385,7 +385,7 @@ public class BatteryServiceMockCallbackBuilderTest {
         };
         BatteryServiceMockCallback callback = new BatteryServiceMockCallback.Builder<>()
                 .addBatteryLevel(index1, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 3, 4, new byte[]{5}, 6)
-                .setClientCharacteristicConfiguration(index1, clientCharacteristicConfigurationAndroid)
+                .setBatteryLevelClientCharacteristicConfiguration(index1, clientCharacteristicConfigurationAndroid)
                 .build();
         callback.setup(mockBLEServerConnection);
 
@@ -400,7 +400,7 @@ public class BatteryServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_setClientCharacteristicConfiguration_00002() {
+    public void test_setBatteryLevelClientCharacteristicConfiguration_00002() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
         ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
@@ -413,7 +413,7 @@ public class BatteryServiceMockCallbackBuilderTest {
         };
         BatteryServiceMockCallback callback = new BatteryServiceMockCallback.Builder<>()
                 .addBatteryLevel(index1, BluetoothGattCharacteristic.PROPERTY_READ, 3, 4, new byte[]{5}, 6)
-                .setClientCharacteristicConfiguration(index1, clientCharacteristicConfigurationAndroid)
+                .setBatteryLevelClientCharacteristicConfiguration(index1, clientCharacteristicConfigurationAndroid)
                 .build();
         callback.setup(mockBLEServerConnection);
 
@@ -425,7 +425,7 @@ public class BatteryServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_setClientCharacteristicConfiguration_00003() {
+    public void test_setBatteryLevelClientCharacteristicConfiguration_00003() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
         ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
@@ -438,7 +438,7 @@ public class BatteryServiceMockCallbackBuilderTest {
         };
         BatteryServiceMockCallback callback = new BatteryServiceMockCallback.Builder<>()
                 .addBatteryLevel(index1, BluetoothGattCharacteristic.PROPERTY_READ, 3, 4, new byte[]{5}, 6)
-                .setClientCharacteristicConfiguration(index1 + 1, clientCharacteristicConfigurationAndroid)
+                .setBatteryLevelClientCharacteristicConfiguration(index1 + 1, clientCharacteristicConfigurationAndroid)
                 .build();
         callback.setup(mockBLEServerConnection);
 
@@ -450,7 +450,7 @@ public class BatteryServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_setClientCharacteristicConfiguration_00004() {
+    public void test_setBatteryLevelClientCharacteristicConfiguration_00004() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
@@ -478,7 +478,7 @@ public class BatteryServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_setClientCharacteristicConfiguration_00101() {
+    public void test_setBatteryLevelClientCharacteristicConfiguration_00101() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
         ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
@@ -491,7 +491,7 @@ public class BatteryServiceMockCallbackBuilderTest {
         };
         BatteryServiceMockCallback callback = new BatteryServiceMockCallback.Builder<>()
                 .addBatteryLevel(index1, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 3, 4, new byte[]{5}, 6)
-                .setClientCharacteristicConfiguration(index1, 77, 88, clientCharacteristicConfigurationAndroid.getBytes())
+                .setBatteryLevelClientCharacteristicConfiguration(index1, 77, 88, clientCharacteristicConfigurationAndroid.getBytes())
                 .build();
         callback.setup(mockBLEServerConnection);
 
@@ -506,7 +506,7 @@ public class BatteryServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_setClientCharacteristicConfiguration_00102() {
+    public void test_setBatteryLevelClientCharacteristicConfiguration_00102() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
         ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
@@ -519,7 +519,7 @@ public class BatteryServiceMockCallbackBuilderTest {
         };
         BatteryServiceMockCallback callback = new BatteryServiceMockCallback.Builder<>()
                 .addBatteryLevel(index1, BluetoothGattCharacteristic.PROPERTY_READ, 3, 4, new byte[]{5}, 6)
-                .setClientCharacteristicConfiguration(index1, 77, 88, clientCharacteristicConfigurationAndroid.getBytes())
+                .setBatteryLevelClientCharacteristicConfiguration(index1, 77, 88, clientCharacteristicConfigurationAndroid.getBytes())
                 .build();
         callback.setup(mockBLEServerConnection);
 
@@ -531,7 +531,7 @@ public class BatteryServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_setClientCharacteristicConfiguration_00103() {
+    public void test_setBatteryLevelClientCharacteristicConfiguration_00103() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
         ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
@@ -544,7 +544,7 @@ public class BatteryServiceMockCallbackBuilderTest {
         };
         BatteryServiceMockCallback callback = new BatteryServiceMockCallback.Builder<>()
                 .addBatteryLevel(index1, BluetoothGattCharacteristic.PROPERTY_READ, 3, 4, new byte[]{5}, 6)
-                .setClientCharacteristicConfiguration(index1 + 1, 77, 88, clientCharacteristicConfigurationAndroid.getBytes())
+                .setBatteryLevelClientCharacteristicConfiguration(index1 + 1, 77, 88, clientCharacteristicConfigurationAndroid.getBytes())
                 .build();
         callback.setup(mockBLEServerConnection);
 
@@ -556,7 +556,7 @@ public class BatteryServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_setClientCharacteristicConfiguration_00104() {
+    public void test_setBatteryLevelClientCharacteristicConfiguration_00104() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
@@ -584,7 +584,7 @@ public class BatteryServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_removeClientCharacteristicConfiguration_00001() {
+    public void test_removeBatteryLevelClientCharacteristicConfiguration_00001() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
         ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
@@ -597,8 +597,8 @@ public class BatteryServiceMockCallbackBuilderTest {
         };
         BatteryServiceMockCallback callback = new BatteryServiceMockCallback.Builder<>()
                 .addBatteryLevel(index1, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 3, 4, new byte[]{5}, 6)
-                .setClientCharacteristicConfiguration(index1, clientCharacteristicConfigurationAndroid)
-                .removeClientCharacteristicConfiguration(index1 + 1)
+                .setBatteryLevelClientCharacteristicConfiguration(index1, clientCharacteristicConfigurationAndroid)
+                .removeBatteryLevelClientCharacteristicConfiguration(index1 + 1)
                 .build();
         callback.setup(mockBLEServerConnection);
 
@@ -614,7 +614,7 @@ public class BatteryServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_removeClientCharacteristicConfiguration_00002() {
+    public void test_removeBatteryLevelClientCharacteristicConfiguration_00002() {
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         int index1 = 1;
         ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
@@ -627,8 +627,8 @@ public class BatteryServiceMockCallbackBuilderTest {
         };
         BatteryServiceMockCallback callback = new BatteryServiceMockCallback.Builder<>()
                 .addBatteryLevel(index1, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 3, 4, new byte[]{5}, 6)
-                .setClientCharacteristicConfiguration(index1, clientCharacteristicConfigurationAndroid)
-                .removeClientCharacteristicConfiguration(index1)
+                .setBatteryLevelClientCharacteristicConfiguration(index1, clientCharacteristicConfigurationAndroid)
+                .removeBatteryLevelClientCharacteristicConfiguration(index1)
                 .build();
         callback.setup(mockBLEServerConnection);
 

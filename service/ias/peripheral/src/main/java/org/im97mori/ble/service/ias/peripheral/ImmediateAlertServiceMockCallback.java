@@ -144,6 +144,7 @@ public class ImmediateAlertServiceMockCallback extends AbstractServiceMockCallba
      */
     @Override
     public synchronized boolean onCharacteristicWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value, boolean force) {
+        boolean result = false;
         BluetoothGattService bluetoothGattService = bluetoothGattCharacteristic.getService();
         UUID serviceUUID = bluetoothGattService.getUuid();
         UUID characteristicUUID = bluetoothGattCharacteristic.getUuid();
@@ -151,13 +152,15 @@ public class ImmediateAlertServiceMockCallback extends AbstractServiceMockCallba
             try {
                 AlertLevel alertLevel = new AlertLevel(value);
                 if (alertLevel.isAlertLevelHighAlert() || alertLevel.isAlertLevelMildAlert() || alertLevel.isAlertLevelNoAlert()) {
-                    super.onCharacteristicWriteRequest(bleServerConnection, device, requestId, bluetoothGattCharacteristic, preparedWrite, responseNeeded, offset, value, force);
+                    result = super.onCharacteristicWriteRequest(bleServerConnection, device, requestId, bluetoothGattCharacteristic, preparedWrite, responseNeeded, offset, value, force);
                 }
             } catch (Exception e) {
                 BLEPeripheralLogUtils.stackLog(e);
             }
+        } else {
+            result = super.onCharacteristicWriteRequest(bleServerConnection, device, requestId, bluetoothGattCharacteristic, preparedWrite, responseNeeded, offset, value, force);
         }
-        return true;
+        return result;
     }
 
     /**

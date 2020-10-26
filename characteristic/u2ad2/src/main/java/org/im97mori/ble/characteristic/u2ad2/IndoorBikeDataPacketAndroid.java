@@ -89,7 +89,6 @@ public class IndoorBikeDataPacketAndroid extends IndoorBikeDataPacket implements
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private IndoorBikeDataPacketAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

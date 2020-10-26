@@ -75,7 +75,6 @@ public class HTTPStatusCodeAndroid extends HTTPStatusCode implements Parcelable 
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private HTTPStatusCodeAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

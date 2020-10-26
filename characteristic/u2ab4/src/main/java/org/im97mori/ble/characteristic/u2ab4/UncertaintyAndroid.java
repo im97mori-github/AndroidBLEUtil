@@ -74,7 +74,6 @@ public class UncertaintyAndroid extends Uncertainty implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private UncertaintyAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

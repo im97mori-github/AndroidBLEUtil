@@ -74,7 +74,6 @@ public class ApparentWindDirectionAndroid extends ApparentWindDirection implemen
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ApparentWindDirectionAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

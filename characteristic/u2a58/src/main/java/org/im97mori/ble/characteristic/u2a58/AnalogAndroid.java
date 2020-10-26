@@ -65,7 +65,6 @@ public class AnalogAndroid extends Analog implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private AnalogAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

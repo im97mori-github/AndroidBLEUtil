@@ -76,7 +76,6 @@ public class CharacteristicPresentationFormatAndroid extends CharacteristicPrese
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private CharacteristicPresentationFormatAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }
