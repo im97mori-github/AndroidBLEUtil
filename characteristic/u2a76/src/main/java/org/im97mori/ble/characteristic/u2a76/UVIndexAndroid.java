@@ -73,7 +73,6 @@ public class UVIndexAndroid extends UVIndex implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private UVIndexAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -68,7 +68,6 @@ public class IndoorPositioningAndroid extends IndoorPositioning implements Adver
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private IndoorPositioningAndroid(@NonNull Parcel in) {
         super(in.createByteArray(), 0, in.readInt());
     }

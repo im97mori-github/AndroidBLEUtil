@@ -65,7 +65,6 @@ public class ClientSupportedFeaturesAndroid extends ClientSupportedFeatures impl
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ClientSupportedFeaturesAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

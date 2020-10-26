@@ -73,7 +73,6 @@ public class ServerCharacteristicConfigurationAndroid extends ServerCharacterist
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ServerCharacteristicConfigurationAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

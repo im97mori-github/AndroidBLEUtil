@@ -68,7 +68,6 @@ public class ServiceData32BitUUIDAndroid extends ServiceData32BitUUID implements
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ServiceData32BitUUIDAndroid(@NonNull Parcel in) {
         super(in.createByteArray(), 0, in.readInt());
     }

@@ -76,7 +76,6 @@ public class HIDInformationAndroid extends HIDInformation implements Parcelable 
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private HIDInformationAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -63,7 +63,6 @@ public class CharacteristicExtendedPropertiesAndroid extends CharacteristicExten
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private CharacteristicExtendedPropertiesAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -946,6 +946,7 @@ public class BLESyncConnection implements BLECallback {
             long end = SystemClock.elapsedRealtime() + duration;
             do {
                 try {
+                    //noinspection BusyWait
                     Thread.sleep(end - SystemClock.elapsedRealtime());
                 } catch (InterruptedException e) {
                     BLELogUtils.stackLog(e);

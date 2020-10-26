@@ -65,7 +65,6 @@ public class CyclingPowerFeatureAndroid extends CyclingPowerFeature implements P
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private CyclingPowerFeatureAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

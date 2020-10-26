@@ -74,7 +74,6 @@ public class TrueWindDirectionAndroid extends TrueWindDirection implements Parce
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private TrueWindDirectionAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

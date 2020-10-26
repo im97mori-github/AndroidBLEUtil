@@ -74,7 +74,6 @@ public class ManufacturerNameStringAndroid extends ManufacturerNameString implem
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ManufacturerNameStringAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

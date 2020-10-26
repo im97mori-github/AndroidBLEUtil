@@ -76,7 +76,6 @@ public class SupportedInclinationRangeAndroid extends SupportedInclinationRange 
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private SupportedInclinationRangeAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -65,7 +65,6 @@ public class BootMouseInputReportAndroid extends BootMouseInputReport implements
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private BootMouseInputReportAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -75,7 +75,6 @@ public class ValueTriggerSettingAndroid extends ValueTriggerSetting implements P
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ValueTriggerSettingAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

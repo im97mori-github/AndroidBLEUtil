@@ -76,7 +76,6 @@ public class RCSettingsAndroid extends RCSettings implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private RCSettingsAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -74,7 +74,6 @@ public class PeripheralPrivacyFlagAndroid extends PeripheralPrivacyFlag implemen
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private PeripheralPrivacyFlagAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

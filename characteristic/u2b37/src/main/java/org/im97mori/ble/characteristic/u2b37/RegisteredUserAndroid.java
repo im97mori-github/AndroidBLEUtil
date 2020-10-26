@@ -61,7 +61,6 @@ public class RegisteredUserAndroid extends RegisteredUser implements Parcelable 
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private RegisteredUserAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -13,7 +13,7 @@ import static org.im97mori.ble.BLEConstants.CharacteristicUUID.LOCAL_NORTH_COORD
 /**
  * Local North Coordinate (Characteristics UUID: 0x2AB0)
  */
-@SuppressWarnings({"WeakerAccess", "ConstantConditions"})
+@SuppressWarnings({"WeakerAccess"})
 public class LocalNorthCoordinateAndroid extends LocalNorthCoordinate implements Parcelable {
 
     /**

@@ -79,7 +79,6 @@ public class UserControlPointAndroid extends UserControlPoint implements Parcela
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private UserControlPointAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

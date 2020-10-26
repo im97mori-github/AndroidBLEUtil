@@ -92,7 +92,6 @@ public class TreadmillDataPacketAndroid extends TreadmillDataPacket implements P
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private TreadmillDataPacketAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

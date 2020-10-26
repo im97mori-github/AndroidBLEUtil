@@ -14,6 +14,7 @@ import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.characteristic.u2a19.BatteryLevelAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
 import org.im97mori.ble.descriptor.u2904.CharacteristicPresentationFormatAndroid;
+import org.im97mori.ble.service.bas.central.BatteryService;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -44,7 +45,7 @@ public class BatteryServiceTest {
         BatteryService batteryService = new BatteryService(mockBLEConnection, new MockBatteryServiceCallback(), null);
         batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertNull(batteryService.getCount());
+        assertNull(batteryService.getBatteryLevelCount());
     }
 
     @Test
@@ -54,7 +55,7 @@ public class BatteryServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertNull(batteryService.getCount());
+        assertNull(batteryService.getBatteryLevelCount());
     }
 
     @Test
@@ -64,7 +65,7 @@ public class BatteryServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
         batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertNull(batteryService.getCount());
+        assertNull(batteryService.getBatteryLevelCount());
     }
 
     @Test
@@ -79,8 +80,8 @@ public class BatteryServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
         batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertNotNull(batteryService.getCount());
-        assertEquals(1, batteryService.getCount().intValue());
+        assertNotNull(batteryService.getBatteryLevelCount());
+        assertEquals(1, batteryService.getBatteryLevelCount().intValue());
     }
 
     @Test
@@ -618,7 +619,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onBatteryLevelClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -661,7 +662,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onBatteryLevelClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -706,7 +707,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onBatteryLevelClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -741,7 +742,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onBatteryLevelClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -776,7 +777,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onBatteryLevelClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -804,7 +805,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onCharacteristicPresentationFormatReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicPresentationFormatAndroid characteristicPresentationFormatAndroid, @Nullable Bundle argument) {
+            public void onBatteryLevelCharacteristicPresentationFormatReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicPresentationFormatAndroid characteristicPresentationFormatAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -847,7 +848,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onCharacteristicPresentationFormatReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicPresentationFormatAndroid characteristicPresentationFormatAndroid, @Nullable Bundle argument) {
+            public void onBatteryLevelCharacteristicPresentationFormatReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicPresentationFormatAndroid characteristicPresentationFormatAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -892,7 +893,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onCharacteristicPresentationFormatReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicPresentationFormatAndroid characteristicPresentationFormatAndroid, @Nullable Bundle argument) {
+            public void onBatteryLevelCharacteristicPresentationFormatReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicPresentationFormatAndroid characteristicPresentationFormatAndroid, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -927,7 +928,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onCharacteristicPresentationFormatReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicPresentationFormatAndroid characteristicPresentationFormatAndroid, @Nullable Bundle argument) {
+            public void onBatteryLevelCharacteristicPresentationFormatReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicPresentationFormatAndroid characteristicPresentationFormatAndroid, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -962,7 +963,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onCharacteristicPresentationFormatReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicPresentationFormatAndroid characteristicPresentationFormatAndroid, @Nullable Bundle argument) {
+            public void onBatteryLevelCharacteristicPresentationFormatReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicPresentationFormatAndroid characteristicPresentationFormatAndroid, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -990,7 +991,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onBatteryLevelClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1033,7 +1034,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onBatteryLevelClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1078,7 +1079,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onBatteryLevelClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1113,7 +1114,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onBatteryLevelClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1148,7 +1149,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onBatteryLevelClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1176,7 +1177,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onCharacteristicPresentationFormatReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onBatteryLevelCharacteristicPresentationFormatReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1219,7 +1220,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onCharacteristicPresentationFormatReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onBatteryLevelCharacteristicPresentationFormatReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1264,7 +1265,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onCharacteristicPresentationFormatReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onBatteryLevelCharacteristicPresentationFormatReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1299,7 +1300,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onCharacteristicPresentationFormatReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onBatteryLevelCharacteristicPresentationFormatReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1334,7 +1335,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onCharacteristicPresentationFormatReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onBatteryLevelCharacteristicPresentationFormatReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1362,7 +1363,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onBatteryLevelClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1405,7 +1406,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onBatteryLevelClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1450,7 +1451,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onBatteryLevelClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1485,7 +1486,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onBatteryLevelClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1520,7 +1521,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onBatteryLevelClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1548,7 +1549,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onCharacteristicPresentationFormatReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onBatteryLevelCharacteristicPresentationFormatReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1591,7 +1592,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onCharacteristicPresentationFormatReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onBatteryLevelCharacteristicPresentationFormatReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1636,7 +1637,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onCharacteristicPresentationFormatReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onBatteryLevelCharacteristicPresentationFormatReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1671,7 +1672,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onCharacteristicPresentationFormatReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onBatteryLevelCharacteristicPresentationFormatReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1706,7 +1707,7 @@ public class BatteryServiceTest {
         MockBatteryServiceCallback mockBatteryServiceCallback = new MockBatteryServiceCallback() {
 
             @Override
-            public void onCharacteristicPresentationFormatReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onBatteryLevelCharacteristicPresentationFormatReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -3605,15 +3606,15 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_getCount_000001() {
+    public void test_getBatteryLevelCount_000001() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         BatteryService batteryService = new BatteryService(mockBLEConnection, new MockBatteryServiceCallback(), null);
 
-        assertNull(batteryService.getCount());
+        assertNull(batteryService.getBatteryLevelCount());
     }
 
     @Test
-    public void test_getCount_000002() {
+    public void test_getBatteryLevelCount_000002() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3622,12 +3623,12 @@ public class BatteryServiceTest {
             }
         };
 
-        assertNotNull(batteryService.getCount());
-        assertEquals(0, batteryService.getCount().intValue());
+        assertNotNull(batteryService.getBatteryLevelCount());
+        assertEquals(0, batteryService.getBatteryLevelCount().intValue());
     }
 
     @Test
-    public void test_getCount_000003() {
+    public void test_getBatteryLevelCount_000003() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3642,12 +3643,12 @@ public class BatteryServiceTest {
 
         batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertNotNull(batteryService.getCount());
-        assertEquals(1, batteryService.getCount().intValue());
+        assertNotNull(batteryService.getBatteryLevelCount());
+        assertEquals(1, batteryService.getBatteryLevelCount().intValue());
     }
 
     @Test
-    public void test_getCount_000004() {
+    public void test_getBatteryLevelCount_000004() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3662,8 +3663,8 @@ public class BatteryServiceTest {
 
         batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Arrays.asList(bluetoothGattService, bluetoothGattService), null);
 
-        assertNotNull(batteryService.getCount());
-        assertEquals(2, batteryService.getCount().intValue());
+        assertNotNull(batteryService.getBatteryLevelCount());
+        assertEquals(2, batteryService.getBatteryLevelCount().intValue());
     }
 
     @Test
@@ -3749,46 +3750,46 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_isNotificatable_000001() {
+    public void test_isBatteryLevelNotificatable_000001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
-            public synchronized boolean isNotificatable(int index) {
+            public synchronized boolean isBatteryLevelNotificatable(int index) {
                 originalIndex.set(index);
-                return super.isNotificatable(index);
+                return super.isBatteryLevelNotificatable(index);
             }
 
         };
 
-        assertFalse(batteryService.isNotificatable());
+        assertFalse(batteryService.isBatteryLevelNotificatable());
         assertEquals(0, originalIndex.get());
     }
 
     @Test
-    public void test_isNotificatable_000002() {
+    public void test_isBatteryLevelNotificatable_000002() {
         final boolean originaNotificatable = true;
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
-            public synchronized boolean isNotificatable(int index) {
+            public synchronized boolean isBatteryLevelNotificatable(int index) {
                 return originaNotificatable;
             }
 
         };
 
-        assertEquals(originaNotificatable, batteryService.isNotificatable());
+        assertEquals(originaNotificatable, batteryService.isBatteryLevelNotificatable());
     }
 
     @Test
-    public void test_isNotificatable_000101() {
+    public void test_isBatteryLevelNotificatable_000101() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null);
 
-        assertFalse(batteryService.isNotificatable(0));
+        assertFalse(batteryService.isBatteryLevelNotificatable(0));
     }
 
     @Test
-    public void test_isNotificatable_000102() {
+    public void test_isBatteryLevelNotificatable_000102() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3797,44 +3798,11 @@ public class BatteryServiceTest {
             }
         };
 
-        assertFalse(batteryService.isNotificatable(-1));
+        assertFalse(batteryService.isBatteryLevelNotificatable(-1));
     }
 
     @Test
-    public void test_isNotificatable_000103() {
-        BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
-
-            @Override
-            public boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        assertFalse(batteryService.isNotificatable(0));
-    }
-
-    @Test
-    public void test_isNotificatable_000104() {
-        BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
-
-            @Override
-            public boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-
-        assertFalse(batteryService.isNotificatable(0));
-    }
-
-    @Test
-    public void test_isNotificatable_000105() {
+    public void test_isBatteryLevelNotificatable_000103() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3847,13 +3815,46 @@ public class BatteryServiceTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
 
-        batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-
-        assertFalse(batteryService.isNotificatable(0));
+        assertFalse(batteryService.isBatteryLevelNotificatable(0));
     }
 
     @Test
-    public void test_isNotificatable_000106() {
+    public void test_isBatteryLevelNotificatable_000104() {
+        BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
+
+            @Override
+            public boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
+        batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+
+        assertFalse(batteryService.isBatteryLevelNotificatable(0));
+    }
+
+    @Test
+    public void test_isBatteryLevelNotificatable_000105() {
+        BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
+
+            @Override
+            public boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ);
+        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
+
+        batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+
+        assertFalse(batteryService.isBatteryLevelNotificatable(0));
+    }
+
+    @Test
+    public void test_isBatteryLevelNotificatable_000106() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3868,11 +3869,11 @@ public class BatteryServiceTest {
 
         batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(batteryService.isNotificatable(0));
+        assertFalse(batteryService.isBatteryLevelNotificatable(0));
     }
 
     @Test
-    public void test_isNotificatable_000107() {
+    public void test_isBatteryLevelNotificatable_000107() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3888,34 +3889,34 @@ public class BatteryServiceTest {
 
         batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(batteryService.isNotificatable(0));
+        assertTrue(batteryService.isBatteryLevelNotificatable(0));
     }
 
     @Test
-    public void test_getCharacteristicPresentationFormat_000001() {
+    public void test_getBatteryLevelCharacteristicPresentationFormat_000001() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null);
 
-        assertNull(batteryService.getCharacteristicPresentationFormat());
+        assertNull(batteryService.getBatteryLevelCharacteristicPresentationFormat());
     }
 
     @Test
-    public void test_getCharacteristicPresentationFormat_000002() {
+    public void test_getBatteryLevelCharacteristicPresentationFormat_000002() {
         final int originalTaskId = 1;
 
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
-            public synchronized Integer getCharacteristicPresentationFormat(int index) {
+            public synchronized Integer getBatteryLevelCharacteristicPresentationFormat(int index) {
                 return originalTaskId;
             }
         };
 
-        assertNotNull(batteryService.getCharacteristicPresentationFormat());
-        assertEquals(originalTaskId, batteryService.getCharacteristicPresentationFormat().intValue());
+        assertNotNull(batteryService.getBatteryLevelCharacteristicPresentationFormat());
+        assertEquals(originalTaskId, batteryService.getBatteryLevelCharacteristicPresentationFormat().intValue());
     }
 
     @Test
-    public void test_getCharacteristicPresentationFormat_00101() {
+    public void test_getBatteryLevelCharacteristicPresentationFormat_00101() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3924,11 +3925,11 @@ public class BatteryServiceTest {
             }
         };
 
-        assertNull(batteryService.getCharacteristicPresentationFormat(0));
+        assertNull(batteryService.getBatteryLevelCharacteristicPresentationFormat(0));
     }
 
     @Test
-    public void test_getCharacteristicPresentationFormat_00102() {
+    public void test_getBatteryLevelCharacteristicPresentationFormat_00102() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3937,11 +3938,11 @@ public class BatteryServiceTest {
             }
         };
 
-        assertNull(batteryService.getCharacteristicPresentationFormat(-1));
+        assertNull(batteryService.getBatteryLevelCharacteristicPresentationFormat(-1));
     }
 
     @Test
-    public void test_getCharacteristicPresentationFormat_00103() {
+    public void test_getBatteryLevelCharacteristicPresentationFormat_00103() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3955,11 +3956,11 @@ public class BatteryServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertNull(batteryService.getCharacteristicPresentationFormat(0));
+        assertNull(batteryService.getBatteryLevelCharacteristicPresentationFormat(0));
     }
 
     @Test
-    public void test_getCharacteristicPresentationFormat_00104() {
+    public void test_getBatteryLevelCharacteristicPresentationFormat_00104() {
         final int originalTaskId = 1;
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
@@ -3982,36 +3983,36 @@ public class BatteryServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        Integer taskId = batteryService.getCharacteristicPresentationFormat(0);
+        Integer taskId = batteryService.getBatteryLevelCharacteristicPresentationFormat(0);
         assertNotNull(taskId);
         assertEquals(originalTaskId, taskId.intValue());
     }
 
     @Test
-    public void test_getClientCharacteristicConfiguration_000001() {
+    public void test_getBatteryLevelClientCharacteristicConfiguration_000001() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null);
 
-        assertNull(batteryService.getClientCharacteristicConfiguration());
+        assertNull(batteryService.getBatteryLevelClientCharacteristicConfiguration());
     }
 
     @Test
-    public void test_getClientCharacteristicConfiguration_000002() {
+    public void test_getBatteryLevelClientCharacteristicConfiguration_000002() {
         final int originalTaskId = 1;
 
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
-            public synchronized Integer getClientCharacteristicConfiguration(int index) {
+            public synchronized Integer getBatteryLevelClientCharacteristicConfiguration(int index) {
                 return originalTaskId;
             }
         };
 
-        assertNotNull(batteryService.getClientCharacteristicConfiguration());
-        assertEquals(originalTaskId, batteryService.getClientCharacteristicConfiguration().intValue());
+        assertNotNull(batteryService.getBatteryLevelClientCharacteristicConfiguration());
+        assertEquals(originalTaskId, batteryService.getBatteryLevelClientCharacteristicConfiguration().intValue());
     }
 
     @Test
-    public void test_getClientCharacteristicConfiguration_00101() {
+    public void test_getBatteryLevelClientCharacteristicConfiguration_00101() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -4020,11 +4021,11 @@ public class BatteryServiceTest {
             }
         };
 
-        assertNull(batteryService.getClientCharacteristicConfiguration(0));
+        assertNull(batteryService.getBatteryLevelClientCharacteristicConfiguration(0));
     }
 
     @Test
-    public void test_getClientCharacteristicConfiguration_00102() {
+    public void test_getBatteryLevelClientCharacteristicConfiguration_00102() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -4033,11 +4034,11 @@ public class BatteryServiceTest {
             }
         };
 
-        assertNull(batteryService.getClientCharacteristicConfiguration(-1));
+        assertNull(batteryService.getBatteryLevelClientCharacteristicConfiguration(-1));
     }
 
     @Test
-    public void test_getClientCharacteristicConfiguration_00103() {
+    public void test_getBatteryLevelClientCharacteristicConfiguration_00103() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -4051,11 +4052,11 @@ public class BatteryServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertNull(batteryService.getClientCharacteristicConfiguration(0));
+        assertNull(batteryService.getBatteryLevelClientCharacteristicConfiguration(0));
     }
 
     @Test
-    public void test_getClientCharacteristicConfiguration_00104() {
+    public void test_getBatteryLevelClientCharacteristicConfiguration_00104() {
         final int originalTaskId = 1;
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
@@ -4078,37 +4079,37 @@ public class BatteryServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        Integer taskId = batteryService.getClientCharacteristicConfiguration(0);
+        Integer taskId = batteryService.getBatteryLevelClientCharacteristicConfiguration(0);
         assertNotNull(taskId);
         assertEquals(originalTaskId, taskId.intValue());
     }
 
     @Test
-    public void test_startNotification_00001() {
+    public void test_startBatteryLevelNotification_00001() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null);
 
-        assertNull(batteryService.startNotification());
+        assertNull(batteryService.startBatteryLevelNotification());
     }
 
     @Test
-    public void test_startNotification_00002() {
+    public void test_startBatteryLevelNotification_00002() {
         final int originalTaskId = 1;
 
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
-            public synchronized Integer startNotification(int index) {
+            public synchronized Integer startBatteryLevelNotification(int index) {
                 return originalTaskId;
             }
         };
 
-        Integer taskId = batteryService.startNotification();
+        Integer taskId = batteryService.startBatteryLevelNotification();
         assertNotNull(taskId);
         assertEquals(originalTaskId, taskId.intValue());
     }
 
     @Test
-    public void test_startNotification_00101() {
+    public void test_startBatteryLevelNotification_00101() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -4117,11 +4118,11 @@ public class BatteryServiceTest {
             }
         };
 
-        assertNull(batteryService.startNotification(0));
+        assertNull(batteryService.startBatteryLevelNotification(0));
     }
 
     @Test
-    public void test_startNotification_00102() {
+    public void test_startBatteryLevelNotification_00102() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -4130,11 +4131,11 @@ public class BatteryServiceTest {
             }
         };
 
-        assertNull(batteryService.startNotification(-1));
+        assertNull(batteryService.startBatteryLevelNotification(-1));
     }
 
     @Test
-    public void test_startNotification_00103() {
+    public void test_startBatteryLevelNotification_00103() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -4148,11 +4149,11 @@ public class BatteryServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertNull(batteryService.startNotification(0));
+        assertNull(batteryService.startBatteryLevelNotification(0));
     }
 
     @Test
-    public void test_startNotification_00104() {
+    public void test_startBatteryLevelNotification_00104() {
         final int originalTaskId = 1;
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
@@ -4176,37 +4177,37 @@ public class BatteryServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        Integer taskId = batteryService.startNotification(0);
+        Integer taskId = batteryService.startBatteryLevelNotification(0);
         assertNotNull(taskId);
         assertEquals(originalTaskId, taskId.intValue());
     }
 
     @Test
-    public void test_stopNotification_00001() {
+    public void test_stopBatteryLevelNotification_00001() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null);
 
-        assertNull(batteryService.stopNotification());
+        assertNull(batteryService.stopBatteryLevelNotification());
     }
 
     @Test
-    public void test_stopNotification_00002() {
+    public void test_stopBatteryLevelNotification_00002() {
         final int originalTaskId = 1;
 
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
-            public synchronized Integer stopNotification(int index) {
+            public synchronized Integer stopBatteryLevelNotification(int index) {
                 return originalTaskId;
             }
         };
 
-        Integer taskId = batteryService.stopNotification();
+        Integer taskId = batteryService.stopBatteryLevelNotification();
         assertNotNull(taskId);
         assertEquals(originalTaskId, taskId.intValue());
     }
 
     @Test
-    public void test_stopNotification_00101() {
+    public void test_stopBatteryLevelNotification_00101() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -4215,11 +4216,11 @@ public class BatteryServiceTest {
             }
         };
 
-        assertNull(batteryService.stopNotification(0));
+        assertNull(batteryService.stopBatteryLevelNotification(0));
     }
 
     @Test
-    public void test_stopNotification_00102() {
+    public void test_stopBatteryLevelNotification_00102() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -4228,11 +4229,11 @@ public class BatteryServiceTest {
             }
         };
 
-        assertNull(batteryService.stopNotification(-1));
+        assertNull(batteryService.stopBatteryLevelNotification(-1));
     }
 
     @Test
-    public void test_stopNotification_00103() {
+    public void test_stopBatteryLevelNotification_00103() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -4246,11 +4247,11 @@ public class BatteryServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertNull(batteryService.stopNotification(0));
+        assertNull(batteryService.stopBatteryLevelNotification(0));
     }
 
     @Test
-    public void test_stopNotification_00104() {
+    public void test_stopBatteryLevelNotification_00104() {
         final int originalTaskId = 1;
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
@@ -4274,7 +4275,7 @@ public class BatteryServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         batteryService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        Integer taskId = batteryService.stopNotification(0);
+        Integer taskId = batteryService.stopBatteryLevelNotification(0);
         assertNotNull(taskId);
         assertEquals(originalTaskId, taskId.intValue());
     }

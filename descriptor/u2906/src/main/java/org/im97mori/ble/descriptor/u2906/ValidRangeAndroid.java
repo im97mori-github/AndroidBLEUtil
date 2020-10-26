@@ -73,7 +73,6 @@ public class ValidRangeAndroid extends ValidRange implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ValidRangeAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

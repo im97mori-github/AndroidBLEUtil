@@ -74,7 +74,6 @@ public class RestingHeartRateAndroid extends RestingHeartRate implements Parcela
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private RestingHeartRateAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

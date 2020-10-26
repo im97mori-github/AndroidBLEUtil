@@ -75,7 +75,6 @@ public class FitnessMachineFeatureAndroid extends FitnessMachineFeature implemen
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private FitnessMachineFeatureAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

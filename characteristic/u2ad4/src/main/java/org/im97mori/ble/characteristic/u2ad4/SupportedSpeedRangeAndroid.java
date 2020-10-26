@@ -76,7 +76,6 @@ public class SupportedSpeedRangeAndroid extends SupportedSpeedRange implements P
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private SupportedSpeedRangeAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

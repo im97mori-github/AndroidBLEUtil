@@ -40,6 +40,8 @@ dependencies {
     api "${groupId}:${profileHrpCentralAndroid.artifactId}:${profileHrpCentralAndroid.versionName}"
     api "${groupId}:${profileHtpPeripheralAndroid.artifactId}:${profileHtpPeripheralAndroid.versionName}"
     api "${groupId}:${profileHtpCentralAndroid.artifactId}:${profileHtpCentralAndroid.versionName}"
+    api "${groupId}:${profileWspPeripheralAndroid.artifactId}:${profileWspPeripheralAndroid.versionName}"
+    api "${groupId}:${profileWspCentralAndroid.artifactId}:${profileWspCentralAndroid.versionName}"
 }
 
 task sourcesJar(type: Jar) {

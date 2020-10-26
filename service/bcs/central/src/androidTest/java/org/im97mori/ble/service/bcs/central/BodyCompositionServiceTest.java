@@ -1486,7 +1486,7 @@ public class BodyCompositionServiceTest {
     public void test_getBloodPressureMeasurementClientCharacteristicConfiguration_000001() {
         BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), new MockBodyCompositionServiceCallback(), null);
 
-        assertNull(bodyCompositionService.getBloodPressureMeasurementClientCharacteristicConfiguration());
+        assertNull(bodyCompositionService.getBodyCompositionMeasurementClientCharacteristicConfiguration());
     }
 
     @Test
@@ -1500,7 +1500,7 @@ public class BodyCompositionServiceTest {
 
         };
 
-        assertNull(bodyCompositionService.getBloodPressureMeasurementClientCharacteristicConfiguration());
+        assertNull(bodyCompositionService.getBodyCompositionMeasurementClientCharacteristicConfiguration());
     }
 
     @Test
@@ -1523,7 +1523,7 @@ public class BodyCompositionServiceTest {
 
         };
 
-        Integer taskId = bodyCompositionService.getBloodPressureMeasurementClientCharacteristicConfiguration();
+        Integer taskId = bodyCompositionService.getBodyCompositionMeasurementClientCharacteristicConfiguration();
         assertNotNull(taskId);
         assertEquals(originalTaskId, taskId);
     }
@@ -1532,7 +1532,7 @@ public class BodyCompositionServiceTest {
     public void test_startBloodPressureMeasurementIndication_000001() {
         BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), new MockBodyCompositionServiceCallback(), null);
 
-        assertNull(bodyCompositionService.startBloodPressureMeasurementIndication());
+        assertNull(bodyCompositionService.startBodyCompositionMeasurementIndication());
     }
 
     @Test
@@ -1546,7 +1546,7 @@ public class BodyCompositionServiceTest {
 
         };
 
-        assertNull(bodyCompositionService.startBloodPressureMeasurementIndication());
+        assertNull(bodyCompositionService.startBodyCompositionMeasurementIndication());
     }
 
     @Test
@@ -1569,7 +1569,7 @@ public class BodyCompositionServiceTest {
 
         };
 
-        Integer taskId = bodyCompositionService.startBloodPressureMeasurementIndication();
+        Integer taskId = bodyCompositionService.startBodyCompositionMeasurementIndication();
         assertNotNull(taskId);
         assertEquals(originalTaskId, taskId);
     }
@@ -1578,7 +1578,7 @@ public class BodyCompositionServiceTest {
     public void test_stopBloodPressureMeasurementIndication_000001() {
         BodyCompositionService bodyCompositionService = new BodyCompositionService(new MockBLEConnection(), new MockBodyCompositionServiceCallback(), null);
 
-        assertNull(bodyCompositionService.stopBloodPressureMeasurementIndication());
+        assertNull(bodyCompositionService.stopBodyCompositionMeasurementIndication());
     }
 
     @Test
@@ -1592,7 +1592,7 @@ public class BodyCompositionServiceTest {
 
         };
 
-        assertNull(bodyCompositionService.stopBloodPressureMeasurementIndication());
+        assertNull(bodyCompositionService.stopBodyCompositionMeasurementIndication());
     }
 
     @Test
@@ -1615,7 +1615,7 @@ public class BodyCompositionServiceTest {
 
         };
 
-        Integer taskId = bodyCompositionService.stopBloodPressureMeasurementIndication();
+        Integer taskId = bodyCompositionService.stopBodyCompositionMeasurementIndication();
         assertNotNull(taskId);
         assertEquals(originalTaskId, taskId);
     }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/pre_connected">
+        <item
+            android:id="@+id/load_bonded_device"
+            android:title="@string/menu_load_bonded_device" />
+
+        <item
+            android:id="@+id/clear_bonded_history"
+            android:title="@string/menu_clear_bonded_history" />
+    </group>
+    <group android:id="@+id/connected">
+        <item
+            android:id="@+id/has_body_composition_service"
+            android:title="@string/menu_has_body_composition_service" />
+        <item
+            android:id="@+id/has_user_data_service"
+            android:title="@string/menu_has_user_data_service" />
+        <item
+            android:id="@+id/has_battery_service"
+            android:title="@string/menu_has_battery_service" />
+        <item
+            android:id="@+id/has_current_time_service"
+            android:title="@string/menu_has_current_time_service" />
+    </group>
+</menu>

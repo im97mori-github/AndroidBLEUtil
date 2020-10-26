@@ -74,7 +74,6 @@ public class HTTPControlPointAndroid extends HTTPControlPoint implements Parcela
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private HTTPControlPointAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

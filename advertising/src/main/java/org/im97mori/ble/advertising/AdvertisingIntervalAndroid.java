@@ -68,7 +68,6 @@ public class AdvertisingIntervalAndroid extends AdvertisingInterval implements A
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private AdvertisingIntervalAndroid(@NonNull Parcel in) {
         super(in.createByteArray(), 0, in.readInt());
     }

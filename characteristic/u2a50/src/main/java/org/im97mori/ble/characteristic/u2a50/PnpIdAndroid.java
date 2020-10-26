@@ -77,7 +77,6 @@ public class PnpIdAndroid extends PnpId implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private PnpIdAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

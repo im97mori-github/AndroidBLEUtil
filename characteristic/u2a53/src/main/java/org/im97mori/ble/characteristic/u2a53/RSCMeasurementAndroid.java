@@ -78,7 +78,6 @@ public class RSCMeasurementAndroid extends RSCMeasurement implements Parcelable 
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private RSCMeasurementAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

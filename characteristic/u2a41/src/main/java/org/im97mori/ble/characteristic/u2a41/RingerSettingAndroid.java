@@ -74,7 +74,6 @@ public class RingerSettingAndroid extends RingerSetting implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private RingerSettingAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

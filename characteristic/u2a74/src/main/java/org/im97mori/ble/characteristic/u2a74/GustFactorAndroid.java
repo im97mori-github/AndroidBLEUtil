@@ -74,7 +74,6 @@ public class GustFactorAndroid extends GustFactor implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private GustFactorAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -74,7 +74,6 @@ public class DeviceNameAndroid extends DeviceName implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private DeviceNameAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

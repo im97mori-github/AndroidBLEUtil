@@ -74,7 +74,6 @@ public class SerialNumberStringAndroid extends SerialNumberString implements Par
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private SerialNumberStringAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

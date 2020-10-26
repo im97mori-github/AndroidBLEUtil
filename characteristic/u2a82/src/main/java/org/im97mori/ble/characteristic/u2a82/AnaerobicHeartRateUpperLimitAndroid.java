@@ -74,7 +74,6 @@ public class AnaerobicHeartRateUpperLimitAndroid extends AnaerobicHeartRateUpper
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private AnaerobicHeartRateUpperLimitAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

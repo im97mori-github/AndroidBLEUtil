@@ -90,7 +90,6 @@ public class RowerDataPacketAndroid extends RowerDataPacket implements Parcelabl
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private RowerDataPacketAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

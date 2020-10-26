@@ -74,7 +74,6 @@ public class CentralAddressResolutionAndroid extends CentralAddressResolution im
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private CentralAddressResolutionAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

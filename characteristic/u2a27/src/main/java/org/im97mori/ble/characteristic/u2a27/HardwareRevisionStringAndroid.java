@@ -74,7 +74,6 @@ public class HardwareRevisionStringAndroid extends HardwareRevisionString implem
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private HardwareRevisionStringAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

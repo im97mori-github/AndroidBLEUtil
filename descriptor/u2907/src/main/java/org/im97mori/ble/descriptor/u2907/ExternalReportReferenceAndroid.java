@@ -75,7 +75,6 @@ public class ExternalReportReferenceAndroid extends ExternalReportReference impl
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ExternalReportReferenceAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

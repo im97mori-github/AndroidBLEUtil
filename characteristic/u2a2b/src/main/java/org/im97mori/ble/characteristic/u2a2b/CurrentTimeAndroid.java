@@ -82,7 +82,6 @@ public class CurrentTimeAndroid extends CurrentTime implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private CurrentTimeAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

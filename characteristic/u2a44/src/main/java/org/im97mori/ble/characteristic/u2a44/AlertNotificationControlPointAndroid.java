@@ -75,7 +75,6 @@ public class AlertNotificationControlPointAndroid extends AlertNotificationContr
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private AlertNotificationControlPointAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

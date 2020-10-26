@@ -75,7 +75,6 @@ public class UnreadAlertStatusAndroid extends UnreadAlertStatus implements Parce
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private UnreadAlertStatusAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -71,7 +71,6 @@ public class EmailAddressAndroid extends EmailAddress implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private EmailAddressAndroid(@NonNull Parcel in) {
         super(new RegisteredUser[]{new RegisteredUser(in.createByteArray())});
     }

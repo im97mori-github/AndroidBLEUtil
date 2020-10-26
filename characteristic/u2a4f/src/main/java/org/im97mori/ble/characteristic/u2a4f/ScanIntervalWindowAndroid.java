@@ -75,7 +75,6 @@ public class ScanIntervalWindowAndroid extends ScanIntervalWindow implements Par
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ScanIntervalWindowAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -74,7 +74,6 @@ public class DatabaseChangeIncrementAndroid extends DatabaseChangeIncrement impl
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private DatabaseChangeIncrementAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

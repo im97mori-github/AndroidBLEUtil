@@ -71,7 +71,6 @@ public class FirstNameAndroid extends FirstName implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private FirstNameAndroid(@NonNull Parcel in) {
         super(new RegisteredUser[]{new RegisteredUser(in.createByteArray())});
     }

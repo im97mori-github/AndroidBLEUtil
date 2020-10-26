@@ -63,7 +63,6 @@ public class CharacteristicAggregateFormatAndroid extends CharacteristicAggregat
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private CharacteristicAggregateFormatAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

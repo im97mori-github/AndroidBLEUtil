@@ -77,7 +77,6 @@ public class TrainingStatusAndroid extends TrainingStatus implements Parcelable 
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private TrainingStatusAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

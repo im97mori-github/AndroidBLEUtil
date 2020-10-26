@@ -79,7 +79,6 @@ public class CyclingPowerVectorAndroid extends CyclingPowerVector implements Par
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private CyclingPowerVectorAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

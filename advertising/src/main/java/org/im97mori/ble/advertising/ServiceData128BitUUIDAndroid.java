@@ -68,7 +68,6 @@ public class ServiceData128BitUUIDAndroid extends ServiceData128BitUUID implemen
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ServiceData128BitUUIDAndroid(@NonNull Parcel in) {
         super(in.createByteArray(), 0, in.readInt());
     }

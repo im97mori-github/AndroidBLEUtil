@@ -89,7 +89,6 @@ public class CyclingPowerMeasurementAndroid extends CyclingPowerMeasurement impl
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private CyclingPowerMeasurementAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

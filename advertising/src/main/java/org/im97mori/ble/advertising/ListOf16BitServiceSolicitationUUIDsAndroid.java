@@ -68,7 +68,6 @@ public class ListOf16BitServiceSolicitationUUIDsAndroid extends ListOf16BitServi
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ListOf16BitServiceSolicitationUUIDsAndroid(Parcel in) {
         super(in.createByteArray(), 0, in.readInt());
     }

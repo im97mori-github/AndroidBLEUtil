@@ -65,7 +65,6 @@ public class BondManagementFeaturesAndroid extends BondManagementFeatures implem
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private BondManagementFeaturesAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

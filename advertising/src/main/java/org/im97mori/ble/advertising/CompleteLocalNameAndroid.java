@@ -68,7 +68,6 @@ public class CompleteLocalNameAndroid extends CompleteLocalName implements Adver
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private CompleteLocalNameAndroid(Parcel in) {
         super(in.createByteArray(), 0, in.readInt());
     }

@@ -90,7 +90,6 @@ public class BloodPressureMeasurementAndroid extends BloodPressureMeasurement im
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private BloodPressureMeasurementAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

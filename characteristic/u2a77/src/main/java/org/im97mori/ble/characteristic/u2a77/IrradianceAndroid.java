@@ -74,7 +74,6 @@ public class IrradianceAndroid extends Irradiance implements Parcelable {
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private IrradianceAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

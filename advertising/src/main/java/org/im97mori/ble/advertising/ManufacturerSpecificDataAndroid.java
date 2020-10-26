@@ -68,7 +68,6 @@ public class ManufacturerSpecificDataAndroid extends ManufacturerSpecificData im
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ManufacturerSpecificDataAndroid(@NonNull Parcel in) {
         super(in.createByteArray(), 0, in.readInt());
     }

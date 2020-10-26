@@ -65,7 +65,6 @@ public class BloodPressureFeatureAndroid extends BloodPressureFeature implements
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private BloodPressureFeatureAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

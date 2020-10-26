@@ -76,7 +76,6 @@ public class SupportedUnreadAlertCategoryAndroid extends SupportedUnreadAlertCat
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private SupportedUnreadAlertCategoryAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

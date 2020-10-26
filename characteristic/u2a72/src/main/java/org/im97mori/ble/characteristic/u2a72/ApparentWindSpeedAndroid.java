@@ -74,7 +74,6 @@ public class ApparentWindSpeedAndroid extends ApparentWindSpeed implements Parce
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ApparentWindSpeedAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

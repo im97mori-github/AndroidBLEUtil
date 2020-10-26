@@ -13,7 +13,7 @@ import org.im97mori.ble.profile.central.AbstractCentralProfile;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
 import org.im97mori.ble.profile.central.task.ScanTask;
 import org.im97mori.ble.profile.lnp.central.db.LocationAndNavigationProfileBondedDatabaseHelper;
-import org.im97mori.ble.service.bas.cental.BatteryService;
+import org.im97mori.ble.service.bas.central.BatteryService;
 import org.im97mori.ble.service.dis.central.DeviceInformationService;
 import org.im97mori.ble.service.lns.central.LocationAndNavigationService;
 import org.im97mori.ble.task.DiscoverServiceTask;
@@ -108,7 +108,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Boolean hasManufacturerNameString() {
         Boolean result = null;
-        if (mDeviceInformationService != null && mHasDeviceInformationService) {
+        if (mDeviceInformationService != null && hasDeviceInformationService()) {
             result = mDeviceInformationService.hasManufacturerNameString();
         }
         return result;
@@ -120,7 +120,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Boolean hasModelNumberString() {
         Boolean result = null;
-        if (mDeviceInformationService != null && mHasDeviceInformationService) {
+        if (mDeviceInformationService != null && hasDeviceInformationService()) {
             result = mDeviceInformationService.hasModelNumberString();
         }
         return result;
@@ -132,7 +132,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getManufacturerNameString() {
         Integer taskId = null;
-        if (mDeviceInformationService != null && mHasDeviceInformationService) {
+        if (mDeviceInformationService != null && hasDeviceInformationService()) {
             taskId = mDeviceInformationService.getManufacturerNameString();
         }
         return taskId;
@@ -144,7 +144,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getModelNumberString() {
         Integer taskId = null;
-        if (mDeviceInformationService != null && mHasDeviceInformationService) {
+        if (mDeviceInformationService != null && hasDeviceInformationService()) {
             taskId = mDeviceInformationService.getModelNumberString();
         }
         return taskId;
@@ -155,13 +155,13 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
      * get available Battery Service count
      *
      * @return available Battery Service count. if {@code null} returned, profile is not ready or no Battery Service
-     * @see BatteryService#getCount()
+     * @see BatteryService#getBatteryLevelCount()
      */
     @Nullable
     public synchronized Integer getBatteryLevelCount() {
         Integer count = null;
-        if (mBatteryService != null && mHasBatteryService) {
-            count = mBatteryService.getCount();
+        if (mBatteryService != null && hasBatteryService()) {
+            count = mBatteryService.getBatteryLevelCount();
         }
         return count;
     }
@@ -184,7 +184,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getBatteryLevel(int index) {
         Integer batteryLevel = null;
-        if (mBatteryService != null && mHasBatteryService) {
+        if (mBatteryService != null && hasBatteryService()) {
             batteryLevel = mBatteryService.getBatteryLevel(index);
         }
         return batteryLevel;
@@ -198,16 +198,16 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     }
 
     /**
-     * get notificatable status
+     * get Battery Level's notificatable status
      *
      * @param index Battery Service index
      * @return {@code true}:target Battery Service is notificatable, {@code false}:not notificatable. if {@code null} returned, profile is not ready or no Battery Service
-     * @see BatteryService#isNotificatable(int)
+     * @see BatteryService#isBatteryLevelNotificatable(int)
      */
     public synchronized Boolean isBatteryLevelNotificatable(int index) {
         Boolean result = null;
-        if (mBatteryService != null && mHasBatteryService) {
-            result = mBatteryService.isNotificatable(index);
+        if (mBatteryService != null && hasBatteryService()) {
+            result = mBatteryService.isBatteryLevelNotificatable(index);
         }
         return result;
     }
@@ -221,17 +221,17 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     }
 
     /**
-     * get Characteristic Presentation Format
+     * get Battery Level's Characteristic Presentation Format
      *
      * @param index Battery Service index
      * @return task id. if {@code null} returned, service is not ready or index is out of range. if {@code null} returned, profile is not ready or no Battery Service
-     * @see BatteryService#getCharacteristicPresentationFormat(int)
+     * @see BatteryService#getBatteryLevelCharacteristicPresentationFormat(int)
      */
     @Nullable
     public synchronized Integer getBatteryLevelCharacteristicPresentationFormat(int index) {
         Integer taskId = null;
-        if (mBatteryService != null && mHasBatteryService) {
-            taskId = mBatteryService.getCharacteristicPresentationFormat(index);
+        if (mBatteryService != null && hasBatteryService()) {
+            taskId = mBatteryService.getBatteryLevelCharacteristicPresentationFormat(index);
         }
         return taskId;
     }
@@ -245,17 +245,17 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     }
 
     /**
-     * get Client Characteristic Configuration
+     * get Battery Level's Client Characteristic Configuration
      *
      * @param index Battery Service index
      * @return task id. if {@code null} returned, service is not ready or index is out of range. if {@code null} returned, profile is not ready or no Battery Service
-     * @see BatteryService#getClientCharacteristicConfiguration(int)
+     * @see BatteryService#getBatteryLevelClientCharacteristicConfiguration(int)
      */
     @Nullable
     public synchronized Integer getBatteryLevelClientCharacteristicConfiguration(int index) {
         Integer taskId = null;
-        if (mBatteryService != null && mHasBatteryService) {
-            taskId = mBatteryService.getClientCharacteristicConfiguration(index);
+        if (mBatteryService != null && hasBatteryService()) {
+            taskId = mBatteryService.getBatteryLevelClientCharacteristicConfiguration(index);
         }
         return taskId;
     }
@@ -269,17 +269,17 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     }
 
     /**
-     * start notification
+     * start Battery Level's notification
      *
      * @param index Battery Service index
      * @return task id. if {@code null} returned, service is not ready or index is out of range. if {@code null} returned, profile is not ready or no Battery Service
-     * @see BatteryService#startNotification(int)
+     * @see BatteryService#startBatteryLevelNotification(int)
      */
     @Nullable
     public synchronized Integer startBatteryLevelNotification(int index) {
         Integer taskId = null;
-        if (mBatteryService != null && mHasBatteryService) {
-            taskId = mBatteryService.startNotification(index);
+        if (mBatteryService != null && hasBatteryService()) {
+            taskId = mBatteryService.startBatteryLevelNotification(index);
         }
         return taskId;
     }
@@ -293,17 +293,17 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     }
 
     /**
-     * stop notification
+     * stop Battery Level's notification
      *
      * @param index Battery Service index
      * @return task id. if {@code null} returned, service is not ready or index is out of range. if {@code null} returned, profile is not ready or no Battery Service
-     * @see BatteryService#stopNotification(int)
+     * @see BatteryService#stopBatteryLevelNotification(int)
      */
     @Nullable
     public synchronized Integer stopBatteryLevelNotification(int index) {
         Integer taskId = null;
-        if (mBatteryService != null && mHasBatteryService) {
-            taskId = mBatteryService.stopNotification(index);
+        if (mBatteryService != null && hasBatteryService()) {
+            taskId = mBatteryService.stopBatteryLevelNotification(index);
         }
         return taskId;
     }

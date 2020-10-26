@@ -75,7 +75,6 @@ public class ThreeZoneHeartRateLimitsAndroid extends ThreeZoneHeartRateLimits im
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ThreeZoneHeartRateLimitsAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -760,7 +760,6 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalCharacteristicResponceCode = 0;
         final long originalCharacteristicDelay = 1;
-        final @NonNull byte[] originalCharacteristicValue = new byte[]{3};
         final int originalSetCumulativeValueResponceValue = 4;
         final int originalMaskLocationAndSpeedCharacteristicContentResponceValue = 5;
         final int originalNavigationControlResponceValue = 6;
@@ -781,25 +780,9 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> addLNControlPoint(int characteristicResponseCode
-                    , long characteristicDelay
-                    , @NonNull byte[] characteristicValue
-                    , int setCumulativeValueResponseValue
-                    , int maskLocationAndSpeedCharacteristicContentResponseValue
-                    , int navigationControlResponseValue
-                    , int requestNumberOfRoutesResponseValue
-                    , @NonNull byte[] requestNumberOfRoutesResponseParameter
-                    , int requestNameOfRouteResponseValue
-                    , @NonNull byte[] requestNameOfRouteResponseParameter
-                    , int selectRouteResponseValue
-                    , int setFixRateResponseValue
-                    , int setElevationResponseValue
-                    , int descriptorResponseCode
-                    , long descriptorDelay
-                    , @NonNull byte[] descriptorValue) {
+            public LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> addLNControlPoint(int characteristicResponseCode, long characteristicDelay, int setCumulativeValueResponseValue, int maskLocationAndSpeedCharacteristicContentResponseValue, int navigationControlResponseValue, int requestNumberOfRoutesResponseValue, @NonNull byte[] requestNumberOfRoutesResponseParameter, int requestNameOfRouteResponseValue, @NonNull byte[] requestNameOfRouteResponseParameter, int selectRouteResponseValue, int setFixRateResponseValue, int setElevationResponseValue, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertEquals(originalCharacteristicResponceCode, characteristicResponseCode);
                 assertEquals(originalCharacteristicDelay, characteristicDelay);
-                assertArrayEquals(originalCharacteristicValue, characteristicValue);
                 assertEquals(originalSetCumulativeValueResponceValue, setCumulativeValueResponseValue);
                 assertEquals(originalMaskLocationAndSpeedCharacteristicContentResponceValue, maskLocationAndSpeedCharacteristicContentResponseValue);
                 assertEquals(originalNavigationControlResponceValue, navigationControlResponseValue);
@@ -814,13 +797,13 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
                 assertEquals(originalDescriptorDelay, descriptorDelay);
                 assertArrayEquals(originalDescriptorValue, descriptorValue);
                 atomicBoolean.set(true);
-                return super.addLNControlPoint(characteristicResponseCode, characteristicDelay, characteristicValue, setCumulativeValueResponseValue, maskLocationAndSpeedCharacteristicContentResponseValue, navigationControlResponseValue, requestNumberOfRoutesResponseValue, requestNumberOfRoutesResponseParameter, requestNameOfRouteResponseValue, requestNameOfRouteResponseParameter, selectRouteResponseValue, setFixRateResponseValue, setElevationResponseValue, descriptorResponseCode, descriptorDelay, descriptorValue);
+                return super.addLNControlPoint(characteristicResponseCode, characteristicDelay, setCumulativeValueResponseValue, maskLocationAndSpeedCharacteristicContentResponseValue, navigationControlResponseValue, requestNumberOfRoutesResponseValue, requestNumberOfRoutesResponseParameter, requestNameOfRouteResponseValue, requestNameOfRouteResponseParameter, selectRouteResponseValue, setFixRateResponseValue, setElevationResponseValue, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
+
         };
         BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
         assertEquals(baseBuilder, baseBuilder.addLNControlPoint(originalCharacteristicResponceCode
                 , originalCharacteristicDelay
-                , originalCharacteristicValue
                 , originalSetCumulativeValueResponceValue
                 , originalMaskLocationAndSpeedCharacteristicContentResponceValue
                 , originalNavigationControlResponceValue

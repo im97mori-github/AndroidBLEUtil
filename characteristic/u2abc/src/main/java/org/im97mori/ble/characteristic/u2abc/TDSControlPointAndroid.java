@@ -76,7 +76,6 @@ public class TDSControlPointAndroid extends TDSControlPoint implements Parcelabl
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private TDSControlPointAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

@@ -65,7 +65,6 @@ public class BootKeyboardInputReportAndroid extends BootKeyboardInputReport impl
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private BootKeyboardInputReportAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

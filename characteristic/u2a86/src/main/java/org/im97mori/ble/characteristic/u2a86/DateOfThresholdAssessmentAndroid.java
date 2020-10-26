@@ -76,7 +76,6 @@ public class DateOfThresholdAssessmentAndroid extends DateOfThresholdAssessment 
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private DateOfThresholdAssessmentAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

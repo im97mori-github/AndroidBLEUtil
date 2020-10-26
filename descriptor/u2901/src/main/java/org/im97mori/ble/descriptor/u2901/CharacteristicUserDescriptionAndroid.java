@@ -63,7 +63,6 @@ public class CharacteristicUserDescriptionAndroid extends CharacteristicUserDesc
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private CharacteristicUserDescriptionAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

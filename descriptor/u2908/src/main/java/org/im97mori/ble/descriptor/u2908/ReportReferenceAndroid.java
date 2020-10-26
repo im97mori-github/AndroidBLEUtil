@@ -73,7 +73,6 @@ public class ReportReferenceAndroid extends ReportReference implements Parcelabl
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private ReportReferenceAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

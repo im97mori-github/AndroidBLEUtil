@@ -74,7 +74,6 @@ public class AerobicThresholdAndroid extends AerobicThreshold implements Parcela
      *
      * @param in Parcel
      */
-    @SuppressWarnings("ConstantConditions")
     private AerobicThresholdAndroid(@NonNull Parcel in) {
         super(in.createByteArray());
     }

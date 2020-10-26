@@ -201,7 +201,7 @@ public class BodyCompositionService extends AbstractCentralService {
      * @see BodyCompositionServiceCallback#onBodyCompositionMeasurementClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getBloodPressureMeasurementClientCharacteristicConfiguration() {
+    public Integer getBodyCompositionMeasurementClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted()) {
             taskId = mBLEConnection.createReadDescriptorTask(BODY_COMPOSITION_SERVICE, null, BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
@@ -218,7 +218,7 @@ public class BodyCompositionService extends AbstractCentralService {
      * @see BodyCompositionServiceCallback#onBodyCompositionMeasurementIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public synchronized Integer startBloodPressureMeasurementIndication() {
+    public synchronized Integer startBodyCompositionMeasurementIndication() {
         Integer taskId = null;
         if (isStarted()) {
             Bundle bundle = new Bundle();
@@ -237,7 +237,7 @@ public class BodyCompositionService extends AbstractCentralService {
      * @see BodyCompositionServiceCallback#onBodyCompositionMeasurementIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public synchronized Integer stopBloodPressureMeasurementIndication() {
+    public synchronized Integer stopBodyCompositionMeasurementIndication() {
         Integer taskId = null;
         if (isStarted()) {
             Bundle bundle = new Bundle();
