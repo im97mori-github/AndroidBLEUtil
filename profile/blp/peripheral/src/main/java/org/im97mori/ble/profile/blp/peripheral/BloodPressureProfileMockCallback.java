@@ -102,9 +102,9 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#addManufacturerNameString(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
             mHasManufacturerNameString = true;
-            mDeviceInformationServiceMockCallbackBuilder.addManufacturerNameString(responceCode, delay, value);
+            mDeviceInformationServiceMockCallbackBuilder.addManufacturerNameString(responseCode, delay, value);
             return this;
         }
 
@@ -151,9 +151,9 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#addModelNumberString(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
             mHasModelNumberString = true;
-            mDeviceInformationServiceMockCallbackBuilder.addModelNumberString(responceCode, delay, value);
+            mDeviceInformationServiceMockCallbackBuilder.addModelNumberString(responseCode, delay, value);
             return this;
         }
 
@@ -179,8 +179,8 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          * @see org.im97mori.ble.service.bls.peripheral.BloodPressureServiceMockCallback.Builder#addBloodPressureMeasurement(int, long, byte[], int, int, long, byte[])
          */
         @NonNull
-        public Builder<T> addBloodPressureMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
-            mBloodPressureServiceMockCallbackBuilder.addBloodPressureMeasurement(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+        public Builder<T> addBloodPressureMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            mBloodPressureServiceMockCallbackBuilder.addBloodPressureMeasurement(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             return this;
         }
 
@@ -205,8 +205,8 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          * @see org.im97mori.ble.service.bls.peripheral.BloodPressureServiceMockCallback.Builder#addIntermediateCuffPressure(int, long, byte[], int, int, long, byte[])
          */
         @NonNull
-        public Builder<T> addIntermediateCuffPressure(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
-            mBloodPressureServiceMockCallbackBuilder.addIntermediateCuffPressure(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+        public Builder<T> addIntermediateCuffPressure(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            mBloodPressureServiceMockCallbackBuilder.addIntermediateCuffPressure(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             return this;
         }
 
@@ -231,8 +231,8 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          * @see org.im97mori.ble.service.bls.peripheral.BloodPressureServiceMockCallback.Builder#addBloodPressureFeature(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addBloodPressureFeature(int responceCode, long delay, @NonNull byte[] value) {
-            mBloodPressureServiceMockCallbackBuilder.addBloodPressureFeature(responceCode, delay, value);
+        public Builder<T> addBloodPressureFeature(int responseCode, long delay, @NonNull byte[] value) {
+            mBloodPressureServiceMockCallbackBuilder.addBloodPressureFeature(responseCode, delay, value);
             return this;
         }
 

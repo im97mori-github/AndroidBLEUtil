@@ -68,10 +68,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback>() {
             @NonNull
             @Override
-            public WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> addWeightScaleFeature(int responceCode, long delay, @NonNull byte[] value) {
+            public WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> addWeightScaleFeature(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addWeightScaleFeature(responceCode, delay, value);
+                return super.addWeightScaleFeature(responseCode, delay, value);
             }
         };
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
@@ -99,10 +99,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback>() {
             @NonNull
             @Override
-            public WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> addWeightScaleFeature(int responceCode, long delay, @NonNull byte[] value) {
+            public WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> addWeightScaleFeature(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addWeightScaleFeature(responceCode, delay, value);
+                return super.addWeightScaleFeature(responseCode, delay, value);
             }
         };
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
@@ -124,7 +124,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     public void test_addWeightScaleFeature_00003() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final byte[] originalValue = new byte[]{1, 2, 3, 4};
 
@@ -132,12 +132,12 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback>() {
             @NonNull
             @Override
-            public WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> addWeightScaleFeature(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> addWeightScaleFeature(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addWeightScaleFeature(responceCode, delay, value);
+                return super.addWeightScaleFeature(responseCode, delay, value);
             }
         };
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
@@ -150,7 +150,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
                 , userDataServiceMockCallbackBuilder
                 , batteryServiceMockCallbackBuilder
                 , currentTimeServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addWeightScaleFeature(originalResponceCode, originalDelay, originalValue));
+        assertEquals(baseBuilder, baseBuilder.addWeightScaleFeature(originalResponseCode, originalDelay, originalValue));
 
         assertTrue(atomicBoolean.get());
     }
@@ -205,11 +205,11 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> addWeightMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            public WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> addWeightMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertArrayEquals(originalValue, characteristicValue);
                 assertArrayEquals(originalDescriptorValue, descriptorValue);
                 atomicBoolean.set(true);
-                return super.addWeightMeasurement(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+                return super.addWeightMeasurement(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
         };
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
@@ -252,16 +252,16 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> addWeightMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
-                assertEquals(originalCharacteristicResponseCode, characteristicResponceCode);
+            public WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> addWeightMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+                assertEquals(originalCharacteristicResponseCode, characteristicResponseCode);
                 assertEquals(originalCharacteristicDelay, characteristicDelay);
                 assertArrayEquals(originalValue, characteristicValue);
                 assertEquals(originalNotificationCount, notificationCount);
-                assertEquals(descriptorResponceCode, originalDescriptorResponseCode);
+                assertEquals(descriptorResponseCode, originalDescriptorResponseCode);
                 assertEquals(descriptorDelay, originalDescriptorDelay);
                 assertArrayEquals(originalDescriptorValue, descriptorValue);
                 atomicBoolean.set(true);
-                return super.addWeightMeasurement(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+                return super.addWeightMeasurement(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
         };
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
@@ -318,10 +318,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(manufacturerName.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
@@ -349,10 +349,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(manufacturerName.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
@@ -379,10 +379,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
@@ -402,7 +402,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     @Test
     public void test_addManufacturerNameString_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final byte[] originalValue = "manufacturerName".getBytes();
 
@@ -411,12 +411,12 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
@@ -428,7 +428,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
                 , userDataServiceMockCallbackBuilder
                 , batteryServiceMockCallbackBuilder
                 , currentTimeServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(originalResponceCode, originalDelay, originalValue));
+        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(originalResponseCode, originalDelay, originalValue));
 
         assertTrue(atomicBoolean.get());
     }
@@ -471,10 +471,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(modelNumber.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addModelNumberString(responceCode, delay, value);
+                return super.addModelNumberString(responseCode, delay, value);
             }
         };
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
@@ -502,10 +502,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(modelNumber.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addModelNumberString(responceCode, delay, value);
+                return super.addModelNumberString(responseCode, delay, value);
             }
         };
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
@@ -532,10 +532,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addModelNumberString(responceCode, delay, value);
+                return super.addModelNumberString(responseCode, delay, value);
             }
         };
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
@@ -555,7 +555,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     @Test
     public void test_addModelNumberString_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final byte[] originalValue = "modelNumber".getBytes();
 
@@ -564,12 +564,12 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addModelNumberString(responceCode, delay, value);
+                return super.addModelNumberString(responseCode, delay, value);
             }
         };
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
@@ -581,7 +581,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
                 , userDataServiceMockCallbackBuilder
                 , batteryServiceMockCallbackBuilder
                 , currentTimeServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addModelNumberString(originalResponceCode, originalDelay, originalValue));
+        assertEquals(baseBuilder, baseBuilder.addModelNumberString(originalResponseCode, originalDelay, originalValue));
 
         assertTrue(atomicBoolean.get());
     }
@@ -625,10 +625,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback>();
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addSystemId(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addSystemId(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalSystemId.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addSystemId(responceCode, delay, value);
+                return super.addSystemId(responseCode, delay, value);
             }
         };
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
@@ -656,10 +656,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback>();
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addSystemId(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addSystemId(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalSystemId.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addSystemId(responceCode, delay, value);
+                return super.addSystemId(responseCode, delay, value);
             }
         };
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
@@ -687,10 +687,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback>();
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addSystemId(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addSystemId(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalSystemId.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addSystemId(responceCode, delay, value);
+                return super.addSystemId(responseCode, delay, value);
             }
         };
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
@@ -710,7 +710,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     @Test
     public void test_addSystemId_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final long originalManufacturerIdentifier = 1;
         final int originalOrganizationallyUniqueIdentifier = 2;
@@ -721,12 +721,12 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addSystemId(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addSystemId(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalSystemId.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addSystemId(responceCode, delay, value);
+                return super.addSystemId(responseCode, delay, value);
             }
         };
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
@@ -738,7 +738,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
                 , userDataServiceMockCallbackBuilder
                 , batteryServiceMockCallbackBuilder
                 , currentTimeServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addSystemId(originalResponceCode, originalDelay, originalSystemId.getBytes()));
+        assertEquals(baseBuilder, baseBuilder.addSystemId(originalResponseCode, originalDelay, originalSystemId.getBytes()));
 
         assertTrue(atomicBoolean.get());
     }
@@ -783,10 +783,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback>() {
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addFirstName(int responceCode, long delay, @NonNull byte[] value) {
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addFirstName(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(firstName.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addFirstName(responceCode, delay, value);
+                return super.addFirstName(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -814,10 +814,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback>() {
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addFirstName(int responceCode, long delay, @NonNull byte[] value) {
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addFirstName(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(firstName.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addFirstName(responceCode, delay, value);
+                return super.addFirstName(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -845,10 +845,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback>() {
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addFirstName(int responceCode, long delay, @NonNull byte[] value) {
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addFirstName(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(firstName.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addFirstName(responceCode, delay, value);
+                return super.addFirstName(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -867,7 +867,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     @Test
     public void test_addFirstName_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final String firstNameString = "firstNameString";
         final FirstName firstName = new FirstName(firstNameString);
@@ -878,12 +878,12 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback>() {
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addFirstName(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addFirstName(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(firstName.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addFirstName(responceCode, delay, value);
+                return super.addFirstName(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -894,7 +894,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
                 , userDataServiceMockCallbackBuilder
                 , batteryServiceMockCallbackBuilder
                 , currentTimeServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addFirstName(originalResponceCode, originalDelay, firstName.getBytes()));
+        assertEquals(baseBuilder, baseBuilder.addFirstName(originalResponseCode, originalDelay, firstName.getBytes()));
 
         assertTrue(atomicBoolean.get());
     }
@@ -941,10 +941,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addAge(int responceCode, long delay, @NonNull byte[] value) {
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addAge(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(age.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addAge(responceCode, delay, value);
+                return super.addAge(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -972,10 +972,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback>() {
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addAge(int responceCode, long delay, @NonNull byte[] value) {
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addAge(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(age.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addAge(responceCode, delay, value);
+                return super.addAge(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -1003,10 +1003,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback>() {
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addAge(int responceCode, long delay, @NonNull byte[] value) {
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addAge(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(age.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addAge(responceCode, delay, value);
+                return super.addAge(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -1025,7 +1025,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     @Test
     public void test_addAge_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final int originalValue = 3;
         final Age age = new Age(originalValue);
@@ -1036,12 +1036,12 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback>() {
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addAge(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addAge(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(age.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addAge(responceCode, delay, value);
+                return super.addAge(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -1052,7 +1052,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
                 , userDataServiceMockCallbackBuilder
                 , batteryServiceMockCallbackBuilder
                 , currentTimeServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addAge(originalResponceCode, originalDelay, age.getBytes()));
+        assertEquals(baseBuilder, baseBuilder.addAge(originalResponseCode, originalDelay, age.getBytes()));
 
         assertTrue(atomicBoolean.get());
     }
@@ -1101,10 +1101,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addDateOfBirth(int responceCode, long delay, @NonNull byte[] value) {
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addDateOfBirth(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(dateOfBirth.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addDateOfBirth(responceCode, delay, value);
+                return super.addDateOfBirth(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -1135,10 +1135,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addDateOfBirth(int responceCode, long delay, @NonNull byte[] value) {
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addDateOfBirth(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(dateOfBirth.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addDateOfBirth(responceCode, delay, value);
+                return super.addDateOfBirth(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -1169,10 +1169,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addDateOfBirth(int responceCode, long delay, @NonNull byte[] value) {
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addDateOfBirth(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(dateOfBirth.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addDateOfBirth(responceCode, delay, value);
+                return super.addDateOfBirth(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -1191,7 +1191,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     @Test
     public void test_addDateOfBirth_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final int originalYear = 3;
         final int originalMonth = 4;
@@ -1205,12 +1205,12 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addDateOfBirth(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addDateOfBirth(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(dateOfBirth.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addDateOfBirth(responceCode, delay, value);
+                return super.addDateOfBirth(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -1221,7 +1221,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
                 , userDataServiceMockCallbackBuilder
                 , batteryServiceMockCallbackBuilder
                 , currentTimeServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addDateOfBirth(originalResponceCode, originalDelay, dateOfBirth.getBytes()));
+        assertEquals(baseBuilder, baseBuilder.addDateOfBirth(originalResponseCode, originalDelay, dateOfBirth.getBytes()));
 
         assertTrue(atomicBoolean.get());
     }
@@ -1268,10 +1268,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addGender(int responceCode, long delay, @NonNull byte[] value) {
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addGender(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(gender.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addGender(responceCode, delay, value);
+                return super.addGender(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -1300,10 +1300,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addGender(int responceCode, long delay, @NonNull byte[] value) {
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addGender(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(gender.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addGender(responceCode, delay, value);
+                return super.addGender(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -1332,10 +1332,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addGender(int responceCode, long delay, @NonNull byte[] value) {
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addGender(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(gender.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addGender(responceCode, delay, value);
+                return super.addGender(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -1354,7 +1354,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     @Test
     public void test_addGender_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final int originalGender = 3;
         final Gender gender = new Gender(originalGender);
@@ -1366,12 +1366,12 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addGender(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addGender(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(gender.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addGender(responceCode, delay, value);
+                return super.addGender(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -1382,7 +1382,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
                 , userDataServiceMockCallbackBuilder
                 , batteryServiceMockCallbackBuilder
                 , currentTimeServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addGender(originalResponceCode, originalDelay, gender.getBytes()));
+        assertEquals(baseBuilder, baseBuilder.addGender(originalResponseCode, originalDelay, gender.getBytes()));
 
         assertTrue(atomicBoolean.get());
     }
@@ -1429,10 +1429,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addHeight(int responceCode, long delay, @NonNull byte[] value) {
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addHeight(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(height.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addGender(responceCode, delay, value);
+                return super.addGender(responseCode, delay, value);
             }
 
         };
@@ -1462,10 +1462,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addHeight(int responceCode, long delay, @NonNull byte[] value) {
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addHeight(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(height.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addGender(responceCode, delay, value);
+                return super.addGender(responseCode, delay, value);
             }
 
         };
@@ -1495,10 +1495,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addHeight(int responceCode, long delay, @NonNull byte[] value) {
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addHeight(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(height.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addGender(responceCode, delay, value);
+                return super.addGender(responseCode, delay, value);
             }
 
         };
@@ -1518,7 +1518,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     @Test
     public void test_addHeight_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final int originalHeight = 3;
         final Height height = new Height(originalHeight);
@@ -1530,12 +1530,12 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addHeight(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> addHeight(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(height.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addGender(responceCode, delay, value);
+                return super.addGender(responseCode, delay, value);
             }
 
         };
@@ -1547,7 +1547,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
                 , userDataServiceMockCallbackBuilder
                 , batteryServiceMockCallbackBuilder
                 , currentTimeServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addHeight(originalResponceCode, originalDelay, height.getBytes()));
+        assertEquals(baseBuilder, baseBuilder.addHeight(originalResponseCode, originalDelay, height.getBytes()));
 
         assertTrue(atomicBoolean.get());
     }
@@ -1596,11 +1596,11 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> addBatteryLevel(int index, int property, int responceCode, long delay, @NonNull byte[] value, int notificationCount) {
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> addBatteryLevel(int index, int property, int responseCode, long delay, @NonNull byte[] value, int notificationCount) {
                 assertEquals(originalIndex, index);
                 assertArrayEquals(batteryLevel.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addBatteryLevel(index, property, responceCode, delay, value, notificationCount);
+                return super.addBatteryLevel(index, property, responseCode, delay, value, notificationCount);
             }
         };
         CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
@@ -1619,7 +1619,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     public void test_addBatteryLevel_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalProperty = 1;
-        final int originalResponceCode = 2;
+        final int originalResponseCode = 2;
         final long originalDelay = 3;
         final int originalNotificationCount = 4;
         final int originalIndex = 5;
@@ -1634,15 +1634,15 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> addBatteryLevel(int index, int property, int responceCode, long delay, @NonNull byte[] value, int notificationCount) {
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> addBatteryLevel(int index, int property, int responseCode, long delay, @NonNull byte[] value, int notificationCount) {
                 assertEquals(originalProperty, property);
-                assertEquals(originalResponceCode, responceCode);
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertEquals(originalNotificationCount, notificationCount);
                 assertEquals(originalIndex, index);
                 assertArrayEquals(batteryLevel.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addBatteryLevel(index, property, responceCode, delay, value, notificationCount);
+                return super.addBatteryLevel(index, property, responseCode, delay, value, notificationCount);
             }
         };
         CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
@@ -1652,7 +1652,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
                 , userDataServiceMockCallbackBuilder
                 , batteryServiceMockCallbackBuilder
                 , currentTimeServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addBatteryLevel(originalIndex, originalProperty, originalResponceCode, originalDelay, batteryLevel.getBytes(), originalNotificationCount));
+        assertEquals(baseBuilder, baseBuilder.addBatteryLevel(originalIndex, originalProperty, originalResponseCode, originalDelay, batteryLevel.getBytes(), originalNotificationCount));
 
         assertTrue(atomicBoolean.get());
     }
@@ -1703,11 +1703,11 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelCharacteristicPresentationFormat(int index, int responceCode, long delay, @NonNull byte[] value) {
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelCharacteristicPresentationFormat(int index, int responseCode, long delay, @NonNull byte[] value) {
                 assertEquals(originalIndex, index);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.setBatteryLevelCharacteristicPresentationFormat(index, responceCode, delay, value);
+                return super.setBatteryLevelCharacteristicPresentationFormat(index, responseCode, delay, value);
             }
         };
         CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
@@ -1725,7 +1725,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     @Test
     public void test_setBatteryLevelCharacteristicPresentationFormat_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final int originalIndex = 3;
         final byte[] originalValue = new byte[]{4, 5, 6, 7, 8, 9, 10};
@@ -1738,13 +1738,13 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelCharacteristicPresentationFormat(int index, int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelCharacteristicPresentationFormat(int index, int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertEquals(originalIndex, index);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.setBatteryLevelCharacteristicPresentationFormat(index, responceCode, delay, value);
+                return super.setBatteryLevelCharacteristicPresentationFormat(index, responseCode, delay, value);
             }
         };
         CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
@@ -1754,7 +1754,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
                 , userDataServiceMockCallbackBuilder
                 , batteryServiceMockCallbackBuilder
                 , currentTimeServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.setBatteryLevelCharacteristicPresentationFormat(originalIndex, originalResponceCode, originalDelay, originalValue));
+        assertEquals(baseBuilder, baseBuilder.setBatteryLevelCharacteristicPresentationFormat(originalIndex, originalResponseCode, originalDelay, originalValue));
 
         assertTrue(atomicBoolean.get());
     }
@@ -1805,11 +1805,11 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelClientCharacteristicConfiguration(int index, int responceCode, long delay, @NonNull byte[] value) {
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelClientCharacteristicConfiguration(int index, int responseCode, long delay, @NonNull byte[] value) {
                 assertEquals(originalIndex, index);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.setBatteryLevelClientCharacteristicConfiguration(index, responceCode, delay, value);
+                return super.setBatteryLevelClientCharacteristicConfiguration(index, responseCode, delay, value);
             }
         };
         CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
@@ -1827,7 +1827,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     @Test
     public void test_setBatteryLevelClientCharacteristicConfiguration_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final int originalIndex = 3;
         final byte[] originalValue = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
@@ -1840,13 +1840,13 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelClientCharacteristicConfiguration(int index, int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelClientCharacteristicConfiguration(int index, int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertEquals(originalIndex, index);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.setBatteryLevelClientCharacteristicConfiguration(index, responceCode, delay, value);
+                return super.setBatteryLevelClientCharacteristicConfiguration(index, responseCode, delay, value);
             }
         };
         CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
@@ -1856,7 +1856,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
                 , userDataServiceMockCallbackBuilder
                 , batteryServiceMockCallbackBuilder
                 , currentTimeServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.setBatteryLevelClientCharacteristicConfiguration(originalIndex, originalResponceCode, originalDelay, originalValue));
+        assertEquals(baseBuilder, baseBuilder.setBatteryLevelClientCharacteristicConfiguration(originalIndex, originalResponseCode, originalDelay, originalValue));
 
         assertTrue(atomicBoolean.get());
     }
@@ -1909,11 +1909,11 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> addCurrentTime(boolean isWritable, int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            public CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> addCurrentTime(boolean isWritable, int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertArrayEquals(originalCharacteristicValue, characteristicValue);
                 assertArrayEquals(originalDescriptorValue, descriptorValue);
                 atomicBoolean.set(true);
-                return super.addCurrentTime(isWritable, characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+                return super.addCurrentTime(isWritable, characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
         };
         BaseBuilder baseBuilder = new BaseBuilder(context
@@ -1949,17 +1949,17 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> addCurrentTime(boolean isWritable, int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            public CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> addCurrentTime(boolean isWritable, int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertEquals(originalIsWritable, isWritable);
-                assertEquals(originalCharacteristicResponseCode, characteristicResponceCode);
+                assertEquals(originalCharacteristicResponseCode, characteristicResponseCode);
                 assertEquals(originalCharacteristicDelay, characteristicDelay);
                 assertArrayEquals(originalCharacteristicValue, characteristicValue);
                 assertEquals(originalNotificationCount, notificationCount);
-                assertEquals(originalDescriptorResponseCode, descriptorResponceCode);
+                assertEquals(originalDescriptorResponseCode, descriptorResponseCode);
                 assertEquals(originalDescriptorDelay, descriptorDelay);
                 assertArrayEquals(originalDescriptorValue, descriptorValue);
                 atomicBoolean.set(true);
-                return super.addCurrentTime(isWritable, characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+                return super.addCurrentTime(isWritable, characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
         };
         BaseBuilder baseBuilder = new BaseBuilder(context
@@ -2017,10 +2017,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> addLocalTimeInformation(boolean isWritable, int responceCode, long delay, @NonNull byte[] value) {
+            public CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> addLocalTimeInformation(boolean isWritable, int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addLocalTimeInformation(isWritable, responceCode, delay, value);
+                return super.addLocalTimeInformation(isWritable, responseCode, delay, value);
             }
         };
         BaseBuilder baseBuilder = new BaseBuilder(context
@@ -2048,10 +2048,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> addLocalTimeInformation(boolean isWritable, int responceCode, long delay, @NonNull byte[] value) {
+            public CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> addLocalTimeInformation(boolean isWritable, int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addLocalTimeInformation(isWritable, responceCode, delay, value);
+                return super.addLocalTimeInformation(isWritable, responseCode, delay, value);
             }
         };
         BaseBuilder baseBuilder = new BaseBuilder(context
@@ -2082,13 +2082,13 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> addLocalTimeInformation(boolean isWritable, int responceCode, long delay, @NonNull byte[] value) {
+            public CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> addLocalTimeInformation(boolean isWritable, int responseCode, long delay, @NonNull byte[] value) {
                 assertEquals(originalIsWritable, isWritable);
-                assertEquals(originalResponseCode, responceCode);
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addLocalTimeInformation(isWritable, responceCode, delay, value);
+                return super.addLocalTimeInformation(isWritable, responseCode, delay, value);
             }
         };
         BaseBuilder baseBuilder = new BaseBuilder(context
@@ -2146,10 +2146,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> addReferenceTimeInformation(int responceCode, long delay, @NonNull byte[] value) {
+            public CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> addReferenceTimeInformation(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addReferenceTimeInformation(responceCode, delay, value);
+                return super.addReferenceTimeInformation(responseCode, delay, value);
             }
         };
         BaseBuilder baseBuilder = new BaseBuilder(context
@@ -2177,10 +2177,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> addReferenceTimeInformation(int responceCode, long delay, @NonNull byte[] value) {
+            public CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> addReferenceTimeInformation(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addReferenceTimeInformation(responceCode, delay, value);
+                return super.addReferenceTimeInformation(responseCode, delay, value);
             }
         };
         BaseBuilder baseBuilder = new BaseBuilder(context
@@ -2210,12 +2210,12 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> addReferenceTimeInformation(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponseCode, responceCode);
+            public CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> addReferenceTimeInformation(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addReferenceTimeInformation(responceCode, delay, value);
+                return super.addReferenceTimeInformation(responseCode, delay, value);
             }
         };
         BaseBuilder baseBuilder = new BaseBuilder(context

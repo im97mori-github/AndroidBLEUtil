@@ -71,18 +71,18 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
         /**
          * add Body Composition Feature characteristic
          *
-         * @param responceCode response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        responce delay(millis)
+         * @param responseCode response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
          * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addBodyCompositionFeature(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addBodyCompositionFeature(int responseCode, long delay, @NonNull byte[] value) {
             mBodyCompositionFeatureData = new CharacteristicData(BODY_COMPOSITION_FEATURE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -111,26 +111,26 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
         /**
          * add Intermediate Cuff Pressure characteristic
          *
-         * @param characteristicResponceCode characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param characteristicResponseCode characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Intermediate Cuff Pressure notification count
-         * @param descriptorResponceCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay            descritptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addBodyCompositionMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+        public Builder<T> addBodyCompositionMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
             mBodyCompositionMeasurementData = new CharacteristicData(BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_INDICATE
                     , 0
                     , Collections.singletonList(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE
-                    , descriptorResponceCode
+                    , descriptorResponseCode
                     , descriptorDelay
                     , descriptorValue))
-                    , characteristicResponceCode
+                    , characteristicResponseCode
                     , characteristicDelay
                     , characteristicValue
                     , notificationCount);

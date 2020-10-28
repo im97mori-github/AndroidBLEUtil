@@ -133,9 +133,9 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          * @see org.im97mori.ble.service.wss.peripheral.WeightScaleServiceMockCallback.Builder#addWeightScaleFeature(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addWeightScaleFeature(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addWeightScaleFeature(int responseCode, long delay, @NonNull byte[] value) {
             mWeightScaleFeatureCharacteristicData = value;
-            mWeightScaleServiceMockCallbackBuilder.addWeightScaleFeature(responceCode, delay, value);
+            mWeightScaleServiceMockCallbackBuilder.addWeightScaleFeature(responseCode, delay, value);
             return this;
         }
 
@@ -161,8 +161,8 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          * @see org.im97mori.ble.service.wss.peripheral.WeightScaleServiceMockCallback.Builder#addWeightMeasurement(int, long, byte[], int, int, long, byte[])
          */
         @NonNull
-        public Builder<T> addWeightMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
-            mWeightScaleServiceMockCallbackBuilder.addWeightMeasurement(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+        public Builder<T> addWeightMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            mWeightScaleServiceMockCallbackBuilder.addWeightMeasurement(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             return this;
         }
 
@@ -205,9 +205,9 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#addManufacturerNameString(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
             mHasManufacturerNameString = true;
-            mDeviceInformationServiceMockCallbackBuilder.addManufacturerNameString(responceCode, delay, value);
+            mDeviceInformationServiceMockCallbackBuilder.addManufacturerNameString(responseCode, delay, value);
             return this;
         }
 
@@ -253,9 +253,9 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#addModelNumberString(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
             mHasModelNumberString = true;
-            mDeviceInformationServiceMockCallbackBuilder.addModelNumberString(responceCode, delay, value);
+            mDeviceInformationServiceMockCallbackBuilder.addModelNumberString(responseCode, delay, value);
             return this;
         }
 
@@ -295,8 +295,8 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
         /**
          * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#addSystemId(int, long, byte[])
          */
-        public Builder<T> addSystemId(int responceCode, long delay, @NonNull byte[] value) {
-            mDeviceInformationServiceMockCallbackBuilder.addSystemId(responceCode, delay, value);
+        public Builder<T> addSystemId(int responseCode, long delay, @NonNull byte[] value) {
+            mDeviceInformationServiceMockCallbackBuilder.addSystemId(responseCode, delay, value);
             return this;
         }
 
@@ -338,9 +338,9 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          * @see org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback.Builder#addFirstName(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addFirstName(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addFirstName(int responseCode, long delay, @NonNull byte[] value) {
             if (mUserDataServiceMockCallbackBuilder != null) {
-                mUserDataServiceMockCallbackBuilder.addFirstName(responceCode, delay, value);
+                mUserDataServiceMockCallbackBuilder.addFirstName(responseCode, delay, value);
             }
             return this;
         }
@@ -386,9 +386,9 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          * @see org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback.Builder#addAge(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addAge(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addAge(int responseCode, long delay, @NonNull byte[] value) {
             if (mUserDataServiceMockCallbackBuilder != null) {
-                mUserDataServiceMockCallbackBuilder.addAge(responceCode, delay, value);
+                mUserDataServiceMockCallbackBuilder.addAge(responseCode, delay, value);
             }
             return this;
         }
@@ -434,9 +434,9 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          * @see org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback.Builder#addDateOfBirth(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addDateOfBirth(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addDateOfBirth(int responseCode, long delay, @NonNull byte[] value) {
             if (mUserDataServiceMockCallbackBuilder != null) {
-                mUserDataServiceMockCallbackBuilder.addDateOfBirth(responceCode, delay, value);
+                mUserDataServiceMockCallbackBuilder.addDateOfBirth(responseCode, delay, value);
             }
             return this;
         }
@@ -482,9 +482,9 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          * @see org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback.Builder#addGender(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addGender(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addGender(int responseCode, long delay, @NonNull byte[] value) {
             if (mUserDataServiceMockCallbackBuilder != null) {
-                mUserDataServiceMockCallbackBuilder.addGender(responceCode, delay, value);
+                mUserDataServiceMockCallbackBuilder.addGender(responseCode, delay, value);
             }
             return this;
         }
@@ -530,9 +530,9 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          * @see org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback.Builder#addHeight(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addHeight(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addHeight(int responseCode, long delay, @NonNull byte[] value) {
             if (mUserDataServiceMockCallbackBuilder != null) {
-                mUserDataServiceMockCallbackBuilder.addHeight(responceCode, delay, value);
+                mUserDataServiceMockCallbackBuilder.addHeight(responseCode, delay, value);
             }
             return this;
         }
@@ -560,9 +560,9 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#addBatteryLevel(int, int, int, long, byte[], int)
          */
         @NonNull
-        public Builder<T> addBatteryLevel(int index, int property, int responceCode, long delay, @NonNull byte[] value, int notificationCount) {
+        public Builder<T> addBatteryLevel(int index, int property, int responseCode, long delay, @NonNull byte[] value, int notificationCount) {
             if (mBatteryServiceMockCallbackBuilder != null) {
-                mBatteryServiceMockCallbackBuilder.addBatteryLevel(index, property, responceCode, delay, value, notificationCount);
+                mBatteryServiceMockCallbackBuilder.addBatteryLevel(index, property, responseCode, delay, value, notificationCount);
             }
             return this;
         }
@@ -590,9 +590,9 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#setBatteryLevelCharacteristicPresentationFormat(int, int, long, byte[])
          */
         @NonNull
-        public Builder<T> setBatteryLevelCharacteristicPresentationFormat(int index, int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> setBatteryLevelCharacteristicPresentationFormat(int index, int responseCode, long delay, @NonNull byte[] value) {
             if (mBatteryServiceMockCallbackBuilder != null) {
-                mBatteryServiceMockCallbackBuilder.setBatteryLevelCharacteristicPresentationFormat(index, responceCode, delay, value);
+                mBatteryServiceMockCallbackBuilder.setBatteryLevelCharacteristicPresentationFormat(index, responseCode, delay, value);
             }
             return this;
         }
@@ -619,9 +619,9 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#setBatteryLevelClientCharacteristicConfiguration(int, int, long, byte[])
          */
         @NonNull
-        public Builder<T> setBatteryLevelClientCharacteristicConfiguration(int index, int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> setBatteryLevelClientCharacteristicConfiguration(int index, int responseCode, long delay, @NonNull byte[] value) {
             if (mBatteryServiceMockCallbackBuilder != null) {
-                mBatteryServiceMockCallbackBuilder.setBatteryLevelClientCharacteristicConfiguration(index, responceCode, delay, value);
+                mBatteryServiceMockCallbackBuilder.setBatteryLevelClientCharacteristicConfiguration(index, responseCode, delay, value);
             }
             return this;
         }
@@ -649,9 +649,9 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          * @see org.im97mori.ble.service.cts.peripheral.CurrentTimeServiceMockCallback.Builder#addCurrentTime(boolean, int, long, byte[], int, int, long, byte[])
          */
         @NonNull
-        public Builder<T> addCurrentTime(boolean isWritable, int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+        public Builder<T> addCurrentTime(boolean isWritable, int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
             if (mCurrentTimeServiceMockCallbackBuilder != null) {
-                mCurrentTimeServiceMockCallbackBuilder.addCurrentTime(isWritable, characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+                mCurrentTimeServiceMockCallbackBuilder.addCurrentTime(isWritable, characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
             return this;
         }
@@ -687,9 +687,9 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          * @see org.im97mori.ble.service.cts.peripheral.CurrentTimeServiceMockCallback.Builder#addLocalTimeInformation(boolean, int, long, byte[])
          */
         @NonNull
-        public Builder<T> addLocalTimeInformation(boolean isWritable, int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addLocalTimeInformation(boolean isWritable, int responseCode, long delay, @NonNull byte[] value) {
             if (mCurrentTimeServiceMockCallbackBuilder != null) {
-                mCurrentTimeServiceMockCallbackBuilder.addLocalTimeInformation(isWritable, responceCode, delay, value);
+                mCurrentTimeServiceMockCallbackBuilder.addLocalTimeInformation(isWritable, responseCode, delay, value);
             }
             return this;
         }
@@ -725,9 +725,9 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          * @see org.im97mori.ble.service.cts.peripheral.CurrentTimeServiceMockCallback.Builder#addReferenceTimeInformation(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addReferenceTimeInformation(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addReferenceTimeInformation(int responseCode, long delay, @NonNull byte[] value) {
             if (mCurrentTimeServiceMockCallbackBuilder != null) {
-                mCurrentTimeServiceMockCallbackBuilder.addReferenceTimeInformation(responceCode, delay, value);
+                mCurrentTimeServiceMockCallbackBuilder.addReferenceTimeInformation(responseCode, delay, value);
             }
             return this;
         }

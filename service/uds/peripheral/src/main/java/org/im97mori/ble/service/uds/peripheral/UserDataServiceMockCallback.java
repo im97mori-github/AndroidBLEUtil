@@ -354,18 +354,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add First Name characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addFirstName(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addFirstName(int responseCode, long delay, @NonNull byte[] value) {
             mFirstNameCharacteristicData = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -412,18 +412,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Last Name characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addLastName(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addLastName(int responseCode, long delay, @NonNull byte[] value) {
             mLastNameCharacteristicData = new UDSCharacteristicData(LAST_NAME_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -470,18 +470,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Email Address characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addEmailAddress(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addEmailAddress(int responseCode, long delay, @NonNull byte[] value) {
             mEmailAddressCharacteristicData = new UDSCharacteristicData(EMAIL_ADDRESS_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -528,18 +528,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Age characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addAge(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addAge(int responseCode, long delay, @NonNull byte[] value) {
             mAgeCharacteristicData = new UDSCharacteristicData(AGE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -586,18 +586,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Date of Birth characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addDateOfBirth(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addDateOfBirth(int responseCode, long delay, @NonNull byte[] value) {
             mDateOfBirthCharacteristicData = new UDSCharacteristicData(DATE_OF_BIRTH_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -644,18 +644,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Gender characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addGender(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addGender(int responseCode, long delay, @NonNull byte[] value) {
             mGenderCharacteristicData = new UDSCharacteristicData(GENDER_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -702,18 +702,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Weight characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addWeight(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addWeight(int responseCode, long delay, @NonNull byte[] value) {
             mWeightCharacteristicData = new UDSCharacteristicData(WEIGHT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -760,18 +760,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Height characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addHeight(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addHeight(int responseCode, long delay, @NonNull byte[] value) {
             mHeightCharacteristicData = new UDSCharacteristicData(HEIGHT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -818,18 +818,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add VO2 Max characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addVO2Max(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addVO2Max(int responseCode, long delay, @NonNull byte[] value) {
             mVO2MaxCharacteristicData = new UDSCharacteristicData(VO2_MAX_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -876,18 +876,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Heart Rate Max characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addHeartRateMax(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addHeartRateMax(int responseCode, long delay, @NonNull byte[] value) {
             mHeartRateMaxCharacteristicData = new UDSCharacteristicData(HEART_RATE_MAX_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -934,18 +934,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Resting Heart Rate characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addRestingHeartRate(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addRestingHeartRate(int responseCode, long delay, @NonNull byte[] value) {
             mRestingHeartRateCharacteristicData = new UDSCharacteristicData(RESTING_HEART_RATE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -992,18 +992,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Maximum Recommended Heart Rate characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addMaximumRecommendedHeartRate(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addMaximumRecommendedHeartRate(int responseCode, long delay, @NonNull byte[] value) {
             mMaximumRecommendedHeartRateCharacteristicData = new UDSCharacteristicData(MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1050,18 +1050,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Aerobic Threshold characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addAerobicThreshold(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addAerobicThreshold(int responseCode, long delay, @NonNull byte[] value) {
             mAerobicThresholdCharacteristicData = new UDSCharacteristicData(AEROBIC_THRESHOLD_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1108,18 +1108,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Anaerobic Threshold characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addAnaerobicThreshold(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addAnaerobicThreshold(int responseCode, long delay, @NonNull byte[] value) {
             mAnaerobicThresholdCharacteristicData = new UDSCharacteristicData(ANAEROBIC_THRESHOLD_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1166,18 +1166,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Sport Type for Aerobic and Anaerobic Thresholds characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addSportTypeForAerobicAndAnaerobicThresholds(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addSportTypeForAerobicAndAnaerobicThresholds(int responseCode, long delay, @NonNull byte[] value) {
             mSportTypeForAerobicAndAnaerobicThresholdsCharacteristicData = new UDSCharacteristicData(SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1224,18 +1224,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Date of Threshold Assessment characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addDateOfThresholdAssessment(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addDateOfThresholdAssessment(int responseCode, long delay, @NonNull byte[] value) {
             mDateOfThresholdAssessmentCharacteristicData = new UDSCharacteristicData(DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1282,18 +1282,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Waist Circumference characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addWaistCircumference(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addWaistCircumference(int responseCode, long delay, @NonNull byte[] value) {
             mWaistCircumferenceCharacteristicData = new UDSCharacteristicData(WAIST_CIRCUMFERENCE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1340,18 +1340,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Hip Circumference characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addHipCircumference(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addHipCircumference(int responseCode, long delay, @NonNull byte[] value) {
             mHipCircumferenceCharacteristicData = new UDSCharacteristicData(HIP_CIRCUMFERENCE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1398,18 +1398,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Fat Burn Heart Rate Lower Limit characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addFatBurnHeartRateLowerLimit(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addFatBurnHeartRateLowerLimit(int responseCode, long delay, @NonNull byte[] value) {
             mFatBurnHeartRateLowerLimitCharacteristicData = new UDSCharacteristicData(FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1456,18 +1456,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Fat Burn Heart Rate Upper Limit characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addFatBurnHeartRateUpperLimit(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addFatBurnHeartRateUpperLimit(int responseCode, long delay, @NonNull byte[] value) {
             mFatBurnHeartRateUpperLimitCharacteristicData = new UDSCharacteristicData(FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1514,18 +1514,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Aerobic Heart Rate Lower Limit characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addAerobicHeartRateLowerLimit(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addAerobicHeartRateLowerLimit(int responseCode, long delay, @NonNull byte[] value) {
             mAerobicHeartRateLowerLimitCharacteristicData = new UDSCharacteristicData(AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1572,18 +1572,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Aerobic Heart Rate Upper Limit characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addAerobicHeartRateUpperLimit(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addAerobicHeartRateUpperLimit(int responseCode, long delay, @NonNull byte[] value) {
             mAerobicHeartRateUpperLimitCharacteristicData = new UDSCharacteristicData(AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1630,18 +1630,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Anaerobic Heart Rate Lower Limit characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addAnaerobicHeartRateLowerLimit(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addAnaerobicHeartRateLowerLimit(int responseCode, long delay, @NonNull byte[] value) {
             mAnaerobicHeartRateLowerLimitCharacteristicData = new UDSCharacteristicData(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1688,18 +1688,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Anaerobic Heart Rate Lower Limit characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addAnaerobicHeartRateUpperLimit(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addAnaerobicHeartRateUpperLimit(int responseCode, long delay, @NonNull byte[] value) {
             mAnaerobicHeartRateUpperLimitCharacteristicData = new UDSCharacteristicData(ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1746,18 +1746,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Five Zone Heart Rate Limits characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addFiveZoneHeartRateLimits(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addFiveZoneHeartRateLimits(int responseCode, long delay, @NonNull byte[] value) {
             mFiveZoneHeartRateLimitsCharacteristicData = new UDSCharacteristicData(FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1804,18 +1804,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Three Zone Heart Rate Limits characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addThreeZoneHeartRateLimits(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addThreeZoneHeartRateLimits(int responseCode, long delay, @NonNull byte[] value) {
             mThreeZoneHeartRateLimitsCharacteristicData = new UDSCharacteristicData(THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1862,18 +1862,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Two Zone Heart Rate Limit characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addTwoZoneHeartRateLimit(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addTwoZoneHeartRateLimit(int responseCode, long delay, @NonNull byte[] value) {
             mTwoZoneHeartRateLimitCharacteristicData = new UDSCharacteristicData(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1920,18 +1920,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Language characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addLanguage(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addLanguage(int responseCode, long delay, @NonNull byte[] value) {
             mLanguageCharacteristicData = new UDSCharacteristicData(LANGUAGE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -1960,28 +1960,28 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Database Change Increment characteristic
          *
-         * @param characteristicResponceCode characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param characteristicResponseCode characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay        characteristic response delay(millis)
          * @param isNotificatable            notificatable flag for Database Change Increment characteristic
-         * @param descriptorResponceCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorResponseCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay            descritptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addDatabaseChangeIncrement(int characteristicResponceCode, long characteristicDelay, boolean isNotificatable, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+        public Builder<T> addDatabaseChangeIncrement(int characteristicResponseCode, long characteristicDelay, boolean isNotificatable, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
             int property = BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE;
             int permission = BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE;
             List<DescriptorData> descriptorDataList = new ArrayList<>();
             if (isNotificatable) {
                 property |= BluetoothGattCharacteristic.PROPERTY_NOTIFY;
-                descriptorDataList.add(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, descriptorResponceCode, descriptorDelay, descriptorValue));
+                descriptorDataList.add(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, descriptorResponseCode, descriptorDelay, descriptorValue));
             }
             mDatabaseChangeIncrementCharacteristicData = new CharacteristicData(DATABASE_CHANGE_INCREMENT_CHARACTERISTIC
                     , property
                     , permission
                     , descriptorDataList
-                    , characteristicResponceCode
+                    , characteristicResponseCode
                     , characteristicDelay
                     , new byte[0] // variable
                     , 1);
@@ -2011,17 +2011,17 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add User Index characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addUserIndex(int responceCode, long delay) {
+        public Builder<T> addUserIndex(int responseCode, long delay) {
             mUserIndexCharacteristicData = new CharacteristicData(USER_INDEX_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , new byte[0] // variable
                     , 0);
@@ -2050,24 +2050,24 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Registered User characteristic
          *
-         * @param characteristicResponceCode characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param characteristicResponseCode characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay        characteristic response delay(millis)
-         * @param descriptorResponceCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorResponseCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay            descritptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addRegisteredUser(int characteristicResponceCode, long characteristicDelay, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+        public Builder<T> addRegisteredUser(int characteristicResponseCode, long characteristicDelay, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
             mRegisteredUserCharacteristicData = new CharacteristicData(REGISTERED_USER_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_INDICATE
                     , 0
                     , Collections.singletonList(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE
-                    , descriptorResponceCode
+                    , descriptorResponseCode
                     , descriptorDelay
                     , descriptorValue))
-                    , characteristicResponceCode
+                    , characteristicResponseCode
                     , characteristicDelay
                     , new byte[0] // variable
                     , 1);
@@ -2089,40 +2089,40 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          * add Registered User characteristic
          *
          * @param characteristicDelay          characteristic response delay(millis)
-         * @param registerNewUserResponceValue characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Register New User response)
-         * @param consentResponceValue         characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Consent Response response)
-         * @param deleteUserDataResponceValue  characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Delete User Data response)
-         * @param listAllUsersResponceValue    characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(List All Users response)
-         * @param deleteUsersResponceValue     characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Delete Users response)
-         * @param descriptorResponceCode       descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param registerNewUserResponseValue characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Register New User response)
+         * @param consentResponseValue         characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Consent Response response)
+         * @param deleteUserDataResponseValue  characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Delete User Data response)
+         * @param listAllUsersResponseValue    characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(List All Users response)
+         * @param deleteUsersResponseValue     characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Delete Users response)
+         * @param descriptorResponseCode       descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay              descritptor response delay(millis)
          * @param descriptorValue              descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
         public Builder<T> addUserControlPoint(long characteristicDelay
-                , int registerNewUserResponceValue
-                , int consentResponceValue
-                , int deleteUserDataResponceValue
-                , int listAllUsersResponceValue
-                , int deleteUsersResponceValue
-                , int descriptorResponceCode
+                , int registerNewUserResponseValue
+                , int consentResponseValue
+                , int deleteUserDataResponseValue
+                , int listAllUsersResponseValue
+                , int deleteUsersResponseValue
+                , int descriptorResponseCode
                 , long descriptorDelay
                 , @NonNull byte[] descriptorValue) {
             mUserControlPointCharacteristicData = new UserControlPointCharacteristicData(BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE
                     , BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.singletonList(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE
-                    , descriptorResponceCode
+                    , descriptorResponseCode
                     , descriptorDelay
                     , descriptorValue))
                     , characteristicDelay
                     , 1
-                    , registerNewUserResponceValue
-                    , consentResponceValue
-                    , deleteUserDataResponceValue
-                    , listAllUsersResponceValue
-                    , deleteUsersResponceValue);
+                    , registerNewUserResponseValue
+                    , consentResponseValue
+                    , deleteUserDataResponseValue
+                    , listAllUsersResponseValue
+                    , deleteUsersResponseValue);
             return this;
         }
 
@@ -2306,7 +2306,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                 characteristicList.add(mUserControlPointCharacteristicData);
             }
 
-            if (UserControlPoint.RESPONSE_VALUE_SUCCESS == mUserControlPointCharacteristicData.listAllUsersResponceValue) {
+            if (UserControlPoint.RESPONSE_VALUE_SUCCESS == mUserControlPointCharacteristicData.listAllUsersResponseValue) {
                 if (mRegisteredUserCharacteristicData == null) {
                     throw new RuntimeException("no Registered User data");
                 } else {
@@ -2687,17 +2687,17 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                     UserControlPointCharacteristicData userControlPointCharacteristicData = (UserControlPointCharacteristicData) characteristicData;
 
                                     if (userControlPoint.isOpCodeRegisterNewUser(userControlPoint.getOpCode())) {
-                                        if (userControlPoint.isResponseValueSuccess(userControlPointCharacteristicData.registerNewUserResponceValue)) {
+                                        if (userControlPoint.isResponseValueSuccess(userControlPointCharacteristicData.registerNewUserResponseValue)) {
                                             int userIndex = mNextUserIndex.getAndIncrement() % UserIndexUtils.USER_ID_UNKNOWN_USER;
                                             mUserMap.put(userIndex, userControlPoint.getConsentCode());
-                                            userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, userIndex, 0, UserControlPoint.OP_CODE_REGISTER_NEW_USER, userControlPointCharacteristicData.registerNewUserResponceValue, 0).getBytes();
+                                            userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, userIndex, 0, UserControlPoint.OP_CODE_REGISTER_NEW_USER, userControlPointCharacteristicData.registerNewUserResponseValue, 0).getBytes();
                                         } else {
-                                            userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, UserControlPoint.OP_CODE_REGISTER_NEW_USER, userControlPointCharacteristicData.registerNewUserResponceValue, 0).getBytes();
+                                            userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, UserControlPoint.OP_CODE_REGISTER_NEW_USER, userControlPointCharacteristicData.registerNewUserResponseValue, 0).getBytes();
                                         }
 
                                         responseCode = BluetoothGatt.GATT_SUCCESS;
                                     } else if (userControlPoint.isOpCodeConsent(userControlPoint.getOpCode())) {
-                                        if (userControlPoint.isResponseValueSuccess(userControlPointCharacteristicData.consentResponceValue)) {
+                                        if (userControlPoint.isResponseValueSuccess(userControlPointCharacteristicData.consentResponseValue)) {
                                             int userIndex = userControlPoint.getUserIndex();
                                             Integer consent = mUserMap.get(userIndex);
                                             if (consent != null && consent == userControlPoint.getConsentCode()) {
@@ -2708,13 +2708,13 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                                 userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, userIndex, 0, UserControlPoint.OP_CODE_CONSENT, UserControlPoint.RESPONSE_VALUE_USER_NOT_AUTHORIZED, 0).getBytes();
                                             }
                                         } else {
-                                            userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, UserControlPoint.OP_CODE_REGISTER_NEW_USER, userControlPointCharacteristicData.registerNewUserResponceValue, 0).getBytes();
+                                            userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, UserControlPoint.OP_CODE_REGISTER_NEW_USER, userControlPointCharacteristicData.registerNewUserResponseValue, 0).getBytes();
                                         }
 
                                         responseCode = BluetoothGatt.GATT_SUCCESS;
                                     } else if (userControlPoint.isOpCodeDeleteUserData(userControlPoint.getOpCode())) {
                                         if (mCurrentUserMap.containsKey(device)) {
-                                            if (userControlPoint.isResponseValueSuccess(userControlPointCharacteristicData.deleteUserDataResponceValue)) {
+                                            if (userControlPoint.isResponseValueSuccess(userControlPointCharacteristicData.deleteUserDataResponseValue)) {
                                                 for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, CharacteristicData>> serviceEntry : mRemappedServiceCharacteristicMap.entrySet()) {
                                                     Pair<UUID, Integer> serviceKey = serviceEntry.getKey();
                                                     if (USER_DATA_SERVICE.equals(serviceKey.first)) {
@@ -2734,7 +2734,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                                 userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, UserControlPoint.OP_CODE_DELETE_USER_DATA, UserControlPoint.RESPONSE_VALUE_SUCCESS, 0).getBytes();
                                                 mCurrentUserMap.remove(device);
                                             } else {
-                                                userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, UserControlPoint.OP_CODE_DELETE_USER_DATA, userControlPointCharacteristicData.deleteUserDataResponceValue, 0).getBytes();
+                                                userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, UserControlPoint.OP_CODE_DELETE_USER_DATA, userControlPointCharacteristicData.deleteUserDataResponseValue, 0).getBytes();
                                             }
                                         } else {
                                             userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, UserControlPoint.OP_CODE_DELETE_USER_DATA, UserControlPoint.RESPONSE_VALUE_USER_NOT_AUTHORIZED, 0).getBytes();
@@ -2744,7 +2744,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                     } else if (userControlPoint.isOpCodeListAllUsers(userControlPoint.getOpCode())) {
                                         if (mRegisteredUserIndicationData == null || mRegisteredUserIndicationData.timeout < SystemClock.elapsedRealtime()) {
                                             mRegisteredUserIndicationData = null;
-                                            if (userControlPoint.isResponseValueSuccess(userControlPointCharacteristicData.listAllUsersResponceValue)) {
+                                            if (userControlPoint.isResponseValueSuccess(userControlPointCharacteristicData.listAllUsersResponseValue)) {
                                                 int registeredUserClientCharacteristicConfigurationInstanceId = 0;
                                                 for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, DescriptorData>> a : mRemappedCharacteristicDescriptorMap.entrySet()) {
                                                     if (REGISTERED_USER_CHARACTERISTIC.equals(a.getKey().first)) {
@@ -2852,7 +2852,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
 
                                                 userControlPointCharacteristicData.currentData = mRegisteredUserIndicationData.returnValue;
                                             } else {
-                                                userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, UserControlPoint.OP_CODE_LIST_ALL_USERS, userControlPointCharacteristicData.listAllUsersResponceValue, 0).getBytes();
+                                                userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, UserControlPoint.OP_CODE_LIST_ALL_USERS, userControlPointCharacteristicData.listAllUsersResponseValue, 0).getBytes();
 
                                                 responseCode = BluetoothGatt.GATT_SUCCESS;
                                             }
@@ -2861,7 +2861,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                         }
 
                                     } else if (userControlPoint.isOpCodeDeleteUsers(userControlPoint.getOpCode())) {
-                                        if (userControlPoint.isResponseValueSuccess(userControlPointCharacteristicData.deleteUsersResponceValue)) {
+                                        if (userControlPoint.isResponseValueSuccess(userControlPointCharacteristicData.deleteUsersResponseValue)) {
                                             int userIndex = userControlPoint.getUserIndex();
                                             for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, CharacteristicData>> serviceEntry : mRemappedServiceCharacteristicMap.entrySet()) {
                                                 Pair<UUID, Integer> serviceKey = serviceEntry.getKey();
@@ -2893,7 +2893,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                             }
                                             userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, userIndex, 0, UserControlPoint.OP_CODE_DELETE_USERS, UserControlPoint.RESPONSE_VALUE_SUCCESS, 0).getBytes();
                                         } else {
-                                            userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, UserControlPoint.OP_CODE_DELETE_USERS, userControlPointCharacteristicData.deleteUsersResponceValue, 0).getBytes();
+                                            userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, UserControlPoint.OP_CODE_DELETE_USERS, userControlPointCharacteristicData.deleteUsersResponseValue, 0).getBytes();
                                         }
 
                                         responseCode = BluetoothGatt.GATT_SUCCESS;

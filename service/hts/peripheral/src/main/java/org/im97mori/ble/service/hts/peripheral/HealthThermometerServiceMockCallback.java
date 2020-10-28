@@ -89,25 +89,25 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
         /**
          * add Temperature Measurement characteristic
          *
-         * @param characteristicResponceCode characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param characteristicResponseCode characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @param descriptorResponceCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorResponseCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay            descritptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addTemperatureMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+        public Builder<T> addTemperatureMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
             mTemperatureMeasurement = new CharacteristicData(TEMPERATURE_MEASUREMENT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_INDICATE
                     , 0
                     , Collections.singletonList(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE
-                    , descriptorResponceCode
+                    , descriptorResponseCode
                     , descriptorDelay
                     , descriptorValue))
-                    , characteristicResponceCode
+                    , characteristicResponseCode
                     , characteristicDelay
                     , characteristicValue
                     , notificationCount);
@@ -136,18 +136,18 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
         /**
          * add Temperature Type characteristic
          *
-         * @param responceCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addTemperatureType(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addTemperatureType(int responseCode, long delay, @NonNull byte[] value) {
             mTemperatureType = new CharacteristicData(TEMPERATURE_TYPE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -176,26 +176,26 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
         /**
          * add Intermediate Temperature characteristic
          *
-         * @param characteristicResponceCode characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param characteristicResponseCode characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          TIntermediate Temperature notification count
-         * @param descriptorResponceCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorResponseCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay            descritptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addIntermediateTemperature(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+        public Builder<T> addIntermediateTemperature(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
             mIntermediateTemperature = new CharacteristicData(INTERMEDIATE_TEMPERATURE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_NOTIFY
                     , 0
                     , Collections.singletonList(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE
-                    , descriptorResponceCode
+                    , descriptorResponseCode
                     , descriptorDelay
                     , descriptorValue))
-                    , characteristicResponceCode
+                    , characteristicResponseCode
                     , characteristicDelay
                     , characteristicValue
                     , notificationCount);
@@ -234,29 +234,29 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
         /**
          * add Measurement Interval characteristic
          *
-         * @param measurementIntervalResponceCode               characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param measurementIntervalResponseCode               characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param measurementIntervalDelay                      characteristic response delay(millis)
          * @param measurementIntervalValue                      characteristic data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param isMeasurementIntervalIndicatable              indicatable flag for Measurement Interval characteristic
          * @param isMeasurementIntervalWritable                 writable flag for Measurement Interval characteristic
-         * @param clientCharacteristicConfigurationResponceCode Client Characteristic Configuration descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param clientCharacteristicConfigurationResponseCode Client Characteristic Configuration descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param clientCharacteristicConfigurationDelay        Client Characteristic Configuration descritptor response delay(millis)
          * @param clientCharacteristicConfigurationValue        Client Characteristic Configuration descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @param validRangeResponceCode                        Valid Range descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param validRangeResponseCode                        Valid Range descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param validRangeDelay                               Valid Range descritptor response delay(millis)
          * @param validRangeValue                               Valid Range descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addMeasurementInterval(int measurementIntervalResponceCode
+        public Builder<T> addMeasurementInterval(int measurementIntervalResponseCode
                 , long measurementIntervalDelay
                 , @NonNull byte[] measurementIntervalValue
                 , boolean isMeasurementIntervalIndicatable
                 , boolean isMeasurementIntervalWritable
-                , int clientCharacteristicConfigurationResponceCode
+                , int clientCharacteristicConfigurationResponseCode
                 , long clientCharacteristicConfigurationDelay
                 , @NonNull byte[] clientCharacteristicConfigurationValue
-                , int validRangeResponceCode
+                , int validRangeResponseCode
                 , long validRangeDelay
                 , @NonNull byte[] validRangeValue) {
             int property = BluetoothGattCharacteristic.PROPERTY_READ;
@@ -264,18 +264,18 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
             List<DescriptorData> descriptorDataList = new ArrayList<>();
             if (isMeasurementIntervalIndicatable) {
                 property |= BluetoothGattCharacteristic.PROPERTY_INDICATE;
-                descriptorDataList.add(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, clientCharacteristicConfigurationResponceCode, clientCharacteristicConfigurationDelay, clientCharacteristicConfigurationValue));
+                descriptorDataList.add(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, clientCharacteristicConfigurationResponseCode, clientCharacteristicConfigurationDelay, clientCharacteristicConfigurationValue));
             }
             if (isMeasurementIntervalWritable) {
                 property |= BluetoothGattCharacteristic.PROPERTY_WRITE;
                 permission |= BluetoothGattCharacteristic.PERMISSION_WRITE;
-                descriptorDataList.add(new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, validRangeResponceCode, validRangeDelay, validRangeValue));
+                descriptorDataList.add(new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, validRangeResponseCode, validRangeDelay, validRangeValue));
             }
             mMeasurementInterval = new CharacteristicData(MEASUREMENT_INTERVAL_CHARACTERISTIC
                     , property
                     , permission
                     , descriptorDataList
-                    , measurementIntervalResponceCode
+                    , measurementIntervalResponseCode
                     , measurementIntervalDelay
                     , measurementIntervalValue
                     , 1);

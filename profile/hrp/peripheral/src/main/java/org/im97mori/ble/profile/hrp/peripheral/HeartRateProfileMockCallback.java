@@ -93,9 +93,9 @@ public class HeartRateProfileMockCallback extends AbstractProfileMockCallback {
          * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#addManufacturerNameString(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
             mHasManufacturerNameString = true;
-            mDeviceInformationServiceMockCallbackBuilder.addManufacturerNameString(responceCode, delay, value);
+            mDeviceInformationServiceMockCallbackBuilder.addManufacturerNameString(responseCode, delay, value);
             return this;
         }
 
@@ -122,8 +122,8 @@ public class HeartRateProfileMockCallback extends AbstractProfileMockCallback {
          * @see org.im97mori.ble.service.hrs.peripheral.HeartRateServiceMockCallback.Builder#addHeartRateMeasurement(int, long, byte[], int, int, long, byte[])
          */
         @NonNull
-        public Builder<T> addHeartRateMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
-            mHeartRateServiceMockCallbackBuilder.addHeartRateMeasurement(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+        public Builder<T> addHeartRateMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            mHeartRateServiceMockCallbackBuilder.addHeartRateMeasurement(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             return this;
         }
 
@@ -148,8 +148,8 @@ public class HeartRateProfileMockCallback extends AbstractProfileMockCallback {
          * @see org.im97mori.ble.service.hrs.peripheral.HeartRateServiceMockCallback.Builder#addBodySensorLocation(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addBodySensorLocation(int responceCode, long delay, @NonNull byte[] value) {
-            mHeartRateServiceMockCallbackBuilder.addBodySensorLocation(responceCode, delay, value);
+        public Builder<T> addBodySensorLocation(int responseCode, long delay, @NonNull byte[] value) {
+            mHeartRateServiceMockCallbackBuilder.addBodySensorLocation(responseCode, delay, value);
             return this;
         }
 
@@ -174,8 +174,8 @@ public class HeartRateProfileMockCallback extends AbstractProfileMockCallback {
          * @see org.im97mori.ble.service.hrs.peripheral.HeartRateServiceMockCallback.Builder#addHeartRateControlPoint(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addHeartRateControlPoint(int responceCode, long delay, @NonNull byte[] value) {
-            mHeartRateServiceMockCallbackBuilder.addHeartRateControlPoint(responceCode, delay, value);
+        public Builder<T> addHeartRateControlPoint(int responseCode, long delay, @NonNull byte[] value) {
+            mHeartRateServiceMockCallbackBuilder.addHeartRateControlPoint(responseCode, delay, value);
             return this;
         }
 

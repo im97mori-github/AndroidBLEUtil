@@ -6936,10 +6936,10 @@ public class UserDataServiceMockCallbackBuilderTest {
     public void test_addDatabaseChangeIncrement_00101() {
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
-        int characteristicResponceCode = 1;
+        int characteristicResponseCode = 1;
         long characteristicDelay = 2;
         boolean isNotificatable = true;
-        int descriptorResponceCode = 3;
+        int descriptorResponseCode = 3;
         long descriptorDelay = 4;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -6955,7 +6955,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         try {
             UserDataServiceMockCallback userDataServiceMockCallback = new UserDataServiceMockCallback.Builder<>()
                     .addFirstName("First Name")
-                    .addDatabaseChangeIncrement(characteristicResponceCode, characteristicDelay, isNotificatable, descriptorResponceCode, descriptorDelay, clientCharacteristicConfiguration.getBytes())
+                    .addDatabaseChangeIncrement(characteristicResponseCode, characteristicDelay, isNotificatable, descriptorResponseCode, descriptorDelay, clientCharacteristicConfiguration.getBytes())
                     .addUserIndex()
                     .addUserControlPoint(0
                             , UserControlPoint.RESPONSE_VALUE_SUCCESS
@@ -6997,10 +6997,10 @@ public class UserDataServiceMockCallbackBuilderTest {
     public void test_addDatabaseChangeIncrement_00102() {
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
-        int characteristicResponceCode = 1;
+        int characteristicResponseCode = 1;
         long characteristicDelay = 2;
         boolean isNotificatable = false;
-        int descriptorResponceCode = 3;
+        int descriptorResponseCode = 3;
         long descriptorDelay = 4;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -7016,7 +7016,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         try {
             UserDataServiceMockCallback userDataServiceMockCallback = new UserDataServiceMockCallback.Builder<>()
                     .addFirstName("First Name")
-                    .addDatabaseChangeIncrement(characteristicResponceCode, characteristicDelay, isNotificatable, descriptorResponceCode, descriptorDelay, clientCharacteristicConfiguration.getBytes())
+                    .addDatabaseChangeIncrement(characteristicResponseCode, characteristicDelay, isNotificatable, descriptorResponseCode, descriptorDelay, clientCharacteristicConfiguration.getBytes())
                     .addUserIndex()
                     .addUserControlPoint(0
                             , UserControlPoint.RESPONSE_VALUE_SUCCESS
@@ -7269,9 +7269,9 @@ public class UserDataServiceMockCallbackBuilderTest {
     public void test_addRegisteredUser_00101() {
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
-        int characteristicResponceCode = 1;
+        int characteristicResponseCode = 1;
         long characteristicDelay = 2;
-        int descriptorResponceCode = 3;
+        int descriptorResponseCode = 3;
         long descriptorDelay = 4;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -7286,7 +7286,7 @@ public class UserDataServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             UserDataServiceMockCallback userDataServiceMockCallback = new UserDataServiceMockCallback.Builder<>()
-                    .addRegisteredUser(characteristicResponceCode, characteristicDelay, descriptorResponceCode, descriptorDelay, clientCharacteristicConfiguration.getBytes())
+                    .addRegisteredUser(characteristicResponseCode, characteristicDelay, descriptorResponseCode, descriptorDelay, clientCharacteristicConfiguration.getBytes())
                     .addFirstName("First Name")
                     .addDatabaseChangeIncrement(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
                     .addUserIndex()
@@ -7389,12 +7389,12 @@ public class UserDataServiceMockCallbackBuilderTest {
     @Test
     public void test_addUserControlPoint_00001() {
         long characteristicDelay = 1;
-        int registerNewUserResponceValue = 2;
-        int consentResponceValue = 3;
-        int deleteUserDataResponceValue = 4;
-        int listAllUsersResponceValue = 5;
-        int deleteUsersResponceValue = 6;
-        int descriptorResponceCode = 7;
+        int registerNewUserResponseValue = 2;
+        int consentResponseValue = 3;
+        int deleteUserDataResponseValue = 4;
+        int listAllUsersResponseValue = 5;
+        int deleteUsersResponseValue = 6;
+        int descriptorResponseCode = 7;
         long descriptorDelay = 8;
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
@@ -7412,12 +7412,12 @@ public class UserDataServiceMockCallbackBuilderTest {
         try {
             UserDataServiceMockCallback userDataServiceMockCallback = new UserDataServiceMockCallback.Builder<>()
                     .addUserControlPoint(characteristicDelay
-                            , registerNewUserResponceValue
-                            , consentResponceValue
-                            , deleteUserDataResponceValue
-                            , listAllUsersResponceValue
-                            , deleteUsersResponceValue
-                            , descriptorResponceCode
+                            , registerNewUserResponseValue
+                            , consentResponseValue
+                            , deleteUserDataResponseValue
+                            , listAllUsersResponseValue
+                            , deleteUsersResponseValue
+                            , descriptorResponseCode
                             , descriptorDelay
                             , clientCharacteristicConfiguration.getBytes())
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
@@ -7453,12 +7453,12 @@ public class UserDataServiceMockCallbackBuilderTest {
     @Test
     public void test_removeUserControlPoint_00001() {
         long characteristicDelay = 1;
-        int registerNewUserResponceValue = 2;
-        int consentResponceValue = 3;
-        int deleteUserDataResponceValue = 4;
-        int listAllUsersResponceValue = 5;
-        int deleteUsersResponceValue = 6;
-        int descriptorResponceCode = 7;
+        int registerNewUserResponseValue = 2;
+        int consentResponseValue = 3;
+        int deleteUserDataResponseValue = 4;
+        int listAllUsersResponseValue = 5;
+        int deleteUsersResponseValue = 6;
+        int descriptorResponseCode = 7;
         long descriptorDelay = 8;
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
@@ -7467,12 +7467,12 @@ public class UserDataServiceMockCallbackBuilderTest {
         try {
             new UserDataServiceMockCallback.Builder<>()
                     .addUserControlPoint(characteristicDelay
-                            , registerNewUserResponceValue
-                            , consentResponceValue
-                            , deleteUserDataResponceValue
-                            , listAllUsersResponceValue
-                            , deleteUsersResponceValue
-                            , descriptorResponceCode
+                            , registerNewUserResponseValue
+                            , consentResponseValue
+                            , deleteUserDataResponseValue
+                            , listAllUsersResponseValue
+                            , deleteUsersResponseValue
+                            , descriptorResponseCode
                             , descriptorDelay
                             , clientCharacteristicConfiguration.getBytes())
                     .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))

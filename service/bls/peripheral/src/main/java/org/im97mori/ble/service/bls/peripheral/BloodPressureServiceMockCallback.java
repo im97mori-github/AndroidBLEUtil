@@ -70,26 +70,26 @@ public class BloodPressureServiceMockCallback extends AbstractServiceMockCallbac
         /**
          * add Blood Pressure Measurement characteristic
          *
-         * @param characteristicResponceCode characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param characteristicResponseCode characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Blood Pressure Measurement indication count
-         * @param descriptorResponceCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay            descritptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addBloodPressureMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+        public Builder<T> addBloodPressureMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
             mBloodPressureMeasurementData = new CharacteristicData(BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_INDICATE
                     , 0
                     , Collections.singletonList(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE
-                    , descriptorResponceCode
+                    , descriptorResponseCode
                     , descriptorDelay
                     , descriptorValue))
-                    , characteristicResponceCode
+                    , characteristicResponseCode
                     , characteristicDelay
                     , characteristicValue
                     , notificationCount);
@@ -118,26 +118,26 @@ public class BloodPressureServiceMockCallback extends AbstractServiceMockCallbac
         /**
          * add Intermediate Cuff Pressure characteristic
          *
-         * @param characteristicResponceCode characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param characteristicResponseCode characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Intermediate Cuff Pressure notification count
-         * @param descriptorResponceCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay            descritptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addIntermediateCuffPressure(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+        public Builder<T> addIntermediateCuffPressure(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
             mIntermediateCuffPressure = new CharacteristicData(INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_NOTIFY
                     , 0
                     , Collections.singletonList(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE
-                    , descriptorResponceCode
+                    , descriptorResponseCode
                     , descriptorDelay
                     , descriptorValue))
-                    , characteristicResponceCode
+                    , characteristicResponseCode
                     , characteristicDelay
                     , characteristicValue
                     , notificationCount);
@@ -166,18 +166,18 @@ public class BloodPressureServiceMockCallback extends AbstractServiceMockCallbac
         /**
          * add Blood Pressure Feature characteristic
          *
-         * @param responceCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addBloodPressureFeature(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addBloodPressureFeature(int responseCode, long delay, @NonNull byte[] value) {
             mBloodPressureFeature = new CharacteristicData(BLOOD_PRESSURE_FEATURE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);

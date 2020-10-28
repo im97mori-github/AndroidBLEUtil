@@ -107,9 +107,9 @@ public class HealthThermometerProfileMockCallback extends AbstractProfileMockCal
          * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#addManufacturerNameString(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
             mHasManufacturerNameString = true;
-            mDeviceInformationServiceMockCallbackBuilder.addManufacturerNameString(responceCode, delay, value);
+            mDeviceInformationServiceMockCallbackBuilder.addManufacturerNameString(responseCode, delay, value);
             return this;
         }
 
@@ -153,9 +153,9 @@ public class HealthThermometerProfileMockCallback extends AbstractProfileMockCal
          * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#addModelNumberString(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
             mHasModelNumberNameString = true;
-            mDeviceInformationServiceMockCallbackBuilder.addModelNumberString(responceCode, delay, value);
+            mDeviceInformationServiceMockCallbackBuilder.addModelNumberString(responseCode, delay, value);
             return this;
         }
 
@@ -195,9 +195,9 @@ public class HealthThermometerProfileMockCallback extends AbstractProfileMockCal
         /**
          * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#addSystemId(int, long, byte[])
          */
-        public Builder<T> addSystemId(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addSystemId(int responseCode, long delay, @NonNull byte[] value) {
             mHasSystemIdString = true;
-            mDeviceInformationServiceMockCallbackBuilder.addSystemId(responceCode, delay, value);
+            mDeviceInformationServiceMockCallbackBuilder.addSystemId(responseCode, delay, value);
             return this;
         }
 
@@ -222,8 +222,8 @@ public class HealthThermometerProfileMockCallback extends AbstractProfileMockCal
          * @see org.im97mori.ble.service.hts.peripheral.HealthThermometerServiceMockCallback.Builder#addTemperatureMeasurement(int, long, byte[], int, int, long, byte[])
          */
         @NonNull
-        public Builder<T> addTemperatureMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
-            mHealthThermometerServiceMockCallback.addTemperatureMeasurement(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+        public Builder<T> addTemperatureMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            mHealthThermometerServiceMockCallback.addTemperatureMeasurement(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             return this;
         }
 
@@ -248,8 +248,8 @@ public class HealthThermometerProfileMockCallback extends AbstractProfileMockCal
          * @see org.im97mori.ble.service.hts.peripheral.HealthThermometerServiceMockCallback.Builder#addTemperatureType(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addTemperatureType(int responceCode, long delay, @NonNull byte[] value) {
-            mHealthThermometerServiceMockCallback.addTemperatureType(responceCode, delay, value);
+        public Builder<T> addTemperatureType(int responseCode, long delay, @NonNull byte[] value) {
+            mHealthThermometerServiceMockCallback.addTemperatureType(responseCode, delay, value);
             return this;
         }
 
@@ -274,8 +274,8 @@ public class HealthThermometerProfileMockCallback extends AbstractProfileMockCal
          * @see org.im97mori.ble.service.hts.peripheral.HealthThermometerServiceMockCallback.Builder#addIntermediateTemperature(int, long, byte[], int, int, long, byte[])
          */
         @NonNull
-        public Builder<T> addIntermediateTemperature(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
-            mHealthThermometerServiceMockCallback.addIntermediateTemperature(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+        public Builder<T> addIntermediateTemperature(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            mHealthThermometerServiceMockCallback.addIntermediateTemperature(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             return this;
         }
 
@@ -310,18 +310,18 @@ public class HealthThermometerProfileMockCallback extends AbstractProfileMockCal
          * @see org.im97mori.ble.service.hts.peripheral.HealthThermometerServiceMockCallback.Builder#addMeasurementInterval(int, long, byte[], boolean, boolean, int, long, byte[], int, long, byte[])
          */
         @NonNull
-        public Builder<T> addMeasurementInterval(int measurementIntervalResponceCode
+        public Builder<T> addMeasurementInterval(int measurementIntervalResponseCode
                 , long measurementIntervalDelay
                 , @NonNull byte[] measurementIntervalValue
                 , boolean isMeasurementIntervalIndicatable
                 , boolean isMeasurementIntervalWritable
-                , int clientCharacteristicConfigurationResponceCode
+                , int clientCharacteristicConfigurationResponseCode
                 , long clientCharacteristicConfigurationDelay
                 , @NonNull byte[] clientCharacteristicConfigurationValue
-                , int validRangeResponceCode
+                , int validRangeResponseCode
                 , long validRangeDelay
                 , @NonNull byte[] validRangeValue) {
-            mHealthThermometerServiceMockCallback.addMeasurementInterval(measurementIntervalResponceCode, measurementIntervalDelay, measurementIntervalValue, isMeasurementIntervalIndicatable, isMeasurementIntervalWritable, clientCharacteristicConfigurationResponceCode, clientCharacteristicConfigurationDelay, clientCharacteristicConfigurationValue, validRangeResponceCode, validRangeDelay, validRangeValue);
+            mHealthThermometerServiceMockCallback.addMeasurementInterval(measurementIntervalResponseCode, measurementIntervalDelay, measurementIntervalValue, isMeasurementIntervalIndicatable, isMeasurementIntervalWritable, clientCharacteristicConfigurationResponseCode, clientCharacteristicConfigurationDelay, clientCharacteristicConfigurationValue, validRangeResponseCode, validRangeDelay, validRangeValue);
             return this;
         }
 

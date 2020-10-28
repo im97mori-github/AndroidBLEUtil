@@ -128,18 +128,18 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * add Manufacturer Name String characteristic
          *
-         * @param responceCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
             mManufacturerNameStringCharacteristicData = new CharacteristicData(MANUFACTURER_NAME_STRING_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -186,18 +186,18 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * add Model Number String characteristic
          *
-         * @param responceCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
             mModelNumberStringCharacteristicData = new CharacteristicData(MODEL_NUMBER_STRING_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -244,18 +244,18 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * add Serial Number String characteristic
          *
-         * @param responceCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addSerialNumberString(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addSerialNumberString(int responseCode, long delay, @NonNull byte[] value) {
             mSerialNumberStringCharacteristicData = new CharacteristicData(SERIAL_NUMBER_STRING_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -302,18 +302,18 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * add Hardware Revision String characteristic
          *
-         * @param responceCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addHardwareRevisionString(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addHardwareRevisionString(int responseCode, long delay, @NonNull byte[] value) {
             mHardwareRevisionStringCharacteristicData = new CharacteristicData(HARDWARE_REVISION_STRING_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -356,17 +356,17 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * add Firmware Revision String characteristic
          *
-         * @param responceCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
-        public Builder<T> addFirmwareRevisionString(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addFirmwareRevisionString(int responseCode, long delay, @NonNull byte[] value) {
             mFirmwareRevisionStringCharacteristicData = new CharacteristicData(FIRMWARE_REVISION_STRING_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -409,17 +409,17 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * add Software Revision String characteristic
          *
-         * @param responceCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
-        public Builder<T> addSoftwareRevisionString(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addSoftwareRevisionString(int responseCode, long delay, @NonNull byte[] value) {
             mSoftwareRevisionStringCharacteristicData = new CharacteristicData(SOFTWARE_REVISION_STRING_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -462,17 +462,17 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * add System ID characteristic
          *
-         * @param responceCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
-        public Builder<T> addSystemId(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addSystemId(int responseCode, long delay, @NonNull byte[] value) {
             mSystemIdCharacteristicData = new CharacteristicData(SYSTEM_ID_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -508,17 +508,17 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * add IEEE 11073-20601 Regulatory Certification Data List characteristic
          *
-         * @param responceCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
-        public Builder<T> addIEEE_11073_20601_RegulatoryCertificationDataList(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addIEEE_11073_20601_RegulatoryCertificationDataList(int responseCode, long delay, @NonNull byte[] value) {
             mIEEE_11073_20601_RegulatoryCertificationDataListCharacteristicData = new CharacteristicData(IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -561,17 +561,17 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         /**
          * add PnP ID characteristic
          *
-         * @param responceCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
-        public Builder<T> addPnpId(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addPnpId(int responseCode, long delay, @NonNull byte[] value) {
             mPnpIdCharacteristicData = new CharacteristicData(PNP_ID_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);

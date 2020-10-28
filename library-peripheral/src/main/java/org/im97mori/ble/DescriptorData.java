@@ -65,7 +65,7 @@ public class DescriptorData implements Parcelable, ByteArrayInterface {
     public int responseCode;
 
     /**
-     * responce delay(millis)
+     * response delay(millis)
      */
     @SerializedName("delay")
     public long delay;
@@ -98,7 +98,7 @@ public class DescriptorData implements Parcelable, ByteArrayInterface {
      *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
      *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
      * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-     * @param delay        responce delay(millis)
+     * @param delay        response delay(millis)
      * @param data         data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
      */
     public DescriptorData(@NonNull UUID uuid, int permission, int responseCode, long delay, @Nullable byte[] data) {

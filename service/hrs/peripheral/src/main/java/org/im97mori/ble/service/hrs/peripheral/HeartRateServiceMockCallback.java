@@ -76,26 +76,26 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Heart Rate Measurement characteristic
          *
-         * @param characteristicResponceCode characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param characteristicResponseCode characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Heart Rate Measurement notification count
-         * @param descriptorResponceCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay            descritptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addHeartRateMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+        public Builder<T> addHeartRateMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
             mHeartRateMeasurementData = new CharacteristicData(HEART_RATE_MEASUREMENT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_NOTIFY
                     , 0
                     , Collections.singletonList(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE
-                    , descriptorResponceCode
+                    , descriptorResponseCode
                     , descriptorDelay
                     , descriptorValue))
-                    , characteristicResponceCode
+                    , characteristicResponseCode
                     , characteristicDelay
                     , characteristicValue
                     , notificationCount);
@@ -124,18 +124,18 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Body Sensor Location characteristic
          *
-         * @param responceCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addBodySensorLocation(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addBodySensorLocation(int responseCode, long delay, @NonNull byte[] value) {
             mBodySensorLocation = new CharacteristicData(BODY_SENSOR_LOCATION_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -164,18 +164,18 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Heart Rate Control Point characteristic
          *
-         * @param responceCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addHeartRateControlPoint(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addHeartRateControlPoint(int responseCode, long delay, @NonNull byte[] value) {
             mHeartRateControlPoint = new CharacteristicData(HEART_RATE_CONTROL_POINT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);

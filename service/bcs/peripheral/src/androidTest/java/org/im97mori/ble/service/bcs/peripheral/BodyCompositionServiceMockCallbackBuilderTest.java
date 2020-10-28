@@ -266,10 +266,10 @@ public class BodyCompositionServiceMockCallbackBuilderTest {
         BodyCompositionMeasurement bodyCompositionMeasurement = new BodyCompositionMeasurement(new BodyCompositionMeasurementPacket[]{new BodyCompositionMeasurementPacket(new byte[]{0, 0, (byte) 0xff, (byte) 0xff})});
         byte[] value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
-        int characteristicResponceCode = 1;
+        int characteristicResponseCode = 1;
         long characteristicDelay = 2;
         int notificationCount = 3;
-        int descriptorResponceCode = 4;
+        int descriptorResponseCode = 4;
         long descriptorDelay = 5;
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
@@ -284,7 +284,7 @@ public class BodyCompositionServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             BodyCompositionServiceMockCallback userDataServiceMockCallback = new BodyCompositionServiceMockCallback.Builder<>()
-                    .addBodyCompositionMeasurement(characteristicResponceCode, characteristicDelay, bodyCompositionMeasurement.getBytes(), notificationCount, descriptorResponceCode, descriptorDelay, clientCharacteristicConfiguration.getBytes())
+                    .addBodyCompositionMeasurement(characteristicResponseCode, characteristicDelay, bodyCompositionMeasurement.getBytes(), notificationCount, descriptorResponseCode, descriptorDelay, clientCharacteristicConfiguration.getBytes())
                     .addBodyCompositionFeature(new BodyCompositionFeature(new byte[4]))
                     .build();
             userDataServiceMockCallback.setup(mockBLEServerConnection);

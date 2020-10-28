@@ -93,7 +93,7 @@ public class FindMeProfileMockCallbackBuilderTest {
     @Test
     public void test_addAlertLevel_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final byte[] originalValue = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT).getBytes();
 
@@ -101,16 +101,16 @@ public class FindMeProfileMockCallbackBuilderTest {
         ImmediateAlertServiceMockCallback.Builder<ImmediateAlertServiceMockCallback> immediateAlertServiceMockCallbackBuilder = new ImmediateAlertServiceMockCallback.Builder<ImmediateAlertServiceMockCallback>() {
             @NonNull
             @Override
-            public ImmediateAlertServiceMockCallback.Builder<ImmediateAlertServiceMockCallback> addAlertLevel(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public ImmediateAlertServiceMockCallback.Builder<ImmediateAlertServiceMockCallback> addAlertLevel(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addAlertLevel(responceCode, delay, value);
+                return super.addAlertLevel(responseCode, delay, value);
             }
         };
         BaseBuilder baseBuilder = new BaseBuilder(context, immediateAlertServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addAlertLevel(originalResponceCode, originalDelay, originalValue));
+        assertEquals(baseBuilder, baseBuilder.addAlertLevel(originalResponseCode, originalDelay, originalValue));
 
         assertTrue(atomicBoolean.get());
     }

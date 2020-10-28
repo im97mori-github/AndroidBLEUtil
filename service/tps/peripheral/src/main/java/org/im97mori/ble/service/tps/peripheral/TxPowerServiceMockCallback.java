@@ -72,18 +72,18 @@ public class TxPowerServiceMockCallback extends AbstractServiceMockCallback {
         /**
          * add Tx Power Level characteristic
          *
-         * @param responceCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param responseCode response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param delay        response delay(millis)
          * @param value        data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addTxPowerLevel(int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addTxPowerLevel(int responseCode, long delay, @NonNull byte[] value) {
             mTxPowerLevelCharacteristicData = new CharacteristicData(TX_POWER_LEVEL_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);

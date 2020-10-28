@@ -51,32 +51,32 @@ public class UserControlPointCharacteristicData extends CharacteristicData {
     /**
      * characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Cumulative Value response)
      */
-    @SerializedName("register_new_user_responce_value")
-    public int registerNewUserResponceValue;
+    @SerializedName("register_new_user_response_value")
+    public int registerNewUserResponseValue;
 
     /**
      * characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Mask Location and Speed Characteristic Content response)
      */
-    @SerializedName("consent_responce_value")
-    public int consentResponceValue;
+    @SerializedName("consent_response_value")
+    public int consentResponseValue;
 
     /**
      * characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Navigation Control response)
      */
-    @SerializedName("delete_user_data_responce_value")
-    public int deleteUserDataResponceValue;
+    @SerializedName("delete_user_data_response_value")
+    public int deleteUserDataResponseValue;
 
     /**
      * part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Number of Routes response)
      */
-    @SerializedName("list_all_users_responce_value")
-    public int listAllUsersResponceValue;
+    @SerializedName("list_all_users_response_value")
+    public int listAllUsersResponseValue;
 
     /**
      * part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Number of Routes response)
      */
-    @SerializedName("delete_users_responce_value")
-    public int deleteUsersResponceValue;
+    @SerializedName("delete_users_response_value")
+    public int deleteUsersResponseValue;
 
     /**
      * @param property                     combination of
@@ -89,30 +89,30 @@ public class UserControlPointCharacteristicData extends CharacteristicData {
      *                                     {@link android.bluetooth.BluetoothGattCharacteristic#PERMISSION_READ}
      *                                     {@link android.bluetooth.BluetoothGattCharacteristic#PERMISSION_WRITE}
      * @param descriptorDataList           {@link DescriptorData} list
-     * @param delay                        responce delay(millis)
+     * @param delay                        response delay(millis)
      * @param notificationCount            notification / indication count
-     * @param registerNewUserResponceValue characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Register New User response)
-     * @param consentResponceValue         characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Consent Response response)
-     * @param deleteUserDataResponceValue  characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Delete User Data response)
-     * @param listAllUsersResponceValue    characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(List All Users response)
-     * @param deleteUsersResponceValue     characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Delete Users response)
+     * @param registerNewUserResponseValue characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Register New User response)
+     * @param consentResponseValue         characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Consent Response response)
+     * @param deleteUserDataResponseValue  characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Delete User Data response)
+     * @param listAllUsersResponseValue    characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(List All Users response)
+     * @param deleteUsersResponseValue     characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Delete Users response)
      */
     public UserControlPointCharacteristicData(int property
             , int permission
             , @NonNull List<DescriptorData> descriptorDataList
             , long delay
             , int notificationCount
-            , int registerNewUserResponceValue
-            , int consentResponceValue
-            , int deleteUserDataResponceValue
-            , int listAllUsersResponceValue
-            , int deleteUsersResponceValue) {
+            , int registerNewUserResponseValue
+            , int consentResponseValue
+            , int deleteUserDataResponseValue
+            , int listAllUsersResponseValue
+            , int deleteUsersResponseValue) {
         super(USER_CONTROL_POINT_CHARACTERISTIC, property, permission, descriptorDataList, BluetoothGatt.GATT_SUCCESS, delay, new byte[0], notificationCount);
-        this.registerNewUserResponceValue = registerNewUserResponceValue;
-        this.consentResponceValue = consentResponceValue;
-        this.deleteUserDataResponceValue = deleteUserDataResponceValue;
-        this.listAllUsersResponceValue = listAllUsersResponceValue;
-        this.deleteUsersResponceValue = deleteUsersResponceValue;
+        this.registerNewUserResponseValue = registerNewUserResponseValue;
+        this.consentResponseValue = consentResponseValue;
+        this.deleteUserDataResponseValue = deleteUserDataResponseValue;
+        this.listAllUsersResponseValue = listAllUsersResponseValue;
+        this.deleteUsersResponseValue = deleteUsersResponseValue;
     }
 
     /**
@@ -122,11 +122,11 @@ public class UserControlPointCharacteristicData extends CharacteristicData {
      */
     public UserControlPointCharacteristicData(@NonNull Parcel in) {
         super(in);
-        registerNewUserResponceValue = in.readInt();
-        consentResponceValue = in.readInt();
-        deleteUserDataResponceValue = in.readInt();
-        listAllUsersResponceValue = in.readInt();
-        deleteUsersResponceValue = in.readInt();
+        registerNewUserResponseValue = in.readInt();
+        consentResponseValue = in.readInt();
+        deleteUserDataResponseValue = in.readInt();
+        listAllUsersResponseValue = in.readInt();
+        deleteUsersResponseValue = in.readInt();
     }
 
     /**
@@ -135,11 +135,11 @@ public class UserControlPointCharacteristicData extends CharacteristicData {
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         super.writeToParcel(dest, flags);
-        dest.writeInt(registerNewUserResponceValue);
-        dest.writeInt(consentResponceValue);
-        dest.writeInt(deleteUserDataResponceValue);
-        dest.writeInt(listAllUsersResponceValue);
-        dest.writeInt(deleteUsersResponceValue);
+        dest.writeInt(registerNewUserResponseValue);
+        dest.writeInt(consentResponseValue);
+        dest.writeInt(deleteUserDataResponseValue);
+        dest.writeInt(listAllUsersResponseValue);
+        dest.writeInt(deleteUsersResponseValue);
     }
 
     /**
@@ -157,11 +157,11 @@ public class UserControlPointCharacteristicData extends CharacteristicData {
                 ^ Integer.valueOf(notificationCount).hashCode()
                 ^ Arrays.hashCode(currentData)
                 ^ Arrays.hashCode(temporaryData)
-                ^ Integer.valueOf(registerNewUserResponceValue).hashCode()
-                ^ Integer.valueOf(consentResponceValue).hashCode()
-                ^ Integer.valueOf(deleteUserDataResponceValue).hashCode()
-                ^ Integer.valueOf(listAllUsersResponceValue).hashCode()
-                ^ Integer.valueOf(deleteUsersResponceValue).hashCode();
+                ^ Integer.valueOf(registerNewUserResponseValue).hashCode()
+                ^ Integer.valueOf(consentResponseValue).hashCode()
+                ^ Integer.valueOf(deleteUserDataResponseValue).hashCode()
+                ^ Integer.valueOf(listAllUsersResponseValue).hashCode()
+                ^ Integer.valueOf(deleteUsersResponseValue).hashCode();
     }
 
     /**
@@ -182,11 +182,11 @@ public class UserControlPointCharacteristicData extends CharacteristicData {
                     && Arrays.equals(currentData, target.currentData)
                     && Arrays.equals(temporaryData, target.temporaryData)
                     && notificationCount == target.notificationCount
-                    && registerNewUserResponceValue == target.registerNewUserResponceValue
-                    && consentResponceValue == target.consentResponceValue
-                    && deleteUserDataResponceValue == target.deleteUserDataResponceValue
-                    && listAllUsersResponceValue == target.listAllUsersResponceValue
-                    && deleteUsersResponceValue == target.deleteUsersResponceValue;
+                    && registerNewUserResponseValue == target.registerNewUserResponseValue
+                    && consentResponseValue == target.consentResponseValue
+                    && deleteUserDataResponseValue == target.deleteUserDataResponseValue
+                    && listAllUsersResponseValue == target.listAllUsersResponseValue
+                    && deleteUsersResponseValue == target.deleteUsersResponseValue;
         }
         return result;
     }
