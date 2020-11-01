@@ -12,6 +12,12 @@
         android:text="@string/get_permission" />
 
     <Button
+        android:id="@+id/enableLocationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enable_location" />
+
+    <Button
         android:id="@+id/connectDisconnectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

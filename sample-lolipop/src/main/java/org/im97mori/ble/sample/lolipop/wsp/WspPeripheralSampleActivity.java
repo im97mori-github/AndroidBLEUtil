@@ -1,5 +1,6 @@
 package org.im97mori.ble.sample.lolipop.wsp;
 
+import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.os.Bundle;
 import android.util.Pair;
@@ -14,10 +15,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEUtilsAndroid;
-import org.im97mori.ble.characteristic.u2a9b.BodyCompositionFeature;
-import org.im97mori.ble.characteristic.u2a9c.BodyCompositionMeasurement;
+import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
+import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformation;
+import org.im97mori.ble.characteristic.u2a19.BatteryLevel;
+import org.im97mori.ble.characteristic.u2a2b.CurrentTime;
+import org.im97mori.ble.characteristic.u2a80.Age;
+import org.im97mori.ble.characteristic.u2a8c.Gender;
 import org.im97mori.ble.characteristic.u2a9d.WeightMeasurement;
 import org.im97mori.ble.characteristic.u2a9e.WeightScaleFeature;
+import org.im97mori.ble.characteristic.u2a9f.UserControlPoint;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.profile.wsp.peripheral.WeightScaleProfileMockCallback;
 import org.im97mori.ble.sample.lolipop.AlertDialogFragment;
@@ -42,7 +48,7 @@ public class WspPeripheralSampleActivity extends BaseActivity implements View.On
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
         mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {
-            @SuppressWarnings("ConstantConditions")
+
             @NonNull
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -50,10 +56,14 @@ public class WspPeripheralSampleActivity extends BaseActivity implements View.On
                 if (child == null) {
                     child = getLayoutInflater().inflate(R.layout.list_child, parent, false);
                 }
-                TextView textView = child.findViewById(R.id.time);
-                textView.setText(getItem(position).first);
-                textView = child.findViewById(R.id.body);
-                textView.setText(getItem(position).second);
+
+                Pair<String, String> item = getItem(position);
+                if (item != null) {
+                    TextView textView = child.findViewById(R.id.time);
+                    textView.setText(item.first);
+                    textView = child.findViewById(R.id.body);
+                    textView.setText(item.second);
+                }
                 return child;
             }
         };
@@ -63,16 +73,41 @@ public class WspPeripheralSampleActivity extends BaseActivity implements View.On
         mConnectDisconnectButton.setOnClickListener(this);
 
         mWeightScaleProfileMockCallback = new WspCallbackSample
-//                .Builder(this, this, false, false)
-                .Builder(this, this,  false, false)
-//                .Builder(this, this, true, false)
-//                .Builder(this, this, false, true)
-                .addWeightScaleFeature(new WeightScaleFeature(false, false, false, WeightScaleFeature.WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED, WeightScaleFeature.WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED))
-                .addWeightMeasurement(new WeightMeasurement(0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                .Builder(this, this, true, true, true, true)
+
+                .addWeightScaleFeature(new WeightScaleFeature(false, true, false, WeightScaleFeature.WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED, WeightScaleFeature.WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED))
+                .addWeightMeasurement(new WeightMeasurement(WeightMeasurement.FLAG_USER_ID_PRESENT_TRUE, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+
                 .addManufacturerNameString("ManufacturerNameString wsp")
                 .addModelNumberString("ModelNumberString wsp")
-//                .addBatteryLevel(0, new BatteryLevel(50))
-//                .addCurrentTime(new CurrentTime(2020, 10, 18, 19, 45, 50, 0, 0, 0), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                .addSystemId(1, 2)
+
+                .addBatteryLevel(0, new BatteryLevel(50))
+
+                .addCurrentTime(new CurrentTime(2020, 10, 18, 19, 45, 50, 0, 0, 0), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                .addLocalTimeInformation(true, BluetoothGatt.GATT_SUCCESS, 0, new LocalTimeInformation(1, 1).getBytes())
+                .addReferenceTimeInformation(new ReferenceTimeInformation(ReferenceTimeInformation.TIME_SOURCE_UNKNOWN
+                        , ReferenceTimeInformation.ACCURACY_UNKNOWN
+                        , 100
+                        , 200))
+
+                .addAge(new Age(1))
+                .addDateOfBirth(3, 4, 5)
+                .addFirstName("firstname wsp")
+                .addHeight(6)
+                .addGender(Gender.GENDER_UNSPECIFIED)
+                .addDatabaseChangeIncrement(BluetoothGatt.GATT_SUCCESS, 0, true, BluetoothGatt.GATT_SUCCESS, 0, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE).getBytes())
+                .addUserIndex()
+                .addUserControlPoint(0
+                        , UserControlPoint.RESPONSE_VALUE_SUCCESS
+                        , UserControlPoint.RESPONSE_VALUE_SUCCESS
+                        , UserControlPoint.RESPONSE_VALUE_SUCCESS
+                        , UserControlPoint.RESPONSE_VALUE_SUCCESS
+                        , UserControlPoint.RESPONSE_VALUE_SUCCESS
+                        , BluetoothGatt.GATT_SUCCESS
+                        , 0
+                        , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
+                .addRegisteredUser(new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
 
                 .build();
     }

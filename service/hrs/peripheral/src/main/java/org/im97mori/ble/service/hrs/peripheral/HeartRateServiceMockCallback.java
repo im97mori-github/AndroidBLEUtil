@@ -249,45 +249,50 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
     @Override
     public synchronized boolean onCharacteristicWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value, boolean force) {
         boolean result = false;
-        BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
 
-        if (bluetoothGattServer != null) {
-            long now = SystemClock.elapsedRealtime();
-            BluetoothGattService bluetoothGattService = bluetoothGattCharacteristic.getService();
-            UUID serviceUUID = bluetoothGattService.getUuid();
-            int serviceInstanceId = bluetoothGattService.getInstanceId();
-            Map<Pair<UUID, Integer>, CharacteristicData> characteristicMap = mRemappedServiceCharacteristicMap.get(Pair.create(serviceUUID, serviceInstanceId));
-            if (characteristicMap == null) {
-                if (force) {
-                    result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
-                }
-            } else {
-                UUID characteristicUUID = bluetoothGattCharacteristic.getUuid();
-                int characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
-                CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
-                if (characteristicData != null) {
-                    delay(now, characteristicData.delay);
+        BluetoothGattService bluetoothGattService = bluetoothGattCharacteristic.getService();
+        UUID serviceUUID = bluetoothGattService.getUuid();
+        UUID characteristicUUID = bluetoothGattCharacteristic.getUuid();
+        if (HEART_RATE_SERVICE.equals(serviceUUID)) {
+            BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
 
-                    result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, null);
+            if (bluetoothGattServer != null) {
+                long now = SystemClock.elapsedRealtime();
+                int serviceInstanceId = bluetoothGattService.getInstanceId();
+                Map<Pair<UUID, Integer>, CharacteristicData> characteristicMap = mRemappedServiceCharacteristicMap.get(Pair.create(serviceUUID, serviceInstanceId));
+                if (characteristicMap == null) {
+                    if (force) {
+                        result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
+                    }
+                } else {
+                    int characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
+                    CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
+                    if (characteristicData != null) {
+                        delay(now, characteristicData.delay);
 
-                    if (result && BluetoothGatt.GATT_SUCCESS == characteristicData.responseCode && new HeartRateControlPoint(value).isHeartRateControlPointResetEnergyExpended()) {
-                        characteristicData.currentData = value;
+                        result = bluetoothGattServer.sendResponse(device, requestId, characteristicData.responseCode, offset, null);
 
-                        for (Map.Entry<Pair<UUID, Integer>, CharacteristicData> entry : characteristicMap.entrySet()) {
-                            Pair<UUID, Integer> key = entry.getKey();
-                            if (HEART_RATE_MEASUREMENT_CHARACTERISTIC.equals(key.first)) {
-                                characteristicData = entry.getValue();
-                                HeartRateMeasurement current = new HeartRateMeasurement(characteristicData.getBytes());
-                                characteristicData.currentData = new HeartRateMeasurement(current.getFlags(), current.getHeartRateMeasurementValueUint8(), current.getHeartRateMeasurementValueUint16(), 0, current.getRrInterval()).getBytes();
+                        if (result && BluetoothGatt.GATT_SUCCESS == characteristicData.responseCode && new HeartRateControlPoint(value).isHeartRateControlPointResetEnergyExpended()) {
+                            characteristicData.currentData = value;
+
+                            for (Map.Entry<Pair<UUID, Integer>, CharacteristicData> entry : characteristicMap.entrySet()) {
+                                Pair<UUID, Integer> key = entry.getKey();
+                                if (HEART_RATE_MEASUREMENT_CHARACTERISTIC.equals(key.first)) {
+                                    characteristicData = entry.getValue();
+                                    HeartRateMeasurement current = new HeartRateMeasurement(characteristicData.getBytes());
+                                    characteristicData.currentData = new HeartRateMeasurement(current.getFlags(), current.getHeartRateMeasurementValueUint8(), current.getHeartRateMeasurementValueUint16(), 0, current.getRrInterval()).getBytes();
+                                }
                             }
                         }
                     }
-                }
 
-                if (force && !result) {
-                    result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
+                    if (force && !result) {
+                        result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
+                    }
                 }
             }
+        } else {
+            result = super.onCharacteristicWriteRequest(bleServerConnection, device, requestId, bluetoothGattCharacteristic, preparedWrite, responseNeeded, offset, value, false);
         }
         return result;
     }
@@ -296,16 +301,8 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
      * {@inheritDoc}
      */
     @Override
-    public void onServerStarted() {
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public void onServiceAddFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument) {
-
+        // do nothing
     }
 
     /**
@@ -313,7 +310,7 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
      */
     @Override
     public void onServiceAddTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument) {
-
+        // do nothing
     }
 
     /**
@@ -321,7 +318,7 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
      */
     @Override
     public void onServiceRemoveFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument) {
-
+        // do nothing
     }
 
     /**
@@ -329,7 +326,7 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
      */
     @Override
     public void onServiceRemoveTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument) {
-
+        // do nothing
     }
 
     /**
@@ -337,7 +334,7 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
      */
     @Override
     public void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings) {
-
+        // do nothing
     }
 
     /**
@@ -345,7 +342,7 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
      */
     @Override
     public void onAdvertisingStartFailed(@Nullable Integer errorCode) {
-
+        // do nothing
     }
 
     /**
@@ -353,7 +350,7 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
      */
     @Override
     public void onAdvertisingFinished() {
-
+        // do nothing
     }
 
 }

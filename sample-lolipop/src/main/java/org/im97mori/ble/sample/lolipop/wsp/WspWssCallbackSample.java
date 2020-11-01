@@ -1,4 +1,4 @@
-package org.im97mori.ble.sample.lolipop.wss;
+package org.im97mori.ble.sample.lolipop.wsp;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -18,9 +18,10 @@ import org.im97mori.ble.MockData;
 import org.im97mori.ble.characteristic.u2a9d.WeightMeasurementAndroid;
 import org.im97mori.ble.characteristic.u2a9e.WeightScaleFeatureAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
+import org.im97mori.ble.profile.wsp.peripheral.WspUserDataServiceMockCallback;
+import org.im97mori.ble.profile.wsp.peripheral.WspWeightScaleServiceMockCallback;
 import org.im97mori.ble.sample.lolipop.SampleCallback;
 import org.im97mori.ble.service.wss.central.WeightScaleServiceCallback;
-import org.im97mori.ble.service.wss.peripheral.WeightScaleServiceMockCallback;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -29,9 +30,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-public class WssCallbackSample extends WeightScaleServiceMockCallback implements WeightScaleServiceCallback, BLECallback {
+public class WspWssCallbackSample extends WspWeightScaleServiceMockCallback implements WeightScaleServiceCallback, BLECallback {
 
-    public static class Builder extends WeightScaleServiceMockCallback.Builder<WssCallbackSample> {
+    public static class Builder extends WspWeightScaleServiceMockCallback.Builder<WspWssCallbackSample> {
 
         private final SampleCallback mSampleCallback;
 
@@ -41,8 +42,8 @@ public class WssCallbackSample extends WeightScaleServiceMockCallback implements
 
         @NonNull
         @Override
-        public WssCallbackSample build() {
-            return new WssCallbackSample(createMockData(), mSampleCallback);
+        public WspWssCallbackSample build() {
+            return new WspWssCallbackSample(createMockData(), mSampleCallback, mWspUserDataServiceMockCallback);
         }
     }
 
@@ -50,8 +51,8 @@ public class WssCallbackSample extends WeightScaleServiceMockCallback implements
 
     private final SampleCallback mSampleCallback;
 
-    WssCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    WspWssCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback, @Nullable WspUserDataServiceMockCallback wspUserDataServiceMockCallback) {
+        super(mockData, false, wspUserDataServiceMockCallback);
         mSampleCallback = sampleCallback;
     }
 

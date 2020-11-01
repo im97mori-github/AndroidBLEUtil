@@ -1,4 +1,4 @@
-package org.im97mori.ble.sample.lolipop.uds;
+package org.im97mori.ble.sample.lolipop.wsp;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -51,7 +51,6 @@ import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroi
 import org.im97mori.ble.profile.wsp.peripheral.WspUserDataServiceMockCallback;
 import org.im97mori.ble.sample.lolipop.SampleCallback;
 import org.im97mori.ble.service.uds.central.UserDataServiceCallback;
-import org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -60,9 +59,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-public class UdsCallbackSample extends UserDataServiceMockCallback implements UserDataServiceCallback, BLECallback {
+public class WspUdsCallbackSample extends WspUserDataServiceMockCallback implements UserDataServiceCallback, BLECallback {
 
-    public static class Builder extends UserDataServiceMockCallback.Builder<UdsCallbackSample> {
+    public static class Builder extends WspUserDataServiceMockCallback.Builder<WspUdsCallbackSample> {
 
         private final SampleCallback mSampleCallback;
 
@@ -72,8 +71,8 @@ public class UdsCallbackSample extends UserDataServiceMockCallback implements Us
 
         @NonNull
         @Override
-        public UdsCallbackSample build() {
-            return new UdsCallbackSample(createMockData(), mSampleCallback);
+        public WspUdsCallbackSample build() {
+            return new WspUdsCallbackSample(createMockData(), mSampleCallback);
         }
     }
 
@@ -81,7 +80,7 @@ public class UdsCallbackSample extends UserDataServiceMockCallback implements Us
 
     private final SampleCallback mSampleCallback;
 
-    UdsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
+    WspUdsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
         super(mockData, false);
         mSampleCallback = sampleCallback;
     }

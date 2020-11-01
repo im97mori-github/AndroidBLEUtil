@@ -56,6 +56,12 @@ public class CurrentTimeService extends AbstractCentralService {
     private boolean mIsLocalTimeInformationCharacteristicSupporeted;
 
     /**
+     * Local Time Information characteristic writable flag
+     * {@code true}:Local Time Informationcharacteristic is writable, {@code false}:Local Time Information characteristic is not writable or service not ready
+     */
+    private boolean mIsLocalTimeInformationCharacteristicWritable;
+
+    /**
      * Reference Time Information characteristic flag
      * {@code true}:Reference Time Information characteristic is exist, {@code false}:Reference Time Information characteristic is not exist or service not ready
      */
@@ -79,6 +85,7 @@ public class CurrentTimeService extends AbstractCentralService {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
             mIsCurrentTimeCharacteristicWritable = false;
             mIsLocalTimeInformationCharacteristicSupporeted = false;
+            mIsLocalTimeInformationCharacteristicWritable = false;
             mIsReferenceTimeInformationCharacteristicSupporeted = false;
         }
         super.onBLEDisconnected(taskId, bluetoothDevice, status, argument);
@@ -100,6 +107,10 @@ public class CurrentTimeService extends AbstractCentralService {
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && (BluetoothGattCharacteristic.PROPERTY_READ & bluetoothGattCharacteristic.getProperties()) != 0) {
                         mIsLocalTimeInformationCharacteristicSupporeted = true;
+
+                        if ((BluetoothGattCharacteristic.PROPERTY_WRITE & bluetoothGattCharacteristic.getProperties()) != 0) {
+                            mIsLocalTimeInformationCharacteristicWritable = true;
+                        }
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(REFERENCE_TIME_INFORMATION_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
@@ -314,6 +325,15 @@ public class CurrentTimeService extends AbstractCentralService {
     }
 
     /**
+     * check Local Time Information characteristic writable
+     *
+     * @return {@code true}:Local Time Information characteristic is writable, {@code false}:Local Time Information characteristic is not writable or service not ready
+     */
+    public boolean isLocalTimeInformationCharacteristicWritable() {
+        return mIsLocalTimeInformationCharacteristicWritable;
+    }
+
+    /**
      * check Reference Time Information characteristic
      *
      * @return {@code true}:Reference Time Information characteristic is exist, {@code false}:Reference Time Information characteristic is not exist or service not ready
@@ -387,7 +407,7 @@ public class CurrentTimeService extends AbstractCentralService {
         if (isStarted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(CURRENT_TIME_SERVICE, null, CURRENT_TIME_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(CURRENT_TIME_SERVICE, null, CURRENT_TIME_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }

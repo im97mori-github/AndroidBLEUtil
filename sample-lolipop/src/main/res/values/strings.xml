@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">sample-lolipop</string>
     <string name="get_permission">Get Permission</string>
+    <string name="enable_location">Enable Location</string>
     <string name="scan_start">Scan Start</string>
     <string name="scan_stop">Scan Stop</string>
     <string name="bond">Bond</string>
@@ -9,6 +10,7 @@
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="permission_message">bluetooth low energy feature needs coarse location permission</string>
+    <string name="location_message">bluetooth low energy feature needs location feature</string>
 
     <string name="label_advertising">Advertising sample</string>
     <string name="label_peripheral">Peripheral sample</string>
@@ -64,9 +66,9 @@
     <string name="menu_read_hardware_revision">Read Hardware Revision</string>
     <string name="menu_read_firmware_revision">Read Firmware Revision</string>
     <string name="menu_read_software_revision">Read Software Revision</string>
-    <string name="menu_read_system_id">Read System Id</string>
+    <string name="menu_read_system_id">Read System ID</string>
     <string name="menu_read_ieee_11073_20601_regulatory_certification_data_list">Read IEEE 11073 20601 RegulatoryCertificationDataList</string>
-    <string name="menu_read_pnp_id">Read Pnp Id</string>
+    <string name="menu_read_pnp_id">Read Pnp ID</string>
 
     <string name="menu_read_battery_level">Read Battery Level</string>
     <string name="menu_read_battery_level_1">Read Battery Level(1)</string>
@@ -136,6 +138,51 @@
     <string name="menu_has_user_data_service">Has User Data Service</string>
     <string name="menu_has_battery_service">Has Battery Service</string>
     <string name="menu_has_current_time_service">Has Current Time Service</string>
+    <string name="menu_indicate_weight_mesurement_start">Indicate Weight Measurement start</string>
+    <string name="menu_indicate_weight_mesurement_stop">Indicate Weight Measurement stop</string>
+    <string name="menu_read_weight_scale_feature">Read Weight Scale Feature</string>
+    <string name="menu_has_system_id">Has System ID</string>
+    <string name="menu_read_current_time">Read Current Time</string>
+    <string name="menu_is_current_time_writable">Is Current Time Writable</string>
+    <string name="menu_write_current_time">Write Current Time</string>
+    <string name="menu_notify_current_time_start">Notify Current Time start</string>
+    <string name="menu_notify_current_time_stop">Notify Current Time  stop</string>
+    <string name="menu_has_local_time_information">Has Local Time Information</string>
+    <string name="menu_read_local_time_information">Read Local Time Information</string>
+    <string name="menu_is_local_time_information_writable">Is Local Time Information Writable</string>
+    <string name="menu_write_local_time_information">Write Local Time Information</string>
+    <string name="menu_has_reference_time_information">Has Reference Time Information</string>
+    <string name="menu_read_reference_time_information">Read Reference Time Information</string>
+    <string name="menu_write_user_control_point_register_new_user">Register New User</string>
+    <string name="menu_write_user_control_point_consent">Consent</string>
+    <string name="menu_write_user_control_point_delete_user_data">Delete User Data</string>
+    <string name="menu_write_user_control_point_list_all_users">List All Users</string>
+    <string name="menu_write_user_control_point_delete_users">Delete Users</string>
+    <string name="menu_indicate_user_control_point_start">Indicate User Control Point start</string>
+    <string name="menu_indicate_user_control_point_stop">Indicate User Control Point stop</string>
+    <string name="menu_indicate_registered_user_start">Indicate Registered User start</string>
+    <string name="menu_indicate_registered_user_stop">Indicate Registered User stop</string>
+    <string name="menu_is_database_change_increment_notificatable">Is Database Change Increment Notificatable</string>
+    <string name="menu_read_database_change_increment">Read Database Change Increment</string>
+    <string name="menu_write_database_change_increment">Write Database Change Increment</string>
+    <string name="menu_notify_database_change_increment_start">Notify Database Change Increment start</string>
+    <string name="menu_notify_database_change_increment_stop">Notify Database Change Increment stop</string>
+    <string name="menu_read_user_index">Read User Index</string>
+    <string name="menu_has_age">Has Age</string>
+    <string name="menu_read_age">Read Age</string>
+    <string name="menu_write_age">Write Age</string>
+    <string name="menu_has_date_of_birth">Has Date of Birth</string>
+    <string name="menu_read_date_of_birth">Read Date of Birth</string>
+    <string name="menu_write_date_of_birth">Write Date of Birth</string>
+    <string name="menu_has_first_name">Has First Name</string>
+    <string name="menu_read_first_name">Read First Name</string>
+    <string name="menu_write_first_name">Write First Name</string>
+    <string name="menu_has_height">Has Height</string>
+    <string name="menu_read_height">Read Height</string>
+    <string name="menu_write_height">Write Height</string>
+    <string name="menu_has_gender">Has Gender</string>
+    <string name="menu_read_gender">Read Gender</string>
+    <string name="menu_write_gender">Write Gender</string>
 
     <string name="menu_clear">Clear</string>
 </resources>

@@ -60,6 +60,7 @@ import org.im97mori.ble.characteristic.u2a9a.UserIndexAndroid;
 import org.im97mori.ble.characteristic.u2a9b.BodyCompositionFeatureAndroid;
 import org.im97mori.ble.characteristic.u2a9c.BodyCompositionMeasurementAndroid;
 import org.im97mori.ble.characteristic.u2a9d.WeightMeasurementAndroid;
+import org.im97mori.ble.characteristic.u2a9e.WeightScaleFeature;
 import org.im97mori.ble.characteristic.u2a9e.WeightScaleFeatureAndroid;
 import org.im97mori.ble.characteristic.u2a9f.UserControlPointAndroid;
 import org.im97mori.ble.characteristic.u2aa2.LanguageAndroid;
@@ -79,6 +80,8 @@ import org.im97mori.ble.sample.lolipop.wss.WssCallbackSample;
 import org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback;
 import org.im97mori.ble.service.cts.peripheral.CurrentTimeServiceMockCallback;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
+import org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback;
+import org.im97mori.ble.service.wss.peripheral.WeightScaleServiceMockCallback;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -90,20 +93,54 @@ import java.util.UUID;
 
 public class WspCallbackSample extends WeightScaleProfileMockCallback implements WeightScaleProfileCallback, BLEServerCallback {
 
-    public static class Builder extends WeightScaleProfileMockCallback.Builder<WeightScaleProfileMockCallback> {
+    public static class Builder extends WeightScaleProfileMockCallback.Builder<WspCallbackSample> {
 
         private final SampleCallback mSampleCallback;
 
-        public Builder(@NonNull Context context, SampleCallback sampleCallback, boolean isBasSupported, boolean isCtsSupported) {
+        public Builder(@NonNull Context context, SampleCallback sampleCallback, boolean isUdsSupported, boolean isWspUdsSupported, boolean isBasSupported, boolean isCtsSupported) {
             super(context
-                    , new WssCallbackSample.Builder(sampleCallback)
+                    , isWspUdsSupported ? new WspWssCallbackSample.Builder(sampleCallback) : new WssCallbackSample.Builder(sampleCallback)
                     , new DisCallbackSample.Builder(sampleCallback)
-                    , new UdsCallbackSample.Builder(sampleCallback)
+                    , isUdsSupported ? isWspUdsSupported ? new WspUdsCallbackSample.Builder(sampleCallback) : new UdsCallbackSample.Builder(sampleCallback) : null
                     , isBasSupported ? new BasCallbackSample.Builder(sampleCallback) : null
                     , isCtsSupported ? new CtsCallbackSample.Builder(sampleCallback) : null);
             mSampleCallback = sampleCallback;
         }
 
+        @Override
+        public WspCallbackSample build() {
+            UserDataServiceMockCallback userDataServiceMockCallback = null;
+            if (mWeightScaleFeatureCharacteristicData == null) {
+                throw new RuntimeException("no Weight Scale Feature data");
+            } else {
+                WeightScaleFeature weightScaleFeature = new WeightScaleFeature(mWeightScaleFeatureCharacteristicData);
+                if (weightScaleFeature.isWeightScaleFeatureMultipleUsersSupported()) {
+                    if (mUserDataServiceMockCallbackBuilder == null) {
+                        throw new RuntimeException("no User Data Service");
+                    } else {
+                        userDataServiceMockCallback = mUserDataServiceMockCallbackBuilder.build();
+                        if (userDataServiceMockCallback instanceof WspUserDataServiceMockCallback) {
+                            ((WspWeightScaleServiceMockCallback.Builder<?>) mWeightScaleServiceMockCallbackBuilder).setWspUserDataServiceMockCallback((WspUserDataServiceMockCallback) userDataServiceMockCallback);
+                        }
+                    }
+                }
+            }
+
+            if (!mHasManufacturerNameString) {
+                throw new RuntimeException("no Manufacturer Name String data");
+            }
+            if (!mHasModelNumberString) {
+                throw new RuntimeException("no Model Number String data");
+            }
+
+            return new WspCallbackSample(mContext
+                    , mWeightScaleServiceMockCallbackBuilder.build()
+                    , mDeviceInformationServiceMockCallbackBuilder.build()
+                    , userDataServiceMockCallback
+                    , mBatteryServiceMockCallbackBuilder == null ? null : mBatteryServiceMockCallbackBuilder.build()
+                    , mCurrentTimeServiceMockCallbackBuilder == null ? null : mCurrentTimeServiceMockCallbackBuilder.build()
+                    , mSampleCallback);
+        }
     }
 
     private final SimpleDateFormat format = new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US);
@@ -111,13 +148,15 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
     private final SampleCallback mSampleCallback;
 
     public WspCallbackSample(Context context, SampleCallback sampleCallback) {
-        this(context, null, null, null, null, null,  sampleCallback);
+        this(context, null, null, null, null, null, sampleCallback);
     }
 
+    WspCentralSampleActivity mWspCentralSampleActivity;
+
     public WspCallbackSample(Context context
-            , WspWeightScaleServiceMockCallback weightScaleServiceMockCallback
+            , WeightScaleServiceMockCallback weightScaleServiceMockCallback
             , DeviceInformationServiceMockCallback deviceInformationServiceMockCallback
-            , WspUserDataServiceMockCallback userDataServiceMockCallback
+            , UserDataServiceMockCallback userDataServiceMockCallback
             , BatteryServiceMockCallback batteryServiceMockCallback
             , CurrentTimeServiceMockCallback currentTimeServiceMockCallback
             , SampleCallback sampleCallback) {
@@ -434,7 +473,7 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
 
     @Override
     public void onReferenceTimeInformationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ReferenceTimeInformationAndroid referenceTimeInformationAndroid, @Nullable Bundle argument) {
-        callback(referenceTimeInformationAndroid.getTimeSource(), referenceTimeInformationAndroid.getDaysSinceUpdate(), referenceTimeInformationAndroid.getHoursSinceUpdate());
+        callback(referenceTimeInformationAndroid.getTimeSource(), referenceTimeInformationAndroid.getAccuracy(), referenceTimeInformationAndroid.getDaysSinceUpdate(), referenceTimeInformationAndroid.getHoursSinceUpdate());
     }
 
     @Override
@@ -539,7 +578,7 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
 
     @Override
     public void onSystemIdReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull SystemIdAndroid systemIdAndroid, @Nullable Bundle argument) {
-        callback(systemIdAndroid.getManufacturerIdentifier());
+        callback(systemIdAndroid.getManufacturerIdentifier(), systemIdAndroid.getOrganizationallyUniqueIdentifier());
     }
 
     @Override
@@ -1499,7 +1538,7 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
 
     @Override
     public void onDatabaseChangeIncrementNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull DatabaseChangeIncrementAndroid databaseChangeIncrementAndroid) {
-        callback();
+        callback(databaseChangeIncrementAndroid.getDatabaseChangeIncrement());
     }
 
     @Override
@@ -1579,7 +1618,16 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
 
     @Override
     public void onUserControlPointIndicated(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UserControlPointAndroid userControlPointAndroid) {
-        callback(userControlPointAndroid.getOpCode());
+        callback(userControlPointAndroid.getOpCode()
+                , userControlPointAndroid.getResponseValue()
+                , userControlPointAndroid.getRequestOpCode()
+                , userControlPointAndroid.getUserIndex()
+                , userControlPointAndroid.getNumberOfUsers());
+        if (userControlPointAndroid.isOpCodeResponseCode(userControlPointAndroid.getOpCode())
+                && userControlPointAndroid.isResponseValueSuccess(userControlPointAndroid.getResponseValue())
+                && userControlPointAndroid.isOpCodeRegisterNewUser(userControlPointAndroid.getRequestOpCode())) {
+            mWspCentralSampleActivity.mLastRegisteredUserIndex = userControlPointAndroid.getUserIndex();
+        }
     }
 
     @Override
@@ -1629,7 +1677,10 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
 
     @Override
     public void onRegisteredUserIndicated(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull RegisteredUserAndroid registeredUserAndroid) {
-        callback(registeredUserAndroid.getFlags());
+        callback("getSegmentationHeader:" + registeredUserAndroid.getSegmentationHeader()
+                , "getFlags:" + registeredUserAndroid.getFlags()
+                , "getRegisteredUserIndex:" + registeredUserAndroid.getRegisteredUserIndex()
+                , "getRegisteredUserData:" + new String(registeredUserAndroid.getRegisteredUserData()));
     }
 
     @Override

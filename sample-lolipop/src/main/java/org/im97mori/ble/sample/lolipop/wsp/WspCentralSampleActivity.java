@@ -18,6 +18,15 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import org.im97mori.ble.BLEUtilsAndroid;
+import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
+import org.im97mori.ble.characteristic.u2a2b.CurrentTime;
+import org.im97mori.ble.characteristic.u2a80.Age;
+import org.im97mori.ble.characteristic.u2a85.DateOfBirth;
+import org.im97mori.ble.characteristic.u2a8a.FirstName;
+import org.im97mori.ble.characteristic.u2a8c.Gender;
+import org.im97mori.ble.characteristic.u2a8e.Height;
+import org.im97mori.ble.characteristic.u2a99.DatabaseChangeIncrement;
+import org.im97mori.ble.characteristic.u2a9f.UserControlPoint;
 import org.im97mori.ble.profile.central.task.BondTask;
 import org.im97mori.ble.profile.wsp.central.WeightScaleProfile;
 import org.im97mori.ble.sample.lolipop.AlertDialogFragment;
@@ -26,6 +35,7 @@ import org.im97mori.ble.sample.lolipop.R;
 import org.im97mori.ble.sample.lolipop.SampleCallback;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.Locale;
@@ -45,11 +55,14 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
     private WeightScaleProfile mWeightScaleProfile;
     BluetoothDevice mBluetoothDevice;
 
+    Integer mLastRegisteredUserIndex;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mWspCallbackSample = new WspCallbackSample(this, this);
+        mWspCallbackSample.mWspCentralSampleActivity = this;
         mWeightScaleProfile = new WeightScaleProfile(this, mWspCallbackSample);
         mWeightScaleProfile.start();
 
@@ -172,6 +185,232 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
             updateLayout();
+        } else if (R.id.read_weight_scale_feature == item.getItemId()) {
+            mWeightScaleProfile.getWeightScaleFeature();
+        } else if (R.id.start_indicate_weight_mesurement == item.getItemId()) {
+            mWeightScaleProfile.startWeightMeasurementIndication();
+        } else if (R.id.stop_indicate_weight_mesurement == item.getItemId()) {
+            mWeightScaleProfile.stopWeightMeasurementIndication();
+        } else if (R.id.read_manufacturer_name == item.getItemId()) {
+            mWeightScaleProfile.getManufacturerNameString();
+        } else if (R.id.read_model_number == item.getItemId()) {
+            mWeightScaleProfile.getModelNumberString();
+        } else if (R.id.has_system_id == item.getItemId()) {
+            String text;
+            Boolean result = mWeightScaleProfile.hasSystemId();
+            if (result == null) {
+                text = "hasSystemId\nnull";
+            } else {
+                text = "hasSystemId\n" + result.toString();
+            }
+            mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
+            mListView.smoothScrollToPosition(mAdapter.getCount());
+        } else if (R.id.read_system_id == item.getItemId()) {
+            mWeightScaleProfile.getSystemId();
+        } else if (R.id.read_current_time == item.getItemId()) {
+            mWeightScaleProfile.getCurrentTime();
+        } else if (R.id.is_current_time_writable == item.getItemId()) {
+            String text;
+            Boolean result = mWeightScaleProfile.isCurrentTimeCharacteristicWritable();
+            if (result == null) {
+                text = "isCurrentTimeCharacteristicWritable\nnull";
+            } else {
+                text = "isCurrentTimeCharacteristicWritable\n" + result.toString();
+            }
+            mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
+            mListView.smoothScrollToPosition(mAdapter.getCount());
+        } else if (R.id.write_current_time == item.getItemId()) {
+            Calendar calendar = Calendar.getInstance();
+            mWeightScaleProfile.setCurrentTime(new CurrentTime(calendar.get(Calendar.YEAR)
+                    , calendar.get(Calendar.MONTH) + 1
+                    , calendar.get(Calendar.DAY_OF_MONTH)
+                    , calendar.get(Calendar.HOUR_OF_DAY)
+                    , calendar.get(Calendar.MINUTE)
+                    , calendar.get(Calendar.SECOND)
+                    , CurrentTime.DAY_OF_WEEK_IS_NOT_KNOWN
+                    , CurrentTime.FRACTIONS_256_NOT_SUPPORTED
+                    , CurrentTime.ADJUST_REASON_MANUAL_TIME_UPDATE));
+        } else if (R.id.notify_current_time_start == item.getItemId()) {
+            mWeightScaleProfile.startCurrentTimeNotification();
+        } else if (R.id.notify_current_time_stop == item.getItemId()) {
+            mWeightScaleProfile.stopCurrentTimeNotification();
+        } else if (R.id.has_local_time_information == item.getItemId()) {
+            String text;
+            Boolean result = mWeightScaleProfile.isLocalTimeInformationCharacteristicSupporeted();
+            if (result == null) {
+                text = "isLocalTimeInformationCharacteristicSupporeted\nnull";
+            } else {
+                text = "isLocalTimeInformationCharacteristicSupporeted\n" + result.toString();
+            }
+            mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
+            mListView.smoothScrollToPosition(mAdapter.getCount());
+        } else if (R.id.read_local_time_information == item.getItemId()) {
+            mWeightScaleProfile.getLocalTimeInformation();
+        } else if (R.id.is_local_time_information_writable == item.getItemId()) {
+            String text;
+            Boolean result = mWeightScaleProfile.isLocalTimeInformationCharacteristicWritable();
+            if (result == null) {
+                text = "isLocalTimeInformationCharacteristicWritable\nnull";
+            } else {
+                text = "isLocalTimeInformationCharacteristicWritable\n" + result.toString();
+            }
+            mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
+            mListView.smoothScrollToPosition(mAdapter.getCount());
+        } else if (R.id.write_local_time_information == item.getItemId()) {
+            mWeightScaleProfile.setLocalTimeInformation(new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 2));
+        } else if (R.id.menu_has_reference_time_information == item.getItemId()) {
+            String text;
+            Boolean result = mWeightScaleProfile.isReferenceTimeInformationCharacteristicSupporeted();
+            if (result == null) {
+                text = "isReferenceTimeInformationCharacteristicSupporeted\nnull";
+            } else {
+                text = "isReferenceTimeInformationCharacteristicSupporeted\n" + result.toString();
+            }
+            mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
+            mListView.smoothScrollToPosition(mAdapter.getCount());
+        } else if (R.id.read_reference_time_information == item.getItemId()) {
+            mWeightScaleProfile.getReferenceTimeInformation();
+        } else if (R.id.read_reference_time_information == item.getItemId()) {
+            mWeightScaleProfile.getReferenceTimeInformation();
+        } else if (R.id.has_age == item.getItemId()) {
+            String text;
+            Boolean result = mWeightScaleProfile.isAgeCharacteristicSupporeted();
+            if (result == null) {
+                text = "isAgeCharacteristicSupporeted\nnull";
+            } else {
+                text = "isAgeCharacteristicSupporeted\n" + result.toString();
+            }
+            mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
+            mListView.smoothScrollToPosition(mAdapter.getCount());
+        } else if (R.id.write_user_control_point_register_new_user == item.getItemId()) {
+            mWeightScaleProfile.setUserControlPoint(new UserControlPoint(UserControlPoint.OP_CODE_REGISTER_NEW_USER
+                    , 0
+                    , 1
+                    , 0
+                    , 0
+                    , 0));
+        } else if (R.id.write_user_control_point_consent == item.getItemId()) {
+            if (mLastRegisteredUserIndex != null) {
+                mWeightScaleProfile.setUserControlPoint(new UserControlPoint(UserControlPoint.OP_CODE_CONSENT
+                        , mLastRegisteredUserIndex
+                        , 1
+                        , 0
+                        , 0
+                        , 0));
+            }
+        } else if (R.id.write_user_control_point_delete_user_data == item.getItemId()) {
+            mWeightScaleProfile.setUserControlPoint(new UserControlPoint(UserControlPoint.OP_CODE_DELETE_USER_DATA
+                    , 0
+                    , 0
+                    , 0
+                    , 0
+                    , 0));
+        } else if (R.id.write_user_control_point_list_all_users == item.getItemId()) {
+            mWeightScaleProfile.setUserControlPoint(new UserControlPoint(UserControlPoint.OP_CODE_LIST_ALL_USERS
+                    , 0
+                    , 0
+                    , 0
+                    , 0
+                    , 0));
+        } else if (R.id.write_user_control_point_delete_users == item.getItemId()) {
+            if (mLastRegisteredUserIndex != null) {
+                mWeightScaleProfile.setUserControlPoint(new UserControlPoint(UserControlPoint.OP_CODE_DELETE_USERS
+                        , mLastRegisteredUserIndex
+                        , 0
+                        , 0
+                        , 0
+                        , 0));
+            }
+        } else if (R.id.indicate_user_control_point_start == item.getItemId()) {
+            mWeightScaleProfile.startUserControlPointIndication();
+        } else if (R.id.indicate_user_control_point_stop == item.getItemId()) {
+            mWeightScaleProfile.stopUserControlPointIndication();
+        } else if (R.id.indicate_registered_user_start == item.getItemId()) {
+            mWeightScaleProfile.startRegisteredUserIndication();
+        } else if (R.id.indicate_registered_user_stop == item.getItemId()) {
+            mWeightScaleProfile.stopRegisteredUserIndication();
+        } else if (R.id.is_database_change_increment_notificatable == item.getItemId()) {
+            String text;
+            Boolean result = mWeightScaleProfile.isDatabaseChangeIncrementCharacteristicNotifySupporeted();
+            if (result == null) {
+                text = "isDatabaseChangeIncrementCharacteristicNotifySupporeted\nnull";
+            } else {
+                text = "isDatabaseChangeIncrementCharacteristicNotifySupporeted\n" + result.toString();
+            }
+            mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
+            mListView.smoothScrollToPosition(mAdapter.getCount());
+        } else if (R.id.read_database_change_increment == item.getItemId()) {
+            mWeightScaleProfile.getDatabaseChangeIncrement();
+        } else if (R.id.write_database_change_increment == item.getItemId()) {
+            mWeightScaleProfile.setDatabaseChangeIncrement(new DatabaseChangeIncrement(2));
+        } else if (R.id.notify_menu_database_change_increment_start == item.getItemId()) {
+            mWeightScaleProfile.startDatabaseChangeIncrementNotification();
+        } else if (R.id.notify_menu_database_change_increment_stop == item.getItemId()) {
+            mWeightScaleProfile.stopDatabaseChangeIncrementNotification();
+        } else if (R.id.read_user_index == item.getItemId()) {
+            mWeightScaleProfile.getUserIndex();
+        } else if (R.id.read_age == item.getItemId()) {
+            mWeightScaleProfile.getAge();
+        } else if (R.id.write_age == item.getItemId()) {
+            mWeightScaleProfile.setAge(new Age(2));
+        } else if (R.id.has_date_of_birth == item.getItemId()) {
+            String text;
+            Boolean result = mWeightScaleProfile.isDateOfBirthCharacteristicSupporeted();
+            if (result == null) {
+                text = "isDateOfBirthCharacteristicSupporeted\nnull";
+            } else {
+                text = "isDateOfBirthCharacteristicSupporeted\n" + result.toString();
+            }
+            mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
+            mListView.smoothScrollToPosition(mAdapter.getCount());
+        } else if (R.id.read_date_of_birth == item.getItemId()) {
+            mWeightScaleProfile.getDateOfBirth();
+        } else if (R.id.write_date_of_birth == item.getItemId()) {
+            mWeightScaleProfile.setDateOfBirth(new DateOfBirth(6, 7, 8));
+        } else if (R.id.has_first_name == item.getItemId()) {
+            String text;
+            Boolean result = mWeightScaleProfile.isFirstNameCharacteristicSupporeted();
+            if (result == null) {
+                text = "isFirstNameCharacteristicSupporeted\nnull";
+            } else {
+                text = "isFirstNameCharacteristicSupporeted\n" + result.toString();
+            }
+            mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
+        } else if (R.id.read_first_name == item.getItemId()) {
+            mWeightScaleProfile.getFirstName();
+            mListView.smoothScrollToPosition(mAdapter.getCount());
+        } else if (R.id.write_first_name == item.getItemId()) {
+            mWeightScaleProfile.setFirstName(new FirstName("firstname wsp 2"));
+        } else if (R.id.write_date_of_birth == item.getItemId()) {
+            mWeightScaleProfile.setDateOfBirth(new DateOfBirth(6, 7, 8));
+        } else if (R.id.has_height == item.getItemId()) {
+            String text;
+            Boolean result = mWeightScaleProfile.isHeightCharacteristicSupporeted();
+            if (result == null) {
+                text = "isHeightCharacteristicSupporeted\nnull";
+            } else {
+                text = "isHeightCharacteristicSupporeted\n" + result.toString();
+            }
+            mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
+            mListView.smoothScrollToPosition(mAdapter.getCount());
+        } else if (R.id.read_height == item.getItemId()) {
+            mWeightScaleProfile.getHeight();
+        } else if (R.id.write_height == item.getItemId()) {
+            mWeightScaleProfile.setHeight(new Height(66));
+        } else if (R.id.has_gender == item.getItemId()) {
+            String text;
+            Boolean result = mWeightScaleProfile.isGenderCharacteristicSupporeted();
+            if (result == null) {
+                text = "isGenderCharacteristicSupporeted\nnull";
+            } else {
+                text = "isGenderCharacteristicSupporeted\n" + result.toString();
+            }
+            mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
+            mListView.smoothScrollToPosition(mAdapter.getCount());
+        } else if (R.id.read_gender == item.getItemId()) {
+            mWeightScaleProfile.getGender();
+        } else if (R.id.write_gender == item.getItemId()) {
+            mWeightScaleProfile.setGender(new Gender(Gender.GENDER_FEMALE));
         }
 
         return true;
@@ -208,6 +447,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
                 mWeightScaleProfile.disconnect();
                 mWspCallbackSample.onBLEDisconnected(Integer.MIN_VALUE, mBluetoothDevice, UNKNOWN, null);
                 mBluetoothDevice = null;
+                mLastRegisteredUserIndex = null;
             } else {
                 if (mBluetoothDevice == null) {
                     mWeightScaleProfile.findWeightScaleProfileDevices(null);

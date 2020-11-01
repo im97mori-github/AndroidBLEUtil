@@ -549,6 +549,126 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
         }
 
         /**
+         * @see #addDatabaseChangeIncrement(int, long, boolean, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addDatabaseChangeIncrement(@NonNull ClientCharacteristicConfiguration clientCharacteristicConfiguration) {
+            return addDatabaseChangeIncrement(BluetoothGatt.GATT_SUCCESS, 0, true, BluetoothGatt.GATT_SUCCESS, 0, clientCharacteristicConfiguration.getBytes());
+        }
+
+        /**
+         * @see org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback.Builder#addDatabaseChangeIncrement(ClientCharacteristicConfiguration)
+         */
+        @NonNull
+        public Builder<T> addDatabaseChangeIncrement(int characteristicResponceCode, long characteristicDelay, boolean isNotificatable, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            if (mUserDataServiceMockCallbackBuilder != null) {
+                mUserDataServiceMockCallbackBuilder.addDatabaseChangeIncrement(characteristicResponceCode, characteristicDelay, isNotificatable, descriptorResponceCode, descriptorDelay, descriptorValue);
+            }
+            return this;
+        }
+
+        /**
+         * @see org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback.Builder#removeDatabaseChangeIncrement()
+         */
+        @NonNull
+        public Builder<T> removeDatabaseChangeIncrement() {
+            if (mUserDataServiceMockCallbackBuilder != null) {
+                mUserDataServiceMockCallbackBuilder.removeDatabaseChangeIncrement();
+            }
+            return this;
+        }
+
+        /**
+         * @see #addUserIndex()
+         */
+        @NonNull
+        public Builder<T> addUserIndex() {
+            return addUserIndex(BluetoothGatt.GATT_SUCCESS, 0);
+        }
+
+        /**
+         * @see org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback.Builder#addUserIndex(int, long)
+         */
+        @NonNull
+        public Builder<T> addUserIndex(int responceCode, long delay) {
+            if (mUserDataServiceMockCallbackBuilder != null) {
+                mUserDataServiceMockCallbackBuilder.addUserIndex(responceCode, delay);
+            }
+            return this;
+        }
+
+        /**
+         * @see org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback.Builder#removeUserIndex()
+         */
+        @NonNull
+        public Builder<T> removeUserIndex() {
+            if (mUserDataServiceMockCallbackBuilder != null) {
+                mUserDataServiceMockCallbackBuilder.removeUserIndex();
+            }
+            return this;
+        }
+
+        /**
+         * @see #addRegisteredUser(int, long, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addRegisteredUser(@NonNull ClientCharacteristicConfiguration clientCharacteristicConfiguration) {
+            return addRegisteredUser(BluetoothGatt.GATT_SUCCESS, 0, 0, 0, clientCharacteristicConfiguration.getBytes());
+        }
+
+        /**
+         * @see org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback.Builder#addRegisteredUser(int, long, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addRegisteredUser(int characteristicResponceCode, long characteristicDelay, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            if (mUserDataServiceMockCallbackBuilder != null) {
+                mUserDataServiceMockCallbackBuilder.addRegisteredUser(characteristicResponceCode, characteristicDelay, descriptorResponceCode, descriptorDelay, descriptorValue);
+            }
+            return this;
+        }
+
+        /**
+         * @see org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback.Builder#removeRegisteredUser()
+         */
+        @NonNull
+        public Builder<T> removeRegisteredUser() {
+            if (mUserDataServiceMockCallbackBuilder != null) {
+                mUserDataServiceMockCallbackBuilder.removeRegisteredUser();
+            }
+            return this;
+        }
+
+        /**
+         * @see org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback.Builder#addUserControlPoint(long, int, int, int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addUserControlPoint(long characteristicDelay
+                , int registerNewUserResponceValue
+                , int consentResponceValue
+                , int deleteUserDataResponceValue
+                , int listAllUsersResponceValue
+                , int deleteUsersResponceValue
+                , int descriptorResponceCode
+                , long descriptorDelay
+                , @NonNull byte[] descriptorValue) {
+            if (mUserDataServiceMockCallbackBuilder != null) {
+                mUserDataServiceMockCallbackBuilder.addUserControlPoint(characteristicDelay, registerNewUserResponceValue, consentResponceValue, deleteUserDataResponceValue, listAllUsersResponceValue, deleteUsersResponceValue, descriptorResponceCode, descriptorDelay, descriptorValue);
+            }
+            return this;
+        }
+
+        /**
+         * @see org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback.Builder#removeUserControlPoint()
+         */
+        @NonNull
+        public Builder<T> removeUserControlPoint() {
+            if (mUserDataServiceMockCallbackBuilder != null) {
+                mUserDataServiceMockCallbackBuilder.removeUserControlPoint();
+            }
+            return this;
+        }
+
+        /**
          * @see #addBatteryLevel(int, int, int, long, byte[], int)
          */
         @NonNull

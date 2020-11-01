@@ -173,7 +173,7 @@ public class CurrentTimeServiceTest {
         CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
         currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupporeted());
+        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicWritable());
     }
 
     @Test
@@ -183,11 +183,74 @@ public class CurrentTimeServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupporeted());
+        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicWritable());
     }
 
     @Test
     public void test_onDiscoverServiceSuccess_00203() {
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, 0, 0));
+        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+
+        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicWritable());
+    }
+
+    @Test
+    public void test_onDiscoverServiceSuccess_00204() {
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
+        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+
+        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicWritable());
+    }
+
+    @Test
+    public void test_onDiscoverServiceSuccess_00205() {
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
+        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+
+        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicWritable());
+    }
+
+    @Test
+    public void test_onDiscoverServiceSuccess_00206() {
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
+        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+
+        assertTrue(currentTimeService.isLocalTimeInformationCharacteristicWritable());
+    }
+
+    @Test
+    public void test_onDiscoverServiceSuccess_00301() {
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
+
+        assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupporeted());
+    }
+
+    @Test
+    public void test_onDiscoverServiceSuccess_00302() {
+        MockBLEConnection mockBLEConnection = new MockBLEConnection();
+        CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
+        currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
+
+        assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupporeted());
+    }
+
+    @Test
+    public void test_onDiscoverServiceSuccess_00303() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
@@ -198,7 +261,7 @@ public class CurrentTimeServiceTest {
     }
 
     @Test
-    public void test_onDiscoverServiceSuccess_00204() {
+    public void test_onDiscoverServiceSuccess_03204() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);

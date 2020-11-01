@@ -5,6 +5,8 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -61,8 +63,11 @@ import java.util.Locale;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, FilteredLeScanCallbackInterface {
 
-    private static final int REQUEST_PERMISSION_COARSE_LOCATION = 0;
+    private static final int REQUEST_PERMISSION_LOCATION = 0;
     private static final String FRAGMENT_TAG_ALERT_DIALOG = "FRAGMENT_TAG_ALERT_DIALOG";
+    private static final String KEY_MODE = "KEY_MODE";
+    private static final String MODE_PERMISSION = "MODE_PERMISSION";
+    private static final String MODE_LOCATION = "MODE_LOCATION";
 
     @Override
     public void onFilteredLeScan(@NonNull BluetoothDevice device, int rssi, @NonNull byte[] scanRecord, @NonNull AdvertisingDataParser.AdvertisingDataParseResult result) {
@@ -448,6 +453,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private Button mGetPermissionButton;
     private Button mConnectDisconnectButton;
+    private Button mEnableLocationButton;
     private ArrayAdapter<Pair<String, String>> mAdapter;
     private ListView mListView;
 
@@ -456,6 +462,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private FilteredLeScanCallback mFilteredLeScanCallback;
 
     private FragmentManager mFragmentManager;
+
+    private LocationManager mLocationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -468,8 +476,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mFragmentManager = getSupportFragmentManager();
 
         mGetPermissionButton = findViewById(R.id.getPermissionButton);
-
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
+        mEnableLocationButton = findViewById(R.id.enableLocationButton);
+
         mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {
             @NonNull
             @Override
@@ -493,6 +502,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         mGetPermissionButton.setOnClickListener(this);
         mConnectDisconnectButton.setOnClickListener(this);
+        mEnableLocationButton.setOnClickListener(this);
+
+        mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
     }
 
     @Override
@@ -516,6 +528,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if (R.id.getPermissionButton == v.getId()) {
+            hasPermission();
+        } else if (R.id.enableLocationButton == v.getId()) {
             hasPermission();
         } else if (R.id.connectDisconnectButton == v.getId()) {
             if (mBluetoothAdapter != null) {
@@ -549,13 +563,23 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     @Override
-    public void onOk() {
-        try {
-            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-            intent.setData(Uri.parse("package:" + getPackageName()));
-            startActivity(intent);
-        } catch (Exception e) {
-            e.printStackTrace();
+    public void onOk(@Nullable Bundle argument) {
+        if (argument != null) {
+            if (MODE_PERMISSION.equals(argument.getString(KEY_MODE))) {
+                try {
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    intent.setData(Uri.parse("package:" + getPackageName()));
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (MODE_LOCATION.equals(argument.getString(KEY_MODE))) {
+                try {
+                    startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -569,24 +593,67 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private boolean hasPermission() {
         boolean result = true;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (PackageManager.PERMISSION_DENIED == checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+                    || PackageManager.PERMISSION_DENIED == checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                    || PackageManager.PERMISSION_DENIED == checkSelfPermission(Manifest.permission.ACCESS_BACKGROUND_LOCATION)) {
+                result = false;
+                if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)
+                        || shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)
+                        || shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_BACKGROUND_LOCATION)) {
+                    if (mFragmentManager.findFragmentByTag(FRAGMENT_TAG_ALERT_DIALOG) == null) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString(KEY_MODE, MODE_PERMISSION);
+                        AlertDialogFragment fragment = AlertDialogFragment.createInstance(getString(R.string.permission_message), bundle);
+                        fragment.show(mFragmentManager, FRAGMENT_TAG_ALERT_DIALOG);
+                    }
+                } else {
+                    requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION
+                            , Manifest.permission.ACCESS_FINE_LOCATION
+                            , Manifest.permission.ACCESS_BACKGROUND_LOCATION}, REQUEST_PERMISSION_LOCATION);
+                }
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (PackageManager.PERMISSION_DENIED == checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)) {
                 result = false;
                 if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)) {
                     if (mFragmentManager.findFragmentByTag(FRAGMENT_TAG_ALERT_DIALOG) == null) {
-                        AlertDialogFragment fragment = new AlertDialogFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString(KEY_MODE, MODE_PERMISSION);
+                        AlertDialogFragment fragment = AlertDialogFragment.createInstance(getString(R.string.permission_message), bundle);
                         fragment.show(mFragmentManager, FRAGMENT_TAG_ALERT_DIALOG);
                     }
                 } else {
-                    requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_PERMISSION_COARSE_LOCATION);
+                    requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_PERMISSION_LOCATION);
                 }
             }
         }
         if (result) {
             mGetPermissionButton.setVisibility(View.GONE);
+
+            if (mLocationManager == null) {
+                result = false;
+            } else {
+                if (mLocationManager.getBestProvider(new Criteria(), true) == null) {
+                    result = false;
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString(KEY_MODE, MODE_LOCATION);
+                    AlertDialogFragment fragment = AlertDialogFragment.createInstance(getString(R.string.location_message), bundle);
+                    fragment.show(mFragmentManager, FRAGMENT_TAG_ALERT_DIALOG);
+                }
+            }
+
+            if (result) {
+                mEnableLocationButton.setVisibility(View.GONE);
+            } else {
+                mEnableLocationButton.setVisibility(View.VISIBLE);
+            }
         } else {
             mGetPermissionButton.setVisibility(View.VISIBLE);
+            mEnableLocationButton.setVisibility(View.GONE);
         }
         return result;
     }
+
 }

@@ -185,9 +185,12 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         mIsReliable = false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void onServerStarted() {
-
+        // do nothing
     }
 
     /**

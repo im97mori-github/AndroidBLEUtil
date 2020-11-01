@@ -10,7 +10,7 @@
             android:id="@+id/clear_bonded_history"
             android:title="@string/menu_clear_bonded_history" />
     </group>
-    <group android:id="@+id/connected">
+    <group android:id="@+id/service_check" android:visible="false">
         <item
             android:id="@+id/has_body_composition_service"
             android:title="@string/menu_has_body_composition_service" />
@@ -23,5 +23,160 @@
         <item
             android:id="@+id/has_current_time_service"
             android:title="@string/menu_has_current_time_service" />
+    </group>
+    <group android:id="@+id/weight_scale_service" android:visible="true">
+        <item
+            android:id="@+id/read_weight_scale_feature"
+            android:title="@string/menu_read_weight_scale_feature" />
+        <item
+            android:id="@+id/start_indicate_weight_mesurement"
+            android:title="@string/menu_indicate_weight_mesurement_start" />
+        <item
+            android:id="@+id/stop_indicate_weight_mesurement"
+            android:title="@string/menu_indicate_weight_mesurement_stop" />
+    </group>
+    <group android:id="@+id/body_composition_service" android:visible="false">
+
+    </group>
+    <group android:id="@+id/device_information_service" android:visible="false">
+        <item
+            android:id="@+id/read_manufacturer_name"
+            android:title="@string/menu_read_manufacturer_name" />
+        <item
+            android:id="@+id/read_model_number"
+            android:title="@string/menu_read_model_number" />
+        <item
+            android:id="@+id/has_system_id"
+            android:title="@string/menu_has_system_id" />
+        <item
+            android:id="@+id/read_system_id"
+            android:title="@string/menu_read_system_id" />
+    </group>
+    <group android:id="@+id/current_time_service" android:visible="false">
+        <item
+            android:id="@+id/read_current_time"
+            android:title="@string/menu_read_current_time" />
+        <item
+            android:id="@+id/is_current_time_writable"
+            android:title="@string/menu_is_current_time_writable" />
+        <item
+            android:id="@+id/write_current_time"
+            android:title="@string/menu_write_current_time" />
+        <item
+            android:id="@+id/notify_current_time_start"
+            android:title="@string/menu_notify_current_time_start" />
+        <item
+            android:id="@+id/notify_current_time_stop"
+            android:title="@string/menu_notify_current_time_stop" />
+        <item
+            android:id="@+id/has_local_time_information"
+            android:title="@string/menu_has_local_time_information" />
+        <item
+            android:id="@+id/read_local_time_information"
+            android:title="@string/menu_read_local_time_information" />
+        <item
+            android:id="@+id/is_local_time_information_writable"
+            android:title="@string/menu_is_local_time_information_writable" />
+        <item
+            android:id="@+id/write_local_time_information"
+            android:title="@string/menu_write_local_time_information" />
+        <item
+            android:id="@+id/menu_has_reference_time_information"
+            android:title="@string/menu_has_reference_time_information" />
+        <item
+            android:id="@+id/read_reference_time_information"
+            android:title="@string/menu_read_reference_time_information" />
+    </group>
+    <group android:id="@+id/user_data_service" android:visible="true">
+        <item
+            android:id="@+id/write_user_control_point_register_new_user"
+            android:title="@string/menu_write_user_control_point_register_new_user" />
+        <item
+            android:id="@+id/write_user_control_point_consent"
+            android:title="@string/menu_write_user_control_point_consent" />
+        <item
+            android:id="@+id/write_user_control_point_delete_user_data"
+            android:title="@string/menu_write_user_control_point_delete_user_data" />
+        <item
+            android:id="@+id/write_user_control_point_list_all_users"
+            android:title="@string/menu_write_user_control_point_list_all_users" />
+        <item
+            android:id="@+id/write_user_control_point_delete_users"
+            android:title="@string/menu_write_user_control_point_delete_users" />
+        <item
+            android:id="@+id/indicate_user_control_point_start"
+            android:title="@string/menu_indicate_user_control_point_start" />
+        <item
+            android:id="@+id/indicate_user_control_point_stop"
+            android:title="@string/menu_indicate_user_control_point_stop" />
+        <item
+            android:id="@+id/indicate_registered_user_start"
+            android:title="@string/menu_indicate_registered_user_start" />
+        <item
+            android:id="@+id/indicate_registered_user_stop"
+            android:title="@string/menu_indicate_registered_user_stop" />
+        <item
+            android:id="@+id/is_database_change_increment_notificatable"
+            android:title="@string/menu_is_database_change_increment_notificatable" />
+        <item
+            android:id="@+id/read_database_change_increment"
+            android:title="@string/menu_read_database_change_increment" />
+        <item
+            android:id="@+id/write_database_change_increment"
+            android:title="@string/menu_write_database_change_increment" />
+        <item
+            android:id="@+id/notify_menu_database_change_increment_start"
+            android:title="@string/menu_notify_database_change_increment_start" />
+        <item
+            android:id="@+id/notify_menu_database_change_increment_stop"
+            android:title="@string/menu_notify_database_change_increment_stop" />
+        <item
+            android:id="@+id/read_user_index"
+            android:title="@string/menu_read_user_index" />
+        <item
+            android:id="@+id/has_age"
+            android:title="@string/menu_has_age" />
+        <item
+            android:id="@+id/read_age"
+            android:title="@string/menu_read_age" />
+        <item
+            android:id="@+id/write_age"
+            android:title="@string/menu_write_age" />
+        <item
+            android:id="@+id/has_date_of_birth"
+            android:title="@string/menu_has_date_of_birth" />
+        <item
+            android:id="@+id/read_date_of_birth"
+            android:title="@string/menu_read_date_of_birth" />
+        <item
+            android:id="@+id/write_date_of_birth"
+            android:title="@string/menu_write_date_of_birth" />
+        <item
+            android:id="@+id/has_first_name"
+            android:title="@string/menu_has_first_name" />
+        <item
+            android:id="@+id/read_first_name"
+            android:title="@string/menu_read_first_name" />
+        <item
+            android:id="@+id/write_first_name"
+            android:title="@string/menu_write_first_name" />
+        <item
+            android:id="@+id/has_height"
+            android:title="@string/menu_has_height" />
+        <item
+            android:id="@+id/read_height"
+            android:title="@string/menu_read_height" />
+        <item
+            android:id="@+id/write_height"
+            android:title="@string/menu_write_height" />
+        <item
+            android:id="@+id/has_gender"
+            android:title="@string/menu_has_gender" />
+        <item
+            android:id="@+id/read_gender"
+            android:title="@string/menu_read_gender" />
+        <item
+            android:id="@+id/write_gender"
+            android:title="@string/menu_write_gender" />
     </group>
 </menu>

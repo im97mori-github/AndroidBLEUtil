@@ -37,7 +37,7 @@ public class PxpPeripheralSampleActivity extends BaseActivity implements View.On
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
         mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {
-            @SuppressWarnings("ConstantConditions")
+
             @NonNull
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -45,10 +45,14 @@ public class PxpPeripheralSampleActivity extends BaseActivity implements View.On
                 if (child == null) {
                     child = getLayoutInflater().inflate(R.layout.list_child, parent, false);
                 }
-                TextView textView = child.findViewById(R.id.time);
-                textView.setText(getItem(position).first);
-                textView = child.findViewById(R.id.body);
-                textView.setText(getItem(position).second);
+
+                Pair<String, String > item = getItem(position);
+                if (item != null) {
+                    TextView textView = child.findViewById(R.id.time);
+                    textView.setText(item.first);
+                    textView = child.findViewById(R.id.body);
+                    textView.setText(item.second);
+                }
                 return child;
             }
         };

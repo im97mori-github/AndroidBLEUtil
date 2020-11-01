@@ -365,101 +365,106 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
     @Override
     public synchronized boolean onCharacteristicWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value, boolean force) {
         boolean result = false;
-        BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
 
-        if (bluetoothGattServer != null) {
-            long now = SystemClock.elapsedRealtime();
-            BluetoothGattService bluetoothGattService = bluetoothGattCharacteristic.getService();
-            UUID serviceUUID = bluetoothGattService.getUuid();
-            int serviceInstanceId = bluetoothGattService.getInstanceId();
-            Map<Pair<UUID, Integer>, CharacteristicData> characteristicMap = mRemappedServiceCharacteristicMap.get(Pair.create(serviceUUID, serviceInstanceId));
-            if (characteristicMap == null) {
-                if (force) {
-                    result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
-                }
-            } else {
-                UUID characteristicUUID = bluetoothGattCharacteristic.getUuid();
-                int characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
-                CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
-                if (characteristicData != null) {
-                    delay(now, characteristicData.delay);
+        BluetoothGattService bluetoothGattService = bluetoothGattCharacteristic.getService();
+        UUID serviceUUID = bluetoothGattService.getUuid();
+        UUID characteristicUUID = bluetoothGattCharacteristic.getUuid();
+        if (HEALTH_THERMOMETER_SERVICE.equals(serviceUUID)) {
+            BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
 
-                    int responseCode = characteristicData.responseCode;
-                    MeasurementInterval measurementInterval = new MeasurementInterval(value);
-
-                    if (!measurementInterval.isMeasurementIntevalNoPeriodicMeasurement()) {
-                        Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
-                        if (descriptorDataMap != null) {
-                            for (Map.Entry<Pair<UUID, Integer>, DescriptorData> descriptorDataEntry : descriptorDataMap.entrySet()) {
-                                if (VALID_RANGE_DESCRIPTOR.equals(descriptorDataEntry.getKey().first)) {
-                                    ValidRange validRange = new ValidRange(descriptorDataEntry.getValue().getBytes());
-                                    int measurementIntervalSec = measurementInterval.getMeasurementInterval();
-                                    if (measurementIntervalSec < validRange.getLowerInclusiveValueSint16() || measurementIntervalSec > validRange.getUpperInclusiveValueUint16()) {
-                                        responseCode = BLEConstants.ErrorCodes.OUT_OF_RANGE;
-                                    }
-                                    break;
-                                }
-                            }
-                        }
+            if (bluetoothGattServer != null) {
+                long now = SystemClock.elapsedRealtime();
+                int serviceInstanceId = bluetoothGattService.getInstanceId();
+                Map<Pair<UUID, Integer>, CharacteristicData> characteristicMap = mRemappedServiceCharacteristicMap.get(Pair.create(serviceUUID, serviceInstanceId));
+                if (characteristicMap == null) {
+                    if (force) {
+                        result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
                     }
+                } else {
+                    int characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
+                    CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
+                    if (characteristicData != null) {
+                        delay(now, characteristicData.delay);
 
-                    result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, null);
-
-                    if (result && BluetoothGatt.GATT_SUCCESS == responseCode) {
-                        characteristicData.currentData = value;
+                        int responseCode = characteristicData.responseCode;
+                        MeasurementInterval measurementInterval = new MeasurementInterval(value);
 
                         if (!measurementInterval.isMeasurementIntevalNoPeriodicMeasurement()) {
-                            for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, DescriptorData>> remappedCharacteristicDescriptorMapEntry : mRemappedCharacteristicDescriptorMap.entrySet()) {
-                                if (TEMPERATURE_MEASUREMENT_CHARACTERISTIC.equals(remappedCharacteristicDescriptorMapEntry.getKey().first)) {
-                                    for (Map.Entry<Pair<UUID, Integer>, DescriptorData> descriptorDataEntry : remappedCharacteristicDescriptorMapEntry.getValue().entrySet()) {
-                                        if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorDataEntry.getKey().first)) {
-                                            if (Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, descriptorDataEntry.getValue().getBytes())) {
-                                                startNotification(null
-                                                        , bleServerConnection
-                                                        , null
-                                                        , HEALTH_THERMOMETER_SERVICE
-                                                        , serviceInstanceId
-                                                        , TEMPERATURE_MEASUREMENT_CHARACTERISTIC
-                                                        , remappedCharacteristicDescriptorMapEntry.getKey().second
-                                                        , descriptorDataEntry.getKey().second
-                                                        , 0
-                                                        , null
-                                                        , null);
-                                            }
-                                            break;
+                            Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
+                            if (descriptorDataMap != null) {
+                                for (Map.Entry<Pair<UUID, Integer>, DescriptorData> descriptorDataEntry : descriptorDataMap.entrySet()) {
+                                    if (VALID_RANGE_DESCRIPTOR.equals(descriptorDataEntry.getKey().first)) {
+                                        ValidRange validRange = new ValidRange(descriptorDataEntry.getValue().getBytes());
+                                        int measurementIntervalSec = measurementInterval.getMeasurementInterval();
+                                        if (measurementIntervalSec < validRange.getLowerInclusiveValueSint16() || measurementIntervalSec > validRange.getUpperInclusiveValueUint16()) {
+                                            responseCode = BLEConstants.ErrorCodes.OUT_OF_RANGE;
                                         }
+                                        break;
                                     }
-                                    break;
                                 }
                             }
                         }
 
-                        Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
-                        if (descriptorDataMap != null) {
-                            for (Map.Entry<Pair<UUID, Integer>, DescriptorData> descriptorDataEntry : descriptorDataMap.entrySet()) {
-                                if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorDataEntry.getKey().first)) {
-                                    startNotification(null
-                                            , bleServerConnection
-                                            , null
-                                            , HEALTH_THERMOMETER_SERVICE
-                                            , serviceInstanceId
-                                            , MEASUREMENT_INTERVAL_CHARACTERISTIC
-                                            , characteristicInstanceId
-                                            , descriptorDataEntry.getKey().second
-                                            , 0
-                                            , null
-                                            , null);
-                                    break;
+                        result = bluetoothGattServer.sendResponse(device, requestId, responseCode, offset, null);
+
+                        if (result && BluetoothGatt.GATT_SUCCESS == responseCode) {
+                            characteristicData.currentData = value;
+
+                            if (!measurementInterval.isMeasurementIntevalNoPeriodicMeasurement()) {
+                                for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, DescriptorData>> remappedCharacteristicDescriptorMapEntry : mRemappedCharacteristicDescriptorMap.entrySet()) {
+                                    if (TEMPERATURE_MEASUREMENT_CHARACTERISTIC.equals(remappedCharacteristicDescriptorMapEntry.getKey().first)) {
+                                        for (Map.Entry<Pair<UUID, Integer>, DescriptorData> descriptorDataEntry : remappedCharacteristicDescriptorMapEntry.getValue().entrySet()) {
+                                            if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorDataEntry.getKey().first)) {
+                                                if (Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, descriptorDataEntry.getValue().getBytes())) {
+                                                    startNotification(null
+                                                            , bleServerConnection
+                                                            , null
+                                                            , HEALTH_THERMOMETER_SERVICE
+                                                            , serviceInstanceId
+                                                            , TEMPERATURE_MEASUREMENT_CHARACTERISTIC
+                                                            , remappedCharacteristicDescriptorMapEntry.getKey().second
+                                                            , descriptorDataEntry.getKey().second
+                                                            , 0
+                                                            , null
+                                                            , null);
+                                                }
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    }
+                                }
+                            }
+
+                            Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
+                            if (descriptorDataMap != null) {
+                                for (Map.Entry<Pair<UUID, Integer>, DescriptorData> descriptorDataEntry : descriptorDataMap.entrySet()) {
+                                    if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorDataEntry.getKey().first)) {
+                                        startNotification(null
+                                                , bleServerConnection
+                                                , null
+                                                , HEALTH_THERMOMETER_SERVICE
+                                                , serviceInstanceId
+                                                , MEASUREMENT_INTERVAL_CHARACTERISTIC
+                                                , characteristicInstanceId
+                                                , descriptorDataEntry.getKey().second
+                                                , 0
+                                                , null
+                                                , null);
+                                        break;
+                                    }
                                 }
                             }
                         }
                     }
-                }
 
-            if (force && !result && responseNeeded) {
-                    result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
+                    if (force && !result && responseNeeded) {
+                        result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
+                    }
                 }
             }
+        } else {
+            result = super.onCharacteristicWriteRequest(bleServerConnection, device, requestId, bluetoothGattCharacteristic, preparedWrite, responseNeeded, offset, value, false);
         }
         return result;
     }
@@ -517,16 +522,8 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
      * {@inheritDoc}
      */
     @Override
-    public void onServerStarted() {
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public void onServiceAddFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument) {
-
+        // do nothing
     }
 
     /**
@@ -534,7 +531,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
      */
     @Override
     public void onServiceAddTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument) {
-
+        // do nothing
     }
 
     /**
@@ -542,7 +539,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
      */
     @Override
     public void onServiceRemoveFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument) {
-
+        // do nothing
     }
 
     /**
@@ -550,7 +547,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
      */
     @Override
     public void onServiceRemoveTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument) {
-
+        // do nothing
     }
 
     /**
@@ -558,7 +555,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
      */
     @Override
     public void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings) {
-
+        // do nothing
     }
 
     /**
@@ -566,7 +563,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
      */
     @Override
     public void onAdvertisingStartFailed(@Nullable Integer errorCode) {
-
+        // do nothing
     }
 
     /**
@@ -574,7 +571,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
      */
     @Override
     public void onAdvertisingFinished() {
-
+        // do nothing
     }
 
 }

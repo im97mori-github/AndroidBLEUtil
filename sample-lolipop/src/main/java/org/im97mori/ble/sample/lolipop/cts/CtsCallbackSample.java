@@ -327,6 +327,7 @@ public class CtsCallbackSample extends CurrentTimeServiceMockCallback implements
     @Override
     public void onServerStarted() {
         callback();
+        super.onServerStarted();
     }
 
     @Override
@@ -356,11 +357,13 @@ public class CtsCallbackSample extends CurrentTimeServiceMockCallback implements
     @Override
     public void onServiceAddFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument) {
         callback(argument);
+        super.onServiceAddFailed(taskId, bleServerConnection, bluetoothGattService, status, argument);
     }
 
     @Override
     public void onServiceAddTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument) {
         callback(argument);
+        super.onServiceAddTimeout(taskId, bleServerConnection, bluetoothGattService, timeout, argument);
     }
 
     @Override
@@ -372,11 +375,13 @@ public class CtsCallbackSample extends CurrentTimeServiceMockCallback implements
     @Override
     public void onServiceRemoveFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument) {
         callback(argument);
+        super.onServiceRemoveFailed(taskId, bleServerConnection, bluetoothGattService, status, argument);
     }
 
     @Override
     public void onServiceRemoveTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument) {
         callback(argument);
+        super.onServiceRemoveTimeout(taskId, bleServerConnection, bluetoothGattService, timeout, argument);
     }
 
     @Override
@@ -430,16 +435,19 @@ public class CtsCallbackSample extends CurrentTimeServiceMockCallback implements
     @Override
     public void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings) {
         callback(advertiseSettings);
+        super.onAdvertisingStartSuccess(advertiseSettings);
     }
 
     @Override
     public void onAdvertisingStartFailed(Integer errorCode) {
         callback(errorCode);
+        super.onAdvertisingStartFailed(errorCode);
     }
 
     @Override
     public void onAdvertisingFinished() {
         callback();
+        super.onAdvertisingFinished();
     }
 
     @Override

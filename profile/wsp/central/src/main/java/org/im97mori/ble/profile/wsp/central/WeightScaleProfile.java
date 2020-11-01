@@ -252,7 +252,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getSystemId() {
         Integer taskId = null;
-        if (mDeviceInformationService != null && hasSystemId()) {
+        if (mDeviceInformationService != null) {
             taskId = mDeviceInformationService.getSystemId();
         }
         return taskId;
@@ -348,7 +348,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getAge() {
         Integer taskId = null;
-        if (mUserDataService != null && isAgeCharacteristicSupporeted()) {
+        if (mUserDataService != null) {
             taskId = mUserDataService.getAge();
         }
         return taskId;
@@ -360,7 +360,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer setAge(@NonNull Age age) {
         Integer taskId = null;
-        if (mUserDataService != null && isAgeCharacteristicSupporeted()) {
+        if (mUserDataService != null) {
             taskId = mUserDataService.setAge(age);
         }
         return taskId;
@@ -372,7 +372,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getDateOfBirth() {
         Integer taskId = null;
-        if (mUserDataService != null && isDateOfBirthCharacteristicSupporeted()) {
+        if (mUserDataService != null) {
             taskId = mUserDataService.getDateOfBirth();
         }
         return taskId;
@@ -384,7 +384,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer setDateOfBirth(@NonNull DateOfBirth dateOfBirth) {
         Integer taskId = null;
-        if (mUserDataService != null && isDateOfBirthCharacteristicSupporeted()) {
+        if (mUserDataService != null) {
             taskId = mUserDataService.setDateOfBirth(dateOfBirth);
         }
         return taskId;
@@ -396,7 +396,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getFirstName() {
         Integer taskId = null;
-        if (mUserDataService != null && isFirstNameCharacteristicSupporeted()) {
+        if (mUserDataService != null) {
             taskId = mUserDataService.getFirstName();
         }
         return taskId;
@@ -408,7 +408,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer setFirstName(@NonNull FirstName firstName) {
         Integer taskId = null;
-        if (mUserDataService != null && isFirstNameCharacteristicSupporeted()) {
+        if (mUserDataService != null) {
             taskId = mUserDataService.setFirstName(firstName);
         }
         return taskId;
@@ -420,7 +420,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getHeight() {
         Integer taskId = null;
-        if (mUserDataService != null && isHeightCharacteristicSupporeted()) {
+        if (mUserDataService != null) {
             taskId = mUserDataService.getHeight();
         }
         return taskId;
@@ -432,7 +432,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer setHeight(@NonNull Height height) {
         Integer taskId = null;
-        if (mUserDataService != null && isHeightCharacteristicSupporeted()) {
+        if (mUserDataService != null) {
             taskId = mUserDataService.setHeight(height);
         }
         return taskId;
@@ -444,7 +444,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getGender() {
         Integer taskId = null;
-        if (mUserDataService != null && isGenderCharacteristicSupporeted()) {
+        if (mUserDataService != null) {
             taskId = mUserDataService.getGender();
         }
         return taskId;
@@ -456,7 +456,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer setGender(@NonNull Gender gender) {
         Integer taskId = null;
-        if (mUserDataService != null && isGenderCharacteristicSupporeted()) {
+        if (mUserDataService != null) {
             taskId = mUserDataService.setGender(gender);
         }
         return taskId;
@@ -530,6 +530,30 @@ public class WeightScaleProfile extends AbstractCentralProfile {
         Integer taskId = null;
         if (mUserDataService != null) {
             taskId = mUserDataService.getUserIndex();
+        }
+        return taskId;
+    }
+
+    /**
+     * @see org.im97mori.ble.service.uds.central.UserDataService#startRegisteredUserIndication()
+     */
+    @Nullable
+    public synchronized Integer startRegisteredUserIndication() {
+        Integer taskId = null;
+        if (mUserDataService != null) {
+            taskId = mUserDataService.startRegisteredUserIndication();
+        }
+        return taskId;
+    }
+
+    /**
+     * @see org.im97mori.ble.service.uds.central.UserDataService#stopRegisteredUserIndication()
+     */
+    @Nullable
+    public synchronized Integer stopRegisteredUserIndication() {
+        Integer taskId = null;
+        if (mUserDataService != null) {
+            taskId = mUserDataService.stopRegisteredUserIndication();
         }
         return taskId;
     }
@@ -770,6 +794,18 @@ public class WeightScaleProfile extends AbstractCentralProfile {
         Boolean result = null;
         if (mCurrentTimeService != null) {
             result = mCurrentTimeService.isLocalTimeInformationCharacteristicSupporeted();
+        }
+        return result;
+    }
+
+    /**
+     * @see org.im97mori.ble.service.cts.central.CurrentTimeService#isLocalTimeInformationCharacteristicWritable()
+     */
+    @Nullable
+    public synchronized Boolean isLocalTimeInformationCharacteristicWritable() {
+        Boolean result = null;
+        if (mCurrentTimeService != null) {
+            result = mCurrentTimeService.isLocalTimeInformationCharacteristicWritable();
         }
         return result;
     }

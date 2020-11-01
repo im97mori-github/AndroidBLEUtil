@@ -2366,14 +2366,6 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * {@inheritDoc}
      */
     @Override
-    public void onServerStarted() {
-        // do nothing
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public void onServerStopped() {
         mNextUserIndex.set(0);
         mUserMap.clear();
@@ -2381,6 +2373,15 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         mCurrentDatabaseChangeIncrementMap.clear();
         mRegisteredUserIndicationData = null;
         super.onServerStopped();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public synchronized void onDeviceDisconnected(BluetoothDevice device) {
+        super.onDeviceDisconnected(device);
+        mCurrentUserMap.remove(device);
     }
 
     /**

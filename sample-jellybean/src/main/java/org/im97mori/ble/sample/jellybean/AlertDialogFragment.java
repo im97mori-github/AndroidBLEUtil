@@ -13,8 +13,22 @@ import androidx.fragment.app.DialogFragment;
 @SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
 public class AlertDialogFragment extends DialogFragment implements DialogInterface.OnClickListener {
 
+    private static final String KEY_MESSSAGE = "KEY_MESSSAGE";
+    private static final String KEY_ARGUMENT = "KEY_ARGUMENT";
+
+    public static AlertDialogFragment createInstance(@NonNull String message, @Nullable Bundle argument) {
+        AlertDialogFragment alertDialogFragment = new AlertDialogFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(KEY_MESSSAGE, message);
+        if (argument != null) {
+            bundle.putBundle(KEY_ARGUMENT, argument);
+        }
+        alertDialogFragment.setArguments(bundle);
+        return alertDialogFragment;
+    }
+
     public interface AlertDialogFragmentCallback {
-        void onOk();
+        void onOk(@Nullable Bundle argument);
 
         void onCancel();
     }
@@ -46,7 +60,10 @@ public class AlertDialogFragment extends DialogFragment implements DialogInterfa
         AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
         builder.setPositiveButton(android.R.string.ok, this);
         builder.setNegativeButton(android.R.string.cancel, this);
-        builder.setMessage(R.string.permission_message);
+        Bundle argument = getArguments();
+        if (argument != null) {
+            builder.setMessage(argument.getString(KEY_MESSSAGE));
+        }
         return builder.create();
     }
 
@@ -55,7 +72,8 @@ public class AlertDialogFragment extends DialogFragment implements DialogInterfa
         try {
             if (mAlertDialogFragmentCallback != null) {
                 if (DialogInterface.BUTTON_POSITIVE == which) {
-                    mAlertDialogFragmentCallback.onOk();
+                    Bundle argument = getArguments();
+                    mAlertDialogFragmentCallback.onOk(argument == null ? null : argument.getBundle(KEY_ARGUMENT));
                 } else if (DialogInterface.BUTTON_NEGATIVE == which) {
                     mAlertDialogFragmentCallback.onCancel();
                 }

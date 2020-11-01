@@ -193,16 +193,8 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
      * {@inheritDoc}
      */
     @Override
-    public void onServerStarted() {
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public void onServiceAddFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument) {
-
+        // do nothing
     }
 
     /**
@@ -210,7 +202,7 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
      */
     @Override
     public void onServiceAddTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument) {
-
+        // do nothing
     }
 
     /**
@@ -218,7 +210,7 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
      */
     @Override
     public void onServiceRemoveFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument) {
-
+        // do nothing
     }
 
     /**
@@ -226,7 +218,7 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
      */
     @Override
     public void onServiceRemoveTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument) {
-
+        // do nothing
     }
 
     /**
@@ -234,7 +226,7 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
      */
     @Override
     public void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings) {
-
+        // do nothing
     }
 
     /**
@@ -242,7 +234,7 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
      */
     @Override
     public void onAdvertisingStartFailed(@Nullable Integer errorCode) {
-
+        // do nothing
     }
 
     /**
@@ -250,7 +242,7 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
      */
     @Override
     public void onAdvertisingFinished() {
-
+        // do nothing
     }
 
 }

@@ -306,14 +306,13 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
     public synchronized boolean onCharacteristicReadRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean force) {
         boolean result = false;
 
+        BluetoothGattService bluetoothGattService = bluetoothGattCharacteristic.getService();
+        UUID serviceUUID = bluetoothGattService.getUuid();
         UUID characteristicUUID = bluetoothGattCharacteristic.getUuid();
-        if (REFERENCE_TIME_INFORMATION_CHARACTERISTIC.equals(characteristicUUID)) {
+        if (CURRENT_TIME_SERVICE.equals(serviceUUID) && REFERENCE_TIME_INFORMATION_CHARACTERISTIC.equals(characteristicUUID)) {
             BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
-
             if (bluetoothGattServer != null) {
                 long now = SystemClock.elapsedRealtime();
-                BluetoothGattService bluetoothGattService = bluetoothGattCharacteristic.getService();
-                UUID serviceUUID = bluetoothGattService.getUuid();
                 int serviceInstanceId = bluetoothGattService.getInstanceId();
                 Map<Pair<UUID, Integer>, CharacteristicData> characteristicMap = mRemappedServiceCharacteristicMap.get(Pair.create(serviceUUID, serviceInstanceId));
                 if (characteristicMap == null) {
@@ -348,14 +347,13 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
     public synchronized boolean onCharacteristicWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value, boolean force) {
         boolean result = false;
 
+        BluetoothGattService bluetoothGattService = bluetoothGattCharacteristic.getService();
+        UUID serviceUUID = bluetoothGattService.getUuid();
         UUID characteristicUUID = bluetoothGattCharacteristic.getUuid();
-        if (CURRENT_TIME_CHARACTERISTIC.equals(characteristicUUID)) {
+        if (CURRENT_TIME_SERVICE.equals(serviceUUID) && REFERENCE_TIME_INFORMATION_CHARACTERISTIC.equals(characteristicUUID)) {
             BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
-
             if (bluetoothGattServer != null) {
                 long now = SystemClock.elapsedRealtime();
-                BluetoothGattService bluetoothGattService = bluetoothGattCharacteristic.getService();
-                UUID serviceUUID = bluetoothGattService.getUuid();
                 int serviceInstanceId = bluetoothGattService.getInstanceId();
                 Map<Pair<UUID, Integer>, CharacteristicData> characteristicMap = mRemappedServiceCharacteristicMap.get(Pair.create(serviceUUID, serviceInstanceId));
                 if (characteristicMap == null) {
@@ -419,7 +417,7 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
      */
     @Override
     public void onServiceAddFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument) {
-
+        // do nothing
     }
 
     /**
@@ -427,7 +425,7 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
      */
     @Override
     public void onServiceAddTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument) {
-
+        // do nothing
     }
 
     /**
@@ -435,7 +433,7 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
      */
     @Override
     public void onServiceRemoveFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument) {
-
+        // do nothing
     }
 
     /**
@@ -443,7 +441,7 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
      */
     @Override
     public void onServiceRemoveTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument) {
-
+        // do nothing
     }
 
     /**
@@ -451,7 +449,7 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
      */
     @Override
     public void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings) {
-
+        // do nothing
     }
 
     /**
@@ -459,7 +457,7 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
      */
     @Override
     public void onAdvertisingStartFailed(@Nullable Integer errorCode) {
-
+        // do nothing
     }
 
     /**
@@ -467,7 +465,7 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
      */
     @Override
     public void onAdvertisingFinished() {
-
+        // do nothing
     }
 
 }

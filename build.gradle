@@ -1919,7 +1919,7 @@ ext.profileFmpAndroid = [
 
 ext.profileFmpPeripheralAndroid = [
         artifactId         : "ble-profile-fmp-peripheral-android"
-        , versionCode      : 5
+        , versionCode      : 6
         , versionName      : '0.1.4'
         , uploadVersionName: '0.1.4'
 ]
