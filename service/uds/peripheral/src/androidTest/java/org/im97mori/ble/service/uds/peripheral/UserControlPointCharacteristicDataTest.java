@@ -47,11 +47,11 @@ public class UserControlPointCharacteristicDataTest {
         assertEquals(result1.delay, result2.delay);
         assertArrayEquals(result1.data, result2.data);
         assertEquals(result1.notificationCount, result2.notificationCount);
-        assertEquals(result1.registerNewUserResponceValue, result2.registerNewUserResponceValue);
-        assertEquals(result1.consentResponceValue, result2.consentResponceValue);
-        assertEquals(result1.deleteUserDataResponceValue, result2.deleteUserDataResponceValue);
-        assertEquals(result1.listAllUsersResponceValue, result2.listAllUsersResponceValue);
-        assertEquals(result1.deleteUsersResponceValue, result2.deleteUsersResponceValue);
+        assertEquals(result1.registerNewUserResponseValue, result2.registerNewUserResponseValue);
+        assertEquals(result1.consentResponseValue, result2.consentResponseValue);
+        assertEquals(result1.deleteUserDataResponseValue, result2.deleteUserDataResponseValue);
+        assertEquals(result1.listAllUsersResponseValue, result2.listAllUsersResponseValue);
+        assertEquals(result1.deleteUsersResponseValue, result2.deleteUsersResponseValue);
     }
 
     @Test
@@ -83,79 +83,58 @@ public class UserControlPointCharacteristicDataTest {
         assertEquals(result1.delay, result2.delay);
         assertArrayEquals(result1.data, result2.data);
         assertEquals(result1.notificationCount, result2.notificationCount);
-        assertEquals(result1.registerNewUserResponceValue, result2.registerNewUserResponceValue);
-        assertEquals(result1.consentResponceValue, result2.consentResponceValue);
-        assertEquals(result1.deleteUserDataResponceValue, result2.deleteUserDataResponceValue);
-        assertEquals(result1.listAllUsersResponceValue, result2.listAllUsersResponceValue);
-        assertEquals(result1.deleteUsersResponceValue, result2.deleteUsersResponceValue);
+        assertEquals(result1.registerNewUserResponseValue, result2.registerNewUserResponseValue);
+        assertEquals(result1.consentResponseValue, result2.consentResponseValue);
+        assertEquals(result1.deleteUserDataResponseValue, result2.deleteUserDataResponseValue);
+        assertEquals(result1.listAllUsersResponseValue, result2.listAllUsersResponseValue);
+        assertEquals(result1.deleteUsersResponseValue, result2.deleteUsersResponseValue);
     }
 
     @Test
-    public void test_setRegisterNewUserResponceValue_00001() {
-        int firstRegisterNewUserResponceValue = 5;
+    public void test_setRegisterNewUserResponseValue_00001() {
+        int firstRegisterNewUserResponseValue = 5;
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(1
                 , 2
                 , new ArrayList<DescriptorData>()
                 , 3
                 , 4
-                , firstRegisterNewUserResponceValue
+                , firstRegisterNewUserResponseValue
                 , 6
                 , 7
                 , 8
                 , 9);
 
-        assertEquals(firstRegisterNewUserResponceValue, result1.registerNewUserResponceValue);
+        assertEquals(firstRegisterNewUserResponseValue, result1.registerNewUserResponseValue);
 
-        int secondRegisterNewUserResponceValue = 55;
-        result1.registerNewUserResponceValue = secondRegisterNewUserResponceValue;
-        assertEquals(secondRegisterNewUserResponceValue, result1.registerNewUserResponceValue);
+        int secondRegisterNewUserResponseValue = 55;
+        result1.registerNewUserResponseValue = secondRegisterNewUserResponseValue;
+        assertEquals(secondRegisterNewUserResponseValue, result1.registerNewUserResponseValue);
     }
 
     @Test
-    public void test_setConsentResponceValue_00001() {
-        int firstConsentResponceValue = 6;
+    public void test_setConsentResponseValue_00001() {
+        int firstConsentResponseValue = 6;
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(1
                 , 2
                 , new ArrayList<DescriptorData>()
                 , 3
                 , 4
                 , 5
-                , firstConsentResponceValue
+                , firstConsentResponseValue
                 , 7
                 , 8
                 , 9);
 
-        assertEquals(firstConsentResponceValue, result1.consentResponceValue);
+        assertEquals(firstConsentResponseValue, result1.consentResponseValue);
 
-        int secondConsentResponceValue = 66;
-        result1.consentResponceValue = secondConsentResponceValue;
-        assertEquals(secondConsentResponceValue, result1.consentResponceValue);
+        int secondConsentResponseValue = 66;
+        result1.consentResponseValue = secondConsentResponseValue;
+        assertEquals(secondConsentResponseValue, result1.consentResponseValue);
     }
 
     @Test
-    public void test_setDeleteUserDataResponceValue_00001() {
-        int firstDeleteUserDataResponceValue = 7;
-        UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(1
-                , 2
-                , new ArrayList<DescriptorData>()
-                , 3
-                , 4
-                , 5
-                , 6
-                , firstDeleteUserDataResponceValue
-                , 8
-                , 9);
-
-        assertEquals(firstDeleteUserDataResponceValue, result1.deleteUserDataResponceValue);
-
-        int secondDeleteUserDataResponceValue = 77;
-        result1.deleteUserDataResponceValue = secondDeleteUserDataResponceValue;
-        assertEquals(secondDeleteUserDataResponceValue, result1.deleteUserDataResponceValue);
-    }
-
-    @Test
-    public void test_setListAllUsersResponceValue_00001() {
-        int firstListAllUsersResponceValue = 8;
+    public void test_setDeleteUserDataResponseValue_00001() {
+        int firstDeleteUserDataResponseValue = 7;
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(1
                 , 2
                 , new ArrayList<DescriptorData>()
@@ -163,20 +142,20 @@ public class UserControlPointCharacteristicDataTest {
                 , 4
                 , 5
                 , 6
-                , 7
-                , firstListAllUsersResponceValue
+                , firstDeleteUserDataResponseValue
+                , 8
                 , 9);
 
-        assertEquals(firstListAllUsersResponceValue, result1.listAllUsersResponceValue);
+        assertEquals(firstDeleteUserDataResponseValue, result1.deleteUserDataResponseValue);
 
-        int secondListAllUsersResponceValue = 88;
-        result1.listAllUsersResponceValue = secondListAllUsersResponceValue;
-        assertEquals(secondListAllUsersResponceValue, result1.listAllUsersResponceValue);
+        int secondDeleteUserDataResponseValue = 77;
+        result1.deleteUserDataResponseValue = secondDeleteUserDataResponseValue;
+        assertEquals(secondDeleteUserDataResponseValue, result1.deleteUserDataResponseValue);
     }
 
     @Test
-    public void test_setDeleteUsersResponceValue_00001() {
-        int firstDeleteUsersResponceValue = 9;
+    public void test_setListAllUsersResponseValue_00001() {
+        int firstListAllUsersResponseValue = 8;
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(1
                 , 2
                 , new ArrayList<DescriptorData>()
@@ -185,14 +164,35 @@ public class UserControlPointCharacteristicDataTest {
                 , 5
                 , 6
                 , 7
+                , firstListAllUsersResponseValue
+                , 9);
+
+        assertEquals(firstListAllUsersResponseValue, result1.listAllUsersResponseValue);
+
+        int secondListAllUsersResponseValue = 88;
+        result1.listAllUsersResponseValue = secondListAllUsersResponseValue;
+        assertEquals(secondListAllUsersResponseValue, result1.listAllUsersResponseValue);
+    }
+
+    @Test
+    public void test_setDeleteUsersResponseValue_00001() {
+        int firstDeleteUsersResponseValue = 9;
+        UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(1
+                , 2
+                , new ArrayList<DescriptorData>()
+                , 3
+                , 4
+                , 5
+                , 6
+                , 7
                 , 8
-                , firstDeleteUsersResponceValue);
+                , firstDeleteUsersResponseValue);
 
-        assertEquals(firstDeleteUsersResponceValue, result1.deleteUsersResponceValue);
+        assertEquals(firstDeleteUsersResponseValue, result1.deleteUsersResponseValue);
 
-        int secondDeleteUsersResponceValue = 99;
-        result1.deleteUsersResponceValue = secondDeleteUsersResponceValue;
-        assertEquals(secondDeleteUsersResponceValue, result1.deleteUsersResponceValue);
+        int secondDeleteUsersResponseValue = 99;
+        result1.deleteUsersResponseValue = secondDeleteUsersResponseValue;
+        assertEquals(secondDeleteUsersResponseValue, result1.deleteUsersResponseValue);
     }
 
     @Test
@@ -226,11 +226,11 @@ public class UserControlPointCharacteristicDataTest {
         assertEquals(result1.delay, result2.delay);
         assertArrayEquals(result1.data, result2.data);
         assertEquals(result1.notificationCount, result2.notificationCount);
-        assertEquals(result1.registerNewUserResponceValue, result2.registerNewUserResponceValue);
-        assertEquals(result1.consentResponceValue, result2.consentResponceValue);
-        assertEquals(result1.deleteUserDataResponceValue, result2.deleteUserDataResponceValue);
-        assertEquals(result1.listAllUsersResponceValue, result2.listAllUsersResponceValue);
-        assertEquals(result1.deleteUsersResponceValue, result2.deleteUsersResponceValue);
+        assertEquals(result1.registerNewUserResponseValue, result2.registerNewUserResponseValue);
+        assertEquals(result1.consentResponseValue, result2.consentResponseValue);
+        assertEquals(result1.deleteUserDataResponseValue, result2.deleteUserDataResponseValue);
+        assertEquals(result1.listAllUsersResponseValue, result2.listAllUsersResponseValue);
+        assertEquals(result1.deleteUsersResponseValue, result2.deleteUsersResponseValue);
     }
 
     @Test
@@ -266,11 +266,11 @@ public class UserControlPointCharacteristicDataTest {
         assertEquals(result1.delay, result2.delay);
         assertArrayEquals(result1.data, result2.data);
         assertEquals(result1.notificationCount, result2.notificationCount);
-        assertEquals(result1.registerNewUserResponceValue, result2.registerNewUserResponceValue);
-        assertEquals(result1.consentResponceValue, result2.consentResponceValue);
-        assertEquals(result1.deleteUserDataResponceValue, result2.deleteUserDataResponceValue);
-        assertEquals(result1.listAllUsersResponceValue, result2.listAllUsersResponceValue);
-        assertEquals(result1.deleteUsersResponceValue, result2.deleteUsersResponceValue);
+        assertEquals(result1.registerNewUserResponseValue, result2.registerNewUserResponseValue);
+        assertEquals(result1.consentResponseValue, result2.consentResponseValue);
+        assertEquals(result1.deleteUserDataResponseValue, result2.deleteUserDataResponseValue);
+        assertEquals(result1.listAllUsersResponseValue, result2.listAllUsersResponseValue);
+        assertEquals(result1.deleteUsersResponseValue, result2.deleteUsersResponseValue);
     }
 
     @Test
@@ -281,11 +281,11 @@ public class UserControlPointCharacteristicDataTest {
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         long delay = 3;
         int notificationCount = 4;
-        int registerNewUserResponceValue = 5;
-        int consentResponceValue = 6;
-        int deleteUserDataResponceValue = 7;
-        int listAllUsersResponceValue = 8;
-        int deleteUsersResponceValue = 9;
+        int registerNewUserResponseValue = 5;
+        int consentResponseValue = 6;
+        int deleteUserDataResponseValue = 7;
+        int listAllUsersResponseValue = 8;
+        int deleteUsersResponseValue = 9;
 
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(
                 property
@@ -293,11 +293,11 @@ public class UserControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , delay
                 , notificationCount
-                , registerNewUserResponceValue
-                , consentResponceValue
-                , deleteUserDataResponceValue
-                , listAllUsersResponceValue
-                , deleteUsersResponceValue);
+                , registerNewUserResponseValue
+                , consentResponseValue
+                , deleteUserDataResponseValue
+                , listAllUsersResponseValue
+                , deleteUsersResponseValue);
 
         assertEquals(USER_CONTROL_POINT_CHARACTERISTIC.hashCode()
                         ^ Integer.valueOf(property).hashCode()
@@ -309,11 +309,11 @@ public class UserControlPointCharacteristicDataTest {
                         ^ Integer.valueOf(notificationCount).hashCode()
                         ^ Arrays.hashCode((byte[]) null)
                         ^ Arrays.hashCode((byte[]) null)
-                        ^ Integer.valueOf(registerNewUserResponceValue).hashCode()
-                        ^ Integer.valueOf(consentResponceValue).hashCode()
-                        ^ Integer.valueOf(deleteUserDataResponceValue).hashCode()
-                        ^ Integer.valueOf(listAllUsersResponceValue).hashCode()
-                        ^ Integer.valueOf(deleteUsersResponceValue).hashCode()
+                        ^ Integer.valueOf(registerNewUserResponseValue).hashCode()
+                        ^ Integer.valueOf(consentResponseValue).hashCode()
+                        ^ Integer.valueOf(deleteUserDataResponseValue).hashCode()
+                        ^ Integer.valueOf(listAllUsersResponseValue).hashCode()
+                        ^ Integer.valueOf(deleteUsersResponseValue).hashCode()
                 , result1.hashCode());
     }
 
@@ -327,11 +327,11 @@ public class UserControlPointCharacteristicDataTest {
         byte[] currentData = new byte[]{11, 12};
         byte[] temporaryData = new byte[]{13, 14};
         int notificationCount = 4;
-        int registerNewUserResponceValue = 5;
-        int consentResponceValue = 6;
-        int deleteUserDataResponceValue = 7;
-        int listAllUsersResponceValue = 8;
-        int deleteUsersResponceValue = 9;
+        int registerNewUserResponseValue = 5;
+        int consentResponseValue = 6;
+        int deleteUserDataResponseValue = 7;
+        int listAllUsersResponseValue = 8;
+        int deleteUsersResponseValue = 9;
 
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(
                 property
@@ -339,11 +339,11 @@ public class UserControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , delay
                 , notificationCount
-                , registerNewUserResponceValue
-                , consentResponceValue
-                , deleteUserDataResponceValue
-                , listAllUsersResponceValue
-                , deleteUsersResponceValue);
+                , registerNewUserResponseValue
+                , consentResponseValue
+                , deleteUserDataResponseValue
+                , listAllUsersResponseValue
+                , deleteUsersResponseValue);
 
         result1.currentData = currentData;
         result1.temporaryData = temporaryData;
@@ -358,11 +358,11 @@ public class UserControlPointCharacteristicDataTest {
                         ^ Integer.valueOf(notificationCount).hashCode()
                         ^ Arrays.hashCode(currentData)
                         ^ Arrays.hashCode(temporaryData)
-                        ^ Integer.valueOf(registerNewUserResponceValue).hashCode()
-                        ^ Integer.valueOf(consentResponceValue).hashCode()
-                        ^ Integer.valueOf(deleteUserDataResponceValue).hashCode()
-                        ^ Integer.valueOf(listAllUsersResponceValue).hashCode()
-                        ^ Integer.valueOf(deleteUsersResponceValue).hashCode()
+                        ^ Integer.valueOf(registerNewUserResponseValue).hashCode()
+                        ^ Integer.valueOf(consentResponseValue).hashCode()
+                        ^ Integer.valueOf(deleteUserDataResponseValue).hashCode()
+                        ^ Integer.valueOf(listAllUsersResponseValue).hashCode()
+                        ^ Integer.valueOf(deleteUsersResponseValue).hashCode()
                 , result1.hashCode());
     }
 
@@ -374,32 +374,32 @@ public class UserControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         long firstDelay = 3;
         int firstNotificationCount = 4;
-        int firstRegisterNewUserResponceValue = 5;
-        int firstConsentResponceValue = 6;
-        int firstDeleteUserDataResponceValue = 7;
-        int firstListAllUsersResponceValue = 8;
-        int firstDeleteUsersResponceValue = 9;
+        int firstRegisterNewUserResponseValue = 5;
+        int firstConsentResponseValue = 6;
+        int firstDeleteUserDataResponseValue = 7;
+        int firstListAllUsersResponseValue = 8;
+        int firstDeleteUsersResponseValue = 9;
 
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         UserControlPointCharacteristicData result2 = new UserControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         assertEquals(result1, result2);
     }
 
@@ -411,11 +411,11 @@ public class UserControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         long firstDelay = 3;
         int firstNotificationCount = 4;
-        int firstRegisterNewUserResponceValue = 5;
-        int firstConsentResponceValue = 6;
-        int firstDeleteUserDataResponceValue = 7;
-        int firstListAllUsersResponceValue = 8;
-        int firstDeleteUsersResponceValue = 9;
+        int firstRegisterNewUserResponseValue = 5;
+        int firstConsentResponseValue = 6;
+        int firstDeleteUserDataResponseValue = 7;
+        int firstListAllUsersResponseValue = 8;
+        int firstDeleteUsersResponseValue = 9;
 
         int secondProperty = 101;
 
@@ -424,21 +424,21 @@ public class UserControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         UserControlPointCharacteristicData result2 = new UserControlPointCharacteristicData(secondProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         assertNotEquals(result1, result2);
     }
 
@@ -450,11 +450,11 @@ public class UserControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         long firstDelay = 3;
         int firstNotificationCount = 4;
-        int firstRegisterNewUserResponceValue = 5;
-        int firstConsentResponceValue = 6;
-        int firstDeleteUserDataResponceValue = 7;
-        int firstListAllUsersResponceValue = 8;
-        int firstDeleteUsersResponceValue = 9;
+        int firstRegisterNewUserResponseValue = 5;
+        int firstConsentResponseValue = 6;
+        int firstDeleteUserDataResponseValue = 7;
+        int firstListAllUsersResponseValue = 8;
+        int firstDeleteUsersResponseValue = 9;
 
         int secondPermission = 102;
 
@@ -463,21 +463,21 @@ public class UserControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         UserControlPointCharacteristicData result2 = new UserControlPointCharacteristicData(firstProperty
                 , secondPermission
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         assertNotEquals(result1, result2);
     }
 
@@ -489,11 +489,11 @@ public class UserControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         long firstDelay = 3;
         int firstNotificationCount = 4;
-        int firstRegisterNewUserResponceValue = 5;
-        int firstConsentResponceValue = 6;
-        int firstDeleteUserDataResponceValue = 7;
-        int firstListAllUsersResponceValue = 8;
-        int firstDeleteUsersResponceValue = 9;
+        int firstRegisterNewUserResponseValue = 5;
+        int firstConsentResponseValue = 6;
+        int firstDeleteUserDataResponseValue = 7;
+        int firstListAllUsersResponseValue = 8;
+        int firstDeleteUsersResponseValue = 9;
 
         List<DescriptorData> secondDescriptorDataList = new ArrayList<>();
         secondDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 11, 22, 33, null));
@@ -503,21 +503,21 @@ public class UserControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         UserControlPointCharacteristicData result2 = new UserControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , secondDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         assertNotEquals(result1, result2);
     }
 
@@ -529,11 +529,11 @@ public class UserControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         long firstDelay = 3;
         int firstNotificationCount = 4;
-        int firstRegisterNewUserResponceValue = 5;
-        int firstConsentResponceValue = 6;
-        int firstDeleteUserDataResponceValue = 7;
-        int firstListAllUsersResponceValue = 8;
-        int firstDeleteUsersResponceValue = 9;
+        int firstRegisterNewUserResponseValue = 5;
+        int firstConsentResponseValue = 6;
+        int firstDeleteUserDataResponseValue = 7;
+        int firstListAllUsersResponseValue = 8;
+        int firstDeleteUsersResponseValue = 9;
 
         int secondDelay = 103;
 
@@ -542,21 +542,21 @@ public class UserControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         UserControlPointCharacteristicData result2 = new UserControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , secondDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         assertNotEquals(result1, result2);
     }
 
@@ -568,11 +568,11 @@ public class UserControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         long firstDelay = 3;
         int firstNotificationCount = 4;
-        int firstRegisterNewUserResponceValue = 5;
-        int firstConsentResponceValue = 6;
-        int firstDeleteUserDataResponceValue = 7;
-        int firstListAllUsersResponceValue = 8;
-        int firstDeleteUsersResponceValue = 9;
+        int firstRegisterNewUserResponseValue = 5;
+        int firstConsentResponseValue = 6;
+        int firstDeleteUserDataResponseValue = 7;
+        int firstListAllUsersResponseValue = 8;
+        int firstDeleteUsersResponseValue = 9;
 
         int secondNotificationCount = 104;
 
@@ -581,21 +581,21 @@ public class UserControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         UserControlPointCharacteristicData result2 = new UserControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstDelay
                 , secondNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         assertNotEquals(result1, result2);
     }
 
@@ -607,34 +607,34 @@ public class UserControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         long firstDelay = 3;
         int firstNotificationCount = 4;
-        int firstRegisterNewUserResponceValue = 5;
-        int firstConsentResponceValue = 6;
-        int firstDeleteUserDataResponceValue = 7;
-        int firstListAllUsersResponceValue = 8;
-        int firstDeleteUsersResponceValue = 9;
+        int firstRegisterNewUserResponseValue = 5;
+        int firstConsentResponseValue = 6;
+        int firstDeleteUserDataResponseValue = 7;
+        int firstListAllUsersResponseValue = 8;
+        int firstDeleteUsersResponseValue = 9;
 
-        int secondRegisterNewUserResponceValue = 105;
+        int secondRegisterNewUserResponseValue = 105;
 
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         UserControlPointCharacteristicData result2 = new UserControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , secondRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , secondRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         assertNotEquals(result1, result2);
     }
 
@@ -646,34 +646,34 @@ public class UserControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         long firstDelay = 3;
         int firstNotificationCount = 4;
-        int firstRegisterNewUserResponceValue = 5;
-        int firstConsentResponceValue = 6;
-        int firstDeleteUserDataResponceValue = 7;
-        int firstListAllUsersResponceValue = 8;
-        int firstDeleteUsersResponceValue = 9;
+        int firstRegisterNewUserResponseValue = 5;
+        int firstConsentResponseValue = 6;
+        int firstDeleteUserDataResponseValue = 7;
+        int firstListAllUsersResponseValue = 8;
+        int firstDeleteUsersResponseValue = 9;
 
-        int secondConsentResponceValue = 106;
+        int secondConsentResponseValue = 106;
 
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         UserControlPointCharacteristicData result2 = new UserControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , secondConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , secondConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         assertNotEquals(result1, result2);
     }
 
@@ -685,34 +685,34 @@ public class UserControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         long firstDelay = 3;
         int firstNotificationCount = 4;
-        int firstRegisterNewUserResponceValue = 5;
-        int firstConsentResponceValue = 6;
-        int firstDeleteUserDataResponceValue = 7;
-        int firstListAllUsersResponceValue = 8;
-        int firstDeleteUsersResponceValue = 9;
+        int firstRegisterNewUserResponseValue = 5;
+        int firstConsentResponseValue = 6;
+        int firstDeleteUserDataResponseValue = 7;
+        int firstListAllUsersResponseValue = 8;
+        int firstDeleteUsersResponseValue = 9;
 
-        int secondDeleteUserDataResponceValue = 107;
+        int secondDeleteUserDataResponseValue = 107;
 
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         UserControlPointCharacteristicData result2 = new UserControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , secondDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , secondDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         assertNotEquals(result1, result2);
     }
 
@@ -724,34 +724,34 @@ public class UserControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         long firstDelay = 3;
         int firstNotificationCount = 4;
-        int firstRegisterNewUserResponceValue = 5;
-        int firstConsentResponceValue = 6;
-        int firstDeleteUserDataResponceValue = 7;
-        int firstListAllUsersResponceValue = 8;
-        int firstDeleteUsersResponceValue = 9;
+        int firstRegisterNewUserResponseValue = 5;
+        int firstConsentResponseValue = 6;
+        int firstDeleteUserDataResponseValue = 7;
+        int firstListAllUsersResponseValue = 8;
+        int firstDeleteUsersResponseValue = 9;
 
-        int secondListAllUsersResponceValue = 108;
+        int secondListAllUsersResponseValue = 108;
 
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         UserControlPointCharacteristicData result2 = new UserControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , secondListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , secondListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         assertNotEquals(result1, result2);
     }
 
@@ -763,34 +763,34 @@ public class UserControlPointCharacteristicDataTest {
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
         long firstDelay = 3;
         int firstNotificationCount = 4;
-        int firstRegisterNewUserResponceValue = 5;
-        int firstConsentResponceValue = 6;
-        int firstDeleteUserDataResponceValue = 7;
-        int firstListAllUsersResponceValue = 8;
-        int firstDeleteUsersResponceValue = 9;
+        int firstRegisterNewUserResponseValue = 5;
+        int firstConsentResponseValue = 6;
+        int firstDeleteUserDataResponseValue = 7;
+        int firstListAllUsersResponseValue = 8;
+        int firstDeleteUsersResponseValue = 9;
 
-        int secondDeleteUsersResponceValue = 109;
+        int secondDeleteUsersResponseValue = 109;
 
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , firstDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , firstDeleteUsersResponseValue);
         UserControlPointCharacteristicData result2 = new UserControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstDelay
                 , firstNotificationCount
-                , firstRegisterNewUserResponceValue
-                , firstConsentResponceValue
-                , firstDeleteUserDataResponceValue
-                , firstListAllUsersResponceValue
-                , secondDeleteUsersResponceValue);
+                , firstRegisterNewUserResponseValue
+                , firstConsentResponseValue
+                , firstDeleteUserDataResponseValue
+                , firstListAllUsersResponseValue
+                , secondDeleteUsersResponseValue);
         assertNotEquals(result1, result2);
     }
 

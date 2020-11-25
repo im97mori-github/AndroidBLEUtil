@@ -106,7 +106,7 @@ public class ProximityProfileMockCallbackBuilderTest {
     @Test
     public void test_addLinkLossServiceAlertLevel_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final byte[] originalValue = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT).getBytes();
 
@@ -114,18 +114,18 @@ public class ProximityProfileMockCallbackBuilderTest {
         LinkLossServiceMockCallback.Builder<LinkLossServiceMockCallback> linkLossServiceMockCallbackBuilder = new LinkLossServiceMockCallback.Builder<LinkLossServiceMockCallback>() {
             @NonNull
             @Override
-            public LinkLossServiceMockCallback.Builder<LinkLossServiceMockCallback> addAlertLevel(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public LinkLossServiceMockCallback.Builder<LinkLossServiceMockCallback> addAlertLevel(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addAlertLevel(responceCode, delay, value);
+                return super.addAlertLevel(responseCode, delay, value);
             }
         };
         ImmediateAlertServiceMockCallback.Builder<ImmediateAlertServiceMockCallback> immediateAlertServiceMockCallbackBuilder = new ImmediateAlertServiceMockCallback.Builder<>();
         TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> txPowerServiceMockCallbackkBuilder = new TxPowerServiceMockCallback.Builder<>();
         BaseBuilder baseBuilder = new BaseBuilder(context, linkLossServiceMockCallbackBuilder, immediateAlertServiceMockCallbackBuilder, txPowerServiceMockCallbackkBuilder);
-        assertEquals(baseBuilder, baseBuilder.addLinkLossServiceAlertLevel(originalResponceCode, originalDelay, originalValue));
+        assertEquals(baseBuilder, baseBuilder.addLinkLossServiceAlertLevel(originalResponseCode, originalDelay, originalValue));
 
         assertTrue(atomicBoolean.get());
     }
@@ -223,7 +223,7 @@ public class ProximityProfileMockCallbackBuilderTest {
     @Test
     public void test_addImmediateAlertServiceAlertLevel_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final byte[] originalValue = new AlertLevel(AlertLevel.ALERT_LEVEL_HIGH_ALERT).getBytes();
 
@@ -232,17 +232,17 @@ public class ProximityProfileMockCallbackBuilderTest {
         ImmediateAlertServiceMockCallback.Builder<ImmediateAlertServiceMockCallback> immediateAlertServiceMockCallbackBuilder = new ImmediateAlertServiceMockCallback.Builder<ImmediateAlertServiceMockCallback>() {
             @NonNull
             @Override
-            public ImmediateAlertServiceMockCallback.Builder<ImmediateAlertServiceMockCallback> addAlertLevel(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public ImmediateAlertServiceMockCallback.Builder<ImmediateAlertServiceMockCallback> addAlertLevel(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addAlertLevel(responceCode, delay, value);
+                return super.addAlertLevel(responseCode, delay, value);
             }
         };
         TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> txPowerServiceMockCallbackkBuilder = new TxPowerServiceMockCallback.Builder<>();
         BaseBuilder baseBuilder = new BaseBuilder(context, linkLossServiceMockCallbackBuilder, immediateAlertServiceMockCallbackBuilder, txPowerServiceMockCallbackkBuilder);
-        assertEquals(baseBuilder, baseBuilder.addImmediateAlertServiceAlertLevel(originalResponceCode, originalDelay, originalValue));
+        assertEquals(baseBuilder, baseBuilder.addImmediateAlertServiceAlertLevel(originalResponseCode, originalDelay, originalValue));
 
         assertTrue(atomicBoolean.get());
     }
@@ -340,7 +340,7 @@ public class ProximityProfileMockCallbackBuilderTest {
     @Test
     public void test_addTxPowerLevel_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final byte[] originalValue = new TxPowerLevel(1).getBytes();
 
@@ -350,16 +350,16 @@ public class ProximityProfileMockCallbackBuilderTest {
         TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> txPowerServiceMockCallbackkBuilder = new TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback>(){
             @NonNull
             @Override
-            public TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> addTxPowerLevel(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public TxPowerServiceMockCallback.Builder<TxPowerServiceMockCallback> addTxPowerLevel(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addTxPowerLevel(responceCode, delay, value);
+                return super.addTxPowerLevel(responseCode, delay, value);
             }
         };
         BaseBuilder baseBuilder = new BaseBuilder(context, linkLossServiceMockCallbackBuilder, immediateAlertServiceMockCallbackBuilder, txPowerServiceMockCallbackkBuilder);
-        assertEquals(baseBuilder, baseBuilder.addTxPowerLevel(originalResponceCode, originalDelay, originalValue));
+        assertEquals(baseBuilder, baseBuilder.addTxPowerLevel(originalResponseCode, originalDelay, originalValue));
 
         assertTrue(atomicBoolean.get());
     }

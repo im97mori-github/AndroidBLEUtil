@@ -46,10 +46,10 @@ public class HeartRateProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(manufacturerName.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         HeartRateServiceMockCallback.Builder<HeartRateServiceMockCallback> heartRateServiceMockCallbackBuilder = new HeartRateServiceMockCallback.Builder<>();
@@ -69,10 +69,10 @@ public class HeartRateProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(manufacturerName.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         HeartRateServiceMockCallback.Builder<HeartRateServiceMockCallback> heartRateServiceMockCallbackBuilder = new HeartRateServiceMockCallback.Builder<>();
@@ -91,10 +91,10 @@ public class HeartRateProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         HeartRateServiceMockCallback.Builder<HeartRateServiceMockCallback> heartRateServiceMockCallbackBuilder = new HeartRateServiceMockCallback.Builder<>();
@@ -107,7 +107,7 @@ public class HeartRateProfileMockCallbackBuilderTest {
     @Test
     public void test_addManufacturerNameString_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final byte[] originalValue = "manufacturerName".getBytes();
 
@@ -115,17 +115,17 @@ public class HeartRateProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         HeartRateServiceMockCallback.Builder<HeartRateServiceMockCallback> heartRateServiceMockCallbackBuilder = new HeartRateServiceMockCallback.Builder<>();
         BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, heartRateServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(originalResponceCode, originalDelay, originalValue));
+        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(originalResponseCode, originalDelay, originalValue));
 
         assertTrue(atomicBoolean.get());
     }
@@ -167,11 +167,11 @@ public class HeartRateProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public HeartRateServiceMockCallback.Builder<HeartRateServiceMockCallback> addHeartRateMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            public HeartRateServiceMockCallback.Builder<HeartRateServiceMockCallback> addHeartRateMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertArrayEquals(characteristicValue, characteristicValue);
                 assertArrayEquals(descriptorValue, descriptorValue);
                 atomicBoolean.set(true);
-                return super.addHeartRateMeasurement(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+                return super.addHeartRateMeasurement(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
 
         };
@@ -201,15 +201,15 @@ public class HeartRateProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public HeartRateServiceMockCallback.Builder<HeartRateServiceMockCallback> addHeartRateMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            public HeartRateServiceMockCallback.Builder<HeartRateServiceMockCallback> addHeartRateMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertArrayEquals(heartRateMeasurement.getBytes(), characteristicValue);
                 assertArrayEquals(clientCharacteristicConfiguration.getBytes(), descriptorValue);
-                assertEquals(originalCharacteristicResponseCode, characteristicResponceCode);
+                assertEquals(originalCharacteristicResponseCode, characteristicResponseCode);
                 assertEquals(originalCharacteristicDelay, characteristicDelay);
-                assertEquals(originalDescriptorResponseCode, descriptorResponceCode);
+                assertEquals(originalDescriptorResponseCode, descriptorResponseCode);
                 assertEquals(originalDescriptorDelay, descriptorDelay);
                 atomicBoolean.set(true);
-                return super.addHeartRateMeasurement(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+                return super.addHeartRateMeasurement(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
 
         };
@@ -254,10 +254,10 @@ public class HeartRateProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public HeartRateServiceMockCallback.Builder<HeartRateServiceMockCallback> addBodySensorLocation(int responceCode, long delay, @NonNull byte[] value) {
+            public HeartRateServiceMockCallback.Builder<HeartRateServiceMockCallback> addBodySensorLocation(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(characteristicValue, value);
                 atomicBoolean.set(true);
-                return super.addBodySensorLocation(responceCode, delay, value);
+                return super.addBodySensorLocation(responseCode, delay, value);
             }
 
         };
@@ -283,12 +283,12 @@ public class HeartRateProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public HeartRateServiceMockCallback.Builder<HeartRateServiceMockCallback> addBodySensorLocation(int responceCode, long delay, @NonNull byte[] value) {
+            public HeartRateServiceMockCallback.Builder<HeartRateServiceMockCallback> addBodySensorLocation(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(bodySensorLocation.getBytes(), value);
-                assertEquals(originalCharacteristicResponseCode, responceCode);
+                assertEquals(originalCharacteristicResponseCode, responseCode);
                 assertEquals(originalCharacteristicDelay, delay);
                 atomicBoolean.set(true);
-                return super.addBodySensorLocation(responceCode, delay, value);
+                return super.addBodySensorLocation(responseCode, delay, value);
             }
 
         };
@@ -333,10 +333,10 @@ public class HeartRateProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public HeartRateServiceMockCallback.Builder<HeartRateServiceMockCallback> addHeartRateControlPoint(int responceCode, long delay, @NonNull byte[] value) {
+            public HeartRateServiceMockCallback.Builder<HeartRateServiceMockCallback> addHeartRateControlPoint(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(characteristicValue, value);
                 atomicBoolean.set(true);
-                return super.addHeartRateControlPoint(responceCode, delay, value);
+                return super.addHeartRateControlPoint(responseCode, delay, value);
             }
 
         };
@@ -362,12 +362,12 @@ public class HeartRateProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public HeartRateServiceMockCallback.Builder<HeartRateServiceMockCallback> addHeartRateControlPoint(int responceCode, long delay, @NonNull byte[] value) {
+            public HeartRateServiceMockCallback.Builder<HeartRateServiceMockCallback> addHeartRateControlPoint(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(heartRateControlPoint.getBytes(), value);
-                assertEquals(originalResponseCode, responceCode);
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 atomicBoolean.set(true);
-                return super.addHeartRateControlPoint(responceCode, delay, value);
+                return super.addHeartRateControlPoint(responseCode, delay, value);
             }
 
         };

@@ -108,7 +108,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Boolean hasManufacturerNameString() {
         Boolean result = null;
-        if (mDeviceInformationService != null && hasDeviceInformationService()) {
+        if (mDeviceInformationService != null) {
             result = mDeviceInformationService.hasManufacturerNameString();
         }
         return result;
@@ -120,7 +120,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Boolean hasModelNumberString() {
         Boolean result = null;
-        if (mDeviceInformationService != null && hasDeviceInformationService()) {
+        if (mDeviceInformationService != null) {
             result = mDeviceInformationService.hasModelNumberString();
         }
         return result;
@@ -132,7 +132,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getManufacturerNameString() {
         Integer taskId = null;
-        if (mDeviceInformationService != null && hasDeviceInformationService()) {
+        if (mDeviceInformationService != null) {
             taskId = mDeviceInformationService.getManufacturerNameString();
         }
         return taskId;
@@ -144,7 +144,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getModelNumberString() {
         Integer taskId = null;
-        if (mDeviceInformationService != null && hasDeviceInformationService()) {
+        if (mDeviceInformationService != null) {
             taskId = mDeviceInformationService.getModelNumberString();
         }
         return taskId;
@@ -160,7 +160,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getBatteryLevelCount() {
         Integer count = null;
-        if (mBatteryService != null && hasBatteryService()) {
+        if (mBatteryService != null) {
             count = mBatteryService.getBatteryLevelCount();
         }
         return count;
@@ -184,7 +184,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getBatteryLevel(int index) {
         Integer batteryLevel = null;
-        if (mBatteryService != null && hasBatteryService()) {
+        if (mBatteryService != null) {
             batteryLevel = mBatteryService.getBatteryLevel(index);
         }
         return batteryLevel;
@@ -206,7 +206,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
      */
     public synchronized Boolean isBatteryLevelNotificatable(int index) {
         Boolean result = null;
-        if (mBatteryService != null && hasBatteryService()) {
+        if (mBatteryService != null) {
             result = mBatteryService.isBatteryLevelNotificatable(index);
         }
         return result;
@@ -230,7 +230,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getBatteryLevelCharacteristicPresentationFormat(int index) {
         Integer taskId = null;
-        if (mBatteryService != null && hasBatteryService()) {
+        if (mBatteryService != null) {
             taskId = mBatteryService.getBatteryLevelCharacteristicPresentationFormat(index);
         }
         return taskId;
@@ -254,7 +254,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer getBatteryLevelClientCharacteristicConfiguration(int index) {
         Integer taskId = null;
-        if (mBatteryService != null && hasBatteryService()) {
+        if (mBatteryService != null) {
             taskId = mBatteryService.getBatteryLevelClientCharacteristicConfiguration(index);
         }
         return taskId;
@@ -278,7 +278,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer startBatteryLevelNotification(int index) {
         Integer taskId = null;
-        if (mBatteryService != null && hasBatteryService()) {
+        if (mBatteryService != null) {
             taskId = mBatteryService.startBatteryLevelNotification(index);
         }
         return taskId;
@@ -302,7 +302,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Integer stopBatteryLevelNotification(int index) {
         Integer taskId = null;
-        if (mBatteryService != null && hasBatteryService()) {
+        if (mBatteryService != null) {
             taskId = mBatteryService.stopBatteryLevelNotification(index);
         }
         return taskId;

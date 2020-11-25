@@ -1,4 +1,4 @@
-package org.im97mori.ble.service.bas.cental;
+package org.im97mori.ble.service.bas.central;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -14,7 +14,6 @@ import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.characteristic.u2a19.BatteryLevelAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
 import org.im97mori.ble.descriptor.u2904.CharacteristicPresentationFormatAndroid;
-import org.im97mori.ble.service.bas.central.BatteryService;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -3443,7 +3442,7 @@ public class BatteryServiceTest {
 
 
     @Test
-    public void test_onCharacteristicNotified_000001() {
+    public void test_onCharacteristicNotified_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
         final UUID originalServiceUUID = BATTERY_SERVICE;
@@ -3475,7 +3474,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_onCharacteristicNotified_000002() {
+    public void test_onCharacteristicNotified_00002() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
         final UUID originalServiceUUID = BATTERY_SERVICE;
@@ -3513,7 +3512,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_onCharacteristicNotified_000003() {
+    public void test_onCharacteristicNotified_00003() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
@@ -3544,7 +3543,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_onCharacteristicNotified_000004() {
+    public void test_onCharacteristicNotified_00004() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
         final UUID originalServiceUUID = BATTERY_SERVICE;
@@ -3575,7 +3574,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_onCharacteristicNotified_000005() {
+    public void test_onCharacteristicNotified_00005() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
         final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
@@ -3606,7 +3605,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_getBatteryLevelCount_000001() {
+    public void test_getBatteryLevelCount_00001() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         BatteryService batteryService = new BatteryService(mockBLEConnection, new MockBatteryServiceCallback(), null);
 
@@ -3614,7 +3613,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_getBatteryLevelCount_000002() {
+    public void test_getBatteryLevelCount_00002() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3628,7 +3627,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_getBatteryLevelCount_000003() {
+    public void test_getBatteryLevelCount_00003() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3648,7 +3647,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_getBatteryLevelCount_000004() {
+    public void test_getBatteryLevelCount_00004() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3668,7 +3667,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_getBatteryLevel_000001() {
+    public void test_getBatteryLevel_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
@@ -3685,7 +3684,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_getBatteryLevel_000002() {
+    public void test_getBatteryLevel_00002() {
         final int originalLevel = 1;
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
@@ -3701,14 +3700,14 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_getBatteryLevel_000101() {
+    public void test_getBatteryLevel_00101() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null);
 
         assertNull(batteryService.getBatteryLevel(0));
     }
 
     @Test
-    public void test_getBatteryLevel_000102() {
+    public void test_getBatteryLevel_00102() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3721,7 +3720,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_getBatteryLevel_000103() {
+    public void test_getBatteryLevel_00103() {
         final int originalTaskId = 1;
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
@@ -3750,7 +3749,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_isBatteryLevelNotificatable_000001() {
+    public void test_isBatteryLevelNotificatable_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
@@ -3767,7 +3766,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_isBatteryLevelNotificatable_000002() {
+    public void test_isBatteryLevelNotificatable_00002() {
         final boolean originaNotificatable = true;
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
@@ -3782,14 +3781,14 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_isBatteryLevelNotificatable_000101() {
+    public void test_isBatteryLevelNotificatable_00101() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null);
 
         assertFalse(batteryService.isBatteryLevelNotificatable(0));
     }
 
     @Test
-    public void test_isBatteryLevelNotificatable_000102() {
+    public void test_isBatteryLevelNotificatable_00102() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3802,7 +3801,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_isBatteryLevelNotificatable_000103() {
+    public void test_isBatteryLevelNotificatable_00103() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3819,7 +3818,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_isBatteryLevelNotificatable_000104() {
+    public void test_isBatteryLevelNotificatable_00104() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3835,7 +3834,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_isBatteryLevelNotificatable_000105() {
+    public void test_isBatteryLevelNotificatable_00105() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3854,7 +3853,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_isBatteryLevelNotificatable_000106() {
+    public void test_isBatteryLevelNotificatable_00106() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3873,7 +3872,7 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_isBatteryLevelNotificatable_000107() {
+    public void test_isBatteryLevelNotificatable_00107() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3893,14 +3892,14 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_getBatteryLevelCharacteristicPresentationFormat_000001() {
+    public void test_getBatteryLevelCharacteristicPresentationFormat_00001() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null);
 
         assertNull(batteryService.getBatteryLevelCharacteristicPresentationFormat());
     }
 
     @Test
-    public void test_getBatteryLevelCharacteristicPresentationFormat_000002() {
+    public void test_getBatteryLevelCharacteristicPresentationFormat_00002() {
         final int originalTaskId = 1;
 
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {
@@ -3989,14 +3988,14 @@ public class BatteryServiceTest {
     }
 
     @Test
-    public void test_getBatteryLevelClientCharacteristicConfiguration_000001() {
+    public void test_getBatteryLevelClientCharacteristicConfiguration_00001() {
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null);
 
         assertNull(batteryService.getBatteryLevelClientCharacteristicConfiguration());
     }
 
     @Test
-    public void test_getBatteryLevelClientCharacteristicConfiguration_000002() {
+    public void test_getBatteryLevelClientCharacteristicConfiguration_00002() {
         final int originalTaskId = 1;
 
         BatteryService batteryService = new BatteryService(new MockBLEConnection(), new MockBatteryServiceCallback(), null) {

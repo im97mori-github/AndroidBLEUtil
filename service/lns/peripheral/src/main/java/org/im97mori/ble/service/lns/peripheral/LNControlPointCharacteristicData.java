@@ -52,62 +52,62 @@ public class LNControlPointCharacteristicData extends CharacteristicData {
     /**
      * characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Cumulative Value response)
      */
-    @SerializedName("set_cumulative_value_responce_value")
-    public int setCumulativeValueResponceValue;
+    @SerializedName("set_cumulative_value_response_value")
+    public int setCumulativeValueResponseValue;
 
     /**
      * characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Mask Location and Speed Characteristic Content response)
      */
-    @SerializedName("mask_location_and_speed_characteristic_content_responce_value")
-    public int maskLocationAndSpeedCharacteristicContentResponceValue;
+    @SerializedName("mask_location_and_speed_characteristic_content_response_value")
+    public int maskLocationAndSpeedCharacteristicContentResponseValue;
 
     /**
      * characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Navigation Control response)
      */
-    @SerializedName("navigation_control_responce_value")
-    public int navigationControlResponceValue;
+    @SerializedName("navigation_control_response_value")
+    public int navigationControlResponseValue;
 
     /**
      * part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Number of Routes response)
      */
-    @SerializedName("request_number_of_routes_responce_value")
-    public int requestNumberOfRoutesResponceValue;
+    @SerializedName("request_number_of_routes_response_value")
+    public int requestNumberOfRoutesResponseValue;
 
     /**
      * part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Number of Routes)
      */
-    @SerializedName("request_number_of_routes_responce_parameter")
-    public byte[] requestNumberOfRoutesResponceParameter;
+    @SerializedName("request_number_of_routes_response_parameter")
+    public byte[] requestNumberOfRoutesResponseParameter;
 
     /**
      * part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Name of Route response)
      */
-    @SerializedName("request_name_of_route_responce_value")
-    public int requestNameOfRouteResponceValue;
+    @SerializedName("request_name_of_route_response_value")
+    public int requestNameOfRouteResponseValue;
 
     /**
      * part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Name of Route)
      */
-    @SerializedName("request_name_of_route_responce_parameter")
-    public byte[] requestNameOfRouteResponceParameter;
+    @SerializedName("request_name_of_route_response_parameter")
+    public byte[] requestNameOfRouteResponseParameter;
 
     /**
      * characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Select Route response)
      */
-    @SerializedName("select_route_responce_value")
-    public int selectRouteResponceValue;
+    @SerializedName("select_route_response_value")
+    public int selectRouteResponseValue;
 
     /**
      * characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Fix Rate response)
      */
-    @SerializedName("set_fix_rate_responce_value")
-    public int setFixRateResponceValue;
+    @SerializedName("set_fix_rate_response_value")
+    public int setFixRateResponseValue;
 
     /**
      * characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Elevation response)
      */
-    @SerializedName("set_elevation_responce_value")
-    public int setElevationResponceValue;
+    @SerializedName("set_elevation_response_value")
+    public int setElevationResponseValue;
 
     /**
      * @param property                                               combination of
@@ -121,18 +121,18 @@ public class LNControlPointCharacteristicData extends CharacteristicData {
      *                                                               {@link android.bluetooth.BluetoothGattCharacteristic#PERMISSION_WRITE}
      * @param descriptorDataList                                     {@link DescriptorData} list
      * @param responseCode                                           response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-     * @param delay                                                  responce delay(millis)
+     * @param delay                                                  response delay(millis)
      * @param notificationCount                                      notification / indication count
-     * @param setCumulativeValueResponceValue                        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Cumulative Value response)
-     * @param maskLocationAndSpeedCharacteristicContentResponceValue characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Mask Location and Speed Characteristic Content response)
-     * @param navigationControlResponceValue                         characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Navigation Control response)
-     * @param requestNumberOfRoutesResponceValue                     part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Number of Routes response)
-     * @param requestNumberOfRoutesResponceParameter                 part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Number of Routes)
-     * @param requestNameOfRouteResponceValue                        part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Name of Route response)
-     * @param requestNameOfRouteResponceParameter                    part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Name of Route)
-     * @param selectRouteResponceValue                               characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Select Route response)
-     * @param setFixRateResponceValue                                characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Fix Rate response)
-     * @param setElevationResponceValue                              characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Elevation response)
+     * @param setCumulativeValueResponseValue                        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Cumulative Value response)
+     * @param maskLocationAndSpeedCharacteristicContentResponseValue characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Mask Location and Speed Characteristic Content response)
+     * @param navigationControlResponseValue                         characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Navigation Control response)
+     * @param requestNumberOfRoutesResponseValue                     part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Number of Routes response)
+     * @param requestNumberOfRoutesResponseParameter                 part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Number of Routes)
+     * @param requestNameOfRouteResponseValue                        part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Name of Route response)
+     * @param requestNameOfRouteResponseParameter                    part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Name of Route)
+     * @param selectRouteResponseValue                               characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Select Route response)
+     * @param setFixRateResponseValue                                characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Fix Rate response)
+     * @param setElevationResponseValue                              characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Elevation response)
      */
     public LNControlPointCharacteristicData(int property
             , int permission
@@ -140,27 +140,27 @@ public class LNControlPointCharacteristicData extends CharacteristicData {
             , int responseCode
             , long delay
             , int notificationCount
-            , int setCumulativeValueResponceValue
-            , int maskLocationAndSpeedCharacteristicContentResponceValue
-            , int navigationControlResponceValue
-            , int requestNumberOfRoutesResponceValue
-            , @NonNull byte[] requestNumberOfRoutesResponceParameter
-            , int requestNameOfRouteResponceValue
-            , @NonNull byte[] requestNameOfRouteResponceParameter
-            , int selectRouteResponceValue
-            , int setFixRateResponceValue
-            , int setElevationResponceValue) {
+            , int setCumulativeValueResponseValue
+            , int maskLocationAndSpeedCharacteristicContentResponseValue
+            , int navigationControlResponseValue
+            , int requestNumberOfRoutesResponseValue
+            , @NonNull byte[] requestNumberOfRoutesResponseParameter
+            , int requestNameOfRouteResponseValue
+            , @NonNull byte[] requestNameOfRouteResponseParameter
+            , int selectRouteResponseValue
+            , int setFixRateResponseValue
+            , int setElevationResponseValue) {
         super(LN_CONTROL_POINT_CHARACTERISTIC, property, permission, descriptorDataList, responseCode, delay, new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_RESPONSE_CODE, LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes(), notificationCount);
-        this.setCumulativeValueResponceValue = setCumulativeValueResponceValue;
-        this.maskLocationAndSpeedCharacteristicContentResponceValue = maskLocationAndSpeedCharacteristicContentResponceValue;
-        this.navigationControlResponceValue = navigationControlResponceValue;
-        this.requestNumberOfRoutesResponceValue = requestNumberOfRoutesResponceValue;
-        this.requestNumberOfRoutesResponceParameter = requestNumberOfRoutesResponceParameter;
-        this.requestNameOfRouteResponceValue = requestNameOfRouteResponceValue;
-        this.requestNameOfRouteResponceParameter = requestNameOfRouteResponceParameter;
-        this.selectRouteResponceValue = selectRouteResponceValue;
-        this.setFixRateResponceValue = setFixRateResponceValue;
-        this.setElevationResponceValue = setElevationResponceValue;
+        this.setCumulativeValueResponseValue = setCumulativeValueResponseValue;
+        this.maskLocationAndSpeedCharacteristicContentResponseValue = maskLocationAndSpeedCharacteristicContentResponseValue;
+        this.navigationControlResponseValue = navigationControlResponseValue;
+        this.requestNumberOfRoutesResponseValue = requestNumberOfRoutesResponseValue;
+        this.requestNumberOfRoutesResponseParameter = requestNumberOfRoutesResponseParameter;
+        this.requestNameOfRouteResponseValue = requestNameOfRouteResponseValue;
+        this.requestNameOfRouteResponseParameter = requestNameOfRouteResponseParameter;
+        this.selectRouteResponseValue = selectRouteResponseValue;
+        this.setFixRateResponseValue = setFixRateResponseValue;
+        this.setElevationResponseValue = setElevationResponseValue;
     }
 
     /**
@@ -170,16 +170,16 @@ public class LNControlPointCharacteristicData extends CharacteristicData {
      */
     public LNControlPointCharacteristicData(@NonNull Parcel in) {
         super(in);
-        setCumulativeValueResponceValue = in.readInt();
-        maskLocationAndSpeedCharacteristicContentResponceValue = in.readInt();
-        navigationControlResponceValue = in.readInt();
-        requestNumberOfRoutesResponceValue = in.readInt();
-        requestNumberOfRoutesResponceParameter = in.createByteArray();
-        requestNameOfRouteResponceValue = in.readInt();
-        requestNameOfRouteResponceParameter = in.createByteArray();
-        selectRouteResponceValue = in.readInt();
-        setFixRateResponceValue = in.readInt();
-        setElevationResponceValue = in.readInt();
+        setCumulativeValueResponseValue = in.readInt();
+        maskLocationAndSpeedCharacteristicContentResponseValue = in.readInt();
+        navigationControlResponseValue = in.readInt();
+        requestNumberOfRoutesResponseValue = in.readInt();
+        requestNumberOfRoutesResponseParameter = in.createByteArray();
+        requestNameOfRouteResponseValue = in.readInt();
+        requestNameOfRouteResponseParameter = in.createByteArray();
+        selectRouteResponseValue = in.readInt();
+        setFixRateResponseValue = in.readInt();
+        setElevationResponseValue = in.readInt();
     }
 
     /**
@@ -193,21 +193,21 @@ public class LNControlPointCharacteristicData extends CharacteristicData {
         try {
             lnControlPoint = new LNControlPoint(super.getBytes());
             if (lnControlPoint.isOpCodesSetCumulativeValue(lnControlPoint.getOpCodes())) {
-                result = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, setCumulativeValueResponceValue, new byte[0]).getBytes();
+                result = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, setCumulativeValueResponseValue, new byte[0]).getBytes();
             } else if (lnControlPoint.isOpCodesMaskLocationAndSpeedCharacteristicContent(lnControlPoint.getOpCodes())) {
-                result = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, maskLocationAndSpeedCharacteristicContentResponceValue, new byte[0]).getBytes();
+                result = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, maskLocationAndSpeedCharacteristicContentResponseValue, new byte[0]).getBytes();
             } else if (lnControlPoint.isOpCodesNavigationControl(lnControlPoint.getOpCodes())) {
-                result = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_NAVIGATION_CONTROL, navigationControlResponceValue, new byte[0]).getBytes();
+                result = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_NAVIGATION_CONTROL, navigationControlResponseValue, new byte[0]).getBytes();
             } else if (lnControlPoint.isOpCodesRequestNumberOfRoutes(lnControlPoint.getOpCodes())) {
-                result = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_REQUEST_NUMBER_OF_ROUTES, requestNumberOfRoutesResponceValue, requestNumberOfRoutesResponceParameter).getBytes();
+                result = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_REQUEST_NUMBER_OF_ROUTES, requestNumberOfRoutesResponseValue, requestNumberOfRoutesResponseParameter).getBytes();
             } else if (lnControlPoint.isOpCodesRequestNameOfRoute(lnControlPoint.getOpCodes())) {
-                result = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_REQUEST_NAME_OF_ROUTE, requestNameOfRouteResponceValue, requestNameOfRouteResponceParameter).getBytes();
+                result = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_REQUEST_NAME_OF_ROUTE, requestNameOfRouteResponseValue, requestNameOfRouteResponseParameter).getBytes();
             } else if (lnControlPoint.isOpCodesSelectRoute(lnControlPoint.getOpCodes())) {
-                result = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_SELECT_ROUTE, selectRouteResponceValue, new byte[0]).getBytes();
+                result = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_SELECT_ROUTE, selectRouteResponseValue, new byte[0]).getBytes();
             } else if (lnControlPoint.isOpCodesSetFixRate(lnControlPoint.getOpCodes())) {
-                result = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_SET_FIX_RATE, setFixRateResponceValue, new byte[0]).getBytes();
+                result = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_SET_FIX_RATE, setFixRateResponseValue, new byte[0]).getBytes();
             } else if (lnControlPoint.isOpCodesSetElevation(lnControlPoint.getOpCodes())) {
-                result = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_SET_ELEVATION, setElevationResponceValue, new byte[0]).getBytes();
+                result = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_SET_ELEVATION, setElevationResponseValue, new byte[0]).getBytes();
             }
         } catch (Exception e) {
             BLEPeripheralLogUtils.stackLog(e);
@@ -231,16 +231,16 @@ public class LNControlPointCharacteristicData extends CharacteristicData {
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         super.writeToParcel(dest, flags);
-        dest.writeInt(setCumulativeValueResponceValue);
-        dest.writeInt(maskLocationAndSpeedCharacteristicContentResponceValue);
-        dest.writeInt(navigationControlResponceValue);
-        dest.writeInt(requestNumberOfRoutesResponceValue);
-        dest.writeByteArray(requestNumberOfRoutesResponceParameter);
-        dest.writeInt(requestNameOfRouteResponceValue);
-        dest.writeByteArray(requestNameOfRouteResponceParameter);
-        dest.writeInt(selectRouteResponceValue);
-        dest.writeInt(setFixRateResponceValue);
-        dest.writeInt(setElevationResponceValue);
+        dest.writeInt(setCumulativeValueResponseValue);
+        dest.writeInt(maskLocationAndSpeedCharacteristicContentResponseValue);
+        dest.writeInt(navigationControlResponseValue);
+        dest.writeInt(requestNumberOfRoutesResponseValue);
+        dest.writeByteArray(requestNumberOfRoutesResponseParameter);
+        dest.writeInt(requestNameOfRouteResponseValue);
+        dest.writeByteArray(requestNameOfRouteResponseParameter);
+        dest.writeInt(selectRouteResponseValue);
+        dest.writeInt(setFixRateResponseValue);
+        dest.writeInt(setElevationResponseValue);
     }
 
     /**
@@ -258,16 +258,16 @@ public class LNControlPointCharacteristicData extends CharacteristicData {
                 ^ Integer.valueOf(notificationCount).hashCode()
                 ^ Arrays.hashCode(currentData)
                 ^ Arrays.hashCode(temporaryData)
-                ^ Integer.valueOf(setCumulativeValueResponceValue).hashCode()
-                ^ Integer.valueOf(maskLocationAndSpeedCharacteristicContentResponceValue).hashCode()
-                ^ Integer.valueOf(navigationControlResponceValue).hashCode()
-                ^ Integer.valueOf(requestNumberOfRoutesResponceValue).hashCode()
-                ^ Arrays.hashCode(requestNumberOfRoutesResponceParameter)
-                ^ Integer.valueOf(requestNameOfRouteResponceValue).hashCode()
-                ^ Arrays.hashCode(requestNameOfRouteResponceParameter)
-                ^ Integer.valueOf(selectRouteResponceValue).hashCode()
-                ^ Integer.valueOf(setFixRateResponceValue).hashCode()
-                ^ Integer.valueOf(setElevationResponceValue).hashCode();
+                ^ Integer.valueOf(setCumulativeValueResponseValue).hashCode()
+                ^ Integer.valueOf(maskLocationAndSpeedCharacteristicContentResponseValue).hashCode()
+                ^ Integer.valueOf(navigationControlResponseValue).hashCode()
+                ^ Integer.valueOf(requestNumberOfRoutesResponseValue).hashCode()
+                ^ Arrays.hashCode(requestNumberOfRoutesResponseParameter)
+                ^ Integer.valueOf(requestNameOfRouteResponseValue).hashCode()
+                ^ Arrays.hashCode(requestNameOfRouteResponseParameter)
+                ^ Integer.valueOf(selectRouteResponseValue).hashCode()
+                ^ Integer.valueOf(setFixRateResponseValue).hashCode()
+                ^ Integer.valueOf(setElevationResponseValue).hashCode();
     }
 
     /**
@@ -288,16 +288,16 @@ public class LNControlPointCharacteristicData extends CharacteristicData {
                     && Arrays.equals(currentData, target.currentData)
                     && Arrays.equals(temporaryData, target.temporaryData)
                     && notificationCount == target.notificationCount
-                    && setCumulativeValueResponceValue == target.setCumulativeValueResponceValue
-                    && maskLocationAndSpeedCharacteristicContentResponceValue == target.maskLocationAndSpeedCharacteristicContentResponceValue
-                    && navigationControlResponceValue == target.navigationControlResponceValue
-                    && requestNumberOfRoutesResponceValue == target.requestNumberOfRoutesResponceValue
-                    && Arrays.equals(requestNumberOfRoutesResponceParameter, target.requestNumberOfRoutesResponceParameter)
-                    && requestNameOfRouteResponceValue == target.requestNameOfRouteResponceValue
-                    && Arrays.equals(requestNameOfRouteResponceParameter, target.requestNameOfRouteResponceParameter)
-                    && selectRouteResponceValue == target.selectRouteResponceValue
-                    && setFixRateResponceValue == target.setFixRateResponceValue
-                    && setElevationResponceValue == target.setElevationResponceValue;
+                    && setCumulativeValueResponseValue == target.setCumulativeValueResponseValue
+                    && maskLocationAndSpeedCharacteristicContentResponseValue == target.maskLocationAndSpeedCharacteristicContentResponseValue
+                    && navigationControlResponseValue == target.navigationControlResponseValue
+                    && requestNumberOfRoutesResponseValue == target.requestNumberOfRoutesResponseValue
+                    && Arrays.equals(requestNumberOfRoutesResponseParameter, target.requestNumberOfRoutesResponseParameter)
+                    && requestNameOfRouteResponseValue == target.requestNameOfRouteResponseValue
+                    && Arrays.equals(requestNameOfRouteResponseParameter, target.requestNameOfRouteResponseParameter)
+                    && selectRouteResponseValue == target.selectRouteResponseValue
+                    && setFixRateResponseValue == target.setFixRateResponseValue
+                    && setElevationResponseValue == target.setElevationResponseValue;
         }
         return result;
     }

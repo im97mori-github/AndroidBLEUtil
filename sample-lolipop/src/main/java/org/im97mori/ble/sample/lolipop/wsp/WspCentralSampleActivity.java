@@ -63,6 +63,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
 
         mWspCallbackSample = new WspCallbackSample(this, this);
         mWspCallbackSample.mWspCentralSampleActivity = this;
+
         mWeightScaleProfile = new WeightScaleProfile(this, mWspCallbackSample);
         mWeightScaleProfile.start();
 

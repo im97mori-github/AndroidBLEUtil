@@ -50,10 +50,10 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(manufacturerName.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> healthThermometerServiceMockCallback = new HealthThermometerServiceMockCallback.Builder<>();
@@ -73,10 +73,10 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(manufacturerName.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> healthThermometerServiceMockCallback = new HealthThermometerServiceMockCallback.Builder<>();
@@ -95,10 +95,10 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> healthThermometerServiceMockCallback = new HealthThermometerServiceMockCallback.Builder<>();
@@ -111,7 +111,7 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
     @Test
     public void test_addManufacturerNameString_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final byte[] originalValue = "manufacturerName".getBytes();
 
@@ -119,17 +119,17 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> healthThermometerServiceMockCallback = new HealthThermometerServiceMockCallback.Builder<>();
         BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, healthThermometerServiceMockCallback);
-        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(originalResponceCode, originalDelay, originalValue));
+        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(originalResponseCode, originalDelay, originalValue));
 
         assertTrue(atomicBoolean.get());
     }
@@ -164,10 +164,10 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(modelNumber.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addModelNumberString(responceCode, delay, value);
+                return super.addModelNumberString(responseCode, delay, value);
             }
         };
         HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> healthThermometerServiceMockCallback = new HealthThermometerServiceMockCallback.Builder<>();
@@ -187,10 +187,10 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(modelNumber.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addModelNumberString(responceCode, delay, value);
+                return super.addModelNumberString(responseCode, delay, value);
             }
         };
         HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> healthThermometerServiceMockCallback = new HealthThermometerServiceMockCallback.Builder<>();
@@ -209,10 +209,10 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addModelNumberString(responceCode, delay, value);
+                return super.addModelNumberString(responseCode, delay, value);
             }
         };
         HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> healthThermometerServiceMockCallback = new HealthThermometerServiceMockCallback.Builder<>();
@@ -225,7 +225,7 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
     @Test
     public void test_addModelNumberString_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final byte[] originalValue = "modelNumber".getBytes();
 
@@ -233,17 +233,17 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addModelNumberString(responceCode, delay, value);
+                return super.addModelNumberString(responseCode, delay, value);
             }
         };
         HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> healthThermometerServiceMockCallback = new HealthThermometerServiceMockCallback.Builder<>();
         BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, healthThermometerServiceMockCallback);
-        assertEquals(baseBuilder, baseBuilder.addModelNumberString(originalResponceCode, originalDelay, originalValue));
+        assertEquals(baseBuilder, baseBuilder.addModelNumberString(originalResponseCode, originalDelay, originalValue));
 
         assertTrue(atomicBoolean.get());
     }
@@ -280,10 +280,10 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addSystemId(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addSystemId(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(systemId.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addSystemId(responceCode, delay, value);
+                return super.addSystemId(responseCode, delay, value);
             }
 
         };
@@ -305,10 +305,10 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addSystemId(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addSystemId(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(systemId.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addSystemId(responceCode, delay, value);
+                return super.addSystemId(responseCode, delay, value);
             }
         };
         HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> healthThermometerServiceMockCallback = new HealthThermometerServiceMockCallback.Builder<>();
@@ -329,10 +329,10 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addSystemId(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addSystemId(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(systemId.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addSystemId(responceCode, delay, value);
+                return super.addSystemId(responseCode, delay, value);
             }
         };
         HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> healthThermometerServiceMockCallback = new HealthThermometerServiceMockCallback.Builder<>();
@@ -345,7 +345,7 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
     @Test
     public void test_addSystemId_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         long manufacturerIdentifier = 1;
         int organizationallyUniqueIdentifier = 2;
@@ -354,17 +354,17 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
         Context context = ApplicationProvider.getApplicationContext();
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addSystemId(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addSystemId(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(systemId.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addSystemId(responceCode, delay, value);
+                return super.addSystemId(responseCode, delay, value);
             }
         };
         HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> healthThermometerServiceMockCallback = new HealthThermometerServiceMockCallback.Builder<>();
         BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, healthThermometerServiceMockCallback);
-        assertEquals(baseBuilder, baseBuilder.addSystemId(originalResponceCode, originalDelay, systemId.getBytes()));
+        assertEquals(baseBuilder, baseBuilder.addSystemId(originalResponseCode, originalDelay, systemId.getBytes()));
 
         assertTrue(atomicBoolean.get());
     }
@@ -406,11 +406,11 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addTemperatureMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addTemperatureMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertArrayEquals(temperatureMeasurement.getBytes(), characteristicValue);
                 assertArrayEquals(clientCharacteristicConfiguration.getBytes(), descriptorValue);
                 atomicBoolean.set(true);
-                return super.addTemperatureMeasurement(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+                return super.addTemperatureMeasurement(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
 
         };
@@ -440,15 +440,15 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addTemperatureMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
-                assertEquals(originalCharacteristicResponseCode, characteristicResponceCode);
+            public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addTemperatureMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+                assertEquals(originalCharacteristicResponseCode, characteristicResponseCode);
                 assertEquals(originalCharacteristicDelay, characteristicDelay);
                 assertArrayEquals(temperatureMeasurement.getBytes(), characteristicValue);
-                assertEquals(originalDescriptorResponseCode, descriptorResponceCode);
+                assertEquals(originalDescriptorResponseCode, descriptorResponseCode);
                 assertEquals(originalDescriptorDelay, descriptorDelay);
                 assertArrayEquals(clientCharacteristicConfiguration.getBytes(), descriptorValue);
                 atomicBoolean.set(true);
-                return super.addTemperatureMeasurement(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+                return super.addTemperatureMeasurement(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
 
         };
@@ -493,10 +493,10 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addTemperatureType(int responceCode, long delay, @NonNull byte[] value) {
+            public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addTemperatureType(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(temperatureType.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addTemperatureType(responceCode, delay, value);
+                return super.addTemperatureType(responseCode, delay, value);
             }
 
         };
@@ -522,12 +522,12 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addTemperatureType(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalCharacteristicResponseCode, responceCode);
+            public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addTemperatureType(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalCharacteristicResponseCode, responseCode);
                 assertEquals(originalCharacteristicDelay, delay);
                 assertArrayEquals(temperatureType.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addTemperatureType(responceCode, delay, value);
+                return super.addTemperatureType(responseCode, delay, value);
             }
 
         };
@@ -575,11 +575,11 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addIntermediateTemperature(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addIntermediateTemperature(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertArrayEquals(intermediateTemperature.getBytes(), characteristicValue);
                 assertArrayEquals(clientCharacteristicConfiguration.getBytes(), descriptorValue);
                 atomicBoolean.set(true);
-                return super.addIntermediateTemperature(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+                return super.addIntermediateTemperature(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
 
         };
@@ -609,15 +609,15 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addIntermediateTemperature(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
-                assertEquals(originalCharacteristicResponseCode, characteristicResponceCode);
+            public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addIntermediateTemperature(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+                assertEquals(originalCharacteristicResponseCode, characteristicResponseCode);
                 assertEquals(originalCharacteristicDelay, characteristicDelay);
                 assertArrayEquals(intermediateTemperature.getBytes(), characteristicValue);
-                assertEquals(originalDescriptorResponseCode, descriptorResponceCode);
+                assertEquals(originalDescriptorResponseCode, descriptorResponseCode);
                 assertEquals(originalDescriptorDelay, descriptorDelay);
                 assertArrayEquals(clientCharacteristicConfiguration.getBytes(), descriptorValue);
                 atomicBoolean.set(true);
-                return super.addIntermediateTemperature(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+                return super.addIntermediateTemperature(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
 
         };
@@ -668,22 +668,22 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addMeasurementInterval(int measurementIntervalResponceCode
+            public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addMeasurementInterval(int measurementIntervalResponseCode
                     , long measurementIntervalDelay
                     , @NonNull byte[] measurementIntervalValue
                     , boolean isMeasurementIntervalIndicatable
                     , boolean isMeasurementIntervalWritable
-                    , int clientCharacteristicConfigurationResponceCode
+                    , int clientCharacteristicConfigurationResponseCode
                     , long clientCharacteristicConfigurationDelay
                     , @NonNull byte[] clientCharacteristicConfigurationValue
-                    , int validRangeResponceCode
+                    , int validRangeResponseCode
                     , long validRangeDelay
                     , @NonNull byte[] validRangeValue) {
                 assertArrayEquals(measurementInterval.getBytes(), measurementIntervalValue);
                 assertArrayEquals(clientCharacteristicConfiguration.getBytes(), clientCharacteristicConfigurationValue);
                 assertArrayEquals(validRange.getBytes(), validRangeValue);
                 atomicBoolean.set(true);
-                return super.addMeasurementInterval(measurementIntervalResponceCode, measurementIntervalDelay, measurementIntervalValue, isMeasurementIntervalIndicatable, isMeasurementIntervalWritable, clientCharacteristicConfigurationResponceCode, clientCharacteristicConfigurationDelay, clientCharacteristicConfigurationValue, validRangeResponceCode, validRangeDelay, validRangeValue);
+                return super.addMeasurementInterval(measurementIntervalResponseCode, measurementIntervalDelay, measurementIntervalValue, isMeasurementIntervalIndicatable, isMeasurementIntervalWritable, clientCharacteristicConfigurationResponseCode, clientCharacteristicConfigurationDelay, clientCharacteristicConfigurationValue, validRangeResponseCode, validRangeDelay, validRangeValue);
             }
 
         };
@@ -719,28 +719,28 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addMeasurementInterval(int measurementIntervalResponceCode
+            public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addMeasurementInterval(int measurementIntervalResponseCode
                     , long measurementIntervalDelay
                     , @NonNull byte[] measurementIntervalValue
                     , boolean isMeasurementIntervalIndicatable
                     , boolean isMeasurementIntervalWritable
-                    , int clientCharacteristicConfigurationResponceCode
+                    , int clientCharacteristicConfigurationResponseCode
                     , long clientCharacteristicConfigurationDelay
                     , @NonNull byte[] clientCharacteristicConfigurationValue
-                    , int validRangeResponceCode
+                    , int validRangeResponseCode
                     , long validRangeDelay
                     , @NonNull byte[] validRangeValue) {
-                assertEquals(originalCharacteristicResponseCode, measurementIntervalResponceCode);
+                assertEquals(originalCharacteristicResponseCode, measurementIntervalResponseCode);
                 assertEquals(originalCharacteristicDelay, measurementIntervalDelay);
                 assertArrayEquals(measurementInterval.getBytes(), measurementIntervalValue);
-                assertEquals(originalDescriptorResponseCode1, clientCharacteristicConfigurationResponceCode);
+                assertEquals(originalDescriptorResponseCode1, clientCharacteristicConfigurationResponseCode);
                 assertEquals(originalDescriptorDelay1, clientCharacteristicConfigurationDelay);
                 assertArrayEquals(clientCharacteristicConfiguration.getBytes(), clientCharacteristicConfigurationValue);
-                assertEquals(originalDescriptorResponseCode2, validRangeResponceCode);
+                assertEquals(originalDescriptorResponseCode2, validRangeResponseCode);
                 assertEquals(originalDescriptorDelay2, validRangeDelay);
                 assertArrayEquals(validRange.getBytes(), validRangeValue);
                 atomicBoolean.set(true);
-                return super.addMeasurementInterval(measurementIntervalResponceCode, measurementIntervalDelay, measurementIntervalValue, isMeasurementIntervalIndicatable, isMeasurementIntervalWritable, clientCharacteristicConfigurationResponceCode, clientCharacteristicConfigurationDelay, clientCharacteristicConfigurationValue, validRangeResponceCode, validRangeDelay, validRangeValue);
+                return super.addMeasurementInterval(measurementIntervalResponseCode, measurementIntervalDelay, measurementIntervalValue, isMeasurementIntervalIndicatable, isMeasurementIntervalWritable, clientCharacteristicConfigurationResponseCode, clientCharacteristicConfigurationDelay, clientCharacteristicConfigurationValue, validRangeResponseCode, validRangeDelay, validRangeValue);
             }
 
         };

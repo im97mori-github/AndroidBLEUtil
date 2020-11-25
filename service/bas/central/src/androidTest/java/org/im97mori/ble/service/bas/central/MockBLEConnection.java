@@ -1,4 +1,4 @@
-package org.im97mori.ble.service.bas.cental;
+package org.im97mori.ble.service.bas.central;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;

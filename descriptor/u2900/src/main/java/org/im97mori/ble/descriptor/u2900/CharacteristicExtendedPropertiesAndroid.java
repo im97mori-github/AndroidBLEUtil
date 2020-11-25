@@ -59,6 +59,16 @@ public class CharacteristicExtendedPropertiesAndroid extends CharacteristicExten
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param isReliableWriteEnabled       {@code true}:{@link #PROPERTIES_RELIABLE_WRITE_ENABLED}, {@code false}:{@link #PROPERTIES_RELIABLE_WRITE_DISABLED}
+     * @param isWritableAuxiliariesEnabled {@code true}:{@link #PROPERTIES_WRITABLE_AUXILIARIES_ENABLED}, {@code false}:{@link #PROPERTIES_WRITABLE_AUXILIARIES_DISABLED}
+     */
+    public CharacteristicExtendedPropertiesAndroid(boolean isReliableWriteEnabled, boolean isWritableAuxiliariesEnabled) {
+        super(isReliableWriteEnabled, isWritableAuxiliariesEnabled);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel

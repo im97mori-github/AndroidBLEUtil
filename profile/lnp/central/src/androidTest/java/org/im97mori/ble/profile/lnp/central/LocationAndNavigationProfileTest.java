@@ -18,7 +18,7 @@ import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a6b.LNControlPoint;
 import org.im97mori.ble.profile.lnp.central.db.LocationAndNavigationProfileBondedDatabaseHelper;
-import org.im97mori.ble.service.bas.cental.BatteryService;
+import org.im97mori.ble.service.bas.central.BatteryService;
 import org.im97mori.ble.service.dis.central.DeviceInformationService;
 import org.im97mori.ble.service.lns.central.LocationAndNavigationService;
 import org.junit.Test;

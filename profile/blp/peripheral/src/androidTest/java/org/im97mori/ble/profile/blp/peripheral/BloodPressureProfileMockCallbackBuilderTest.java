@@ -49,10 +49,10 @@ public class BloodPressureProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(manufacturerName.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> bloodPressureServiceMockCallbackBuilder = new BloodPressureServiceMockCallback.Builder<>();
@@ -72,10 +72,10 @@ public class BloodPressureProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(manufacturerName.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> bloodPressureServiceMockCallbackBuilder = new BloodPressureServiceMockCallback.Builder<>();
@@ -94,10 +94,10 @@ public class BloodPressureProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> bloodPressureServiceMockCallbackBuilder = new BloodPressureServiceMockCallback.Builder<>();
@@ -110,7 +110,7 @@ public class BloodPressureProfileMockCallbackBuilderTest {
     @Test
     public void test_addManufacturerNameString_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final byte[] originalValue = "manufacturerName".getBytes();
 
@@ -118,17 +118,17 @@ public class BloodPressureProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> bloodPressureServiceMockCallbackBuilder = new BloodPressureServiceMockCallback.Builder<>();
         BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, bloodPressureServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(originalResponceCode, originalDelay, originalValue));
+        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(originalResponseCode, originalDelay, originalValue));
 
         assertTrue(atomicBoolean.get());
     }
@@ -163,10 +163,10 @@ public class BloodPressureProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(modelNumber.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addModelNumberString(responceCode, delay, value);
+                return super.addModelNumberString(responseCode, delay, value);
             }
         };
         BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> bloodPressureServiceMockCallbackBuilder = new BloodPressureServiceMockCallback.Builder<>();
@@ -186,10 +186,10 @@ public class BloodPressureProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(modelNumber.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addModelNumberString(responceCode, delay, value);
+                return super.addModelNumberString(responseCode, delay, value);
             }
         };
         BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> bloodPressureServiceMockCallbackBuilder = new BloodPressureServiceMockCallback.Builder<>();
@@ -208,10 +208,10 @@ public class BloodPressureProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addModelNumberString(responceCode, delay, value);
+                return super.addModelNumberString(responseCode, delay, value);
             }
         };
         BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> bloodPressureServiceMockCallbackBuilder = new BloodPressureServiceMockCallback.Builder<>();
@@ -224,7 +224,7 @@ public class BloodPressureProfileMockCallbackBuilderTest {
     @Test
     public void test_addModelNumberString_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final byte[] originalValue = "modelNumber".getBytes();
 
@@ -232,17 +232,17 @@ public class BloodPressureProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addModelNumberString(responceCode, delay, value);
+                return super.addModelNumberString(responseCode, delay, value);
             }
         };
         BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> bloodPressureServiceMockCallbackBuilder = new BloodPressureServiceMockCallback.Builder<>();
         BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, bloodPressureServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addModelNumberString(originalResponceCode, originalDelay, originalValue));
+        assertEquals(baseBuilder, baseBuilder.addModelNumberString(originalResponseCode, originalDelay, originalValue));
 
         assertTrue(atomicBoolean.get());
     }
@@ -297,11 +297,11 @@ public class BloodPressureProfileMockCallbackBuilderTest {
         BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> bloodPressureServiceMockCallbackBuilder = new BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback>() {
             @NonNull
             @Override
-            public BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> addBloodPressureMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            public BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> addBloodPressureMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertArrayEquals(bloodPressureMeasurement.getBytes(), characteristicValue);
                 assertArrayEquals(bpmclientCharacteristicConfiguration.getBytes(), descriptorValue);
                 atomicBoolean.set(true);
-                return super.addBloodPressureMeasurement(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+                return super.addBloodPressureMeasurement(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
 
         };
@@ -346,15 +346,15 @@ public class BloodPressureProfileMockCallbackBuilderTest {
         BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> bloodPressureServiceMockCallbackBuilder = new BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback>() {
             @NonNull
             @Override
-            public BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> addBloodPressureMeasurement(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            public BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> addBloodPressureMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertArrayEquals(bloodPressureMeasurement.getBytes(), characteristicValue);
                 assertArrayEquals(bpmclientCharacteristicConfiguration.getBytes(), descriptorValue);
-                assertEquals(originalCharacteristicResponseCode, characteristicResponceCode);
+                assertEquals(originalCharacteristicResponseCode, characteristicResponseCode);
                 assertEquals(originalCharacteristicDelay, characteristicDelay);
-                assertEquals(originalDescriptorResponseCode, descriptorResponceCode);
+                assertEquals(originalDescriptorResponseCode, descriptorResponseCode);
                 assertEquals(originalDescriptorDelay, descriptorDelay);
                 atomicBoolean.set(true);
-                return super.addBloodPressureMeasurement(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+                return super.addBloodPressureMeasurement(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
 
         };
@@ -415,11 +415,11 @@ public class BloodPressureProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> addIntermediateCuffPressure(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            public BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> addIntermediateCuffPressure(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertArrayEquals(intermediateCuffPressure.getBytes(), characteristicValue);
                 assertArrayEquals(icpclientCharacteristicConfiguration.getBytes(), descriptorValue);
                 atomicBoolean.set(true);
-                return super.addIntermediateCuffPressure(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+                return super.addIntermediateCuffPressure(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
 
         };
@@ -463,15 +463,15 @@ public class BloodPressureProfileMockCallbackBuilderTest {
         BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> bloodPressureServiceMockCallbackBuilder = new BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback>() {
             @NonNull
             @Override
-            public BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> addIntermediateCuffPressure(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            public BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> addIntermediateCuffPressure(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertArrayEquals(intermediateCuffPressure.getBytes(), characteristicValue);
                 assertArrayEquals(icpclientCharacteristicConfiguration.getBytes(), descriptorValue);
-                assertEquals(originalCharacteristicResponseCode, characteristicResponceCode);
+                assertEquals(originalCharacteristicResponseCode, characteristicResponseCode);
                 assertEquals(originalCharacteristicDelay, characteristicDelay);
-                assertEquals(originalDescriptorResponseCode, descriptorResponceCode);
+                assertEquals(originalDescriptorResponseCode, descriptorResponseCode);
                 assertEquals(originalDescriptorDelay, descriptorDelay);
                 atomicBoolean.set(true);
-                return super.addIntermediateCuffPressure(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+                return super.addIntermediateCuffPressure(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
 
         };
@@ -518,10 +518,10 @@ public class BloodPressureProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> addBloodPressureFeature(int responceCode, long delay, @NonNull byte[] value) {
+            public BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> addBloodPressureFeature(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(bloodPressureFeature.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addBloodPressureFeature(responceCode, delay, value);
+                return super.addBloodPressureFeature(responseCode, delay, value);
             }
 
         };
@@ -551,12 +551,12 @@ public class BloodPressureProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> addBloodPressureFeature(int responceCode, long delay, @NonNull byte[] value) {
+            public BloodPressureServiceMockCallback.Builder<BloodPressureServiceMockCallback> addBloodPressureFeature(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(bloodPressureFeature.getBytes(), value);
-                assertEquals(originalResponseCode, responceCode);
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 atomicBoolean.set(true);
-                return super.addBloodPressureFeature(responceCode, delay, value);
+                return super.addBloodPressureFeature(responseCode, delay, value);
             }
 
         };

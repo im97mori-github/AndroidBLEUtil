@@ -102,8 +102,8 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
          * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#addManufacturerNameString(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
-            mDeviceInformationServiceMockCallbackBuilder.addManufacturerNameString(responceCode, delay, value);
+        public Builder<T> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
+            mDeviceInformationServiceMockCallbackBuilder.addManufacturerNameString(responseCode, delay, value);
             return this;
         }
 
@@ -146,8 +146,8 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
          * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#addModelNumberString(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
-            mDeviceInformationServiceMockCallbackBuilder.addModelNumberString(responceCode, delay, value);
+        public Builder<T> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
+            mDeviceInformationServiceMockCallbackBuilder.addModelNumberString(responseCode, delay, value);
             return this;
         }
 
@@ -172,8 +172,8 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
          * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#addBatteryLevel(int, int, int, long, byte[], int)
          */
         @NonNull
-        public Builder<T> addBatteryLevel(int index, int property, int responceCode, long delay, @NonNull byte[] value, int notificationCount) {
-            mBatteryServiceMockCallbackBuilder.addBatteryLevel(index, property, responceCode, delay, value, notificationCount);
+        public Builder<T> addBatteryLevel(int index, int property, int responseCode, long delay, @NonNull byte[] value, int notificationCount) {
+            mBatteryServiceMockCallbackBuilder.addBatteryLevel(index, property, responseCode, delay, value, notificationCount);
             return this;
         }
 
@@ -198,8 +198,8 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
          * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#setBatteryLevelCharacteristicPresentationFormat(int, int, long, byte[])
          */
         @NonNull
-        public Builder<T> setBatteryLevelCharacteristicPresentationFormat(int index, int responceCode, long delay, @NonNull byte[] value) {
-            mBatteryServiceMockCallbackBuilder.setBatteryLevelCharacteristicPresentationFormat(index, responceCode, delay, value);
+        public Builder<T> setBatteryLevelCharacteristicPresentationFormat(int index, int responseCode, long delay, @NonNull byte[] value) {
+            mBatteryServiceMockCallbackBuilder.setBatteryLevelCharacteristicPresentationFormat(index, responseCode, delay, value);
             return this;
         }
 
@@ -223,8 +223,8 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
          * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#setBatteryLevelClientCharacteristicConfiguration(int, int, long, byte[])
          */
         @NonNull
-        public Builder<T> setBatteryLevelClientCharacteristicConfiguration(int index, int responceCode, long delay, @NonNull byte[] value) {
-            mBatteryServiceMockCallbackBuilder.setBatteryLevelClientCharacteristicConfiguration(index, responceCode, delay, value);
+        public Builder<T> setBatteryLevelClientCharacteristicConfiguration(int index, int responseCode, long delay, @NonNull byte[] value) {
+            mBatteryServiceMockCallbackBuilder.setBatteryLevelClientCharacteristicConfiguration(index, responseCode, delay, value);
             return this;
         }
 
@@ -249,8 +249,8 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
          * @see org.im97mori.ble.service.lns.peripheral.LocationAndNavigationServiceMockCallback.Builder#addLNFeature(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addLNFeature(int responceCode, long delay, @NonNull byte[] value) {
-            mLocationAndNavigationServiceMockCallbackBuilder.addLNFeature(responceCode, delay, value);
+        public Builder<T> addLNFeature(int responseCode, long delay, @NonNull byte[] value) {
+            mLocationAndNavigationServiceMockCallbackBuilder.addLNFeature(responseCode, delay, value);
             return this;
         }
 
@@ -275,8 +275,8 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
          * @see org.im97mori.ble.service.lns.peripheral.LocationAndNavigationServiceMockCallback.Builder#addLocationAndSpeed(int, long, byte[], int, int, long, byte[])
          */
         @NonNull
-        public Builder<T> addLocationAndSpeed(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
-            mLocationAndNavigationServiceMockCallbackBuilder.addLocationAndSpeed(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+        public Builder<T> addLocationAndSpeed(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            mLocationAndNavigationServiceMockCallbackBuilder.addLocationAndSpeed(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             return this;
         }
 
@@ -301,8 +301,8 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
          * @see org.im97mori.ble.service.lns.peripheral.LocationAndNavigationServiceMockCallback.Builder#addPositionQuality(int, long, byte[])
          */
         @NonNull
-        public Builder<T> addPositionQuality(int responceCode, long delay, @NonNull byte[] value) {
-            mLocationAndNavigationServiceMockCallbackBuilder.addPositionQuality(responceCode, delay, value);
+        public Builder<T> addPositionQuality(int responseCode, long delay, @NonNull byte[] value) {
+            mLocationAndNavigationServiceMockCallbackBuilder.addPositionQuality(responseCode, delay, value);
             return this;
         }
 
@@ -319,34 +319,34 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
          * @see org.im97mori.ble.service.lns.peripheral.LocationAndNavigationServiceMockCallback.Builder#addLNControlPoint(int, long, int, int, int, int, byte[], int, byte[], int, int, int, int, long, byte[])
          */
         @NonNull
-        public Builder<T> addLNControlPoint(int characteristicResponceCode
+        public Builder<T> addLNControlPoint(int characteristicResponseCode
                 , long characteristicDelay
-                , int setCumulativeValueResponceValue
-                , int maskLocationAndSpeedCharacteristicContentResponceValue
-                , int navigationControlResponceValue
-                , int requestNumberOfRoutesResponceValue
-                , @NonNull byte[] requestNumberOfRoutesResponceParameter
-                , int requestNameOfRouteResponceValue
-                , @NonNull byte[] requestNameOfRouteResponceParameter
-                , int selectRouteResponceValue
-                , int setFixRateResponceValue
-                , int setElevationResponceValue
-                , int descriptorResponceCode
+                , int setCumulativeValueResponseValue
+                , int maskLocationAndSpeedCharacteristicContentResponseValue
+                , int navigationControlResponseValue
+                , int requestNumberOfRoutesResponseValue
+                , @NonNull byte[] requestNumberOfRoutesResponseParameter
+                , int requestNameOfRouteResponseValue
+                , @NonNull byte[] requestNameOfRouteResponseParameter
+                , int selectRouteResponseValue
+                , int setFixRateResponseValue
+                , int setElevationResponseValue
+                , int descriptorResponseCode
                 , long descriptorDelay
                 , @NonNull byte[] descriptorValue) {
-            mLocationAndNavigationServiceMockCallbackBuilder.addLNControlPoint(characteristicResponceCode
+            mLocationAndNavigationServiceMockCallbackBuilder.addLNControlPoint(characteristicResponseCode
                     , characteristicDelay
-                    , setCumulativeValueResponceValue
-                    , maskLocationAndSpeedCharacteristicContentResponceValue
-                    , navigationControlResponceValue
-                    , requestNumberOfRoutesResponceValue
-                    , requestNumberOfRoutesResponceParameter
-                    , requestNameOfRouteResponceValue
-                    , requestNameOfRouteResponceParameter
-                    , selectRouteResponceValue
-                    , setFixRateResponceValue
-                    , setElevationResponceValue
-                    , descriptorResponceCode
+                    , setCumulativeValueResponseValue
+                    , maskLocationAndSpeedCharacteristicContentResponseValue
+                    , navigationControlResponseValue
+                    , requestNumberOfRoutesResponseValue
+                    , requestNumberOfRoutesResponseParameter
+                    , requestNameOfRouteResponseValue
+                    , requestNameOfRouteResponseParameter
+                    , selectRouteResponseValue
+                    , setFixRateResponseValue
+                    , setElevationResponseValue
+                    , descriptorResponseCode
                     , descriptorDelay
                     , descriptorValue);
             return this;
@@ -373,8 +373,8 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
          * @see org.im97mori.ble.service.lns.peripheral.LocationAndNavigationServiceMockCallback.Builder#addNavigation(int, long, byte[], int, int, long, byte[])
          */
         @NonNull
-        public Builder<T> addNavigation(int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
-            mLocationAndNavigationServiceMockCallbackBuilder.addNavigation(characteristicResponceCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponceCode, descriptorDelay, descriptorValue);
+        public Builder<T> addNavigation(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            mLocationAndNavigationServiceMockCallbackBuilder.addNavigation(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             return this;
         }
 

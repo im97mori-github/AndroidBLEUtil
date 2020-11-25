@@ -202,6 +202,9 @@
             <option value="$PROJECT_DIR$/library-handler" />
             <option value="$PROJECT_DIR$/library-peripheral" />
             <option value="$PROJECT_DIR$/profile" />
+            <option value="$PROJECT_DIR$/profile/aiop" />
+            <option value="$PROJECT_DIR$/profile/aiop/central" />
+            <option value="$PROJECT_DIR$/profile/aiop/peripheral" />
             <option value="$PROJECT_DIR$/profile/blp" />
             <option value="$PROJECT_DIR$/profile/blp/central" />
             <option value="$PROJECT_DIR$/profile/blp/peripheral" />
@@ -228,6 +231,9 @@
             <option value="$PROJECT_DIR$/sample-jellybean" />
             <option value="$PROJECT_DIR$/sample-lolipop" />
             <option value="$PROJECT_DIR$/service" />
+            <option value="$PROJECT_DIR$/service/aios" />
+            <option value="$PROJECT_DIR$/service/aios/central" />
+            <option value="$PROJECT_DIR$/service/aios/peripheral" />
             <option value="$PROJECT_DIR$/service/bas" />
             <option value="$PROJECT_DIR$/service/bas/central" />
             <option value="$PROJECT_DIR$/service/bas/peripheral" />

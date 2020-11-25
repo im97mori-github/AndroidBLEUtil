@@ -93,6 +93,12 @@
         <activity
             android:name=".wsp.WspCentralSampleActivity"
             android:label="@string/label_wsp_central" />
+        <activity
+            android:name=".aiop.AiopPeripheralSampleActivity"
+            android:label="@string/label_aiop_peripheral" />
+        <activity
+            android:name=".aiop.AiopCentralSampleActivity"
+            android:label="@string/label_aiop_central" />
     </application>
 
 </manifest>

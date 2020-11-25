@@ -28,5 +28,7 @@ dependencies {
     implementation project(path: ':profile:htp:central')
     implementation project(path: ':profile:wsp:peripheral')
     implementation project(path: ':profile:wsp:central')
+    implementation project(path: ':profile:aiop:peripheral')
+    implementation project(path: ':profile:aiop:central')
     implementation 'androidx.fragment:fragment:1.2.5'
 }

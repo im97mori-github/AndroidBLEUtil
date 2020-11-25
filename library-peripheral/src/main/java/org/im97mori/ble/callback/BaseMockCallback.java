@@ -222,6 +222,20 @@ public abstract class BaseMockCallback implements BLEServerCallback {
     }
 
     /**
+     * @param bluetoothGattDescriptor {@link BluetoothGattDescriptor} instance
+     * @return descriptor instance id(like {@link BluetoothGattService#getInstanceId()} or {@link BluetoothGattCharacteristic#getInstanceId()})
+     */
+    protected int getDescriptorInstanceId(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
+        Parcel parcel = Parcel.obtain();
+        bluetoothGattDescriptor.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        parcel.readParcelable(getClass().getClassLoader());
+        int descriptorInstanceId = parcel.readInt();
+        parcel.recycle();
+        return descriptorInstanceId;
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
@@ -256,20 +270,17 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                             for (DescriptorData descriptorData : characteristicData.descriptorDataList) {
                                 for (BluetoothGattDescriptor bluetoothGattDescriptor : bluetoothGattCharacteristic.getDescriptors()) {
                                     UUID descriptorUUID = bluetoothGattDescriptor.getUuid();
-                                    Parcel parcel = Parcel.obtain();
-                                    bluetoothGattDescriptor.writeToParcel(parcel, 0);
-                                    parcel.setDataPosition(0);
-                                    parcel.readParcelable(getClass().getClassLoader());
-                                    int descriptorInstanceId = parcel.readInt();
-                                    parcel.recycle();
+                                    int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
                                     Pair<UUID, Integer> descriptorPair = Pair.create(descriptorUUID, descriptorInstanceId);
                                     if (descriptorData.uuid.equals(descriptorUUID) && !usedDescriptorSet.contains(descriptorPair)) {
                                         usedDescriptorSet.add(descriptorPair);
                                         descriptorDataMap.put(descriptorPair, descriptorData);
+                                        break;
                                     }
                                 }
                             }
                             mRemappedCharacteristicDescriptorMap.put(characteristicPair, descriptorDataMap);
+                            break;
                         }
                     }
                     mRemappedServiceCharacteristicMap.put(servicePair, characteristicDataMap);
@@ -392,9 +403,9 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                         mIsReliable |= preparedWrite;
 
                         if (mIsReliable) {
-                            characteristicData.temporaryData = value;
+                            characteristicData.temporaryData = Arrays.copyOfRange(value, offset, value.length);
                         } else {
-                            characteristicData.currentData = value;
+                            characteristicData.currentData = Arrays.copyOfRange(value, offset, value.length);
                         }
                     }
                 }
@@ -428,12 +439,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
             Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
             if (descriptorDataMap != null) {
                 UUID descriptorUUID = bluetoothGattDescriptor.getUuid();
-                Parcel parcel = Parcel.obtain();
-                bluetoothGattDescriptor.writeToParcel(parcel, 0);
-                parcel.setDataPosition(0);
-                parcel.readParcelable(getClass().getClassLoader());
-                int descriptorInstanceId = parcel.readInt();
-                parcel.recycle();
+                int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
                 Pair<UUID, Integer> descriptorPair = Pair.create(descriptorUUID, descriptorInstanceId);
 
                 DescriptorData descriptorData = descriptorDataMap.get(descriptorPair);
@@ -484,12 +490,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
             Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
             if (descriptorDataMap != null) {
                 UUID descriptorUUID = bluetoothGattDescriptor.getUuid();
-                Parcel parcel = Parcel.obtain();
-                bluetoothGattDescriptor.writeToParcel(parcel, 0);
-                parcel.setDataPosition(0);
-                parcel.readParcelable(getClass().getClassLoader());
-                int descriptorInstanceId = parcel.readInt();
-                parcel.recycle();
+                int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
                 Pair<UUID, Integer> descriptorPair = Pair.create(descriptorUUID, descriptorInstanceId);
 
                 DescriptorData descriptorData = descriptorDataMap.get(descriptorPair);
@@ -506,10 +507,10 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                         mIsReliable |= preparedWrite;
 
                         if (mIsReliable) {
-                            descriptorData.temporaryData = value;
+                            descriptorData.temporaryData = Arrays.copyOfRange(value, offset, value.length);
                         } else {
                             byte[] oldData = descriptorData.getBytes();
-                            descriptorData.currentData = value;
+                            descriptorData.currentData = Arrays.copyOfRange(value, offset, value.length);
 
                             if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
                                 if (!Arrays.equals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, descriptorData.currentData)

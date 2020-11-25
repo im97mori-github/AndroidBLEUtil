@@ -61,13 +61,14 @@ public class ValueTriggerSettingAndroid extends ValueTriggerSetting implements P
     /**
      * Constructor from parameters
      *
-     * @param condition           Condition
-     * @param valueAnalog         Value (Analog)
-     * @param valueBitMask        Value (Bit Mask)
-     * @param valueAnalogInterval Value (Analog Interval)
+     * @param condition      Condition
+     * @param valueAnalog    Value (Analog)
+     * @param valueBitMask   Value (Bit Mask)
+     * @param valueAnalogOne Value (Analog Interval One)
+     * @param valueAnalogTwo Value (Analog Interval Two)
      */
-    public ValueTriggerSettingAndroid(int condition, int valueAnalog, @NonNull byte[] valueBitMask, long valueAnalogInterval) {
-        super(condition, valueAnalog, valueBitMask, valueAnalogInterval);
+    public ValueTriggerSettingAndroid(int condition, int valueAnalog, @NonNull byte[] valueBitMask, int valueAnalogOne, int valueAnalogTwo) {
+        super(condition, valueAnalog, valueBitMask, valueAnalogOne, valueAnalogTwo);
     }
 
     /**

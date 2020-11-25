@@ -81,7 +81,7 @@ public class BloodPressureService extends AbstractCentralService {
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_NOTIFY == bluetoothGattCharacteristic.getProperties()) {
                         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC);
-                        if (bluetoothGattDescriptor != null && (BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE) == bluetoothGattDescriptor.getPermissions()) {
+                        if (bluetoothGattDescriptor != null) {
                             mIsIntermediateCuffPressureCharacteristicSupporeted = true;
                         }
                     }

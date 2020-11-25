@@ -78,17 +78,17 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
          * add Current Time characteristic
          *
          * @param isWritable                 {@code true}:Current Time is writable, {@code false}:read only
-         * @param characteristicResponceCode characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param characteristicResponseCode characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Intermediate Cuff Pressure notification count
-         * @param descriptorResponceCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay            descritptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addCurrentTime(boolean isWritable, int characteristicResponceCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponceCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+        public Builder<T> addCurrentTime(boolean isWritable, int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
             int property = BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY;
             int permission = BluetoothGattCharacteristic.PERMISSION_READ;
             if (isWritable) {
@@ -100,10 +100,10 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
                     , permission
                     , Collections.singletonList(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE
-                    , descriptorResponceCode
+                    , descriptorResponseCode
                     , descriptorDelay
                     , descriptorValue))
-                    , characteristicResponceCode
+                    , characteristicResponseCode
                     , characteristicDelay
                     , characteristicValue
                     , notificationCount);
@@ -141,13 +141,13 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
          * add Local Time Information characteristic
          *
          * @param isWritable   {@code true}:Local Time Information is writable, {@code false}:read only
-         * @param responceCode response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        responce delay(millis)
+         * @param responseCode response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
          * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addLocalTimeInformation(boolean isWritable, int responceCode, long delay, @NonNull byte[] value) {
+        public Builder<T> addLocalTimeInformation(boolean isWritable, int responseCode, long delay, @NonNull byte[] value) {
             int property = BluetoothGattCharacteristic.PROPERTY_READ;
             int permission = BluetoothGattCharacteristic.PERMISSION_READ;
             if (isWritable) {
@@ -158,7 +158,7 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
                     , property
                     , permission
                     , Collections.<DescriptorData>emptyList()
-                    , responceCode
+                    , responseCode
                     , delay
                     , value
                     , 0);
@@ -195,14 +195,14 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
         /**
          * add Reference Time Information characteristic
          *
-         * @param responceCode response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        responce delay(millis)
+         * @param responseCode response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
          * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addReferenceTimeInformation(int responceCode, long delay, @NonNull byte[] value) {
-            mReferenceTimeInformation = new ReferenceTimeInformationCharacteristicData(responceCode, delay, value);
+        public Builder<T> addReferenceTimeInformation(int responseCode, long delay, @NonNull byte[] value) {
+            mReferenceTimeInformation = new ReferenceTimeInformationCharacteristicData(responseCode, delay, value);
             return this;
         }
 

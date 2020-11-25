@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.DescriptorUUID.NUMBEROF_DIGITALS_DESCRIPTOR;
+import static org.im97mori.ble.BLEConstants.DescriptorUUID.NUMBER_OF_DIGITALS_DESCRIPTOR;
 
 /**
  * Number of Digitals (Descriptor UUID: 0x2909)
@@ -42,7 +42,7 @@ public class NumberOfDigitalsAndroid extends NumberOfDigitals implements Parcela
          */
         @NonNull
         public NumberOfDigitalsAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(NUMBEROF_DIGITALS_DESCRIPTOR, 0);
+            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(NUMBER_OF_DIGITALS_DESCRIPTOR, 0);
             bluetoothGattDescriptor.setValue(values);
             return new NumberOfDigitalsAndroid(bluetoothGattDescriptor);
         }

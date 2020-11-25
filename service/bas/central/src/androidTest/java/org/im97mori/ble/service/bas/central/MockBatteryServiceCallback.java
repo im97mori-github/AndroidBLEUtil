@@ -1,4 +1,4 @@
-package org.im97mori.ble.service.bas.cental;
+package org.im97mori.ble.service.bas.central;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
@@ -9,7 +9,6 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.characteristic.u2a19.BatteryLevelAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
 import org.im97mori.ble.descriptor.u2904.CharacteristicPresentationFormatAndroid;
-import org.im97mori.ble.service.bas.central.BatteryServiceCallback;
 
 import java.util.UUID;
 

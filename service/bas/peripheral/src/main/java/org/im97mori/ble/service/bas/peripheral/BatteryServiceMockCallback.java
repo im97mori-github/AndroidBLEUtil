@@ -74,15 +74,15 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
          * @param property          combination of
          *                          {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
          *                          {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
-         * @param responceCode      response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay             responce delay(millis)
+         * @param responseCode      response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay             response delay(millis)
          * @param value             data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount notification count
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addBatteryLevel(int index, int property, int responceCode, long delay, @NonNull byte[] value, int notificationCount) {
-            mCharacteristicDataMap.put(index, new CharacteristicData(BATTERY_LEVEL_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responceCode, delay, value, notificationCount));
+        public Builder<T> addBatteryLevel(int index, int property, int responseCode, long delay, @NonNull byte[] value, int notificationCount) {
+            mCharacteristicDataMap.put(index, new CharacteristicData(BATTERY_LEVEL_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<DescriptorData>(), responseCode, delay, value, notificationCount));
             return this;
         }
 
@@ -110,14 +110,14 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
          * add Battery Level characteristic's Characteristic Presentation Format descriptor
          *
          * @param index        Battery Service index
-         * @param responceCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        responce delay(millis)
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
          * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> setBatteryLevelCharacteristicPresentationFormat(int index, int responceCode, long delay, @NonNull byte[] value) {
-            mCharacteristicPresentationFormatMap.put(index, new DescriptorData(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responceCode, delay, value));
+        public Builder<T> setBatteryLevelCharacteristicPresentationFormat(int index, int responseCode, long delay, @NonNull byte[] value) {
+            mCharacteristicPresentationFormatMap.put(index, new DescriptorData(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
             return this;
         }
 
@@ -144,14 +144,14 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
          * add Battery Level characteristic's Client Characteristic Configuration descriptor
          *
          * @param index        Battery Service index
-         * @param responceCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        responce delay(millis)
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
          * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> setBatteryLevelClientCharacteristicConfiguration(int index, int responceCode, long delay, @NonNull byte[] value) {
-            mClientCharacteristicConfigurationMap.put(index, new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, responceCode, delay, value));
+        public Builder<T> setBatteryLevelClientCharacteristicConfiguration(int index, int responseCode, long delay, @NonNull byte[] value) {
+            mClientCharacteristicConfigurationMap.put(index, new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, responseCode, delay, value));
             return this;
         }
 

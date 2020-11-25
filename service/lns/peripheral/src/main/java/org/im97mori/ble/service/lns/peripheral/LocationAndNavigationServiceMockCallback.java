@@ -8,7 +8,6 @@ import android.bluetooth.BluetoothGattServer;
 import android.bluetooth.BluetoothGattService;
 import android.bluetooth.le.AdvertiseSettings;
 import android.os.Bundle;
-import android.os.Parcel;
 import android.os.SystemClock;
 import android.util.Pair;
 
@@ -28,6 +27,7 @@ import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -444,19 +444,14 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
                         mIsReliable |= preparedWrite;
 
                         if (mIsReliable) {
-                            characteristicData.temporaryData = value;
+                            characteristicData.temporaryData = Arrays.copyOfRange(value, offset, value.length);
                         } else {
-                            characteristicData.currentData = value;
+                            characteristicData.currentData = Arrays.copyOfRange(value, offset, value.length);
 
                             if (LN_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
                                 BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
                                 if (bluetoothGattDescriptor != null) {
-                                    Parcel parcel = Parcel.obtain();
-                                    bluetoothGattDescriptor.writeToParcel(parcel, 0);
-                                    parcel.setDataPosition(0);
-                                    parcel.readParcelable(getClass().getClassLoader());
-                                    int descriptorInstanceId = parcel.readInt();
-                                    parcel.recycle();
+                                    int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
 
                                     startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, characteristicData.delay, characteristicData.notificationCount, null);
                                 }
@@ -490,12 +485,7 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
             Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
             if (descriptorDataMap != null) {
                 UUID descriptorUUID = bluetoothGattDescriptor.getUuid();
-                Parcel parcel = Parcel.obtain();
-                bluetoothGattDescriptor.writeToParcel(parcel, 0);
-                parcel.setDataPosition(0);
-                parcel.readParcelable(getClass().getClassLoader());
-                int descriptorInstanceId = parcel.readInt();
-                parcel.recycle();
+                int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
                 Pair<UUID, Integer> descriptorPair = Pair.create(descriptorUUID, descriptorInstanceId);
 
                 DescriptorData descriptorData = descriptorDataMap.get(descriptorPair);

@@ -51,10 +51,10 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(manufacturerName.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -75,10 +75,10 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(manufacturerName.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -98,10 +98,10 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -115,7 +115,7 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
     @Test
     public void test_addManufacturerNameString_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final byte[] originalValue = "manufacturerName".getBytes();
 
@@ -123,18 +123,18 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addManufacturerNameString(responceCode, delay, value);
+                return super.addManufacturerNameString(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
         BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(originalResponceCode, originalDelay, originalValue));
+        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(originalResponseCode, originalDelay, originalValue));
 
         assertTrue(atomicBoolean.get());
     }
@@ -170,10 +170,10 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(modelNumber.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addModelNumberString(responceCode, delay, value);
+                return super.addModelNumberString(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -194,10 +194,10 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(modelNumber.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addModelNumberString(responceCode, delay, value);
+                return super.addModelNumberString(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -217,10 +217,10 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addModelNumberString(responceCode, delay, value);
+                return super.addModelNumberString(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
@@ -234,7 +234,7 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
     @Test
     public void test_addModelNumberString_00004() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponceCode = 1;
+        final int originalResponseCode = 1;
         final long originalDelay = 2;
         final byte[] originalValue = "modelNumber".getBytes();
 
@@ -242,18 +242,18 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
             @NonNull
             @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responceCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponceCode, responceCode);
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(originalValue, value);
                 atomicBoolean.set(true);
-                return super.addModelNumberString(responceCode, delay, value);
+                return super.addModelNumberString(responseCode, delay, value);
             }
         };
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
         BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addModelNumberString(originalResponceCode, originalDelay, originalValue));
+        assertEquals(baseBuilder, baseBuilder.addModelNumberString(originalResponseCode, originalDelay, originalValue));
 
         assertTrue(atomicBoolean.get());
     }
@@ -292,11 +292,11 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> addBatteryLevel(int index, int property, int responceCode, long delay, @NonNull byte[] value, int notificationCount) {
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> addBatteryLevel(int index, int property, int responseCode, long delay, @NonNull byte[] value, int notificationCount) {
                 assertEquals(originalIndex, index);
                 assertArrayEquals(batteryLevel.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.addBatteryLevel(index, property, responceCode, delay, value, notificationCount);
+                return super.addBatteryLevel(index, property, responseCode, delay, value, notificationCount);
             }
         };
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
@@ -322,15 +322,15 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> addBatteryLevel(int index, int property, int responceCode, long delay, @NonNull byte[] value, int notificationCount) {
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> addBatteryLevel(int index, int property, int responseCode, long delay, @NonNull byte[] value, int notificationCount) {
                 assertEquals(originalIndex, index);
                 assertEquals(originalProperty, property);
-                assertEquals(originalResponseCode, responceCode);
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(batteryLevel.getBytes(), value);
                 assertEquals(originalNotificationCount, notificationCount);
                 atomicBoolean.set(true);
-                return super.addBatteryLevel(index, property, responceCode, delay, value, notificationCount);
+                return super.addBatteryLevel(index, property, responseCode, delay, value, notificationCount);
             }
         };
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
@@ -376,11 +376,11 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setCharacteristicPresentationFormat(int index, int responceCode, long delay, @NonNull byte[] value) {
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelCharacteristicPresentationFormat(int index, int responseCode, long delay, @NonNull byte[] value) {
                 assertEquals(originalIndex, index);
                 assertArrayEquals(characteristicPresentationFormat.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.setCharacteristicPresentationFormat(index, responceCode, delay, value);
+                return super.setBatteryLevelCharacteristicPresentationFormat(index, responseCode, delay, value);
             }
         };
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
@@ -404,13 +404,13 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setCharacteristicPresentationFormat(int index, int responceCode, long delay, @NonNull byte[] value) {
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelCharacteristicPresentationFormat(int index, int responseCode, long delay, @NonNull byte[] value) {
                 assertEquals(originalIndex, index);
-                assertEquals(originalResponseCode, responceCode);
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(characteristicPresentationFormat.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.setCharacteristicPresentationFormat(index, responceCode, delay, value);
+                return super.setBatteryLevelCharacteristicPresentationFormat(index, responseCode, delay, value);
             }
         };
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
@@ -431,10 +431,10 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> removeCharacteristicPresentationFormat(int index) {
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> removeBatteryLevelCharacteristicPresentationFormat(int index) {
                 assertEquals(originalIndex, index);
                 atomicBoolean.set(true);
-                return super.removeCharacteristicPresentationFormat(index);
+                return super.removeBatteryLevelCharacteristicPresentationFormat(index);
             }
         };
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
@@ -456,11 +456,11 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setClientCharacteristicConfiguration(int index, int responceCode, long delay, @NonNull byte[] value) {
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelClientCharacteristicConfiguration(int index, int responseCode, long delay, @NonNull byte[] value) {
                 assertEquals(originalIndex, index);
                 assertArrayEquals(clientCharacteristicConfiguration.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.setClientCharacteristicConfiguration(index, responceCode, delay, value);
+                return super.setBatteryLevelClientCharacteristicConfiguration(index, responseCode, delay, value);
             }
         };
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
@@ -485,13 +485,13 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setClientCharacteristicConfiguration(int index, int responceCode, long delay, @NonNull byte[] value) {
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelClientCharacteristicConfiguration(int index, int responseCode, long delay, @NonNull byte[] value) {
                 assertEquals(originalIndex, index);
-                assertEquals(originalResponseCode, responceCode);
+                assertEquals(originalResponseCode, responseCode);
                 assertEquals(originalDelay, delay);
                 assertArrayEquals(clientCharacteristicConfiguration.getBytes(), value);
                 atomicBoolean.set(true);
-                return super.setClientCharacteristicConfiguration(index, responceCode, delay, value);
+                return super.setBatteryLevelClientCharacteristicConfiguration(index, responseCode, delay, value);
             }
 
         };
@@ -513,10 +513,10 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> removeClientCharacteristicConfiguration(int index) {
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> removeBatteryLevelClientCharacteristicConfiguration(int index) {
                 assertEquals(originalIndex, index);
                 atomicBoolean.set(true);
-                return super.removeClientCharacteristicConfiguration(index);
+                return super.removeBatteryLevelClientCharacteristicConfiguration(index);
             }
         };
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
@@ -758,19 +758,19 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
     @Test
     public void test_addLNControlPoint_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalCharacteristicResponceCode = 0;
+        final int originalCharacteristicResponseCode = 0;
         final long originalCharacteristicDelay = 1;
-        final int originalSetCumulativeValueResponceValue = 4;
-        final int originalMaskLocationAndSpeedCharacteristicContentResponceValue = 5;
-        final int originalNavigationControlResponceValue = 6;
-        final int originalRequestNumberOfRoutesResponceValue = 7;
-        final @NonNull byte[] originalRequestNumberOfRoutesResponceParameter = new byte[]{8};
-        final int originalRequestNameOfRouteResponceValue = 9;
-        final @NonNull byte[] originalRequestNameOfRouteResponceParameter = new byte[]{10};
-        final int originalSelectRouteResponceValue = 11;
-        final int originalSetFixRateResponceValue = 12;
-        final int originalSetElevationResponceValue = 13;
-        final int originalDescriptorResponceCode = 14;
+        final int originalSetCumulativeValueResponseValue = 4;
+        final int originalMaskLocationAndSpeedCharacteristicContentResponseValue = 5;
+        final int originalNavigationControlResponseValue = 6;
+        final int originalRequestNumberOfRoutesResponseValue = 7;
+        final @NonNull byte[] originalRequestNumberOfRoutesResponseParameter = new byte[]{8};
+        final int originalRequestNameOfRouteResponseValue = 9;
+        final @NonNull byte[] originalRequestNameOfRouteResponseParameter = new byte[]{10};
+        final int originalSelectRouteResponseValue = 11;
+        final int originalSetFixRateResponseValue = 12;
+        final int originalSetElevationResponseValue = 13;
+        final int originalDescriptorResponseCode = 14;
         final long originalDescriptorDelay = 15;
         final @NonNull byte[] originalDescriptorValue = new byte[]{16};
         Context context = ApplicationProvider.getApplicationContext();
@@ -781,19 +781,19 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
             @NonNull
             @Override
             public LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> addLNControlPoint(int characteristicResponseCode, long characteristicDelay, int setCumulativeValueResponseValue, int maskLocationAndSpeedCharacteristicContentResponseValue, int navigationControlResponseValue, int requestNumberOfRoutesResponseValue, @NonNull byte[] requestNumberOfRoutesResponseParameter, int requestNameOfRouteResponseValue, @NonNull byte[] requestNameOfRouteResponseParameter, int selectRouteResponseValue, int setFixRateResponseValue, int setElevationResponseValue, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
-                assertEquals(originalCharacteristicResponceCode, characteristicResponseCode);
+                assertEquals(originalCharacteristicResponseCode, characteristicResponseCode);
                 assertEquals(originalCharacteristicDelay, characteristicDelay);
-                assertEquals(originalSetCumulativeValueResponceValue, setCumulativeValueResponseValue);
-                assertEquals(originalMaskLocationAndSpeedCharacteristicContentResponceValue, maskLocationAndSpeedCharacteristicContentResponseValue);
-                assertEquals(originalNavigationControlResponceValue, navigationControlResponseValue);
-                assertEquals(originalRequestNumberOfRoutesResponceValue, requestNumberOfRoutesResponseValue);
-                assertArrayEquals(originalRequestNumberOfRoutesResponceParameter, requestNumberOfRoutesResponseParameter);
-                assertEquals(originalRequestNameOfRouteResponceValue, requestNameOfRouteResponseValue);
-                assertArrayEquals(originalRequestNameOfRouteResponceParameter, requestNameOfRouteResponseParameter);
-                assertEquals(originalSelectRouteResponceValue, selectRouteResponseValue);
-                assertEquals(originalSetFixRateResponceValue, setFixRateResponseValue);
-                assertEquals(originalSetElevationResponceValue, setElevationResponseValue);
-                assertEquals(originalDescriptorResponceCode, descriptorResponseCode);
+                assertEquals(originalSetCumulativeValueResponseValue, setCumulativeValueResponseValue);
+                assertEquals(originalMaskLocationAndSpeedCharacteristicContentResponseValue, maskLocationAndSpeedCharacteristicContentResponseValue);
+                assertEquals(originalNavigationControlResponseValue, navigationControlResponseValue);
+                assertEquals(originalRequestNumberOfRoutesResponseValue, requestNumberOfRoutesResponseValue);
+                assertArrayEquals(originalRequestNumberOfRoutesResponseParameter, requestNumberOfRoutesResponseParameter);
+                assertEquals(originalRequestNameOfRouteResponseValue, requestNameOfRouteResponseValue);
+                assertArrayEquals(originalRequestNameOfRouteResponseParameter, requestNameOfRouteResponseParameter);
+                assertEquals(originalSelectRouteResponseValue, selectRouteResponseValue);
+                assertEquals(originalSetFixRateResponseValue, setFixRateResponseValue);
+                assertEquals(originalSetElevationResponseValue, setElevationResponseValue);
+                assertEquals(originalDescriptorResponseCode, descriptorResponseCode);
                 assertEquals(originalDescriptorDelay, descriptorDelay);
                 assertArrayEquals(originalDescriptorValue, descriptorValue);
                 atomicBoolean.set(true);
@@ -802,19 +802,19 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
 
         };
         BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addLNControlPoint(originalCharacteristicResponceCode
+        assertEquals(baseBuilder, baseBuilder.addLNControlPoint(originalCharacteristicResponseCode
                 , originalCharacteristicDelay
-                , originalSetCumulativeValueResponceValue
-                , originalMaskLocationAndSpeedCharacteristicContentResponceValue
-                , originalNavigationControlResponceValue
-                , originalRequestNumberOfRoutesResponceValue
-                , originalRequestNumberOfRoutesResponceParameter
-                , originalRequestNameOfRouteResponceValue
-                , originalRequestNameOfRouteResponceParameter
-                , originalSelectRouteResponceValue
-                , originalSetFixRateResponceValue
-                , originalSetElevationResponceValue
-                , originalDescriptorResponceCode
+                , originalSetCumulativeValueResponseValue
+                , originalMaskLocationAndSpeedCharacteristicContentResponseValue
+                , originalNavigationControlResponseValue
+                , originalRequestNumberOfRoutesResponseValue
+                , originalRequestNumberOfRoutesResponseParameter
+                , originalRequestNameOfRouteResponseValue
+                , originalRequestNameOfRouteResponseParameter
+                , originalSelectRouteResponseValue
+                , originalSetFixRateResponseValue
+                , originalSetElevationResponseValue
+                , originalDescriptorResponseCode
                 , originalDescriptorDelay
                 , originalDescriptorValue));
 

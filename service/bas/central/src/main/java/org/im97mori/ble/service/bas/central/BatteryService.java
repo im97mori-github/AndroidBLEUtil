@@ -35,21 +35,6 @@ import static org.im97mori.ble.BLEConstants.ServiceUUID.BATTERY_SERVICE;
 public class BatteryService extends AbstractCentralService {
 
     /**
-     * KEY:STATUS
-     */
-    private static final String KEY_STATUS = "KEY_STATUS";
-
-    /**
-     * STATUS:START
-     */
-    private static final int STATUS_START = 0;
-
-    /**
-     * STATUS:STOP
-     */
-    private static final int STATUS_STOP = 1;
-
-    /**
      * {@link BatteryServiceCallback} instance
      */
     private final BatteryServiceCallback mBatteryServiceCallback;
@@ -111,7 +96,7 @@ public class BatteryService extends AbstractCentralService {
      *
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @return service index. {@link BatteryService#getBatteryLevel(int)} 1st parameter or null
+     * @return service index
      */
     @Nullable
     private Integer getIndex(@Nullable Integer serviceInstanceId, @Nullable Integer characteristicInstanceId) {
@@ -262,7 +247,7 @@ public class BatteryService extends AbstractCentralService {
     /**
      * get available Battery Service count
      *
-     * @return available Battery Service count,. if {@code null} returned, service is not ready
+     * @return available Battery Service count. if {@code null} returned, service is not ready
      */
     @Nullable
     public synchronized Integer getBatteryLevelCount() {

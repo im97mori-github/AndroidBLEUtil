@@ -77,8 +77,8 @@ public class FindMeProfileMockCallback extends AbstractProfileMockCallback {
          * @see org.im97mori.ble.service.ias.peripheral.ImmediateAlertServiceMockCallback.Builder#addAlertLevel(int, long, byte[])
          */
         @NonNull
-        public FindMeProfileMockCallback.Builder<T> addAlertLevel(int responceCode, long delay, @NonNull byte[] value) {
-            mImmediateAlertServiceMockCallbackBuilder.addAlertLevel(responceCode, delay, value);
+        public FindMeProfileMockCallback.Builder<T> addAlertLevel(int responseCode, long delay, @NonNull byte[] value) {
+            mImmediateAlertServiceMockCallbackBuilder.addAlertLevel(responseCode, delay, value);
             return this;
         }
 

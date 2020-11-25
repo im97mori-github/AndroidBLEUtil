@@ -94,8 +94,8 @@ public class ProximityProfileMockCallback extends AbstractProfileMockCallback {
          * @see org.im97mori.ble.service.lls.peripheral.LinkLossServiceMockCallback.Builder#addAlertLevel(int, long, byte[])
          */
         @NonNull
-        public ProximityProfileMockCallback.Builder<T> addLinkLossServiceAlertLevel(int responceCode, long delay, @NonNull byte[] value) {
-            mLinkLossServiceMockCallbackBuilder.addAlertLevel(responceCode, delay, value);
+        public ProximityProfileMockCallback.Builder<T> addLinkLossServiceAlertLevel(int responseCode, long delay, @NonNull byte[] value) {
+            mLinkLossServiceMockCallbackBuilder.addAlertLevel(responseCode, delay, value);
             return this;
         }
 
@@ -139,8 +139,8 @@ public class ProximityProfileMockCallback extends AbstractProfileMockCallback {
          * @see org.im97mori.ble.service.ias.peripheral.ImmediateAlertServiceMockCallback.Builder#addAlertLevel(int, long, byte[])
          */
         @NonNull
-        public ProximityProfileMockCallback.Builder<T> addImmediateAlertServiceAlertLevel(int responceCode, long delay, @NonNull byte[] value) {
-            mImmediateAlertServiceMockCallbackBuilder.addAlertLevel(responceCode, delay, value);
+        public ProximityProfileMockCallback.Builder<T> addImmediateAlertServiceAlertLevel(int responseCode, long delay, @NonNull byte[] value) {
+            mImmediateAlertServiceMockCallbackBuilder.addAlertLevel(responseCode, delay, value);
             return this;
         }
 
@@ -184,8 +184,8 @@ public class ProximityProfileMockCallback extends AbstractProfileMockCallback {
          * @see org.im97mori.ble.service.tps.peripheral.TxPowerServiceMockCallback.Builder#addTxPowerLevel(int, long, byte[])
          */
         @NonNull
-        public ProximityProfileMockCallback.Builder<T> addTxPowerLevel(int responceCode, long delay, @NonNull byte[] value) {
-            mTxPowerServiceMockCallbackBuilder.addTxPowerLevel(responceCode, delay, value);
+        public ProximityProfileMockCallback.Builder<T> addTxPowerLevel(int responseCode, long delay, @NonNull byte[] value) {
+            mTxPowerServiceMockCallbackBuilder.addTxPowerLevel(responseCode, delay, value);
             return this;
         }
 
