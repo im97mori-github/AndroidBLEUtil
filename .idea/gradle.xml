@@ -205,6 +205,9 @@
             <option value="$PROJECT_DIR$/profile/aiop" />
             <option value="$PROJECT_DIR$/profile/aiop/central" />
             <option value="$PROJECT_DIR$/profile/aiop/peripheral" />
+            <option value="$PROJECT_DIR$/profile/anp" />
+            <option value="$PROJECT_DIR$/profile/anp/central" />
+            <option value="$PROJECT_DIR$/profile/anp/peripheral" />
             <option value="$PROJECT_DIR$/profile/blp" />
             <option value="$PROJECT_DIR$/profile/blp/central" />
             <option value="$PROJECT_DIR$/profile/blp/peripheral" />
@@ -234,6 +237,9 @@
             <option value="$PROJECT_DIR$/service/aios" />
             <option value="$PROJECT_DIR$/service/aios/central" />
             <option value="$PROJECT_DIR$/service/aios/peripheral" />
+            <option value="$PROJECT_DIR$/service/ans" />
+            <option value="$PROJECT_DIR$/service/ans/central" />
+            <option value="$PROJECT_DIR$/service/ans/peripheral" />
             <option value="$PROJECT_DIR$/service/bas" />
             <option value="$PROJECT_DIR$/service/bas/central" />
             <option value="$PROJECT_DIR$/service/bas/peripheral" />

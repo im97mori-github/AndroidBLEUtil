@@ -99,6 +99,12 @@
         <activity
             android:name=".aiop.AiopCentralSampleActivity"
             android:label="@string/label_aiop_central" />
+        <activity
+            android:name=".anp.AnpPeripheralSampleActivity"
+            android:label="@string/label_anp_peripheral" />
+        <activity
+            android:name=".anp.AnpCentralSampleActivity"
+            android:label="@string/label_anp_central" />
     </application>
 
 </manifest>

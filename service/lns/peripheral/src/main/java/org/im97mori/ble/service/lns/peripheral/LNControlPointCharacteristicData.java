@@ -50,25 +50,25 @@ public class LNControlPointCharacteristicData extends CharacteristicData {
     };
 
     /**
-     * characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Cumulative Value response)
+     * characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Cumulative Value response)
      */
     @SerializedName("set_cumulative_value_response_value")
     public int setCumulativeValueResponseValue;
 
     /**
-     * characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Mask Location and Speed Characteristic Content response)
+     * characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Mask Location and Speed Characteristic Content response)
      */
     @SerializedName("mask_location_and_speed_characteristic_content_response_value")
     public int maskLocationAndSpeedCharacteristicContentResponseValue;
 
     /**
-     * characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Navigation Control response)
+     * characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Navigation Control response)
      */
     @SerializedName("navigation_control_response_value")
     public int navigationControlResponseValue;
 
     /**
-     * part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Number of Routes response)
+     * characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Number of Routes response)
      */
     @SerializedName("request_number_of_routes_response_value")
     public int requestNumberOfRoutesResponseValue;
@@ -80,7 +80,7 @@ public class LNControlPointCharacteristicData extends CharacteristicData {
     public byte[] requestNumberOfRoutesResponseParameter;
 
     /**
-     * part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Name of Route response)
+     * characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Name of Route response)
      */
     @SerializedName("request_name_of_route_response_value")
     public int requestNameOfRouteResponseValue;
@@ -92,19 +92,19 @@ public class LNControlPointCharacteristicData extends CharacteristicData {
     public byte[] requestNameOfRouteResponseParameter;
 
     /**
-     * characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Select Route response)
+     * characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Select Route response)
      */
     @SerializedName("select_route_response_value")
     public int selectRouteResponseValue;
 
     /**
-     * characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Fix Rate response)
+     * characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Fix Rate response)
      */
     @SerializedName("set_fix_rate_response_value")
     public int setFixRateResponseValue;
 
     /**
-     * characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Elevation response)
+     * characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Elevation response)
      */
     @SerializedName("set_elevation_response_value")
     public int setElevationResponseValue;
@@ -123,16 +123,16 @@ public class LNControlPointCharacteristicData extends CharacteristicData {
      * @param responseCode                                           response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
      * @param delay                                                  response delay(millis)
      * @param notificationCount                                      notification / indication count
-     * @param setCumulativeValueResponseValue                        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Cumulative Value response)
-     * @param maskLocationAndSpeedCharacteristicContentResponseValue characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Mask Location and Speed Characteristic Content response)
-     * @param navigationControlResponseValue                         characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Navigation Control response)
-     * @param requestNumberOfRoutesResponseValue                     part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Number of Routes response)
+     * @param setCumulativeValueResponseValue                        characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Cumulative Value response)
+     * @param maskLocationAndSpeedCharacteristicContentResponseValue characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Mask Location and Speed Characteristic Content response)
+     * @param navigationControlResponseValue                         characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Navigation Control response)
+     * @param requestNumberOfRoutesResponseValue                     characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Number of Routes response)
      * @param requestNumberOfRoutesResponseParameter                 part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Number of Routes)
-     * @param requestNameOfRouteResponseValue                        part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Name of Route response)
+     * @param requestNameOfRouteResponseValue                        characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Name of Route response)
      * @param requestNameOfRouteResponseParameter                    part of characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Name of Route)
-     * @param selectRouteResponseValue                               characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Select Route response)
-     * @param setFixRateResponseValue                                characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Fix Rate response)
-     * @param setElevationResponseValue                              characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Elevation response)
+     * @param selectRouteResponseValue                               characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Select Route response)
+     * @param setFixRateResponseValue                                characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Fix Rate response)
+     * @param setElevationResponseValue                              characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Elevation response)
      */
     public LNControlPointCharacteristicData(int property
             , int permission

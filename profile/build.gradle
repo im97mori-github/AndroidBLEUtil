@@ -44,6 +44,8 @@ dependencies {
     api "${groupId}:${profileWspCentralAndroid.artifactId}:${profileWspCentralAndroid.versionName}"
     api "${groupId}:${profileAiopPeripheralAndroid.artifactId}:${profileAiopPeripheralAndroid.versionName}"
     api "${groupId}:${profileAiopCentralAndroid.artifactId}:${profileAiopCentralAndroid.versionName}"
+    api "${groupId}:${profileAnpPeripheralAndroid.artifactId}:${profileAnpPeripheralAndroid.versionName}"
+    api "${groupId}:${profileAnpCentralAndroid.artifactId}:${profileAnpCentralAndroid.versionName}"
 }
 
 task sourcesJar(type: Jar) {

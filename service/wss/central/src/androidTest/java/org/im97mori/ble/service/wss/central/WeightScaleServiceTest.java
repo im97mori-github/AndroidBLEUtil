@@ -66,7 +66,6 @@ public class WeightScaleServiceTest {
             }
 
         };
-        new WeightScaleFeatureAndroid(true, true, true, 0, 0);
         WeightScaleService weightScaleService = new WeightScaleService(mockBLEConnection, mockWeightScaleServiceCallback, null);
         weightScaleService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
 
@@ -1474,14 +1473,14 @@ public class WeightScaleServiceTest {
     }
 
     @Test
-    public void test_getWeightScaleFeature_000001() {
+    public void test_getWeightScaleFeature_00001() {
         WeightScaleService weightScaleService = new WeightScaleService(new MockBLEConnection(), new MockWeightScaleServiceCallback(), null);
 
         assertNull(weightScaleService.getWeightScaleFeature());
     }
 
     @Test
-    public void test_getWeightScaleFeature_000002() {
+    public void test_getWeightScaleFeature_00002() {
         WeightScaleService weightScaleService = new WeightScaleService(new MockBLEConnection(), new MockWeightScaleServiceCallback(), null) {
 
             @Override
@@ -1495,7 +1494,7 @@ public class WeightScaleServiceTest {
     }
 
     @Test
-    public void test_getWeightScaleFeature_000003() {
+    public void test_getWeightScaleFeature_00003() {
         final Integer originalTaskId = 1;
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
@@ -1520,14 +1519,14 @@ public class WeightScaleServiceTest {
     }
 
     @Test
-    public void test_getWeightMeasurementClientCharacteristicConfiguration_000001() {
+    public void test_getWeightMeasurementClientCharacteristicConfiguration_00001() {
         WeightScaleService weightScaleService = new WeightScaleService(new MockBLEConnection(), new MockWeightScaleServiceCallback(), null);
 
         assertNull(weightScaleService.getWeightMeasurementClientCharacteristicConfiguration());
     }
 
     @Test
-    public void test_getWeightMeasurementClientCharacteristicConfiguration_000002() {
+    public void test_getWeightMeasurementClientCharacteristicConfiguration_00002() {
         WeightScaleService weightScaleService = new WeightScaleService(new MockBLEConnection(), new MockWeightScaleServiceCallback(), null) {
 
             @Override
@@ -1541,7 +1540,7 @@ public class WeightScaleServiceTest {
     }
 
     @Test
-    public void test_getWeightMeasurementClientCharacteristicConfiguration_000003() {
+    public void test_getWeightMeasurementClientCharacteristicConfiguration_00003() {
         final Integer originalTaskId = 1;
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
@@ -1566,14 +1565,14 @@ public class WeightScaleServiceTest {
     }
 
     @Test
-    public void test_startWeightMeasurementIndication_000001() {
+    public void test_startWeightMeasurementIndication_00001() {
         WeightScaleService weightScaleService = new WeightScaleService(new MockBLEConnection(), new MockWeightScaleServiceCallback(), null);
 
         assertNull(weightScaleService.startWeightMeasurementIndication());
     }
 
     @Test
-    public void test_startWeightMeasurementIndication_000002() {
+    public void test_startWeightMeasurementIndication_00002() {
         WeightScaleService weightScaleService = new WeightScaleService(new MockBLEConnection(), new MockWeightScaleServiceCallback(), null) {
 
             @Override
@@ -1587,7 +1586,7 @@ public class WeightScaleServiceTest {
     }
 
     @Test
-    public void test_startWeightMeasurementIndication_000003() {
+    public void test_startWeightMeasurementIndication_00003() {
         final Integer originalTaskId = 1;
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
@@ -1612,14 +1611,14 @@ public class WeightScaleServiceTest {
     }
 
     @Test
-    public void test_stopWeightMeasurementIndication_000001() {
+    public void test_stopWeightMeasurementIndication_00001() {
         WeightScaleService weightScaleService = new WeightScaleService(new MockBLEConnection(), new MockWeightScaleServiceCallback(), null);
 
         assertNull(weightScaleService.stopWeightMeasurementIndication());
     }
 
     @Test
-    public void test_stopWeightMeasurementIndication_000002() {
+    public void test_stopWeightMeasurementIndication_00002() {
         WeightScaleService weightScaleService = new WeightScaleService(new MockBLEConnection(), new MockWeightScaleServiceCallback(), null) {
 
             @Override
@@ -1633,7 +1632,7 @@ public class WeightScaleServiceTest {
     }
 
     @Test
-    public void test_stopWeightMeasurementIndication_000003() {
+    public void test_stopWeightMeasurementIndication_00003() {
         final Integer originalTaskId = 1;
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 

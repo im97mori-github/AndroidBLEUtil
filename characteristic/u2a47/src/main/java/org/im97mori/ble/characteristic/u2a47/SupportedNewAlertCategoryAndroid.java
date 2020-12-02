@@ -63,11 +63,30 @@ public class SupportedNewAlertCategoryAndroid extends SupportedNewAlertCategory 
     /**
      * Constructor from parameters
      *
+     * @param categoryIdBitMask0 Category ID Bit Mask 0
+     */
+    public SupportedNewAlertCategoryAndroid(int categoryIdBitMask0) {
+        super(categoryIdBitMask0, false, 0);
+    }
+
+    /**
+     * Constructor from parameters
+     *
+     * @param categoryIdBitMask0 Category ID Bit Mask 0
+     * @param categoryIdBitMask1 Category ID Bit Mask 1
+     */
+    public SupportedNewAlertCategoryAndroid(int categoryIdBitMask0, int categoryIdBitMask1) {
+        super(categoryIdBitMask0, true, categoryIdBitMask1);
+    }
+
+    /**
+     * Constructor from parameters
+     *
      * @param categoryIdBitMask0    Category ID Bit Mask 0
-     * @param hasCategoryIdBitMask1 no Category ID Bit Mask 1, 1: has Category ID Bit Mask 1
+     * @param hasCategoryIdBitMask1 {@code true}:has Category ID Bit Mask 1, {@code false}:no Category ID Bit Mask 1
      * @param categoryIdBitMask1    Category ID Bit Mask 1
      */
-    public SupportedNewAlertCategoryAndroid(int categoryIdBitMask0, int hasCategoryIdBitMask1, int categoryIdBitMask1) {
+    public SupportedNewAlertCategoryAndroid(int categoryIdBitMask0, boolean hasCategoryIdBitMask1, int categoryIdBitMask1) {
         super(categoryIdBitMask0, hasCategoryIdBitMask1, categoryIdBitMask1);
     }
 
