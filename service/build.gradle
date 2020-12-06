@@ -56,6 +56,10 @@ dependencies {
     api "${groupId}:${serviceAiosCentralAndroid.artifactId}:${serviceAiosCentralAndroid.versionName}"
     api "${groupId}:${serviceAnsPeripheralAndroid.artifactId}:${serviceAnsPeripheralAndroid.versionName}"
     api "${groupId}:${serviceAnsCentralAndroid.artifactId}:${serviceAnsCentralAndroid.versionName}"
+    api "${groupId}:${serviceNdcsPeripheralAndroid.artifactId}:${serviceNdcsPeripheralAndroid.versionName}"
+    api "${groupId}:${serviceNdcsCentralAndroid.artifactId}:${serviceNdcsCentralAndroid.versionName}"
+    api "${groupId}:${serviceRtusPeripheralAndroid.artifactId}:${serviceRtusPeripheralAndroid.versionName}"
+    api "${groupId}:${serviceRtusCentralAndroid.artifactId}:${serviceRtusCentralAndroid.versionName}"
 }
 
 task sourcesJar(type: Jar) {

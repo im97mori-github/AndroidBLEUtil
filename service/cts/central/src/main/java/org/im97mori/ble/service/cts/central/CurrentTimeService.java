@@ -185,6 +185,7 @@ public class CurrentTimeService extends AbstractCentralService {
                 mCurrentTimeServiceCallback.onLocalTimeInformationWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, LocalTimeInformationAndroid.CREATOR.createFromByteArray(values), argument);
             }
         }
+        super.onCharacteristicWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, values, argument);
     }
 
     /**

@@ -3,6 +3,7 @@ package org.im97mori.ble.profile.peripheral;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.BLEServerConnection;
@@ -43,7 +44,7 @@ public abstract class AbstractProfileMockCallback {
     /**
      * @return {@link UUID} for advertising
      */
-    @NonNull
+    @Nullable
     public abstract UUID getServiceUUID();
 
     /**
@@ -55,14 +56,21 @@ public abstract class AbstractProfileMockCallback {
     }
 
     /**
-     * start advertising
-     *
-     * @see BLEServerConnection#startAdvertising()
+     * @see #startAdvertising(boolean)
      */
     public boolean startAdvertising() {
+        return startAdvertising(true);
+    }
+
+    /**
+     * start advertising
+     *
+     * @see BLEServerConnection#startAdvertising(boolean, boolean, UUID)
+     */
+    public boolean startAdvertising(boolean includeUUID) {
         boolean result = false;
         if (mIsAdvertisingFlag) {
-            result = mBLEServerConnection.startAdvertising(false, getServiceUUID());
+            result = mBLEServerConnection.startAdvertising(false, includeUUID, getServiceUUID());
         }
         return result;
     }

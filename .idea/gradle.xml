@@ -228,6 +228,9 @@
             <option value="$PROJECT_DIR$/profile/pxp" />
             <option value="$PROJECT_DIR$/profile/pxp/central" />
             <option value="$PROJECT_DIR$/profile/pxp/peripheral" />
+            <option value="$PROJECT_DIR$/profile/tip" />
+            <option value="$PROJECT_DIR$/profile/tip/central" />
+            <option value="$PROJECT_DIR$/profile/tip/peripheral" />
             <option value="$PROJECT_DIR$/profile/wsp" />
             <option value="$PROJECT_DIR$/profile/wsp/central" />
             <option value="$PROJECT_DIR$/profile/wsp/peripheral" />
@@ -271,7 +274,13 @@
             <option value="$PROJECT_DIR$/service/lns" />
             <option value="$PROJECT_DIR$/service/lns/central" />
             <option value="$PROJECT_DIR$/service/lns/peripheral" />
+            <option value="$PROJECT_DIR$/service/ndcs" />
+            <option value="$PROJECT_DIR$/service/ndcs/central" />
+            <option value="$PROJECT_DIR$/service/ndcs/peripheral" />
             <option value="$PROJECT_DIR$/service/peripheral" />
+            <option value="$PROJECT_DIR$/service/rtus" />
+            <option value="$PROJECT_DIR$/service/rtus/central" />
+            <option value="$PROJECT_DIR$/service/rtus/peripheral" />
             <option value="$PROJECT_DIR$/service/tps" />
             <option value="$PROJECT_DIR$/service/tps/central" />
             <option value="$PROJECT_DIR$/service/tps/peripheral" />

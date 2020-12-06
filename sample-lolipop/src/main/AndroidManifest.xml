@@ -105,6 +105,12 @@
         <activity
             android:name=".anp.AnpCentralSampleActivity"
             android:label="@string/label_anp_central" />
+        <activity
+            android:name=".tip.TipPeripheralSampleActivity"
+            android:label="@string/label_tip_peripheral" />
+        <activity
+            android:name=".tip.TipCentralSampleActivity"
+            android:label="@string/label_tip_central" />
     </application>
 
 </manifest>

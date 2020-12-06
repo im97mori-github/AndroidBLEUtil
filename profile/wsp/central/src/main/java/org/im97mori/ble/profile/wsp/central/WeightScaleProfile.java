@@ -37,6 +37,9 @@ import static org.im97mori.ble.BLEConstants.ServiceUUID.CURRENT_TIME_SERVICE;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.USER_DATA_SERVICE;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.WEIGHT_SCALE_SERVICE;
 
+/**
+ * Weight Scale Profile for Central
+ */
 public class WeightScaleProfile extends AbstractCentralProfile {
 
     /**

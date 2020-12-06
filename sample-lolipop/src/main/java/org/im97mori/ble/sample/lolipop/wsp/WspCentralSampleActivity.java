@@ -146,9 +146,9 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             String text;
             Boolean result = mWeightScaleProfile.hasBodyCompositionService();
             if (result == null) {
-                text = "null";
+                text = "hasBodyCompositionService\nnull";
             } else {
-                text = result.toString();
+                text = "hasBodyCompositionService\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());

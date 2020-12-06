@@ -684,41 +684,71 @@ public class BLEServerConnectionTest {
 
     @Test
     public void test_startAdvertising_001() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(true);
+        final AtomicBoolean atomicBoolean1 = new AtomicBoolean(true);
+        final AtomicBoolean atomicBoolean2 = new AtomicBoolean(false);
         final AtomicReference<UUID> atomicReference = new AtomicReference<>(UUID.randomUUID());
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
 
             @Override
-            public synchronized boolean startAdvertising(boolean includeDeviceName, @Nullable UUID serviceUUID) {
-                atomicBoolean.set(includeDeviceName);
+            public synchronized boolean startAdvertising(boolean includeDeviceName, boolean includeUUID, @Nullable UUID serviceUUID) {
+                atomicBoolean1.set(includeDeviceName);
+                atomicBoolean2.set(includeUUID);
                 atomicReference.set(serviceUUID);
                 return false;
             }
         };
 
         mockBLEServerConnection.startAdvertising();
-        assertFalse(atomicBoolean.get());
+        assertFalse(atomicBoolean1.get());
+        assertTrue(atomicBoolean2.get());
         assertNull(atomicReference.get());
     }
 
     @Test
     public void test_startAdvertising_002() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(true);
+        final AtomicBoolean atomicBoolean1 = new AtomicBoolean(true);
+        final AtomicBoolean atomicBoolean2 = new AtomicBoolean(false);
         UUID firstUUID = UUID.randomUUID();
         UUID secondUUID = UUID.randomUUID();
         final AtomicReference<UUID> atomicReference = new AtomicReference<>(firstUUID);
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
 
             @Override
-            public synchronized boolean startAdvertising(boolean includeDeviceName, @Nullable UUID serviceUUID) {
-                atomicBoolean.set(includeDeviceName);
+            public synchronized boolean startAdvertising(boolean includeDeviceName, boolean includeUUID, @Nullable UUID serviceUUID) {
+                atomicBoolean1.set(includeDeviceName);
+                atomicBoolean2.set(includeUUID);
                 atomicReference.set(serviceUUID);
                 return false;
             }
         };
 
         mockBLEServerConnection.startAdvertising(false, secondUUID);
-        assertFalse(atomicBoolean.get());
+        assertFalse(atomicBoolean1.get());
+        assertTrue(atomicBoolean2.get());
+        assertEquals(secondUUID, atomicReference.get());
+    }
+
+    @Test
+    public void test_startAdvertising_003() {
+        final AtomicBoolean atomicBoolean1 = new AtomicBoolean(true);
+        final AtomicBoolean atomicBoolean2 = new AtomicBoolean(true);
+        UUID firstUUID = UUID.randomUUID();
+        UUID secondUUID = UUID.randomUUID();
+        final AtomicReference<UUID> atomicReference = new AtomicReference<>(firstUUID);
+        MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
+
+            @Override
+            public synchronized boolean startAdvertising(boolean includeDeviceName, boolean includeUUID, @Nullable UUID serviceUUID) {
+                atomicBoolean1.set(includeDeviceName);
+                atomicBoolean2.set(includeUUID);
+                atomicReference.set(serviceUUID);
+                return false;
+            }
+        };
+
+        mockBLEServerConnection.startAdvertising(false, false, secondUUID);
+        assertFalse(atomicBoolean1.get());
+        assertFalse(atomicBoolean2.get());
         assertEquals(secondUUID, atomicReference.get());
     }
 

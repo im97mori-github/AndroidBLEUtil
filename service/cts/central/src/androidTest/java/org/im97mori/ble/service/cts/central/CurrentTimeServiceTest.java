@@ -261,7 +261,7 @@ public class CurrentTimeServiceTest {
     }
 
     @Test
-    public void test_onDiscoverServiceSuccess_03204() {
+    public void test_onDiscoverServiceSuccess_00304() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);

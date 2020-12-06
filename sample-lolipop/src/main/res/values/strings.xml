@@ -39,6 +39,8 @@
     <string name="label_aiop_central">AIOP Central sample</string>
     <string name="label_anp_peripheral">ANP Peripheral sample</string>
     <string name="label_anp_central">ANP Central sample</string>
+    <string name="label_tip_peripheral">TIP Peripheral sample</string>
+    <string name="label_tip_central">TIP Central sample</string>
 
     <string name="menu_discover_service">Discover Service</string>
     <string name="menu_discover_service_sync">Discover Service(Synchronous)</string>
@@ -393,6 +395,12 @@
     <string name="menu_notify_unread_alert_status_high_prioritized">Notify UAS High Prioritized</string>
     <string name="menu_notify_unread_alert_status_instant_message">Notify UAS Instant Message</string>
     <string name="menu_notify_unread_alert_status_all">Notify UAS All</string>
+
+    <string name="menu_has_next_dst_change_service">Has Next DST Change Service</string>
+    <string name="menu_has_reference_time_update_service">Has Reference Time Update Service</string>
+    <string name="menu_read_time_with_dst">Get Time with DST</string>
+    <string name="menu_write_time_update_control_point">Set Time Update Control Point</string>
+    <string name="menu_read_time_update_state">Get Time Update State</string>
 
     <string name="menu_clear">Clear</string>
 </resources>
