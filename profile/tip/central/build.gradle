@@ -32,8 +32,7 @@ dependencies {
     api "${groupId}:${serviceCtsCentralAndroid.artifactId}:${serviceCtsCentralAndroid.versionName}"
     api "${groupId}:${serviceNdcsCentralAndroid.artifactId}:${serviceNdcsCentralAndroid.versionName}"
     api "${groupId}:${serviceRtusCentralAndroid.artifactId}:${serviceRtusCentralAndroid.versionName}"
-    androidTestImplementation androidxTestRunner
-    androidTestImplementation androidxTestCore
+    androidTestImplementation apiTest
 }
 
 task sourcesJar(type: Jar) {

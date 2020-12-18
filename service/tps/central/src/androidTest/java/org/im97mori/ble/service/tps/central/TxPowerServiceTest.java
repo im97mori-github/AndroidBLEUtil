@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.characteristic.u2a07.TxPowerLevel;
 import org.im97mori.ble.characteristic.u2a07.TxPowerLevelAndroid;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.UUID;

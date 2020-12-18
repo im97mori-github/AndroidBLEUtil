@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a16.TimeUpdateControlPoint;
 import org.im97mori.ble.characteristic.u2a17.TimeUpdateState;
+import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
 import org.junit.Test;
 
 import java.util.LinkedList;

@@ -138,7 +138,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && HEALTH_THERMOMETER_SERVICE.equals(serviceUUID)) {
             if (TEMPERATURE_TYPE_CHARACTERISTIC.equals(characteristicUUID)) {
                 mHealthThermometerServiceCallback.onTemperatureTypeReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, TemperatureTypeAndroid.CREATOR.createFromByteArray(values), argument);
@@ -153,7 +153,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && HEALTH_THERMOMETER_SERVICE.equals(serviceUUID)) {
             if (TEMPERATURE_TYPE_CHARACTERISTIC.equals(characteristicUUID)) {
                 mHealthThermometerServiceCallback.onTemperatureTypeReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
@@ -168,7 +168,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && HEALTH_THERMOMETER_SERVICE.equals(serviceUUID)) {
             if (TEMPERATURE_TYPE_CHARACTERISTIC.equals(characteristicUUID)) {
                 mHealthThermometerServiceCallback.onTemperatureTypeReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
@@ -216,7 +216,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && HEALTH_THERMOMETER_SERVICE.equals(serviceUUID)) {
             if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
                 if (TEMPERATURE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
@@ -237,7 +237,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && HEALTH_THERMOMETER_SERVICE.equals(serviceUUID)) {
             if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
                 if (TEMPERATURE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
@@ -258,7 +258,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && HEALTH_THERMOMETER_SERVICE.equals(serviceUUID)) {
             if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
                 if (TEMPERATURE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
@@ -279,7 +279,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && HEALTH_THERMOMETER_SERVICE.equals(serviceUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
@@ -308,7 +308,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && HEALTH_THERMOMETER_SERVICE.equals(serviceUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
@@ -337,7 +337,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && HEALTH_THERMOMETER_SERVICE.equals(serviceUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
@@ -366,7 +366,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values) {
+    public synchronized void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && HEALTH_THERMOMETER_SERVICE.equals(serviceUUID)) {
             if (TEMPERATURE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 mHealthThermometerServiceCallback.onTemperatureMeasurementIndicated(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, TemperatureMeasurementAndroid.CREATOR.createFromByteArray(values));
@@ -433,7 +433,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * @see HealthThermometerServiceCallback#onTemperatureMeasurementClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getTemperatureMeasurementClientCharacteristicConfiguration() {
+    public synchronized Integer getTemperatureMeasurementClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted()) {
             taskId = mBLEConnection.createReadDescriptorTask(HEALTH_THERMOMETER_SERVICE, null, TEMPERATURE_MEASUREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
@@ -488,7 +488,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * @see HealthThermometerServiceCallback#onTemperatureTypeReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getTemperatureType() {
+    public synchronized Integer getTemperatureType() {
         Integer taskId = null;
         if (isStarted() && isTemperatureTypeCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(HEALTH_THERMOMETER_SERVICE, null, TEMPERATURE_TYPE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -505,7 +505,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * @see HealthThermometerServiceCallback#onIntermediateTemperatureClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getIntermediateTemperatureClientCharacteristicConfiguration() {
+    public synchronized Integer getIntermediateTemperatureClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted() && isIntermediateTemperatureCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadDescriptorTask(HEALTH_THERMOMETER_SERVICE, null, INTERMEDIATE_TEMPERATURE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
@@ -560,7 +560,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * @see HealthThermometerServiceCallback#onMeasurementIntervalWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getMeasurementInterval() {
+    public synchronized Integer getMeasurementInterval() {
         Integer taskId = null;
         if (isStarted() && isMeasurementIntervalCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(HEALTH_THERMOMETER_SERVICE, null, MEASUREMENT_INTERVAL_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -577,7 +577,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * @see HealthThermometerServiceCallback#onMeasurementIntervalWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setMeasurementInterval(@NonNull MeasurementInterval measurementInterval) {
+    public synchronized Integer setMeasurementInterval(@NonNull MeasurementInterval measurementInterval) {
         Integer taskId = null;
         if (isStarted() && isMeasurementIntervalCharacteristicWriteSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(HEALTH_THERMOMETER_SERVICE, null, MEASUREMENT_INTERVAL_CHARACTERISTIC, null, measurementInterval, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -594,7 +594,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * @see HealthThermometerServiceCallback#onMeasurementIntervalClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getMeasurementIntervalClientCharacteristicConfiguration() {
+    public synchronized Integer getMeasurementIntervalClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted() && isMeasurementIntervalCharacteristicIndicateSupporeted()) {
             taskId = mBLEConnection.createReadDescriptorTask(HEALTH_THERMOMETER_SERVICE, null, MEASUREMENT_INTERVAL_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
@@ -649,7 +649,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * @see HealthThermometerServiceCallback#onMeasurementIntervalValidRangeReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getMeasurementIntervalValidRange() {
+    public synchronized Integer getMeasurementIntervalValidRange() {
         Integer taskId = null;
         if (isStarted() && isMeasurementIntervalCharacteristicWriteSupporeted()) {
             taskId = mBLEConnection.createReadDescriptorTask(HEALTH_THERMOMETER_SERVICE, null, MEASUREMENT_INTERVAL_CHARACTERISTIC, null, VALID_RANGE_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);

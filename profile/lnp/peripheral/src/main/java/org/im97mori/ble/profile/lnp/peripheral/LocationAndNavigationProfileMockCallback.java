@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.im97mori.ble.characteristic.u2a19.BatteryLevel;
 import org.im97mori.ble.characteristic.u2a24.ModelNumberString;
@@ -63,178 +64,13 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
          * @param locationAndNavigationServiceMockCallbackBuilder {@link org.im97mori.ble.service.lns.peripheral.LocationAndNavigationServiceMockCallback.Builder} instance
          */
         public Builder(@NonNull Context context
-                , @NonNull DeviceInformationServiceMockCallback.Builder<? extends DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder
-                , @NonNull BatteryServiceMockCallback.Builder<? extends BatteryServiceMockCallback> batteryServiceMockCallbackBuilder
-                , @NonNull LocationAndNavigationServiceMockCallback.Builder<? extends LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder) {
+                , @NonNull LocationAndNavigationServiceMockCallback.Builder<? extends LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder
+                , @Nullable DeviceInformationServiceMockCallback.Builder<? extends DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder
+                , @Nullable BatteryServiceMockCallback.Builder<? extends BatteryServiceMockCallback> batteryServiceMockCallbackBuilder) {
             mContext = context;
             mDeviceInformationServiceMockCallbackBuilder = deviceInformationServiceMockCallbackBuilder;
             mBatteryServiceMockCallbackBuilder = batteryServiceMockCallbackBuilder;
             mLocationAndNavigationServiceMockCallbackBuilder = locationAndNavigationServiceMockCallbackBuilder;
-        }
-
-        /**
-         * @see #addManufacturerNameString(ManufacturerNameString)
-         */
-        @NonNull
-        public Builder<T> addManufacturerNameString(@NonNull String manufacturerName) {
-            return addManufacturerNameString(new ManufacturerNameString(manufacturerName));
-        }
-
-        /**
-         * @see #addManufacturerNameString(byte[])
-         */
-        @NonNull
-        public Builder<T> addManufacturerNameString(@NonNull ManufacturerNameString manufacturerNameString) {
-            return addManufacturerNameString(manufacturerNameString.getBytes());
-        }
-
-        /**
-         * @see #addManufacturerNameString(int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> addManufacturerNameString(@NonNull byte[] value) {
-            return addManufacturerNameString(BluetoothGatt.GATT_SUCCESS
-                    , 0
-                    , value);
-        }
-
-        /**
-         * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#addManufacturerNameString(int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
-            mDeviceInformationServiceMockCallbackBuilder.addManufacturerNameString(responseCode, delay, value);
-            return this;
-        }
-
-        /**
-         * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#removeManufacturerNameString()
-         */
-        @NonNull
-        public Builder<T> removeManufacturerNameString() {
-            mDeviceInformationServiceMockCallbackBuilder.removeManufacturerNameString();
-            return this;
-        }
-
-        /**
-         * @see #addModelNumberString(ModelNumberString)
-         */
-        @NonNull
-        public Builder<T> addModelNumberString(@NonNull String modelNumber) {
-            return addModelNumberString(new ModelNumberString(modelNumber));
-        }
-
-        /**
-         * @see #addModelNumberString(byte[])
-         */
-        @NonNull
-        public Builder<T> addModelNumberString(ModelNumberString modelNumberString) {
-            return addModelNumberString(modelNumberString.getBytes());
-        }
-
-        /**
-         * @see #addModelNumberString(int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> addModelNumberString(@NonNull byte[] value) {
-            return addModelNumberString(BluetoothGatt.GATT_SUCCESS
-                    , 0
-                    , value);
-        }
-
-        /**
-         * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#addModelNumberString(int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
-            mDeviceInformationServiceMockCallbackBuilder.addModelNumberString(responseCode, delay, value);
-            return this;
-        }
-
-        /**
-         * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#removeModelNumberString()
-         */
-        @NonNull
-        public Builder<T> removeModelNumberString() {
-            mDeviceInformationServiceMockCallbackBuilder.removeModelNumberString();
-            return this;
-        }
-
-        /**
-         * @see #addBatteryLevel(int, int, int, long, byte[], int)
-         */
-        @NonNull
-        public Builder<T> addBatteryLevel(int index, @NonNull BatteryLevel batteryLevel) {
-            return addBatteryLevel(index, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGatt.GATT_SUCCESS, 0, batteryLevel.getBytes(), -1);
-        }
-
-        /**
-         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#addBatteryLevel(int, int, int, long, byte[], int)
-         */
-        @NonNull
-        public Builder<T> addBatteryLevel(int index, int property, int responseCode, long delay, @NonNull byte[] value, int notificationCount) {
-            mBatteryServiceMockCallbackBuilder.addBatteryLevel(index, property, responseCode, delay, value, notificationCount);
-            return this;
-        }
-
-        /**
-         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#removeBatteryLevel(int)
-         */
-        @NonNull
-        public Builder<T> removeBatteryLevel(int index) {
-            mBatteryServiceMockCallbackBuilder.removeBatteryLevel(index);
-            return this;
-        }
-
-        /**
-         * @see #setBatteryLevelCharacteristicPresentationFormat(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setBatteryLevelCharacteristicPresentationFormat(int index, @NonNull CharacteristicPresentationFormat characteristicPresentationFormat) {
-            return setBatteryLevelCharacteristicPresentationFormat(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicPresentationFormat.getBytes());
-        }
-
-        /**
-         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#setBatteryLevelCharacteristicPresentationFormat(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setBatteryLevelCharacteristicPresentationFormat(int index, int responseCode, long delay, @NonNull byte[] value) {
-            mBatteryServiceMockCallbackBuilder.setBatteryLevelCharacteristicPresentationFormat(index, responseCode, delay, value);
-            return this;
-        }
-
-        /**
-         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#removeBatteryLevelCharacteristicPresentationFormat(int)
-         */
-        @NonNull
-        public Builder<T> removeBatteryLevelCharacteristicPresentationFormat(int index) {
-            mBatteryServiceMockCallbackBuilder.removeBatteryLevelCharacteristicPresentationFormat(index);
-            return this;
-        }
-
-        /**
-         * @see #setBatteryLevelClientCharacteristicConfiguration(int, int, long, byte[])
-         */
-        public Builder<T> setBatteryLevelClientCharacteristicConfiguration(int index, @NonNull ClientCharacteristicConfiguration clientCharacteristicConfiguration) {
-            return setBatteryLevelClientCharacteristicConfiguration(index, BluetoothGatt.GATT_SUCCESS, 0, clientCharacteristicConfiguration.getBytes());
-        }
-
-        /**
-         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#setBatteryLevelClientCharacteristicConfiguration(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setBatteryLevelClientCharacteristicConfiguration(int index, int responseCode, long delay, @NonNull byte[] value) {
-            mBatteryServiceMockCallbackBuilder.setBatteryLevelClientCharacteristicConfiguration(index, responseCode, delay, value);
-            return this;
-        }
-
-        /**
-         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#removeBatteryLevelClientCharacteristicConfiguration(int)
-         */
-        @NonNull
-        public Builder<T> removeBatteryLevelClientCharacteristicConfiguration(int index) {
-            mBatteryServiceMockCallbackBuilder.removeBatteryLevelClientCharacteristicConfiguration(index);
-            return this;
         }
 
         /**
@@ -388,24 +224,211 @@ public class LocationAndNavigationProfileMockCallback extends AbstractProfileMoc
         }
 
         /**
+         * @see #addManufacturerNameString(ManufacturerNameString)
+         */
+        @NonNull
+        public Builder<T> addManufacturerNameString(@NonNull String manufacturerName) {
+            return addManufacturerNameString(new ManufacturerNameString(manufacturerName));
+        }
+
+        /**
+         * @see #addManufacturerNameString(byte[])
+         */
+        @NonNull
+        public Builder<T> addManufacturerNameString(@NonNull ManufacturerNameString manufacturerNameString) {
+            return addManufacturerNameString(manufacturerNameString.getBytes());
+        }
+
+        /**
+         * @see #addManufacturerNameString(int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addManufacturerNameString(@NonNull byte[] value) {
+            return addManufacturerNameString(BluetoothGatt.GATT_SUCCESS
+                    , 0
+                    , value);
+        }
+
+        /**
+         * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#addManufacturerNameString(int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
+            if (mDeviceInformationServiceMockCallbackBuilder != null) {
+                mDeviceInformationServiceMockCallbackBuilder.addManufacturerNameString(responseCode, delay, value);
+            }
+            return this;
+        }
+
+        /**
+         * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#removeManufacturerNameString()
+         */
+        @NonNull
+        public Builder<T> removeManufacturerNameString() {
+            if (mDeviceInformationServiceMockCallbackBuilder != null) {
+                mDeviceInformationServiceMockCallbackBuilder.removeManufacturerNameString();
+            }
+            return this;
+        }
+
+        /**
+         * @see #addModelNumberString(ModelNumberString)
+         */
+        @NonNull
+        public Builder<T> addModelNumberString(@NonNull String modelNumber) {
+            return addModelNumberString(new ModelNumberString(modelNumber));
+        }
+
+        /**
+         * @see #addModelNumberString(byte[])
+         */
+        @NonNull
+        public Builder<T> addModelNumberString(ModelNumberString modelNumberString) {
+            return addModelNumberString(modelNumberString.getBytes());
+        }
+
+        /**
+         * @see #addModelNumberString(int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addModelNumberString(@NonNull byte[] value) {
+            return addModelNumberString(BluetoothGatt.GATT_SUCCESS
+                    , 0
+                    , value);
+        }
+
+        /**
+         * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#addModelNumberString(int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
+            if (mDeviceInformationServiceMockCallbackBuilder != null) {
+                mDeviceInformationServiceMockCallbackBuilder.addModelNumberString(responseCode, delay, value);
+            }
+            return this;
+        }
+
+        /**
+         * @see org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder#removeModelNumberString()
+         */
+        @NonNull
+        public Builder<T> removeModelNumberString() {
+            if (mDeviceInformationServiceMockCallbackBuilder != null) {
+                mDeviceInformationServiceMockCallbackBuilder.removeModelNumberString();
+            }
+            return this;
+        }
+
+        /**
+         * @see #addBatteryLevel(int, int, int, long, byte[], int)
+         */
+        @NonNull
+        public Builder<T> addBatteryLevel(int index, @NonNull BatteryLevel batteryLevel) {
+            return addBatteryLevel(index, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGatt.GATT_SUCCESS, 0, batteryLevel.getBytes(), -1);
+        }
+
+        /**
+         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#addBatteryLevel(int, int, int, long, byte[], int)
+         */
+        @NonNull
+        public Builder<T> addBatteryLevel(int index, int property, int responseCode, long delay, @NonNull byte[] value, int notificationCount) {
+            if (mBatteryServiceMockCallbackBuilder != null) {
+                mBatteryServiceMockCallbackBuilder.addBatteryLevel(index, property, responseCode, delay, value, notificationCount);
+            }
+            return this;
+        }
+
+        /**
+         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#removeBatteryLevel(int)
+         */
+        @NonNull
+        public Builder<T> removeBatteryLevel(int index) {
+            if (mBatteryServiceMockCallbackBuilder != null) {
+                mBatteryServiceMockCallbackBuilder.removeBatteryLevel(index);
+            }
+            return this;
+        }
+
+        /**
+         * @see #setBatteryLevelCharacteristicPresentationFormat(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setBatteryLevelCharacteristicPresentationFormat(int index, @NonNull CharacteristicPresentationFormat characteristicPresentationFormat) {
+            return setBatteryLevelCharacteristicPresentationFormat(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicPresentationFormat.getBytes());
+        }
+
+        /**
+         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#setBatteryLevelCharacteristicPresentationFormat(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setBatteryLevelCharacteristicPresentationFormat(int index, int responseCode, long delay, @NonNull byte[] value) {
+            if (mBatteryServiceMockCallbackBuilder != null) {
+                mBatteryServiceMockCallbackBuilder.setBatteryLevelCharacteristicPresentationFormat(index, responseCode, delay, value);
+            }
+            return this;
+        }
+
+        /**
+         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#removeBatteryLevelCharacteristicPresentationFormat(int)
+         */
+        @NonNull
+        public Builder<T> removeBatteryLevelCharacteristicPresentationFormat(int index) {
+            if (mBatteryServiceMockCallbackBuilder != null) {
+                mBatteryServiceMockCallbackBuilder.removeBatteryLevelCharacteristicPresentationFormat(index);
+            }
+            return this;
+        }
+
+        /**
+         * @see #setBatteryLevelClientCharacteristicConfiguration(int, int, long, byte[])
+         */
+        public Builder<T> setBatteryLevelClientCharacteristicConfiguration(int index, @NonNull ClientCharacteristicConfiguration clientCharacteristicConfiguration) {
+            return setBatteryLevelClientCharacteristicConfiguration(index, BluetoothGatt.GATT_SUCCESS, 0, clientCharacteristicConfiguration.getBytes());
+        }
+
+        /**
+         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#setBatteryLevelClientCharacteristicConfiguration(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setBatteryLevelClientCharacteristicConfiguration(int index, int responseCode, long delay, @NonNull byte[] value) {
+            if (mBatteryServiceMockCallbackBuilder != null) {
+                mBatteryServiceMockCallbackBuilder.setBatteryLevelClientCharacteristicConfiguration(index, responseCode, delay, value);
+            }
+            return this;
+        }
+
+        /**
+         * @see org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder#removeBatteryLevelClientCharacteristicConfiguration(int)
+         */
+        @NonNull
+        public Builder<T> removeBatteryLevelClientCharacteristicConfiguration(int index) {
+            if (mBatteryServiceMockCallbackBuilder != null) {
+                mBatteryServiceMockCallbackBuilder.removeBatteryLevelClientCharacteristicConfiguration(index);
+            }
+            return this;
+        }
+
+        /**
          * @return {@link LocationAndNavigationProfileMockCallback} instance
          */
         public LocationAndNavigationProfileMockCallback build() {
-            return new LocationAndNavigationProfileMockCallback(mContext, mDeviceInformationServiceMockCallbackBuilder.build(), mBatteryServiceMockCallbackBuilder.build(), mLocationAndNavigationServiceMockCallbackBuilder.build());
+            return new LocationAndNavigationProfileMockCallback(mContext, mLocationAndNavigationServiceMockCallbackBuilder.build()
+                    , mDeviceInformationServiceMockCallbackBuilder == null ? null : mDeviceInformationServiceMockCallbackBuilder.build()
+                    , mBatteryServiceMockCallbackBuilder == null ? null : mBatteryServiceMockCallbackBuilder.build());
         }
 
     }
 
     /**
      * @param context                                  {@link Context} instance
+     * @param locationAndNavigationServiceMockCallback {@link LocationAndNavigationServiceMockCallback} instance
      * @param deviceInformationServiceMockCallback     {@link DeviceInformationServiceMockCallback} instance
      * @param batteryServiceMockCallback               {@link BatteryServiceMockCallback} instance
-     * @param locationAndNavigationServiceMockCallback {@link LocationAndNavigationServiceMockCallback} instance
      */
     public LocationAndNavigationProfileMockCallback(@NonNull Context context
-            , @NonNull DeviceInformationServiceMockCallback deviceInformationServiceMockCallback
-            , @NonNull BatteryServiceMockCallback batteryServiceMockCallback
-            , @NonNull LocationAndNavigationServiceMockCallback locationAndNavigationServiceMockCallback) {
+            , @NonNull LocationAndNavigationServiceMockCallback locationAndNavigationServiceMockCallback
+            , @Nullable DeviceInformationServiceMockCallback deviceInformationServiceMockCallback
+            , @Nullable BatteryServiceMockCallback batteryServiceMockCallback) {
         super(context, true, deviceInformationServiceMockCallback, batteryServiceMockCallback, locationAndNavigationServiceMockCallback);
     }
 

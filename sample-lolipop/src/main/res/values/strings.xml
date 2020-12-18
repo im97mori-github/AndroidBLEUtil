@@ -41,6 +41,8 @@
     <string name="label_anp_central">ANP Central sample</string>
     <string name="label_tip_peripheral">TIP Peripheral sample</string>
     <string name="label_tip_central">TIP Central sample</string>
+    <string name="label_cpp_peripheral">CPP Peripheral sample</string>
+    <string name="label_cpp_central">CPP Central sample</string>
 
     <string name="menu_discover_service">Discover Service</string>
     <string name="menu_discover_service_sync">Discover Service(Synchronous)</string>
@@ -103,6 +105,7 @@
     <string name="menu_write_ln_control_point_6">Write LN Control Point(6)</string>
     <string name="menu_write_ln_control_point_7">Write LN Control Point(7)</string>
     <string name="menu_write_ln_control_point_8">Write LN Control Point(8)</string>
+    <string name="menu_get_ln_control_point_characteristic_configuration">Read New Alert Client Characteristic Configuration</string>
     <string name="menu_indicate_ln_control_point_start">Indicate LN Control Point start</string>
     <string name="menu_indicate_ln_control_point_stop">Indicate LN Control Point stop</string>
     <string name="menu_notify_navigation_start">Notify Navigation start</string>
@@ -401,6 +404,40 @@
     <string name="menu_read_time_with_dst">Get Time with DST</string>
     <string name="menu_write_time_update_control_point">Set Time Update Control Point</string>
     <string name="menu_read_time_update_state">Get Time Update State</string>
+
+    <string name="menu_has_device_information_service">Has Device Information Service</string>
+    <string name="menu_is_cycling_power_control_point_characteristic_supporeted">Is Cycling Power Control Point supported</string>
+    <string name="menu_is_cycling_power_vector_characteristic_supporeted">IS Cycling Power Vector supported</string>
+    <string name="menu_read_cycling_power_feature">Get Cycling Power Feature</string>
+    <string name="menu_read_cycling_power_measurement_characteristic_configuration">Read Cycling Power Measurement Client Characteristic Configuration</string>
+    <string name="menu_notify_cycling_power_measurement_start">Notify Cycling Power Measurement start</string>
+    <string name="menu_notify_cycling_power_measurement_stop">Notify Cycling Power Measurement stop</string>
+    <string name="menu_read_sensor_location">Get Sensor Location</string>
+
+    <string name="menu_write_cycling_power_control_point_1">Set Cumulative Value</string>
+    <string name="menu_write_cycling_power_control_point_2">Update Sensor Location</string>
+    <string name="menu_write_cycling_power_control_point_3">Request Supported Sensor Locations</string>
+    <string name="menu_write_cycling_power_control_point_4">Set Crank Length</string>
+    <string name="menu_write_cycling_power_control_point_5">Request Crank Length</string>
+    <string name="menu_write_cycling_power_control_point_6">Set Chain Length</string>
+    <string name="menu_write_cycling_power_control_point_7">Request Chain Length</string>
+    <string name="menu_write_cycling_power_control_point_8">Set Chain Weight</string>
+    <string name="menu_write_cycling_power_control_point_9">Request Chain Weight</string>
+    <string name="menu_write_cycling_power_control_point_10">Set Span Length</string>
+    <string name="menu_write_cycling_power_control_point_11">Request Span Length</string>
+    <string name="menu_write_cycling_power_control_point_12">Start Offset Compensation</string>
+    <string name="menu_write_cycling_power_control_point_13_off">Mask Cycling Power Measurement</string>
+    <string name="menu_write_cycling_power_control_point_13_on">Unmask Cycling Power Measurement</string>
+    <string name="menu_write_cycling_power_control_point_14">Request Sampling Rate</string>
+    <string name="menu_write_cycling_power_control_point_15">Request Factory Calibration Date</string>
+    <string name="menu_write_cycling_power_control_point_16">Start Enhanced Offset Compensation</string>
+
+    <string name="menu_read_cycling_power_control_point_characteristic_configuration">Read Cycling Power Control Point Characteristic Configuration</string>
+    <string name="menu_indicate_cycling_power_control_point_start">Indicate Cycling Power Control Point start</string>
+    <string name="menu_indicate_cycling_power_control_point_stop">Indicate Cycling Power Control Point stop</string>
+    <string name="menu_read_cycling_power_vector_characteristic_configuration">Read Cycling Power Vector Client Characteristic Configuration</string>
+    <string name="menu_notify_cycling_power_vector_start">Notify Cycling Power Vector start</string>
+    <string name="menu_notify_cycling_power_vector_stop">Notify Cycling Power Vector stop</string>
 
     <string name="menu_clear">Clear</string>
 </resources>

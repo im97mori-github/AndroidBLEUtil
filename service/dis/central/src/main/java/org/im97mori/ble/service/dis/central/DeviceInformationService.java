@@ -78,7 +78,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && DEVICE_INFORMATION_SERVICE.equals(serviceUUID)) {
             if (MANUFACTURER_NAME_STRING_CHARACTERISTIC.equals(characteristicUUID)) {
                 mDeviceInformationServiceCallback.onManufacturerNameStringReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ManufacturerNameStringAndroid.CREATOR.createFromByteArray(values), argument);
@@ -107,7 +107,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && DEVICE_INFORMATION_SERVICE.equals(serviceUUID)) {
             if (MANUFACTURER_NAME_STRING_CHARACTERISTIC.equals(characteristicUUID)) {
                 mDeviceInformationServiceCallback.onManufacturerNameStringReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
@@ -136,7 +136,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && DEVICE_INFORMATION_SERVICE.equals(serviceUUID)) {
             if (MANUFACTURER_NAME_STRING_CHARACTERISTIC.equals(characteristicUUID)) {
                 mDeviceInformationServiceCallback.onManufacturerNameStringReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
@@ -232,7 +232,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onManufacturerNameStringReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onManufacturerNameStringReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
-    public Integer getManufacturerNameString() {
+    public synchronized Integer getManufacturerNameString() {
         Integer taskId = null;
         if (isStarted() && hasManufacturerNameString()) {
             taskId = mBLEConnection.createReadCharacteristicTask(DEVICE_INFORMATION_SERVICE, null, MANUFACTURER_NAME_STRING_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -248,7 +248,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onModelNumberStringReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onModelNumberStringReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
-    public Integer getModelNumberString() {
+    public synchronized Integer getModelNumberString() {
         Integer taskId = null;
         if (isStarted() && hasModelNumberString()) {
             taskId = mBLEConnection.createReadCharacteristicTask(DEVICE_INFORMATION_SERVICE, null, MODEL_NUMBER_STRING_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -264,7 +264,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onSerialNumberStringReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onSerialNumberStringReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
-    public Integer getSerialNumberString() {
+    public synchronized Integer getSerialNumberString() {
         Integer taskId = null;
         if (isStarted() && hasSerialNumberString()) {
             taskId = mBLEConnection.createReadCharacteristicTask(DEVICE_INFORMATION_SERVICE, null, SERIAL_NUMBER_STRING_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -280,7 +280,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onHardwareRevisionStringReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onHardwareRevisionStringReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
-    public Integer getHardwareRevisionString() {
+    public synchronized Integer getHardwareRevisionString() {
         Integer taskId = null;
         if (isStarted() && hasHardwareRevisionString()) {
             taskId = mBLEConnection.createReadCharacteristicTask(DEVICE_INFORMATION_SERVICE, null, HARDWARE_REVISION_STRING_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -296,7 +296,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onFirmwareRevisionStringReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onFirmwareRevisionStringReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
-    public Integer getFirmwareRevisionString() {
+    public synchronized Integer getFirmwareRevisionString() {
         Integer taskId = null;
         if (isStarted() && hasFirmwareRevisionString()) {
             taskId = mBLEConnection.createReadCharacteristicTask(DEVICE_INFORMATION_SERVICE, null, FIRMWARE_REVISION_STRING_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -312,7 +312,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onSoftwareRevisionStringReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onSoftwareRevisionStringReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
-    public Integer getSoftwareRevisionString() {
+    public synchronized Integer getSoftwareRevisionString() {
         Integer taskId = null;
         if (isStarted() && hasSoftwareRevisionString()) {
             taskId = mBLEConnection.createReadCharacteristicTask(DEVICE_INFORMATION_SERVICE, null, SOFTWARE_REVISION_STRING_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -328,7 +328,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onSystemIdReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onSystemIdReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
-    public Integer getSystemId() {
+    public synchronized Integer getSystemId() {
         Integer taskId = null;
         if (isStarted() && hasSystemId()) {
             taskId = mBLEConnection.createReadCharacteristicTask(DEVICE_INFORMATION_SERVICE, null, SYSTEM_ID_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -344,7 +344,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onIEEE_11073_20601_RegulatoryCertificationDataListReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onIEEE_11073_20601_RegulatoryCertificationDataListReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
-    public Integer getIEEE_11073_20601_RegulatoryCertificationDataList() {
+    public synchronized Integer getIEEE_11073_20601_RegulatoryCertificationDataList() {
         Integer taskId = null;
         if (isStarted() && hasIEEE_11073_20601_RegulatoryCertificationDataList()) {
             taskId = mBLEConnection.createReadCharacteristicTask(DEVICE_INFORMATION_SERVICE, null, IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -360,7 +360,7 @@ public class DeviceInformationService extends AbstractCentralService {
      * @see DeviceInformationServiceCallback#onPnPIdReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
      * @see DeviceInformationServiceCallback#onPnPIdReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
-    public Integer getPnpId() {
+    public synchronized Integer getPnpId() {
         Integer taskId = null;
         if (isStarted() && hasPnpId()) {
             taskId = mBLEConnection.createReadCharacteristicTask(DEVICE_INFORMATION_SERVICE, null, PNP_ID_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);

@@ -111,6 +111,12 @@
         <activity
             android:name=".tip.TipCentralSampleActivity"
             android:label="@string/label_tip_central" />
+        <activity
+            android:name=".cpp.CppPeripheralSampleActivity"
+            android:label="@string/label_cpp_peripheral" />
+        <activity
+            android:name=".cpp.CppCentralSampleActivity"
+            android:label="@string/label_cpp_central" />
     </application>
 
 </manifest>

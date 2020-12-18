@@ -73,7 +73,7 @@ public abstract class AbstractCentralService implements BLECallback {
      *
      * @return {@code true}:service ready(connected and service discovered), {@code false}:service not ready
      */
-    public boolean isStarted() {
+    public synchronized boolean isStarted() {
         return mBLEConnection.isConnected() && mIsServiceDiscovered;
     }
 
@@ -82,7 +82,7 @@ public abstract class AbstractCentralService implements BLECallback {
      *
      * @return task id. if {@code null} returned, service ready
      */
-    public Integer start() {
+    public synchronized Integer start() {
         Integer taskId = null;
         if (!isStarted()) {
             if (mBLEConnection.isConnected()) {
@@ -99,7 +99,7 @@ public abstract class AbstractCentralService implements BLECallback {
      *
      * @return task id. if {@code null} returned, service not ready
      */
-    public Integer quit() {
+    public synchronized Integer quit() {
         Integer taskId = null;
         if (mBLEConnection.isConnected()) {
             taskId = mBLEConnection.quit();
@@ -111,7 +111,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+    public synchronized void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onBLEConnected(taskId, bluetoothDevice, argument);
         }
@@ -122,7 +122,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onBLEConnectFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+    public synchronized void onBLEConnectFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onBLEConnectFailed(taskId, bluetoothDevice, status, argument);
         }
@@ -132,7 +132,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onBLEConnectTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+    public synchronized void onBLEConnectTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onBLEConnectTimeout(taskId, bluetoothDevice, argument);
         }
@@ -170,7 +170,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDiscoverServiceFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+    public synchronized void onDiscoverServiceFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onDiscoverServiceFailed(taskId, bluetoothDevice, status, argument);
         }
@@ -180,7 +180,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDiscoverServiceTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDiscoverServiceTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onDiscoverServiceTimeout(taskId, bluetoothDevice, timeout, argument);
         }
@@ -190,7 +190,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onRequestMtuSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int mtu, @Nullable Bundle argument) {
+    public synchronized void onRequestMtuSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int mtu, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onRequestMtuSuccess(taskId, bluetoothDevice, mtu, argument);
         }
@@ -200,7 +200,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onRequestMtuFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+    public synchronized void onRequestMtuFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onRequestMtuFailed(taskId, bluetoothDevice, status, argument);
         }
@@ -210,18 +210,17 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onRequestMtuTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+    public synchronized void onRequestMtuTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onRequestMtuTimeout(taskId, bluetoothDevice, timeout, argument);
         }
     }
 
-
     /**
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onCharacteristicReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, values, argument);
         }
@@ -231,7 +230,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onCharacteristicReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
         }
@@ -241,7 +240,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onCharacteristicReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
         }
@@ -251,7 +250,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onCharacteristicWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, values, argument);
         }
@@ -261,7 +260,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onCharacteristicWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
         }
@@ -271,7 +270,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onCharacteristicWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
         }
@@ -281,7 +280,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, argument);
         }
@@ -291,7 +290,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, argument);
         }
@@ -301,7 +300,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, argument);
         }
@@ -311,7 +310,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, argument);
         }
@@ -321,7 +320,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, argument);
         }
@@ -331,7 +330,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, argument);
         }
@@ -341,7 +340,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values) {
+    public synchronized void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values) {
         if (mBLECallback != null) {
             mBLECallback.onCharacteristicNotified(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, values);
         }
@@ -351,7 +350,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onReadPhySuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int txPhy, int rxPhy, @Nullable Bundle argument) {
+    public synchronized void onReadPhySuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int txPhy, int rxPhy, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onReadPhySuccess(taskId, bluetoothDevice, txPhy, rxPhy, argument);
         }
@@ -361,7 +360,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onReadPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+    public synchronized void onReadPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onReadPhyFailed(taskId, bluetoothDevice, status, argument);
         }
@@ -371,7 +370,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onReadPhyTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+    public synchronized void onReadPhyTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onReadPhyTimeout(taskId, bluetoothDevice, timeout, argument);
         }
@@ -381,7 +380,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onSetPreferredPhySuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int txPhy, int rxPhy, int phyOptions, @Nullable Bundle argument) {
+    public synchronized void onSetPreferredPhySuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int txPhy, int rxPhy, int phyOptions, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onSetPreferredPhySuccess(taskId, bluetoothDevice, txPhy, rxPhy, phyOptions, argument);
         }
@@ -391,7 +390,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onSetPreferredPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+    public synchronized void onSetPreferredPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onSetPreferredPhyFailed(taskId, bluetoothDevice, status, argument);
         }
@@ -401,7 +400,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onSetPreferredPhyTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+    public synchronized void onSetPreferredPhyTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onSetPreferredPhyTimeout(taskId, bluetoothDevice, timeout, argument);
         }
@@ -411,7 +410,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onReadRemoteRssiSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int rssi, @Nullable Bundle argument) {
+    public synchronized void onReadRemoteRssiSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int rssi, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onReadRemoteRssiSuccess(taskId, bluetoothDevice, rssi, argument);
         }
@@ -421,7 +420,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onReadRemoteRssiFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+    public synchronized void onReadRemoteRssiFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onReadRemoteRssiFailed(taskId, bluetoothDevice, status, argument);
         }
@@ -431,7 +430,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onReadRemoteRssiTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+    public synchronized void onReadRemoteRssiTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onReadRemoteRssiTimeout(taskId, bluetoothDevice, timeout, argument);
         }
@@ -441,7 +440,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onBeginReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+    public synchronized void onBeginReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onBeginReliableWriteSuccess(taskId, bluetoothDevice, argument);
         }
@@ -451,7 +450,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onBeginReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+    public synchronized void onBeginReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onBeginReliableWriteFailed(taskId, bluetoothDevice, status, argument);
         }
@@ -461,7 +460,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onExecuteReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+    public synchronized void onExecuteReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onExecuteReliableWriteSuccess(taskId, bluetoothDevice, argument);
         }
@@ -471,7 +470,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onExecuteReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+    public synchronized void onExecuteReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onExecuteReliableWriteFailed(taskId, bluetoothDevice, status, argument);
         }
@@ -481,7 +480,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onExecuteReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+    public synchronized void onExecuteReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onExecuteReliableWriteTimeout(taskId, bluetoothDevice, timeout, argument);
         }
@@ -491,7 +490,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onAbortReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+    public synchronized void onAbortReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onAbortReliableWriteSuccess(taskId, bluetoothDevice, argument);
         }
@@ -501,7 +500,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onAbortReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+    public synchronized void onAbortReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onAbortReliableWriteFailed(taskId, bluetoothDevice, status, argument);
         }
@@ -511,7 +510,7 @@ public abstract class AbstractCentralService implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onAbortReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
+    public synchronized void onAbortReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
         if (mBLECallback != null) {
             mBLECallback.onAbortReliableWriteTimeout(taskId, bluetoothDevice, timeout, argument);
         }

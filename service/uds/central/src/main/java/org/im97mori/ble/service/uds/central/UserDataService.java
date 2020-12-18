@@ -489,7 +489,7 @@ public class UserDataService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID)) {
             if (FIRST_NAME_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onFirstNameReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, FirstNameAndroid.CREATOR.createFromMultiplePacketArray(new RegisteredUserAndroid[]{RegisteredUserAndroid.CREATOR.createFromByteArray(values)}), argument);
@@ -560,7 +560,7 @@ public class UserDataService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID)) {
             if (FIRST_NAME_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onFirstNameReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
@@ -631,7 +631,7 @@ public class UserDataService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID)) {
             if (FIRST_NAME_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onFirstNameReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
@@ -702,7 +702,7 @@ public class UserDataService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID)) {
             if (FIRST_NAME_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onFirstNameWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, FirstNameAndroid.CREATOR.createFromMultiplePacketArray(new RegisteredUserAndroid[]{RegisteredUserAndroid.CREATOR.createFromByteArray(values)}), argument);
@@ -773,7 +773,7 @@ public class UserDataService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID)) {
             if (FIRST_NAME_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onFirstNameWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
@@ -844,7 +844,7 @@ public class UserDataService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID)) {
             if (FIRST_NAME_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onFirstNameWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
@@ -915,7 +915,7 @@ public class UserDataService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
             if (DATABASE_CHANGE_INCREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onDatabaseChangeIncrementClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
@@ -932,7 +932,7 @@ public class UserDataService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
             if (DATABASE_CHANGE_INCREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onDatabaseChangeIncrementClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
@@ -949,7 +949,7 @@ public class UserDataService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
             if (DATABASE_CHANGE_INCREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onDatabaseChangeIncrementClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
@@ -966,7 +966,7 @@ public class UserDataService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (DATABASE_CHANGE_INCREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
@@ -995,7 +995,7 @@ public class UserDataService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (DATABASE_CHANGE_INCREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
@@ -1024,7 +1024,7 @@ public class UserDataService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (DATABASE_CHANGE_INCREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
@@ -1053,7 +1053,7 @@ public class UserDataService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values) {
+    public synchronized void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID)) {
             if (DATABASE_CHANGE_INCREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 mUserDataServiceCallback.onDatabaseChangeIncrementNotified(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, DatabaseChangeIncrementAndroid.CREATOR.createFromByteArray(values));
@@ -1336,7 +1336,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onFirstNameReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getFirstName() {
+    public synchronized Integer getFirstName() {
         Integer taskId = null;
         if (isStarted() && isFirstNameCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, FIRST_NAME_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1353,7 +1353,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onFirstNameWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setFirstName(@NonNull FirstName firstName) {
+    public synchronized Integer setFirstName(@NonNull FirstName firstName) {
         Integer taskId = null;
         if (isStarted() && isFirstNameCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, FIRST_NAME_CHARACTERISTIC, null, firstName, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1370,7 +1370,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onLastNameReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getLastName() {
+    public synchronized Integer getLastName() {
         Integer taskId = null;
         if (isStarted() && isLastNameCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, LAST_NAME_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1387,7 +1387,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onLastNameWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setLastName(@NonNull LastName lastName) {
+    public synchronized Integer setLastName(@NonNull LastName lastName) {
         Integer taskId = null;
         if (isStarted() && isLastNameCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, LAST_NAME_CHARACTERISTIC, null, lastName, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1404,7 +1404,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onEmailAddressReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getEmailAddress() {
+    public synchronized Integer getEmailAddress() {
         Integer taskId = null;
         if (isStarted() && isEmailAddressCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, EMAIL_ADDRESS_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1421,7 +1421,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onEmailAddressWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setEmailAddress(@NonNull EmailAddress emailAddress) {
+    public synchronized Integer setEmailAddress(@NonNull EmailAddress emailAddress) {
         Integer taskId = null;
         if (isStarted() && isEmailAddressCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, EMAIL_ADDRESS_CHARACTERISTIC, null, emailAddress, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1438,7 +1438,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onAgeReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getAge() {
+    public synchronized Integer getAge() {
         Integer taskId = null;
         if (isStarted() && isAgeCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, AGE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1455,7 +1455,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onAgeWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setAge(@NonNull Age age) {
+    public synchronized Integer setAge(@NonNull Age age) {
         Integer taskId = null;
         if (isStarted() && isAgeCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, AGE_CHARACTERISTIC, null, age, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1472,7 +1472,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onDateOfBirthReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getDateOfBirth() {
+    public synchronized Integer getDateOfBirth() {
         Integer taskId = null;
         if (isStarted() && isDateOfBirthCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, DATE_OF_BIRTH_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1489,7 +1489,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onDateOfBirthWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setDateOfBirth(@NonNull DateOfBirth dateOfBirth) {
+    public synchronized Integer setDateOfBirth(@NonNull DateOfBirth dateOfBirth) {
         Integer taskId = null;
         if (isStarted() && isDateOfBirthCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, DATE_OF_BIRTH_CHARACTERISTIC, null, dateOfBirth, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1506,7 +1506,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onGenderReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getGender() {
+    public synchronized Integer getGender() {
         Integer taskId = null;
         if (isStarted() && isGenderCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, GENDER_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1523,7 +1523,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onGenderWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setGender(@NonNull Gender gender) {
+    public synchronized Integer setGender(@NonNull Gender gender) {
         Integer taskId = null;
         if (isStarted() && isGenderCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, GENDER_CHARACTERISTIC, null, gender, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1540,7 +1540,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onWeightReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getWeight() {
+    public synchronized Integer getWeight() {
         Integer taskId = null;
         if (isStarted() && isWeightCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, WEIGHT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1557,7 +1557,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onWeightWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setWeight(@NonNull Weight weight) {
+    public synchronized Integer setWeight(@NonNull Weight weight) {
         Integer taskId = null;
         if (isStarted() && isWeightCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, WEIGHT_CHARACTERISTIC, null, weight, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1574,7 +1574,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onHeightReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getHeight() {
+    public synchronized Integer getHeight() {
         Integer taskId = null;
         if (isStarted() && isHeightCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, HEIGHT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1591,7 +1591,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onHeightWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setHeight(@NonNull Height height) {
+    public synchronized Integer setHeight(@NonNull Height height) {
         Integer taskId = null;
         if (isStarted() && isHeightCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, HEIGHT_CHARACTERISTIC, null, height, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1608,7 +1608,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onVO2MaxReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getVO2Max() {
+    public synchronized Integer getVO2Max() {
         Integer taskId = null;
         if (isStarted() && isVO2MaxCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, VO2_MAX_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1625,7 +1625,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onVO2MaxWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setVO2Max(@NonNull VO2Max vo2Max) {
+    public synchronized Integer setVO2Max(@NonNull VO2Max vo2Max) {
         Integer taskId = null;
         if (isStarted() && isVO2MaxCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, VO2_MAX_CHARACTERISTIC, null, vo2Max, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1642,7 +1642,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onHeartRateMaxReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getHeartRateMax() {
+    public synchronized Integer getHeartRateMax() {
         Integer taskId = null;
         if (isStarted() && isHeartRateMaxCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, HEART_RATE_MAX_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1676,7 +1676,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onRestingHeartRateReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getRestingHeartRate() {
+    public synchronized Integer getRestingHeartRate() {
         Integer taskId = null;
         if (isStarted() && isRestingHeartRateCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, RESTING_HEART_RATE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1693,7 +1693,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onRestingHeartRateWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setRestingHeartRate(@NonNull RestingHeartRate restingHeartRate) {
+    public synchronized Integer setRestingHeartRate(@NonNull RestingHeartRate restingHeartRate) {
         Integer taskId = null;
         if (isStarted() && isRestingHeartRateCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, RESTING_HEART_RATE_CHARACTERISTIC, null, restingHeartRate, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1710,7 +1710,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onMaximumRecommendedHeartRateReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getMaximumRecommendedHeartRate() {
+    public synchronized Integer getMaximumRecommendedHeartRate() {
         Integer taskId = null;
         if (isStarted() && isMaximumRecommendedHeartRateCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1727,7 +1727,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onMaximumRecommendedHeartRateWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setMaximumRecommendedHeartRate(@NonNull MaximumRecommendedHeartRate maximumRecommendedHeartRate) {
+    public synchronized Integer setMaximumRecommendedHeartRate(@NonNull MaximumRecommendedHeartRate maximumRecommendedHeartRate) {
         Integer taskId = null;
         if (isStarted() && isMaximumRecommendedHeartRateCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC, null, maximumRecommendedHeartRate, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1744,7 +1744,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onAerobicThresholdReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getAerobicThreshold() {
+    public synchronized Integer getAerobicThreshold() {
         Integer taskId = null;
         if (isStarted() && isAerobicThresholdCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, AEROBIC_THRESHOLD_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1761,7 +1761,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onAerobicThresholdWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setAerobicThreshold(@NonNull AerobicThreshold aerobicThreshold) {
+    public synchronized Integer setAerobicThreshold(@NonNull AerobicThreshold aerobicThreshold) {
         Integer taskId = null;
         if (isStarted() && isAerobicThresholdCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, AEROBIC_THRESHOLD_CHARACTERISTIC, null, aerobicThreshold, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1778,7 +1778,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onAnaerobicThresholdReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getAnaerobicThreshold() {
+    public synchronized Integer getAnaerobicThreshold() {
         Integer taskId = null;
         if (isStarted() && isAnaerobicThresholdCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, ANAEROBIC_THRESHOLD_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1795,7 +1795,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onAnaerobicThresholdWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setAnaerobicThreshold(@NonNull AnaerobicThreshold anaerobicThreshold) {
+    public synchronized Integer setAnaerobicThreshold(@NonNull AnaerobicThreshold anaerobicThreshold) {
         Integer taskId = null;
         if (isStarted() && isAnaerobicThresholdCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, ANAEROBIC_THRESHOLD_CHARACTERISTIC, null, anaerobicThreshold, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1812,7 +1812,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onSportTypeForAerobicAndAnaerobicThresholdsReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getSportTypeForAerobicAndAnaerobicThresholds() {
+    public synchronized Integer getSportTypeForAerobicAndAnaerobicThresholds() {
         Integer taskId = null;
         if (isStarted() && isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1829,7 +1829,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onSportTypeForAerobicAndAnaerobicThresholdsWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setSportTypeForAerobicAndAnaerobicThresholds(@NonNull SportTypeForAerobicAndAnaerobicThresholds sportTypeForAerobicAndAnaerobicThresholds) {
+    public synchronized Integer setSportTypeForAerobicAndAnaerobicThresholds(@NonNull SportTypeForAerobicAndAnaerobicThresholds sportTypeForAerobicAndAnaerobicThresholds) {
         Integer taskId = null;
         if (isStarted() && isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC, null, sportTypeForAerobicAndAnaerobicThresholds, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1846,7 +1846,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onDateOfThresholdAssessmentReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getDateOfThresholdAssessment() {
+    public synchronized Integer getDateOfThresholdAssessment() {
         Integer taskId = null;
         if (isStarted() && isDateOfThresholdAssessmentCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1863,7 +1863,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onDateOfThresholdAssessmentWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setDateOfThresholdAssessment(@NonNull DateOfThresholdAssessment dateOfThresholdAssessment) {
+    public synchronized Integer setDateOfThresholdAssessment(@NonNull DateOfThresholdAssessment dateOfThresholdAssessment) {
         Integer taskId = null;
         if (isStarted() && isDateOfThresholdAssessmentCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC, null, dateOfThresholdAssessment, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1880,7 +1880,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onWaistCircumferenceReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getWaistCircumference() {
+    public synchronized Integer getWaistCircumference() {
         Integer taskId = null;
         if (isStarted() && isWaistCircumferenceCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, WAIST_CIRCUMFERENCE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1897,7 +1897,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onWaistCircumferenceWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setWaistCircumference(@NonNull WaistCircumference waistCircumference) {
+    public synchronized Integer setWaistCircumference(@NonNull WaistCircumference waistCircumference) {
         Integer taskId = null;
         if (isStarted() && isWaistCircumferenceCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, WAIST_CIRCUMFERENCE_CHARACTERISTIC, null, waistCircumference, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1914,7 +1914,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onHipCircumferenceReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getHipCircumference() {
+    public synchronized Integer getHipCircumference() {
         Integer taskId = null;
         if (isStarted() && isHipCircumferenceCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, HIP_CIRCUMFERENCE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1931,7 +1931,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onHipCircumferenceWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setHipCircumference(@NonNull HipCircumference hipCircumference) {
+    public synchronized Integer setHipCircumference(@NonNull HipCircumference hipCircumference) {
         Integer taskId = null;
         if (isStarted() && isHipCircumferenceCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, HIP_CIRCUMFERENCE_CHARACTERISTIC, null, hipCircumference, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1948,7 +1948,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onFatBurnHeartRateLowerLimitReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getFatBurnHeartRateLowerLimit() {
+    public synchronized Integer getFatBurnHeartRateLowerLimit() {
         Integer taskId = null;
         if (isStarted() && isFatBurnHeartRateLowerLimitCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1965,7 +1965,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onFatBurnHeartRateLowerLimitWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setFatBurnHeartRateLowerLimit(@NonNull FatBurnHeartRateLowerLimit fatBurnHeartRateLowerLimit) {
+    public synchronized Integer setFatBurnHeartRateLowerLimit(@NonNull FatBurnHeartRateLowerLimit fatBurnHeartRateLowerLimit) {
         Integer taskId = null;
         if (isStarted() && isFatBurnHeartRateLowerLimitCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, null, fatBurnHeartRateLowerLimit, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1982,7 +1982,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onFatBurnHeartRateLowerLimitReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getFatBurnHeartRateUpperLimit() {
+    public synchronized Integer getFatBurnHeartRateUpperLimit() {
         Integer taskId = null;
         if (isStarted() && isFatBurnHeartRateUpperLimitCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -1999,7 +1999,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onFatBurnHeartRateLowerLimitWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setFatBurnHeartRateUpperLimit(@NonNull FatBurnHeartRateUpperLimit fatBurnHeartRateUpperLimit) {
+    public synchronized Integer setFatBurnHeartRateUpperLimit(@NonNull FatBurnHeartRateUpperLimit fatBurnHeartRateUpperLimit) {
         Integer taskId = null;
         if (isStarted() && isFatBurnHeartRateUpperLimitCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, null, fatBurnHeartRateUpperLimit, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2016,7 +2016,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onAerobicHeartRateLowerLimitReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getAerobicHeartRateLowerLimit() {
+    public synchronized Integer getAerobicHeartRateLowerLimit() {
         Integer taskId = null;
         if (isStarted() && isAerobicHeartRateLowerLimitCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2033,7 +2033,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onAerobicHeartRateLowerLimitWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setAerobicHeartRateLowerLimit(@NonNull AerobicHeartRateLowerLimit aerobicHeartRateLowerLimit) {
+    public synchronized Integer setAerobicHeartRateLowerLimit(@NonNull AerobicHeartRateLowerLimit aerobicHeartRateLowerLimit) {
         Integer taskId = null;
         if (isStarted() && isAerobicHeartRateLowerLimitCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, null, aerobicHeartRateLowerLimit, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2050,7 +2050,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onAerobicHeartRateUpperLimitReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getAerobicHeartRateUpperLimit() {
+    public synchronized Integer getAerobicHeartRateUpperLimit() {
         Integer taskId = null;
         if (isStarted() && isAerobicHeartRateUpperLimitCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2067,7 +2067,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onAerobicHeartRateUpperLimitWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setAerobicHeartRateUpperLimit(@NonNull AerobicHeartRateUpperLimit aerobicHeartRateUpperLimit) {
+    public synchronized Integer setAerobicHeartRateUpperLimit(@NonNull AerobicHeartRateUpperLimit aerobicHeartRateUpperLimit) {
         Integer taskId = null;
         if (isStarted() && isAerobicHeartRateUpperLimitCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, null, aerobicHeartRateUpperLimit, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2084,7 +2084,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onAnaerobicHeartRateLowerLimitReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getAnaerobicHeartRateLowerLimit() {
+    public synchronized Integer getAnaerobicHeartRateLowerLimit() {
         Integer taskId = null;
         if (isStarted() && isAnaerobicHeartRateLowerLimitCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2101,7 +2101,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onAnaerobicHeartRateLowerLimitWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setAnaerobicHeartRateLowerLimit(@NonNull AnaerobicHeartRateLowerLimit anaerobicHeartRateLowerLimit) {
+    public synchronized Integer setAnaerobicHeartRateLowerLimit(@NonNull AnaerobicHeartRateLowerLimit anaerobicHeartRateLowerLimit) {
         Integer taskId = null;
         if (isStarted() && isAnaerobicHeartRateLowerLimitCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, null, anaerobicHeartRateLowerLimit, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2118,7 +2118,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onAnaerobicHeartRateUpperLimitReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getAnaerobicHeartRateUpperLimit() {
+    public synchronized Integer getAnaerobicHeartRateUpperLimit() {
         Integer taskId = null;
         if (isStarted() && isAnaerobicHeartRateUpperLimitCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2135,7 +2135,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onAnaerobicHeartRateUpperLimitWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setAnaerobicHeartRateUpperLimit(@NonNull AnaerobicHeartRateUpperLimit anaerobicHeartRateUpperLimit) {
+    public synchronized Integer setAnaerobicHeartRateUpperLimit(@NonNull AnaerobicHeartRateUpperLimit anaerobicHeartRateUpperLimit) {
         Integer taskId = null;
         if (isStarted() && isAnaerobicHeartRateUpperLimitCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, null, anaerobicHeartRateUpperLimit, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2152,7 +2152,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onFiveZoneHeartRateLimitsReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getFiveZoneHeartRateLimits() {
+    public synchronized Integer getFiveZoneHeartRateLimits() {
         Integer taskId = null;
         if (isStarted() && isFiveZoneHeartRateLimitsCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2169,7 +2169,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onFiveZoneHeartRateLimitsWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setFiveZoneHeartRateLimits(@NonNull FiveZoneHeartRateLimits fiveZoneHeartRateLimits) {
+    public synchronized Integer setFiveZoneHeartRateLimits(@NonNull FiveZoneHeartRateLimits fiveZoneHeartRateLimits) {
         Integer taskId = null;
         if (isStarted() && isFiveZoneHeartRateLimitsCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, null, fiveZoneHeartRateLimits, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2186,7 +2186,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onThreeZoneHeartRateLimitsReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getThreeZoneHeartRateLimits() {
+    public synchronized Integer getThreeZoneHeartRateLimits() {
         Integer taskId = null;
         if (isStarted() && isThreeZoneHeartRateLimitsCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2203,7 +2203,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onThreeZoneHeartRateLimitsWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setThreeZoneHeartRateLimits(@NonNull ThreeZoneHeartRateLimits threeZoneHeartRateLimits) {
+    public synchronized Integer setThreeZoneHeartRateLimits(@NonNull ThreeZoneHeartRateLimits threeZoneHeartRateLimits) {
         Integer taskId = null;
         if (isStarted() && isThreeZoneHeartRateLimitsCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, null, threeZoneHeartRateLimits, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2220,7 +2220,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onTwoZoneHeartRateLimitReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getTwoZoneHeartRateLimit() {
+    public synchronized Integer getTwoZoneHeartRateLimit() {
         Integer taskId = null;
         if (isStarted() && isTwoZoneHeartRateLimitCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2237,7 +2237,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onTwoZoneHeartRateLimitWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setTwoZoneHeartRateLimit(@NonNull TwoZoneHeartRateLimit twoZoneHeartRateLimit) {
+    public synchronized Integer setTwoZoneHeartRateLimit(@NonNull TwoZoneHeartRateLimit twoZoneHeartRateLimit) {
         Integer taskId = null;
         if (isStarted() && isTwoZoneHeartRateLimitCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, null, twoZoneHeartRateLimit, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2254,7 +2254,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onLanguageReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getLanguage() {
+    public synchronized Integer getLanguage() {
         Integer taskId = null;
         if (isStarted() && isLanguageCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, LANGUAGE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2271,7 +2271,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onLanguageWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setLanguage(@NonNull Language language) {
+    public synchronized Integer setLanguage(@NonNull Language language) {
         Integer taskId = null;
         if (isStarted() && isLanguageCharacteristicSupporeted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, LANGUAGE_CHARACTERISTIC, null, language, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2288,7 +2288,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onDatabaseChangeIncrementReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getDatabaseChangeIncrement() {
+    public synchronized Integer getDatabaseChangeIncrement() {
         Integer taskId = null;
         if (isStarted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2305,7 +2305,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onDatabaseChangeIncrementWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setDatabaseChangeIncrement(@NonNull DatabaseChangeIncrement databaseChangeIncrement) {
+    public synchronized Integer setDatabaseChangeIncrement(@NonNull DatabaseChangeIncrement databaseChangeIncrement) {
         Integer taskId = null;
         if (isStarted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, null, databaseChangeIncrement, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2322,7 +2322,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onDatabaseChangeIncrementClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getDatabaseChangeIncrementClientCharacteristicConfiguration() {
+    public synchronized Integer getDatabaseChangeIncrementClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted() && isDatabaseChangeIncrementCharacteristicNotifySupporeted()) {
             taskId = mBLEConnection.createReadDescriptorTask(USER_DATA_SERVICE, null, DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
@@ -2377,7 +2377,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onUserIndexReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getUserIndex() {
+    public synchronized Integer getUserIndex() {
         Integer taskId = null;
         if (isStarted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, USER_INDEX_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2394,7 +2394,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onRegisteredUserClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getRegisteredUserClientCharacteristicConfiguration() {
+    public synchronized Integer getRegisteredUserClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted()) {
             taskId = mBLEConnection.createReadDescriptorTask(USER_DATA_SERVICE, null, REGISTERED_USER_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
@@ -2449,7 +2449,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onUserControlPointWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setUserControlPoint(@NonNull UserControlPoint userControlPoint) {
+    public synchronized Integer setUserControlPoint(@NonNull UserControlPoint userControlPoint) {
         Integer taskId = null;
         if (isStarted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, USER_CONTROL_POINT_CHARACTERISTIC, null, userControlPoint, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -2466,7 +2466,7 @@ public class UserDataService extends AbstractCentralService {
      * @see UserDataServiceCallback#onUserControlPointClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getUserControlPointClientCharacteristicConfiguration() {
+    public synchronized Integer getUserControlPointClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted()) {
             taskId = mBLEConnection.createReadDescriptorTask(USER_DATA_SERVICE, null, USER_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);

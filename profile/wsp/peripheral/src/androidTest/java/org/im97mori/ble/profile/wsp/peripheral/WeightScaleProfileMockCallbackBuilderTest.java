@@ -900,6 +900,35 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_addFirstName_00101() {
+        final int originalResponseCode = 1;
+        final long originalDelay = 2;
+        final String firstNameString = "firstNameString";
+        final FirstName firstName = new FirstName(firstNameString);
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.addFirstName(originalResponseCode, originalDelay, firstName.getBytes());
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeFirstName_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -926,6 +955,29 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeFirstName());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeFirstName_00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+        Exception exception = null;
+        try {
+            baseBuilder.removeFirstName();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -1058,6 +1110,35 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_addAge_00101() {
+        final int originalResponseCode = 1;
+        final long originalDelay = 2;
+        final int originalValue = 3;
+        final Age age = new Age(originalValue);
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.addAge(originalResponseCode, originalDelay, age.getBytes());
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeAge_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -1084,6 +1165,30 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeAge());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeAge_00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeAge();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -1227,6 +1332,37 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_addDateOfBirth_00101() {
+        final int originalResponseCode = 1;
+        final long originalDelay = 2;
+        final int originalYear = 3;
+        final int originalMonth = 4;
+        final int originalDay = 5;
+        final DateOfBirth dateOfBirth = new DateOfBirth(originalYear, originalMonth, originalDay);
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.addDateOfBirth(originalResponseCode, originalDelay, dateOfBirth.getBytes());
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeDateOfBirth_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -1253,6 +1389,30 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeDateOfBirth());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeDateOfBirth_00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeDateOfBirth();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -1388,6 +1548,35 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_addGender_00101() {
+        final int originalResponseCode = 1;
+        final long originalDelay = 2;
+        final int originalGender = 3;
+        final Gender gender = new Gender(originalGender);
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.addGender(originalResponseCode, originalDelay, gender.getBytes());
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeGender_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -1414,6 +1603,30 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeGender());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeGender_00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeGender();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -1553,6 +1766,35 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_addHeight_00101() {
+        final int originalResponseCode = 1;
+        final long originalDelay = 2;
+        final int originalHeight = 3;
+        final Height height = new Height(originalHeight);
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.addHeight(originalResponseCode, originalDelay, height.getBytes());
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeHeight_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -1579,6 +1821,30 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeHeight());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeHeight_00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeHeight();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -1659,6 +1925,39 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_addDatabaseChangeIncrement_00101() {
+        final byte[] originalDescriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
+
+        final int originalCharacteristicResponseCode = 1;
+        final long originalCharacteristicDelay = 2;
+        final boolean originalIsNotificatable = false;
+        final int originalDescriptorResponseCode = 4;
+        final long originalDescriptorDelay = 5;
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.addDatabaseChangeIncrement(originalCharacteristicResponseCode, originalCharacteristicDelay, originalIsNotificatable, originalDescriptorResponseCode, originalDescriptorDelay, originalDescriptorValue));
+
+        Exception exception = null;
+        try {
+            baseBuilder.addDatabaseChangeIncrement(originalCharacteristicResponseCode, originalCharacteristicDelay, originalIsNotificatable, originalDescriptorResponseCode, originalDescriptorDelay, originalDescriptorValue);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeDatabaseChangeIncrement_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -1685,6 +1984,31 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeDatabaseChangeIncrement());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeDatabaseChangeIncrement_00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.removeDatabaseChangeIncrement());
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeDatabaseChangeIncrement();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -1753,6 +2077,33 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_addUserIndex_00101() {
+        final int originalResponseCode = 1;
+        final long originalDelay = 2;
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.addUserIndex(originalResponseCode, originalDelay);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeUserIndex_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -1779,6 +2130,31 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeUserIndex());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeUserIndex_00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.removeUserIndex());
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeUserIndex();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -1857,6 +2233,37 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_addRegisteredUser_00101() {
+        final byte[] originalDescriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
+
+        final int originalCharacteristicResponseCode = 1;
+        final long originalCharacteristicDelay = 2;
+        final int originalDescriptorResponseCode = 4;
+        final long originalDescriptorDelay = 5;
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.addRegisteredUser(originalCharacteristicResponseCode, originalCharacteristicDelay, originalDescriptorResponseCode, originalDescriptorDelay, originalDescriptorValue);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeRegisteredUser00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -1883,6 +2290,30 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeRegisteredUser());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeRegisteredUser00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeRegisteredUser();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -1942,6 +2373,47 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_addUserControlPoint_00101() {
+        final long originalCharacteristicDelay = 1;
+        final int originalRegisterNewUserResponseValue = 2;
+        final int originalConsentResponseValue = 3;
+        final int originalDeleteUserDataResponseValue = 4;
+        final int originalListAllUsersResponseValue = 5;
+        final int originalDeleteUsersResponseValue = 6;
+        final int originalDescriptorResponseCode = 7;
+        final long originalDescriptorDelay = 8;
+        final byte[] originalDescriptorValue = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.addUserControlPoint(originalCharacteristicDelay
+                    , originalRegisterNewUserResponseValue
+                    , originalConsentResponseValue
+                    , originalDeleteUserDataResponseValue
+                    , originalListAllUsersResponseValue
+                    , originalDeleteUsersResponseValue
+                    , originalDescriptorResponseCode
+                    , originalDescriptorDelay
+                    , originalDescriptorValue);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeUserControlPoint_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -1968,6 +2440,31 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeUserControlPoint());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeUserControlPoint_00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , null
+                , batteryServiceMockCallbackBuilder
+                , currentTimeServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.removeUserControlPoint());
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeUserControlPoint();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -2047,6 +2544,38 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_addBatteryLevel_00101() {
+        final int originalProperty = 1;
+        final int originalResponseCode = 2;
+        final long originalDelay = 3;
+        final int originalNotificationCount = 4;
+        final int originalIndex = 5;
+        final int originalBatteryLevel = 6;
+        final BatteryLevel batteryLevel = new BatteryLevel(originalBatteryLevel);
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , userDataServiceMockCallbackBuilder
+                , null
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.addBatteryLevel(originalIndex, originalProperty, originalResponseCode, originalDelay, batteryLevel.getBytes(), originalNotificationCount);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeBatteryLevel_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2075,6 +2604,32 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeBatteryLevel(originalIndex));
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeBatteryLevel_00101() {
+        final int originalIndex = 1;
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , userDataServiceMockCallbackBuilder
+                , null
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeBatteryLevel(originalIndex);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -2149,6 +2704,35 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_setBatteryLevelCharacteristicPresentationFormat_00101() {
+        final int originalResponseCode = 1;
+        final long originalDelay = 2;
+        final int originalIndex = 3;
+        final byte[] originalValue = new byte[]{4, 5, 6, 7, 8, 9, 10};
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , userDataServiceMockCallbackBuilder
+                , null
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.setBatteryLevelCharacteristicPresentationFormat(originalIndex, originalResponseCode, originalDelay, originalValue);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeBatteryLevelCharacteristicPresentationFormat_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2177,6 +2761,32 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeBatteryLevelCharacteristicPresentationFormat(originalIndex));
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeBatteryLevelCharacteristicPresentationFormat_00101() {
+        final int originalIndex = 1;
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , userDataServiceMockCallbackBuilder
+                , null
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeBatteryLevelCharacteristicPresentationFormat(originalIndex);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -2251,6 +2861,35 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_setBatteryLevelClientCharacteristicConfiguration_00101() {
+        final int originalResponseCode = 1;
+        final long originalDelay = 2;
+        final int originalIndex = 3;
+        final byte[] originalValue = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , userDataServiceMockCallbackBuilder
+                , null
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.setBatteryLevelClientCharacteristicConfiguration(originalIndex, originalResponseCode, originalDelay, originalValue);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeBatteryLevelClientCharacteristicConfiguration_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
@@ -2279,6 +2918,32 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeBatteryLevelClientCharacteristicConfiguration(originalIndex));
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeBatteryLevelClientCharacteristicConfiguration_00101() {
+        final int originalIndex = 1;
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , userDataServiceMockCallbackBuilder
+                , null
+                , currentTimeServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeBatteryLevelClientCharacteristicConfiguration(originalIndex);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -2363,6 +3028,39 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_addCurrentTime_00101() {
+        final boolean originalIsWritable = false;
+        final int originalCharacteristicResponseCode = 1;
+        final long originalCharacteristicDelay = 2;
+        final int originalNotificationCount = 3;
+        final int originalDescriptorResponseCode = 4;
+        final long originalDescriptorDelay = 5;
+        final byte[] originalCharacteristicValue = new byte[]{6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+        final byte[] originalDescriptorValue = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , userDataServiceMockCallbackBuilder
+                , batteryServiceMockCallbackBuilder
+                , null);
+
+        Exception exception = null;
+        try {
+            baseBuilder.addCurrentTime(originalIsWritable, originalCharacteristicResponseCode, originalCharacteristicDelay, originalCharacteristicValue, originalNotificationCount, originalDescriptorResponseCode, originalDescriptorDelay, originalDescriptorValue);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeCurrentTime_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -2389,6 +3087,30 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeCurrentTime());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeCurrentTime_00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , userDataServiceMockCallbackBuilder
+                , batteryServiceMockCallbackBuilder
+                , null);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeCurrentTime();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -2492,6 +3214,35 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_addLocalTimeInformation_00101() {
+        final boolean originalIsWritable = false;
+        final int originalResponseCode = 0;
+        final long originalDelay = 1;
+        final byte[] originalValue = new byte[]{2, 3};
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , userDataServiceMockCallbackBuilder
+                , batteryServiceMockCallbackBuilder
+                , null);
+
+        Exception exception = null;
+        try {
+            baseBuilder.addLocalTimeInformation(originalIsWritable, originalResponseCode, originalDelay, originalValue);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeLocalTimeInformation_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -2518,6 +3269,30 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeLocalTimeInformation());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeLocalTimeInformation_00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , userDataServiceMockCallbackBuilder
+                , batteryServiceMockCallbackBuilder
+                , null);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeLocalTimeInformation();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -2619,6 +3394,34 @@ public class WeightScaleProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_addReferenceTimeInformation_00101() {
+        final int originalResponseCode = 0;
+        final long originalDelay = 1;
+        final byte[] originalValue = new byte[]{2, 3, 4, 5};
+
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , userDataServiceMockCallbackBuilder
+                , batteryServiceMockCallbackBuilder
+                , null);
+
+        Exception exception = null;
+        try {
+            baseBuilder.addReferenceTimeInformation(originalResponseCode, originalDelay, originalValue);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeReferenceTimeInformation_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -2645,6 +3448,30 @@ public class WeightScaleProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeReferenceTimeInformation());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeReferenceTimeInformation_00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> weightScaleServiceMockCallbackBuilder = new WspWeightScaleServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        UserDataServiceMockCallback.Builder<WspUserDataServiceMockCallback> userDataServiceMockCallbackBuilder = new WspUserDataServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , weightScaleServiceMockCallbackBuilder
+                , deviceInformationServiceMockCallbackBuilder
+                , userDataServiceMockCallbackBuilder
+                , batteryServiceMockCallbackBuilder
+                , null);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeReferenceTimeInformation();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -2914,6 +3741,55 @@ public class WeightScaleProfileMockCallbackBuilderTest {
                     .addManufacturerNameString("ManufacturerNameString")
                     .addModelNumberString(0, 1, new ModelNumberString("ModelNumberString").getBytes())
                     .addCurrentTime(new CurrentTime(new byte[10]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
+    public void test_build_00501() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new WeightScaleServiceMockCallback.Builder<>()
+                    , new DeviceInformationServiceMockCallback.Builder<>()
+                    , new UserDataServiceMockCallback.Builder<>()
+                    , new BatteryServiceMockCallback.Builder<>()
+                    , new CurrentTimeServiceMockCallback.Builder<>())
+
+                    .addWeightScaleFeature(new WeightScaleFeature(false, false, false, WeightScaleFeature.WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED, WeightScaleFeature.WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED))
+                    .addWeightMeasurement(new WeightMeasurement(new byte[3]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                    .addManufacturerNameString("ManufacturerNameString")
+                    .addModelNumberString(0, 1, new ModelNumberString("ModelNumberString").getBytes())
+                    .addCurrentTime(new CurrentTime(new byte[10]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
+    public void test_build_00502() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new WeightScaleServiceMockCallback.Builder<>()
+                    , new DeviceInformationServiceMockCallback.Builder<>()
+                    , new UserDataServiceMockCallback.Builder<>()
+                    , new BatteryServiceMockCallback.Builder<>()
+                    , null)
+
+                    .addWeightScaleFeature(new WeightScaleFeature(false, false, false, WeightScaleFeature.WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED, WeightScaleFeature.WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED))
+                    .addWeightMeasurement(new WeightMeasurement(new byte[3]), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                    .addManufacturerNameString("ManufacturerNameString")
+                    .addModelNumberString(0, 1, new ModelNumberString("ModelNumberString").getBytes())
+
                     .build();
         } catch (Exception e) {
             exception = e;

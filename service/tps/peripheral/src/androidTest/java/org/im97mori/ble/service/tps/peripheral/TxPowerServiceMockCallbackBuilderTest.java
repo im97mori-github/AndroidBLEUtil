@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a07.TxPowerLevel;
+import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicReference;

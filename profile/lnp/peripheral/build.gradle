@@ -32,8 +32,7 @@ dependencies {
     api "${groupId}:${serviceDisPeripheralAndroid.artifactId}:${serviceDisPeripheralAndroid.versionName}"
     api "${groupId}:${serviceBasPeripheralAndroid.artifactId}:${serviceBasPeripheralAndroid.versionName}"
     api "${groupId}:${serviceLnsPeripheralAndroid.artifactId}:${serviceLnsPeripheralAndroid.versionName}"
-    androidTestImplementation androidxTestRunner
-    androidTestImplementation androidxTestCore
+    androidTestImplementation apiTest
 }
 
 task sourcesJar(type: Jar) {

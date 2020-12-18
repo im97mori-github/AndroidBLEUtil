@@ -75,7 +75,7 @@ public class UserControlPointCharacteristicDataTest {
         assertEquals(result1.uuid, result2.uuid);
         assertEquals(result1.property, result2.property);
         assertEquals(result1.permission, result2.permission);
-        assertNotNull(result2.descriptorDataList);
+        assertNotNull(result1.descriptorDataList);
         assertNotNull(result2.descriptorDataList);
         assertEquals(result1.descriptorDataList.size(), result2.descriptorDataList.size());
         assertArrayEquals(result1.descriptorDataList.toArray(), result2.descriptorDataList.toArray());
@@ -218,7 +218,7 @@ public class UserControlPointCharacteristicDataTest {
         assertEquals(result1.uuid, result2.uuid);
         assertEquals(result1.property, result2.property);
         assertEquals(result1.permission, result2.permission);
-        assertNotNull(result2.descriptorDataList);
+        assertNotNull(result1.descriptorDataList);
         assertNotNull(result2.descriptorDataList);
         assertEquals(result1.descriptorDataList.size(), result2.descriptorDataList.size());
         assertArrayEquals(result1.descriptorDataList.toArray(), result2.descriptorDataList.toArray());
@@ -256,7 +256,7 @@ public class UserControlPointCharacteristicDataTest {
         assertEquals(result1.uuid, result2.uuid);
         assertEquals(result1.property, result2.property);
         assertEquals(result1.permission, result2.permission);
-        assertNotNull(result2.descriptorDataList);
+        assertNotNull(result1.descriptorDataList);
         assertNotNull(result2.descriptorDataList);
         assertEquals(result1.descriptorDataList.size(), result2.descriptorDataList.size());
         assertArrayEquals(result1.descriptorDataList.toArray(), result2.descriptorDataList.toArray());

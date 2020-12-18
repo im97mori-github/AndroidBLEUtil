@@ -13,6 +13,7 @@ import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a47.SupportedNewAlertCategory;
 import org.im97mori.ble.characteristic.u2a48.SupportedUnreadAlertCategory;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
+import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -51,7 +52,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             new AlertNotificationServiceMockCallback.Builder<>()
-                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, 0, 0))
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, false, 0))
                     .build();
         } catch (RuntimeException e) {
             exception = e;
@@ -66,7 +67,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             new AlertNotificationServiceMockCallback.Builder<>()
-                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, 0, 0))
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, false, 0))
                     .addNewAlert(0
                             , ""
                             , 0
@@ -104,7 +105,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             new AlertNotificationServiceMockCallback.Builder<>()
-                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, 0, 0))
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, false, 0))
                     .addNewAlert(0
                             , ""
                             , 0
@@ -128,7 +129,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , 0
                             , 0
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
-                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, 0, 0))
+                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, false, 0))
                     .build();
         } catch (RuntimeException e) {
             exception = e;
@@ -143,7 +144,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             new AlertNotificationServiceMockCallback.Builder<>()
-                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, 0, 0))
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, false, 0))
                     .addNewAlert(0
                             , ""
                             , 0
@@ -167,7 +168,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , 0
                             , 0
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
-                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, 0, 0))
+                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, false, 0))
                     .addUnreadAlertStatus(0
                             , 0
                             , 0
@@ -195,7 +196,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             new AlertNotificationServiceMockCallback.Builder<>()
-                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, 0, 0))
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, false, 0))
                     .addNewAlert(0
                             , ""
                             , 0
@@ -219,7 +220,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , 0
                             , 0
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
-                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, 0, 0))
+                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, false, 0))
                     .addUnreadAlertStatus(0
                             , 0
                             , 0
@@ -250,7 +251,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
 
     @Test
     public void test_addSupportedNewAlertCategory_00001() {
-        SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, 0, 0);
+        SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, false, 0);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
@@ -288,7 +289,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , 0
                             , 0
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
-                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, 0, 0))
+                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, false, 0))
                     .addUnreadAlertStatus(0
                             , 0
                             , 0
@@ -332,7 +333,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
 
     @Test
     public void test_addSupportedNewAlertCategory_00101() {
-        SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, 0, 0);
+        SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, false, 0);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
@@ -370,7 +371,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , 0
                             , 0
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
-                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, 0, 0))
+                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, false, 0))
                     .addUnreadAlertStatus(0
                             , 0
                             , 0
@@ -414,7 +415,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
 
     @Test
     public void test_addSupportedNewAlertCategory_00201() {
-        SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, 0, 0);
+        SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, false, 0);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
@@ -452,7 +453,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , 0
                             , 0
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
-                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, 0, 0))
+                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, false, 0))
                     .addUnreadAlertStatus(0
                             , 0
                             , 0
@@ -499,7 +500,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             new AlertNotificationServiceMockCallback.Builder<>()
-                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, 0, 0))
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, false, 0))
                     .addNewAlert(0
                             , ""
                             , 0
@@ -523,7 +524,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , 0
                             , 0
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
-                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, 0, 0))
+                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, false, 0))
                     .addUnreadAlertStatus(0
                             , 0
                             , 0
@@ -571,7 +572,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             AlertNotificationServiceMockCallback callback = new AlertNotificationServiceMockCallback.Builder<>()
-                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, 0, 0))
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, false, 0))
                     .addNewAlert(0
                             , ""
                             , 0
@@ -595,7 +596,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , 0
                             , 0
                             , clientCharacteristicConfiguration.getBytes())
-                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, 0, 0))
+                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, false, 0))
                     .addUnreadAlertStatus(0
                             , 0
                             , 0
@@ -647,7 +648,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             new AlertNotificationServiceMockCallback.Builder<>()
-                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, 0, 0))
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, false, 0))
                     .addNewAlert(0
                             , ""
                             , 0
@@ -671,7 +672,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , 0
                             , 0
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
-                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, 0, 0))
+                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, false, 0))
                     .addUnreadAlertStatus(0
                             , 0
                             , 0
@@ -704,7 +705,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
 
     @Test
     public void test_addSupportedUnreadAlertCategory_00001() {
-        SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, 0, 0);
+        SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, false, 0);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
@@ -718,7 +719,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             AlertNotificationServiceMockCallback callback = new AlertNotificationServiceMockCallback.Builder<>()
-                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, 0, 0))
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, false, 0))
                     .addNewAlert(0
                             , ""
                             , 0
@@ -786,7 +787,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
 
     @Test
     public void test_addSupportedUnreadAlertCategory_00101() {
-        SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, 0, 0);
+        SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, false, 0);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
@@ -800,7 +801,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             AlertNotificationServiceMockCallback callback = new AlertNotificationServiceMockCallback.Builder<>()
-                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, 0, 0))
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, false, 0))
                     .addNewAlert(0
                             , ""
                             , 0
@@ -868,7 +869,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
 
     @Test
     public void test_addSupportedUnreadAlertCategory_00201() {
-        SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, 0, 0);
+        SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, false, 0);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MockBLEServerConnection mockBLEServerConnection = new MockBLEServerConnection() {
@@ -882,7 +883,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             AlertNotificationServiceMockCallback callback = new AlertNotificationServiceMockCallback.Builder<>()
-                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, 0, 0))
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, false, 0))
                     .addNewAlert(0
                             , ""
                             , 0
@@ -953,7 +954,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             new AlertNotificationServiceMockCallback.Builder<>()
-                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, 0, 0))
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, false, 0))
                     .addNewAlert(0
                             , ""
                             , 0
@@ -977,7 +978,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , 0
                             , 0
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
-                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, 0, 0))
+                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, false, 0))
                     .addUnreadAlertStatus(0
                             , 0
                             , 0
@@ -1025,7 +1026,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             AlertNotificationServiceMockCallback callback = new AlertNotificationServiceMockCallback.Builder<>()
-                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, 0, 0))
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, false, 0))
                     .addNewAlert(0
                             , ""
                             , 0
@@ -1049,7 +1050,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , 0
                             , 0
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
-                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, 0, 0))
+                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, false, 0))
                     .addUnreadAlertStatus(0
                             , 0
                             , 0
@@ -1101,7 +1102,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             new AlertNotificationServiceMockCallback.Builder<>()
-                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, 0, 0))
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, false, 0))
                     .addNewAlert(0
                             , ""
                             , 0
@@ -1125,7 +1126,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , 0
                             , 0
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
-                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, 0, 0))
+                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, false, 0))
                     .addUnreadAlertStatus(0
                             , 0
                             , 0
@@ -1170,7 +1171,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             AlertNotificationServiceMockCallback callback = new AlertNotificationServiceMockCallback.Builder<>()
-                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, 0, 0))
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, false, 0))
                     .addNewAlert(0
                             , ""
                             , 0
@@ -1194,7 +1195,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , 0
                             , 0
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
-                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, 0, 0))
+                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, false, 0))
                     .addUnreadAlertStatus(0
                             , 0
                             , 0
@@ -1241,7 +1242,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             new AlertNotificationServiceMockCallback.Builder<>()
-                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, 0, 0))
+                    .addSupportedNewAlertCategory(new SupportedNewAlertCategory(0, false, 0))
                     .addNewAlert(0
                             , ""
                             , 0
@@ -1265,7 +1266,7 @@ public class AlertNotificationServiceMockCallbackBuilderTest {
                             , 0
                             , 0
                             , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
-                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, 0, 0))
+                    .addSupportedUnreadAlertCategory(new SupportedUnreadAlertCategory(0, false, 0))
                     .addUnreadAlertStatus(0
                             , 0
                             , 0

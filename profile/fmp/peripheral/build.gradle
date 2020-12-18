@@ -30,8 +30,7 @@ android {
 dependencies {
     api "${groupId}:${profilePeripheralAndroid.artifactId}:${profilePeripheralAndroid.versionName}"
     api "${groupId}:${serviceIasPeripheralAndroid.artifactId}:${serviceIasPeripheralAndroid.versionName}"
-    androidTestImplementation androidxTestRunner
-    androidTestImplementation androidxTestCore
+    androidTestImplementation apiTest
 }
 
 task sourcesJar(type: Jar) {

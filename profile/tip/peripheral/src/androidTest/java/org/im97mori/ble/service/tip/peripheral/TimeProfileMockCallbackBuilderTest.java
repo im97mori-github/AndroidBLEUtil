@@ -449,6 +449,30 @@ public class TimeProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_addTimeWithDst_00101() {
+        final int originalResponseCode = 0;
+        final long originalDelay = 1;
+        final byte[] originalValue = new byte[]{1, 2, 3, 4, 5, 6, 7, 8};
+
+        Context context = ApplicationProvider.getApplicationContext();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        ReferenceTimeUpdateServiceMockCallback.Builder<ReferenceTimeUpdateServiceMockCallback> referenceTimeUpdateServiceMockCallbackBuilder = new ReferenceTimeUpdateServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , currentTimeServiceMockCallbackBuilder
+                , null
+                , referenceTimeUpdateServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.addTimeWithDst(originalResponseCode, originalDelay, originalValue);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeTimeWithDst_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -470,6 +494,26 @@ public class TimeProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeTimeWithDst());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeTimeWithDst_00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        ReferenceTimeUpdateServiceMockCallback.Builder<ReferenceTimeUpdateServiceMockCallback> referenceTimeUpdateServiceMockCallbackBuilder = new ReferenceTimeUpdateServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , currentTimeServiceMockCallbackBuilder
+                , null
+                , referenceTimeUpdateServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeTimeWithDst();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -532,6 +576,29 @@ public class TimeProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_addTimeUpdateControlPoint_00101() {
+        final int originalResponseCode = 0;
+        final long originalDelay = 1;
+        final byte[] originalValue = new byte[]{TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_CANCEL_REFERENCE_UPDATE};
+
+        Context context = ApplicationProvider.getApplicationContext();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        NextDstChangeServiceMockCallback.Builder<NextDstChangeServiceMockCallback> nextDstChangeServiceMockCallbackBuilder = new NextDstChangeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , currentTimeServiceMockCallbackBuilder
+                , nextDstChangeServiceMockCallbackBuilder
+                , null);
+        Exception exception = null;
+        try {
+            baseBuilder.addTimeUpdateControlPoint(originalResponseCode, originalDelay, originalValue);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeTimeUpdateControlPoint_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -553,6 +620,25 @@ public class TimeProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeTimeUpdateControlPoint());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeTimeUpdateControlPoint_00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        NextDstChangeServiceMockCallback.Builder<NextDstChangeServiceMockCallback> nextDstChangeServiceMockCallbackBuilder = new NextDstChangeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , currentTimeServiceMockCallbackBuilder
+                , nextDstChangeServiceMockCallbackBuilder
+                , null);
+        Exception exception = null;
+        try {
+            baseBuilder.removeTimeUpdateControlPoint();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -615,6 +701,29 @@ public class TimeProfileMockCallbackBuilderTest {
     }
 
     @Test
+    public void test_addTimeUpdateState_00101() {
+        final int originalResponseCode = 0;
+        final long originalDelay = 1;
+        final byte[] originalValue = new byte[]{TimeUpdateState.CURRENT_STATE_IDLE, TimeUpdateState.RESULT_CANCELED};
+
+        Context context = ApplicationProvider.getApplicationContext();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        NextDstChangeServiceMockCallback.Builder<NextDstChangeServiceMockCallback> nextDstChangeServiceMockCallbackBuilder = new NextDstChangeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , currentTimeServiceMockCallbackBuilder
+                , nextDstChangeServiceMockCallbackBuilder
+                , null);
+        Exception exception = null;
+        try {
+            baseBuilder.addTimeUpdateState(originalResponseCode, originalDelay, originalValue);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
     public void test_removeTimeUpdateState_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -643,6 +752,25 @@ public class TimeProfileMockCallbackBuilderTest {
         assertEquals(baseBuilder, baseBuilder.removeTimeUpdateState());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeTimeUpdateState_00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        CurrentTimeServiceMockCallback.Builder<CurrentTimeServiceMockCallback> currentTimeServiceMockCallbackBuilder = new CurrentTimeServiceMockCallback.Builder<>();
+        NextDstChangeServiceMockCallback.Builder<NextDstChangeServiceMockCallback> nextDstChangeServiceMockCallbackBuilder = new NextDstChangeServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context
+                , currentTimeServiceMockCallbackBuilder
+                , nextDstChangeServiceMockCallbackBuilder
+                , null);
+        Exception exception = null;
+        try {
+            baseBuilder.removeTimeUpdateState();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
     @Test
@@ -784,6 +912,43 @@ public class TimeProfileMockCallbackBuilderTest {
                     , null
                     , null)
                     .addCurrentTime(new CurrentTime(new byte[]{6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
+    public void test_build_00401() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new CurrentTimeServiceMockCallback.Builder<>()
+                    , null
+                    , new ReferenceTimeUpdateServiceMockCallback.Builder<>())
+                    .addCurrentTime(new CurrentTime(new byte[]{6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                    .addTimeUpdateControlPoint(new TimeUpdateControlPoint(TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_GET_REFERENCE_UPDATE))
+                    .addTimeUpdateState(new TimeUpdateState(new byte[]{TimeUpdateState.CURRENT_STATE_IDLE, TimeUpdateState.RESULT_CANCELED}))
+                    .build();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
+    public void test_build_00402() {
+        Exception exception = null;
+        try {
+            new BaseBuilder(ApplicationProvider.getApplicationContext()
+                    , new CurrentTimeServiceMockCallback.Builder<>()
+                    , new NextDstChangeServiceMockCallback.Builder<>()
+                    , null)
+                    .addCurrentTime(new CurrentTime(new byte[]{6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}), new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                    .addTimeWithDst(new TimeWithDst(new byte[]{1, 2, 3, 4, 5, 6, 7, 8}))
                     .build();
         } catch (Exception e) {
             exception = e;

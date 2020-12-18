@@ -24,6 +24,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class LocationAndNavigationProfileMockCallbackBuilderTest {
@@ -31,10 +32,10 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
     @Test
     public void test_constructor_00001() {
         Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
         BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
 
         assertEquals(context, baseBuilder.mContext);
         assertEquals(deviceInformationServiceMockCallbackBuilder, baseBuilder.mDeviceInformationServiceMockCallbackBuilder);
@@ -43,497 +44,11 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_addManufacturerNameString_00001() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final String manufacturerName = "manufacturerName";
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
-            @NonNull
-            @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
-                assertArrayEquals(manufacturerName.getBytes(), value);
-                atomicBoolean.set(true);
-                return super.addManufacturerNameString(responseCode, delay, value);
-            }
-        };
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(manufacturerName));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_addManufacturerNameString_00002() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final String manufacturerName = "manufacturerName";
-        ManufacturerNameString manufacturerNameString = new ManufacturerNameString(manufacturerName);
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
-            @NonNull
-            @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
-                assertArrayEquals(manufacturerName.getBytes(), value);
-                atomicBoolean.set(true);
-                return super.addManufacturerNameString(responseCode, delay, value);
-            }
-        };
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(manufacturerNameString));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_addManufacturerNameString_00003() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final byte[] originalValue = "manufacturerName".getBytes();
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
-            @NonNull
-            @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
-                assertArrayEquals(originalValue, value);
-                atomicBoolean.set(true);
-                return super.addManufacturerNameString(responseCode, delay, value);
-            }
-        };
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(originalValue));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_addManufacturerNameString_00004() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponseCode = 1;
-        final long originalDelay = 2;
-        final byte[] originalValue = "manufacturerName".getBytes();
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
-            @NonNull
-            @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponseCode, responseCode);
-                assertEquals(originalDelay, delay);
-                assertArrayEquals(originalValue, value);
-                atomicBoolean.set(true);
-                return super.addManufacturerNameString(responseCode, delay, value);
-            }
-        };
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(originalResponseCode, originalDelay, originalValue));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_removeManufacturerNameString_00001() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
-
-            @NonNull
-            @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> removeManufacturerNameString() {
-                atomicBoolean.set(true);
-                return super.removeManufacturerNameString();
-            }
-        };
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.removeManufacturerNameString());
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_addModelNumberString_00001() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final String modelNumber = "modelNumber";
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
-            @NonNull
-            @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
-                assertArrayEquals(modelNumber.getBytes(), value);
-                atomicBoolean.set(true);
-                return super.addModelNumberString(responseCode, delay, value);
-            }
-        };
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addModelNumberString(modelNumber));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_addModelNumberString_00002() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final String modelNumber = "modelNumber";
-        ModelNumberString modelNumberString = new ModelNumberString(modelNumber);
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
-            @NonNull
-            @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
-                assertArrayEquals(modelNumber.getBytes(), value);
-                atomicBoolean.set(true);
-                return super.addModelNumberString(responseCode, delay, value);
-            }
-        };
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addModelNumberString(modelNumberString));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_addModelNumberString_00003() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final byte[] originalValue = "modelNumber".getBytes();
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
-            @NonNull
-            @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
-                assertArrayEquals(originalValue, value);
-                atomicBoolean.set(true);
-                return super.addModelNumberString(responseCode, delay, value);
-            }
-        };
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addModelNumberString(originalValue));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_addModelNumberString_00004() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalResponseCode = 1;
-        final long originalDelay = 2;
-        final byte[] originalValue = "modelNumber".getBytes();
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
-            @NonNull
-            @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalResponseCode, responseCode);
-                assertEquals(originalDelay, delay);
-                assertArrayEquals(originalValue, value);
-                atomicBoolean.set(true);
-                return super.addModelNumberString(responseCode, delay, value);
-            }
-        };
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addModelNumberString(originalResponseCode, originalDelay, originalValue));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_removeModelNumberString_00001() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
-
-            @NonNull
-            @Override
-            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> removeModelNumberString() {
-                atomicBoolean.set(true);
-                return super.removeModelNumberString();
-            }
-        };
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.removeModelNumberString());
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_addBatteryLevel_00001() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalIndex = 0;
-        final BatteryLevel batteryLevel = new BatteryLevel(1);
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
-
-            @NonNull
-            @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> addBatteryLevel(int index, int property, int responseCode, long delay, @NonNull byte[] value, int notificationCount) {
-                assertEquals(originalIndex, index);
-                assertArrayEquals(batteryLevel.getBytes(), value);
-                atomicBoolean.set(true);
-                return super.addBatteryLevel(index, property, responseCode, delay, value, notificationCount);
-            }
-        };
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addBatteryLevel(originalIndex, batteryLevel));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_addBatteryLevel_00002() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalIndex = 0;
-        final int originalProperty = 1;
-        final int originalResponseCode = 2;
-        final long originalDelay = 3;
-        final BatteryLevel batteryLevel = new BatteryLevel(4);
-        final int originalNotificationCount = 5;
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
-
-            @NonNull
-            @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> addBatteryLevel(int index, int property, int responseCode, long delay, @NonNull byte[] value, int notificationCount) {
-                assertEquals(originalIndex, index);
-                assertEquals(originalProperty, property);
-                assertEquals(originalResponseCode, responseCode);
-                assertEquals(originalDelay, delay);
-                assertArrayEquals(batteryLevel.getBytes(), value);
-                assertEquals(originalNotificationCount, notificationCount);
-                atomicBoolean.set(true);
-                return super.addBatteryLevel(index, property, responseCode, delay, value, notificationCount);
-            }
-        };
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addBatteryLevel(originalIndex, originalProperty, originalResponseCode, originalDelay, batteryLevel.getBytes(), originalNotificationCount));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_removeBatteryLevel_00001() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalIndex = 0;
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
-
-            @NonNull
-            @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> removeBatteryLevel(int index) {
-                assertEquals(originalIndex, index);
-                atomicBoolean.set(true);
-                return super.removeBatteryLevel(index);
-            }
-        };
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.removeBatteryLevel(originalIndex));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_setBatteryLevelCharacteristicPresentationFormat_00001() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalIndex = 0;
-        final CharacteristicPresentationFormat characteristicPresentationFormat = new CharacteristicPresentationFormat(new byte[]{1, 2, 3, 4, 5, 6, 7});
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
-
-            @NonNull
-            @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelCharacteristicPresentationFormat(int index, int responseCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalIndex, index);
-                assertArrayEquals(characteristicPresentationFormat.getBytes(), value);
-                atomicBoolean.set(true);
-                return super.setBatteryLevelCharacteristicPresentationFormat(index, responseCode, delay, value);
-            }
-        };
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.setBatteryLevelCharacteristicPresentationFormat(originalIndex, characteristicPresentationFormat));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_setBatteryLevelCharacteristicPresentationFormat_00002() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalIndex = 0;
-        final int originalResponseCode = 1;
-        final long originalDelay = 2;
-        final CharacteristicPresentationFormat characteristicPresentationFormat = new CharacteristicPresentationFormat(new byte[]{3, 4, 5, 6, 7, 8, 9});
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
-
-            @NonNull
-            @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelCharacteristicPresentationFormat(int index, int responseCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalIndex, index);
-                assertEquals(originalResponseCode, responseCode);
-                assertEquals(originalDelay, delay);
-                assertArrayEquals(characteristicPresentationFormat.getBytes(), value);
-                atomicBoolean.set(true);
-                return super.setBatteryLevelCharacteristicPresentationFormat(index, responseCode, delay, value);
-            }
-        };
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.setBatteryLevelCharacteristicPresentationFormat(originalIndex, originalResponseCode, originalDelay, characteristicPresentationFormat.getBytes()));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_removeBatteryLevelCharacteristicPresentationFormat_00001() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalIndex = 0;
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
-
-            @NonNull
-            @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> removeBatteryLevelCharacteristicPresentationFormat(int index) {
-                assertEquals(originalIndex, index);
-                atomicBoolean.set(true);
-                return super.removeBatteryLevelCharacteristicPresentationFormat(index);
-            }
-        };
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.removeBatteryLevelCharacteristicPresentationFormat(originalIndex));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_setBatteryLevelClientCharacteristicConfiguration_00001() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalIndex = 0;
-        final ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
-
-            @NonNull
-            @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelClientCharacteristicConfiguration(int index, int responseCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalIndex, index);
-                assertArrayEquals(clientCharacteristicConfiguration.getBytes(), value);
-                atomicBoolean.set(true);
-                return super.setBatteryLevelClientCharacteristicConfiguration(index, responseCode, delay, value);
-            }
-        };
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.setBatteryLevelClientCharacteristicConfiguration(originalIndex, clientCharacteristicConfiguration));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_setBatteryLevelClientCharacteristicConfiguration_00002() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalIndex = 0;
-        final int originalResponseCode = 1;
-        final long originalDelay = 2;
-        final ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
-
-
-            @NonNull
-            @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelClientCharacteristicConfiguration(int index, int responseCode, long delay, @NonNull byte[] value) {
-                assertEquals(originalIndex, index);
-                assertEquals(originalResponseCode, responseCode);
-                assertEquals(originalDelay, delay);
-                assertArrayEquals(clientCharacteristicConfiguration.getBytes(), value);
-                atomicBoolean.set(true);
-                return super.setBatteryLevelClientCharacteristicConfiguration(index, responseCode, delay, value);
-            }
-
-        };
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.setBatteryLevelClientCharacteristicConfiguration(originalIndex, originalResponseCode, originalDelay, clientCharacteristicConfiguration.getBytes()));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
-    public void test_removeBatteryLevelClientCharacteristicConfiguration_00001() {
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final int originalIndex = 0;
-
-        Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
-
-            @NonNull
-            @Override
-            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> removeBatteryLevelClientCharacteristicConfiguration(int index) {
-                assertEquals(originalIndex, index);
-                atomicBoolean.set(true);
-                return super.removeBatteryLevelClientCharacteristicConfiguration(index);
-            }
-        };
-        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.removeBatteryLevelClientCharacteristicConfiguration(originalIndex));
-
-        assertTrue(atomicBoolean.get());
-    }
-
-    @Test
     public void test_addLNFeature_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final LNFeature lnFeature = new LNFeature(new byte[]{0, 0, 0, 0});
 
         Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback>() {
             @NonNull
             @Override
@@ -543,7 +58,9 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
                 return super.addLNFeature(ResponseCode, delay, value);
             }
         };
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
         assertEquals(baseBuilder, baseBuilder.addLNFeature(lnFeature));
 
         assertTrue(atomicBoolean.get());
@@ -557,8 +74,6 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         final LNFeature lnFeature = new LNFeature(new byte[]{0, 0, 0, 0});
 
         Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback>() {
             @NonNull
             @Override
@@ -570,7 +85,9 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
                 return super.addLNFeature(responseCode, delay, value);
             }
         };
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
         assertEquals(baseBuilder, baseBuilder.addLNFeature(originalResponseCode, originalDelay, lnFeature.getBytes()));
 
         assertTrue(atomicBoolean.get());
@@ -581,8 +98,6 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
         Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback>() {
 
             @NonNull
@@ -592,7 +107,9 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
                 return super.removeLNFeature();
             }
         };
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
         assertEquals(baseBuilder, baseBuilder.removeLNFeature());
 
         assertTrue(atomicBoolean.get());
@@ -605,8 +122,6 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         final ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
 
         Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback>() {
 
             @NonNull
@@ -618,7 +133,9 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
                 return super.addLocationAndSpeed(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
         };
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
         assertEquals(baseBuilder, baseBuilder.addLocationAndSpeed(locationAndSpeed, clientCharacteristicConfiguration));
 
         assertTrue(atomicBoolean.get());
@@ -636,8 +153,6 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         final ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
 
         Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback>() {
 
             @NonNull
@@ -654,7 +169,9 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
                 return super.addLocationAndSpeed(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
         };
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
         assertEquals(baseBuilder, baseBuilder.addLocationAndSpeed(originalCharacteristicResponseCode, originalCharacteristicDelay, locationAndSpeed.getBytes(), originalNotificationCount, originalDescriptorResponseCode, originalDescriptorDelay, clientCharacteristicConfiguration.getBytes()));
 
         assertTrue(atomicBoolean.get());
@@ -665,8 +182,6 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
         Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback>() {
 
             @NonNull
@@ -676,7 +191,9 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
                 return super.removeLocationAndSpeed();
             }
         };
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
         assertEquals(baseBuilder, baseBuilder.removeLocationAndSpeed());
 
         assertTrue(atomicBoolean.get());
@@ -688,8 +205,6 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         final PositionQuality positionQuality = new PositionQuality(new byte[]{0, 0});
 
         Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback>() {
 
             @NonNull
@@ -700,7 +215,9 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
                 return super.addPositionQuality(responseCode, delay, value);
             }
         };
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
         assertEquals(baseBuilder, baseBuilder.addPositionQuality(positionQuality));
 
         assertTrue(atomicBoolean.get());
@@ -713,8 +230,6 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         final long originalDelay = 2;
         final PositionQuality positionQuality = new PositionQuality(new byte[]{0, 0});
         Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback>() {
 
             @NonNull
@@ -727,7 +242,9 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
                 return super.addPositionQuality(responseCode, delay, value);
             }
         };
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
         assertEquals(baseBuilder, baseBuilder.addPositionQuality(originalResponseCode, originalDelay, positionQuality.getBytes()));
 
         assertTrue(atomicBoolean.get());
@@ -738,8 +255,6 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
         Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback>() {
 
             @NonNull
@@ -749,7 +264,9 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
                 return super.removePositionQuality();
             }
         };
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
         assertEquals(baseBuilder, baseBuilder.removePositionQuality());
 
         assertTrue(atomicBoolean.get());
@@ -774,8 +291,6 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         final long originalDescriptorDelay = 15;
         final @NonNull byte[] originalDescriptorValue = new byte[]{16};
         Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback>() {
 
             @NonNull
@@ -801,7 +316,9 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
             }
 
         };
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
         assertEquals(baseBuilder, baseBuilder.addLNControlPoint(originalCharacteristicResponseCode
                 , originalCharacteristicDelay
                 , originalSetCumulativeValueResponseValue
@@ -826,8 +343,6 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
         Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback>() {
 
             @NonNull
@@ -837,7 +352,9 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
                 return super.removeLNControlPoint();
             }
         };
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
         assertEquals(baseBuilder, baseBuilder.removeLNControlPoint());
 
         assertTrue(atomicBoolean.get());
@@ -850,8 +367,6 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         final ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
 
         Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback>() {
 
             @NonNull
@@ -863,7 +378,9 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
                 return super.addNavigation(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
         };
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
         assertEquals(baseBuilder, baseBuilder.addNavigation(navigation, clientCharacteristicConfiguration));
 
         assertTrue(atomicBoolean.get());
@@ -881,8 +398,6 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         final long originalDescriptorDelay = 5;
 
         Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback>() {
 
             @NonNull
@@ -899,7 +414,9 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
                 return super.addNavigation(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
         };
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
         assertEquals(baseBuilder, baseBuilder.addNavigation(originalCharacteristicResponseCode, originalCharacteristicDelay, navigation.getBytes(), originalNotificationCount, originalDescriptorResponseCode, originalDescriptorDelay, clientCharacteristicConfiguration.getBytes()));
 
         assertTrue(atomicBoolean.get());
@@ -910,8 +427,6 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
         Context context = ApplicationProvider.getApplicationContext();
-        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
-        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
         LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback>() {
 
             @NonNull
@@ -921,10 +436,697 @@ public class LocationAndNavigationProfileMockCallbackBuilderTest {
                 return super.removeNavigation();
             }
         };
-        BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder, locationAndNavigationServiceMockCallbackBuilder);
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
         assertEquals(baseBuilder, baseBuilder.removeNavigation());
 
         assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_addManufacturerNameString_00001() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final String manufacturerName = "manufacturerName";
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
+            @NonNull
+            @Override
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
+                assertArrayEquals(manufacturerName.getBytes(), value);
+                atomicBoolean.set(true);
+                return super.addManufacturerNameString(responseCode, delay, value);
+            }
+        };
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(manufacturerName));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_addManufacturerNameString_00002() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final String manufacturerName = "manufacturerName";
+        ManufacturerNameString manufacturerNameString = new ManufacturerNameString(manufacturerName);
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
+            @NonNull
+            @Override
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
+                assertArrayEquals(manufacturerName.getBytes(), value);
+                atomicBoolean.set(true);
+                return super.addManufacturerNameString(responseCode, delay, value);
+            }
+        };
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(manufacturerNameString));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_addManufacturerNameString_00003() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final byte[] originalValue = "manufacturerName".getBytes();
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
+            @NonNull
+            @Override
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
+                assertArrayEquals(originalValue, value);
+                atomicBoolean.set(true);
+                return super.addManufacturerNameString(responseCode, delay, value);
+            }
+        };
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(originalValue));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_addManufacturerNameString_00004() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final int originalResponseCode = 1;
+        final long originalDelay = 2;
+        final byte[] originalValue = "manufacturerName".getBytes();
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
+            @NonNull
+            @Override
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addManufacturerNameString(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
+                assertEquals(originalDelay, delay);
+                assertArrayEquals(originalValue, value);
+                atomicBoolean.set(true);
+                return super.addManufacturerNameString(responseCode, delay, value);
+            }
+        };
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.addManufacturerNameString(originalResponseCode, originalDelay, originalValue));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_addManufacturerNameString_00101() {
+        final int originalResponseCode = 1;
+        final long originalDelay = 2;
+        final byte[] originalValue = "manufacturerName".getBytes();
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, null, batteryServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.addManufacturerNameString(originalResponseCode, originalDelay, originalValue);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
+    public void test_removeManufacturerNameString_00001() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
+
+            @NonNull
+            @Override
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> removeManufacturerNameString() {
+                atomicBoolean.set(true);
+                return super.removeManufacturerNameString();
+            }
+        };
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.removeManufacturerNameString());
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeManufacturerNameString_00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, null, batteryServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeManufacturerNameString();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
+    public void test_addModelNumberString_00001() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final String modelNumber = "modelNumber";
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
+            @NonNull
+            @Override
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
+                assertArrayEquals(modelNumber.getBytes(), value);
+                atomicBoolean.set(true);
+                return super.addModelNumberString(responseCode, delay, value);
+            }
+        };
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.addModelNumberString(modelNumber));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_addModelNumberString_00002() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final String modelNumber = "modelNumber";
+        ModelNumberString modelNumberString = new ModelNumberString(modelNumber);
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
+            @NonNull
+            @Override
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
+                assertArrayEquals(modelNumber.getBytes(), value);
+                atomicBoolean.set(true);
+                return super.addModelNumberString(responseCode, delay, value);
+            }
+        };
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.addModelNumberString(modelNumberString));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_addModelNumberString_00003() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final byte[] originalValue = "modelNumber".getBytes();
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
+            @NonNull
+            @Override
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
+                assertArrayEquals(originalValue, value);
+                atomicBoolean.set(true);
+                return super.addModelNumberString(responseCode, delay, value);
+            }
+        };
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.addModelNumberString(originalValue));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_addModelNumberString_00004() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final int originalResponseCode = 1;
+        final long originalDelay = 2;
+        final byte[] originalValue = "modelNumber".getBytes();
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
+            @NonNull
+            @Override
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> addModelNumberString(int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalResponseCode, responseCode);
+                assertEquals(originalDelay, delay);
+                assertArrayEquals(originalValue, value);
+                atomicBoolean.set(true);
+                return super.addModelNumberString(responseCode, delay, value);
+            }
+        };
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.addModelNumberString(originalResponseCode, originalDelay, originalValue));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_addModelNumberString_00101() {
+        final int originalResponseCode = 1;
+        final long originalDelay = 2;
+        final byte[] originalValue = "modelNumber".getBytes();
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, null, batteryServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.addModelNumberString(originalResponseCode, originalDelay, originalValue);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
+    public void test_removeModelNumberString_00001() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback>() {
+
+            @NonNull
+            @Override
+            public DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> removeModelNumberString() {
+                atomicBoolean.set(true);
+                return super.removeModelNumberString();
+            }
+        };
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.removeModelNumberString());
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeModelNumberString_00101() {
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, null, batteryServiceMockCallbackBuilder);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeModelNumberString();
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
+    public void test_addBatteryLevel_00001() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final int originalIndex = 0;
+        final BatteryLevel batteryLevel = new BatteryLevel(1);
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
+
+            @NonNull
+            @Override
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> addBatteryLevel(int index, int property, int responseCode, long delay, @NonNull byte[] value, int notificationCount) {
+                assertEquals(originalIndex, index);
+                assertArrayEquals(batteryLevel.getBytes(), value);
+                atomicBoolean.set(true);
+                return super.addBatteryLevel(index, property, responseCode, delay, value, notificationCount);
+            }
+        };
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.addBatteryLevel(originalIndex, batteryLevel));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_addBatteryLevel_00002() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final int originalIndex = 0;
+        final int originalProperty = 1;
+        final int originalResponseCode = 2;
+        final long originalDelay = 3;
+        final BatteryLevel batteryLevel = new BatteryLevel(4);
+        final int originalNotificationCount = 5;
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
+
+            @NonNull
+            @Override
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> addBatteryLevel(int index, int property, int responseCode, long delay, @NonNull byte[] value, int notificationCount) {
+                assertEquals(originalIndex, index);
+                assertEquals(originalProperty, property);
+                assertEquals(originalResponseCode, responseCode);
+                assertEquals(originalDelay, delay);
+                assertArrayEquals(batteryLevel.getBytes(), value);
+                assertEquals(originalNotificationCount, notificationCount);
+                atomicBoolean.set(true);
+                return super.addBatteryLevel(index, property, responseCode, delay, value, notificationCount);
+            }
+        };
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.addBatteryLevel(originalIndex, originalProperty, originalResponseCode, originalDelay, batteryLevel.getBytes(), originalNotificationCount));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_addBatteryLevel_00101() {
+        final int originalIndex = 0;
+        final int originalProperty = 1;
+        final int originalResponseCode = 2;
+        final long originalDelay = 3;
+        final BatteryLevel batteryLevel = new BatteryLevel(4);
+        final int originalNotificationCount = 5;
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, null);
+
+        Exception exception = null;
+        try {
+            baseBuilder.addBatteryLevel(originalIndex, originalProperty, originalResponseCode, originalDelay, batteryLevel.getBytes(), originalNotificationCount);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
+    public void test_removeBatteryLevel_00001() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final int originalIndex = 0;
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
+
+            @NonNull
+            @Override
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> removeBatteryLevel(int index) {
+                assertEquals(originalIndex, index);
+                atomicBoolean.set(true);
+                return super.removeBatteryLevel(index);
+            }
+        };
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.removeBatteryLevel(originalIndex));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeBatteryLevel_00101() {
+        final int originalIndex = 0;
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, null);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeBatteryLevel(originalIndex);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
+    public void test_setBatteryLevelCharacteristicPresentationFormat_00001() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final int originalIndex = 0;
+        final CharacteristicPresentationFormat characteristicPresentationFormat = new CharacteristicPresentationFormat(new byte[]{1, 2, 3, 4, 5, 6, 7});
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
+
+            @NonNull
+            @Override
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelCharacteristicPresentationFormat(int index, int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalIndex, index);
+                assertArrayEquals(characteristicPresentationFormat.getBytes(), value);
+                atomicBoolean.set(true);
+                return super.setBatteryLevelCharacteristicPresentationFormat(index, responseCode, delay, value);
+            }
+        };
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.setBatteryLevelCharacteristicPresentationFormat(originalIndex, characteristicPresentationFormat));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_setBatteryLevelCharacteristicPresentationFormat_00002() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final int originalIndex = 0;
+        final int originalResponseCode = 1;
+        final long originalDelay = 2;
+        final CharacteristicPresentationFormat characteristicPresentationFormat = new CharacteristicPresentationFormat(new byte[]{3, 4, 5, 6, 7, 8, 9});
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
+
+            @NonNull
+            @Override
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelCharacteristicPresentationFormat(int index, int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalIndex, index);
+                assertEquals(originalResponseCode, responseCode);
+                assertEquals(originalDelay, delay);
+                assertArrayEquals(characteristicPresentationFormat.getBytes(), value);
+                atomicBoolean.set(true);
+                return super.setBatteryLevelCharacteristicPresentationFormat(index, responseCode, delay, value);
+            }
+        };
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.setBatteryLevelCharacteristicPresentationFormat(originalIndex, originalResponseCode, originalDelay, characteristicPresentationFormat.getBytes()));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_setBatteryLevelCharacteristicPresentationFormat_00101() {
+        final int originalIndex = 0;
+        final int originalResponseCode = 1;
+        final long originalDelay = 2;
+        final CharacteristicPresentationFormat characteristicPresentationFormat = new CharacteristicPresentationFormat(new byte[]{3, 4, 5, 6, 7, 8, 9});
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, null);
+
+        Exception exception = null;
+        try {
+            baseBuilder.setBatteryLevelCharacteristicPresentationFormat(originalIndex, originalResponseCode, originalDelay, characteristicPresentationFormat.getBytes());
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
+    public void test_removeBatteryLevelCharacteristicPresentationFormat_00001() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final int originalIndex = 0;
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
+
+            @NonNull
+            @Override
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> removeBatteryLevelCharacteristicPresentationFormat(int index) {
+                assertEquals(originalIndex, index);
+                atomicBoolean.set(true);
+                return super.removeBatteryLevelCharacteristicPresentationFormat(index);
+            }
+        };
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.removeBatteryLevelCharacteristicPresentationFormat(originalIndex));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeBatteryLevelCharacteristicPresentationFormat_00101() {
+        final int originalIndex = 0;
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, null);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeBatteryLevelCharacteristicPresentationFormat(originalIndex);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
+    public void test_setBatteryLevelClientCharacteristicConfiguration_00001() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final int originalIndex = 0;
+        final ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
+
+            @NonNull
+            @Override
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelClientCharacteristicConfiguration(int index, int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalIndex, index);
+                assertArrayEquals(clientCharacteristicConfiguration.getBytes(), value);
+                atomicBoolean.set(true);
+                return super.setBatteryLevelClientCharacteristicConfiguration(index, responseCode, delay, value);
+            }
+        };
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.setBatteryLevelClientCharacteristicConfiguration(originalIndex, clientCharacteristicConfiguration));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_setBatteryLevelClientCharacteristicConfiguration_00002() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final int originalIndex = 0;
+        final int originalResponseCode = 1;
+        final long originalDelay = 2;
+        final ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
+
+
+            @NonNull
+            @Override
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> setBatteryLevelClientCharacteristicConfiguration(int index, int responseCode, long delay, @NonNull byte[] value) {
+                assertEquals(originalIndex, index);
+                assertEquals(originalResponseCode, responseCode);
+                assertEquals(originalDelay, delay);
+                assertArrayEquals(clientCharacteristicConfiguration.getBytes(), value);
+                atomicBoolean.set(true);
+                return super.setBatteryLevelClientCharacteristicConfiguration(index, responseCode, delay, value);
+            }
+
+        };
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.setBatteryLevelClientCharacteristicConfiguration(originalIndex, originalResponseCode, originalDelay, clientCharacteristicConfiguration.getBytes()));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_setBatteryLevelClientCharacteristicConfiguration_00101() {
+        final int originalIndex = 0;
+        final int originalResponseCode = 1;
+        final long originalDelay = 2;
+        final ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, null);
+
+        Exception exception = null;
+        try {
+            baseBuilder.setBatteryLevelClientCharacteristicConfiguration(originalIndex, originalResponseCode, originalDelay, clientCharacteristicConfiguration.getBytes());
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
+    public void test_removeBatteryLevelClientCharacteristicConfiguration_00001() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        final int originalIndex = 0;
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> batteryServiceMockCallbackBuilder = new BatteryServiceMockCallback.Builder<BatteryServiceMockCallback>() {
+
+            @NonNull
+            @Override
+            public BatteryServiceMockCallback.Builder<BatteryServiceMockCallback> removeBatteryLevelClientCharacteristicConfiguration(int index) {
+                assertEquals(originalIndex, index);
+                atomicBoolean.set(true);
+                return super.removeBatteryLevelClientCharacteristicConfiguration(index);
+            }
+        };
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, batteryServiceMockCallbackBuilder);
+        assertEquals(baseBuilder, baseBuilder.removeBatteryLevelClientCharacteristicConfiguration(originalIndex));
+
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_removeBatteryLevelClientCharacteristicConfiguration_00101() {
+        final int originalIndex = 0;
+
+        Context context = ApplicationProvider.getApplicationContext();
+        LocationAndNavigationServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> locationAndNavigationServiceMockCallbackBuilder = new LocationAndNavigationServiceMockCallback.Builder<>();
+        DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
+        BaseBuilder baseBuilder = new BaseBuilder(context, locationAndNavigationServiceMockCallbackBuilder, deviceInformationServiceMockCallbackBuilder, null);
+
+        Exception exception = null;
+        try {
+            baseBuilder.removeBatteryLevelClientCharacteristicConfiguration(originalIndex);
+        } catch (Exception e) {
+            exception = e;
+        }
+
+        assertNull(exception);
     }
 
 }

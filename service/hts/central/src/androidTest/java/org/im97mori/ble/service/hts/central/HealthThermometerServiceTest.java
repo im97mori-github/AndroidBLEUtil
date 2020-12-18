@@ -24,6 +24,7 @@ import org.im97mori.ble.characteristic.u2a21.MeasurementInterval;
 import org.im97mori.ble.characteristic.u2a21.MeasurementIntervalAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
 import org.im97mori.ble.descriptor.u2906.ValidRangeAndroid;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.Collections;

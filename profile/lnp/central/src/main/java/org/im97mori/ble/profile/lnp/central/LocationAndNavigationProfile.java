@@ -330,7 +330,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
      * @see LocationAndNavigationService#isLNControlPointCharacteristicSupporeted()
      */
     @Nullable
-    public Boolean isLNControlPointCharacteristicSupporeted() {
+    public synchronized Boolean isLNControlPointCharacteristicSupporeted() {
         Boolean result = null;
         if (mLocationAndNavigationService != null) {
             result = mLocationAndNavigationService.isLNControlPointCharacteristicSupporeted();
@@ -345,7 +345,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
      * @see LocationAndNavigationService#isNavigationCharacteristicSupporeted()
      */
     @Nullable
-    public Boolean isNavigationCharacteristicSupporeted() {
+    public synchronized Boolean isNavigationCharacteristicSupporeted() {
         Boolean result = null;
         if (mLocationAndNavigationService != null) {
             result = mLocationAndNavigationService.isNavigationCharacteristicSupporeted();
@@ -360,7 +360,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
      * @see LocationAndNavigationService#getLNFeature()
      */
     @Nullable
-    public Integer getLNFeature() {
+    public synchronized Integer getLNFeature() {
         Integer taskId = null;
         if (mLocationAndNavigationService != null) {
             taskId = mLocationAndNavigationService.getLNFeature();
@@ -375,7 +375,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
      * @see LocationAndNavigationService#getLocationAndSpeedClientCharacteristicConfiguration()
      */
     @Nullable
-    public Integer getLocationAndSpeedClientCharacteristicConfiguration() {
+    public synchronized Integer getLocationAndSpeedClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (mLocationAndNavigationService != null) {
             taskId = mLocationAndNavigationService.getLocationAndSpeedClientCharacteristicConfiguration();
@@ -420,7 +420,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
      * @see LocationAndNavigationService#getPositionQuality()
      */
     @Nullable
-    public Integer getPositionQuality() {
+    public synchronized Integer getPositionQuality() {
         Integer taskId = null;
         if (mLocationAndNavigationService != null) {
             taskId = mLocationAndNavigationService.getPositionQuality();
@@ -435,10 +435,25 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
      * @see LocationAndNavigationService#setLNControlPoint(LNControlPoint)
      */
     @Nullable
-    public Integer setLNControlPoint(@NonNull LNControlPoint lnControlPoint) {
+    public synchronized Integer setLNControlPoint(@NonNull LNControlPoint lnControlPoint) {
         Integer taskId = null;
         if (mLocationAndNavigationService != null) {
             taskId = mLocationAndNavigationService.setLNControlPoint(lnControlPoint);
+        }
+        return taskId;
+    }
+
+    /**
+     * get LN Control Point's Client Characteristic Configuration
+     *
+     * @return task id. if {@code null} returned, service is not ready
+     * @see LocationAndNavigationService#getLNControlPointClientCharacteristicConfiguration()
+     */
+    @Nullable
+    public synchronized Integer getLNControlPointClientCharacteristicConfiguration() {
+        Integer taskId = null;
+        if (mLocationAndNavigationService != null) {
+            taskId = mLocationAndNavigationService.getLNControlPointClientCharacteristicConfiguration();
         }
         return taskId;
     }
@@ -546,7 +561,7 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
      * {@inheritDoc}
      */
     @Override
-    public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+    public synchronized void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
         if (bluetoothDevice.equals(mCurrentBluetoothDevice)) {
             mBLEConnection.createDiscoverServiceTask(DiscoverServiceTask.TIMEOUT_MILLIS, null, this);
         }

@@ -29,8 +29,6 @@ android {
 
 dependencies {
     api "${groupId}:${peripheral.artifactId}:${peripheral.versionName}"
-    androidTestImplementation androidxTestRunner
-    androidTestImplementation androidxTestCore
 }
 
 task sourcesJar(type: Jar) {

@@ -75,6 +75,7 @@ import org.im97mori.ble.characteristic.u2aa2.LanguageAndroid;
 import org.im97mori.ble.characteristic.u2b37.RegisteredUser;
 import org.im97mori.ble.characteristic.u2b37.RegisteredUserAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.Collections;

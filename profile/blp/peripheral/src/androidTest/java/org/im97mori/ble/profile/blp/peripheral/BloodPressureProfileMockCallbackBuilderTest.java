@@ -338,8 +338,9 @@ public class BloodPressureProfileMockCallbackBuilderTest {
 
         final int originalCharacteristicResponseCode = 38;
         final long originalCharacteristicDelay = 39;
-        final int originalDescriptorResponseCode = 40;
-        final long originalDescriptorDelay = 41;
+        final int originalNotificationCount = 40;
+        final int originalDescriptorResponseCode = 41;
+        final long originalDescriptorDelay = 42;
 
         Context context = ApplicationProvider.getApplicationContext();
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
@@ -351,6 +352,7 @@ public class BloodPressureProfileMockCallbackBuilderTest {
                 assertArrayEquals(bpmclientCharacteristicConfiguration.getBytes(), descriptorValue);
                 assertEquals(originalCharacteristicResponseCode, characteristicResponseCode);
                 assertEquals(originalCharacteristicDelay, characteristicDelay);
+                assertEquals(originalNotificationCount, notificationCount);
                 assertEquals(originalDescriptorResponseCode, descriptorResponseCode);
                 assertEquals(originalDescriptorDelay, descriptorDelay);
                 atomicBoolean.set(true);
@@ -359,7 +361,7 @@ public class BloodPressureProfileMockCallbackBuilderTest {
 
         };
         BaseBuilder baseBuilder = new BaseBuilder(context, deviceInformationServiceMockCallbackBuilder, bloodPressureServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addBloodPressureMeasurement(originalCharacteristicResponseCode, originalCharacteristicDelay, bloodPressureMeasurement.getBytes(), originalDescriptorResponseCode, originalDescriptorResponseCode, originalDescriptorDelay, bpmclientCharacteristicConfiguration.getBytes()));
+        assertEquals(baseBuilder, baseBuilder.addBloodPressureMeasurement(originalCharacteristicResponseCode, originalCharacteristicDelay, bloodPressureMeasurement.getBytes(), originalNotificationCount, originalDescriptorResponseCode, originalDescriptorDelay, bpmclientCharacteristicConfiguration.getBytes()));
 
         assertTrue(atomicBoolean.get());
     }
@@ -603,9 +605,9 @@ public class BloodPressureProfileMockCallbackBuilderTest {
     public void test_build_00101() {
         Exception exception = null;
         try {
-            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
-            baseBuilder.addManufacturerNameString("");
-            baseBuilder.build();
+            new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>())
+                    .addManufacturerNameString("")
+                    .build();
         } catch (Exception e) {
             exception = e;
         }
@@ -618,9 +620,9 @@ public class BloodPressureProfileMockCallbackBuilderTest {
     public void test_build_00102() {
         Exception exception = null;
         try {
-            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
-            baseBuilder.addManufacturerNameString(new ManufacturerNameString(""));
-            baseBuilder.build();
+            new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>())
+                    .addManufacturerNameString(new ManufacturerNameString(""))
+                    .build();
         } catch (Exception e) {
             exception = e;
         }
@@ -633,9 +635,9 @@ public class BloodPressureProfileMockCallbackBuilderTest {
     public void test_build_00103() {
         Exception exception = null;
         try {
-            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
-            baseBuilder.addManufacturerNameString(new ManufacturerNameString("").getBytes());
-            baseBuilder.build();
+            new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>())
+                    .addManufacturerNameString(new ManufacturerNameString("").getBytes())
+                    .build();
         } catch (Exception e) {
             exception = e;
         }
@@ -648,9 +650,9 @@ public class BloodPressureProfileMockCallbackBuilderTest {
     public void test_build_00104() {
         Exception exception = null;
         try {
-            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
-            baseBuilder.addManufacturerNameString(0, 0, new ManufacturerNameString("").getBytes());
-            baseBuilder.build();
+            new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>())
+                    .addManufacturerNameString(0, 0, new ManufacturerNameString("").getBytes())
+                    .build();
         } catch (Exception e) {
             exception = e;
         }
@@ -663,9 +665,9 @@ public class BloodPressureProfileMockCallbackBuilderTest {
     public void test_build_00201() {
         Exception exception = null;
         try {
-            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
-            baseBuilder.addModelNumberString("");
-            baseBuilder.build();
+            new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>())
+                    .addModelNumberString("")
+                    .build();
         } catch (Exception e) {
             exception = e;
         }
@@ -678,9 +680,9 @@ public class BloodPressureProfileMockCallbackBuilderTest {
     public void test_build_00202() {
         Exception exception = null;
         try {
-            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
-            baseBuilder.addModelNumberString(new ModelNumberString(""));
-            baseBuilder.build();
+            new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>())
+                    .addModelNumberString(new ModelNumberString(""))
+                    .build();
         } catch (Exception e) {
             exception = e;
         }
@@ -693,9 +695,9 @@ public class BloodPressureProfileMockCallbackBuilderTest {
     public void test_build_00203() {
         Exception exception = null;
         try {
-            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
-            baseBuilder.addModelNumberString(new ModelNumberString("").getBytes());
-            baseBuilder.build();
+            new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>())
+                    .addModelNumberString(new ModelNumberString("").getBytes())
+                    .build();
         } catch (Exception e) {
             exception = e;
         }
@@ -708,9 +710,9 @@ public class BloodPressureProfileMockCallbackBuilderTest {
     public void test_build_00204() {
         Exception exception = null;
         try {
-            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
-            baseBuilder.addModelNumberString(0, 0, new ModelNumberString("").getBytes());
-            baseBuilder.build();
+            new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>())
+                    .addModelNumberString(0, 0, new ModelNumberString("").getBytes())
+                    .build();
         } catch (Exception e) {
             exception = e;
         }
@@ -752,12 +754,12 @@ public class BloodPressureProfileMockCallbackBuilderTest {
 
         Exception exception = null;
         try {
-            BaseBuilder baseBuilder = new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>());
-            baseBuilder.addManufacturerNameString("");
-            baseBuilder.addModelNumberString("");
-            baseBuilder.addBloodPressureMeasurement(bloodPressureMeasurement, bpmclientCharacteristicConfiguration);
-            baseBuilder.addBloodPressureFeature(bloodPressureFeature);
-            baseBuilder.build();
+            new BaseBuilder(ApplicationProvider.getApplicationContext(), new DeviceInformationServiceMockCallback.Builder<>(), new BloodPressureServiceMockCallback.Builder<>())
+                    .addManufacturerNameString("")
+                    .addModelNumberString("")
+                    .addBloodPressureMeasurement(bloodPressureMeasurement, bpmclientCharacteristicConfiguration)
+                    .addBloodPressureFeature(bloodPressureFeature)
+                    .build();
         } catch (Exception e) {
             exception = e;
         }

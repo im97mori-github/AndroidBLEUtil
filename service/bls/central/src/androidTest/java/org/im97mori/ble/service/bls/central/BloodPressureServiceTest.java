@@ -19,6 +19,7 @@ import org.im97mori.ble.characteristic.u2a36.IntermediateCuffPressure;
 import org.im97mori.ble.characteristic.u2a36.IntermediateCuffPressureAndroid;
 import org.im97mori.ble.characteristic.u2a49.BloodPressureFeatureAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -111,45 +112,6 @@ public class BloodPressureServiceTest {
 
     @Test
     public void test_onDiscoverServiceSuccess_00007() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null);
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BLOOD_PRESSURE_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, 0));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        bloodPressureService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-
-        assertFalse(bloodPressureService.isIntermediateCuffPressureSupported());
-    }
-
-    @Test
-    public void test_onDiscoverServiceSuccess_00008() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null);
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BLOOD_PRESSURE_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, BluetoothGattDescriptor.PERMISSION_READ));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        bloodPressureService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-
-        assertFalse(bloodPressureService.isIntermediateCuffPressureSupported());
-    }
-
-    @Test
-    public void test_onDiscoverServiceSuccess_00009() {
-        MockBLEConnection mockBLEConnection = new MockBLEConnection();
-        BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null);
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BLOOD_PRESSURE_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, BluetoothGattDescriptor.PERMISSION_WRITE));
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-        bloodPressureService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-
-        assertFalse(bloodPressureService.isIntermediateCuffPressureSupported());
-    }
-
-    @Test
-    public void test_onDiscoverServiceSuccess_00010() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         BloodPressureService bloodPressureService = new BloodPressureService(mockBLEConnection, new MockBloodPressureServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(BLOOD_PRESSURE_SERVICE, 0);

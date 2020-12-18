@@ -19,6 +19,7 @@ import org.im97mori.ble.characteristic.u2a6a.LNFeatureAndroid;
 import org.im97mori.ble.characteristic.u2a6b.LNControlPoint;
 import org.im97mori.ble.characteristic.u2a6b.LNControlPointAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.Collections;

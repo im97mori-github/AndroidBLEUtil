@@ -102,6 +102,11 @@ public class BloodPressureProfileTest {
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
             @Override
+            public boolean isConnected() {
+                return true;
+            }
+
+            @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
             }
@@ -149,6 +154,11 @@ public class BloodPressureProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+            @Override
+            public boolean isConnected() {
+                return true;
+            }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -214,6 +224,10 @@ public class BloodPressureProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+            @Override
+            public boolean isConnected() {
+                return true;
+            }
 
             @Override
             public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
@@ -233,7 +247,7 @@ public class BloodPressureProfileTest {
                     mBloodPressureService = new BloodPressureService(mBLEConnection, mBloodPressureProfileCallback, null) {
 
                         @Override
-                        public boolean isStarted() {
+                        public synchronized boolean isStarted() {
                             return true;
                         }
 
@@ -258,6 +272,10 @@ public class BloodPressureProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+            @Override
+            public boolean isConnected() {
+                return true;
+            }
 
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
@@ -277,7 +295,7 @@ public class BloodPressureProfileTest {
                     mBloodPressureService = new BloodPressureService(mBLEConnection, mBloodPressureProfileCallback, null) {
 
                         @Override
-                        public boolean isStarted() {
+                        public synchronized boolean isStarted() {
                             return true;
                         }
 
@@ -302,6 +320,10 @@ public class BloodPressureProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+            @Override
+            public boolean isConnected() {
+                return true;
+            }
 
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
@@ -321,7 +343,7 @@ public class BloodPressureProfileTest {
                     mBloodPressureService = new BloodPressureService(mBLEConnection, mBloodPressureProfileCallback, null) {
 
                         @Override
-                        public boolean isStarted() {
+                        public synchronized boolean isStarted() {
                             return true;
                         }
 
@@ -365,7 +387,7 @@ public class BloodPressureProfileTest {
                     mBloodPressureService = new BloodPressureService(mBLEConnection, mBloodPressureProfileCallback, null) {
 
                         @Override
-                        public boolean isStarted() {
+                        public synchronized boolean isStarted() {
                             return true;
                         }
 
@@ -384,6 +406,11 @@ public class BloodPressureProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+
+            @Override
+            public boolean isConnected() {
+                return true;
+            }
 
             @Override
             public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
@@ -408,7 +435,7 @@ public class BloodPressureProfileTest {
                         }
 
                         @Override
-                        public boolean isStarted() {
+                        public synchronized boolean isStarted() {
                             return true;
                         }
 
@@ -452,7 +479,7 @@ public class BloodPressureProfileTest {
                     mBloodPressureService = new BloodPressureService(mBLEConnection, mBloodPressureProfileCallback, null) {
 
                         @Override
-                        public boolean isStarted() {
+                        public synchronized boolean isStarted() {
                             return true;
                         }
 
@@ -471,6 +498,10 @@ public class BloodPressureProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+            @Override
+            public boolean isConnected() {
+                return true;
+            }
 
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
@@ -495,7 +526,7 @@ public class BloodPressureProfileTest {
                         }
 
                         @Override
-                        public boolean isStarted() {
+                        public synchronized boolean isStarted() {
                             return true;
                         }
 
@@ -539,7 +570,7 @@ public class BloodPressureProfileTest {
                     mBloodPressureService = new BloodPressureService(mBLEConnection, mBloodPressureProfileCallback, null) {
 
                         @Override
-                        public boolean isStarted() {
+                        public synchronized boolean isStarted() {
                             return true;
                         }
 
@@ -558,6 +589,10 @@ public class BloodPressureProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+            @Override
+            public boolean isConnected() {
+                return true;
+            }
 
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
@@ -582,7 +617,7 @@ public class BloodPressureProfileTest {
                         }
 
                         @Override
-                        public boolean isStarted() {
+                        public synchronized boolean isStarted() {
                             return true;
                         }
 
@@ -608,6 +643,11 @@ public class BloodPressureProfileTest {
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
             @Override
+            public boolean isConnected() {
+                return true;
+            }
+
+            @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
             }
@@ -625,7 +665,7 @@ public class BloodPressureProfileTest {
                     mBloodPressureService = new BloodPressureService(mBLEConnection, mBloodPressureProfileCallback, null) {
 
                         @Override
-                        public boolean isStarted() {
+                        public synchronized boolean isStarted() {
                             return true;
                         }
 
@@ -647,7 +687,7 @@ public class BloodPressureProfileTest {
     @Test
     public void test_createServices_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()){
+        BloodPressureProfile bloodPressureProfile = new BloodPressureProfile(ApplicationProvider.getApplicationContext(), new BaseBloodPressureProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 super.createServices();

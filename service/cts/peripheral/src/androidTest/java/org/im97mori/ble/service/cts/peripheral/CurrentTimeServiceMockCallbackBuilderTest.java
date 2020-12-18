@@ -14,6 +14,7 @@ import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
 import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformation;
 import org.im97mori.ble.characteristic.u2a2b.CurrentTime;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
+import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
 import org.junit.Test;
 
 import java.util.LinkedList;

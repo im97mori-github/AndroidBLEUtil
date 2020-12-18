@@ -14,6 +14,7 @@ import org.im97mori.ble.characteristic.u2a9b.BodyCompositionFeature;
 import org.im97mori.ble.characteristic.u2a9c.BodyCompositionMeasurement;
 import org.im97mori.ble.characteristic.u2a9c.BodyCompositionMeasurementPacket;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
+import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
 import org.junit.Test;
 
 import java.util.LinkedList;

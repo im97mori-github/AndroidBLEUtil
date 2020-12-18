@@ -212,6 +212,9 @@
             <option value="$PROJECT_DIR$/profile/blp/central" />
             <option value="$PROJECT_DIR$/profile/blp/peripheral" />
             <option value="$PROJECT_DIR$/profile/central" />
+            <option value="$PROJECT_DIR$/profile/cpp" />
+            <option value="$PROJECT_DIR$/profile/cpp/central" />
+            <option value="$PROJECT_DIR$/profile/cpp/peripheral" />
             <option value="$PROJECT_DIR$/profile/fmp" />
             <option value="$PROJECT_DIR$/profile/fmp/central" />
             <option value="$PROJECT_DIR$/profile/fmp/peripheral" />
@@ -253,6 +256,9 @@
             <option value="$PROJECT_DIR$/service/bls/central" />
             <option value="$PROJECT_DIR$/service/bls/peripheral" />
             <option value="$PROJECT_DIR$/service/central" />
+            <option value="$PROJECT_DIR$/service/cps" />
+            <option value="$PROJECT_DIR$/service/cps/central" />
+            <option value="$PROJECT_DIR$/service/cps/peripheral" />
             <option value="$PROJECT_DIR$/service/cts" />
             <option value="$PROJECT_DIR$/service/cts/central" />
             <option value="$PROJECT_DIR$/service/cts/peripheral" />
@@ -290,6 +296,9 @@
             <option value="$PROJECT_DIR$/service/wss" />
             <option value="$PROJECT_DIR$/service/wss/central" />
             <option value="$PROJECT_DIR$/service/wss/peripheral" />
+            <option value="$PROJECT_DIR$/test" />
+            <option value="$PROJECT_DIR$/test/central" />
+            <option value="$PROJECT_DIR$/test/peripheral" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

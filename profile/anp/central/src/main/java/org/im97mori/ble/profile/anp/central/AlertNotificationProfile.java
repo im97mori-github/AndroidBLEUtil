@@ -53,7 +53,7 @@ public class AlertNotificationProfile extends AbstractCentralProfile {
      * @see AlertNotificationService#getSupportedNewAlertCategory()
      */
     @Nullable
-    public Integer getSupportedNewAlertCategory() {
+    public synchronized Integer getSupportedNewAlertCategory() {
         Integer taskId = null;
         if (mAlertNotificationService != null) {
             taskId = mAlertNotificationService.getSupportedNewAlertCategory();
@@ -65,7 +65,7 @@ public class AlertNotificationProfile extends AbstractCentralProfile {
      * @see AlertNotificationService#getNewAlertClientCharacteristicConfiguration()
      */
     @Nullable
-    public Integer getNewAlertClientCharacteristicConfiguration() {
+    public synchronized Integer getNewAlertClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (mAlertNotificationService != null) {
             taskId = mAlertNotificationService.getNewAlertClientCharacteristicConfiguration();
@@ -101,7 +101,7 @@ public class AlertNotificationProfile extends AbstractCentralProfile {
      * @see AlertNotificationService#getSupportedUnreadAlertCategory()
      */
     @Nullable
-    public Integer getSupportedUnreadAlertCategory() {
+    public synchronized Integer getSupportedUnreadAlertCategory() {
         Integer taskId = null;
         if (mAlertNotificationService != null) {
             taskId = mAlertNotificationService.getSupportedUnreadAlertCategory();
@@ -113,7 +113,7 @@ public class AlertNotificationProfile extends AbstractCentralProfile {
      * @see AlertNotificationService#getUnreadAlertStatusClientCharacteristicConfiguration()
      */
     @Nullable
-    public Integer getUnreadAlertStatusClientCharacteristicConfiguration() {
+    public synchronized Integer getUnreadAlertStatusClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (mAlertNotificationService != null) {
             taskId = mAlertNotificationService.getUnreadAlertStatusClientCharacteristicConfiguration();
@@ -149,7 +149,7 @@ public class AlertNotificationProfile extends AbstractCentralProfile {
      * @see AlertNotificationService#setAlertNotificationControlPoint(AlertNotificationControlPoint)
      */
     @Nullable
-    public Integer setAlertNotificationControlPoint(@NonNull AlertNotificationControlPoint alertNotificationControlPoint) {
+    public synchronized Integer setAlertNotificationControlPoint(@NonNull AlertNotificationControlPoint alertNotificationControlPoint) {
         Integer taskId = null;
         if (mAlertNotificationService != null) {
             taskId = mAlertNotificationService.setAlertNotificationControlPoint(alertNotificationControlPoint);

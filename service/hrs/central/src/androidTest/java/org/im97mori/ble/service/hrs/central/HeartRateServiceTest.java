@@ -16,6 +16,7 @@ import org.im97mori.ble.characteristic.u2a38.BodySensorLocationAndroid;
 import org.im97mori.ble.characteristic.u2a39.HeartRateControlPoint;
 import org.im97mori.ble.characteristic.u2a39.HeartRateControlPointAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.Collections;

@@ -986,7 +986,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
      * {@inheritDoc}
      */
     @Override
-    public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+    public synchronized void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
         if (bluetoothDevice.equals(mCurrentBluetoothDevice)) {
             mBLEConnection.createDiscoverServiceTask(DiscoverServiceTask.TIMEOUT_MILLIS, null, this);
         }

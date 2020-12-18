@@ -19,6 +19,7 @@ import org.im97mori.ble.characteristic.u2a28.SoftwareRevisionStringAndroid;
 import org.im97mori.ble.characteristic.u2a29.ManufacturerNameStringAndroid;
 import org.im97mori.ble.characteristic.u2a2a.IEEE_11073_20601_RegulatoryCertificationDataListAndroid;
 import org.im97mori.ble.characteristic.u2a50.PnpIdAndroid;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.Collections;

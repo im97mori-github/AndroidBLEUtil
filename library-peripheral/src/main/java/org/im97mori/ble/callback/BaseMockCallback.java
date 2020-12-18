@@ -776,4 +776,50 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         } while (start + duration > SystemClock.elapsedRealtime());
     }
 
+    /**
+     * find target characteristic data
+     *
+     * @param serviceUUID        target service {@link UUID} instance
+     * @param characteristicUUID target characteristic {@link UUID} instance
+     * @param clazz              return class
+     * @param <T>                child of {@link CharacteristicData} class
+     * @return target characteristic data, or {@code null}
+     * @see #findCharacteristicData(Map, UUID, Class)
+     */
+    @Nullable
+    protected <T extends CharacteristicData> T findCharacteristicData(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull Class<T> clazz) {
+        T target = null;
+        for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, CharacteristicData>> serviceDataEntry : mRemappedServiceCharacteristicMap.entrySet()) {
+            if (serviceUUID.equals(serviceDataEntry.getKey().first)) {
+                target = findCharacteristicData(serviceDataEntry.getValue(), characteristicUUID, clazz);
+                break;
+            }
+        }
+        return target;
+    }
+
+    /**
+     * find target characteristic data
+     *
+     * @param characteristicDataMap target characteristic map
+     * @param characteristicUUID    target characteristic {@link UUID} instance
+     * @param clazz                 return class
+     * @param <T>                   child of {@link CharacteristicData} class
+     * @return target characteristic data, or {@code null}
+     */
+    @Nullable
+    protected <T extends CharacteristicData> T findCharacteristicData(@NonNull Map<Pair<UUID, Integer>, CharacteristicData> characteristicDataMap, @NonNull UUID characteristicUUID, @NonNull Class<T> clazz) {
+        T target = null;
+        for (Map.Entry<Pair<UUID, Integer>, CharacteristicData> characteristicEntry : characteristicDataMap.entrySet()) {
+            if (characteristicUUID.equals(characteristicEntry.getKey().first)) {
+                CharacteristicData characteristicData = characteristicEntry.getValue();
+                if (characteristicData != null && clazz.isAssignableFrom(characteristicData.getClass())) {
+                    target = clazz.cast(characteristicData);
+                }
+                break;
+            }
+        }
+        return target;
+    }
+
 }

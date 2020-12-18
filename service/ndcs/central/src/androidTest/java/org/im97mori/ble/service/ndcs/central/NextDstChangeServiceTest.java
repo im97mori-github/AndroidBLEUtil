@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.characteristic.u2a11.TimeWithDstAndroid;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.UUID;

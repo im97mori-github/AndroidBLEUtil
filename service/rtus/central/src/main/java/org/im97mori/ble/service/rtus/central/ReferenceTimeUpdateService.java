@@ -46,7 +46,7 @@ public class ReferenceTimeUpdateService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && REFERENCE_TIME_UPDATE_SERVICE.equals(serviceUUID) && TIME_UPDATE_STATE_CHARACTERISTIC.equals(characteristicUUID)) {
             mReferenceTimeUpdateServiceCallback.onTimeUpdateStateReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, TimeUpdateStateAndroid.CREATOR.createFromByteArray(values), argument);
         }
@@ -57,7 +57,7 @@ public class ReferenceTimeUpdateService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && REFERENCE_TIME_UPDATE_SERVICE.equals(serviceUUID) && TIME_UPDATE_STATE_CHARACTERISTIC.equals(characteristicUUID)) {
             mReferenceTimeUpdateServiceCallback.onTimeUpdateStateReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
         }
@@ -68,7 +68,7 @@ public class ReferenceTimeUpdateService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && REFERENCE_TIME_UPDATE_SERVICE.equals(serviceUUID) && TIME_UPDATE_STATE_CHARACTERISTIC.equals(characteristicUUID)) {
             mReferenceTimeUpdateServiceCallback.onTimeUpdateStateReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
         }
@@ -79,7 +79,7 @@ public class ReferenceTimeUpdateService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && REFERENCE_TIME_UPDATE_SERVICE.equals(serviceUUID) && TIME_UPDATE_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
             mReferenceTimeUpdateServiceCallback.onTimeUpdateControlPointWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, TimeUpdateControlPointAndroid.CREATOR.createFromByteArray(values), argument);
         }
@@ -90,7 +90,7 @@ public class ReferenceTimeUpdateService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && REFERENCE_TIME_UPDATE_SERVICE.equals(serviceUUID) && TIME_UPDATE_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
             mReferenceTimeUpdateServiceCallback.onTimeUpdateControlPointWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
         }
@@ -101,7 +101,7 @@ public class ReferenceTimeUpdateService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && REFERENCE_TIME_UPDATE_SERVICE.equals(serviceUUID) && TIME_UPDATE_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
             mReferenceTimeUpdateServiceCallback.onTimeUpdateControlPointWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
         }
@@ -117,7 +117,7 @@ public class ReferenceTimeUpdateService extends AbstractCentralService {
      * @see ReferenceTimeUpdateServiceCallback#onTimeUpdateControlPointWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setTimeUpdateControlPoint(@NonNull TimeUpdateControlPoint timeUpdateControlPoint) {
+    public synchronized Integer setTimeUpdateControlPoint(@NonNull TimeUpdateControlPoint timeUpdateControlPoint) {
         Integer taskId = null;
         if (isStarted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(REFERENCE_TIME_UPDATE_SERVICE, null, TIME_UPDATE_CONTROL_POINT_CHARACTERISTIC, null, timeUpdateControlPoint, BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
@@ -135,7 +135,7 @@ public class ReferenceTimeUpdateService extends AbstractCentralService {
      * @see ReferenceTimeUpdateServiceCallback#onTimeUpdateStateReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer getTimeUpdateState() {
+    public synchronized Integer getTimeUpdateState() {
         Integer taskId = null;
         if (isStarted()) {
             taskId = mBLEConnection.createReadCharacteristicTask(REFERENCE_TIME_UPDATE_SERVICE, null, TIME_UPDATE_STATE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);

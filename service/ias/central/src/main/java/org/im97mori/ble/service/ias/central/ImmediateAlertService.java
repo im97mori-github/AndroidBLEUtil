@@ -43,7 +43,7 @@ public class ImmediateAlertService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && IMMEDIATE_ALERT_SERVICE.equals(serviceUUID) && ALERT_LEVEL_CHARACTERISTIC.equals(characteristicUUID)) {
             mImmediateAlertServiceCallback.onAlertLevelWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, AlertLevelAndroid.CREATOR.createFromByteArray(values), argument);
         }
@@ -54,7 +54,7 @@ public class ImmediateAlertService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && IMMEDIATE_ALERT_SERVICE.equals(serviceUUID) && ALERT_LEVEL_CHARACTERISTIC.equals(characteristicUUID)) {
             mImmediateAlertServiceCallback.onAlertLevelWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
         }
@@ -65,7 +65,7 @@ public class ImmediateAlertService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+    public synchronized void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && IMMEDIATE_ALERT_SERVICE.equals(serviceUUID) && ALERT_LEVEL_CHARACTERISTIC.equals(characteristicUUID)) {
             mImmediateAlertServiceCallback.onAlertLevelWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
         }
@@ -81,7 +81,7 @@ public class ImmediateAlertService extends AbstractCentralService {
      * @see ImmediateAlertServiceCallback#onAlertLevelWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
      */
     @Nullable
-    public Integer setAlertLevel(@NonNull AlertLevel alertLevel) {
+    public synchronized Integer setAlertLevel(@NonNull AlertLevel alertLevel) {
         Integer taskId = null;
         if (isStarted()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(IMMEDIATE_ALERT_SERVICE

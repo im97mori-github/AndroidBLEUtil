@@ -210,6 +210,8 @@ public class LnpCentralSampleActivity extends BaseActivity implements View.OnCli
                     , 0
                     , new byte[0]
             ));
+        } else if (R.id.get_ln_control_point_client_characteristic_configuration == item.getItemId()) {
+            mLocationAndNavigationProfile.getLNControlPointClientCharacteristicConfiguration();
         } else if (R.id.start_ln_control_point == item.getItemId()) {
             mLocationAndNavigationProfile.startLNControlPointIndication();
         } else if (R.id.stop_ln_control_point == item.getItemId()) {

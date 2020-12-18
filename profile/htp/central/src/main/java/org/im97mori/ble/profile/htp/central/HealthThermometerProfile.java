@@ -152,7 +152,7 @@ public class HealthThermometerProfile extends AbstractCentralProfile {
      * @see HealthThermometerService#getTemperatureMeasurementClientCharacteristicConfiguration()
      */
     @Nullable
-    public Integer getTemperatureMeasurementClientCharacteristicConfiguration() {
+    public synchronized Integer getTemperatureMeasurementClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (mHealthThermometerService != null) {
             taskId = mHealthThermometerService.getTemperatureMeasurementClientCharacteristicConfiguration();
@@ -188,7 +188,7 @@ public class HealthThermometerProfile extends AbstractCentralProfile {
      * @see HealthThermometerService#getTemperatureType()
      */
     @Nullable
-    public Integer getTemperatureType() {
+    public synchronized Integer getTemperatureType() {
         Integer taskId = null;
         if (mHealthThermometerService != null) {
             taskId = mHealthThermometerService.getTemperatureType();
@@ -200,7 +200,7 @@ public class HealthThermometerProfile extends AbstractCentralProfile {
      * @see HealthThermometerService#getIntermediateTemperatureClientCharacteristicConfiguration()
      */
     @Nullable
-    public Integer getIntermediateTemperatureClientCharacteristicConfiguration() {
+    public synchronized Integer getIntermediateTemperatureClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (mHealthThermometerService != null) {
             taskId = mHealthThermometerService.getIntermediateTemperatureClientCharacteristicConfiguration();
@@ -236,7 +236,7 @@ public class HealthThermometerProfile extends AbstractCentralProfile {
      * @see HealthThermometerService#getMeasurementInterval()
      */
     @Nullable
-    public Integer getMeasurementInterval() {
+    public synchronized Integer getMeasurementInterval() {
         Integer taskId = null;
         if (mHealthThermometerService != null) {
             taskId = mHealthThermometerService.getMeasurementInterval();
@@ -248,7 +248,7 @@ public class HealthThermometerProfile extends AbstractCentralProfile {
      * @see HealthThermometerService#setMeasurementInterval(MeasurementInterval)
      */
     @Nullable
-    public Integer setMeasurementInterval(@NonNull MeasurementInterval measurementInterval) {
+    public synchronized Integer setMeasurementInterval(@NonNull MeasurementInterval measurementInterval) {
         Integer taskId = null;
         if (mHealthThermometerService != null) {
             taskId = mHealthThermometerService.setMeasurementInterval(measurementInterval);
@@ -260,7 +260,7 @@ public class HealthThermometerProfile extends AbstractCentralProfile {
      * @see HealthThermometerService#getMeasurementIntervalClientCharacteristicConfiguration()
      */
     @Nullable
-    public Integer getMeasurementIntervalClientCharacteristicConfiguration() {
+    public synchronized Integer getMeasurementIntervalClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (mHealthThermometerService != null) {
             taskId = mHealthThermometerService.getMeasurementIntervalClientCharacteristicConfiguration();
@@ -296,7 +296,7 @@ public class HealthThermometerProfile extends AbstractCentralProfile {
      * @see HealthThermometerService#getMeasurementIntervalValidRange()
      */
     @Nullable
-    public Integer getMeasurementIntervalValidRange() {
+    public synchronized Integer getMeasurementIntervalValidRange() {
         Integer taskId = null;
         if (mHealthThermometerService != null) {
             taskId = mHealthThermometerService.getMeasurementIntervalValidRange();

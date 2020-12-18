@@ -32,9 +32,7 @@ dependencies {
     api "${groupId}:${serviceCtsPeripheralAndroid.artifactId}:${serviceCtsPeripheralAndroid.versionName}"
     api "${groupId}:${serviceNdcsPeripheralAndroid.artifactId}:${serviceNdcsPeripheralAndroid.versionName}"
     api "${groupId}:${serviceRtusPeripheralAndroid.artifactId}:${serviceRtusPeripheralAndroid.versionName}"
-
-    androidTestImplementation androidxTestRunner
-    androidTestImplementation androidxTestCore
+    androidTestImplementation apiTest
 }
 
 task sourcesJar(type: Jar) {

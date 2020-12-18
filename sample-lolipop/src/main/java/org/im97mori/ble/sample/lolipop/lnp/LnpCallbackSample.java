@@ -34,10 +34,10 @@ import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroi
 import org.im97mori.ble.descriptor.u2904.CharacteristicPresentationFormatAndroid;
 import org.im97mori.ble.profile.lnp.central.LocationAndNavigationProfileCallback;
 import org.im97mori.ble.profile.lnp.peripheral.LocationAndNavigationProfileMockCallback;
-import org.im97mori.ble.sample.lolipop.lns.LnsCallbackSample;
 import org.im97mori.ble.sample.lolipop.SampleCallback;
 import org.im97mori.ble.sample.lolipop.bas.BasCallbackSample;
 import org.im97mori.ble.sample.lolipop.dis.DisCallbackSample;
+import org.im97mori.ble.sample.lolipop.lns.LnsCallbackSample;
 import org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
 import org.im97mori.ble.service.lns.peripheral.LocationAndNavigationServiceMockCallback;
@@ -57,13 +57,16 @@ public class LnpCallbackSample extends LocationAndNavigationProfileMockCallback 
         private final SampleCallback mSampleCallback;
 
         public Builder(@NonNull Context context, SampleCallback sampleCallback) {
-            super(context, new DisCallbackSample.Builder(sampleCallback), new BasCallbackSample.Builder(sampleCallback), new LnsCallbackSample.Builder(sampleCallback));
+            super(context, new LnsCallbackSample.Builder(sampleCallback), new DisCallbackSample.Builder(sampleCallback), new BasCallbackSample.Builder(sampleCallback));
             mSampleCallback = sampleCallback;
         }
 
         @Override
         public LnpCallbackSample build() {
-            return new LnpCallbackSample(mContext, mDeviceInformationServiceMockCallbackBuilder.build(), mBatteryServiceMockCallbackBuilder.build(), mLocationAndNavigationServiceMockCallbackBuilder.build(), mSampleCallback);
+            return new LnpCallbackSample(mContext, mLocationAndNavigationServiceMockCallbackBuilder.build()
+                    , mDeviceInformationServiceMockCallbackBuilder == null ? null : mDeviceInformationServiceMockCallbackBuilder.build()
+                    , mBatteryServiceMockCallbackBuilder == null ? null : mBatteryServiceMockCallbackBuilder.build()
+                    , mSampleCallback);
         }
     }
 
@@ -75,8 +78,8 @@ public class LnpCallbackSample extends LocationAndNavigationProfileMockCallback 
         this(context, null, null, null, sampleCallback);
     }
 
-    public LnpCallbackSample(Context context, DeviceInformationServiceMockCallback deviceInformationServiceMockCallback, BatteryServiceMockCallback batteryServiceMockCallback, LocationAndNavigationServiceMockCallback locationAndNavigationServiceMockCallback, SampleCallback sampleCallback) {
-        super(context, deviceInformationServiceMockCallback, batteryServiceMockCallback, locationAndNavigationServiceMockCallback);
+    public LnpCallbackSample(Context context, LocationAndNavigationServiceMockCallback locationAndNavigationServiceMockCallback, DeviceInformationServiceMockCallback deviceInformationServiceMockCallback, BatteryServiceMockCallback batteryServiceMockCallback, SampleCallback sampleCallback) {
+        super(context, locationAndNavigationServiceMockCallback, deviceInformationServiceMockCallback, batteryServiceMockCallback);
         mSampleCallback = sampleCallback;
     }
 

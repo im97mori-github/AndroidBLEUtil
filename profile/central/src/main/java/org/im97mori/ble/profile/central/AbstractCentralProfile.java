@@ -263,7 +263,7 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
 
     /**
      * @param bluetoothDevice bond target {@link BluetoothDevice} instance
-     * @param timeout              timeout(millis)
+     * @param timeout         timeout(millis)
      * @param argument        callback argument
      * @return task id. if {@code null} returned, task was not registed
      */
@@ -344,7 +344,7 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
      * {@inheritDoc}
      */
     @Override
-    public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+    public synchronized void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
         // do nothing
     }
 
@@ -352,7 +352,7 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
      * {@inheritDoc}
      */
     @Override
-    public void onBLEConnectFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
+    public synchronized void onBLEConnectFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         // do nothing
     }
 
@@ -360,7 +360,7 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
      * {@inheritDoc}
      */
     @Override
-    public void onBLEConnectTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+    public synchronized void onBLEConnectTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
         // do nothing
     }
 

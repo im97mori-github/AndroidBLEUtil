@@ -16,6 +16,7 @@ import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformationAndroid;
 import org.im97mori.ble.characteristic.u2a2b.CurrentTime;
 import org.im97mori.ble.characteristic.u2a2b.CurrentTimeAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.Collections;

@@ -29,8 +29,7 @@ android {
 
 dependencies {
     api androidxAnnotation
-    androidTestImplementation androidxTestRunner
-    androidTestImplementation androidxTestCore
+    androidTestImplementation apiTest
 }
 
 task sourcesJar(type: Jar) {

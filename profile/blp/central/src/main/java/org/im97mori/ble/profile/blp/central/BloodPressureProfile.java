@@ -108,7 +108,7 @@ public class BloodPressureProfile extends AbstractCentralProfile {
     @Nullable
     public synchronized Boolean isIntermediateCuffPressureSupported() {
         Boolean result = null;
-        if (mBloodPressureService != null ) {
+        if (mBloodPressureService != null) {
             result = mBloodPressureService.isIntermediateCuffPressureSupported();
         }
         return result;

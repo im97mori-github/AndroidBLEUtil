@@ -254,7 +254,7 @@ public class TimeProfile extends AbstractCentralProfile {
      * @see NextDstChangeService#getTimeWithDst()
      */
     @Nullable
-    public Integer getTimeWithDst() {
+    public synchronized Integer getTimeWithDst() {
         Integer taskId = null;
         if (mNextDstChangeService != null) {
             taskId = mNextDstChangeService.getTimeWithDst();
@@ -266,7 +266,7 @@ public class TimeProfile extends AbstractCentralProfile {
      * @see ReferenceTimeUpdateService#setTimeUpdateControlPoint(TimeUpdateControlPoint)
      */
     @Nullable
-    public Integer setTimeUpdateControlPoint(@NonNull TimeUpdateControlPoint timeUpdateControlPoint) {
+    public synchronized Integer setTimeUpdateControlPoint(@NonNull TimeUpdateControlPoint timeUpdateControlPoint) {
         Integer taskId = null;
         if (mReferenceTimeUpdateService != null) {
             taskId = mReferenceTimeUpdateService.setTimeUpdateControlPoint(timeUpdateControlPoint);
@@ -278,7 +278,7 @@ public class TimeProfile extends AbstractCentralProfile {
      * @see ReferenceTimeUpdateService#getTimeUpdateState()
      */
     @Nullable
-    public Integer getTimeUpdateState() {
+    public synchronized Integer getTimeUpdateState() {
         Integer taskId = null;
         if (mReferenceTimeUpdateService != null) {
             taskId = mReferenceTimeUpdateService.getTimeUpdateState();
@@ -337,7 +337,7 @@ public class TimeProfile extends AbstractCentralProfile {
      * {@inheritDoc}
      */
     @Override
-    public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+    public synchronized void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
         if (bluetoothDevice.equals(mCurrentBluetoothDevice)) {
             mBLEConnection.createDiscoverServiceTask(DiscoverServiceTask.TIMEOUT_MILLIS, null, this);
         }

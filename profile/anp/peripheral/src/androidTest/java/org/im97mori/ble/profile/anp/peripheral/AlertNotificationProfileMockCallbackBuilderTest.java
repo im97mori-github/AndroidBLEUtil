@@ -33,7 +33,7 @@ public class AlertNotificationProfileMockCallbackBuilderTest {
     @Test
     public void test_addSupportedNewAlertCategory_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, 0, 0);
+        final SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, false, 0);
 
         Context context = ApplicationProvider.getApplicationContext();
         AlertNotificationServiceMockCallback.Builder<AlertNotificationServiceMockCallback> alertNotificationServiceMockCallbackBuilder = new AlertNotificationServiceMockCallback.Builder<AlertNotificationServiceMockCallback>() {
@@ -57,7 +57,7 @@ public class AlertNotificationProfileMockCallbackBuilderTest {
     @Test
     public void test_addSupportedNewAlertCategory_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, 0, 0);
+        final SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, false, 0);
 
         Context context = ApplicationProvider.getApplicationContext();
         AlertNotificationServiceMockCallback.Builder<AlertNotificationServiceMockCallback> alertNotificationServiceMockCallbackBuilder = new AlertNotificationServiceMockCallback.Builder<AlertNotificationServiceMockCallback>() {
@@ -83,7 +83,7 @@ public class AlertNotificationProfileMockCallbackBuilderTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalResponseCode = 1;
         final long originalDelay = 2;
-        final SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, 0, 0);
+        final SupportedNewAlertCategory supportedNewAlertCategory = new SupportedNewAlertCategory(0, false, 0);
 
         Context context = ApplicationProvider.getApplicationContext();
         AlertNotificationServiceMockCallback.Builder<AlertNotificationServiceMockCallback> alertNotificationServiceMockCallbackBuilder = new AlertNotificationServiceMockCallback.Builder<AlertNotificationServiceMockCallback>() {
@@ -265,7 +265,7 @@ public class AlertNotificationProfileMockCallbackBuilderTest {
     @Test
     public void test_addSupportedUnreadAlertCategory_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, 0, 0);
+        final SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, false, 0);
 
         Context context = ApplicationProvider.getApplicationContext();
         AlertNotificationServiceMockCallback.Builder<AlertNotificationServiceMockCallback> alertNotificationServiceMockCallbackBuilder = new AlertNotificationServiceMockCallback.Builder<AlertNotificationServiceMockCallback>() {
@@ -289,7 +289,7 @@ public class AlertNotificationProfileMockCallbackBuilderTest {
     @Test
     public void test_addSupportedUnreadAlertCategory_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, 0, 0);
+        final SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, false, 0);
 
         Context context = ApplicationProvider.getApplicationContext();
         AlertNotificationServiceMockCallback.Builder<AlertNotificationServiceMockCallback> alertNotificationServiceMockCallbackBuilder = new AlertNotificationServiceMockCallback.Builder<AlertNotificationServiceMockCallback>() {
@@ -315,7 +315,7 @@ public class AlertNotificationProfileMockCallbackBuilderTest {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalResponseCode = 1;
         final long originalDelay = 2;
-        final SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, 0, 0);
+        final SupportedUnreadAlertCategory supportedUnreadAlertCategory = new SupportedUnreadAlertCategory(0, false, 0);
 
         Context context = ApplicationProvider.getApplicationContext();
         AlertNotificationServiceMockCallback.Builder<AlertNotificationServiceMockCallback> alertNotificationServiceMockCallbackBuilder = new AlertNotificationServiceMockCallback.Builder<AlertNotificationServiceMockCallback>() {

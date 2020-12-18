@@ -28,8 +28,6 @@ android {
 }
 
 dependencies {
-    androidTestImplementation androidxTestRunner
-    androidTestImplementation androidxTestCore
 }
 
 task sourcesJar(type: Jar) {

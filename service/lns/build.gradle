@@ -34,8 +34,6 @@ dependencies {
     api "${groupId}:${characteristicU2a69Android.artifactId}:${characteristicU2a69Android.versionName}"
     api "${groupId}:${characteristicU2a6aAndroid.artifactId}:${characteristicU2a6aAndroid.versionName}"
     api "${groupId}:${characteristicU2a6bAndroid.artifactId}:${characteristicU2a6bAndroid.versionName}"
-    androidTestImplementation androidxTestRunner
-    androidTestImplementation androidxTestCore
 }
 
 task sourcesJar(type: Jar) {

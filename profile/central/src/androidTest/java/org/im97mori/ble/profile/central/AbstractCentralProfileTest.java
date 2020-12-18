@@ -15,6 +15,7 @@ import org.im97mori.ble.profile.central.db.BaseBondedDeviceDatabaseHelper;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
 import org.im97mori.ble.profile.central.task.BondTask;
 import org.im97mori.ble.profile.central.task.ScanTask;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.List;

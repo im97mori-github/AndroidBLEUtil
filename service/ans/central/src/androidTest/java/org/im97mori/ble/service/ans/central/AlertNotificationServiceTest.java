@@ -18,6 +18,7 @@ import org.im97mori.ble.characteristic.u2a47.SupportedNewAlertCategoryAndroid;
 import org.im97mori.ble.characteristic.u2a48.SupportedUnreadAlertCategoryAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
 import org.im97mori.ble.service.ans.AlertNotificationCategoryIdUtils;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.UUID;

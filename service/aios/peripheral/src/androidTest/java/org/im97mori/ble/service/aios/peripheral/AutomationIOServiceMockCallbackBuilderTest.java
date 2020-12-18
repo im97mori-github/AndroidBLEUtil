@@ -20,6 +20,7 @@ import org.im97mori.ble.descriptor.u2906.ValidRange;
 import org.im97mori.ble.descriptor.u2909.NumberOfDigitals;
 import org.im97mori.ble.descriptor.u290a.ValueTriggerSetting;
 import org.im97mori.ble.descriptor.u290e.TimeTriggerSetting;
+import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
 import org.junit.Test;
 
 import java.util.LinkedList;

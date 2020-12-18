@@ -13,6 +13,7 @@ import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.characteristic.u2a9d.WeightMeasurement;
 import org.im97mori.ble.characteristic.u2a9e.WeightScaleFeature;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
+import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
 import org.junit.Test;
 
 import java.util.LinkedList;

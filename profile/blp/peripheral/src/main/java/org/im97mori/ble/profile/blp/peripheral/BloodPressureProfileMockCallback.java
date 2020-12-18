@@ -74,7 +74,6 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> addManufacturerNameString(@NonNull String manufacturerName) {
-            mHasManufacturerNameString = true;
             return addManufacturerNameString(new ManufacturerNameString(manufacturerName));
         }
 
@@ -83,7 +82,6 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> addManufacturerNameString(@NonNull ManufacturerNameString manufacturerNameString) {
-            mHasManufacturerNameString = true;
             return addManufacturerNameString(manufacturerNameString.getBytes());
         }
 
@@ -92,7 +90,6 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> addManufacturerNameString(@NonNull byte[] value) {
-            mHasManufacturerNameString = true;
             return addManufacturerNameString(BluetoothGatt.GATT_SUCCESS
                     , 0
                     , value);
@@ -123,7 +120,6 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> addModelNumberString(@NonNull String modelNumber) {
-            mHasModelNumberString = true;
             return addModelNumberString(new ModelNumberString(modelNumber));
         }
 
@@ -132,7 +128,6 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> addModelNumberString(ModelNumberString modelNumberString) {
-            mHasModelNumberString = true;
             return addModelNumberString(modelNumberString.getBytes());
         }
 
@@ -141,7 +136,6 @@ public class BloodPressureProfileMockCallback extends AbstractProfileMockCallbac
          */
         @NonNull
         public Builder<T> addModelNumberString(@NonNull byte[] value) {
-            mHasModelNumberString = true;
             return addModelNumberString(BluetoothGatt.GATT_SUCCESS
                     , 0
                     , value);

@@ -18,6 +18,7 @@ import org.im97mori.ble.descriptor.u2900.CharacteristicExtendedProperties;
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;
 import org.im97mori.ble.descriptor.u290a.ValueTriggerSetting;
 import org.im97mori.ble.descriptor.u290e.TimeTriggerSetting;
+import org.im97mori.ble.test.central.MockBLEConnection;
 import org.junit.Test;
 
 import java.util.Collections;

@@ -31,8 +31,7 @@ dependencies {
     api "${groupId}:${profileCentralAndroid.artifactId}:${profileCentralAndroid.versionName}"
     api "${groupId}:${serviceDisCentralAndroid.artifactId}:${serviceDisCentralAndroid.versionName}"
     api "${groupId}:${serviceHrsCentralAndroid.artifactId}:${serviceHrsCentralAndroid.versionName}"
-    androidTestImplementation androidxTestRunner
-    androidTestImplementation androidxTestCore
+    androidTestImplementation apiTest
 }
 
 task sourcesJar(type: Jar) {

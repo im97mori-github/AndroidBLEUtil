@@ -34,5 +34,7 @@ dependencies {
     implementation project(path: ':profile:anp:central')
     implementation project(path: ':profile:tip:peripheral')
     implementation project(path: ':profile:tip:central')
+    implementation project(path: ':profile:cpp:peripheral')
+    implementation project(path: ':profile:cpp:central')
     implementation 'androidx.fragment:fragment:1.2.5'
 }

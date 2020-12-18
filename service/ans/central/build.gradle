@@ -30,8 +30,7 @@ android {
 dependencies {
     api "${groupId}:${serviceCentralAndroid.artifactId}:${serviceCentralAndroid.versionName}"
     api "${groupId}:${serviceAnsAndroid.artifactId}:${serviceAnsAndroid.versionName}"
-    androidTestImplementation androidxTestRunner
-    androidTestImplementation androidxTestCore
+    androidTestImplementation "${groupId}:${testCentral.artifactId}:${testCentral.versionName}"
 }
 
 task sourcesJar(type: Jar) {

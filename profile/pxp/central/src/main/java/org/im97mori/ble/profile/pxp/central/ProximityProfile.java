@@ -110,7 +110,7 @@ public class ProximityProfile extends AbstractCentralProfile {
      * @see LinkLossService#getAlertLevel()
      */
     @Nullable
-    public Integer getAlertLevel() {
+    public synchronized Integer getAlertLevel() {
         Integer taskId = null;
         if (mLinkLossService != null) {
             taskId = mLinkLossService.getAlertLevel();
@@ -122,7 +122,7 @@ public class ProximityProfile extends AbstractCentralProfile {
      * @see LinkLossService#setAlertLevel(AlertLevel)
      */
     @Nullable
-    public Integer setLinkLossServiceAlertLevel(@NonNull AlertLevel alertLevel) {
+    public synchronized Integer setLinkLossServiceAlertLevel(@NonNull AlertLevel alertLevel) {
         Integer taskId = null;
         if (mLinkLossService != null) {
             taskId = mLinkLossService.setAlertLevel(alertLevel);
@@ -134,7 +134,7 @@ public class ProximityProfile extends AbstractCentralProfile {
      * @see ImmediateAlertService#setAlertLevel(AlertLevel)
      */
     @Nullable
-    public Integer setImmediateAlertServiceAlertLevel(@NonNull AlertLevel alertLevel) {
+    public synchronized Integer setImmediateAlertServiceAlertLevel(@NonNull AlertLevel alertLevel) {
         Integer taskId = null;
         if (mImmediateAlertService != null && mHasImmediateAlertService) {
             taskId = mImmediateAlertService.setAlertLevel(alertLevel);
@@ -146,7 +146,7 @@ public class ProximityProfile extends AbstractCentralProfile {
      * @see TxPowerService#getTxPowerLevel()
      */
     @Nullable
-    public Integer getTxPowerLevel() {
+    public synchronized Integer getTxPowerLevel() {
         Integer taskId = null;
         if (mTxPowerService != null && mHasTxPowerService) {
             taskId = mTxPowerService.getTxPowerLevel();
@@ -197,7 +197,7 @@ public class ProximityProfile extends AbstractCentralProfile {
      * {@inheritDoc}
      */
     @Override
-    public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+    public synchronized void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
         if (bluetoothDevice.equals(mCurrentBluetoothDevice)) {
             mBLEConnection.createDiscoverServiceTask(DiscoverServiceTask.TIMEOUT_MILLIS, null, this);
         }

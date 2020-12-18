@@ -208,6 +208,7 @@
     <pattern value="org.im97mori.ble.task.AbstractBLETask" method="createTimeoutMessage" />
     <pattern value="org.im97mori.ble.BLELogUtils" method="stackLog" />
     <pattern value="org.im97mori.ble.advertising.filter.FilteredLeScanCallback.Builder" method="build" />
+    <pattern value="org.im97mori.ble.callback.BaseMockCallback" method="findCharacteristicData" />
   </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="F:/a" />

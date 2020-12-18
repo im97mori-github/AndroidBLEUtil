@@ -85,7 +85,7 @@ public class HeartRateProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         int taskId = 1;
-        List<BluetoothGattService> serviceList = new ArrayList<BluetoothGattService>();
+        List<BluetoothGattService> serviceList = new ArrayList<>();
 
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
         heartRateProfile.connect(MOCK_DEVICE);
@@ -102,7 +102,7 @@ public class HeartRateProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         int taskId = 1;
-        List<BluetoothGattService> serviceList = new ArrayList<BluetoothGattService>();
+        List<BluetoothGattService> serviceList = new ArrayList<>();
         serviceList.add(new BluetoothGattService(GENERIC_ACCESS_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
 
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
@@ -120,7 +120,7 @@ public class HeartRateProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         int taskId = 1;
-        List<BluetoothGattService> serviceList = new ArrayList<BluetoothGattService>();
+        List<BluetoothGattService> serviceList = new ArrayList<>();
         serviceList.add(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
 
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
@@ -138,7 +138,7 @@ public class HeartRateProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         int taskId = 1;
-        List<BluetoothGattService> serviceList = new ArrayList<BluetoothGattService>();
+        List<BluetoothGattService> serviceList = new ArrayList<>();
         serviceList.add(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
 
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
@@ -159,7 +159,7 @@ public class HeartRateProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         int taskId = 1;
-        List<BluetoothGattService> serviceList = new ArrayList<BluetoothGattService>();
+        List<BluetoothGattService> serviceList = new ArrayList<>();
         serviceList.add(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
 
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
@@ -189,7 +189,7 @@ public class HeartRateProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         int taskId = 1;
-        List<BluetoothGattService> serviceList = new ArrayList<BluetoothGattService>();
+        List<BluetoothGattService> serviceList = new ArrayList<>();
         serviceList.add(new BluetoothGattService(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY));
 
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
@@ -251,6 +251,11 @@ public class HeartRateProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+            @Override
+            public boolean isConnected() {
+                return true;
+            }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -380,6 +385,10 @@ public class HeartRateProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+            @Override
+            public boolean isConnected() {
+                return true;
+            }
 
             @Override
             public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
@@ -424,6 +433,10 @@ public class HeartRateProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+            @Override
+            public boolean isConnected() {
+                return true;
+            }
 
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
@@ -468,6 +481,10 @@ public class HeartRateProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+            @Override
+            public boolean isConnected() {
+                return true;
+            }
 
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
@@ -512,6 +529,11 @@ public class HeartRateProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+            @Override
+            public boolean isConnected() {
+                return true;
+            }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -560,6 +582,10 @@ public class HeartRateProfileTest {
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
         BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+            @Override
+            public boolean isConnected() {
+                return true;
+            }
 
             @Override
             public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {

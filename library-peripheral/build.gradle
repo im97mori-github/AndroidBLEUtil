@@ -33,9 +33,7 @@ dependencies {
     api apiAdvertisingAndroid
     api apiHandler
     api 'com.google.code.gson:gson:2.8.6'
-
-    androidTestImplementation androidxTestRunner
-    androidTestImplementation androidxTestCore
+    androidTestImplementation apiTest
 }
 
 task sourcesJar(type: Jar) {

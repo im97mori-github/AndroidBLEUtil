@@ -30,8 +30,6 @@ android {
 dependencies {
     api "${groupId}:${characteristicU2a16Android.artifactId}:${characteristicU2a16Android.versionName}"
     api "${groupId}:${characteristicU2a17Android.artifactId}:${characteristicU2a17Android.versionName}"
-    androidTestImplementation androidxTestRunner
-    androidTestImplementation androidxTestCore
 }
 
 task sourcesJar(type: Jar) {

@@ -54,7 +54,7 @@ public class FindMeProfile extends AbstractCentralProfile {
      * @see ImmediateAlertService#setAlertLevel(AlertLevel)
      */
     @Nullable
-    public Integer setAlertLevel(@NonNull AlertLevel alertLevel) {
+    public synchronized Integer setAlertLevel(@NonNull AlertLevel alertLevel) {
         Integer taskId = null;
         if (mImmediateAlertService != null) {
             taskId = mImmediateAlertService.setAlertLevel(alertLevel);
@@ -95,7 +95,7 @@ public class FindMeProfile extends AbstractCentralProfile {
      * {@inheritDoc}
      */
     @Override
-    public void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+    public synchronized void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
         if (bluetoothDevice.equals(mCurrentBluetoothDevice)) {
             mBLEConnection.createDiscoverServiceTask(DiscoverServiceTask.TIMEOUT_MILLIS, null, this);
         }

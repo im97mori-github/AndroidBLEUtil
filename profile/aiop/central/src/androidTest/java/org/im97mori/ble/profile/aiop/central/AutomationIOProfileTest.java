@@ -86,13 +86,13 @@ public class AutomationIOProfileTest {
     }
 
     @Test
-    public void test_isDigitalCharacteristicReadable_00001() {
+    public void test_isDigitalReadable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isDigitalCharacteristicReadable());
+        assertNull(automationIOProfile.isDigitalReadable());
     }
 
     @Test
-    public void test_isDigitalCharacteristicReadable_00002() {
+    public void test_isDigitalReadable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -106,7 +106,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isDigitalCharacteristicReadable(int index) {
+                        public boolean isDigitalReadable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -117,19 +117,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isDigitalCharacteristicReadable());
+        assertNotNull(automationIOProfile.isDigitalReadable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isDigitalCharacteristicReadable_00101() {
+    public void test_isDigitalReadable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isDigitalCharacteristicReadable(1));
+        assertNull(automationIOProfile.isDigitalReadable(1));
     }
 
     @Test
-    public void test_isDigitalCharacteristicReadable_00102() {
+    public void test_isDigitalReadable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -143,7 +143,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isDigitalCharacteristicReadable(int index) {
+                        public boolean isDigitalReadable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -154,19 +154,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isDigitalCharacteristicReadable(originalIndex));
+        assertNotNull(automationIOProfile.isDigitalReadable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isDigitalCharacteristicWritable_00001() {
+    public void test_isDigitalWritable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isDigitalCharacteristicWritable());
+        assertNull(automationIOProfile.isDigitalWritable());
     }
 
     @Test
-    public void test_isDigitalCharacteristicWritable_00002() {
+    public void test_isDigitalWritable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -180,7 +180,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isDigitalCharacteristicWritable(int index) {
+                        public boolean isDigitalWritable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -191,19 +191,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isDigitalCharacteristicWritable());
+        assertNotNull(automationIOProfile.isDigitalWritable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isDigitalCharacteristicWritable_00101() {
+    public void test_isDigitalWritable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isDigitalCharacteristicWritable(1));
+        assertNull(automationIOProfile.isDigitalWritable(1));
     }
 
     @Test
-    public void test_isDigitalCharacteristicWritable_00102() {
+    public void test_isDigitalWritable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -217,7 +217,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isDigitalCharacteristicWritable(int index) {
+                        public boolean isDigitalWritable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -228,19 +228,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isDigitalCharacteristicWritable(originalIndex));
+        assertNotNull(automationIOProfile.isDigitalWritable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isDigitalCharacteristicWritableWithNoResponse_00001() {
+    public void test_isDigitalWritableWithNoResponse_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isDigitalCharacteristicWritableWithNoResponse());
+        assertNull(automationIOProfile.isDigitalWritableWithNoResponse());
     }
 
     @Test
-    public void test_isDigitalCharacteristicWritableWithNoResponse_00002() {
+    public void test_isDigitalWritableWithNoResponse_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -254,7 +254,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isDigitalCharacteristicWritableWithNoResponse(int index) {
+                        public boolean isDigitalWritableWithNoResponse(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -265,19 +265,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isDigitalCharacteristicWritableWithNoResponse());
+        assertNotNull(automationIOProfile.isDigitalWritableWithNoResponse());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isDigitalCharacteristicWritableWithNoResponse_00101() {
+    public void test_isDigitalWritableWithNoResponse_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isDigitalCharacteristicWritableWithNoResponse(1));
+        assertNull(automationIOProfile.isDigitalWritableWithNoResponse(1));
     }
 
     @Test
-    public void test_isDigitalCharacteristicWritableWithNoResponse_00102() {
+    public void test_isDigitalWritableWithNoResponse_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -291,7 +291,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isDigitalCharacteristicWritableWithNoResponse(int index) {
+                        public boolean isDigitalWritableWithNoResponse(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -302,19 +302,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isDigitalCharacteristicWritableWithNoResponse(originalIndex));
+        assertNotNull(automationIOProfile.isDigitalWritableWithNoResponse(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isDigitalCharacteristicNotificatable_00001() {
+    public void test_isDigitalNotificatable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isDigitalCharacteristicNotificatable());
+        assertNull(automationIOProfile.isDigitalNotificatable());
     }
 
     @Test
-    public void test_isDigitalCharacteristicNotificatable_00002() {
+    public void test_isDigitalNotificatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -328,7 +328,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isDigitalCharacteristicNotificatable(int index) {
+                        public boolean isDigitalNotificatable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -339,19 +339,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isDigitalCharacteristicNotificatable());
+        assertNotNull(automationIOProfile.isDigitalNotificatable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isDigitalCharacteristicNotificatable_00101() {
+    public void test_isDigitalNotificatable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isDigitalCharacteristicNotificatable(1));
+        assertNull(automationIOProfile.isDigitalNotificatable(1));
     }
 
     @Test
-    public void test_isDigitalCharacteristicNotificatable_00102() {
+    public void test_isDigitalNotificatable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -365,7 +365,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isDigitalCharacteristicNotificatable(int index) {
+                        public boolean isDigitalNotificatable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -376,19 +376,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isDigitalCharacteristicNotificatable(originalIndex));
+        assertNotNull(automationIOProfile.isDigitalNotificatable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isDigitalCharacteristicIndicatable_00001() {
+    public void test_isDigitalIndicatable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isDigitalCharacteristicIndicatable());
+        assertNull(automationIOProfile.isDigitalIndicatable());
     }
 
     @Test
-    public void test_isDigitalCharacteristicIndicatable_00002() {
+    public void test_isDigitalIndicatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -402,7 +402,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isDigitalCharacteristicIndicatable(int index) {
+                        public boolean isDigitalIndicatable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -413,19 +413,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isDigitalCharacteristicIndicatable());
+        assertNotNull(automationIOProfile.isDigitalIndicatable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isDigitalCharacteristicIndicatable_00101() {
+    public void test_isDigitalIndicatable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isDigitalCharacteristicIndicatable(1));
+        assertNull(automationIOProfile.isDigitalIndicatable(1));
     }
 
     @Test
-    public void test_isDigitalCharacteristicIndicatable_00102() {
+    public void test_isDigitalIndicatable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -439,7 +439,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isDigitalCharacteristicIndicatable(int index) {
+                        public boolean isDigitalIndicatable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -450,19 +450,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isDigitalCharacteristicIndicatable(originalIndex));
+        assertNotNull(automationIOProfile.isDigitalIndicatable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00001() {
+    public void test_hasDigitalCharacteristicPresentationFormat_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasDigitalCharacteristicPresentationFormatDescriptor());
+        assertNull(automationIOProfile.hasDigitalCharacteristicPresentationFormat());
     }
 
     @Test
-    public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00002() {
+    public void test_hasDigitalCharacteristicPresentationFormat_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -476,7 +476,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasDigitalCharacteristicPresentationFormatDescriptor(int index) {
+                        public boolean hasDigitalCharacteristicPresentationFormat(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -487,19 +487,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasDigitalCharacteristicPresentationFormatDescriptor());
+        assertNotNull(automationIOProfile.hasDigitalCharacteristicPresentationFormat());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00101() {
+    public void test_hasDigitalCharacteristicPresentationFormat_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasDigitalCharacteristicPresentationFormatDescriptor(1));
+        assertNull(automationIOProfile.hasDigitalCharacteristicPresentationFormat(1));
     }
 
     @Test
-    public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00102() {
+    public void test_hasDigitalCharacteristicPresentationFormat_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -513,7 +513,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasDigitalCharacteristicPresentationFormatDescriptor(int index) {
+                        public boolean hasDigitalCharacteristicPresentationFormat(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -524,19 +524,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasDigitalCharacteristicPresentationFormatDescriptor(originalIndex));
+        assertNotNull(automationIOProfile.hasDigitalCharacteristicPresentationFormat(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00001() {
+    public void test_hasDigitalCharacteristicUserDescription_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor());
+        assertNull(automationIOProfile.hasDigitalCharacteristicUserDescription());
     }
 
     @Test
-    public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00002() {
+    public void test_hasDigitalCharacteristicUserDescription_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -550,7 +550,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor(int index) {
+                        public boolean hasDigitalCharacteristicUserDescription(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -561,19 +561,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor());
+        assertNotNull(automationIOProfile.hasDigitalCharacteristicUserDescription());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00101() {
+    public void test_hasDigitalCharacteristicUserDescription_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor(1));
+        assertNull(automationIOProfile.hasDigitalCharacteristicUserDescription(1));
     }
 
     @Test
-    public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00102() {
+    public void test_hasDigitalCharacteristicUserDescription_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -587,7 +587,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor(int index) {
+                        public boolean hasDigitalCharacteristicUserDescription(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -598,19 +598,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor(originalIndex));
+        assertNotNull(automationIOProfile.hasDigitalCharacteristicUserDescription(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isDigitalCharacteristicCharacteristicUserDescriptionDescriptorWritable_00001() {
+    public void test_isDigitalCharacteristicUserDescriptionWritable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isDigitalCharacteristicCharacteristicUserDescriptionDescriptorWritable());
+        assertNull(automationIOProfile.isDigitalCharacteristicUserDescriptionWritable());
     }
 
     @Test
-    public void test_isDigitalCharacteristicCharacteristicUserDescriptionDescriptorWritable_00002() {
+    public void test_isDigitalCharacteristicUserDescriptionWritable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -624,7 +624,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isDigitalCharacteristicCharacteristicUserDescriptionDescriptorWritable(int index) {
+                        public boolean isDigitalCharacteristicUserDescriptionWritable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -635,19 +635,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isDigitalCharacteristicCharacteristicUserDescriptionDescriptorWritable());
+        assertNotNull(automationIOProfile.isDigitalCharacteristicUserDescriptionWritable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isDigitalCharacteristicCharacteristicUserDescriptionDescriptorWritable_00101() {
+    public void test_isDigitalCharacteristicUserDescriptionWritable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isDigitalCharacteristicCharacteristicUserDescriptionDescriptorWritable(1));
+        assertNull(automationIOProfile.isDigitalCharacteristicUserDescriptionWritable(1));
     }
 
     @Test
-    public void test_isDigitalCharacteristicCharacteristicUserDescriptionDescriptorWritable_00102() {
+    public void test_isDigitalCharacteristicUserDescriptionWritable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -661,7 +661,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isDigitalCharacteristicCharacteristicUserDescriptionDescriptorWritable(int index) {
+                        public boolean isDigitalCharacteristicUserDescriptionWritable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -672,19 +672,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isDigitalCharacteristicCharacteristicUserDescriptionDescriptorWritable(originalIndex));
+        assertNotNull(automationIOProfile.isDigitalCharacteristicUserDescriptionWritable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00001() {
+    public void test_hasDigitalCharacteristicExtendedProperties_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor());
+        assertNull(automationIOProfile.hasDigitalCharacteristicExtendedProperties());
     }
 
     @Test
-    public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00002() {
+    public void test_hasDigitalCharacteristicExtendedProperties_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -698,7 +698,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor(int index) {
+                        public boolean hasDigitalCharacteristicExtendedProperties(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -709,19 +709,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor());
+        assertNotNull(automationIOProfile.hasDigitalCharacteristicExtendedProperties());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00101() {
+    public void test_hasDigitalCharacteristicExtendedProperties_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor(1));
+        assertNull(automationIOProfile.hasDigitalCharacteristicExtendedProperties(1));
     }
 
     @Test
-    public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00102() {
+    public void test_hasDigitalCharacteristicExtendedProperties_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -735,7 +735,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor(int index) {
+                        public boolean hasDigitalCharacteristicExtendedProperties(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -746,19 +746,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor(originalIndex));
+        assertNotNull(automationIOProfile.hasDigitalCharacteristicExtendedProperties(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00001() {
+    public void test_hasDigitalValueTriggerSetting_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasDigitalCharacteristicValueTriggerSettingDescriptor());
+        assertNull(automationIOProfile.hasDigitalValueTriggerSetting());
     }
 
     @Test
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00002() {
+    public void test_hasDigitalValueTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -772,7 +772,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasDigitalCharacteristicValueTriggerSettingDescriptor(int index) {
+                        public boolean hasDigitalValueTriggerSetting(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -783,19 +783,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasDigitalCharacteristicValueTriggerSettingDescriptor());
+        assertNotNull(automationIOProfile.hasDigitalValueTriggerSetting());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00101() {
+    public void test_hasDigitalValueTriggerSetting_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasDigitalCharacteristicValueTriggerSettingDescriptor(1));
+        assertNull(automationIOProfile.hasDigitalValueTriggerSetting(1));
     }
 
     @Test
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00102() {
+    public void test_hasDigitalValueTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -809,7 +809,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasDigitalCharacteristicValueTriggerSettingDescriptor(int index) {
+                        public boolean hasDigitalValueTriggerSetting(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -820,19 +820,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasDigitalCharacteristicValueTriggerSettingDescriptor(originalIndex));
+        assertNotNull(automationIOProfile.hasDigitalValueTriggerSetting(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00001() {
+    public void test_hasDigitalTimeTriggerSetting_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasDigitalCharacteristicTimeTriggerSettingDescriptor());
+        assertNull(automationIOProfile.hasDigitalTimeTriggerSetting());
     }
 
     @Test
-    public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00002() {
+    public void test_hasDigitalTimeTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -846,7 +846,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasDigitalCharacteristicTimeTriggerSettingDescriptor(int index) {
+                        public boolean hasDigitalTimeTriggerSetting(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -857,19 +857,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasDigitalCharacteristicTimeTriggerSettingDescriptor());
+        assertNotNull(automationIOProfile.hasDigitalTimeTriggerSetting());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00101() {
+    public void test_hasDigitalTimeTriggerSetting_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasDigitalCharacteristicTimeTriggerSettingDescriptor(1));
+        assertNull(automationIOProfile.hasDigitalTimeTriggerSetting(1));
     }
 
     @Test
-    public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00102() {
+    public void test_hasDigitalTimeTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -883,7 +883,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasDigitalCharacteristicTimeTriggerSettingDescriptor(int index) {
+                        public boolean hasDigitalTimeTriggerSetting(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -894,7 +894,7 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasDigitalCharacteristicTimeTriggerSettingDescriptor(originalIndex));
+        assertNotNull(automationIOProfile.hasDigitalTimeTriggerSetting(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
@@ -932,13 +932,13 @@ public class AutomationIOProfileTest {
     }
 
     @Test
-    public void test_isAnalogCharacteristicReadable_00001() {
+    public void test_isAnalogReadable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAnalogCharacteristicReadable());
+        assertNull(automationIOProfile.isAnalogReadable());
     }
 
     @Test
-    public void test_isAnalogCharacteristicReadable_00002() {
+    public void test_isAnalogReadable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -952,7 +952,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAnalogCharacteristicReadable(int index) {
+                        public boolean isAnalogReadable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -963,19 +963,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAnalogCharacteristicReadable());
+        assertNotNull(automationIOProfile.isAnalogReadable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isAnalogCharacteristicReadable_00101() {
+    public void test_isAnalogReadable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAnalogCharacteristicReadable(1));
+        assertNull(automationIOProfile.isAnalogReadable(1));
     }
 
     @Test
-    public void test_isAnalogCharacteristicReadable_00102() {
+    public void test_isAnalogReadable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -989,7 +989,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAnalogCharacteristicReadable(int index) {
+                        public boolean isAnalogReadable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1000,19 +1000,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAnalogCharacteristicReadable(originalIndex));
+        assertNotNull(automationIOProfile.isAnalogReadable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isAnalogCharacteristicWritable_00001() {
+    public void test_isAnalogWritable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAnalogCharacteristicWritable());
+        assertNull(automationIOProfile.isAnalogWritable());
     }
 
     @Test
-    public void test_isAnalogCharacteristicWritable_00002() {
+    public void test_isAnalogWritable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1026,7 +1026,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAnalogCharacteristicWritable(int index) {
+                        public boolean isAnalogWritable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1037,19 +1037,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAnalogCharacteristicWritable());
+        assertNotNull(automationIOProfile.isAnalogWritable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isAnalogCharacteristicWritable_00101() {
+    public void test_isAnalogWritable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAnalogCharacteristicWritable(1));
+        assertNull(automationIOProfile.isAnalogWritable(1));
     }
 
     @Test
-    public void test_isAnalogCharacteristicWritable_00102() {
+    public void test_isAnalogWritable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1063,7 +1063,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAnalogCharacteristicWritable(int index) {
+                        public boolean isAnalogWritable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1074,19 +1074,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAnalogCharacteristicWritable(originalIndex));
+        assertNotNull(automationIOProfile.isAnalogWritable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isAnalogCharacteristicWritableWithNoResponse_00001() {
+    public void test_isAnalogWritableWithNoResponse_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAnalogCharacteristicWritableWithNoResponse());
+        assertNull(automationIOProfile.isAnalogWritableWithNoResponse());
     }
 
     @Test
-    public void test_isAnalogCharacteristicWritableWithNoResponse_00002() {
+    public void test_isAnalogWritableWithNoResponse_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1100,7 +1100,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAnalogCharacteristicWritableWithNoResponse(int index) {
+                        public boolean isAnalogWritableWithNoResponse(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1111,19 +1111,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAnalogCharacteristicWritableWithNoResponse());
+        assertNotNull(automationIOProfile.isAnalogWritableWithNoResponse());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isAnalogCharacteristicWritableWithNoResponse_00101() {
+    public void test_isAnalogWritableWithNoResponse_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAnalogCharacteristicWritableWithNoResponse(1));
+        assertNull(automationIOProfile.isAnalogWritableWithNoResponse(1));
     }
 
     @Test
-    public void test_isAnalogCharacteristicWritableWithNoResponse_00102() {
+    public void test_isAnalogWritableWithNoResponse_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1137,7 +1137,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAnalogCharacteristicWritableWithNoResponse(int index) {
+                        public boolean isAnalogWritableWithNoResponse(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1148,19 +1148,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAnalogCharacteristicWritableWithNoResponse(originalIndex));
+        assertNotNull(automationIOProfile.isAnalogWritableWithNoResponse(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isAnalogCharacteristicNotificatable_00001() {
+    public void test_isAnalogNotificatable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAnalogCharacteristicNotificatable());
+        assertNull(automationIOProfile.isAnalogNotificatable());
     }
 
     @Test
-    public void test_isAnalogCharacteristicNotificatable_00002() {
+    public void test_isAnalogNotificatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1174,7 +1174,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAnalogCharacteristicNotificatable(int index) {
+                        public boolean isAnalogNotificatable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1185,19 +1185,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAnalogCharacteristicNotificatable());
+        assertNotNull(automationIOProfile.isAnalogNotificatable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isAnalogCharacteristicNotificatable_00101() {
+    public void test_isAnalogNotificatable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAnalogCharacteristicNotificatable(1));
+        assertNull(automationIOProfile.isAnalogNotificatable(1));
     }
 
     @Test
-    public void test_isAnalogCharacteristicNotificatable_00102() {
+    public void test_isAnalogNotificatable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1211,7 +1211,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAnalogCharacteristicNotificatable(int index) {
+                        public boolean isAnalogNotificatable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1222,19 +1222,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAnalogCharacteristicNotificatable(originalIndex));
+        assertNotNull(automationIOProfile.isAnalogNotificatable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isAnalogCharacteristicIndicatable_00001() {
+    public void test_isAnalogIndicatable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAnalogCharacteristicIndicatable());
+        assertNull(automationIOProfile.isAnalogIndicatable());
     }
 
     @Test
-    public void test_isAnalogCharacteristicIndicatable_00002() {
+    public void test_isAnalogIndicatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1248,7 +1248,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAnalogCharacteristicIndicatable(int index) {
+                        public boolean isAnalogIndicatable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1259,19 +1259,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAnalogCharacteristicIndicatable());
+        assertNotNull(automationIOProfile.isAnalogIndicatable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isAnalogCharacteristicIndicatable_00101() {
+    public void test_isAnalogIndicatable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAnalogCharacteristicIndicatable(1));
+        assertNull(automationIOProfile.isAnalogIndicatable(1));
     }
 
     @Test
-    public void test_isAnalogCharacteristicIndicatable_00102() {
+    public void test_isAnalogIndicatable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1285,7 +1285,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAnalogCharacteristicIndicatable(int index) {
+                        public boolean isAnalogIndicatable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1296,19 +1296,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAnalogCharacteristicIndicatable(originalIndex));
+        assertNotNull(automationIOProfile.isAnalogIndicatable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00001() {
+    public void test_hasAnalogCharacteristicPresentationFormat_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasAnalogCharacteristicPresentationFormatDescriptor());
+        assertNull(automationIOProfile.hasAnalogCharacteristicPresentationFormat());
     }
 
     @Test
-    public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00002() {
+    public void test_hasAnalogCharacteristicPresentationFormat_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1322,7 +1322,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasAnalogCharacteristicPresentationFormatDescriptor(int index) {
+                        public boolean hasAnalogCharacteristicPresentationFormat(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1333,19 +1333,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasAnalogCharacteristicPresentationFormatDescriptor());
+        assertNotNull(automationIOProfile.hasAnalogCharacteristicPresentationFormat());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00101() {
+    public void test_hasAnalogCharacteristicPresentationFormat_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasAnalogCharacteristicPresentationFormatDescriptor(1));
+        assertNull(automationIOProfile.hasAnalogCharacteristicPresentationFormat(1));
     }
 
     @Test
-    public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00102() {
+    public void test_hasAnalogCharacteristicPresentationFormat_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1359,7 +1359,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasAnalogCharacteristicPresentationFormatDescriptor(int index) {
+                        public boolean hasAnalogCharacteristicPresentationFormat(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1370,19 +1370,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasAnalogCharacteristicPresentationFormatDescriptor(originalIndex));
+        assertNotNull(automationIOProfile.hasAnalogCharacteristicPresentationFormat(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00001() {
+    public void test_hasAnalogCharacteristicUserDescription_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor());
+        assertNull(automationIOProfile.hasAnalogCharacteristicUserDescription());
     }
 
     @Test
-    public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00002() {
+    public void test_hasAnalogCharacteristicUserDescription_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1396,7 +1396,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor(int index) {
+                        public boolean hasAnalogCharacteristicUserDescription(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1407,19 +1407,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor());
+        assertNotNull(automationIOProfile.hasAnalogCharacteristicUserDescription());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00101() {
+    public void test_hasAnalogCharacteristicUserDescription_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor(1));
+        assertNull(automationIOProfile.hasAnalogCharacteristicUserDescription(1));
     }
 
     @Test
-    public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00102() {
+    public void test_hasAnalogCharacteristicUserDescription_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1433,7 +1433,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor(int index) {
+                        public boolean hasAnalogCharacteristicUserDescription(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1444,19 +1444,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor(originalIndex));
+        assertNotNull(automationIOProfile.hasAnalogCharacteristicUserDescription(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00001() {
+    public void test_isAnalogCharacteristicUserDescriptionWritable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable());
+        assertNull(automationIOProfile.isAnalogCharacteristicUserDescriptionWritable());
     }
 
     @Test
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00002() {
+    public void test_isAnalogCharacteristicUserDescriptionWritable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1470,7 +1470,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable(int index) {
+                        public boolean isAnalogCharacteristicUserDescriptionWritable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1481,19 +1481,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable());
+        assertNotNull(automationIOProfile.isAnalogCharacteristicUserDescriptionWritable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00101() {
+    public void test_isAnalogCharacteristicUserDescriptionWritable_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable(1));
+        assertNull(automationIOProfile.isAnalogCharacteristicUserDescriptionWritable(1));
     }
 
     @Test
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00102() {
+    public void test_isAnalogCharacteristicUserDescriptionWritable_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1507,7 +1507,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable(int index) {
+                        public boolean isAnalogCharacteristicUserDescriptionWritable(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1518,19 +1518,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable(originalIndex));
+        assertNotNull(automationIOProfile.isAnalogCharacteristicUserDescriptionWritable(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00001() {
+    public void test_hasAnalogCharacteristicExtendedProperties_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor());
+        assertNull(automationIOProfile.hasAnalogCharacteristicExtendedProperties());
     }
 
     @Test
-    public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00002() {
+    public void test_hasAnalogCharacteristicExtendedProperties_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1544,7 +1544,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor(int index) {
+                        public boolean hasAnalogCharacteristicExtendedProperties(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1555,19 +1555,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor());
+        assertNotNull(automationIOProfile.hasAnalogCharacteristicExtendedProperties());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00101() {
+    public void test_hasAnalogCharacteristicExtendedProperties_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor(1));
+        assertNull(automationIOProfile.hasAnalogCharacteristicExtendedProperties(1));
     }
 
     @Test
-    public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00102() {
+    public void test_hasAnalogCharacteristicExtendedProperties_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1581,7 +1581,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor(int index) {
+                        public boolean hasAnalogCharacteristicExtendedProperties(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1592,19 +1592,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor(originalIndex));
+        assertNotNull(automationIOProfile.hasAnalogCharacteristicExtendedProperties(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00001() {
+    public void test_hasAnalogValueTriggerSetting_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasAnalogCharacteristicValueTriggerSettingDescriptor());
+        assertNull(automationIOProfile.hasAnalogValueTriggerSetting());
     }
 
     @Test
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00002() {
+    public void test_hasAnalogValueTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1618,7 +1618,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasAnalogCharacteristicValueTriggerSettingDescriptor(int index) {
+                        public boolean hasAnalogValueTriggerSetting(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1629,19 +1629,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasAnalogCharacteristicValueTriggerSettingDescriptor());
+        assertNotNull(automationIOProfile.hasAnalogValueTriggerSetting());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00101() {
+    public void test_hasAnalogValueTriggerSetting_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasAnalogCharacteristicValueTriggerSettingDescriptor(1));
+        assertNull(automationIOProfile.hasAnalogValueTriggerSetting(1));
     }
 
     @Test
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00102() {
+    public void test_hasAnalogValueTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1655,7 +1655,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasAnalogCharacteristicValueTriggerSettingDescriptor(int index) {
+                        public boolean hasAnalogValueTriggerSetting(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1666,19 +1666,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasAnalogCharacteristicValueTriggerSettingDescriptor(originalIndex));
+        assertNotNull(automationIOProfile.hasAnalogValueTriggerSetting(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00001() {
+    public void test_hasAnalogTimeTriggerSetting_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasAnalogCharacteristicTimeTriggerSettingDescriptor());
+        assertNull(automationIOProfile.hasAnalogTimeTriggerSetting());
     }
 
     @Test
-    public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00002() {
+    public void test_hasAnalogTimeTriggerSetting_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1692,7 +1692,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasAnalogCharacteristicTimeTriggerSettingDescriptor(int index) {
+                        public boolean hasAnalogTimeTriggerSetting(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1703,19 +1703,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasAnalogCharacteristicTimeTriggerSettingDescriptor());
+        assertNotNull(automationIOProfile.hasAnalogTimeTriggerSetting());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00101() {
+    public void test_hasAnalogTimeTriggerSetting_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.hasAnalogCharacteristicTimeTriggerSettingDescriptor(1));
+        assertNull(automationIOProfile.hasAnalogTimeTriggerSetting(1));
     }
 
     @Test
-    public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00102() {
+    public void test_hasAnalogTimeTriggerSetting_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -1729,7 +1729,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean hasAnalogCharacteristicTimeTriggerSettingDescriptor(int index) {
+                        public boolean hasAnalogTimeTriggerSetting(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1740,19 +1740,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.hasAnalogCharacteristicTimeTriggerSettingDescriptor(originalIndex));
+        assertNotNull(automationIOProfile.hasAnalogTimeTriggerSetting(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isAggregateCharacteristicSupporeted_00001() {
+    public void test_isAggregateSupporeted_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAggregateCharacteristicSupporeted());
+        assertNull(automationIOProfile.isAggregateSupporeted());
     }
 
     @Test
-    public void test_isAggregateCharacteristicSupporeted_00002() {
+    public void test_isAggregateSupporeted_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
@@ -1765,7 +1765,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAggregateCharacteristicSupporeted() {
+                        public boolean isAggregateSupporeted() {
                             atomicBoolean.set(true);
                             return true;
                         }
@@ -1775,19 +1775,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAggregateCharacteristicSupporeted());
+        assertNotNull(automationIOProfile.isAggregateSupporeted());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isAggregateCharacteristicReadable_00001() {
+    public void test_isAggregateReadable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAggregateCharacteristicReadable());
+        assertNull(automationIOProfile.isAggregateReadable());
     }
 
     @Test
-    public void test_isAggregateCharacteristicReadable_00002() {
+    public void test_isAggregateReadable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
@@ -1800,7 +1800,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAggregateCharacteristicReadable() {
+                        public boolean isAggregateReadable() {
                             atomicBoolean.set(true);
                             return true;
                         }
@@ -1810,19 +1810,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAggregateCharacteristicReadable());
+        assertNotNull(automationIOProfile.isAggregateReadable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isAggregateCharacteristicNotificatable_00001() {
+    public void test_isAggregateNotificatable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAggregateCharacteristicNotificatable());
+        assertNull(automationIOProfile.isAggregateNotificatable());
     }
 
     @Test
-    public void test_isAggregateCharacteristicNotificatable_00002() {
+    public void test_isAggregateNotificatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
@@ -1835,7 +1835,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAggregateCharacteristicNotificatable() {
+                        public boolean isAggregateNotificatable() {
                             atomicBoolean.set(true);
                             return true;
                         }
@@ -1845,19 +1845,19 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAggregateCharacteristicNotificatable());
+        assertNotNull(automationIOProfile.isAggregateNotificatable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
-    public void test_isAggregateCharacteristicIndicatable_00001() {
+    public void test_isAggregateIndicatable_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAggregateCharacteristicIndicatable());
+        assertNull(automationIOProfile.isAggregateIndicatable());
     }
 
     @Test
-    public void test_isAggregateCharacteristicIndicatable_00002() {
+    public void test_isAggregateIndicatable_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
@@ -1870,7 +1870,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAggregateCharacteristicIndicatable() {
+                        public boolean isAggregateIndicatable() {
                             atomicBoolean.set(true);
                             return true;
                         }
@@ -1880,7 +1880,7 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAggregateCharacteristicIndicatable());
+        assertNotNull(automationIOProfile.isAggregateIndicatable());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }

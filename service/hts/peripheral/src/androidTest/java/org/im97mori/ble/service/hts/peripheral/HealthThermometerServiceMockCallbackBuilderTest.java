@@ -19,6 +19,7 @@ import org.im97mori.ble.characteristic.u2a1e.IntermediateTemperature;
 import org.im97mori.ble.characteristic.u2a21.MeasurementInterval;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.descriptor.u2906.ValidRange;
+import org.im97mori.ble.test.peripheral.MockBLEServerConnection;
 import org.junit.Test;
 
 import java.util.LinkedList;
