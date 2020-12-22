@@ -24,7 +24,7 @@ import static org.im97mori.ble.BLEConstants.ServiceUUID.BATTERY_SERVICE;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
 
 /**
- * Location and Navigation Profile for Central
+ *Cycling Power Profile for Central
  */
 public class CyclingPowerProfile extends AbstractCentralProfile {
 

@@ -6,6 +6,7 @@ import android.os.Parcel;
 import com.google.gson.Gson;
 
 import org.im97mori.ble.DescriptorData;
+import org.im97mori.ble.characteristic.u2a66.CyclingPowerControlPoint;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class CyclingPowerControlPointCharacteristicDataTest {
@@ -1139,6 +1141,980 @@ public class CyclingPowerControlPointCharacteristicDataTest {
         byte[] secondStartEnhancedOffsetCompensationResponseParameter = new byte[]{77};
         result1.startEnhancedOffsetCompensationResponseParameter = secondStartEnhancedOffsetCompensationResponseParameter;
         assertArrayEquals(secondStartEnhancedOffsetCompensationResponseParameter, result1.startEnhancedOffsetCompensationResponseParameter);
+    }
+
+    @Test
+    public void test_getBytes_00001() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        int firstSetCumulativeValueResponseValue = 3;
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , firstSetCumulativeValueResponseValue
+                , 4
+                , 5
+                , new byte[]{6}
+                , 7
+                , 8
+                , new byte[]{9}
+                , 10
+                , 11
+                , new byte[]{12}
+                , 13
+                , 14
+                , new byte[]{15}
+                , 16
+                , 17
+                , new byte[]{18}
+                , 19
+                , new byte[]{20}
+                , 21
+                , 22
+                , new byte[]{23}
+                , 24
+                , new byte[]{25}
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_SET_CUMULATIVE_VALUE
+                , firstSetCumulativeValueResponseValue
+                , new byte[0]).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_SET_CUMULATIVE_VALUE
+                , new byte[4]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00002() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        int firstUdateSensorLocationResponseValue = 4;
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , firstUdateSensorLocationResponseValue
+                , 5
+                , new byte[]{6}
+                , 7
+                , 8
+                , new byte[]{9}
+                , 10
+                , 11
+                , new byte[]{12}
+                , 13
+                , 14
+                , new byte[]{15}
+                , 16
+                , 17
+                , new byte[]{18}
+                , 19
+                , new byte[]{20}
+                , 21
+                , 22
+                , new byte[]{23}
+                , 24
+                , new byte[]{25}
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_UPDATE_SENSOR_LOCATION
+                , firstUdateSensorLocationResponseValue
+                , new byte[0]).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_UPDATE_SENSOR_LOCATION
+                , new byte[1]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00003() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        int firstRequestSupportedSensorLocationsResponseValue = 4;
+        byte[] firstRequestSupportedSensorLocationsResponseParameter = new byte[]{6};
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , 4
+                , firstRequestSupportedSensorLocationsResponseValue
+                , firstRequestSupportedSensorLocationsResponseParameter
+                , 7
+                , 8
+                , new byte[]{9}
+                , 10
+                , 11
+                , new byte[]{12}
+                , 13
+                , 14
+                , new byte[]{15}
+                , 16
+                , 17
+                , new byte[]{18}
+                , 19
+                , new byte[]{20}
+                , 21
+                , 22
+                , new byte[]{23}
+                , 24
+                , new byte[]{25}
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_REQUEST_SUPPORTED_SENSOR_LOCATION
+                , firstRequestSupportedSensorLocationsResponseValue
+                , firstRequestSupportedSensorLocationsResponseParameter).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_REQUEST_SUPPORTED_SENSOR_LOCATION
+                , new byte[0]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00004() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        int firstSetCrankLengthResponseValue = 7;
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , 4
+                , 5
+                , new byte[]{6}
+                , firstSetCrankLengthResponseValue
+                , 8
+                , new byte[]{9}
+                , 10
+                , 11
+                , new byte[]{12}
+                , 13
+                , 14
+                , new byte[]{15}
+                , 16
+                , 17
+                , new byte[]{18}
+                , 19
+                , new byte[]{20}
+                , 21
+                , 22
+                , new byte[]{23}
+                , 24
+                , new byte[]{25}
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_SET_CRANK_LENGTH
+                , firstSetCrankLengthResponseValue
+                , new byte[0]).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_SET_CRANK_LENGTH
+                , new byte[0]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00005() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        int firstRequestCrankLengthResponseValue = 8;
+        byte[] firstRequestCrankLengthResponseParameter = new byte[]{9};
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , 4
+                , 5
+                , new byte[]{6}
+                , 7
+                , firstRequestCrankLengthResponseValue
+                , firstRequestCrankLengthResponseParameter
+                , 10
+                , 11
+                , new byte[]{12}
+                , 13
+                , 14
+                , new byte[]{15}
+                , 16
+                , 17
+                , new byte[]{18}
+                , 19
+                , new byte[]{20}
+                , 21
+                , 22
+                , new byte[]{23}
+                , 24
+                , new byte[]{25}
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_REQUEST_CRANK_LENGTH
+                , firstRequestCrankLengthResponseValue
+                , firstRequestCrankLengthResponseParameter).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_REQUEST_CRANK_LENGTH
+                , new byte[0]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00006() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        int firstSetChainLengthResponseValue = 10;
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , 4
+                , 5
+                , new byte[]{6}
+                , 7
+                , 8
+                , new byte[]{9}
+                , firstSetChainLengthResponseValue
+                , 11
+                , new byte[]{12}
+                , 13
+                , 14
+                , new byte[]{15}
+                , 16
+                , 17
+                , new byte[]{18}
+                , 19
+                , new byte[]{20}
+                , 21
+                , 22
+                , new byte[]{23}
+                , 24
+                , new byte[]{25}
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_SET_CHAIN_LENGTH
+                , firstSetChainLengthResponseValue
+                , new byte[0]).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_SET_CHAIN_LENGTH
+                , new byte[0]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00007() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        int firstRequestChainLengthResponseValue = 11;
+        byte[] firstRequestChainLengthResponseParameter = new byte[]{12};
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , 4
+                , 5
+                , new byte[]{6}
+                , 7
+                , 8
+                , new byte[]{9}
+                , 10
+                , firstRequestChainLengthResponseValue
+                , firstRequestChainLengthResponseParameter
+                , 13
+                , 14
+                , new byte[]{15}
+                , 16
+                , 17
+                , new byte[]{18}
+                , 19
+                , new byte[]{20}
+                , 21
+                , 22
+                , new byte[]{23}
+                , 24
+                , new byte[]{25}
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_REQUEST_CHAIN_LENGTH
+                , firstRequestChainLengthResponseValue
+                , firstRequestChainLengthResponseParameter).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_REQUEST_CHAIN_LENGTH
+                , new byte[0]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00008() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        int firstSetChainWeightResponseValue = 13;
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , 4
+                , 5
+                , new byte[]{6}
+                , 7
+                , 8
+                , new byte[]{9}
+                , 10
+                , 11
+                , new byte[]{12}
+                , firstSetChainWeightResponseValue
+                , 14
+                , new byte[]{15}
+                , 16
+                , 17
+                , new byte[]{18}
+                , 19
+                , new byte[]{20}
+                , 21
+                , 22
+                , new byte[]{23}
+                , 24
+                , new byte[]{25}
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_SET_CHAIN_WEIGHT
+                , firstSetChainWeightResponseValue
+                , new byte[0]).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_SET_CHAIN_WEIGHT
+                , new byte[0]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00009() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        int firstRequestChainWeightResponseValue = 14;
+        byte[] firstRequestChainWeightResponseParameter = new byte[]{15};
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , 4
+                , 5
+                , new byte[]{6}
+                , 7
+                , 8
+                , new byte[]{9}
+                , 10
+                , 11
+                , new byte[]{12}
+                , 13
+                , firstRequestChainWeightResponseValue
+                , firstRequestChainWeightResponseParameter
+                , 16
+                , 17
+                , new byte[]{18}
+                , 19
+                , new byte[]{20}
+                , 21
+                , 22
+                , new byte[]{23}
+                , 24
+                , new byte[]{25}
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_REQUEST_CHAIN_WEIGHT
+                , firstRequestChainWeightResponseValue
+                , firstRequestChainWeightResponseParameter).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_REQUEST_CHAIN_WEIGHT
+                , new byte[0]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00010() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        int firstSetSpanLengthResponseValue = 16;
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , 4
+                , 5
+                , new byte[]{6}
+                , 7
+                , 8
+                , new byte[]{9}
+                , 10
+                , 11
+                , new byte[]{12}
+                , 13
+                , 14
+                , new byte[]{15}
+                , firstSetSpanLengthResponseValue
+                , 17
+                , new byte[]{18}
+                , 19
+                , new byte[]{20}
+                , 21
+                , 22
+                , new byte[]{23}
+                , 24
+                , new byte[]{25}
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_SET_SPAN_LENGTH
+                , firstSetSpanLengthResponseValue
+                , new byte[0]).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_SET_SPAN_LENGTH
+                , new byte[0]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00011() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        int firstRequestSpanLengthResponseValue = 17;
+        byte[] firstRequestSpanLengthResponseParameter = new byte[]{18};
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , 4
+                , 5
+                , new byte[]{6}
+                , 7
+                , 8
+                , new byte[]{9}
+                , 10
+                , 11
+                , new byte[]{12}
+                , 13
+                , 14
+                , new byte[]{15}
+                , 16
+                , firstRequestSpanLengthResponseValue
+                , firstRequestSpanLengthResponseParameter
+                , 19
+                , new byte[]{20}
+                , 21
+                , 22
+                , new byte[]{23}
+                , 24
+                , new byte[]{25}
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_REQUEST_SPAN_LENGTH
+                , firstRequestSpanLengthResponseValue
+                , firstRequestSpanLengthResponseParameter).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_REQUEST_SPAN_LENGTH
+                , new byte[0]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00012() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        int firstStartOffsetCompensationResponseValue = 19;
+        byte[] firstStartOffsetCompensationResponseParameter = new byte[]{20};
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , 4
+                , 5
+                , new byte[]{6}
+                , 7
+                , 8
+                , new byte[]{9}
+                , 10
+                , 11
+                , new byte[]{12}
+                , 13
+                , 14
+                , new byte[]{15}
+                , 16
+                , 17
+                , new byte[]{18}
+                , firstStartOffsetCompensationResponseValue
+                , firstStartOffsetCompensationResponseParameter
+                , 21
+                , 22
+                , new byte[]{23}
+                , 24
+                , new byte[]{25}
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_START_OFFSET_COMPENSATION
+                , firstStartOffsetCompensationResponseValue
+                , firstStartOffsetCompensationResponseParameter).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_START_OFFSET_COMPENSATION
+                , new byte[0]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00013() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        int firstMaskCyclingPowerMeasurementCharacteristicContentResponseValue = 21;
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , 4
+                , 5
+                , new byte[]{6}
+                , 7
+                , 8
+                , new byte[]{9}
+                , 10
+                , 11
+                , new byte[]{12}
+                , 13
+                , 14
+                , new byte[]{15}
+                , 16
+                , 17
+                , new byte[]{18}
+                , 19
+                , new byte[]{20}
+                , firstMaskCyclingPowerMeasurementCharacteristicContentResponseValue
+                , 22
+                , new byte[]{23}
+                , 24
+                , new byte[]{25}
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_MASK_CYCLING_POWER_MEASUREMENT_CHARACTERISTIC_CONTENT
+                , firstMaskCyclingPowerMeasurementCharacteristicContentResponseValue
+                , new byte[0]).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_MASK_CYCLING_POWER_MEASUREMENT_CHARACTERISTIC_CONTENT
+                , new byte[0]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00014() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        int firstRequestSamplingRateResponseValue = 22;
+        byte[] firstRequestSamplingRateResponseParameter = new byte[]{23};
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , 4
+                , 5
+                , new byte[]{6}
+                , 7
+                , 8
+                , new byte[]{9}
+                , 10
+                , 11
+                , new byte[]{12}
+                , 13
+                , 14
+                , new byte[]{15}
+                , 16
+                , 17
+                , new byte[]{18}
+                , 19
+                , new byte[]{20}
+                , 21
+                , firstRequestSamplingRateResponseValue
+                , firstRequestSamplingRateResponseParameter
+                , 24
+                , new byte[]{25}
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_REQUEST_SAMPLING_RATE
+                , firstRequestSamplingRateResponseValue
+                , firstRequestSamplingRateResponseParameter).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_REQUEST_SAMPLING_RATE
+                , new byte[0]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00015() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        int firstRequestFactoryCalibrationDateResponseValue = 24;
+        byte[] firstRequestFactoryCalibrationDateResponseParameter = new byte[]{25};
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , 4
+                , 5
+                , new byte[]{6}
+                , 7
+                , 8
+                , new byte[]{9}
+                , 10
+                , 11
+                , new byte[]{12}
+                , 13
+                , 14
+                , new byte[]{15}
+                , 16
+                , 17
+                , new byte[]{18}
+                , 19
+                , new byte[]{20}
+                , 21
+                , 22
+                , new byte[]{23}
+                , firstRequestFactoryCalibrationDateResponseValue
+                , firstRequestFactoryCalibrationDateResponseParameter
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_REQUEST_FACTORY_CALIBRATION_DATE
+                , firstRequestFactoryCalibrationDateResponseValue
+                , firstRequestFactoryCalibrationDateResponseParameter).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_REQUEST_FACTORY_CALIBRATION_DATE
+                , new byte[0]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00016() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        int firstStartEnhancedOffsetCompensationResponseValue = 26;
+        byte[] firstStartEnhancedOffsetCompensationResponseParameter = new byte[]{27};
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , 4
+                , 5
+                , new byte[]{6}
+                , 7
+                , 8
+                , new byte[]{9}
+                , 10
+                , 11
+                , new byte[]{12}
+                , 13
+                , 14
+                , new byte[]{15}
+                , 16
+                , 17
+                , new byte[]{18}
+                , 19
+                , new byte[]{20}
+                , 21
+                , 22
+                , new byte[]{23}
+                , 24
+                , new byte[]{25}
+                , firstStartEnhancedOffsetCompensationResponseValue
+                , firstStartEnhancedOffsetCompensationResponseParameter);
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_START_ENHANCED_OFFSET_COMPENSATION
+                , firstStartEnhancedOffsetCompensationResponseValue
+                , firstStartEnhancedOffsetCompensationResponseParameter).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_START_ENHANCED_OFFSET_COMPENSATION
+                , new byte[0]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00017() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , 4
+                , 5
+                , new byte[]{6}
+                , 7
+                , 8
+                , new byte[]{9}
+                , 10
+                , 11
+                , new byte[]{12}
+                , 13
+                , 14
+                , new byte[]{15}
+                , 16
+                , 17
+                , new byte[]{18}
+                , 19
+                , new byte[]{20}
+                , 21
+                , 22
+                , new byte[]{23}
+                , 24
+                , new byte[]{25}
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+
+        byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE + 1
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE + 1
+                , new byte[0]
+                , 0
+                , 0
+                , new byte[0]).getBytes();
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00018() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 28, 29, 30, new byte[]{31}));
+
+        byte[] firstData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , new byte[0]
+                , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
+                , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
+                , new byte[0]).getBytes();
+        CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
+                , 1
+                , 2
+                , 3
+                , 4
+                , 5
+                , new byte[]{6}
+                , 7
+                , 8
+                , new byte[]{9}
+                , 10
+                , 11
+                , new byte[]{12}
+                , 13
+                , 14
+                , new byte[]{15}
+                , 16
+                , 17
+                , new byte[]{18}
+                , 19
+                , new byte[]{20}
+                , 21
+                , 22
+                , new byte[]{23}
+                , 24
+                , new byte[]{25}
+                , 26
+                , new byte[]{27});
+        assertArrayEquals(firstData, cyclingPowerControlPointCharacteristicData.getBytes());
+        assertNull(cyclingPowerControlPointCharacteristicData.highPriorityResponseData);
+
+        byte[] secondData = new byte[]{100};
+        cyclingPowerControlPointCharacteristicData.highPriorityResponseData = secondData;
+        assertNotNull(cyclingPowerControlPointCharacteristicData.highPriorityResponseData);
+        assertArrayEquals(secondData, cyclingPowerControlPointCharacteristicData.getBytes());
+        assertNull(cyclingPowerControlPointCharacteristicData.highPriorityResponseData);
     }
 
     @Test

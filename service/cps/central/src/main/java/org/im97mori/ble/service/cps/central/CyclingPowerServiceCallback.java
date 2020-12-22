@@ -602,7 +602,7 @@ public interface CyclingPowerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Weight Measurement indicated callback
+     * Cycling Power Control Point indicated callback
      *
      * @param bluetoothDevice                 BLE device
      * @param serviceUUID                     service {@link UUID}

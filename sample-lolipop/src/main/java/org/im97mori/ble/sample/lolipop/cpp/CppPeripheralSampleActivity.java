@@ -1,6 +1,7 @@
 package org.im97mori.ble.sample.lolipop.cpp;
 
 import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.os.Bundle;
 import android.util.Pair;
@@ -17,12 +18,15 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.core.DateTimeUtils;
 import org.im97mori.ble.characteristic.core.SensorLocationUtils;
+import org.im97mori.ble.characteristic.u2a19.BatteryLevel;
 import org.im97mori.ble.characteristic.u2a5d.SensorLocation;
 import org.im97mori.ble.characteristic.u2a63.CyclingPowerMeasurement;
 import org.im97mori.ble.characteristic.u2a64.CyclingPowerVector;
 import org.im97mori.ble.characteristic.u2a65.CyclingPowerFeature;
 import org.im97mori.ble.characteristic.u2a66.CyclingPowerControlPoint;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
+import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
+import org.im97mori.ble.descriptor.u2904.CharacteristicPresentationFormat;
 import org.im97mori.ble.profile.cpp.peripheral.CyclingPowerProfileMockCallback;
 import org.im97mori.ble.sample.lolipop.AlertDialogFragment;
 import org.im97mori.ble.sample.lolipop.BaseActivity;
@@ -30,6 +34,8 @@ import org.im97mori.ble.sample.lolipop.R;
 import org.im97mori.ble.sample.lolipop.SampleCallback;
 
 import java.util.LinkedList;
+
+import static org.im97mori.ble.BLEConstants.UnitsUUID.PERCENTAGE_UNITS;
 
 public class CppPeripheralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
@@ -84,7 +90,8 @@ public class CppPeripheralSampleActivity extends BaseActivity implements View.On
                 | CyclingPowerFeature.CYCLING_POWER_FEATURE_EXTREME_MAGNITUDES_SUPPORTED_TRUE
                 | CyclingPowerFeature.CYCLING_POWER_FEATURE_EXTREME_ANGLES_SUPPORTED_TRUE
                 | CyclingPowerFeature.CYCLING_POWER_FEATURE_TOP_AND_BOTTOM_DEAD_SPOT_ANGLES_SUPPORTED_TRUE
-                | CyclingPowerFeature.CYCLING_POWER_FEATURE_ACCUMULATED_ENERGY_SUPPORTED_TRUE;
+                | CyclingPowerFeature.CYCLING_POWER_FEATURE_ACCUMULATED_ENERGY_SUPPORTED_TRUE
+                | CyclingPowerFeature.CYCLING_POWER_FEATURE_MULTIPLE_SENSOR_LOCATIONS_SUPPORTED_TRUE;
 
         int measurementFlags = CyclingPowerMeasurement.FLAGS_PEDAL_POWER_BALANCE_PRESENT_TRUE
                 | CyclingPowerMeasurement.FLAGS_ACCUMULATED_TORQUE_PRESENT_TRUE
@@ -146,7 +153,7 @@ public class CppPeripheralSampleActivity extends BaseActivity implements View.On
                 , 31 // Accumulated Energy
                 , 32
         };
-        mCyclingPowerProfileMockCallback = new CppCallbackSample.Builder(this, this, false, false)
+        mCyclingPowerProfileMockCallback = new CppCallbackSample.Builder(this, this, true, true)
                 .addCyclingPowerFeature(new CyclingPowerFeature(new byte[]{(byte) featureFlags
                         , (byte) (featureFlags >> 8)
                         , (byte) (featureFlags >> 16)
@@ -154,7 +161,7 @@ public class CppPeripheralSampleActivity extends BaseActivity implements View.On
                 .addCyclingPowerMeasurement(BluetoothGatt.GATT_SUCCESS
                         , 0
                         , measurementData
-                        , 1
+                        , -1
                         , BluetoothGatt.GATT_SUCCESS
                         , 0
                         , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
@@ -200,6 +207,17 @@ public class CppPeripheralSampleActivity extends BaseActivity implements View.On
                         , new byte[]{11, 12})
                 .addCyclingPowerVector(new CyclingPowerVector(new byte[1])
                         , new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+
+                .addManufacturerNameString("Manufacturer Name String data cpp")
+                .addModelNumberString("Model Number String data cpp")
+
+                .addBatteryLevel(0, new BatteryLevel(10))
+                .addBatteryLevel(1, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGatt.GATT_SUCCESS, 0, new BatteryLevel(20).getBytes(), -1)
+                .setBatteryLevelCharacteristicPresentationFormat(0, new CharacteristicPresentationFormat(CharacteristicPresentationFormat.FORMAT_UNSIGNED_8_BIT_INTEGER, 0, PERCENTAGE_UNITS, CharacteristicPresentationFormat.NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS, new byte[]{0x01}))
+                .setBatteryLevelCharacteristicPresentationFormat(1, new CharacteristicPresentationFormat(CharacteristicPresentationFormat.FORMAT_UNSIGNED_8_BIT_INTEGER, 0, PERCENTAGE_UNITS, CharacteristicPresentationFormat.NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS, new byte[]{0x02}))
+                .setBatteryLevelClientCharacteristicConfiguration(0, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+                .setBatteryLevelClientCharacteristicConfiguration(1, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE))
+
                 .build();
     }
 

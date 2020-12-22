@@ -26,7 +26,7 @@ import java.util.UUID;
 import static org.im97mori.ble.BLEConstants.ServiceUUID.CYCLING_POWER_SERVICE;
 
 /**
- * Find Me Profile for Peripheral
+ * Cycling Power Profile for Peripheral
  */
 public class CyclingPowerProfileMockCallback extends AbstractProfileMockCallback {
 

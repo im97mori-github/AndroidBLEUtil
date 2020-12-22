@@ -246,6 +246,18 @@ public class CppCentralSampleActivity extends BaseActivity implements View.OnCli
             mCyclingPowerProfile.startCyclingPowerVectorNotification();
         } else if (R.id.stop_notificate_cycling_power_vector == item.getItemId()) {
             mCyclingPowerProfile.stopCyclingPowerVectorNotification();
+        } else if (R.id.read_manufacturer_name == item.getItemId()) {
+            mCyclingPowerProfile.getManufacturerNameString();
+        } else if (R.id.read_model_number == item.getItemId()) {
+            mCyclingPowerProfile.getModelNumberString();
+        } else if (R.id.read_battery_level_1 == item.getItemId()) {
+            mCyclingPowerProfile.getBatteryLevel(0);
+        } else if (R.id.read_battery_level_2 == item.getItemId()) {
+            mCyclingPowerProfile.getBatteryLevel(1);
+        } else if (R.id.start_notify_battery_level == item.getItemId()) {
+            mCyclingPowerProfile.startBatteryLevelNotification(1);
+        } else if (R.id.stop_notify_battery_level == item.getItemId()) {
+            mCyclingPowerProfile.stopBatteryLevelNotification(1);
         }
 
         return true;

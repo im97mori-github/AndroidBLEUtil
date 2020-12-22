@@ -113,5 +113,24 @@
             android:id="@+id/stop_notificate_cycling_power_vector"
             android:title="@string/menu_notify_cycling_power_vector_stop" />
 
+        <item
+            android:id="@+id/read_manufacturer_name"
+            android:title="@string/menu_read_manufacturer_name" />
+        <item
+            android:id="@+id/read_model_number"
+            android:title="@string/menu_read_model_number" />
+
+        <item
+            android:id="@+id/read_battery_level_1"
+            android:title="@string/menu_read_battery_level_1" />
+        <item
+            android:id="@+id/read_battery_level_2"
+            android:title="@string/menu_read_battery_level_2" />
+        <item
+            android:id="@+id/start_notify_battery_level"
+            android:title="@string/menu_notify_battery_level_start" />
+        <item
+            android:id="@+id/stop_notify_battery_level"
+            android:title="@string/menu_notify_battery_level_stop" />
     </group>
 </menu>

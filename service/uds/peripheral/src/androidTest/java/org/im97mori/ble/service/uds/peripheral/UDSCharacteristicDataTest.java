@@ -69,12 +69,12 @@ public class UDSCharacteristicDataTest {
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
 
         UUID firstUUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
-        UDSCharacteristicData UDSCharacteristicData = new UDSCharacteristicData(firstUUID, 1, 2, descriptorDataList, 3, 4, null, 5);
-        assertEquals(firstUUID, UDSCharacteristicData.uuid);
+        UDSCharacteristicData udsCharacteristicData = new UDSCharacteristicData(firstUUID, 1, 2, descriptorDataList, 3, 4, null, 5);
+        assertEquals(firstUUID, udsCharacteristicData.uuid);
 
         UUID secondUUID = UUID.fromString("00000000-0000-0000-0000-000000000001");
-        UDSCharacteristicData.uuid = secondUUID;
-        assertEquals(secondUUID, UDSCharacteristicData.uuid);
+        udsCharacteristicData.uuid = secondUUID;
+        assertEquals(secondUUID, udsCharacteristicData.uuid);
     }
 
     @Test
@@ -83,12 +83,12 @@ public class UDSCharacteristicDataTest {
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
 
         int firstProperty = 1;
-        UDSCharacteristicData UDSCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), firstProperty, 2, descriptorDataList, 3, 4, null, 5);
-        assertEquals(firstProperty, UDSCharacteristicData.property);
+        UDSCharacteristicData udsCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), firstProperty, 2, descriptorDataList, 3, 4, null, 5);
+        assertEquals(firstProperty, udsCharacteristicData.property);
 
         int secondProperty = 2;
-        UDSCharacteristicData.property = secondProperty;
-        assertEquals(secondProperty, UDSCharacteristicData.property);
+        udsCharacteristicData.property = secondProperty;
+        assertEquals(secondProperty, udsCharacteristicData.property);
     }
 
     @Test
@@ -97,12 +97,12 @@ public class UDSCharacteristicDataTest {
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
 
         int firstPermission = 2;
-        UDSCharacteristicData UDSCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, firstPermission, descriptorDataList, 3, 4, null, 5);
-        assertEquals(firstPermission, UDSCharacteristicData.permission);
+        UDSCharacteristicData udsCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, firstPermission, descriptorDataList, 3, 4, null, 5);
+        assertEquals(firstPermission, udsCharacteristicData.permission);
 
         int secondPermission = 22;
-        UDSCharacteristicData.permission = secondPermission;
-        assertEquals(secondPermission, UDSCharacteristicData.permission);
+        udsCharacteristicData.permission = secondPermission;
+        assertEquals(secondPermission, udsCharacteristicData.permission);
     }
 
     @Test
@@ -110,13 +110,13 @@ public class UDSCharacteristicDataTest {
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
         firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
 
-        UDSCharacteristicData UDSCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, firstDescriptorDataList, 3, 4, null, 5);
-        assertArrayEquals(firstDescriptorDataList.toArray(), UDSCharacteristicData.descriptorDataList.toArray());
+        UDSCharacteristicData udsCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, firstDescriptorDataList, 3, 4, null, 5);
+        assertArrayEquals(firstDescriptorDataList.toArray(), udsCharacteristicData.descriptorDataList.toArray());
 
         List<DescriptorData> secondDescriptorDataList = new ArrayList<>();
         secondDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 11, 22, 33, null));
-        UDSCharacteristicData.descriptorDataList = secondDescriptorDataList;
-        assertArrayEquals(secondDescriptorDataList.toArray(), UDSCharacteristicData.descriptorDataList.toArray());
+        udsCharacteristicData.descriptorDataList = secondDescriptorDataList;
+        assertArrayEquals(secondDescriptorDataList.toArray(), udsCharacteristicData.descriptorDataList.toArray());
     }
 
     @Test
@@ -125,12 +125,12 @@ public class UDSCharacteristicDataTest {
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
 
         int firstResponseCode = 3;
-        UDSCharacteristicData UDSCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, firstResponseCode, 4, null, 5);
-        assertEquals(firstResponseCode, UDSCharacteristicData.responseCode);
+        UDSCharacteristicData udsCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, firstResponseCode, 4, null, 5);
+        assertEquals(firstResponseCode, udsCharacteristicData.responseCode);
 
         int secondResponseCode = 33;
-        UDSCharacteristicData.responseCode = secondResponseCode;
-        assertEquals(secondResponseCode, UDSCharacteristicData.responseCode);
+        udsCharacteristicData.responseCode = secondResponseCode;
+        assertEquals(secondResponseCode, udsCharacteristicData.responseCode);
     }
 
     @Test
@@ -139,12 +139,12 @@ public class UDSCharacteristicDataTest {
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
 
         long firstDelay = 4;
-        UDSCharacteristicData UDSCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, firstDelay, null, 5);
-        assertEquals(firstDelay, UDSCharacteristicData.delay);
+        UDSCharacteristicData udsCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, firstDelay, null, 5);
+        assertEquals(firstDelay, udsCharacteristicData.delay);
 
         long secondDelay = 44;
-        UDSCharacteristicData.delay = secondDelay;
-        assertEquals(secondDelay, UDSCharacteristicData.delay);
+        udsCharacteristicData.delay = secondDelay;
+        assertEquals(secondDelay, udsCharacteristicData.delay);
     }
 
     @Test
@@ -153,54 +153,12 @@ public class UDSCharacteristicDataTest {
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
 
         byte[] firstData = new byte[0];
-        UDSCharacteristicData UDSCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, firstData, 5);
-        assertArrayEquals(firstData, UDSCharacteristicData.data);
+        UDSCharacteristicData udsCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, firstData, 5);
+        assertArrayEquals(firstData, udsCharacteristicData.data);
 
         byte[] secondData = new byte[1];
-        UDSCharacteristicData.data = secondData;
-        assertArrayEquals(secondData, UDSCharacteristicData.data);
-    }
-
-    @Test
-    public void test_getBytes_00001() {
-        List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
-
-        byte[] firstData = new byte[0];
-        UDSCharacteristicData UDSCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, firstData, 5);
-        assertArrayEquals(firstData, UDSCharacteristicData.getBytes());
-
-        byte[] secondData = new byte[1];
-        UDSCharacteristicData.data = secondData;
-        assertArrayEquals(secondData, UDSCharacteristicData.getBytes());
-    }
-
-    @Test
-    public void test_getBytes_00002() {
-        List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
-
-        byte[] firstData = new byte[0];
-        UDSCharacteristicData UDSCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, firstData, 5);
-        assertArrayEquals(firstData, UDSCharacteristicData.getBytes());
-
-        byte[] secondData = new byte[1];
-        UDSCharacteristicData.currentData = secondData;
-        assertArrayEquals(secondData, UDSCharacteristicData.getBytes());
-    }
-
-    @Test
-    public void test_getBytes_00003() {
-        List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
-
-        byte[] firstData = new byte[0];
-        UDSCharacteristicData UDSCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, firstData, 5);
-        assertArrayEquals(firstData, UDSCharacteristicData.getBytes());
-
-        byte[] secondData = new byte[1];
-        UDSCharacteristicData.temporaryData = secondData;
-        assertArrayEquals(firstData, UDSCharacteristicData.getBytes());
+        udsCharacteristicData.data = secondData;
+        assertArrayEquals(secondData, udsCharacteristicData.data);
     }
 
     @Test
@@ -209,12 +167,54 @@ public class UDSCharacteristicDataTest {
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
 
         int firstNotificationCount = 5;
-        UDSCharacteristicData UDSCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, null, firstNotificationCount);
-        assertEquals(firstNotificationCount, UDSCharacteristicData.notificationCount);
+        UDSCharacteristicData udsCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, null, firstNotificationCount);
+        assertEquals(firstNotificationCount, udsCharacteristicData.notificationCount);
 
         int secondNotificationCount = 55;
-        UDSCharacteristicData.notificationCount = secondNotificationCount;
-        assertEquals(secondNotificationCount, UDSCharacteristicData.notificationCount);
+        udsCharacteristicData.notificationCount = secondNotificationCount;
+        assertEquals(secondNotificationCount, udsCharacteristicData.notificationCount);
+    }
+
+    @Test
+    public void test_getBytes_00001() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+
+        byte[] firstData = new byte[0];
+        UDSCharacteristicData udsCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, firstData, 5);
+        assertArrayEquals(firstData, udsCharacteristicData.getBytes());
+
+        byte[] secondData = new byte[1];
+        udsCharacteristicData.data = secondData;
+        assertArrayEquals(secondData, udsCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00002() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+
+        byte[] firstData = new byte[0];
+        UDSCharacteristicData udsCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, firstData, 5);
+        assertArrayEquals(firstData, udsCharacteristicData.getBytes());
+
+        byte[] secondData = new byte[1];
+        udsCharacteristicData.currentData = secondData;
+        assertArrayEquals(secondData, udsCharacteristicData.getBytes());
+    }
+
+    @Test
+    public void test_getBytes_00003() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+
+        byte[] firstData = new byte[0];
+        UDSCharacteristicData udsCharacteristicData = new UDSCharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, firstData, 5);
+        assertArrayEquals(firstData, udsCharacteristicData.getBytes());
+
+        byte[] secondData = new byte[1];
+        udsCharacteristicData.temporaryData = secondData;
+        assertArrayEquals(firstData, udsCharacteristicData.getBytes());
     }
 
     @Test

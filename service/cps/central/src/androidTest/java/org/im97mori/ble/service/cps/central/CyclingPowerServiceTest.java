@@ -1567,11 +1567,11 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
+        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupporeted());
+        assertTrue(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupporeted());
     }
 
     @Test
@@ -1580,7 +1580,7 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
+        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         cyclingPowerService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
@@ -1601,11 +1601,11 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CYCLING_POWER_VECTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CYCLING_POWER_VECTOR_CHARACTERISTIC, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
+        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerVectorCharacteristicSupporeted());
+        assertTrue(cyclingPowerService.isCyclingPowerVectorCharacteristicSupporeted());
     }
 
     @Test
@@ -1614,7 +1614,7 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CYCLING_POWER_VECTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
-        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CYCLING_POWER_VECTOR_CHARACTERISTIC, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
+        bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         cyclingPowerService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);

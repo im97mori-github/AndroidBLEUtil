@@ -50,6 +50,8 @@ dependencies {
     api "${groupId}:${profileTipCentralAndroid.artifactId}:${profileTipCentralAndroid.versionName}"
     api "${groupId}:${profileCppPeripheralAndroid.artifactId}:${profileCppPeripheralAndroid.versionName}"
     api "${groupId}:${profileCppCentralAndroid.artifactId}:${profileCppCentralAndroid.versionName}"
+    api "${groupId}:${profileCscpPeripheralAndroid.artifactId}:${profileCscpPeripheralAndroid.versionName}"
+    api "${groupId}:${profileCscpCentralAndroid.artifactId}:${profileCscpCentralAndroid.versionName}"
 }
 
 task sourcesJar(type: Jar) {

@@ -122,7 +122,7 @@ public class CyclingPowerProfileMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_removeCyclingPowerFeature_00003() {
+    public void test_removeCyclingPowerFeature_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
         Context context = ApplicationProvider.getApplicationContext();
@@ -158,7 +158,7 @@ public class CyclingPowerProfileMockCallbackBuilderTest {
             @Override
             public CyclingPowerServiceMockCallback.Builder<CyclingPowerServiceMockCallback> addCyclingPowerMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertArrayEquals(cyclingPowerMeasurement.getBytes(), characteristicValue);
-                assertArrayEquals(descriptorValue, descriptorValue);
+                assertArrayEquals(clientCharacteristicConfiguration.getBytes(), descriptorValue);
                 atomicBoolean.set(true);
                 return super.addCyclingPowerMeasurement(characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
@@ -191,7 +191,7 @@ public class CyclingPowerProfileMockCallbackBuilderTest {
             @Override
             public CyclingPowerServiceMockCallback.Builder<CyclingPowerServiceMockCallback> addCyclingPowerMeasurement(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertArrayEquals(cyclingPowerMeasurement.getBytes(), characteristicValue);
-                assertArrayEquals(descriptorValue, descriptorValue);
+                assertArrayEquals(clientCharacteristicConfiguration.getBytes(), descriptorValue);
                 assertEquals(originalCharacteristicResponseCode, characteristicResponseCode);
                 assertEquals(originalCharacteristicDelay, characteristicDelay);
                 assertEquals(originalNotificationCount, notificationCount);
@@ -210,7 +210,7 @@ public class CyclingPowerProfileMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_removeCyclingPowerMeasurement_00003() {
+    public void test_removeCyclingPowerMeasurement_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
         Context context = ApplicationProvider.getApplicationContext();
@@ -308,7 +308,7 @@ public class CyclingPowerProfileMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_removeSensorLocation_00003() {
+    public void test_removeSensorLocation_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
         Context context = ApplicationProvider.getApplicationContext();
@@ -330,7 +330,7 @@ public class CyclingPowerProfileMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_addCyclingPowerControlPoint_00003() {
+    public void test_addCyclingPowerControlPoint_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalCharacteristicResponseCode = 1;
         final long originalCharacteristicDelay = 2;
@@ -471,7 +471,7 @@ public class CyclingPowerProfileMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_removeCyclingPowerControlPoint_00003() {
+    public void test_removeCyclingPowerControlPoint_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
         Context context = ApplicationProvider.getApplicationContext();
@@ -540,7 +540,7 @@ public class CyclingPowerProfileMockCallbackBuilderTest {
             @Override
             public CyclingPowerServiceMockCallback.Builder<CyclingPowerServiceMockCallback> addCyclingPowerVector(int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertArrayEquals(cyclingPowerVector.getBytes(), characteristicValue);
-                assertArrayEquals(descriptorValue, descriptorValue);
+                assertArrayEquals(clientCharacteristicConfiguration.getBytes(), descriptorValue);
                 assertEquals(originalCharacteristicResponseCode, characteristicResponseCode);
                 assertEquals(originalCharacteristicDelay, characteristicDelay);
                 assertEquals(originalNotificationCount, notificationCount);
@@ -559,7 +559,7 @@ public class CyclingPowerProfileMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_removeCyclingPowerVector_00003() {
+    public void test_removeCyclingPowerVector_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
         Context context = ApplicationProvider.getApplicationContext();

@@ -117,6 +117,12 @@
         <activity
             android:name=".cpp.CppCentralSampleActivity"
             android:label="@string/label_cpp_central" />
+        <activity
+            android:name=".cscp.CscpPeripheralSampleActivity"
+            android:label="@string/label_cscp_peripheral" />
+        <activity
+            android:name=".cscp.CscpCentralSampleActivity"
+            android:label="@string/label_cscp_central" />
     </application>
 
 </manifest>

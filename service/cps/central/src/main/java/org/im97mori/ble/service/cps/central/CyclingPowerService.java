@@ -37,7 +37,7 @@ import static org.im97mori.ble.BLEConstants.DescriptorUUID.CLIENT_CHARACTERISTIC
 import static org.im97mori.ble.BLEConstants.ServiceUUID.CYCLING_POWER_SERVICE;
 
 /**
- * Cycling Power Service (Service UUID: 0x1805) for Central
+ * Cycling Power Service (Service UUID: 0x1818) for Central
  */
 public class CyclingPowerService extends AbstractCentralService {
 
@@ -334,12 +334,14 @@ public class CyclingPowerService extends AbstractCentralService {
      */
     @Override
     public synchronized void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values) {
-        if (CYCLING_POWER_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
-            mCyclingPowerServiceCallback.onCyclingPowerMeasurementNotified(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, CyclingPowerMeasurementAndroid.CREATOR.createFromByteArray(values));
-        } else if (CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
-            mCyclingPowerServiceCallback.onCyclingPowerControlPointIndicated(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, CyclingPowerControlPointAndroid.CREATOR.createFromByteArray(values));
-        } else if (CYCLING_POWER_VECTOR_CHARACTERISTIC.equals(characteristicUUID)) {
-            mCyclingPowerServiceCallback.onCyclingPowerVectorNotified(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, CyclingPowerVectorAndroid.CREATOR.createFromByteArray(values));
+        if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && CYCLING_POWER_SERVICE.equals(serviceUUID)) {
+            if (CYCLING_POWER_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
+                mCyclingPowerServiceCallback.onCyclingPowerMeasurementNotified(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, CyclingPowerMeasurementAndroid.CREATOR.createFromByteArray(values));
+            } else if (CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
+                mCyclingPowerServiceCallback.onCyclingPowerControlPointIndicated(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, CyclingPowerControlPointAndroid.CREATOR.createFromByteArray(values));
+            } else if (CYCLING_POWER_VECTOR_CHARACTERISTIC.equals(characteristicUUID)) {
+                mCyclingPowerServiceCallback.onCyclingPowerVectorNotified(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, CyclingPowerVectorAndroid.CREATOR.createFromByteArray(values));
+            }
         }
         super.onCharacteristicNotified(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, values);
     }
