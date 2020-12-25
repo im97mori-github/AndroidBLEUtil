@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.R_S_C_MEASUREMENT_CHARACTERISTIC;
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RSC_MEASUREMENT_CHARACTERISTIC;
 
 /**
  * RSC Measurement (Characteristics UUID: 0x2A53)
@@ -44,7 +44,7 @@ public class RSCMeasurementAndroid extends RSCMeasurement implements Parcelable 
          */
         @NonNull
         public RSCMeasurementAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(R_S_C_MEASUREMENT_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RSC_MEASUREMENT_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new RSCMeasurementAndroid(bluetoothGattCharacteristic);
         }

@@ -582,7 +582,7 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
                                     CharacteristicData cyclingPowerFeatureCharacterisitcData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
                                     if (cyclingPowerFeatureCharacterisitcData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacterisitcData.getBytes()).isCyclingPowerFeatureCyclingMultipleSensorLocationsSupported()) {
                                         int sensorLocation = BLEUtils.createUInt8(requestCyclingPowerControlPoint.getParameterValue(), 0);
-                                        if (Arrays.binarySearch(cyclingPowerControlPointCharacteristicData.requestSupportedSensorLocationsResponseParameter, (byte) sensorLocation) == -1) {
+                                        if (Arrays.binarySearch(cyclingPowerControlPointCharacteristicData.requestSupportedSensorLocationsResponseParameter, (byte) sensorLocation) < 0) {
                                             cyclingPowerControlPointCharacteristicData.highPriorityResponseData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], CyclingPowerControlPoint.OP_CODES_UPDATE_SENSOR_LOCATION, CyclingPowerControlPoint.RESPONSE_VALUE_INVALID_PARAMETER, new byte[0]).getBytes();
                                         } else {
                                             CharacteristicData sensorLocationCharacteristicData = findCharacteristicData(CYCLING_POWER_SERVICE, SENSOR_LOCATION_CHARACTERISTIC, CharacteristicData.class);

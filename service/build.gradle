@@ -64,6 +64,8 @@ dependencies {
     api "${groupId}:${serviceCpsCentralAndroid.artifactId}:${serviceCpsCentralAndroid.versionName}"
     api "${groupId}:${serviceCscsPeripheralAndroid.artifactId}:${serviceCscsPeripheralAndroid.versionName}"
     api "${groupId}:${serviceCscsCentralAndroid.artifactId}:${serviceCscsCentralAndroid.versionName}"
+    api "${groupId}:${serviceRscsPeripheralAndroid.artifactId}:${serviceRscsPeripheralAndroid.versionName}"
+    api "${groupId}:${serviceRscsCentralAndroid.artifactId}:${serviceRscsCentralAndroid.versionName}"
 }
 
 task sourcesJar(type: Jar) {

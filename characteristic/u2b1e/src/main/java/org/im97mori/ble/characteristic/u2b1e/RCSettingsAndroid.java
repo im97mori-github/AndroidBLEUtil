@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.R_C_SETTINGS_CHARACTERISTIC;
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RC_SETTINGS_CHARACTERISTIC;
 
 /**
  * RC Settings (Characteristics UUID: 0x2B1E)
@@ -44,7 +44,7 @@ public class RCSettingsAndroid extends RCSettings implements Parcelable {
          */
         @NonNull
         public RCSettingsAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(R_C_SETTINGS_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RC_SETTINGS_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new RCSettingsAndroid(bluetoothGattCharacteristic);
         }

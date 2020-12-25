@@ -388,13 +388,13 @@ public class CyclingSpeedAndCadenceServiceMockCallback extends AbstractServiceMo
                                     if (cscFeature == null || cscFeature.isCscFeatureWheelRevolutionDataNotSupported()) {
                                         scControlPointCharacteristicData.highPriorityResponseData = new SCControlPoint(SCControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, SCControlPoint.OP_CODE_SET_CUMULATIVE_VALUE, SCControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes();
                                     } else {
-                                        CharacteristicData cyclingPowerMeasurementCharacteristicData = findCharacteristicData(characteristicMap, CSC_MEASUREMENT_CHARACTERISTIC, CharacteristicData.class);
-                                        if (cyclingPowerMeasurementCharacteristicData != null) {
-                                            CSCMeasurement currentCSCMeasurement = new CSCMeasurement(cyclingPowerMeasurementCharacteristicData.getBytes());
+                                        CharacteristicData cscMeasurementCharacteristicData = findCharacteristicData(characteristicMap, CSC_MEASUREMENT_CHARACTERISTIC, CharacteristicData.class);
+                                        if (cscMeasurementCharacteristicData != null) {
+                                            CSCMeasurement currentCSCMeasurement = new CSCMeasurement(cscMeasurementCharacteristicData.getBytes());
                                             if (currentCSCMeasurement.isFlagsWheelRevolutionDataNotPresent()) {
                                                 scControlPointCharacteristicData.highPriorityResponseData = new SCControlPoint(SCControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, SCControlPoint.OP_CODE_SET_CUMULATIVE_VALUE, SCControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes();
                                             } else {
-                                                cyclingPowerMeasurementCharacteristicData.currentData = new CSCMeasurement(currentCSCMeasurement.getFlags()
+                                                cscMeasurementCharacteristicData.currentData = new CSCMeasurement(currentCSCMeasurement.getFlags()
                                                         , requestScControlPoint.getCumulativeValue()
                                                         , currentCSCMeasurement.getLastWheelEventTime()
                                                         , currentCSCMeasurement.getCumulativeCrankRevolutions()
@@ -409,7 +409,7 @@ public class CyclingSpeedAndCadenceServiceMockCallback extends AbstractServiceMo
                                         scControlPointCharacteristicData.highPriorityResponseData = new SCControlPoint(SCControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, SCControlPoint.OP_CODE_UPDATE_SENSOR_LOCATION, SCControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes();
                                     } else {
                                         int sensorLocation = requestScControlPoint.getSensorLocationValue();
-                                        if (Arrays.binarySearch(scControlPointCharacteristicData.requestSupportedSensorLocationsResponseParameter, (byte) sensorLocation) == -1) {
+                                        if (Arrays.binarySearch(scControlPointCharacteristicData.requestSupportedSensorLocationsResponseParameter, (byte) sensorLocation) < 0) {
                                             scControlPointCharacteristicData.highPriorityResponseData = new SCControlPoint(SCControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, SCControlPoint.OP_CODE_UPDATE_SENSOR_LOCATION, SCControlPoint.RESPONSE_VALUE_INVALID_PARAMETER, new byte[0]).getBytes();
                                         } else {
                                             CharacteristicData sensorLocationCharacteristicData = findCharacteristicData(characteristicMap, SENSOR_LOCATION_CHARACTERISTIC, CharacteristicData.class);

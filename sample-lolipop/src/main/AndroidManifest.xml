@@ -123,6 +123,12 @@
         <activity
             android:name=".cscp.CscpCentralSampleActivity"
             android:label="@string/label_cscp_central" />
+        <activity
+            android:name=".rscp.RscpPeripheralSampleActivity"
+            android:label="@string/label_rscp_peripheral" />
+        <activity
+            android:name=".rscp.RscpCentralSampleActivity"
+            android:label="@string/label_rscp_central" />
     </application>
 
 </manifest>

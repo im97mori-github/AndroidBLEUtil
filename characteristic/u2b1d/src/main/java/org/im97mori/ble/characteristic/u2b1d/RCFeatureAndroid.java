@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreater;
 
-import static org.im97mori.ble.BLEConstants.CharacteristicUUID.R_C_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.BLEConstants.CharacteristicUUID.RC_FEATURE_CHARACTERISTIC;
 
 /**
  * RC Feature (Characteristics UUID: 0x2B1D)
@@ -44,7 +44,7 @@ public class RCFeatureAndroid extends RCFeature implements Parcelable {
          */
         @NonNull
         public RCFeatureAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(R_C_FEATURE_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RC_FEATURE_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new RCFeatureAndroid(bluetoothGattCharacteristic);
         }

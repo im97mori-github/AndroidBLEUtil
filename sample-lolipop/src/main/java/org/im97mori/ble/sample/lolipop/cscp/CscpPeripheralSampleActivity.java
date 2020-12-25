@@ -90,7 +90,7 @@ public class CscpPeripheralSampleActivity extends BaseActivity implements View.O
                 .addCSCMeasurement(BluetoothGatt.GATT_SUCCESS
                         , 0
                         , measurementData
-                        , 1
+                        , -1
                         , BluetoothGatt.GATT_SUCCESS
                         , 0
                         , BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)

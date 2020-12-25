@@ -45,6 +45,8 @@
     <string name="label_cpp_central">CPP Central sample</string>
     <string name="label_cscp_peripheral">CSCP Peripheral sample</string>
     <string name="label_cscp_central">CSCP Central sample</string>
+    <string name="label_rscp_peripheral">RSCP Peripheral sample</string>
+    <string name="label_rscp_central">RSCP Central sample</string>
 
     <string name="menu_discover_service">Discover Service</string>
     <string name="menu_discover_service_sync">Discover Service(Synchronous)</string>
@@ -453,6 +455,12 @@
     <string name="menu_read_sc_control_point_characteristic_configuration">Read SC Control Point Characteristic Configuration</string>
     <string name="menu_indicate_sc_control_point_start">Indicate SC Control Point start</string>
     <string name="menu_indicate_sc_control_point_stop">Indicate SC Control Point stop</string>
+
+    <string name="menu_read_rsc_feature">Get RSC Feature</string>
+    <string name="menu_read_rsc_measurement_characteristic_configuration">Read RSC Measurement Client Characteristic Configuration</string>
+    <string name="menu_notify_rsc_measurement_start">Notify RSC Measurement start</string>
+    <string name="menu_notify_rsc_measurement_stop">Notify RSC Measurement stop</string>
+    <string name="menu_write_sc_control_point_4">Start Sensor Calibration</string>
 
     <string name="menu_clear">Clear</string>
 </resources>

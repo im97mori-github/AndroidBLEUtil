@@ -1505,7 +1505,7 @@ public class CyclingSpeedAndCadenceServiceTest {
     }
 
     @Test
-    public void test_setCyclingPowerControlPoint_000001() {
+    public void test_setSCControlPoint_000001() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(new MockBLEConnection(), new MockCyclingSpeedAndCadenceServiceCallback(), null);
         SCControlPoint scControlPoint = new SCControlPoint(new byte[]{SCControlPoint.OP_CODE_REQUEST_SUPPORTED_SENSOR_LOCATIONS});
 
@@ -1513,7 +1513,7 @@ public class CyclingSpeedAndCadenceServiceTest {
     }
 
     @Test
-    public void test_setCyclingPowerControlPoint_000002() {
+    public void test_setSCControlPoint_000002() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(new MockBLEConnection(), new MockCyclingSpeedAndCadenceServiceCallback(), null) {
 
             @Override
@@ -1528,7 +1528,7 @@ public class CyclingSpeedAndCadenceServiceTest {
     }
 
     @Test
-    public void test_setCyclingPowerControlPoint_000003() {
+    public void test_setSCControlPoint_000003() {
         CyclingSpeedAndCadenceService cyclingSpeedAndCadenceService = new CyclingSpeedAndCadenceService(new MockBLEConnection(), new MockCyclingSpeedAndCadenceServiceCallback(), null) {
 
             @Override
@@ -1548,7 +1548,7 @@ public class CyclingSpeedAndCadenceServiceTest {
     }
 
     @Test
-    public void test_setCyclingPowerControlPoint_000004() {
+    public void test_setSCControlPoint_000004() {
         final Integer originalTaskId = 1;
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
