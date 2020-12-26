@@ -47,6 +47,8 @@
     <string name="label_cscp_central">CSCP Central sample</string>
     <string name="label_rscp_peripheral">RSCP Peripheral sample</string>
     <string name="label_rscp_central">RSCP Central sample</string>
+    <string name="label_pasp_peripheral">PASP Peripheral sample</string>
+    <string name="label_pasp_central">PASP Central sample</string>
 
     <string name="menu_discover_service">Discover Service</string>
     <string name="menu_discover_service_sync">Discover Service(Synchronous)</string>
@@ -461,6 +463,18 @@
     <string name="menu_notify_rsc_measurement_start">Notify RSC Measurement start</string>
     <string name="menu_notify_rsc_measurement_stop">Notify RSC Measurement stop</string>
     <string name="menu_write_sc_control_point_4">Start Sensor Calibration</string>
+
+    <string name="menu_read_alert_status">Get Alert Status</string>
+    <string name="menu_read_alert_status_characteristic_configuration">Read Alert Status Client Characteristic Configuration</string>
+    <string name="menu_notify_alert_status_start">Notify Alert Status start</string>
+    <string name="menu_notify_alert_status_stop">Notify Alert Status stop</string>
+    <string name="menu_read_ringer_setting">Get Ringer Setting</string>
+    <string name="menu_read_ringer_setting_characteristic_configuration">Read Ringer Setting Client Characteristic Configuration</string>
+    <string name="menu_notify_ringer_setting_start">Notify Ringer Setting start</string>
+    <string name="menu_notify_ringer_setting_stop">Notify Ringer Setting stop</string>
+    <string name="menu_write_ringer_control_point_1">Silent Mode</string>
+    <string name="menu_write_ringer_control_point_2">Mute Once</string>
+    <string name="menu_write_ringer_control_point_3">Cancel Silent Mode</string>
 
     <string name="menu_clear">Clear</string>
 </resources>

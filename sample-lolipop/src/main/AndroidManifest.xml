@@ -129,6 +129,12 @@
         <activity
             android:name=".rscp.RscpCentralSampleActivity"
             android:label="@string/label_rscp_central" />
+        <activity
+            android:name=".pasp.PaspPeripheralSampleActivity"
+            android:label="@string/label_pasp_peripheral" />
+        <activity
+            android:name=".pasp.PaspCentralSampleActivity"
+            android:label="@string/label_pasp_central" />
     </application>
 
 </manifest>

@@ -27,7 +27,7 @@ import static org.im97mori.ble.BLEConstants.ServiceUUID.DEVICE_INFORMATION_SERVI
 public class RunningSpeedAndCadenceProfile extends AbstractCentralProfile {
 
     /**
-     * {@link RunningSpeedAndCadenceProfile} instance
+     * {@link RunningSpeedAndCadenceProfileCallback} instance
      */
     protected final RunningSpeedAndCadenceProfileCallback mRunningSpeedAndCadenceProfileCallback;
 

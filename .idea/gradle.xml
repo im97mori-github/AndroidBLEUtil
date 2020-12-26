@@ -230,6 +230,9 @@
             <option value="$PROJECT_DIR$/profile/lnp" />
             <option value="$PROJECT_DIR$/profile/lnp/central" />
             <option value="$PROJECT_DIR$/profile/lnp/peripheral" />
+            <option value="$PROJECT_DIR$/profile/pasp" />
+            <option value="$PROJECT_DIR$/profile/pasp/central" />
+            <option value="$PROJECT_DIR$/profile/pasp/peripheral" />
             <option value="$PROJECT_DIR$/profile/peripheral" />
             <option value="$PROJECT_DIR$/profile/pxp" />
             <option value="$PROJECT_DIR$/profile/pxp/central" />
@@ -292,6 +295,9 @@
             <option value="$PROJECT_DIR$/service/ndcs" />
             <option value="$PROJECT_DIR$/service/ndcs/central" />
             <option value="$PROJECT_DIR$/service/ndcs/peripheral" />
+            <option value="$PROJECT_DIR$/service/pass" />
+            <option value="$PROJECT_DIR$/service/pass/central" />
+            <option value="$PROJECT_DIR$/service/pass/peripheral" />
             <option value="$PROJECT_DIR$/service/peripheral" />
             <option value="$PROJECT_DIR$/service/rscs" />
             <option value="$PROJECT_DIR$/service/rscs/central" />

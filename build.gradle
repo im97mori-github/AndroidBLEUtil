@@ -1993,11 +1993,32 @@ ext.serviceRscsCentralAndroid = [
         , uploadVersionName: '0.1.0'
 ]
 
+ext.servicePassAndroid = [
+        artifactId         : "ble-service-pass-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.servicePassPeripheralAndroid = [
+        artifactId         : "ble-service-pass-peripheral-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.servicePassCentralAndroid = [
+        artifactId         : "ble-service-pass-central-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
 ext.serviceAndroid = [
         artifactId         : "ble-service-android"
-        , versionCode      : 18
-        , versionName      : '0.1.17'
-        , uploadVersionName: '0.1.17'
+        , versionCode      : 19
+        , versionName      : '0.1.18'
+        , uploadVersionName: '0.1.18'
 ]
 
 ext.profilePeripheralAndroid = [
@@ -2282,6 +2303,27 @@ ext.profileRscpPeripheralAndroid = [
 
 ext.profileRscpCentralAndroid = [
         artifactId         : "ble-profile-rscp-central-android"
+        , versionCode      : 2
+        , versionName      : '0.1.1'
+        , uploadVersionName: '0.1.1'
+]
+
+ext.profilePaspAndroid = [
+        artifactId         : "ble-profile-pasp-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.profilePaspPeripheralAndroid = [
+        artifactId         : "ble-profile-pasp-peripheral-android"
+        , versionCode      : 1
+        , versionName      : '0.1.0'
+        , uploadVersionName: '0.1.0'
+]
+
+ext.profilePaspCentralAndroid = [
+        artifactId         : "ble-profile-pasp-central-android"
         , versionCode      : 1
         , versionName      : '0.1.0'
         , uploadVersionName: '0.1.0'
@@ -2289,9 +2331,9 @@ ext.profileRscpCentralAndroid = [
 
 ext.profileAndroid = [
         artifactId         : "ble-profile-android"
-        , versionCode      : 17
-        , versionName      : '0.1.16'
-        , uploadVersionName: '0.1.16'
+        , versionCode      : 18
+        , versionName      : '0.1.17'
+        , uploadVersionName: '0.1.17'
 ]
 
 ext.test = [
