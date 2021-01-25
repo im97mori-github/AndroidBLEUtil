@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/pre_connected">
+        <item
+            android:id="@+id/load_bonded_device"
+            android:title="@string/menu_load_bonded_device" />
+
+        <item
+            android:id="@+id/clear_bonded_history"
+            android:title="@string/menu_clear_bonded_history" />
+    </group>
+    <group
+        android:id="@+id/service_check"
+        android:visible="false">
+        <item
+            android:id="@+id/has_user_data_service"
+            android:title="@string/menu_has_user_data_service" />
+        <item
+            android:id="@+id/has_device_information_service"
+            android:title="@string/menu_has_device_information_service" />
+    </group>
+    <group
+        android:id="@+id/fitness_machine_service_1"
+        android:visible="false">
+        <item
+            android:id="@+id/is_treadmill_data_characteristic_supporeted"
+            android:title="@string/menu_is_treadmill_data_characteristic_supporeted" />
+        <item
+            android:id="@+id/is_cross_trainer_data_characteristic_supporeted"
+            android:title="@string/menu_is_cross_trainer_data_characteristic_supporeted" />
+        <item
+            android:id="@+id/is_step_climber_data_characteristic_supporeted"
+            android:title="@string/menu_is_step_climber_data_characteristic_supporeted" />
+        <item
+            android:id="@+id/is_stair_climber_data_characteristic_supporeted"
+            android:title="@string/menu_is_stair_climber_data_characteristic_supporeted" />
+        <item
+            android:id="@+id/is_rower_data_characteristic_supporeted"
+            android:title="@string/menu_is_rower_data_characteristic_supporeted" />
+        <item
+            android:id="@+id/is_indoor_bike_data_characteristic_supporeted"
+            android:title="@string/menu_is_indoor_bike_data_characteristic_supporeted" />
+        <item
+            android:id="@+id/is_training_status_characteristic_supporeted"
+            android:title="@string/menu_is_training_status_characteristic_supporeted" />
+        <item
+            android:id="@+id/is_supported_speed_range_characteristic_supporeted"
+            android:title="@string/menu_is_supported_speed_range_characteristic_supporeted" />
+        <item
+            android:id="@+id/is_supported_inclination_range_characteristic_supporeted"
+            android:title="@string/menu_is_supported_inclination_range_characteristic_supporeted" />
+        <item
+            android:id="@+id/is_supported_resistance_level_range_characteristic_supporeted"
+            android:title="@string/menu_is_supported_resistance_level_range_characteristic_supporeted" />
+        <item
+            android:id="@+id/is_supported_power_range_characteristic_supporeted"
+            android:title="@string/menu_is_supported_power_range_characteristic_supporeted" />
+        <item
+            android:id="@+id/is_supported_heart_rate_range_characteristic_supporeted"
+            android:title="@string/menu_is_supported_heart_rate_range_characteristic_supporeted" />
+        <item
+            android:id="@+id/is_fitness_machine_control_point_characteristic_supporeted"
+            android:title="@string/menu_is_fitness_machine_control_point_characteristic_supporeted" />
+        <item
+            android:id="@+id/is_fitness_machine_status_characteristic_supporeted"
+            android:title="@string/menu_is_fitness_machine_status_characteristic_supporeted" />
+    </group>
+    <group
+        android:id="@+id/fitness_machine_service_2"
+        android:visible="false">
+        <item
+            android:id="@+id/read_fitness_machine_feature"
+            android:title="@string/menu_read_fitness_machine_feature" />
+        <item
+            android:id="@+id/read_treadmill_data_characteristic_configuration"
+            android:title="@string/menu_read_treadmill_data_characteristic_configuration" />
+        <item
+            android:id="@+id/start_notificate_treadmill_data"
+            android:title="@string/menu_notify_treadmill_data_start" />
+        <item
+            android:id="@+id/stop_notificate_treadmill_data"
+            android:title="@string/menu_notify_treadmill_data_stop" />
+        <item
+            android:id="@+id/read_cross_trainer_data_characteristic_configuration"
+            android:title="@string/menu_read_cross_trainer_data_characteristic_configuration" />
+        <item
+            android:id="@+id/start_notificate_cross_trainer_data"
+            android:title="@string/menu_notify_cross_trainer_data_start" />
+        <item
+            android:id="@+id/stop_notificate_cross_trainer_data"
+            android:title="@string/menu_notify_cross_trainer_data_stop" />
+        <item
+            android:id="@+id/read_step_climber_data_characteristic_configuration"
+            android:title="@string/menu_read_step_climber_data_characteristic_configuration" />
+        <item
+            android:id="@+id/start_notificate_step_climber_data"
+            android:title="@string/menu_notify_step_climber_data_start" />
+        <item
+            android:id="@+id/stop_notificate_step_climber_data"
+            android:title="@string/menu_notify_step_climber_data_stop" />
+        <item
+            android:id="@+id/read_stair_climber_data_characteristic_configuration"
+            android:title="@string/menu_read_stair_climber_data_characteristic_configuration" />
+        <item
+            android:id="@+id/start_notificate_stair_climber_data"
+            android:title="@string/menu_notify_stair_climber_data_start" />
+        <item
+            android:id="@+id/stop_notificate_stair_climber_data"
+            android:title="@string/menu_notify_stair_climber_data_stop" />
+        <item
+            android:id="@+id/read_rower_data_characteristic_configuration"
+            android:title="@string/menu_read_rower_data_characteristic_configuration" />
+        <item
+            android:id="@+id/start_notificate_rower_data"
+            android:title="@string/menu_notify_rower_data_start" />
+        <item
+            android:id="@+id/stop_notificate_rower_data"
+            android:title="@string/menu_notify_rower_data_stop" />
+        <item
+            android:id="@+id/read_indoor_bike_data_characteristic_configuration"
+            android:title="@string/menu_read_indoor_bike_data_characteristic_configuration" />
+        <item
+            android:id="@+id/start_notificate_indoor_bike_data"
+            android:title="@string/menu_notify_indoor_bike_data_start" />
+        <item
+            android:id="@+id/stop_notificate_indoor_bike_data"
+            android:title="@string/menu_notify_indoor_bike_data_stop" />
+        <item
+            android:id="@+id/read_training_status"
+            android:title="@string/menu_read_training_status" />
+        <item
+            android:id="@+id/read_training_status_characteristic_configuration"
+            android:title="@string/menu_read_training_status_characteristic_configuration" />
+        <item
+            android:id="@+id/start_notificate_training_status"
+            android:title="@string/menu_notify_training_status_start" />
+        <item
+            android:id="@+id/stop_notificate_training_status"
+            android:title="@string/menu_notify_training_status_stop" />
+        <item
+            android:id="@+id/read_supported_speed_range"
+            android:title="@string/menu_read_supported_speed_range" />
+        <item
+            android:id="@+id/read_supported_inclination_range"
+            android:title="@string/menu_read_supported_inclination_range" />
+        <item
+            android:id="@+id/read_supported_resistance_level_range"
+            android:title="@string/menu_read_supported_resistance_level_range" />
+        <item
+            android:id="@+id/read_supported_power_range"
+            android:title="@string/menu_read_supported_power_range" />
+        <item
+            android:id="@+id/read_supported_heart_rate_range"
+            android:title="@string/menu_read_supported_heart_rate_range" />
+    </group>
+    <group
+        android:id="@+id/fitness_machine_service_3"
+        android:visible="false">
+        <item
+            android:id="@+id/write_fitness_machine_control_point_request_control"
+            android:title="@string/menu_write_fitness_machine_control_point_request_control" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_reset"
+            android:title="@string/menu_write_fitness_machine_control_point_reset" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_set_target_speed"
+            android:title="@string/menu_write_fitness_machine_control_point_set_target_speed" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_set_target_inclination"
+            android:title="@string/menu_write_fitness_machine_control_point_set_target_inclination" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_set_target_resistance_level"
+            android:title="@string/menu_write_fitness_machine_control_point_set_target_resistance_level" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_set_target_power"
+            android:title="@string/menu_write_fitness_machine_control_point_set_target_power" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_set_target_heart_rate"
+            android:title="@string/menu_write_fitness_machine_control_point_set_target_heart_rate" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_start_or_resume"
+            android:title="@string/menu_write_fitness_machine_control_point_start_or_resume" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_stop_or_pause"
+            android:title="@string/menu_write_fitness_machine_control_point_stop_or_pause" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_set_targeted_expended_energy"
+            android:title="@string/menu_write_fitness_machine_control_point_set_targeted_expended_energy" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_set_targeted_number_of_steps"
+            android:title="@string/menu_write_fitness_machine_control_point_set_targeted_number_of_steps" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_set_targeted_number_of_strides"
+            android:title="@string/menu_write_fitness_machine_control_point_set_targeted_number_of_strides" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_set_targeted_distance"
+            android:title="@string/menu_write_fitness_machine_control_point_set_targeted_distance" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_set_targeted_training_time"
+            android:title="@string/menu_write_fitness_machine_control_point_set_targeted_training_time" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_set_targeted_time_in_two_heart_rate_zones"
+            android:title="@string/menu_write_fitness_machine_control_point_set_targeted_time_in_two_heart_rate_zones" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_set_targeted_time_in_three_zone_heart_rate"
+            android:title="@string/menu_write_fitness_machine_control_point_set_targeted_time_in_three_zone_heart_rate" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_set_targeted_time_in_five_zone_heart_rate"
+            android:title="@string/menu_write_fitness_machine_control_point_set_targeted_time_in_five_zone_heart_rate" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_set_indoor_bike_simulation_parameters"
+            android:title="@string/menu_write_fitness_machine_control_point_set_indoor_bike_simulation_parameters" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_set_wheel_circumference"
+            android:title="@string/menu_write_fitness_machine_control_point_set_wheel_circumference" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_spin_down_control"
+            android:title="@string/menu_write_fitness_machine_control_point_spin_down_control" />
+        <item
+            android:id="@+id/write_fitness_machine_control_point_set_targeted_cadence"
+            android:title="@string/menu_write_fitness_machine_control_point_set_targeted_cadence" />
+        <item
+            android:id="@+id/read_fitness_machine_control_point_characteristic_configuration"
+            android:title="@string/menu_read_fitness_machine_control_point_characteristic_configuration" />
+        <item
+            android:id="@+id/start_indicate_fitness_machine_control_point"
+            android:title="@string/menu_indicate_fitness_machine_control_point_start" />
+        <item
+            android:id="@+id/stop_indicate_fitness_machine_control_point"
+            android:title="@string/menu_indicate_fitness_machine_control_point_stop" />
+        <item
+            android:id="@+id/read_fitness_machine_status_characteristic_configuration"
+            android:title="@string/menu_read_fitness_machine_status_characteristic_configuration" />
+        <item
+            android:id="@+id/start_notificate_fitness_machine_status"
+            android:title="@string/menu_notify_fitness_machine_status_start" />
+        <item
+            android:id="@+id/stop_notificate_fitness_machine_status"
+            android:title="@string/menu_notify_fitness_machine_status_stop" />
+    </group>
+    <group
+        android:id="@+id/user_data_service_1"
+        android:visible="false">
+        <item
+            android:id="@+id/has_first_name"
+            android:title="@string/menu_has_first_name" />
+        <item
+            android:id="@+id/has_weight"
+            android:title="@string/menu_has_weight" />
+        <item
+            android:id="@+id/has_gender"
+            android:title="@string/menu_has_gender" />
+        <item
+            android:id="@+id/has_height"
+            android:title="@string/menu_has_height" />
+        <item
+            android:id="@+id/has_age"
+            android:title="@string/menu_has_age" />
+        <item
+            android:id="@+id/has_date_of_birth"
+            android:title="@string/menu_has_date_of_birth" />
+        <item
+            android:id="@+id/has_heart_rate_max"
+            android:title="@string/menu_has_heart_rate_max" />
+        <item
+            android:id="@+id/has_resting_heart_rate"
+            android:title="@string/menu_has_resting_heart_rate" />
+        <item
+            android:id="@+id/has_maximum_recommended_heart_rate"
+            android:title="@string/menu_has_maximum_recommended_heart_rate" />
+        <item
+            android:id="@+id/has_vo2_max"
+            android:title="@string/menu_has_vo2_max" />
+        <item
+            android:id="@+id/has_language"
+            android:title="@string/menu_has_language" />
+        <item
+            android:id="@+id/has_two_zone_heart_rate_limits"
+            android:title="@string/menu_has_two_zone_heart_rate_limits" />
+        <item
+            android:id="@+id/has_three_zone_heart_rate_limits"
+            android:title="@string/menu_has_three_zone_heart_rate_limits" />
+        <item
+            android:id="@+id/has_five_zone_heart_rate_limits"
+            android:title="@string/menu_has_five_zone_heart_rate_limits" />
+    </group>
+    <group
+        android:id="@+id/user_data_service_2"
+        android:visible="true">
+        <item
+            android:id="@+id/read_user_index"
+            android:title="@string/menu_read_user_index" />
+        <item
+            android:id="@+id/read_database_change_increment"
+            android:title="@string/menu_read_database_change_increment" />
+        <item
+            android:id="@+id/write_database_change_increment"
+            android:title="@string/menu_write_database_change_increment" />
+        <item
+            android:id="@+id/is_database_change_increment_notificatable"
+            android:title="@string/menu_is_database_change_increment_notificatable" />
+        <item
+            android:id="@+id/read_database_change_increment_characteristic_configuration"
+            android:title="@string/menu_read_database_change_increment_characteristic_configuration" />
+        <item
+            android:id="@+id/notify_menu_database_change_increment_start"
+            android:title="@string/menu_notify_database_change_increment_start" />
+        <item
+            android:id="@+id/notify_menu_database_change_increment_stop"
+            android:title="@string/menu_notify_database_change_increment_stop" />
+        <item
+            android:id="@+id/write_user_control_point_register_new_user"
+            android:title="@string/menu_write_user_control_point_register_new_user" />
+        <item
+            android:id="@+id/write_user_control_point_consent"
+            android:title="@string/menu_write_user_control_point_consent" />
+        <item
+            android:id="@+id/write_user_control_point_delete_user_data"
+            android:title="@string/menu_write_user_control_point_delete_user_data" />
+        <item
+            android:id="@+id/read_user_control_point_characteristic_configuration"
+            android:title="@string/menu_read_user_control_point_characteristic_configuration" />
+        <item
+            android:id="@+id/indicate_user_control_point_start"
+            android:title="@string/menu_indicate_user_control_point_start" />
+        <item
+            android:id="@+id/indicate_user_control_point_stop"
+            android:title="@string/menu_indicate_user_control_point_stop" />
+        <item
+            android:id="@+id/read_first_name"
+            android:title="@string/menu_read_first_name" />
+        <item
+            android:id="@+id/write_first_name"
+            android:title="@string/menu_write_first_name" />
+        <item
+            android:id="@+id/read_weight"
+            android:title="@string/menu_read_weight" />
+        <item
+            android:id="@+id/write_weight"
+            android:title="@string/menu_write_weight" />
+        <item
+            android:id="@+id/read_gender"
+            android:title="@string/menu_read_gender" />
+        <item
+            android:id="@+id/write_gender"
+            android:title="@string/menu_write_gender" />
+        <item
+            android:id="@+id/read_height"
+            android:title="@string/menu_read_height" />
+        <item
+            android:id="@+id/write_height"
+            android:title="@string/menu_write_height" />
+        <item
+            android:id="@+id/read_age"
+            android:title="@string/menu_read_age" />
+        <item
+            android:id="@+id/write_age"
+            android:title="@string/menu_write_age" />
+        <item
+            android:id="@+id/read_date_of_birth"
+            android:title="@string/menu_read_date_of_birth" />
+        <item
+            android:id="@+id/write_date_of_birth"
+            android:title="@string/menu_write_date_of_birth" />
+        <item
+            android:id="@+id/read_heart_rate_max"
+            android:title="@string/menu_read_heart_rate_max" />
+        <item
+            android:id="@+id/write_heart_rate_max"
+            android:title="@string/menu_write_heart_rate_max" />
+        <item
+            android:id="@+id/read_resting_heart_rate"
+            android:title="@string/menu_read_resting_heart_rate" />
+        <item
+            android:id="@+id/write_resting_heart_rate"
+            android:title="@string/menu_write_resting_heart_rate" />
+        <item
+            android:id="@+id/read_maximum_recommended_heart_rate"
+            android:title="@string/menu_read_maximum_recommended_heart_rate" />
+        <item
+            android:id="@+id/write_maximum_recommended_heart_rate"
+            android:title="@string/menu_write_maximum_recommended_heart_rate" />
+        <item
+            android:id="@+id/read_vo2_max"
+            android:title="@string/menu_read_vo2_max" />
+        <item
+            android:id="@+id/write_vo2_max"
+            android:title="@string/menu_write_vo2_max" />
+        <item
+            android:id="@+id/read_language"
+            android:title="@string/menu_read_language" />
+        <item
+            android:id="@+id/write_language"
+            android:title="@string/menu_write_language" />
+        <item
+            android:id="@+id/read_two_zone_heart_rate_limits"
+            android:title="@string/menu_read_two_zone_heart_rate_limits" />
+        <item
+            android:id="@+id/write_two_zone_heart_rate_limits"
+            android:title="@string/menu_write_two_zone_heart_rate_limits" />
+        <item
+            android:id="@+id/read_three_zone_heart_rate_limits"
+            android:title="@string/menu_read_three_zone_heart_rate_limits" />
+        <item
+            android:id="@+id/write_three_zone_heart_rate_limits"
+            android:title="@string/menu_write_three_zone_heart_rate_limits" />
+        <item
+            android:id="@+id/read_five_zone_heart_rate_limits"
+            android:title="@string/menu_read_five_zone_heart_rate_limits" />
+        <item
+            android:id="@+id/write_five_zone_heart_rate_limits"
+            android:title="@string/menu_write_five_zone_heart_rate_limits" />
+    </group>
+    <group
+        android:id="@+id/device_information_service"
+        android:visible="false">
+        <item
+            android:id="@+id/has_manufacturer_name"
+            android:title="@string/menu_has_manufacturer_name" />
+        <item
+            android:id="@+id/read_manufacturer_name"
+            android:title="@string/menu_read_manufacturer_name" />
+        <item
+            android:id="@+id/has_model_number"
+            android:title="@string/menu_has_model_number" />
+        <item
+            android:id="@+id/read_model_number"
+            android:title="@string/menu_read_model_number" />
+    </group>
+</menu>

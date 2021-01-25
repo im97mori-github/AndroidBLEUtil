@@ -102,7 +102,7 @@ public class LocationAndNavigationService extends AbstractCentralService {
                         mIsPositionQualityCharacteristicSupporeted = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(LN_CONTROL_POINT_CHARACTERISTIC);
-                    if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_INDICATE == bluetoothGattCharacteristic.getProperties()) {
+                    if (bluetoothGattCharacteristic != null && (BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE) == bluetoothGattCharacteristic.getProperties()) {
                         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
                         if (bluetoothGattDescriptor != null) {
                             mIsLNControlPointCharacteristicSupporeted = true;
@@ -498,7 +498,7 @@ public class LocationAndNavigationService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getLNControlPointClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted()) {
+        if (isStarted() && isLNControlPointCharacteristicSupporeted()) {
             taskId = mBLEConnection.createReadDescriptorTask(LOCATION_AND_NAVIGATION_SERVICE, null, LN_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;

@@ -787,7 +787,7 @@ public class NewAlertCharacteristicDataTest {
         int instantMessageAlertNumberOfNewAlert = 10;
         String instantMessageTextStringInformation = "j";
         long delay = 0;
-        int notificationCount = 1;
+        int notificationCount = 0;
         List<DescriptorData> descriptorDataList = new ArrayList<>();
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 11, 12, 13, new byte[]{20}));
 

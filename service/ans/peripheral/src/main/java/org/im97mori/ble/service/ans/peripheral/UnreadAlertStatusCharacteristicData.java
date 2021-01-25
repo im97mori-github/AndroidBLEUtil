@@ -132,7 +132,14 @@ public class UnreadAlertStatusCharacteristicData extends CharacteristicData {
             , int highPrioritizedAlertUnreadCount
             , int instantMessageAlertUnreadCount
             , @NonNull List<DescriptorData> descriptorDataList) {
-        super(UNREAD_ALERT_STATUS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, descriptorDataList, BluetoothGatt.GATT_SUCCESS, 0, null, 1);
+        super(UNREAD_ALERT_STATUS_CHARACTERISTIC
+                , BluetoothGattCharacteristic.PROPERTY_NOTIFY
+                , 0
+                , descriptorDataList
+                , BluetoothGatt.GATT_SUCCESS
+                , 0
+                , null
+                , 0);
         this.simpleAlertUnreadCount = simpleAlertUnreadCount;
         this.emailUnreadCount = emailUnreadCount;
         this.newsUnreadCount = newsUnreadCount;

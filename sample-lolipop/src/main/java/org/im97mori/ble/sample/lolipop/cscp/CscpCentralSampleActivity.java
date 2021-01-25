@@ -179,11 +179,11 @@ public class CscpCentralSampleActivity extends BaseActivity implements View.OnCl
                     , 0
                     , 0
                     , new byte[0]));
-        } else if (R.id.read_sc_control_characteristic_configuration == item.getItemId()) {
+        } else if (R.id.read_sc_control_point_characteristic_configuration == item.getItemId()) {
             mCyclingSpeedAndCadenceProfile.getSCControlPointClientCharacteristicConfiguration();
-        } else if (R.id.start_indicate_sc_control == item.getItemId()) {
+        } else if (R.id.start_indicate_sc_control_point == item.getItemId()) {
             mCyclingSpeedAndCadenceProfile.startSCControlPointIndication();
-        } else if (R.id.stop_indicate_sc_control == item.getItemId()) {
+        } else if (R.id.stop_indicate_sc_control_point == item.getItemId()) {
             mCyclingSpeedAndCadenceProfile.startSCControlPointIndication();
         } else if (R.id.read_manufacturer_name == item.getItemId()) {
             mCyclingSpeedAndCadenceProfile.getManufacturerNameString();

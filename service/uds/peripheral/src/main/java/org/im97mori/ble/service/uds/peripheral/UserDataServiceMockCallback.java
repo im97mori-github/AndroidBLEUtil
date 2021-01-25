@@ -1984,7 +1984,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                     , characteristicResponseCode
                     , characteristicDelay
                     , new byte[0] // variable
-                    , 1);
+                    , 0);
 
             return this;
         }
@@ -2070,7 +2070,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                     , characteristicResponseCode
                     , characteristicDelay
                     , new byte[0] // variable
-                    , 1);
+                    , 0);
             return this;
         }
 
@@ -2117,7 +2117,6 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                     , descriptorDelay
                     , descriptorValue))
                     , characteristicDelay
-                    , 1
                     , registerNewUserResponseValue
                     , consentResponseValue
                     , deleteUserDataResponseValue
@@ -2379,9 +2378,9 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDeviceDisconnected(BluetoothDevice device) {
-        super.onDeviceDisconnected(device);
+    public synchronized void onDeviceDisconnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
         mCurrentUserMap.remove(device);
+        super.onDeviceDisconnected(bleServerConnection, device);
     }
 
     /**
@@ -2393,7 +2392,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @param bluetoothGattServer         {@link BluetoothGattServer} instance
      * @return {@code true}:handled, {@code false}:not handled
      */
-    private boolean onDatabaseChangeIncrementReadRequest(@NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
+    protected boolean onDatabaseChangeIncrementReadRequest(@NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
         boolean result = false;
 
         long now = SystemClock.elapsedRealtime();
@@ -2447,7 +2446,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @param bluetoothGattServer         {@link BluetoothGattServer} instance
      * @return {@code true}:handled, {@code false}:not handled
      */
-    private boolean onUserIndexReadRequest(@NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
+    protected boolean onUserIndexReadRequest(@NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
         boolean result = false;
 
         long now = SystemClock.elapsedRealtime();
@@ -2461,7 +2460,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
             }
         } else {
             int characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
-            CharacteristicData characteristicData = characteristicMap.get(Pair.create(DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, characteristicInstanceId));
+            CharacteristicData characteristicData = characteristicMap.get(Pair.create(USER_INDEX_CHARACTERISTIC, characteristicInstanceId));
             if (characteristicData != null) {
                 delay(now, characteristicData.delay);
 
@@ -2496,7 +2495,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @param bluetoothGattServer         {@link BluetoothGattServer} instance
      * @return {@code true}:handled, {@code false}:not handled
      */
-    private boolean onUserDataReadRequest(@NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
+    protected boolean onUserDataReadRequest(@NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
         boolean result = false;
 
         long now = SystemClock.elapsedRealtime();
@@ -2579,7 +2578,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @param bluetoothGattServer         {@link BluetoothGattServer} instance
      * @return {@code true}:handled, {@code false}:not handled
      */
-    private boolean onDatabaseChangeIncrementWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, int offset, @NonNull byte[] value, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
+    protected boolean onDatabaseChangeIncrementWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, int offset, @NonNull byte[] value, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
         boolean result = false;
 
         long now = SystemClock.elapsedRealtime();
@@ -2626,7 +2625,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                                 , characteristicInstanceId
                                                 , descriptorEntry.getKey().second
                                                 , characteristicData.delay
-                                                , null
+                                                , 1
                                                 , null);
                                     }
                                 }
@@ -2643,6 +2642,55 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
     }
 
     /**
+     * Delete User Data process
+     *
+     * @param userIndex user index
+     */
+    protected void deleteUserData(int userIndex) {
+        for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, CharacteristicData>> serviceEntry : mRemappedServiceCharacteristicMap.entrySet()) {
+            Pair<UUID, Integer> serviceKey = serviceEntry.getKey();
+            if (USER_DATA_SERVICE.equals(serviceKey.first)) {
+                for (Map.Entry<Pair<UUID, Integer>, CharacteristicData> characteristicEntry : serviceEntry.getValue().entrySet()) {
+                    Pair<UUID, Integer> characteristicKey = characteristicEntry.getKey();
+                    if (UDS_CHARACTERISTIC_SET.contains(characteristicKey.first)) {
+                        CharacteristicData targetCharacteristicData = characteristicEntry.getValue();
+                        if (targetCharacteristicData instanceof UDSCharacteristicData) {
+                            UDSCharacteristicData udsCharacteristicData = (UDSCharacteristicData) targetCharacteristicData;
+                            udsCharacteristicData.removeUserData(userIndex);
+                        }
+                    }
+                }
+                break;
+            }
+        }
+    }
+
+    /**
+     * Delete Users process
+     *
+     * @param userIndex user index
+     */
+    protected void deleteUsers(int userIndex) {
+        deleteUserData(userIndex);
+        if (UserIndexUtils.isUserIdUnknownUser(userIndex)) {
+            mUserMap.clear();
+            mCurrentDatabaseChangeIncrementMap.clear();
+            mCurrentUserMap.clear();
+        } else {
+            mUserMap.remove(userIndex);
+            mCurrentDatabaseChangeIncrementMap.remove(userIndex);
+            Iterator<Map.Entry<BluetoothDevice, Integer>> it = mCurrentUserMap.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry<BluetoothDevice, Integer> entry = it.next();
+                Integer consentUserIndex = entry.getValue();
+                if (consentUserIndex != null && consentUserIndex == userIndex) {
+                    it.remove();
+                }
+            }
+        }
+    }
+
+    /**
      * @param bleServerConnection         {@link BLEServerConnection} instance
      * @param device                      {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 2nd parameter
      * @param requestId                   {@link #onCharacteristicWriteRequest(BLEServerConnection, BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[], boolean)} 3rd parameter
@@ -2653,7 +2701,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @param bluetoothGattServer         {@link BluetoothGattServer} instance
      * @return {@code true}:handled, {@code false}:not handled
      */
-    private boolean onUserControlPointWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, int offset, @NonNull byte[] value, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
+    protected boolean onUserControlPointWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, int offset, @NonNull byte[] value, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
         boolean result = false;
 
         long now = SystemClock.elapsedRealtime();
@@ -2716,22 +2764,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                     } else if (userControlPoint.isOpCodeDeleteUserData(userControlPoint.getOpCode())) {
                                         if (mCurrentUserMap.containsKey(device)) {
                                             if (userControlPoint.isResponseValueSuccess(userControlPointCharacteristicData.deleteUserDataResponseValue)) {
-                                                for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, CharacteristicData>> serviceEntry : mRemappedServiceCharacteristicMap.entrySet()) {
-                                                    Pair<UUID, Integer> serviceKey = serviceEntry.getKey();
-                                                    if (USER_DATA_SERVICE.equals(serviceKey.first)) {
-                                                        for (Map.Entry<Pair<UUID, Integer>, CharacteristicData> characteristicEntry : serviceEntry.getValue().entrySet()) {
-                                                            Pair<UUID, Integer> characteristicKey = characteristicEntry.getKey();
-                                                            if (UDS_CHARACTERISTIC_SET.contains(characteristicKey.first)) {
-                                                                CharacteristicData targetCharacteristicData = characteristicEntry.getValue();
-                                                                if (targetCharacteristicData instanceof UDSCharacteristicData) {
-                                                                    UDSCharacteristicData udsCharacteristicData = (UDSCharacteristicData) targetCharacteristicData;
-                                                                    udsCharacteristicData.removeUserData(userControlPoint.getUserIndex());
-                                                                }
-                                                            }
-                                                        }
-                                                        break;
-                                                    }
-                                                }
+                                                deleteUserData(userControlPoint.getUserIndex());
                                                 userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, UserControlPoint.OP_CODE_DELETE_USER_DATA, UserControlPoint.RESPONSE_VALUE_SUCCESS, 0).getBytes();
                                                 mCurrentUserMap.remove(device);
                                             } else {
@@ -2844,7 +2877,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                                                         , registeredUserInstanceId
                                                                         , registeredUserClientCharacteristicConfigurationInstanceId
                                                                         , registeredUserData.delay
-                                                                        , null
+                                                                        , 1
                                                                         , bundle);
                                                             }
                                                         }
@@ -2864,34 +2897,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                     } else if (userControlPoint.isOpCodeDeleteUsers(userControlPoint.getOpCode())) {
                                         if (userControlPoint.isResponseValueSuccess(userControlPointCharacteristicData.deleteUsersResponseValue)) {
                                             int userIndex = userControlPoint.getUserIndex();
-                                            for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, CharacteristicData>> serviceEntry : mRemappedServiceCharacteristicMap.entrySet()) {
-                                                Pair<UUID, Integer> serviceKey = serviceEntry.getKey();
-                                                if (USER_DATA_SERVICE.equals(serviceKey.first)) {
-                                                    for (Map.Entry<Pair<UUID, Integer>, CharacteristicData> characteristicEntry : serviceEntry.getValue().entrySet()) {
-                                                        Pair<UUID, Integer> characteristicKey = characteristicEntry.getKey();
-                                                        if (UDS_CHARACTERISTIC_SET.contains(characteristicKey.first)) {
-                                                            ((UDSCharacteristicData) characteristicEntry.getValue()).removeUserData(userIndex);
-                                                        }
-                                                    }
-                                                    break;
-                                                }
-                                            }
-                                            if (UserIndexUtils.isUserIdUnknownUser(userIndex)) {
-                                                mUserMap.clear();
-                                                mCurrentDatabaseChangeIncrementMap.clear();
-                                                mCurrentUserMap.clear();
-                                            } else {
-                                                mUserMap.remove(userIndex);
-                                                mCurrentDatabaseChangeIncrementMap.remove(userIndex);
-                                                Iterator<Map.Entry<BluetoothDevice, Integer>> it = mCurrentUserMap.entrySet().iterator();
-                                                while (it.hasNext()) {
-                                                    Map.Entry<BluetoothDevice, Integer> entry = it.next();
-                                                    Integer consentUserIndex = entry.getValue();
-                                                    if (consentUserIndex != null && consentUserIndex == userIndex) {
-                                                        it.remove();
-                                                    }
-                                                }
-                                            }
+                                            deleteUsers(userIndex);
                                             userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, userIndex, 0, UserControlPoint.OP_CODE_DELETE_USERS, UserControlPoint.RESPONSE_VALUE_SUCCESS, 0).getBytes();
                                         } else {
                                             userControlPointCharacteristicData.currentData = new UserControlPoint(UserControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, UserControlPoint.OP_CODE_DELETE_USERS, userControlPointCharacteristicData.deleteUsersResponseValue, 0).getBytes();
@@ -2910,10 +2916,11 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                                 , characteristicInstanceId
                                                 , key.second
                                                 , characteristicData.delay
-                                                , null
+                                                , 1
                                                 , null);
                                     }
                                 }
+                                break;
                             }
                         }
                     }
@@ -2938,7 +2945,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      * @param bluetoothGattServer         {@link BluetoothGattServer} instance
      * @return {@code true}:handled, {@code false}:not handled
      */
-    private boolean onUserDataWriteRequest(@NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, int offset, @NonNull byte[] value, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
+    protected boolean onUserDataWriteRequest(@NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, int offset, @NonNull byte[] value, boolean force, @NonNull BluetoothGattServer bluetoothGattServer) {
         boolean result = false;
 
         long now = SystemClock.elapsedRealtime();
@@ -3179,6 +3186,23 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
     @Override
     public void onAdvertisingFinished() {
         // do nothing
+    }
+
+    /**
+     * check consent status
+     *
+     * @param device    target device
+     * @param userIndex target user index
+     * @return {@code true}:no consent, {@code false}:has consent
+     */
+    public boolean hasNoConsent(@NonNull BluetoothDevice device, @Nullable Integer userIndex) {
+        boolean result;
+        if (userIndex == null) {
+            result = true;
+        } else {
+            result = !userIndex.equals(mCurrentUserMap.get(device));
+        }
+        return result;
     }
 
 }

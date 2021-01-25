@@ -214,7 +214,14 @@ public class NewAlertCharacteristicData extends CharacteristicData {
             , int instantMessageAlertNumberOfNewAlert
             , @Nullable String instantMessageTextStringInformation
             , @NonNull List<DescriptorData> descriptorDataList) {
-        super(NEW_ALERT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, descriptorDataList, BluetoothGatt.GATT_SUCCESS, 0, null, 1);
+        super(NEW_ALERT_CHARACTERISTIC
+                , BluetoothGattCharacteristic.PROPERTY_NOTIFY
+                , 0
+                , descriptorDataList
+                , BluetoothGatt.GATT_SUCCESS
+                , 0
+                , null
+                , 0);
         this.simpleAlertNumberOfNewAlert = simpleAlertNumberOfNewAlert;
         this.simpleAlertTextStringInformation = simpleAlertTextStringInformation;
         this.emailNumberOfNewAlert = emailNumberOfNewAlert;

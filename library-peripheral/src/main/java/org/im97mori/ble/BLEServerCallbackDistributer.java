@@ -109,10 +109,10 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDeviceConnected(BluetoothDevice device) {
+    public void onDeviceConnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
         for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
             try {
-                bleServerCallback.onDeviceConnected(device);
+                bleServerCallback.onDeviceConnected(bleServerConnection, device);
             } catch (Exception e) {
                 BLEPeripheralLogUtils.stackLog(e);
             }
@@ -123,10 +123,10 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDeviceDisconnected(BluetoothDevice device) {
+    public void onDeviceDisconnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
         for (BLEServerCallback bleServerCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
             try {
-                bleServerCallback.onDeviceDisconnected(device);
+                bleServerCallback.onDeviceDisconnected(bleServerConnection, device);
             } catch (Exception e) {
                 BLEPeripheralLogUtils.stackLog(e);
             }
@@ -647,6 +647,7 @@ public class BLEServerCallbackDistributer implements BLEServerCallback {
 
     /**
      * {@inheritDoc}
+     *
      * @param errorCode
      */
     @Override

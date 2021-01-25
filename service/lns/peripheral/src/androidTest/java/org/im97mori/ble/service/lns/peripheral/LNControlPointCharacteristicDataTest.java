@@ -29,17 +29,16 @@ public class LNControlPointCharacteristicDataTest {
                 , new ArrayList<DescriptorData>()
                 , 3
                 , 4
+                , 5
                 , 6
                 , 7
                 , 8
-                , 9
+                , new byte[]{9}
                 , 10
                 , new byte[]{11}
                 , 12
-                , new byte[]{13}
-                , 14
-                , 15
-                , 16);
+                , 13
+                , 14);
 
         Gson gson = new Gson();
         LNControlPointCharacteristicData result2 = gson.fromJson(gson.toJson(result1), LNControlPointCharacteristicData.class);
@@ -74,17 +73,16 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 3
                 , 4
+                , 5
                 , 6
                 , 7
                 , 8
-                , 9
+                , new byte[]{9}
                 , 10
                 , new byte[]{11}
                 , 12
-                , new byte[]{13}
-                , 14
-                , 15
-                , 16);
+                , 13
+                , 14);
 
         Gson gson = new Gson();
         LNControlPointCharacteristicData result2 = gson.fromJson(gson.toJson(result1), LNControlPointCharacteristicData.class);
@@ -124,7 +122,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 0
                 , 0
-                , 0
                 , firstCumulativeValueResponseValue
                 , 0
                 , 0
@@ -152,7 +149,6 @@ public class LNControlPointCharacteristicDataTest {
         LNControlPointCharacteristicData characteristicData = new LNControlPointCharacteristicData(0
                 , 0
                 , descriptorDataList
-                , 0
                 , 0
                 , 0
                 , 0
@@ -186,7 +182,6 @@ public class LNControlPointCharacteristicDataTest {
                 , 0
                 , 0
                 , 0
-                , 0
                 , firstNavigationControlResponseValue
                 , 0
                 , new byte[0]
@@ -212,7 +207,6 @@ public class LNControlPointCharacteristicDataTest {
         LNControlPointCharacteristicData characteristicData = new LNControlPointCharacteristicData(0
                 , 0
                 , descriptorDataList
-                , 0
                 , 0
                 , 0
                 , 0
@@ -248,7 +242,6 @@ public class LNControlPointCharacteristicDataTest {
                 , 0
                 , 0
                 , 0
-                , 0
                 , firstRequestNumberOfRoutesResponseParameter
                 , 0
                 , new byte[0]
@@ -272,7 +265,6 @@ public class LNControlPointCharacteristicDataTest {
         LNControlPointCharacteristicData characteristicData = new LNControlPointCharacteristicData(0
                 , 0
                 , descriptorDataList
-                , 0
                 , 0
                 , 0
                 , 0
@@ -308,7 +300,6 @@ public class LNControlPointCharacteristicDataTest {
                 , 0
                 , 0
                 , 0
-                , 0
                 , new byte[0]
                 , 0
                 , firstRequestNameOfRouteResponseParameter
@@ -332,7 +323,6 @@ public class LNControlPointCharacteristicDataTest {
         LNControlPointCharacteristicData characteristicData = new LNControlPointCharacteristicData(0
                 , 0
                 , descriptorDataList
-                , 0
                 , 0
                 , 0
                 , 0
@@ -368,7 +358,6 @@ public class LNControlPointCharacteristicDataTest {
                 , 0
                 , 0
                 , 0
-                , 0
                 , new byte[0]
                 , 0
                 , new byte[0]
@@ -398,7 +387,6 @@ public class LNControlPointCharacteristicDataTest {
                 , 0
                 , 0
                 , 0
-                , 0
                 , new byte[0]
                 , 0
                 , new byte[0]
@@ -421,17 +409,16 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 3
                 , 4
+                , 5
                 , 6
                 , 7
                 , 8
-                , 9
+                , new byte[]{9}
                 , 10
                 , new byte[]{11}
                 , 12
-                , new byte[]{13}
-                , 14
-                , 15
-                , 16);
+                , 13
+                , 14);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -470,17 +457,16 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , 3
                 , 4
+                , 5
                 , 6
                 , 7
                 , 8
-                , 9
+                , new byte[]{9}
                 , 10
                 , new byte[]{11}
                 , 12
-                , new byte[]{13}
-                , 14
-                , 15
-                , 16);
+                , 13
+                , 14);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -515,20 +501,19 @@ public class LNControlPointCharacteristicDataTest {
         int property = 1;
         int permission = 2;
         List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 7, null));
         int responseCode = 3;
         long delay = 4;
-        int notificationCount = 7;
-        int setCumulativeValueResponseValue = 8;
-        int maskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int navigationControlResponseValue = 10;
-        int requestNumberOfRoutesResponseValue = 11;
-        byte[] requestNumberOfRoutesResponseParameter = new byte[]{12};
-        int requestNameOfRouteResponseValue = 13;
-        byte[] requestNameOfRouteResponseParameter = new byte[]{14};
-        int selectRouteResponseValue = 15;
-        int setFixRateResponseValue = 16;
-        int setElevationResponseValue = 17;
+        int setCumulativeValueResponseValue = 5;
+        int maskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int navigationControlResponseValue = 7;
+        int requestNumberOfRoutesResponseValue = 8;
+        byte[] requestNumberOfRoutesResponseParameter = new byte[]{9};
+        int requestNameOfRouteResponseValue = 10;
+        byte[] requestNameOfRouteResponseParameter = new byte[]{11};
+        int selectRouteResponseValue = 12;
+        int setFixRateResponseValue = 13;
+        int setElevationResponseValue = 14;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(
                 property
@@ -536,7 +521,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , notificationCount
                 , setCumulativeValueResponseValue
                 , maskLocationAndSpeedCharacteristicContentResponseValue
                 , navigationControlResponseValue
@@ -554,7 +538,6 @@ public class LNControlPointCharacteristicDataTest {
                         ^ Integer.valueOf(responseCode).hashCode()
                         ^ Long.valueOf(delay).hashCode()
                         ^ Arrays.hashCode(new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_RESPONSE_CODE, LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes())
-                        ^ Integer.valueOf(notificationCount).hashCode()
                         ^ Arrays.hashCode((byte[]) null)
                         ^ Arrays.hashCode((byte[]) null)
                         ^ Integer.valueOf(setCumulativeValueResponseValue).hashCode()
@@ -575,22 +558,21 @@ public class LNControlPointCharacteristicDataTest {
         int property = 1;
         int permission = 2;
         List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 19, 20, 21, null));
         int responseCode = 3;
         long delay = 4;
-        byte[] currentData = new byte[]{7, 8};
-        byte[] temporaryData = new byte[]{9, 10};
-        int notificationCount = 11;
-        int setCumulativeValueResponseValue = 12;
-        int maskLocationAndSpeedCharacteristicContentResponseValue = 13;
-        int navigationControlResponseValue = 14;
-        int requestNumberOfRoutesResponseValue = 15;
-        byte[] requestNumberOfRoutesResponseParameter = new byte[]{16};
-        int requestNameOfRouteResponseValue = 17;
-        byte[] requestNameOfRouteResponseParameter = new byte[]{18};
-        int selectRouteResponseValue = 19;
-        int setFixRateResponseValue = 20;
-        int setElevationResponseValue = 21;
+        byte[] currentData = new byte[]{5, 6};
+        byte[] temporaryData = new byte[]{7, 8};
+        int setCumulativeValueResponseValue = 9;
+        int maskLocationAndSpeedCharacteristicContentResponseValue = 10;
+        int navigationControlResponseValue = 11;
+        int requestNumberOfRoutesResponseValue = 12;
+        byte[] requestNumberOfRoutesResponseParameter = new byte[]{13};
+        int requestNameOfRouteResponseValue = 14;
+        byte[] requestNameOfRouteResponseParameter = new byte[]{15};
+        int selectRouteResponseValue = 16;
+        int setFixRateResponseValue = 17;
+        int setElevationResponseValue = 18;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(
                 property
@@ -598,7 +580,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , notificationCount
                 , setCumulativeValueResponseValue
                 , maskLocationAndSpeedCharacteristicContentResponseValue
                 , navigationControlResponseValue
@@ -618,7 +599,6 @@ public class LNControlPointCharacteristicDataTest {
                         ^ Integer.valueOf(responseCode).hashCode()
                         ^ Long.valueOf(delay).hashCode()
                         ^ Arrays.hashCode(new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_RESPONSE_CODE, LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes())
-                        ^ Integer.valueOf(notificationCount).hashCode()
                         ^ Arrays.hashCode(currentData)
                         ^ Arrays.hashCode(temporaryData)
                         ^ Integer.valueOf(setCumulativeValueResponseValue).hashCode()
@@ -639,27 +619,25 @@ public class LNControlPointCharacteristicDataTest {
         int firstProperty = 1;
         int firstPermission = 2;
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -676,7 +654,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -696,20 +673,19 @@ public class LNControlPointCharacteristicDataTest {
         int firstProperty = 1;
         int firstPermission = 2;
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
 
         int secondProperty = 101;
 
@@ -718,7 +694,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -735,7 +710,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -755,20 +729,19 @@ public class LNControlPointCharacteristicDataTest {
         int firstProperty = 1;
         int firstPermission = 2;
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
 
         int secondPermission = 102;
 
@@ -777,7 +750,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -794,7 +766,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -814,30 +785,28 @@ public class LNControlPointCharacteristicDataTest {
         int firstProperty = 1;
         int firstPermission = 2;
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
 
         List<DescriptorData> secondDescriptorDataList = new ArrayList<>();
-        secondDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 11, 22, 33, null));
+        secondDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 115, 116, 117, null));
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -854,7 +823,6 @@ public class LNControlPointCharacteristicDataTest {
                 , secondDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -874,20 +842,19 @@ public class LNControlPointCharacteristicDataTest {
         int firstProperty = 1;
         int firstPermission = 2;
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
 
         int secondResponseCode = 103;
 
@@ -896,7 +863,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -913,7 +879,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , secondResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -933,29 +898,27 @@ public class LNControlPointCharacteristicDataTest {
         int firstProperty = 1;
         int firstPermission = 2;
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
 
-        int secondResponseCode = 104;
+        int secondResponseCode = 103;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -972,7 +935,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , secondResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -992,20 +954,19 @@ public class LNControlPointCharacteristicDataTest {
         int firstProperty = 1;
         int firstPermission = 2;
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
 
         long secondDelay = 104;
 
@@ -1014,7 +975,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1031,8 +991,63 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , secondDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
+                , firstMaskLocationAndSpeedCharacteristicContentResponseValue
+                , firstNavigationControlResponseValue
+                , firstRequestNumberOfRoutesResponseValue
+                , firstRequestNumberOfRoutesResponseParameter
+                , firstRequestNameOfRouteResponseValue
+                , firstRequestNameOfRouteResponseParameter
+                , firstSelectRouteResponseValue
+                , firstSetFixRateResponseValue
+                , firstSetElevationResponseValue
+        );
+        assertNotEquals(result1, result2);
+    }
+
+    @Test
+    public void test_equals_00008() {
+        int firstProperty = 1;
+        int firstPermission = 2;
+        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
+        int firstResponseCode = 3;
+        long firstDelay = 4;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
+
+        int secondSetCumulativeValueResponseValue = 105;
+
+        LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(firstProperty
+                , firstPermission
+                , firstDescriptorDataList
+                , firstResponseCode
+                , firstDelay
+                , firstSetCumulativeValueResponseValue
+                , firstMaskLocationAndSpeedCharacteristicContentResponseValue
+                , firstNavigationControlResponseValue
+                , firstRequestNumberOfRoutesResponseValue
+                , firstRequestNumberOfRoutesResponseParameter
+                , firstRequestNameOfRouteResponseValue
+                , firstRequestNameOfRouteResponseParameter
+                , firstSelectRouteResponseValue
+                , firstSetFixRateResponseValue
+                , firstSetElevationResponseValue
+        );
+        LNControlPointCharacteristicData result2 = new LNControlPointCharacteristicData(firstProperty
+                , firstPermission
+                , firstDescriptorDataList
+                , firstResponseCode
+                , firstDelay
+                , secondSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
                 , firstRequestNumberOfRoutesResponseValue
@@ -1051,29 +1066,27 @@ public class LNControlPointCharacteristicDataTest {
         int firstProperty = 1;
         int firstPermission = 2;
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
 
-        int secondNotificationCount = 107;
+        int secondMaskLocationAndSpeedCharacteristicContentResponseValue = 106;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1090,9 +1103,8 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , secondNotificationCount
                 , firstSetCumulativeValueResponseValue
-                , firstMaskLocationAndSpeedCharacteristicContentResponseValue
+                , secondMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
                 , firstRequestNumberOfRoutesResponseValue
                 , firstRequestNumberOfRoutesResponseParameter
@@ -1110,29 +1122,27 @@ public class LNControlPointCharacteristicDataTest {
         int firstProperty = 1;
         int firstPermission = 2;
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
 
-        int secondSetCumulativeValueResponseValue = 108;
+        int secondNavigationControlResponseValue = 107;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1149,10 +1159,9 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
-                , secondSetCumulativeValueResponseValue
+                , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
-                , firstNavigationControlResponseValue
+                , secondNavigationControlResponseValue
                 , firstRequestNumberOfRoutesResponseValue
                 , firstRequestNumberOfRoutesResponseParameter
                 , firstRequestNameOfRouteResponseValue
@@ -1169,29 +1178,27 @@ public class LNControlPointCharacteristicDataTest {
         int firstProperty = 1;
         int firstPermission = 2;
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
 
-        int secondMaskLocationAndSpeedCharacteristicContentResponseValue = 109;
+        int secondRequestNumberOfRoutesResponseValue = 109;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1208,125 +1215,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
-                , firstSetCumulativeValueResponseValue
-                , secondMaskLocationAndSpeedCharacteristicContentResponseValue
-                , firstNavigationControlResponseValue
-                , firstRequestNumberOfRoutesResponseValue
-                , firstRequestNumberOfRoutesResponseParameter
-                , firstRequestNameOfRouteResponseValue
-                , firstRequestNameOfRouteResponseParameter
-                , firstSelectRouteResponseValue
-                , firstSetFixRateResponseValue
-                , firstSetElevationResponseValue
-        );
-        assertNotEquals(result1, result2);
-    }
-
-    @Test
-    public void test_equals_00012() {
-        int firstProperty = 1;
-        int firstPermission = 2;
-        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
-        int firstResponseCode = 3;
-        long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
-
-        int secondNavigationControlResponseValue = 110;
-
-        LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(firstProperty
-                , firstPermission
-                , firstDescriptorDataList
-                , firstResponseCode
-                , firstDelay
-                , firstNotificationCount
-                , firstSetCumulativeValueResponseValue
-                , firstMaskLocationAndSpeedCharacteristicContentResponseValue
-                , firstNavigationControlResponseValue
-                , firstRequestNumberOfRoutesResponseValue
-                , firstRequestNumberOfRoutesResponseParameter
-                , firstRequestNameOfRouteResponseValue
-                , firstRequestNameOfRouteResponseParameter
-                , firstSelectRouteResponseValue
-                , firstSetFixRateResponseValue
-                , firstSetElevationResponseValue
-        );
-        LNControlPointCharacteristicData result2 = new LNControlPointCharacteristicData(firstProperty
-                , firstPermission
-                , firstDescriptorDataList
-                , firstResponseCode
-                , firstDelay
-                , firstNotificationCount
-                , firstSetCumulativeValueResponseValue
-                , firstMaskLocationAndSpeedCharacteristicContentResponseValue
-                , secondNavigationControlResponseValue
-                , firstRequestNumberOfRoutesResponseValue
-                , firstRequestNumberOfRoutesResponseParameter
-                , firstRequestNameOfRouteResponseValue
-                , firstRequestNameOfRouteResponseParameter
-                , firstSelectRouteResponseValue
-                , firstSetFixRateResponseValue
-                , firstSetElevationResponseValue
-        );
-        assertNotEquals(result1, result2);
-    }
-
-    @Test
-    public void test_equals_00013() {
-        int firstProperty = 1;
-        int firstPermission = 2;
-        List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
-        int firstResponseCode = 3;
-        long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
-
-        int secondRequestNumberOfRoutesResponseValue = 111;
-
-        LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(firstProperty
-                , firstPermission
-                , firstDescriptorDataList
-                , firstResponseCode
-                , firstDelay
-                , firstNotificationCount
-                , firstSetCumulativeValueResponseValue
-                , firstMaskLocationAndSpeedCharacteristicContentResponseValue
-                , firstNavigationControlResponseValue
-                , firstRequestNumberOfRoutesResponseValue
-                , firstRequestNumberOfRoutesResponseParameter
-                , firstRequestNameOfRouteResponseValue
-                , firstRequestNameOfRouteResponseParameter
-                , firstSelectRouteResponseValue
-                , firstSetFixRateResponseValue
-                , firstSetElevationResponseValue
-        );
-        LNControlPointCharacteristicData result2 = new LNControlPointCharacteristicData(firstProperty
-                , firstPermission
-                , firstDescriptorDataList
-                , firstResponseCode
-                , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1342,33 +1230,31 @@ public class LNControlPointCharacteristicDataTest {
     }
 
     @Test
-    public void test_equals_00014() {
+    public void test_equals_00012() {
         int firstProperty = 1;
         int firstPermission = 2;
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
 
-        byte[] secondRequestNumberOfRoutesResponseParameter = new byte[]{112};
+        byte[] secondRequestNumberOfRoutesResponseParameter = new byte[]{110};
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1385,7 +1271,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1401,33 +1286,31 @@ public class LNControlPointCharacteristicDataTest {
     }
 
     @Test
-    public void test_equals_00015() {
+    public void test_equals_00013() {
         int firstProperty = 1;
         int firstPermission = 2;
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
 
-        int secondRequestNameOfRouteResponseValue = 113;
+        int secondRequestNameOfRouteResponseValue = 111;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1444,7 +1327,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1460,33 +1342,31 @@ public class LNControlPointCharacteristicDataTest {
     }
 
     @Test
-    public void test_equals_00016() {
+    public void test_equals_00014() {
         int firstProperty = 1;
         int firstPermission = 2;
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
 
-        byte[] secondRequestNameOfRouteResponseParameter = new byte[]{114};
+        byte[] secondRequestNameOfRouteResponseParameter = new byte[]{111};
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1503,7 +1383,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1519,33 +1398,31 @@ public class LNControlPointCharacteristicDataTest {
     }
 
     @Test
-    public void test_equals_00017() {
+    public void test_equals_00015() {
         int firstProperty = 1;
         int firstPermission = 2;
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
 
-        int secondSelectRouteResponseValue = 115;
+        int secondSelectRouteResponseValue = 112;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1562,7 +1439,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1578,33 +1454,31 @@ public class LNControlPointCharacteristicDataTest {
     }
 
     @Test
-    public void test_equals_00018() {
+    public void test_equals_00016() {
         int firstProperty = 1;
         int firstPermission = 2;
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
 
-        int secondSetFixRateResponseValue = 116;
+        int secondSetFixRateResponseValue = 113;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1621,7 +1495,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1637,33 +1510,31 @@ public class LNControlPointCharacteristicDataTest {
     }
 
     @Test
-    public void test_equals_00019() {
+    public void test_equals_00017() {
         int firstProperty = 1;
         int firstPermission = 2;
         List<DescriptorData> firstDescriptorDataList = new ArrayList<>();
-        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        firstDescriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int firstResponseCode = 3;
         long firstDelay = 4;
-        int firstNotificationCount = 7;
-        int firstSetCumulativeValueResponseValue = 8;
-        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int firstNavigationControlResponseValue = 10;
-        int firstRequestNumberOfRoutesResponseValue = 11;
-        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{12};
-        int firstRequestNameOfRouteResponseValue = 13;
-        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{14};
-        int firstSelectRouteResponseValue = 15;
-        int firstSetFixRateResponseValue = 16;
-        int firstSetElevationResponseValue = 17;
+        int firstSetCumulativeValueResponseValue = 5;
+        int firstMaskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int firstNavigationControlResponseValue = 7;
+        int firstRequestNumberOfRoutesResponseValue = 8;
+        byte[] firstRequestNumberOfRoutesResponseParameter = new byte[]{9};
+        int firstRequestNameOfRouteResponseValue = 10;
+        byte[] firstRequestNameOfRouteResponseParameter = new byte[]{11};
+        int firstSelectRouteResponseValue = 12;
+        int firstSetFixRateResponseValue = 13;
+        int firstSetElevationResponseValue = 14;
 
-        int secondSetElevationResponseValue = 117;
+        int secondSetElevationResponseValue = 114;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(firstProperty
                 , firstPermission
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1680,7 +1551,6 @@ public class LNControlPointCharacteristicDataTest {
                 , firstDescriptorDataList
                 , firstResponseCode
                 , firstDelay
-                , firstNotificationCount
                 , firstSetCumulativeValueResponseValue
                 , firstMaskLocationAndSpeedCharacteristicContentResponseValue
                 , firstNavigationControlResponseValue
@@ -1700,21 +1570,20 @@ public class LNControlPointCharacteristicDataTest {
         int property = 1;
         int permission = 2;
         List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int responseCode = 3;
         long delay = 4;
         byte[] data = new LNControlPoint(LNControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, new byte[0], 0, 0, new byte[0]).getBytes();
-        int notificationCount = 7;
-        int setCumulativeValueResponseValue = 8;
-        int maskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int navigationControlResponseValue = 10;
-        int requestNumberOfRoutesResponseValue = 11;
-        byte[] requestNumberOfRoutesResponseParameter = new byte[]{12};
-        int requestNameOfRouteResponseValue = 13;
-        byte[] requestNameOfRouteResponseParameter = new byte[]{14};
-        int selectRouteResponseValue = 15;
-        int setFixRateResponseValue = 16;
-        int setElevationResponseValue = 17;
+        int setCumulativeValueResponseValue = 5;
+        int maskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int navigationControlResponseValue = 7;
+        int requestNumberOfRoutesResponseValue = 8;
+        byte[] requestNumberOfRoutesResponseParameter = new byte[]{9};
+        int requestNameOfRouteResponseValue = 10;
+        byte[] requestNameOfRouteResponseParameter = new byte[]{11};
+        int selectRouteResponseValue = 12;
+        int setFixRateResponseValue = 13;
+        int setElevationResponseValue = 14;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(
                 property
@@ -1722,7 +1591,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , notificationCount
                 , setCumulativeValueResponseValue
                 , maskLocationAndSpeedCharacteristicContentResponseValue
                 , navigationControlResponseValue
@@ -1744,21 +1612,20 @@ public class LNControlPointCharacteristicDataTest {
         int property = 1;
         int permission = 2;
         List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int responseCode = 3;
         long delay = 4;
         byte[] data = new LNControlPoint(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, new byte[0], 0, 0, new byte[0]).getBytes();
-        int notificationCount = 7;
-        int setCumulativeValueResponseValue = 8;
-        int maskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int navigationControlResponseValue = 10;
-        int requestNumberOfRoutesResponseValue = 11;
-        byte[] requestNumberOfRoutesResponseParameter = new byte[]{12};
-        int requestNameOfRouteResponseValue = 13;
-        byte[] requestNameOfRouteResponseParameter = new byte[]{14};
-        int selectRouteResponseValue = 15;
-        int setFixRateResponseValue = 16;
-        int setElevationResponseValue = 17;
+        int setCumulativeValueResponseValue = 5;
+        int maskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int navigationControlResponseValue = 7;
+        int requestNumberOfRoutesResponseValue = 8;
+        byte[] requestNumberOfRoutesResponseParameter = new byte[]{9};
+        int requestNameOfRouteResponseValue = 10;
+        byte[] requestNameOfRouteResponseParameter = new byte[]{11};
+        int selectRouteResponseValue = 12;
+        int setFixRateResponseValue = 13;
+        int setElevationResponseValue = 14;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(
                 property
@@ -1766,7 +1633,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , notificationCount
                 , setCumulativeValueResponseValue
                 , maskLocationAndSpeedCharacteristicContentResponseValue
                 , navigationControlResponseValue
@@ -1788,21 +1654,20 @@ public class LNControlPointCharacteristicDataTest {
         int property = 1;
         int permission = 2;
         List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int responseCode = 3;
         long delay = 4;
         byte[] data = new LNControlPoint(LNControlPoint.OP_CODES_NAVIGATION_CONTROL, new byte[0], 0, 0, new byte[0]).getBytes();
-        int notificationCount = 7;
-        int setCumulativeValueResponseValue = 8;
-        int maskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int navigationControlResponseValue = 10;
-        int requestNumberOfRoutesResponseValue = 11;
-        byte[] requestNumberOfRoutesResponseParameter = new byte[]{12};
-        int requestNameOfRouteResponseValue = 13;
-        byte[] requestNameOfRouteResponseParameter = new byte[]{14};
-        int selectRouteResponseValue = 15;
-        int setFixRateResponseValue = 16;
-        int setElevationResponseValue = 17;
+        int setCumulativeValueResponseValue = 5;
+        int maskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int navigationControlResponseValue = 7;
+        int requestNumberOfRoutesResponseValue = 8;
+        byte[] requestNumberOfRoutesResponseParameter = new byte[]{9};
+        int requestNameOfRouteResponseValue = 10;
+        byte[] requestNameOfRouteResponseParameter = new byte[]{11};
+        int selectRouteResponseValue = 12;
+        int setFixRateResponseValue = 13;
+        int setElevationResponseValue = 14;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(
                 property
@@ -1810,7 +1675,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , notificationCount
                 , setCumulativeValueResponseValue
                 , maskLocationAndSpeedCharacteristicContentResponseValue
                 , navigationControlResponseValue
@@ -1832,21 +1696,20 @@ public class LNControlPointCharacteristicDataTest {
         int property = 1;
         int permission = 2;
         List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int responseCode = 3;
         long delay = 4;
         byte[] data = new LNControlPoint(LNControlPoint.OP_CODES_REQUEST_NUMBER_OF_ROUTES, new byte[0], 0, 0, new byte[0]).getBytes();
-        int notificationCount = 7;
-        int setCumulativeValueResponseValue = 8;
-        int maskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int navigationControlResponseValue = 10;
-        int requestNumberOfRoutesResponseValue = 11;
-        byte[] requestNumberOfRoutesResponseParameter = new byte[]{12};
-        int requestNameOfRouteResponseValue = 13;
-        byte[] requestNameOfRouteResponseParameter = new byte[]{14};
-        int selectRouteResponseValue = 15;
-        int setFixRateResponseValue = 16;
-        int setElevationResponseValue = 17;
+        int setCumulativeValueResponseValue = 5;
+        int maskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int navigationControlResponseValue = 7;
+        int requestNumberOfRoutesResponseValue = 8;
+        byte[] requestNumberOfRoutesResponseParameter = new byte[]{9};
+        int requestNameOfRouteResponseValue = 10;
+        byte[] requestNameOfRouteResponseParameter = new byte[]{11};
+        int selectRouteResponseValue = 12;
+        int setFixRateResponseValue = 13;
+        int setElevationResponseValue = 14;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(
                 property
@@ -1854,7 +1717,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , notificationCount
                 , setCumulativeValueResponseValue
                 , maskLocationAndSpeedCharacteristicContentResponseValue
                 , navigationControlResponseValue
@@ -1876,21 +1738,20 @@ public class LNControlPointCharacteristicDataTest {
         int property = 1;
         int permission = 2;
         List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int responseCode = 3;
         long delay = 4;
         byte[] data = new LNControlPoint(LNControlPoint.OP_CODES_REQUEST_NAME_OF_ROUTE, new byte[0], 0, 0, new byte[0]).getBytes();
-        int notificationCount = 7;
-        int setCumulativeValueResponseValue = 8;
-        int maskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int navigationControlResponseValue = 10;
-        int requestNumberOfRoutesResponseValue = 11;
-        byte[] requestNumberOfRoutesResponseParameter = new byte[]{12};
-        int requestNameOfRouteResponseValue = 13;
-        byte[] requestNameOfRouteResponseParameter = new byte[]{14};
-        int selectRouteResponseValue = 15;
-        int setFixRateResponseValue = 16;
-        int setElevationResponseValue = 17;
+        int setCumulativeValueResponseValue = 5;
+        int maskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int navigationControlResponseValue = 7;
+        int requestNumberOfRoutesResponseValue = 8;
+        byte[] requestNumberOfRoutesResponseParameter = new byte[]{9};
+        int requestNameOfRouteResponseValue = 10;
+        byte[] requestNameOfRouteResponseParameter = new byte[]{11};
+        int selectRouteResponseValue = 12;
+        int setFixRateResponseValue = 13;
+        int setElevationResponseValue = 14;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(
                 property
@@ -1898,7 +1759,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , notificationCount
                 , setCumulativeValueResponseValue
                 , maskLocationAndSpeedCharacteristicContentResponseValue
                 , navigationControlResponseValue
@@ -1920,21 +1780,20 @@ public class LNControlPointCharacteristicDataTest {
         int property = 1;
         int permission = 2;
         List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int responseCode = 3;
         long delay = 4;
         byte[] data = new LNControlPoint(LNControlPoint.OP_CODES_SELECT_ROUTE, new byte[0], 0, 0, new byte[0]).getBytes();
-        int notificationCount = 7;
-        int setCumulativeValueResponseValue = 8;
-        int maskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int navigationControlResponseValue = 10;
-        int requestNumberOfRoutesResponseValue = 11;
-        byte[] requestNumberOfRoutesResponseParameter = new byte[]{12};
-        int requestNameOfRouteResponseValue = 13;
-        byte[] requestNameOfRouteResponseParameter = new byte[]{14};
-        int selectRouteResponseValue = 15;
-        int setFixRateResponseValue = 16;
-        int setElevationResponseValue = 17;
+        int setCumulativeValueResponseValue = 5;
+        int maskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int navigationControlResponseValue = 7;
+        int requestNumberOfRoutesResponseValue = 8;
+        byte[] requestNumberOfRoutesResponseParameter = new byte[]{9};
+        int requestNameOfRouteResponseValue = 10;
+        byte[] requestNameOfRouteResponseParameter = new byte[]{11};
+        int selectRouteResponseValue = 12;
+        int setFixRateResponseValue = 13;
+        int setElevationResponseValue = 14;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(
                 property
@@ -1942,7 +1801,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , notificationCount
                 , setCumulativeValueResponseValue
                 , maskLocationAndSpeedCharacteristicContentResponseValue
                 , navigationControlResponseValue
@@ -1964,21 +1822,20 @@ public class LNControlPointCharacteristicDataTest {
         int property = 1;
         int permission = 2;
         List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int responseCode = 3;
         long delay = 4;
         byte[] data = new LNControlPoint(LNControlPoint.OP_CODES_SET_FIX_RATE, new byte[0], 0, 0, new byte[0]).getBytes();
-        int notificationCount = 7;
-        int setCumulativeValueResponseValue = 8;
-        int maskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int navigationControlResponseValue = 10;
-        int requestNumberOfRoutesResponseValue = 11;
-        byte[] requestNumberOfRoutesResponseParameter = new byte[]{12};
-        int requestNameOfRouteResponseValue = 13;
-        byte[] requestNameOfRouteResponseParameter = new byte[]{14};
-        int selectRouteResponseValue = 15;
-        int setFixRateResponseValue = 16;
-        int setElevationResponseValue = 17;
+        int setCumulativeValueResponseValue = 5;
+        int maskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int navigationControlResponseValue = 7;
+        int requestNumberOfRoutesResponseValue = 8;
+        byte[] requestNumberOfRoutesResponseParameter = new byte[]{9};
+        int requestNameOfRouteResponseValue = 10;
+        byte[] requestNameOfRouteResponseParameter = new byte[]{11};
+        int selectRouteResponseValue = 12;
+        int setFixRateResponseValue = 13;
+        int setElevationResponseValue = 14;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(
                 property
@@ -1986,7 +1843,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , notificationCount
                 , setCumulativeValueResponseValue
                 , maskLocationAndSpeedCharacteristicContentResponseValue
                 , navigationControlResponseValue
@@ -2008,21 +1864,20 @@ public class LNControlPointCharacteristicDataTest {
         int property = 1;
         int permission = 2;
         List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int responseCode = 3;
         long delay = 4;
         byte[] data = new LNControlPoint(LNControlPoint.OP_CODES_SET_ELEVATION, new byte[0], 0, 0, new byte[0]).getBytes();
-        int notificationCount = 7;
-        int setCumulativeValueResponseValue = 8;
-        int maskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int navigationControlResponseValue = 10;
-        int requestNumberOfRoutesResponseValue = 11;
-        byte[] requestNumberOfRoutesResponseParameter = new byte[]{12};
-        int requestNameOfRouteResponseValue = 13;
-        byte[] requestNameOfRouteResponseParameter = new byte[]{14};
-        int selectRouteResponseValue = 15;
-        int setFixRateResponseValue = 16;
-        int setElevationResponseValue = 17;
+        int setCumulativeValueResponseValue = 5;
+        int maskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int navigationControlResponseValue = 7;
+        int requestNumberOfRoutesResponseValue = 8;
+        byte[] requestNumberOfRoutesResponseParameter = new byte[]{9};
+        int requestNameOfRouteResponseValue = 10;
+        byte[] requestNameOfRouteResponseParameter = new byte[]{11};
+        int selectRouteResponseValue = 12;
+        int setFixRateResponseValue = 13;
+        int setElevationResponseValue = 14;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(
                 property
@@ -2030,7 +1885,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , notificationCount
                 , setCumulativeValueResponseValue
                 , maskLocationAndSpeedCharacteristicContentResponseValue
                 , navigationControlResponseValue
@@ -2052,21 +1906,20 @@ public class LNControlPointCharacteristicDataTest {
         int property = 1;
         int permission = 2;
         List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int responseCode = 3;
         long delay = 4;
         byte[] data = new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], 0, 0, new byte[0]).getBytes();
-        int notificationCount = 7;
-        int setCumulativeValueResponseValue = 8;
-        int maskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int navigationControlResponseValue = 10;
-        int requestNumberOfRoutesResponseValue = 11;
-        byte[] requestNumberOfRoutesResponseParameter = new byte[]{12};
-        int requestNameOfRouteResponseValue = 13;
-        byte[] requestNameOfRouteResponseParameter = new byte[]{14};
-        int selectRouteResponseValue = 15;
-        int setFixRateResponseValue = 16;
-        int setElevationResponseValue = 17;
+        int setCumulativeValueResponseValue = 5;
+        int maskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int navigationControlResponseValue = 7;
+        int requestNumberOfRoutesResponseValue = 8;
+        byte[] requestNumberOfRoutesResponseParameter = new byte[]{9};
+        int requestNameOfRouteResponseValue = 10;
+        byte[] requestNameOfRouteResponseParameter = new byte[]{11};
+        int selectRouteResponseValue = 12;
+        int setFixRateResponseValue = 13;
+        int setElevationResponseValue = 14;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(
                 property
@@ -2074,7 +1927,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , notificationCount
                 , setCumulativeValueResponseValue
                 , maskLocationAndSpeedCharacteristicContentResponseValue
                 , navigationControlResponseValue
@@ -2096,20 +1948,19 @@ public class LNControlPointCharacteristicDataTest {
         int property = 1;
         int permission = 2;
         List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int responseCode = 3;
         long delay = 4;
-        int notificationCount = 7;
-        int setCumulativeValueResponseValue = 8;
-        int maskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int navigationControlResponseValue = 10;
-        int requestNumberOfRoutesResponseValue = 11;
-        byte[] requestNumberOfRoutesResponseParameter = new byte[]{12};
-        int requestNameOfRouteResponseValue = 13;
-        byte[] requestNameOfRouteResponseParameter = new byte[]{14};
-        int selectRouteResponseValue = 15;
-        int setFixRateResponseValue = 16;
-        int setElevationResponseValue = 17;
+        int setCumulativeValueResponseValue = 5;
+        int maskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int navigationControlResponseValue = 7;
+        int requestNumberOfRoutesResponseValue = 8;
+        byte[] requestNumberOfRoutesResponseParameter = new byte[]{9};
+        int requestNameOfRouteResponseValue = 10;
+        byte[] requestNameOfRouteResponseParameter = new byte[]{11};
+        int selectRouteResponseValue = 12;
+        int setFixRateResponseValue = 13;
+        int setElevationResponseValue = 14;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(
                 property
@@ -2117,7 +1968,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , notificationCount
                 , setCumulativeValueResponseValue
                 , maskLocationAndSpeedCharacteristicContentResponseValue
                 , navigationControlResponseValue
@@ -2139,21 +1989,20 @@ public class LNControlPointCharacteristicDataTest {
         int property = 1;
         int permission = 2;
         List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int responseCode = 3;
         long delay = 4;
         byte[] data = new LNControlPoint(-1, new byte[0], 0, 0, new byte[0]).getBytes();
-        int notificationCount = 7;
-        int setCumulativeValueResponseValue = 8;
-        int maskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int navigationControlResponseValue = 10;
-        int requestNumberOfRoutesResponseValue = 11;
-        byte[] requestNumberOfRoutesResponseParameter = new byte[]{12};
-        int requestNameOfRouteResponseValue = 13;
-        byte[] requestNameOfRouteResponseParameter = new byte[]{14};
-        int selectRouteResponseValue = 15;
-        int setFixRateResponseValue = 16;
-        int setElevationResponseValue = 17;
+        int setCumulativeValueResponseValue = 5;
+        int maskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int navigationControlResponseValue = 7;
+        int requestNumberOfRoutesResponseValue = 8;
+        byte[] requestNumberOfRoutesResponseParameter = new byte[]{9};
+        int requestNameOfRouteResponseValue = 10;
+        byte[] requestNameOfRouteResponseParameter = new byte[]{11};
+        int selectRouteResponseValue = 12;
+        int setFixRateResponseValue = 13;
+        int setElevationResponseValue = 14;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(
                 property
@@ -2161,7 +2010,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , notificationCount
                 , setCumulativeValueResponseValue
                 , maskLocationAndSpeedCharacteristicContentResponseValue
                 , navigationControlResponseValue
@@ -2183,20 +2031,19 @@ public class LNControlPointCharacteristicDataTest {
         int property = 1;
         int permission = 2;
         List<DescriptorData> descriptorDataList = new ArrayList<>();
-        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 15, 16, 17, null));
         int responseCode = 3;
         long delay = 4;
-        int notificationCount = 7;
-        int setCumulativeValueResponseValue = 8;
-        int maskLocationAndSpeedCharacteristicContentResponseValue = 9;
-        int navigationControlResponseValue = 10;
-        int requestNumberOfRoutesResponseValue = 11;
-        byte[] requestNumberOfRoutesResponseParameter = new byte[]{12};
-        int requestNameOfRouteResponseValue = 13;
-        byte[] requestNameOfRouteResponseParameter = new byte[]{14};
-        int selectRouteResponseValue = 15;
-        int setFixRateResponseValue = 16;
-        int setElevationResponseValue = 17;
+        int setCumulativeValueResponseValue = 5;
+        int maskLocationAndSpeedCharacteristicContentResponseValue = 6;
+        int navigationControlResponseValue = 7;
+        int requestNumberOfRoutesResponseValue = 8;
+        byte[] requestNumberOfRoutesResponseParameter = new byte[]{9};
+        int requestNameOfRouteResponseValue = 10;
+        byte[] requestNameOfRouteResponseParameter = new byte[]{11};
+        int selectRouteResponseValue = 12;
+        int setFixRateResponseValue = 13;
+        int setElevationResponseValue = 14;
 
         LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData(
                 property
@@ -2204,7 +2051,6 @@ public class LNControlPointCharacteristicDataTest {
                 , descriptorDataList
                 , responseCode
                 , delay
-                , notificationCount
                 , setCumulativeValueResponseValue
                 , maskLocationAndSpeedCharacteristicContentResponseValue
                 , navigationControlResponseValue

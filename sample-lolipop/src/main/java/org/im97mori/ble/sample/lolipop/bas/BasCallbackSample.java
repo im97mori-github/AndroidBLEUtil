@@ -335,15 +335,15 @@ public class BasCallbackSample extends BatteryServiceMockCallback implements Bat
     }
 
     @Override
-    public void onDeviceConnected(BluetoothDevice device) {
+    public void onDeviceConnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
         callback(device);
-        super.onDeviceConnected(device);
+        super.onDeviceConnected(bleServerConnection, device);
     }
 
     @Override
-    public void onDeviceDisconnected(BluetoothDevice device) {
+    public void onDeviceDisconnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
         callback(device);
-        super.onDeviceDisconnected(device);
+        super.onDeviceDisconnected(bleServerConnection, device);
     }
 
     @Override

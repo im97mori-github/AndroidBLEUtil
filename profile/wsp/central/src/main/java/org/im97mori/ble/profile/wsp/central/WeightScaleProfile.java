@@ -538,6 +538,18 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     }
 
     /**
+     * @see org.im97mori.ble.service.uds.central.UserDataService#getRegisteredUserClientCharacteristicConfiguration()
+     */
+    @Nullable
+    public synchronized Integer getRegisteredUserClientCharacteristicConfiguration() {
+        Integer taskId = null;
+        if (mUserDataService != null) {
+            taskId = mUserDataService.getRegisteredUserClientCharacteristicConfiguration();
+        }
+        return taskId;
+    }
+
+    /**
      * @see org.im97mori.ble.service.uds.central.UserDataService#startRegisteredUserIndication()
      */
     @Nullable

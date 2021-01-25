@@ -69,7 +69,6 @@ import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroi
 import org.im97mori.ble.descriptor.u2904.CharacteristicPresentationFormatAndroid;
 import org.im97mori.ble.profile.wsp.central.WeightScaleProfileCallback;
 import org.im97mori.ble.profile.wsp.peripheral.WeightScaleProfileMockCallback;
-import org.im97mori.ble.profile.wsp.peripheral.WspUserDataServiceMockCallback;
 import org.im97mori.ble.profile.wsp.peripheral.WspWeightScaleServiceMockCallback;
 import org.im97mori.ble.sample.lolipop.SampleCallback;
 import org.im97mori.ble.sample.lolipop.bas.BasCallbackSample;
@@ -101,7 +100,7 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
             super(context
                     , isWspUdsSupported ? new WspWssCallbackSample.Builder(sampleCallback) : new WssCallbackSample.Builder(sampleCallback)
                     , new DisCallbackSample.Builder(sampleCallback)
-                    , isUdsSupported ? isWspUdsSupported ? new WspUdsCallbackSample.Builder(sampleCallback) : new UdsCallbackSample.Builder(sampleCallback) : null
+                    , isUdsSupported ? isWspUdsSupported ? new UdsCallbackSample.Builder(sampleCallback) : new UdsCallbackSample.Builder(sampleCallback) : null
                     , isBasSupported ? new BasCallbackSample.Builder(sampleCallback) : null
                     , isCtsSupported ? new CtsCallbackSample.Builder(sampleCallback) : null);
             mSampleCallback = sampleCallback;
@@ -119,9 +118,7 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
                         throw new RuntimeException("no User Data Service");
                     } else {
                         userDataServiceMockCallback = mUserDataServiceMockCallbackBuilder.build();
-                        if (userDataServiceMockCallback instanceof WspUserDataServiceMockCallback) {
-                            ((WspWeightScaleServiceMockCallback.Builder<?>) mWeightScaleServiceMockCallbackBuilder).setWspUserDataServiceMockCallback((WspUserDataServiceMockCallback) userDataServiceMockCallback);
-                        }
+                        ((WspWeightScaleServiceMockCallback.Builder<?>) mWeightScaleServiceMockCallbackBuilder).setUserDataServiceMockCallback(userDataServiceMockCallback);
                     }
                 }
             }
@@ -2003,12 +2000,12 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
     }
 
     @Override
-    public void onDeviceConnected(BluetoothDevice device) {
+    public void onDeviceConnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
         callback(device);
     }
 
     @Override
-    public void onDeviceDisconnected(BluetoothDevice device) {
+    public void onDeviceDisconnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
         callback(device);
     }
 

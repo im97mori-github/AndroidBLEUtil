@@ -1397,6 +1397,12 @@ public class LocationAndNavigationProfileTest {
                 }
                 if (mLocationAndNavigationService == null) {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
+
+                        @Override
+                        public boolean isLNControlPointCharacteristicSupporeted() {
+                            return true;
+                        }
+
                         @Override
                         public boolean isStarted() {
                             return true;
@@ -1447,6 +1453,12 @@ public class LocationAndNavigationProfileTest {
                 }
                 if (mLocationAndNavigationService == null) {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
+
+                        @Override
+                        public boolean isLNControlPointCharacteristicSupporeted() {
+                            return true;
+                        }
+
                         @Override
                         public boolean isStarted() {
                             return true;
@@ -1501,6 +1513,12 @@ public class LocationAndNavigationProfileTest {
                 }
                 if (mLocationAndNavigationService == null) {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
+
+                        @Override
+                        public boolean isLNControlPointCharacteristicSupporeted() {
+                            return true;
+                        }
+
                         @Override
                         public boolean isStarted() {
                             return true;
@@ -1556,6 +1574,12 @@ public class LocationAndNavigationProfileTest {
                 }
                 if (mLocationAndNavigationService == null) {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
+
+                        @Override
+                        public boolean isLNControlPointCharacteristicSupporeted() {
+                            return true;
+                        }
+
                         @Override
                         public boolean isStarted() {
                             return true;

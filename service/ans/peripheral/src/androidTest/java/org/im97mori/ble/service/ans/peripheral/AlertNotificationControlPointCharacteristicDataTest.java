@@ -196,7 +196,7 @@ public class AlertNotificationControlPointCharacteristicDataTest {
         int notifyNewAlertImmediatelyResponseValue = 5;
         int notifyUnreadAlertStatusImmediatelyResponseValue = 6;
         long delay = 7;
-        int notificationCount = 1;
+        int notificationCount = 0;
 
 
         AlertNotificationControlPointCharacteristicData result1 = new AlertNotificationControlPointCharacteristicData(enableNewAlertNotificationResponseValue

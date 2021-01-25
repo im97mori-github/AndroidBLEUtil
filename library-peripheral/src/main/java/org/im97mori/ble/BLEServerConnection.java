@@ -203,9 +203,9 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
             , int newState) {
         if (mBluetoothGattServer != null) {
             if (BluetoothProfile.STATE_CONNECTED == newState) {
-                mBLEServerCallbackDistributer.onDeviceConnected(device);
+                mBLEServerCallbackDistributer.onDeviceConnected(this, device);
             } else if (BluetoothProfile.STATE_DISCONNECTED == newState) {
-                mBLEServerCallbackDistributer.onDeviceDisconnected(device);
+                mBLEServerCallbackDistributer.onDeviceDisconnected(this, device);
             }
         }
     }

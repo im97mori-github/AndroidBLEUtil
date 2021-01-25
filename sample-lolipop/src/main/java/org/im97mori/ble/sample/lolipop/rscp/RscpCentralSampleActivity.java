@@ -186,11 +186,11 @@ public class RscpCentralSampleActivity extends BaseActivity implements View.OnCl
                     , 0
                     , 0
                     , new byte[0]));
-        } else if (R.id.read_sc_control_characteristic_configuration == item.getItemId()) {
+        } else if (R.id.read_sc_control_point_characteristic_configuration == item.getItemId()) {
             mRunningSpeedAndCadenceProfile.getSCControlPointClientCharacteristicConfiguration();
-        } else if (R.id.start_indicate_sc_control == item.getItemId()) {
+        } else if (R.id.start_indicate_sc_control_point == item.getItemId()) {
             mRunningSpeedAndCadenceProfile.startSCControlPointIndication();
-        } else if (R.id.stop_indicate_sc_control == item.getItemId()) {
+        } else if (R.id.stop_indicate_sc_control_point == item.getItemId()) {
             mRunningSpeedAndCadenceProfile.startSCControlPointIndication();
         } else if (R.id.read_manufacturer_name == item.getItemId()) {
             mRunningSpeedAndCadenceProfile.getManufacturerNameString();

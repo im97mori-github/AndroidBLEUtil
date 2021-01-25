@@ -11,7 +11,11 @@ import org.im97mori.ble.service.wss.central.WeightScaleServiceCallback;
 /**
  * Weight Scale Profile callback
  *
+ * @see WeightScaleServiceCallback
  * @see DeviceInformationServiceCallback
+ * @see UserDataServiceCallback
+ * @see BodyCompositionServiceCallback
+ * @see CurrentTimeServiceCallback
  * @see ProfileCallback
  */
 public interface WeightScaleProfileCallback extends WeightScaleServiceCallback, DeviceInformationServiceCallback, UserDataServiceCallback, BodyCompositionServiceCallback, BatteryServiceCallback, CurrentTimeServiceCallback, ProfileCallback {

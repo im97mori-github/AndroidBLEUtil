@@ -158,7 +158,8 @@ public class BLEServerConnectionTest {
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
 
             @Override
-            public void onDeviceConnected(BluetoothDevice device) {
+            public void onDeviceConnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
+                assertEquals(MOCK_BLE_SERVER_CONNECTION, bleServerConnection);
                 result.set(true);
             }
 
@@ -174,7 +175,8 @@ public class BLEServerConnectionTest {
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
 
             @Override
-            public void onDeviceDisconnected(BluetoothDevice device) {
+            public void onDeviceDisconnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
+                assertEquals(MOCK_BLE_SERVER_CONNECTION, bleServerConnection);
                 result.set(true);
             }
 

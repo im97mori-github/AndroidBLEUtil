@@ -428,7 +428,7 @@ public class CyclingSpeedAndCadenceServiceMockCallback extends AbstractServiceMo
                                 if (bluetoothGattDescriptor != null) {
                                     int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
 
-                                    startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, characteristicData.delay, characteristicData.notificationCount, null);
+                                    startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, characteristicData.delay, 1, null);
                                 }
                             }
                         }

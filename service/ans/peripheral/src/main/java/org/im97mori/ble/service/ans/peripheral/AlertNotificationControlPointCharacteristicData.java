@@ -101,7 +101,14 @@ public class AlertNotificationControlPointCharacteristicData extends Characteris
             , int notifyNewAlertImmediatelyResponseValue
             , int notifyUnreadAlertStatusImmediatelyResponseValue
             , long delay) {
-        super(ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, BluetoothGattCharacteristic.PERMISSION_WRITE, Collections.<DescriptorData>emptyList(), BluetoothGatt.GATT_SUCCESS, delay, null, 1);
+        super(ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC
+                , BluetoothGattCharacteristic.PROPERTY_WRITE
+                , BluetoothGattCharacteristic.PERMISSION_WRITE
+                , Collections.<DescriptorData>emptyList()
+                , BluetoothGatt.GATT_SUCCESS
+                , delay
+                , null
+                , 0);
         this.enableNewAlertNotificationResponseValue = enableNewAlertNotificationResponseValue;
         this.enableUnreadAlertStatusNotificationResponseValue = enableUnreadAlertStatusNotificationResponseValue;
         this.disableNewAlertNotificationResponseValue = disableNewAlertNotificationResponseValue;

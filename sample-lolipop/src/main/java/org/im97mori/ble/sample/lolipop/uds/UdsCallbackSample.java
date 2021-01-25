@@ -48,7 +48,6 @@ import org.im97mori.ble.characteristic.u2a9f.UserControlPointAndroid;
 import org.im97mori.ble.characteristic.u2aa2.LanguageAndroid;
 import org.im97mori.ble.characteristic.u2b37.RegisteredUserAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
-import org.im97mori.ble.profile.wsp.peripheral.WspUserDataServiceMockCallback;
 import org.im97mori.ble.sample.lolipop.SampleCallback;
 import org.im97mori.ble.service.uds.central.UserDataServiceCallback;
 import org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback;
@@ -366,15 +365,15 @@ public class UdsCallbackSample extends UserDataServiceMockCallback implements Us
     }
 
     @Override
-    public void onDeviceConnected(BluetoothDevice device) {
+    public void onDeviceConnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
         callback(device);
-        super.onDeviceConnected(device);
+        super.onDeviceConnected(bleServerConnection, device);
     }
 
     @Override
-    public void onDeviceDisconnected(BluetoothDevice device) {
+    public void onDeviceDisconnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
         callback(device);
-        super.onDeviceDisconnected(device);
+        super.onDeviceDisconnected(bleServerConnection, device);
     }
 
     @Override

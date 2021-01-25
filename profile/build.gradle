@@ -56,6 +56,8 @@ dependencies {
     api "${groupId}:${profileRscpCentralAndroid.artifactId}:${profileRscpCentralAndroid.versionName}"
     api "${groupId}:${profilePaspPeripheralAndroid.artifactId}:${profilePaspPeripheralAndroid.versionName}"
     api "${groupId}:${profilePaspCentralAndroid.artifactId}:${profilePaspCentralAndroid.versionName}"
+    api "${groupId}:${profileFtmpPeripheralAndroid.artifactId}:${profileFtmpPeripheralAndroid.versionName}"
+    api "${groupId}:${profileFtmpCentralAndroid.artifactId}:${profileFtmpCentralAndroid.versionName}"
 }
 
 task sourcesJar(type: Jar) {

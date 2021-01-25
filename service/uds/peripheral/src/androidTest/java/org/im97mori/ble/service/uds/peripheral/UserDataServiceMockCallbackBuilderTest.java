@@ -1,5 +1,7 @@
 package org.im97mori.ble.service.uds.peripheral;
 
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
@@ -9,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerCallback;
+import org.im97mori.ble.MockData;
 import org.im97mori.ble.characteristic.u2a7e.AerobicHeartRateLowerLimit;
 import org.im97mori.ble.characteristic.u2a7f.AerobicThreshold;
 import org.im97mori.ble.characteristic.u2a80.Age;
@@ -84,6 +87,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
 public class UserDataServiceMockCallbackBuilderTest {
@@ -7488,6 +7492,75 @@ public class UserDataServiceMockCallbackBuilderTest {
 
         assertNotNull(exception);
         assertEquals("no User Control Point data", exception.getMessage());
+    }
+
+    @Test
+    public void test_hasNoConsent_00001() {
+        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+
+        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        assertTrue(userDataServiceMockCallback.hasNoConsent(bluetoothDevice, null));
+    }
+
+    @Test
+    public void test_hasNoConsent_00002() {
+        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+
+        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        Integer userIndex = 1;
+        assertTrue(userDataServiceMockCallback.hasNoConsent(bluetoothDevice, userIndex));
+    }
+
+    @Test
+    public void test_hasNoConsent_00003() {
+        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+
+        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        Integer userIndex = 1;
+        userDataServiceMockCallback.setConsent(bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:CC"), 2);
+        assertTrue(userDataServiceMockCallback.hasNoConsent(bluetoothDevice, userIndex));
+    }
+
+    @Test
+    public void test_hasNoConsent_00004() {
+        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+
+        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        Integer userIndex = 1;
+        userDataServiceMockCallback.setConsent(bluetoothDevice, 2);
+        assertTrue(userDataServiceMockCallback.hasNoConsent(bluetoothDevice, userIndex));
+    }
+
+    @Test
+    public void test_hasNoConsent_00005() {
+        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+
+        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        Integer userIndex = 1;
+        userDataServiceMockCallback.setConsent(bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:CC"), userIndex);
+        assertTrue(userDataServiceMockCallback.hasNoConsent(bluetoothDevice, userIndex));
+    }
+
+    @Test
+    public void test_hasNoConsent_00006() {
+        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+
+        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        Integer userIndex = 1;
+        userDataServiceMockCallback.setConsent(bluetoothDevice, userIndex);
+        assertFalse(userDataServiceMockCallback.hasNoConsent(bluetoothDevice, userIndex));
     }
 
 }

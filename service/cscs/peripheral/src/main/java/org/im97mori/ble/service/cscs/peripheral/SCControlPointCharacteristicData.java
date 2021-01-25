@@ -101,7 +101,7 @@ public class SCControlPointCharacteristicData extends CharacteristicData {
                 , responseCode
                 , delay
                 , null
-                , 1);
+                , 0);
         this.setCumulativeValueResponseValue = setCumulativeValueResponseValue;
         this.updateSensorLocationResponseValue = updateSensorLocationResponseValue;
         this.requestSupportedSensorLocationsResponseValue = requestSupportedSensorLocationsResponseValue;

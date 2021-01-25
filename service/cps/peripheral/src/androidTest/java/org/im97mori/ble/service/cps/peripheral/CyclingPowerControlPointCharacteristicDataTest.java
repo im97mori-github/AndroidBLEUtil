@@ -133,7 +133,6 @@ public class CyclingPowerControlPointCharacteristicDataTest {
         assertEquals(result1.uuid, result2.uuid);
         assertEquals(result1.property, result2.property);
         assertEquals(result1.permission, result2.permission);
-        assertNotNull(result1.descriptorDataList);
         assertNotNull(result2.descriptorDataList);
         assertEquals(result1.descriptorDataList.size(), result2.descriptorDataList.size());
         assertArrayEquals(result1.descriptorDataList.toArray(), result2.descriptorDataList.toArray());
@@ -2158,7 +2157,6 @@ public class CyclingPowerControlPointCharacteristicDataTest {
         assertEquals(result1.uuid, result2.uuid);
         assertEquals(result1.property, result2.property);
         assertEquals(result1.permission, result2.permission);
-        assertNotNull(result1.descriptorDataList);
         assertNotNull(result2.descriptorDataList);
         assertEquals(result1.descriptorDataList.size(), result2.descriptorDataList.size());
         assertArrayEquals(result1.descriptorDataList.toArray(), result2.descriptorDataList.toArray());
@@ -2235,7 +2233,6 @@ public class CyclingPowerControlPointCharacteristicDataTest {
         assertEquals(result1.property, result2.property);
         assertEquals(result1.permission, result2.permission);
         assertNotNull(result1.descriptorDataList);
-        assertNotNull(result2.descriptorDataList);
         assertEquals(result1.descriptorDataList.size(), result2.descriptorDataList.size());
         assertArrayEquals(result1.descriptorDataList.toArray(), result2.descriptorDataList.toArray());
         result1.descriptorDataList.clear();
@@ -2339,7 +2336,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
                         ^ Integer.valueOf(responseCode).hashCode()
                         ^ Long.valueOf(delay).hashCode()
                         ^ Arrays.hashCode((byte[]) null)
-                        ^ Integer.valueOf(1).hashCode()
+                        ^ Integer.valueOf(0).hashCode()
                         ^ Arrays.hashCode((byte[]) null)
                         ^ Arrays.hashCode((byte[]) null)
                         ^ Integer.valueOf(setCumulativeValueResponseValue).hashCode()
@@ -2401,8 +2398,8 @@ public class CyclingPowerControlPointCharacteristicDataTest {
         byte[] requestFactoryCalibrationDateResponseParameter = new byte[]{25};
         int startEnhancedOffsetCompensationResponseValue = 26;
         byte[] startEnhancedOffsetCompensationResponseParameter = new byte[]{27};
-        byte[] currentData = new byte[]{28};
-        byte[] temporaryData = new byte[]{29};
+        byte[] currentData = new byte[]{32};
+        byte[] temporaryData = new byte[]{33};
 
         CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(descriptorDataList
                 , responseCode
@@ -2443,7 +2440,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
                         ^ Integer.valueOf(responseCode).hashCode()
                         ^ Long.valueOf(delay).hashCode()
                         ^ Arrays.hashCode((byte[]) null)
-                        ^ Integer.valueOf(1).hashCode()
+                        ^ Integer.valueOf(0).hashCode()
                         ^ Arrays.hashCode(currentData)
                         ^ Arrays.hashCode(temporaryData)
                         ^ Integer.valueOf(setCumulativeValueResponseValue).hashCode()

@@ -654,7 +654,7 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
                                                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorDataEntry.getKey().first)) {
                                                     Bundle argument = new Bundle();
                                                     argument.putInt(KEY_CATEGORY_ID, categoryId);
-                                                    startNotification(null, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicDataEntryKey.first, characteristicDataEntryKey.second, descriptorDataEntry.getKey().second, NOTIFICATION_INTERVAL, null, argument);
+                                                    startNotification(null, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicDataEntryKey.first, characteristicDataEntryKey.second, descriptorDataEntry.getKey().second, NOTIFICATION_INTERVAL, 1, argument);
                                                     break;
                                                 }
                                             }
@@ -672,7 +672,7 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
                                                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorDataEntry.getKey().first)) {
                                                     Bundle argument = new Bundle();
                                                     argument.putInt(KEY_CATEGORY_ID, categoryId);
-                                                    startNotification(null, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicDataEntryKey.first, characteristicDataEntryKey.second, descriptorDataEntry.getKey().second, NOTIFICATION_INTERVAL, null, argument);
+                                                    startNotification(null, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicDataEntryKey.first, characteristicDataEntryKey.second, descriptorDataEntry.getKey().second, NOTIFICATION_INTERVAL, 1, argument);
                                                     break;
                                                 }
                                             }
@@ -705,84 +705,87 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
             if (characteristicMap != null) {
                 CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
                 if (characteristicData instanceof NewAlertCharacteristicData) {
-                    final NewAlertCharacteristicData newAlertCharacteristicData = (NewAlertCharacteristicData) characteristicData;
-                    Bundle bundle = new Bundle();
-                    bundle.putInt(KEY_NOTIFICATION_COUNT, notificationCount == null ? newAlertCharacteristicData.notificationCount : notificationCount);
-                    bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
-                    bundle.putBundle(KEY_ORIGINAL_ARGUMENT, argument);
+                    int targetNotificationCount = notificationCount == null ? characteristicData.notificationCount : notificationCount;
+                    if (targetNotificationCount != 0) {
+                        final NewAlertCharacteristicData newAlertCharacteristicData = (NewAlertCharacteristicData) characteristicData;
+                        Bundle bundle = new Bundle();
+                        bundle.putInt(KEY_NOTIFICATION_COUNT, notificationCount == null ? newAlertCharacteristicData.notificationCount : notificationCount);
+                        bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
+                        bundle.putBundle(KEY_ORIGINAL_ARGUMENT, argument);
 
-                    Boolean isConfirm = null;
-                    Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
-                    if (descriptorDataMap != null) {
-                        DescriptorData descriptorData = descriptorDataMap.get(Pair.create(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, descriptorInstanceId));
-                        if (descriptorData != null) {
-                            if ((newAlertCharacteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
-                                isConfirm = false;
-                            } else if ((newAlertCharacteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, descriptorData.getBytes())) {
-                                isConfirm = true;
+                        Boolean isConfirm = null;
+                        Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
+                        if (descriptorDataMap != null) {
+                            DescriptorData descriptorData = descriptorDataMap.get(Pair.create(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, descriptorInstanceId));
+                            if (descriptorData != null) {
+                                if ((newAlertCharacteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
+                                    isConfirm = false;
+                                } else if ((newAlertCharacteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, descriptorData.getBytes())) {
+                                    isConfirm = true;
+                                }
                             }
                         }
-                    }
 
-                    if (isConfirm != null) {
-                        int categoryId = argument.getInt(KEY_CATEGORY_ID);
-                        List<NewAlert> newAlertList = new LinkedList<>();
-                        for (Map.Entry<Integer, Boolean> entry : mNewAlertEnableMap.entrySet()) {
-                            final int currentCategoryId = entry.getKey();
-                            if ((AlertNotificationCategoryIdUtils.isCategoryIdAll(categoryId) || categoryId == currentCategoryId) && entry.getValue()) {
-                                if (entry.getValue()) {
-                                    if (AlertNotificationCategoryIdUtils.isCategoryIdSimpleAlert(currentCategoryId)) {
-                                        newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.simpleAlertNumberOfNewAlert, newAlertCharacteristicData.simpleAlertTextStringInformation));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdEmail(currentCategoryId)) {
-                                        newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.emailNumberOfNewAlert, newAlertCharacteristicData.emailTextStringInformation));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdNews(currentCategoryId)) {
-                                        newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.newsNumberOfNewAlert, newAlertCharacteristicData.newsTextStringInformation));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdCall(currentCategoryId)) {
-                                        newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.callNumberOfNewAlert, newAlertCharacteristicData.callTextStringInformation));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdMissedCall(currentCategoryId)) {
-                                        newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.missedCallNumberOfNewAlert, newAlertCharacteristicData.missedCallTextStringInformation));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdSmsMms(currentCategoryId)) {
-                                        newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.smsMmsNumberOfNewAlert, newAlertCharacteristicData.smsMmsTextStringInformation));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdVoiceMail(currentCategoryId)) {
-                                        newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.voiceMailNumberOfNewAlert, newAlertCharacteristicData.voiceMailTextStringInformation));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdSchedule(currentCategoryId)) {
-                                        newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.scheduleNumberOfNewAlert, newAlertCharacteristicData.scheduleTextStringInformation));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdHighPrioritizedAlert(currentCategoryId)) {
-                                        newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.highPrioritizedAlertNumberOfNewAlert, newAlertCharacteristicData.highPrioritizedAlertTextStringInformation));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdInstantMessage(currentCategoryId)) {
-                                        newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.instantMessageAlertNumberOfNewAlert, newAlertCharacteristicData.instantMessageTextStringInformation));
+                        if (isConfirm != null) {
+                            int categoryId = argument.getInt(KEY_CATEGORY_ID);
+                            List<NewAlert> newAlertList = new LinkedList<>();
+                            for (Map.Entry<Integer, Boolean> entry : mNewAlertEnableMap.entrySet()) {
+                                final int currentCategoryId = entry.getKey();
+                                if ((AlertNotificationCategoryIdUtils.isCategoryIdAll(categoryId) || categoryId == currentCategoryId) && entry.getValue()) {
+                                    if (entry.getValue()) {
+                                        if (AlertNotificationCategoryIdUtils.isCategoryIdSimpleAlert(currentCategoryId)) {
+                                            newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.simpleAlertNumberOfNewAlert, newAlertCharacteristicData.simpleAlertTextStringInformation));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdEmail(currentCategoryId)) {
+                                            newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.emailNumberOfNewAlert, newAlertCharacteristicData.emailTextStringInformation));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdNews(currentCategoryId)) {
+                                            newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.newsNumberOfNewAlert, newAlertCharacteristicData.newsTextStringInformation));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdCall(currentCategoryId)) {
+                                            newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.callNumberOfNewAlert, newAlertCharacteristicData.callTextStringInformation));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdMissedCall(currentCategoryId)) {
+                                            newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.missedCallNumberOfNewAlert, newAlertCharacteristicData.missedCallTextStringInformation));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdSmsMms(currentCategoryId)) {
+                                            newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.smsMmsNumberOfNewAlert, newAlertCharacteristicData.smsMmsTextStringInformation));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdVoiceMail(currentCategoryId)) {
+                                            newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.voiceMailNumberOfNewAlert, newAlertCharacteristicData.voiceMailTextStringInformation));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdSchedule(currentCategoryId)) {
+                                            newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.scheduleNumberOfNewAlert, newAlertCharacteristicData.scheduleTextStringInformation));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdHighPrioritizedAlert(currentCategoryId)) {
+                                            newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.highPrioritizedAlertNumberOfNewAlert, newAlertCharacteristicData.highPrioritizedAlertTextStringInformation));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdInstantMessage(currentCategoryId)) {
+                                            newAlertList.add(new NewAlert(currentCategoryId, newAlertCharacteristicData.instantMessageAlertNumberOfNewAlert, newAlertCharacteristicData.instantMessageTextStringInformation));
+                                        }
                                     }
                                 }
                             }
-                        }
-                        for (NewAlert newAlert : newAlertList) {
-                            if (device == null) {
-                                for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
-                                    bleServerConnection.createNotificationTask(bluetoothDevice
-                                            , serviceUUID
-                                            , serviceInstanceId
-                                            , characteristicUUID
-                                            , characteristicInstanceId
-                                            , newAlert
-                                            , isConfirm
-                                            , NotificationTask.TIMEOUT_MILLIS
-                                            , delay
-                                            , bundle
-                                            , this);
-                                }
-                            } else {
-                                if (mConnectedDeviceSet.contains(device)) {
-                                    bleServerConnection.createNotificationTask(device
-                                            , serviceUUID
-                                            , serviceInstanceId
-                                            , characteristicUUID
-                                            , characteristicInstanceId
-                                            , newAlert
-                                            , isConfirm
-                                            , NotificationTask.TIMEOUT_MILLIS
-                                            , delay
-                                            , bundle
-                                            , this);
+                            for (NewAlert newAlert : newAlertList) {
+                                if (device == null) {
+                                    for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
+                                        bleServerConnection.createNotificationTask(bluetoothDevice
+                                                , serviceUUID
+                                                , serviceInstanceId
+                                                , characteristicUUID
+                                                , characteristicInstanceId
+                                                , newAlert
+                                                , isConfirm
+                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , delay
+                                                , bundle
+                                                , this);
+                                    }
+                                } else {
+                                    if (mConnectedDeviceSet.contains(device)) {
+                                        bleServerConnection.createNotificationTask(device
+                                                , serviceUUID
+                                                , serviceInstanceId
+                                                , characteristicUUID
+                                                , characteristicInstanceId
+                                                , newAlert
+                                                , isConfirm
+                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , delay
+                                                , bundle
+                                                , this);
+                                    }
                                 }
                             }
                         }
@@ -794,84 +797,87 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
             if (characteristicMap != null) {
                 CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
                 if (characteristicData instanceof UnreadAlertStatusCharacteristicData) {
-                    final UnreadAlertStatusCharacteristicData unreadAlertStatusCharacteristicData = (UnreadAlertStatusCharacteristicData) characteristicData;
-                    Bundle bundle = new Bundle();
-                    bundle.putInt(KEY_NOTIFICATION_COUNT, notificationCount == null ? unreadAlertStatusCharacteristicData.notificationCount : notificationCount);
-                    bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
-                    bundle.putBundle(KEY_ORIGINAL_ARGUMENT, argument);
+                    int targetNotificationCount = notificationCount == null ? characteristicData.notificationCount : notificationCount;
+                    if (targetNotificationCount != 0) {
+                        final UnreadAlertStatusCharacteristicData unreadAlertStatusCharacteristicData = (UnreadAlertStatusCharacteristicData) characteristicData;
+                        Bundle bundle = new Bundle();
+                        bundle.putInt(KEY_NOTIFICATION_COUNT, notificationCount == null ? unreadAlertStatusCharacteristicData.notificationCount : notificationCount);
+                        bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
+                        bundle.putBundle(KEY_ORIGINAL_ARGUMENT, argument);
 
-                    Boolean isConfirm = null;
-                    Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
-                    if (descriptorDataMap != null) {
-                        DescriptorData descriptorData = descriptorDataMap.get(Pair.create(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, descriptorInstanceId));
-                        if (descriptorData != null) {
-                            if ((unreadAlertStatusCharacteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
-                                isConfirm = false;
-                            } else if ((unreadAlertStatusCharacteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, descriptorData.getBytes())) {
-                                isConfirm = true;
+                        Boolean isConfirm = null;
+                        Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
+                        if (descriptorDataMap != null) {
+                            DescriptorData descriptorData = descriptorDataMap.get(Pair.create(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, descriptorInstanceId));
+                            if (descriptorData != null) {
+                                if ((unreadAlertStatusCharacteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
+                                    isConfirm = false;
+                                } else if ((unreadAlertStatusCharacteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, descriptorData.getBytes())) {
+                                    isConfirm = true;
+                                }
                             }
                         }
-                    }
 
-                    if (isConfirm != null) {
-                        int categoryId = argument.getInt(KEY_CATEGORY_ID);
-                        List<UnreadAlertStatus> unreadAlertStatusList = new LinkedList<>();
-                        for (Map.Entry<Integer, Boolean> entry : mUnreadAlertEnableMap.entrySet()) {
-                            final int currentCategoryId = entry.getKey();
-                            if ((AlertNotificationCategoryIdUtils.isCategoryIdAll(categoryId) || categoryId == currentCategoryId) && entry.getValue()) {
-                                if (entry.getValue()) {
-                                    if (AlertNotificationCategoryIdUtils.isCategoryIdSimpleAlert(currentCategoryId)) {
-                                        unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.simpleAlertUnreadCount));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdEmail(currentCategoryId)) {
-                                        unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.emailUnreadCount));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdNews(currentCategoryId)) {
-                                        unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.newsUnreadCount));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdCall(currentCategoryId)) {
-                                        unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.callUnreadCount));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdMissedCall(currentCategoryId)) {
-                                        unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.missedCallUnreadCount));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdSmsMms(currentCategoryId)) {
-                                        unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.smsMmsUnreadCount));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdVoiceMail(currentCategoryId)) {
-                                        unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.voiceMailUnreadCount));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdSchedule(currentCategoryId)) {
-                                        unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.scheduleUnreadCount));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdHighPrioritizedAlert(currentCategoryId)) {
-                                        unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.highPrioritizedAlertUnreadCount));
-                                    } else if (AlertNotificationCategoryIdUtils.isCategoryIdInstantMessage(currentCategoryId)) {
-                                        unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.instantMessageAlertUnreadCount));
+                        if (isConfirm != null) {
+                            int categoryId = argument.getInt(KEY_CATEGORY_ID);
+                            List<UnreadAlertStatus> unreadAlertStatusList = new LinkedList<>();
+                            for (Map.Entry<Integer, Boolean> entry : mUnreadAlertEnableMap.entrySet()) {
+                                final int currentCategoryId = entry.getKey();
+                                if ((AlertNotificationCategoryIdUtils.isCategoryIdAll(categoryId) || categoryId == currentCategoryId) && entry.getValue()) {
+                                    if (entry.getValue()) {
+                                        if (AlertNotificationCategoryIdUtils.isCategoryIdSimpleAlert(currentCategoryId)) {
+                                            unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.simpleAlertUnreadCount));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdEmail(currentCategoryId)) {
+                                            unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.emailUnreadCount));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdNews(currentCategoryId)) {
+                                            unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.newsUnreadCount));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdCall(currentCategoryId)) {
+                                            unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.callUnreadCount));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdMissedCall(currentCategoryId)) {
+                                            unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.missedCallUnreadCount));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdSmsMms(currentCategoryId)) {
+                                            unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.smsMmsUnreadCount));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdVoiceMail(currentCategoryId)) {
+                                            unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.voiceMailUnreadCount));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdSchedule(currentCategoryId)) {
+                                            unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.scheduleUnreadCount));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdHighPrioritizedAlert(currentCategoryId)) {
+                                            unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.highPrioritizedAlertUnreadCount));
+                                        } else if (AlertNotificationCategoryIdUtils.isCategoryIdInstantMessage(currentCategoryId)) {
+                                            unreadAlertStatusList.add(new UnreadAlertStatus(currentCategoryId, unreadAlertStatusCharacteristicData.instantMessageAlertUnreadCount));
+                                        }
                                     }
                                 }
                             }
-                        }
-                        for (UnreadAlertStatus unreadAlertStatus : unreadAlertStatusList) {
-                            if (device == null) {
-                                for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
-                                    bleServerConnection.createNotificationTask(bluetoothDevice
-                                            , serviceUUID
-                                            , serviceInstanceId
-                                            , characteristicUUID
-                                            , characteristicInstanceId
-                                            , unreadAlertStatus
-                                            , isConfirm
-                                            , NotificationTask.TIMEOUT_MILLIS
-                                            , delay
-                                            , bundle
-                                            , this);
-                                }
-                            } else {
-                                if (mConnectedDeviceSet.contains(device)) {
-                                    bleServerConnection.createNotificationTask(device
-                                            , serviceUUID
-                                            , serviceInstanceId
-                                            , characteristicUUID
-                                            , characteristicInstanceId
-                                            , unreadAlertStatus
-                                            , isConfirm
-                                            , NotificationTask.TIMEOUT_MILLIS
-                                            , delay
-                                            , bundle
-                                            , this);
+                            for (UnreadAlertStatus unreadAlertStatus : unreadAlertStatusList) {
+                                if (device == null) {
+                                    for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
+                                        bleServerConnection.createNotificationTask(bluetoothDevice
+                                                , serviceUUID
+                                                , serviceInstanceId
+                                                , characteristicUUID
+                                                , characteristicInstanceId
+                                                , unreadAlertStatus
+                                                , isConfirm
+                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , delay
+                                                , bundle
+                                                , this);
+                                    }
+                                } else {
+                                    if (mConnectedDeviceSet.contains(device)) {
+                                        bleServerConnection.createNotificationTask(device
+                                                , serviceUUID
+                                                , serviceInstanceId
+                                                , characteristicUUID
+                                                , characteristicInstanceId
+                                                , unreadAlertStatus
+                                                , isConfirm
+                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , delay
+                                                , bundle
+                                                , this);
+                                    }
                                 }
                             }
                         }
@@ -881,14 +887,6 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
         } else {
             super.startNotification(taskId, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, delay, notificationCount, argument);
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected synchronized void repeatNotification(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @Nullable Bundle argument) {
-        // do nothing
     }
 
     /**

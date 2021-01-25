@@ -87,13 +87,16 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          */
         protected boolean mHasModelNumberString;
 
+        /**
+         * Weight Scale Feature data
+         */
         protected byte[] mWeightScaleFeatureCharacteristicData;
 
         /**
          * @param context                                     {@link Context} instance
          * @param weightScaleServiceMockCallbackBuilder       {@link WspWeightScaleServiceMockCallback.Builder} instance
          * @param deviceInformationServiceMockCallbackBuilder {@link org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback.Builder} instance
-         * @param userDataServiceMockCallbackBuilder          {@link WspUserDataServiceMockCallback.Builder} instance
+         * @param userDataServiceMockCallbackBuilder          {@link org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback.Builder} instance
          * @param batteryServiceMockCallbackBuilder           {@link org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback.Builder} instance
          * @param currentTimeServiceMockCallbackBuilder       {@link org.im97mori.ble.service.cts.peripheral.CurrentTimeServiceMockCallback.Builder} instance
          */
@@ -877,8 +880,8 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
                         throw new RuntimeException("no User Data Service");
                     } else {
                         userDataServiceMockCallback = mUserDataServiceMockCallbackBuilder.build();
-                        if (userDataServiceMockCallback instanceof WspUserDataServiceMockCallback && mWeightScaleServiceMockCallbackBuilder instanceof WspWeightScaleServiceMockCallback.Builder) {
-                            ((WspWeightScaleServiceMockCallback.Builder<?>) mWeightScaleServiceMockCallbackBuilder).setWspUserDataServiceMockCallback((WspUserDataServiceMockCallback) userDataServiceMockCallback);
+                        if (mWeightScaleServiceMockCallbackBuilder instanceof WspWeightScaleServiceMockCallback.Builder) {
+                            ((WspWeightScaleServiceMockCallback.Builder<?>) mWeightScaleServiceMockCallbackBuilder).setUserDataServiceMockCallback(userDataServiceMockCallback);
                         }
                     }
                 }
@@ -905,7 +908,7 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
      * @param context                              {@link Context} instance
      * @param weightScaleServiceMockCallback       {@link WspWeightScaleServiceMockCallback} instance
      * @param deviceInformationServiceMockCallback {@link DeviceInformationServiceMockCallback} instance
-     * @param userDataServiceMockCallback          {@link WspUserDataServiceMockCallback} instance
+     * @param userDataServiceMockCallback          {@link UserDataServiceMockCallback} instance
      * @param batteryServiceMockCallback           {@link BatteryServiceMockCallback} instance
      * @param currentTimeServiceMockCallback       {@link CurrentTimeServiceMockCallback} instance
      */

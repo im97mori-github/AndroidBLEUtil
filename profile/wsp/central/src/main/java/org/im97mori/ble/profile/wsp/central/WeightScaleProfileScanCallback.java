@@ -34,7 +34,7 @@ import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingD
 import static org.im97mori.ble.advertising.AdvertisingDataConstants.AdvertisingDataTypes.DATA_TYPE_INCOMPLETE_LIST_OF_32_BIT_SERVICE_UUIDS;
 
 /**
- * WeightS cale Profile specific scan callback
+ * Weight Scale Profile specific scan callback
  */
 public class WeightScaleProfileScanCallback extends FilteredScanCallback {
 

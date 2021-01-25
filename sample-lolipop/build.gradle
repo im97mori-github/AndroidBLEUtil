@@ -42,5 +42,7 @@ dependencies {
     implementation project(path: ':profile:rscp:central')
     implementation project(path: ':profile:pasp:peripheral')
     implementation project(path: ':profile:pasp:central')
+    implementation project(path: ':profile:ftmp:peripheral')
+    implementation project(path: ':profile:ftmp:central')
     implementation 'androidx.fragment:fragment:1.2.5'
 }

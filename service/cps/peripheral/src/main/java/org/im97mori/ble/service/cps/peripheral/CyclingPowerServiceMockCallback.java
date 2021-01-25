@@ -679,7 +679,7 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
                                 if (bluetoothGattDescriptor != null) {
                                     int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
 
-                                    startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, characteristicData.delay, characteristicData.notificationCount, null);
+                                    startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, characteristicData.delay, 1, null);
                                 }
                             }
                         }
@@ -703,177 +703,180 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
         if (characteristicMap != null) {
             CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
             if (characteristicData != null) {
-                Bundle bundle = new Bundle();
-                bundle.putInt(KEY_NOTIFICATION_COUNT, notificationCount == null ? characteristicData.notificationCount : notificationCount);
-                bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
-                if (argument != null) {
-                    bundle.putBundle(KEY_ORIGINAL_ARGUMENT, argument);
-                }
+                int targetNotificationCount = notificationCount == null ? characteristicData.notificationCount : notificationCount;
+                if (targetNotificationCount != 0) {
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(KEY_NOTIFICATION_COUNT, notificationCount == null ? characteristicData.notificationCount : notificationCount);
+                    bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
+                    if (argument != null) {
+                        bundle.putBundle(KEY_ORIGINAL_ARGUMENT, argument);
+                    }
 
-                Boolean isConfirm = null;
-                Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
-                if (descriptorDataMap != null) {
-                    DescriptorData descriptorData = descriptorDataMap.get(Pair.create(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, descriptorInstanceId));
-                    if (descriptorData != null) {
-                        if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
-                            isConfirm = false;
-                        } else if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, descriptorData.getBytes())) {
-                            isConfirm = true;
+                    Boolean isConfirm = null;
+                    Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
+                    if (descriptorDataMap != null) {
+                        DescriptorData descriptorData = descriptorDataMap.get(Pair.create(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, descriptorInstanceId));
+                        if (descriptorData != null) {
+                            if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
+                                isConfirm = false;
+                            } else if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, descriptorData.getBytes())) {
+                                isConfirm = true;
+                            }
                         }
                     }
-                }
 
-                if (isConfirm != null) {
-                    NotificationData notificationData;
-                    if (CYCLING_POWER_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
-                        CyclingPowerMeasurement originalCyclingPowerMeasurement = new CyclingPowerMeasurement(characteristicData.getBytes());
-                        int flags = BLEUtils.createUInt16(originalCyclingPowerMeasurement.getFlags(), 0);
+                    if (isConfirm != null) {
+                        NotificationData notificationData;
+                        if (CYCLING_POWER_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
+                            CyclingPowerMeasurement originalCyclingPowerMeasurement = new CyclingPowerMeasurement(characteristicData.getBytes());
+                            int flags = BLEUtils.createUInt16(originalCyclingPowerMeasurement.getFlags(), 0);
 
-                        Boolean mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_CONTENT_PEDAL_POWER_BALANCE_MASK);
-                        if (originalCyclingPowerMeasurement.isFlagsPedalPowerBalancePresent() && Boolean.TRUE.equals(mask)) {
-                            flags &= ~CyclingPowerMeasurement.FLAGS_PEDAL_POWER_BALANCE_PRESENT_MASK;
-                        }
-                        mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_CONTENT_ACCUMULATED_TORQUE_MASK);
-                        if (originalCyclingPowerMeasurement.isFlagsAccumulatedTorquePresent() && Boolean.TRUE.equals(mask)) {
-                            flags &= ~CyclingPowerMeasurement.FLAGS_ACCUMULATED_TORQUE_PRESENT_MASK;
-                        }
-                        mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_CONTENT_WHEEL_REVOLUTION_DATA_MASK);
-                        if (originalCyclingPowerMeasurement.isFlagsWheelRevolutionDataPresent() && Boolean.TRUE.equals(mask)) {
-                            flags &= ~CyclingPowerMeasurement.FLAGS_WHEEL_REVOLUTION_DATA_PRESENT_MASK;
-                        }
-                        mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_CONTENT_CRANK_REVOLUTION_DATA_MASK);
-                        if (originalCyclingPowerMeasurement.isFlagsCrankRevolutionDataPresent() && Boolean.TRUE.equals(mask)) {
-                            flags &= ~CyclingPowerMeasurement.FLAGS_CRANK_REVOLUTION_DATA_PRESENT_MASK;
-                        }
-                        mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_CONTENT_EXTREME_MAGNITUDES_MASK);
-                        if (originalCyclingPowerMeasurement.isFlagsExtremeForceMagnitudesPresent() && Boolean.TRUE.equals(mask)) {
-                            flags &= ~CyclingPowerMeasurement.FLAGS_EXTREME_FORCE_MAGNITUDES_PRESENT_MASK;
-                        }
-                        if (originalCyclingPowerMeasurement.isFlagsExtremeTorqueMagnitudesPresent() && Boolean.TRUE.equals(mask)) {
-                            flags &= ~CyclingPowerMeasurement.FLAGS_EXTREME_TORQUE_MAGNITUDES_PRESENT_MASK;
-                        }
-                        mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_EXTREME_ANGLES_MASK);
-                        if (originalCyclingPowerMeasurement.isFlagsExtremeAnglesPresent() && Boolean.TRUE.equals(mask)) {
-                            flags &= ~CyclingPowerMeasurement.FLAGS_EXTREME_ANGLES_PRESENT_MASK;
-                        }
-                        mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_TOP_DEAD_SPOT_ANGLE_MASK);
-                        if (originalCyclingPowerMeasurement.isFlagsTopDeadSpotAnglePresent() && Boolean.TRUE.equals(mask)) {
-                            flags &= ~CyclingPowerMeasurement.FLAGS_TOP_DEAD_SPOT_ANGLE_PRESENT_MASK;
-                        }
-                        mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_BOTTOM_DEAD_SPOT_ANGLE_MASK);
-                        if (originalCyclingPowerMeasurement.isFlagsBottomDeadSpotAnglePresent() && Boolean.TRUE.equals(mask)) {
-                            flags &= ~CyclingPowerMeasurement.FLAGS_BOTTOM_DEAD_SPOT_ANGLE_PRESENT_MASK;
-                        }
-                        mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_ACCUMULATED_ENERGY_MASK);
-                        if (originalCyclingPowerMeasurement.isFlagsAccumulatedEnergyPresent() && Boolean.TRUE.equals(mask)) {
-                            flags &= ~CyclingPowerMeasurement.FLAGS_ACCUMULATED_ENERGY_PRESENT_MASK;
-                        }
-
-                        CyclingPowerMeasurement modifiedCyclingPowerMeasurement = new CyclingPowerMeasurement(new byte[]{(byte) flags, (byte) ((0xff00 & flags) >> 8)}
-                                , originalCyclingPowerMeasurement.getInstantaneousPower()
-                                , originalCyclingPowerMeasurement.getPedalPowerBalance()
-                                , originalCyclingPowerMeasurement.getAccumulatedTorque()
-                                , originalCyclingPowerMeasurement.getWheelRevolutionDataCumulativeWheelRevolutions()
-                                , originalCyclingPowerMeasurement.getWheelRevolutionDataLastWheelEventTime()
-                                , originalCyclingPowerMeasurement.getCrankRevolutionDataCumulativeCrankRevolutions()
-                                , originalCyclingPowerMeasurement.getCrankRevolutionDataLastCrankEventTime()
-                                , originalCyclingPowerMeasurement.getExtremeForceMagnitudesMaximumForceMagnitude()
-                                , originalCyclingPowerMeasurement.getExtremeForceMagnitudesMinimumForceMagnitude()
-                                , originalCyclingPowerMeasurement.getExtremeTorqueMagnitudesMaximumTorqueMagnitude()
-                                , originalCyclingPowerMeasurement.getExtremeTorqueMagnitudesMinimumTorqueMagnitude()
-                                , originalCyclingPowerMeasurement.getExtremeAnglesMaximumAngle()
-                                , originalCyclingPowerMeasurement.getExtremeAnglesMinimumAngle()
-                                , originalCyclingPowerMeasurement.getTopDeadSpotAngle()
-                                , originalCyclingPowerMeasurement.getBottomDeadSpotAngle()
-                                , originalCyclingPowerMeasurement.getAccumulatedEnergy());
-
-                        if (device == null) {
-                            for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
-                                notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
-                                if (!mActivatedNotificationMap.containsKey(notificationData)) {
-                                    Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
-                                            , serviceUUID
-                                            , serviceInstanceId
-                                            , characteristicUUID
-                                            , characteristicInstanceId
-                                            , modifiedCyclingPowerMeasurement
-                                            , isConfirm
-                                            , NotificationTask.TIMEOUT_MILLIS
-                                            , delay
-                                            , bundle
-                                            , this);
-                                    if (newTaskId != null) {
-                                        mActivatedNotificationMap.put(notificationData, newTaskId);
-                                    }
-                                }
+                            Boolean mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_CONTENT_PEDAL_POWER_BALANCE_MASK);
+                            if (originalCyclingPowerMeasurement.isFlagsPedalPowerBalancePresent() && Boolean.TRUE.equals(mask)) {
+                                flags &= ~CyclingPowerMeasurement.FLAGS_PEDAL_POWER_BALANCE_PRESENT_MASK;
                             }
-                        } else {
-                            notificationData = new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
-                            if (mConnectedDeviceSet.contains(device)) {
-                                Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
-                                if (currentTaskId == null || currentTaskId.equals(taskId)) {
-                                    Integer newTaskId = bleServerConnection.createNotificationTask(device
-                                            , serviceUUID
-                                            , serviceInstanceId
-                                            , characteristicUUID
-                                            , characteristicInstanceId
-                                            , modifiedCyclingPowerMeasurement
-                                            , isConfirm
-                                            , NotificationTask.TIMEOUT_MILLIS
-                                            , delay
-                                            , bundle
-                                            , this);
-                                    if (newTaskId != null) {
-                                        mActivatedNotificationMap.put(notificationData, newTaskId);
+                            mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_CONTENT_ACCUMULATED_TORQUE_MASK);
+                            if (originalCyclingPowerMeasurement.isFlagsAccumulatedTorquePresent() && Boolean.TRUE.equals(mask)) {
+                                flags &= ~CyclingPowerMeasurement.FLAGS_ACCUMULATED_TORQUE_PRESENT_MASK;
+                            }
+                            mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_CONTENT_WHEEL_REVOLUTION_DATA_MASK);
+                            if (originalCyclingPowerMeasurement.isFlagsWheelRevolutionDataPresent() && Boolean.TRUE.equals(mask)) {
+                                flags &= ~CyclingPowerMeasurement.FLAGS_WHEEL_REVOLUTION_DATA_PRESENT_MASK;
+                            }
+                            mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_CONTENT_CRANK_REVOLUTION_DATA_MASK);
+                            if (originalCyclingPowerMeasurement.isFlagsCrankRevolutionDataPresent() && Boolean.TRUE.equals(mask)) {
+                                flags &= ~CyclingPowerMeasurement.FLAGS_CRANK_REVOLUTION_DATA_PRESENT_MASK;
+                            }
+                            mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_CONTENT_EXTREME_MAGNITUDES_MASK);
+                            if (originalCyclingPowerMeasurement.isFlagsExtremeForceMagnitudesPresent() && Boolean.TRUE.equals(mask)) {
+                                flags &= ~CyclingPowerMeasurement.FLAGS_EXTREME_FORCE_MAGNITUDES_PRESENT_MASK;
+                            }
+                            if (originalCyclingPowerMeasurement.isFlagsExtremeTorqueMagnitudesPresent() && Boolean.TRUE.equals(mask)) {
+                                flags &= ~CyclingPowerMeasurement.FLAGS_EXTREME_TORQUE_MAGNITUDES_PRESENT_MASK;
+                            }
+                            mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_EXTREME_ANGLES_MASK);
+                            if (originalCyclingPowerMeasurement.isFlagsExtremeAnglesPresent() && Boolean.TRUE.equals(mask)) {
+                                flags &= ~CyclingPowerMeasurement.FLAGS_EXTREME_ANGLES_PRESENT_MASK;
+                            }
+                            mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_TOP_DEAD_SPOT_ANGLE_MASK);
+                            if (originalCyclingPowerMeasurement.isFlagsTopDeadSpotAnglePresent() && Boolean.TRUE.equals(mask)) {
+                                flags &= ~CyclingPowerMeasurement.FLAGS_TOP_DEAD_SPOT_ANGLE_PRESENT_MASK;
+                            }
+                            mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_BOTTOM_DEAD_SPOT_ANGLE_MASK);
+                            if (originalCyclingPowerMeasurement.isFlagsBottomDeadSpotAnglePresent() && Boolean.TRUE.equals(mask)) {
+                                flags &= ~CyclingPowerMeasurement.FLAGS_BOTTOM_DEAD_SPOT_ANGLE_PRESENT_MASK;
+                            }
+                            mask = mMaskMap.get(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_ACCUMULATED_ENERGY_MASK);
+                            if (originalCyclingPowerMeasurement.isFlagsAccumulatedEnergyPresent() && Boolean.TRUE.equals(mask)) {
+                                flags &= ~CyclingPowerMeasurement.FLAGS_ACCUMULATED_ENERGY_PRESENT_MASK;
+                            }
+
+                            CyclingPowerMeasurement modifiedCyclingPowerMeasurement = new CyclingPowerMeasurement(new byte[]{(byte) flags, (byte) ((0xff00 & flags) >> 8)}
+                                    , originalCyclingPowerMeasurement.getInstantaneousPower()
+                                    , originalCyclingPowerMeasurement.getPedalPowerBalance()
+                                    , originalCyclingPowerMeasurement.getAccumulatedTorque()
+                                    , originalCyclingPowerMeasurement.getWheelRevolutionDataCumulativeWheelRevolutions()
+                                    , originalCyclingPowerMeasurement.getWheelRevolutionDataLastWheelEventTime()
+                                    , originalCyclingPowerMeasurement.getCrankRevolutionDataCumulativeCrankRevolutions()
+                                    , originalCyclingPowerMeasurement.getCrankRevolutionDataLastCrankEventTime()
+                                    , originalCyclingPowerMeasurement.getExtremeForceMagnitudesMaximumForceMagnitude()
+                                    , originalCyclingPowerMeasurement.getExtremeForceMagnitudesMinimumForceMagnitude()
+                                    , originalCyclingPowerMeasurement.getExtremeTorqueMagnitudesMaximumTorqueMagnitude()
+                                    , originalCyclingPowerMeasurement.getExtremeTorqueMagnitudesMinimumTorqueMagnitude()
+                                    , originalCyclingPowerMeasurement.getExtremeAnglesMaximumAngle()
+                                    , originalCyclingPowerMeasurement.getExtremeAnglesMinimumAngle()
+                                    , originalCyclingPowerMeasurement.getTopDeadSpotAngle()
+                                    , originalCyclingPowerMeasurement.getBottomDeadSpotAngle()
+                                    , originalCyclingPowerMeasurement.getAccumulatedEnergy());
+
+                            if (device == null) {
+                                for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
+                                    notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
+                                    if (!mActivatedNotificationMap.containsKey(notificationData)) {
+                                        Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
+                                                , serviceUUID
+                                                , serviceInstanceId
+                                                , characteristicUUID
+                                                , characteristicInstanceId
+                                                , modifiedCyclingPowerMeasurement
+                                                , isConfirm
+                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , delay
+                                                , bundle
+                                                , this);
+                                        if (newTaskId != null) {
+                                            mActivatedNotificationMap.put(notificationData, newTaskId);
+                                        }
                                     }
                                 }
                             } else {
-                                mActivatedNotificationMap.remove(notificationData);
-                            }
-                        }
-                    } else {
-                        if (device == null) {
-                            for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
-                                notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
-                                if (!mActivatedNotificationMap.containsKey(notificationData)) {
-                                    Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
-                                            , serviceUUID
-                                            , serviceInstanceId
-                                            , characteristicUUID
-                                            , characteristicInstanceId
-                                            , characteristicData
-                                            , isConfirm
-                                            , NotificationTask.TIMEOUT_MILLIS
-                                            , delay
-                                            , bundle
-                                            , this);
-                                    if (newTaskId != null) {
-                                        mActivatedNotificationMap.put(notificationData, newTaskId);
+                                notificationData = new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
+                                if (mConnectedDeviceSet.contains(device)) {
+                                    Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
+                                    if (currentTaskId == null || currentTaskId.equals(taskId)) {
+                                        Integer newTaskId = bleServerConnection.createNotificationTask(device
+                                                , serviceUUID
+                                                , serviceInstanceId
+                                                , characteristicUUID
+                                                , characteristicInstanceId
+                                                , modifiedCyclingPowerMeasurement
+                                                , isConfirm
+                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , delay
+                                                , bundle
+                                                , this);
+                                        if (newTaskId != null) {
+                                            mActivatedNotificationMap.put(notificationData, newTaskId);
+                                        }
                                     }
+                                } else {
+                                    mActivatedNotificationMap.remove(notificationData);
                                 }
                             }
                         } else {
-                            notificationData = new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
-                            if (mConnectedDeviceSet.contains(device)) {
-                                Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
-                                if (currentTaskId == null || currentTaskId.equals(taskId)) {
-                                    Integer newTaskId = bleServerConnection.createNotificationTask(device
-                                            , serviceUUID
-                                            , serviceInstanceId
-                                            , characteristicUUID
-                                            , characteristicInstanceId
-                                            , characteristicData
-                                            , isConfirm
-                                            , NotificationTask.TIMEOUT_MILLIS
-                                            , delay
-                                            , bundle
-                                            , this);
-                                    if (newTaskId != null) {
-                                        mActivatedNotificationMap.put(notificationData, newTaskId);
+                            if (device == null) {
+                                for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
+                                    notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
+                                    if (!mActivatedNotificationMap.containsKey(notificationData)) {
+                                        Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
+                                                , serviceUUID
+                                                , serviceInstanceId
+                                                , characteristicUUID
+                                                , characteristicInstanceId
+                                                , characteristicData
+                                                , isConfirm
+                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , delay
+                                                , bundle
+                                                , this);
+                                        if (newTaskId != null) {
+                                            mActivatedNotificationMap.put(notificationData, newTaskId);
+                                        }
                                     }
                                 }
                             } else {
-                                mActivatedNotificationMap.remove(notificationData);
+                                notificationData = new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
+                                if (mConnectedDeviceSet.contains(device)) {
+                                    Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
+                                    if (currentTaskId == null || currentTaskId.equals(taskId)) {
+                                        Integer newTaskId = bleServerConnection.createNotificationTask(device
+                                                , serviceUUID
+                                                , serviceInstanceId
+                                                , characteristicUUID
+                                                , characteristicInstanceId
+                                                , characteristicData
+                                                , isConfirm
+                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , delay
+                                                , bundle
+                                                , this);
+                                        if (newTaskId != null) {
+                                            mActivatedNotificationMap.put(notificationData, newTaskId);
+                                        }
+                                    }
+                                } else {
+                                    mActivatedNotificationMap.remove(notificationData);
+                                }
                             }
                         }
                     }

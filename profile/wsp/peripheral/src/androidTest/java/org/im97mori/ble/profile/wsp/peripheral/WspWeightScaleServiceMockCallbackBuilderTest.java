@@ -6,6 +6,7 @@ import org.im97mori.ble.MockData;
 import org.im97mori.ble.characteristic.u2a9d.WeightMeasurement;
 import org.im97mori.ble.characteristic.u2a9e.WeightScaleFeature;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
+import org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -15,7 +16,7 @@ import static org.junit.Assert.assertNull;
 public class WspWeightScaleServiceMockCallbackBuilderTest {
 
     @Test
-    public void test_setWspUserDataServiceMockCallback_00001() {
+    public void test_setUserDataServiceMockCallback_00001() {
         Exception exception = null;
         try {
             new WspWeightScaleServiceMockCallback.Builder<>()
@@ -31,15 +32,15 @@ public class WspWeightScaleServiceMockCallbackBuilderTest {
         }
 
         assertNotNull(exception);
-        assertEquals("no WspUserDataServiceMockCallback instance", exception.getMessage());
+        assertEquals("no UserDataServiceMockCallback instance", exception.getMessage());
     }
 
     @Test
-    public void test_setWspUserDataServiceMockCallback_00002() {
+    public void test_setUserDataServiceMockCallback_00002() {
         Exception exception = null;
         try {
             new WspWeightScaleServiceMockCallback.Builder<>()
-                    .setWspUserDataServiceMockCallback(new WspUserDataServiceMockCallback(new MockData(), false))
+                    .setUserDataServiceMockCallback(new UserDataServiceMockCallback(new MockData(), false))
                     .addWeightScaleFeature(new WeightScaleFeature(false
                             , false
                             , false
@@ -55,19 +56,19 @@ public class WspWeightScaleServiceMockCallbackBuilderTest {
     }
 
     @Test
-    public void test_removeWspUserDataServiceMockCallback_00001() {
+    public void test_removeUserDataServiceMockCallback_00001() {
         Exception exception = null;
         try {
             new WspWeightScaleServiceMockCallback.Builder<>()
-                    .setWspUserDataServiceMockCallback(new WspUserDataServiceMockCallback(new MockData(), false))
-                    .removeWspUserDataServiceMockCallback()
+                    .setUserDataServiceMockCallback(new UserDataServiceMockCallback(new MockData(), false))
+                    .removeUserDataServiceMockCallback()
                     .build();
         } catch (RuntimeException e) {
             exception = e;
         }
 
         assertNotNull(exception);
-        assertEquals("no WspUserDataServiceMockCallback instance", exception.getMessage());
+        assertEquals("no UserDataServiceMockCallback instance", exception.getMessage());
     }
 
 }

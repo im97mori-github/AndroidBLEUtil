@@ -1,4 +1,4 @@
-package org.im97mori.ble.profile.wsp.peripheral;
+package org.im97mori.ble.service.uds.peripheral;
 
 import android.bluetooth.BluetoothDevice;
 
@@ -6,9 +6,9 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.MockData;
 
-class ConsentTestWspUserDataServiceMockCallback extends WspUserDataServiceMockCallback {
+class ConsentTestUserDataServiceMockCallback extends UserDataServiceMockCallback {
 
-    public ConsentTestWspUserDataServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
+    public ConsentTestUserDataServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
         super(mockData, isFallback);
     }
 

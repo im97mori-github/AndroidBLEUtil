@@ -427,6 +427,7 @@ public class CyclingSpeedAndCadenceService extends AbstractCentralService {
     /**
      * set SC Control Point
      *
+     * @param scControlPoint {@link SCControlPoint} instance
      * @return task id. if {@code null} returned, service is not ready
      * @see CyclingSpeedAndCadenceServiceCallback#onSCControlPointWriteSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, SCControlPointAndroid, Bundle)
      * @see CyclingSpeedAndCadenceServiceCallback#onSCControlPointWriteFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)

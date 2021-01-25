@@ -221,6 +221,9 @@
             <option value="$PROJECT_DIR$/profile/fmp" />
             <option value="$PROJECT_DIR$/profile/fmp/central" />
             <option value="$PROJECT_DIR$/profile/fmp/peripheral" />
+            <option value="$PROJECT_DIR$/profile/ftmp" />
+            <option value="$PROJECT_DIR$/profile/ftmp/central" />
+            <option value="$PROJECT_DIR$/profile/ftmp/peripheral" />
             <option value="$PROJECT_DIR$/profile/hrp" />
             <option value="$PROJECT_DIR$/profile/hrp/central" />
             <option value="$PROJECT_DIR$/profile/hrp/peripheral" />
@@ -277,6 +280,9 @@
             <option value="$PROJECT_DIR$/service/dis" />
             <option value="$PROJECT_DIR$/service/dis/central" />
             <option value="$PROJECT_DIR$/service/dis/peripheral" />
+            <option value="$PROJECT_DIR$/service/ftms" />
+            <option value="$PROJECT_DIR$/service/ftms/central" />
+            <option value="$PROJECT_DIR$/service/ftms/peripheral" />
             <option value="$PROJECT_DIR$/service/hrs" />
             <option value="$PROJECT_DIR$/service/hrs/central" />
             <option value="$PROJECT_DIR$/service/hrs/peripheral" />

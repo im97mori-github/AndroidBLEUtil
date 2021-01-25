@@ -40,16 +40,18 @@ public interface BLEServerCallback {
     /**
      * Central connected callback
      *
-     * @param device central BLE device
+     * @param bleServerConnection {@link BLEServerConnection} instance
+     * @param device              central BLE device
      */
-    void onDeviceConnected(BluetoothDevice device);
+    void onDeviceConnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device);
 
     /**
      * Central disconnected callback
      *
-     * @param device central BLE device
+     * @param bleServerConnection {@link BLEServerConnection} instance
+     * @param device              central BLE device
      */
-    void onDeviceDisconnected(BluetoothDevice device);
+    void onDeviceDisconnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device);
 
     /**
      * Peripheral service add success callback

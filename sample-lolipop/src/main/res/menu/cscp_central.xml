@@ -46,13 +46,13 @@
             android:id="@+id/write_sc_control_point_3"
             android:title="@string/menu_write_sc_control_point_3" />
         <item
-            android:id="@+id/read_sc_control_characteristic_configuration"
+            android:id="@+id/read_sc_control_point_characteristic_configuration"
             android:title="@string/menu_read_sc_control_point_characteristic_configuration" />
         <item
-            android:id="@+id/start_indicate_sc_control"
+            android:id="@+id/start_indicate_sc_control_point"
             android:title="@string/menu_indicate_sc_control_point_start" />
         <item
-            android:id="@+id/stop_indicate_sc_control"
+            android:id="@+id/stop_indicate_sc_control_point"
             android:title="@string/menu_indicate_sc_control_point_stop" />
 
         <item

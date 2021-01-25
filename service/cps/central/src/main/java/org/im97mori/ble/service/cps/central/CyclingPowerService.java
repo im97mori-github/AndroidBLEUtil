@@ -456,6 +456,7 @@ public class CyclingPowerService extends AbstractCentralService {
     /**
      * set Cycling Power Control Point
      *
+     * @param cyclingPowerControlPoint {@link CyclingPowerControlPoint} instance
      * @return task id. if {@code null} returned, service is not ready
      * @see CyclingPowerServiceCallback#onCyclingPowerControlPointWriteSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, CyclingPowerControlPointAndroid, Bundle)
      * @see CyclingPowerServiceCallback#onCyclingPowerControlPointWriteFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)

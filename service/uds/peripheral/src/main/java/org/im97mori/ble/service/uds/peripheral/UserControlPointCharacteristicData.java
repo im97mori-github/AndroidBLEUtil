@@ -90,7 +90,6 @@ public class UserControlPointCharacteristicData extends CharacteristicData {
      *                                     {@link android.bluetooth.BluetoothGattCharacteristic#PERMISSION_WRITE}
      * @param descriptorDataList           {@link DescriptorData} list
      * @param delay                        response delay(millis)
-     * @param notificationCount            notification / indication count
      * @param registerNewUserResponseValue characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Register New User response)
      * @param consentResponseValue         characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Consent Response response)
      * @param deleteUserDataResponseValue  characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Delete User Data response)
@@ -101,13 +100,12 @@ public class UserControlPointCharacteristicData extends CharacteristicData {
             , int permission
             , @NonNull List<DescriptorData> descriptorDataList
             , long delay
-            , int notificationCount
             , int registerNewUserResponseValue
             , int consentResponseValue
             , int deleteUserDataResponseValue
             , int listAllUsersResponseValue
             , int deleteUsersResponseValue) {
-        super(USER_CONTROL_POINT_CHARACTERISTIC, property, permission, descriptorDataList, BluetoothGatt.GATT_SUCCESS, delay, new byte[0], notificationCount);
+        super(USER_CONTROL_POINT_CHARACTERISTIC, property, permission, descriptorDataList, BluetoothGatt.GATT_SUCCESS, delay, new byte[0], 0);
         this.registerNewUserResponseValue = registerNewUserResponseValue;
         this.consentResponseValue = consentResponseValue;
         this.deleteUserDataResponseValue = deleteUserDataResponseValue;

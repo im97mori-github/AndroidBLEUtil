@@ -135,6 +135,12 @@
         <activity
             android:name=".pasp.PaspCentralSampleActivity"
             android:label="@string/label_pasp_central" />
+        <activity
+            android:name=".ftmp.FtmpPeripheralSampleActivity"
+            android:label="@string/label_ftmp_peripheral" />
+        <activity
+            android:name=".ftmp.FtmpCentralSampleActivity"
+            android:label="@string/label_ftmp_central" />
     </application>
 
 </manifest>

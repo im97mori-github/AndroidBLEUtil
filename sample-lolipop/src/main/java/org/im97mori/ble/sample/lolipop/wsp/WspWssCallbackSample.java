@@ -18,9 +18,9 @@ import org.im97mori.ble.MockData;
 import org.im97mori.ble.characteristic.u2a9d.WeightMeasurementAndroid;
 import org.im97mori.ble.characteristic.u2a9e.WeightScaleFeatureAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
-import org.im97mori.ble.profile.wsp.peripheral.WspUserDataServiceMockCallback;
 import org.im97mori.ble.profile.wsp.peripheral.WspWeightScaleServiceMockCallback;
 import org.im97mori.ble.sample.lolipop.SampleCallback;
+import org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback;
 import org.im97mori.ble.service.wss.central.WeightScaleServiceCallback;
 
 import java.text.SimpleDateFormat;
@@ -43,7 +43,7 @@ public class WspWssCallbackSample extends WspWeightScaleServiceMockCallback impl
         @NonNull
         @Override
         public WspWssCallbackSample build() {
-            return new WspWssCallbackSample(createMockData(), mSampleCallback, mWspUserDataServiceMockCallback);
+            return new WspWssCallbackSample(createMockData(), mSampleCallback, mUserDataServiceMockCallback);
         }
     }
 
@@ -51,8 +51,8 @@ public class WspWssCallbackSample extends WspWeightScaleServiceMockCallback impl
 
     private final SampleCallback mSampleCallback;
 
-    WspWssCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback, @Nullable WspUserDataServiceMockCallback wspUserDataServiceMockCallback) {
-        super(mockData, false, wspUserDataServiceMockCallback);
+    WspWssCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback, @Nullable UserDataServiceMockCallback userDataServiceMockCallback) {
+        super(mockData, false, userDataServiceMockCallback);
         mSampleCallback = sampleCallback;
     }
 
@@ -336,15 +336,15 @@ public class WspWssCallbackSample extends WspWeightScaleServiceMockCallback impl
     }
 
     @Override
-    public void onDeviceConnected(BluetoothDevice device) {
+    public void onDeviceConnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
         callback(device);
-        super.onDeviceConnected(device);
+        super.onDeviceConnected(bleServerConnection, device);
     }
 
     @Override
-    public void onDeviceDisconnected(BluetoothDevice device) {
+    public void onDeviceDisconnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
         callback(device);
-        super.onDeviceDisconnected(device);
+        super.onDeviceDisconnected(bleServerConnection, device);
     }
 
     @Override

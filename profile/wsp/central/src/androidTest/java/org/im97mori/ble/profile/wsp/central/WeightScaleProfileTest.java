@@ -25,6 +25,7 @@ import org.im97mori.ble.characteristic.u2a8c.Gender;
 import org.im97mori.ble.characteristic.u2a8e.Height;
 import org.im97mori.ble.characteristic.u2a99.DatabaseChangeIncrement;
 import org.im97mori.ble.characteristic.u2a9f.UserControlPoint;
+import org.im97mori.ble.profile.wsp.central.db.WeightScaleProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.bas.central.BatteryService;
 import org.im97mori.ble.service.bcs.central.BodyCompositionService;
 import org.im97mori.ble.service.cts.central.CurrentTimeService;
@@ -188,6 +189,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -245,6 +247,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -302,6 +305,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -359,6 +363,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -468,6 +473,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -532,6 +538,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -596,6 +603,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -660,6 +668,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -712,16 +721,7 @@ public class WeightScaleProfileTest {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
+        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
         BLEConnectionHolder.clearInstance();
         BLEConnectionHolder.addInstance(bleConnection, true);
 
@@ -730,8 +730,7 @@ public class WeightScaleProfileTest {
             @Override
             public synchronized void createServices() {
                 if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
+                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
@@ -766,16 +765,7 @@ public class WeightScaleProfileTest {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
+        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
         BLEConnectionHolder.clearInstance();
         BLEConnectionHolder.addInstance(bleConnection, true);
 
@@ -784,8 +774,7 @@ public class WeightScaleProfileTest {
             @Override
             public synchronized void createServices() {
                 if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
+                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
@@ -820,16 +809,7 @@ public class WeightScaleProfileTest {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
+        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
         BLEConnectionHolder.clearInstance();
         BLEConnectionHolder.addInstance(bleConnection, true);
 
@@ -838,8 +818,7 @@ public class WeightScaleProfileTest {
             @Override
             public synchronized void createServices() {
                 if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
+                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
@@ -874,16 +853,7 @@ public class WeightScaleProfileTest {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
+        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
         BLEConnectionHolder.clearInstance();
         BLEConnectionHolder.addInstance(bleConnection, true);
 
@@ -892,8 +862,7 @@ public class WeightScaleProfileTest {
             @Override
             public synchronized void createServices() {
                 if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
+                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
@@ -928,16 +897,7 @@ public class WeightScaleProfileTest {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
+        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
         BLEConnectionHolder.clearInstance();
         BLEConnectionHolder.addInstance(bleConnection, true);
 
@@ -946,8 +906,7 @@ public class WeightScaleProfileTest {
             @Override
             public synchronized void createServices() {
                 if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
+                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
@@ -982,16 +941,7 @@ public class WeightScaleProfileTest {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
-        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
-            @Override
-            public boolean isConnected() {
-                return true;
-            }
-            @Override
-            public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
-                return 1;
-            }
-        };
+        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null);
         BLEConnectionHolder.clearInstance();
         BLEConnectionHolder.addInstance(bleConnection, true);
 
@@ -1000,8 +950,7 @@ public class WeightScaleProfileTest {
             @Override
             public synchronized void createServices() {
                 if (mWeightScaleService == null) {
-                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
-                    };
+                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
                 if (mDeviceInformationService == null) {
                     mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
@@ -1041,6 +990,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -1105,6 +1055,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -1169,6 +1120,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -1233,6 +1185,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -1297,6 +1250,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -1362,6 +1316,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -1426,6 +1381,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -1491,6 +1447,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -1555,6 +1512,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -1620,6 +1578,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -1684,6 +1643,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -1744,6 +1704,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -1803,6 +1764,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -1868,6 +1830,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -1933,6 +1896,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -1998,6 +1962,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -2044,6 +2009,69 @@ public class WeightScaleProfileTest {
     }
 
     @Test
+    public void test_getRegisteredUserClientCharacteristicConfiguration_00001() {
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        assertNull(weightScaleProfile.getRegisteredUserClientCharacteristicConfiguration());
+    }
+
+    @Test
+    public void test_getRegisteredUserClientCharacteristicConfiguration_00002() {
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        BLEConnection bleConnection = new BLEConnection(ApplicationProvider.getApplicationContext(), MOCK_DEVICE, null) {
+            @Override
+            public boolean isConnected() {
+                return true;
+            }
+
+            @Override
+            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+                return 1;
+            }
+        };
+        BLEConnectionHolder.clearInstance();
+        BLEConnectionHolder.addInstance(bleConnection, true);
+
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
+
+            @Override
+            public synchronized void createServices() {
+                if (mWeightScaleService == null) {
+                    mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null) {
+                    };
+                }
+                if (mDeviceInformationService == null) {
+                    mDeviceInformationService = new DeviceInformationService(mBLEConnection, mWeightScaleProfileCallback, null);
+                }
+                if (mUserDataService == null) {
+                    mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
+
+                        @Override
+                        public boolean isStarted() {
+                            return true;
+                        }
+
+                    };
+                }
+                if (mBodyCompositionService == null) {
+                    mBodyCompositionService = new BodyCompositionService(mBLEConnection, mWeightScaleProfileCallback, null);
+                }
+                if (mBatteryService == null) {
+                    mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
+                }
+                if (mCurrentTimeService == null) {
+                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null);
+                }
+            }
+        };
+        weightScaleProfile.connect(MOCK_DEVICE);
+        assertNotNull(weightScaleProfile.getRegisteredUserClientCharacteristicConfiguration());
+        weightScaleProfile.disconnect();
+    }
+
+
+    @Test
     public void test_startRegisteredUserIndication_00001() {
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
         assertNull(weightScaleProfile.startRegisteredUserIndication());
@@ -2059,6 +2087,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -2120,6 +2149,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -2181,6 +2211,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -2240,6 +2271,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -2301,6 +2333,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -2362,6 +2395,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -2423,6 +2457,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -2483,6 +2518,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -2543,6 +2579,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -2651,6 +2688,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -2716,6 +2754,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -2779,6 +2818,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -2841,6 +2881,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -2903,6 +2944,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -2967,6 +3009,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -3031,6 +3074,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -3095,6 +3139,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -3159,6 +3204,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -3223,6 +3269,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -3287,6 +3334,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -3351,6 +3399,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -3595,7 +3644,7 @@ public class WeightScaleProfileTest {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
                 if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null){
+                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
                         public boolean isStarted() {
                             return true;
@@ -3625,6 +3674,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -3654,7 +3704,7 @@ public class WeightScaleProfileTest {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
                 if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null){
+                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
                         public boolean isCurrentTimeCharacteristicWritable() {
                             return true;
@@ -3689,6 +3739,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -3718,7 +3769,7 @@ public class WeightScaleProfileTest {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
                 if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null){
+                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
 
                         @Override
                         public boolean isStarted() {
@@ -3749,6 +3800,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -3778,7 +3830,7 @@ public class WeightScaleProfileTest {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
                 if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null){
+                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
 
                         @Override
                         public boolean isStarted() {
@@ -3809,6 +3861,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -3838,7 +3891,7 @@ public class WeightScaleProfileTest {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
                 if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null){
+                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
 
                         @Override
                         public boolean isStarted() {
@@ -3869,6 +3922,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -3897,7 +3951,7 @@ public class WeightScaleProfileTest {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
                 if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null){
+                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
                         public boolean isLocalTimeInformationCharacteristicSupporeted() {
                             return true;
@@ -3932,6 +3986,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull ByteArrayInterface byteArrayInterface, int writeType, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -3961,7 +4016,7 @@ public class WeightScaleProfileTest {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
                 if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null){
+                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
                         public boolean isLocalTimeInformationCharacteristicSupporeted() {
                             return true;
@@ -3996,6 +4051,7 @@ public class WeightScaleProfileTest {
             public boolean isConnected() {
                 return true;
             }
+
             @Override
             public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return 1;
@@ -4024,7 +4080,7 @@ public class WeightScaleProfileTest {
                     mBatteryService = new BatteryService(mBLEConnection, mWeightScaleProfileCallback, null);
                 }
                 if (mCurrentTimeService == null) {
-                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null){
+                    mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
                         public boolean isReferenceTimeInformationCharacteristicSupporeted() {
                             return true;
@@ -4041,6 +4097,51 @@ public class WeightScaleProfileTest {
         weightScaleProfile.connect(MOCK_DEVICE);
         assertNotNull(weightScaleProfile.getReferenceTimeInformation());
         weightScaleProfile.disconnect();
+    }
+
+    @Test
+    public void test_getDatabaseHelper_00001() {
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        assertTrue(weightScaleProfile.getDatabaseHelper() instanceof WeightScaleProfileBondedDatabaseHelper);
+    }
+
+    @Test
+    public void test_createServices_00001() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback()) {
+            @Override
+            public synchronized void createServices() {
+                super.createServices();
+                atomicBoolean.set(true);
+            }
+        };
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        weightScaleProfile.connect(MOCK_DEVICE);
+        assertNotNull(weightScaleProfile.mWeightScaleService);
+        assertNotNull(weightScaleProfile.mDeviceInformationService);
+        assertNotNull(weightScaleProfile.mUserDataService);
+        assertNotNull(weightScaleProfile.mBodyCompositionService);
+        assertNotNull(weightScaleProfile.mBatteryService);
+        assertNotNull(weightScaleProfile.mCurrentTimeService);
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_quit_00001() {
+        WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        weightScaleProfile.connect(MOCK_DEVICE);
+        weightScaleProfile.quit();
+        assertNull(weightScaleProfile.mWeightScaleService);
+        assertNull(weightScaleProfile.mDeviceInformationService);
+        assertNull(weightScaleProfile.mUserDataService);
+        assertNull(weightScaleProfile.mBodyCompositionService);
+        assertNull(weightScaleProfile.mBatteryService);
+        assertNull(weightScaleProfile.mCurrentTimeService);
     }
 
 }

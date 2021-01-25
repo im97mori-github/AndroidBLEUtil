@@ -122,7 +122,6 @@ public class LNControlPointCharacteristicData extends CharacteristicData {
      * @param descriptorDataList                                     {@link DescriptorData} list
      * @param responseCode                                           response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
      * @param delay                                                  response delay(millis)
-     * @param notificationCount                                      notification / indication count
      * @param setCumulativeValueResponseValue                        characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Cumulative Value response)
      * @param maskLocationAndSpeedCharacteristicContentResponseValue characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Mask Location and Speed Characteristic Content response)
      * @param navigationControlResponseValue                         characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Navigation Control response)
@@ -139,7 +138,6 @@ public class LNControlPointCharacteristicData extends CharacteristicData {
             , @NonNull List<DescriptorData> descriptorDataList
             , int responseCode
             , long delay
-            , int notificationCount
             , int setCumulativeValueResponseValue
             , int maskLocationAndSpeedCharacteristicContentResponseValue
             , int navigationControlResponseValue
@@ -150,7 +148,14 @@ public class LNControlPointCharacteristicData extends CharacteristicData {
             , int selectRouteResponseValue
             , int setFixRateResponseValue
             , int setElevationResponseValue) {
-        super(LN_CONTROL_POINT_CHARACTERISTIC, property, permission, descriptorDataList, responseCode, delay, new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_RESPONSE_CODE, LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes(), notificationCount);
+        super(LN_CONTROL_POINT_CHARACTERISTIC
+                , property
+                , permission
+                , descriptorDataList
+                , responseCode
+                , delay
+                , new LNControlPoint(LNControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], LNControlPoint.OP_CODES_RESPONSE_CODE, LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes()
+                , 0);
         this.setCumulativeValueResponseValue = setCumulativeValueResponseValue;
         this.maskLocationAndSpeedCharacteristicContentResponseValue = maskLocationAndSpeedCharacteristicContentResponseValue;
         this.navigationControlResponseValue = navigationControlResponseValue;

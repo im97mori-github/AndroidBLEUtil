@@ -209,7 +209,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDeviceConnected(BluetoothDevice device) {
+    public synchronized void onDeviceConnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
         mConnectedDeviceSet.add(device);
     }
 
@@ -217,7 +217,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDeviceDisconnected(BluetoothDevice device) {
+    public synchronized void onDeviceDisconnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
         mConnectedDeviceSet.remove(device);
     }
 
@@ -565,70 +565,73 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         if (characteristicMap != null) {
             CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
             if (characteristicData != null) {
-                Bundle bundle = new Bundle();
-                bundle.putInt(KEY_NOTIFICATION_COUNT, notificationCount == null ? characteristicData.notificationCount : notificationCount);
-                bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
-                if (argument != null) {
-                    bundle.putBundle(KEY_ORIGINAL_ARGUMENT, argument);
-                }
-
-                Boolean isConfirm = null;
-                Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
-                if (descriptorDataMap != null) {
-                    DescriptorData descriptorData = descriptorDataMap.get(Pair.create(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, descriptorInstanceId));
-                    if (descriptorData != null) {
-                        if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
-                            isConfirm = false;
-                        } else if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, descriptorData.getBytes())) {
-                            isConfirm = true;
-                        }
+                int targetNotificationCount = notificationCount == null ? characteristicData.notificationCount : notificationCount;
+                if (targetNotificationCount != 0) {
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(KEY_NOTIFICATION_COUNT, notificationCount == null ? characteristicData.notificationCount : notificationCount);
+                    bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
+                    if (argument != null) {
+                        bundle.putBundle(KEY_ORIGINAL_ARGUMENT, argument);
                     }
-                }
 
-                if (isConfirm != null) {
-                    NotificationData notificationData;
-                    if (device == null) {
-                        for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
-                            notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
-                            if (!mActivatedNotificationMap.containsKey(notificationData)) {
-                                Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
-                                        , serviceUUID
-                                        , serviceInstanceId
-                                        , characteristicUUID
-                                        , characteristicInstanceId
-                                        , characteristicData
-                                        , isConfirm
-                                        , NotificationTask.TIMEOUT_MILLIS
-                                        , delay
-                                        , bundle
-                                        , this);
-                                if (newTaskId != null) {
-                                    mActivatedNotificationMap.put(notificationData, newTaskId);
-                                }
+                    Boolean isConfirm = null;
+                    Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
+                    if (descriptorDataMap != null) {
+                        DescriptorData descriptorData = descriptorDataMap.get(Pair.create(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, descriptorInstanceId));
+                        if (descriptorData != null) {
+                            if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
+                                isConfirm = false;
+                            } else if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, descriptorData.getBytes())) {
+                                isConfirm = true;
                             }
                         }
-                    } else {
-                        notificationData = new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
-                        if (mConnectedDeviceSet.contains(device)) {
-                            Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
-                            if (currentTaskId == null || currentTaskId.equals(taskId)) {
-                                Integer newTaskId = bleServerConnection.createNotificationTask(device
-                                        , serviceUUID
-                                        , serviceInstanceId
-                                        , characteristicUUID
-                                        , characteristicInstanceId
-                                        , characteristicData
-                                        , isConfirm
-                                        , NotificationTask.TIMEOUT_MILLIS
-                                        , delay
-                                        , bundle
-                                        , this);
-                                if (newTaskId != null) {
-                                    mActivatedNotificationMap.put(notificationData, newTaskId);
+                    }
+
+                    if (isConfirm != null) {
+                        NotificationData notificationData;
+                        if (device == null) {
+                            for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
+                                notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
+                                if (!mActivatedNotificationMap.containsKey(notificationData)) {
+                                    Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
+                                            , serviceUUID
+                                            , serviceInstanceId
+                                            , characteristicUUID
+                                            , characteristicInstanceId
+                                            , characteristicData
+                                            , isConfirm
+                                            , NotificationTask.TIMEOUT_MILLIS
+                                            , delay
+                                            , bundle
+                                            , this);
+                                    if (newTaskId != null) {
+                                        mActivatedNotificationMap.put(notificationData, newTaskId);
+                                    }
                                 }
                             }
                         } else {
-                            mActivatedNotificationMap.remove(notificationData);
+                            notificationData = new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
+                            if (mConnectedDeviceSet.contains(device)) {
+                                Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
+                                if (currentTaskId == null || currentTaskId.equals(taskId)) {
+                                    Integer newTaskId = bleServerConnection.createNotificationTask(device
+                                            , serviceUUID
+                                            , serviceInstanceId
+                                            , characteristicUUID
+                                            , characteristicInstanceId
+                                            , characteristicData
+                                            , isConfirm
+                                            , NotificationTask.TIMEOUT_MILLIS
+                                            , delay
+                                            , bundle
+                                            , this);
+                                    if (newTaskId != null) {
+                                        mActivatedNotificationMap.put(notificationData, newTaskId);
+                                    }
+                                }
+                            } else {
+                                mActivatedNotificationMap.remove(notificationData);
+                            }
                         }
                     }
                 }

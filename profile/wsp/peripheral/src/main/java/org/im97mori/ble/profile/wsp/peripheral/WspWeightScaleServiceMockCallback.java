@@ -39,26 +39,26 @@ public class WspWeightScaleServiceMockCallback extends WeightScaleServiceMockCal
     public static class Builder<T extends WspWeightScaleServiceMockCallback> extends WeightScaleServiceMockCallback.Builder<WspWeightScaleServiceMockCallback> {
 
         /**
-         * {@link WspUserDataServiceMockCallback} instance
+         * {@link UserDataServiceMockCallback} instance
          */
-        protected WspUserDataServiceMockCallback mWspUserDataServiceMockCallback;
+        protected UserDataServiceMockCallback mUserDataServiceMockCallback;
 
         /**
-         * @param wspUserDataServiceMockCallback {@link WspUserDataServiceMockCallback} instance
+         * @param userDataServiceMockCallback {@link UserDataServiceMockCallback} instance
          * @return {@link Builder} instance
          */
-        public Builder<T> setWspUserDataServiceMockCallback(@Nullable WspUserDataServiceMockCallback wspUserDataServiceMockCallback) {
-            mWspUserDataServiceMockCallback = wspUserDataServiceMockCallback;
+        public Builder<T> setUserDataServiceMockCallback(@Nullable UserDataServiceMockCallback userDataServiceMockCallback) {
+            mUserDataServiceMockCallback = userDataServiceMockCallback;
             return this;
         }
 
         /**
-         * remove {@link WspUserDataServiceMockCallback} instance
+         * remove {@link UserDataServiceMockCallback} instance
          *
          * @return {@link Builder} instance
          */
-        public Builder<T> removeWspUserDataServiceMockCallback() {
-            mWspUserDataServiceMockCallback = null;
+        public Builder<T> removeUserDataServiceMockCallback() {
+            mUserDataServiceMockCallback = null;
             return this;
         }
 
@@ -68,25 +68,25 @@ public class WspWeightScaleServiceMockCallback extends WeightScaleServiceMockCal
         @NonNull
         @Override
         public WspWeightScaleServiceMockCallback build() {
-            if (mWspUserDataServiceMockCallback == null) {
-                throw new RuntimeException("no WspUserDataServiceMockCallback instance");
+            if (mUserDataServiceMockCallback == null) {
+                throw new RuntimeException("no UserDataServiceMockCallback instance");
             }
-            return new WspWeightScaleServiceMockCallback(createMockData(), false, mWspUserDataServiceMockCallback);
+            return new WspWeightScaleServiceMockCallback(createMockData(), false, mUserDataServiceMockCallback);
         }
 
     }
 
-    private final WspUserDataServiceMockCallback mWspUserDataServiceMockCallback;
+    private final UserDataServiceMockCallback mUserDataServiceMockCallback;
 
     /**
-     * @param mockData                       {@link MockData} instance
-     * @param isFallback                     fallback flag
-     * @param wspUserDataServiceMockCallback set if multiple user supported
+     * @param mockData                    {@link MockData} instance
+     * @param isFallback                  fallback flag
+     * @param userDataServiceMockCallback set if multiple user supported
      * @see WeightScaleServiceMockCallback#WeightScaleServiceMockCallback(MockData, boolean)
      */
-    public WspWeightScaleServiceMockCallback(@NonNull MockData mockData, boolean isFallback, @Nullable WspUserDataServiceMockCallback wspUserDataServiceMockCallback) {
+    public WspWeightScaleServiceMockCallback(@NonNull MockData mockData, boolean isFallback, @Nullable UserDataServiceMockCallback userDataServiceMockCallback) {
         super(mockData, isFallback);
-        mWspUserDataServiceMockCallback = wspUserDataServiceMockCallback;
+        mUserDataServiceMockCallback = userDataServiceMockCallback;
     }
 
     /**
@@ -94,91 +94,94 @@ public class WspWeightScaleServiceMockCallback extends WeightScaleServiceMockCal
      */
     @Override
     protected synchronized void startNotification(@Nullable Integer taskId, @NonNull BLEServerConnection bleServerConnection, @Nullable BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int descriptorInstanceId, long delay, @Nullable Integer notificationCount, @Nullable Bundle argument) {
-        if (mWspUserDataServiceMockCallback == null) {
+        if (mUserDataServiceMockCallback == null) {
             super.startNotification(taskId, bleServerConnection, device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, delay, notificationCount, argument);
         } else {
             Map<Pair<UUID, Integer>, CharacteristicData> characteristicMap = mRemappedServiceCharacteristicMap.get(Pair.create(serviceUUID, serviceInstanceId));
             if (characteristicMap != null) {
                 CharacteristicData characteristicData = characteristicMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
                 if (characteristicData != null) {
-                    Bundle bundle = new Bundle();
-                    bundle.putInt(KEY_NOTIFICATION_COUNT, notificationCount == null ? characteristicData.notificationCount : notificationCount);
-                    bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
-                    if (argument != null) {
-                        bundle.putBundle(KEY_ORIGINAL_ARGUMENT, argument);
-                    }
-
-                    Boolean isConfirm = null;
-                    Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
-                    if (descriptorDataMap != null) {
-                        DescriptorData descriptorData = descriptorDataMap.get(Pair.create(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, descriptorInstanceId));
-                        if (descriptorData != null) {
-                            if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
-                                isConfirm = false;
-                            } else if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, descriptorData.getBytes())) {
-                                isConfirm = true;
-                            }
-                        }
-                    }
-
-                    if (isConfirm != null) {
-                        Integer userId = null;
-                        if (WEIGHT_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
-                            WeightMeasurement weightMeasurement = new WeightMeasurement(characteristicData.getBytes());
-                            if (weightMeasurement.isFlagsUserIdPresent()) {
-                                userId = weightMeasurement.getUserId();
-                            }
+                    int targetNotificationCount = notificationCount == null ? characteristicData.notificationCount : notificationCount;
+                    if (targetNotificationCount != 0) {
+                        Bundle bundle = new Bundle();
+                        bundle.putInt(KEY_NOTIFICATION_COUNT, notificationCount == null ? characteristicData.notificationCount : notificationCount);
+                        bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
+                        if (argument != null) {
+                            bundle.putBundle(KEY_ORIGINAL_ARGUMENT, argument);
                         }
 
-                        NotificationData notificationData;
-                        if (device == null) {
-                            for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
-                                if (mWspUserDataServiceMockCallback.hasNoConsent(bluetoothDevice, userId)) {
-                                    continue;
+                        Boolean isConfirm = null;
+                        Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
+                        if (descriptorDataMap != null) {
+                            DescriptorData descriptorData = descriptorDataMap.get(Pair.create(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, descriptorInstanceId));
+                            if (descriptorData != null) {
+                                if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, descriptorData.getBytes())) {
+                                    isConfirm = false;
+                                } else if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0 && Arrays.equals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE, descriptorData.getBytes())) {
+                                    isConfirm = true;
                                 }
-                                notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
-                                if (!mActivatedNotificationMap.containsKey(notificationData)) {
-                                    Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
-                                            , serviceUUID
-                                            , serviceInstanceId
-                                            , characteristicUUID
-                                            , characteristicInstanceId
-                                            , characteristicData
-                                            , isConfirm
-                                            , NotificationTask.TIMEOUT_MILLIS
-                                            , delay
-                                            , bundle
-                                            , this);
-                                    if (newTaskId != null) {
-                                        mActivatedNotificationMap.put(notificationData, newTaskId);
+                            }
+                        }
+
+                        if (isConfirm != null) {
+                            Integer userId = null;
+                            if (WEIGHT_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
+                                WeightMeasurement weightMeasurement = new WeightMeasurement(characteristicData.getBytes());
+                                if (weightMeasurement.isFlagsUserIdPresent()) {
+                                    userId = weightMeasurement.getUserId();
+                                }
+                            }
+
+                            NotificationData notificationData;
+                            if (device == null) {
+                                for (BluetoothDevice bluetoothDevice : mConnectedDeviceSet) {
+                                    if (mUserDataServiceMockCallback.hasNoConsent(bluetoothDevice, userId)) {
+                                        continue;
                                     }
-                                }
-                            }
-                        } else {
-                            if (mWspUserDataServiceMockCallback.hasNoConsent(device, userId)) {
-                                return;
-                            }
-                            notificationData = new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
-                            if (mConnectedDeviceSet.contains(device)) {
-                                Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
-                                if (currentTaskId == null || currentTaskId.equals(taskId)) {
-                                    Integer newTaskId = bleServerConnection.createNotificationTask(device
-                                            , serviceUUID
-                                            , serviceInstanceId
-                                            , characteristicUUID
-                                            , characteristicInstanceId
-                                            , characteristicData
-                                            , isConfirm
-                                            , NotificationTask.TIMEOUT_MILLIS
-                                            , delay
-                                            , bundle
-                                            , this);
-                                    if (newTaskId != null) {
-                                        mActivatedNotificationMap.put(notificationData, newTaskId);
+                                    notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
+                                    if (!mActivatedNotificationMap.containsKey(notificationData)) {
+                                        Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
+                                                , serviceUUID
+                                                , serviceInstanceId
+                                                , characteristicUUID
+                                                , characteristicInstanceId
+                                                , characteristicData
+                                                , isConfirm
+                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , delay
+                                                , bundle
+                                                , this);
+                                        if (newTaskId != null) {
+                                            mActivatedNotificationMap.put(notificationData, newTaskId);
+                                        }
                                     }
                                 }
                             } else {
-                                mActivatedNotificationMap.remove(notificationData);
+                                if (mUserDataServiceMockCallback.hasNoConsent(device, userId)) {
+                                    return;
+                                }
+                                notificationData = new NotificationData(device, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
+                                if (mConnectedDeviceSet.contains(device)) {
+                                    Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
+                                    if (currentTaskId == null || currentTaskId.equals(taskId)) {
+                                        Integer newTaskId = bleServerConnection.createNotificationTask(device
+                                                , serviceUUID
+                                                , serviceInstanceId
+                                                , characteristicUUID
+                                                , characteristicInstanceId
+                                                , characteristicData
+                                                , isConfirm
+                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , delay
+                                                , bundle
+                                                , this);
+                                        if (newTaskId != null) {
+                                            mActivatedNotificationMap.put(notificationData, newTaskId);
+                                        }
+                                    }
+                                } else {
+                                    mActivatedNotificationMap.remove(notificationData);
+                                }
                             }
                         }
                     }

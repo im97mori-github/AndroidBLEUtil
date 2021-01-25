@@ -252,7 +252,6 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
                     , descriptorValue))
                     , characteristicResponseCode
                     , characteristicDelay
-                    , 1
                     , setCumulativeValueResponseValue
                     , maskLocationAndSpeedCharacteristicContentResponseValue
                     , navigationControlResponseValue
@@ -453,7 +452,7 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
                                 if (bluetoothGattDescriptor != null) {
                                     int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
 
-                                    startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, characteristicData.delay, characteristicData.notificationCount, null);
+                                    startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, characteristicData.delay, 1, null);
                                 }
                             }
                         }
@@ -463,59 +462,6 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
                 if (force && !result && responseNeeded) {
                     result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
                 }
-            }
-        }
-        return result;
-    }
-
-    @Override
-    public synchronized boolean onDescriptorWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattDescriptor bluetoothGattDescriptor, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value, boolean force) {
-        boolean result = false;
-
-        long now = SystemClock.elapsedRealtime();
-        BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
-
-        if (bluetoothGattServer != null) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattDescriptor.getCharacteristic();
-            BluetoothGattService bluetoothGattService = bluetoothGattCharacteristic.getService();
-            UUID serviceUUID = bluetoothGattService.getUuid();
-            int serviceInstanceId = bluetoothGattService.getInstanceId();
-            UUID characteristicUUID = bluetoothGattCharacteristic.getUuid();
-            int characteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
-            Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
-            if (descriptorDataMap != null) {
-                UUID descriptorUUID = bluetoothGattDescriptor.getUuid();
-                int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
-                Pair<UUID, Integer> descriptorPair = Pair.create(descriptorUUID, descriptorInstanceId);
-
-                DescriptorData descriptorData = descriptorDataMap.get(descriptorPair);
-                if (descriptorData != null) {
-                    delay(now, descriptorData.delay);
-
-                    if (responseNeeded) {
-                        result = bluetoothGattServer.sendResponse(device, requestId, descriptorData.responseCode, offset, null);
-                    } else {
-                        result = true;
-                    }
-
-                    if (result && BluetoothGatt.GATT_SUCCESS == descriptorData.responseCode) {
-                        mIsReliable |= preparedWrite;
-
-                        if (mIsReliable) {
-                            descriptorData.temporaryData = value;
-                        } else {
-                            descriptorData.currentData = value;
-
-                            if (!LN_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                                startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, 0, null, null);
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (force && !result && responseNeeded) {
-                result = bluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
             }
         }
         return result;
