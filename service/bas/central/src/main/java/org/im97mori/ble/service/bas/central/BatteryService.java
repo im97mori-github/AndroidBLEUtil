@@ -141,96 +141,96 @@ public class BatteryService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && BATTERY_SERVICE.equals(serviceUUID) && BATTERY_LEVEL_CHARACTERISTIC.equals(characteristicUUID)) {
             if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                mBatteryServiceCallback.onBatteryLevelClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mBatteryServiceCallback.onBatteryLevelClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR.equals(descriptorUUID)) {
-                mBatteryServiceCallback.onBatteryLevelCharacteristicPresentationFormatReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), CharacteristicPresentationFormatAndroid.CREATOR.createFromByteArray(values), argument);
+                mBatteryServiceCallback.onBatteryLevelCharacteristicPresentationFormatReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), descriptorInstanceId, CharacteristicPresentationFormatAndroid.CREATOR.createFromByteArray(values), argument);
             }
         }
-        super.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, argument);
+        super.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && BATTERY_SERVICE.equals(serviceUUID) && BATTERY_LEVEL_CHARACTERISTIC.equals(characteristicUUID)) {
             if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                mBatteryServiceCallback.onBatteryLevelClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), status, argument);
+                mBatteryServiceCallback.onBatteryLevelClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), descriptorInstanceId, status, argument);
             } else if (CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR.equals(descriptorUUID)) {
-                mBatteryServiceCallback.onBatteryLevelCharacteristicPresentationFormatReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), status, argument);
+                mBatteryServiceCallback.onBatteryLevelCharacteristicPresentationFormatReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), descriptorInstanceId, status, argument);
             }
         }
-        super.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, argument);
+        super.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && BATTERY_SERVICE.equals(serviceUUID) && BATTERY_LEVEL_CHARACTERISTIC.equals(characteristicUUID)) {
             if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                mBatteryServiceCallback.onBatteryLevelClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), timeout, argument);
+                mBatteryServiceCallback.onBatteryLevelClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), descriptorInstanceId, timeout, argument);
             } else if (CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR.equals(descriptorUUID)) {
-                mBatteryServiceCallback.onBatteryLevelCharacteristicPresentationFormatReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), timeout, argument);
+                mBatteryServiceCallback.onBatteryLevelCharacteristicPresentationFormatReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), descriptorInstanceId, timeout, argument);
             }
         }
-        super.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, argument);
+        super.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && BATTERY_SERVICE.equals(serviceUUID) && BATTERY_LEVEL_CHARACTERISTIC.equals(characteristicUUID)) {
             if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mBatteryServiceCallback.onBatteryLevelNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), argument);
+                    mBatteryServiceCallback.onBatteryLevelNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), descriptorInstanceId, argument);
                 } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
-                    mBatteryServiceCallback.onBatteryLevelNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), argument);
+                    mBatteryServiceCallback.onBatteryLevelNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), descriptorInstanceId, argument);
                 }
             }
         }
-        super.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, argument);
+        super.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && BATTERY_SERVICE.equals(serviceUUID) && BATTERY_LEVEL_CHARACTERISTIC.equals(characteristicUUID)) {
             if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mBatteryServiceCallback.onBatteryLevelNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), status, argument);
+                    mBatteryServiceCallback.onBatteryLevelNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), descriptorInstanceId, status, argument);
                 } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
-                    mBatteryServiceCallback.onBatteryLevelNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), status, argument);
+                    mBatteryServiceCallback.onBatteryLevelNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), descriptorInstanceId, status, argument);
                 }
             }
         }
-        super.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, argument);
+        super.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && BATTERY_SERVICE.equals(serviceUUID) && BATTERY_LEVEL_CHARACTERISTIC.equals(characteristicUUID)) {
             if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mBatteryServiceCallback.onBatteryLevelNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), timeout, argument);
+                    mBatteryServiceCallback.onBatteryLevelNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), descriptorInstanceId, timeout, argument);
                 } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
-                    mBatteryServiceCallback.onBatteryLevelNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), timeout, argument);
+                    mBatteryServiceCallback.onBatteryLevelNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, getIndex(serviceInstanceId, characteristicInstanceId), descriptorInstanceId, timeout, argument);
                 }
             }
         }
-        super.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, argument);
+        super.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, argument);
     }
 
     /**
@@ -324,9 +324,9 @@ public class BatteryService extends AbstractCentralService {
      *
      * @param index Battery Service index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see BatteryServiceCallback#onBatteryLevelCharacteristicPresentationFormatReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, CharacteristicPresentationFormatAndroid, Bundle)
-     * @see BatteryServiceCallback#onBatteryLevelCharacteristicPresentationFormatReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see BatteryServiceCallback#onBatteryLevelCharacteristicPresentationFormatReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see BatteryServiceCallback#onBatteryLevelCharacteristicPresentationFormatReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, CharacteristicPresentationFormatAndroid, Bundle)
+     * @see BatteryServiceCallback#onBatteryLevelCharacteristicPresentationFormatReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see BatteryServiceCallback#onBatteryLevelCharacteristicPresentationFormatReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getBatteryLevelCharacteristicPresentationFormat(int index) {
@@ -337,7 +337,7 @@ public class BatteryService extends AbstractCentralService {
             if (bluetoothGattCharacteristic != null) {
                 BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR);
                 if (bluetoothGattDescriptor != null) {
-                    taskId = mBLEConnection.createReadDescriptorTask(BATTERY_SERVICE, bluetoothGattService.getInstanceId(), BATTERY_LEVEL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+                    taskId = mBLEConnection.createReadDescriptorTask(BATTERY_SERVICE, bluetoothGattService.getInstanceId(), BATTERY_LEVEL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
                 }
             }
         }
@@ -357,9 +357,9 @@ public class BatteryService extends AbstractCentralService {
      *
      * @param index Battery Service index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see BatteryServiceCallback#onBatteryLevelClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see BatteryServiceCallback#onBatteryLevelClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see BatteryServiceCallback#onBatteryLevelClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see BatteryServiceCallback#onBatteryLevelClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see BatteryServiceCallback#onBatteryLevelClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see BatteryServiceCallback#onBatteryLevelClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getBatteryLevelClientCharacteristicConfiguration(int index) {
@@ -370,7 +370,7 @@ public class BatteryService extends AbstractCentralService {
                 BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(BATTERY_LEVEL_CHARACTERISTIC);
                 BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
                 if (bluetoothGattDescriptor != null) {
-                    taskId = mBLEConnection.createReadDescriptorTask(BATTERY_SERVICE, bluetoothGattService.getInstanceId(), BATTERY_LEVEL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+                    taskId = mBLEConnection.createReadDescriptorTask(BATTERY_SERVICE, bluetoothGattService.getInstanceId(), BATTERY_LEVEL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
                 }
             }
         }
@@ -390,9 +390,9 @@ public class BatteryService extends AbstractCentralService {
      *
      * @param index Battery Service index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see BatteryServiceCallback#onBatteryLevelNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see BatteryServiceCallback#onBatteryLevelNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see BatteryServiceCallback#onBatteryLevelNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see BatteryServiceCallback#onBatteryLevelNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, Bundle)
+     * @see BatteryServiceCallback#onBatteryLevelNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see BatteryServiceCallback#onBatteryLevelNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startBatteryLevelNotification(int index) {
@@ -405,7 +405,7 @@ public class BatteryService extends AbstractCentralService {
                 if (bluetoothGattDescriptor != null) {
                     Bundle bundle = new Bundle();
                     bundle.putInt(KEY_STATUS, STATUS_START);
-                    taskId = mBLEConnection.createWriteDescriptorTask(BATTERY_SERVICE, bluetoothGattService.getInstanceId(), BATTERY_LEVEL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+                    taskId = mBLEConnection.createWriteDescriptorTask(BATTERY_SERVICE, bluetoothGattService.getInstanceId(), BATTERY_LEVEL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
                 }
             }
         }
@@ -425,9 +425,9 @@ public class BatteryService extends AbstractCentralService {
      *
      * @param index Battery Service index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see BatteryServiceCallback#onBatteryLevelNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see BatteryServiceCallback#onBatteryLevelNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see BatteryServiceCallback#onBatteryLevelNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see BatteryServiceCallback#onBatteryLevelNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, Bundle)
+     * @see BatteryServiceCallback#onBatteryLevelNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see BatteryServiceCallback#onBatteryLevelNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopBatteryLevelNotification(int index) {
@@ -440,7 +440,7 @@ public class BatteryService extends AbstractCentralService {
                 if (bluetoothGattDescriptor != null) {
                     Bundle bundle = new Bundle();
                     bundle.putInt(KEY_STATUS, STATUS_STOP);
-                    taskId = mBLEConnection.createWriteDescriptorTask(BATTERY_SERVICE, bluetoothGattService.getInstanceId(), BATTERY_LEVEL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+                    taskId = mBLEConnection.createWriteDescriptorTask(BATTERY_SERVICE, bluetoothGattService.getInstanceId(), BATTERY_LEVEL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
                 }
             }
         }

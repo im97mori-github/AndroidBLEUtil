@@ -367,9 +367,24 @@ public abstract class AbstractBLETask {
     public static final int PROGRESS_BOND_ERROR = PROGRESS_BOND_SUCCESS + 1;
 
     /**
+     * PROGRESS:SET_NOTIFICATION_START
+     */
+    public static final int PROGRESS_SET_NOTIFICATION_START = PROGRESS_BOND_SUCCESS + 1;
+
+    /**
+     * PROGRESS:SET_NOTIFICATION_SUCCESS
+     */
+    public static final int PROGRESS_SET_NOTIFICATION_SUCCESS = PROGRESS_SET_NOTIFICATION_START + 1;
+
+    /**
+     * PROGRESS:SET_NOTIFICATION_ERROR
+     */
+    public static final int PROGRESS_SET_NOTIFICATION_ERROR = PROGRESS_SET_NOTIFICATION_SUCCESS + 1;
+
+    /**
      * For user defined progress
      */
-    public static final int PROGRESS_FIRST_USER = PROGRESS_REMOVE_SERVICE_ERROR + 1;
+    public static final int PROGRESS_FIRST_USER = PROGRESS_SET_NOTIFICATION_ERROR + 1;
 
     /**
      * create timeout message

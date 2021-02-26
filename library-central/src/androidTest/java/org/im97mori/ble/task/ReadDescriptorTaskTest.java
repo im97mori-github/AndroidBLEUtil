@@ -32,7 +32,7 @@ public class ReadDescriptorTaskTest {
         UUID serviceUUID = UUID.randomUUID();
         UUID characteristicUUID = UUID.randomUUID();
         UUID descriptorUUID = UUID.randomUUID();
-        ReadDescriptorTask task = new ReadDescriptorTask(null, null, null, serviceUUID, null, characteristicUUID, null, descriptorUUID, ReadDescriptorTask.TIMEOUT_MILLIS, null);
+        ReadDescriptorTask task = new ReadDescriptorTask(null, null, null, serviceUUID, null, characteristicUUID, null, descriptorUUID, null, ReadDescriptorTask.TIMEOUT_MILLIS, null);
         Message message = task.createInitialMessage();
 
         assertNotNull(message);
@@ -56,21 +56,25 @@ public class ReadDescriptorTaskTest {
         UUID characteristicUUID = UUID.randomUUID();
         int characteristicInstanceId = 2;
         UUID descriptorUUID = UUID.randomUUID();
+        int descriptorInstanceId = 3;
         byte[] values = new byte[0];
-        Message message = ReadDescriptorTask.createReadDescriptorSuccessMessage(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values);
+        Message message = ReadDescriptorTask.createReadDescriptorSuccessMessage(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
         assertEquals(serviceUUID, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
-        assertEquals(serviceInstanceId, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
+        assertEquals(serviceInstanceId, bundle.getInt(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
-        assertEquals(characteristicInstanceId, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
+        assertEquals(characteristicInstanceId, bundle.getInt(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_DESCRIPTOR_UUID));
         assertEquals(descriptorUUID, bundle.getSerializable(AbstractBLETask.KEY_DESCRIPTOR_UUID));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_DESCRIPTOR_INSTANCE_ID));
+        assertEquals(descriptorInstanceId, bundle.getInt(AbstractBLETask.KEY_DESCRIPTOR_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_VALUES));
         assertArrayEquals(values, bundle.getByteArray(AbstractBLETask.KEY_VALUES));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
@@ -84,21 +88,25 @@ public class ReadDescriptorTaskTest {
         UUID characteristicUUID = UUID.randomUUID();
         int characteristicInstanceId = 2;
         UUID descriptorUUID = UUID.randomUUID();
+        int descriptorInstanceId = 3;
         int status = new Random().nextInt();
-        Message message = ReadDescriptorTask.createReadDescriptorErrorMessage(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status);
+        Message message = ReadDescriptorTask.createReadDescriptorErrorMessage(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_UUID));
         assertEquals(serviceUUID, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
-        assertEquals(serviceInstanceId, bundle.getSerializable(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
+        assertEquals(serviceInstanceId, bundle.getInt(AbstractBLETask.KEY_SERVICE_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertEquals(characteristicUUID, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_UUID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
-        assertEquals(characteristicInstanceId, bundle.getSerializable(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
+        assertEquals(characteristicInstanceId, bundle.getInt(AbstractBLETask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_DESCRIPTOR_UUID));
         assertEquals(descriptorUUID, bundle.getSerializable(AbstractBLETask.KEY_DESCRIPTOR_UUID));
+        assertTrue(bundle.containsKey(AbstractBLETask.KEY_DESCRIPTOR_INSTANCE_ID));
+        assertEquals(descriptorInstanceId, bundle.getInt(AbstractBLETask.KEY_DESCRIPTOR_INSTANCE_ID));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_STATUS));
         assertEquals(status, bundle.getInt(AbstractBLETask.KEY_STATUS));
         assertTrue(bundle.containsKey(AbstractBLETask.KEY_NEXT_PROGRESS));
@@ -110,7 +118,7 @@ public class ReadDescriptorTaskTest {
         UUID serviceUUID = UUID.randomUUID();
         UUID characteristicUUID = UUID.randomUUID();
         UUID descriptorUUID = UUID.randomUUID();
-        ReadDescriptorTask task = new ReadDescriptorTask(null, null, null, serviceUUID, null, characteristicUUID, null, descriptorUUID, ReadDescriptorTask.TIMEOUT_MILLIS, null);
+        ReadDescriptorTask task = new ReadDescriptorTask(null, null, null, serviceUUID, null, characteristicUUID, null, descriptorUUID, null, ReadDescriptorTask.TIMEOUT_MILLIS, null);
         assertFalse(task.doProcess(new Message()));
     }
 
@@ -125,7 +133,7 @@ public class ReadDescriptorTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ReadDescriptorTask task = new ReadDescriptorTask(new MockBLEConnection(), null, mockTaskHandler, null, null, null, null, null, ReadDescriptorTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ReadDescriptorTask task = new ReadDescriptorTask(new MockBLEConnection(), null, mockTaskHandler, null, null, null, null, null, null, ReadDescriptorTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -145,7 +153,7 @@ public class ReadDescriptorTaskTest {
             BaseBLECallback callback = new BaseBLECallback() {
 
                 @Override
-                public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, Bundle argument) {
+                public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, Bundle argument) {
                     result.set(true);
                 }
             };
@@ -158,7 +166,7 @@ public class ReadDescriptorTaskTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ReadDescriptorTask task = new ReadDescriptorTask(mockBleConnection, null, mockTaskHandler, null, null, null, null, null, ReadDescriptorTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ReadDescriptorTask task = new ReadDescriptorTask(mockBleConnection, null, mockTaskHandler, null, null, null, null, null, null, ReadDescriptorTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());

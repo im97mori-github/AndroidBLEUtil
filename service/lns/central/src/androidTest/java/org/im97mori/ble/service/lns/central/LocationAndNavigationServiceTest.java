@@ -1108,19 +1108,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onLocationAndSpeedClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, clientCharacteristicConfigurationAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1128,7 +1130,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1143,19 +1145,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onLocationAndSpeedClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1170,19 +1173,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onLocationAndSpeedClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1197,19 +1201,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onLocationAndSpeedClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1224,19 +1229,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onLNControlPointClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, clientCharacteristicConfigurationAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1244,7 +1251,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1259,19 +1266,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onLNControlPointClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1286,19 +1294,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onLNControlPointClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1313,19 +1322,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onLNControlPointClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1340,19 +1350,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onNavigationClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, clientCharacteristicConfigurationAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1360,7 +1372,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1375,19 +1387,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onNavigationClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1402,19 +1415,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onNavigationClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1429,19 +1443,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onNavigationClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1456,19 +1471,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLocationAndSpeedClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1476,7 +1493,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1491,19 +1508,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLocationAndSpeedClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1518,19 +1536,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLocationAndSpeedClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1545,19 +1564,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLocationAndSpeedClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1572,19 +1592,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLNControlPointClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1592,7 +1614,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1607,19 +1629,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLNControlPointClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1634,19 +1657,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLNControlPointClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1661,19 +1685,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLNControlPointClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1688,19 +1713,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onNavigationClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1708,7 +1735,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1723,19 +1750,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onNavigationClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1750,19 +1778,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onNavigationClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1777,19 +1806,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onNavigationClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1804,19 +1834,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLocationAndSpeedClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1824,7 +1856,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1839,19 +1871,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLocationAndSpeedClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1866,19 +1899,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLocationAndSpeedClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1893,19 +1927,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLocationAndSpeedClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1920,19 +1955,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLNControlPointClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1940,7 +1977,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1955,19 +1992,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLNControlPointClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1982,19 +2020,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLNControlPointClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2009,19 +2048,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLNControlPointClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2036,19 +2076,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onNavigationClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -2056,7 +2098,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2071,19 +2113,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onNavigationClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2098,19 +2141,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onNavigationClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2125,19 +2169,20 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onNavigationClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2152,27 +2197,29 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2187,20 +2234,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2215,20 +2263,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2243,20 +2292,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2271,14 +2321,15 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -2291,7 +2342,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2306,20 +2357,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2334,20 +2386,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2362,20 +2415,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2390,27 +2444,29 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2425,20 +2481,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2453,20 +2510,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2481,20 +2539,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2509,14 +2568,15 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -2529,7 +2589,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2544,20 +2604,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2572,20 +2633,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2600,20 +2662,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2628,27 +2691,29 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onNavigationNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2663,20 +2728,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onNavigationNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2691,20 +2757,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onNavigationNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2719,20 +2786,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onNavigationNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2747,14 +2815,15 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onNavigationNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -2767,7 +2836,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2782,20 +2851,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onNavigationNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2810,20 +2880,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onNavigationNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2838,20 +2909,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onNavigationNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        locationAndNavigationService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2866,20 +2938,22 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -2887,7 +2961,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2902,20 +2976,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2930,20 +3005,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2958,20 +3034,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2986,14 +3063,15 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -3007,7 +3085,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3022,20 +3100,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3050,20 +3129,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3078,20 +3158,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3106,20 +3187,22 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -3127,7 +3210,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3142,20 +3225,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3170,20 +3254,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3198,20 +3283,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3226,14 +3312,15 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -3247,7 +3334,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3262,20 +3349,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3290,20 +3378,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3318,20 +3407,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3346,20 +3436,22 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onNavigationNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -3367,7 +3459,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3382,20 +3474,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onNavigationNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3410,20 +3503,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onNavigationNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3438,20 +3532,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onNavigationNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3466,14 +3561,15 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onNavigationNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -3487,7 +3583,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3502,20 +3598,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onNavigationNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3530,20 +3627,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onNavigationNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3558,20 +3656,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onNavigationNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        locationAndNavigationService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3586,20 +3685,22 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -3607,7 +3708,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3622,20 +3723,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3650,20 +3752,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3678,20 +3781,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3706,14 +3810,15 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -3727,7 +3832,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3742,20 +3847,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3770,20 +3876,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3798,20 +3905,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LOCATION_AND_SPEED_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLocationAndSpeedNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLocationAndSpeedNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3826,20 +3934,22 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -3847,7 +3957,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3862,20 +3972,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3890,20 +4001,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3918,20 +4030,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3946,14 +4059,15 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -3967,7 +4081,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3982,20 +4096,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4010,20 +4125,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4038,20 +4154,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onLNControlPointIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onLNControlPointIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4066,20 +4183,22 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onNavigationNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -4087,7 +4206,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -4102,20 +4221,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onNavigationNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4130,20 +4250,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onNavigationNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4158,20 +4279,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onNavigationNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4186,14 +4308,15 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onNavigationNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -4207,7 +4330,7 @@ public class LocationAndNavigationServiceTest {
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -4222,20 +4345,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onNavigationNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4250,20 +4374,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = LN_FEATURE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onNavigationNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4278,20 +4403,21 @@ public class LocationAndNavigationServiceTest {
         final UUID originalCharacteristicUUID = NAVIGATION_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockLocationAndNavigationServiceCallback mockLocationAndNavigationServiceCallback = new MockLocationAndNavigationServiceCallback() {
 
             @Override
-            public void onNavigationNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onNavigationNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, mockLocationAndNavigationServiceCallback, null);
-        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        locationAndNavigationService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4791,7 +4917,7 @@ public class LocationAndNavigationServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 
@@ -4837,7 +4963,7 @@ public class LocationAndNavigationServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 
@@ -4883,7 +5009,7 @@ public class LocationAndNavigationServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 
@@ -5092,7 +5218,7 @@ public class LocationAndNavigationServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 
@@ -5162,7 +5288,7 @@ public class LocationAndNavigationServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 
@@ -5232,7 +5358,7 @@ public class LocationAndNavigationServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 
@@ -5302,7 +5428,7 @@ public class LocationAndNavigationServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 
@@ -5372,7 +5498,7 @@ public class LocationAndNavigationServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 

@@ -71,6 +71,20 @@
     <item
         android:id="@+id/read_multi_instance_characteristic"
         android:title="@string/menu_read_multi_instance_characteristic" />
+
+    <item
+        android:id="@+id/set_notification_on"
+        android:title="@string/menu_set_notification_on" />
+    <item
+        android:id="@+id/set_notification_off"
+        android:title="@string/menu_set_notification_off" />
+    <item
+        android:id="@+id/set_notification_on_sync"
+        android:title="@string/menu_set_notification_on_sync" />
+    <item
+        android:id="@+id/set_notification_off_sync"
+        android:title="@string/menu_set_notification_off_sync" />
+
     <item
         android:id="@+id/clear"
         android:title="@string/menu_clear" />

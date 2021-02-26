@@ -402,282 +402,282 @@ public class FitnessMachineService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && FITNESS_MACHINE_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
             if (TREADMILL_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onTreadmillDataClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mFitnessMachineServiceCallback.onTreadmillDataClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (CROSS_TRAINER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onCrossTrainerDataClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mFitnessMachineServiceCallback.onCrossTrainerDataClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (STEP_CLIMBER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onStepClimberDataClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mFitnessMachineServiceCallback.onStepClimberDataClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (STAIR_CLIMBER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onStairClimberDataClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mFitnessMachineServiceCallback.onStairClimberDataClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (ROWER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onRowerDataClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mFitnessMachineServiceCallback.onRowerDataClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (INDOOR_BIKE_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onIndoorBikeDataClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mFitnessMachineServiceCallback.onIndoorBikeDataClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (TRAINING_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onTrainingStatusClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mFitnessMachineServiceCallback.onTrainingStatusClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onFitnessMachineControlPointClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mFitnessMachineServiceCallback.onFitnessMachineControlPointClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (FITNESS_MACHINE_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onFitnessMachineStatusClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mFitnessMachineServiceCallback.onFitnessMachineStatusClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             }
         }
-        super.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, argument);
+        super.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && FITNESS_MACHINE_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
             if (TREADMILL_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onTreadmillDataClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                mFitnessMachineServiceCallback.onTreadmillDataClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
             } else if (CROSS_TRAINER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onCrossTrainerDataClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                mFitnessMachineServiceCallback.onCrossTrainerDataClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
             } else if (STEP_CLIMBER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onStepClimberDataClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                mFitnessMachineServiceCallback.onStepClimberDataClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
             } else if (STAIR_CLIMBER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onStairClimberDataClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                mFitnessMachineServiceCallback.onStairClimberDataClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
             } else if (ROWER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onRowerDataClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                mFitnessMachineServiceCallback.onRowerDataClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
             } else if (INDOOR_BIKE_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onIndoorBikeDataClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                mFitnessMachineServiceCallback.onIndoorBikeDataClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
             } else if (TRAINING_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onTrainingStatusClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                mFitnessMachineServiceCallback.onTrainingStatusClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
             } else if (FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onFitnessMachineControlPointClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                mFitnessMachineServiceCallback.onFitnessMachineControlPointClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
             } else if (FITNESS_MACHINE_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onFitnessMachineStatusClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                mFitnessMachineServiceCallback.onFitnessMachineStatusClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
             }
         }
-        super.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, argument);
+        super.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && FITNESS_MACHINE_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
             if (TREADMILL_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onTreadmillDataClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                mFitnessMachineServiceCallback.onTreadmillDataClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
             } else if (CROSS_TRAINER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onCrossTrainerDataClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                mFitnessMachineServiceCallback.onCrossTrainerDataClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
             } else if (STEP_CLIMBER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onStepClimberDataClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                mFitnessMachineServiceCallback.onStepClimberDataClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
             } else if (STAIR_CLIMBER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onStairClimberDataClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                mFitnessMachineServiceCallback.onStairClimberDataClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
             } else if (ROWER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onRowerDataClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                mFitnessMachineServiceCallback.onRowerDataClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
             } else if (INDOOR_BIKE_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onIndoorBikeDataClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                mFitnessMachineServiceCallback.onIndoorBikeDataClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
             } else if (TRAINING_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onTrainingStatusClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                mFitnessMachineServiceCallback.onTrainingStatusClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
             } else if (FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onFitnessMachineControlPointClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                mFitnessMachineServiceCallback.onFitnessMachineControlPointClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
             } else if (FITNESS_MACHINE_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
-                mFitnessMachineServiceCallback.onFitnessMachineStatusClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                mFitnessMachineServiceCallback.onFitnessMachineStatusClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
             }
         }
-        super.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, argument);
+        super.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && FITNESS_MACHINE_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (TREADMILL_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onTreadmillDataNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onTreadmillDataNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onTreadmillDataNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onTreadmillDataNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             } else if (CROSS_TRAINER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onCrossTrainerDataNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onCrossTrainerDataNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onCrossTrainerDataNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onCrossTrainerDataNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             } else if (STEP_CLIMBER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onStepClimberDataNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onStepClimberDataNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onStepClimberDataNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onStepClimberDataNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             } else if (STAIR_CLIMBER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onStairClimberDataNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onStairClimberDataNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onStairClimberDataNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onStairClimberDataNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             } else if (ROWER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onRowerDataNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onRowerDataNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onRowerDataNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onRowerDataNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             } else if (INDOOR_BIKE_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onIndoorBikeDataNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onIndoorBikeDataNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onIndoorBikeDataNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onIndoorBikeDataNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             } else if (TRAINING_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onTrainingStatusNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onTrainingStatusNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onTrainingStatusNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onTrainingStatusNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             } else if (FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onFitnessMachineControlPointIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onFitnessMachineControlPointIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onFitnessMachineControlPointIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onFitnessMachineControlPointIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             } else if (FITNESS_MACHINE_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onFitnessMachineStatusNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onFitnessMachineStatusNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onFitnessMachineStatusNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mFitnessMachineServiceCallback.onFitnessMachineStatusNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             }
         }
-        super.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, argument);
+        super.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && FITNESS_MACHINE_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (TREADMILL_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onTreadmillDataNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onTreadmillDataNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onTreadmillDataNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onTreadmillDataNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             } else if (CROSS_TRAINER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onCrossTrainerDataNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onCrossTrainerDataNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onCrossTrainerDataNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onCrossTrainerDataNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             } else if (STEP_CLIMBER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onStepClimberDataNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onStepClimberDataNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onStepClimberDataNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onStepClimberDataNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             } else if (STAIR_CLIMBER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onStairClimberDataNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onStairClimberDataNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onStairClimberDataNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onStairClimberDataNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             } else if (ROWER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onRowerDataNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onRowerDataNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onRowerDataNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onRowerDataNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             } else if (INDOOR_BIKE_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onIndoorBikeDataNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onIndoorBikeDataNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onIndoorBikeDataNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onIndoorBikeDataNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             } else if (TRAINING_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onTrainingStatusNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onTrainingStatusNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onTrainingStatusNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onTrainingStatusNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             } else if (FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onFitnessMachineControlPointIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onFitnessMachineControlPointIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onFitnessMachineControlPointIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onFitnessMachineControlPointIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             } else if (FITNESS_MACHINE_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onFitnessMachineStatusNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onFitnessMachineStatusNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onFitnessMachineStatusNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mFitnessMachineServiceCallback.onFitnessMachineStatusNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             }
         }
-        super.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, argument);
+        super.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && FITNESS_MACHINE_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (TREADMILL_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onTreadmillDataNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onTreadmillDataNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onTreadmillDataNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onTreadmillDataNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             } else if (CROSS_TRAINER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onCrossTrainerDataNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onCrossTrainerDataNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onCrossTrainerDataNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onCrossTrainerDataNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             } else if (STEP_CLIMBER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onStepClimberDataNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onStepClimberDataNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onStepClimberDataNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onStepClimberDataNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             } else if (STAIR_CLIMBER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onStairClimberDataNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onStairClimberDataNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onStairClimberDataNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onStairClimberDataNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             } else if (ROWER_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onRowerDataNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onRowerDataNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onRowerDataNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onRowerDataNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             } else if (INDOOR_BIKE_DATA_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onIndoorBikeDataNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onIndoorBikeDataNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onIndoorBikeDataNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onIndoorBikeDataNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             } else if (TRAINING_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onTrainingStatusNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onTrainingStatusNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onTrainingStatusNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onTrainingStatusNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             } else if (FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onFitnessMachineControlPointIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onFitnessMachineControlPointIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onFitnessMachineControlPointIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onFitnessMachineControlPointIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             } else if (FITNESS_MACHINE_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mFitnessMachineServiceCallback.onFitnessMachineStatusNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onFitnessMachineStatusNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mFitnessMachineServiceCallback.onFitnessMachineStatusNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mFitnessMachineServiceCallback.onFitnessMachineStatusNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             }
         }
-        super.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, argument);
+        super.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, argument);
     }
 
     /**
@@ -856,15 +856,15 @@ public class FitnessMachineService extends AbstractCentralService {
      * get Treadmill Data's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onTreadmillDataClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see FitnessMachineServiceCallback#onTreadmillDataClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onTreadmillDataClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onTreadmillDataClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see FitnessMachineServiceCallback#onTreadmillDataClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onTreadmillDataClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getTreadmillDataClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted() && isTreadmillDataCharacteristicSupporeted()) {
-            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, TREADMILL_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, TREADMILL_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -873,9 +873,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * start Treadmill Data notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onTreadmillDataNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onTreadmillDataNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onTreadmillDataNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onTreadmillDataNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onTreadmillDataNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onTreadmillDataNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startTreadmillDataNotification() {
@@ -883,7 +883,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isTreadmillDataCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, TREADMILL_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, TREADMILL_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -892,9 +892,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * stop Treadmill Data notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onTreadmillDataNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onTreadmillDataNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onTreadmillDataNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onTreadmillDataNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onTreadmillDataNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onTreadmillDataNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopTreadmillDataNotification() {
@@ -902,7 +902,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isTreadmillDataCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, TREADMILL_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, TREADMILL_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -911,15 +911,15 @@ public class FitnessMachineService extends AbstractCentralService {
      * get Cross Trainer Data's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onCrossTrainerDataClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see FitnessMachineServiceCallback#onCrossTrainerDataClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onCrossTrainerDataClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onCrossTrainerDataClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see FitnessMachineServiceCallback#onCrossTrainerDataClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onCrossTrainerDataClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getCrossTrainerDataClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted() && isCrossTrainerDataCharacteristicSupporeted()) {
-            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, CROSS_TRAINER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, CROSS_TRAINER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -928,9 +928,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * start Cross Trainer Data notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onCrossTrainerDataNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onCrossTrainerDataNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onCrossTrainerDataNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onCrossTrainerDataNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onCrossTrainerDataNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onCrossTrainerDataNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startCrossTrainerDataNotification() {
@@ -938,7 +938,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isCrossTrainerDataCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, CROSS_TRAINER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, CROSS_TRAINER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -947,9 +947,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * stop Cross Trainer Data notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onCrossTrainerDataNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onCrossTrainerDataNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onCrossTrainerDataNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onCrossTrainerDataNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onCrossTrainerDataNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onCrossTrainerDataNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopCrossTrainerDataNotification() {
@@ -957,7 +957,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isCrossTrainerDataCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, CROSS_TRAINER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, CROSS_TRAINER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -966,15 +966,15 @@ public class FitnessMachineService extends AbstractCentralService {
      * get Step Climber Data's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onStepClimberDataClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see FitnessMachineServiceCallback#onStepClimberDataClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onStepClimberDataClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onStepClimberDataClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see FitnessMachineServiceCallback#onStepClimberDataClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onStepClimberDataClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getStepClimberDataClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted() && isStepClimberDataCharacteristicSupporeted()) {
-            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, STEP_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, STEP_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -983,9 +983,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * start Step Climber Data notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onStepClimberDataNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onStepClimberDataNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onStepClimberDataNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onStepClimberDataNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onStepClimberDataNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onStepClimberDataNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startStepClimberDataNotification() {
@@ -993,7 +993,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isStepClimberDataCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, STEP_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, STEP_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1002,9 +1002,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * stop Step Climber Data notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onStepClimberDataNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onStepClimberDataNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onStepClimberDataNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onStepClimberDataNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onStepClimberDataNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onStepClimberDataNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopStepClimberDataNotification() {
@@ -1012,7 +1012,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isStepClimberDataCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, STEP_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, STEP_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1021,15 +1021,15 @@ public class FitnessMachineService extends AbstractCentralService {
      * get Stair Climber Data's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onStairClimberDataClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see FitnessMachineServiceCallback#onStairClimberDataClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onStairClimberDataClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onStairClimberDataClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see FitnessMachineServiceCallback#onStairClimberDataClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onStairClimberDataClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getStairClimberDataClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted() && isStairClimberDataCharacteristicSupporeted()) {
-            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, STAIR_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, STAIR_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1038,9 +1038,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * start Stair Climber Data notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onStairClimberDataNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onStairClimberDataNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onStairClimberDataNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onStairClimberDataNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onStairClimberDataNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onStairClimberDataNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startStairClimberDataNotification() {
@@ -1048,7 +1048,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isStairClimberDataCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, STAIR_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, STAIR_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1057,9 +1057,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * stop Stair Climber Data notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onStairClimberDataNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onStairClimberDataNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onStairClimberDataNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onStairClimberDataNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onStairClimberDataNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onStairClimberDataNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopStairClimberDataNotification() {
@@ -1067,7 +1067,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isStairClimberDataCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, STAIR_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, STAIR_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1076,15 +1076,15 @@ public class FitnessMachineService extends AbstractCentralService {
      * get Rower Data's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onRowerDataClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see FitnessMachineServiceCallback#onRowerDataClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onRowerDataClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onRowerDataClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see FitnessMachineServiceCallback#onRowerDataClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onRowerDataClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getRowerDataClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted() && isRowerDataCharacteristicSupporeted()) {
-            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, ROWER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, ROWER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1093,9 +1093,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * start Rower Data notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onRowerDataNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onRowerDataNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onRowerDataNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onRowerDataNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onRowerDataNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onRowerDataNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startRowerDataNotification() {
@@ -1103,7 +1103,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isRowerDataCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, ROWER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, ROWER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1112,9 +1112,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * stop Rower Data notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onRowerDataNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onRowerDataNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onRowerDataNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onRowerDataNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onRowerDataNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onRowerDataNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopRowerDataNotification() {
@@ -1122,7 +1122,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isRowerDataCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, ROWER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, ROWER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1131,15 +1131,15 @@ public class FitnessMachineService extends AbstractCentralService {
      * get Indoor Bike Data's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onIndoorBikeDataClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see FitnessMachineServiceCallback#onIndoorBikeDataClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onIndoorBikeDataClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onIndoorBikeDataClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see FitnessMachineServiceCallback#onIndoorBikeDataClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onIndoorBikeDataClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getIndoorBikeDataClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted() && isIndoorBikeDataCharacteristicSupporeted()) {
-            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, INDOOR_BIKE_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, INDOOR_BIKE_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1148,9 +1148,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * start Indoor Bike Data notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onIndoorBikeDataNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onIndoorBikeDataNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onIndoorBikeDataNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onIndoorBikeDataNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onIndoorBikeDataNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onIndoorBikeDataNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startIndoorBikeDataNotification() {
@@ -1158,7 +1158,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isIndoorBikeDataCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, INDOOR_BIKE_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, INDOOR_BIKE_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1167,9 +1167,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * stop Indoor Bike Data notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onIndoorBikeDataNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onIndoorBikeDataNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onIndoorBikeDataNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onIndoorBikeDataNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onIndoorBikeDataNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onIndoorBikeDataNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopIndoorBikeDataNotification() {
@@ -1177,7 +1177,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isIndoorBikeDataCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, INDOOR_BIKE_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, INDOOR_BIKE_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1203,15 +1203,15 @@ public class FitnessMachineService extends AbstractCentralService {
      * get Training Status's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onTrainingStatusClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see FitnessMachineServiceCallback#onTrainingStatusClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onTrainingStatusClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onTrainingStatusClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see FitnessMachineServiceCallback#onTrainingStatusClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onTrainingStatusClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getTrainingStatusClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted() && isTrainingStatusCharacteristicSupporeted()) {
-            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, TRAINING_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, TRAINING_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1220,9 +1220,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * start Training Status notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onTrainingStatusNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onTrainingStatusNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onTrainingStatusNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onTrainingStatusNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onTrainingStatusNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onTrainingStatusNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startTrainingStatusNotification() {
@@ -1230,7 +1230,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isTrainingStatusCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, TRAINING_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, TRAINING_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1239,9 +1239,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * stop Training Status notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onTrainingStatusNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onTrainingStatusNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onTrainingStatusNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onTrainingStatusNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onTrainingStatusNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onTrainingStatusNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopTrainingStatusNotification() {
@@ -1249,7 +1249,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isTrainingStatusCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, TRAINING_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, TRAINING_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1361,15 +1361,15 @@ public class FitnessMachineService extends AbstractCentralService {
      * get Fitness Machine Control Point's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getFitnessMachineControlPointClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted() && isFitnessMachineControlPointCharacteristicSupporeted()) {
-            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1378,9 +1378,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * start Fitness Machine Control Point indication
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointIndicateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointIndicateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointIndicateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointIndicateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startFitnessMachineControlPointIndication() {
@@ -1388,7 +1388,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isFitnessMachineControlPointCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1397,9 +1397,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * stop Fitness Machine Control Point indication
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointIndicateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointIndicateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointIndicateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointIndicateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineControlPointIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopFitnessMachineControlPointIndication() {
@@ -1407,7 +1407,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isFitnessMachineControlPointCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1416,15 +1416,15 @@ public class FitnessMachineService extends AbstractCentralService {
      * get Fitness Machine Status's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onFitnessMachineStatusClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see FitnessMachineServiceCallback#onFitnessMachineStatusClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onFitnessMachineStatusClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineStatusClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineStatusClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineStatusClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getFitnessMachineStatusClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted() && isFitnessMachineStatusCharacteristicSupporeted()) {
-            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1433,9 +1433,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * start Fitness Machine Status notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onFitnessMachineStatusNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onFitnessMachineStatusNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onFitnessMachineStatusNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineStatusNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineStatusNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineStatusNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startFitnessMachineStatusNotification() {
@@ -1443,7 +1443,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isFitnessMachineStatusCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1452,9 +1452,9 @@ public class FitnessMachineService extends AbstractCentralService {
      * stop Fitness Machine Status notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see FitnessMachineServiceCallback#onFitnessMachineStatusNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see FitnessMachineServiceCallback#onFitnessMachineStatusNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see FitnessMachineServiceCallback#onFitnessMachineStatusNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineStatusNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineStatusNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see FitnessMachineServiceCallback#onFitnessMachineStatusNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopFitnessMachineStatusNotification() {
@@ -1462,7 +1462,7 @@ public class FitnessMachineService extends AbstractCentralService {
         if (isStarted() && isFitnessMachineStatusCharacteristicSupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }

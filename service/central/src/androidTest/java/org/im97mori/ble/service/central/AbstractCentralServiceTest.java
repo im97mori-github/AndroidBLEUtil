@@ -661,12 +661,13 @@ public class AbstractCentralServiceTest {
         final UUID originalCharactersticUUID = UUID.randomUUID();
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = UUID.randomUUID();
-        final byte[] originalValues = new byte[]{4};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5};
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
 
             @Override
-            public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+            public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -674,6 +675,7 @@ public class AbstractCentralServiceTest {
                 assertEquals(originalCharactersticUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertEquals(originalDescriptorUUID, descriptorUUID);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, values);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -683,7 +685,7 @@ public class AbstractCentralServiceTest {
         CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
         TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
 
-        testCentralService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        testCentralService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
         assertTrue(isCalled.get());
     }
 
@@ -697,12 +699,13 @@ public class AbstractCentralServiceTest {
         final UUID originalCharactersticUUID = UUID.randomUUID();
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = UUID.randomUUID();
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
 
             @Override
-            public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+            public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -710,6 +713,7 @@ public class AbstractCentralServiceTest {
                 assertEquals(originalCharactersticUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertEquals(originalDescriptorUUID, descriptorUUID);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -719,7 +723,7 @@ public class AbstractCentralServiceTest {
         CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
         TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
 
-        testCentralService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        testCentralService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
         assertTrue(isCalled.get());
     }
 
@@ -733,12 +737,13 @@ public class AbstractCentralServiceTest {
         final UUID originalCharactersticUUID = UUID.randomUUID();
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = UUID.randomUUID();
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
 
             @Override
-            public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+            public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -746,6 +751,7 @@ public class AbstractCentralServiceTest {
                 assertEquals(originalCharactersticUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertEquals(originalDescriptorUUID, descriptorUUID);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -755,7 +761,7 @@ public class AbstractCentralServiceTest {
         CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
         TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
 
-        testCentralService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        testCentralService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
         assertTrue(isCalled.get());
     }
 
@@ -769,12 +775,13 @@ public class AbstractCentralServiceTest {
         final UUID originalCharactersticUUID = UUID.randomUUID();
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = UUID.randomUUID();
-        final byte[] originalValues = new byte[]{4};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5};
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
 
             @Override
-            public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+            public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -782,6 +789,7 @@ public class AbstractCentralServiceTest {
                 assertEquals(originalCharactersticUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertEquals(originalDescriptorUUID, descriptorUUID);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, values);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -791,7 +799,7 @@ public class AbstractCentralServiceTest {
         CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
         TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
 
-        testCentralService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        testCentralService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
         assertTrue(isCalled.get());
     }
 
@@ -805,12 +813,13 @@ public class AbstractCentralServiceTest {
         final UUID originalCharactersticUUID = UUID.randomUUID();
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = UUID.randomUUID();
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
 
             @Override
-            public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+            public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -818,6 +827,7 @@ public class AbstractCentralServiceTest {
                 assertEquals(originalCharactersticUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertEquals(originalDescriptorUUID, descriptorUUID);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -827,7 +837,7 @@ public class AbstractCentralServiceTest {
         CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
         TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
 
-        testCentralService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        testCentralService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
         assertTrue(isCalled.get());
     }
 
@@ -841,12 +851,13 @@ public class AbstractCentralServiceTest {
         final UUID originalCharactersticUUID = UUID.randomUUID();
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = UUID.randomUUID();
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLECallback bleCallback = new MockBLECallback() {
 
             @Override
-            public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+            public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -854,6 +865,7 @@ public class AbstractCentralServiceTest {
                 assertEquals(originalCharactersticUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertEquals(originalDescriptorUUID, descriptorUUID);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -863,7 +875,7 @@ public class AbstractCentralServiceTest {
         CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
         TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
 
-        testCentralService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        testCentralService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
         assertTrue(isCalled.get());
     }
 
@@ -875,7 +887,7 @@ public class AbstractCentralServiceTest {
         final Integer originalServiceInstanceId = 1;
         final UUID originalCharactersticUUID = UUID.randomUUID();
         final Integer originalCharacteristicInstanceId = 2;
-        final byte[] originalValues = new byte[]{4};
+        final byte[] originalValues = new byte[]{3};
         MockBLECallback bleCallback = new MockBLECallback() {
 
             @Override
@@ -1337,6 +1349,76 @@ public class AbstractCentralServiceTest {
         TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
 
         testCentralService.onAbortReliableWriteTimeout(originalTaskId, originalBluetoothDevice, originalTimeout, originalBundle);
+        assertTrue(isCalled.get());
+    }
+
+    @Test
+    public void test_onSetNotificationSuccess_00001() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = UUID.randomUUID();
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharactersticUUID = UUID.randomUUID();
+        final Integer originalCharacteristicInstanceId = 3;
+        final boolean originalNotificationStatus = true;
+        final Bundle originalBundle = new Bundle();
+        MockBLECallback bleCallback = new MockBLECallback() {
+
+            @Override
+            public void onSetNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument) {
+                assertEquals(originalTaskId, taskId);
+                assertEquals(originalBluetoothDevice, bluetoothDevice);
+                assertEquals(originalServiceUUID, serviceUUID);
+                assertEquals(originalServiceInstanceId, serviceInstanceId);
+                assertEquals(originalCharactersticUUID, characteristicUUID);
+                assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalNotificationStatus, notificationStatus);
+                assertEquals(originalBundle, argument);
+                isCalled.set(true);
+            }
+
+        };
+        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
+        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+
+        testCentralService.onSetNotificationSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalNotificationStatus, originalBundle);
+        assertTrue(isCalled.get());
+    }
+
+    @Test
+    public void test_onSetNotificationFailed_00001() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = CentralMockBLEConnection.MOCK_DEVICE;
+        final UUID originalServiceUUID = UUID.randomUUID();
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharactersticUUID = UUID.randomUUID();
+        final Integer originalCharacteristicInstanceId = 3;
+        final boolean originalNotificationStatus = true;
+        final int originalStatus = 4;
+        final Bundle originalBundle = new Bundle();
+        MockBLECallback bleCallback = new MockBLECallback() {
+
+            @Override
+            public void onSetNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, int status, @Nullable Bundle argument) {
+                assertEquals(originalTaskId, taskId);
+                assertEquals(originalBluetoothDevice, bluetoothDevice);
+                assertEquals(originalServiceUUID, serviceUUID);
+                assertEquals(originalServiceInstanceId, serviceInstanceId);
+                assertEquals(originalCharactersticUUID, characteristicUUID);
+                assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalNotificationStatus, notificationStatus);
+                assertEquals(originalBundle, argument);
+                assertEquals(originalStatus, status);
+                isCalled.set(true);
+            }
+
+        };
+        CentralMockBLEConnection mockBLEConnection = new CentralMockBLEConnection();
+        TestCentralService testCentralService = new TestCentralService(mockBLEConnection, bleCallback);
+
+        testCentralService.onSetNotificationFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharactersticUUID, originalCharacteristicInstanceId, originalNotificationStatus, originalStatus, originalBundle);
         assertTrue(isCalled.get());
     }
 

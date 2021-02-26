@@ -25,6 +25,7 @@ import java.util.UUID;
 
 import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_INDICATABLE_CHARACTERISTIC;
 import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_NOTIFICATABLE_CHARACTERISTIC;
+import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_PRIMARY_SERVICE_1;
 import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_READABLE_CHARACTERISTIC;
 
 public class BLECallbackSample extends BaseMockCallback implements BLECallback {
@@ -33,9 +34,12 @@ public class BLECallbackSample extends BaseMockCallback implements BLECallback {
 
     private final SampleCallback mSampleCallback;
 
-    BLECallbackSample(SampleCallback sampleCallback) {
+    private final PeripheralSampleActivity mPeripheralSampleActivity;
+
+    BLECallbackSample(@NonNull SampleCallback sampleCallback, @Nullable PeripheralSampleActivity peripheralSampleActivity) {
         super(new SampleMockData.Builder().build(), true);
         mSampleCallback = sampleCallback;
+        mPeripheralSampleActivity = peripheralSampleActivity;
     }
 
     private void callback(Object... logs) {
@@ -191,32 +195,32 @@ public class BLECallbackSample extends BaseMockCallback implements BLECallback {
     }
 
     @Override
-    public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         callback(characteristicUUID, descriptorUUID, Arrays.toString(values), argument);
     }
 
     @Override
-    public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         callback(characteristicUUID, descriptorUUID, status, argument);
     }
 
     @Override
-    public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         callback(characteristicUUID, descriptorUUID, timeout, argument);
     }
 
     @Override
-    public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         callback(characteristicUUID, descriptorUUID, Arrays.toString(values), argument);
     }
 
     @Override
-    public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         callback(characteristicUUID, descriptorUUID, status, argument);
     }
 
     @Override
-    public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         callback(characteristicUUID, descriptorUUID, timeout, argument);
     }
 
@@ -315,6 +319,16 @@ public class BLECallbackSample extends BaseMockCallback implements BLECallback {
     }
 
     @Override
+    public void onSetNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument) {
+        callback(notificationStatus, argument);
+    }
+
+    @Override
+    public void onSetNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, int status, @Nullable Bundle argument) {
+        callback(notificationStatus, status, argument);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }
@@ -328,16 +342,30 @@ public class BLECallbackSample extends BaseMockCallback implements BLECallback {
     @Override
     public void onDeviceConnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
         callback(device);
+        if (mPeripheralSampleActivity != null) {
+            mPeripheralSampleActivity.mLatestConnectedBluetoothDevice = device;
+        }
     }
 
     @Override
     public void onDeviceDisconnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
         callback(device);
+        if (mPeripheralSampleActivity != null) {
+            mPeripheralSampleActivity.mLatestConnectedBluetoothDevice = null;
+            mPeripheralSampleActivity.mLatestNotificatableServiceInstanceId = null;
+            mPeripheralSampleActivity.mLatestNotificatableCharacteristicInstanceId = null;
+        }
     }
 
     @Override
     public boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
         callback(bluetoothGattService.getUuid());
+        UUID serviceUUID = bluetoothGattService.getUuid();
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SAMPLE_NOTIFICATABLE_CHARACTERISTIC);
+        if (SAMPLE_PRIMARY_SERVICE_1.equals(serviceUUID) && bluetoothGattCharacteristic != null) {
+            mPeripheralSampleActivity.mLatestNotificatableServiceInstanceId = bluetoothGattService.getInstanceId();
+            mPeripheralSampleActivity.mLatestNotificatableCharacteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
+        }
         return super.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, argument);
     }
 

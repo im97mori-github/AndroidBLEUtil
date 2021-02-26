@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,9 +41,6 @@ import static org.im97mori.ble.BLEConstants.ServiceUUID.CURRENT_TIME_SERVICE;
 public class TipCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
     private Button mConnectDisconnectButton;
-
-    private ArrayAdapter<Pair<String, String>> mAdapter;
-    private ListView mListView;
 
     private TipCallbackSample mTipCallbackSample;
     private TimeProfile mTimeProfile;
@@ -228,7 +224,7 @@ public class TipCentralSampleActivity extends BaseActivity implements View.OnCli
         return true;
     }
 
-    private void updateLayout() {
+    protected void updateLayout() {
         if (!BLEUtilsAndroid.isBluetoothEnabled()) {
             BLEUtilsAndroid.bluetoothEnable();
         } else {

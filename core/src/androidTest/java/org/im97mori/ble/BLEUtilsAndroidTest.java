@@ -1,10 +1,13 @@
 package org.im97mori.ble;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothGattDescriptor;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Parcel;
+import android.os.ParcelUuid;
 
 import androidx.test.core.app.ApplicationProvider;
 
@@ -14,6 +17,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
+import static org.im97mori.ble.BLEConstants.BASE_UUID;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -298,6 +303,25 @@ public class BLEUtilsAndroidTest {
         Boolean value = result.get();
         assertNotNull(value);
         assertFalse(value);
+    }
+
+    @Test
+    public void test_getDescriptorInstanceId_00001() {
+        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
+        assertEquals(0, BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor));
+    }
+
+    @Test
+    public void test_getDescriptorInstanceId_00002() {
+        int originalInstanceId = 1;
+        Parcel parcel = Parcel.obtain();
+        parcel.writeParcelable(new ParcelUuid(BASE_UUID), 0);
+        parcel.writeInt(originalInstanceId);
+        parcel.writeInt(0);
+        parcel.setDataPosition(0);
+        BluetoothGattDescriptor bluetoothGattDescriptor = BluetoothGattDescriptor.CREATOR.createFromParcel(parcel);
+        parcel.recycle();
+        assertEquals(originalInstanceId, BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor));
     }
 
 }

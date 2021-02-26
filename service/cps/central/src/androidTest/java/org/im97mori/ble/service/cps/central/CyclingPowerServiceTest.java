@@ -511,19 +511,21 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerMeasurementClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onCyclingPowerMeasurementClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, clientCharacteristicConfigurationAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -531,7 +533,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        cyclingPowerService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -546,19 +548,21 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerControlPointClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onCyclingPowerControlPointClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, clientCharacteristicConfigurationAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -566,7 +570,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        cyclingPowerService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -581,19 +585,21 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_VECTOR_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerVectorClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+            public void onCyclingPowerVectorClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, clientCharacteristicConfigurationAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -601,7 +607,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        cyclingPowerService.onDescriptorReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -616,19 +622,21 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerMeasurementClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onCyclingPowerMeasurementClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -636,7 +644,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        cyclingPowerService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -651,19 +659,21 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerControlPointClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onCyclingPowerControlPointClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -671,7 +681,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        cyclingPowerService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -686,19 +696,21 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_VECTOR_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerVectorClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onCyclingPowerVectorClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -706,7 +718,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        cyclingPowerService.onDescriptorReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -721,19 +733,21 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerMeasurementClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onCyclingPowerMeasurementClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -741,7 +755,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        cyclingPowerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -756,19 +770,21 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerControlPointClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onCyclingPowerControlPointClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -776,7 +792,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        cyclingPowerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -791,19 +807,21 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_VECTOR_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerVectorClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onCyclingPowerVectorClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -811,7 +829,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        cyclingPowerService.onDescriptorReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -826,27 +844,29 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerMeasurementNotificateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onCyclingPowerMeasurementNotificateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        cyclingPowerService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -861,27 +881,29 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerControlPointIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onCyclingPowerControlPointIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        cyclingPowerService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -896,27 +918,29 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_VECTOR_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerVectorNotificateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onCyclingPowerVectorNotificateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        cyclingPowerService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -931,27 +955,29 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerMeasurementNotificateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onCyclingPowerMeasurementNotificateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        cyclingPowerService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -966,27 +992,29 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerControlPointIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onCyclingPowerControlPointIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        cyclingPowerService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1001,27 +1029,29 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_VECTOR_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerVectorNotificateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onCyclingPowerVectorNotificateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        cyclingPowerService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1036,20 +1066,22 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerMeasurementNotificateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onCyclingPowerMeasurementNotificateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1057,7 +1089,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        cyclingPowerService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1072,20 +1104,22 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerControlPointIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onCyclingPowerControlPointIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1093,7 +1127,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        cyclingPowerService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1108,20 +1142,22 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_VECTOR_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerVectorNotificateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onCyclingPowerVectorNotificateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1129,7 +1165,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        cyclingPowerService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1144,20 +1180,22 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerMeasurementNotificateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onCyclingPowerMeasurementNotificateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1165,7 +1203,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        cyclingPowerService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1180,20 +1218,22 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerControlPointIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onCyclingPowerControlPointIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1201,7 +1241,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        cyclingPowerService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1216,20 +1256,22 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_VECTOR_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerVectorNotificateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onCyclingPowerVectorNotificateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1237,7 +1279,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        cyclingPowerService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1252,20 +1294,22 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerMeasurementNotificateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onCyclingPowerMeasurementNotificateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1273,7 +1317,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        cyclingPowerService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1288,20 +1332,22 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerControlPointIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onCyclingPowerControlPointIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1309,7 +1355,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        cyclingPowerService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1324,20 +1370,22 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_VECTOR_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerVectorNotificateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onCyclingPowerVectorNotificateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1345,7 +1393,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        cyclingPowerService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1360,20 +1408,22 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_MEASUREMENT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerMeasurementNotificateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onCyclingPowerMeasurementNotificateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1381,7 +1431,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        cyclingPowerService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1396,20 +1446,22 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerControlPointIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onCyclingPowerControlPointIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1417,7 +1469,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        cyclingPowerService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1432,20 +1484,22 @@ public class CyclingPowerServiceTest {
         final UUID originalCharacteristicUUID = CYCLING_POWER_VECTOR_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final long originalTimeout = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final long originalTimeout = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockCyclingPowerServiceCallback mockCyclingPowerServiceCallback = new MockCyclingPowerServiceCallback() {
 
             @Override
-            public void onCyclingPowerVectorNotificateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onCyclingPowerVectorNotificateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1453,7 +1507,7 @@ public class CyclingPowerServiceTest {
 
         };
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, mockCyclingPowerServiceCallback, null);
-        cyclingPowerService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        cyclingPowerService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1693,7 +1747,7 @@ public class CyclingPowerServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 
@@ -1739,7 +1793,7 @@ public class CyclingPowerServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 
@@ -1785,7 +1839,7 @@ public class CyclingPowerServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 
@@ -1968,7 +2022,7 @@ public class CyclingPowerServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 
@@ -2038,7 +2092,7 @@ public class CyclingPowerServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 
@@ -2109,7 +2163,7 @@ public class CyclingPowerServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 
@@ -2179,7 +2233,7 @@ public class CyclingPowerServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 
@@ -2249,7 +2303,7 @@ public class CyclingPowerServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 
@@ -2320,7 +2374,7 @@ public class CyclingPowerServiceTest {
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
 
             @Override
-            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+            public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, @NonNull ByteArrayInterface byteArrayInterface, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
                 return originalTaskId;
             }
 

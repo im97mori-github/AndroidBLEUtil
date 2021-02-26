@@ -136,114 +136,114 @@ public class AlertNotificationService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && ALERT_NOTIFICATION_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
             if (NEW_ALERT_CHARACTERISTIC.equals(characteristicUUID)) {
-                mAlertNotificationServiceCallback.onNewAlertClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mAlertNotificationServiceCallback.onNewAlertClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (UNREAD_ALERT_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
-                mAlertNotificationServiceCallback.onUnreadAlertStatusClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mAlertNotificationServiceCallback.onUnreadAlertStatusClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             }
         }
-        super.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, argument);
+        super.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && ALERT_NOTIFICATION_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
             if (NEW_ALERT_CHARACTERISTIC.equals(characteristicUUID)) {
-                mAlertNotificationServiceCallback.onNewAlertClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                mAlertNotificationServiceCallback.onNewAlertClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
             } else if (UNREAD_ALERT_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
-                mAlertNotificationServiceCallback.onUnreadAlertStatusClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                mAlertNotificationServiceCallback.onUnreadAlertStatusClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
             }
         }
-        super.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, argument);
+        super.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && ALERT_NOTIFICATION_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
             if (NEW_ALERT_CHARACTERISTIC.equals(characteristicUUID)) {
-                mAlertNotificationServiceCallback.onNewAlertClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                mAlertNotificationServiceCallback.onNewAlertClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
             } else if (UNREAD_ALERT_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
-                mAlertNotificationServiceCallback.onUnreadAlertStatusClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                mAlertNotificationServiceCallback.onUnreadAlertStatusClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
             }
         }
-        super.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, argument);
+        super.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && ALERT_NOTIFICATION_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (NEW_ALERT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mAlertNotificationServiceCallback.onNewAlertNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mAlertNotificationServiceCallback.onNewAlertNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mAlertNotificationServiceCallback.onNewAlertNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mAlertNotificationServiceCallback.onNewAlertNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             } else if (UNREAD_ALERT_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mAlertNotificationServiceCallback.onUnreadAlertStatusNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mAlertNotificationServiceCallback.onUnreadAlertStatusNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mAlertNotificationServiceCallback.onUnreadAlertStatusNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mAlertNotificationServiceCallback.onUnreadAlertStatusNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             }
         }
-        super.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, argument);
+        super.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && ALERT_NOTIFICATION_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (NEW_ALERT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mAlertNotificationServiceCallback.onNewAlertNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mAlertNotificationServiceCallback.onNewAlertNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mAlertNotificationServiceCallback.onNewAlertNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mAlertNotificationServiceCallback.onNewAlertNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             } else if (UNREAD_ALERT_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mAlertNotificationServiceCallback.onUnreadAlertStatusNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mAlertNotificationServiceCallback.onUnreadAlertStatusNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mAlertNotificationServiceCallback.onUnreadAlertStatusNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mAlertNotificationServiceCallback.onUnreadAlertStatusNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             }
         }
-        super.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, argument);
+        super.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && ALERT_NOTIFICATION_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (NEW_ALERT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mAlertNotificationServiceCallback.onNewAlertNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mAlertNotificationServiceCallback.onNewAlertNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mAlertNotificationServiceCallback.onNewAlertNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mAlertNotificationServiceCallback.onNewAlertNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             } else if (UNREAD_ALERT_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mAlertNotificationServiceCallback.onUnreadAlertStatusNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mAlertNotificationServiceCallback.onUnreadAlertStatusNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mAlertNotificationServiceCallback.onUnreadAlertStatusNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mAlertNotificationServiceCallback.onUnreadAlertStatusNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             }
         }
-        super.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, argument);
+        super.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, argument);
     }
 
     /**
@@ -282,15 +282,15 @@ public class AlertNotificationService extends AbstractCentralService {
      * get New Alert's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see AlertNotificationServiceCallback#onNewAlertClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see AlertNotificationServiceCallback#onNewAlertClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see AlertNotificationServiceCallback#onNewAlertClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see AlertNotificationServiceCallback#onNewAlertClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see AlertNotificationServiceCallback#onNewAlertClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see AlertNotificationServiceCallback#onNewAlertClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getNewAlertClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted()) {
-            taskId = mBLEConnection.createReadDescriptorTask(ALERT_NOTIFICATION_SERVICE, null, NEW_ALERT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(ALERT_NOTIFICATION_SERVICE, null, NEW_ALERT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -299,9 +299,9 @@ public class AlertNotificationService extends AbstractCentralService {
      * start New Alert notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see AlertNotificationServiceCallback#onNewAlertNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see AlertNotificationServiceCallback#onNewAlertNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see AlertNotificationServiceCallback#onNewAlertNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see AlertNotificationServiceCallback#onNewAlertNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see AlertNotificationServiceCallback#onNewAlertNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see AlertNotificationServiceCallback#onNewAlertNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startNewAlertNotification() {
@@ -309,7 +309,7 @@ public class AlertNotificationService extends AbstractCentralService {
         if (isStarted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(ALERT_NOTIFICATION_SERVICE, null, NEW_ALERT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(ALERT_NOTIFICATION_SERVICE, null, NEW_ALERT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -318,9 +318,9 @@ public class AlertNotificationService extends AbstractCentralService {
      * stop New Alert notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see AlertNotificationServiceCallback#onNewAlertNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see AlertNotificationServiceCallback#onNewAlertNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see AlertNotificationServiceCallback#onNewAlertNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see AlertNotificationServiceCallback#onNewAlertNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see AlertNotificationServiceCallback#onNewAlertNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see AlertNotificationServiceCallback#onNewAlertNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopNewAlertNotification() {
@@ -328,7 +328,7 @@ public class AlertNotificationService extends AbstractCentralService {
         if (isStarted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(ALERT_NOTIFICATION_SERVICE, null, NEW_ALERT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(ALERT_NOTIFICATION_SERVICE, null, NEW_ALERT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -354,15 +354,15 @@ public class AlertNotificationService extends AbstractCentralService {
      * get Unread Alert Status's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see AlertNotificationServiceCallback#onUnreadAlertStatusClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see AlertNotificationServiceCallback#onUnreadAlertStatusClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see AlertNotificationServiceCallback#onUnreadAlertStatusClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see AlertNotificationServiceCallback#onUnreadAlertStatusClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see AlertNotificationServiceCallback#onUnreadAlertStatusClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see AlertNotificationServiceCallback#onUnreadAlertStatusClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getUnreadAlertStatusClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted()) {
-            taskId = mBLEConnection.createReadDescriptorTask(ALERT_NOTIFICATION_SERVICE, null, UNREAD_ALERT_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(ALERT_NOTIFICATION_SERVICE, null, UNREAD_ALERT_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -371,9 +371,9 @@ public class AlertNotificationService extends AbstractCentralService {
      * start Unread Alert Status notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see AlertNotificationServiceCallback#onUnreadAlertStatusNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see AlertNotificationServiceCallback#onUnreadAlertStatusNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see AlertNotificationServiceCallback#onUnreadAlertStatusNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see AlertNotificationServiceCallback#onUnreadAlertStatusNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see AlertNotificationServiceCallback#onUnreadAlertStatusNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see AlertNotificationServiceCallback#onUnreadAlertStatusNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startUnreadAlertStatusNotification() {
@@ -381,7 +381,7 @@ public class AlertNotificationService extends AbstractCentralService {
         if (isStarted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(ALERT_NOTIFICATION_SERVICE, null, UNREAD_ALERT_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(ALERT_NOTIFICATION_SERVICE, null, UNREAD_ALERT_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -390,9 +390,9 @@ public class AlertNotificationService extends AbstractCentralService {
      * stop Unread Alert Status notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see AlertNotificationServiceCallback#onUnreadAlertStatusNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see AlertNotificationServiceCallback#onUnreadAlertStatusNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see AlertNotificationServiceCallback#onUnreadAlertStatusNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see AlertNotificationServiceCallback#onUnreadAlertStatusNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see AlertNotificationServiceCallback#onUnreadAlertStatusNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see AlertNotificationServiceCallback#onUnreadAlertStatusNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopUnreadAlertStatusNotification() {
@@ -400,7 +400,7 @@ public class AlertNotificationService extends AbstractCentralService {
         if (isStarted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(ALERT_NOTIFICATION_SERVICE, null, UNREAD_ALERT_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(ALERT_NOTIFICATION_SERVICE, null, UNREAD_ALERT_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }

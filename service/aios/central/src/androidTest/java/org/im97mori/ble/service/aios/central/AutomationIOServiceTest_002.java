@@ -53,7 +53,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -65,13 +66,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -86,7 +87,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -98,7 +100,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -109,7 +111,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -124,7 +126,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -136,7 +139,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -147,7 +150,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -162,7 +165,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -174,7 +178,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -182,7 +186,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -194,7 +199,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -209,7 +214,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -221,7 +227,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -229,7 +235,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -244,7 +251,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -259,7 +266,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -271,13 +279,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -292,7 +300,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -304,7 +313,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -315,7 +324,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -330,7 +339,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -342,7 +352,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -353,7 +363,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -368,7 +378,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -380,7 +391,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -388,7 +399,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -400,7 +412,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -415,7 +427,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -427,7 +440,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -435,7 +448,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -450,7 +464,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -465,7 +479,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -477,13 +492,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -498,7 +513,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -510,7 +526,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -521,7 +537,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -536,7 +552,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -548,7 +565,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -559,7 +576,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -574,7 +591,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -586,7 +604,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -594,7 +612,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -606,7 +625,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -621,7 +640,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -633,7 +653,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -641,7 +661,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -656,7 +677,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -671,7 +692,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -683,13 +705,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -704,7 +726,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -716,7 +739,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -727,7 +750,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -742,7 +765,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -754,7 +778,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -765,7 +789,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -780,7 +804,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -792,7 +817,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -800,7 +825,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -812,7 +838,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -827,7 +853,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -839,7 +866,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onDigitalIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -847,7 +874,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -862,7 +890,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -877,13 +905,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
-        final byte[] originalValues = "a".getBytes();
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalCharacteristicUserDescriptionWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle argument) {
+            public void onDigitalCharacteristicUserDescriptionWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -891,6 +920,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, characteristicUserDescriptionAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -898,7 +928,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -913,13 +943,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = "a".getBytes();
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalCharacteristicUserDescriptionWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle argument) {
+            public void onDigitalCharacteristicUserDescriptionWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -927,7 +958,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, characteristicUserDescriptionAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -940,7 +972,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
     }
 
@@ -954,13 +986,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = "a".getBytes();
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalCharacteristicUserDescriptionWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle argument) {
+            public void onDigitalCharacteristicUserDescriptionWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -968,7 +1001,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, characteristicUserDescriptionAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -984,7 +1018,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -999,13 +1033,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{ValueTriggerSetting.NONE_7};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalValueTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ValueTriggerSettingAndroid valueTriggerSettingAndroid, @Nullable Bundle argument) {
+            public void onDigitalValueTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull ValueTriggerSettingAndroid valueTriggerSettingAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1013,6 +1048,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, valueTriggerSettingAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1020,7 +1056,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1035,13 +1071,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{ValueTriggerSetting.NONE_7};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalValueTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ValueTriggerSettingAndroid valueTriggerSettingAndroid, @Nullable Bundle argument) {
+            public void onDigitalValueTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull ValueTriggerSettingAndroid valueTriggerSettingAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1049,7 +1086,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, valueTriggerSettingAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1062,7 +1100,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
     }
 
@@ -1076,13 +1114,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{ValueTriggerSetting.NONE_7};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalValueTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ValueTriggerSettingAndroid valueTriggerSettingAndroid, @Nullable Bundle argument) {
+            public void onDigitalValueTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull ValueTriggerSettingAndroid valueTriggerSettingAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1090,7 +1129,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, valueTriggerSettingAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1106,7 +1146,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1121,13 +1161,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 4};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalTimeTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull TimeTriggerSettingAndroid timeTriggerSettingAndroid, @Nullable Bundle argument) {
+            public void onDigitalTimeTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull TimeTriggerSettingAndroid timeTriggerSettingAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1135,6 +1176,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, timeTriggerSettingAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1142,7 +1184,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1157,13 +1199,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 4};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalTimeTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull TimeTriggerSettingAndroid timeTriggerSettingAndroid, @Nullable Bundle argument) {
+            public void onDigitalTimeTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull TimeTriggerSettingAndroid timeTriggerSettingAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1171,7 +1214,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, timeTriggerSettingAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1184,7 +1228,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
     }
 
@@ -1198,13 +1242,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 4};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalTimeTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull TimeTriggerSettingAndroid timeTriggerSettingAndroid, @Nullable Bundle argument) {
+            public void onDigitalTimeTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull TimeTriggerSettingAndroid timeTriggerSettingAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1212,7 +1257,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, timeTriggerSettingAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -1228,7 +1274,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1243,7 +1289,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1255,13 +1302,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1276,7 +1323,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1288,7 +1336,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1299,7 +1347,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1314,7 +1362,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1326,7 +1375,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1337,7 +1386,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1352,7 +1401,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1364,7 +1414,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1372,7 +1422,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -1384,7 +1435,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1399,7 +1450,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1411,7 +1463,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1419,7 +1471,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -1434,7 +1487,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1449,7 +1502,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1461,13 +1515,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1482,7 +1536,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1494,7 +1549,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1505,7 +1560,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1520,7 +1575,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1532,7 +1588,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1543,7 +1599,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1558,7 +1614,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1570,7 +1627,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1578,7 +1635,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -1590,7 +1648,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1605,7 +1663,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1617,7 +1676,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1625,7 +1684,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -1640,7 +1700,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1655,7 +1715,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1667,13 +1728,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1688,7 +1749,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1700,7 +1762,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1711,7 +1773,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1726,7 +1788,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1738,7 +1801,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1749,7 +1812,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1764,7 +1827,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1776,7 +1840,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1784,7 +1848,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -1796,7 +1861,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1811,7 +1876,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1823,7 +1889,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1831,7 +1897,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -1846,7 +1913,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -1861,7 +1928,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1873,13 +1941,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1894,7 +1962,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1906,7 +1975,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1917,7 +1986,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1932,7 +2001,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1944,7 +2014,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -1955,7 +2025,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -1970,7 +2040,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -1982,7 +2053,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1990,7 +2061,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -2002,7 +2074,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2017,7 +2089,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -2029,7 +2102,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
+            public void onAnalogIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -2037,7 +2110,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -2052,7 +2126,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2067,13 +2141,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = "a".getBytes();
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogCharacteristicUserDescriptionWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle argument) {
+            public void onAnalogCharacteristicUserDescriptionWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -2081,6 +2156,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, characteristicUserDescriptionAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -2088,7 +2164,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2103,13 +2179,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = "a".getBytes();
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogCharacteristicUserDescriptionWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle argument) {
+            public void onAnalogCharacteristicUserDescriptionWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -2117,7 +2194,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, characteristicUserDescriptionAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -2130,7 +2208,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
     }
 
@@ -2144,13 +2222,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = "a".getBytes();
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogCharacteristicUserDescriptionWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle argument) {
+            public void onAnalogCharacteristicUserDescriptionWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -2158,7 +2237,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, characteristicUserDescriptionAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -2174,7 +2254,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2189,13 +2269,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{ValueTriggerSetting.NONE_7};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogValueTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ValueTriggerSettingAndroid valueTriggerSettingAndroid, @Nullable Bundle argument) {
+            public void onAnalogValueTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull ValueTriggerSettingAndroid valueTriggerSettingAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -2203,6 +2284,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, valueTriggerSettingAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -2210,7 +2292,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2225,13 +2307,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{ValueTriggerSetting.NONE_7};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogValueTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ValueTriggerSettingAndroid valueTriggerSettingAndroid, @Nullable Bundle argument) {
+            public void onAnalogValueTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull ValueTriggerSettingAndroid valueTriggerSettingAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -2239,7 +2322,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, valueTriggerSettingAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -2252,7 +2336,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
     }
 
@@ -2266,13 +2350,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{ValueTriggerSetting.NONE_7};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogValueTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ValueTriggerSettingAndroid valueTriggerSettingAndroid, @Nullable Bundle argument) {
+            public void onAnalogValueTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull ValueTriggerSettingAndroid valueTriggerSettingAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -2280,7 +2365,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, valueTriggerSettingAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -2296,7 +2382,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2311,13 +2397,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 4};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogTimeTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull TimeTriggerSettingAndroid timeTriggerSettingAndroid, @Nullable Bundle argument) {
+            public void onAnalogTimeTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull TimeTriggerSettingAndroid timeTriggerSettingAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -2325,6 +2412,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, timeTriggerSettingAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -2332,7 +2420,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2347,13 +2435,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 4};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogTimeTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull TimeTriggerSettingAndroid timeTriggerSettingAndroid, @Nullable Bundle argument) {
+            public void onAnalogTimeTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull TimeTriggerSettingAndroid timeTriggerSettingAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -2361,7 +2450,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, timeTriggerSettingAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -2374,7 +2464,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
     }
 
@@ -2388,13 +2478,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final byte[] originalValues = new byte[]{TimeTriggerSetting.CONDITION_NO_TIME_BASED_TRIGGERING_USED, 4};
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogTimeTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull TimeTriggerSettingAndroid timeTriggerSettingAndroid, @Nullable Bundle argument) {
+            public void onAnalogTimeTriggerSettingWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull TimeTriggerSettingAndroid timeTriggerSettingAndroid, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -2402,7 +2493,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertArrayEquals(originalValues, timeTriggerSettingAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -2418,7 +2510,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2433,7 +2525,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -2445,13 +2538,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2466,7 +2559,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -2478,7 +2572,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -2489,7 +2583,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2504,7 +2598,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -2516,7 +2611,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -2527,7 +2622,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2542,7 +2637,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -2554,7 +2650,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -2565,7 +2661,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2580,7 +2676,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -2592,7 +2689,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -2612,7 +2709,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2627,7 +2724,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -2639,13 +2737,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2660,7 +2758,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -2672,7 +2771,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -2683,7 +2782,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2698,7 +2797,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -2710,7 +2810,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -2721,7 +2821,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2736,7 +2836,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -2748,7 +2849,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -2759,7 +2860,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2774,7 +2875,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -2786,7 +2888,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -2806,7 +2908,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -2821,7 +2923,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -2833,13 +2936,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2854,7 +2957,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -2866,7 +2970,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -2877,7 +2981,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2892,7 +2996,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -2904,7 +3009,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -2915,7 +3020,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2930,7 +3035,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -2942,7 +3048,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -2953,7 +3059,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -2968,7 +3074,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -2980,7 +3087,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -3000,7 +3107,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3015,7 +3122,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3027,13 +3135,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3048,7 +3156,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3060,7 +3169,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -3071,7 +3180,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3086,7 +3195,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3098,7 +3208,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -3109,7 +3219,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3124,7 +3234,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3136,7 +3247,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -3147,7 +3258,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3162,7 +3273,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final byte[] originalValues = new byte[]{4, 5};
+        final Integer originalDescriptorInstanceId = 4;
+        final byte[] originalValues = new byte[]{5, 6};
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3174,13 +3286,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+            public void onAggregateIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -3194,7 +3307,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalValues, originalBundle);
+        automationIOService.onDescriptorWriteSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalValues, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3209,7 +3322,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3221,13 +3335,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3242,7 +3356,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3254,7 +3369,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -3265,7 +3380,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3280,7 +3395,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3292,7 +3408,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -3303,7 +3419,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3318,7 +3434,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3330,7 +3447,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -3338,7 +3455,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -3351,7 +3469,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3366,7 +3484,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3378,7 +3497,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -3386,7 +3505,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -3402,7 +3522,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3417,7 +3537,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3429,13 +3550,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3450,7 +3571,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3462,7 +3584,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -3473,7 +3595,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3488,7 +3610,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3500,7 +3623,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -3511,7 +3634,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3526,7 +3649,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3538,7 +3662,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -3546,7 +3670,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -3559,7 +3684,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3574,7 +3699,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3586,7 +3712,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -3594,7 +3720,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -3610,7 +3737,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3625,7 +3752,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3637,13 +3765,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3658,7 +3786,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3670,7 +3799,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -3681,7 +3810,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3696,7 +3825,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3708,7 +3838,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -3719,7 +3849,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3734,7 +3864,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3746,7 +3877,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -3754,7 +3885,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -3767,7 +3899,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3782,7 +3914,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3794,7 +3927,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -3802,7 +3935,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -3818,7 +3952,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3833,7 +3967,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3845,13 +3980,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3866,7 +4001,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3878,7 +4014,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -3889,7 +4025,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3904,7 +4040,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3916,7 +4053,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -3927,7 +4064,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -3942,7 +4079,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -3954,7 +4092,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -3962,7 +4100,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -3975,7 +4114,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -3990,7 +4129,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -4002,7 +4142,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -4010,7 +4150,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -4026,7 +4167,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -4041,13 +4182,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalCharacteristicUserDescriptionWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalCharacteristicUserDescriptionWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -4055,6 +4197,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -4062,7 +4205,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -4077,13 +4220,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalCharacteristicUserDescriptionWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalCharacteristicUserDescriptionWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -4091,7 +4235,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -4104,7 +4249,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
     }
 
@@ -4118,13 +4263,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalCharacteristicUserDescriptionWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalCharacteristicUserDescriptionWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -4132,7 +4278,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -4148,7 +4295,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -4163,13 +4310,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalValueTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalValueTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -4177,6 +4325,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -4184,7 +4333,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -4199,13 +4348,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalValueTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalValueTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -4213,7 +4363,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -4226,7 +4377,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
     }
 
@@ -4240,13 +4391,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalValueTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalValueTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -4254,7 +4406,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -4270,7 +4423,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -4285,13 +4438,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalTimeTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalTimeTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -4299,6 +4453,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -4306,7 +4461,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -4321,13 +4476,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalTimeTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalTimeTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -4335,7 +4491,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -4348,7 +4505,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
     }
 
@@ -4362,13 +4519,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalTimeTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onDigitalTimeTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -4376,7 +4534,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -4392,7 +4551,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -4407,7 +4566,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -4419,13 +4579,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4440,7 +4600,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -4452,7 +4613,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -4463,7 +4624,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4478,7 +4639,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -4490,7 +4652,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -4501,7 +4663,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4516,7 +4678,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -4528,7 +4691,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -4536,7 +4699,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -4549,7 +4713,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -4564,7 +4728,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -4576,7 +4741,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -4584,7 +4749,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -4600,7 +4766,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -4615,7 +4781,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -4627,13 +4794,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4648,7 +4815,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -4660,7 +4828,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -4671,7 +4839,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4686,7 +4854,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -4698,7 +4867,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -4709,7 +4878,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4724,7 +4893,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -4736,7 +4906,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -4744,7 +4914,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -4757,7 +4928,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -4772,7 +4943,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -4784,7 +4956,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -4792,7 +4964,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -4808,7 +4981,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -4823,7 +4996,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -4835,13 +5009,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4856,7 +5030,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -4868,7 +5043,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -4879,7 +5054,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4894,7 +5069,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -4906,7 +5082,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -4917,7 +5093,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -4932,7 +5108,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -4944,7 +5121,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -4952,7 +5129,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -4965,7 +5143,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -4980,7 +5158,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -4992,7 +5171,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -5000,7 +5179,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -5016,7 +5196,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -5031,7 +5211,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -5043,13 +5224,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -5064,7 +5245,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -5076,7 +5258,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -5087,7 +5269,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -5102,7 +5284,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -5114,7 +5297,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -5125,7 +5308,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -5140,7 +5323,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -5152,7 +5336,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -5160,7 +5344,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -5173,7 +5358,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -5188,7 +5373,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -5200,7 +5386,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -5208,7 +5394,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -5224,7 +5411,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -5239,13 +5426,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogCharacteristicUserDescriptionWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogCharacteristicUserDescriptionWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -5253,6 +5441,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -5260,7 +5449,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -5275,13 +5464,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogCharacteristicUserDescriptionWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogCharacteristicUserDescriptionWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -5289,7 +5479,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -5302,7 +5493,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
     }
 
@@ -5316,13 +5507,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogCharacteristicUserDescriptionWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogCharacteristicUserDescriptionWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -5330,7 +5522,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -5346,7 +5539,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -5361,13 +5554,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogValueTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogValueTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -5375,6 +5569,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -5382,7 +5577,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -5397,13 +5592,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogValueTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogValueTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -5411,7 +5607,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -5424,7 +5621,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
     }
 
@@ -5438,13 +5635,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogValueTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogValueTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -5452,7 +5650,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -5468,7 +5667,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -5483,13 +5682,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogTimeTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogTimeTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -5497,6 +5697,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -5504,7 +5705,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -5519,13 +5720,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogTimeTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogTimeTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -5533,7 +5735,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -5546,7 +5749,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
     }
 
@@ -5560,13 +5763,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogTimeTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
+            public void onAnalogTimeTriggerSettingWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -5574,7 +5778,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -5590,7 +5795,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -5605,7 +5810,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -5617,13 +5823,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -5638,7 +5844,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -5650,7 +5857,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -5661,7 +5868,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -5676,7 +5883,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -5688,7 +5896,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -5699,7 +5907,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -5714,7 +5922,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -5726,7 +5935,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -5737,7 +5946,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -5752,7 +5961,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -5764,7 +5974,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -5785,7 +5995,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -5800,7 +6010,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -5812,13 +6023,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -5833,7 +6044,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -5845,7 +6057,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -5856,7 +6068,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -5871,7 +6083,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -5883,7 +6096,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -5894,7 +6107,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -5909,7 +6122,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -5921,7 +6135,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -5932,7 +6146,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -5947,7 +6161,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -5959,7 +6174,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -5980,7 +6195,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -5995,7 +6210,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -6007,13 +6223,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6028,7 +6244,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -6040,7 +6257,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -6051,7 +6268,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6066,7 +6283,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -6078,7 +6296,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -6089,7 +6307,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6104,7 +6322,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -6116,7 +6335,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -6127,7 +6346,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6142,7 +6361,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -6154,7 +6374,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -6175,7 +6395,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -6190,7 +6410,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -6202,13 +6423,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6223,7 +6444,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -6235,7 +6457,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -6246,7 +6468,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6261,7 +6483,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -6273,7 +6496,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -6284,7 +6507,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6299,7 +6522,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -6311,7 +6535,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -6322,7 +6546,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6337,7 +6561,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-        final int originalStatus = 4;
+        final Integer originalDescriptorInstanceId = 4;
+        final int originalStatus = 5;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
         MockBLEConnection mockBLEConnection = new MockBLEConnection() {
@@ -6349,13 +6574,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+            public void onAggregateIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalStatus, status);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -6370,7 +6596,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalStatus, originalBundle);
+        automationIOService.onDescriptorWriteFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalStatus, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -6385,6 +6611,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -6397,13 +6624,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6418,6 +6645,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -6430,7 +6658,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -6441,7 +6669,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6456,6 +6684,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -6468,7 +6697,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -6479,7 +6708,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6494,6 +6723,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -6506,7 +6736,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -6514,7 +6744,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -6527,7 +6758,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -6542,6 +6773,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -6554,7 +6786,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -6562,7 +6794,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -6578,7 +6811,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -6593,6 +6826,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -6605,13 +6839,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6626,6 +6860,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -6638,7 +6873,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -6649,7 +6884,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6664,6 +6899,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -6676,7 +6912,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -6687,7 +6923,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6702,6 +6938,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -6714,7 +6951,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -6722,7 +6959,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -6735,7 +6973,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -6750,6 +6988,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -6762,7 +7001,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -6770,7 +7009,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -6786,7 +7026,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -6801,6 +7041,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -6813,13 +7054,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6834,6 +7075,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -6846,7 +7088,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -6857,7 +7099,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6872,6 +7114,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -6884,7 +7127,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -6895,7 +7138,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -6910,6 +7153,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -6922,7 +7166,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -6930,7 +7174,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -6943,7 +7188,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -6958,6 +7203,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -6970,7 +7216,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -6978,7 +7224,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -6994,7 +7241,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -7009,6 +7256,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -7021,13 +7269,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -7042,6 +7290,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -7054,7 +7303,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -7065,7 +7314,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -7080,6 +7329,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -7092,7 +7342,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -7103,7 +7353,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -7118,6 +7368,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -7130,7 +7381,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -7138,7 +7389,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -7151,7 +7403,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -7166,6 +7418,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -7178,7 +7431,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -7186,7 +7439,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -7202,7 +7456,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -7217,13 +7471,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalCharacteristicUserDescriptionWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalCharacteristicUserDescriptionWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -7231,6 +7486,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -7238,7 +7494,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -7253,13 +7509,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalCharacteristicUserDescriptionWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalCharacteristicUserDescriptionWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -7267,7 +7524,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -7280,7 +7538,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
     }
 
@@ -7294,13 +7552,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalCharacteristicUserDescriptionWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalCharacteristicUserDescriptionWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -7308,7 +7567,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -7324,7 +7584,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -7339,13 +7599,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalValueTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalValueTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -7353,6 +7614,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -7360,7 +7622,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -7375,13 +7637,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalValueTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalValueTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -7389,7 +7652,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -7402,7 +7666,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
     }
 
@@ -7416,13 +7680,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalValueTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalValueTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -7430,7 +7695,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -7446,7 +7712,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -7461,13 +7727,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalTimeTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalTimeTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -7475,6 +7742,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -7482,7 +7750,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -7497,20 +7765,22 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalTimeTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalTimeTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -7523,7 +7793,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
     }
 
@@ -7537,20 +7807,22 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onDigitalTimeTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onDigitalTimeTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -7566,7 +7838,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -7581,6 +7853,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -7593,13 +7866,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -7614,6 +7887,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -7626,7 +7900,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -7637,7 +7911,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -7652,6 +7926,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -7664,7 +7939,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -7675,7 +7950,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -7690,6 +7965,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -7702,7 +7978,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -7710,7 +7986,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -7723,7 +8000,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -7738,6 +8015,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -7750,7 +8028,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -7758,7 +8036,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -7774,7 +8053,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -7789,6 +8068,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -7801,13 +8081,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -7822,6 +8102,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -7834,7 +8115,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -7845,7 +8126,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -7860,6 +8141,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -7872,7 +8154,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -7883,7 +8165,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -7898,6 +8180,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -7910,7 +8193,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -7918,7 +8201,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -7931,7 +8215,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -7946,6 +8230,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -7958,7 +8243,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -7966,7 +8251,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -7982,7 +8268,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -7997,6 +8283,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -8009,13 +8296,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -8030,6 +8317,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -8042,7 +8330,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -8053,7 +8341,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -8068,6 +8356,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -8080,7 +8369,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -8091,7 +8380,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -8106,6 +8395,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -8118,7 +8408,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -8126,7 +8416,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -8139,7 +8430,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -8154,6 +8445,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -8166,7 +8458,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -8174,7 +8466,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -8190,7 +8483,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -8205,6 +8498,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -8217,13 +8511,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -8238,6 +8532,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -8250,7 +8545,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -8261,7 +8556,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -8276,6 +8571,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -8288,7 +8584,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -8299,7 +8595,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -8314,6 +8610,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -8326,7 +8623,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -8334,7 +8631,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -8347,7 +8645,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -8362,6 +8660,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -8374,7 +8673,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -8382,7 +8681,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -8398,7 +8698,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -8413,13 +8713,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogCharacteristicUserDescriptionWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogCharacteristicUserDescriptionWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -8427,6 +8728,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -8434,7 +8736,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -8449,13 +8751,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogCharacteristicUserDescriptionWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogCharacteristicUserDescriptionWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -8463,7 +8766,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -8476,7 +8780,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
     }
 
@@ -8490,13 +8794,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogCharacteristicUserDescriptionWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogCharacteristicUserDescriptionWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -8504,7 +8809,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -8520,7 +8826,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -8535,13 +8841,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogValueTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogValueTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -8549,6 +8856,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -8556,7 +8864,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -8571,13 +8879,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogValueTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogValueTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -8585,7 +8894,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -8598,7 +8908,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
     }
 
@@ -8612,13 +8922,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = VALUE_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogValueTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogValueTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -8626,7 +8937,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -8642,7 +8954,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -8657,13 +8969,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogTimeTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogTimeTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -8671,6 +8984,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNull(index);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -8678,7 +8992,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -8693,13 +9007,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogTimeTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogTimeTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -8707,7 +9022,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -8720,7 +9036,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
     }
 
@@ -8734,13 +9050,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = TIME_TRIGGER_SETTING_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAnalogTimeTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
+            public void onAnalogTimeTriggerSettingWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -8748,7 +9065,8 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -8764,7 +9082,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -8779,6 +9097,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -8791,13 +9110,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -8812,6 +9131,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -8824,7 +9144,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -8835,7 +9155,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -8850,6 +9170,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -8862,7 +9183,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -8873,7 +9194,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -8888,6 +9209,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -8900,7 +9222,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -8911,7 +9233,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -8926,6 +9248,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -8938,7 +9261,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -8959,7 +9282,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -8974,6 +9297,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -8986,13 +9310,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -9007,6 +9331,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -9019,7 +9344,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -9030,7 +9355,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -9045,6 +9370,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -9057,7 +9383,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -9068,7 +9394,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -9083,6 +9409,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -9095,7 +9422,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -9106,7 +9433,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -9121,6 +9448,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 0);
@@ -9133,7 +9461,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -9154,7 +9482,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -9169,6 +9497,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -9181,13 +9510,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -9202,6 +9531,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -9214,7 +9544,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -9225,7 +9555,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -9240,6 +9570,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -9252,7 +9583,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -9263,7 +9594,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -9278,6 +9609,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -9290,7 +9622,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -9301,7 +9633,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -9316,6 +9648,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -9328,7 +9661,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -9349,7 +9682,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -9364,6 +9697,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -9376,13 +9710,13 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
         };
         AutomationIOService automationIOService = new AutomationIOService(mockBLEConnection, mockAutomationIOServiceCallback, null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -9397,6 +9731,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -9409,7 +9744,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -9420,7 +9755,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -9435,6 +9770,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -9447,7 +9783,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -9458,7 +9794,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -9473,6 +9809,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -9485,7 +9822,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 isCalled.set(true);
             }
 
@@ -9496,7 +9833,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(BluetoothGattCharacteristic.CREATOR.createFromParcel(parcel));
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertFalse(isCalled.get());
     }
@@ -9511,6 +9848,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
         final Integer originalCharacteristicInstanceId = 3;
         final UUID originalDescriptorUUID = CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+        final Integer originalDescriptorInstanceId = 4;
         final int originalTimeout = 4;
         final Bundle originalBundle = new Bundle();
         originalBundle.putInt("KEY_STATUS", 1);
@@ -9523,13 +9861,14 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         MockAutomationIOServiceCallback mockAutomationIOServiceCallback = new MockAutomationIOServiceCallback() {
 
             @Override
-            public void onAggregateIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+            public void onAggregateIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
                 assertEquals(originalServiceInstanceId, serviceInstanceId);
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalDescriptorInstanceId, descriptorInstanceId);
                 assertEquals(originalTimeout, timeout);
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
@@ -9544,7 +9883,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalTimeout, originalBundle);
+        automationIOService.onDescriptorWriteTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalDescriptorUUID, originalDescriptorInstanceId, originalTimeout, originalBundle);
 
         assertTrue(isCalled.get());
     }
@@ -9675,7 +10014,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
                 assertArrayEquals(originalValues, digitalAndroid.getBytes());
                 isCalled.set(true);
             }
@@ -9718,7 +10057,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
                 assertArrayEquals(originalValues, digitalAndroid.getBytes());
                 isCalled.set(true);
             }
@@ -9864,7 +10203,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
                 assertArrayEquals(originalValues, digitalAndroid.getBytes());
                 isCalled.set(true);
             }
@@ -9907,7 +10246,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
                 assertArrayEquals(originalValues, digitalAndroid.getBytes());
                 isCalled.set(true);
             }
@@ -10053,7 +10392,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
                 assertArrayEquals(originalValues, analogAndroid.getBytes());
                 isCalled.set(true);
             }
@@ -10096,7 +10435,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
                 assertArrayEquals(originalValues, analogAndroid.getBytes());
                 isCalled.set(true);
             }
@@ -10242,7 +10581,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(0, index.intValue());
+                assertEquals((0), index.intValue());
                 assertArrayEquals(originalValues, analogAndroid.getBytes());
                 isCalled.set(true);
             }
@@ -10285,7 +10624,7 @@ public class AutomationIOServiceTest_002 extends AbstractAutomationIOServiceTest
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertNotNull(index);
-                assertEquals(1, index.intValue());
+                assertEquals((1), index.intValue());
                 assertArrayEquals(originalValues, analogAndroid.getBytes());
                 isCalled.set(true);
             }

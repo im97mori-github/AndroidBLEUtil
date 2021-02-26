@@ -529,7 +529,7 @@ public class BLECallbackDistributer implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
+    public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         Integer callbackId;
         if (argument.containsKey(KEY_CALLBACK_ID)) {
             callbackId = argument.getInt(KEY_CALLBACK_ID);
@@ -541,9 +541,9 @@ public class BLECallbackDistributer implements BLECallback {
         for (BLECallback bleCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
             try {
                 if (callbackId == null) {
-                    bleCallback.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, originalArgument);
+                    bleCallback.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values, originalArgument);
                 } else if (bleCallback.hashCode() == callbackId) {
-                    bleCallback.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, originalArgument);
+                    bleCallback.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values, originalArgument);
                     break;
                 }
             } catch (Exception e) {
@@ -556,7 +556,7 @@ public class BLECallbackDistributer implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
+    public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         Integer callbackId;
         if (argument.containsKey(KEY_CALLBACK_ID)) {
             callbackId = argument.getInt(KEY_CALLBACK_ID);
@@ -568,9 +568,9 @@ public class BLECallbackDistributer implements BLECallback {
         for (BLECallback bleCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
             try {
                 if (callbackId == null) {
-                    bleCallback.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, originalArgument);
+                    bleCallback.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status, originalArgument);
                 } else if (bleCallback.hashCode() == callbackId) {
-                    bleCallback.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, originalArgument);
+                    bleCallback.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status, originalArgument);
                     break;
                 }
             } catch (Exception e) {
@@ -583,7 +583,7 @@ public class BLECallbackDistributer implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
+    public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         Integer callbackId;
         if (argument.containsKey(KEY_CALLBACK_ID)) {
             callbackId = argument.getInt(KEY_CALLBACK_ID);
@@ -595,9 +595,9 @@ public class BLECallbackDistributer implements BLECallback {
         for (BLECallback bleCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
             try {
                 if (callbackId == null) {
-                    bleCallback.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, originalArgument);
+                    bleCallback.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, originalArgument);
                 } else if (bleCallback.hashCode() == callbackId) {
-                    bleCallback.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, originalArgument);
+                    bleCallback.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, originalArgument);
                     break;
                 }
             } catch (Exception e) {
@@ -610,7 +610,7 @@ public class BLECallbackDistributer implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
+    public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         Integer callbackId;
         if (argument.containsKey(KEY_CALLBACK_ID)) {
             callbackId = argument.getInt(KEY_CALLBACK_ID);
@@ -622,9 +622,9 @@ public class BLECallbackDistributer implements BLECallback {
         for (BLECallback bleCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
             try {
                 if (callbackId == null) {
-                    bleCallback.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, originalArgument);
+                    bleCallback.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values, originalArgument);
                 } else if (bleCallback.hashCode() == callbackId) {
-                    bleCallback.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, originalArgument);
+                    bleCallback.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values, originalArgument);
                     break;
                 }
             } catch (Exception e) {
@@ -637,7 +637,7 @@ public class BLECallbackDistributer implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
+    public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         Integer callbackId;
         if (argument.containsKey(KEY_CALLBACK_ID)) {
             callbackId = argument.getInt(KEY_CALLBACK_ID);
@@ -649,9 +649,9 @@ public class BLECallbackDistributer implements BLECallback {
         for (BLECallback bleCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
             try {
                 if (callbackId == null) {
-                    bleCallback.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, originalArgument);
+                    bleCallback.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status, originalArgument);
                 } else if (bleCallback.hashCode() == callbackId) {
-                    bleCallback.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, originalArgument);
+                    bleCallback.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status, originalArgument);
                     break;
                 }
             } catch (Exception e) {
@@ -664,7 +664,7 @@ public class BLECallbackDistributer implements BLECallback {
      * {@inheritDoc}
      */
     @Override
-    public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
+    public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         Integer callbackId;
         if (argument.containsKey(KEY_CALLBACK_ID)) {
             callbackId = argument.getInt(KEY_CALLBACK_ID);
@@ -676,9 +676,9 @@ public class BLECallbackDistributer implements BLECallback {
         for (BLECallback bleCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
             try {
                 if (callbackId == null) {
-                    bleCallback.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, originalArgument);
+                    bleCallback.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, originalArgument);
                 } else if (bleCallback.hashCode() == callbackId) {
-                    bleCallback.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, originalArgument);
+                    bleCallback.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, originalArgument);
                     break;
                 }
             } catch (Exception e) {
@@ -1152,6 +1152,60 @@ public class BLECallbackDistributer implements BLECallback {
                     bleCallback.onAbortReliableWriteTimeout(taskId, bluetoothDevice, timeout, originalArgument);
                 } else if (bleCallback.hashCode() == callbackId) {
                     bleCallback.onAbortReliableWriteTimeout(taskId, bluetoothDevice, timeout, originalArgument);
+                    break;
+                }
+            } catch (Exception e) {
+                BLELogUtils.stackLog(e);
+            }
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onSetNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, boolean notificationStatus, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
+        Integer callbackId;
+        if (argument.containsKey(KEY_CALLBACK_ID)) {
+            callbackId = argument.getInt(KEY_CALLBACK_ID);
+        } else {
+            callbackId = null;
+        }
+        Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+        for (BLECallback bleCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+            try {
+                if (callbackId == null) {
+                    bleCallback.onSetNotificationSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, notificationStatus, originalArgument);
+                } else if (bleCallback.hashCode() == callbackId) {
+                    bleCallback.onSetNotificationSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, notificationStatus, originalArgument);
+                    break;
+                }
+            } catch (Exception e) {
+                BLELogUtils.stackLog(e);
+            }
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onSetNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, int status, @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
+        Integer callbackId;
+        if (argument.containsKey(KEY_CALLBACK_ID)) {
+            callbackId = argument.getInt(KEY_CALLBACK_ID);
+        } else {
+            callbackId = null;
+        }
+        Bundle originalArgument = argument.getBundle(KEY_WRAPPED_ARGUMENT);
+
+        for (BLECallback bleCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+            try {
+                if (callbackId == null) {
+                    bleCallback.onSetNotificationFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, notificationStatus, status, originalArgument);
+                } else if (bleCallback.hashCode() == callbackId) {
+                    bleCallback.onSetNotificationFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, notificationStatus, status, originalArgument);
                     break;
                 }
             } catch (Exception e) {

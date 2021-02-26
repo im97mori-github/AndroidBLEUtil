@@ -128,114 +128,114 @@ public class BloodPressureService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && BLOOD_PRESSURE_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
             if (BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
-                mBloodPressureServiceCallback.onBloodPressureMeasurementClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mBloodPressureServiceCallback.onBloodPressureMeasurementClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC.equals(characteristicUUID)) {
-                mBloodPressureServiceCallback.onIntermediateCuffPressureClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mBloodPressureServiceCallback.onIntermediateCuffPressureClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             }
         }
-        super.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, argument);
+        super.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && BLOOD_PRESSURE_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
             if (BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
-                mBloodPressureServiceCallback.onBloodPressureMeasurementClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                mBloodPressureServiceCallback.onBloodPressureMeasurementClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
             } else if (INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC.equals(characteristicUUID)) {
-                mBloodPressureServiceCallback.onIntermediateCuffPressureClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                mBloodPressureServiceCallback.onIntermediateCuffPressureClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
             }
         }
-        super.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, argument);
+        super.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && BLOOD_PRESSURE_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
             if (BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
-                mBloodPressureServiceCallback.onBloodPressureMeasurementClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                mBloodPressureServiceCallback.onBloodPressureMeasurementClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
             } else if (INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC.equals(characteristicUUID)) {
-                mBloodPressureServiceCallback.onIntermediateCuffPressureClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                mBloodPressureServiceCallback.onIntermediateCuffPressureClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
             }
         }
-        super.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, argument);
+        super.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && BLOOD_PRESSURE_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mBloodPressureServiceCallback.onBloodPressureMeasurementIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mBloodPressureServiceCallback.onBloodPressureMeasurementIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mBloodPressureServiceCallback.onBloodPressureMeasurementIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mBloodPressureServiceCallback.onBloodPressureMeasurementIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             } else if (INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mBloodPressureServiceCallback.onIntermediateCuffPressureNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mBloodPressureServiceCallback.onIntermediateCuffPressureNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mBloodPressureServiceCallback.onIntermediateCuffPressureNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mBloodPressureServiceCallback.onIntermediateCuffPressureNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             }
         }
-        super.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, argument);
+        super.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && BLOOD_PRESSURE_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mBloodPressureServiceCallback.onBloodPressureMeasurementIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mBloodPressureServiceCallback.onBloodPressureMeasurementIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mBloodPressureServiceCallback.onBloodPressureMeasurementIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mBloodPressureServiceCallback.onBloodPressureMeasurementIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             } else if (INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mBloodPressureServiceCallback.onIntermediateCuffPressureNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mBloodPressureServiceCallback.onIntermediateCuffPressureNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mBloodPressureServiceCallback.onIntermediateCuffPressureNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mBloodPressureServiceCallback.onIntermediateCuffPressureNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             }
         }
-        super.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, argument);
+        super.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && BLOOD_PRESSURE_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mBloodPressureServiceCallback.onBloodPressureMeasurementIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mBloodPressureServiceCallback.onBloodPressureMeasurementIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mBloodPressureServiceCallback.onBloodPressureMeasurementIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mBloodPressureServiceCallback.onBloodPressureMeasurementIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             } else if (INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mBloodPressureServiceCallback.onIntermediateCuffPressureNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mBloodPressureServiceCallback.onIntermediateCuffPressureNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mBloodPressureServiceCallback.onIntermediateCuffPressureNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mBloodPressureServiceCallback.onIntermediateCuffPressureNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             }
         }
-        super.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, argument);
+        super.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, argument);
     }
 
     /**
@@ -266,15 +266,15 @@ public class BloodPressureService extends AbstractCentralService {
      * get Blood Pressure Measurement's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see BloodPressureServiceCallback#onBloodPressureMeasurementClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see BloodPressureServiceCallback#onBloodPressureMeasurementClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see BloodPressureServiceCallback#onBloodPressureMeasurementClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see BloodPressureServiceCallback#onBloodPressureMeasurementClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see BloodPressureServiceCallback#onBloodPressureMeasurementClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see BloodPressureServiceCallback#onBloodPressureMeasurementClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getBloodPressureMeasurementClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted()) {
-            taskId = mBLEConnection.createReadDescriptorTask(BLOOD_PRESSURE_SERVICE, null, BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(BLOOD_PRESSURE_SERVICE, null, BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -283,9 +283,9 @@ public class BloodPressureService extends AbstractCentralService {
      * start Blood Pressure Measurement indication
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startBloodPressureMeasurementIndication() {
@@ -293,7 +293,7 @@ public class BloodPressureService extends AbstractCentralService {
         if (isStarted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(BLOOD_PRESSURE_SERVICE, null, BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(BLOOD_PRESSURE_SERVICE, null, BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -302,9 +302,9 @@ public class BloodPressureService extends AbstractCentralService {
      * stop Blood Pressure Measurement indication
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see BloodPressureServiceCallback#onBloodPressureMeasurementIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopBloodPressureMeasurementIndication() {
@@ -312,7 +312,7 @@ public class BloodPressureService extends AbstractCentralService {
         if (isStarted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(BLOOD_PRESSURE_SERVICE, null, BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(BLOOD_PRESSURE_SERVICE, null, BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -321,15 +321,15 @@ public class BloodPressureService extends AbstractCentralService {
      * get Intermediate Cuff Pressure's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see BloodPressureServiceCallback#onIntermediateCuffPressureClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see BloodPressureServiceCallback#onIntermediateCuffPressureClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see BloodPressureServiceCallback#onIntermediateCuffPressureClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see BloodPressureServiceCallback#onIntermediateCuffPressureClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see BloodPressureServiceCallback#onIntermediateCuffPressureClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see BloodPressureServiceCallback#onIntermediateCuffPressureClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getIntermediateCuffPressureClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted() && isIntermediateCuffPressureSupported()) {
-            taskId = mBLEConnection.createReadDescriptorTask(BLOOD_PRESSURE_SERVICE, null, INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(BLOOD_PRESSURE_SERVICE, null, INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -338,9 +338,9 @@ public class BloodPressureService extends AbstractCentralService {
      * start Intermediate Cuff Pressure notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startIntermediateCuffPressureNotification() {
@@ -348,7 +348,7 @@ public class BloodPressureService extends AbstractCentralService {
         if (isStarted() && isIntermediateCuffPressureSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(BLOOD_PRESSURE_SERVICE, null, INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(BLOOD_PRESSURE_SERVICE, null, INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -357,9 +357,9 @@ public class BloodPressureService extends AbstractCentralService {
      * stop Intermediate Cuff Pressure notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see BloodPressureServiceCallback#onIntermediateCuffPressureNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopIntermediateCuffPressureNotification() {
@@ -367,7 +367,7 @@ public class BloodPressureService extends AbstractCentralService {
         if (isStarted() && isIntermediateCuffPressureSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(BLOOD_PRESSURE_SERVICE, null, INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(BLOOD_PRESSURE_SERVICE, null, INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }

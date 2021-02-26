@@ -915,138 +915,138 @@ public class UserDataService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
             if (DATABASE_CHANGE_INCREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
-                mUserDataServiceCallback.onDatabaseChangeIncrementClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mUserDataServiceCallback.onDatabaseChangeIncrementClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (REGISTERED_USER_CHARACTERISTIC.equals(characteristicUUID)) {
-                mUserDataServiceCallback.onRegisteredUserClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mUserDataServiceCallback.onRegisteredUserClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (USER_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
-                mUserDataServiceCallback.onUserControlPointClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                mUserDataServiceCallback.onUserControlPointClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
             }
         }
-        super.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, argument);
+        super.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
             if (DATABASE_CHANGE_INCREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
-                mUserDataServiceCallback.onDatabaseChangeIncrementClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                mUserDataServiceCallback.onDatabaseChangeIncrementClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
             } else if (REGISTERED_USER_CHARACTERISTIC.equals(characteristicUUID)) {
-                mUserDataServiceCallback.onRegisteredUserClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                mUserDataServiceCallback.onRegisteredUserClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
             } else if (USER_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
-                mUserDataServiceCallback.onUserControlPointClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                mUserDataServiceCallback.onUserControlPointClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
             }
         }
-        super.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, argument);
+        super.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
             if (DATABASE_CHANGE_INCREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
-                mUserDataServiceCallback.onDatabaseChangeIncrementClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                mUserDataServiceCallback.onDatabaseChangeIncrementClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
             } else if (REGISTERED_USER_CHARACTERISTIC.equals(characteristicUUID)) {
-                mUserDataServiceCallback.onRegisteredUserClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                mUserDataServiceCallback.onRegisteredUserClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
             } else if (USER_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
-                mUserDataServiceCallback.onUserControlPointClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                mUserDataServiceCallback.onUserControlPointClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
             }
         }
-        super.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, argument);
+        super.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (DATABASE_CHANGE_INCREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mUserDataServiceCallback.onDatabaseChangeIncrementNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mUserDataServiceCallback.onDatabaseChangeIncrementNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mUserDataServiceCallback.onDatabaseChangeIncrementNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mUserDataServiceCallback.onDatabaseChangeIncrementNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             } else if (REGISTERED_USER_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mUserDataServiceCallback.onRegisteredUserIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mUserDataServiceCallback.onRegisteredUserIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mUserDataServiceCallback.onRegisteredUserIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mUserDataServiceCallback.onRegisteredUserIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             } else if (USER_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mUserDataServiceCallback.onUserControlPointIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mUserDataServiceCallback.onUserControlPointIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mUserDataServiceCallback.onUserControlPointIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                    mUserDataServiceCallback.onUserControlPointIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             }
         }
-        super.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, argument);
+        super.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (DATABASE_CHANGE_INCREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mUserDataServiceCallback.onDatabaseChangeIncrementNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mUserDataServiceCallback.onDatabaseChangeIncrementNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mUserDataServiceCallback.onDatabaseChangeIncrementNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mUserDataServiceCallback.onDatabaseChangeIncrementNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             } else if (REGISTERED_USER_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mUserDataServiceCallback.onRegisteredUserIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mUserDataServiceCallback.onRegisteredUserIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mUserDataServiceCallback.onRegisteredUserIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mUserDataServiceCallback.onRegisteredUserIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             } else if (USER_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mUserDataServiceCallback.onUserControlPointIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mUserDataServiceCallback.onUserControlPointIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mUserDataServiceCallback.onUserControlPointIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mUserDataServiceCallback.onUserControlPointIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             }
         }
-        super.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, argument);
+        super.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && USER_DATA_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (DATABASE_CHANGE_INCREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mUserDataServiceCallback.onDatabaseChangeIncrementNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mUserDataServiceCallback.onDatabaseChangeIncrementNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mUserDataServiceCallback.onDatabaseChangeIncrementNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mUserDataServiceCallback.onDatabaseChangeIncrementNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             } else if (REGISTERED_USER_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mUserDataServiceCallback.onRegisteredUserIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mUserDataServiceCallback.onRegisteredUserIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mUserDataServiceCallback.onRegisteredUserIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mUserDataServiceCallback.onRegisteredUserIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             } else if (USER_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mUserDataServiceCallback.onUserControlPointIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mUserDataServiceCallback.onUserControlPointIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mUserDataServiceCallback.onUserControlPointIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mUserDataServiceCallback.onUserControlPointIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             }
         }
-        super.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, argument);
+        super.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, argument);
     }
 
     /**
@@ -2317,15 +2317,15 @@ public class UserDataService extends AbstractCentralService {
      * get Database Change Increment's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see UserDataServiceCallback#onDatabaseChangeIncrementClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see UserDataServiceCallback#onDatabaseChangeIncrementClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see UserDataServiceCallback#onDatabaseChangeIncrementClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see UserDataServiceCallback#onDatabaseChangeIncrementClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see UserDataServiceCallback#onDatabaseChangeIncrementClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see UserDataServiceCallback#onDatabaseChangeIncrementClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getDatabaseChangeIncrementClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted() && isDatabaseChangeIncrementCharacteristicNotifySupporeted()) {
-            taskId = mBLEConnection.createReadDescriptorTask(USER_DATA_SERVICE, null, DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(USER_DATA_SERVICE, null, DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -2334,9 +2334,9 @@ public class UserDataService extends AbstractCentralService {
      * start Database Change Increment notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see UserDataServiceCallback#onDatabaseChangeIncrementNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see UserDataServiceCallback#onDatabaseChangeIncrementNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see UserDataServiceCallback#onDatabaseChangeIncrementNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see UserDataServiceCallback#onDatabaseChangeIncrementNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see UserDataServiceCallback#onDatabaseChangeIncrementNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see UserDataServiceCallback#onDatabaseChangeIncrementNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startDatabaseChangeIncrementNotification() {
@@ -2344,7 +2344,7 @@ public class UserDataService extends AbstractCentralService {
         if (isStarted() && isDatabaseChangeIncrementCharacteristicNotifySupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(USER_DATA_SERVICE, null, DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(USER_DATA_SERVICE, null, DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -2353,9 +2353,9 @@ public class UserDataService extends AbstractCentralService {
      * stop Database Change Increment notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see UserDataServiceCallback#onDatabaseChangeIncrementNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see UserDataServiceCallback#onDatabaseChangeIncrementNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see UserDataServiceCallback#onDatabaseChangeIncrementNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see UserDataServiceCallback#onDatabaseChangeIncrementNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see UserDataServiceCallback#onDatabaseChangeIncrementNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see UserDataServiceCallback#onDatabaseChangeIncrementNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopDatabaseChangeIncrementNotification() {
@@ -2363,7 +2363,7 @@ public class UserDataService extends AbstractCentralService {
         if (isStarted() && isDatabaseChangeIncrementCharacteristicNotifySupporeted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(USER_DATA_SERVICE, null, DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(USER_DATA_SERVICE, null, DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -2389,15 +2389,15 @@ public class UserDataService extends AbstractCentralService {
      * get Registered User's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see UserDataServiceCallback#onRegisteredUserClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see UserDataServiceCallback#onRegisteredUserClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see UserDataServiceCallback#onRegisteredUserClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see UserDataServiceCallback#onRegisteredUserClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see UserDataServiceCallback#onRegisteredUserClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see UserDataServiceCallback#onRegisteredUserClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getRegisteredUserClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted()) {
-            taskId = mBLEConnection.createReadDescriptorTask(USER_DATA_SERVICE, null, REGISTERED_USER_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(USER_DATA_SERVICE, null, REGISTERED_USER_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -2406,9 +2406,9 @@ public class UserDataService extends AbstractCentralService {
      * start Registered User indication
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see UserDataServiceCallback#onRegisteredUserIndicateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see UserDataServiceCallback#onRegisteredUserIndicateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see UserDataServiceCallback#onRegisteredUserIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see UserDataServiceCallback#onRegisteredUserIndicateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see UserDataServiceCallback#onRegisteredUserIndicateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see UserDataServiceCallback#onRegisteredUserIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startRegisteredUserIndication() {
@@ -2416,7 +2416,7 @@ public class UserDataService extends AbstractCentralService {
         if (isStarted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(USER_DATA_SERVICE, null, REGISTERED_USER_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(USER_DATA_SERVICE, null, REGISTERED_USER_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -2425,9 +2425,9 @@ public class UserDataService extends AbstractCentralService {
      * stop Registered User indication
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see UserDataServiceCallback#onRegisteredUserIndicateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see UserDataServiceCallback#onRegisteredUserIndicateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see UserDataServiceCallback#onRegisteredUserIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see UserDataServiceCallback#onRegisteredUserIndicateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see UserDataServiceCallback#onRegisteredUserIndicateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see UserDataServiceCallback#onRegisteredUserIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopRegisteredUserIndication() {
@@ -2435,7 +2435,7 @@ public class UserDataService extends AbstractCentralService {
         if (isStarted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(USER_DATA_SERVICE, null, REGISTERED_USER_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(USER_DATA_SERVICE, null, REGISTERED_USER_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -2461,15 +2461,15 @@ public class UserDataService extends AbstractCentralService {
      * get User Control Point's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see UserDataServiceCallback#onUserControlPointClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see UserDataServiceCallback#onUserControlPointClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see UserDataServiceCallback#onUserControlPointClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see UserDataServiceCallback#onUserControlPointClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see UserDataServiceCallback#onUserControlPointClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see UserDataServiceCallback#onUserControlPointClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getUserControlPointClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted()) {
-            taskId = mBLEConnection.createReadDescriptorTask(USER_DATA_SERVICE, null, USER_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(USER_DATA_SERVICE, null, USER_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -2478,9 +2478,9 @@ public class UserDataService extends AbstractCentralService {
      * start User Control Point indication
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see UserDataServiceCallback#onUserControlPointIndicateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see UserDataServiceCallback#onUserControlPointIndicateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see UserDataServiceCallback#onUserControlPointIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see UserDataServiceCallback#onUserControlPointIndicateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see UserDataServiceCallback#onUserControlPointIndicateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see UserDataServiceCallback#onUserControlPointIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startUserControlPointIndication() {
@@ -2488,7 +2488,7 @@ public class UserDataService extends AbstractCentralService {
         if (isStarted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(USER_DATA_SERVICE, null, USER_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(USER_DATA_SERVICE, null, USER_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -2497,9 +2497,9 @@ public class UserDataService extends AbstractCentralService {
      * stop User Control Point indication
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see UserDataServiceCallback#onUserControlPointIndicateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see UserDataServiceCallback#onUserControlPointIndicateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see UserDataServiceCallback#onUserControlPointIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see UserDataServiceCallback#onUserControlPointIndicateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see UserDataServiceCallback#onUserControlPointIndicateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see UserDataServiceCallback#onUserControlPointIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopUserControlPointIndication() {
@@ -2507,7 +2507,7 @@ public class UserDataService extends AbstractCentralService {
         if (isStarted()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(USER_DATA_SERVICE, null, USER_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(USER_DATA_SERVICE, null, USER_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }

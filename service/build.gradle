@@ -70,6 +70,8 @@ dependencies {
     api "${groupId}:${servicePassCentralAndroid.artifactId}:${servicePassCentralAndroid.versionName}"
     api "${groupId}:${serviceFtmsPeripheralAndroid.artifactId}:${serviceFtmsPeripheralAndroid.versionName}"
     api "${groupId}:${serviceFtmsCentralAndroid.artifactId}:${serviceFtmsCentralAndroid.versionName}"
+    api "${groupId}:${serviceEssPeripheralAndroid.artifactId}:${serviceEssPeripheralAndroid.versionName}"
+    api "${groupId}:${serviceEssCentralAndroid.artifactId}:${serviceEssCentralAndroid.versionName}"
 }
 
 task sourcesJar(type: Jar) {

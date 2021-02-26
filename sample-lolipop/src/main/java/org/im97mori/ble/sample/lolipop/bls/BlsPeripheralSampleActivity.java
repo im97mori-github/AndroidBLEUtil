@@ -134,7 +134,7 @@ public class BlsPeripheralSampleActivity extends BaseActivity implements View.On
         super.onDestroy();
     }
 
-    private void updateLayout() {
+    protected void updateLayout() {
         if (mBluetoothAdapter != null && !mBluetoothAdapter.isEnabled()) {
             mBluetoothAdapter.enable();
         } else if (mBLEServerConnection.isStarted()) {

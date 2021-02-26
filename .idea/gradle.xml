@@ -218,6 +218,9 @@
             <option value="$PROJECT_DIR$/profile/cscp" />
             <option value="$PROJECT_DIR$/profile/cscp/central" />
             <option value="$PROJECT_DIR$/profile/cscp/peripheral" />
+            <option value="$PROJECT_DIR$/profile/esp" />
+            <option value="$PROJECT_DIR$/profile/esp/central" />
+            <option value="$PROJECT_DIR$/profile/esp/peripheral" />
             <option value="$PROJECT_DIR$/profile/fmp" />
             <option value="$PROJECT_DIR$/profile/fmp/central" />
             <option value="$PROJECT_DIR$/profile/fmp/peripheral" />
@@ -280,6 +283,9 @@
             <option value="$PROJECT_DIR$/service/dis" />
             <option value="$PROJECT_DIR$/service/dis/central" />
             <option value="$PROJECT_DIR$/service/dis/peripheral" />
+            <option value="$PROJECT_DIR$/service/ess" />
+            <option value="$PROJECT_DIR$/service/ess/central" />
+            <option value="$PROJECT_DIR$/service/ess/peripheral" />
             <option value="$PROJECT_DIR$/service/ftms" />
             <option value="$PROJECT_DIR$/service/ftms/central" />
             <option value="$PROJECT_DIR$/service/ftms/peripheral" />

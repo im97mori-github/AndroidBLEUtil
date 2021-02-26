@@ -135,7 +135,7 @@ public class RscpPeripheralSampleActivity extends BaseActivity implements View.O
         super.onDestroy();
     }
 
-    private void updateLayout() {
+    protected void updateLayout() {
         if (!BLEUtilsAndroid.isBluetoothEnabled()) {
             BLEUtilsAndroid.bluetoothEnable();
         } else if (mRunningSpeedAndCadenceProfileMockCallback.isStarted()) {

@@ -9,15 +9,23 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Pair;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import org.im97mori.ble.BLEPeripheralLogUtils;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 @SuppressWarnings({"SameReturnValue", "WeakerAccess", "RedundantSuppression"})
 public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback {
@@ -28,12 +36,16 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     protected static final String MODE_PERMISSION = "MODE_PERMISSION";
     protected static final String MODE_LOCATION = "MODE_LOCATION";
 
+    protected ArrayAdapter<Pair<String, String>> mAdapter;
+    protected ListView mListView;
+
     protected Button mGetPermissionButton;
     protected Button mEnableLocationButton;
 
     protected FragmentManager mFragmentManager;
 
     protected LocationManager mLocationManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,5 +176,20 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         }
         return result;
     }
+
+
+    protected void addRow(@NonNull String prefix, @Nullable Object result) {
+        String text;
+        if (result == null) {
+            text = prefix + "\nnull";
+        } else {
+            text = prefix + "\n" + result.toString();
+        }
+        mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
+        mListView.smoothScrollToPosition(mAdapter.getCount());
+        updateLayout();
+    }
+
+    abstract protected void updateLayout();
 
 }

@@ -141,6 +141,12 @@
         <activity
             android:name=".ftmp.FtmpCentralSampleActivity"
             android:label="@string/label_ftmp_central" />
+        <activity
+            android:name=".esp.EspPeripheralSampleActivity"
+            android:label="@string/label_esp_peripheral" />
+        <activity
+            android:name=".esp.EspCentralSampleActivity"
+            android:label="@string/label_esp_central" />
     </application>
 
 </manifest>

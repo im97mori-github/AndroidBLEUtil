@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,10 +30,7 @@ import org.im97mori.ble.sample.lolipop.BaseActivity;
 import org.im97mori.ble.sample.lolipop.R;
 import org.im97mori.ble.sample.lolipop.SampleCallback;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedList;
-import java.util.Locale;
 import java.util.Set;
 
 import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
@@ -43,9 +39,6 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 public class AiopCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
     private Button mConnectDisconnectButton;
-
-    private ArrayAdapter<Pair<String, String>> mAdapter;
-    private ListView mListView;
 
     private AiopCallbackSample mAiopCallbackSample;
     private AutomationIOProfile mAutomationIOProfile;
@@ -158,18 +151,6 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
             analog0(item);
             analog1(item);
         }
-    }
-
-    private void addRow(@NonNull String prefix, @Nullable Object result) {
-        String text;
-        if (result == null) {
-            text = prefix + "\nnull";
-        } else {
-            text = prefix + "\n" + result.toString();
-        }
-        mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
-        mListView.smoothScrollToPosition(mAdapter.getCount());
-        updateLayout();
     }
 
     private void digital0(MenuItem item) {
@@ -436,7 +417,7 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
         }
     }
 
-    private void updateLayout() {
+    protected void updateLayout() {
         if (!BLEUtilsAndroid.isBluetoothEnabled()) {
             BLEUtilsAndroid.bluetoothEnable();
         } else {

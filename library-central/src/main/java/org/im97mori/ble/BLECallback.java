@@ -230,9 +230,10 @@ public interface BLECallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorUUID           descriptor  {@link UUID}
+     * @param descriptorInstanceId     task target descriptor incetanceId
      * @param values                   {@link BluetoothGattDescriptor#getValue()}
      */
-    void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument);
+    void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument);
 
     /**
      * Read descriptor error callback
@@ -244,10 +245,11 @@ public interface BLECallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorUUID           descriptor  {@link UUID}
+     * @param descriptorInstanceId     task target descriptor incetanceId
      * @param status                   one of {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
      * @param argument                 callback argument
      */
-    void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument);
+    void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument);
 
     /**
      * Read descriptor timeout callback
@@ -259,9 +261,10 @@ public interface BLECallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorUUID           descriptor  {@link UUID}
+     * @param descriptorInstanceId     task target descriptor incetanceId
      * @param timeout                  timeout(millis)
      */
-    void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument);
+    void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument);
 
     /**
      * Write descriptor success callback
@@ -273,10 +276,11 @@ public interface BLECallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorUUID           descriptor  {@link UUID}
+     * @param descriptorInstanceId     task target descriptor incetanceId
      * @param values                   {@link BluetoothGattDescriptor#getValue()}
      * @param argument                 callback argument
      */
-    void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument);
+    void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument);
 
     /**
      * Write descriptor error callback
@@ -287,11 +291,12 @@ public interface BLECallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor incetanceId
      * @param status                   one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link BLEConstants.ErrorCodes#UNKNOWN}, {@link BLEConstants.ErrorCodes#CANCEL}, {@link BLEConstants.ErrorCodes#BUSY}
      * @param argument                 callback argument
      * @see BLEConstants.ErrorCodes
      */
-    void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument);
+    void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument);
 
     /**
      * Write descriptor timeout callback
@@ -303,10 +308,11 @@ public interface BLECallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorUUID           descriptor  {@link UUID}
+     * @param descriptorInstanceId     task target descriptor incetanceId
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument);
+    void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument);
 
     /**
      * Notification characteristic callback
@@ -489,5 +495,34 @@ public interface BLECallback {
      * @param argument        callback argument
      */
     void onAbortReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
+
+    /**
+     * Set Notification success callback
+     *
+     * @param taskId                   task id
+     * @param bluetoothDevice          BLE device
+     * @param serviceUUID              service {@link UUID}
+     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       characteristic {@link UUID}
+     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param notificationStatus       {@link BluetoothGatt#setCharacteristicNotification(BluetoothGattCharacteristic, boolean)} 2nd paramater
+     * @param argument                 callback argument
+     */
+    void onSetNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument);
+
+    /**
+     * Set Notification error callback
+     *
+     * @param taskId                   task id
+     * @param bluetoothDevice          BLE device
+     * @param serviceUUID              service {@link UUID}
+     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       characteristic {@link UUID}
+     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param notificationStatus       {@link BluetoothGatt#setCharacteristicNotification(BluetoothGattCharacteristic, boolean)} 2nd paramater
+     * @param status                   {@link BLEConstants.ErrorCodes#UNKNOWN} or {@link BLEConstants.ErrorCodes#BUSY}
+     * @param argument                 callback argument
+     */
+    void onSetNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, int status, @Nullable Bundle argument);
 
 }

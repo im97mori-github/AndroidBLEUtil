@@ -305,154 +305,154 @@ public class AutomationIOService extends AbstractCentralService {
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && AUTOMATION_IO_SERVICE.equals(serviceUUID)) {
             if (DIGITAL_CHARACTERISTIC.equals(characteristicUUID)) {
                 Integer characteristicIndex = getCharacteristicIndex(mDigitalList, characteristicInstanceId);
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onDigitalClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalCharacteristicPresentationFormatReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, CharacteristicPresentationFormatAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onDigitalCharacteristicPresentationFormatReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, CharacteristicPresentationFormatAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalCharacteristicUserDescriptionReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, CharacteristicUserDescriptionAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onDigitalCharacteristicUserDescriptionReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, CharacteristicUserDescriptionAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalCharacteristicExtendedPropertiesReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, CharacteristicExtendedPropertiesAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onDigitalCharacteristicExtendedPropertiesReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, CharacteristicExtendedPropertiesAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (VALUE_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalValueTriggerSettingReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, ValueTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onDigitalValueTriggerSettingReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, ValueTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (TIME_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalTimeTriggerSettingReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, TimeTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onDigitalTimeTriggerSettingReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, TimeTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (NUMBER_OF_DIGITALS_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalNumberOfDigitalsReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, NumberOfDigitalsAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onDigitalNumberOfDigitalsReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, NumberOfDigitalsAndroid.CREATOR.createFromByteArray(values), argument);
                 }
             } else if (ANALOG_CHARACTERISTIC.equals(characteristicUUID)) {
                 Integer characteristicIndex = getCharacteristicIndex(mAnalogList, characteristicInstanceId);
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onAnalogClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogCharacteristicPresentationFormatReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, CharacteristicPresentationFormatAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onAnalogCharacteristicPresentationFormatReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, CharacteristicPresentationFormatAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogCharacteristicUserDescriptionReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, CharacteristicUserDescriptionAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onAnalogCharacteristicUserDescriptionReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, CharacteristicUserDescriptionAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogCharacteristicExtendedPropertiesReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, CharacteristicExtendedPropertiesAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onAnalogCharacteristicExtendedPropertiesReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, CharacteristicExtendedPropertiesAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (VALUE_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogValueTriggerSettingReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, ValueTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onAnalogValueTriggerSettingReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, ValueTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (TIME_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogTimeTriggerSettingReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, TimeTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onAnalogTimeTriggerSettingReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, TimeTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (VALID_RANGE_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogValidRangeReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, ValidRangeAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onAnalogValidRangeReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, ValidRangeAndroid.CREATOR.createFromByteArray(values), argument);
                 }
             } else if (AGGREGATE_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAggregateClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onAggregateClientCharacteristicConfigurationReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(values), argument);
                 }
             }
         }
-        super.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, argument);
+        super.onDescriptorReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && AUTOMATION_IO_SERVICE.equals(serviceUUID)) {
             if (DIGITAL_CHARACTERISTIC.equals(characteristicUUID)) {
                 Integer characteristicIndex = getCharacteristicIndex(mDigitalList, characteristicInstanceId);
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onDigitalClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 } else if (CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalCharacteristicPresentationFormatReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onDigitalCharacteristicPresentationFormatReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 } else if (CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalCharacteristicUserDescriptionReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onDigitalCharacteristicUserDescriptionReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 } else if (CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalCharacteristicExtendedPropertiesReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onDigitalCharacteristicExtendedPropertiesReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 } else if (VALUE_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalValueTriggerSettingReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onDigitalValueTriggerSettingReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 } else if (TIME_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalTimeTriggerSettingReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onDigitalTimeTriggerSettingReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 } else if (NUMBER_OF_DIGITALS_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalNumberOfDigitalsReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onDigitalNumberOfDigitalsReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 }
             } else if (ANALOG_CHARACTERISTIC.equals(characteristicUUID)) {
                 Integer characteristicIndex = getCharacteristicIndex(mAnalogList, characteristicInstanceId);
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onAnalogClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 } else if (CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogCharacteristicPresentationFormatReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onAnalogCharacteristicPresentationFormatReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 } else if (CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogCharacteristicUserDescriptionReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onAnalogCharacteristicUserDescriptionReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 } else if (CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogCharacteristicExtendedPropertiesReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onAnalogCharacteristicExtendedPropertiesReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 } else if (VALUE_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogValueTriggerSettingReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onAnalogValueTriggerSettingReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 } else if (TIME_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogTimeTriggerSettingReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onAnalogTimeTriggerSettingReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 } else if (VALID_RANGE_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogValidRangeReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onAnalogValidRangeReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 }
             } else if (AGGREGATE_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAggregateClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                    mAutomationIOServiceCallback.onAggregateClientCharacteristicConfigurationReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             }
         }
-        super.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, argument);
+        super.onDescriptorReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && AUTOMATION_IO_SERVICE.equals(serviceUUID)) {
             if (DIGITAL_CHARACTERISTIC.equals(characteristicUUID)) {
                 Integer characteristicIndex = getCharacteristicIndex(mDigitalList, characteristicInstanceId);
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onDigitalClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 } else if (CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalCharacteristicPresentationFormatReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onDigitalCharacteristicPresentationFormatReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 } else if (CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalCharacteristicUserDescriptionReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onDigitalCharacteristicUserDescriptionReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 } else if (CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalCharacteristicExtendedPropertiesReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onDigitalCharacteristicExtendedPropertiesReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 } else if (VALUE_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalValueTriggerSettingReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onDigitalValueTriggerSettingReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 } else if (TIME_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalTimeTriggerSettingReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onDigitalTimeTriggerSettingReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 } else if (NUMBER_OF_DIGITALS_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalNumberOfDigitalsReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onDigitalNumberOfDigitalsReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 }
             } else if (ANALOG_CHARACTERISTIC.equals(characteristicUUID)) {
                 Integer characteristicIndex = getCharacteristicIndex(mAnalogList, characteristicInstanceId);
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onAnalogClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 } else if (CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogCharacteristicPresentationFormatReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onAnalogCharacteristicPresentationFormatReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 } else if (CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogCharacteristicUserDescriptionReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onAnalogCharacteristicUserDescriptionReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 } else if (CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogCharacteristicExtendedPropertiesReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onAnalogCharacteristicExtendedPropertiesReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 } else if (VALUE_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogValueTriggerSettingReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onAnalogValueTriggerSettingReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 } else if (TIME_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogTimeTriggerSettingReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onAnalogTimeTriggerSettingReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 } else if (VALID_RANGE_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogValidRangeReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onAnalogValidRangeReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 }
             } else if (AGGREGATE_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAggregateClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                    mAutomationIOServiceCallback.onAggregateClientCharacteristicConfigurationReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             }
         }
-        super.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, argument);
+        super.onDescriptorReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && AUTOMATION_IO_SERVICE.equals(serviceUUID)) {
             if (DIGITAL_CHARACTERISTIC.equals(characteristicUUID)) {
                 Integer characteristicIndex = getCharacteristicIndex(mDigitalList, characteristicInstanceId);
@@ -460,24 +460,24 @@ public class AutomationIOService extends AbstractCentralService {
                     if (characteristicIndex != null) {
                         if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
                             if (isDigitalNotificatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onDigitalNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, argument);
+                                mAutomationIOServiceCallback.onDigitalNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, argument);
                             } else if (isDigitalIndicatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onDigitalIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, argument);
+                                mAutomationIOServiceCallback.onDigitalIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, argument);
                             }
                         } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
                             if (isDigitalNotificatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onDigitalNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, argument);
+                                mAutomationIOServiceCallback.onDigitalNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, argument);
                             } else if (isDigitalIndicatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onDigitalIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, argument);
+                                mAutomationIOServiceCallback.onDigitalIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, argument);
                             }
                         }
                     }
                 } else if (CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalCharacteristicUserDescriptionWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, CharacteristicUserDescriptionAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onDigitalCharacteristicUserDescriptionWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, CharacteristicUserDescriptionAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (VALUE_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalValueTriggerSettingWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, ValueTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onDigitalValueTriggerSettingWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, ValueTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (TIME_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalTimeTriggerSettingWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, TimeTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onDigitalTimeTriggerSettingWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, TimeTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
                 }
             } else if (ANALOG_CHARACTERISTIC.equals(characteristicUUID)) {
                 Integer characteristicIndex = getCharacteristicIndex(mAnalogList, characteristicInstanceId);
@@ -485,51 +485,51 @@ public class AutomationIOService extends AbstractCentralService {
                     if (characteristicIndex != null) {
                         if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
                             if (isAnalogNotificatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onAnalogNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, argument);
+                                mAutomationIOServiceCallback.onAnalogNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, argument);
                             } else if (isAnalogIndicatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onAnalogIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, argument);
+                                mAutomationIOServiceCallback.onAnalogIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, argument);
                             }
                         } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
                             if (isAnalogNotificatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onAnalogNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, argument);
+                                mAutomationIOServiceCallback.onAnalogNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, argument);
                             } else if (isAnalogIndicatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onAnalogIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, argument);
+                                mAutomationIOServiceCallback.onAnalogIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, argument);
                             }
                         }
                     }
                 } else if (CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogCharacteristicUserDescriptionWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, CharacteristicUserDescriptionAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onAnalogCharacteristicUserDescriptionWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, CharacteristicUserDescriptionAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (VALUE_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogValueTriggerSettingWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, ValueTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onAnalogValueTriggerSettingWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, ValueTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (TIME_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogTimeTriggerSettingWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, TimeTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
+                    mAutomationIOServiceCallback.onAnalogTimeTriggerSettingWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, TimeTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
                 }
             } else if (AGGREGATE_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
                     if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
                         if (isAggregateNotificatable()) {
-                            mAutomationIOServiceCallback.onAggregateNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                            mAutomationIOServiceCallback.onAggregateNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                         } else if (isAggregateIndicatable()) {
-                            mAutomationIOServiceCallback.onAggregateIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                            mAutomationIOServiceCallback.onAggregateIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                         }
                     } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
                         if (isAggregateNotificatable()) {
-                            mAutomationIOServiceCallback.onAggregateNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                            mAutomationIOServiceCallback.onAggregateNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                         } else if (isAggregateIndicatable()) {
-                            mAutomationIOServiceCallback.onAggregateIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, argument);
+                            mAutomationIOServiceCallback.onAggregateIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                         }
                     }
                 }
             }
         }
-        super.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, values, argument);
+        super.onDescriptorWriteSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, values, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && AUTOMATION_IO_SERVICE.equals(serviceUUID)) {
             if (DIGITAL_CHARACTERISTIC.equals(characteristicUUID)) {
                 Integer characteristicIndex = getCharacteristicIndex(mDigitalList, characteristicInstanceId);
@@ -537,24 +537,24 @@ public class AutomationIOService extends AbstractCentralService {
                     if (characteristicIndex != null) {
                         if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
                             if (isDigitalNotificatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onDigitalNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                                mAutomationIOServiceCallback.onDigitalNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                             } else if (isDigitalIndicatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onDigitalIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                                mAutomationIOServiceCallback.onDigitalIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                             }
                         } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
                             if (isDigitalNotificatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onDigitalNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                                mAutomationIOServiceCallback.onDigitalNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                             } else if (isDigitalIndicatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onDigitalIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                                mAutomationIOServiceCallback.onDigitalIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                             }
                         }
                     }
                 } else if (CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalCharacteristicUserDescriptionWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onDigitalCharacteristicUserDescriptionWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 } else if (VALUE_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalValueTriggerSettingWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onDigitalValueTriggerSettingWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 } else if (TIME_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalTimeTriggerSettingWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onDigitalTimeTriggerSettingWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 }
             } else if (ANALOG_CHARACTERISTIC.equals(characteristicUUID)) {
                 Integer characteristicIndex = getCharacteristicIndex(mAnalogList, characteristicInstanceId);
@@ -562,51 +562,51 @@ public class AutomationIOService extends AbstractCentralService {
                     if (characteristicIndex != null) {
                         if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
                             if (isAnalogNotificatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onAnalogNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                                mAutomationIOServiceCallback.onAnalogNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                             } else if (isAnalogIndicatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onAnalogIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                                mAutomationIOServiceCallback.onAnalogIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                             }
                         } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
                             if (isAnalogNotificatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onAnalogNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                                mAutomationIOServiceCallback.onAnalogNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                             } else if (isAnalogIndicatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onAnalogIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                                mAutomationIOServiceCallback.onAnalogIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                             }
                         }
                     }
                 } else if (CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogCharacteristicUserDescriptionWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onAnalogCharacteristicUserDescriptionWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 } else if (VALUE_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogValueTriggerSettingWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onAnalogValueTriggerSettingWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 } else if (TIME_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogTimeTriggerSettingWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, status, argument);
+                    mAutomationIOServiceCallback.onAnalogTimeTriggerSettingWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                 }
             } else if (AGGREGATE_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
                     if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
                         if (isAggregateNotificatable()) {
-                            mAutomationIOServiceCallback.onAggregateNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                            mAutomationIOServiceCallback.onAggregateNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                         } else if (isAggregateIndicatable()) {
-                            mAutomationIOServiceCallback.onAggregateIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                            mAutomationIOServiceCallback.onAggregateIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                         }
                     } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
                         if (isAggregateNotificatable()) {
-                            mAutomationIOServiceCallback.onAggregateNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                            mAutomationIOServiceCallback.onAggregateNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                         } else if (isAggregateIndicatable()) {
-                            mAutomationIOServiceCallback.onAggregateIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+                            mAutomationIOServiceCallback.onAggregateIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                         }
                     }
                 }
             }
         }
-        super.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, status, argument);
+        super.onDescriptorWriteFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, status, argument);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public synchronized void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && AUTOMATION_IO_SERVICE.equals(serviceUUID)) {
             if (DIGITAL_CHARACTERISTIC.equals(characteristicUUID)) {
                 Integer characteristicIndex = getCharacteristicIndex(mDigitalList, characteristicInstanceId);
@@ -614,24 +614,24 @@ public class AutomationIOService extends AbstractCentralService {
                     if (characteristicIndex != null) {
                         if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
                             if (isDigitalNotificatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onDigitalNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                                mAutomationIOServiceCallback.onDigitalNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                             } else if (isDigitalIndicatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onDigitalIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                                mAutomationIOServiceCallback.onDigitalIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                             }
                         } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
                             if (isDigitalNotificatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onDigitalNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                                mAutomationIOServiceCallback.onDigitalNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                             } else if (isDigitalIndicatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onDigitalIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                                mAutomationIOServiceCallback.onDigitalIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                             }
                         }
                     }
                 } else if (CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalCharacteristicUserDescriptionWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onDigitalCharacteristicUserDescriptionWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 } else if (VALUE_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalValueTriggerSettingWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onDigitalValueTriggerSettingWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 } else if (TIME_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalTimeTriggerSettingWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onDigitalTimeTriggerSettingWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 }
             } else if (ANALOG_CHARACTERISTIC.equals(characteristicUUID)) {
                 Integer characteristicIndex = getCharacteristicIndex(mAnalogList, characteristicInstanceId);
@@ -639,44 +639,44 @@ public class AutomationIOService extends AbstractCentralService {
                     if (characteristicIndex != null) {
                         if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
                             if (isAnalogNotificatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onAnalogNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                                mAutomationIOServiceCallback.onAnalogNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                             } else if (isAnalogIndicatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onAnalogIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                                mAutomationIOServiceCallback.onAnalogIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                             }
                         } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
                             if (isAnalogNotificatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onAnalogNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                                mAutomationIOServiceCallback.onAnalogNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                             } else if (isAnalogIndicatable(characteristicIndex)) {
-                                mAutomationIOServiceCallback.onAnalogIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                                mAutomationIOServiceCallback.onAnalogIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                             }
                         }
                     }
                 } else if (CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogCharacteristicUserDescriptionWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onAnalogCharacteristicUserDescriptionWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 } else if (VALUE_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogValueTriggerSettingWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onAnalogValueTriggerSettingWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 } else if (TIME_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogTimeTriggerSettingWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, timeout, argument);
+                    mAutomationIOServiceCallback.onAnalogTimeTriggerSettingWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                 }
             } else if (AGGREGATE_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
                     if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
                         if (isAggregateNotificatable()) {
-                            mAutomationIOServiceCallback.onAggregateNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                            mAutomationIOServiceCallback.onAggregateNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                         } else if (isAggregateIndicatable()) {
-                            mAutomationIOServiceCallback.onAggregateIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                            mAutomationIOServiceCallback.onAggregateIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                         }
                     } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
                         if (isAggregateNotificatable()) {
-                            mAutomationIOServiceCallback.onAggregateNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                            mAutomationIOServiceCallback.onAggregateNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                         } else if (isAggregateIndicatable()) {
-                            mAutomationIOServiceCallback.onAggregateIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+                            mAutomationIOServiceCallback.onAggregateIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                         }
                     }
                 }
             }
         }
-        super.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, timeout, argument);
+        super.onDescriptorWriteTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, argument);
     }
 
     /**
@@ -1321,16 +1321,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Digital Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onDigitalClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getDigitalClientCharacteristicConfiguration(int index) {
         Integer taskId = null;
         if (isStarted() && (isDigitalNotificatable(index) || isDigitalIndicatable(index))) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
-            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1348,9 +1348,9 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Digital Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onDigitalNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startDigitalNotification(int index) {
@@ -1359,7 +1359,7 @@ public class AutomationIOService extends AbstractCentralService {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1377,9 +1377,9 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Digital Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onDigitalNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopDigitalNotification(int index) {
@@ -1388,7 +1388,7 @@ public class AutomationIOService extends AbstractCentralService {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1406,9 +1406,9 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Digital Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onDigitalIndicateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalIndicateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalIndicateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalIndicateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startDigitalIndication(int index) {
@@ -1417,7 +1417,7 @@ public class AutomationIOService extends AbstractCentralService {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1435,9 +1435,9 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Digital Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onDigitalIndicateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalIndicateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalIndicateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalIndicateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopDigitalIndication(int index) {
@@ -1446,7 +1446,7 @@ public class AutomationIOService extends AbstractCentralService {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1464,16 +1464,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Digital Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onDigitalCharacteristicPresentationFormatReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, CharacteristicPresentationFormatAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalCharacteristicPresentationFormatReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalCharacteristicPresentationFormatReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalCharacteristicPresentationFormatReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, CharacteristicPresentationFormatAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalCharacteristicPresentationFormatReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalCharacteristicPresentationFormatReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getDigitalCharacteristicPresentationFormat(int index) {
         Integer taskId = null;
         if (isStarted() && hasDigitalCharacteristicPresentationFormat(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
-            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1491,16 +1491,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Digital Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onDigitalCharacteristicUserDescriptionReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, CharacteristicUserDescriptionAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalCharacteristicUserDescriptionReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalCharacteristicUserDescriptionReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalCharacteristicUserDescriptionReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, CharacteristicUserDescriptionAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalCharacteristicUserDescriptionReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalCharacteristicUserDescriptionReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getDigitalCharacteristicUserDescription(int index) {
         Integer taskId = null;
         if (isStarted() && hasDigitalCharacteristicUserDescription(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
-            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1518,16 +1518,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Digital Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onDigitalCharacteristicUserDescriptionWriteSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, CharacteristicUserDescriptionAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalCharacteristicUserDescriptionWriteFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalCharacteristicUserDescriptionWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalCharacteristicUserDescriptionWriteSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, CharacteristicUserDescriptionAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalCharacteristicUserDescriptionWriteFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalCharacteristicUserDescriptionWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer setDigitalCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
         Integer taskId = null;
         if (isStarted() && isDigitalCharacteristicUserDescriptionWritable(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, characteristicUserDescription, WriteDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, null, characteristicUserDescription, WriteDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1545,16 +1545,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Digital Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onDigitalCharacteristicExtendedPropertiesReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, CharacteristicExtendedPropertiesAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalCharacteristicExtendedPropertiesReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalCharacteristicExtendedPropertiesReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalCharacteristicExtendedPropertiesReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, CharacteristicExtendedPropertiesAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalCharacteristicExtendedPropertiesReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalCharacteristicExtendedPropertiesReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getDigitalCharacteristicExtendedProperties(int index) {
         Integer taskId = null;
         if (isStarted() && hasDigitalCharacteristicExtendedProperties(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
-            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1572,16 +1572,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Digital Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onDigitalValueTriggerSettingReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ValueTriggerSettingAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalValueTriggerSettingReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalValueTriggerSettingReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalValueTriggerSettingReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, ValueTriggerSettingAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalValueTriggerSettingReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalValueTriggerSettingReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getDigitalValueTriggerSetting(int index) {
         Integer taskId = null;
         if (isStarted() && hasDigitalValueTriggerSetting(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
-            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), VALUE_TRIGGER_SETTING_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), VALUE_TRIGGER_SETTING_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1599,16 +1599,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Digital Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onDigitalValueTriggerSettingWriteSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ValueTriggerSettingAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalValueTriggerSettingWriteFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalValueTriggerSettingWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalValueTriggerSettingWriteSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, ValueTriggerSettingAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalValueTriggerSettingWriteFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalValueTriggerSettingWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer setDigitalValueTriggerSetting(int index, @NonNull ValueTriggerSetting valueTriggerSetting) {
         Integer taskId = null;
         if (isStarted() && hasDigitalValueTriggerSetting(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), VALUE_TRIGGER_SETTING_DESCRIPTOR, valueTriggerSetting, WriteDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), VALUE_TRIGGER_SETTING_DESCRIPTOR, null, valueTriggerSetting, WriteDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1626,16 +1626,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Digital Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onDigitalTimeTriggerSettingReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, TimeTriggerSettingAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalTimeTriggerSettingReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalTimeTriggerSettingReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalTimeTriggerSettingReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, TimeTriggerSettingAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalTimeTriggerSettingReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalTimeTriggerSettingReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getDigitalTimeTriggerSetting(int index) {
         Integer taskId = null;
         if (isStarted() && hasDigitalTimeTriggerSetting(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
-            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), TIME_TRIGGER_SETTING_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), TIME_TRIGGER_SETTING_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1653,16 +1653,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Digital Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onDigitalTimeTriggerSettingWriteSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, TimeTriggerSettingAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalTimeTriggerSettingWriteFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalTimeTriggerSettingWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalTimeTriggerSettingWriteSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, TimeTriggerSettingAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalTimeTriggerSettingWriteFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalTimeTriggerSettingWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer setDigitalTimeTriggerSetting(int index, @NonNull TimeTriggerSetting timeTriggerSetting) {
         Integer taskId = null;
         if (isStarted() && hasDigitalTimeTriggerSetting(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), TIME_TRIGGER_SETTING_DESCRIPTOR, timeTriggerSetting, WriteDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), TIME_TRIGGER_SETTING_DESCRIPTOR, null, timeTriggerSetting, WriteDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1680,16 +1680,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Digital Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onDigitalNumberOfDigitalsReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, NumberOfDigitalsAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalNumberOfDigitalsReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onDigitalNumberOfDigitalsReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalNumberOfDigitalsReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, NumberOfDigitalsAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalNumberOfDigitalsReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onDigitalNumberOfDigitalsReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getDigitalNumberOfDigitals(int index) {
         Integer taskId = null;
         if (isStarted() && index >= 0 && index < mDigitalList.size()) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
-            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), NUMBER_OF_DIGITALS_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), NUMBER_OF_DIGITALS_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1811,16 +1811,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Analog Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onAnalogClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getAnalogClientCharacteristicConfiguration(int index) {
         Integer taskId = null;
         if (isStarted() && (isAnalogNotificatable(index) || isAnalogIndicatable(index))) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
-            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1838,9 +1838,9 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Analog Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onAnalogNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startAnalogNotification(int index) {
@@ -1849,7 +1849,7 @@ public class AutomationIOService extends AbstractCentralService {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1867,9 +1867,9 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Analog Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onAnalogNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopAnalogNotification(int index) {
@@ -1878,7 +1878,7 @@ public class AutomationIOService extends AbstractCentralService {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1896,9 +1896,9 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Analog Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onAnalogIndicateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogIndicateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogIndicateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogIndicateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startAnalogIndication(int index) {
@@ -1907,7 +1907,7 @@ public class AutomationIOService extends AbstractCentralService {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1925,9 +1925,9 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Analog Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onAnalogIndicateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogIndicateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogIndicateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogIndicateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopAnalogIndication(int index) {
@@ -1936,7 +1936,7 @@ public class AutomationIOService extends AbstractCentralService {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -1954,16 +1954,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Analog Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onAnalogCharacteristicPresentationFormatReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, CharacteristicPresentationFormatAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogCharacteristicPresentationFormatReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogCharacteristicPresentationFormatReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogCharacteristicPresentationFormatReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, CharacteristicPresentationFormatAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogCharacteristicPresentationFormatReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogCharacteristicPresentationFormatReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getAnalogCharacteristicPresentationFormat(int index) {
         Integer taskId = null;
         if (isStarted() && hasAnalogCharacteristicPresentationFormat(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
-            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -1981,16 +1981,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Analog Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onAnalogCharacteristicUserDescriptionReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, CharacteristicUserDescriptionAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogCharacteristicUserDescriptionReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogCharacteristicUserDescriptionReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogCharacteristicUserDescriptionReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, CharacteristicUserDescriptionAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogCharacteristicUserDescriptionReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogCharacteristicUserDescriptionReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getAnalogCharacteristicUserDescription(int index) {
         Integer taskId = null;
         if (isStarted() && hasAnalogCharacteristicUserDescription(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
-            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -2008,16 +2008,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Analog Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onAnalogCharacteristicUserDescriptionWriteSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, CharacteristicUserDescriptionAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogCharacteristicUserDescriptionWriteFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogCharacteristicUserDescriptionWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogCharacteristicUserDescriptionWriteSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, CharacteristicUserDescriptionAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogCharacteristicUserDescriptionWriteFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogCharacteristicUserDescriptionWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer setAnalogCharacteristicUserDescription(int index, @NonNull CharacteristicUserDescription characteristicUserDescription) {
         Integer taskId = null;
         if (isStarted() && isAnalogCharacteristicUserDescriptionWritable(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, characteristicUserDescription, WriteDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, null, characteristicUserDescription, WriteDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -2035,16 +2035,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Analog Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onAnalogCharacteristicExtendedPropertiesReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, CharacteristicExtendedPropertiesAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogCharacteristicExtendedPropertiesReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogCharacteristicExtendedPropertiesReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogCharacteristicExtendedPropertiesReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, CharacteristicExtendedPropertiesAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogCharacteristicExtendedPropertiesReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogCharacteristicExtendedPropertiesReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getAnalogCharacteristicExtendedProperties(int index) {
         Integer taskId = null;
         if (isStarted() && hasAnalogCharacteristicExtendedProperties(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
-            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -2062,16 +2062,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Analog Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onAnalogValueTriggerSettingReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ValueTriggerSettingAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogValueTriggerSettingReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogValueTriggerSettingReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogValueTriggerSettingReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, ValueTriggerSettingAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogValueTriggerSettingReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogValueTriggerSettingReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getAnalogValueTriggerSetting(int index) {
         Integer taskId = null;
         if (isStarted() && hasAnalogValueTriggerSetting(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
-            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), VALUE_TRIGGER_SETTING_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), VALUE_TRIGGER_SETTING_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -2089,16 +2089,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Analog Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onAnalogValueTriggerSettingWriteSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ValueTriggerSettingAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogValueTriggerSettingWriteFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogValueTriggerSettingWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogValueTriggerSettingWriteSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, ValueTriggerSettingAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogValueTriggerSettingWriteFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogValueTriggerSettingWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer setAnalogValueTriggerSetting(int index, @NonNull ValueTriggerSetting valueTriggerSetting) {
         Integer taskId = null;
         if (isStarted() && hasAnalogValueTriggerSetting(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), VALUE_TRIGGER_SETTING_DESCRIPTOR, valueTriggerSetting, WriteDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), VALUE_TRIGGER_SETTING_DESCRIPTOR, null, valueTriggerSetting, WriteDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -2116,16 +2116,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Analog Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onAnalogTimeTriggerSettingReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, TimeTriggerSettingAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogTimeTriggerSettingReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogTimeTriggerSettingReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogTimeTriggerSettingReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, TimeTriggerSettingAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogTimeTriggerSettingReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogTimeTriggerSettingReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getAnalogTimeTriggerSetting(int index) {
         Integer taskId = null;
         if (isStarted() && hasAnalogTimeTriggerSetting(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
-            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), TIME_TRIGGER_SETTING_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), TIME_TRIGGER_SETTING_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -2143,16 +2143,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Analog Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onAnalogTimeTriggerSettingWriteSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, TimeTriggerSettingAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogTimeTriggerSettingWriteFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogTimeTriggerSettingWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogTimeTriggerSettingWriteSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, TimeTriggerSettingAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogTimeTriggerSettingWriteFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogTimeTriggerSettingWriteTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer setAnalogTimeTriggerSetting(int index, @NonNull TimeTriggerSetting timeTriggerSetting) {
         Integer taskId = null;
         if (isStarted() && hasAnalogTimeTriggerSetting(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), TIME_TRIGGER_SETTING_DESCRIPTOR, timeTriggerSetting, WriteDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), TIME_TRIGGER_SETTING_DESCRIPTOR, null, timeTriggerSetting, WriteDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -2170,16 +2170,16 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @param index Analog Characteristic index
      * @return task id. if {@code null} returned, service is not ready or index is out of range
-     * @see AutomationIOServiceCallback#onAnalogValidRangeReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ValidRangeAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogValidRangeReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAnalogValidRangeReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogValidRangeReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, ValidRangeAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogValidRangeReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAnalogValidRangeReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getAnalogValidRange(int index) {
         Integer taskId = null;
         if (isStarted() && index >= 0 && index < mAnalogList.size()) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
-            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), VALID_RANGE_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), VALID_RANGE_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -2205,15 +2205,15 @@ public class AutomationIOService extends AbstractCentralService {
      * get Aggregate's Client Characteristic Configuration
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see AutomationIOServiceCallback#onAggregateClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
-     * @see AutomationIOServiceCallback#onAggregateClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAggregateClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAggregateClientCharacteristicConfigurationReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, ClientCharacteristicConfigurationAndroid, Bundle)
+     * @see AutomationIOServiceCallback#onAggregateClientCharacteristicConfigurationReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAggregateClientCharacteristicConfigurationReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer getAggregateClientCharacteristicConfiguration() {
         Integer taskId = null;
         if (isStarted() && (isAggregateNotificatable() || isAggregateIndicatable())) {
-            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, null, AGGREGATE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
+            taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, null, AGGREGATE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
     }
@@ -2222,9 +2222,9 @@ public class AutomationIOService extends AbstractCentralService {
      * start Aggregate's notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see AutomationIOServiceCallback#onAggregateNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see AutomationIOServiceCallback#onAggregateNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAggregateNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAggregateNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see AutomationIOServiceCallback#onAggregateNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAggregateNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startAggregateNotification() {
@@ -2232,7 +2232,7 @@ public class AutomationIOService extends AbstractCentralService {
         if (isStarted() && isAggregateNotificatable()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, null, AGGREGATE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, null, AGGREGATE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -2241,9 +2241,9 @@ public class AutomationIOService extends AbstractCentralService {
      * stop Aggregate's notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see AutomationIOServiceCallback#onAggregateNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see AutomationIOServiceCallback#onAggregateNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAggregateNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAggregateNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see AutomationIOServiceCallback#onAggregateNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAggregateNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopAggregateNotification() {
@@ -2251,7 +2251,7 @@ public class AutomationIOService extends AbstractCentralService {
         if (isStarted() && isAggregateNotificatable()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, null, AGGREGATE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, null, AGGREGATE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -2260,9 +2260,9 @@ public class AutomationIOService extends AbstractCentralService {
      * start Aggregate's indication
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see AutomationIOServiceCallback#onAggregateIndicateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see AutomationIOServiceCallback#onAggregateIndicateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAggregateIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAggregateIndicateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see AutomationIOServiceCallback#onAggregateIndicateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAggregateIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startAggregateIndication() {
@@ -2270,7 +2270,7 @@ public class AutomationIOService extends AbstractCentralService {
         if (isStarted() && isAggregateIndicatable()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, null, AGGREGATE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, null, AGGREGATE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }
@@ -2279,9 +2279,9 @@ public class AutomationIOService extends AbstractCentralService {
      * stop Aggregate's indication
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see AutomationIOServiceCallback#onAggregateIndicateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Bundle)
-     * @see AutomationIOServiceCallback#onAggregateIndicateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
-     * @see AutomationIOServiceCallback#onAggregateIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     * @see AutomationIOServiceCallback#onAggregateIndicateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see AutomationIOServiceCallback#onAggregateIndicateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see AutomationIOServiceCallback#onAggregateIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopAggregateIndication() {
@@ -2289,7 +2289,7 @@ public class AutomationIOService extends AbstractCentralService {
         if (isStarted() && isAggregateIndicatable()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
-            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, null, AGGREGATE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
+            taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, null, AGGREGATE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
         }
         return taskId;
     }

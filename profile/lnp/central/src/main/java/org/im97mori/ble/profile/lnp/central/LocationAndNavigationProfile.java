@@ -150,7 +150,6 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
         return taskId;
     }
 
-
     /**
      * get available Battery Service count
      *

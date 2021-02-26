@@ -116,7 +116,7 @@ public class HtpPeripheralSampleActivity extends BaseActivity implements View.On
         super.onDestroy();
     }
 
-    private void updateLayout() {
+    protected void updateLayout() {
         if (!BLEUtilsAndroid.isBluetoothEnabled()) {
             BLEUtilsAndroid.bluetoothEnable();
         } else if (mHealthThermometerProfileMockCallback.isStarted()) {

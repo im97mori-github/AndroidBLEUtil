@@ -21,7 +21,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -90,19 +89,16 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
     private FilteredScanCallback mFilteredScanCallback;
 
     private BLEConnection mBleConnection;
-    private ArrayAdapter<Pair<String, String>> mAdapter;
-    private ListView mListView;
 
     private BLECallbackSample mBLECallbackSample;
 
     private BroadcastReceiver mReceiver;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mBLECallbackSample = new BLECallbackSample(this);
+        mBLECallbackSample = new BLECallbackSample(this, null);
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
         mAdapter = new ArrayAdapter<Pair<String, String>>(this, R.layout.list_child, new LinkedList<Pair<String, String>>()) {
@@ -598,14 +594,131 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
 //                            , "Mocked!".getBytes()
 //                    )
 //                    , WriteCharacteristicTask.TIMEOUT_MILLIS);
+        } else if (R.id.set_notification_on == item.getItemId()) {
+            mBleConnection.createSetNotificationTask(SAMPLE_PRIMARY_SERVICE_1
+                    , null
+                    , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                    , null
+                    , true
+                    , null
+                    , null);
+        } else if (R.id.set_notification_off == item.getItemId()) {
+            mBleConnection.createSetNotificationTask(SAMPLE_PRIMARY_SERVICE_1
+                    , null
+                    , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                    , null
+                    , false
+                    , null
+                    , null);
+        } else if (R.id.set_notification_on_sync == item.getItemId()) {
+            new Thread() {
+                @Override
+                public void run() {
+                    BLEConnection target = mBleConnection;
+                    if (target != null) {
+                        BLESyncConnection.BLEResult result = BLESyncConnection.createSetNotificationTask(target
+                                , SAMPLE_PRIMARY_SERVICE_1
+                                , null
+                                , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                                , null
+                                , ReadCharacteristicTask.TIMEOUT_MILLIS
+                                , true
+                                , null
+                                , false);
+
+                        if (result == null) {
+                            mBLECallbackSample.onSetNotificationFailed(0
+                                    , target.getBluetoothDevice()
+                                    , SAMPLE_PRIMARY_SERVICE_1
+                                    , null
+                                    , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                                    , null
+                                    , true
+                                    , BLEConstants.ErrorCodes.UNKNOWN
+                                    , null);
+                        } else {
+                            if (RESULT_SUCCESS == result.getResultCode()) {
+                                mBLECallbackSample.onSetNotificationSuccess(0
+                                        , target.getBluetoothDevice()
+                                        , SAMPLE_PRIMARY_SERVICE_1
+                                        , Objects.requireNonNull(result.getServiceInstanceId())
+                                        , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                                        , Objects.requireNonNull(result.getCharacteristicInstanceId())
+                                        , result.getNotifiationStatus()
+                                        , result.getArgument());
+                            } else if (RESULT_FAILED == result.getResultCode()) {
+                                mBLECallbackSample.onSetNotificationFailed(0
+                                        , target.getBluetoothDevice()
+                                        , SAMPLE_PRIMARY_SERVICE_1
+                                        , result.getServiceInstanceId()
+                                        , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                                        , result.getServiceInstanceId()
+                                        , result.getNotifiationStatus()
+                                        , result.getStatus()
+                                        , result.getArgument());
+                            }
+                        }
+                    }
+                }
+            }.start();
+        } else if (R.id.set_notification_off_sync == item.getItemId()) {
+            new Thread() {
+                @Override
+                public void run() {
+                    BLEConnection target = mBleConnection;
+                    if (target != null) {
+                        BLESyncConnection.BLEResult result = BLESyncConnection.createSetNotificationTask(target
+                                , SAMPLE_PRIMARY_SERVICE_1
+                                , null
+                                , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                                , null
+                                , ReadCharacteristicTask.TIMEOUT_MILLIS
+                                , false
+                                , null
+                                , false);
+
+                        if (result == null) {
+                            mBLECallbackSample.onSetNotificationFailed(0
+                                    , target.getBluetoothDevice()
+                                    , SAMPLE_PRIMARY_SERVICE_1
+                                    , null
+                                    , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                                    , null
+                                    , true
+                                    , BLEConstants.ErrorCodes.UNKNOWN
+                                    , null);
+                        } else {
+                            if (RESULT_SUCCESS == result.getResultCode()) {
+                                mBLECallbackSample.onSetNotificationSuccess(0
+                                        , target.getBluetoothDevice()
+                                        , SAMPLE_PRIMARY_SERVICE_1
+                                        , Objects.requireNonNull(result.getServiceInstanceId())
+                                        , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                                        , Objects.requireNonNull(result.getCharacteristicInstanceId())
+                                        , result.getNotifiationStatus()
+                                        , result.getArgument());
+                            } else if (RESULT_FAILED == result.getResultCode()) {
+                                mBLECallbackSample.onSetNotificationFailed(0
+                                        , target.getBluetoothDevice()
+                                        , SAMPLE_PRIMARY_SERVICE_1
+                                        , result.getServiceInstanceId()
+                                        , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                                        , result.getServiceInstanceId()
+                                        , result.getNotifiationStatus()
+                                        , result.getStatus()
+                                        , result.getArgument());
+                            }
+                        }
+                    }
+                }
+            }.start();
         } else if (R.id.clear == item.getItemId()) {
             mBleConnection.clear();
         }
         return true;
     }
 
-
-    private void updateLayout() {
+    protected void updateLayout() {
         if (!BLEUtilsAndroid.isBluetoothEnabled()) {
             BLEUtilsAndroid.bluetoothEnable();
         } else if (mBluetoothLeScanner == null) {

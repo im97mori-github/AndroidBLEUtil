@@ -215,82 +215,82 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
 
     @Override
     public void onBatteryLevelReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull BatteryLevelAndroid batteryLevelAndroid, @Nullable Bundle argument) {
-        callback(batteryLevelAndroid.getLevel());
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, batteryLevelAndroid.getLevel());
     }
 
     @Override
     public void onBatteryLevelReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, status);
     }
 
     @Override
     public void onBatteryLevelReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, timeout);
     }
 
     @Override
-    public void onBatteryLevelClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
-        callback(Arrays.toString(clientCharacteristicConfigurationAndroid.getProperties()));
+    public void onBatteryLevelClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, Arrays.toString(clientCharacteristicConfigurationAndroid.getProperties()));
     }
 
     @Override
-    public void onBatteryLevelClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
-        callback(status);
+    public void onBatteryLevelClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, status);
     }
 
     @Override
-    public void onBatteryLevelClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+    public void onBatteryLevelClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, timeout);
     }
 
     @Override
-    public void onBatteryLevelCharacteristicPresentationFormatReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull CharacteristicPresentationFormatAndroid characteristicPresentationFormatAndroid, @Nullable Bundle argument) {
-        callback(Arrays.toString(characteristicPresentationFormatAndroid.getDescription()));
+    public void onBatteryLevelCharacteristicPresentationFormatReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @NonNull CharacteristicPresentationFormatAndroid characteristicPresentationFormatAndroid, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, characteristicPresentationFormatAndroid.getFormat(), characteristicPresentationFormatAndroid.getExponent(), characteristicPresentationFormatAndroid.getUnit(), characteristicPresentationFormatAndroid.getNamespace(), characteristicPresentationFormatAndroid.getDescription());
     }
 
     @Override
-    public void onBatteryLevelCharacteristicPresentationFormatReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
-        callback(status);
+    public void onBatteryLevelCharacteristicPresentationFormatReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, status);
     }
 
     @Override
-    public void onBatteryLevelCharacteristicPresentationFormatReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+    public void onBatteryLevelCharacteristicPresentationFormatReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, timeout);
     }
 
     @Override
-    public void onBatteryLevelNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
-        callback(index);
+    public void onBatteryLevelNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index);
     }
 
     @Override
-    public void onBatteryLevelNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
-        callback(status);
+    public void onBatteryLevelNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index);
     }
 
     @Override
-    public void onBatteryLevelNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+    public void onBatteryLevelNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index);
     }
 
     @Override
-    public void onBatteryLevelNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @Nullable Bundle argument) {
-        callback(index);
+    public void onBatteryLevelNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index);
     }
 
     @Override
-    public void onBatteryLevelNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, int status, @Nullable Bundle argument) {
-        callback(status);
+    public void onBatteryLevelNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index);
     }
 
     @Override
-    public void onBatteryLevelNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+    public void onBatteryLevelNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer index, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index);
     }
 
     @Override
     public void onBatteryLevelNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull BatteryLevelAndroid batteryLevelAndroid) {
-        callback(batteryLevelAndroid.getLevel());
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, batteryLevelAndroid.getLevel());
     }
 
     @Override
@@ -309,47 +309,47 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
     }
 
     @Override
-    public void onBodyCompositionMeasurementClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+    public void onBodyCompositionMeasurementClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
         callback(Arrays.toString(clientCharacteristicConfigurationAndroid.getProperties()));
     }
 
     @Override
-    public void onBodyCompositionMeasurementClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+    public void onBodyCompositionMeasurementClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         callback(status);
     }
 
     @Override
-    public void onBodyCompositionMeasurementClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+    public void onBodyCompositionMeasurementClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         callback(timeout);
     }
 
     @Override
-    public void onBodyCompositionMeasurementIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+    public void onBodyCompositionMeasurementIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
         callback();
     }
 
     @Override
-    public void onBodyCompositionMeasurementIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+    public void onBodyCompositionMeasurementIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         callback(status);
     }
 
     @Override
-    public void onBodyCompositionMeasurementIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+    public void onBodyCompositionMeasurementIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         callback(timeout);
     }
 
     @Override
-    public void onBodyCompositionMeasurementIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+    public void onBodyCompositionMeasurementIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
         callback();
     }
 
     @Override
-    public void onBodyCompositionMeasurementIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+    public void onBodyCompositionMeasurementIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         callback(status);
     }
 
     @Override
-    public void onBodyCompositionMeasurementIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+    public void onBodyCompositionMeasurementIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         callback(timeout);
     }
 
@@ -389,47 +389,47 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
     }
 
     @Override
-    public void onCurrentTimeClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+    public void onCurrentTimeClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
         callback(Arrays.toString(clientCharacteristicConfigurationAndroid.getProperties()));
     }
 
     @Override
-    public void onCurrentTimeClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+    public void onCurrentTimeClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         callback(status);
     }
 
     @Override
-    public void onCurrentTimeClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+    public void onCurrentTimeClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         callback(timeout);
     }
 
     @Override
-    public void onCurrentTimeNotificateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+    public void onCurrentTimeNotificateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
         callback();
     }
 
     @Override
-    public void onCurrentTimeNotificateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+    public void onCurrentTimeNotificateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         callback(status);
     }
 
     @Override
-    public void onCurrentTimeNotificateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+    public void onCurrentTimeNotificateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         callback(timeout);
     }
 
     @Override
-    public void onCurrentTimeNotificateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
+    public void onCurrentTimeNotificateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
         callback();
     }
 
     @Override
-    public void onCurrentTimeNotificateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+    public void onCurrentTimeNotificateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         callback(status);
     }
 
     @Override
-    public void onCurrentTimeNotificateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+    public void onCurrentTimeNotificateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         callback(timeout);
     }
 
@@ -620,1129 +620,1117 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
 
     @Override
     public void onFirstNameReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull FirstNameAndroid firstNameAndroid, @Nullable Bundle argument) {
-        callback(firstNameAndroid.getFirstName());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, firstNameAndroid.getFirstName());
     }
 
     @Override
     public void onFirstNameReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onFirstNameReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onFirstNameWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull FirstNameAndroid firstNameAndroid, @Nullable Bundle argument) {
-        callback(firstNameAndroid.getFirstName());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, firstNameAndroid.getFirstName());
     }
 
     @Override
     public void onFirstNameWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onFirstNameWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onLastNameReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull LastNameAndroid lastNameAndroid, @Nullable Bundle argument) {
-        callback(lastNameAndroid.getLastName());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, lastNameAndroid.getLastName());
     }
 
     @Override
     public void onLastNameReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onLastNameReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onLastNameWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull LastNameAndroid lastNameAndroid, @Nullable Bundle argument) {
-        callback(lastNameAndroid.getLastName());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, lastNameAndroid.getLastName());
     }
 
     @Override
     public void onLastNameWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onLastNameWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onEmailAddressReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull EmailAddressAndroid emailAddressAndroid, @Nullable Bundle argument) {
-        callback(emailAddressAndroid.getEmailAddress());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, emailAddressAndroid.getEmailAddress());
     }
 
     @Override
     public void onEmailAddressReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onEmailAddressReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onEmailAddressWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull EmailAddressAndroid emailAddressAndroid, @Nullable Bundle argument) {
-        callback(emailAddressAndroid.getEmailAddress());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, emailAddressAndroid.getEmailAddress());
     }
 
     @Override
     public void onEmailAddressWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onEmailAddressWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onAgeReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AgeAndroid ageAndroid, @Nullable Bundle argument) {
-        callback(ageAndroid.getAge());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, ageAndroid.getAge());
     }
 
     @Override
     public void onAgeReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onAgeReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onAgeWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AgeAndroid ageAndroid, @Nullable Bundle argument) {
-        callback(ageAndroid.getAge());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, ageAndroid.getAge());
     }
 
     @Override
     public void onAgeWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onAgeWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onDateOfBirthReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull DateOfBirthAndroid dateOfBirthAndroid, @Nullable Bundle argument) {
-        callback(dateOfBirthAndroid.getYear(), dateOfBirthAndroid.getMonth(), dateOfBirthAndroid.getDay());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, dateOfBirthAndroid.getYear(), dateOfBirthAndroid.getMonth(), dateOfBirthAndroid.getDay());
     }
 
     @Override
     public void onDateOfBirthReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onDateOfBirthReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onDateOfBirthWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull DateOfBirthAndroid dateOfBirthAndroid, @Nullable Bundle argument) {
-        callback(dateOfBirthAndroid.getYear(), dateOfBirthAndroid.getMonth(), dateOfBirthAndroid.getDay());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, dateOfBirthAndroid.getYear(), dateOfBirthAndroid.getMonth(), dateOfBirthAndroid.getDay());
     }
 
     @Override
     public void onDateOfBirthWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onDateOfBirthWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onGenderReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull GenderAndroid genderAndroid, @Nullable Bundle argument) {
-        callback(genderAndroid.getGender());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, genderAndroid.getGender());
     }
 
     @Override
     public void onGenderReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onGenderReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onGenderWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull GenderAndroid genderAndroid, @Nullable Bundle argument) {
-        callback(genderAndroid.getGender());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, genderAndroid.getGender());
     }
 
     @Override
     public void onGenderWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onGenderWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onWeightReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull WeightAndroid weightAndroid, @Nullable Bundle argument) {
-        callback(weightAndroid.getWeightKg());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, weightAndroid.getWeightKg());
     }
 
     @Override
     public void onWeightReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onWeightReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onWeightWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull WeightAndroid weightAndroid, @Nullable Bundle argument) {
-        callback(weightAndroid.getWeightKg());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, weightAndroid.getWeightKg());
     }
 
     @Override
     public void onWeightWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onWeightWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onHeightReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull HeightAndroid heightAndroid, @Nullable Bundle argument) {
-        callback(heightAndroid.getHeightMeters());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, heightAndroid.getHeightMeters());
     }
 
     @Override
     public void onHeightReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onHeightReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onHeightWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull HeightAndroid heightAndroid, @Nullable Bundle argument) {
-        callback(heightAndroid.getHeightMeters());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, heightAndroid.getHeightMeters());
     }
 
     @Override
     public void onHeightWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onHeightWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onVO2MaxReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull VO2MaxAndroid vo2MaxAndroid, @Nullable Bundle argument) {
-        callback(vo2MaxAndroid.getVo2Max());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, vo2MaxAndroid.getVo2Max());
     }
 
     @Override
     public void onVO2MaxReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onVO2MaxReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onVO2MaxWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull VO2MaxAndroid vo2MaxAndroid, @Nullable Bundle argument) {
-        callback(vo2MaxAndroid.getVo2Max());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, vo2MaxAndroid.getVo2Max());
     }
 
     @Override
     public void onVO2MaxWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onVO2MaxWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onHeartRateMaxReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull HeartRateMaxAndroid heartRateMaxAndroid, @Nullable Bundle argument) {
-        callback(heartRateMaxAndroid.getHeartRateMax());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, heartRateMaxAndroid.getHeartRateMax());
     }
 
     @Override
     public void onHeartRateMaxReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onHeartRateMaxReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onHeartRateMaxWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull HeartRateMaxAndroid heartRateMaxAndroid, @Nullable Bundle argument) {
-        callback(heartRateMaxAndroid.getHeartRateMax());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, heartRateMaxAndroid.getHeartRateMax());
     }
 
     @Override
     public void onHeartRateMaxWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onHeartRateMaxWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onRestingHeartRateReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull RestingHeartRateAndroid restingHeartRateAndroid, @Nullable Bundle argument) {
-        callback(restingHeartRateAndroid.getRestingHeartRate());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, restingHeartRateAndroid.getRestingHeartRate());
     }
 
     @Override
     public void onRestingHeartRateReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onRestingHeartRateReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onRestingHeartRateWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull RestingHeartRateAndroid restingHeartRateAndroid, @Nullable Bundle argument) {
-        callback(restingHeartRateAndroid.getRestingHeartRate());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, restingHeartRateAndroid.getRestingHeartRate());
     }
 
     @Override
     public void onRestingHeartRateWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onRestingHeartRateWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onMaximumRecommendedHeartRateReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull MaximumRecommendedHeartRateAndroid maximumRecommendedHeartRateAndroid, @Nullable Bundle argument) {
-        callback(maximumRecommendedHeartRateAndroid.getMaximumRecommendedHeartRate());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, maximumRecommendedHeartRateAndroid.getMaximumRecommendedHeartRate());
     }
 
     @Override
     public void onMaximumRecommendedHeartRateReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onMaximumRecommendedHeartRateReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onMaximumRecommendedHeartRateWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull MaximumRecommendedHeartRateAndroid maximumRecommendedHeartRateAndroid, @Nullable Bundle argument) {
-        callback(maximumRecommendedHeartRateAndroid.getMaximumRecommendedHeartRate());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, maximumRecommendedHeartRateAndroid.getMaximumRecommendedHeartRate());
     }
 
     @Override
     public void onMaximumRecommendedHeartRateWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onMaximumRecommendedHeartRateWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onAerobicThresholdReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AerobicThresholdAndroid aerobicThresholdAndroid, @Nullable Bundle argument) {
-        callback(aerobicThresholdAndroid.getAerobicThreshold());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, aerobicThresholdAndroid.getAerobicThreshold());
     }
 
     @Override
     public void onAerobicThresholdReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onAerobicThresholdReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onAerobicThresholdWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AerobicThresholdAndroid aerobicThresholdAndroid, @Nullable Bundle argument) {
-        callback(aerobicThresholdAndroid.getAerobicThreshold());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, aerobicThresholdAndroid.getAerobicThreshold());
     }
 
     @Override
     public void onAerobicThresholdWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onAerobicThresholdWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onAnaerobicThresholdReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AnaerobicThresholdAndroid anaerobicThresholdAndroid, @Nullable Bundle argument) {
-        callback(anaerobicThresholdAndroid.getAnaerobicThreshold());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, anaerobicThresholdAndroid.getAnaerobicThreshold());
     }
 
     @Override
     public void onAnaerobicThresholdReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onAnaerobicThresholdReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onAnaerobicThresholdWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AnaerobicThresholdAndroid anaerobicThresholdAndroid, @Nullable Bundle argument) {
-        callback(anaerobicThresholdAndroid.getAnaerobicThreshold());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, anaerobicThresholdAndroid.getAnaerobicThreshold());
     }
 
     @Override
     public void onAnaerobicThresholdWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onAnaerobicThresholdWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onSportTypeForAerobicAndAnaerobicThresholdsReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull SportTypeForAerobicAndAnaerobicThresholdsAndroid sportTypeForAerobicAndAnaerobicThresholdsAndroid, @Nullable Bundle argument) {
-        callback(sportTypeForAerobicAndAnaerobicThresholdsAndroid.getSportTypeForAerobicAndAnaerobicThresholds());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, sportTypeForAerobicAndAnaerobicThresholdsAndroid.getSportTypeForAerobicAndAnaerobicThresholds());
     }
 
     @Override
     public void onSportTypeForAerobicAndAnaerobicThresholdsReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onSportTypeForAerobicAndAnaerobicThresholdsReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onSportTypeForAerobicAndAnaerobicThresholdsWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull SportTypeForAerobicAndAnaerobicThresholdsAndroid sportTypeForAerobicAndAnaerobicThresholdsAndroid, @Nullable Bundle argument) {
-        callback(sportTypeForAerobicAndAnaerobicThresholdsAndroid.getSportTypeForAerobicAndAnaerobicThresholds());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, sportTypeForAerobicAndAnaerobicThresholdsAndroid.getSportTypeForAerobicAndAnaerobicThresholds());
     }
 
     @Override
     public void onSportTypeForAerobicAndAnaerobicThresholdsWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onSportTypeForAerobicAndAnaerobicThresholdsWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onDateOfThresholdAssessmentReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull DateOfThresholdAssessmentAndroid dateOfThresholdAssessmentAndroid, @Nullable Bundle argument) {
-        callback(dateOfThresholdAssessmentAndroid.getYear(), dateOfThresholdAssessmentAndroid.getMonth(), dateOfThresholdAssessmentAndroid.getDay());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, dateOfThresholdAssessmentAndroid.getYear(), dateOfThresholdAssessmentAndroid.getMonth(), dateOfThresholdAssessmentAndroid.getDay());
     }
 
     @Override
     public void onDateOfThresholdAssessmentReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onDateOfThresholdAssessmentReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onDateOfThresholdAssessmentWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull DateOfThresholdAssessmentAndroid dateOfThresholdAssessmentAndroid, @Nullable Bundle argument) {
-        callback(dateOfThresholdAssessmentAndroid.getYear(), dateOfThresholdAssessmentAndroid.getMonth(), dateOfThresholdAssessmentAndroid.getDay());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, dateOfThresholdAssessmentAndroid.getYear(), dateOfThresholdAssessmentAndroid.getMonth(), dateOfThresholdAssessmentAndroid.getDay());
     }
 
     @Override
     public void onDateOfThresholdAssessmentWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onDateOfThresholdAssessmentWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onWaistCircumferenceReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull WaistCircumferenceAndroid waistCircumferenceAndroid, @Nullable Bundle argument) {
-        callback(waistCircumferenceAndroid.getWaistCircumferenceMeters());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, waistCircumferenceAndroid.getWaistCircumferenceMeters());
     }
 
     @Override
     public void onWaistCircumferenceReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onWaistCircumferenceReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onWaistCircumferenceWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull WaistCircumferenceAndroid waistCircumferenceAndroid, @Nullable Bundle argument) {
-        callback(waistCircumferenceAndroid.getWaistCircumferenceMeters());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, waistCircumferenceAndroid.getWaistCircumferenceMeters());
     }
 
     @Override
     public void onWaistCircumferenceWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onWaistCircumferenceWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onHipCircumferenceReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull HipCircumferenceAndroid hipCircumferenceAndroid, @Nullable Bundle argument) {
-        callback(hipCircumferenceAndroid.getHipCircumferenceMeters());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, hipCircumferenceAndroid.getHipCircumferenceMeters());
     }
 
     @Override
     public void onHipCircumferenceReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onHipCircumferenceReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onHipCircumferenceWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull HipCircumferenceAndroid hipCircumferenceAndroid, @Nullable Bundle argument) {
-        callback(hipCircumferenceAndroid.getHipCircumferenceMeters());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, hipCircumferenceAndroid.getHipCircumferenceMeters());
     }
 
     @Override
     public void onHipCircumferenceWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onHipCircumferenceWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onFatBurnHeartRateLowerLimitReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull FatBurnHeartRateLowerLimitAndroid fatBurnHeartRateLowerLimitAndroid, @Nullable Bundle argument) {
-        callback(fatBurnHeartRateLowerLimitAndroid.getFatBurnHeartRateLowerLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, fatBurnHeartRateLowerLimitAndroid.getFatBurnHeartRateLowerLimit());
     }
 
     @Override
     public void onFatBurnHeartRateLowerLimitReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onFatBurnHeartRateLowerLimitReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onFatBurnHeartRateLowerLimitWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull FatBurnHeartRateLowerLimitAndroid fatBurnHeartRateLowerLimitAndroid, @Nullable Bundle argument) {
-        callback(fatBurnHeartRateLowerLimitAndroid.getFatBurnHeartRateLowerLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, fatBurnHeartRateLowerLimitAndroid.getFatBurnHeartRateLowerLimit());
     }
 
     @Override
     public void onFatBurnHeartRateLowerLimitWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onFatBurnHeartRateLowerLimitWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onFatBurnHeartRateUpperLimitReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull FatBurnHeartRateUpperLimitAndroid fatBurnHeartRateUpperLimitAndroid, @Nullable Bundle argument) {
-        callback(fatBurnHeartRateUpperLimitAndroid.getFatBurnHeartRateUpperLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, fatBurnHeartRateUpperLimitAndroid.getFatBurnHeartRateUpperLimit());
     }
 
     @Override
     public void onFatBurnHeartRateUpperLimitReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onFatBurnHeartRateUpperLimitReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onFatBurnHeartRateUpperLimitWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull FatBurnHeartRateUpperLimitAndroid fatBurnHeartRateUpperLimitAndroid, @Nullable Bundle argument) {
-        callback(fatBurnHeartRateUpperLimitAndroid.getFatBurnHeartRateUpperLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, fatBurnHeartRateUpperLimitAndroid.getFatBurnHeartRateUpperLimit());
     }
 
     @Override
     public void onFatBurnHeartRateUpperLimitWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onFatBurnHeartRateUpperLimitWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onAerobicHeartRateLowerLimitReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AerobicHeartRateLowerLimitAndroid aerobicHeartRateLowerLimitAndroid, @Nullable Bundle argument) {
-        callback(aerobicHeartRateLowerLimitAndroid.getAerobicHeartRateLowerLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, aerobicHeartRateLowerLimitAndroid.getAerobicHeartRateLowerLimit());
     }
 
     @Override
     public void onAerobicHeartRateLowerLimitReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onAerobicHeartRateLowerLimitReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onAerobicHeartRateLowerLimitWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AerobicHeartRateLowerLimitAndroid aerobicHeartRateLowerLimitAndroid, @Nullable Bundle argument) {
-        callback(aerobicHeartRateLowerLimitAndroid.getAerobicHeartRateLowerLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, aerobicHeartRateLowerLimitAndroid.getAerobicHeartRateLowerLimit());
     }
 
     @Override
     public void onAerobicHeartRateLowerLimitWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onAerobicHeartRateLowerLimitWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onAerobicHeartRateUpperLimitReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AerobicHeartRateUpperLimitAndroid aerobicHeartRateUpperLimitAndroid, @Nullable Bundle argument) {
-        callback(aerobicHeartRateUpperLimitAndroid.getAerobicHeartRateUpperLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, aerobicHeartRateUpperLimitAndroid.getAerobicHeartRateUpperLimit());
     }
 
     @Override
     public void onAerobicHeartRateUpperLimitReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onAerobicHeartRateUpperLimitReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onAerobicHeartRateUpperLimitWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AerobicHeartRateUpperLimitAndroid aerobicHeartRateUpperLimitAndroid, @Nullable Bundle argument) {
-        callback(aerobicHeartRateUpperLimitAndroid.getAerobicHeartRateUpperLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, aerobicHeartRateUpperLimitAndroid.getAerobicHeartRateUpperLimit());
     }
 
     @Override
     public void onAerobicHeartRateUpperLimitWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onAerobicHeartRateUpperLimitWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onAnaerobicHeartRateLowerLimitReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AnaerobicHeartRateLowerLimitAndroid anaerobicHeartRateLowerLimitAndroid, @Nullable Bundle argument) {
-        callback(anaerobicHeartRateLowerLimitAndroid.getAnaerobicHeartRateLowerLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, anaerobicHeartRateLowerLimitAndroid.getAnaerobicHeartRateLowerLimit());
     }
 
     @Override
     public void onAnaerobicHeartRateLowerLimitReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onAnaerobicHeartRateLowerLimitReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onAnaerobicHeartRateLowerLimitWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AnaerobicHeartRateLowerLimitAndroid anaerobicHeartRateLowerLimitAndroid, @Nullable Bundle argument) {
-        callback(anaerobicHeartRateLowerLimitAndroid.getAnaerobicHeartRateLowerLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, anaerobicHeartRateLowerLimitAndroid.getAnaerobicHeartRateLowerLimit());
     }
 
     @Override
     public void onAnaerobicHeartRateLowerLimitWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onAnaerobicHeartRateLowerLimitWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onAnaerobicHeartRateUpperLimitReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AnaerobicHeartRateUpperLimitAndroid anaerobicHeartRateUpperLimitAndroid, @Nullable Bundle argument) {
-        callback(anaerobicHeartRateUpperLimitAndroid.getAnaerobicHeartRateUpperLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, anaerobicHeartRateUpperLimitAndroid.getAnaerobicHeartRateUpperLimit());
     }
 
     @Override
     public void onAnaerobicHeartRateUpperLimitReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onAnaerobicHeartRateUpperLimitReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onAnaerobicHeartRateUpperLimitWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AnaerobicHeartRateUpperLimitAndroid anaerobicHeartRateUpperLimitAndroid, @Nullable Bundle argument) {
-        callback(anaerobicHeartRateUpperLimitAndroid.getAnaerobicHeartRateUpperLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, anaerobicHeartRateUpperLimitAndroid.getAnaerobicHeartRateUpperLimit());
     }
 
     @Override
     public void onAnaerobicHeartRateUpperLimitWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onAnaerobicHeartRateUpperLimitWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onFiveZoneHeartRateLimitsReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull FiveZoneHeartRateLimitsAndroid fiveZoneHeartRateLimitsAndroid, @Nullable Bundle argument) {
-        callback(fiveZoneHeartRateLimitsAndroid.getFiveZoneHeartRateLimitsHardMaximumLimit(), fiveZoneHeartRateLimitsAndroid.getFiveZoneHeartRateLimitsModerateHardLimit(), fiveZoneHeartRateLimitsAndroid.getFiveZoneHeartRateLimitsLightModerateLimit(), fiveZoneHeartRateLimitsAndroid.getFiveZoneHeartRateLimitsVeryLightLightLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, fiveZoneHeartRateLimitsAndroid.getFiveZoneHeartRateLimitsHardMaximumLimit(), fiveZoneHeartRateLimitsAndroid.getFiveZoneHeartRateLimitsModerateHardLimit(), fiveZoneHeartRateLimitsAndroid.getFiveZoneHeartRateLimitsLightModerateLimit(), fiveZoneHeartRateLimitsAndroid.getFiveZoneHeartRateLimitsVeryLightLightLimit());
     }
 
     @Override
     public void onFiveZoneHeartRateLimitsReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onFiveZoneHeartRateLimitsReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onFiveZoneHeartRateLimitsWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull FiveZoneHeartRateLimitsAndroid fiveZoneHeartRateLimitsAndroid, @Nullable Bundle argument) {
-        callback(fiveZoneHeartRateLimitsAndroid.getFiveZoneHeartRateLimitsHardMaximumLimit(), fiveZoneHeartRateLimitsAndroid.getFiveZoneHeartRateLimitsModerateHardLimit(), fiveZoneHeartRateLimitsAndroid.getFiveZoneHeartRateLimitsLightModerateLimit(), fiveZoneHeartRateLimitsAndroid.getFiveZoneHeartRateLimitsVeryLightLightLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, fiveZoneHeartRateLimitsAndroid.getFiveZoneHeartRateLimitsHardMaximumLimit(), fiveZoneHeartRateLimitsAndroid.getFiveZoneHeartRateLimitsModerateHardLimit(), fiveZoneHeartRateLimitsAndroid.getFiveZoneHeartRateLimitsLightModerateLimit(), fiveZoneHeartRateLimitsAndroid.getFiveZoneHeartRateLimitsVeryLightLightLimit());
     }
 
     @Override
     public void onFiveZoneHeartRateLimitsWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onFiveZoneHeartRateLimitsWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onThreeZoneHeartRateLimitsReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ThreeZoneHeartRateLimitsAndroid threeZoneHeartRateLimitsAndroid, @Nullable Bundle argument) {
-        callback(threeZoneHeartRateLimitsAndroid.getThreeZoneHeartRateLimitsLightFatBurnModerateAerobicLimit(), threeZoneHeartRateLimitsAndroid.getThreeZoneHeartRateLimitsLightFatBurnModerateAerobicLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, threeZoneHeartRateLimitsAndroid.getThreeZoneHeartRateLimitsModerateAerobicHardAnaerobicLimit(), threeZoneHeartRateLimitsAndroid.getThreeZoneHeartRateLimitsLightFatBurnModerateAerobicLimit());
     }
 
     @Override
     public void onThreeZoneHeartRateLimitsReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onThreeZoneHeartRateLimitsReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onThreeZoneHeartRateLimitsWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ThreeZoneHeartRateLimitsAndroid threeZoneHeartRateLimitsAndroid, @Nullable Bundle argument) {
-        callback(threeZoneHeartRateLimitsAndroid.getThreeZoneHeartRateLimitsLightFatBurnModerateAerobicLimit(), threeZoneHeartRateLimitsAndroid.getThreeZoneHeartRateLimitsLightFatBurnModerateAerobicLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, threeZoneHeartRateLimitsAndroid.getThreeZoneHeartRateLimitsModerateAerobicHardAnaerobicLimit(), threeZoneHeartRateLimitsAndroid.getThreeZoneHeartRateLimitsLightFatBurnModerateAerobicLimit());
     }
 
     @Override
     public void onThreeZoneHeartRateLimitsWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onThreeZoneHeartRateLimitsWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onTwoZoneHeartRateLimitReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull TwoZoneHeartRateLimitAndroid twoZoneHeartRateLimitAndroid, @Nullable Bundle argument) {
-        callback(twoZoneHeartRateLimitAndroid.getTwoZoneHeartRateLimitFatBurnFitnessLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, twoZoneHeartRateLimitAndroid.getTwoZoneHeartRateLimitFatBurnFitnessLimit());
     }
 
     @Override
     public void onTwoZoneHeartRateLimitReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onTwoZoneHeartRateLimitReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onTwoZoneHeartRateLimitWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull TwoZoneHeartRateLimitAndroid twoZoneHeartRateLimitAndroid, @Nullable Bundle argument) {
-        callback(twoZoneHeartRateLimitAndroid.getTwoZoneHeartRateLimitFatBurnFitnessLimit());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, twoZoneHeartRateLimitAndroid.getTwoZoneHeartRateLimitFatBurnFitnessLimit());
     }
 
     @Override
     public void onTwoZoneHeartRateLimitWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onTwoZoneHeartRateLimitWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onLanguageReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull LanguageAndroid languageAndroid, @Nullable Bundle argument) {
-        callback(languageAndroid.getLanguage());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, languageAndroid.getLanguage());
     }
 
     @Override
     public void onLanguageReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onLanguageReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onLanguageWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull LanguageAndroid languageAndroid, @Nullable Bundle argument) {
-        callback(languageAndroid.getLanguage());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, languageAndroid.getLanguage());
     }
 
     @Override
     public void onLanguageWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onLanguageWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onDatabaseChangeIncrementReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull DatabaseChangeIncrementAndroid databaseChangeIncrementAndroid, @Nullable Bundle argument) {
-        callback(databaseChangeIncrementAndroid.getDatabaseChangeIncrement());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, databaseChangeIncrementAndroid.getDatabaseChangeIncrement());
     }
 
     @Override
     public void onDatabaseChangeIncrementReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onDatabaseChangeIncrementReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onDatabaseChangeIncrementWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull DatabaseChangeIncrementAndroid databaseChangeIncrementAndroid, @Nullable Bundle argument) {
-        callback(databaseChangeIncrementAndroid.getDatabaseChangeIncrement());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, databaseChangeIncrementAndroid.getDatabaseChangeIncrement());
     }
 
     @Override
     public void onDatabaseChangeIncrementWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onDatabaseChangeIncrementWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
-    public void onDatabaseChangeIncrementClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
-        callback(Arrays.toString(clientCharacteristicConfigurationAndroid.getProperties()));
+    public void onDatabaseChangeIncrementClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId);
     }
 
     @Override
-    public void onDatabaseChangeIncrementClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+    public void onDatabaseChangeIncrementClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
-    public void onDatabaseChangeIncrementClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+    public void onDatabaseChangeIncrementClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
-    public void onDatabaseChangeIncrementNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
-        callback();
+    public void onDatabaseChangeIncrementNotifyStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId);
     }
 
     @Override
-    public void onDatabaseChangeIncrementNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+    public void onDatabaseChangeIncrementNotifyStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
-    public void onDatabaseChangeIncrementNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+    public void onDatabaseChangeIncrementNotifyStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
-    public void onDatabaseChangeIncrementNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
-        callback();
+    public void onDatabaseChangeIncrementNotifyStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId);
     }
 
     @Override
-    public void onDatabaseChangeIncrementNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+    public void onDatabaseChangeIncrementNotifyStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
-    public void onDatabaseChangeIncrementNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+    public void onDatabaseChangeIncrementNotifyStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onDatabaseChangeIncrementNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull DatabaseChangeIncrementAndroid databaseChangeIncrementAndroid) {
-        callback(databaseChangeIncrementAndroid.getDatabaseChangeIncrement());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, databaseChangeIncrementAndroid.getDatabaseChangeIncrement());
     }
 
     @Override
     public void onUserIndexReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UserIndexAndroid userIndexAndroid, @Nullable Bundle argument) {
-        callback(userIndexAndroid.getUserIndex());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, userIndexAndroid.getUserIndex());
     }
 
     @Override
     public void onUserIndexReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onUserIndexReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onUserControlPointWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UserControlPointAndroid userControlPointAndroid, @Nullable Bundle argument) {
-        callback(userControlPointAndroid.getOpCode());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, userControlPointAndroid.getOpCode());
     }
 
     @Override
     public void onUserControlPointWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onUserControlPointWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
-    public void onUserControlPointClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
-        callback(Arrays.toString(clientCharacteristicConfigurationAndroid.getProperties()));
+    public void onUserControlPointClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, Arrays.toString(clientCharacteristicConfigurationAndroid.getProperties()));
     }
 
     @Override
-    public void onUserControlPointClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+    public void onUserControlPointClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
-    public void onUserControlPointClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+    public void onUserControlPointClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
-    public void onUserControlPointIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
-        callback();
+    public void onUserControlPointIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId);
     }
 
     @Override
-    public void onUserControlPointIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+    public void onUserControlPointIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
-    public void onUserControlPointIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+    public void onUserControlPointIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
-    public void onUserControlPointIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
-        callback();
+    public void onUserControlPointIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId);
     }
 
     @Override
-    public void onUserControlPointIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+    public void onUserControlPointIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
-    public void onUserControlPointIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+    public void onUserControlPointIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onUserControlPointIndicated(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UserControlPointAndroid userControlPointAndroid) {
-        callback(userControlPointAndroid.getOpCode()
-                , userControlPointAndroid.getResponseValue()
-                , userControlPointAndroid.getRequestOpCode()
-                , userControlPointAndroid.getUserIndex()
-                , userControlPointAndroid.getNumberOfUsers());
-        if (userControlPointAndroid.isOpCodeResponseCode(userControlPointAndroid.getOpCode())
-                && userControlPointAndroid.isResponseValueSuccess(userControlPointAndroid.getResponseValue())
-                && userControlPointAndroid.isOpCodeRegisterNewUser(userControlPointAndroid.getRequestOpCode())) {
-            mWspCentralSampleActivity.mLastRegisteredUserIndex = userControlPointAndroid.getUserIndex();
-        }
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, userControlPointAndroid.getOpCode());
     }
 
     @Override
-    public void onRegisteredUserClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
-        callback(Arrays.toString(clientCharacteristicConfigurationAndroid.getProperties()));
+    public void onRegisteredUserClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, Arrays.toString(clientCharacteristicConfigurationAndroid.getProperties()));
     }
 
     @Override
-    public void onRegisteredUserClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+    public void onRegisteredUserClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
-    public void onRegisteredUserClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+    public void onRegisteredUserClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
-    public void onRegisteredUserIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
-        callback();
+    public void onRegisteredUserIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId);
     }
 
     @Override
-    public void onRegisteredUserIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+    public void onRegisteredUserIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
-    public void onRegisteredUserIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+    public void onRegisteredUserIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
-    public void onRegisteredUserIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
-        callback();
+    public void onRegisteredUserIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId);
     }
 
     @Override
-    public void onRegisteredUserIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+    public void onRegisteredUserIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
-    public void onRegisteredUserIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+    public void onRegisteredUserIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onRegisteredUserIndicated(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull RegisteredUserAndroid registeredUserAndroid) {
-        callback("getSegmentationHeader:" + registeredUserAndroid.getSegmentationHeader()
-                , "getFlags:" + registeredUserAndroid.getFlags()
-                , "getRegisteredUserIndex:" + registeredUserAndroid.getRegisteredUserIndex()
-                , "getRegisteredUserData:" + new String(registeredUserAndroid.getRegisteredUserData()));
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, registeredUserAndroid.getFlags());
     }
 
     @Override
     public void onWeightScaleFeatureReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull WeightScaleFeatureAndroid weightScaleFeatureAndroid, @Nullable Bundle argument) {
-        callback(Arrays.toString(weightScaleFeatureAndroid.getWeightScaleFeature()));
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, Arrays.toString(weightScaleFeatureAndroid.getWeightScaleFeature()));
     }
 
     @Override
     public void onWeightScaleFeatureReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
     public void onWeightScaleFeatureReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
-    public void onWeightMeasurementClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
-        callback(Arrays.toString(clientCharacteristicConfigurationAndroid.getProperties()));
+    public void onWeightMeasurementClientCharacteristicConfigurationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId);
     }
 
     @Override
-    public void onWeightMeasurementClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+    public void onWeightMeasurementClientCharacteristicConfigurationReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
-    public void onWeightMeasurementClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+    public void onWeightMeasurementClientCharacteristicConfigurationReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
-    public void onWeightMeasurementIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
-        callback();
+    public void onWeightMeasurementIndicateStartSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId);
     }
 
     @Override
-    public void onWeightMeasurementIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+    public void onWeightMeasurementIndicateStartFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
-    public void onWeightMeasurementIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+    public void onWeightMeasurementIndicateStartTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
-    public void onWeightMeasurementIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Bundle argument) {
-        callback();
+    public void onWeightMeasurementIndicateStopSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull Integer descriptorInstanceId, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId);
     }
 
     @Override
-    public void onWeightMeasurementIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
-        callback(status);
+    public void onWeightMeasurementIndicateStopFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
     }
 
     @Override
-    public void onWeightMeasurementIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
-        callback(timeout);
+    public void onWeightMeasurementIndicateStopTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
     @Override
     public void onWeightMeasurementIndicated(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull WeightMeasurementAndroid weightMeasurementAndroid) {
-        callback(weightMeasurementAndroid.getWeightSiKg(), weightMeasurementAndroid.getWeightImperialLb());
+        callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, weightMeasurementAndroid.getWeightSiKg(), weightMeasurementAndroid.getHeightImperialInch());
     }
 
     @Override
@@ -1870,32 +1858,32 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
     }
 
     @Override
-    public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         callback(characteristicUUID, descriptorUUID, Arrays.toString(values), argument);
     }
 
     @Override
-    public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         callback(characteristicUUID, descriptorUUID, status, argument);
     }
 
     @Override
-    public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         callback(characteristicUUID, descriptorUUID, timeout, argument);
     }
 
     @Override
-    public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull byte[] values, @Nullable Bundle argument) {
+    public void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument) {
         callback(characteristicUUID, descriptorUUID, Arrays.toString(values), argument);
     }
 
     @Override
-    public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, int status, @Nullable Bundle argument) {
+    public void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument) {
         callback(characteristicUUID, descriptorUUID, status, argument);
     }
 
     @Override
-    public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, long timeout, @Nullable Bundle argument) {
+    public void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument) {
         callback(characteristicUUID, descriptorUUID, timeout, argument);
     }
 
@@ -1987,6 +1975,16 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
     @Override
     public void onAbortReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument) {
         callback(timeout, argument);
+    }
+
+    @Override
+    public void onSetNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument) {
+        callback(notificationStatus, argument);
+    }
+
+    @Override
+    public void onSetNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, int status, @Nullable Bundle argument) {
+        callback(notificationStatus, status, argument);
     }
 
     @Override

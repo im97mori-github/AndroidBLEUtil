@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.BLEUtils;
+import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
@@ -61,7 +62,7 @@ import static org.im97mori.ble.BLEConstants.ServiceUUID.AUTOMATION_IO_SERVICE;
 
 /**
  * Automation IO Service (Service UUID: 0x1815) for Peripheral
- * (writable Characteristic User Descriptio is not supported)
+ * (writable Characteristic User Description is not supported)
  */
 public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback {
 
@@ -1181,7 +1182,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                                 responseCode = APPLICATION_ERROR_9F;
                             } else {
                                 UUID descriptorUUID = bluetoothGattDescriptor.getUuid();
-                                int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
+                                int descriptorInstanceId = BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor);
                                 Pair<UUID, Integer> descriptorPair = Pair.create(descriptorUUID, descriptorInstanceId);
                                 DescriptorData descriptorData = descriptorDataMap.get(descriptorPair);
                                 if (descriptorData == null) {
@@ -1204,7 +1205,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                                 Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(characteristicKeyPair);
                                 if (descriptorDataMap != null) {
                                     UUID descriptorUUID = bluetoothGattDescriptor.getUuid();
-                                    int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
+                                    int descriptorInstanceId = BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor);
                                     Pair<UUID, Integer> descriptorPair = Pair.create(descriptorUUID, descriptorInstanceId);
                                     DescriptorData descriptorData = descriptorDataMap.get(descriptorPair);
                                     if (descriptorData != null) {
@@ -1261,11 +1262,11 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                                 if (bluetoothGattCharacteristic != null) {
                                     bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
                                     if (bluetoothGattDescriptor != null) {
-                                        descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
+                                        descriptorInstanceId = BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor);
                                     }
                                 }
                             } else {
-                                descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
+                                descriptorInstanceId = BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor);
                             }
                             if (descriptorInstanceId != null) {
                                 startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, 0, null, null);
@@ -1281,7 +1282,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                                 responseCode = APPLICATION_ERROR_9F;
                             } else {
                                 UUID descriptorUUID = bluetoothGattDescriptor.getUuid();
-                                int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
+                                int descriptorInstanceId = BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor);
                                 Pair<UUID, Integer> descriptorPair = Pair.create(descriptorUUID, descriptorInstanceId);
                                 DescriptorData descriptorData = descriptorDataMap.get(descriptorPair);
                                 if (descriptorData == null) {
@@ -1308,7 +1309,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                                 Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(characteristicKeyPair);
                                 if (descriptorDataMap != null) {
                                     UUID descriptorUUID = bluetoothGattDescriptor.getUuid();
-                                    int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
+                                    int descriptorInstanceId = BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor);
                                     Pair<UUID, Integer> descriptorPair = Pair.create(descriptorUUID, descriptorInstanceId);
                                     DescriptorData valueTriggerDescriptorData = descriptorDataMap.get(descriptorPair);
                                     if (valueTriggerDescriptorData != null) {
@@ -1319,7 +1320,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                                         CharacteristicPresentationFormat characteristicPresentationFormat = null;
                                         if (bluetoothGattDescriptor != null) {
                                             descriptorUUID = bluetoothGattDescriptor.getUuid();
-                                            descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
+                                            descriptorInstanceId = BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor);
                                             descriptorPair = Pair.create(descriptorUUID, descriptorInstanceId);
                                             DescriptorData characteristicPresentationFormatDescriptorData = descriptorDataMap.get(descriptorPair);
                                             if (characteristicPresentationFormatDescriptorData != null) {
@@ -1399,11 +1400,11 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                                 if (bluetoothGattCharacteristic != null) {
                                     bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
                                     if (bluetoothGattDescriptor != null) {
-                                        descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
+                                        descriptorInstanceId = BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor);
                                     }
                                 }
                             } else {
-                                descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
+                                descriptorInstanceId = BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor);
                             }
                             if (descriptorInstanceId != null) {
                                 startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, 0, null, null);
@@ -1458,7 +1459,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
             Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
             if (descriptorDataMap != null) {
                 UUID descriptorUUID = bluetoothGattDescriptor.getUuid();
-                int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
+                int descriptorInstanceId = BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor);
                 Pair<UUID, Integer> descriptorPair = Pair.create(descriptorUUID, descriptorInstanceId);
 
                 DescriptorData descriptorData = descriptorDataMap.get(descriptorPair);

@@ -527,7 +527,7 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
         updateLayout();
     }
 
-    private void updateLayout() {
+    protected void updateLayout() {
         if (mBluetoothAdapter != null && !mBluetoothAdapter.isEnabled()) {
             mBluetoothAdapter.enable();
         } else if (mBluetoothLeScanner == null) {

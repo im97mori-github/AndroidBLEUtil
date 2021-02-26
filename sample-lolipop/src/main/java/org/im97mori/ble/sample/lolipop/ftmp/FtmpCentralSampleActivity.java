@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -54,9 +53,6 @@ import static org.im97mori.ble.BLEConstants.ErrorCodes.UNKNOWN;
 public class FtmpCentralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
     private Button mConnectDisconnectButton;
-
-    private ArrayAdapter<Pair<String, String>> mAdapter;
-    private ListView mListView;
 
     private FtmpCallbackSample mFtmpCallbackSample;
     private FitnessMachineProfile mFitnessMachineProfile;
@@ -136,7 +132,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
         return true;
     }
 
-    private void addRow(@NonNull String prefix, @Nullable Object result) {
+    protected void addRow(@NonNull String prefix, @Nullable Object result) {
         String text;
         if (result == null) {
             text = prefix + "\nnull";
@@ -659,7 +655,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
         return true;
     }
 
-    private void updateLayout() {
+    protected void updateLayout() {
         if (!BLEUtilsAndroid.isBluetoothEnabled()) {
             BLEUtilsAndroid.bluetoothEnable();
         } else {

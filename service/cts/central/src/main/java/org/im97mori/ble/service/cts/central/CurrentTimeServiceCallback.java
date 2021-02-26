@@ -158,6 +158,7 @@ public interface CurrentTimeServiceCallback {
      * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
      * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId                     task target descriptor incetanceId
      * @param clientCharacteristicConfigurationAndroid {@link ClientCharacteristicConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -167,6 +168,7 @@ public interface CurrentTimeServiceCallback {
             , @NonNull Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
             , @NonNull Integer characteristicInstanceId
+            , @NonNull Integer descriptorInstanceId
             , @NonNull ClientCharacteristicConfigurationAndroid clientCharacteristicConfigurationAndroid
             , @Nullable Bundle argument);
 
@@ -179,6 +181,7 @@ public interface CurrentTimeServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor incetanceId
      * @param status                   one of {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.BLEConstants.ErrorCodes#UNKNOWN}, {@link org.im97mori.ble.BLEConstants.ErrorCodes#CANCEL}, {@link org.im97mori.ble.BLEConstants.ErrorCodes#BUSY}
      * @param argument                 callback argument
      */
@@ -188,6 +191,7 @@ public interface CurrentTimeServiceCallback {
             , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
             , @Nullable Integer characteristicInstanceId
+            , @Nullable Integer descriptorInstanceId
             , int status
             , @Nullable Bundle argument);
 
@@ -200,6 +204,7 @@ public interface CurrentTimeServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor incetanceId
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -209,6 +214,7 @@ public interface CurrentTimeServiceCallback {
             , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
             , @Nullable Integer characteristicInstanceId
+            , @Nullable Integer descriptorInstanceId
             , long timeout
             , @Nullable Bundle argument);
 
@@ -221,6 +227,7 @@ public interface CurrentTimeServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor incetanceId
      * @param argument                 callback argument
      */
     void onCurrentTimeNotificateStartSuccess(@NonNull Integer taskId
@@ -229,6 +236,7 @@ public interface CurrentTimeServiceCallback {
             , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
             , @Nullable Integer characteristicInstanceId
+            , @NonNull Integer descriptorInstanceId
             , @Nullable Bundle argument);
 
     /**
@@ -240,6 +248,7 @@ public interface CurrentTimeServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor incetanceId
      * @param status                   one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.BLEConstants.ErrorCodes#UNKNOWN}, {@link org.im97mori.ble.BLEConstants.ErrorCodes#CANCEL}, {@link org.im97mori.ble.BLEConstants.ErrorCodes#BUSY}
      * @param argument                 callback argument
      */
@@ -249,6 +258,7 @@ public interface CurrentTimeServiceCallback {
             , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
             , @Nullable Integer characteristicInstanceId
+            , @Nullable Integer descriptorInstanceId
             , int status
             , @Nullable Bundle argument);
 
@@ -261,6 +271,7 @@ public interface CurrentTimeServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor incetanceId
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -270,6 +281,7 @@ public interface CurrentTimeServiceCallback {
             , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
             , @Nullable Integer characteristicInstanceId
+            , @Nullable Integer descriptorInstanceId
             , long timeout
             , @Nullable Bundle argument);
 
@@ -282,6 +294,7 @@ public interface CurrentTimeServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor incetanceId
      * @param argument                 callback argument
      */
     void onCurrentTimeNotificateStopSuccess(@NonNull Integer taskId
@@ -290,6 +303,7 @@ public interface CurrentTimeServiceCallback {
             , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
             , @Nullable Integer characteristicInstanceId
+            , @NonNull Integer descriptorInstanceId
             , @Nullable Bundle argument);
 
     /**
@@ -301,6 +315,7 @@ public interface CurrentTimeServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor incetanceId
      * @param status                   one of {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter, {@link org.im97mori.ble.BLEConstants.ErrorCodes#UNKNOWN}, {@link org.im97mori.ble.BLEConstants.ErrorCodes#CANCEL}, {@link org.im97mori.ble.BLEConstants.ErrorCodes#BUSY}
      * @param argument                 callback argument
      */
@@ -310,6 +325,7 @@ public interface CurrentTimeServiceCallback {
             , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
             , @Nullable Integer characteristicInstanceId
+            , @Nullable Integer descriptorInstanceId
             , int status
             , @Nullable Bundle argument);
 
@@ -322,6 +338,7 @@ public interface CurrentTimeServiceCallback {
      * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor incetanceId
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -331,6 +348,7 @@ public interface CurrentTimeServiceCallback {
             , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
             , @Nullable Integer characteristicInstanceId
+            , @Nullable Integer descriptorInstanceId
             , long timeout
             , @Nullable Bundle argument);
 

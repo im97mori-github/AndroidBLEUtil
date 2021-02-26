@@ -64,7 +64,7 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addBatteryLevel(int index, @NonNull BatteryLevel batteryLevel) {
-            return addBatteryLevel(index, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ, 0, batteryLevel.getBytes(), -1);
+            return addBatteryLevel(index, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGatt.GATT_SUCCESS, 0, batteryLevel.getBytes(), -1);
         }
 
         /**

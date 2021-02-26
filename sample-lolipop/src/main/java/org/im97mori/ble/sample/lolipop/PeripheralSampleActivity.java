@@ -1,8 +1,11 @@
 package org.im97mori.ble.sample.lolipop;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
 import android.util.Pair;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -14,8 +17,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
+import org.im97mori.ble.ByteArrayInterface;
+import org.im97mori.ble.task.NotificationTask;
 
 import java.util.LinkedList;
+
+import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_NOTIFICATABLE_CHARACTERISTIC;
+import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_PRIMARY_SERVICE_1;
 
 public class PeripheralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
@@ -27,6 +35,10 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
     private ListView mListView;
 
     private BLEServerConnection mBLEServerConnection;
+
+    BluetoothDevice mLatestConnectedBluetoothDevice;
+    Integer mLatestNotificatableServiceInstanceId;
+    Integer mLatestNotificatableCharacteristicInstanceId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +54,7 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
                     child = getLayoutInflater().inflate(R.layout.list_child, parent, false);
                 }
 
-                Pair<String, String > item = getItem(position);
+                Pair<String, String> item = getItem(position);
                 if (item != null) {
                     TextView textView = child.findViewById(R.id.time);
                     textView.setText(item.first);
@@ -60,7 +72,7 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         mBLEServerConnection = new BLEServerConnection(this);
-        mBLEServerConnection.attach(new BLECallbackSample(this));
+        mBLEServerConnection.attach(new BLECallbackSample(this, this));
     }
 
     @Override
@@ -81,7 +93,65 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
         super.onDestroy();
     }
 
-    private void updateLayout() {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.peripheral, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (R.id.notification == item.getItemId()) {
+            BluetoothDevice bluetoothDevice = mLatestConnectedBluetoothDevice;
+            Integer serviceInstanceId = mLatestNotificatableServiceInstanceId;
+            Integer characteristicInstanceId = mLatestNotificatableCharacteristicInstanceId;
+            if (bluetoothDevice != null && serviceInstanceId != null && characteristicInstanceId != null) {
+                mBLEServerConnection.createNotificationTask(bluetoothDevice
+                        , SAMPLE_PRIMARY_SERVICE_1
+                        , serviceInstanceId
+                        , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                        , characteristicInstanceId
+                        , new ByteArrayInterface() {
+                            @NonNull
+                            @Override
+                            public byte[] getBytes() {
+                                return new byte[]{1, 2, 3, 4};
+                            }
+                        }
+                        , false
+                        , NotificationTask.TIMEOUT_MILLIS
+                        , 0
+                        , null
+                        , null);
+            }
+        } else if (R.id.indication == item.getItemId()) {
+            BluetoothDevice bluetoothDevice = mLatestConnectedBluetoothDevice;
+            Integer serviceInstanceId = mLatestNotificatableServiceInstanceId;
+            Integer characteristicInstanceId = mLatestNotificatableCharacteristicInstanceId;
+            if (bluetoothDevice != null && serviceInstanceId != null && characteristicInstanceId != null) {
+                mBLEServerConnection.createNotificationTask(bluetoothDevice
+                        , SAMPLE_PRIMARY_SERVICE_1
+                        , serviceInstanceId
+                        , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                        , characteristicInstanceId
+                        , new ByteArrayInterface() {
+                            @NonNull
+                            @Override
+                            public byte[] getBytes() {
+                                return new byte[]{1, 2, 3, 4};
+                            }
+                        }
+                        , true
+                        , NotificationTask.TIMEOUT_MILLIS
+                        , 0
+                        , null
+                        , null);
+            }
+        }
+        return true;
+    }
+
+    protected void updateLayout() {
         if (mBluetoothAdapter != null && !mBluetoothAdapter.isEnabled()) {
             mBluetoothAdapter.enable();
         } else if (mBLEServerConnection.isStarted()) {

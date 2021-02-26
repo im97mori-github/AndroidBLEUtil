@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEConstants;
 import org.im97mori.ble.BLEServerConnection;
+import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
 import org.im97mori.ble.MockData;
@@ -1653,7 +1654,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
 
                                         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
                                         if (bluetoothGattDescriptor != null) {
-                                            int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
+                                            int descriptorInstanceId = BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor);
                                             startNotification(null, bleServerConnection, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, characteristicData.delay, 1, null);
                                         }
 

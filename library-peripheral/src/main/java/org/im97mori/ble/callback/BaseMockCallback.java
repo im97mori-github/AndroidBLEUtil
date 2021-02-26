@@ -7,7 +7,6 @@ import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattServer;
 import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
-import android.os.Parcel;
 import android.os.SystemClock;
 import android.util.Pair;
 
@@ -17,6 +16,7 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEPeripheralLogUtils;
 import org.im97mori.ble.BLEServerCallback;
 import org.im97mori.ble.BLEServerConnection;
+import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
@@ -222,20 +222,6 @@ public abstract class BaseMockCallback implements BLEServerCallback {
     }
 
     /**
-     * @param bluetoothGattDescriptor {@link BluetoothGattDescriptor} instance
-     * @return descriptor instance id(like {@link BluetoothGattService#getInstanceId()} or {@link BluetoothGattCharacteristic#getInstanceId()})
-     */
-    protected int getDescriptorInstanceId(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
-        Parcel parcel = Parcel.obtain();
-        bluetoothGattDescriptor.writeToParcel(parcel, 0);
-        parcel.setDataPosition(0);
-        parcel.readParcelable(getClass().getClassLoader());
-        int descriptorInstanceId = parcel.readInt();
-        parcel.recycle();
-        return descriptorInstanceId;
-    }
-
-    /**
      * {@inheritDoc}
      */
     @Override
@@ -270,7 +256,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                             for (DescriptorData descriptorData : characteristicData.descriptorDataList) {
                                 for (BluetoothGattDescriptor bluetoothGattDescriptor : bluetoothGattCharacteristic.getDescriptors()) {
                                     UUID descriptorUUID = bluetoothGattDescriptor.getUuid();
-                                    int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
+                                    int descriptorInstanceId = BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor);
                                     Pair<UUID, Integer> descriptorPair = Pair.create(descriptorUUID, descriptorInstanceId);
                                     if (descriptorData.uuid.equals(descriptorUUID) && !usedDescriptorSet.contains(descriptorPair)) {
                                         usedDescriptorSet.add(descriptorPair);
@@ -439,7 +425,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
             Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
             if (descriptorDataMap != null) {
                 UUID descriptorUUID = bluetoothGattDescriptor.getUuid();
-                int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
+                int descriptorInstanceId = BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor);
                 Pair<UUID, Integer> descriptorPair = Pair.create(descriptorUUID, descriptorInstanceId);
 
                 DescriptorData descriptorData = descriptorDataMap.get(descriptorPair);
@@ -490,7 +476,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
             Map<Pair<UUID, Integer>, DescriptorData> descriptorDataMap = mRemappedCharacteristicDescriptorMap.get(Pair.create(characteristicUUID, characteristicInstanceId));
             if (descriptorDataMap != null) {
                 UUID descriptorUUID = bluetoothGattDescriptor.getUuid();
-                int descriptorInstanceId = getDescriptorInstanceId(bluetoothGattDescriptor);
+                int descriptorInstanceId = BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor);
                 Pair<UUID, Integer> descriptorPair = Pair.create(descriptorUUID, descriptorInstanceId);
 
                 DescriptorData descriptorData = descriptorDataMap.get(descriptorPair);
