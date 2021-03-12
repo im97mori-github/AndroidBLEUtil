@@ -1399,6 +1399,7 @@ public class FitnessMachineProfile extends AbstractCentralProfile {
      */
     @Override
     public synchronized void createServices() {
+        super.createServices();
         if (mFitnessMachineService == null) {
             mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null);
         }

@@ -311,6 +311,7 @@ public class TimeProfile extends AbstractCentralProfile {
      */
     @Override
     public synchronized void createServices() {
+        super.createServices();
         if (mCurrentTimeService == null) {
             mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null);
         }

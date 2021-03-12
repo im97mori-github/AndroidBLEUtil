@@ -169,6 +169,7 @@ public class ProximityProfile extends AbstractCentralProfile {
      */
     @Override
     public synchronized void createServices() {
+        super.createServices();
         if (mLinkLossService == null) {
             mLinkLossService = new LinkLossService(mBLEConnection, mProximityProfileCallback, null);
         }

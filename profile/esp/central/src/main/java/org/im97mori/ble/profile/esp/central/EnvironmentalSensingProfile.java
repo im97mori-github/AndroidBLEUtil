@@ -7179,6 +7179,7 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
      */
     @Override
     public synchronized void createServices() {
+        super.createServices();
         if (mEnvironmentalSensingService == null) {
             mEnvironmentalSensingService = new EnvironmentalSensingService(mBLEConnection, mEnvironmentalSensingProfileCallback, null);
         }

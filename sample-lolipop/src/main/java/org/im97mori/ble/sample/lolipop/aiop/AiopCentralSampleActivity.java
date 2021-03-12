@@ -18,8 +18,13 @@ import androidx.annotation.RequiresApi;
 
 import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.core.AutomationIoUtils;
+import org.im97mori.ble.characteristic.u2a00.DeviceName;
+import org.im97mori.ble.characteristic.u2a01.Appearance;
+import org.im97mori.ble.characteristic.u2a02.PeripheralPrivacyFlag;
+import org.im97mori.ble.characteristic.u2a03.ReconnectionAddress;
 import org.im97mori.ble.characteristic.u2a56.Digital;
 import org.im97mori.ble.characteristic.u2a58.Analog;
+import org.im97mori.ble.characteristic.u2b29.ClientSupportedFeatures;
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;
 import org.im97mori.ble.descriptor.u290a.ValueTriggerSetting;
 import org.im97mori.ble.descriptor.u290e.TimeTriggerSetting;
@@ -29,6 +34,7 @@ import org.im97mori.ble.sample.lolipop.AlertDialogFragment;
 import org.im97mori.ble.sample.lolipop.BaseActivity;
 import org.im97mori.ble.sample.lolipop.R;
 import org.im97mori.ble.sample.lolipop.SampleCallback;
+import org.im97mori.ble.task.DiscoverServiceTask;
 
 import java.util.LinkedList;
 import java.util.Set;
@@ -49,7 +55,12 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
         super.onCreate(savedInstanceState);
 
         mAiopCallbackSample = new AiopCallbackSample(this, this);
-        mAutomationIOProfile = new AutomationIOProfile(this, mAiopCallbackSample);
+        mAutomationIOProfile = new AutomationIOProfile(this, mAiopCallbackSample) {
+            @Override
+            public synchronized void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument) {
+                mBLEConnection.createDiscoverServiceTask(DiscoverServiceTask.TIMEOUT_MILLIS, null, null);
+            }
+        };
         mAutomationIOProfile.start();
 
         mConnectDisconnectButton = findViewById(R.id.connectDisconnectButton);
@@ -127,12 +138,84 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
             mAutomationIOProfile.syncBondedDevice();
             mBluetoothDevice = null;
             updateLayout();
+        } else if (R.id.get_device_name == item.getItemId()) {
+            mAutomationIOProfile.getDeviceName();
+        } else if (R.id.is_device_name_writable == item.getItemId()) {
+            addRow("isDeviceNameCharacteristicWritable", mAutomationIOProfile.isDeviceNameCharacteristicWritable());
+        } else if (R.id.set_device_name == item.getItemId()) {
+            mAutomationIOProfile.setDeviceName(new DeviceName("a"));
+        } else if (R.id.get_appearance == item.getItemId()) {
+            mAutomationIOProfile.getAppearance();
         } else {
             digital(item);
             analog(item);
             aggregate(item);
+            gatt(item);
+            gap(item);
         }
         return true;
+    }
+
+    private void gatt(MenuItem item) {
+        if (R.id.get_device_name == item.getItemId()) {
+            mAutomationIOProfile.getDeviceName();
+        } else if (R.id.is_device_name_writable == item.getItemId()) {
+            addRow("isDeviceNameCharacteristicWritable", mAutomationIOProfile.isDeviceNameCharacteristicWritable());
+        } else if (R.id.set_device_name == item.getItemId()) {
+            mAutomationIOProfile.setDeviceName(new DeviceName("deviceNameAiop2"));
+        } else if (R.id.get_appearance == item.getItemId()) {
+            mAutomationIOProfile.getAppearance();
+        } else if (R.id.is_appearance_writable == item.getItemId()) {
+            addRow("isDeviceNameCharacteristicWritable", mAutomationIOProfile.isAppearanceCharacteristicWritable());
+        } else if (R.id.set_appearance == item.getItemId()) {
+            mAutomationIOProfile.setAppearance(new Appearance(new byte[]{Appearance.CATEGORY_UNKNOWN}));
+        } else if (R.id.has_ppcp == item.getItemId()) {
+            addRow("isPeripheralPreferredConnectionParametersCharacteristicSupporeted", mAutomationIOProfile.isPeripheralPreferredConnectionParametersCharacteristicSupporeted());
+        } else if (R.id.get_ppcp == item.getItemId()) {
+            mAutomationIOProfile.getPeripheralPreferredConnectionParameters();
+        } else if (R.id.has_car == item.getItemId()) {
+            addRow("isCentralAddressResolutionCharacteristicSupporeted", mAutomationIOProfile.isCentralAddressResolutionCharacteristicSupporeted());
+        } else if (R.id.get_car == item.getItemId()) {
+            mAutomationIOProfile.getCentralAddressResolutionParameters();
+        } else if (R.id.has_rpao == item.getItemId()) {
+            addRow("isCentralAddressResolutionCharacteristicSupporeted", mAutomationIOProfile.isResolvablePrivateAddressOnlyCharacteristicSupporeted());
+        } else if (R.id.get_rpao == item.getItemId()) {
+            mAutomationIOProfile.getResolvablePrivateAddressOnly();
+        } else if (R.id.has_reconnection_address == item.getItemId()) {
+            addRow("isCentralAddressResolutionCharacteristicSupporeted", mAutomationIOProfile.isReconnectionAddressCharacteristicSupporeted());
+        } else if (R.id.set_reconnection_address == item.getItemId()) {
+            mAutomationIOProfile.setReconnectionAddress(new ReconnectionAddress(1));
+        } else if (R.id.has_ppf == item.getItemId()) {
+            addRow("isPeripheralPrivacyFlagCharacteristicSupporeted", mAutomationIOProfile.isPeripheralPrivacyFlagCharacteristicSupporeted());
+        } else if (R.id.get_ppf == item.getItemId()) {
+            mAutomationIOProfile.getPeripheralPrivacyFlag();
+        } else if (R.id.is_ppf_writable == item.getItemId()) {
+            addRow("isPeripheralPrivacyFlagCharacteristicWritable", mAutomationIOProfile.isPeripheralPrivacyFlagCharacteristicWritable());
+        } else if (R.id.set_ppf == item.getItemId()) {
+            mAutomationIOProfile.setPeripheralPrivacyFlag(new PeripheralPrivacyFlag(PeripheralPrivacyFlag.FLAGS_PRIVACY_IS_ENABLED_IN_THIS_DEVICE));
+        }
+    }
+
+    private void gap(MenuItem item) {
+        if (R.id.has_service_changed == item.getItemId()) {
+            addRow("isServiceChangedCharacteristicSupporeted", mAutomationIOProfile.isServiceChangedCharacteristicSupporeted());
+        } else if (R.id.read_service_changed_characteristic_configuration == item.getItemId()) {
+            mAutomationIOProfile.getServiceChangedClientCharacteristicConfiguration();
+        } else if (R.id.indicate_service_changed_start == item.getItemId()) {
+            mAutomationIOProfile.startServiceChangedIndication();
+        } else if (R.id.indicate_service_changed_stop == item.getItemId()) {
+            mAutomationIOProfile.stopServiceChangedIndication();
+        } else if (R.id.has_csf == item.getItemId()) {
+            addRow("isClientSupportedFeaturesCharacteristicSupporeted", mAutomationIOProfile.isClientSupportedFeaturesCharacteristicSupporeted());
+        } else if (R.id.get_csf == item.getItemId()) {
+            mAutomationIOProfile.getClientSupportedFeatures();
+        } else if (R.id.set_csf == item.getItemId()) {
+            mAutomationIOProfile.setClientSupportedFeatures(new ClientSupportedFeatures(new byte[0]));
+        } else if (R.id.has_database_hash == item.getItemId()) {
+            addRow("isDatabaseHashCharacteristicSupporeted", mAutomationIOProfile.isDatabaseHashCharacteristicSupporeted());
+        } else if (R.id.get_database_hash == item.getItemId()) {
+            mAutomationIOProfile.getDatabaseHash();
+        }
     }
 
     private void digital(MenuItem item) {

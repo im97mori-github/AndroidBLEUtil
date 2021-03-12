@@ -7,13 +7,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
+import org.im97mori.ble.service.gap.central.GenericAttributeServiceCallback;
+import org.im97mori.ble.service.gatt.central.GenericAccessServiceCallback;
 
 import java.util.Set;
 
 /**
  * Profile callback
  */
-public interface ProfileCallback extends BLECallback {
+public interface ProfileCallback extends GenericAccessServiceCallback, GenericAttributeServiceCallback, BLECallback {
 
     /**
      * Scan finished callback

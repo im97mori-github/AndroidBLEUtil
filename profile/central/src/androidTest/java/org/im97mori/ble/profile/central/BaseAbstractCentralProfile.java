@@ -27,8 +27,4 @@ public class BaseAbstractCentralProfile extends AbstractCentralProfile {
         return null;
     }
 
-    @Override
-    protected void createServices() {
-
-    }
 }

@@ -317,7 +317,7 @@ public class CurrentTimeService extends AbstractCentralService {
     }
 
     /**
-     * check Intermediate Cuff Pressure characteristic
+     * check Local Time Information characteristic
      *
      * @return {@code true}:Local Time Information characteristic is exist, {@code false}:Local Time Information characteristic is not exist or service not ready
      */

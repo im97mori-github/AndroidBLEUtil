@@ -16,6 +16,95 @@
             android:title="@string/menu_get_analog_count" />
     </group>
     <group
+        android:id="@+id/gatt"
+        android:visible="false">
+        <item
+            android:id="@+id/get_device_name"
+            android:title="@string/menu_get_device_name" />
+        <item
+            android:id="@+id/is_device_name_writable"
+            android:title="@string/menu_is_device_name_writable" />
+        <item
+            android:id="@+id/set_device_name"
+            android:title="@string/menu_set_device_name" />
+        <item
+            android:id="@+id/get_appearance"
+            android:title="@string/menu_get_appearance" />
+        <item
+            android:id="@+id/is_appearance_writable"
+            android:title="@string/menu_is_appearance_writable" />
+        <item
+            android:id="@+id/set_appearance"
+            android:title="@string/menu_set_appearance" />
+        <item
+            android:id="@+id/has_ppcp"
+            android:title="@string/menu_has_ppcp" />
+        <item
+            android:id="@+id/get_ppcp"
+            android:title="@string/menu_get_ppcp" />
+        <item
+            android:id="@+id/has_car"
+            android:title="@string/menu_has_car" />
+        <item
+            android:id="@+id/get_car"
+            android:title="@string/menu_get_car" />
+        <item
+            android:id="@+id/has_rpao"
+            android:title="@string/menu_has_rpao" />
+        <item
+            android:id="@+id/get_rpao"
+            android:title="@string/menu_get_rpao" />
+        <item
+            android:id="@+id/has_reconnection_address"
+            android:title="@string/menu_has_reconnection_address" />
+        <item
+            android:id="@+id/set_reconnection_address"
+            android:title="@string/menu_set_reconnection_address" />
+        <item
+            android:id="@+id/has_ppf"
+            android:title="@string/menu_has_ppf" />
+        <item
+            android:id="@+id/get_ppf"
+            android:title="@string/menu_get_ppf" />
+        <item
+            android:id="@+id/is_ppf_writable"
+            android:title="@string/menu_is_ppf_writable" />
+        <item
+            android:id="@+id/set_ppf"
+            android:title="@string/menu_set_ppf" />
+    </group>
+    <group
+        android:id="@+id/gap"
+        android:visible="true">
+        <item
+            android:id="@+id/has_service_changed"
+            android:title="@string/menu_has_service_changed" />
+        <item
+            android:id="@+id/read_service_changed_characteristic_configuration"
+            android:title="@string/menu_read_service_changed_characteristic_configuration" />
+        <item
+            android:id="@+id/indicate_service_changed_start"
+            android:title="@string/menu_indicate_service_changed_start" />
+        <item
+            android:id="@+id/indicate_service_changed_stop"
+            android:title="@string/menu_indicate_service_changed_stop" />
+        <item
+            android:id="@+id/has_csf"
+            android:title="@string/menu_has_csf" />
+        <item
+            android:id="@+id/get_csf"
+            android:title="@string/menu_get_csf" />
+        <item
+            android:id="@+id/set_csf"
+            android:title="@string/menu_set_csf" />
+        <item
+            android:id="@+id/has_database_hash"
+            android:title="@string/menu_has_database_hash" />
+        <item
+            android:id="@+id/get_database_hash"
+            android:title="@string/menu_get_database_hash" />
+    </group>
+    <group
         android:id="@+id/digital_0"
         android:visible="false">
         <item

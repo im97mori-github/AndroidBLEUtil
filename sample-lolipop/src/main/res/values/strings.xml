@@ -215,6 +215,35 @@
     <string name="menu_get_digital_count">Get Digital Count</string>
     <string name="menu_get_analog_count">Get Analog Count</string>
 
+    <string name="menu_get_device_name">Get Device Name</string>
+    <string name="menu_is_device_name_writable">Is Device Name Writable</string>
+    <string name="menu_set_device_name">Set Device Name</string>
+    <string name="menu_get_appearance">Get Appearance</string>
+    <string name="menu_is_appearance_writable">Is Appearance Writable</string>
+    <string name="menu_set_appearance">Set Appearance</string>
+    <string name="menu_has_ppcp">Has PPCP</string>
+    <string name="menu_get_ppcp">Get PPCP</string>
+    <string name="menu_has_car">Has CAR</string>
+    <string name="menu_get_car">Get CAR</string>
+    <string name="menu_has_rpao">Has RPAO</string>
+    <string name="menu_get_rpao">Get RPAO</string>
+    <string name="menu_has_reconnection_address">Has Reconnection Address</string>
+    <string name="menu_set_reconnection_address">Set Reconnection Address</string>
+    <string name="menu_has_ppf">Has PPF</string>
+    <string name="menu_get_ppf">Get PPF</string>
+    <string name="menu_is_ppf_writable">Is PPF Writable</string>
+    <string name="menu_set_ppf">Set PPF</string>
+
+    <string name="menu_has_service_changed">Has Service Changed</string>
+    <string name="menu_read_service_changed_characteristic_configuration">Read Service Changed Client Characteristic Configuration</string>
+    <string name="menu_indicate_service_changed_start">Indicate Service Changed start</string>
+    <string name="menu_indicate_service_changed_stop">Indicate Service Changed stop</string>
+    <string name="menu_has_csf">Has CSF</string>
+    <string name="menu_get_csf">Get CSF</string>
+    <string name="menu_set_csf">Set CSF</string>
+    <string name="menu_has_database_hash">Has Database Hash</string>
+    <string name="menu_get_database_hash">Get Database Hash</string>
+
     <string name="menu_is_digital_readable_0">D Readable(0)</string>
     <string name="menu_is_digital_writable_0">D Writable(0)</string>
     <string name="menu_is_digital_writable_with_no_response_0">D WritableWNR(0)</string>

@@ -960,6 +960,7 @@ public class WeightScaleProfile extends AbstractCentralProfile {
      */
     @Override
     public synchronized void createServices() {
+        super.createServices();
         if (mWeightScaleService == null) {
             mWeightScaleService = new WeightScaleService(mBLEConnection, mWeightScaleProfileCallback, null);
         }

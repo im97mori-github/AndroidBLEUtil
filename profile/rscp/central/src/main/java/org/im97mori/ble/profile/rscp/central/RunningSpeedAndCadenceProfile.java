@@ -268,6 +268,7 @@ public class RunningSpeedAndCadenceProfile extends AbstractCentralProfile {
      */
     @Override
     public synchronized void createServices() {
+        super.createServices();
         if (mRunningSpeedAndCadenceService == null) {
             mRunningSpeedAndCadenceService = new RunningSpeedAndCadenceService(mBLEConnection, mRunningSpeedAndCadenceProfileCallback, null);
         }

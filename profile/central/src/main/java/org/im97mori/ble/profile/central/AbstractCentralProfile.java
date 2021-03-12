@@ -21,9 +21,16 @@ import org.im97mori.ble.TaskHandler;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.advertising.filter.FilteredScanCallbackInterface;
+import org.im97mori.ble.characteristic.u2a00.DeviceName;
+import org.im97mori.ble.characteristic.u2a01.Appearance;
+import org.im97mori.ble.characteristic.u2a02.PeripheralPrivacyFlag;
+import org.im97mori.ble.characteristic.u2a03.ReconnectionAddress;
+import org.im97mori.ble.characteristic.u2b29.ClientSupportedFeatures;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
 import org.im97mori.ble.profile.central.task.BondTask;
 import org.im97mori.ble.profile.central.task.ScanTask;
+import org.im97mori.ble.service.gap.central.GenericAttributeService;
+import org.im97mori.ble.service.gatt.central.GenericAccessService;
 import org.im97mori.ble.task.ConnectTask;
 
 import java.util.List;
@@ -62,6 +69,16 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
      * @see #mCurrentBluetoothDevice
      */
     protected BLEConnection mBLEConnection;
+
+    /**
+     * {@link GenericAccessService} instance
+     */
+    protected GenericAccessService mGenericAccessService;
+
+    /**
+     * {@link GenericAttributeService} instance
+     */
+    protected GenericAttributeService mGenericAttributeService;
 
     /**
      * @param context         {@link Context} instance
@@ -212,7 +229,14 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
      *
      * @see #connect(BluetoothDevice)
      */
-    protected abstract void createServices();
+    protected void createServices() {
+        if (mGenericAccessService == null) {
+            mGenericAccessService = new GenericAccessService(mBLEConnection, mProfileCallback, null);
+        }
+        if (mGenericAttributeService == null) {
+            mGenericAttributeService = new GenericAttributeService(mBLEConnection, mProfileCallback, null);
+        }
+    }
 
     /**
      * <p>
@@ -227,6 +251,8 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
             mTaskHandler = null;
         }
         disconnect();
+        mGenericAccessService = null;
+        mGenericAttributeService = null;
     }
 
     /**
@@ -676,6 +702,329 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
     @Override
     public void onSetNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, int status, @Nullable Bundle argument) {
         // do nothing
+    }
+
+    /**
+     * @see GenericAccessService#isDeviceNameCharacteristicWritable()
+     */
+    @Nullable
+    public Boolean isDeviceNameCharacteristicWritable() {
+        Boolean result = null;
+        if (mGenericAccessService != null) {
+            result = mGenericAccessService.isDeviceNameCharacteristicWritable();
+        }
+        return result;
+    }
+
+    /**
+     * @see GenericAccessService#isAppearanceCharacteristicWritable()
+     */
+    @Nullable
+    public Boolean isAppearanceCharacteristicWritable() {
+        Boolean result = null;
+        if (mGenericAccessService != null) {
+            result = mGenericAccessService.isAppearanceCharacteristicWritable();
+        }
+        return result;
+    }
+
+    /**
+     * @see GenericAccessService#isPeripheralPreferredConnectionParametersCharacteristicSupporeted()
+     */
+    @Nullable
+    public Boolean isPeripheralPreferredConnectionParametersCharacteristicSupporeted() {
+        Boolean result = null;
+        if (mGenericAccessService != null) {
+            result = mGenericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupporeted();
+        }
+        return result;
+    }
+
+    /**
+     * @see GenericAccessService#isCentralAddressResolutionCharacteristicSupporeted()
+     */
+    @Nullable
+    public Boolean isCentralAddressResolutionCharacteristicSupporeted() {
+        Boolean result = null;
+        if (mGenericAccessService != null) {
+            result = mGenericAccessService.isCentralAddressResolutionCharacteristicSupporeted();
+        }
+        return result;
+    }
+
+    /**
+     * @see GenericAccessService#isResolvablePrivateAddressOnlyCharacteristicSupporeted()
+     */
+    @Nullable
+    public Boolean isResolvablePrivateAddressOnlyCharacteristicSupporeted() {
+        Boolean result = null;
+        if (mGenericAccessService != null) {
+            result = mGenericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupporeted();
+        }
+        return result;
+    }
+
+    /**
+     * @see GenericAccessService#isReconnectionAddressCharacteristicSupporeted()
+     */
+    @Nullable
+    public Boolean isReconnectionAddressCharacteristicSupporeted() {
+        Boolean result = null;
+        if (mGenericAccessService != null) {
+            result = mGenericAccessService.isReconnectionAddressCharacteristicSupporeted();
+        }
+        return result;
+    }
+
+    /**
+     * @see GenericAccessService#isPeripheralPrivacyFlagCharacteristicSupporeted()
+     */
+    @Nullable
+    public Boolean isPeripheralPrivacyFlagCharacteristicSupporeted() {
+        Boolean result = null;
+        if (mGenericAccessService != null) {
+            result = mGenericAccessService.isPeripheralPrivacyFlagCharacteristicSupporeted();
+        }
+        return result;
+    }
+
+    /**
+     * @see GenericAccessService#isPeripheralPrivacyFlagCharacteristicWritable()
+     */
+    public Boolean isPeripheralPrivacyFlagCharacteristicWritable() {
+        Boolean result = null;
+        if (mGenericAccessService != null) {
+            result = mGenericAccessService.isPeripheralPrivacyFlagCharacteristicWritable();
+        }
+        return result;
+    }
+
+    /**
+     * @see GenericAttributeService#isServiceChangedCharacteristicSupporeted()
+     */
+    @Nullable
+    public Boolean isServiceChangedCharacteristicSupporeted() {
+        Boolean result = null;
+        if (mGenericAttributeService != null) {
+            result = mGenericAttributeService.isServiceChangedCharacteristicSupporeted();
+        }
+        return result;
+    }
+
+    /**
+     * @see GenericAttributeService#isClientSupportedFeaturesCharacteristicSupporeted()
+     */
+    @Nullable
+    public Boolean isClientSupportedFeaturesCharacteristicSupporeted() {
+        Boolean result = null;
+        if (mGenericAttributeService != null) {
+            result = mGenericAttributeService.isClientSupportedFeaturesCharacteristicSupporeted();
+        }
+        return result;
+    }
+
+    /**
+     * @see GenericAttributeService#isDatabaseHashCharacteristicSupporeted()
+     */
+    @Nullable
+    public Boolean isDatabaseHashCharacteristicSupporeted() {
+        Boolean result = null;
+        if (mGenericAttributeService != null) {
+            result = mGenericAttributeService.isDatabaseHashCharacteristicSupporeted();
+        }
+        return result;
+    }
+
+    /**
+     * @see GenericAccessService#getDeviceName()
+     */
+    @Nullable
+    public synchronized Integer getDeviceName() {
+        Integer taskId = null;
+        if (mGenericAccessService != null) {
+            taskId = mGenericAccessService.getDeviceName();
+        }
+        return taskId;
+    }
+
+    /**
+     * @see GenericAccessService#setDeviceName(DeviceName)
+     */
+    @Nullable
+    public synchronized Integer setDeviceName(@NonNull DeviceName deviceName) {
+        Integer taskId = null;
+        if (mGenericAccessService != null) {
+            taskId = mGenericAccessService.setDeviceName(deviceName);
+        }
+        return taskId;
+    }
+
+    /**
+     * @see GenericAccessService#getAppearance()
+     */
+    @Nullable
+    public synchronized Integer getAppearance() {
+        Integer taskId = null;
+        if (mGenericAccessService != null) {
+            taskId = mGenericAccessService.getAppearance();
+        }
+        return taskId;
+    }
+
+    /**
+     * @see GenericAccessService#setAppearance(Appearance)
+     */
+    @Nullable
+    public synchronized Integer setAppearance(@NonNull Appearance appearance) {
+        Integer taskId = null;
+        if (mGenericAccessService != null) {
+            taskId = mGenericAccessService.setAppearance(appearance);
+        }
+        return taskId;
+    }
+
+    /**
+     * @see GenericAccessService#getPeripheralPreferredConnectionParameters()
+     */
+    @Nullable
+    public synchronized Integer getPeripheralPreferredConnectionParameters() {
+        Integer taskId = null;
+        if (mGenericAccessService != null) {
+            taskId = mGenericAccessService.getPeripheralPreferredConnectionParameters();
+        }
+        return taskId;
+    }
+
+    /**
+     * @see GenericAccessService#getCentralAddressResolutionParameters()
+     */
+    @Nullable
+    public synchronized Integer getCentralAddressResolutionParameters() {
+        Integer taskId = null;
+        if (mGenericAccessService != null) {
+            taskId = mGenericAccessService.getCentralAddressResolutionParameters();
+        }
+        return taskId;
+    }
+
+    /**
+     * @see GenericAccessService#getResolvablePrivateAddressOnly()
+     */
+    @Nullable
+    public synchronized Integer getResolvablePrivateAddressOnly() {
+        Integer taskId = null;
+        if (mGenericAccessService != null) {
+            taskId = mGenericAccessService.getResolvablePrivateAddressOnly();
+        }
+        return taskId;
+    }
+
+    /**
+     * @see GenericAccessService#setReconnectionAddress(ReconnectionAddress)
+     */
+    @Nullable
+    public synchronized Integer setReconnectionAddress(@NonNull ReconnectionAddress reconnectionAddress) {
+        Integer taskId = null;
+        if (mGenericAccessService != null) {
+            taskId = mGenericAccessService.setReconnectionAddress(reconnectionAddress);
+        }
+        return taskId;
+    }
+
+    /**
+     * @see GenericAccessService#getPeripheralPrivacyFlag()
+     */
+    @Nullable
+    public synchronized Integer getPeripheralPrivacyFlag() {
+        Integer taskId = null;
+        if (mGenericAccessService != null) {
+            taskId = mGenericAccessService.getPeripheralPrivacyFlag();
+        }
+        return taskId;
+    }
+
+    /**
+     * @see GenericAccessService#setPeripheralPrivacyFlag(PeripheralPrivacyFlag)
+     */
+    @Nullable
+    public synchronized Integer setPeripheralPrivacyFlag(@NonNull PeripheralPrivacyFlag peripheralPrivacyFlag) {
+        Integer taskId = null;
+        if (mGenericAccessService != null) {
+            taskId = mGenericAccessService.setPeripheralPrivacyFlag(peripheralPrivacyFlag);
+        }
+        return taskId;
+    }
+
+    /**
+     * @see GenericAttributeService#getServiceChangedClientCharacteristicConfiguration()
+     */
+    @Nullable
+    public synchronized Integer getServiceChangedClientCharacteristicConfiguration() {
+        Integer taskId = null;
+        if (mGenericAttributeService != null) {
+            taskId = mGenericAttributeService.getServiceChangedClientCharacteristicConfiguration();
+        }
+        return taskId;
+    }
+
+    /**
+     * @see GenericAttributeService#startServiceChangedIndication()
+     */
+    @Nullable
+    public synchronized Integer startServiceChangedIndication() {
+        Integer taskId = null;
+        if (mGenericAttributeService != null) {
+            taskId = mGenericAttributeService.startServiceChangedIndication();
+        }
+        return taskId;
+    }
+
+    /**
+     * @see GenericAttributeService#stopServiceChangedIndication()
+     */
+    @Nullable
+    public synchronized Integer stopServiceChangedIndication() {
+        Integer taskId = null;
+        if (mGenericAttributeService != null) {
+            taskId = mGenericAttributeService.stopServiceChangedIndication();
+        }
+        return taskId;
+    }
+
+    /**
+     * @see GenericAttributeService#getClientSupportedFeatures()
+     */
+    @Nullable
+    public synchronized Integer getClientSupportedFeatures() {
+        Integer taskId = null;
+        if (mGenericAttributeService != null) {
+            taskId = mGenericAttributeService.getClientSupportedFeatures();
+        }
+        return taskId;
+    }
+
+    /**
+     * @see GenericAttributeService#setClientSupportedFeatures(ClientSupportedFeatures)
+     */
+    @Nullable
+    public synchronized Integer setClientSupportedFeatures(@NonNull ClientSupportedFeatures clientSupportedFeatures) {
+        Integer taskId = null;
+        if (mGenericAttributeService != null) {
+            taskId = mGenericAttributeService.setClientSupportedFeatures(clientSupportedFeatures);
+        }
+        return taskId;
+    }
+
+    /**
+     * @see GenericAttributeService#getDatabaseHash()
+     */
+    @Nullable
+    public synchronized Integer getDatabaseHash() {
+        Integer taskId = null;
+        if (mGenericAttributeService != null) {
+            taskId = mGenericAttributeService.getDatabaseHash();
+        }
+        return taskId;
     }
 
 }

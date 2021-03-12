@@ -30,6 +30,8 @@ android {
 dependencies {
     api apiAdvertisingAndroid
     api "${groupId}:${serviceCentralAndroid.artifactId}:${serviceCentralAndroid.versionName}"
+    api "${groupId}:${serviceGapCentralAndroid.artifactId}:${serviceGapCentralAndroid.versionName}"
+    api "${groupId}:${serviceGattCentralAndroid.artifactId}:${serviceGattCentralAndroid.versionName}"
     androidTestImplementation "${groupId}:${testCentral.artifactId}:${testCentral.versionName}"
 }
 

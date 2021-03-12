@@ -172,6 +172,7 @@ public class AlertNotificationProfile extends AbstractCentralProfile {
      */
     @Override
     public synchronized void createServices() {
+        super.createServices();
         if (mAlertNotificationService == null) {
             mAlertNotificationService = new AlertNotificationService(mBLEConnection, mAlertNotificationProfileCallback, null);
         }

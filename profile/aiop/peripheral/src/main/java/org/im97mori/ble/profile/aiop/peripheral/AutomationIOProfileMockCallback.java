@@ -11,6 +11,9 @@ import java.util.UUID;
 
 import static org.im97mori.ble.BLEConstants.ServiceUUID.AUTOMATION_IO_SERVICE;
 
+/**
+ * Automation IO Profile for Peripheral
+ */
 public class AutomationIOProfileMockCallback extends AbstractProfileMockCallback {
 
     /**

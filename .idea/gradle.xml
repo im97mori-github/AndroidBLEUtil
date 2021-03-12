@@ -289,6 +289,12 @@
             <option value="$PROJECT_DIR$/service/ftms" />
             <option value="$PROJECT_DIR$/service/ftms/central" />
             <option value="$PROJECT_DIR$/service/ftms/peripheral" />
+            <option value="$PROJECT_DIR$/service/gap" />
+            <option value="$PROJECT_DIR$/service/gap/central" />
+            <option value="$PROJECT_DIR$/service/gap/peripheral" />
+            <option value="$PROJECT_DIR$/service/gatt" />
+            <option value="$PROJECT_DIR$/service/gatt/central" />
+            <option value="$PROJECT_DIR$/service/gatt/peripheral" />
             <option value="$PROJECT_DIR$/service/hrs" />
             <option value="$PROJECT_DIR$/service/hrs/central" />
             <option value="$PROJECT_DIR$/service/hrs/peripheral" />

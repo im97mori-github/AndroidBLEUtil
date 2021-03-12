@@ -1282,6 +1282,7 @@ public class AutomationIOProfile extends AbstractCentralProfile {
      */
     @Override
     public synchronized void createServices() {
+        super.createServices();
         if (mAutomationIOService == null) {
             mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null);
         }

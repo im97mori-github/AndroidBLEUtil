@@ -213,6 +213,7 @@ public class BloodPressureProfile extends AbstractCentralProfile {
      */
     @Override
     public synchronized void createServices() {
+        super.createServices();
         if (mDeviceInformationService == null) {
             mDeviceInformationService = new DeviceInformationService(mBLEConnection, mBloodPressureProfileCallback, null);
         }

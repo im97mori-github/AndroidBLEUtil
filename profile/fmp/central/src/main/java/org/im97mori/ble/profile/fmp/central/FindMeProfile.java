@@ -77,6 +77,7 @@ public class FindMeProfile extends AbstractCentralProfile {
      */
     @Override
     public synchronized void createServices() {
+        super.createServices();
         if (mImmediateAlertService == null) {
             mImmediateAlertService = new ImmediateAlertService(mBLEConnection, mFindMeProfileCallback, null);
         }

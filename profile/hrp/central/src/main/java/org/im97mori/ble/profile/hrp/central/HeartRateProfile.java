@@ -210,6 +210,7 @@ public class HeartRateProfile extends AbstractCentralProfile {
      */
     @Override
     public synchronized void createServices() {
+        super.createServices();
         if (mDeviceInformationService == null) {
             mDeviceInformationService = new DeviceInformationService(mBLEConnection, mHeartRateProfileCallback, null);
         }

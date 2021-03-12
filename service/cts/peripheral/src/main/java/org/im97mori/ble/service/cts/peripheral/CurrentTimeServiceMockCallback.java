@@ -59,12 +59,12 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
         /**
          * Local Time Information data
          */
-        protected CharacteristicData mLocalTimeInformation;
+        protected CharacteristicData mLocalTimeInformationData;
 
         /**
          * Reference Time Information data
          */
-        protected ReferenceTimeInformationCharacteristicData mReferenceTimeInformation;
+        protected ReferenceTimeInformationCharacteristicData mReferenceTimeInformationData;
 
         /**
          * @see #addCurrentTime(boolean, int, long, byte[], int, int, long, byte[])
@@ -154,7 +154,7 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
                 property |= BluetoothGattCharacteristic.PROPERTY_WRITE;
                 permission |= BluetoothGattCharacteristic.PERMISSION_WRITE;
             }
-            mLocalTimeInformation = new CharacteristicData(LOCAL_TIME_INFORMATION_CHARACTERISTIC
+            mLocalTimeInformationData = new CharacteristicData(LOCAL_TIME_INFORMATION_CHARACTERISTIC
                     , property
                     , permission
                     , Collections.<DescriptorData>emptyList()
@@ -172,7 +172,7 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
          */
         @NonNull
         public Builder<T> removeLocalTimeInformation() {
-            mLocalTimeInformation = null;
+            mLocalTimeInformationData = null;
             return this;
         }
 
@@ -202,7 +202,7 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
          */
         @NonNull
         public Builder<T> addReferenceTimeInformation(int responseCode, long delay, @NonNull byte[] value) {
-            mReferenceTimeInformation = new ReferenceTimeInformationCharacteristicData(responseCode, delay, value);
+            mReferenceTimeInformationData = new ReferenceTimeInformationCharacteristicData(responseCode, delay, value);
             return this;
         }
 
@@ -213,7 +213,7 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
          */
         @NonNull
         public Builder<T> removeReferenceTimeInformation() {
-            mReferenceTimeInformation = null;
+            mReferenceTimeInformationData = null;
             return this;
         }
 
@@ -230,11 +230,11 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
             } else {
                 characteristicList.add(mCurrentTimeData);
             }
-            if (mLocalTimeInformation != null) {
-                characteristicList.add(mLocalTimeInformation);
+            if (mLocalTimeInformationData != null) {
+                characteristicList.add(mLocalTimeInformationData);
             }
-            if (mReferenceTimeInformation != null) {
-                characteristicList.add(mReferenceTimeInformation);
+            if (mReferenceTimeInformationData != null) {
+                characteristicList.add(mReferenceTimeInformationData);
             }
             ServiceData serviceData = new ServiceData(CURRENT_TIME_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
             return new MockData(Collections.singletonList(serviceData));

@@ -173,6 +173,7 @@ public class PhoneAlertStatusProfile extends AbstractCentralProfile {
      */
     @Override
     public synchronized void createServices() {
+        super.createServices();
         if (mPhoneAlertStatusService == null) {
             mPhoneAlertStatusService = new PhoneAlertStatusService(mBLEConnection, mPhoneAlertStatusProfileCallback, null);
         }

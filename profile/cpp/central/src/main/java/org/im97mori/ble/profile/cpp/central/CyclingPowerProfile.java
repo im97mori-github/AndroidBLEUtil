@@ -464,6 +464,7 @@ public class CyclingPowerProfile extends AbstractCentralProfile {
      */
     @Override
     public synchronized void createServices() {
+        super.createServices();
         if (mCyclingPowerService == null) {
             mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null);
         }
