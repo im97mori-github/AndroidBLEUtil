@@ -128,8 +128,8 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
             addRow("hasDeviceInformationService", mEnvironmentalSensingProfile.hasDeviceInformationService());
         } else if (R.id.has_battery_service == item.getItemId()) {
             addRow("hasBatteryService", mEnvironmentalSensingProfile.hasBatteryService());
-        } else if (R.id.is_descriptor_value_changed_characteristic_supporeted == item.getItemId()) {
-            mEnvironmentalSensingProfile.isDescriptorValueChangedCharacteristicSupporeted();
+        } else if (R.id.is_descriptor_value_changed_characteristic_supported == item.getItemId()) {
+            mEnvironmentalSensingProfile.isDescriptorValueChangedCharacteristicSupported();
         } else if (R.id.indicate_descriptor_value_changed_start == item.getItemId()) {
             mEnvironmentalSensingProfile.startDescriptorValueChangedIndication();
         } else if (R.id.indicate_descriptor_value_changed_stop == item.getItemId()) {

@@ -311,13 +311,13 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
      * check Position Quality characteristic
      *
      * @return {@code true}:Position Quality characteristic is exist, {@code false}:Position Quality characteristic is not exist or service not ready. if {@code null} returned, profile is not ready or no Location and Navigation Service
-     * @see LocationAndNavigationService#isPositionQualityCharacteristicSupporeted()
+     * @see LocationAndNavigationService#isPositionQualityCharacteristicSupported()
      */
     @Nullable
-    public Boolean isPositionQualityCharacteristicSupporeted() {
+    public Boolean isPositionQualityCharacteristicSupported() {
         Boolean result = null;
         if (mLocationAndNavigationService != null) {
-            result = mLocationAndNavigationService.isPositionQualityCharacteristicSupporeted();
+            result = mLocationAndNavigationService.isPositionQualityCharacteristicSupported();
         }
         return result;
     }
@@ -326,13 +326,13 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
      * check LN Control Point characteristic
      *
      * @return {@code true}:LN Control Point characteristic is exist, {@code false}:LN Control Point characteristic is not exist or service not ready. if {@code null} returned, profile is not ready or no Location and Navigation Service
-     * @see LocationAndNavigationService#isLNControlPointCharacteristicSupporeted()
+     * @see LocationAndNavigationService#isLNControlPointCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isLNControlPointCharacteristicSupporeted() {
+    public synchronized Boolean isLNControlPointCharacteristicSupported() {
         Boolean result = null;
         if (mLocationAndNavigationService != null) {
-            result = mLocationAndNavigationService.isLNControlPointCharacteristicSupporeted();
+            result = mLocationAndNavigationService.isLNControlPointCharacteristicSupported();
         }
         return result;
     }
@@ -341,13 +341,13 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
      * check Navigation characteristic
      *
      * @return {@code true}:Navigation characteristic is exist, {@code false}:Navigation characteristic is not exist or service not ready. if {@code null} returned, profile is not ready or no Location and Navigation Service
-     * @see LocationAndNavigationService#isNavigationCharacteristicSupporeted()
+     * @see LocationAndNavigationService#isNavigationCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isNavigationCharacteristicSupporeted() {
+    public synchronized Boolean isNavigationCharacteristicSupported() {
         Boolean result = null;
         if (mLocationAndNavigationService != null) {
-            result = mLocationAndNavigationService.isNavigationCharacteristicSupporeted();
+            result = mLocationAndNavigationService.isNavigationCharacteristicSupported();
         }
         return result;
     }

@@ -23,47 +23,47 @@
         android:id="@+id/fitness_machine_service_1"
         android:visible="false">
         <item
-            android:id="@+id/is_treadmill_data_characteristic_supporeted"
-            android:title="@string/menu_is_treadmill_data_characteristic_supporeted" />
+            android:id="@+id/is_treadmill_data_characteristic_supported"
+            android:title="@string/menu_is_treadmill_data_characteristic_supported" />
         <item
-            android:id="@+id/is_cross_trainer_data_characteristic_supporeted"
-            android:title="@string/menu_is_cross_trainer_data_characteristic_supporeted" />
+            android:id="@+id/is_cross_trainer_data_characteristic_supported"
+            android:title="@string/menu_is_cross_trainer_data_characteristic_supported" />
         <item
-            android:id="@+id/is_step_climber_data_characteristic_supporeted"
-            android:title="@string/menu_is_step_climber_data_characteristic_supporeted" />
+            android:id="@+id/is_step_climber_data_characteristic_supported"
+            android:title="@string/menu_is_step_climber_data_characteristic_supported" />
         <item
-            android:id="@+id/is_stair_climber_data_characteristic_supporeted"
-            android:title="@string/menu_is_stair_climber_data_characteristic_supporeted" />
+            android:id="@+id/is_stair_climber_data_characteristic_supported"
+            android:title="@string/menu_is_stair_climber_data_characteristic_supported" />
         <item
-            android:id="@+id/is_rower_data_characteristic_supporeted"
-            android:title="@string/menu_is_rower_data_characteristic_supporeted" />
+            android:id="@+id/is_rower_data_characteristic_supported"
+            android:title="@string/menu_is_rower_data_characteristic_supported" />
         <item
-            android:id="@+id/is_indoor_bike_data_characteristic_supporeted"
-            android:title="@string/menu_is_indoor_bike_data_characteristic_supporeted" />
+            android:id="@+id/is_indoor_bike_data_characteristic_supported"
+            android:title="@string/menu_is_indoor_bike_data_characteristic_supported" />
         <item
-            android:id="@+id/is_training_status_characteristic_supporeted"
-            android:title="@string/menu_is_training_status_characteristic_supporeted" />
+            android:id="@+id/is_training_status_characteristic_supported"
+            android:title="@string/menu_is_training_status_characteristic_supported" />
         <item
-            android:id="@+id/is_supported_speed_range_characteristic_supporeted"
-            android:title="@string/menu_is_supported_speed_range_characteristic_supporeted" />
+            android:id="@+id/is_supported_speed_range_characteristic_supported"
+            android:title="@string/menu_is_supported_speed_range_characteristic_supported" />
         <item
-            android:id="@+id/is_supported_inclination_range_characteristic_supporeted"
-            android:title="@string/menu_is_supported_inclination_range_characteristic_supporeted" />
+            android:id="@+id/is_supported_inclination_range_characteristic_supported"
+            android:title="@string/menu_is_supported_inclination_range_characteristic_supported" />
         <item
-            android:id="@+id/is_supported_resistance_level_range_characteristic_supporeted"
-            android:title="@string/menu_is_supported_resistance_level_range_characteristic_supporeted" />
+            android:id="@+id/is_supported_resistance_level_range_characteristic_supported"
+            android:title="@string/menu_is_supported_resistance_level_range_characteristic_supported" />
         <item
-            android:id="@+id/is_supported_power_range_characteristic_supporeted"
-            android:title="@string/menu_is_supported_power_range_characteristic_supporeted" />
+            android:id="@+id/is_supported_power_range_characteristic_supported"
+            android:title="@string/menu_is_supported_power_range_characteristic_supported" />
         <item
-            android:id="@+id/is_supported_heart_rate_range_characteristic_supporeted"
-            android:title="@string/menu_is_supported_heart_rate_range_characteristic_supporeted" />
+            android:id="@+id/is_supported_heart_rate_range_characteristic_supported"
+            android:title="@string/menu_is_supported_heart_rate_range_characteristic_supported" />
         <item
-            android:id="@+id/is_fitness_machine_control_point_characteristic_supporeted"
-            android:title="@string/menu_is_fitness_machine_control_point_characteristic_supporeted" />
+            android:id="@+id/is_fitness_machine_control_point_characteristic_supported"
+            android:title="@string/menu_is_fitness_machine_control_point_characteristic_supported" />
         <item
-            android:id="@+id/is_fitness_machine_status_characteristic_supporeted"
-            android:title="@string/menu_is_fitness_machine_status_characteristic_supporeted" />
+            android:id="@+id/is_fitness_machine_status_characteristic_supported"
+            android:title="@string/menu_is_fitness_machine_status_characteristic_supported" />
     </group>
     <group
         android:id="@+id/fitness_machine_service_2"

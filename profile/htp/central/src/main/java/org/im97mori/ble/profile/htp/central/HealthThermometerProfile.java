@@ -92,58 +92,58 @@ public class HealthThermometerProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see HealthThermometerService#isTemperatureTypeCharacteristicSupporeted()
+     * @see HealthThermometerService#isTemperatureTypeCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isTemperatureTypeCharacteristicSupporeted() {
+    public synchronized Boolean isTemperatureTypeCharacteristicSupported() {
         Boolean result = null;
         if (mHealthThermometerService != null) {
-            result = mHealthThermometerService.isTemperatureTypeCharacteristicSupporeted();
+            result = mHealthThermometerService.isTemperatureTypeCharacteristicSupported();
         }
         return result;
     }
 
 
     /**
-     * @see HealthThermometerService#isIntermediateTemperatureCharacteristicSupporeted()
+     * @see HealthThermometerService#isIntermediateTemperatureCharacteristicSupported()
      */
-    public synchronized Boolean isIntermediateTemperatureCharacteristicSupporeted() {
+    public synchronized Boolean isIntermediateTemperatureCharacteristicSupported() {
         Boolean result = null;
         if (mHealthThermometerService != null) {
-            result = mHealthThermometerService.isIntermediateTemperatureCharacteristicSupporeted();
+            result = mHealthThermometerService.isIntermediateTemperatureCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see HealthThermometerService#isMeasurementIntervalCharacteristicSupporeted()
+     * @see HealthThermometerService#isMeasurementIntervalCharacteristicSupported()
      */
-    public synchronized Boolean isMeasurementIntervalCharacteristicSupporeted() {
+    public synchronized Boolean isMeasurementIntervalCharacteristicSupported() {
         Boolean result = null;
         if (mHealthThermometerService != null) {
-            result = mHealthThermometerService.isMeasurementIntervalCharacteristicSupporeted();
+            result = mHealthThermometerService.isMeasurementIntervalCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see HealthThermometerService#isMeasurementIntervalCharacteristicIndicateSupporeted()
+     * @see HealthThermometerService#isMeasurementIntervalCharacteristicIndicateSupported()
      */
-    public synchronized Boolean isMeasurementIntervalCharacteristicIndicateSupporeted() {
+    public synchronized Boolean isMeasurementIntervalCharacteristicIndicateSupported() {
         Boolean result = null;
         if (mHealthThermometerService != null) {
-            result = mHealthThermometerService.isMeasurementIntervalCharacteristicIndicateSupporeted();
+            result = mHealthThermometerService.isMeasurementIntervalCharacteristicIndicateSupported();
         }
         return result;
     }
 
     /**
-     * @see HealthThermometerService#isMeasurementIntervalCharacteristicWriteSupporeted()
+     * @see HealthThermometerService#isMeasurementIntervalCharacteristicWriteSupported()
      */
-    public synchronized Boolean isMeasurementIntervalCharacteristicWriteSupporeted() {
+    public synchronized Boolean isMeasurementIntervalCharacteristicWriteSupported() {
         Boolean result = null;
         if (mHealthThermometerService != null) {
-            result = mHealthThermometerService.isMeasurementIntervalCharacteristicWriteSupporeted();
+            result = mHealthThermometerService.isMeasurementIntervalCharacteristicWriteSupported();
         }
         return result;
     }

@@ -50,19 +50,19 @@ public class LocationAndNavigationService extends AbstractCentralService {
      * Position Quality characteristic flag
      * {@code true}:Position Quality characteristic is exist, {@code false}:Position Quality characteristic is not exist or service not ready
      */
-    private boolean mIsPositionQualityCharacteristicSupporeted;
+    private boolean mIsPositionQualityCharacteristicSupported;
 
     /**
      * LN Control Point characteristic flag
      * {@code true}:LN Control Point characteristic is exist, {@code false}:LN Control Point characteristic is not exist or service not ready
      */
-    private boolean mIsLNControlPointCharacteristicSupporeted;
+    private boolean mIsLNControlPointCharacteristicSupported;
 
     /**
      * Navigation characteristic flag
      * {@code true}:Navigation characteristic is exist, {@code false}:Navigation characteristic is not exist or service not ready
      */
-    private boolean mIsNavigationCharacteristicSupporeted;
+    private boolean mIsNavigationCharacteristicSupported;
 
     /**
      * @param bleConnection                        {@link BLEConnection} instance
@@ -80,9 +80,9 @@ public class LocationAndNavigationService extends AbstractCentralService {
     @Override
     public synchronized void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
-            mIsPositionQualityCharacteristicSupporeted = false;
-            mIsLNControlPointCharacteristicSupporeted = false;
-            mIsNavigationCharacteristicSupporeted = false;
+            mIsPositionQualityCharacteristicSupported = false;
+            mIsLNControlPointCharacteristicSupported = false;
+            mIsNavigationCharacteristicSupported = false;
         }
         super.onBLEDisconnected(taskId, bluetoothDevice, status, argument);
     }
@@ -99,20 +99,20 @@ public class LocationAndNavigationService extends AbstractCentralService {
                 if (LOCATION_AND_NAVIGATION_SERVICE.equals(bluetoothGattService.getUuid())) {
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(POSITION_QUALITY_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
-                        mIsPositionQualityCharacteristicSupporeted = true;
+                        mIsPositionQualityCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(LN_CONTROL_POINT_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && (BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE) == bluetoothGattCharacteristic.getProperties()) {
                         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
                         if (bluetoothGattDescriptor != null) {
-                            mIsLNControlPointCharacteristicSupporeted = true;
+                            mIsLNControlPointCharacteristicSupported = true;
                         }
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(NAVIGATION_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_NOTIFY == bluetoothGattCharacteristic.getProperties()) {
                         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
                         if (bluetoothGattDescriptor != null) {
-                            mIsNavigationCharacteristicSupporeted = true;
+                            mIsNavigationCharacteristicSupported = true;
                         }
                     }
                 }
@@ -359,8 +359,8 @@ public class LocationAndNavigationService extends AbstractCentralService {
      *
      * @return {@code true}:Position Quality characteristic is exist, {@code false}:Position Quality characteristic is not exist or service not ready
      */
-    public boolean isPositionQualityCharacteristicSupporeted() {
-        return mIsPositionQualityCharacteristicSupporeted;
+    public boolean isPositionQualityCharacteristicSupported() {
+        return mIsPositionQualityCharacteristicSupported;
     }
 
     /**
@@ -368,8 +368,8 @@ public class LocationAndNavigationService extends AbstractCentralService {
      *
      * @return {@code true}:LN Control Point characteristic is exist, {@code false}:LN Control Point characteristic is not exist or service not ready
      */
-    public boolean isLNControlPointCharacteristicSupporeted() {
-        return mIsLNControlPointCharacteristicSupporeted;
+    public boolean isLNControlPointCharacteristicSupported() {
+        return mIsLNControlPointCharacteristicSupported;
     }
 
     /**
@@ -377,8 +377,8 @@ public class LocationAndNavigationService extends AbstractCentralService {
      *
      * @return {@code true}:Navigation characteristic is exist, {@code false}:Navigation characteristic is not exist or service not ready
      */
-    public boolean isNavigationCharacteristicSupporeted() {
-        return mIsNavigationCharacteristicSupporeted;
+    public boolean isNavigationCharacteristicSupported() {
+        return mIsNavigationCharacteristicSupported;
     }
 
     /**
@@ -464,7 +464,7 @@ public class LocationAndNavigationService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getPositionQuality() {
         Integer taskId = null;
-        if (isStarted() && isPositionQualityCharacteristicSupporeted()) {
+        if (isStarted() && isPositionQualityCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(LOCATION_AND_NAVIGATION_SERVICE, null, POSITION_QUALITY_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -481,7 +481,7 @@ public class LocationAndNavigationService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setLNControlPoint(@NonNull LNControlPoint lnControlPoint) {
         Integer taskId = null;
-        if (isStarted() && isLNControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isLNControlPointCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(LOCATION_AND_NAVIGATION_SERVICE, null, LN_CONTROL_POINT_CHARACTERISTIC, null, lnControlPoint, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -498,7 +498,7 @@ public class LocationAndNavigationService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getLNControlPointClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isLNControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isLNControlPointCharacteristicSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(LOCATION_AND_NAVIGATION_SERVICE, null, LN_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -515,7 +515,7 @@ public class LocationAndNavigationService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startLNControlPointIndication() {
         Integer taskId = null;
-        if (isStarted() && isLNControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isLNControlPointCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(LOCATION_AND_NAVIGATION_SERVICE, null, LN_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -534,7 +534,7 @@ public class LocationAndNavigationService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopLNControlPointIndication() {
         Integer taskId = null;
-        if (isStarted() && isLNControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isLNControlPointCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(LOCATION_AND_NAVIGATION_SERVICE, null, LN_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -553,7 +553,7 @@ public class LocationAndNavigationService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startNavigationNotification() {
         Integer taskId = null;
-        if (isStarted() && isNavigationCharacteristicSupporeted()) {
+        if (isStarted() && isNavigationCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(LOCATION_AND_NAVIGATION_SERVICE, null, NAVIGATION_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -572,7 +572,7 @@ public class LocationAndNavigationService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopNavigationNotification() {
         Integer taskId = null;
-        if (isStarted() && isNavigationCharacteristicSupporeted()) {
+        if (isStarted() && isNavigationCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(LOCATION_AND_NAVIGATION_SERVICE, null, NAVIGATION_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);

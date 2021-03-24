@@ -80,38 +80,38 @@ public class RunningSpeedAndCadenceProfileTest {
     }
 
     @Test
-    public void test_isSensorLocationCharacteristicSupporeted_00001() {
+    public void test_isSensorLocationCharacteristicSupported_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
-        assertNull(runningSpeedAndCadenceProfile.isSensorLocationCharacteristicSupporeted());
+        assertNull(runningSpeedAndCadenceProfile.isSensorLocationCharacteristicSupported());
     }
 
     @Test
-    public void test_isSensorLocationCharacteristicSupporeted_00002() {
+    public void test_isSensorLocationCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
 
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         runningSpeedAndCadenceProfile.connect(MOCK_DEVICE);
-        assertNotNull(runningSpeedAndCadenceProfile.isSensorLocationCharacteristicSupporeted());
+        assertNotNull(runningSpeedAndCadenceProfile.isSensorLocationCharacteristicSupported());
         runningSpeedAndCadenceProfile.disconnect();
     }
 
     @Test
-    public void test_isSCControlPointCharacteristicSupporeted_00001() {
+    public void test_isSCControlPointCharacteristicSupported_00001() {
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
-        assertNull(runningSpeedAndCadenceProfile.isSCControlPointCharacteristicSupporeted());
+        assertNull(runningSpeedAndCadenceProfile.isSCControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isSCControlPointCharacteristicSupporeted_00002() {
+    public void test_isSCControlPointCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
 
         RunningSpeedAndCadenceProfile runningSpeedAndCadenceProfile = new RunningSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseRunningSpeedAndCadenceProfileCallback());
         runningSpeedAndCadenceProfile.connect(MOCK_DEVICE);
-        assertNotNull(runningSpeedAndCadenceProfile.isSCControlPointCharacteristicSupporeted());
+        assertNotNull(runningSpeedAndCadenceProfile.isSCControlPointCharacteristicSupported());
         runningSpeedAndCadenceProfile.disconnect();
     }
 

@@ -53,6 +53,8 @@
     <string name="label_ftmp_central">FTMP Central sample</string>
     <string name="label_esp_peripheral">ESP Peripheral sample</string>
     <string name="label_esp_central">ESP Central sample</string>
+    <string name="label_scpp_peripheral">SCPP Peripheral sample</string>
+    <string name="label_scpp_central">SCPP Central sample</string>
 
     <string name="menu_discover_service">Discover Service</string>
     <string name="menu_discover_service_sync">Discover Service(Synchronous)</string>
@@ -454,8 +456,8 @@
     <string name="menu_read_time_update_state">Get Time Update State</string>
 
     <string name="menu_has_device_information_service">Has Device Information Service</string>
-    <string name="menu_is_cycling_power_control_point_characteristic_supporeted">Is Cycling Power Control Point supported</string>
-    <string name="menu_is_cycling_power_vector_characteristic_supporeted">Is Cycling Power Vector supported</string>
+    <string name="menu_is_cycling_power_control_point_characteristic_supported">Is Cycling Power Control Point supported</string>
+    <string name="menu_is_cycling_power_vector_characteristic_supported">Is Cycling Power Vector supported</string>
     <string name="menu_read_cycling_power_feature">Get Cycling Power Feature</string>
     <string name="menu_read_cycling_power_measurement_characteristic_configuration">Read Cycling Power Measurement Client Characteristic Configuration</string>
     <string name="menu_notify_cycling_power_measurement_start">Notify Cycling Power Measurement start</string>
@@ -487,8 +489,8 @@
     <string name="menu_notify_cycling_power_vector_start">Notify Cycling Power Vector start</string>
     <string name="menu_notify_cycling_power_vector_stop">Notify Cycling Power Vector stop</string>
 
-    <string name="menu_is_sensor_location_characteristic_supporeted">Is Sensor Location supported</string>
-    <string name="menu_is_sc_control_point_characteristic_supporeted">Is SC Control Point supported</string>
+    <string name="menu_is_sensor_location_characteristic_supported">Is Sensor Location supported</string>
+    <string name="menu_is_sc_control_point_characteristic_supported">Is SC Control Point supported</string>
     <string name="menu_read_csc_feature">Get CSC Feature</string>
     <string name="menu_read_csc_measurement_characteristic_configuration">Read CSC Measurement Client Characteristic Configuration</string>
     <string name="menu_notify_csc_measurement_start">Notify CSC Measurement start</string>
@@ -518,20 +520,20 @@
     <string name="menu_write_ringer_control_point_2">Mute Once</string>
     <string name="menu_write_ringer_control_point_3">Cancel Silent Mode</string>
 
-    <string name="menu_is_treadmill_data_characteristic_supporeted">Has Treadmill Data</string>
-    <string name="menu_is_cross_trainer_data_characteristic_supporeted">Has Cross Trainer Data</string>
-    <string name="menu_is_step_climber_data_characteristic_supporeted">Has Step Climber Data</string>
-    <string name="menu_is_stair_climber_data_characteristic_supporeted">Has Stair Climber Data</string>
-    <string name="menu_is_rower_data_characteristic_supporeted">Has Rower Data</string>
-    <string name="menu_is_indoor_bike_data_characteristic_supporeted">Has Indoor Bike Data</string>
-    <string name="menu_is_training_status_characteristic_supporeted">Has Traning Status</string>
-    <string name="menu_is_supported_speed_range_characteristic_supporeted">Has Supported Speed Range</string>
-    <string name="menu_is_supported_inclination_range_characteristic_supporeted">Has Supported Inclination Range</string>
-    <string name="menu_is_supported_resistance_level_range_characteristic_supporeted">Has Supported Resistance Level Range</string>
-    <string name="menu_is_supported_power_range_characteristic_supporeted">Has Supported Power Range</string>
-    <string name="menu_is_supported_heart_rate_range_characteristic_supporeted">Has Supported Heart Rate Range</string>
-    <string name="menu_is_fitness_machine_control_point_characteristic_supporeted">Has Fitness Machine Control Point</string>
-    <string name="menu_is_fitness_machine_status_characteristic_supporeted">Has Fitness Machine Status</string>
+    <string name="menu_is_treadmill_data_characteristic_supported">Has Treadmill Data</string>
+    <string name="menu_is_cross_trainer_data_characteristic_supported">Has Cross Trainer Data</string>
+    <string name="menu_is_step_climber_data_characteristic_supported">Has Step Climber Data</string>
+    <string name="menu_is_stair_climber_data_characteristic_supported">Has Stair Climber Data</string>
+    <string name="menu_is_rower_data_characteristic_supported">Has Rower Data</string>
+    <string name="menu_is_indoor_bike_data_characteristic_supported">Has Indoor Bike Data</string>
+    <string name="menu_is_training_status_characteristic_supported">Has Traning Status</string>
+    <string name="menu_is_supported_speed_range_characteristic_supported">Has Supported Speed Range</string>
+    <string name="menu_is_supported_inclination_range_characteristic_supported">Has Supported Inclination Range</string>
+    <string name="menu_is_supported_resistance_level_range_characteristic_supported">Has Supported Resistance Level Range</string>
+    <string name="menu_is_supported_power_range_characteristic_supported">Has Supported Power Range</string>
+    <string name="menu_is_supported_heart_rate_range_characteristic_supported">Has Supported Heart Rate Range</string>
+    <string name="menu_is_fitness_machine_control_point_characteristic_supported">Has Fitness Machine Control Point</string>
+    <string name="menu_is_fitness_machine_status_characteristic_supported">Has Fitness Machine Status</string>
     <string name="menu_read_fitness_machine_feature">Read Fitness Machine Feature</string>
     <string name="menu_read_treadmill_data_characteristic_configuration">Read Treadmill Data Client Characteristic Configuration</string>
     <string name="menu_notify_treadmill_data_start">Notify Treadmill Data start</string>
@@ -617,7 +619,7 @@
     <string name="menu_has_manufacturer_name">Has Manufacturer Name String</string>
     <string name="menu_has_model_number">Has Model Number String</string>
 
-    <string name="menu_is_descriptor_value_changed_characteristic_supporeted">Is DVC Supported</string>
+    <string name="menu_is_descriptor_value_changed_characteristic_supported">Is DVC Supported</string>
     <string name="menu_indicate_descriptor_value_changed_start">Indicate DVC start</string>
     <string name="menu_indicate_descriptor_value_changed_stop">Indicate DVC stop</string>
 
@@ -1380,6 +1382,13 @@
     <string name="menu_write_mfd3d_cud_1">Write MFD3D CUD(1)</string>
     <string name="menu_read_mfd3d_vr_0">Read MFD3D VR(0)</string>
     <string name="menu_read_mfd3d_vr_1">Read MFD3D VR(1)</string>
+
+    <string name="menu_has_scan_refresh">Has Scan Refresh</string>
+    <string name="menu_write_scan_interval_window">Write Scan Interval Window</string>
+    <string name="menu_read_scan_refresh_characteristic_configuration">Read Scan Refresh CCCD</string>
+    <string name="menu_notify_scan_refresh_start">Notify Scan Refresh start</string>
+    <string name="menu_notify_scan_refresh_stop">Notify Scan Refresh stop</string>
+
 
     <string name="menu_clear">Clear</string>
 </resources>

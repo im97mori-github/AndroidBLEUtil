@@ -729,61 +729,61 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
     }
 
     /**
-     * @see GenericAccessService#isPeripheralPreferredConnectionParametersCharacteristicSupporeted()
+     * @see GenericAccessService#isPeripheralPreferredConnectionParametersCharacteristicSupported()
      */
     @Nullable
-    public Boolean isPeripheralPreferredConnectionParametersCharacteristicSupporeted() {
+    public Boolean isPeripheralPreferredConnectionParametersCharacteristicSupported() {
         Boolean result = null;
         if (mGenericAccessService != null) {
-            result = mGenericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupporeted();
+            result = mGenericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see GenericAccessService#isCentralAddressResolutionCharacteristicSupporeted()
+     * @see GenericAccessService#isCentralAddressResolutionCharacteristicSupported()
      */
     @Nullable
-    public Boolean isCentralAddressResolutionCharacteristicSupporeted() {
+    public Boolean isCentralAddressResolutionCharacteristicSupported() {
         Boolean result = null;
         if (mGenericAccessService != null) {
-            result = mGenericAccessService.isCentralAddressResolutionCharacteristicSupporeted();
+            result = mGenericAccessService.isCentralAddressResolutionCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see GenericAccessService#isResolvablePrivateAddressOnlyCharacteristicSupporeted()
+     * @see GenericAccessService#isResolvablePrivateAddressOnlyCharacteristicSupported()
      */
     @Nullable
-    public Boolean isResolvablePrivateAddressOnlyCharacteristicSupporeted() {
+    public Boolean isResolvablePrivateAddressOnlyCharacteristicSupported() {
         Boolean result = null;
         if (mGenericAccessService != null) {
-            result = mGenericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupporeted();
+            result = mGenericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see GenericAccessService#isReconnectionAddressCharacteristicSupporeted()
+     * @see GenericAccessService#isReconnectionAddressCharacteristicSupported()
      */
     @Nullable
-    public Boolean isReconnectionAddressCharacteristicSupporeted() {
+    public Boolean isReconnectionAddressCharacteristicSupported() {
         Boolean result = null;
         if (mGenericAccessService != null) {
-            result = mGenericAccessService.isReconnectionAddressCharacteristicSupporeted();
+            result = mGenericAccessService.isReconnectionAddressCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see GenericAccessService#isPeripheralPrivacyFlagCharacteristicSupporeted()
+     * @see GenericAccessService#isPeripheralPrivacyFlagCharacteristicSupported()
      */
     @Nullable
-    public Boolean isPeripheralPrivacyFlagCharacteristicSupporeted() {
+    public Boolean isPeripheralPrivacyFlagCharacteristicSupported() {
         Boolean result = null;
         if (mGenericAccessService != null) {
-            result = mGenericAccessService.isPeripheralPrivacyFlagCharacteristicSupporeted();
+            result = mGenericAccessService.isPeripheralPrivacyFlagCharacteristicSupported();
         }
         return result;
     }
@@ -800,37 +800,37 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
     }
 
     /**
-     * @see GenericAttributeService#isServiceChangedCharacteristicSupporeted()
+     * @see GenericAttributeService#isServiceChangedCharacteristicSupported()
      */
     @Nullable
-    public Boolean isServiceChangedCharacteristicSupporeted() {
+    public Boolean isServiceChangedCharacteristicSupported() {
         Boolean result = null;
         if (mGenericAttributeService != null) {
-            result = mGenericAttributeService.isServiceChangedCharacteristicSupporeted();
+            result = mGenericAttributeService.isServiceChangedCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see GenericAttributeService#isClientSupportedFeaturesCharacteristicSupporeted()
+     * @see GenericAttributeService#isClientSupportedFeaturesCharacteristicSupported()
      */
     @Nullable
-    public Boolean isClientSupportedFeaturesCharacteristicSupporeted() {
+    public Boolean isClientSupportedFeaturesCharacteristicSupported() {
         Boolean result = null;
         if (mGenericAttributeService != null) {
-            result = mGenericAttributeService.isClientSupportedFeaturesCharacteristicSupporeted();
+            result = mGenericAttributeService.isClientSupportedFeaturesCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see GenericAttributeService#isDatabaseHashCharacteristicSupporeted()
+     * @see GenericAttributeService#isDatabaseHashCharacteristicSupported()
      */
     @Nullable
-    public Boolean isDatabaseHashCharacteristicSupporeted() {
+    public Boolean isDatabaseHashCharacteristicSupported() {
         Boolean result = null;
         if (mGenericAttributeService != null) {
-            result = mGenericAttributeService.isDatabaseHashCharacteristicSupporeted();
+            result = mGenericAttributeService.isDatabaseHashCharacteristicSupported();
         }
         return result;
     }

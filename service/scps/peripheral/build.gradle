@@ -1,0 +1,72 @@
+apply plugin: 'com.android.library'
+apply plugin: 'digital.wup.android-maven-publish'
+
+def target = serviceScpsPeripheralAndroid
+def GROUP_ID = groupId
+def ARTIFACT_ID = target[artifactId]
+def VERSION_CODE = target[versionCode]
+def VERSION_NAME = target[uploadVersionName]
+
+android {
+    compileSdkVersion globalCompileSdkVersion
+    buildToolsVersion globalBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion globalPeripheralMinSdkVersion
+        targetSdkVersion globalTargetSdkVersion
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    api "${groupId}:${servicePeripheralAndroid.artifactId}:${servicePeripheralAndroid.versionName}"
+    api "${groupId}:${serviceScpsAndroid.artifactId}:${serviceScpsAndroid.versionName}"
+    androidTestImplementation "${groupId}:${testPeripheral.artifactId}:${testPeripheral.versionName}"
+}
+
+task sourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from android.sourceSets.main.java.srcDirs
+}
+
+publishing {
+    publications {
+        mavenAar(MavenPublication) {
+            groupId GROUP_ID
+            artifactId ARTIFACT_ID
+            version VERSION_NAME
+            artifact(sourcesJar)
+            from components.android
+            pom {
+                name = 'BLE Core Utility for Android'
+                url = 'https://github.com/im97mori-github/AndroidBLEUtil'
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                        distribution = 'repo'
+                    }
+                }
+                developers {
+                    developer {
+                        email = 'github@im97mori.org'
+                    }
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            url System.getenv('MAVEN_REPOSITORY_URL')
+        }
+    }
+}

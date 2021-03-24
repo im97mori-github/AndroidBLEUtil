@@ -154,7 +154,7 @@ public class GenericAccessServiceTest {
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(genericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupporeted());
+        assertFalse(genericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupported());
     }
 
     @Test
@@ -164,7 +164,7 @@ public class GenericAccessServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupporeted());
+        assertFalse(genericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupported());
     }
 
     @Test
@@ -174,7 +174,7 @@ public class GenericAccessServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupporeted());
+        assertFalse(genericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupported());
     }
 
     @Test
@@ -185,7 +185,7 @@ public class GenericAccessServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC, 0, 0));
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupporeted());
+        assertFalse(genericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupported());
     }
 
     @Test
@@ -196,7 +196,7 @@ public class GenericAccessServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(genericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupporeted());
+        assertTrue(genericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupported());
     }
 
     @Test
@@ -205,7 +205,7 @@ public class GenericAccessServiceTest {
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(genericAccessService.isCentralAddressResolutionCharacteristicSupporeted());
+        assertFalse(genericAccessService.isCentralAddressResolutionCharacteristicSupported());
     }
 
     @Test
@@ -215,7 +215,7 @@ public class GenericAccessServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAccessService.isCentralAddressResolutionCharacteristicSupporeted());
+        assertFalse(genericAccessService.isCentralAddressResolutionCharacteristicSupported());
     }
 
     @Test
@@ -225,7 +225,7 @@ public class GenericAccessServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAccessService.isCentralAddressResolutionCharacteristicSupporeted());
+        assertFalse(genericAccessService.isCentralAddressResolutionCharacteristicSupported());
     }
 
     @Test
@@ -236,7 +236,7 @@ public class GenericAccessServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC, 0, 0));
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAccessService.isCentralAddressResolutionCharacteristicSupporeted());
+        assertFalse(genericAccessService.isCentralAddressResolutionCharacteristicSupported());
     }
 
     @Test
@@ -247,7 +247,7 @@ public class GenericAccessServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(genericAccessService.isCentralAddressResolutionCharacteristicSupporeted());
+        assertTrue(genericAccessService.isCentralAddressResolutionCharacteristicSupported());
     }
 
     @Test
@@ -256,7 +256,7 @@ public class GenericAccessServiceTest {
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(genericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupporeted());
+        assertFalse(genericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupported());
     }
 
     @Test
@@ -266,7 +266,7 @@ public class GenericAccessServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupporeted());
+        assertFalse(genericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupported());
     }
 
     @Test
@@ -276,7 +276,7 @@ public class GenericAccessServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupporeted());
+        assertFalse(genericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupported());
     }
 
     @Test
@@ -287,7 +287,7 @@ public class GenericAccessServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(RESOLVABLE_PRIVATE_ADDRESS_ONLY_CHARACTERISTIC, 0, 0));
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupporeted());
+        assertFalse(genericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupported());
     }
 
     @Test
@@ -298,7 +298,7 @@ public class GenericAccessServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(RESOLVABLE_PRIVATE_ADDRESS_ONLY_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(genericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupporeted());
+        assertTrue(genericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupported());
     }
 
     @Test
@@ -307,7 +307,7 @@ public class GenericAccessServiceTest {
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(genericAccessService.isReconnectionAddressCharacteristicSupporeted());
+        assertFalse(genericAccessService.isReconnectionAddressCharacteristicSupported());
     }
 
     @Test
@@ -317,7 +317,7 @@ public class GenericAccessServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAccessService.isReconnectionAddressCharacteristicSupporeted());
+        assertFalse(genericAccessService.isReconnectionAddressCharacteristicSupported());
     }
 
     @Test
@@ -327,7 +327,7 @@ public class GenericAccessServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAccessService.isReconnectionAddressCharacteristicSupporeted());
+        assertFalse(genericAccessService.isReconnectionAddressCharacteristicSupported());
     }
 
     @Test
@@ -338,7 +338,7 @@ public class GenericAccessServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(RECONNECTION_ADDRESS_CHARACTERISTIC, 0, 0));
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAccessService.isReconnectionAddressCharacteristicSupporeted());
+        assertFalse(genericAccessService.isReconnectionAddressCharacteristicSupported());
     }
 
     @Test
@@ -349,7 +349,7 @@ public class GenericAccessServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(RECONNECTION_ADDRESS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(genericAccessService.isReconnectionAddressCharacteristicSupporeted());
+        assertTrue(genericAccessService.isReconnectionAddressCharacteristicSupported());
     }
 
     @Test
@@ -358,7 +358,7 @@ public class GenericAccessServiceTest {
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(genericAccessService.isPeripheralPrivacyFlagCharacteristicSupporeted());
+        assertFalse(genericAccessService.isPeripheralPrivacyFlagCharacteristicSupported());
     }
 
     @Test
@@ -368,7 +368,7 @@ public class GenericAccessServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAccessService.isPeripheralPrivacyFlagCharacteristicSupporeted());
+        assertFalse(genericAccessService.isPeripheralPrivacyFlagCharacteristicSupported());
     }
 
     @Test
@@ -378,7 +378,7 @@ public class GenericAccessServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAccessService.isPeripheralPrivacyFlagCharacteristicSupporeted());
+        assertFalse(genericAccessService.isPeripheralPrivacyFlagCharacteristicSupported());
     }
 
     @Test
@@ -389,7 +389,7 @@ public class GenericAccessServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC, 0, 0));
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAccessService.isPeripheralPrivacyFlagCharacteristicSupporeted());
+        assertFalse(genericAccessService.isPeripheralPrivacyFlagCharacteristicSupported());
     }
 
     @Test
@@ -400,7 +400,7 @@ public class GenericAccessServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(genericAccessService.isPeripheralPrivacyFlagCharacteristicSupporeted());
+        assertTrue(genericAccessService.isPeripheralPrivacyFlagCharacteristicSupported());
     }
 
     @Test
@@ -1561,14 +1561,14 @@ public class GenericAccessServiceTest {
     }
 
     @Test
-    public void test_isPeripheralPreferredConnectionParametersCharacteristicSupporeted_00001() {
+    public void test_isPeripheralPreferredConnectionParametersCharacteristicSupported_00001() {
         GenericAccessService genericAccessService = new GenericAccessService(new MockBLEConnection(), new MockGenericAccessServiceCallback(), null);
 
-        assertFalse(genericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupporeted());
+        assertFalse(genericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupported());
     }
 
     @Test
-    public void test_isPeripheralPreferredConnectionParametersCharacteristicSupporeted_00002() {
+    public void test_isPeripheralPreferredConnectionParametersCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1576,11 +1576,11 @@ public class GenericAccessServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(genericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupporeted());
+        assertTrue(genericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupported());
     }
 
     @Test
-    public void test_isPeripheralPreferredConnectionParametersCharacteristicSupporeted_00003() {
+    public void test_isPeripheralPreferredConnectionParametersCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1589,18 +1589,18 @@ public class GenericAccessServiceTest {
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         genericAccessService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(genericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupporeted());
+        assertFalse(genericAccessService.isPeripheralPreferredConnectionParametersCharacteristicSupported());
     }
 
     @Test
-    public void test_isCentralAddressResolutionCharacteristicSupporeted_00001() {
+    public void test_isCentralAddressResolutionCharacteristicSupported_00001() {
         GenericAccessService genericAccessService = new GenericAccessService(new MockBLEConnection(), new MockGenericAccessServiceCallback(), null);
 
-        assertFalse(genericAccessService.isCentralAddressResolutionCharacteristicSupporeted());
+        assertFalse(genericAccessService.isCentralAddressResolutionCharacteristicSupported());
     }
 
     @Test
-    public void test_isCentralAddressResolutionCharacteristicSupporeted_00002() {
+    public void test_isCentralAddressResolutionCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1608,11 +1608,11 @@ public class GenericAccessServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(genericAccessService.isCentralAddressResolutionCharacteristicSupporeted());
+        assertTrue(genericAccessService.isCentralAddressResolutionCharacteristicSupported());
     }
 
     @Test
-    public void test_isCentralAddressResolutionCharacteristicSupporeted_00003() {
+    public void test_isCentralAddressResolutionCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1621,18 +1621,18 @@ public class GenericAccessServiceTest {
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         genericAccessService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(genericAccessService.isCentralAddressResolutionCharacteristicSupporeted());
+        assertFalse(genericAccessService.isCentralAddressResolutionCharacteristicSupported());
     }
 
     @Test
-    public void test_isResolvablePrivateAddressOnlyCharacteristicSupporeted_00001() {
+    public void test_isResolvablePrivateAddressOnlyCharacteristicSupported_00001() {
         GenericAccessService genericAccessService = new GenericAccessService(new MockBLEConnection(), new MockGenericAccessServiceCallback(), null);
 
-        assertFalse(genericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupporeted());
+        assertFalse(genericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupported());
     }
 
     @Test
-    public void test_isResolvablePrivateAddressOnlyCharacteristicSupporeted_00002() {
+    public void test_isResolvablePrivateAddressOnlyCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1640,11 +1640,11 @@ public class GenericAccessServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(genericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupporeted());
+        assertTrue(genericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupported());
     }
 
     @Test
-    public void test_isResolvablePrivateAddressOnlyCharacteristicSupporeted_00003() {
+    public void test_isResolvablePrivateAddressOnlyCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1653,18 +1653,18 @@ public class GenericAccessServiceTest {
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         genericAccessService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(genericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupporeted());
+        assertFalse(genericAccessService.isResolvablePrivateAddressOnlyCharacteristicSupported());
     }
 
     @Test
-    public void test_isReconnectionAddressCharacteristicSupporeted_00001() {
+    public void test_isReconnectionAddressCharacteristicSupported_00001() {
         GenericAccessService genericAccessService = new GenericAccessService(new MockBLEConnection(), new MockGenericAccessServiceCallback(), null);
 
-        assertFalse(genericAccessService.isReconnectionAddressCharacteristicSupporeted());
+        assertFalse(genericAccessService.isReconnectionAddressCharacteristicSupported());
     }
 
     @Test
-    public void test_isReconnectionAddressCharacteristicSupporeted_00002() {
+    public void test_isReconnectionAddressCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1672,11 +1672,11 @@ public class GenericAccessServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(genericAccessService.isReconnectionAddressCharacteristicSupporeted());
+        assertTrue(genericAccessService.isReconnectionAddressCharacteristicSupported());
     }
 
     @Test
-    public void test_isReconnectionAddressCharacteristicSupporeted_00003() {
+    public void test_isReconnectionAddressCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1685,18 +1685,18 @@ public class GenericAccessServiceTest {
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         genericAccessService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(genericAccessService.isReconnectionAddressCharacteristicSupporeted());
+        assertFalse(genericAccessService.isReconnectionAddressCharacteristicSupported());
     }
 
     @Test
-    public void test_isPeripheralPrivacyFlagCharacteristicSupporeted_00001() {
+    public void test_isPeripheralPrivacyFlagCharacteristicSupported_00001() {
         GenericAccessService genericAccessService = new GenericAccessService(new MockBLEConnection(), new MockGenericAccessServiceCallback(), null);
 
-        assertFalse(genericAccessService.isPeripheralPrivacyFlagCharacteristicSupporeted());
+        assertFalse(genericAccessService.isPeripheralPrivacyFlagCharacteristicSupported());
     }
 
     @Test
-    public void test_isPeripheralPrivacyFlagCharacteristicSupporeted_00002() {
+    public void test_isPeripheralPrivacyFlagCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1704,11 +1704,11 @@ public class GenericAccessServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(genericAccessService.isPeripheralPrivacyFlagCharacteristicSupporeted());
+        assertTrue(genericAccessService.isPeripheralPrivacyFlagCharacteristicSupported());
     }
 
     @Test
-    public void test_isPeripheralPrivacyFlagCharacteristicSupporeted_00003() {
+    public void test_isPeripheralPrivacyFlagCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
@@ -1717,7 +1717,7 @@ public class GenericAccessServiceTest {
         genericAccessService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         genericAccessService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(genericAccessService.isPeripheralPrivacyFlagCharacteristicSupporeted());
+        assertFalse(genericAccessService.isPeripheralPrivacyFlagCharacteristicSupported());
     }
 
     @Test
@@ -2010,7 +2010,7 @@ public class GenericAccessServiceTest {
         GenericAccessService genericAccessService = new GenericAccessService(new MockBLEConnection(), new MockGenericAccessServiceCallback(), null) {
 
             @Override
-            public boolean isPeripheralPreferredConnectionParametersCharacteristicSupporeted() {
+            public boolean isPeripheralPreferredConnectionParametersCharacteristicSupported() {
                 return true;
             }
 
@@ -2038,7 +2038,7 @@ public class GenericAccessServiceTest {
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null) {
 
             @Override
-            public boolean isPeripheralPreferredConnectionParametersCharacteristicSupporeted() {
+            public boolean isPeripheralPreferredConnectionParametersCharacteristicSupported() {
                 return true;
             }
 
@@ -2080,7 +2080,7 @@ public class GenericAccessServiceTest {
         GenericAccessService genericAccessService = new GenericAccessService(new MockBLEConnection(), new MockGenericAccessServiceCallback(), null) {
 
             @Override
-            public boolean isCentralAddressResolutionCharacteristicSupporeted() {
+            public boolean isCentralAddressResolutionCharacteristicSupported() {
                 return true;
             }
 
@@ -2108,7 +2108,7 @@ public class GenericAccessServiceTest {
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null) {
 
             @Override
-            public boolean isCentralAddressResolutionCharacteristicSupporeted() {
+            public boolean isCentralAddressResolutionCharacteristicSupported() {
                 return true;
             }
 
@@ -2150,7 +2150,7 @@ public class GenericAccessServiceTest {
         GenericAccessService genericAccessService = new GenericAccessService(new MockBLEConnection(), new MockGenericAccessServiceCallback(), null) {
 
             @Override
-            public boolean isResolvablePrivateAddressOnlyCharacteristicSupporeted() {
+            public boolean isResolvablePrivateAddressOnlyCharacteristicSupported() {
                 return true;
             }
 
@@ -2178,7 +2178,7 @@ public class GenericAccessServiceTest {
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null) {
 
             @Override
-            public boolean isResolvablePrivateAddressOnlyCharacteristicSupporeted() {
+            public boolean isResolvablePrivateAddressOnlyCharacteristicSupported() {
                 return true;
             }
 
@@ -2220,7 +2220,7 @@ public class GenericAccessServiceTest {
         GenericAccessService genericAccessService = new GenericAccessService(new MockBLEConnection(), new MockGenericAccessServiceCallback(), null) {
 
             @Override
-            public boolean isReconnectionAddressCharacteristicSupporeted() {
+            public boolean isReconnectionAddressCharacteristicSupported() {
                 return true;
             }
 
@@ -2248,7 +2248,7 @@ public class GenericAccessServiceTest {
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null) {
 
             @Override
-            public boolean isReconnectionAddressCharacteristicSupporeted() {
+            public boolean isReconnectionAddressCharacteristicSupported() {
                 return true;
             }
 
@@ -2290,7 +2290,7 @@ public class GenericAccessServiceTest {
         GenericAccessService genericAccessService = new GenericAccessService(new MockBLEConnection(), new MockGenericAccessServiceCallback(), null) {
 
             @Override
-            public boolean isPeripheralPrivacyFlagCharacteristicSupporeted() {
+            public boolean isPeripheralPrivacyFlagCharacteristicSupported() {
                 return true;
             }
 
@@ -2318,7 +2318,7 @@ public class GenericAccessServiceTest {
         GenericAccessService genericAccessService = new GenericAccessService(mockBLEConnection, new MockGenericAccessServiceCallback(), null) {
 
             @Override
-            public boolean isPeripheralPrivacyFlagCharacteristicSupporeted() {
+            public boolean isPeripheralPrivacyFlagCharacteristicSupported() {
                 return true;
             }
 

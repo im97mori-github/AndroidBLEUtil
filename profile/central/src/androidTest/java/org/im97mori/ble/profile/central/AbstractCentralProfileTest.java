@@ -472,13 +472,13 @@ public class AbstractCentralProfileTest {
     }
 
     @Test
-    public void test_isPeripheralPreferredConnectionParametersCharacteristicSupporeted_00001() {
+    public void test_isPeripheralPreferredConnectionParametersCharacteristicSupported_00001() {
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        assertNull(baseAbstractCentralProfile.isPeripheralPreferredConnectionParametersCharacteristicSupporeted());
+        assertNull(baseAbstractCentralProfile.isPeripheralPreferredConnectionParametersCharacteristicSupported());
     }
 
     @Test
-    public void test_isPeripheralPreferredConnectionParametersCharacteristicSupporeted_00002() {
+    public void test_isPeripheralPreferredConnectionParametersCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -493,18 +493,18 @@ public class AbstractCentralProfileTest {
         BLEConnectionHolder.addInstance(bleConnection, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
         baseAbstractCentralProfile.connect(MOCK_DEVICE);
-        assertNotNull(baseAbstractCentralProfile.isPeripheralPreferredConnectionParametersCharacteristicSupporeted());
+        assertNotNull(baseAbstractCentralProfile.isPeripheralPreferredConnectionParametersCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
     }
 
     @Test
-    public void test_isCentralAddressResolutionCharacteristicSupporeted_00001() {
+    public void test_isCentralAddressResolutionCharacteristicSupported_00001() {
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        assertNull(baseAbstractCentralProfile.isCentralAddressResolutionCharacteristicSupporeted());
+        assertNull(baseAbstractCentralProfile.isCentralAddressResolutionCharacteristicSupported());
     }
 
     @Test
-    public void test_isCentralAddressResolutionCharacteristicSupporeted_00002() {
+    public void test_isCentralAddressResolutionCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -519,18 +519,18 @@ public class AbstractCentralProfileTest {
         BLEConnectionHolder.addInstance(bleConnection, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
         baseAbstractCentralProfile.connect(MOCK_DEVICE);
-        assertNotNull(baseAbstractCentralProfile.isCentralAddressResolutionCharacteristicSupporeted());
+        assertNotNull(baseAbstractCentralProfile.isCentralAddressResolutionCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
     }
 
     @Test
-    public void test_isResolvablePrivateAddressOnlyCharacteristicSupporeted_00001() {
+    public void test_isResolvablePrivateAddressOnlyCharacteristicSupported_00001() {
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        assertNull(baseAbstractCentralProfile.isResolvablePrivateAddressOnlyCharacteristicSupporeted());
+        assertNull(baseAbstractCentralProfile.isResolvablePrivateAddressOnlyCharacteristicSupported());
     }
 
     @Test
-    public void test_isResolvablePrivateAddressOnlyCharacteristicSupporeted_00002() {
+    public void test_isResolvablePrivateAddressOnlyCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -545,18 +545,18 @@ public class AbstractCentralProfileTest {
         BLEConnectionHolder.addInstance(bleConnection, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
         baseAbstractCentralProfile.connect(MOCK_DEVICE);
-        assertNotNull(baseAbstractCentralProfile.isResolvablePrivateAddressOnlyCharacteristicSupporeted());
+        assertNotNull(baseAbstractCentralProfile.isResolvablePrivateAddressOnlyCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
     }
 
     @Test
-    public void test_isReconnectionAddressCharacteristicSupporeted_00001() {
+    public void test_isReconnectionAddressCharacteristicSupported_00001() {
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        assertNull(baseAbstractCentralProfile.isReconnectionAddressCharacteristicSupporeted());
+        assertNull(baseAbstractCentralProfile.isReconnectionAddressCharacteristicSupported());
     }
 
     @Test
-    public void test_isReconnectionAddressCharacteristicSupporeted_00002() {
+    public void test_isReconnectionAddressCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -571,18 +571,18 @@ public class AbstractCentralProfileTest {
         BLEConnectionHolder.addInstance(bleConnection, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
         baseAbstractCentralProfile.connect(MOCK_DEVICE);
-        assertNotNull(baseAbstractCentralProfile.isReconnectionAddressCharacteristicSupporeted());
+        assertNotNull(baseAbstractCentralProfile.isReconnectionAddressCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
     }
 
     @Test
-    public void test_isPeripheralPrivacyFlagCharacteristicSupporeted_00001() {
+    public void test_isPeripheralPrivacyFlagCharacteristicSupported_00001() {
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        assertNull(baseAbstractCentralProfile.isPeripheralPrivacyFlagCharacteristicSupporeted());
+        assertNull(baseAbstractCentralProfile.isPeripheralPrivacyFlagCharacteristicSupported());
     }
 
     @Test
-    public void test_isPeripheralPrivacyFlagCharacteristicSupporeted_00002() {
+    public void test_isPeripheralPrivacyFlagCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -597,7 +597,7 @@ public class AbstractCentralProfileTest {
         BLEConnectionHolder.addInstance(bleConnection, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
         baseAbstractCentralProfile.connect(MOCK_DEVICE);
-        assertNotNull(baseAbstractCentralProfile.isPeripheralPrivacyFlagCharacteristicSupporeted());
+        assertNotNull(baseAbstractCentralProfile.isPeripheralPrivacyFlagCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
     }
 
@@ -628,13 +628,13 @@ public class AbstractCentralProfileTest {
     }
 
     @Test
-    public void test_isServiceChangedCharacteristicSupporeted_00001() {
+    public void test_isServiceChangedCharacteristicSupported_00001() {
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        assertNull(baseAbstractCentralProfile.isServiceChangedCharacteristicSupporeted());
+        assertNull(baseAbstractCentralProfile.isServiceChangedCharacteristicSupported());
     }
 
     @Test
-    public void test_isServiceChangedCharacteristicSupporeted_00002() {
+    public void test_isServiceChangedCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -649,18 +649,18 @@ public class AbstractCentralProfileTest {
         BLEConnectionHolder.addInstance(bleConnection, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
         baseAbstractCentralProfile.connect(MOCK_DEVICE);
-        assertNotNull(baseAbstractCentralProfile.isServiceChangedCharacteristicSupporeted());
+        assertNotNull(baseAbstractCentralProfile.isServiceChangedCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
     }
 
     @Test
-    public void test_isClientSupportedFeaturesCharacteristicSupporeted_00001() {
+    public void test_isClientSupportedFeaturesCharacteristicSupported_00001() {
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        assertNull(baseAbstractCentralProfile.isClientSupportedFeaturesCharacteristicSupporeted());
+        assertNull(baseAbstractCentralProfile.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
-    public void test_isClientSupportedFeaturesCharacteristicSupporeted_00002() {
+    public void test_isClientSupportedFeaturesCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -675,18 +675,18 @@ public class AbstractCentralProfileTest {
         BLEConnectionHolder.addInstance(bleConnection, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
         baseAbstractCentralProfile.connect(MOCK_DEVICE);
-        assertNotNull(baseAbstractCentralProfile.isClientSupportedFeaturesCharacteristicSupporeted());
+        assertNotNull(baseAbstractCentralProfile.isClientSupportedFeaturesCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
     }
 
     @Test
-    public void test_isDatabaseHashCharacteristicSupporeted_00001() {
+    public void test_isDatabaseHashCharacteristicSupported_00001() {
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        assertNull(baseAbstractCentralProfile.isDatabaseHashCharacteristicSupporeted());
+        assertNull(baseAbstractCentralProfile.isDatabaseHashCharacteristicSupported());
     }
 
     @Test
-    public void test_isDatabaseHashCharacteristicSupporeted_00002() {
+    public void test_isDatabaseHashCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -701,7 +701,7 @@ public class AbstractCentralProfileTest {
         BLEConnectionHolder.addInstance(bleConnection, true);
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
         baseAbstractCentralProfile.connect(MOCK_DEVICE);
-        assertNotNull(baseAbstractCentralProfile.isDatabaseHashCharacteristicSupporeted());
+        assertNotNull(baseAbstractCentralProfile.isDatabaseHashCharacteristicSupported());
         baseAbstractCentralProfile.disconnect();
     }
 
@@ -944,7 +944,7 @@ public class AbstractCentralProfileTest {
                     mGenericAccessService = new GenericAccessService(mBLEConnection, mProfileCallback, null) {
 
                         @Override
-                        public boolean isPeripheralPreferredConnectionParametersCharacteristicSupporeted() {
+                        public boolean isPeripheralPreferredConnectionParametersCharacteristicSupported() {
                             return true;
                         }
 
@@ -998,7 +998,7 @@ public class AbstractCentralProfileTest {
                     mGenericAccessService = new GenericAccessService(mBLEConnection, mProfileCallback, null) {
 
                         @Override
-                        public boolean isCentralAddressResolutionCharacteristicSupporeted() {
+                        public boolean isCentralAddressResolutionCharacteristicSupported() {
                             return true;
                         }
 
@@ -1052,7 +1052,7 @@ public class AbstractCentralProfileTest {
                     mGenericAccessService = new GenericAccessService(mBLEConnection, mProfileCallback, null) {
 
                         @Override
-                        public boolean isResolvablePrivateAddressOnlyCharacteristicSupporeted() {
+                        public boolean isResolvablePrivateAddressOnlyCharacteristicSupported() {
                             return true;
                         }
 
@@ -1106,7 +1106,7 @@ public class AbstractCentralProfileTest {
                     mGenericAccessService = new GenericAccessService(mBLEConnection, mProfileCallback, null) {
 
                         @Override
-                        public boolean isReconnectionAddressCharacteristicSupporeted() {
+                        public boolean isReconnectionAddressCharacteristicSupported() {
                             return true;
                         }
 
@@ -1160,7 +1160,7 @@ public class AbstractCentralProfileTest {
                     mGenericAccessService = new GenericAccessService(mBLEConnection, mProfileCallback, null) {
 
                         @Override
-                        public boolean isPeripheralPrivacyFlagCharacteristicSupporeted() {
+                        public boolean isPeripheralPrivacyFlagCharacteristicSupported() {
                             return true;
                         }
 
@@ -1270,7 +1270,7 @@ public class AbstractCentralProfileTest {
                         mGenericAttributeService = new GenericAttributeService(mBLEConnection, mProfileCallback, null) {
 
                             @Override
-                            public boolean isServiceChangedCharacteristicSupporeted() {
+                            public boolean isServiceChangedCharacteristicSupported() {
                                 return true;
                             }
 
@@ -1324,7 +1324,7 @@ public class AbstractCentralProfileTest {
                         mGenericAttributeService = new GenericAttributeService(mBLEConnection, mProfileCallback, null) {
 
                             @Override
-                            public boolean isServiceChangedCharacteristicSupporeted() {
+                            public boolean isServiceChangedCharacteristicSupported() {
                                 return true;
                             }
 
@@ -1378,7 +1378,7 @@ public class AbstractCentralProfileTest {
                         mGenericAttributeService = new GenericAttributeService(mBLEConnection, mProfileCallback, null) {
 
                             @Override
-                            public boolean isServiceChangedCharacteristicSupporeted() {
+                            public boolean isServiceChangedCharacteristicSupported() {
                                 return true;
                             }
 
@@ -1432,7 +1432,7 @@ public class AbstractCentralProfileTest {
                         mGenericAttributeService = new GenericAttributeService(mBLEConnection, mProfileCallback, null) {
 
                             @Override
-                            public boolean isClientSupportedFeaturesCharacteristicSupporeted() {
+                            public boolean isClientSupportedFeaturesCharacteristicSupported() {
                                 return true;
                             }
 
@@ -1486,7 +1486,7 @@ public class AbstractCentralProfileTest {
                         mGenericAttributeService = new GenericAttributeService(mBLEConnection, mProfileCallback, null) {
 
                             @Override
-                            public boolean isClientSupportedFeaturesCharacteristicSupporeted() {
+                            public boolean isClientSupportedFeaturesCharacteristicSupported() {
                                 return true;
                             }
 
@@ -1540,7 +1540,7 @@ public class AbstractCentralProfileTest {
                         mGenericAttributeService = new GenericAttributeService(mBLEConnection, mProfileCallback, null) {
 
                             @Override
-                            public boolean isDatabaseHashCharacteristicSupporeted() {
+                            public boolean isDatabaseHashCharacteristicSupported() {
                                 return true;
                             }
 

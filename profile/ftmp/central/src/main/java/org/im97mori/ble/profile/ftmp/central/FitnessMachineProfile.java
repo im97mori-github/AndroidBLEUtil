@@ -119,335 +119,335 @@ public class FitnessMachineProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see FitnessMachineService#isTreadmillDataCharacteristicSupporeted()
+     * @see FitnessMachineService#isTreadmillDataCharacteristicSupported()
      */
-    public synchronized Boolean isTreadmillDataCharacteristicSupporeted() {
+    public synchronized Boolean isTreadmillDataCharacteristicSupported() {
         Boolean result = null;
         if (mFitnessMachineService != null) {
-            result = mFitnessMachineService.isTreadmillDataCharacteristicSupporeted();
+            result = mFitnessMachineService.isTreadmillDataCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see FitnessMachineService#isCrossTrainerDataCharacteristicSupporeted()
+     * @see FitnessMachineService#isCrossTrainerDataCharacteristicSupported()
      */
-    public synchronized Boolean isCrossTrainerDataCharacteristicSupporeted() {
+    public synchronized Boolean isCrossTrainerDataCharacteristicSupported() {
         Boolean result = null;
         if (mFitnessMachineService != null) {
-            result = mFitnessMachineService.isCrossTrainerDataCharacteristicSupporeted();
+            result = mFitnessMachineService.isCrossTrainerDataCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see FitnessMachineService#isStepClimberDataCharacteristicSupporeted()
+     * @see FitnessMachineService#isStepClimberDataCharacteristicSupported()
      */
-    public synchronized Boolean isStepClimberDataCharacteristicSupporeted() {
+    public synchronized Boolean isStepClimberDataCharacteristicSupported() {
         Boolean result = null;
         if (mFitnessMachineService != null) {
-            result = mFitnessMachineService.isStepClimberDataCharacteristicSupporeted();
+            result = mFitnessMachineService.isStepClimberDataCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see FitnessMachineService#isStairClimberDataCharacteristicSupporeted()
+     * @see FitnessMachineService#isStairClimberDataCharacteristicSupported()
      */
-    public synchronized Boolean isStairClimberDataCharacteristicSupporeted() {
+    public synchronized Boolean isStairClimberDataCharacteristicSupported() {
         Boolean result = null;
         if (mFitnessMachineService != null) {
-            result = mFitnessMachineService.isStairClimberDataCharacteristicSupporeted();
+            result = mFitnessMachineService.isStairClimberDataCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see FitnessMachineService#isRowerDataCharacteristicSupporeted()
+     * @see FitnessMachineService#isRowerDataCharacteristicSupported()
      */
-    public synchronized Boolean isRowerDataCharacteristicSupporeted() {
+    public synchronized Boolean isRowerDataCharacteristicSupported() {
         Boolean result = null;
         if (mFitnessMachineService != null) {
-            result = mFitnessMachineService.isRowerDataCharacteristicSupporeted();
+            result = mFitnessMachineService.isRowerDataCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see FitnessMachineService#isIndoorBikeDataCharacteristicSupporeted()
+     * @see FitnessMachineService#isIndoorBikeDataCharacteristicSupported()
      */
-    public synchronized Boolean isIndoorBikeDataCharacteristicSupporeted() {
+    public synchronized Boolean isIndoorBikeDataCharacteristicSupported() {
         Boolean result = null;
         if (mFitnessMachineService != null) {
-            result = mFitnessMachineService.isIndoorBikeDataCharacteristicSupporeted();
+            result = mFitnessMachineService.isIndoorBikeDataCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see FitnessMachineService#isTrainingStatusCharacteristicSupporeted()
+     * @see FitnessMachineService#isTrainingStatusCharacteristicSupported()
      */
-    public synchronized Boolean isTrainingStatusCharacteristicSupporeted() {
+    public synchronized Boolean isTrainingStatusCharacteristicSupported() {
         Boolean result = null;
         if (mFitnessMachineService != null) {
-            result = mFitnessMachineService.isTrainingStatusCharacteristicSupporeted();
+            result = mFitnessMachineService.isTrainingStatusCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see FitnessMachineService#isSupportedSpeedRangeCharacteristicSupporeted()
+     * @see FitnessMachineService#isSupportedSpeedRangeCharacteristicSupported()
      */
-    public synchronized Boolean isSupportedSpeedRangeCharacteristicSupporeted() {
+    public synchronized Boolean isSupportedSpeedRangeCharacteristicSupported() {
         Boolean result = null;
         if (mFitnessMachineService != null) {
-            result = mFitnessMachineService.isSupportedSpeedRangeCharacteristicSupporeted();
+            result = mFitnessMachineService.isSupportedSpeedRangeCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see FitnessMachineService#isSupportedInclinationRangeCharacteristicSupporeted()
+     * @see FitnessMachineService#isSupportedInclinationRangeCharacteristicSupported()
      */
-    public synchronized Boolean isSupportedInclinationRangeCharacteristicSupporeted() {
+    public synchronized Boolean isSupportedInclinationRangeCharacteristicSupported() {
         Boolean result = null;
         if (mFitnessMachineService != null) {
-            result = mFitnessMachineService.isSupportedInclinationRangeCharacteristicSupporeted();
+            result = mFitnessMachineService.isSupportedInclinationRangeCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see FitnessMachineService#isSupportedResistanceLevelRangeCharacteristicSupporeted()
+     * @see FitnessMachineService#isSupportedResistanceLevelRangeCharacteristicSupported()
      */
-    public synchronized Boolean isSupportedResistanceLevelRangeCharacteristicSupporeted() {
+    public synchronized Boolean isSupportedResistanceLevelRangeCharacteristicSupported() {
         Boolean result = null;
         if (mFitnessMachineService != null) {
-            result = mFitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupporeted();
+            result = mFitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see FitnessMachineService#isSupportedPowerRangeCharacteristicSupporeted()
+     * @see FitnessMachineService#isSupportedPowerRangeCharacteristicSupported()
      */
-    public synchronized Boolean isSupportedPowerRangeCharacteristicSupporeted() {
+    public synchronized Boolean isSupportedPowerRangeCharacteristicSupported() {
         Boolean result = null;
         if (mFitnessMachineService != null) {
-            result = mFitnessMachineService.isSupportedPowerRangeCharacteristicSupporeted();
+            result = mFitnessMachineService.isSupportedPowerRangeCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see FitnessMachineService#isSupportedHeartRateRangeCharacteristicSupporeted()
+     * @see FitnessMachineService#isSupportedHeartRateRangeCharacteristicSupported()
      */
-    public synchronized Boolean isSupportedHeartRateRangeCharacteristicSupporeted() {
+    public synchronized Boolean isSupportedHeartRateRangeCharacteristicSupported() {
         Boolean result = null;
         if (mFitnessMachineService != null) {
-            result = mFitnessMachineService.isSupportedHeartRateRangeCharacteristicSupporeted();
+            result = mFitnessMachineService.isSupportedHeartRateRangeCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see FitnessMachineService#isFitnessMachineControlPointCharacteristicSupporeted()
+     * @see FitnessMachineService#isFitnessMachineControlPointCharacteristicSupported()
      */
-    public synchronized Boolean isFitnessMachineControlPointCharacteristicSupporeted() {
+    public synchronized Boolean isFitnessMachineControlPointCharacteristicSupported() {
         Boolean result = null;
         if (mFitnessMachineService != null) {
-            result = mFitnessMachineService.isFitnessMachineControlPointCharacteristicSupporeted();
+            result = mFitnessMachineService.isFitnessMachineControlPointCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see FitnessMachineService#isFitnessMachineStatusCharacteristicSupporeted()
+     * @see FitnessMachineService#isFitnessMachineStatusCharacteristicSupported()
      */
-    public synchronized Boolean isFitnessMachineStatusCharacteristicSupporeted() {
+    public synchronized Boolean isFitnessMachineStatusCharacteristicSupported() {
         Boolean result = null;
         if (mFitnessMachineService != null) {
-            result = mFitnessMachineService.isFitnessMachineStatusCharacteristicSupporeted();
+            result = mFitnessMachineService.isFitnessMachineStatusCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see UserDataService#isFirstNameCharacteristicSupporeted()
+     * @see UserDataService#isFirstNameCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isFirstNameCharacteristicSupporeted() {
+    public synchronized Boolean isFirstNameCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isFirstNameCharacteristicSupporeted();
+            result = mUserDataService.isFirstNameCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see UserDataService#isWeightCharacteristicSupporeted()
+     * @see UserDataService#isWeightCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isWeightCharacteristicSupporeted() {
+    public synchronized Boolean isWeightCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isWeightCharacteristicSupporeted();
+            result = mUserDataService.isWeightCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see UserDataService#isGenderCharacteristicSupporeted()
+     * @see UserDataService#isGenderCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isGenderCharacteristicSupporeted() {
+    public synchronized Boolean isGenderCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isGenderCharacteristicSupporeted();
+            result = mUserDataService.isGenderCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see UserDataService#isHeightCharacteristicSupporeted()
+     * @see UserDataService#isHeightCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isHeightCharacteristicSupporeted() {
+    public synchronized Boolean isHeightCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isHeightCharacteristicSupporeted();
+            result = mUserDataService.isHeightCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see UserDataService#isAgeCharacteristicSupporeted()
+     * @see UserDataService#isAgeCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isAgeCharacteristicSupporeted() {
+    public synchronized Boolean isAgeCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isAgeCharacteristicSupporeted();
+            result = mUserDataService.isAgeCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see UserDataService#isDateOfBirthCharacteristicSupporeted()
+     * @see UserDataService#isDateOfBirthCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isDateOfBirthCharacteristicSupporeted() {
+    public synchronized Boolean isDateOfBirthCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isDateOfBirthCharacteristicSupporeted();
+            result = mUserDataService.isDateOfBirthCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see UserDataService#isHeartRateMaxCharacteristicSupporeted()
+     * @see UserDataService#isHeartRateMaxCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isHeartRateMaxCharacteristicSupporeted() {
+    public synchronized Boolean isHeartRateMaxCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isHeartRateMaxCharacteristicSupporeted();
+            result = mUserDataService.isHeartRateMaxCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see UserDataService#isRestingHeartRateCharacteristicSupporeted()
+     * @see UserDataService#isRestingHeartRateCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isRestingHeartRateCharacteristicSupporeted() {
+    public synchronized Boolean isRestingHeartRateCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isRestingHeartRateCharacteristicSupporeted();
+            result = mUserDataService.isRestingHeartRateCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see UserDataService#isMaximumRecommendedHeartRateCharacteristicSupporeted()
+     * @see UserDataService#isMaximumRecommendedHeartRateCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isMaximumRecommendedHeartRateCharacteristicSupporeted() {
+    public synchronized Boolean isMaximumRecommendedHeartRateCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isMaximumRecommendedHeartRateCharacteristicSupporeted();
+            result = mUserDataService.isMaximumRecommendedHeartRateCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see UserDataService#isVO2MaxCharacteristicSupporeted()
+     * @see UserDataService#isVO2MaxCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isVO2MaxCharacteristicSupporeted() {
+    public synchronized Boolean isVO2MaxCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isVO2MaxCharacteristicSupporeted();
+            result = mUserDataService.isVO2MaxCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see UserDataService#isLanguageCharacteristicSupporeted()
+     * @see UserDataService#isLanguageCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isLanguageCharacteristicSupporeted() {
+    public synchronized Boolean isLanguageCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isLanguageCharacteristicSupporeted();
+            result = mUserDataService.isLanguageCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see UserDataService#isTwoZoneHeartRateLimitCharacteristicSupporeted()
+     * @see UserDataService#isTwoZoneHeartRateLimitCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isTwoZoneHeartRateLimitCharacteristicSupporeted() {
+    public synchronized Boolean isTwoZoneHeartRateLimitCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isTwoZoneHeartRateLimitCharacteristicSupporeted();
+            result = mUserDataService.isTwoZoneHeartRateLimitCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see UserDataService#isThreeZoneHeartRateLimitsCharacteristicSupporeted()
+     * @see UserDataService#isThreeZoneHeartRateLimitsCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isThreeZoneHeartRateLimitsCharacteristicSupporeted() {
+    public synchronized Boolean isThreeZoneHeartRateLimitsCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isThreeZoneHeartRateLimitsCharacteristicSupporeted();
+            result = mUserDataService.isThreeZoneHeartRateLimitsCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see UserDataService#isFiveZoneHeartRateLimitsCharacteristicSupporeted()
+     * @see UserDataService#isFiveZoneHeartRateLimitsCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isFiveZoneHeartRateLimitsCharacteristicSupporeted() {
+    public synchronized Boolean isFiveZoneHeartRateLimitsCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isFiveZoneHeartRateLimitsCharacteristicSupporeted();
+            result = mUserDataService.isFiveZoneHeartRateLimitsCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see UserDataService#isDatabaseChangeIncrementCharacteristicNotifySupporeted()
+     * @see UserDataService#isDatabaseChangeIncrementCharacteristicNotifySupported()
      */
     @Nullable
-    public synchronized Boolean isDatabaseChangeIncrementCharacteristicNotifySupporeted() {
+    public synchronized Boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isDatabaseChangeIncrementCharacteristicNotifySupporeted();
+            result = mUserDataService.isDatabaseChangeIncrementCharacteristicNotifySupported();
         }
         return result;
     }

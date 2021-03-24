@@ -78,7 +78,7 @@ public class AutomationIOService extends AbstractCentralService {
      * Aggregate characteristic flag
      * {@code true}:Aggregate characteristic is exist, {@code false}:Aggregate characteristic is not exist or service not ready
      */
-    private boolean mIsAggregateSupporeted;
+    private boolean mIsAggregateSupported;
 
     /**
      * Aggregate characteristic readable flag
@@ -115,7 +115,7 @@ public class AutomationIOService extends AbstractCentralService {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
             mDigitalList.clear();
             mAnalogList.clear();
-            mIsAggregateSupporeted = false;
+            mIsAggregateSupported = false;
             mIsAggregateReadable = false;
             mIsAggregateNotificatable = false;
             mIsAggregateIndicatable = false;
@@ -137,7 +137,7 @@ public class AutomationIOService extends AbstractCentralService {
                         } else if (ANALOG_CHARACTERISTIC.equals(bluetoothGattCharacteristic.getUuid())) {
                             mAnalogList.add(bluetoothGattCharacteristic);
                         } else if (AGGREGATE_CHARACTERISTIC.equals(bluetoothGattCharacteristic.getUuid())) {
-                            mIsAggregateSupporeted = true;
+                            mIsAggregateSupported = true;
                             if ((bluetoothGattCharacteristic.getProperties() & BluetoothGattCharacteristic.PROPERTY_READ) == BluetoothGattCharacteristic.PROPERTY_READ) {
                                 mIsAggregateReadable = true;
                             }
@@ -1174,8 +1174,8 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @return {@code true}:Aggregate characteristic is exist, {@code false}:Aggregate characteristic is not exist or service not ready
      */
-    public synchronized boolean isAggregateSupporeted() {
-        return mIsAggregateSupporeted;
+    public synchronized boolean isAggregateSupported() {
+        return mIsAggregateSupported;
     }
 
     /**

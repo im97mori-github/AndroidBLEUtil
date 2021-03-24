@@ -80,38 +80,38 @@ public class CyclingSpeedAndCadenceProfileTest {
     }
 
     @Test
-    public void test_isSensorLocationCharacteristicSupporeted_00001() {
+    public void test_isSensorLocationCharacteristicSupported_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
-        assertNull(cyclingSpeedAndCadenceProfile.isSensorLocationCharacteristicSupporeted());
+        assertNull(cyclingSpeedAndCadenceProfile.isSensorLocationCharacteristicSupported());
     }
 
     @Test
-    public void test_isSensorLocationCharacteristicSupporeted_00002() {
+    public void test_isSensorLocationCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
 
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         cyclingSpeedAndCadenceProfile.connect(MOCK_DEVICE);
-        assertNotNull(cyclingSpeedAndCadenceProfile.isSensorLocationCharacteristicSupporeted());
+        assertNotNull(cyclingSpeedAndCadenceProfile.isSensorLocationCharacteristicSupported());
         cyclingSpeedAndCadenceProfile.disconnect();
     }
 
     @Test
-    public void test_isSCControlPointCharacteristicSupporeted_00001() {
+    public void test_isSCControlPointCharacteristicSupported_00001() {
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
-        assertNull(cyclingSpeedAndCadenceProfile.isSCControlPointCharacteristicSupporeted());
+        assertNull(cyclingSpeedAndCadenceProfile.isSCControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isSCControlPointCharacteristicSupporeted_00002() {
+    public void test_isSCControlPointCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
 
         CyclingSpeedAndCadenceProfile cyclingSpeedAndCadenceProfile = new CyclingSpeedAndCadenceProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingSpeedAndCadenceProfileCallback());
         cyclingSpeedAndCadenceProfile.connect(MOCK_DEVICE);
-        assertNotNull(cyclingSpeedAndCadenceProfile.isSCControlPointCharacteristicSupporeted());
+        assertNotNull(cyclingSpeedAndCadenceProfile.isSCControlPointCharacteristicSupported());
         cyclingSpeedAndCadenceProfile.disconnect();
     }
 

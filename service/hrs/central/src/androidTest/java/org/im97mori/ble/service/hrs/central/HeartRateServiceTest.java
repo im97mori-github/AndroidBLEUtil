@@ -51,7 +51,7 @@ public class HeartRateServiceTest {
         HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
         heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(heartRateService.isBodySensorLocationCharacteristicSupporeted());
+        assertFalse(heartRateService.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
@@ -61,7 +61,7 @@ public class HeartRateServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(heartRateService.isBodySensorLocationCharacteristicSupporeted());
+        assertFalse(heartRateService.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
@@ -71,7 +71,7 @@ public class HeartRateServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
         heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(heartRateService.isBodySensorLocationCharacteristicSupporeted());
+        assertFalse(heartRateService.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
@@ -82,7 +82,7 @@ public class HeartRateServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BODY_SENSOR_LOCATION_CHARACTERISTIC, 0, 0));
         heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(heartRateService.isBodySensorLocationCharacteristicSupporeted());
+        assertFalse(heartRateService.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
@@ -93,7 +93,7 @@ public class HeartRateServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BODY_SENSOR_LOCATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(heartRateService.isBodySensorLocationCharacteristicSupporeted());
+        assertTrue(heartRateService.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
@@ -102,7 +102,7 @@ public class HeartRateServiceTest {
         HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
         heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupporeted());
+        assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
@@ -112,7 +112,7 @@ public class HeartRateServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupporeted());
+        assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
@@ -122,7 +122,7 @@ public class HeartRateServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
         heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupporeted());
+        assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
@@ -133,7 +133,7 @@ public class HeartRateServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HEART_RATE_CONTROL_POINT_CHARACTERISTIC, 0, 0));
         heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupporeted());
+        assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
@@ -144,7 +144,7 @@ public class HeartRateServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HEART_RATE_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(heartRateService.isHeartRateControlPointCharacteristicSupporeted());
+        assertTrue(heartRateService.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
@@ -1884,14 +1884,14 @@ public class HeartRateServiceTest {
     }
 
     @Test
-    public void test_isBodySensorLocationCharacteristicSupporeted_00001() {
+    public void test_isBodySensorLocationCharacteristicSupported_00001() {
         HeartRateService heartRateService = new HeartRateService(new MockBLEConnection(), new MockHeartRateServiceCallback(), null);
 
-        assertFalse(heartRateService.isBodySensorLocationCharacteristicSupporeted());
+        assertFalse(heartRateService.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
-    public void test_isBodySensorLocationCharacteristicSupporeted_00002() {
+    public void test_isBodySensorLocationCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
@@ -1899,11 +1899,11 @@ public class HeartRateServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(heartRateService.isBodySensorLocationCharacteristicSupporeted());
+        assertTrue(heartRateService.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
-    public void test_isBodySensorLocationCharacteristicSupporeted_00003() {
+    public void test_isBodySensorLocationCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
@@ -1912,18 +1912,18 @@ public class HeartRateServiceTest {
         heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         heartRateService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(heartRateService.isBodySensorLocationCharacteristicSupporeted());
+        assertFalse(heartRateService.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
-    public void test_isHeartRateControlPointCharacteristicSupporeted_00001() {
+    public void test_isHeartRateControlPointCharacteristicSupported_00001() {
         HeartRateService heartRateService = new HeartRateService(new MockBLEConnection(), new MockHeartRateServiceCallback(), null);
 
-        assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupporeted());
+        assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isHeartRateControlPointCharacteristicSupporeted_00002() {
+    public void test_isHeartRateControlPointCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
@@ -1931,11 +1931,11 @@ public class HeartRateServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(heartRateService.isHeartRateControlPointCharacteristicSupporeted());
+        assertTrue(heartRateService.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isHeartRateControlPointCharacteristicSupporeted_00003() {
+    public void test_isHeartRateControlPointCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEART_RATE_SERVICE, 0);
@@ -1944,7 +1944,7 @@ public class HeartRateServiceTest {
         heartRateService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         heartRateService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupporeted());
+        assertFalse(heartRateService.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
@@ -2143,7 +2143,7 @@ public class HeartRateServiceTest {
         HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null) {
 
             @Override
-            public boolean isBodySensorLocationCharacteristicSupporeted() {
+            public boolean isBodySensorLocationCharacteristicSupported() {
                 return true;
             }
 
@@ -2187,7 +2187,7 @@ public class HeartRateServiceTest {
         HeartRateService heartRateService = new HeartRateService(new MockBLEConnection(), new MockHeartRateServiceCallback(), null) {
 
             @Override
-            public boolean isHeartRateControlPointCharacteristicSupporeted() {
+            public boolean isHeartRateControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -2216,7 +2216,7 @@ public class HeartRateServiceTest {
         HeartRateService heartRateService = new HeartRateService(mockBLEConnection, new MockHeartRateServiceCallback(), null) {
 
             @Override
-            public boolean isHeartRateControlPointCharacteristicSupporeted() {
+            public boolean isHeartRateControlPointCharacteristicSupported() {
                 return true;
             }
 

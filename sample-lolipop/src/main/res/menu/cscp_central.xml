@@ -15,11 +15,11 @@
             android:title="@string/menu_has_device_information_service" />
 
         <item
-            android:id="@+id/is_sensor_location_characteristic_supporeted"
-            android:title="@string/menu_is_sensor_location_characteristic_supporeted" />
+            android:id="@+id/is_sensor_location_characteristic_supported"
+            android:title="@string/menu_is_sensor_location_characteristic_supported" />
         <item
-            android:id="@+id/is_sc_control_point_characteristic_supporeted"
-            android:title="@string/menu_is_sc_control_point_characteristic_supporeted" />
+            android:id="@+id/is_sc_control_point_characteristic_supported"
+            android:title="@string/menu_is_sc_control_point_characteristic_supported" />
 
         <item
             android:id="@+id/read_csc_feature"

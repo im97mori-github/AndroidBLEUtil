@@ -274,73 +274,73 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see org.im97mori.ble.service.uds.central.UserDataService#isAgeCharacteristicSupporeted()
+     * @see org.im97mori.ble.service.uds.central.UserDataService#isAgeCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isAgeCharacteristicSupporeted() {
+    public synchronized Boolean isAgeCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isAgeCharacteristicSupporeted();
+            result = mUserDataService.isAgeCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see org.im97mori.ble.service.uds.central.UserDataService#isDateOfBirthCharacteristicSupporeted()
+     * @see org.im97mori.ble.service.uds.central.UserDataService#isDateOfBirthCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isDateOfBirthCharacteristicSupporeted() {
+    public synchronized Boolean isDateOfBirthCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isDateOfBirthCharacteristicSupporeted();
+            result = mUserDataService.isDateOfBirthCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see org.im97mori.ble.service.uds.central.UserDataService#isFirstNameCharacteristicSupporeted()
+     * @see org.im97mori.ble.service.uds.central.UserDataService#isFirstNameCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isFirstNameCharacteristicSupporeted() {
+    public synchronized Boolean isFirstNameCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isFirstNameCharacteristicSupporeted();
+            result = mUserDataService.isFirstNameCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see org.im97mori.ble.service.uds.central.UserDataService#isHeightCharacteristicSupporeted()
+     * @see org.im97mori.ble.service.uds.central.UserDataService#isHeightCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isHeightCharacteristicSupporeted() {
+    public synchronized Boolean isHeightCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isHeightCharacteristicSupporeted();
+            result = mUserDataService.isHeightCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see org.im97mori.ble.service.uds.central.UserDataService#isGenderCharacteristicSupporeted()
+     * @see org.im97mori.ble.service.uds.central.UserDataService#isGenderCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isGenderCharacteristicSupporeted() {
+    public synchronized Boolean isGenderCharacteristicSupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isGenderCharacteristicSupporeted();
+            result = mUserDataService.isGenderCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see org.im97mori.ble.service.uds.central.UserDataService#isDatabaseChangeIncrementCharacteristicNotifySupporeted()
+     * @see org.im97mori.ble.service.uds.central.UserDataService#isDatabaseChangeIncrementCharacteristicNotifySupported()
      */
     @Nullable
-    public synchronized Boolean isDatabaseChangeIncrementCharacteristicNotifySupporeted() {
+    public synchronized Boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
         Boolean result = null;
         if (mUserDataService != null) {
-            result = mUserDataService.isDatabaseChangeIncrementCharacteristicNotifySupporeted();
+            result = mUserDataService.isDatabaseChangeIncrementCharacteristicNotifySupported();
         }
         return result;
     }
@@ -802,13 +802,13 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see org.im97mori.ble.service.cts.central.CurrentTimeService#isLocalTimeInformationCharacteristicSupporeted()
+     * @see org.im97mori.ble.service.cts.central.CurrentTimeService#isLocalTimeInformationCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isLocalTimeInformationCharacteristicSupporeted() {
+    public synchronized Boolean isLocalTimeInformationCharacteristicSupported() {
         Boolean result = null;
         if (mCurrentTimeService != null) {
-            result = mCurrentTimeService.isLocalTimeInformationCharacteristicSupporeted();
+            result = mCurrentTimeService.isLocalTimeInformationCharacteristicSupported();
         }
         return result;
     }
@@ -826,13 +826,13 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see org.im97mori.ble.service.cts.central.CurrentTimeService#isReferenceTimeInformationCharacteristicSupporeted()
+     * @see org.im97mori.ble.service.cts.central.CurrentTimeService#isReferenceTimeInformationCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isReferenceTimeInformationCharacteristicSupporeted() {
+    public synchronized Boolean isReferenceTimeInformationCharacteristicSupported() {
         Boolean result = null;
         if (mCurrentTimeService != null) {
-            result = mCurrentTimeService.isReferenceTimeInformationCharacteristicSupporeted();
+            result = mCurrentTimeService.isReferenceTimeInformationCharacteristicSupported();
         }
         return result;
     }

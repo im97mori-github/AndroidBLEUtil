@@ -119,13 +119,13 @@ public class TimeProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see CurrentTimeService#isLocalTimeInformationCharacteristicSupporeted()
+     * @see CurrentTimeService#isLocalTimeInformationCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isLocalTimeInformationCharacteristicSupporeted() {
+    public synchronized Boolean isLocalTimeInformationCharacteristicSupported() {
         Boolean result = null;
         if (mCurrentTimeService != null) {
-            result = mCurrentTimeService.isLocalTimeInformationCharacteristicSupporeted();
+            result = mCurrentTimeService.isLocalTimeInformationCharacteristicSupported();
         }
         return result;
     }
@@ -143,13 +143,13 @@ public class TimeProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see CurrentTimeService#isReferenceTimeInformationCharacteristicSupporeted()
+     * @see CurrentTimeService#isReferenceTimeInformationCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isReferenceTimeInformationCharacteristicSupporeted() {
+    public synchronized Boolean isReferenceTimeInformationCharacteristicSupported() {
         Boolean result = null;
         if (mCurrentTimeService != null) {
-            result = mCurrentTimeService.isReferenceTimeInformationCharacteristicSupporeted();
+            result = mCurrentTimeService.isReferenceTimeInformationCharacteristicSupported();
         }
         return result;
     }

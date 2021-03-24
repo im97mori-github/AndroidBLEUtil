@@ -6,7 +6,7 @@ import org.im97mori.ble.service.ndcs.central.NextDstChangeServiceCallback;
 import org.im97mori.ble.service.rtus.central.ReferenceTimeUpdateServiceCallback;
 
 /**
- * Weight Scale Profile callback
+ * Time Profile callback
  *
  * @see CurrentTimeServiceCallback
  * @see NextDstChangeServiceCallback

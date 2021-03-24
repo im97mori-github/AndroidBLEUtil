@@ -56,7 +56,7 @@ public class LocationAndNavigationServiceTest {
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         locationAndNavigationService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupported());
     }
 
     @Test
@@ -70,7 +70,7 @@ public class LocationAndNavigationServiceTest {
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         locationAndNavigationService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupported());
     }
 
     @Test
@@ -84,7 +84,7 @@ public class LocationAndNavigationServiceTest {
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         locationAndNavigationService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupported());
     }
 
     @Test
@@ -93,7 +93,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null);
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupported());
     }
 
     @Test
@@ -103,7 +103,7 @@ public class LocationAndNavigationServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupported());
     }
 
     @Test
@@ -113,7 +113,7 @@ public class LocationAndNavigationServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupported());
     }
 
     @Test
@@ -124,7 +124,7 @@ public class LocationAndNavigationServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(POSITION_QUALITY_CHARACTERISTIC, 0, 0));
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupported());
     }
 
     @Test
@@ -135,7 +135,7 @@ public class LocationAndNavigationServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(POSITION_QUALITY_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(locationAndNavigationService.isPositionQualityCharacteristicSupporeted());
+        assertTrue(locationAndNavigationService.isPositionQualityCharacteristicSupported());
     }
 
     @Test
@@ -146,7 +146,7 @@ public class LocationAndNavigationServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(POSITION_QUALITY_CHARACTERISTIC, 0, BluetoothGattCharacteristic.PERMISSION_READ));
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupported());
     }
 
     @Test
@@ -157,7 +157,7 @@ public class LocationAndNavigationServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(POSITION_QUALITY_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(locationAndNavigationService.isPositionQualityCharacteristicSupporeted());
+        assertTrue(locationAndNavigationService.isPositionQualityCharacteristicSupported());
     }
 
     @Test
@@ -166,7 +166,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null);
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupported());
     }
 
     @Test
@@ -176,7 +176,7 @@ public class LocationAndNavigationServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupported());
     }
 
     @Test
@@ -186,7 +186,7 @@ public class LocationAndNavigationServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupported());
     }
 
     @Test
@@ -197,7 +197,7 @@ public class LocationAndNavigationServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LN_CONTROL_POINT_CHARACTERISTIC, 0, 0));
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupported());
     }
 
     @Test
@@ -208,7 +208,7 @@ public class LocationAndNavigationServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LN_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0));
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupported());
     }
 
     @Test
@@ -219,7 +219,7 @@ public class LocationAndNavigationServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LN_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0));
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupported());
     }
 
     @Test
@@ -232,7 +232,7 @@ public class LocationAndNavigationServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupported());
     }
 
     @Test
@@ -245,7 +245,7 @@ public class LocationAndNavigationServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(locationAndNavigationService.isLNControlPointCharacteristicSupporeted());
+        assertTrue(locationAndNavigationService.isLNControlPointCharacteristicSupported());
     }
 
     @Test
@@ -254,7 +254,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null);
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupported());
     }
 
     @Test
@@ -264,7 +264,7 @@ public class LocationAndNavigationServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupported());
     }
 
     @Test
@@ -274,7 +274,7 @@ public class LocationAndNavigationServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupported());
     }
 
     @Test
@@ -285,7 +285,7 @@ public class LocationAndNavigationServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(NAVIGATION_CHARACTERISTIC, 0, 0));
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupported());
     }
 
     @Test
@@ -296,7 +296,7 @@ public class LocationAndNavigationServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(NAVIGATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupported());
     }
 
     @Test
@@ -309,7 +309,7 @@ public class LocationAndNavigationServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupported());
     }
 
     @Test
@@ -322,7 +322,7 @@ public class LocationAndNavigationServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(locationAndNavigationService.isNavigationCharacteristicSupporeted());
+        assertTrue(locationAndNavigationService.isNavigationCharacteristicSupported());
     }
 
     @Test
@@ -4753,42 +4753,42 @@ public class LocationAndNavigationServiceTest {
     }
 
     @Test
-    public void test_isPositionQualityCharacteristicSupporeted_00001() {
+    public void test_isPositionQualityCharacteristicSupported_00001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null);
 
-        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupported());
     }
 
     @Test
-    public void test_isPositionQualityCharacteristicSupporeted_00002() {
+    public void test_isPositionQualityCharacteristicSupported_00002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(POSITION_QUALITY_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(locationAndNavigationService.isPositionQualityCharacteristicSupporeted());
+        assertTrue(locationAndNavigationService.isPositionQualityCharacteristicSupported());
     }
 
     @Test
-    public void test_isPositionQualityCharacteristicSupporeted_00003() {
+    public void test_isPositionQualityCharacteristicSupported_00003() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(POSITION_QUALITY_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ));
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         locationAndNavigationService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isPositionQualityCharacteristicSupported());
     }
 
     @Test
-    public void test_isLNControlPointCharacteristicSupporeted_00001() {
+    public void test_isLNControlPointCharacteristicSupported_00001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null);
 
-        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isLNControlPointCharacteristicSupporeted_00002() {
+    public void test_isLNControlPointCharacteristicSupported_00002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LN_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
@@ -4796,11 +4796,11 @@ public class LocationAndNavigationServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(locationAndNavigationService.isLNControlPointCharacteristicSupporeted());
+        assertTrue(locationAndNavigationService.isLNControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isLNControlPointCharacteristicSupporeted_00003() {
+    public void test_isLNControlPointCharacteristicSupported_00003() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LN_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0);
@@ -4809,18 +4809,18 @@ public class LocationAndNavigationServiceTest {
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         locationAndNavigationService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isLNControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isNavigationCharacteristicSupporeted_00001() {
+    public void test_isNavigationCharacteristicSupported_00001() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null);
 
-        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupported());
     }
 
     @Test
-    public void test_isNavigationCharacteristicSupporeted_00002() {
+    public void test_isNavigationCharacteristicSupported_00002() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(NAVIGATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
@@ -4828,11 +4828,11 @@ public class LocationAndNavigationServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(locationAndNavigationService.isNavigationCharacteristicSupporeted());
+        assertTrue(locationAndNavigationService.isNavigationCharacteristicSupported());
     }
 
     @Test
-    public void test_isNavigationCharacteristicSupporeted_00003() {
+    public void test_isNavigationCharacteristicSupported_00003() {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(LOCATION_AND_NAVIGATION_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(NAVIGATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
@@ -4841,7 +4841,7 @@ public class LocationAndNavigationServiceTest {
         locationAndNavigationService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         locationAndNavigationService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupporeted());
+        assertFalse(locationAndNavigationService.isNavigationCharacteristicSupported());
     }
 
     @Test
@@ -5054,7 +5054,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null) {
 
             @Override
-            public boolean isPositionQualityCharacteristicSupporeted() {
+            public boolean isPositionQualityCharacteristicSupported() {
                 return true;
             }
 
@@ -5082,7 +5082,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null) {
 
             @Override
-            public boolean isPositionQualityCharacteristicSupporeted() {
+            public boolean isPositionQualityCharacteristicSupported() {
                 return true;
             }
 
@@ -5126,7 +5126,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null) {
 
             @Override
-            public boolean isLNControlPointCharacteristicSupporeted() {
+            public boolean isLNControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -5155,7 +5155,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null) {
 
             @Override
-            public boolean isLNControlPointCharacteristicSupporeted() {
+            public boolean isLNControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -5198,7 +5198,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null) {
 
             @Override
-            public boolean isLNControlPointCharacteristicSupporeted() {
+            public boolean isLNControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -5226,7 +5226,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null) {
 
             @Override
-            public boolean isLNControlPointCharacteristicSupporeted() {
+            public boolean isLNControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -5268,7 +5268,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null) {
 
             @Override
-            public boolean isLNControlPointCharacteristicSupporeted() {
+            public boolean isLNControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -5296,7 +5296,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null) {
 
             @Override
-            public boolean isLNControlPointCharacteristicSupporeted() {
+            public boolean isLNControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -5338,7 +5338,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null) {
 
             @Override
-            public boolean isLNControlPointCharacteristicSupporeted() {
+            public boolean isLNControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -5366,7 +5366,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null) {
 
             @Override
-            public boolean isLNControlPointCharacteristicSupporeted() {
+            public boolean isLNControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -5408,7 +5408,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null) {
 
             @Override
-            public boolean isNavigationCharacteristicSupporeted() {
+            public boolean isNavigationCharacteristicSupported() {
                 return true;
             }
 
@@ -5436,7 +5436,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null) {
 
             @Override
-            public boolean isNavigationCharacteristicSupporeted() {
+            public boolean isNavigationCharacteristicSupported() {
                 return true;
             }
 
@@ -5478,7 +5478,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(new MockBLEConnection(), new MockLocationAndNavigationServiceCallback(), null) {
 
             @Override
-            public boolean isNavigationCharacteristicSupporeted() {
+            public boolean isNavigationCharacteristicSupported() {
                 return true;
             }
 
@@ -5506,7 +5506,7 @@ public class LocationAndNavigationServiceTest {
         LocationAndNavigationService locationAndNavigationService = new LocationAndNavigationService(mockBLEConnection, new MockLocationAndNavigationServiceCallback(), null) {
 
             @Override
-            public boolean isNavigationCharacteristicSupporeted() {
+            public boolean isNavigationCharacteristicSupported() {
                 return true;
             }
 

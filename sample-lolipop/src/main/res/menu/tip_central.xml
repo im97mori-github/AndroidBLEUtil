@@ -44,7 +44,7 @@
             android:id="@+id/write_local_time_information"
             android:title="@string/menu_write_local_time_information" />
         <item
-            android:id="@+id/menu_has_reference_time_information"
+            android:id="@+id/has_reference_time_information"
             android:title="@string/menu_has_reference_time_information" />
         <item
             android:id="@+id/read_reference_time_information"

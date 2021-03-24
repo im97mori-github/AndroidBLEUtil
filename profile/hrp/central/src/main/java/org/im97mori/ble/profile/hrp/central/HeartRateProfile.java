@@ -103,25 +103,25 @@ public class HeartRateProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see HeartRateService#isBodySensorLocationCharacteristicSupporeted()
+     * @see HeartRateService#isBodySensorLocationCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isBodySensorLocationCharacteristicSupporeted() {
+    public synchronized Boolean isBodySensorLocationCharacteristicSupported() {
         Boolean result = null;
         if (mHeartRateService != null) {
-            result = mHeartRateService.isBodySensorLocationCharacteristicSupporeted();
+            result = mHeartRateService.isBodySensorLocationCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see HeartRateService#isHeartRateControlPointCharacteristicSupporeted()
+     * @see HeartRateService#isHeartRateControlPointCharacteristicSupported()
      */
     @Nullable
-    public synchronized Boolean isHeartRateControlPointCharacteristicSupporeted() {
+    public synchronized Boolean isHeartRateControlPointCharacteristicSupported() {
         Boolean result = null;
         if (mHeartRateService != null) {
-            result = mHeartRateService.isHeartRateControlPointCharacteristicSupporeted();
+            result = mHeartRateService.isHeartRateControlPointCharacteristicSupported();
         }
         return result;
     }

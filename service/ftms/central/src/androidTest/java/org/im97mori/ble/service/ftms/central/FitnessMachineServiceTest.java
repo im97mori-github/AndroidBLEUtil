@@ -80,7 +80,7 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isTreadmillDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTreadmillDataCharacteristicSupported());
     }
 
     @Test
@@ -92,7 +92,7 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isCrossTrainerDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isCrossTrainerDataCharacteristicSupported());
     }
 
     @Test
@@ -104,7 +104,7 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isStepClimberDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isStepClimberDataCharacteristicSupported());
     }
 
     @Test
@@ -116,7 +116,7 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isStairClimberDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isStairClimberDataCharacteristicSupported());
     }
 
     @Test
@@ -128,7 +128,7 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isRowerDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isRowerDataCharacteristicSupported());
     }
 
     @Test
@@ -140,7 +140,7 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isIndoorBikeDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isIndoorBikeDataCharacteristicSupported());
     }
 
     @Test
@@ -152,7 +152,7 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupported());
     }
 
     @Test
@@ -164,7 +164,7 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupported());
     }
 
     @Test
@@ -176,7 +176,7 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupported());
     }
 
     @Test
@@ -188,7 +188,7 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupported());
     }
 
     @Test
@@ -200,7 +200,7 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isSupportedPowerRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedPowerRangeCharacteristicSupported());
     }
 
     @Test
@@ -212,7 +212,7 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupported());
     }
 
     @Test
@@ -224,7 +224,7 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupported());
     }
 
     @Test
@@ -236,7 +236,7 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineStatusCharacteristicSupported());
     }
 
     @Test
@@ -245,7 +245,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(fitnessMachineService.isTreadmillDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTreadmillDataCharacteristicSupported());
     }
 
     @Test
@@ -255,7 +255,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isTreadmillDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTreadmillDataCharacteristicSupported());
     }
 
     @Test
@@ -265,7 +265,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isTreadmillDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTreadmillDataCharacteristicSupported());
     }
 
     @Test
@@ -276,7 +276,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TREADMILL_DATA_CHARACTERISTIC, 0, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isTreadmillDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTreadmillDataCharacteristicSupported());
     }
 
     @Test
@@ -287,7 +287,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TREADMILL_DATA_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isTreadmillDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTreadmillDataCharacteristicSupported());
     }
 
     @Test
@@ -300,7 +300,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isTreadmillDataCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isTreadmillDataCharacteristicSupported());
     }
 
     @Test
@@ -309,7 +309,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(fitnessMachineService.isCrossTrainerDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isCrossTrainerDataCharacteristicSupported());
     }
 
     @Test
@@ -319,7 +319,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isCrossTrainerDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isCrossTrainerDataCharacteristicSupported());
     }
 
     @Test
@@ -329,7 +329,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isCrossTrainerDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isCrossTrainerDataCharacteristicSupported());
     }
 
     @Test
@@ -340,7 +340,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CROSS_TRAINER_DATA_CHARACTERISTIC, 0, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isCrossTrainerDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isCrossTrainerDataCharacteristicSupported());
     }
 
     @Test
@@ -351,7 +351,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CROSS_TRAINER_DATA_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isCrossTrainerDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isCrossTrainerDataCharacteristicSupported());
     }
 
     @Test
@@ -364,7 +364,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isCrossTrainerDataCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isCrossTrainerDataCharacteristicSupported());
     }
 
     @Test
@@ -373,7 +373,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(fitnessMachineService.isStepClimberDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isStepClimberDataCharacteristicSupported());
     }
 
     @Test
@@ -383,7 +383,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isStepClimberDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isStepClimberDataCharacteristicSupported());
     }
 
     @Test
@@ -393,7 +393,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isStepClimberDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isStepClimberDataCharacteristicSupported());
     }
 
     @Test
@@ -404,7 +404,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(STEP_CLIMBER_DATA_CHARACTERISTIC, 0, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isStepClimberDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isStepClimberDataCharacteristicSupported());
     }
 
     @Test
@@ -415,7 +415,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(STEP_CLIMBER_DATA_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isStepClimberDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isStepClimberDataCharacteristicSupported());
     }
 
     @Test
@@ -428,7 +428,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isStepClimberDataCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isStepClimberDataCharacteristicSupported());
     }
 
     @Test
@@ -437,7 +437,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(fitnessMachineService.isStairClimberDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isStairClimberDataCharacteristicSupported());
     }
 
     @Test
@@ -447,7 +447,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isStairClimberDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isStairClimberDataCharacteristicSupported());
     }
 
     @Test
@@ -457,7 +457,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isStairClimberDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isStairClimberDataCharacteristicSupported());
     }
 
     @Test
@@ -468,7 +468,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(STAIR_CLIMBER_DATA_CHARACTERISTIC, 0, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isStairClimberDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isStairClimberDataCharacteristicSupported());
     }
 
     @Test
@@ -479,7 +479,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(STAIR_CLIMBER_DATA_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isStairClimberDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isStairClimberDataCharacteristicSupported());
     }
 
     @Test
@@ -492,7 +492,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isStairClimberDataCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isStairClimberDataCharacteristicSupported());
     }
 
     @Test
@@ -501,7 +501,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(fitnessMachineService.isRowerDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isRowerDataCharacteristicSupported());
     }
 
     @Test
@@ -511,7 +511,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isRowerDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isRowerDataCharacteristicSupported());
     }
 
     @Test
@@ -521,7 +521,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isRowerDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isRowerDataCharacteristicSupported());
     }
 
     @Test
@@ -532,7 +532,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ROWER_DATA_CHARACTERISTIC, 0, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isRowerDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isRowerDataCharacteristicSupported());
     }
 
     @Test
@@ -543,7 +543,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ROWER_DATA_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isRowerDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isRowerDataCharacteristicSupported());
     }
 
     @Test
@@ -556,7 +556,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isRowerDataCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isRowerDataCharacteristicSupported());
     }
 
     @Test
@@ -565,7 +565,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(fitnessMachineService.isIndoorBikeDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isIndoorBikeDataCharacteristicSupported());
     }
 
     @Test
@@ -575,7 +575,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isIndoorBikeDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isIndoorBikeDataCharacteristicSupported());
     }
 
     @Test
@@ -585,7 +585,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isIndoorBikeDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isIndoorBikeDataCharacteristicSupported());
     }
 
     @Test
@@ -596,7 +596,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(INDOOR_BIKE_DATA_CHARACTERISTIC, 0, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isIndoorBikeDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isIndoorBikeDataCharacteristicSupported());
     }
 
     @Test
@@ -607,7 +607,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(INDOOR_BIKE_DATA_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isIndoorBikeDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isIndoorBikeDataCharacteristicSupported());
     }
 
     @Test
@@ -620,7 +620,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isIndoorBikeDataCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isIndoorBikeDataCharacteristicSupported());
     }
 
     @Test
@@ -629,7 +629,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupported());
     }
 
     @Test
@@ -639,7 +639,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupported());
     }
 
     @Test
@@ -649,7 +649,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupported());
     }
 
     @Test
@@ -660,7 +660,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TRAINING_STATUS_CHARACTERISTIC, 0, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupported());
     }
 
     @Test
@@ -671,7 +671,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TRAINING_STATUS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupported());
     }
 
     @Test
@@ -682,7 +682,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TRAINING_STATUS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupported());
     }
 
     @Test
@@ -693,7 +693,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TRAINING_STATUS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupported());
     }
 
     @Test
@@ -706,7 +706,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isTrainingStatusCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isTrainingStatusCharacteristicSupported());
     }
 
     @Test
@@ -715,7 +715,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupported());
     }
 
     @Test
@@ -725,7 +725,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupported());
     }
 
     @Test
@@ -735,7 +735,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupported());
     }
 
     @Test
@@ -746,7 +746,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SUPPORTED_SPEED_RANGE_CHARACTERISTIC, 0, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupported());
     }
 
     @Test
@@ -757,7 +757,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SUPPORTED_SPEED_RANGE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupported());
     }
 
     @Test
@@ -766,7 +766,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupported());
     }
 
     @Test
@@ -776,7 +776,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupported());
     }
 
     @Test
@@ -786,7 +786,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupported());
     }
 
     @Test
@@ -797,7 +797,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SUPPORTED_INCLINATION_RANGE_CHARACTERISTIC, 0, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupported());
     }
 
     @Test
@@ -808,7 +808,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SUPPORTED_INCLINATION_RANGE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupported());
     }
 
     @Test
@@ -817,7 +817,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupported());
     }
 
     @Test
@@ -827,7 +827,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupported());
     }
 
     @Test
@@ -837,7 +837,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupported());
     }
 
     @Test
@@ -848,7 +848,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SUPPORTED_RESISTANCE_LEVEL_RANGE_CHARACTERISTIC, 0, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupported());
     }
 
     @Test
@@ -859,7 +859,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SUPPORTED_RESISTANCE_LEVEL_RANGE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupported());
     }
 
     @Test
@@ -868,7 +868,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(fitnessMachineService.isSupportedPowerRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedPowerRangeCharacteristicSupported());
     }
 
     @Test
@@ -878,7 +878,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isSupportedPowerRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedPowerRangeCharacteristicSupported());
     }
 
     @Test
@@ -888,7 +888,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isSupportedPowerRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedPowerRangeCharacteristicSupported());
     }
 
     @Test
@@ -899,7 +899,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SUPPORTED_POWER_RANGE_CHARACTERISTIC, 0, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isSupportedPowerRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedPowerRangeCharacteristicSupported());
     }
 
     @Test
@@ -910,7 +910,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SUPPORTED_POWER_RANGE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isSupportedPowerRangeCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isSupportedPowerRangeCharacteristicSupported());
     }
 
     @Test
@@ -919,7 +919,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupported());
     }
 
     @Test
@@ -929,7 +929,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupported());
     }
 
     @Test
@@ -939,7 +939,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupported());
     }
 
     @Test
@@ -950,7 +950,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SUPPORTED_HEART_RATE_RANGE_CHARACTERISTIC, 0, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupported());
     }
 
     @Test
@@ -961,7 +961,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SUPPORTED_HEART_RATE_RANGE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupported());
     }
 
     @Test
@@ -970,7 +970,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupported());
     }
 
     @Test
@@ -980,7 +980,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupported());
     }
 
     @Test
@@ -990,7 +990,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupported());
     }
 
     @Test
@@ -1001,7 +1001,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, 0, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupported());
     }
 
     @Test
@@ -1012,7 +1012,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupported());
     }
 
     @Test
@@ -1023,7 +1023,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupported());
     }
 
     @Test
@@ -1034,7 +1034,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupported());
     }
 
     @Test
@@ -1047,7 +1047,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupported());
     }
 
     @Test
@@ -1056,7 +1056,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineStatusCharacteristicSupported());
     }
 
     @Test
@@ -1066,7 +1066,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineStatusCharacteristicSupported());
     }
 
     @Test
@@ -1076,7 +1076,7 @@ public class FitnessMachineServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineStatusCharacteristicSupported());
     }
 
     @Test
@@ -1087,7 +1087,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FITNESS_MACHINE_STATUS_CHARACTERISTIC, 0, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineStatusCharacteristicSupported());
     }
 
     @Test
@@ -1098,7 +1098,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FITNESS_MACHINE_STATUS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineStatusCharacteristicSupported());
     }
 
     @Test
@@ -1111,7 +1111,7 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isFitnessMachineStatusCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isFitnessMachineStatusCharacteristicSupported());
     }
 
     @Test
@@ -5253,14 +5253,14 @@ public class FitnessMachineServiceTest {
     }
 
     @Test
-    public void test_isTreadmillDataCharacteristicSupporeted_00001() {
+    public void test_isTreadmillDataCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(new MockBLEConnection(), new MockFitnessMachineServiceCallback(), null);
 
-        assertFalse(fitnessMachineService.isTreadmillDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTreadmillDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isTreadmillDataCharacteristicSupporeted_00002() {
+    public void test_isTreadmillDataCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5269,11 +5269,11 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isTreadmillDataCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isTreadmillDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isTreadmillDataCharacteristicSupporeted_00003() {
+    public void test_isTreadmillDataCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5283,18 +5283,18 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isTreadmillDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTreadmillDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isCrossTrainerDataCharacteristicSupporeted_00001() {
+    public void test_isCrossTrainerDataCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(new MockBLEConnection(), new MockFitnessMachineServiceCallback(), null);
 
-        assertFalse(fitnessMachineService.isCrossTrainerDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isCrossTrainerDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isCrossTrainerDataCharacteristicSupporeted_00002() {
+    public void test_isCrossTrainerDataCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5303,11 +5303,11 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isCrossTrainerDataCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isCrossTrainerDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isCrossTrainerDataCharacteristicSupporeted_00003() {
+    public void test_isCrossTrainerDataCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5317,18 +5317,18 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isCrossTrainerDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isCrossTrainerDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isStepClimberDataCharacteristicSupporeted_00001() {
+    public void test_isStepClimberDataCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(new MockBLEConnection(), new MockFitnessMachineServiceCallback(), null);
 
-        assertFalse(fitnessMachineService.isStepClimberDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isStepClimberDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isStepClimberDataCharacteristicSupporeted_00002() {
+    public void test_isStepClimberDataCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5337,11 +5337,11 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isStepClimberDataCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isStepClimberDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isStepClimberDataCharacteristicSupporeted_00003() {
+    public void test_isStepClimberDataCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5351,18 +5351,18 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isStepClimberDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isStepClimberDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isStairClimberDataCharacteristicSupporeted_00001() {
+    public void test_isStairClimberDataCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(new MockBLEConnection(), new MockFitnessMachineServiceCallback(), null);
 
-        assertFalse(fitnessMachineService.isStairClimberDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isStairClimberDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isStairClimberDataCharacteristicSupporeted_00002() {
+    public void test_isStairClimberDataCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5371,11 +5371,11 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isStairClimberDataCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isStairClimberDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isStairClimberDataCharacteristicSupporeted_00003() {
+    public void test_isStairClimberDataCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5385,18 +5385,18 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isStairClimberDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isStairClimberDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isRowerDataCharacteristicSupporeted_00001() {
+    public void test_isRowerDataCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(new MockBLEConnection(), new MockFitnessMachineServiceCallback(), null);
 
-        assertFalse(fitnessMachineService.isRowerDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isRowerDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isRowerDataCharacteristicSupporeted_00002() {
+    public void test_isRowerDataCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5405,11 +5405,11 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isRowerDataCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isRowerDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isRowerDataCharacteristicSupporeted_00003() {
+    public void test_isRowerDataCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5419,18 +5419,18 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isRowerDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isRowerDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isIndoorBikeDataCharacteristicSupporeted_00001() {
+    public void test_isIndoorBikeDataCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(new MockBLEConnection(), new MockFitnessMachineServiceCallback(), null);
 
-        assertFalse(fitnessMachineService.isIndoorBikeDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isIndoorBikeDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isIndoorBikeDataCharacteristicSupporeted_00002() {
+    public void test_isIndoorBikeDataCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5439,11 +5439,11 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isIndoorBikeDataCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isIndoorBikeDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isIndoorBikeDataCharacteristicSupporeted_00003() {
+    public void test_isIndoorBikeDataCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5453,18 +5453,18 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isIndoorBikeDataCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isIndoorBikeDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isTrainingStatusCharacteristicSupporeted_00001() {
+    public void test_isTrainingStatusCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(new MockBLEConnection(), new MockFitnessMachineServiceCallback(), null);
 
-        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupported());
     }
 
     @Test
-    public void test_isTrainingStatusCharacteristicSupporeted_00002() {
+    public void test_isTrainingStatusCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5473,11 +5473,11 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isTrainingStatusCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isTrainingStatusCharacteristicSupported());
     }
 
     @Test
-    public void test_isTrainingStatusCharacteristicSupporeted_00003() {
+    public void test_isTrainingStatusCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5487,18 +5487,18 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isTrainingStatusCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedSpeedRangeCharacteristicSupporeted_00001() {
+    public void test_isSupportedSpeedRangeCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(new MockBLEConnection(), new MockFitnessMachineServiceCallback(), null);
 
-        assertFalse(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedSpeedRangeCharacteristicSupporeted_00002() {
+    public void test_isSupportedSpeedRangeCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5507,11 +5507,11 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedSpeedRangeCharacteristicSupporeted_00003() {
+    public void test_isSupportedSpeedRangeCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5521,18 +5521,18 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedSpeedRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedInclinationRangeCharacteristicSupporeted_00001() {
+    public void test_isSupportedInclinationRangeCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(new MockBLEConnection(), new MockFitnessMachineServiceCallback(), null);
 
-        assertFalse(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedInclinationRangeCharacteristicSupporeted_00002() {
+    public void test_isSupportedInclinationRangeCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5541,11 +5541,11 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedInclinationRangeCharacteristicSupporeted_00003() {
+    public void test_isSupportedInclinationRangeCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5555,18 +5555,18 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedInclinationRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedResistanceLevelRangeCharacteristicSupporeted_00001() {
+    public void test_isSupportedResistanceLevelRangeCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(new MockBLEConnection(), new MockFitnessMachineServiceCallback(), null);
 
-        assertFalse(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedResistanceLevelRangeCharacteristicSupporeted_00002() {
+    public void test_isSupportedResistanceLevelRangeCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5575,11 +5575,11 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedResistanceLevelRangeCharacteristicSupporeted_00003() {
+    public void test_isSupportedResistanceLevelRangeCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5589,18 +5589,18 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedResistanceLevelRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedPowerRangeCharacteristicSupporeted_00001() {
+    public void test_isSupportedPowerRangeCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(new MockBLEConnection(), new MockFitnessMachineServiceCallback(), null);
 
-        assertFalse(fitnessMachineService.isSupportedPowerRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedPowerRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedPowerRangeCharacteristicSupporeted_00002() {
+    public void test_isSupportedPowerRangeCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5609,11 +5609,11 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isSupportedPowerRangeCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isSupportedPowerRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedPowerRangeCharacteristicSupporeted_00003() {
+    public void test_isSupportedPowerRangeCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5623,18 +5623,18 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isSupportedPowerRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedPowerRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedHeartRateRangeCharacteristicSupporeted_00001() {
+    public void test_isSupportedHeartRateRangeCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(new MockBLEConnection(), new MockFitnessMachineServiceCallback(), null);
 
-        assertFalse(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedHeartRateRangeCharacteristicSupporeted_00002() {
+    public void test_isSupportedHeartRateRangeCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5643,11 +5643,11 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedHeartRateRangeCharacteristicSupporeted_00003() {
+    public void test_isSupportedHeartRateRangeCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5657,18 +5657,18 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isSupportedHeartRateRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isFitnessMachineControlPointCharacteristicSupporeted_00001() {
+    public void test_isFitnessMachineControlPointCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(new MockBLEConnection(), new MockFitnessMachineServiceCallback(), null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isFitnessMachineControlPointCharacteristicSupporeted_00002() {
+    public void test_isFitnessMachineControlPointCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5677,11 +5677,11 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isFitnessMachineControlPointCharacteristicSupporeted_00003() {
+    public void test_isFitnessMachineControlPointCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5691,18 +5691,18 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isFitnessMachineStatusCharacteristicSupporeted_00001() {
+    public void test_isFitnessMachineStatusCharacteristicSupported_00001() {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(new MockBLEConnection(), new MockFitnessMachineServiceCallback(), null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineStatusCharacteristicSupported());
     }
 
     @Test
-    public void test_isFitnessMachineStatusCharacteristicSupporeted_00002() {
+    public void test_isFitnessMachineStatusCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5711,11 +5711,11 @@ public class FitnessMachineServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(fitnessMachineService.isFitnessMachineStatusCharacteristicSupporeted());
+        assertTrue(fitnessMachineService.isFitnessMachineStatusCharacteristicSupported());
     }
 
     @Test
-    public void test_isFitnessMachineStatusCharacteristicSupporeted_00003() {
+    public void test_isFitnessMachineStatusCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(FITNESS_MACHINE_SERVICE, 0);
@@ -5725,7 +5725,7 @@ public class FitnessMachineServiceTest {
         fitnessMachineService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         fitnessMachineService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(fitnessMachineService.isFitnessMachineStatusCharacteristicSupporeted());
+        assertFalse(fitnessMachineService.isFitnessMachineStatusCharacteristicSupported());
     }
 
     @Test
@@ -5799,7 +5799,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isTreadmillDataCharacteristicSupporeted() {
+            public boolean isTreadmillDataCharacteristicSupported() {
                 return true;
             }
 
@@ -5827,7 +5827,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isTreadmillDataCharacteristicSupporeted() {
+            public boolean isTreadmillDataCharacteristicSupported() {
                 return true;
             }
 
@@ -5870,7 +5870,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isTreadmillDataCharacteristicSupporeted() {
+            public boolean isTreadmillDataCharacteristicSupported() {
                 return true;
             }
 
@@ -5898,7 +5898,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isTreadmillDataCharacteristicSupporeted() {
+            public boolean isTreadmillDataCharacteristicSupported() {
                 return true;
             }
 
@@ -5941,7 +5941,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isTreadmillDataCharacteristicSupporeted() {
+            public boolean isTreadmillDataCharacteristicSupported() {
                 return true;
             }
 
@@ -5969,7 +5969,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isTreadmillDataCharacteristicSupporeted() {
+            public boolean isTreadmillDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6012,7 +6012,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isCrossTrainerDataCharacteristicSupporeted() {
+            public boolean isCrossTrainerDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6040,7 +6040,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isCrossTrainerDataCharacteristicSupporeted() {
+            public boolean isCrossTrainerDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6083,7 +6083,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isCrossTrainerDataCharacteristicSupporeted() {
+            public boolean isCrossTrainerDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6111,7 +6111,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isCrossTrainerDataCharacteristicSupporeted() {
+            public boolean isCrossTrainerDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6154,7 +6154,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isCrossTrainerDataCharacteristicSupporeted() {
+            public boolean isCrossTrainerDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6182,7 +6182,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isCrossTrainerDataCharacteristicSupporeted() {
+            public boolean isCrossTrainerDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6225,7 +6225,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isStepClimberDataCharacteristicSupporeted() {
+            public boolean isStepClimberDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6253,7 +6253,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isStepClimberDataCharacteristicSupporeted() {
+            public boolean isStepClimberDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6296,7 +6296,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isStepClimberDataCharacteristicSupporeted() {
+            public boolean isStepClimberDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6324,7 +6324,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isStepClimberDataCharacteristicSupporeted() {
+            public boolean isStepClimberDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6367,7 +6367,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isStepClimberDataCharacteristicSupporeted() {
+            public boolean isStepClimberDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6395,7 +6395,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isStepClimberDataCharacteristicSupporeted() {
+            public boolean isStepClimberDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6438,7 +6438,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isStairClimberDataCharacteristicSupporeted() {
+            public boolean isStairClimberDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6466,7 +6466,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isStairClimberDataCharacteristicSupporeted() {
+            public boolean isStairClimberDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6509,7 +6509,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isStairClimberDataCharacteristicSupporeted() {
+            public boolean isStairClimberDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6537,7 +6537,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isStairClimberDataCharacteristicSupporeted() {
+            public boolean isStairClimberDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6580,7 +6580,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isStairClimberDataCharacteristicSupporeted() {
+            public boolean isStairClimberDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6608,7 +6608,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isStairClimberDataCharacteristicSupporeted() {
+            public boolean isStairClimberDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6651,7 +6651,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isRowerDataCharacteristicSupporeted() {
+            public boolean isRowerDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6679,7 +6679,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isRowerDataCharacteristicSupporeted() {
+            public boolean isRowerDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6722,7 +6722,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isRowerDataCharacteristicSupporeted() {
+            public boolean isRowerDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6750,7 +6750,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isRowerDataCharacteristicSupporeted() {
+            public boolean isRowerDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6793,7 +6793,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isRowerDataCharacteristicSupporeted() {
+            public boolean isRowerDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6821,7 +6821,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isRowerDataCharacteristicSupporeted() {
+            public boolean isRowerDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6864,7 +6864,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isIndoorBikeDataCharacteristicSupporeted() {
+            public boolean isIndoorBikeDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6892,7 +6892,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isIndoorBikeDataCharacteristicSupporeted() {
+            public boolean isIndoorBikeDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6935,7 +6935,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isIndoorBikeDataCharacteristicSupporeted() {
+            public boolean isIndoorBikeDataCharacteristicSupported() {
                 return true;
             }
 
@@ -6963,7 +6963,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isIndoorBikeDataCharacteristicSupporeted() {
+            public boolean isIndoorBikeDataCharacteristicSupported() {
                 return true;
             }
 
@@ -7006,7 +7006,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isIndoorBikeDataCharacteristicSupporeted() {
+            public boolean isIndoorBikeDataCharacteristicSupported() {
                 return true;
             }
 
@@ -7034,7 +7034,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isIndoorBikeDataCharacteristicSupporeted() {
+            public boolean isIndoorBikeDataCharacteristicSupported() {
                 return true;
             }
 
@@ -7077,7 +7077,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isTrainingStatusCharacteristicSupporeted() {
+            public boolean isTrainingStatusCharacteristicSupported() {
                 return true;
             }
 
@@ -7105,7 +7105,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isTrainingStatusCharacteristicSupporeted() {
+            public boolean isTrainingStatusCharacteristicSupported() {
                 return true;
             }
 
@@ -7148,7 +7148,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isTrainingStatusCharacteristicSupporeted() {
+            public boolean isTrainingStatusCharacteristicSupported() {
                 return true;
             }
 
@@ -7176,7 +7176,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isTrainingStatusCharacteristicSupporeted() {
+            public boolean isTrainingStatusCharacteristicSupported() {
                 return true;
             }
 
@@ -7219,7 +7219,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isTrainingStatusCharacteristicSupporeted() {
+            public boolean isTrainingStatusCharacteristicSupported() {
                 return true;
             }
 
@@ -7247,7 +7247,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isTrainingStatusCharacteristicSupporeted() {
+            public boolean isTrainingStatusCharacteristicSupported() {
                 return true;
             }
 
@@ -7290,7 +7290,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isTrainingStatusCharacteristicSupporeted() {
+            public boolean isTrainingStatusCharacteristicSupported() {
                 return true;
             }
 
@@ -7318,7 +7318,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isTrainingStatusCharacteristicSupporeted() {
+            public boolean isTrainingStatusCharacteristicSupported() {
                 return true;
             }
 
@@ -7361,7 +7361,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isSupportedSpeedRangeCharacteristicSupporeted() {
+            public boolean isSupportedSpeedRangeCharacteristicSupported() {
                 return true;
             }
 
@@ -7389,7 +7389,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isSupportedSpeedRangeCharacteristicSupporeted() {
+            public boolean isSupportedSpeedRangeCharacteristicSupported() {
                 return true;
             }
 
@@ -7432,7 +7432,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isSupportedInclinationRangeCharacteristicSupporeted() {
+            public boolean isSupportedInclinationRangeCharacteristicSupported() {
                 return true;
             }
 
@@ -7460,7 +7460,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isSupportedInclinationRangeCharacteristicSupporeted() {
+            public boolean isSupportedInclinationRangeCharacteristicSupported() {
                 return true;
             }
 
@@ -7503,7 +7503,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isSupportedResistanceLevelRangeCharacteristicSupporeted() {
+            public boolean isSupportedResistanceLevelRangeCharacteristicSupported() {
                 return true;
             }
 
@@ -7531,7 +7531,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isSupportedResistanceLevelRangeCharacteristicSupporeted() {
+            public boolean isSupportedResistanceLevelRangeCharacteristicSupported() {
                 return true;
             }
 
@@ -7574,7 +7574,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isSupportedPowerRangeCharacteristicSupporeted() {
+            public boolean isSupportedPowerRangeCharacteristicSupported() {
                 return true;
             }
 
@@ -7602,7 +7602,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isSupportedPowerRangeCharacteristicSupporeted() {
+            public boolean isSupportedPowerRangeCharacteristicSupported() {
                 return true;
             }
 
@@ -7645,7 +7645,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isSupportedHeartRateRangeCharacteristicSupporeted() {
+            public boolean isSupportedHeartRateRangeCharacteristicSupported() {
                 return true;
             }
 
@@ -7673,7 +7673,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isSupportedHeartRateRangeCharacteristicSupporeted() {
+            public boolean isSupportedHeartRateRangeCharacteristicSupported() {
                 return true;
             }
 
@@ -7716,7 +7716,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isFitnessMachineControlPointCharacteristicSupporeted() {
+            public boolean isFitnessMachineControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -7744,7 +7744,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isFitnessMachineControlPointCharacteristicSupporeted() {
+            public boolean isFitnessMachineControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -7787,7 +7787,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isFitnessMachineControlPointCharacteristicSupporeted() {
+            public boolean isFitnessMachineControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -7815,7 +7815,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isFitnessMachineControlPointCharacteristicSupporeted() {
+            public boolean isFitnessMachineControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -7858,7 +7858,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isFitnessMachineControlPointCharacteristicSupporeted() {
+            public boolean isFitnessMachineControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -7886,7 +7886,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isFitnessMachineControlPointCharacteristicSupporeted() {
+            public boolean isFitnessMachineControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -7929,7 +7929,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isFitnessMachineControlPointCharacteristicSupporeted() {
+            public boolean isFitnessMachineControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -7957,7 +7957,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isFitnessMachineControlPointCharacteristicSupporeted() {
+            public boolean isFitnessMachineControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -8000,7 +8000,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isFitnessMachineStatusCharacteristicSupporeted() {
+            public boolean isFitnessMachineStatusCharacteristicSupported() {
                 return true;
             }
 
@@ -8028,7 +8028,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isFitnessMachineStatusCharacteristicSupporeted() {
+            public boolean isFitnessMachineStatusCharacteristicSupported() {
                 return true;
             }
 
@@ -8071,7 +8071,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isFitnessMachineStatusCharacteristicSupporeted() {
+            public boolean isFitnessMachineStatusCharacteristicSupported() {
                 return true;
             }
 
@@ -8099,7 +8099,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isFitnessMachineStatusCharacteristicSupporeted() {
+            public boolean isFitnessMachineStatusCharacteristicSupported() {
                 return true;
             }
 
@@ -8142,7 +8142,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isFitnessMachineStatusCharacteristicSupporeted() {
+            public boolean isFitnessMachineStatusCharacteristicSupported() {
                 return true;
             }
 
@@ -8170,7 +8170,7 @@ public class FitnessMachineServiceTest {
         FitnessMachineService fitnessMachineService = new FitnessMachineService(mockBLEConnection, new MockFitnessMachineServiceCallback(), null) {
 
             @Override
-            public boolean isFitnessMachineStatusCharacteristicSupporeted() {
+            public boolean isFitnessMachineStatusCharacteristicSupported() {
                 return true;
             }
 

@@ -17,6 +17,7 @@ import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
 import org.im97mori.ble.characteristic.u2a16.TimeUpdateControlPoint;
 import org.im97mori.ble.characteristic.u2a2b.CurrentTime;
+import org.im97mori.ble.profile.tip.central.db.TimeProfileBondedDatabaseHelper;
 import org.im97mori.ble.service.cts.central.CurrentTimeService;
 import org.im97mori.ble.service.ndcs.central.NextDstChangeService;
 import org.im97mori.ble.service.rtus.central.ReferenceTimeUpdateService;
@@ -37,7 +38,7 @@ import static org.junit.Assert.assertTrue;
 public class TimeProfileTest {
 
     @Test
-    public void test_findWeightScaleProfileDevices_00001() {
+    public void test_findTimeProfileDevices_00001() {
         TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback());
         assertNull(timeProfile.findTimeProfileDevices(BASE_UUID, null));
     }
@@ -142,13 +143,13 @@ public class TimeProfileTest {
     }
 
     @Test
-    public void test_isLocalTimeInformationCharacteristicSupporeted_00001() {
+    public void test_isLocalTimeInformationCharacteristicSupported_00001() {
         TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback());
-        assertNull(timeProfile.isLocalTimeInformationCharacteristicSupporeted());
+        assertNull(timeProfile.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
-    public void test_isLocalTimeInformationCharacteristicSupporeted_00002() {
+    public void test_isLocalTimeInformationCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -169,7 +170,7 @@ public class TimeProfileTest {
             }
         };
         timeProfile.connect(MOCK_DEVICE);
-        assertNotNull(timeProfile.isLocalTimeInformationCharacteristicSupporeted());
+        assertNotNull(timeProfile.isLocalTimeInformationCharacteristicSupported());
         timeProfile.disconnect();
     }
 
@@ -206,13 +207,13 @@ public class TimeProfileTest {
     }
 
     @Test
-    public void test_isReferenceTimeInformationCharacteristicSupporeted_00001() {
+    public void test_isReferenceTimeInformationCharacteristicSupported_00001() {
         TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback());
-        assertNull(timeProfile.isReferenceTimeInformationCharacteristicSupporeted());
+        assertNull(timeProfile.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
-    public void test_isReferenceTimeInformationCharacteristicSupporeted_00002() {
+    public void test_isReferenceTimeInformationCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -233,7 +234,7 @@ public class TimeProfileTest {
             }
         };
         timeProfile.connect(MOCK_DEVICE);
-        assertNotNull(timeProfile.isReferenceTimeInformationCharacteristicSupporeted());
+        assertNotNull(timeProfile.isReferenceTimeInformationCharacteristicSupported());
         timeProfile.disconnect();
     }
 
@@ -509,7 +510,7 @@ public class TimeProfileTest {
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null) {
                         @Override
-                        public boolean isLocalTimeInformationCharacteristicSupporeted() {
+                        public boolean isLocalTimeInformationCharacteristicSupported() {
                             return true;
                         }
 
@@ -563,7 +564,7 @@ public class TimeProfileTest {
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null) {
                         @Override
-                        public boolean isLocalTimeInformationCharacteristicSupporeted() {
+                        public boolean isLocalTimeInformationCharacteristicSupported() {
                             return true;
                         }
 
@@ -617,7 +618,7 @@ public class TimeProfileTest {
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mTimeProfileCallback, null) {
                         @Override
-                        public boolean isReferenceTimeInformationCharacteristicSupporeted() {
+                        public boolean isReferenceTimeInformationCharacteristicSupported() {
                             return true;
                         }
 
@@ -785,6 +786,45 @@ public class TimeProfileTest {
         timeProfile.connect(MOCK_DEVICE);
         assertNotNull(timeProfile.getTimeUpdateState());
         timeProfile.disconnect();
+    }
+
+    @Test
+    public void test_getDatabaseHelper_00001() {
+        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback());
+        assertTrue(timeProfile.getDatabaseHelper() instanceof TimeProfileBondedDatabaseHelper);
+    }
+
+    @Test
+    public void test_createServices_00001() {
+        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback()) {
+            @Override
+            public synchronized void createServices() {
+                super.createServices();
+                atomicBoolean.set(true);
+            }
+        };
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        timeProfile.connect(MOCK_DEVICE);
+        assertNotNull(timeProfile.mCurrentTimeService);
+        assertNotNull(timeProfile.mNextDstChangeService);
+        assertNotNull(timeProfile.mReferenceTimeUpdateService);
+        assertTrue(atomicBoolean.get());
+    }
+
+    @Test
+    public void test_quit_00001() {
+        TimeProfile timeProfile = new TimeProfile(ApplicationProvider.getApplicationContext(), new BaseTimeProfileCallback());
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        assertNotNull(bluetoothAdapter);
+        BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
+        timeProfile.connect(MOCK_DEVICE);
+        timeProfile.quit();
+        assertNull(timeProfile.mCurrentTimeService);
+        assertNull(timeProfile.mNextDstChangeService);
+        assertNull(timeProfile.mReferenceTimeUpdateService);
     }
 
 }

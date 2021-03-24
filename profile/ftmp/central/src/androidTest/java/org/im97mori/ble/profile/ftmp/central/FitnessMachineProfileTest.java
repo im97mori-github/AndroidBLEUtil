@@ -51,7 +51,7 @@ import static org.junit.Assert.assertTrue;
 public class FitnessMachineProfileTest {
 
     @Test
-    public void test_findBloodPressureProfileDevices_00001() {
+    public void test_findFitnessMachineProfileDevices_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
         assertNull(fitnessMachineProfile.findFitnessMachineProfileDevices(null));
     }
@@ -124,13 +124,13 @@ public class FitnessMachineProfileTest {
     }
 
     @Test
-    public void test_isTreadmillDataCharacteristicSupporeted_00001() {
+    public void test_isTreadmillDataCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isTreadmillDataCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isTreadmillDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isTreadmillDataCharacteristicSupporeted_00002() {
+    public void test_isTreadmillDataCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -154,18 +154,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isTreadmillDataCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isTreadmillDataCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isCrossTrainerDataCharacteristicSupporeted_00001() {
+    public void test_isCrossTrainerDataCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isCrossTrainerDataCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isCrossTrainerDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isCrossTrainerDataCharacteristicSupporeted_00002() {
+    public void test_isCrossTrainerDataCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -189,18 +189,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isCrossTrainerDataCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isCrossTrainerDataCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isStepClimberDataCharacteristicSupporeted_00001() {
+    public void test_isStepClimberDataCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isStepClimberDataCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isStepClimberDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isStepClimberDataCharacteristicSupporeted_00002() {
+    public void test_isStepClimberDataCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -224,18 +224,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isStepClimberDataCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isStepClimberDataCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isStairClimberDataCharacteristicSupporeted_00001() {
+    public void test_isStairClimberDataCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isStairClimberDataCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isStairClimberDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isStairClimberDataCharacteristicSupporeted_00002() {
+    public void test_isStairClimberDataCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -259,18 +259,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isStairClimberDataCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isStairClimberDataCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isRowerDataCharacteristicSupporeted_00001() {
+    public void test_isRowerDataCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isRowerDataCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isRowerDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isRowerDataCharacteristicSupporeted_00002() {
+    public void test_isRowerDataCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -294,18 +294,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isRowerDataCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isRowerDataCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isIndoorBikeDataCharacteristicSupporeted_00001() {
+    public void test_isIndoorBikeDataCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isIndoorBikeDataCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isIndoorBikeDataCharacteristicSupported());
     }
 
     @Test
-    public void test_isIndoorBikeDataCharacteristicSupporeted_00002() {
+    public void test_isIndoorBikeDataCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -329,18 +329,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isIndoorBikeDataCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isIndoorBikeDataCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isTrainingStatusCharacteristicSupporeted_00001() {
+    public void test_isTrainingStatusCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isTrainingStatusCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isTrainingStatusCharacteristicSupported());
     }
 
     @Test
-    public void test_isTrainingStatusCharacteristicSupporeted_00002() {
+    public void test_isTrainingStatusCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -364,18 +364,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isTrainingStatusCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isTrainingStatusCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isSupportedSpeedRangeCharacteristicSupporeted_00001() {
+    public void test_isSupportedSpeedRangeCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isSupportedSpeedRangeCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isSupportedSpeedRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedSpeedRangeCharacteristicSupporeted_00002() {
+    public void test_isSupportedSpeedRangeCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -399,18 +399,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isSupportedSpeedRangeCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isSupportedSpeedRangeCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isSupportedInclinationRangeCharacteristicSupporeted_00001() {
+    public void test_isSupportedInclinationRangeCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isSupportedInclinationRangeCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isSupportedInclinationRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedInclinationRangeCharacteristicSupporeted_00002() {
+    public void test_isSupportedInclinationRangeCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -434,18 +434,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isSupportedInclinationRangeCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isSupportedInclinationRangeCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isSupportedResistanceLevelRangeCharacteristicSupporeted_00001() {
+    public void test_isSupportedResistanceLevelRangeCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isSupportedResistanceLevelRangeCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isSupportedResistanceLevelRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedResistanceLevelRangeCharacteristicSupporeted_00002() {
+    public void test_isSupportedResistanceLevelRangeCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -469,18 +469,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isSupportedResistanceLevelRangeCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isSupportedResistanceLevelRangeCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isSupportedPowerRangeCharacteristicSupporeted_00001() {
+    public void test_isSupportedPowerRangeCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isSupportedPowerRangeCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isSupportedPowerRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedPowerRangeCharacteristicSupporeted_00002() {
+    public void test_isSupportedPowerRangeCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -504,18 +504,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isSupportedPowerRangeCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isSupportedPowerRangeCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isSupportedHeartRateRangeCharacteristicSupporeted_00001() {
+    public void test_isSupportedHeartRateRangeCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isSupportedHeartRateRangeCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isSupportedHeartRateRangeCharacteristicSupported());
     }
 
     @Test
-    public void test_isSupportedHeartRateRangeCharacteristicSupporeted_00002() {
+    public void test_isSupportedHeartRateRangeCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -539,18 +539,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isSupportedHeartRateRangeCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isSupportedHeartRateRangeCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isFitnessMachineControlPointCharacteristicSupporeted_00001() {
+    public void test_isFitnessMachineControlPointCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isFitnessMachineControlPointCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isFitnessMachineControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isFitnessMachineControlPointCharacteristicSupporeted_00002() {
+    public void test_isFitnessMachineControlPointCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -574,18 +574,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isFitnessMachineControlPointCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isFitnessMachineControlPointCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isFitnessMachineStatusCharacteristicSupporeted_00001() {
+    public void test_isFitnessMachineStatusCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isFitnessMachineStatusCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isFitnessMachineStatusCharacteristicSupported());
     }
 
     @Test
-    public void test_isFitnessMachineStatusCharacteristicSupporeted_00002() {
+    public void test_isFitnessMachineStatusCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -609,18 +609,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isFitnessMachineStatusCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isFitnessMachineStatusCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isFirstNameCharacteristicSupporeted_00001() {
+    public void test_isFirstNameCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isFirstNameCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isFirstNameCharacteristicSupported());
     }
 
     @Test
-    public void test_isFirstNameCharacteristicSupporeted_00002() {
+    public void test_isFirstNameCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -644,18 +644,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isFirstNameCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isFirstNameCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isWeightCharacteristicSupporeted_00001() {
+    public void test_isWeightCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isWeightCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isWeightCharacteristicSupported());
     }
 
     @Test
-    public void test_isWeightCharacteristicSupporeted_00002() {
+    public void test_isWeightCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -679,18 +679,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isWeightCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isWeightCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isGenderCharacteristicSupporeted_00001() {
+    public void test_isGenderCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isGenderCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isGenderCharacteristicSupported());
     }
 
     @Test
-    public void test_isGenderCharacteristicSupporeted_00002() {
+    public void test_isGenderCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -714,18 +714,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isGenderCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isGenderCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isHeightCharacteristicSupporeted_00001() {
+    public void test_isHeightCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isHeightCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isHeightCharacteristicSupported());
     }
 
     @Test
-    public void test_isHeightCharacteristicSupporeted_00002() {
+    public void test_isHeightCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -749,18 +749,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isHeightCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isHeightCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isAgeCharacteristicSupporeted_00001() {
+    public void test_isAgeCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isAgeCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isAgeCharacteristicSupported());
     }
 
     @Test
-    public void test_isAgeCharacteristicSupporeted_00002() {
+    public void test_isAgeCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -784,18 +784,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isAgeCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isAgeCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isDateOfBirthCharacteristicSupporeted_00001() {
+    public void test_isDateOfBirthCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isDateOfBirthCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isDateOfBirthCharacteristicSupported());
     }
 
     @Test
-    public void test_isDateOfBirthCharacteristicSupporeted_00002() {
+    public void test_isDateOfBirthCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -819,18 +819,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isDateOfBirthCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isDateOfBirthCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isHeartRateMaxCharacteristicSupporeted_00001() {
+    public void test_isHeartRateMaxCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isHeartRateMaxCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isHeartRateMaxCharacteristicSupported());
     }
 
     @Test
-    public void test_isHeartRateMaxCharacteristicSupporeted_00002() {
+    public void test_isHeartRateMaxCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -854,18 +854,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isHeartRateMaxCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isHeartRateMaxCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isRestingHeartRateCharacteristicSupporeted_00001() {
+    public void test_isRestingHeartRateCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isRestingHeartRateCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isRestingHeartRateCharacteristicSupported());
     }
 
     @Test
-    public void test_isRestingHeartRateCharacteristicSupporeted_00002() {
+    public void test_isRestingHeartRateCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -889,18 +889,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isRestingHeartRateCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isRestingHeartRateCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isMaximumRecommendedHeartRateCharacteristicSupporeted_00001() {
+    public void test_isMaximumRecommendedHeartRateCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isMaximumRecommendedHeartRateCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isMaximumRecommendedHeartRateCharacteristicSupported());
     }
 
     @Test
-    public void test_isMaximumRecommendedHeartRateCharacteristicSupporeted_00002() {
+    public void test_isMaximumRecommendedHeartRateCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -924,18 +924,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isMaximumRecommendedHeartRateCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isMaximumRecommendedHeartRateCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isVO2MaxCharacteristicSupporeted_00001() {
+    public void test_isVO2MaxCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isVO2MaxCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isVO2MaxCharacteristicSupported());
     }
 
     @Test
-    public void test_isVO2MaxCharacteristicSupporeted_00002() {
+    public void test_isVO2MaxCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -959,18 +959,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isVO2MaxCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isVO2MaxCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isLanguageCharacteristicSupporeted_00001() {
+    public void test_isLanguageCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isLanguageCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isLanguageCharacteristicSupported());
     }
 
     @Test
-    public void test_isLanguageCharacteristicSupporeted_00002() {
+    public void test_isLanguageCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -994,18 +994,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isLanguageCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isLanguageCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isTwoZoneHeartRateLimitCharacteristicSupporeted_00001() {
+    public void test_isTwoZoneHeartRateLimitCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isTwoZoneHeartRateLimitCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isTwoZoneHeartRateLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isTwoZoneHeartRateLimitCharacteristicSupporeted_00002() {
+    public void test_isTwoZoneHeartRateLimitCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -1029,18 +1029,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isTwoZoneHeartRateLimitCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isTwoZoneHeartRateLimitCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isThreeZoneHeartRateLimitsCharacteristicSupporeted_00001() {
+    public void test_isThreeZoneHeartRateLimitsCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isThreeZoneHeartRateLimitsCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isThreeZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
-    public void test_isThreeZoneHeartRateLimitsCharacteristicSupporeted_00002() {
+    public void test_isThreeZoneHeartRateLimitsCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -1064,18 +1064,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isThreeZoneHeartRateLimitsCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isThreeZoneHeartRateLimitsCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isFiveZoneHeartRateLimitsCharacteristicSupporeted_00001() {
+    public void test_isFiveZoneHeartRateLimitsCharacteristicSupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isFiveZoneHeartRateLimitsCharacteristicSupporeted());
+        assertNull(fitnessMachineProfile.isFiveZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
-    public void test_isFiveZoneHeartRateLimitsCharacteristicSupporeted_00002() {
+    public void test_isFiveZoneHeartRateLimitsCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -1099,18 +1099,18 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isFiveZoneHeartRateLimitsCharacteristicSupporeted());
+        assertNotNull(fitnessMachineProfile.isFiveZoneHeartRateLimitsCharacteristicSupported());
         fitnessMachineProfile.disconnect();
     }
 
     @Test
-    public void test_isDatabaseChangeIncrementCharacteristicNotifySupporeted_00001() {
+    public void test_isDatabaseChangeIncrementCharacteristicNotifySupported_00001() {
         FitnessMachineProfile fitnessMachineProfile = new FitnessMachineProfile(ApplicationProvider.getApplicationContext(), new BaseFitnessMachineProfileCallback());
-        assertNull(fitnessMachineProfile.isDatabaseChangeIncrementCharacteristicNotifySupporeted());
+        assertNull(fitnessMachineProfile.isDatabaseChangeIncrementCharacteristicNotifySupported());
     }
 
     @Test
-    public void test_isDatabaseChangeIncrementCharacteristicNotifySupporeted_00002() {
+    public void test_isDatabaseChangeIncrementCharacteristicNotifySupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -1134,7 +1134,7 @@ public class FitnessMachineProfileTest {
             }
         };
         fitnessMachineProfile.connect(MOCK_DEVICE);
-        assertNotNull(fitnessMachineProfile.isDatabaseChangeIncrementCharacteristicNotifySupporeted());
+        assertNotNull(fitnessMachineProfile.isDatabaseChangeIncrementCharacteristicNotifySupported());
         fitnessMachineProfile.disconnect();
     }
 
@@ -1298,7 +1298,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isTreadmillDataCharacteristicSupporeted() {
+                        public boolean isTreadmillDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1354,7 +1354,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isTreadmillDataCharacteristicSupporeted() {
+                        public boolean isTreadmillDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1410,7 +1410,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isTreadmillDataCharacteristicSupporeted() {
+                        public boolean isTreadmillDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1466,7 +1466,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isCrossTrainerDataCharacteristicSupporeted() {
+                        public boolean isCrossTrainerDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1522,7 +1522,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isCrossTrainerDataCharacteristicSupporeted() {
+                        public boolean isCrossTrainerDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1578,7 +1578,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isCrossTrainerDataCharacteristicSupporeted() {
+                        public boolean isCrossTrainerDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1634,7 +1634,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isStepClimberDataCharacteristicSupporeted() {
+                        public boolean isStepClimberDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1690,7 +1690,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isStepClimberDataCharacteristicSupporeted() {
+                        public boolean isStepClimberDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1746,7 +1746,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isStepClimberDataCharacteristicSupporeted() {
+                        public boolean isStepClimberDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1802,7 +1802,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isStairClimberDataCharacteristicSupporeted() {
+                        public boolean isStairClimberDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1858,7 +1858,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isStairClimberDataCharacteristicSupporeted() {
+                        public boolean isStairClimberDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1914,7 +1914,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isStairClimberDataCharacteristicSupporeted() {
+                        public boolean isStairClimberDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1970,7 +1970,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isRowerDataCharacteristicSupporeted() {
+                        public boolean isRowerDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -2026,7 +2026,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isRowerDataCharacteristicSupporeted() {
+                        public boolean isRowerDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -2082,7 +2082,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isRowerDataCharacteristicSupporeted() {
+                        public boolean isRowerDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -2138,7 +2138,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isIndoorBikeDataCharacteristicSupporeted() {
+                        public boolean isIndoorBikeDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -2194,7 +2194,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isIndoorBikeDataCharacteristicSupporeted() {
+                        public boolean isIndoorBikeDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -2250,7 +2250,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isIndoorBikeDataCharacteristicSupporeted() {
+                        public boolean isIndoorBikeDataCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -2301,7 +2301,7 @@ public class FitnessMachineProfileTest {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isTrainingStatusCharacteristicSupporeted() {
+                        public boolean isTrainingStatusCharacteristicSupported() {
                             return true;
                         }
 
@@ -2363,7 +2363,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isTrainingStatusCharacteristicSupporeted() {
+                        public boolean isTrainingStatusCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -2419,7 +2419,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isTrainingStatusCharacteristicSupporeted() {
+                        public boolean isTrainingStatusCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -2475,7 +2475,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isTrainingStatusCharacteristicSupporeted() {
+                        public boolean isTrainingStatusCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -2526,7 +2526,7 @@ public class FitnessMachineProfileTest {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isSupportedSpeedRangeCharacteristicSupporeted() {
+                        public boolean isSupportedSpeedRangeCharacteristicSupported() {
                             return true;
                         }
 
@@ -2583,7 +2583,7 @@ public class FitnessMachineProfileTest {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isSupportedInclinationRangeCharacteristicSupporeted() {
+                        public boolean isSupportedInclinationRangeCharacteristicSupported() {
                             return true;
                         }
 
@@ -2640,7 +2640,7 @@ public class FitnessMachineProfileTest {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isSupportedResistanceLevelRangeCharacteristicSupporeted() {
+                        public boolean isSupportedResistanceLevelRangeCharacteristicSupported() {
                             return true;
                         }
 
@@ -2697,7 +2697,7 @@ public class FitnessMachineProfileTest {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isSupportedPowerRangeCharacteristicSupporeted() {
+                        public boolean isSupportedPowerRangeCharacteristicSupported() {
                             return true;
                         }
 
@@ -2754,7 +2754,7 @@ public class FitnessMachineProfileTest {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isSupportedHeartRateRangeCharacteristicSupporeted() {
+                        public boolean isSupportedHeartRateRangeCharacteristicSupported() {
                             return true;
                         }
 
@@ -2811,7 +2811,7 @@ public class FitnessMachineProfileTest {
                     mFitnessMachineService = new FitnessMachineService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isFitnessMachineControlPointCharacteristicSupporeted() {
+                        public boolean isFitnessMachineControlPointCharacteristicSupported() {
                             return true;
                         }
 
@@ -2873,7 +2873,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isFitnessMachineControlPointCharacteristicSupporeted() {
+                        public boolean isFitnessMachineControlPointCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -2929,7 +2929,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isFitnessMachineControlPointCharacteristicSupporeted() {
+                        public boolean isFitnessMachineControlPointCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -2985,7 +2985,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isFitnessMachineControlPointCharacteristicSupporeted() {
+                        public boolean isFitnessMachineControlPointCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -3041,7 +3041,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isFitnessMachineStatusCharacteristicSupporeted() {
+                        public boolean isFitnessMachineStatusCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -3097,7 +3097,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isFitnessMachineStatusCharacteristicSupporeted() {
+                        public boolean isFitnessMachineStatusCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -3153,7 +3153,7 @@ public class FitnessMachineProfileTest {
                         }
 
                         @Override
-                        public boolean isFitnessMachineStatusCharacteristicSupporeted() {
+                        public boolean isFitnessMachineStatusCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -3314,7 +3314,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupporeted() {
+                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
                             return true;
                         }
 
@@ -3371,7 +3371,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupporeted() {
+                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
                             return true;
                         }
 
@@ -3428,7 +3428,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupporeted() {
+                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
                             return true;
                         }
 
@@ -3745,7 +3745,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isFirstNameCharacteristicSupporeted() {
+                        public boolean isFirstNameCharacteristicSupported() {
                             return true;
                         }
 
@@ -3802,7 +3802,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isFirstNameCharacteristicSupporeted() {
+                        public boolean isFirstNameCharacteristicSupported() {
                             return true;
                         }
 
@@ -3859,7 +3859,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isWeightCharacteristicSupporeted() {
+                        public boolean isWeightCharacteristicSupported() {
                             return true;
                         }
 
@@ -3916,7 +3916,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isWeightCharacteristicSupporeted() {
+                        public boolean isWeightCharacteristicSupported() {
                             return true;
                         }
 
@@ -3973,7 +3973,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isGenderCharacteristicSupporeted() {
+                        public boolean isGenderCharacteristicSupported() {
                             return true;
                         }
 
@@ -4030,7 +4030,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isGenderCharacteristicSupporeted() {
+                        public boolean isGenderCharacteristicSupported() {
                             return true;
                         }
 
@@ -4087,7 +4087,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isHeightCharacteristicSupporeted() {
+                        public boolean isHeightCharacteristicSupported() {
                             return true;
                         }
 
@@ -4144,7 +4144,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isHeightCharacteristicSupporeted() {
+                        public boolean isHeightCharacteristicSupported() {
                             return true;
                         }
 
@@ -4201,7 +4201,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isAgeCharacteristicSupporeted() {
+                        public boolean isAgeCharacteristicSupported() {
                             return true;
                         }
 
@@ -4258,7 +4258,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isAgeCharacteristicSupporeted() {
+                        public boolean isAgeCharacteristicSupported() {
                             return true;
                         }
 
@@ -4315,7 +4315,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isDateOfBirthCharacteristicSupporeted() {
+                        public boolean isDateOfBirthCharacteristicSupported() {
                             return true;
                         }
 
@@ -4372,7 +4372,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isDateOfBirthCharacteristicSupporeted() {
+                        public boolean isDateOfBirthCharacteristicSupported() {
                             return true;
                         }
 
@@ -4429,7 +4429,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isHeartRateMaxCharacteristicSupporeted() {
+                        public boolean isHeartRateMaxCharacteristicSupported() {
                             return true;
                         }
 
@@ -4486,7 +4486,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isHeartRateMaxCharacteristicSupporeted() {
+                        public boolean isHeartRateMaxCharacteristicSupported() {
                             return true;
                         }
 
@@ -4543,7 +4543,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isRestingHeartRateCharacteristicSupporeted() {
+                        public boolean isRestingHeartRateCharacteristicSupported() {
                             return true;
                         }
 
@@ -4600,7 +4600,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isRestingHeartRateCharacteristicSupporeted() {
+                        public boolean isRestingHeartRateCharacteristicSupported() {
                             return true;
                         }
 
@@ -4657,7 +4657,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isMaximumRecommendedHeartRateCharacteristicSupporeted() {
+                        public boolean isMaximumRecommendedHeartRateCharacteristicSupported() {
                             return true;
                         }
 
@@ -4714,7 +4714,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isMaximumRecommendedHeartRateCharacteristicSupporeted() {
+                        public boolean isMaximumRecommendedHeartRateCharacteristicSupported() {
                             return true;
                         }
 
@@ -4771,7 +4771,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isVO2MaxCharacteristicSupporeted() {
+                        public boolean isVO2MaxCharacteristicSupported() {
                             return true;
                         }
 
@@ -4828,7 +4828,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isVO2MaxCharacteristicSupporeted() {
+                        public boolean isVO2MaxCharacteristicSupported() {
                             return true;
                         }
 
@@ -4885,7 +4885,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isLanguageCharacteristicSupporeted() {
+                        public boolean isLanguageCharacteristicSupported() {
                             return true;
                         }
 
@@ -4942,7 +4942,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isLanguageCharacteristicSupporeted() {
+                        public boolean isLanguageCharacteristicSupported() {
                             return true;
                         }
 
@@ -4999,7 +4999,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isTwoZoneHeartRateLimitCharacteristicSupporeted() {
+                        public boolean isTwoZoneHeartRateLimitCharacteristicSupported() {
                             return true;
                         }
 
@@ -5056,7 +5056,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isTwoZoneHeartRateLimitCharacteristicSupporeted() {
+                        public boolean isTwoZoneHeartRateLimitCharacteristicSupported() {
                             return true;
                         }
 
@@ -5113,7 +5113,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isThreeZoneHeartRateLimitsCharacteristicSupporeted() {
+                        public boolean isThreeZoneHeartRateLimitsCharacteristicSupported() {
                             return true;
                         }
 
@@ -5170,7 +5170,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isThreeZoneHeartRateLimitsCharacteristicSupporeted() {
+                        public boolean isThreeZoneHeartRateLimitsCharacteristicSupported() {
                             return true;
                         }
 
@@ -5227,7 +5227,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isFiveZoneHeartRateLimitsCharacteristicSupporeted() {
+                        public boolean isFiveZoneHeartRateLimitsCharacteristicSupported() {
                             return true;
                         }
 
@@ -5284,7 +5284,7 @@ public class FitnessMachineProfileTest {
                     mUserDataService = new UserDataService(mBLEConnection, mFitnessMachineProfileCallback, null) {
 
                         @Override
-                        public boolean isFiveZoneHeartRateLimitsCharacteristicSupporeted() {
+                        public boolean isFiveZoneHeartRateLimitsCharacteristicSupported() {
                             return true;
                         }
 

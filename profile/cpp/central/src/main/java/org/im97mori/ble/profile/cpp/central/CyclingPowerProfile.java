@@ -103,29 +103,29 @@ public class CyclingPowerProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see CyclingPowerService#isCyclingPowerControlPointCharacteristicSupporeted()
+     * @see CyclingPowerService#isCyclingPowerControlPointCharacteristicSupported()
      */
-    public synchronized Boolean isCyclingPowerControlPointCharacteristicSupporeted() {
+    public synchronized Boolean isCyclingPowerControlPointCharacteristicSupported() {
         Boolean result = null;
         if (mCyclingPowerService != null) {
-            result = mCyclingPowerService.isCyclingPowerControlPointCharacteristicSupporeted();
+            result = mCyclingPowerService.isCyclingPowerControlPointCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see CyclingPowerService#isCyclingPowerVectorCharacteristicSupporeted()
+     * @see CyclingPowerService#isCyclingPowerVectorCharacteristicSupported()
      */
-    public synchronized Boolean isCyclingPowerVectorCharacteristicSupporeted() {
+    public synchronized Boolean isCyclingPowerVectorCharacteristicSupported() {
         Boolean result = null;
         if (mCyclingPowerService != null) {
-            result = mCyclingPowerService.isCyclingPowerVectorCharacteristicSupporeted();
+            result = mCyclingPowerService.isCyclingPowerVectorCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see CyclingPowerService#isCyclingPowerVectorCharacteristicSupporeted()
+     * @see CyclingPowerService#isCyclingPowerVectorCharacteristicSupported()
      */
     @Nullable
     public synchronized Integer getCyclingPowerFeature() {

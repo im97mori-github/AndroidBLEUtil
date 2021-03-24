@@ -294,13 +294,13 @@ public class HeartRateProfileTest {
     }
 
     @Test
-    public void test_isBodySensorLocationCharacteristicSupporeted_00001() {
+    public void test_isBodySensorLocationCharacteristicSupported_00001() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
-        assertNull(heartRateProfile.isBodySensorLocationCharacteristicSupporeted());
+        assertNull(heartRateProfile.isBodySensorLocationCharacteristicSupported());
     }
 
     @Test
-    public void test_isBodySensorLocationCharacteristicSupporeted_00002() {
+    public void test_isBodySensorLocationCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -320,7 +320,7 @@ public class HeartRateProfileTest {
                         }
 
                         @Override
-                        public boolean isBodySensorLocationCharacteristicSupporeted() {
+                        public boolean isBodySensorLocationCharacteristicSupported() {
                             return true;
                         }
 
@@ -329,18 +329,18 @@ public class HeartRateProfileTest {
             }
         };
         heartRateProfile.connect(MOCK_DEVICE);
-        assertNotNull(heartRateProfile.isBodySensorLocationCharacteristicSupporeted());
+        assertNotNull(heartRateProfile.isBodySensorLocationCharacteristicSupported());
         heartRateProfile.disconnect();
     }
 
     @Test
-    public void test_isHeartRateControlPointCharacteristicSupporeted_00001() {
+    public void test_isHeartRateControlPointCharacteristicSupported_00001() {
         HeartRateProfile heartRateProfile = new HeartRateProfile(ApplicationProvider.getApplicationContext(), new BaseHeartRateProfileCallback());
-        assertNull(heartRateProfile.isHeartRateControlPointCharacteristicSupporeted());
+        assertNull(heartRateProfile.isHeartRateControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isHeartRateControlPointCharacteristicSupporeted_00002() {
+    public void test_isHeartRateControlPointCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -360,7 +360,7 @@ public class HeartRateProfileTest {
                         }
 
                         @Override
-                        public boolean isHeartRateControlPointCharacteristicSupporeted() {
+                        public boolean isHeartRateControlPointCharacteristicSupported() {
                             return true;
                         }
 
@@ -369,7 +369,7 @@ public class HeartRateProfileTest {
             }
         };
         heartRateProfile.connect(MOCK_DEVICE);
-        assertNotNull(heartRateProfile.isHeartRateControlPointCharacteristicSupporeted());
+        assertNotNull(heartRateProfile.isHeartRateControlPointCharacteristicSupported());
         heartRateProfile.disconnect();
     }
 
@@ -552,7 +552,7 @@ public class HeartRateProfileTest {
                     mHeartRateService = new HeartRateService(mBLEConnection, mHeartRateProfileCallback, null) {
 
                         @Override
-                        public boolean isBodySensorLocationCharacteristicSupporeted() {
+                        public boolean isBodySensorLocationCharacteristicSupported() {
                             return true;
                         }
 
@@ -605,7 +605,7 @@ public class HeartRateProfileTest {
                     mHeartRateService = new HeartRateService(mBLEConnection, mHeartRateProfileCallback, null) {
 
                         @Override
-                        public boolean isHeartRateControlPointCharacteristicSupporeted() {
+                        public boolean isHeartRateControlPointCharacteristicSupported() {
                             return true;
                         }
 

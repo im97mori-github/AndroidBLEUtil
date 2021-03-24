@@ -83,7 +83,7 @@ public class EnvironmentalSensingServiceTest_1 {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, new MockEnvironmentalSensingServiceCallback(), null);
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test
@@ -93,7 +93,7 @@ public class EnvironmentalSensingServiceTest_1 {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test
@@ -103,7 +103,7 @@ public class EnvironmentalSensingServiceTest_1 {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test
@@ -115,7 +115,7 @@ public class EnvironmentalSensingServiceTest_1 {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test
@@ -127,7 +127,7 @@ public class EnvironmentalSensingServiceTest_1 {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test
@@ -139,7 +139,7 @@ public class EnvironmentalSensingServiceTest_1 {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test
@@ -153,7 +153,7 @@ public class EnvironmentalSensingServiceTest_1 {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test
@@ -167,7 +167,7 @@ public class EnvironmentalSensingServiceTest_1 {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertTrue(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test

@@ -160,34 +160,34 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             addRow("hasUserDataService", mFitnessMachineProfile.hasUserDataService());
         } else if (R.id.has_device_information_service == item.getItemId()) {
             addRow("hasDeviceInformationService", mFitnessMachineProfile.hasDeviceInformationService());
-        } else if (R.id.is_treadmill_data_characteristic_supporeted == item.getItemId()) {
-            addRow("isTreadmillDataCharacteristicSupporeted", mFitnessMachineProfile.isTreadmillDataCharacteristicSupporeted());
-        } else if (R.id.is_cross_trainer_data_characteristic_supporeted == item.getItemId()) {
-            addRow("isCrossTrainerDataCharacteristicSupporeted", mFitnessMachineProfile.isCrossTrainerDataCharacteristicSupporeted());
-        } else if (R.id.is_step_climber_data_characteristic_supporeted == item.getItemId()) {
-            addRow("isStepClimberDataCharacteristicSupporeted", mFitnessMachineProfile.isStepClimberDataCharacteristicSupporeted());
-        } else if (R.id.is_stair_climber_data_characteristic_supporeted == item.getItemId()) {
-            addRow("isStairClimberDataCharacteristicSupporeted", mFitnessMachineProfile.isStairClimberDataCharacteristicSupporeted());
-        } else if (R.id.is_rower_data_characteristic_supporeted == item.getItemId()) {
-            addRow("isRowerDataCharacteristicSupporeted", mFitnessMachineProfile.isRowerDataCharacteristicSupporeted());
-        } else if (R.id.is_indoor_bike_data_characteristic_supporeted == item.getItemId()) {
-            addRow("isIndoorBikeDataCharacteristicSupporeted", mFitnessMachineProfile.isIndoorBikeDataCharacteristicSupporeted());
-        } else if (R.id.is_training_status_characteristic_supporeted == item.getItemId()) {
-            addRow("isTrainingStatusCharacteristicSupporeted", mFitnessMachineProfile.isTrainingStatusCharacteristicSupporeted());
-        } else if (R.id.is_supported_speed_range_characteristic_supporeted == item.getItemId()) {
-            addRow("isSupportedSpeedRangeCharacteristicSupporeted", mFitnessMachineProfile.isSupportedSpeedRangeCharacteristicSupporeted());
-        } else if (R.id.is_supported_inclination_range_characteristic_supporeted == item.getItemId()) {
-            addRow("isSupportedInclinationRangeCharacteristicSupporeted", mFitnessMachineProfile.isSupportedInclinationRangeCharacteristicSupporeted());
-        } else if (R.id.is_supported_resistance_level_range_characteristic_supporeted == item.getItemId()) {
-            addRow("isSupportedResistanceLevelRangeCharacteristicSupporeted", mFitnessMachineProfile.isSupportedResistanceLevelRangeCharacteristicSupporeted());
-        } else if (R.id.is_supported_power_range_characteristic_supporeted == item.getItemId()) {
-            addRow("isSupportedPowerRangeCharacteristicSupporeted", mFitnessMachineProfile.isSupportedPowerRangeCharacteristicSupporeted());
-        } else if (R.id.is_supported_heart_rate_range_characteristic_supporeted == item.getItemId()) {
-            addRow("isSupportedHeartRateRangeCharacteristicSupporeted", mFitnessMachineProfile.isSupportedHeartRateRangeCharacteristicSupporeted());
-        } else if (R.id.is_fitness_machine_control_point_characteristic_supporeted == item.getItemId()) {
-            addRow("isFitnessMachineControlPointCharacteristicSupporeted", mFitnessMachineProfile.isFitnessMachineControlPointCharacteristicSupporeted());
-        } else if (R.id.is_fitness_machine_status_characteristic_supporeted == item.getItemId()) {
-            addRow("isFitnessMachineStatusCharacteristicSupporeted", mFitnessMachineProfile.isFitnessMachineStatusCharacteristicSupporeted());
+        } else if (R.id.is_treadmill_data_characteristic_supported == item.getItemId()) {
+            addRow("isTreadmillDataCharacteristicSupported", mFitnessMachineProfile.isTreadmillDataCharacteristicSupported());
+        } else if (R.id.is_cross_trainer_data_characteristic_supported == item.getItemId()) {
+            addRow("isCrossTrainerDataCharacteristicSupported", mFitnessMachineProfile.isCrossTrainerDataCharacteristicSupported());
+        } else if (R.id.is_step_climber_data_characteristic_supported == item.getItemId()) {
+            addRow("isStepClimberDataCharacteristicSupported", mFitnessMachineProfile.isStepClimberDataCharacteristicSupported());
+        } else if (R.id.is_stair_climber_data_characteristic_supported == item.getItemId()) {
+            addRow("isStairClimberDataCharacteristicSupported", mFitnessMachineProfile.isStairClimberDataCharacteristicSupported());
+        } else if (R.id.is_rower_data_characteristic_supported == item.getItemId()) {
+            addRow("isRowerDataCharacteristicSupported", mFitnessMachineProfile.isRowerDataCharacteristicSupported());
+        } else if (R.id.is_indoor_bike_data_characteristic_supported == item.getItemId()) {
+            addRow("isIndoorBikeDataCharacteristicSupported", mFitnessMachineProfile.isIndoorBikeDataCharacteristicSupported());
+        } else if (R.id.is_training_status_characteristic_supported == item.getItemId()) {
+            addRow("isTrainingStatusCharacteristicSupported", mFitnessMachineProfile.isTrainingStatusCharacteristicSupported());
+        } else if (R.id.is_supported_speed_range_characteristic_supported == item.getItemId()) {
+            addRow("isSupportedSpeedRangeCharacteristicSupported", mFitnessMachineProfile.isSupportedSpeedRangeCharacteristicSupported());
+        } else if (R.id.is_supported_inclination_range_characteristic_supported == item.getItemId()) {
+            addRow("isSupportedInclinationRangeCharacteristicSupported", mFitnessMachineProfile.isSupportedInclinationRangeCharacteristicSupported());
+        } else if (R.id.is_supported_resistance_level_range_characteristic_supported == item.getItemId()) {
+            addRow("isSupportedResistanceLevelRangeCharacteristicSupported", mFitnessMachineProfile.isSupportedResistanceLevelRangeCharacteristicSupported());
+        } else if (R.id.is_supported_power_range_characteristic_supported == item.getItemId()) {
+            addRow("isSupportedPowerRangeCharacteristicSupported", mFitnessMachineProfile.isSupportedPowerRangeCharacteristicSupported());
+        } else if (R.id.is_supported_heart_rate_range_characteristic_supported == item.getItemId()) {
+            addRow("isSupportedHeartRateRangeCharacteristicSupported", mFitnessMachineProfile.isSupportedHeartRateRangeCharacteristicSupported());
+        } else if (R.id.is_fitness_machine_control_point_characteristic_supported == item.getItemId()) {
+            addRow("isFitnessMachineControlPointCharacteristicSupported", mFitnessMachineProfile.isFitnessMachineControlPointCharacteristicSupported());
+        } else if (R.id.is_fitness_machine_status_characteristic_supported == item.getItemId()) {
+            addRow("isFitnessMachineStatusCharacteristicSupported", mFitnessMachineProfile.isFitnessMachineStatusCharacteristicSupported());
         } else if (R.id.read_fitness_machine_feature == item.getItemId()) {
             mFitnessMachineProfile.getFitnessMachineFeature();
         } else if (R.id.read_treadmill_data_characteristic_configuration == item.getItemId()) {
@@ -393,141 +393,141 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
 
         } else if (R.id.has_first_name == item.getItemId()) {
             String text;
-            Boolean result = mFitnessMachineProfile.isFirstNameCharacteristicSupporeted();
+            Boolean result = mFitnessMachineProfile.isFirstNameCharacteristicSupported();
             if (result == null) {
-                text = "isFirstNameCharacteristicSupporeted\nnull";
+                text = "isFirstNameCharacteristicSupported\nnull";
             } else {
-                text = "isFirstNameCharacteristicSupporeted\n" + result.toString();
+                text = "isFirstNameCharacteristicSupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
         } else if (R.id.has_weight == item.getItemId()) {
             String text;
-            Boolean result = mFitnessMachineProfile.isWeightCharacteristicSupporeted();
+            Boolean result = mFitnessMachineProfile.isWeightCharacteristicSupported();
             if (result == null) {
-                text = "isWeightCharacteristicSupporeted\nnull";
+                text = "isWeightCharacteristicSupported\nnull";
             } else {
-                text = "isWeightCharacteristicSupporeted\n" + result.toString();
+                text = "isWeightCharacteristicSupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
         } else if (R.id.has_gender == item.getItemId()) {
             String text;
-            Boolean result = mFitnessMachineProfile.isGenderCharacteristicSupporeted();
+            Boolean result = mFitnessMachineProfile.isGenderCharacteristicSupported();
             if (result == null) {
-                text = "isGenderCharacteristicSupporeted\nnull";
+                text = "isGenderCharacteristicSupported\nnull";
             } else {
-                text = "isGenderCharacteristicSupporeted\n" + result.toString();
+                text = "isGenderCharacteristicSupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
         } else if (R.id.has_height == item.getItemId()) {
             String text;
-            Boolean result = mFitnessMachineProfile.isHeightCharacteristicSupporeted();
+            Boolean result = mFitnessMachineProfile.isHeightCharacteristicSupported();
             if (result == null) {
-                text = "isHeightCharacteristicSupporeted\nnull";
+                text = "isHeightCharacteristicSupported\nnull";
             } else {
-                text = "isHeightCharacteristicSupporeted\n" + result.toString();
+                text = "isHeightCharacteristicSupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
         } else if (R.id.has_age == item.getItemId()) {
             String text;
-            Boolean result = mFitnessMachineProfile.isAgeCharacteristicSupporeted();
+            Boolean result = mFitnessMachineProfile.isAgeCharacteristicSupported();
             if (result == null) {
-                text = "isAgeCharacteristicSupporeted\nnull";
+                text = "isAgeCharacteristicSupported\nnull";
             } else {
-                text = "isAgeCharacteristicSupporeted\n" + result.toString();
+                text = "isAgeCharacteristicSupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
         } else if (R.id.has_date_of_birth == item.getItemId()) {
             String text;
-            Boolean result = mFitnessMachineProfile.isDateOfBirthCharacteristicSupporeted();
+            Boolean result = mFitnessMachineProfile.isDateOfBirthCharacteristicSupported();
             if (result == null) {
-                text = "isDateOfBirthCharacteristicSupporeted\nnull";
+                text = "isDateOfBirthCharacteristicSupported\nnull";
             } else {
-                text = "isDateOfBirthCharacteristicSupporeted\n" + result.toString();
+                text = "isDateOfBirthCharacteristicSupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
         } else if (R.id.has_heart_rate_max == item.getItemId()) {
             String text;
-            Boolean result = mFitnessMachineProfile.isHeartRateMaxCharacteristicSupporeted();
+            Boolean result = mFitnessMachineProfile.isHeartRateMaxCharacteristicSupported();
             if (result == null) {
-                text = "isHeartRateMaxCharacteristicSupporeted\nnull";
+                text = "isHeartRateMaxCharacteristicSupported\nnull";
             } else {
-                text = "isHeartRateMaxCharacteristicSupporeted\n" + result.toString();
+                text = "isHeartRateMaxCharacteristicSupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
         } else if (R.id.has_resting_heart_rate == item.getItemId()) {
             String text;
-            Boolean result = mFitnessMachineProfile.isRestingHeartRateCharacteristicSupporeted();
+            Boolean result = mFitnessMachineProfile.isRestingHeartRateCharacteristicSupported();
             if (result == null) {
-                text = "isRestingHeartRateCharacteristicSupporeted\nnull";
+                text = "isRestingHeartRateCharacteristicSupported\nnull";
             } else {
-                text = "isRestingHeartRateCharacteristicSupporeted\n" + result.toString();
+                text = "isRestingHeartRateCharacteristicSupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
         } else if (R.id.has_maximum_recommended_heart_rate == item.getItemId()) {
             String text;
-            Boolean result = mFitnessMachineProfile.isMaximumRecommendedHeartRateCharacteristicSupporeted();
+            Boolean result = mFitnessMachineProfile.isMaximumRecommendedHeartRateCharacteristicSupported();
             if (result == null) {
-                text = "isMaximumRecommendedHeartRateCharacteristicSupporeted\nnull";
+                text = "isMaximumRecommendedHeartRateCharacteristicSupported\nnull";
             } else {
-                text = "isMaximumRecommendedHeartRateCharacteristicSupporeted\n" + result.toString();
+                text = "isMaximumRecommendedHeartRateCharacteristicSupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
         } else if (R.id.has_vo2_max == item.getItemId()) {
             String text;
-            Boolean result = mFitnessMachineProfile.isVO2MaxCharacteristicSupporeted();
+            Boolean result = mFitnessMachineProfile.isVO2MaxCharacteristicSupported();
             if (result == null) {
-                text = "isVO2MaxCharacteristicSupporeted\nnull";
+                text = "isVO2MaxCharacteristicSupported\nnull";
             } else {
-                text = "isVO2MaxCharacteristicSupporeted\n" + result.toString();
+                text = "isVO2MaxCharacteristicSupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
         } else if (R.id.has_language == item.getItemId()) {
             String text;
-            Boolean result = mFitnessMachineProfile.isLanguageCharacteristicSupporeted();
+            Boolean result = mFitnessMachineProfile.isLanguageCharacteristicSupported();
             if (result == null) {
-                text = "isLanguageCharacteristicSupporeted\nnull";
+                text = "isLanguageCharacteristicSupported\nnull";
             } else {
-                text = "isLanguageCharacteristicSupporeted\n" + result.toString();
+                text = "isLanguageCharacteristicSupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
         } else if (R.id.has_two_zone_heart_rate_limits == item.getItemId()) {
             String text;
-            Boolean result = mFitnessMachineProfile.isTwoZoneHeartRateLimitCharacteristicSupporeted();
+            Boolean result = mFitnessMachineProfile.isTwoZoneHeartRateLimitCharacteristicSupported();
             if (result == null) {
-                text = "isTwoZoneHeartRateLimitCharacteristicSupporeted\nnull";
+                text = "isTwoZoneHeartRateLimitCharacteristicSupported\nnull";
             } else {
-                text = "isTwoZoneHeartRateLimitCharacteristicSupporeted\n" + result.toString();
+                text = "isTwoZoneHeartRateLimitCharacteristicSupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
         } else if (R.id.has_three_zone_heart_rate_limits == item.getItemId()) {
             String text;
-            Boolean result = mFitnessMachineProfile.isThreeZoneHeartRateLimitsCharacteristicSupporeted();
+            Boolean result = mFitnessMachineProfile.isThreeZoneHeartRateLimitsCharacteristicSupported();
             if (result == null) {
-                text = "isThreeZoneHeartRateLimitsCharacteristicSupporeted\nnull";
+                text = "isThreeZoneHeartRateLimitsCharacteristicSupported\nnull";
             } else {
-                text = "isThreeZoneHeartRateLimitsCharacteristicSupporeted\n" + result.toString();
+                text = "isThreeZoneHeartRateLimitsCharacteristicSupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
         } else if (R.id.has_five_zone_heart_rate_limits == item.getItemId()) {
             String text;
-            Boolean result = mFitnessMachineProfile.isFiveZoneHeartRateLimitsCharacteristicSupporeted();
+            Boolean result = mFitnessMachineProfile.isFiveZoneHeartRateLimitsCharacteristicSupported();
             if (result == null) {
-                text = "isFiveZoneHeartRateLimitsCharacteristicSupporeted\nnull";
+                text = "isFiveZoneHeartRateLimitsCharacteristicSupported\nnull";
             } else {
-                text = "isFiveZoneHeartRateLimitsCharacteristicSupporeted\n" + result.toString();
+                text = "isFiveZoneHeartRateLimitsCharacteristicSupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -620,11 +620,11 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             mFitnessMachineProfile.stopUserControlPointIndication();
         } else if (R.id.is_database_change_increment_notificatable == item.getItemId()) {
             String text;
-            Boolean result = mFitnessMachineProfile.isDatabaseChangeIncrementCharacteristicNotifySupporeted();
+            Boolean result = mFitnessMachineProfile.isDatabaseChangeIncrementCharacteristicNotifySupported();
             if (result == null) {
-                text = "isDatabaseChangeIncrementCharacteristicNotifySupporeted\nnull";
+                text = "isDatabaseChangeIncrementCharacteristicNotifySupported\nnull";
             } else {
-                text = "isDatabaseChangeIncrementCharacteristicNotifySupporeted\n" + result.toString();
+                text = "isDatabaseChangeIncrementCharacteristicNotifySupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());

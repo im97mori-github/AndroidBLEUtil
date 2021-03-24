@@ -79,23 +79,23 @@ public class CyclingSpeedAndCadenceProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see CyclingSpeedAndCadenceService#isSensorLocationCharacteristicSupporeted()
+     * @see CyclingSpeedAndCadenceService#isSensorLocationCharacteristicSupported()
      */
-    public synchronized Boolean isSensorLocationCharacteristicSupporeted() {
+    public synchronized Boolean isSensorLocationCharacteristicSupported() {
         Boolean result = null;
         if (mCyclingSpeedAndCadenceService != null) {
-            result = mCyclingSpeedAndCadenceService.isSensorLocationCharacteristicSupporeted();
+            result = mCyclingSpeedAndCadenceService.isSensorLocationCharacteristicSupported();
         }
         return result;
     }
 
     /**
-     * @see CyclingSpeedAndCadenceService#isSCControlPointCharacteristicSupporeted()
+     * @see CyclingSpeedAndCadenceService#isSCControlPointCharacteristicSupported()
      */
-    public synchronized Boolean isSCControlPointCharacteristicSupporeted() {
+    public synchronized Boolean isSCControlPointCharacteristicSupported() {
         Boolean result = null;
         if (mCyclingSpeedAndCadenceService != null) {
-            result = mCyclingSpeedAndCadenceService.isSCControlPointCharacteristicSupporeted();
+            result = mCyclingSpeedAndCadenceService.isSCControlPointCharacteristicSupported();
         }
         return result;
     }

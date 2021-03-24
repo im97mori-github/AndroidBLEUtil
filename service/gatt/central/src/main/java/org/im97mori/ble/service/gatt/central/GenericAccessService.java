@@ -63,31 +63,31 @@ public class GenericAccessService extends AbstractCentralService {
      * Peripheral Preferred Connection Parameters characteristic flag
      * {@code true}:Peripheral Preferred Connection Parameters characteristic is exist, {@code false}:Peripheral Preferred Connection Parameters characteristic is not exist or service not ready
      */
-    private boolean mIsPeripheralPreferredConnectionParametersCharacteristicSupporeted;
+    private boolean mIsPeripheralPreferredConnectionParametersCharacteristicSupported;
 
     /**
      * Central Address Resolution characteristic flag
      * {@code true}:Central Address Resolution characteristic is exist, {@code false}:Central Address Resolution characteristic is not exist or service not ready
      */
-    private boolean mIsCentralAddressResolutionCharacteristicSupporeted;
+    private boolean mIsCentralAddressResolutionCharacteristicSupported;
 
     /**
      * Resolvable Private Address Only characteristic flag
      * {@code true}:Resolvable Private Address Only characteristic is exist, {@code false}:Resolvable Private Address Only characteristic is not exist or service not ready
      */
-    private boolean mIsResolvablePrivateAddressOnlyCharacteristicSupporeted;
+    private boolean mIsResolvablePrivateAddressOnlyCharacteristicSupported;
 
     /**
      * Reconnection Address characteristic flag
      * {@code true}:Reconnection Address characteristic is exist, {@code false}:Reconnection Address characteristic is not exist or service not ready
      */
-    private boolean mIsReconnectionAddressCharacteristicSupporeted;
+    private boolean mIsReconnectionAddressCharacteristicSupported;
 
     /**
      * Peripheral Privacy Flag characteristic flag
      * {@code true}:Peripheral Privacy Flag characteristic is exist, {@code false}:Peripheral Privacy Flag characteristic is not exist or service not ready
      */
-    private boolean mIsPeripheralPrivacyFlagCharacteristicSupporeted;
+    private boolean mIsPeripheralPrivacyFlagCharacteristicSupported;
 
     /**
      * Peripheral Privacy Flag characteristic writable flag
@@ -113,11 +113,11 @@ public class GenericAccessService extends AbstractCentralService {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
             mIsDeviceNameCharacteristicWritable = false;
             mIsAppearanceCharacteristicWritable = false;
-            mIsPeripheralPreferredConnectionParametersCharacteristicSupporeted = false;
-            mIsCentralAddressResolutionCharacteristicSupporeted = false;
-            mIsResolvablePrivateAddressOnlyCharacteristicSupporeted = false;
-            mIsReconnectionAddressCharacteristicSupporeted = false;
-            mIsPeripheralPrivacyFlagCharacteristicSupporeted = false;
+            mIsPeripheralPreferredConnectionParametersCharacteristicSupported = false;
+            mIsCentralAddressResolutionCharacteristicSupported = false;
+            mIsResolvablePrivateAddressOnlyCharacteristicSupported = false;
+            mIsReconnectionAddressCharacteristicSupported = false;
+            mIsPeripheralPrivacyFlagCharacteristicSupported = false;
             mIsPeripheralPrivacyFlagCharacteristicWritable = false;
         }
         super.onBLEDisconnected(taskId, bluetoothDevice, status, argument);
@@ -142,23 +142,23 @@ public class GenericAccessService extends AbstractCentralService {
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
-                        mIsPeripheralPreferredConnectionParametersCharacteristicSupporeted = true;
+                        mIsPeripheralPreferredConnectionParametersCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
-                        mIsCentralAddressResolutionCharacteristicSupporeted = true;
+                        mIsCentralAddressResolutionCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(RESOLVABLE_PRIVATE_ADDRESS_ONLY_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
-                        mIsResolvablePrivateAddressOnlyCharacteristicSupporeted = true;
+                        mIsResolvablePrivateAddressOnlyCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(RECONNECTION_ADDRESS_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_WRITE == bluetoothGattCharacteristic.getProperties()) {
-                        mIsReconnectionAddressCharacteristicSupporeted = true;
+                        mIsReconnectionAddressCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && (BluetoothGattCharacteristic.PROPERTY_READ & bluetoothGattCharacteristic.getProperties()) != 0) {
-                        mIsPeripheralPrivacyFlagCharacteristicSupporeted = true;
+                        mIsPeripheralPrivacyFlagCharacteristicSupported = true;
                         if ((BluetoothGattCharacteristic.PROPERTY_WRITE & bluetoothGattCharacteristic.getProperties()) != 0) {
                             mIsPeripheralPrivacyFlagCharacteristicWritable = true;
                         }
@@ -318,8 +318,8 @@ public class GenericAccessService extends AbstractCentralService {
      *
      * @return {@code true}:Peripheral Preferred Connection Parameters characteristic is exist, {@code false}:Peripheral Preferred Connection Parameters characteristic is not exist or service not ready
      */
-    public boolean isPeripheralPreferredConnectionParametersCharacteristicSupporeted() {
-        return mIsPeripheralPreferredConnectionParametersCharacteristicSupporeted;
+    public boolean isPeripheralPreferredConnectionParametersCharacteristicSupported() {
+        return mIsPeripheralPreferredConnectionParametersCharacteristicSupported;
     }
 
     /**
@@ -327,8 +327,8 @@ public class GenericAccessService extends AbstractCentralService {
      *
      * @return {@code true}:Central Address Resolution characteristic is exist, {@code false}:Central Address Resolution characteristic is not exist or service not ready
      */
-    public boolean isCentralAddressResolutionCharacteristicSupporeted() {
-        return mIsCentralAddressResolutionCharacteristicSupporeted;
+    public boolean isCentralAddressResolutionCharacteristicSupported() {
+        return mIsCentralAddressResolutionCharacteristicSupported;
     }
 
     /**
@@ -336,8 +336,8 @@ public class GenericAccessService extends AbstractCentralService {
      *
      * @return {@code true}:Resolvable Private Address Only characteristic is exist, {@code false}:Resolvable Private Address Only characteristic is not exist or service not ready
      */
-    public boolean isResolvablePrivateAddressOnlyCharacteristicSupporeted() {
-        return mIsResolvablePrivateAddressOnlyCharacteristicSupporeted;
+    public boolean isResolvablePrivateAddressOnlyCharacteristicSupported() {
+        return mIsResolvablePrivateAddressOnlyCharacteristicSupported;
     }
 
     /**
@@ -345,8 +345,8 @@ public class GenericAccessService extends AbstractCentralService {
      *
      * @return {@code true}:Reconnection Address characteristic is exist, {@code false}:Reconnection Address characteristic is not exist or service not ready
      */
-    public boolean isReconnectionAddressCharacteristicSupporeted() {
-        return mIsReconnectionAddressCharacteristicSupporeted;
+    public boolean isReconnectionAddressCharacteristicSupported() {
+        return mIsReconnectionAddressCharacteristicSupported;
     }
 
     /**
@@ -354,8 +354,8 @@ public class GenericAccessService extends AbstractCentralService {
      *
      * @return {@code true}:Peripheral Privacy Flag characteristic is exist, {@code false}:Peripheral Privacy Flag characteristic is not exist or service not ready
      */
-    public boolean isPeripheralPrivacyFlagCharacteristicSupporeted() {
-        return mIsPeripheralPrivacyFlagCharacteristicSupporeted;
+    public boolean isPeripheralPrivacyFlagCharacteristicSupported() {
+        return mIsPeripheralPrivacyFlagCharacteristicSupported;
     }
 
     /**
@@ -446,7 +446,7 @@ public class GenericAccessService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getPeripheralPreferredConnectionParameters() {
         Integer taskId = null;
-        if (isStarted() && isPeripheralPreferredConnectionParametersCharacteristicSupporeted()) {
+        if (isStarted() && isPeripheralPreferredConnectionParametersCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(GENERIC_ACCESS_SERVICE, null, PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -463,7 +463,7 @@ public class GenericAccessService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getCentralAddressResolutionParameters() {
         Integer taskId = null;
-        if (isStarted() && isCentralAddressResolutionCharacteristicSupporeted()) {
+        if (isStarted() && isCentralAddressResolutionCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(GENERIC_ACCESS_SERVICE, null, CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -480,7 +480,7 @@ public class GenericAccessService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getResolvablePrivateAddressOnly() {
         Integer taskId = null;
-        if (isStarted() && isResolvablePrivateAddressOnlyCharacteristicSupporeted()) {
+        if (isStarted() && isResolvablePrivateAddressOnlyCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(GENERIC_ACCESS_SERVICE, null, RESOLVABLE_PRIVATE_ADDRESS_ONLY_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -497,7 +497,7 @@ public class GenericAccessService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setReconnectionAddress(@NonNull ReconnectionAddress reconnectionAddress) {
         Integer taskId = null;
-        if (isStarted() && isReconnectionAddressCharacteristicSupporeted()) {
+        if (isStarted() && isReconnectionAddressCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(GENERIC_ACCESS_SERVICE, null, RECONNECTION_ADDRESS_CHARACTERISTIC, null, reconnectionAddress, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -514,7 +514,7 @@ public class GenericAccessService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getPeripheralPrivacyFlag() {
         Integer taskId = null;
-        if (isStarted() && isPeripheralPrivacyFlagCharacteristicSupporeted()) {
+        if (isStarted() && isPeripheralPrivacyFlagCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(GENERIC_ACCESS_SERVICE, null, PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;

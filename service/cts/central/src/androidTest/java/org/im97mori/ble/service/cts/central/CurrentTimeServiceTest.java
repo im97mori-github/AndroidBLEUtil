@@ -60,7 +60,7 @@ public class CurrentTimeServiceTest {
         currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         currentTimeService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupporeted());
+        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
@@ -72,7 +72,7 @@ public class CurrentTimeServiceTest {
         currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         currentTimeService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupporeted());
+        assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
@@ -133,7 +133,7 @@ public class CurrentTimeServiceTest {
         CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
         currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupporeted());
+        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
@@ -143,7 +143,7 @@ public class CurrentTimeServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupporeted());
+        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
@@ -154,7 +154,7 @@ public class CurrentTimeServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, 0, 0));
         currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupporeted());
+        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
@@ -165,7 +165,7 @@ public class CurrentTimeServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(currentTimeService.isLocalTimeInformationCharacteristicSupporeted());
+        assertTrue(currentTimeService.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
@@ -237,7 +237,7 @@ public class CurrentTimeServiceTest {
         CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null);
         currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupporeted());
+        assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
@@ -247,7 +247,7 @@ public class CurrentTimeServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupporeted());
+        assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
@@ -258,7 +258,7 @@ public class CurrentTimeServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(REFERENCE_TIME_INFORMATION_CHARACTERISTIC, 0, 0));
         currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupporeted());
+        assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
@@ -269,7 +269,7 @@ public class CurrentTimeServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(REFERENCE_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(currentTimeService.isReferenceTimeInformationCharacteristicSupporeted());
+        assertTrue(currentTimeService.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
@@ -1153,59 +1153,59 @@ public class CurrentTimeServiceTest {
     }
 
     @Test
-    public void test_isLocalTimeInformationCharacteristicSupporeted_00001() {
+    public void test_isLocalTimeInformationCharacteristicSupported_00001() {
         CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
 
-        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupporeted());
+        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
-    public void test_isLocalTimeInformationCharacteristicSupporeted_00002() {
+    public void test_isLocalTimeInformationCharacteristicSupported_00002() {
         CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(currentTimeService.isLocalTimeInformationCharacteristicSupporeted());
+        assertTrue(currentTimeService.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
-    public void test_isLocalTimeInformationCharacteristicSupporeted_00003() {
+    public void test_isLocalTimeInformationCharacteristicSupported_00003() {
         CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         currentTimeService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupporeted());
+        assertFalse(currentTimeService.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
-    public void test_isReferenceTimeInformationCharacteristicSupporeted_00001() {
+    public void test_isReferenceTimeInformationCharacteristicSupported_00001() {
         CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
 
-        assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupporeted());
+        assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
-    public void test_isReferenceTimeInformationCharacteristicSupporeted_00002() {
+    public void test_isReferenceTimeInformationCharacteristicSupported_00002() {
         CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(REFERENCE_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(currentTimeService.isReferenceTimeInformationCharacteristicSupporeted());
+        assertTrue(currentTimeService.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
-    public void test_isReferenceTimeInformationCharacteristicSupporeted_00003() {
+    public void test_isReferenceTimeInformationCharacteristicSupported_00003() {
         CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CURRENT_TIME_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(REFERENCE_TIME_INFORMATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         currentTimeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         currentTimeService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupporeted());
+        assertFalse(currentTimeService.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
@@ -1492,7 +1492,7 @@ public class CurrentTimeServiceTest {
         CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null) {
 
             @Override
-            public boolean isLocalTimeInformationCharacteristicSupporeted() {
+            public boolean isLocalTimeInformationCharacteristicSupported() {
                 return true;
             }
 
@@ -1520,7 +1520,7 @@ public class CurrentTimeServiceTest {
         CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
-            public boolean isLocalTimeInformationCharacteristicSupporeted() {
+            public boolean isLocalTimeInformationCharacteristicSupported() {
                 return true;
             }
 
@@ -1564,7 +1564,7 @@ public class CurrentTimeServiceTest {
         CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null) {
 
             @Override
-            public boolean isLocalTimeInformationCharacteristicSupporeted() {
+            public boolean isLocalTimeInformationCharacteristicSupported() {
                 return true;
             }
 
@@ -1593,7 +1593,7 @@ public class CurrentTimeServiceTest {
         CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
-            public boolean isLocalTimeInformationCharacteristicSupporeted() {
+            public boolean isLocalTimeInformationCharacteristicSupported() {
                 return true;
             }
 
@@ -1636,7 +1636,7 @@ public class CurrentTimeServiceTest {
         CurrentTimeService currentTimeService = new CurrentTimeService(new MockBLEConnection(), new MockCurrentTimeServiceCallback(), null) {
 
             @Override
-            public boolean isReferenceTimeInformationCharacteristicSupporeted() {
+            public boolean isReferenceTimeInformationCharacteristicSupported() {
                 return true;
             }
 
@@ -1664,7 +1664,7 @@ public class CurrentTimeServiceTest {
         CurrentTimeService currentTimeService = new CurrentTimeService(mockBLEConnection, new MockCurrentTimeServiceCallback(), null) {
 
             @Override
-            public boolean isReferenceTimeInformationCharacteristicSupporeted() {
+            public boolean isReferenceTimeInformationCharacteristicSupported() {
                 return true;
             }
 

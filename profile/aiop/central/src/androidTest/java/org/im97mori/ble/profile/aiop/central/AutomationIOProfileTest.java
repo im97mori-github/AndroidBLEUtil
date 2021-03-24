@@ -1746,13 +1746,13 @@ public class AutomationIOProfileTest {
     }
 
     @Test
-    public void test_isAggregateSupporeted_00001() {
+    public void test_isAggregateSupported_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAggregateSupporeted());
+        assertNull(automationIOProfile.isAggregateSupported());
     }
 
     @Test
-    public void test_isAggregateSupporeted_00002() {
+    public void test_isAggregateSupported_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
@@ -1765,7 +1765,7 @@ public class AutomationIOProfileTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAggregateSupporeted() {
+                        public boolean isAggregateSupported() {
                             atomicBoolean.set(true);
                             return true;
                         }
@@ -1775,7 +1775,7 @@ public class AutomationIOProfileTest {
             }
         };
         automationIOProfile.connect(MOCK_DEVICE);
-        assertNotNull(automationIOProfile.isAggregateSupporeted());
+        assertNotNull(automationIOProfile.isAggregateSupported());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }

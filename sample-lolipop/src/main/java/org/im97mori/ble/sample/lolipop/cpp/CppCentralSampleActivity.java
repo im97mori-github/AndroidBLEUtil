@@ -127,10 +127,10 @@ public class CppCentralSampleActivity extends BaseActivity implements View.OnCli
             addRow("hasDeviceInformationService", mCyclingPowerProfile.hasDeviceInformationService());
         } else if (R.id.has_battery_service == item.getItemId()) {
             addRow("hasBatteryService", mCyclingPowerProfile.hasBatteryService());
-        } else if (R.id.is_cycling_power_control_point_characteristic_supporeted == item.getItemId()) {
-            addRow("isCyclingPowerControlPointCharacteristicSupporeted", mCyclingPowerProfile.isCyclingPowerControlPointCharacteristicSupporeted());
-        } else if (R.id.is_cycling_power_vector_characteristic_supporeted == item.getItemId()) {
-            addRow("isCyclingPowerVectorCharacteristicSupporeted", mCyclingPowerProfile.isCyclingPowerVectorCharacteristicSupporeted());
+        } else if (R.id.is_cycling_power_control_point_characteristic_supported == item.getItemId()) {
+            addRow("isCyclingPowerControlPointCharacteristicSupported", mCyclingPowerProfile.isCyclingPowerControlPointCharacteristicSupported());
+        } else if (R.id.is_cycling_power_vector_characteristic_supported == item.getItemId()) {
+            addRow("isCyclingPowerVectorCharacteristicSupported", mCyclingPowerProfile.isCyclingPowerVectorCharacteristicSupported());
 
         } else if (R.id.read_cycling_power_feature == item.getItemId()) {
             mCyclingPowerProfile.getCyclingPowerFeature();

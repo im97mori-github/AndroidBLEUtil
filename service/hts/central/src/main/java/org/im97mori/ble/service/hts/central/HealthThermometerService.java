@@ -50,31 +50,31 @@ public class HealthThermometerService extends AbstractCentralService {
      * Temperature Type characteristic flag
      * {@code true}:Temperature Type characteristic is exist, {@code false}:Temperature Type characteristic is not exist or service not ready
      */
-    private boolean mIsTemperatureTypeCharacteristicSupporeted;
+    private boolean mIsTemperatureTypeCharacteristicSupported;
 
     /**
      * Intermediate Temperature characteristic flag
      * {@code true}:Intermediate Temperature characteristic is exist, {@code false}:Intermediate Temperature characteristic is not exist or service not ready
      */
-    private boolean mIsIntermediateTemperatureCharacteristicSupporeted;
+    private boolean mIsIntermediateTemperatureCharacteristicSupported;
 
     /**
      * Measurement Interval characteristic flag
      * {@code true}:Measurement Interval characteristic is exist, {@code false}:Measurement Interval characteristic is not exist or service not ready
      */
-    private boolean mIsMeasurementIntervalCharacteristicSupporeted;
+    private boolean mIsMeasurementIntervalCharacteristicSupported;
 
     /**
      * Measurement Interval characteristic indicatable flag
      * {@code true}:Measurement Interval characteristic is indicatable, {@code false}:Measurement Interval characteristic is not indicatable or service not ready
      */
-    private boolean mIsMeasurementIntervalCharacteristicIndicateSupporeted;
+    private boolean mIsMeasurementIntervalCharacteristicIndicateSupported;
 
     /**
      * Measurement Interval characteristic writable flag
      * {@code true}:Measurement Interval characteristic is writable, {@code false}:Measurement Interval characteristic is not writable or service not ready
      */
-    private boolean mIsMeasurementIntervalCharacteristicWriteSupporeted;
+    private boolean mIsMeasurementIntervalCharacteristicWriteSupported;
 
     /**
      * @param bleConnection                    {@link BLEConnection} instance
@@ -92,11 +92,11 @@ public class HealthThermometerService extends AbstractCentralService {
     @Override
     public synchronized void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
-            mIsTemperatureTypeCharacteristicSupporeted = false;
-            mIsIntermediateTemperatureCharacteristicSupporeted = false;
-            mIsMeasurementIntervalCharacteristicSupporeted = false;
-            mIsMeasurementIntervalCharacteristicIndicateSupporeted = false;
-            mIsMeasurementIntervalCharacteristicWriteSupporeted = false;
+            mIsTemperatureTypeCharacteristicSupported = false;
+            mIsIntermediateTemperatureCharacteristicSupported = false;
+            mIsMeasurementIntervalCharacteristicSupported = false;
+            mIsMeasurementIntervalCharacteristicIndicateSupported = false;
+            mIsMeasurementIntervalCharacteristicWriteSupported = false;
         }
         super.onBLEDisconnected(taskId, bluetoothDevice, status, argument);
     }
@@ -112,20 +112,20 @@ public class HealthThermometerService extends AbstractCentralService {
                 if (HEALTH_THERMOMETER_SERVICE.equals(bluetoothGattService.getUuid())) {
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(TEMPERATURE_TYPE_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
-                        mIsTemperatureTypeCharacteristicSupporeted = true;
+                        mIsTemperatureTypeCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(INTERMEDIATE_TEMPERATURE_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_NOTIFY == bluetoothGattCharacteristic.getProperties()) {
-                        mIsIntermediateTemperatureCharacteristicSupporeted = true;
+                        mIsIntermediateTemperatureCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(MEASUREMENT_INTERVAL_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && (BluetoothGattCharacteristic.PROPERTY_READ & bluetoothGattCharacteristic.getProperties()) != 0) {
-                        mIsMeasurementIntervalCharacteristicSupporeted = true;
+                        mIsMeasurementIntervalCharacteristicSupported = true;
                         if ((BluetoothGattCharacteristic.PROPERTY_INDICATE & bluetoothGattCharacteristic.getProperties()) != 0 && bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
-                            mIsMeasurementIntervalCharacteristicIndicateSupporeted = true;
+                            mIsMeasurementIntervalCharacteristicIndicateSupported = true;
                         }
                         if ((BluetoothGattCharacteristic.PROPERTY_WRITE & bluetoothGattCharacteristic.getProperties()) != 0 && bluetoothGattCharacteristic.getDescriptor(VALID_RANGE_DESCRIPTOR) != null) {
-                            mIsMeasurementIntervalCharacteristicWriteSupporeted = true;
+                            mIsMeasurementIntervalCharacteristicWriteSupported = true;
                         }
                     }
                 }
@@ -384,8 +384,8 @@ public class HealthThermometerService extends AbstractCentralService {
      * <p>
      * {@code true}:Temperature Type characteristic is exist, {@code false}:Temperature Type characteristic is not exist or service not ready
      */
-    public boolean isTemperatureTypeCharacteristicSupporeted() {
-        return mIsTemperatureTypeCharacteristicSupporeted;
+    public boolean isTemperatureTypeCharacteristicSupported() {
+        return mIsTemperatureTypeCharacteristicSupported;
     }
 
     /**
@@ -393,8 +393,8 @@ public class HealthThermometerService extends AbstractCentralService {
      * <p>
      * {@code true}:Intermediate Temperature characteristic is exist, {@code false}:Intermediate Temperature characteristic is not exist or service not ready
      */
-    public boolean isIntermediateTemperatureCharacteristicSupporeted() {
-        return mIsIntermediateTemperatureCharacteristicSupporeted;
+    public boolean isIntermediateTemperatureCharacteristicSupported() {
+        return mIsIntermediateTemperatureCharacteristicSupported;
     }
 
     /**
@@ -402,8 +402,8 @@ public class HealthThermometerService extends AbstractCentralService {
      * <p>
      * {@code true}:Measurement Interval characteristic is exist, {@code false}:Measurement Interval characteristic is not exist or service not ready
      */
-    public boolean isMeasurementIntervalCharacteristicSupporeted() {
-        return mIsMeasurementIntervalCharacteristicSupporeted;
+    public boolean isMeasurementIntervalCharacteristicSupported() {
+        return mIsMeasurementIntervalCharacteristicSupported;
     }
 
     /**
@@ -411,8 +411,8 @@ public class HealthThermometerService extends AbstractCentralService {
      * <p>
      * {@code true}:Measurement Interval characteristic is indicatable, {@code false}:Measurement Interval characteristic is not indicatable or service not ready
      */
-    public boolean isMeasurementIntervalCharacteristicIndicateSupporeted() {
-        return mIsMeasurementIntervalCharacteristicIndicateSupporeted;
+    public boolean isMeasurementIntervalCharacteristicIndicateSupported() {
+        return mIsMeasurementIntervalCharacteristicIndicateSupported;
     }
 
     /**
@@ -420,8 +420,8 @@ public class HealthThermometerService extends AbstractCentralService {
      * <p>
      * {@code true}:Measurement Interval characteristic is writable, {@code false}:Measurement Interval characteristic is not writable or service not ready
      */
-    public boolean isMeasurementIntervalCharacteristicWriteSupporeted() {
-        return mIsMeasurementIntervalCharacteristicWriteSupporeted;
+    public boolean isMeasurementIntervalCharacteristicWriteSupported() {
+        return mIsMeasurementIntervalCharacteristicWriteSupported;
     }
 
     /**
@@ -490,7 +490,7 @@ public class HealthThermometerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getTemperatureType() {
         Integer taskId = null;
-        if (isStarted() && isTemperatureTypeCharacteristicSupporeted()) {
+        if (isStarted() && isTemperatureTypeCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(HEALTH_THERMOMETER_SERVICE, null, TEMPERATURE_TYPE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -507,7 +507,7 @@ public class HealthThermometerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getIntermediateTemperatureClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isIntermediateTemperatureCharacteristicSupporeted()) {
+        if (isStarted() && isIntermediateTemperatureCharacteristicSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(HEALTH_THERMOMETER_SERVICE, null, INTERMEDIATE_TEMPERATURE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -524,7 +524,7 @@ public class HealthThermometerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startIntermediateTemperatureNotification() {
         Integer taskId = null;
-        if (isStarted() && isIntermediateTemperatureCharacteristicSupporeted()) {
+        if (isStarted() && isIntermediateTemperatureCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(HEALTH_THERMOMETER_SERVICE, null, INTERMEDIATE_TEMPERATURE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -543,7 +543,7 @@ public class HealthThermometerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopIntermediateTemperaturNotification() {
         Integer taskId = null;
-        if (isStarted() && isIntermediateTemperatureCharacteristicSupporeted()) {
+        if (isStarted() && isIntermediateTemperatureCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(HEALTH_THERMOMETER_SERVICE, null, INTERMEDIATE_TEMPERATURE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -562,7 +562,7 @@ public class HealthThermometerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getMeasurementInterval() {
         Integer taskId = null;
-        if (isStarted() && isMeasurementIntervalCharacteristicSupporeted()) {
+        if (isStarted() && isMeasurementIntervalCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(HEALTH_THERMOMETER_SERVICE, null, MEASUREMENT_INTERVAL_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -579,7 +579,7 @@ public class HealthThermometerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setMeasurementInterval(@NonNull MeasurementInterval measurementInterval) {
         Integer taskId = null;
-        if (isStarted() && isMeasurementIntervalCharacteristicWriteSupporeted()) {
+        if (isStarted() && isMeasurementIntervalCharacteristicWriteSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(HEALTH_THERMOMETER_SERVICE, null, MEASUREMENT_INTERVAL_CHARACTERISTIC, null, measurementInterval, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -596,7 +596,7 @@ public class HealthThermometerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getMeasurementIntervalClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isMeasurementIntervalCharacteristicIndicateSupporeted()) {
+        if (isStarted() && isMeasurementIntervalCharacteristicIndicateSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(HEALTH_THERMOMETER_SERVICE, null, MEASUREMENT_INTERVAL_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -613,7 +613,7 @@ public class HealthThermometerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startMeasurementIntervalInidication() {
         Integer taskId = null;
-        if (isStarted() && isMeasurementIntervalCharacteristicIndicateSupporeted()) {
+        if (isStarted() && isMeasurementIntervalCharacteristicIndicateSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(HEALTH_THERMOMETER_SERVICE, null, MEASUREMENT_INTERVAL_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -632,7 +632,7 @@ public class HealthThermometerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopMeasurementIntervalInidication() {
         Integer taskId = null;
-        if (isStarted() && isMeasurementIntervalCharacteristicIndicateSupporeted()) {
+        if (isStarted() && isMeasurementIntervalCharacteristicIndicateSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(HEALTH_THERMOMETER_SERVICE, null, MEASUREMENT_INTERVAL_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -651,7 +651,7 @@ public class HealthThermometerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getMeasurementIntervalValidRange() {
         Integer taskId = null;
-        if (isStarted() && isMeasurementIntervalCharacteristicWriteSupporeted()) {
+        if (isStarted() && isMeasurementIntervalCharacteristicWriteSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(HEALTH_THERMOMETER_SERVICE, null, MEASUREMENT_INTERVAL_CHARACTERISTIC, null, VALID_RANGE_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;

@@ -4869,13 +4869,13 @@ public class AutomationIOServiceTest_003 extends AbstractAutomationIOServiceTest
     }
 
     @Test
-    public void test_isAggregateCharacteristicSupporeted_00001() {
+    public void test_isAggregateCharacteristicSupported_00001() {
         AutomationIOService automationIOService = new AutomationIOService(new MockBLEConnection(), new MockAutomationIOServiceCallback(), null);
-        assertFalse(automationIOService.isAggregateSupporeted());
+        assertFalse(automationIOService.isAggregateSupported());
     }
 
     @Test
-    public void test_isAggregateCharacteristicSupporeted_00002() {
+    public void test_isAggregateCharacteristicSupported_00002() {
         final BluetoothDevice originalBluetoothDevice = MockBLEConnection.MOCK_DEVICE;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
@@ -4888,7 +4888,7 @@ public class AutomationIOServiceTest_003 extends AbstractAutomationIOServiceTest
         parcel.recycle();
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(automationIOService.isAggregateSupporeted());
+        assertTrue(automationIOService.isAggregateSupported());
     }
 
     @Test

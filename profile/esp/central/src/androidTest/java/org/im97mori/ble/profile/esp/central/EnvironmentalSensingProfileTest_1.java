@@ -99,13 +99,13 @@ public class EnvironmentalSensingProfileTest_1 {
     }
 
     @Test
-    public void test_isDescriptorValueChangedCharacteristicSupporeted_00001() {
+    public void test_isDescriptorValueChangedCharacteristicSupported_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isDescriptorValueChangedCharacteristicSupporeted());
+        assertNull(environmentalSensingProfile.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test
-    public void test_isDescriptorValueChangedCharacteristicSupporeted_00002() {
+    public void test_isDescriptorValueChangedCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -139,7 +139,7 @@ public class EnvironmentalSensingProfileTest_1 {
             }
         };
         environmentalSensingProfile.connect(MOCK_DEVICE);
-        assertNotNull(environmentalSensingProfile.isDescriptorValueChangedCharacteristicSupporeted());
+        assertNotNull(environmentalSensingProfile.isDescriptorValueChangedCharacteristicSupported());
         environmentalSensingProfile.disconnect();
     }
 

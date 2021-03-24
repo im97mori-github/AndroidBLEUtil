@@ -99,7 +99,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
      * Descriptor Value Changed characteristic flag
      * {@code true}:Descriptor Value Changed characteristic is exist, {@code false}:Descriptor Value Changed characteristic is not exist or service not ready
      */
-    private boolean mIsDescriptorValueChangedCharacteristicSupporeted;
+    private boolean mIsDescriptorValueChangedCharacteristicSupported;
 
     /**
      * Apparent Wind Direction Characteristic list
@@ -317,7 +317,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Override
     public synchronized void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
-            mIsDescriptorValueChangedCharacteristicSupporeted = false;
+            mIsDescriptorValueChangedCharacteristicSupported = false;
             mApparentWindDirectionCharacteristicList.clear();
             mApparentWindDirectionEnvironmentalSensingTriggerSettingDescriptorMap.clear();
             mApparentWindSpeedCharacteristicList.clear();
@@ -374,7 +374,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
                     if (descriptorValueChangedbluetoothGattCharacteristic != null
                             && BluetoothGattCharacteristic.PROPERTY_INDICATE == descriptorValueChangedbluetoothGattCharacteristic.getProperties()
                             && descriptorValueChangedbluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
-                        mIsDescriptorValueChangedCharacteristicSupporeted = true;
+                        mIsDescriptorValueChangedCharacteristicSupported = true;
                     }
                     for (BluetoothGattCharacteristic bluetoothGattCharacteristic : bluetoothGattService.getCharacteristics()) {
                         UUID characteristicUUID = bluetoothGattCharacteristic.getUuid();
@@ -3004,8 +3004,8 @@ public class EnvironmentalSensingService extends AbstractCentralService {
      * <p>
      * {@code true}:Descriptor Value Changed characteristic is exist, {@code false}:Descriptor Value Changed characteristic is not exist or service not ready
      */
-    public boolean isDescriptorValueChangedCharacteristicSupporeted() {
-        return mIsDescriptorValueChangedCharacteristicSupporeted;
+    public boolean isDescriptorValueChangedCharacteristicSupported() {
+        return mIsDescriptorValueChangedCharacteristicSupported;
     }
 
     /**

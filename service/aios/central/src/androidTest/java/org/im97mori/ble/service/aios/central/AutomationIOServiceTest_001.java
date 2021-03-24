@@ -70,7 +70,7 @@ public class AutomationIOServiceTest_001 extends AbstractAutomationIOServiceTest
 
         assertEquals(1, automationIOService.getDigitalCount().intValue());
         assertEquals(1, automationIOService.getAnalogCount().intValue());
-        assertTrue(automationIOService.isAggregateSupporeted());
+        assertTrue(automationIOService.isAggregateSupported());
         assertTrue(automationIOService.isAggregateReadable());
         assertTrue(automationIOService.isAggregateNotificatable());
 
@@ -82,7 +82,7 @@ public class AutomationIOServiceTest_001 extends AbstractAutomationIOServiceTest
         count = automationIOService.getAnalogCount();
         assertNotNull(count);
         assertEquals(0, count.intValue());
-        assertFalse(automationIOService.isAggregateSupporeted());
+        assertFalse(automationIOService.isAggregateSupported());
         assertFalse(automationIOService.isAggregateReadable());
         assertFalse(automationIOService.isAggregateNotificatable());
     }
@@ -109,7 +109,7 @@ public class AutomationIOServiceTest_001 extends AbstractAutomationIOServiceTest
         count = automationIOService.getAnalogCount();
         assertNotNull(count);
         assertEquals(1, count.intValue());
-        assertTrue(automationIOService.isAggregateSupporeted());
+        assertTrue(automationIOService.isAggregateSupported());
         assertTrue(automationIOService.isAggregateReadable());
         assertTrue(automationIOService.isAggregateIndicatable());
 
@@ -121,7 +121,7 @@ public class AutomationIOServiceTest_001 extends AbstractAutomationIOServiceTest
         count = automationIOService.getAnalogCount();
         assertNotNull(count);
         assertEquals(0, count.intValue());
-        assertFalse(automationIOService.isAggregateSupporeted());
+        assertFalse(automationIOService.isAggregateSupported());
         assertFalse(automationIOService.isAggregateReadable());
         assertFalse(automationIOService.isAggregateIndicatable());
     }
@@ -135,7 +135,7 @@ public class AutomationIOServiceTest_001 extends AbstractAutomationIOServiceTest
         assertNull(count);
         count = automationIOService.getAnalogCount();
         assertNull(count);
-        assertFalse(automationIOService.isAggregateSupporeted());
+        assertFalse(automationIOService.isAggregateSupported());
         assertFalse(automationIOService.isAggregateReadable());
         assertFalse(automationIOService.isAggregateNotificatable());
         assertFalse(automationIOService.isAggregateIndicatable());
@@ -157,7 +157,7 @@ public class AutomationIOServiceTest_001 extends AbstractAutomationIOServiceTest
         count = automationIOService.getAnalogCount();
         assertNotNull(count);
         assertEquals(0, count.intValue());
-        assertFalse(automationIOService.isAggregateSupporeted());
+        assertFalse(automationIOService.isAggregateSupported());
         assertFalse(automationIOService.isAggregateReadable());
         assertFalse(automationIOService.isAggregateNotificatable());
         assertFalse(automationIOService.isAggregateIndicatable());
@@ -181,7 +181,7 @@ public class AutomationIOServiceTest_001 extends AbstractAutomationIOServiceTest
         count = automationIOService.getAnalogCount();
         assertNotNull(count);
         assertEquals(0, count.intValue());
-        assertFalse(automationIOService.isAggregateSupporeted());
+        assertFalse(automationIOService.isAggregateSupported());
         assertFalse(automationIOService.isAggregateReadable());
         assertFalse(automationIOService.isAggregateNotificatable());
         assertFalse(automationIOService.isAggregateIndicatable());
@@ -205,7 +205,7 @@ public class AutomationIOServiceTest_001 extends AbstractAutomationIOServiceTest
         count = automationIOService.getAnalogCount();
         assertNotNull(count);
         assertEquals(1, count.intValue());
-        assertFalse(automationIOService.isAggregateSupporeted());
+        assertFalse(automationIOService.isAggregateSupported());
         assertFalse(automationIOService.isAggregateReadable());
         assertFalse(automationIOService.isAggregateNotificatable());
         assertFalse(automationIOService.isAggregateIndicatable());
@@ -230,7 +230,7 @@ public class AutomationIOServiceTest_001 extends AbstractAutomationIOServiceTest
         count = automationIOService.getAnalogCount();
         assertNotNull(count);
         assertEquals(0, count.intValue());
-        assertTrue(automationIOService.isAggregateSupporeted());
+        assertTrue(automationIOService.isAggregateSupported());
         assertFalse(automationIOService.isAggregateReadable());
         assertFalse(automationIOService.isAggregateNotificatable());
         assertFalse(automationIOService.isAggregateIndicatable());
@@ -255,7 +255,7 @@ public class AutomationIOServiceTest_001 extends AbstractAutomationIOServiceTest
         count = automationIOService.getAnalogCount();
         assertNotNull(count);
         assertEquals(0, count.intValue());
-        assertTrue(automationIOService.isAggregateSupporeted());
+        assertTrue(automationIOService.isAggregateSupported());
         assertTrue(automationIOService.isAggregateReadable());
         assertFalse(automationIOService.isAggregateNotificatable());
         assertFalse(automationIOService.isAggregateIndicatable());
@@ -281,7 +281,7 @@ public class AutomationIOServiceTest_001 extends AbstractAutomationIOServiceTest
         count = automationIOService.getAnalogCount();
         assertNotNull(count);
         assertEquals(0, count.intValue());
-        assertTrue(automationIOService.isAggregateSupporeted());
+        assertTrue(automationIOService.isAggregateSupported());
         assertTrue(automationIOService.isAggregateReadable());
         assertFalse(automationIOService.isAggregateNotificatable());
         assertFalse(automationIOService.isAggregateIndicatable());
@@ -307,7 +307,7 @@ public class AutomationIOServiceTest_001 extends AbstractAutomationIOServiceTest
         count = automationIOService.getAnalogCount();
         assertNotNull(count);
         assertEquals(0, count.intValue());
-        assertTrue(automationIOService.isAggregateSupporeted());
+        assertTrue(automationIOService.isAggregateSupported());
         assertTrue(automationIOService.isAggregateReadable());
         assertTrue(automationIOService.isAggregateNotificatable());
         assertFalse(automationIOService.isAggregateIndicatable());
@@ -333,7 +333,7 @@ public class AutomationIOServiceTest_001 extends AbstractAutomationIOServiceTest
         count = automationIOService.getAnalogCount();
         assertNotNull(count);
         assertEquals(0, count.intValue());
-        assertTrue(automationIOService.isAggregateSupporeted());
+        assertTrue(automationIOService.isAggregateSupported());
         assertTrue(automationIOService.isAggregateReadable());
         assertFalse(automationIOService.isAggregateNotificatable());
         assertTrue(automationIOService.isAggregateIndicatable());

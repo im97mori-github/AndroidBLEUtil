@@ -1020,13 +1020,13 @@ public class LocationAndNavigationProfileTest {
     }
 
     @Test
-    public void test_isPositionQualityCharacteristicSupporeted_00001() {
+    public void test_isPositionQualityCharacteristicSupported_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
-        assertNull(locationAndNavigationProfile.isPositionQualityCharacteristicSupporeted());
+        assertNull(locationAndNavigationProfile.isPositionQualityCharacteristicSupported());
     }
 
     @Test
-    public void test_isPositionQualityCharacteristicSupporeted_00002() {
+    public void test_isPositionQualityCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -1039,18 +1039,18 @@ public class LocationAndNavigationProfileTest {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(MOCK_DEVICE);
         locationAndNavigationProfile.mLocationAndNavigationService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        assertNotNull(locationAndNavigationProfile.isPositionQualityCharacteristicSupporeted());
+        assertNotNull(locationAndNavigationProfile.isPositionQualityCharacteristicSupported());
         locationAndNavigationProfile.disconnect();
     }
 
     @Test
-    public void test_isLNControlPointCharacteristicSupporeted_00001() {
+    public void test_isLNControlPointCharacteristicSupported_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
-        assertNull(locationAndNavigationProfile.isLNControlPointCharacteristicSupporeted());
+        assertNull(locationAndNavigationProfile.isLNControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isLNControlPointCharacteristicSupporeted_00002() {
+    public void test_isLNControlPointCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -1065,18 +1065,18 @@ public class LocationAndNavigationProfileTest {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(MOCK_DEVICE);
         locationAndNavigationProfile.mLocationAndNavigationService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        assertNotNull(locationAndNavigationProfile.isLNControlPointCharacteristicSupporeted());
+        assertNotNull(locationAndNavigationProfile.isLNControlPointCharacteristicSupported());
         locationAndNavigationProfile.disconnect();
     }
 
     @Test
-    public void test_isNavigationCharacteristicSupporeted_00001() {
+    public void test_isNavigationCharacteristicSupported_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
-        assertNull(locationAndNavigationProfile.isNavigationCharacteristicSupporeted());
+        assertNull(locationAndNavigationProfile.isNavigationCharacteristicSupported());
     }
 
     @Test
-    public void test_isNavigationCharacteristicSupporeted_00002() {
+    public void test_isNavigationCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -1091,7 +1091,7 @@ public class LocationAndNavigationProfileTest {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(MOCK_DEVICE);
         locationAndNavigationProfile.mLocationAndNavigationService.onDiscoverServiceSuccess(1, MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
-        assertNotNull(locationAndNavigationProfile.isNavigationCharacteristicSupporeted());
+        assertNotNull(locationAndNavigationProfile.isNavigationCharacteristicSupported());
         locationAndNavigationProfile.disconnect();
     }
 
@@ -1399,7 +1399,7 @@ public class LocationAndNavigationProfileTest {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
 
                         @Override
-                        public boolean isLNControlPointCharacteristicSupporeted() {
+                        public boolean isLNControlPointCharacteristicSupported() {
                             return true;
                         }
 
@@ -1455,7 +1455,7 @@ public class LocationAndNavigationProfileTest {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
 
                         @Override
-                        public boolean isLNControlPointCharacteristicSupporeted() {
+                        public boolean isLNControlPointCharacteristicSupported() {
                             return true;
                         }
 
@@ -1515,7 +1515,7 @@ public class LocationAndNavigationProfileTest {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
 
                         @Override
-                        public boolean isLNControlPointCharacteristicSupporeted() {
+                        public boolean isLNControlPointCharacteristicSupported() {
                             return true;
                         }
 
@@ -1576,7 +1576,7 @@ public class LocationAndNavigationProfileTest {
                     mLocationAndNavigationService = new LocationAndNavigationService(mBLEConnection, mLocationAndNavigationProfileCallback, null) {
 
                         @Override
-                        public boolean isLNControlPointCharacteristicSupporeted() {
+                        public boolean isLNControlPointCharacteristicSupported() {
                             return true;
                         }
 

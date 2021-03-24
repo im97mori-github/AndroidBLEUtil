@@ -220,92 +220,92 @@ public class HealthThermometerProfileTest {
     }
 
     @Test
-    public void test_isTemperatureTypeCharacteristicSupporeted_00001() {
+    public void test_isTemperatureTypeCharacteristicSupported_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        assertNull(healthThermometerProfile.isTemperatureTypeCharacteristicSupporeted());
+        assertNull(healthThermometerProfile.isTemperatureTypeCharacteristicSupported());
     }
 
     @Test
-    public void test_isTemperatureTypeCharacteristicSupporeted_00002() {
+    public void test_isTemperatureTypeCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
 
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         healthThermometerProfile.connect(MOCK_DEVICE);
-        assertNotNull(healthThermometerProfile.isTemperatureTypeCharacteristicSupporeted());
+        assertNotNull(healthThermometerProfile.isTemperatureTypeCharacteristicSupported());
         healthThermometerProfile.disconnect();
     }
 
     @Test
-    public void test_isIntermediateTemperatureCharacteristicSupporeted_00001() {
+    public void test_isIntermediateTemperatureCharacteristicSupported_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        assertNull(healthThermometerProfile.isIntermediateTemperatureCharacteristicSupporeted());
+        assertNull(healthThermometerProfile.isIntermediateTemperatureCharacteristicSupported());
     }
 
     @Test
-    public void test_isIntermediateTemperatureCharacteristicSupporeted_00002() {
+    public void test_isIntermediateTemperatureCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
 
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         healthThermometerProfile.connect(MOCK_DEVICE);
-        assertNotNull(healthThermometerProfile.isIntermediateTemperatureCharacteristicSupporeted());
+        assertNotNull(healthThermometerProfile.isIntermediateTemperatureCharacteristicSupported());
         healthThermometerProfile.disconnect();
     }
 
     @Test
-    public void test_isMeasurementIntervalCharacteristicSupporeted_00001() {
+    public void test_isMeasurementIntervalCharacteristicSupported_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        assertNull(healthThermometerProfile.isMeasurementIntervalCharacteristicSupporeted());
+        assertNull(healthThermometerProfile.isMeasurementIntervalCharacteristicSupported());
     }
 
     @Test
-    public void test_isMeasurementIntervalCharacteristicSupporeted_00002() {
+    public void test_isMeasurementIntervalCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
 
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         healthThermometerProfile.connect(MOCK_DEVICE);
-        assertNotNull(healthThermometerProfile.isMeasurementIntervalCharacteristicSupporeted());
+        assertNotNull(healthThermometerProfile.isMeasurementIntervalCharacteristicSupported());
         healthThermometerProfile.disconnect();
     }
 
     @Test
-    public void test_isMeasurementIntervalCharacteristicIndicateSupporeted_00001() {
+    public void test_isMeasurementIntervalCharacteristicIndicateSupported_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        assertNull(healthThermometerProfile.isMeasurementIntervalCharacteristicIndicateSupporeted());
+        assertNull(healthThermometerProfile.isMeasurementIntervalCharacteristicIndicateSupported());
     }
 
     @Test
-    public void test_isMeasurementIntervalCharacteristicIndicateSupporeted_00002() {
+    public void test_isMeasurementIntervalCharacteristicIndicateSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
 
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         healthThermometerProfile.connect(MOCK_DEVICE);
-        assertNotNull(healthThermometerProfile.isMeasurementIntervalCharacteristicIndicateSupporeted());
+        assertNotNull(healthThermometerProfile.isMeasurementIntervalCharacteristicIndicateSupported());
         healthThermometerProfile.disconnect();
     }
 
     @Test
-    public void test_isMeasurementIntervalCharacteristicWriteSupporeted_00001() {
+    public void test_isMeasurementIntervalCharacteristicWriteSupported_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        assertNull(healthThermometerProfile.isMeasurementIntervalCharacteristicWriteSupporeted());
+        assertNull(healthThermometerProfile.isMeasurementIntervalCharacteristicWriteSupported());
     }
 
     @Test
-    public void test_isMeasurementIntervalCharacteristicWriteSupporeted_00002() {
+    public void test_isMeasurementIntervalCharacteristicWriteSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
 
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
         healthThermometerProfile.connect(MOCK_DEVICE);
-        assertNotNull(healthThermometerProfile.isMeasurementIntervalCharacteristicWriteSupporeted());
+        assertNotNull(healthThermometerProfile.isMeasurementIntervalCharacteristicWriteSupported());
         healthThermometerProfile.disconnect();
     }
 
@@ -489,7 +489,7 @@ public class HealthThermometerProfileTest {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
 
                         @Override
-                        public boolean isTemperatureTypeCharacteristicSupporeted() {
+                        public boolean isTemperatureTypeCharacteristicSupported() {
                             return true;
                         }
 
@@ -543,7 +543,7 @@ public class HealthThermometerProfileTest {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
 
                         @Override
-                        public boolean isIntermediateTemperatureCharacteristicSupporeted() {
+                        public boolean isIntermediateTemperatureCharacteristicSupported() {
                             return true;
                         }
 
@@ -596,7 +596,7 @@ public class HealthThermometerProfileTest {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
 
                         @Override
-                        public boolean isIntermediateTemperatureCharacteristicSupporeted() {
+                        public boolean isIntermediateTemperatureCharacteristicSupported() {
                             return true;
                         }
 
@@ -649,7 +649,7 @@ public class HealthThermometerProfileTest {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
 
                         @Override
-                        public boolean isIntermediateTemperatureCharacteristicSupporeted() {
+                        public boolean isIntermediateTemperatureCharacteristicSupported() {
                             return true;
                         }
 
@@ -703,7 +703,7 @@ public class HealthThermometerProfileTest {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
 
                         @Override
-                        public boolean isMeasurementIntervalCharacteristicSupporeted() {
+                        public boolean isMeasurementIntervalCharacteristicSupported() {
                             return true;
                         }
 
@@ -757,7 +757,7 @@ public class HealthThermometerProfileTest {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
 
                         @Override
-                        public boolean isMeasurementIntervalCharacteristicWriteSupporeted() {
+                        public boolean isMeasurementIntervalCharacteristicWriteSupported() {
                             return true;
                         }
 
@@ -811,7 +811,7 @@ public class HealthThermometerProfileTest {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
 
                         @Override
-                        public boolean isMeasurementIntervalCharacteristicIndicateSupporeted() {
+                        public boolean isMeasurementIntervalCharacteristicIndicateSupported() {
                             return true;
                         }
 
@@ -864,7 +864,7 @@ public class HealthThermometerProfileTest {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
 
                         @Override
-                        public boolean isMeasurementIntervalCharacteristicIndicateSupporeted() {
+                        public boolean isMeasurementIntervalCharacteristicIndicateSupported() {
                             return true;
                         }
 
@@ -917,7 +917,7 @@ public class HealthThermometerProfileTest {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
 
                         @Override
-                        public boolean isMeasurementIntervalCharacteristicIndicateSupporeted() {
+                        public boolean isMeasurementIntervalCharacteristicIndicateSupported() {
                             return true;
                         }
 
@@ -971,7 +971,7 @@ public class HealthThermometerProfileTest {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
 
                         @Override
-                        public boolean isMeasurementIntervalCharacteristicWriteSupporeted() {
+                        public boolean isMeasurementIntervalCharacteristicWriteSupported() {
                             return true;
                         }
 

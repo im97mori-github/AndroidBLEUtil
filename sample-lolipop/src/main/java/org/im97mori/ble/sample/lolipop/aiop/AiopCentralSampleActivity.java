@@ -170,23 +170,23 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
         } else if (R.id.set_appearance == item.getItemId()) {
             mAutomationIOProfile.setAppearance(new Appearance(new byte[]{Appearance.CATEGORY_UNKNOWN}));
         } else if (R.id.has_ppcp == item.getItemId()) {
-            addRow("isPeripheralPreferredConnectionParametersCharacteristicSupporeted", mAutomationIOProfile.isPeripheralPreferredConnectionParametersCharacteristicSupporeted());
+            addRow("isPeripheralPreferredConnectionParametersCharacteristicSupported", mAutomationIOProfile.isPeripheralPreferredConnectionParametersCharacteristicSupported());
         } else if (R.id.get_ppcp == item.getItemId()) {
             mAutomationIOProfile.getPeripheralPreferredConnectionParameters();
         } else if (R.id.has_car == item.getItemId()) {
-            addRow("isCentralAddressResolutionCharacteristicSupporeted", mAutomationIOProfile.isCentralAddressResolutionCharacteristicSupporeted());
+            addRow("isCentralAddressResolutionCharacteristicSupported", mAutomationIOProfile.isCentralAddressResolutionCharacteristicSupported());
         } else if (R.id.get_car == item.getItemId()) {
             mAutomationIOProfile.getCentralAddressResolutionParameters();
         } else if (R.id.has_rpao == item.getItemId()) {
-            addRow("isCentralAddressResolutionCharacteristicSupporeted", mAutomationIOProfile.isResolvablePrivateAddressOnlyCharacteristicSupporeted());
+            addRow("isCentralAddressResolutionCharacteristicSupported", mAutomationIOProfile.isResolvablePrivateAddressOnlyCharacteristicSupported());
         } else if (R.id.get_rpao == item.getItemId()) {
             mAutomationIOProfile.getResolvablePrivateAddressOnly();
         } else if (R.id.has_reconnection_address == item.getItemId()) {
-            addRow("isCentralAddressResolutionCharacteristicSupporeted", mAutomationIOProfile.isReconnectionAddressCharacteristicSupporeted());
+            addRow("isCentralAddressResolutionCharacteristicSupported", mAutomationIOProfile.isReconnectionAddressCharacteristicSupported());
         } else if (R.id.set_reconnection_address == item.getItemId()) {
             mAutomationIOProfile.setReconnectionAddress(new ReconnectionAddress(1));
         } else if (R.id.has_ppf == item.getItemId()) {
-            addRow("isPeripheralPrivacyFlagCharacteristicSupporeted", mAutomationIOProfile.isPeripheralPrivacyFlagCharacteristicSupporeted());
+            addRow("isPeripheralPrivacyFlagCharacteristicSupported", mAutomationIOProfile.isPeripheralPrivacyFlagCharacteristicSupported());
         } else if (R.id.get_ppf == item.getItemId()) {
             mAutomationIOProfile.getPeripheralPrivacyFlag();
         } else if (R.id.is_ppf_writable == item.getItemId()) {
@@ -198,7 +198,7 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
 
     private void gap(MenuItem item) {
         if (R.id.has_service_changed == item.getItemId()) {
-            addRow("isServiceChangedCharacteristicSupporeted", mAutomationIOProfile.isServiceChangedCharacteristicSupporeted());
+            addRow("isServiceChangedCharacteristicSupported", mAutomationIOProfile.isServiceChangedCharacteristicSupported());
         } else if (R.id.read_service_changed_characteristic_configuration == item.getItemId()) {
             mAutomationIOProfile.getServiceChangedClientCharacteristicConfiguration();
         } else if (R.id.indicate_service_changed_start == item.getItemId()) {
@@ -206,13 +206,13 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
         } else if (R.id.indicate_service_changed_stop == item.getItemId()) {
             mAutomationIOProfile.stopServiceChangedIndication();
         } else if (R.id.has_csf == item.getItemId()) {
-            addRow("isClientSupportedFeaturesCharacteristicSupporeted", mAutomationIOProfile.isClientSupportedFeaturesCharacteristicSupporeted());
+            addRow("isClientSupportedFeaturesCharacteristicSupported", mAutomationIOProfile.isClientSupportedFeaturesCharacteristicSupported());
         } else if (R.id.get_csf == item.getItemId()) {
             mAutomationIOProfile.getClientSupportedFeatures();
         } else if (R.id.set_csf == item.getItemId()) {
             mAutomationIOProfile.setClientSupportedFeatures(new ClientSupportedFeatures(new byte[0]));
         } else if (R.id.has_database_hash == item.getItemId()) {
-            addRow("isDatabaseHashCharacteristicSupporeted", mAutomationIOProfile.isDatabaseHashCharacteristicSupporeted());
+            addRow("isDatabaseHashCharacteristicSupported", mAutomationIOProfile.isDatabaseHashCharacteristicSupported());
         } else if (R.id.get_database_hash == item.getItemId()) {
             mAutomationIOProfile.getDatabaseHash();
         }
@@ -478,7 +478,7 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
 
     private void aggregate(MenuItem item) {
         if (R.id.is_aggregate_supported == item.getItemId()) {
-            addRow("isAggregateSupporeted", mAutomationIOProfile.isAggregateSupporeted());
+            addRow("isAggregateSupported", mAutomationIOProfile.isAggregateSupported());
         } else if (R.id.is_aggregate_readable == item.getItemId()) {
             addRow("isAggregateReadable", mAutomationIOProfile.isAggregateReadable());
         } else if (R.id.is_aggregate_notificatable == item.getItemId()) {

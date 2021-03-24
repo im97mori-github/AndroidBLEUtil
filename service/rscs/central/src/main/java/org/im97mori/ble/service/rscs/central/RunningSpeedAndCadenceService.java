@@ -48,13 +48,13 @@ public class RunningSpeedAndCadenceService extends AbstractCentralService {
      * Sensor Location characteristic flag
      * {@code true}:Sensor Location characteristic is exist, {@code false}:Sensor Location characteristic is not exist or service not ready
      */
-    private boolean mIsSensorLocationCharacteristicSupporeted;
+    private boolean mIsSensorLocationCharacteristicSupported;
 
     /**
      * SC Control Point characteristic flag
      * {@code true}:SC Control Point characteristic is exist, {@code false}:SC Control Point characteristic is not exist or service not ready
      */
-    private boolean mIsSCControlPointCharacteristicSupporeted;
+    private boolean mIsSCControlPointCharacteristicSupported;
 
     /**
      * @param bleConnection                         {@link BLEConnection} instance
@@ -72,8 +72,8 @@ public class RunningSpeedAndCadenceService extends AbstractCentralService {
     @Override
     public synchronized void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
-            mIsSensorLocationCharacteristicSupporeted = false;
-            mIsSCControlPointCharacteristicSupporeted = false;
+            mIsSensorLocationCharacteristicSupported = false;
+            mIsSCControlPointCharacteristicSupported = false;
         }
         super.onBLEDisconnected(taskId, bluetoothDevice, status, argument);
     }
@@ -90,13 +90,13 @@ public class RunningSpeedAndCadenceService extends AbstractCentralService {
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SENSOR_LOCATION_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null
                             && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
-                        mIsSensorLocationCharacteristicSupporeted = true;
+                        mIsSensorLocationCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SC_CONTROL_POINT_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null
                             && (BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE) == bluetoothGattCharacteristic.getProperties()
                             && bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
-                        mIsSCControlPointCharacteristicSupporeted = true;
+                        mIsSCControlPointCharacteristicSupported = true;
                     }
                 }
             }
@@ -322,8 +322,8 @@ public class RunningSpeedAndCadenceService extends AbstractCentralService {
      *
      * @return {@code true}:Sensor Location characteristic is exist, {@code false}:Sensor Location characteristic is not exist or service not ready
      */
-    public boolean isSensorLocationCharacteristicSupporeted() {
-        return mIsSensorLocationCharacteristicSupporeted;
+    public boolean isSensorLocationCharacteristicSupported() {
+        return mIsSensorLocationCharacteristicSupported;
     }
 
     /**
@@ -331,8 +331,8 @@ public class RunningSpeedAndCadenceService extends AbstractCentralService {
      *
      * @return {@code true}:SC Control Point characteristic is exist, {@code false}:SC Control Point characteristic is not exist or service not ready
      */
-    public boolean isSCControlPointCharacteristicSupporeted() {
-        return mIsSCControlPointCharacteristicSupporeted;
+    public boolean isSCControlPointCharacteristicSupported() {
+        return mIsSCControlPointCharacteristicSupported;
     }
 
     /**
@@ -418,7 +418,7 @@ public class RunningSpeedAndCadenceService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getSensorLocation() {
         Integer taskId = null;
-        if (isStarted() && isSensorLocationCharacteristicSupporeted()) {
+        if (isStarted() && isSensorLocationCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(RUNNING_SPEED_AND_CADENCE_SERVICE, null, SENSOR_LOCATION_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -436,7 +436,7 @@ public class RunningSpeedAndCadenceService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setSCControlPoint(@NonNull SCControlPoint scControlPoint) {
         Integer taskId = null;
-        if (isStarted() && isSCControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isSCControlPointCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(RUNNING_SPEED_AND_CADENCE_SERVICE, null, SC_CONTROL_POINT_CHARACTERISTIC, null, scControlPoint, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -453,7 +453,7 @@ public class RunningSpeedAndCadenceService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getSCControlPointClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isSCControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isSCControlPointCharacteristicSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(RUNNING_SPEED_AND_CADENCE_SERVICE, null, SC_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -470,7 +470,7 @@ public class RunningSpeedAndCadenceService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startSCControlPointIndication() {
         Integer taskId = null;
-        if (isStarted() && isSCControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isSCControlPointCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(RUNNING_SPEED_AND_CADENCE_SERVICE, null, SC_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -489,7 +489,7 @@ public class RunningSpeedAndCadenceService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopSCControlPointIndication() {
         Integer taskId = null;
-        if (isStarted() && isSCControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isSCControlPointCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(RUNNING_SPEED_AND_CADENCE_SERVICE, null, SC_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);

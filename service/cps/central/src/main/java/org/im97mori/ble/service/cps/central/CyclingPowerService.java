@@ -50,13 +50,13 @@ public class CyclingPowerService extends AbstractCentralService {
      * Cycling Power Control Point characteristic flag
      * {@code true}:Cycling Power Control Point characteristic is exist, {@code false}:Cycling Power Control Point characteristic is not exist or service not ready
      */
-    private boolean mIsCyclingPowerControlPointCharacteristicSupporeted;
+    private boolean mIsCyclingPowerControlPointCharacteristicSupported;
 
     /**
      * Cycling Power Vector characteristic flag
      * {@code true}:Cycling Power Vector characteristic is exist, {@code false}:Cycling Power Vector characteristic is not exist or service not ready
      */
-    private boolean mIsCyclingPowerVectorCharacteristicSupporeted;
+    private boolean mIsCyclingPowerVectorCharacteristicSupported;
 
     /**
      * @param bleConnection               {@link BLEConnection} instance
@@ -74,8 +74,8 @@ public class CyclingPowerService extends AbstractCentralService {
     @Override
     public synchronized void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
-            mIsCyclingPowerControlPointCharacteristicSupporeted = false;
-            mIsCyclingPowerVectorCharacteristicSupporeted = false;
+            mIsCyclingPowerControlPointCharacteristicSupported = false;
+            mIsCyclingPowerVectorCharacteristicSupported = false;
         }
         super.onBLEDisconnected(taskId, bluetoothDevice, status, argument);
     }
@@ -93,13 +93,13 @@ public class CyclingPowerService extends AbstractCentralService {
                     if (bluetoothGattCharacteristic != null
                             && (BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE) == bluetoothGattCharacteristic.getProperties()
                             && bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
-                        mIsCyclingPowerControlPointCharacteristicSupporeted = true;
+                        mIsCyclingPowerControlPointCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(CYCLING_POWER_VECTOR_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null
                             && BluetoothGattCharacteristic.PROPERTY_NOTIFY == bluetoothGattCharacteristic.getProperties()
                             && bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
-                        mIsCyclingPowerVectorCharacteristicSupporeted = true;
+                        mIsCyclingPowerVectorCharacteristicSupported = true;
                     }
                 }
             }
@@ -351,8 +351,8 @@ public class CyclingPowerService extends AbstractCentralService {
      *
      * @return {@code true}:Cycling Power Control Point characteristic is exist, {@code false}:Cycling Power Control Point characteristic is not exist or service not ready
      */
-    public boolean isCyclingPowerControlPointCharacteristicSupporeted() {
-        return mIsCyclingPowerControlPointCharacteristicSupporeted;
+    public boolean isCyclingPowerControlPointCharacteristicSupported() {
+        return mIsCyclingPowerControlPointCharacteristicSupported;
     }
 
     /**
@@ -360,8 +360,8 @@ public class CyclingPowerService extends AbstractCentralService {
      *
      * @return {@code true}:Cycling Power Vector characteristic is exist, {@code false}:Cycling Power Vector characteristic is not exist or service not ready
      */
-    public boolean isCyclingPowerVectorCharacteristicSupporeted() {
-        return mIsCyclingPowerVectorCharacteristicSupporeted;
+    public boolean isCyclingPowerVectorCharacteristicSupported() {
+        return mIsCyclingPowerVectorCharacteristicSupported;
     }
 
     /**
@@ -465,7 +465,7 @@ public class CyclingPowerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setCyclingPowerControlPoint(@NonNull CyclingPowerControlPoint cyclingPowerControlPoint) {
         Integer taskId = null;
-        if (isStarted() && isCyclingPowerControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isCyclingPowerControlPointCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(CYCLING_POWER_SERVICE, null, CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, null, cyclingPowerControlPoint, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -482,7 +482,7 @@ public class CyclingPowerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getCyclingPowerControlPointClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isCyclingPowerControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isCyclingPowerControlPointCharacteristicSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(CYCLING_POWER_SERVICE, null, CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -499,7 +499,7 @@ public class CyclingPowerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startCyclingPowerControlPointIndication() {
         Integer taskId = null;
-        if (isStarted() && isCyclingPowerControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isCyclingPowerControlPointCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(CYCLING_POWER_SERVICE, null, CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -518,7 +518,7 @@ public class CyclingPowerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopCyclingPowerControlPointIndication() {
         Integer taskId = null;
-        if (isStarted() && isCyclingPowerControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isCyclingPowerControlPointCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(CYCLING_POWER_SERVICE, null, CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -537,7 +537,7 @@ public class CyclingPowerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getCyclingPowerVectorClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isCyclingPowerVectorCharacteristicSupporeted()) {
+        if (isStarted() && isCyclingPowerVectorCharacteristicSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(CYCLING_POWER_SERVICE, null, CYCLING_POWER_VECTOR_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -554,7 +554,7 @@ public class CyclingPowerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startCyclingPowerVectorNotification() {
         Integer taskId = null;
-        if (isStarted() && isCyclingPowerVectorCharacteristicSupporeted()) {
+        if (isStarted() && isCyclingPowerVectorCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(CYCLING_POWER_SERVICE, null, CYCLING_POWER_VECTOR_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -573,7 +573,7 @@ public class CyclingPowerService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopCyclingPowerVectorNotification() {
         Integer taskId = null;
-        if (isStarted() && isCyclingPowerVectorCharacteristicSupporeted()) {
+        if (isStarted() && isCyclingPowerVectorCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(CYCLING_POWER_SERVICE, null, CYCLING_POWER_VECTOR_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);

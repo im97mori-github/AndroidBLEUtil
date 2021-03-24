@@ -11176,36 +11176,36 @@ public class EnvironmentalSensingServiceTest_36 {
     }
 
     @Test
-    public void test_isDescriptorValueChangedCharacteristicSupporeted_00001() {
+    public void test_isDescriptorValueChangedCharacteristicSupported_00001() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, new MockEnvironmentalSensingServiceCallback(), null);
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test
-    public void test_isDescriptorValueChangedCharacteristicSupporeted_00002() {
+    public void test_isDescriptorValueChangedCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, new MockEnvironmentalSensingServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test
-    public void test_isDescriptorValueChangedCharacteristicSupporeted_00003() {
+    public void test_isDescriptorValueChangedCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, new MockEnvironmentalSensingServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test
-    public void test_isDescriptorValueChangedCharacteristicSupporeted_00004() {
+    public void test_isDescriptorValueChangedCharacteristicSupported_00004() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, new MockEnvironmentalSensingServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
@@ -11213,11 +11213,11 @@ public class EnvironmentalSensingServiceTest_36 {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test
-    public void test_isDescriptorValueChangedCharacteristicSupporeted_00005() {
+    public void test_isDescriptorValueChangedCharacteristicSupported_00005() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, new MockEnvironmentalSensingServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
@@ -11225,11 +11225,11 @@ public class EnvironmentalSensingServiceTest_36 {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test
-    public void test_isDescriptorValueChangedCharacteristicSupporeted_00006() {
+    public void test_isDescriptorValueChangedCharacteristicSupported_00006() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, new MockEnvironmentalSensingServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
@@ -11237,11 +11237,11 @@ public class EnvironmentalSensingServiceTest_36 {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test
-    public void test_isDescriptorValueChangedCharacteristicSupporeted_00007() {
+    public void test_isDescriptorValueChangedCharacteristicSupported_00007() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, new MockEnvironmentalSensingServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
@@ -11251,11 +11251,11 @@ public class EnvironmentalSensingServiceTest_36 {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test
-    public void test_isDescriptorValueChangedCharacteristicSupporeted_00008() {
+    public void test_isDescriptorValueChangedCharacteristicSupported_00008() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, new MockEnvironmentalSensingServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
@@ -11265,11 +11265,11 @@ public class EnvironmentalSensingServiceTest_36 {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertTrue(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
     @Test
-    public void test_isDescriptorValueChangedCharacteristicSupporeted_00009() {
+    public void test_isDescriptorValueChangedCharacteristicSupported_00009() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(mockBLEConnection, new MockEnvironmentalSensingServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
@@ -11280,7 +11280,7 @@ public class EnvironmentalSensingServiceTest_36 {
         environmentalSensingService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         environmentalSensingService.onBLEDisconnected(2, MockBLEConnection.MOCK_DEVICE, BluetoothGatt.GATT_SUCCESS, null);
 
-        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted());
+        assertFalse(environmentalSensingService.isDescriptorValueChangedCharacteristicSupported());
     }
 
 }

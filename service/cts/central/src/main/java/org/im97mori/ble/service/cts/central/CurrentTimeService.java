@@ -53,7 +53,7 @@ public class CurrentTimeService extends AbstractCentralService {
      * Local Time Information characteristic flag
      * {@code true}:Local Time Information characteristic is exist, {@code false}:Local Time Information characteristic is not exist or service not ready
      */
-    private boolean mIsLocalTimeInformationCharacteristicSupporeted;
+    private boolean mIsLocalTimeInformationCharacteristicSupported;
 
     /**
      * Local Time Information characteristic writable flag
@@ -65,7 +65,7 @@ public class CurrentTimeService extends AbstractCentralService {
      * Reference Time Information characteristic flag
      * {@code true}:Reference Time Information characteristic is exist, {@code false}:Reference Time Information characteristic is not exist or service not ready
      */
-    private boolean mIsReferenceTimeInformationCharacteristicSupporeted;
+    private boolean mIsReferenceTimeInformationCharacteristicSupported;
 
     /**
      * @param bleConnection              {@link BLEConnection} instance
@@ -84,9 +84,9 @@ public class CurrentTimeService extends AbstractCentralService {
     public synchronized void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
             mIsCurrentTimeCharacteristicWritable = false;
-            mIsLocalTimeInformationCharacteristicSupporeted = false;
+            mIsLocalTimeInformationCharacteristicSupported = false;
             mIsLocalTimeInformationCharacteristicWritable = false;
-            mIsReferenceTimeInformationCharacteristicSupporeted = false;
+            mIsReferenceTimeInformationCharacteristicSupported = false;
         }
         super.onBLEDisconnected(taskId, bluetoothDevice, status, argument);
     }
@@ -106,7 +106,7 @@ public class CurrentTimeService extends AbstractCentralService {
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && (BluetoothGattCharacteristic.PROPERTY_READ & bluetoothGattCharacteristic.getProperties()) != 0) {
-                        mIsLocalTimeInformationCharacteristicSupporeted = true;
+                        mIsLocalTimeInformationCharacteristicSupported = true;
 
                         if ((BluetoothGattCharacteristic.PROPERTY_WRITE & bluetoothGattCharacteristic.getProperties()) != 0) {
                             mIsLocalTimeInformationCharacteristicWritable = true;
@@ -114,7 +114,7 @@ public class CurrentTimeService extends AbstractCentralService {
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(REFERENCE_TIME_INFORMATION_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
-                        mIsReferenceTimeInformationCharacteristicSupporeted = true;
+                        mIsReferenceTimeInformationCharacteristicSupported = true;
                     }
                 }
             }
@@ -321,8 +321,8 @@ public class CurrentTimeService extends AbstractCentralService {
      *
      * @return {@code true}:Local Time Information characteristic is exist, {@code false}:Local Time Information characteristic is not exist or service not ready
      */
-    public boolean isLocalTimeInformationCharacteristicSupporeted() {
-        return mIsLocalTimeInformationCharacteristicSupporeted;
+    public boolean isLocalTimeInformationCharacteristicSupported() {
+        return mIsLocalTimeInformationCharacteristicSupported;
     }
 
     /**
@@ -339,8 +339,8 @@ public class CurrentTimeService extends AbstractCentralService {
      *
      * @return {@code true}:Reference Time Information characteristic is exist, {@code false}:Reference Time Information characteristic is not exist or service not ready
      */
-    public boolean isReferenceTimeInformationCharacteristicSupporeted() {
-        return mIsReferenceTimeInformationCharacteristicSupporeted;
+    public boolean isReferenceTimeInformationCharacteristicSupported() {
+        return mIsReferenceTimeInformationCharacteristicSupported;
     }
 
     /**
@@ -443,7 +443,7 @@ public class CurrentTimeService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getLocalTimeInformation() {
         Integer taskId = null;
-        if (isStarted() && isLocalTimeInformationCharacteristicSupporeted()) {
+        if (isStarted() && isLocalTimeInformationCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(CURRENT_TIME_SERVICE, null, LOCAL_TIME_INFORMATION_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -460,7 +460,7 @@ public class CurrentTimeService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setLocalTimeInformation(@NonNull LocalTimeInformation localTimeInformation) {
         Integer taskId = null;
-        if (isStarted() && isLocalTimeInformationCharacteristicSupporeted()) {
+        if (isStarted() && isLocalTimeInformationCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(CURRENT_TIME_SERVICE, null, LOCAL_TIME_INFORMATION_CHARACTERISTIC, null, localTimeInformation, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -477,7 +477,7 @@ public class CurrentTimeService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getReferenceTimeInformation() {
         Integer taskId = null;
-        if (isStarted() && isReferenceTimeInformationCharacteristicSupporeted()) {
+        if (isStarted() && isReferenceTimeInformationCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(CURRENT_TIME_SERVICE, null, REFERENCE_TIME_INFORMATION_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;

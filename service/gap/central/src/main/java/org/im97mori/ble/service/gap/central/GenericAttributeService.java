@@ -46,19 +46,19 @@ public class GenericAttributeService extends AbstractCentralService {
      * Service Changed characteristic flag
      * {@code true}:Service Changed characteristic is exist, {@code false}:Service Changed characteristic is not exist or service not ready
      */
-    private boolean mIsServiceChangedCharacteristicSupporeted;
+    private boolean mIsServiceChangedCharacteristicSupported;
 
     /**
      * Client Supported Features characteristic flag
      * {@code true}:Client Supported Features characteristic is exist, {@code false}:Client Supported Features characteristic is not exist or service not ready
      */
-    private boolean mIsClientSupportedFeaturesCharacteristicSupporeted;
+    private boolean mIsClientSupportedFeaturesCharacteristicSupported;
 
     /**
      * Database Hash characteristic flag
      * {@code true}:Database Hash characteristic is exist, {@code false}:Database Hash characteristic is not exist or service not ready
      */
-    private boolean mIsDatabaseHashCharacteristicSupporeted;
+    private boolean mIsDatabaseHashCharacteristicSupported;
 
     /**
      * @param bleConnection                   {@link BLEConnection} instance
@@ -76,9 +76,9 @@ public class GenericAttributeService extends AbstractCentralService {
     @Override
     public synchronized void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
-            mIsServiceChangedCharacteristicSupporeted = false;
-            mIsClientSupportedFeaturesCharacteristicSupporeted = false;
-            mIsDatabaseHashCharacteristicSupporeted = false;
+            mIsServiceChangedCharacteristicSupported = false;
+            mIsClientSupportedFeaturesCharacteristicSupported = false;
+            mIsDatabaseHashCharacteristicSupported = false;
         }
         super.onBLEDisconnected(taskId, bluetoothDevice, status, argument);
     }
@@ -96,15 +96,15 @@ public class GenericAttributeService extends AbstractCentralService {
                     if (bluetoothGattCharacteristic != null
                             && (BluetoothGattCharacteristic.PROPERTY_INDICATE & bluetoothGattCharacteristic.getProperties()) != 0
                             && bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
-                        mIsServiceChangedCharacteristicSupporeted = true;
+                        mIsServiceChangedCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && (BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties()) {
-                        mIsClientSupportedFeaturesCharacteristicSupporeted = true;
+                        mIsClientSupportedFeaturesCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(DATABASE_HASH_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
-                        mIsDatabaseHashCharacteristicSupporeted = true;
+                        mIsDatabaseHashCharacteristicSupported = true;
                     }
                 }
             }
@@ -290,8 +290,8 @@ public class GenericAttributeService extends AbstractCentralService {
      *
      * @return {@code true}:Service Changed characteristic is exist, {@code false}:Service Changed characteristic is not exist or service not ready
      */
-    public boolean isServiceChangedCharacteristicSupporeted() {
-        return mIsServiceChangedCharacteristicSupporeted;
+    public boolean isServiceChangedCharacteristicSupported() {
+        return mIsServiceChangedCharacteristicSupported;
     }
 
     /**
@@ -299,8 +299,8 @@ public class GenericAttributeService extends AbstractCentralService {
      *
      * @return {@code true}:Client Supported Features characteristic is exist, {@code false}:Client Supported Features characteristic is not exist or service not ready
      */
-    public boolean isClientSupportedFeaturesCharacteristicSupporeted() {
-        return mIsClientSupportedFeaturesCharacteristicSupporeted;
+    public boolean isClientSupportedFeaturesCharacteristicSupported() {
+        return mIsClientSupportedFeaturesCharacteristicSupported;
     }
 
     /**
@@ -308,8 +308,8 @@ public class GenericAttributeService extends AbstractCentralService {
      *
      * @return {@code true}:Database Hashs characteristic is exist, {@code false}:Database Hash characteristic is not exist or service not ready
      */
-    public boolean isDatabaseHashCharacteristicSupporeted() {
-        return mIsDatabaseHashCharacteristicSupporeted;
+    public boolean isDatabaseHashCharacteristicSupported() {
+        return mIsDatabaseHashCharacteristicSupported;
     }
 
     /**
@@ -323,7 +323,7 @@ public class GenericAttributeService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getServiceChangedClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isServiceChangedCharacteristicSupporeted()) {
+        if (isStarted() && isServiceChangedCharacteristicSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(GENERIC_ATTRIBUTE_SERVICE, null, SERVICE_CHANGED_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -340,7 +340,7 @@ public class GenericAttributeService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startServiceChangedIndication() {
         Integer taskId = null;
-        if (isStarted() && isServiceChangedCharacteristicSupporeted()) {
+        if (isStarted() && isServiceChangedCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(GENERIC_ATTRIBUTE_SERVICE, null, SERVICE_CHANGED_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -359,7 +359,7 @@ public class GenericAttributeService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopServiceChangedIndication() {
         Integer taskId = null;
-        if (isStarted() && isServiceChangedCharacteristicSupporeted()) {
+        if (isStarted() && isServiceChangedCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(GENERIC_ATTRIBUTE_SERVICE, null, SERVICE_CHANGED_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -378,7 +378,7 @@ public class GenericAttributeService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getClientSupportedFeatures() {
         Integer taskId = null;
-        if (isStarted() && isClientSupportedFeaturesCharacteristicSupporeted()) {
+        if (isStarted() && isClientSupportedFeaturesCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(GENERIC_ATTRIBUTE_SERVICE, null, CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -395,7 +395,7 @@ public class GenericAttributeService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setClientSupportedFeatures(@NonNull ClientSupportedFeatures clientSupportedFeatures) {
         Integer taskId = null;
-        if (isStarted() && isClientSupportedFeaturesCharacteristicSupporeted()) {
+        if (isStarted() && isClientSupportedFeaturesCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(GENERIC_ATTRIBUTE_SERVICE, null, CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, null, clientSupportedFeatures, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -412,7 +412,7 @@ public class GenericAttributeService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getDatabaseHash() {
         Integer taskId = null;
-        if (isStarted() && isDatabaseHashCharacteristicSupporeted()) {
+        if (isStarted() && isDatabaseHashCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(GENERIC_ATTRIBUTE_SERVICE, null, DATABASE_HASH_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;

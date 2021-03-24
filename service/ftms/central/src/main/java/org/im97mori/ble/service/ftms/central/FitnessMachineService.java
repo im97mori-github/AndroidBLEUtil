@@ -76,85 +76,85 @@ public class FitnessMachineService extends AbstractCentralService {
      * Treadmill Data characteristic flag
      * {@code true}:Treadmill Data characteristic is exist, {@code false}:Treadmill Data characteristic is not exist or service not ready
      */
-    private boolean mIsTreadmillDataCharacteristicSupporeted;
+    private boolean mIsTreadmillDataCharacteristicSupported;
 
     /**
      * Cross Trainer Data characteristic flag
      * {@code true}:Cross Trainer Data characteristic is exist, {@code false}:Cross Trainer Data characteristic is not exist or service not ready
      */
-    private boolean mIsCrossTrainerDataCharacteristicSupporeted;
+    private boolean mIsCrossTrainerDataCharacteristicSupported;
 
     /**
      * Step Climber Data characteristic flag
      * {@code true}:Step Climber Data characteristic is exist, {@code false}:Step Climber Data characteristic is not exist or service not ready
      */
-    private boolean mIsStepClimberDataCharacteristicSupporeted;
+    private boolean mIsStepClimberDataCharacteristicSupported;
 
     /**
      * Stair Climber Data characteristic flag
      * {@code true}:Stair Climber Data characteristic is exist, {@code false}:Stair Climber Data characteristic is not exist or service not ready
      */
-    private boolean mIsStairClimberDataCharacteristicSupporeted;
+    private boolean mIsStairClimberDataCharacteristicSupported;
 
     /**
      * Rower Data characteristic flag
      * {@code true}:Rower Data characteristic is exist, {@code false}:Rower Data characteristic is not exist or service not ready
      */
-    private boolean mIsRowerDataCharacteristicSupporeted;
+    private boolean mIsRowerDataCharacteristicSupported;
 
     /**
      * Indoor Bike Data characteristic flag
      * {@code true}:Indoor Bike Data characteristic is exist, {@code false}:Indoor Bike Data characteristic is not exist or service not ready
      */
-    private boolean mIsIndoorBikeDataCharacteristicSupporeted;
+    private boolean mIsIndoorBikeDataCharacteristicSupported;
 
     /**
      * Training Status characteristic flag
      * {@code true}:Training Status characteristic is exist, {@code false}:Training Status characteristic is not exist or service not ready
      */
-    private boolean mIsTrainingStatusCharacteristicSupporeted;
+    private boolean mIsTrainingStatusCharacteristicSupported;
 
     /**
      * Supported Speed Range characteristic flag
      * {@code true}:Supported Speed Range characteristic is exist, {@code false}:Supported Speed Range characteristic is not exist or service not ready
      */
-    private boolean mIsSupportedSpeedRangeCharacteristicSupporeted;
+    private boolean mIsSupportedSpeedRangeCharacteristicSupported;
 
     /**
      * Supported Inclination Range characteristic flag
      * {@code true}:Supported Inclination Range characteristic is exist, {@code false}:Supported Inclination Range characteristic is not exist or service not ready
      */
-    private boolean mIsSupportedInclinationRangeCharacteristicSupporeted;
+    private boolean mIsSupportedInclinationRangeCharacteristicSupported;
 
     /**
      * Supported Resistance Level Range characteristic flag
      * {@code true}:Supported Resistance Level Range characteristic is exist, {@code false}:Supported Resistance Level Range characteristic is not exist or service not ready
      */
-    private boolean mIsSupportedResistanceLevelRangeCharacteristicSupporeted;
+    private boolean mIsSupportedResistanceLevelRangeCharacteristicSupported;
 
     /**
      * Supported Power Range characteristic flag
      * {@code true}:Supported Power Range characteristic is exist, {@code false}:Supported Power Range characteristic is not exist or service not ready
      */
-    private boolean mIsSupportedPowerRangeCharacteristicSupporeted;
+    private boolean mIsSupportedPowerRangeCharacteristicSupported;
 
     /**
      * Supported Heart Rate Range characteristic flag
      * {@code true}:Supported Heart Rate Range characteristic is exist, {@code false}:Supported Heart Rate Range characteristic is not exist or service not ready
      */
-    private boolean mIsSupportedHeartRateRangeCharacteristicSupporeted;
+    private boolean mIsSupportedHeartRateRangeCharacteristicSupported;
 
     /**
      * Fitness Machine Control Point characteristic flag
      * {@code true}:Fitness Machine Control Point characteristic is exist, {@code false}:Fitness Machine Control Point characteristic is not exist or service not ready
      */
-    private boolean mIsFitnessMachineControlPointCharacteristicSupporeted;
+    private boolean mIsFitnessMachineControlPointCharacteristicSupported;
 
     /**
      * Fitness Machine Status characteristic flag
      * {@code true}:Fitness Machine Status characteristic is exist, {@code false}:Fitness Machine Status characteristic is not exist or service not ready
      */
-    private boolean mIsFitnessMachineStatusCharacteristicSupporeted;
+    private boolean mIsFitnessMachineStatusCharacteristicSupported;
 
     /**
      * @param bleConnection                 {@link BLEConnection} instance
@@ -172,20 +172,20 @@ public class FitnessMachineService extends AbstractCentralService {
     @Override
     public synchronized void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
-            mIsTreadmillDataCharacteristicSupporeted = false;
-            mIsCrossTrainerDataCharacteristicSupporeted = false;
-            mIsStepClimberDataCharacteristicSupporeted = false;
-            mIsStairClimberDataCharacteristicSupporeted = false;
-            mIsRowerDataCharacteristicSupporeted = false;
-            mIsIndoorBikeDataCharacteristicSupporeted = false;
-            mIsTrainingStatusCharacteristicSupporeted = false;
-            mIsSupportedSpeedRangeCharacteristicSupporeted = false;
-            mIsSupportedInclinationRangeCharacteristicSupporeted = false;
-            mIsSupportedResistanceLevelRangeCharacteristicSupporeted = false;
-            mIsSupportedPowerRangeCharacteristicSupporeted = false;
-            mIsSupportedHeartRateRangeCharacteristicSupporeted = false;
-            mIsFitnessMachineControlPointCharacteristicSupporeted = false;
-            mIsFitnessMachineStatusCharacteristicSupporeted = false;
+            mIsTreadmillDataCharacteristicSupported = false;
+            mIsCrossTrainerDataCharacteristicSupported = false;
+            mIsStepClimberDataCharacteristicSupported = false;
+            mIsStairClimberDataCharacteristicSupported = false;
+            mIsRowerDataCharacteristicSupported = false;
+            mIsIndoorBikeDataCharacteristicSupported = false;
+            mIsTrainingStatusCharacteristicSupported = false;
+            mIsSupportedSpeedRangeCharacteristicSupported = false;
+            mIsSupportedInclinationRangeCharacteristicSupported = false;
+            mIsSupportedResistanceLevelRangeCharacteristicSupported = false;
+            mIsSupportedPowerRangeCharacteristicSupported = false;
+            mIsSupportedHeartRateRangeCharacteristicSupported = false;
+            mIsFitnessMachineControlPointCharacteristicSupported = false;
+            mIsFitnessMachineStatusCharacteristicSupported = false;
         }
         super.onBLEDisconnected(taskId, bluetoothDevice, status, argument);
     }
@@ -203,80 +203,80 @@ public class FitnessMachineService extends AbstractCentralService {
                     if (bluetoothGattCharacteristic != null
                             && BluetoothGattCharacteristic.PROPERTY_NOTIFY == bluetoothGattCharacteristic.getProperties()
                             && bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
-                        mIsTreadmillDataCharacteristicSupporeted = true;
+                        mIsTreadmillDataCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(CROSS_TRAINER_DATA_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null
                             && BluetoothGattCharacteristic.PROPERTY_NOTIFY == bluetoothGattCharacteristic.getProperties()
                             && bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
-                        mIsCrossTrainerDataCharacteristicSupporeted = true;
+                        mIsCrossTrainerDataCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(STEP_CLIMBER_DATA_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null
                             && BluetoothGattCharacteristic.PROPERTY_NOTIFY == bluetoothGattCharacteristic.getProperties()
                             && bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
-                        mIsStepClimberDataCharacteristicSupporeted = true;
+                        mIsStepClimberDataCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(STAIR_CLIMBER_DATA_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null
                             && BluetoothGattCharacteristic.PROPERTY_NOTIFY == bluetoothGattCharacteristic.getProperties()
                             && bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
-                        mIsStairClimberDataCharacteristicSupporeted = true;
+                        mIsStairClimberDataCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(ROWER_DATA_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null
                             && BluetoothGattCharacteristic.PROPERTY_NOTIFY == bluetoothGattCharacteristic.getProperties()
                             && bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
-                        mIsRowerDataCharacteristicSupporeted = true;
+                        mIsRowerDataCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(INDOOR_BIKE_DATA_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null
                             && BluetoothGattCharacteristic.PROPERTY_NOTIFY == bluetoothGattCharacteristic.getProperties()
                             && bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
-                        mIsIndoorBikeDataCharacteristicSupporeted = true;
+                        mIsIndoorBikeDataCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(TRAINING_STATUS_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null
                             && (BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY) == bluetoothGattCharacteristic.getProperties()
                             && bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
-                        mIsTrainingStatusCharacteristicSupporeted = true;
+                        mIsTrainingStatusCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SUPPORTED_SPEED_RANGE_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null
                             && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
-                        mIsSupportedSpeedRangeCharacteristicSupporeted = true;
+                        mIsSupportedSpeedRangeCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SUPPORTED_INCLINATION_RANGE_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null
                             && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
-                        mIsSupportedInclinationRangeCharacteristicSupporeted = true;
+                        mIsSupportedInclinationRangeCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SUPPORTED_RESISTANCE_LEVEL_RANGE_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null
                             && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
-                        mIsSupportedResistanceLevelRangeCharacteristicSupporeted = true;
+                        mIsSupportedResistanceLevelRangeCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SUPPORTED_POWER_RANGE_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null
                             && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
-                        mIsSupportedPowerRangeCharacteristicSupporeted = true;
+                        mIsSupportedPowerRangeCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SUPPORTED_HEART_RATE_RANGE_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null
                             && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
-                        mIsSupportedHeartRateRangeCharacteristicSupporeted = true;
+                        mIsSupportedHeartRateRangeCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null
                             && (BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE) == bluetoothGattCharacteristic.getProperties()
                             && bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
-                        mIsFitnessMachineControlPointCharacteristicSupporeted = true;
+                        mIsFitnessMachineControlPointCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(FITNESS_MACHINE_STATUS_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null
                             && BluetoothGattCharacteristic.PROPERTY_NOTIFY == bluetoothGattCharacteristic.getProperties()
                             && bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
-                        mIsFitnessMachineStatusCharacteristicSupporeted = true;
+                        mIsFitnessMachineStatusCharacteristicSupported = true;
                     }
                 }
             }
@@ -714,8 +714,8 @@ public class FitnessMachineService extends AbstractCentralService {
      *
      * @return {@code true}:Treadmill Data characteristic is exist, {@code false}:Treadmill Data characteristic is not exist or service not ready
      */
-    public boolean isTreadmillDataCharacteristicSupporeted() {
-        return mIsTreadmillDataCharacteristicSupporeted;
+    public boolean isTreadmillDataCharacteristicSupported() {
+        return mIsTreadmillDataCharacteristicSupported;
     }
 
     /**
@@ -723,8 +723,8 @@ public class FitnessMachineService extends AbstractCentralService {
      *
      * @return {@code true}:Cross Trainer Data characteristic is exist, {@code false}:Cross Trainer Data characteristic is not exist or service not ready
      */
-    public boolean isCrossTrainerDataCharacteristicSupporeted() {
-        return mIsCrossTrainerDataCharacteristicSupporeted;
+    public boolean isCrossTrainerDataCharacteristicSupported() {
+        return mIsCrossTrainerDataCharacteristicSupported;
     }
 
     /**
@@ -732,8 +732,8 @@ public class FitnessMachineService extends AbstractCentralService {
      *
      * @return {@code true}:Step Climber Data characteristic is exist, {@code false}:Step Climber Data characteristic is not exist or service not ready
      */
-    public boolean isStepClimberDataCharacteristicSupporeted() {
-        return mIsStepClimberDataCharacteristicSupporeted;
+    public boolean isStepClimberDataCharacteristicSupported() {
+        return mIsStepClimberDataCharacteristicSupported;
     }
 
     /**
@@ -741,8 +741,8 @@ public class FitnessMachineService extends AbstractCentralService {
      *
      * @return {@code true}:Stair Climber Data characteristic is exist, {@code false}:Stair Climber Data characteristic is not exist or service not ready
      */
-    public boolean isStairClimberDataCharacteristicSupporeted() {
-        return mIsStairClimberDataCharacteristicSupporeted;
+    public boolean isStairClimberDataCharacteristicSupported() {
+        return mIsStairClimberDataCharacteristicSupported;
     }
 
     /**
@@ -750,8 +750,8 @@ public class FitnessMachineService extends AbstractCentralService {
      *
      * @return {@code true}:Rower Data characteristic is exist, {@code false}:Rower Data characteristic is not exist or service not ready
      */
-    public boolean isRowerDataCharacteristicSupporeted() {
-        return mIsRowerDataCharacteristicSupporeted;
+    public boolean isRowerDataCharacteristicSupported() {
+        return mIsRowerDataCharacteristicSupported;
     }
 
     /**
@@ -759,8 +759,8 @@ public class FitnessMachineService extends AbstractCentralService {
      *
      * @return {@code true}:Indoor Bike Data characteristic is exist, {@code false}:Indoor Bike Data characteristic is not exist or service not ready
      */
-    public boolean isIndoorBikeDataCharacteristicSupporeted() {
-        return mIsIndoorBikeDataCharacteristicSupporeted;
+    public boolean isIndoorBikeDataCharacteristicSupported() {
+        return mIsIndoorBikeDataCharacteristicSupported;
     }
 
     /**
@@ -768,8 +768,8 @@ public class FitnessMachineService extends AbstractCentralService {
      *
      * @return {@code true}:Training Status Data characteristic is exist, {@code false}:Training Status Data characteristic is not exist or service not ready
      */
-    public boolean isTrainingStatusCharacteristicSupporeted() {
-        return mIsTrainingStatusCharacteristicSupporeted;
+    public boolean isTrainingStatusCharacteristicSupported() {
+        return mIsTrainingStatusCharacteristicSupported;
     }
 
     /**
@@ -777,8 +777,8 @@ public class FitnessMachineService extends AbstractCentralService {
      *
      * @return {@code true}:Supported Speed Range characteristic is exist, {@code false}:Supported Speed Range characteristic is not exist or service not ready
      */
-    public boolean isSupportedSpeedRangeCharacteristicSupporeted() {
-        return mIsSupportedSpeedRangeCharacteristicSupporeted;
+    public boolean isSupportedSpeedRangeCharacteristicSupported() {
+        return mIsSupportedSpeedRangeCharacteristicSupported;
     }
 
     /**
@@ -786,8 +786,8 @@ public class FitnessMachineService extends AbstractCentralService {
      *
      * @return {@code true}:Supported Inclination Range characteristic is exist, {@code false}:Supported Inclination Range characteristic is not exist or service not ready
      */
-    public boolean isSupportedInclinationRangeCharacteristicSupporeted() {
-        return mIsSupportedInclinationRangeCharacteristicSupporeted;
+    public boolean isSupportedInclinationRangeCharacteristicSupported() {
+        return mIsSupportedInclinationRangeCharacteristicSupported;
     }
 
     /**
@@ -795,8 +795,8 @@ public class FitnessMachineService extends AbstractCentralService {
      *
      * @return {@code true}:Supported Resistance Level Range characteristic is exist, {@code false}:Supported Resistance Level Range characteristic is not exist or service not ready
      */
-    public boolean isSupportedResistanceLevelRangeCharacteristicSupporeted() {
-        return mIsSupportedResistanceLevelRangeCharacteristicSupporeted;
+    public boolean isSupportedResistanceLevelRangeCharacteristicSupported() {
+        return mIsSupportedResistanceLevelRangeCharacteristicSupported;
     }
 
     /**
@@ -804,8 +804,8 @@ public class FitnessMachineService extends AbstractCentralService {
      *
      * @return {@code true}:Supported Power Range characteristic is exist, {@code false}:Supported Power Range characteristic is not exist or service not ready
      */
-    public boolean isSupportedPowerRangeCharacteristicSupporeted() {
-        return mIsSupportedPowerRangeCharacteristicSupporeted;
+    public boolean isSupportedPowerRangeCharacteristicSupported() {
+        return mIsSupportedPowerRangeCharacteristicSupported;
     }
 
     /**
@@ -813,8 +813,8 @@ public class FitnessMachineService extends AbstractCentralService {
      *
      * @return {@code true}:Supported Heart Rate Range characteristic is exist, {@code false}:Supported Heart Rate Range characteristic is not exist or service not ready
      */
-    public boolean isSupportedHeartRateRangeCharacteristicSupporeted() {
-        return mIsSupportedHeartRateRangeCharacteristicSupporeted;
+    public boolean isSupportedHeartRateRangeCharacteristicSupported() {
+        return mIsSupportedHeartRateRangeCharacteristicSupported;
     }
 
     /**
@@ -822,8 +822,8 @@ public class FitnessMachineService extends AbstractCentralService {
      *
      * @return {@code true}:Fitness Machine Control Point characteristic is exist, {@code false}:Fitness Machine Control Point characteristic is not exist or service not ready
      */
-    public boolean isFitnessMachineControlPointCharacteristicSupporeted() {
-        return mIsFitnessMachineControlPointCharacteristicSupporeted;
+    public boolean isFitnessMachineControlPointCharacteristicSupported() {
+        return mIsFitnessMachineControlPointCharacteristicSupported;
     }
 
     /**
@@ -831,8 +831,8 @@ public class FitnessMachineService extends AbstractCentralService {
      *
      * @return {@code true}:Fitness Machine Status characteristic is exist, {@code false}:Fitness Machine Status characteristic is not exist or service not ready
      */
-    public boolean isFitnessMachineStatusCharacteristicSupporeted() {
-        return mIsFitnessMachineStatusCharacteristicSupporeted;
+    public boolean isFitnessMachineStatusCharacteristicSupported() {
+        return mIsFitnessMachineStatusCharacteristicSupported;
     }
 
     /**
@@ -863,7 +863,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getTreadmillDataClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isTreadmillDataCharacteristicSupporeted()) {
+        if (isStarted() && isTreadmillDataCharacteristicSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, TREADMILL_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -880,7 +880,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startTreadmillDataNotification() {
         Integer taskId = null;
-        if (isStarted() && isTreadmillDataCharacteristicSupporeted()) {
+        if (isStarted() && isTreadmillDataCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, TREADMILL_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -899,7 +899,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopTreadmillDataNotification() {
         Integer taskId = null;
-        if (isStarted() && isTreadmillDataCharacteristicSupporeted()) {
+        if (isStarted() && isTreadmillDataCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, TREADMILL_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -918,7 +918,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getCrossTrainerDataClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isCrossTrainerDataCharacteristicSupporeted()) {
+        if (isStarted() && isCrossTrainerDataCharacteristicSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, CROSS_TRAINER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -935,7 +935,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startCrossTrainerDataNotification() {
         Integer taskId = null;
-        if (isStarted() && isCrossTrainerDataCharacteristicSupporeted()) {
+        if (isStarted() && isCrossTrainerDataCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, CROSS_TRAINER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -954,7 +954,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopCrossTrainerDataNotification() {
         Integer taskId = null;
-        if (isStarted() && isCrossTrainerDataCharacteristicSupporeted()) {
+        if (isStarted() && isCrossTrainerDataCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, CROSS_TRAINER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -973,7 +973,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getStepClimberDataClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isStepClimberDataCharacteristicSupporeted()) {
+        if (isStarted() && isStepClimberDataCharacteristicSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, STEP_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -990,7 +990,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startStepClimberDataNotification() {
         Integer taskId = null;
-        if (isStarted() && isStepClimberDataCharacteristicSupporeted()) {
+        if (isStarted() && isStepClimberDataCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, STEP_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -1009,7 +1009,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopStepClimberDataNotification() {
         Integer taskId = null;
-        if (isStarted() && isStepClimberDataCharacteristicSupporeted()) {
+        if (isStarted() && isStepClimberDataCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, STEP_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -1028,7 +1028,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getStairClimberDataClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isStairClimberDataCharacteristicSupporeted()) {
+        if (isStarted() && isStairClimberDataCharacteristicSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, STAIR_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1045,7 +1045,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startStairClimberDataNotification() {
         Integer taskId = null;
-        if (isStarted() && isStairClimberDataCharacteristicSupporeted()) {
+        if (isStarted() && isStairClimberDataCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, STAIR_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -1064,7 +1064,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopStairClimberDataNotification() {
         Integer taskId = null;
-        if (isStarted() && isStairClimberDataCharacteristicSupporeted()) {
+        if (isStarted() && isStairClimberDataCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, STAIR_CLIMBER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -1083,7 +1083,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getRowerDataClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isRowerDataCharacteristicSupporeted()) {
+        if (isStarted() && isRowerDataCharacteristicSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, ROWER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1100,7 +1100,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startRowerDataNotification() {
         Integer taskId = null;
-        if (isStarted() && isRowerDataCharacteristicSupporeted()) {
+        if (isStarted() && isRowerDataCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, ROWER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -1119,7 +1119,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopRowerDataNotification() {
         Integer taskId = null;
-        if (isStarted() && isRowerDataCharacteristicSupporeted()) {
+        if (isStarted() && isRowerDataCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, ROWER_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -1138,7 +1138,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getIndoorBikeDataClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isIndoorBikeDataCharacteristicSupporeted()) {
+        if (isStarted() && isIndoorBikeDataCharacteristicSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, INDOOR_BIKE_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1155,7 +1155,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startIndoorBikeDataNotification() {
         Integer taskId = null;
-        if (isStarted() && isIndoorBikeDataCharacteristicSupporeted()) {
+        if (isStarted() && isIndoorBikeDataCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, INDOOR_BIKE_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -1174,7 +1174,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopIndoorBikeDataNotification() {
         Integer taskId = null;
-        if (isStarted() && isIndoorBikeDataCharacteristicSupporeted()) {
+        if (isStarted() && isIndoorBikeDataCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, INDOOR_BIKE_DATA_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -1193,7 +1193,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getTrainingStatus() {
         Integer taskId = null;
-        if (isStarted() && isTrainingStatusCharacteristicSupporeted()) {
+        if (isStarted() && isTrainingStatusCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(FITNESS_MACHINE_SERVICE, null, TRAINING_STATUS_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1210,7 +1210,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getTrainingStatusClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isTrainingStatusCharacteristicSupporeted()) {
+        if (isStarted() && isTrainingStatusCharacteristicSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, TRAINING_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1227,7 +1227,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startTrainingStatusNotification() {
         Integer taskId = null;
-        if (isStarted() && isTrainingStatusCharacteristicSupporeted()) {
+        if (isStarted() && isTrainingStatusCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, TRAINING_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -1246,7 +1246,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopTrainingStatusNotification() {
         Integer taskId = null;
-        if (isStarted() && isTrainingStatusCharacteristicSupporeted()) {
+        if (isStarted() && isTrainingStatusCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, TRAINING_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -1265,7 +1265,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getSupportedSpeedRange() {
         Integer taskId = null;
-        if (isStarted() && isSupportedSpeedRangeCharacteristicSupporeted()) {
+        if (isStarted() && isSupportedSpeedRangeCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(FITNESS_MACHINE_SERVICE, null, SUPPORTED_SPEED_RANGE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1282,7 +1282,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getSupportedInclinationRange() {
         Integer taskId = null;
-        if (isStarted() && isSupportedInclinationRangeCharacteristicSupporeted()) {
+        if (isStarted() && isSupportedInclinationRangeCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(FITNESS_MACHINE_SERVICE, null, SUPPORTED_INCLINATION_RANGE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1299,7 +1299,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getSupportedResistanceLevelRange() {
         Integer taskId = null;
-        if (isStarted() && isSupportedResistanceLevelRangeCharacteristicSupporeted()) {
+        if (isStarted() && isSupportedResistanceLevelRangeCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(FITNESS_MACHINE_SERVICE, null, SUPPORTED_RESISTANCE_LEVEL_RANGE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1316,7 +1316,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getSupportedPowerRange() {
         Integer taskId = null;
-        if (isStarted() && isSupportedPowerRangeCharacteristicSupporeted()) {
+        if (isStarted() && isSupportedPowerRangeCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(FITNESS_MACHINE_SERVICE, null, SUPPORTED_POWER_RANGE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1333,7 +1333,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getSupportedHeartRateRange() {
         Integer taskId = null;
-        if (isStarted() && isSupportedHeartRateRangeCharacteristicSupporeted()) {
+        if (isStarted() && isSupportedHeartRateRangeCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(FITNESS_MACHINE_SERVICE, null, SUPPORTED_HEART_RATE_RANGE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1351,7 +1351,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setFitnessMachineControlPoint(@NonNull FitnessMachineControlPoint fitnessMachineControlPoint) {
         Integer taskId = null;
-        if (isStarted() && isFitnessMachineControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isFitnessMachineControlPointCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, null, fitnessMachineControlPoint, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1368,7 +1368,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getFitnessMachineControlPointClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isFitnessMachineControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isFitnessMachineControlPointCharacteristicSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1385,7 +1385,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startFitnessMachineControlPointIndication() {
         Integer taskId = null;
-        if (isStarted() && isFitnessMachineControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isFitnessMachineControlPointCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -1404,7 +1404,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopFitnessMachineControlPointIndication() {
         Integer taskId = null;
-        if (isStarted() && isFitnessMachineControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isFitnessMachineControlPointCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_CONTROL_POINT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -1423,7 +1423,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getFitnessMachineStatusClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isFitnessMachineStatusCharacteristicSupporeted()) {
+        if (isStarted() && isFitnessMachineStatusCharacteristicSupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1440,7 +1440,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startFitnessMachineStatusNotification() {
         Integer taskId = null;
-        if (isStarted() && isFitnessMachineStatusCharacteristicSupporeted()) {
+        if (isStarted() && isFitnessMachineStatusCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -1459,7 +1459,7 @@ public class FitnessMachineService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopFitnessMachineStatusNotification() {
         Integer taskId = null;
-        if (isStarted() && isFitnessMachineStatusCharacteristicSupporeted()) {
+        if (isStarted() && isFitnessMachineStatusCharacteristicSupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(FITNESS_MACHINE_SERVICE, null, FITNESS_MACHINE_STATUS_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);

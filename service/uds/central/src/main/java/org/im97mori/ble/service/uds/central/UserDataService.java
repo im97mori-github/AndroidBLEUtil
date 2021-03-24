@@ -133,175 +133,175 @@ public class UserDataService extends AbstractCentralService {
      * First Name characteristic flag
      * {@code true}:First Name characteristic is exist, {@code false}:First Name characteristic is not exist or service not ready
      */
-    private boolean mIsFirstNameCharacteristicSupporeted;
+    private boolean mIsFirstNameCharacteristicSupported;
 
     /**
      * Last Name characteristic flag
      * {@code true}:Last Name characteristic is exist, {@code false}:Last Name characteristic is not exist or service not ready
      */
-    private boolean mIsLastNameCharacteristicSupporeted;
+    private boolean mIsLastNameCharacteristicSupported;
 
     /**
      * Email Address characteristic flag
      * {@code true}:Email Address characteristic is exist, {@code false}:Email Address characteristic is not exist or service not ready
      */
-    private boolean mIsEmailAddressCharacteristicSupporeted;
+    private boolean mIsEmailAddressCharacteristicSupported;
 
     /**
      * Age characteristic flag
      * {@code true}:Age characteristic is exist, {@code false}:Age characteristic is not exist or service not ready
      */
-    private boolean mIsAgeCharacteristicSupporeted;
+    private boolean mIsAgeCharacteristicSupported;
 
     /**
      * Date of Birth characteristic flag
      * {@code true}:Date of Birth characteristic is exist, {@code false}:Date of Birth characteristic is not exist or service not ready
      */
-    private boolean mIsDateOfBirthCharacteristicSupporeted;
+    private boolean mIsDateOfBirthCharacteristicSupported;
 
     /**
      * Gender characteristic flag
      * {@code true}:Gender characteristic is exist, {@code false}:Gender characteristic is not exist or service not ready
      */
-    private boolean mIsGenderCharacteristicSupporeted;
+    private boolean mIsGenderCharacteristicSupported;
 
     /**
      * Weight characteristic flag
      * {@code true}:Weight characteristic is exist, {@code false}:Weight characteristic is not exist or service not ready
      */
-    private boolean mIsWeightCharacteristicSupporeted;
+    private boolean mIsWeightCharacteristicSupported;
 
     /**
      * Height characteristic flag
      * {@code true}:Height characteristic is exist, {@code false}:Height characteristic is not exist or service not ready
      */
-    private boolean mIsHeightCharacteristicSupporeted;
+    private boolean mIsHeightCharacteristicSupported;
 
     /**
      * VO2 Max characteristic flag
      * {@code true}:VO2 Max characteristic is exist, {@code false}:VO2 Max characteristic is not exist or service not ready
      */
-    private boolean mIsVO2MaxCharacteristicSupporeted;
+    private boolean mIsVO2MaxCharacteristicSupported;
 
     /**
      * Heart Rate Max characteristic flag
      * {@code true}:Heart Rate Max characteristic is exist, {@code false}:Heart Rate Max characteristic is not exist or service not ready
      */
-    private boolean mIsHeartRateMaxCharacteristicSupporeted;
+    private boolean mIsHeartRateMaxCharacteristicSupported;
 
     /**
      * Resting Heart Rate characteristic flag
      * {@code true}:Resting Heart Rate characteristic is exist, {@code false}:Resting Heart Rate characteristic is not exist or service not ready
      */
-    private boolean mIsRestingHeartRateCharacteristicSupporeted;
+    private boolean mIsRestingHeartRateCharacteristicSupported;
 
     /**
      * Maximum Recommended Heart Rate characteristic flag
      * {@code true}:Maximum Recommended Heart Rate characteristic is exist, {@code false}:Maximum Recommended Heart Rate characteristic is not exist or service not ready
      */
-    private boolean mIsMaximumRecommendedHeartRateCharacteristicSupporeted;
+    private boolean mIsMaximumRecommendedHeartRateCharacteristicSupported;
 
     /**
      * Aerobic Threshold characteristic flag
      * {@code true}:Aerobic Threshold characteristic is exist, {@code false}:Aerobic Threshold characteristic is not exist or service not ready
      */
-    private boolean mIsAerobicThresholdCharacteristicSupporeted;
+    private boolean mIsAerobicThresholdCharacteristicSupported;
 
     /**
      * Anaerobic Threshold characteristic flag
      * {@code true}:Anaerobic Threshold characteristic is exist, {@code false}:Anaerobic Threshold characteristic is not exist or service not ready
      */
-    private boolean mIsAnaerobicThresholdCharacteristicSupporeted;
+    private boolean mIsAnaerobicThresholdCharacteristicSupported;
 
     /**
      * Sport Type for Aerobic and Anaerobic Thresholds characteristic flag
      * {@code true}:Sport Type for Aerobic and Anaerobic Thresholds characteristic is exist, {@code false}:Sport Type for Aerobic and Anaerobic Thresholds characteristic is not exist or service not ready
      */
-    private boolean mIsSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted;
+    private boolean mIsSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported;
 
     /**
      * Date of Threshold Assessment characteristic flag
      * {@code true}:Date of Threshold Assessment characteristic is exist, {@code false}:Date of Threshold Assessment characteristic is not exist or service not ready
      */
-    private boolean mIsDateOfThresholdAssessmentCharacteristicSupporeted;
+    private boolean mIsDateOfThresholdAssessmentCharacteristicSupported;
 
     /**
      * Waist Circumference characteristic flag
      * {@code true}:Waist Circumference characteristic is exist, {@code false}:Waist Circumference Assessment characteristic is not exist or service not ready
      */
-    private boolean mIsWaistCircumferenceCharacteristicSupporeted;
+    private boolean mIsWaistCircumferenceCharacteristicSupported;
 
     /**
      * Hip Circumference characteristic flag
      * {@code true}:Hip Circumference characteristic is exist, {@code false}:Hip Circumference Assessment characteristic is not exist or service not ready
      */
-    private boolean mIsHipCircumferenceCharacteristicSupporeted;
+    private boolean mIsHipCircumferenceCharacteristicSupported;
 
     /**
      * Fat Burn Heart Rate Lower Limit characteristic flag
      * {@code true}:Fat Burn Heart Rate Lower Limit characteristic is exist, {@code false}:Fat Burn Heart Rate Lower Limit characteristic is not exist or service not ready
      */
-    private boolean mIsFatBurnHeartRateLowerLimitCharacteristicSupporeted;
+    private boolean mIsFatBurnHeartRateLowerLimitCharacteristicSupported;
 
     /**
      * Fat Burn Heart Rate Upper Limit characteristic flag
      * {@code true}:Fat Burn Heart Rate Upper Limit characteristic is exist, {@code false}:Fat Burn Heart Rate Upper Limit characteristic is not exist or service not ready
      */
-    private boolean mIsFatBurnHeartRateUpperLimitCharacteristicSupporeted;
+    private boolean mIsFatBurnHeartRateUpperLimitCharacteristicSupported;
 
     /**
      * Aerobic Heart Rate Lower Limit characteristic flag
      * {@code true}:Aerobic Heart Rate Lower Limit characteristic is exist, {@code false}:Aerobic Heart Rate Lower Limit characteristic is not exist or service not ready
      */
-    private boolean mIsAerobicHeartRateLowerLimitCharacteristicSupporeted;
+    private boolean mIsAerobicHeartRateLowerLimitCharacteristicSupported;
 
     /**
      * Aerobic Heart Rate Upper Limit characteristic flag
      * {@code true}:Aerobic Heart Rate Upper Limit characteristic is exist, {@code false}:Aerobic Heart Rate Upper Limit characteristic is not exist or service not ready
      */
-    private boolean mIsAerobicHeartRateUpperLimitCharacteristicSupporeted;
+    private boolean mIsAerobicHeartRateUpperLimitCharacteristicSupported;
 
     /**
      * Anaerobic Heart Rate Lower Limit characteristic flag
      * {@code true}:Anaerobic Heart Rate Lower Limit characteristic is exist, {@code false}:Anaerobic Heart Rate Lower Limit characteristic is not exist or service not ready
      */
-    private boolean mIsAnaerobicHeartRateLowerLimitCharacteristicSupporeted;
+    private boolean mIsAnaerobicHeartRateLowerLimitCharacteristicSupported;
 
     /**
      * Anaerobic Heart Rate Upper Limit characteristic flag
      * {@code true}:Anaerobic Heart Rate Upper Limit characteristic is exist, {@code false}:Anaerobic Heart Rate Upper Limit characteristic is not exist or service not ready
      */
-    private boolean mIsAnaerobicHeartRateUpperLimitCharacteristicSupporeted;
+    private boolean mIsAnaerobicHeartRateUpperLimitCharacteristicSupported;
 
     /**
      * Five Zone Heart Rate Limits characteristic flag
      * {@code true}:Five Zone Heart Rate Limits characteristic is exist, {@code false}:Five Zone Heart Rate Limits characteristic is not exist or service not ready
      */
-    private boolean mIsFiveZoneHeartRateLimitsCharacteristicSupporeted;
+    private boolean mIsFiveZoneHeartRateLimitsCharacteristicSupported;
 
     /**
      * Three Zone Heart Rate Limits characteristic flag
      * {@code true}:Three Zone Heart Rate Limits characteristic is exist, {@code false}:Three Zone Heart Rate Limits characteristic is not exist or service not ready
      */
-    private boolean mIsThreeZoneHeartRateLimitsCharacteristicSupporeted;
+    private boolean mIsThreeZoneHeartRateLimitsCharacteristicSupported;
 
     /**
      * Two Zone Heart Rate Limit characteristic flag
      * {@code true}:Two Zone Heart Rate Limit characteristic is exist, {@code false}:Two Zone Heart Rate Limit characteristic is not exist or service not ready
      */
-    private boolean mIsTwoZoneHeartRateLimitCharacteristicSupporeted;
+    private boolean mIsTwoZoneHeartRateLimitCharacteristicSupported;
 
     /**
      * Language Limit characteristic flag
      * {@code true}:Language characteristic is exist, {@code false}:Language characteristic is not exist or service not ready
      */
-    private boolean mIsLanguageCharacteristicSupporeted;
+    private boolean mIsLanguageCharacteristicSupported;
 
     /**
      * Database Change Increment characteristic notificatable flag
      * {@code true}:Database Change Increment characteristic is notificatable, {@code false}:Database Change Increment characteristic is not notificatable or service not ready
      */
-    private boolean mIsDatabaseChangeIncrementCharacteristicNotifySupporeted;
+    private boolean mIsDatabaseChangeIncrementCharacteristicNotifySupported;
 
     /**
      * @param bleConnection           {@link BLEConnection} instance
@@ -319,35 +319,35 @@ public class UserDataService extends AbstractCentralService {
     @Override
     public synchronized void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
-            mIsFirstNameCharacteristicSupporeted = false;
-            mIsLastNameCharacteristicSupporeted = false;
-            mIsEmailAddressCharacteristicSupporeted = false;
-            mIsAgeCharacteristicSupporeted = false;
-            mIsDateOfBirthCharacteristicSupporeted = false;
-            mIsGenderCharacteristicSupporeted = false;
-            mIsWeightCharacteristicSupporeted = false;
-            mIsHeightCharacteristicSupporeted = false;
-            mIsVO2MaxCharacteristicSupporeted = false;
-            mIsHeartRateMaxCharacteristicSupporeted = false;
-            mIsRestingHeartRateCharacteristicSupporeted = false;
-            mIsMaximumRecommendedHeartRateCharacteristicSupporeted = false;
-            mIsAerobicThresholdCharacteristicSupporeted = false;
-            mIsAnaerobicThresholdCharacteristicSupporeted = false;
-            mIsSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted = false;
-            mIsDateOfThresholdAssessmentCharacteristicSupporeted = false;
-            mIsWaistCircumferenceCharacteristicSupporeted = false;
-            mIsHipCircumferenceCharacteristicSupporeted = false;
-            mIsFatBurnHeartRateLowerLimitCharacteristicSupporeted = false;
-            mIsFatBurnHeartRateUpperLimitCharacteristicSupporeted = false;
-            mIsAerobicHeartRateLowerLimitCharacteristicSupporeted = false;
-            mIsAerobicHeartRateUpperLimitCharacteristicSupporeted = false;
-            mIsAnaerobicHeartRateLowerLimitCharacteristicSupporeted = false;
-            mIsAnaerobicHeartRateUpperLimitCharacteristicSupporeted = false;
-            mIsFiveZoneHeartRateLimitsCharacteristicSupporeted = false;
-            mIsThreeZoneHeartRateLimitsCharacteristicSupporeted = false;
-            mIsTwoZoneHeartRateLimitCharacteristicSupporeted = false;
-            mIsLanguageCharacteristicSupporeted = false;
-            mIsDatabaseChangeIncrementCharacteristicNotifySupporeted = false;
+            mIsFirstNameCharacteristicSupported = false;
+            mIsLastNameCharacteristicSupported = false;
+            mIsEmailAddressCharacteristicSupported = false;
+            mIsAgeCharacteristicSupported = false;
+            mIsDateOfBirthCharacteristicSupported = false;
+            mIsGenderCharacteristicSupported = false;
+            mIsWeightCharacteristicSupported = false;
+            mIsHeightCharacteristicSupported = false;
+            mIsVO2MaxCharacteristicSupported = false;
+            mIsHeartRateMaxCharacteristicSupported = false;
+            mIsRestingHeartRateCharacteristicSupported = false;
+            mIsMaximumRecommendedHeartRateCharacteristicSupported = false;
+            mIsAerobicThresholdCharacteristicSupported = false;
+            mIsAnaerobicThresholdCharacteristicSupported = false;
+            mIsSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported = false;
+            mIsDateOfThresholdAssessmentCharacteristicSupported = false;
+            mIsWaistCircumferenceCharacteristicSupported = false;
+            mIsHipCircumferenceCharacteristicSupported = false;
+            mIsFatBurnHeartRateLowerLimitCharacteristicSupported = false;
+            mIsFatBurnHeartRateUpperLimitCharacteristicSupported = false;
+            mIsAerobicHeartRateLowerLimitCharacteristicSupported = false;
+            mIsAerobicHeartRateUpperLimitCharacteristicSupported = false;
+            mIsAnaerobicHeartRateLowerLimitCharacteristicSupported = false;
+            mIsAnaerobicHeartRateUpperLimitCharacteristicSupported = false;
+            mIsFiveZoneHeartRateLimitsCharacteristicSupported = false;
+            mIsThreeZoneHeartRateLimitsCharacteristicSupported = false;
+            mIsTwoZoneHeartRateLimitCharacteristicSupported = false;
+            mIsLanguageCharacteristicSupported = false;
+            mIsDatabaseChangeIncrementCharacteristicNotifySupported = false;
         }
         super.onBLEDisconnected(taskId, bluetoothDevice, status, argument);
     }
@@ -363,120 +363,120 @@ public class UserDataService extends AbstractCentralService {
                 if (USER_DATA_SERVICE.equals(bluetoothGattService.getUuid())) {
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(FIRST_NAME_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsFirstNameCharacteristicSupporeted = true;
+                        mIsFirstNameCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(LAST_NAME_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsLastNameCharacteristicSupporeted = true;
+                        mIsLastNameCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(EMAIL_ADDRESS_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsEmailAddressCharacteristicSupporeted = true;
+                        mIsEmailAddressCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(AGE_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsAgeCharacteristicSupporeted = true;
+                        mIsAgeCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(DATE_OF_BIRTH_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsDateOfBirthCharacteristicSupporeted = true;
+                        mIsDateOfBirthCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(GENDER_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsGenderCharacteristicSupporeted = true;
+                        mIsGenderCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(WEIGHT_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsWeightCharacteristicSupporeted = true;
+                        mIsWeightCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(HEIGHT_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsHeightCharacteristicSupporeted = true;
+                        mIsHeightCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(VO2_MAX_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsVO2MaxCharacteristicSupporeted = true;
+                        mIsVO2MaxCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(HEART_RATE_MAX_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsHeartRateMaxCharacteristicSupporeted = true;
+                        mIsHeartRateMaxCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(RESTING_HEART_RATE_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsRestingHeartRateCharacteristicSupporeted = true;
+                        mIsRestingHeartRateCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsMaximumRecommendedHeartRateCharacteristicSupporeted = true;
+                        mIsMaximumRecommendedHeartRateCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(AEROBIC_THRESHOLD_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsAerobicThresholdCharacteristicSupporeted = true;
+                        mIsAerobicThresholdCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(ANAEROBIC_THRESHOLD_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsAnaerobicThresholdCharacteristicSupporeted = true;
+                        mIsAnaerobicThresholdCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted = true;
+                        mIsSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsDateOfThresholdAssessmentCharacteristicSupporeted = true;
+                        mIsDateOfThresholdAssessmentCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(WAIST_CIRCUMFERENCE_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsWaistCircumferenceCharacteristicSupporeted = true;
+                        mIsWaistCircumferenceCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(HIP_CIRCUMFERENCE_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsHipCircumferenceCharacteristicSupporeted = true;
+                        mIsHipCircumferenceCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsFatBurnHeartRateLowerLimitCharacteristicSupporeted = true;
+                        mIsFatBurnHeartRateLowerLimitCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsFatBurnHeartRateUpperLimitCharacteristicSupporeted = true;
+                        mIsFatBurnHeartRateUpperLimitCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsAerobicHeartRateLowerLimitCharacteristicSupporeted = true;
+                        mIsAerobicHeartRateLowerLimitCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsAerobicHeartRateUpperLimitCharacteristicSupporeted = true;
+                        mIsAerobicHeartRateUpperLimitCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsAnaerobicHeartRateLowerLimitCharacteristicSupporeted = true;
+                        mIsAnaerobicHeartRateLowerLimitCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsAnaerobicHeartRateUpperLimitCharacteristicSupporeted = true;
+                        mIsAnaerobicHeartRateUpperLimitCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsFiveZoneHeartRateLimitsCharacteristicSupporeted = true;
+                        mIsFiveZoneHeartRateLimitsCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsThreeZoneHeartRateLimitsCharacteristicSupporeted = true;
+                        mIsThreeZoneHeartRateLimitsCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsTwoZoneHeartRateLimitCharacteristicSupporeted = true;
+                        mIsTwoZoneHeartRateLimitCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(LANGUAGE_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && ((BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE) == bluetoothGattCharacteristic.getProperties())) {
-                        mIsLanguageCharacteristicSupporeted = true;
+                        mIsLanguageCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(DATABASE_CHANGE_INCREMENT_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null) {
                         if ((BluetoothGattCharacteristic.PROPERTY_NOTIFY & bluetoothGattCharacteristic.getProperties()) != 0 && bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
-                            mIsDatabaseChangeIncrementCharacteristicNotifySupporeted = true;
+                            mIsDatabaseChangeIncrementCharacteristicNotifySupported = true;
                         }
                     }
                 }
@@ -1071,8 +1071,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:First Name characteristic is exist, {@code false}:First Name characteristic is not exist or service not ready
      */
-    public boolean isFirstNameCharacteristicSupporeted() {
-        return mIsFirstNameCharacteristicSupporeted;
+    public boolean isFirstNameCharacteristicSupported() {
+        return mIsFirstNameCharacteristicSupported;
     }
 
     /**
@@ -1080,8 +1080,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Last Name characteristic is exist, {@code false}:Last Name characteristic is not exist or service not ready
      */
-    public boolean isLastNameCharacteristicSupporeted() {
-        return mIsLastNameCharacteristicSupporeted;
+    public boolean isLastNameCharacteristicSupported() {
+        return mIsLastNameCharacteristicSupported;
     }
 
     /**
@@ -1089,8 +1089,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Email Address characteristic is exist, {@code false}:Email Address characteristic is not exist or service not ready
      */
-    public boolean isEmailAddressCharacteristicSupporeted() {
-        return mIsEmailAddressCharacteristicSupporeted;
+    public boolean isEmailAddressCharacteristicSupported() {
+        return mIsEmailAddressCharacteristicSupported;
     }
 
     /**
@@ -1098,8 +1098,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Age characteristic is exist, {@code false}:Age characteristic is not exist or service not ready
      */
-    public boolean isAgeCharacteristicSupporeted() {
-        return mIsAgeCharacteristicSupporeted;
+    public boolean isAgeCharacteristicSupported() {
+        return mIsAgeCharacteristicSupported;
     }
 
     /**
@@ -1107,8 +1107,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Date of Birth characteristic is exist, {@code false}:Date of Birth characteristic is not exist or service not ready
      */
-    public boolean isDateOfBirthCharacteristicSupporeted() {
-        return mIsDateOfBirthCharacteristicSupporeted;
+    public boolean isDateOfBirthCharacteristicSupported() {
+        return mIsDateOfBirthCharacteristicSupported;
     }
 
     /**
@@ -1116,8 +1116,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Gender characteristic is exist, {@code false}:Gender characteristic is not exist or service not ready
      */
-    public boolean isGenderCharacteristicSupporeted() {
-        return mIsGenderCharacteristicSupporeted;
+    public boolean isGenderCharacteristicSupported() {
+        return mIsGenderCharacteristicSupported;
     }
 
     /**
@@ -1125,8 +1125,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Weight characteristic is exist, {@code false}:Weight characteristic is not exist or service not ready
      */
-    public boolean isWeightCharacteristicSupporeted() {
-        return mIsWeightCharacteristicSupporeted;
+    public boolean isWeightCharacteristicSupported() {
+        return mIsWeightCharacteristicSupported;
     }
 
     /**
@@ -1134,8 +1134,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Height characteristic is exist, {@code false}:Height characteristic is not exist or service not ready
      */
-    public boolean isHeightCharacteristicSupporeted() {
-        return mIsHeightCharacteristicSupporeted;
+    public boolean isHeightCharacteristicSupported() {
+        return mIsHeightCharacteristicSupported;
     }
 
     /**
@@ -1143,8 +1143,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:VO2 Max characteristic is exist, {@code false}:VO2 Max characteristic is not exist or service not ready
      */
-    public boolean isVO2MaxCharacteristicSupporeted() {
-        return mIsVO2MaxCharacteristicSupporeted;
+    public boolean isVO2MaxCharacteristicSupported() {
+        return mIsVO2MaxCharacteristicSupported;
     }
 
     /**
@@ -1152,8 +1152,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Heart Rate Max characteristic is exist, {@code false}:Heart Rate Max characteristic is not exist or service not ready
      */
-    public boolean isHeartRateMaxCharacteristicSupporeted() {
-        return mIsHeartRateMaxCharacteristicSupporeted;
+    public boolean isHeartRateMaxCharacteristicSupported() {
+        return mIsHeartRateMaxCharacteristicSupported;
     }
 
     /**
@@ -1161,8 +1161,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Resting Heart Rate characteristic is exist, {@code false}:Resting Heart Rate characteristic is not exist or service not ready
      */
-    public boolean isRestingHeartRateCharacteristicSupporeted() {
-        return mIsRestingHeartRateCharacteristicSupporeted;
+    public boolean isRestingHeartRateCharacteristicSupported() {
+        return mIsRestingHeartRateCharacteristicSupported;
     }
 
     /**
@@ -1170,8 +1170,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Maximum Recommended Heart Rate characteristic is exist, {@code false}:Maximum Recommended Heart Rate characteristic is not exist or service not ready
      */
-    public boolean isMaximumRecommendedHeartRateCharacteristicSupporeted() {
-        return mIsMaximumRecommendedHeartRateCharacteristicSupporeted;
+    public boolean isMaximumRecommendedHeartRateCharacteristicSupported() {
+        return mIsMaximumRecommendedHeartRateCharacteristicSupported;
     }
 
     /**
@@ -1179,8 +1179,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Aerobic Threshold characteristic is exist, {@code false}:Aerobic Threshold characteristic is not exist or service not ready
      */
-    public boolean isAerobicThresholdCharacteristicSupporeted() {
-        return mIsAerobicThresholdCharacteristicSupporeted;
+    public boolean isAerobicThresholdCharacteristicSupported() {
+        return mIsAerobicThresholdCharacteristicSupported;
     }
 
     /**
@@ -1188,8 +1188,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Anaerobic Threshold characteristic is exist, {@code false}:Anaerobic Threshold characteristic is not exist or service not ready
      */
-    public boolean isAnaerobicThresholdCharacteristicSupporeted() {
-        return mIsAnaerobicThresholdCharacteristicSupporeted;
+    public boolean isAnaerobicThresholdCharacteristicSupported() {
+        return mIsAnaerobicThresholdCharacteristicSupported;
     }
 
     /**
@@ -1197,8 +1197,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Sport Type for Aerobic and Anaerobic Thresholds characteristic is exist, {@code false}:Sport Type for Aerobic and Anaerobic Thresholds characteristic is not exist or service not ready
      */
-    public boolean isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted() {
-        return mIsSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted;
+    public boolean isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported() {
+        return mIsSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported;
     }
 
     /**
@@ -1206,8 +1206,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Date of Threshold Assessment characteristic is exist, {@code false}:Date of Threshold Assessment characteristic is not exist or service not ready
      */
-    public boolean isDateOfThresholdAssessmentCharacteristicSupporeted() {
-        return mIsDateOfThresholdAssessmentCharacteristicSupporeted;
+    public boolean isDateOfThresholdAssessmentCharacteristicSupported() {
+        return mIsDateOfThresholdAssessmentCharacteristicSupported;
     }
 
     /**
@@ -1215,8 +1215,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Waist Circumference characteristic is exist, {@code false}:Waist Circumference characteristic is not exist or service not ready
      */
-    public boolean isWaistCircumferenceCharacteristicSupporeted() {
-        return mIsWaistCircumferenceCharacteristicSupporeted;
+    public boolean isWaistCircumferenceCharacteristicSupported() {
+        return mIsWaistCircumferenceCharacteristicSupported;
     }
 
     /**
@@ -1224,8 +1224,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Hip Circumference characteristic is exist, {@code false}:Hip Circumference characteristic is not exist or service not ready
      */
-    public boolean isHipCircumferenceCharacteristicSupporeted() {
-        return mIsHipCircumferenceCharacteristicSupporeted;
+    public boolean isHipCircumferenceCharacteristicSupported() {
+        return mIsHipCircumferenceCharacteristicSupported;
     }
 
     /**
@@ -1233,8 +1233,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Fat Burn Heart Rate Lower Limit characteristic is exist, {@code false}:Fat Burn Heart Rate Lower Limit characteristic is not exist or service not ready
      */
-    public boolean isFatBurnHeartRateLowerLimitCharacteristicSupporeted() {
-        return mIsFatBurnHeartRateLowerLimitCharacteristicSupporeted;
+    public boolean isFatBurnHeartRateLowerLimitCharacteristicSupported() {
+        return mIsFatBurnHeartRateLowerLimitCharacteristicSupported;
     }
 
     /**
@@ -1242,8 +1242,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Fat Burn Heart Rate Upper Limit characteristic is exist, {@code false}:Fat Burn Heart Rate Upper Limit characteristic is not exist or service not ready
      */
-    public boolean isFatBurnHeartRateUpperLimitCharacteristicSupporeted() {
-        return mIsFatBurnHeartRateUpperLimitCharacteristicSupporeted;
+    public boolean isFatBurnHeartRateUpperLimitCharacteristicSupported() {
+        return mIsFatBurnHeartRateUpperLimitCharacteristicSupported;
     }
 
     /**
@@ -1251,8 +1251,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Aerobic Heart Rate Lower Limit characteristic is exist, {@code false}:Aerobic Heart Rate Lower Limit characteristic is not exist or service not ready
      */
-    public boolean isAerobicHeartRateLowerLimitCharacteristicSupporeted() {
-        return mIsAerobicHeartRateLowerLimitCharacteristicSupporeted;
+    public boolean isAerobicHeartRateLowerLimitCharacteristicSupported() {
+        return mIsAerobicHeartRateLowerLimitCharacteristicSupported;
     }
 
     /**
@@ -1260,8 +1260,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Aerobic Heart Rate Upper Limit characteristic is exist, {@code false}:Aerobic Heart Rate Upper Limit characteristic is not exist or service not ready
      */
-    public boolean isAerobicHeartRateUpperLimitCharacteristicSupporeted() {
-        return mIsAerobicHeartRateUpperLimitCharacteristicSupporeted;
+    public boolean isAerobicHeartRateUpperLimitCharacteristicSupported() {
+        return mIsAerobicHeartRateUpperLimitCharacteristicSupported;
     }
 
     /**
@@ -1269,8 +1269,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Anaerobic Heart Rate Lower Limit characteristic is exist, {@code false}:Anaerobic Heart Rate Lower Limit characteristic is not exist or service not ready
      */
-    public boolean isAnaerobicHeartRateLowerLimitCharacteristicSupporeted() {
-        return mIsAnaerobicHeartRateLowerLimitCharacteristicSupporeted;
+    public boolean isAnaerobicHeartRateLowerLimitCharacteristicSupported() {
+        return mIsAnaerobicHeartRateLowerLimitCharacteristicSupported;
     }
 
     /**
@@ -1278,8 +1278,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Anaerobic Heart Rate Upper Limit characteristic is exist, {@code false}:Anaerobic Heart Rate Upper Limit characteristic is not exist or service not ready
      */
-    public boolean isAnaerobicHeartRateUpperLimitCharacteristicSupporeted() {
-        return mIsAnaerobicHeartRateUpperLimitCharacteristicSupporeted;
+    public boolean isAnaerobicHeartRateUpperLimitCharacteristicSupported() {
+        return mIsAnaerobicHeartRateUpperLimitCharacteristicSupported;
     }
 
     /**
@@ -1287,8 +1287,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Five Zone Heart Rate Limits characteristic is exist, {@code false}:Five Zone Heart Rate Limits characteristic is not exist or service not ready
      */
-    public boolean isFiveZoneHeartRateLimitsCharacteristicSupporeted() {
-        return mIsFiveZoneHeartRateLimitsCharacteristicSupporeted;
+    public boolean isFiveZoneHeartRateLimitsCharacteristicSupported() {
+        return mIsFiveZoneHeartRateLimitsCharacteristicSupported;
     }
 
     /**
@@ -1296,8 +1296,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Three Zone Heart Rate Limits characteristic is exist, {@code false}:Three Zone Heart Rate Limits characteristic is not exist or service not ready
      */
-    public boolean isThreeZoneHeartRateLimitsCharacteristicSupporeted() {
-        return mIsThreeZoneHeartRateLimitsCharacteristicSupporeted;
+    public boolean isThreeZoneHeartRateLimitsCharacteristicSupported() {
+        return mIsThreeZoneHeartRateLimitsCharacteristicSupported;
     }
 
     /**
@@ -1305,8 +1305,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Two Zone Heart Rate Limit characteristic is exist, {@code false}:Two Zone Heart Rate Limit characteristic is not exist or service not ready
      */
-    public boolean isTwoZoneHeartRateLimitCharacteristicSupporeted() {
-        return mIsTwoZoneHeartRateLimitCharacteristicSupporeted;
+    public boolean isTwoZoneHeartRateLimitCharacteristicSupported() {
+        return mIsTwoZoneHeartRateLimitCharacteristicSupported;
     }
 
     /**
@@ -1314,8 +1314,8 @@ public class UserDataService extends AbstractCentralService {
      *
      * @return {@code true}:Language characteristic is exist, {@code false}:Language characteristic is not exist or service not ready
      */
-    public boolean isLanguageCharacteristicSupporeted() {
-        return mIsLanguageCharacteristicSupporeted;
+    public boolean isLanguageCharacteristicSupported() {
+        return mIsLanguageCharacteristicSupported;
     }
 
     /**
@@ -1323,8 +1323,8 @@ public class UserDataService extends AbstractCentralService {
      * <p>
      * {@code true}:Database Change Increment is notificatable, {@code false}:Database Change Increment characteristic is not notificatable or service not ready
      */
-    public boolean isDatabaseChangeIncrementCharacteristicNotifySupporeted() {
-        return mIsDatabaseChangeIncrementCharacteristicNotifySupporeted;
+    public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
+        return mIsDatabaseChangeIncrementCharacteristicNotifySupported;
     }
 
     /**
@@ -1338,7 +1338,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getFirstName() {
         Integer taskId = null;
-        if (isStarted() && isFirstNameCharacteristicSupporeted()) {
+        if (isStarted() && isFirstNameCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, FIRST_NAME_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1355,7 +1355,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setFirstName(@NonNull FirstName firstName) {
         Integer taskId = null;
-        if (isStarted() && isFirstNameCharacteristicSupporeted()) {
+        if (isStarted() && isFirstNameCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, FIRST_NAME_CHARACTERISTIC, null, firstName, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1372,7 +1372,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getLastName() {
         Integer taskId = null;
-        if (isStarted() && isLastNameCharacteristicSupporeted()) {
+        if (isStarted() && isLastNameCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, LAST_NAME_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1389,7 +1389,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setLastName(@NonNull LastName lastName) {
         Integer taskId = null;
-        if (isStarted() && isLastNameCharacteristicSupporeted()) {
+        if (isStarted() && isLastNameCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, LAST_NAME_CHARACTERISTIC, null, lastName, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1406,7 +1406,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getEmailAddress() {
         Integer taskId = null;
-        if (isStarted() && isEmailAddressCharacteristicSupporeted()) {
+        if (isStarted() && isEmailAddressCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, EMAIL_ADDRESS_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1423,7 +1423,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setEmailAddress(@NonNull EmailAddress emailAddress) {
         Integer taskId = null;
-        if (isStarted() && isEmailAddressCharacteristicSupporeted()) {
+        if (isStarted() && isEmailAddressCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, EMAIL_ADDRESS_CHARACTERISTIC, null, emailAddress, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1440,7 +1440,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getAge() {
         Integer taskId = null;
-        if (isStarted() && isAgeCharacteristicSupporeted()) {
+        if (isStarted() && isAgeCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, AGE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1457,7 +1457,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setAge(@NonNull Age age) {
         Integer taskId = null;
-        if (isStarted() && isAgeCharacteristicSupporeted()) {
+        if (isStarted() && isAgeCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, AGE_CHARACTERISTIC, null, age, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1474,7 +1474,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getDateOfBirth() {
         Integer taskId = null;
-        if (isStarted() && isDateOfBirthCharacteristicSupporeted()) {
+        if (isStarted() && isDateOfBirthCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, DATE_OF_BIRTH_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1491,7 +1491,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setDateOfBirth(@NonNull DateOfBirth dateOfBirth) {
         Integer taskId = null;
-        if (isStarted() && isDateOfBirthCharacteristicSupporeted()) {
+        if (isStarted() && isDateOfBirthCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, DATE_OF_BIRTH_CHARACTERISTIC, null, dateOfBirth, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1508,7 +1508,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getGender() {
         Integer taskId = null;
-        if (isStarted() && isGenderCharacteristicSupporeted()) {
+        if (isStarted() && isGenderCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, GENDER_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1525,7 +1525,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setGender(@NonNull Gender gender) {
         Integer taskId = null;
-        if (isStarted() && isGenderCharacteristicSupporeted()) {
+        if (isStarted() && isGenderCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, GENDER_CHARACTERISTIC, null, gender, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1542,7 +1542,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getWeight() {
         Integer taskId = null;
-        if (isStarted() && isWeightCharacteristicSupporeted()) {
+        if (isStarted() && isWeightCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, WEIGHT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1559,7 +1559,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setWeight(@NonNull Weight weight) {
         Integer taskId = null;
-        if (isStarted() && isWeightCharacteristicSupporeted()) {
+        if (isStarted() && isWeightCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, WEIGHT_CHARACTERISTIC, null, weight, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1576,7 +1576,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getHeight() {
         Integer taskId = null;
-        if (isStarted() && isHeightCharacteristicSupporeted()) {
+        if (isStarted() && isHeightCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, HEIGHT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1593,7 +1593,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setHeight(@NonNull Height height) {
         Integer taskId = null;
-        if (isStarted() && isHeightCharacteristicSupporeted()) {
+        if (isStarted() && isHeightCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, HEIGHT_CHARACTERISTIC, null, height, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1610,7 +1610,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getVO2Max() {
         Integer taskId = null;
-        if (isStarted() && isVO2MaxCharacteristicSupporeted()) {
+        if (isStarted() && isVO2MaxCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, VO2_MAX_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1627,7 +1627,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setVO2Max(@NonNull VO2Max vo2Max) {
         Integer taskId = null;
-        if (isStarted() && isVO2MaxCharacteristicSupporeted()) {
+        if (isStarted() && isVO2MaxCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, VO2_MAX_CHARACTERISTIC, null, vo2Max, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1644,7 +1644,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getHeartRateMax() {
         Integer taskId = null;
-        if (isStarted() && isHeartRateMaxCharacteristicSupporeted()) {
+        if (isStarted() && isHeartRateMaxCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, HEART_RATE_MAX_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1661,7 +1661,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public Integer setHeartRateMax(@NonNull HeartRateMax heartRateMax) {
         Integer taskId = null;
-        if (isStarted() && isHeartRateMaxCharacteristicSupporeted()) {
+        if (isStarted() && isHeartRateMaxCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, HEART_RATE_MAX_CHARACTERISTIC, null, heartRateMax, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1678,7 +1678,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getRestingHeartRate() {
         Integer taskId = null;
-        if (isStarted() && isRestingHeartRateCharacteristicSupporeted()) {
+        if (isStarted() && isRestingHeartRateCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, RESTING_HEART_RATE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1695,7 +1695,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setRestingHeartRate(@NonNull RestingHeartRate restingHeartRate) {
         Integer taskId = null;
-        if (isStarted() && isRestingHeartRateCharacteristicSupporeted()) {
+        if (isStarted() && isRestingHeartRateCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, RESTING_HEART_RATE_CHARACTERISTIC, null, restingHeartRate, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1712,7 +1712,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getMaximumRecommendedHeartRate() {
         Integer taskId = null;
-        if (isStarted() && isMaximumRecommendedHeartRateCharacteristicSupporeted()) {
+        if (isStarted() && isMaximumRecommendedHeartRateCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1729,7 +1729,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setMaximumRecommendedHeartRate(@NonNull MaximumRecommendedHeartRate maximumRecommendedHeartRate) {
         Integer taskId = null;
-        if (isStarted() && isMaximumRecommendedHeartRateCharacteristicSupporeted()) {
+        if (isStarted() && isMaximumRecommendedHeartRateCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC, null, maximumRecommendedHeartRate, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1746,7 +1746,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getAerobicThreshold() {
         Integer taskId = null;
-        if (isStarted() && isAerobicThresholdCharacteristicSupporeted()) {
+        if (isStarted() && isAerobicThresholdCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, AEROBIC_THRESHOLD_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1763,7 +1763,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setAerobicThreshold(@NonNull AerobicThreshold aerobicThreshold) {
         Integer taskId = null;
-        if (isStarted() && isAerobicThresholdCharacteristicSupporeted()) {
+        if (isStarted() && isAerobicThresholdCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, AEROBIC_THRESHOLD_CHARACTERISTIC, null, aerobicThreshold, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1780,7 +1780,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getAnaerobicThreshold() {
         Integer taskId = null;
-        if (isStarted() && isAnaerobicThresholdCharacteristicSupporeted()) {
+        if (isStarted() && isAnaerobicThresholdCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, ANAEROBIC_THRESHOLD_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1797,7 +1797,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setAnaerobicThreshold(@NonNull AnaerobicThreshold anaerobicThreshold) {
         Integer taskId = null;
-        if (isStarted() && isAnaerobicThresholdCharacteristicSupporeted()) {
+        if (isStarted() && isAnaerobicThresholdCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, ANAEROBIC_THRESHOLD_CHARACTERISTIC, null, anaerobicThreshold, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1814,7 +1814,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getSportTypeForAerobicAndAnaerobicThresholds() {
         Integer taskId = null;
-        if (isStarted() && isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted()) {
+        if (isStarted() && isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1831,7 +1831,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setSportTypeForAerobicAndAnaerobicThresholds(@NonNull SportTypeForAerobicAndAnaerobicThresholds sportTypeForAerobicAndAnaerobicThresholds) {
         Integer taskId = null;
-        if (isStarted() && isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted()) {
+        if (isStarted() && isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC, null, sportTypeForAerobicAndAnaerobicThresholds, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1848,7 +1848,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getDateOfThresholdAssessment() {
         Integer taskId = null;
-        if (isStarted() && isDateOfThresholdAssessmentCharacteristicSupporeted()) {
+        if (isStarted() && isDateOfThresholdAssessmentCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1865,7 +1865,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setDateOfThresholdAssessment(@NonNull DateOfThresholdAssessment dateOfThresholdAssessment) {
         Integer taskId = null;
-        if (isStarted() && isDateOfThresholdAssessmentCharacteristicSupporeted()) {
+        if (isStarted() && isDateOfThresholdAssessmentCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC, null, dateOfThresholdAssessment, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1882,7 +1882,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getWaistCircumference() {
         Integer taskId = null;
-        if (isStarted() && isWaistCircumferenceCharacteristicSupporeted()) {
+        if (isStarted() && isWaistCircumferenceCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, WAIST_CIRCUMFERENCE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1899,7 +1899,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setWaistCircumference(@NonNull WaistCircumference waistCircumference) {
         Integer taskId = null;
-        if (isStarted() && isWaistCircumferenceCharacteristicSupporeted()) {
+        if (isStarted() && isWaistCircumferenceCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, WAIST_CIRCUMFERENCE_CHARACTERISTIC, null, waistCircumference, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1916,7 +1916,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getHipCircumference() {
         Integer taskId = null;
-        if (isStarted() && isHipCircumferenceCharacteristicSupporeted()) {
+        if (isStarted() && isHipCircumferenceCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, HIP_CIRCUMFERENCE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1933,7 +1933,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setHipCircumference(@NonNull HipCircumference hipCircumference) {
         Integer taskId = null;
-        if (isStarted() && isHipCircumferenceCharacteristicSupporeted()) {
+        if (isStarted() && isHipCircumferenceCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, HIP_CIRCUMFERENCE_CHARACTERISTIC, null, hipCircumference, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1950,7 +1950,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getFatBurnHeartRateLowerLimit() {
         Integer taskId = null;
-        if (isStarted() && isFatBurnHeartRateLowerLimitCharacteristicSupporeted()) {
+        if (isStarted() && isFatBurnHeartRateLowerLimitCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1967,7 +1967,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setFatBurnHeartRateLowerLimit(@NonNull FatBurnHeartRateLowerLimit fatBurnHeartRateLowerLimit) {
         Integer taskId = null;
-        if (isStarted() && isFatBurnHeartRateLowerLimitCharacteristicSupporeted()) {
+        if (isStarted() && isFatBurnHeartRateLowerLimitCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, null, fatBurnHeartRateLowerLimit, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -1984,7 +1984,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getFatBurnHeartRateUpperLimit() {
         Integer taskId = null;
-        if (isStarted() && isFatBurnHeartRateUpperLimitCharacteristicSupporeted()) {
+        if (isStarted() && isFatBurnHeartRateUpperLimitCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2001,7 +2001,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setFatBurnHeartRateUpperLimit(@NonNull FatBurnHeartRateUpperLimit fatBurnHeartRateUpperLimit) {
         Integer taskId = null;
-        if (isStarted() && isFatBurnHeartRateUpperLimitCharacteristicSupporeted()) {
+        if (isStarted() && isFatBurnHeartRateUpperLimitCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, null, fatBurnHeartRateUpperLimit, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2018,7 +2018,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getAerobicHeartRateLowerLimit() {
         Integer taskId = null;
-        if (isStarted() && isAerobicHeartRateLowerLimitCharacteristicSupporeted()) {
+        if (isStarted() && isAerobicHeartRateLowerLimitCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2035,7 +2035,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setAerobicHeartRateLowerLimit(@NonNull AerobicHeartRateLowerLimit aerobicHeartRateLowerLimit) {
         Integer taskId = null;
-        if (isStarted() && isAerobicHeartRateLowerLimitCharacteristicSupporeted()) {
+        if (isStarted() && isAerobicHeartRateLowerLimitCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, null, aerobicHeartRateLowerLimit, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2052,7 +2052,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getAerobicHeartRateUpperLimit() {
         Integer taskId = null;
-        if (isStarted() && isAerobicHeartRateUpperLimitCharacteristicSupporeted()) {
+        if (isStarted() && isAerobicHeartRateUpperLimitCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2069,7 +2069,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setAerobicHeartRateUpperLimit(@NonNull AerobicHeartRateUpperLimit aerobicHeartRateUpperLimit) {
         Integer taskId = null;
-        if (isStarted() && isAerobicHeartRateUpperLimitCharacteristicSupporeted()) {
+        if (isStarted() && isAerobicHeartRateUpperLimitCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, null, aerobicHeartRateUpperLimit, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2086,7 +2086,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getAnaerobicHeartRateLowerLimit() {
         Integer taskId = null;
-        if (isStarted() && isAnaerobicHeartRateLowerLimitCharacteristicSupporeted()) {
+        if (isStarted() && isAnaerobicHeartRateLowerLimitCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2103,7 +2103,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setAnaerobicHeartRateLowerLimit(@NonNull AnaerobicHeartRateLowerLimit anaerobicHeartRateLowerLimit) {
         Integer taskId = null;
-        if (isStarted() && isAnaerobicHeartRateLowerLimitCharacteristicSupporeted()) {
+        if (isStarted() && isAnaerobicHeartRateLowerLimitCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, null, anaerobicHeartRateLowerLimit, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2120,7 +2120,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getAnaerobicHeartRateUpperLimit() {
         Integer taskId = null;
-        if (isStarted() && isAnaerobicHeartRateUpperLimitCharacteristicSupporeted()) {
+        if (isStarted() && isAnaerobicHeartRateUpperLimitCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2137,7 +2137,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setAnaerobicHeartRateUpperLimit(@NonNull AnaerobicHeartRateUpperLimit anaerobicHeartRateUpperLimit) {
         Integer taskId = null;
-        if (isStarted() && isAnaerobicHeartRateUpperLimitCharacteristicSupporeted()) {
+        if (isStarted() && isAnaerobicHeartRateUpperLimitCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, null, anaerobicHeartRateUpperLimit, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2154,7 +2154,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getFiveZoneHeartRateLimits() {
         Integer taskId = null;
-        if (isStarted() && isFiveZoneHeartRateLimitsCharacteristicSupporeted()) {
+        if (isStarted() && isFiveZoneHeartRateLimitsCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2171,7 +2171,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setFiveZoneHeartRateLimits(@NonNull FiveZoneHeartRateLimits fiveZoneHeartRateLimits) {
         Integer taskId = null;
-        if (isStarted() && isFiveZoneHeartRateLimitsCharacteristicSupporeted()) {
+        if (isStarted() && isFiveZoneHeartRateLimitsCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, null, fiveZoneHeartRateLimits, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2188,7 +2188,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getThreeZoneHeartRateLimits() {
         Integer taskId = null;
-        if (isStarted() && isThreeZoneHeartRateLimitsCharacteristicSupporeted()) {
+        if (isStarted() && isThreeZoneHeartRateLimitsCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2205,7 +2205,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setThreeZoneHeartRateLimits(@NonNull ThreeZoneHeartRateLimits threeZoneHeartRateLimits) {
         Integer taskId = null;
-        if (isStarted() && isThreeZoneHeartRateLimitsCharacteristicSupporeted()) {
+        if (isStarted() && isThreeZoneHeartRateLimitsCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, null, threeZoneHeartRateLimits, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2222,7 +2222,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getTwoZoneHeartRateLimit() {
         Integer taskId = null;
-        if (isStarted() && isTwoZoneHeartRateLimitCharacteristicSupporeted()) {
+        if (isStarted() && isTwoZoneHeartRateLimitCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2239,7 +2239,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setTwoZoneHeartRateLimit(@NonNull TwoZoneHeartRateLimit twoZoneHeartRateLimit) {
         Integer taskId = null;
-        if (isStarted() && isTwoZoneHeartRateLimitCharacteristicSupporeted()) {
+        if (isStarted() && isTwoZoneHeartRateLimitCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, null, twoZoneHeartRateLimit, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2256,7 +2256,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getLanguage() {
         Integer taskId = null;
-        if (isStarted() && isLanguageCharacteristicSupporeted()) {
+        if (isStarted() && isLanguageCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(USER_DATA_SERVICE, null, LANGUAGE_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2273,7 +2273,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setLanguage(@NonNull Language language) {
         Integer taskId = null;
-        if (isStarted() && isLanguageCharacteristicSupporeted()) {
+        if (isStarted() && isLanguageCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(USER_DATA_SERVICE, null, LANGUAGE_CHARACTERISTIC, null, language, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2324,7 +2324,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getDatabaseChangeIncrementClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && isDatabaseChangeIncrementCharacteristicNotifySupporeted()) {
+        if (isStarted() && isDatabaseChangeIncrementCharacteristicNotifySupported()) {
             taskId = mBLEConnection.createReadDescriptorTask(USER_DATA_SERVICE, null, DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2341,7 +2341,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startDatabaseChangeIncrementNotification() {
         Integer taskId = null;
-        if (isStarted() && isDatabaseChangeIncrementCharacteristicNotifySupporeted()) {
+        if (isStarted() && isDatabaseChangeIncrementCharacteristicNotifySupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(USER_DATA_SERVICE, null, DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -2360,7 +2360,7 @@ public class UserDataService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopDatabaseChangeIncrementNotification() {
         Integer taskId = null;
-        if (isStarted() && isDatabaseChangeIncrementCharacteristicNotifySupporeted()) {
+        if (isStarted() && isDatabaseChangeIncrementCharacteristicNotifySupported()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(USER_DATA_SERVICE, null, DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);

@@ -101,38 +101,38 @@ public class CyclingPowerProfileTest {
     }
 
     @Test
-    public void test_isCyclingPowerControlPointCharacteristicSupporeted_00001() {
+    public void test_isCyclingPowerControlPointCharacteristicSupported_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
-        assertNull(cyclingPowerProfile.isCyclingPowerControlPointCharacteristicSupporeted());
+        assertNull(cyclingPowerProfile.isCyclingPowerControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isCyclingPowerControlPointCharacteristicSupporeted_00002() {
+    public void test_isCyclingPowerControlPointCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
 
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         cyclingPowerProfile.connect(MOCK_DEVICE);
-        assertNotNull(cyclingPowerProfile.isCyclingPowerControlPointCharacteristicSupporeted());
+        assertNotNull(cyclingPowerProfile.isCyclingPowerControlPointCharacteristicSupported());
         cyclingPowerProfile.disconnect();
     }
 
     @Test
-    public void test_isCyclingPowerVectorCharacteristicSupporeted_00001() {
+    public void test_isCyclingPowerVectorCharacteristicSupported_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
-        assertNull(cyclingPowerProfile.isCyclingPowerVectorCharacteristicSupporeted());
+        assertNull(cyclingPowerProfile.isCyclingPowerVectorCharacteristicSupported());
     }
 
     @Test
-    public void test_isCyclingPowerVectorCharacteristicSupporeted_00002() {
+    public void test_isCyclingPowerVectorCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
 
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
         cyclingPowerProfile.connect(MOCK_DEVICE);
-        assertNotNull(cyclingPowerProfile.isCyclingPowerVectorCharacteristicSupporeted());
+        assertNotNull(cyclingPowerProfile.isCyclingPowerVectorCharacteristicSupported());
         cyclingPowerProfile.disconnect();
     }
 
@@ -473,7 +473,7 @@ public class CyclingPowerProfileTest {
                 if (mCyclingPowerService == null) {
                     mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isCyclingPowerControlPointCharacteristicSupporeted() {
+                        public boolean isCyclingPowerControlPointCharacteristicSupported() {
                             return true;
                         }
 
@@ -643,7 +643,7 @@ public class CyclingPowerProfileTest {
                 if (mCyclingPowerService == null) {
                     mCyclingPowerService = new CyclingPowerService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public boolean isCyclingPowerControlPointCharacteristicSupporeted() {
+                        public boolean isCyclingPowerControlPointCharacteristicSupported() {
                             return true;
                         }
 

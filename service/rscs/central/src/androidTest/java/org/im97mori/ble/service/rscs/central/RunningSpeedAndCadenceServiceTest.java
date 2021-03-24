@@ -47,7 +47,7 @@ public class RunningSpeedAndCadenceServiceTest {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(mockBLEConnection, new MockRunningSpeedAndCadenceServiceCallback(), null);
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(runningSpeedAndCadenceService.isSensorLocationCharacteristicSupporeted());
+        assertFalse(runningSpeedAndCadenceService.isSensorLocationCharacteristicSupported());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class RunningSpeedAndCadenceServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(runningSpeedAndCadenceService.isSensorLocationCharacteristicSupporeted());
+        assertFalse(runningSpeedAndCadenceService.isSensorLocationCharacteristicSupported());
     }
 
     @Test
@@ -67,7 +67,7 @@ public class RunningSpeedAndCadenceServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(runningSpeedAndCadenceService.isSensorLocationCharacteristicSupporeted());
+        assertFalse(runningSpeedAndCadenceService.isSensorLocationCharacteristicSupported());
     }
 
     @Test
@@ -78,7 +78,7 @@ public class RunningSpeedAndCadenceServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SENSOR_LOCATION_CHARACTERISTIC, 0, 0));
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(runningSpeedAndCadenceService.isSensorLocationCharacteristicSupporeted());
+        assertFalse(runningSpeedAndCadenceService.isSensorLocationCharacteristicSupported());
     }
 
     @Test
@@ -89,7 +89,7 @@ public class RunningSpeedAndCadenceServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SENSOR_LOCATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(runningSpeedAndCadenceService.isSensorLocationCharacteristicSupporeted());
+        assertTrue(runningSpeedAndCadenceService.isSensorLocationCharacteristicSupported());
     }
 
     @Test
@@ -98,7 +98,7 @@ public class RunningSpeedAndCadenceServiceTest {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(mockBLEConnection, new MockRunningSpeedAndCadenceServiceCallback(), null);
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupporeted());
+        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupported());
     }
 
     @Test
@@ -108,7 +108,7 @@ public class RunningSpeedAndCadenceServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupporeted());
+        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupported());
     }
 
     @Test
@@ -118,7 +118,7 @@ public class RunningSpeedAndCadenceServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupporeted());
+        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupported());
     }
 
     @Test
@@ -129,7 +129,7 @@ public class RunningSpeedAndCadenceServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SC_CONTROL_POINT_CHARACTERISTIC, 0, 0));
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupporeted());
+        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupported());
     }
 
     @Test
@@ -140,7 +140,7 @@ public class RunningSpeedAndCadenceServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SC_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupporeted());
+        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupported());
     }
 
     @Test
@@ -151,7 +151,7 @@ public class RunningSpeedAndCadenceServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SC_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0));
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupporeted());
+        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupported());
     }
 
     @Test
@@ -162,7 +162,7 @@ public class RunningSpeedAndCadenceServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SC_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0));
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupporeted());
+        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupported());
     }
 
     @Test
@@ -175,7 +175,7 @@ public class RunningSpeedAndCadenceServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupporeted());
+        assertTrue(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupported());
     }
 
     @Test
@@ -1211,14 +1211,14 @@ public class RunningSpeedAndCadenceServiceTest {
     }
 
     @Test
-    public void test_isSensorLocationCharacteristicSupporeted_00001() {
+    public void test_isSensorLocationCharacteristicSupported_00001() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(new MockBLEConnection(), new MockRunningSpeedAndCadenceServiceCallback(), null);
 
-        assertFalse(runningSpeedAndCadenceService.isSensorLocationCharacteristicSupporeted());
+        assertFalse(runningSpeedAndCadenceService.isSensorLocationCharacteristicSupported());
     }
 
     @Test
-    public void test_isSensorLocationCharacteristicSupporeted_00002() {
+    public void test_isSensorLocationCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(mockBLEConnection, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -1227,11 +1227,11 @@ public class RunningSpeedAndCadenceServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(runningSpeedAndCadenceService.isSensorLocationCharacteristicSupporeted());
+        assertTrue(runningSpeedAndCadenceService.isSensorLocationCharacteristicSupported());
     }
 
     @Test
-    public void test_isSensorLocationCharacteristicSupporeted_00003() {
+    public void test_isSensorLocationCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(mockBLEConnection, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -1241,18 +1241,18 @@ public class RunningSpeedAndCadenceServiceTest {
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         runningSpeedAndCadenceService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(runningSpeedAndCadenceService.isSensorLocationCharacteristicSupporeted());
+        assertFalse(runningSpeedAndCadenceService.isSensorLocationCharacteristicSupported());
     }
 
     @Test
-    public void test_isSCControlPointCharacteristicSupporeted_00001() {
+    public void test_isSCControlPointCharacteristicSupported_00001() {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(new MockBLEConnection(), new MockRunningSpeedAndCadenceServiceCallback(), null);
 
-        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupporeted());
+        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isSCControlPointCharacteristicSupporeted_00002() {
+    public void test_isSCControlPointCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(mockBLEConnection, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -1261,11 +1261,11 @@ public class RunningSpeedAndCadenceServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupporeted());
+        assertTrue(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isSCControlPointCharacteristicSupporeted_00003() {
+    public void test_isSCControlPointCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(mockBLEConnection, new MockRunningSpeedAndCadenceServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(RUNNING_SPEED_AND_CADENCE_SERVICE, 0);
@@ -1275,7 +1275,7 @@ public class RunningSpeedAndCadenceServiceTest {
         runningSpeedAndCadenceService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         runningSpeedAndCadenceService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupporeted());
+        assertFalse(runningSpeedAndCadenceService.isSCControlPointCharacteristicSupported());
     }
 
     @Test
@@ -1486,7 +1486,7 @@ public class RunningSpeedAndCadenceServiceTest {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(new MockBLEConnection(), new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
             @Override
-            public boolean isSensorLocationCharacteristicSupporeted() {
+            public boolean isSensorLocationCharacteristicSupported() {
                 return true;
             }
 
@@ -1514,7 +1514,7 @@ public class RunningSpeedAndCadenceServiceTest {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(mockBLEConnection, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
             @Override
-            public boolean isSensorLocationCharacteristicSupporeted() {
+            public boolean isSensorLocationCharacteristicSupported() {
                 return true;
             }
 
@@ -1556,7 +1556,7 @@ public class RunningSpeedAndCadenceServiceTest {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(new MockBLEConnection(), new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
             @Override
-            public boolean isSCControlPointCharacteristicSupporeted() {
+            public boolean isSCControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -1585,7 +1585,7 @@ public class RunningSpeedAndCadenceServiceTest {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(mockBLEConnection, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
             @Override
-            public boolean isSCControlPointCharacteristicSupporeted() {
+            public boolean isSCControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -1628,7 +1628,7 @@ public class RunningSpeedAndCadenceServiceTest {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(new MockBLEConnection(), new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
             @Override
-            public boolean isSCControlPointCharacteristicSupporeted() {
+            public boolean isSCControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -1656,7 +1656,7 @@ public class RunningSpeedAndCadenceServiceTest {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(mockBLEConnection, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
             @Override
-            public boolean isSCControlPointCharacteristicSupporeted() {
+            public boolean isSCControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -1698,7 +1698,7 @@ public class RunningSpeedAndCadenceServiceTest {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(new MockBLEConnection(), new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
             @Override
-            public boolean isSCControlPointCharacteristicSupporeted() {
+            public boolean isSCControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -1726,7 +1726,7 @@ public class RunningSpeedAndCadenceServiceTest {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(mockBLEConnection, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
             @Override
-            public boolean isSCControlPointCharacteristicSupporeted() {
+            public boolean isSCControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -1768,7 +1768,7 @@ public class RunningSpeedAndCadenceServiceTest {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(new MockBLEConnection(), new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
             @Override
-            public boolean isSCControlPointCharacteristicSupporeted() {
+            public boolean isSCControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -1796,7 +1796,7 @@ public class RunningSpeedAndCadenceServiceTest {
         RunningSpeedAndCadenceService runningSpeedAndCadenceService = new RunningSpeedAndCadenceService(mockBLEConnection, new MockRunningSpeedAndCadenceServiceCallback(), null) {
 
             @Override
-            public boolean isSCControlPointCharacteristicSupporeted() {
+            public boolean isSCControlPointCharacteristicSupported() {
                 return true;
             }
 

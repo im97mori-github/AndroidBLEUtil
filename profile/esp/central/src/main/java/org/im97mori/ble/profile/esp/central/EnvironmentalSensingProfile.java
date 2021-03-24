@@ -105,12 +105,12 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see EnvironmentalSensingService#isDescriptorValueChangedCharacteristicSupporeted()
+     * @see EnvironmentalSensingService#isDescriptorValueChangedCharacteristicSupported()
      */
-    public synchronized Boolean isDescriptorValueChangedCharacteristicSupporeted() {
+    public synchronized Boolean isDescriptorValueChangedCharacteristicSupported() {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isDescriptorValueChangedCharacteristicSupporeted();
+            result = mEnvironmentalSensingService.isDescriptorValueChangedCharacteristicSupported();
         }
         return result;
     }

@@ -46,13 +46,13 @@ public class HeartRateService extends AbstractCentralService {
      * Body Sensor Location characteristic flag
      * {@code true}:Body Sensor Location characteristic is exist, {@code false}:Body Sensor Location characteristic is not exist or service not ready
      */
-    private boolean mIsBodySensorLocationCharacteristicSupporeted;
+    private boolean mIsBodySensorLocationCharacteristicSupported;
 
     /**
      * Heart Rate Control Point characteristic flag
      * {@code true}:Heart Rate Control Point characteristic is exist, {@code false}:Heart Rate Control Point characteristic is not exist or service not ready
      */
-    private boolean mIsHeartRateControlPointCharacteristicSupporeted;
+    private boolean mIsHeartRateControlPointCharacteristicSupported;
 
     /**
      * @param bleConnection            {@link BLEConnection} instance
@@ -70,8 +70,8 @@ public class HeartRateService extends AbstractCentralService {
     @Override
     public synchronized void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
-            mIsBodySensorLocationCharacteristicSupporeted = false;
-            mIsHeartRateControlPointCharacteristicSupporeted = false;
+            mIsBodySensorLocationCharacteristicSupported = false;
+            mIsHeartRateControlPointCharacteristicSupported = false;
         }
         super.onBLEDisconnected(taskId, bluetoothDevice, status, argument);
     }
@@ -87,11 +87,11 @@ public class HeartRateService extends AbstractCentralService {
                 if (HEART_RATE_SERVICE.equals(bluetoothGattService.getUuid())) {
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(BODY_SENSOR_LOCATION_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties()) {
-                        mIsBodySensorLocationCharacteristicSupporeted = true;
+                        mIsBodySensorLocationCharacteristicSupported = true;
                     }
                     bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(HEART_RATE_CONTROL_POINT_CHARACTERISTIC);
                     if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_WRITE == bluetoothGattCharacteristic.getProperties()) {
-                        mIsHeartRateControlPointCharacteristicSupporeted = true;
+                        mIsHeartRateControlPointCharacteristicSupported = true;
                     }
                 }
             }
@@ -260,8 +260,8 @@ public class HeartRateService extends AbstractCentralService {
      *
      * @return {@code true}:Body Sensor Location characteristic is exist, {@code false}:Body Sensor Location characteristic is not exist or service not ready
      */
-    public boolean isBodySensorLocationCharacteristicSupporeted() {
-        return mIsBodySensorLocationCharacteristicSupporeted;
+    public boolean isBodySensorLocationCharacteristicSupported() {
+        return mIsBodySensorLocationCharacteristicSupported;
     }
 
     /**
@@ -269,8 +269,8 @@ public class HeartRateService extends AbstractCentralService {
      *
      * @return {@code true}:Heart Rate Control Point characteristic is exist, {@code false}:Heart Rate Control Point characteristic is not exist or service not ready
      */
-    public boolean isHeartRateControlPointCharacteristicSupporeted() {
-        return mIsHeartRateControlPointCharacteristicSupporeted;
+    public boolean isHeartRateControlPointCharacteristicSupported() {
+        return mIsHeartRateControlPointCharacteristicSupported;
     }
 
     /**
@@ -339,7 +339,7 @@ public class HeartRateService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getBodySensorLocation() {
         Integer taskId = null;
-        if (isStarted() && isBodySensorLocationCharacteristicSupporeted()) {
+        if (isStarted() && isBodySensorLocationCharacteristicSupported()) {
             taskId = mBLEConnection.createReadCharacteristicTask(HEART_RATE_SERVICE, null, BODY_SENSOR_LOCATION_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -356,7 +356,7 @@ public class HeartRateService extends AbstractCentralService {
     @Nullable
     public synchronized Integer setHeartRateControlPoint(@NonNull HeartRateControlPoint heartRateControlPoint) {
         Integer taskId = null;
-        if (isStarted() && isHeartRateControlPointCharacteristicSupporeted()) {
+        if (isStarted() && isHeartRateControlPointCharacteristicSupported()) {
             taskId = mBLEConnection.createWriteCharacteristicTask(HEART_RATE_SERVICE, null, HEART_RATE_CONTROL_POINT_CHARACTERISTIC, null, heartRateControlPoint, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT, WriteCharacteristicTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;

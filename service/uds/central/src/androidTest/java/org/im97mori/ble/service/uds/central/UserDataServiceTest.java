@@ -136,7 +136,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isFirstNameCharacteristicSupporeted());
+        assertFalse(userDataService.isFirstNameCharacteristicSupported());
     }
 
     @Test
@@ -148,7 +148,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isLastNameCharacteristicSupporeted());
+        assertFalse(userDataService.isLastNameCharacteristicSupported());
     }
 
     @Test
@@ -160,7 +160,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isEmailAddressCharacteristicSupporeted());
+        assertFalse(userDataService.isEmailAddressCharacteristicSupported());
     }
 
     @Test
@@ -172,7 +172,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isAgeCharacteristicSupporeted());
+        assertFalse(userDataService.isAgeCharacteristicSupported());
     }
 
     @Test
@@ -184,7 +184,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isDateOfBirthCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfBirthCharacteristicSupported());
     }
 
     @Test
@@ -196,7 +196,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isGenderCharacteristicSupporeted());
+        assertFalse(userDataService.isGenderCharacteristicSupported());
     }
 
     @Test
@@ -208,7 +208,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isWeightCharacteristicSupporeted());
+        assertFalse(userDataService.isWeightCharacteristicSupported());
     }
 
     @Test
@@ -220,7 +220,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isHeightCharacteristicSupporeted());
+        assertFalse(userDataService.isHeightCharacteristicSupported());
     }
 
     @Test
@@ -232,7 +232,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isVO2MaxCharacteristicSupporeted());
+        assertFalse(userDataService.isVO2MaxCharacteristicSupported());
     }
 
     @Test
@@ -244,7 +244,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isHeartRateMaxCharacteristicSupporeted());
+        assertFalse(userDataService.isHeartRateMaxCharacteristicSupported());
     }
 
     @Test
@@ -256,7 +256,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isRestingHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isRestingHeartRateCharacteristicSupported());
     }
 
     @Test
@@ -268,7 +268,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupported());
     }
 
     @Test
@@ -280,7 +280,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isAerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicThresholdCharacteristicSupported());
     }
 
     @Test
@@ -292,7 +292,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupported());
     }
 
     @Test
@@ -304,7 +304,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted());
+        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported());
     }
 
     @Test
@@ -316,7 +316,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupported());
     }
 
     @Test
@@ -328,7 +328,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupported());
     }
 
     @Test
@@ -340,7 +340,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isHipCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isHipCircumferenceCharacteristicSupported());
     }
 
     @Test
@@ -352,7 +352,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -364,7 +364,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -376,7 +376,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -388,7 +388,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -400,7 +400,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -412,7 +412,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -424,7 +424,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
@@ -436,7 +436,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
@@ -448,7 +448,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupported());
     }
 
     @Test
@@ -460,7 +460,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isLanguageCharacteristicSupporeted());
+        assertFalse(userDataService.isLanguageCharacteristicSupported());
     }
 
     @Test
@@ -474,7 +474,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupporeted());
+        assertFalse(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupported());
     }
 
     @Test
@@ -483,7 +483,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isFirstNameCharacteristicSupporeted());
+        assertFalse(userDataService.isFirstNameCharacteristicSupported());
     }
 
     @Test
@@ -493,7 +493,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFirstNameCharacteristicSupporeted());
+        assertFalse(userDataService.isFirstNameCharacteristicSupported());
     }
 
     @Test
@@ -503,7 +503,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFirstNameCharacteristicSupporeted());
+        assertFalse(userDataService.isFirstNameCharacteristicSupported());
     }
 
     @Test
@@ -514,7 +514,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FIRST_NAME_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFirstNameCharacteristicSupporeted());
+        assertFalse(userDataService.isFirstNameCharacteristicSupported());
     }
 
     @Test
@@ -525,7 +525,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FIRST_NAME_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFirstNameCharacteristicSupporeted());
+        assertFalse(userDataService.isFirstNameCharacteristicSupported());
     }
 
     @Test
@@ -536,7 +536,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FIRST_NAME_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFirstNameCharacteristicSupporeted());
+        assertFalse(userDataService.isFirstNameCharacteristicSupported());
     }
 
     @Test
@@ -547,7 +547,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FIRST_NAME_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isFirstNameCharacteristicSupporeted());
+        assertTrue(userDataService.isFirstNameCharacteristicSupported());
     }
 
     @Test
@@ -556,7 +556,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isLastNameCharacteristicSupporeted());
+        assertFalse(userDataService.isLastNameCharacteristicSupported());
     }
 
     @Test
@@ -566,7 +566,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isLastNameCharacteristicSupporeted());
+        assertFalse(userDataService.isLastNameCharacteristicSupported());
     }
 
     @Test
@@ -576,7 +576,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isLastNameCharacteristicSupporeted());
+        assertFalse(userDataService.isLastNameCharacteristicSupported());
     }
 
     @Test
@@ -587,7 +587,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LAST_NAME_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isLastNameCharacteristicSupporeted());
+        assertFalse(userDataService.isLastNameCharacteristicSupported());
     }
 
     @Test
@@ -598,7 +598,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LAST_NAME_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isLastNameCharacteristicSupporeted());
+        assertFalse(userDataService.isLastNameCharacteristicSupported());
     }
 
     @Test
@@ -609,7 +609,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LAST_NAME_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isLastNameCharacteristicSupporeted());
+        assertFalse(userDataService.isLastNameCharacteristicSupported());
     }
 
     @Test
@@ -620,7 +620,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LAST_NAME_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isLastNameCharacteristicSupporeted());
+        assertTrue(userDataService.isLastNameCharacteristicSupported());
     }
 
     @Test
@@ -629,7 +629,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isEmailAddressCharacteristicSupporeted());
+        assertFalse(userDataService.isEmailAddressCharacteristicSupported());
     }
 
     @Test
@@ -639,7 +639,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isEmailAddressCharacteristicSupporeted());
+        assertFalse(userDataService.isEmailAddressCharacteristicSupported());
     }
 
     @Test
@@ -649,7 +649,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isEmailAddressCharacteristicSupporeted());
+        assertFalse(userDataService.isEmailAddressCharacteristicSupported());
     }
 
     @Test
@@ -660,7 +660,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(EMAIL_ADDRESS_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isEmailAddressCharacteristicSupporeted());
+        assertFalse(userDataService.isEmailAddressCharacteristicSupported());
     }
 
     @Test
@@ -671,7 +671,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(EMAIL_ADDRESS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isEmailAddressCharacteristicSupporeted());
+        assertFalse(userDataService.isEmailAddressCharacteristicSupported());
     }
 
     @Test
@@ -682,7 +682,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(EMAIL_ADDRESS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isEmailAddressCharacteristicSupporeted());
+        assertFalse(userDataService.isEmailAddressCharacteristicSupported());
     }
 
     @Test
@@ -693,7 +693,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(EMAIL_ADDRESS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isEmailAddressCharacteristicSupporeted());
+        assertTrue(userDataService.isEmailAddressCharacteristicSupported());
     }
 
     @Test
@@ -702,7 +702,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isAgeCharacteristicSupporeted());
+        assertFalse(userDataService.isAgeCharacteristicSupported());
     }
 
     @Test
@@ -712,7 +712,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAgeCharacteristicSupporeted());
+        assertFalse(userDataService.isAgeCharacteristicSupported());
     }
 
     @Test
@@ -722,7 +722,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAgeCharacteristicSupporeted());
+        assertFalse(userDataService.isAgeCharacteristicSupported());
     }
 
     @Test
@@ -733,7 +733,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AGE_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAgeCharacteristicSupporeted());
+        assertFalse(userDataService.isAgeCharacteristicSupported());
     }
 
     @Test
@@ -744,7 +744,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AGE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAgeCharacteristicSupporeted());
+        assertFalse(userDataService.isAgeCharacteristicSupported());
     }
 
     @Test
@@ -755,7 +755,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AGE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAgeCharacteristicSupporeted());
+        assertFalse(userDataService.isAgeCharacteristicSupported());
     }
 
     @Test
@@ -766,7 +766,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AGE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isAgeCharacteristicSupporeted());
+        assertTrue(userDataService.isAgeCharacteristicSupported());
     }
 
     @Test
@@ -775,7 +775,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isDateOfBirthCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfBirthCharacteristicSupported());
     }
 
     @Test
@@ -785,7 +785,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isDateOfBirthCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfBirthCharacteristicSupported());
     }
 
     @Test
@@ -795,7 +795,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isDateOfBirthCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfBirthCharacteristicSupported());
     }
 
     @Test
@@ -806,7 +806,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATE_OF_BIRTH_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isDateOfBirthCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfBirthCharacteristicSupported());
     }
 
     @Test
@@ -817,7 +817,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATE_OF_BIRTH_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isDateOfBirthCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfBirthCharacteristicSupported());
     }
 
     @Test
@@ -828,7 +828,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATE_OF_BIRTH_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isDateOfBirthCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfBirthCharacteristicSupported());
     }
 
     @Test
@@ -839,7 +839,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATE_OF_BIRTH_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isDateOfBirthCharacteristicSupporeted());
+        assertTrue(userDataService.isDateOfBirthCharacteristicSupported());
     }
 
     @Test
@@ -848,7 +848,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isGenderCharacteristicSupporeted());
+        assertFalse(userDataService.isGenderCharacteristicSupported());
     }
 
     @Test
@@ -858,7 +858,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isGenderCharacteristicSupporeted());
+        assertFalse(userDataService.isGenderCharacteristicSupported());
     }
 
     @Test
@@ -868,7 +868,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isGenderCharacteristicSupporeted());
+        assertFalse(userDataService.isGenderCharacteristicSupported());
     }
 
     @Test
@@ -879,7 +879,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GENDER_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isGenderCharacteristicSupporeted());
+        assertFalse(userDataService.isGenderCharacteristicSupported());
     }
 
     @Test
@@ -890,7 +890,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GENDER_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isGenderCharacteristicSupporeted());
+        assertFalse(userDataService.isGenderCharacteristicSupported());
     }
 
     @Test
@@ -901,7 +901,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GENDER_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isGenderCharacteristicSupporeted());
+        assertFalse(userDataService.isGenderCharacteristicSupported());
     }
 
     @Test
@@ -912,7 +912,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GENDER_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isGenderCharacteristicSupporeted());
+        assertTrue(userDataService.isGenderCharacteristicSupported());
     }
 
     @Test
@@ -921,7 +921,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isWeightCharacteristicSupporeted());
+        assertFalse(userDataService.isWeightCharacteristicSupported());
     }
 
     @Test
@@ -931,7 +931,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isWeightCharacteristicSupporeted());
+        assertFalse(userDataService.isWeightCharacteristicSupported());
     }
 
     @Test
@@ -941,7 +941,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isWeightCharacteristicSupporeted());
+        assertFalse(userDataService.isWeightCharacteristicSupported());
     }
 
     @Test
@@ -952,7 +952,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(WEIGHT_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isWeightCharacteristicSupporeted());
+        assertFalse(userDataService.isWeightCharacteristicSupported());
     }
 
     @Test
@@ -963,7 +963,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(WEIGHT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isWeightCharacteristicSupporeted());
+        assertFalse(userDataService.isWeightCharacteristicSupported());
     }
 
     @Test
@@ -974,7 +974,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(WEIGHT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isWeightCharacteristicSupporeted());
+        assertFalse(userDataService.isWeightCharacteristicSupported());
     }
 
     @Test
@@ -985,7 +985,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(WEIGHT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isWeightCharacteristicSupporeted());
+        assertTrue(userDataService.isWeightCharacteristicSupported());
     }
 
     @Test
@@ -994,7 +994,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isHeightCharacteristicSupporeted());
+        assertFalse(userDataService.isHeightCharacteristicSupported());
     }
 
     @Test
@@ -1004,7 +1004,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isHeightCharacteristicSupporeted());
+        assertFalse(userDataService.isHeightCharacteristicSupported());
     }
 
     @Test
@@ -1014,7 +1014,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isHeightCharacteristicSupporeted());
+        assertFalse(userDataService.isHeightCharacteristicSupported());
     }
 
     @Test
@@ -1025,7 +1025,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HEIGHT_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isHeightCharacteristicSupporeted());
+        assertFalse(userDataService.isHeightCharacteristicSupported());
     }
 
     @Test
@@ -1036,7 +1036,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HEIGHT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isHeightCharacteristicSupporeted());
+        assertFalse(userDataService.isHeightCharacteristicSupported());
     }
 
     @Test
@@ -1047,7 +1047,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HEIGHT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isHeightCharacteristicSupporeted());
+        assertFalse(userDataService.isHeightCharacteristicSupported());
     }
 
     @Test
@@ -1058,7 +1058,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HEIGHT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isHeightCharacteristicSupporeted());
+        assertTrue(userDataService.isHeightCharacteristicSupported());
     }
 
     @Test
@@ -1067,7 +1067,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isVO2MaxCharacteristicSupporeted());
+        assertFalse(userDataService.isVO2MaxCharacteristicSupported());
     }
 
     @Test
@@ -1077,7 +1077,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isVO2MaxCharacteristicSupporeted());
+        assertFalse(userDataService.isVO2MaxCharacteristicSupported());
     }
 
     @Test
@@ -1087,7 +1087,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isVO2MaxCharacteristicSupporeted());
+        assertFalse(userDataService.isVO2MaxCharacteristicSupported());
     }
 
     @Test
@@ -1098,7 +1098,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(VO2_MAX_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isVO2MaxCharacteristicSupporeted());
+        assertFalse(userDataService.isVO2MaxCharacteristicSupported());
     }
 
     @Test
@@ -1109,7 +1109,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(VO2_MAX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isVO2MaxCharacteristicSupporeted());
+        assertFalse(userDataService.isVO2MaxCharacteristicSupported());
     }
 
     @Test
@@ -1120,7 +1120,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(VO2_MAX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isVO2MaxCharacteristicSupporeted());
+        assertFalse(userDataService.isVO2MaxCharacteristicSupported());
     }
 
     @Test
@@ -1131,7 +1131,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(VO2_MAX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isVO2MaxCharacteristicSupporeted());
+        assertTrue(userDataService.isVO2MaxCharacteristicSupported());
     }
 
     @Test
@@ -1140,7 +1140,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isHeartRateMaxCharacteristicSupporeted());
+        assertFalse(userDataService.isHeartRateMaxCharacteristicSupported());
     }
 
     @Test
@@ -1150,7 +1150,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isHeartRateMaxCharacteristicSupporeted());
+        assertFalse(userDataService.isHeartRateMaxCharacteristicSupported());
     }
 
     @Test
@@ -1160,7 +1160,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isHeartRateMaxCharacteristicSupporeted());
+        assertFalse(userDataService.isHeartRateMaxCharacteristicSupported());
     }
 
     @Test
@@ -1171,7 +1171,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HEART_RATE_MAX_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isHeartRateMaxCharacteristicSupporeted());
+        assertFalse(userDataService.isHeartRateMaxCharacteristicSupported());
     }
 
     @Test
@@ -1182,7 +1182,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HEART_RATE_MAX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isHeartRateMaxCharacteristicSupporeted());
+        assertFalse(userDataService.isHeartRateMaxCharacteristicSupported());
     }
 
     @Test
@@ -1193,7 +1193,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HEART_RATE_MAX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isHeartRateMaxCharacteristicSupporeted());
+        assertFalse(userDataService.isHeartRateMaxCharacteristicSupported());
     }
 
     @Test
@@ -1204,7 +1204,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HEART_RATE_MAX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isHeartRateMaxCharacteristicSupporeted());
+        assertTrue(userDataService.isHeartRateMaxCharacteristicSupported());
     }
 
     @Test
@@ -1213,7 +1213,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isRestingHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isRestingHeartRateCharacteristicSupported());
     }
 
     @Test
@@ -1223,7 +1223,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isRestingHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isRestingHeartRateCharacteristicSupported());
     }
 
     @Test
@@ -1233,7 +1233,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isRestingHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isRestingHeartRateCharacteristicSupported());
     }
 
     @Test
@@ -1244,7 +1244,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(RESTING_HEART_RATE_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isRestingHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isRestingHeartRateCharacteristicSupported());
     }
 
     @Test
@@ -1255,7 +1255,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(RESTING_HEART_RATE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isRestingHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isRestingHeartRateCharacteristicSupported());
     }
 
     @Test
@@ -1266,7 +1266,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(RESTING_HEART_RATE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isRestingHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isRestingHeartRateCharacteristicSupported());
     }
 
     @Test
@@ -1277,7 +1277,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(RESTING_HEART_RATE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isRestingHeartRateCharacteristicSupporeted());
+        assertTrue(userDataService.isRestingHeartRateCharacteristicSupported());
     }
 
     @Test
@@ -1286,7 +1286,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupported());
     }
 
     @Test
@@ -1296,7 +1296,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupported());
     }
 
     @Test
@@ -1306,7 +1306,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupported());
     }
 
     @Test
@@ -1317,7 +1317,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupported());
     }
 
     @Test
@@ -1328,7 +1328,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupported());
     }
 
     @Test
@@ -1339,7 +1339,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupported());
     }
 
     @Test
@@ -1350,7 +1350,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isMaximumRecommendedHeartRateCharacteristicSupporeted());
+        assertTrue(userDataService.isMaximumRecommendedHeartRateCharacteristicSupported());
     }
 
     @Test
@@ -1359,7 +1359,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isAerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicThresholdCharacteristicSupported());
     }
 
     @Test
@@ -1369,7 +1369,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicThresholdCharacteristicSupported());
     }
 
     @Test
@@ -1379,7 +1379,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicThresholdCharacteristicSupported());
     }
 
     @Test
@@ -1390,7 +1390,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_THRESHOLD_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicThresholdCharacteristicSupported());
     }
 
     @Test
@@ -1401,7 +1401,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_THRESHOLD_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicThresholdCharacteristicSupported());
     }
 
     @Test
@@ -1412,7 +1412,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_THRESHOLD_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicThresholdCharacteristicSupported());
     }
 
     @Test
@@ -1423,7 +1423,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_THRESHOLD_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isAerobicThresholdCharacteristicSupporeted());
+        assertTrue(userDataService.isAerobicThresholdCharacteristicSupported());
     }
 
     @Test
@@ -1432,7 +1432,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupported());
     }
 
     @Test
@@ -1442,7 +1442,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupported());
     }
 
     @Test
@@ -1452,7 +1452,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupported());
     }
 
     @Test
@@ -1463,7 +1463,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_THRESHOLD_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupported());
     }
 
     @Test
@@ -1474,7 +1474,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_THRESHOLD_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupported());
     }
 
     @Test
@@ -1485,7 +1485,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_THRESHOLD_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupported());
     }
 
     @Test
@@ -1496,7 +1496,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_THRESHOLD_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isAnaerobicThresholdCharacteristicSupporeted());
+        assertTrue(userDataService.isAnaerobicThresholdCharacteristicSupported());
     }
 
     @Test
@@ -1505,7 +1505,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted());
+        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported());
     }
 
     @Test
@@ -1515,7 +1515,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted());
+        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported());
     }
 
     @Test
@@ -1525,7 +1525,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted());
+        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported());
     }
 
     @Test
@@ -1536,7 +1536,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted());
+        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported());
     }
 
     @Test
@@ -1547,7 +1547,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted());
+        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported());
     }
 
     @Test
@@ -1558,7 +1558,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted());
+        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported());
     }
 
     @Test
@@ -1569,7 +1569,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted());
+        assertTrue(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported());
     }
 
     @Test
@@ -1578,7 +1578,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupported());
     }
 
     @Test
@@ -1588,7 +1588,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupported());
     }
 
     @Test
@@ -1598,7 +1598,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupported());
     }
 
     @Test
@@ -1609,7 +1609,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupported());
     }
 
     @Test
@@ -1620,7 +1620,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupported());
     }
 
     @Test
@@ -1631,7 +1631,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupported());
     }
 
     @Test
@@ -1642,7 +1642,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isDateOfThresholdAssessmentCharacteristicSupporeted());
+        assertTrue(userDataService.isDateOfThresholdAssessmentCharacteristicSupported());
     }
 
     @Test
@@ -1651,7 +1651,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupported());
     }
 
     @Test
@@ -1661,7 +1661,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupported());
     }
 
     @Test
@@ -1671,7 +1671,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupported());
     }
 
     @Test
@@ -1682,7 +1682,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(WAIST_CIRCUMFERENCE_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupported());
     }
 
     @Test
@@ -1693,7 +1693,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(WAIST_CIRCUMFERENCE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupported());
     }
 
     @Test
@@ -1704,7 +1704,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(WAIST_CIRCUMFERENCE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupported());
     }
 
     @Test
@@ -1715,7 +1715,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(WAIST_CIRCUMFERENCE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isWaistCircumferenceCharacteristicSupporeted());
+        assertTrue(userDataService.isWaistCircumferenceCharacteristicSupported());
     }
 
     @Test
@@ -1724,7 +1724,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isHipCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isHipCircumferenceCharacteristicSupported());
     }
 
     @Test
@@ -1734,7 +1734,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isHipCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isHipCircumferenceCharacteristicSupported());
     }
 
     @Test
@@ -1744,7 +1744,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isHipCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isHipCircumferenceCharacteristicSupported());
     }
 
     @Test
@@ -1755,7 +1755,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HIP_CIRCUMFERENCE_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isHipCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isHipCircumferenceCharacteristicSupported());
     }
 
     @Test
@@ -1766,7 +1766,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HIP_CIRCUMFERENCE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isHipCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isHipCircumferenceCharacteristicSupported());
     }
 
     @Test
@@ -1777,7 +1777,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HIP_CIRCUMFERENCE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isHipCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isHipCircumferenceCharacteristicSupported());
     }
 
     @Test
@@ -1788,7 +1788,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HIP_CIRCUMFERENCE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isHipCircumferenceCharacteristicSupporeted());
+        assertTrue(userDataService.isHipCircumferenceCharacteristicSupported());
     }
 
     @Test
@@ -1797,7 +1797,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -1807,7 +1807,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -1817,7 +1817,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -1828,7 +1828,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -1839,7 +1839,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -1850,7 +1850,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -1861,7 +1861,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupporeted());
+        assertTrue(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -1870,7 +1870,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -1880,7 +1880,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -1890,7 +1890,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -1901,7 +1901,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -1912,7 +1912,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -1923,7 +1923,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -1934,7 +1934,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupporeted());
+        assertTrue(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -1943,7 +1943,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -1953,7 +1953,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -1963,7 +1963,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -1974,7 +1974,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -1985,7 +1985,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -1996,7 +1996,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -2007,7 +2007,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertTrue(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -2016,7 +2016,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -2026,7 +2026,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -2036,7 +2036,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -2047,7 +2047,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -2058,7 +2058,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -2069,7 +2069,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -2080,7 +2080,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertTrue(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -2089,7 +2089,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -2099,7 +2099,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -2109,7 +2109,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -2120,7 +2120,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -2131,7 +2131,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -2142,7 +2142,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -2153,7 +2153,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertTrue(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
@@ -2162,7 +2162,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -2172,7 +2172,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -2182,7 +2182,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -2193,7 +2193,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -2204,7 +2204,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -2215,7 +2215,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -2226,7 +2226,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertTrue(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
@@ -2235,7 +2235,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
@@ -2245,7 +2245,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
@@ -2255,7 +2255,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
@@ -2266,7 +2266,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
@@ -2277,7 +2277,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
@@ -2288,7 +2288,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
@@ -2299,7 +2299,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupporeted());
+        assertTrue(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
@@ -2308,7 +2308,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
@@ -2318,7 +2318,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
@@ -2328,7 +2328,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
@@ -2339,7 +2339,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
@@ -2350,7 +2350,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
@@ -2361,7 +2361,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
@@ -2372,7 +2372,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupporeted());
+        assertTrue(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
@@ -2381,7 +2381,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupported());
     }
 
     @Test
@@ -2391,7 +2391,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupported());
     }
 
     @Test
@@ -2401,7 +2401,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupported());
     }
 
     @Test
@@ -2412,7 +2412,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupported());
     }
 
     @Test
@@ -2423,7 +2423,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupported());
     }
 
     @Test
@@ -2434,7 +2434,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupported());
     }
 
     @Test
@@ -2445,7 +2445,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isTwoZoneHeartRateLimitCharacteristicSupporeted());
+        assertTrue(userDataService.isTwoZoneHeartRateLimitCharacteristicSupported());
     }
 
     @Test
@@ -2454,7 +2454,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isLanguageCharacteristicSupporeted());
+        assertFalse(userDataService.isLanguageCharacteristicSupported());
     }
 
     @Test
@@ -2464,7 +2464,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isLanguageCharacteristicSupporeted());
+        assertFalse(userDataService.isLanguageCharacteristicSupported());
     }
 
     @Test
@@ -2474,7 +2474,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isLanguageCharacteristicSupporeted());
+        assertFalse(userDataService.isLanguageCharacteristicSupported());
     }
 
     @Test
@@ -2485,7 +2485,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LANGUAGE_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isLanguageCharacteristicSupporeted());
+        assertFalse(userDataService.isLanguageCharacteristicSupported());
     }
 
     @Test
@@ -2496,7 +2496,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LANGUAGE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isLanguageCharacteristicSupporeted());
+        assertFalse(userDataService.isLanguageCharacteristicSupported());
     }
 
     @Test
@@ -2507,7 +2507,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LANGUAGE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isLanguageCharacteristicSupporeted());
+        assertFalse(userDataService.isLanguageCharacteristicSupported());
     }
 
     @Test
@@ -2518,7 +2518,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LANGUAGE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isLanguageCharacteristicSupporeted());
+        assertTrue(userDataService.isLanguageCharacteristicSupported());
     }
 
     @Test
@@ -2527,7 +2527,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupporeted());
+        assertFalse(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupported());
     }
 
     @Test
@@ -2537,7 +2537,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupporeted());
+        assertFalse(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupported());
     }
 
     @Test
@@ -2547,7 +2547,7 @@ public class UserDataServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupporeted());
+        assertFalse(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupported());
     }
 
     @Test
@@ -2558,7 +2558,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, 0, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupporeted());
+        assertFalse(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupported());
     }
 
     @Test
@@ -2569,7 +2569,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupporeted());
+        assertFalse(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupported());
     }
 
     @Test
@@ -2582,7 +2582,7 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupporeted());
+        assertTrue(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupported());
     }
 
     @Test
@@ -9836,798 +9836,798 @@ public class UserDataServiceTest {
     }
 
     @Test
-    public void test_isFirstNameCharacteristicSupporeted_00001() {
+    public void test_isFirstNameCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isFirstNameCharacteristicSupporeted());
+        assertFalse(userDataService.isFirstNameCharacteristicSupported());
     }
 
     @Test
-    public void test_isFirstNameCharacteristicSupporeted_00002() {
+    public void test_isFirstNameCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FIRST_NAME_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isFirstNameCharacteristicSupporeted());
+        assertTrue(userDataService.isFirstNameCharacteristicSupported());
     }
 
     @Test
-    public void test_isFirstNameCharacteristicSupporeted_00003() {
+    public void test_isFirstNameCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LAST_NAME_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isFirstNameCharacteristicSupporeted());
+        assertFalse(userDataService.isFirstNameCharacteristicSupported());
     }
 
     @Test
-    public void test_isLastNameCharacteristicSupporeted_00001() {
+    public void test_isLastNameCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isLastNameCharacteristicSupporeted());
+        assertFalse(userDataService.isLastNameCharacteristicSupported());
     }
 
     @Test
-    public void test_isLastNameCharacteristicSupporeted_00002() {
+    public void test_isLastNameCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LAST_NAME_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isLastNameCharacteristicSupporeted());
+        assertTrue(userDataService.isLastNameCharacteristicSupported());
     }
 
     @Test
-    public void test_isLastNameCharacteristicSupporeted_00003() {
+    public void test_isLastNameCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LAST_NAME_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isLastNameCharacteristicSupporeted());
+        assertFalse(userDataService.isLastNameCharacteristicSupported());
     }
 
     @Test
-    public void test_isEmailAddressCharacteristicSupporeted_00001() {
+    public void test_isEmailAddressCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isEmailAddressCharacteristicSupporeted());
+        assertFalse(userDataService.isEmailAddressCharacteristicSupported());
     }
 
     @Test
-    public void test_isEmailAddressCharacteristicSupporeted_00002() {
+    public void test_isEmailAddressCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(EMAIL_ADDRESS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isEmailAddressCharacteristicSupporeted());
+        assertTrue(userDataService.isEmailAddressCharacteristicSupported());
     }
 
     @Test
-    public void test_isEmailAddressCharacteristicSupporeted_00003() {
+    public void test_isEmailAddressCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(EMAIL_ADDRESS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isEmailAddressCharacteristicSupporeted());
+        assertFalse(userDataService.isEmailAddressCharacteristicSupported());
     }
 
     @Test
-    public void test_isAgeCharacteristicSupporeted_00001() {
+    public void test_isAgeCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isAgeCharacteristicSupporeted());
+        assertFalse(userDataService.isAgeCharacteristicSupported());
     }
 
     @Test
-    public void test_isAgeCharacteristicSupporeted_00002() {
+    public void test_isAgeCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AGE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isAgeCharacteristicSupporeted());
+        assertTrue(userDataService.isAgeCharacteristicSupported());
     }
 
     @Test
-    public void test_isAgeCharacteristicSupporeted_00003() {
+    public void test_isAgeCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AGE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isAgeCharacteristicSupporeted());
+        assertFalse(userDataService.isAgeCharacteristicSupported());
     }
 
     @Test
-    public void test_isDateOfBirthCharacteristicSupporeted_00001() {
+    public void test_isDateOfBirthCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isDateOfBirthCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfBirthCharacteristicSupported());
     }
 
     @Test
-    public void test_isDateOfBirthCharacteristicSupporeted_00002() {
+    public void test_isDateOfBirthCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATE_OF_BIRTH_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isDateOfBirthCharacteristicSupporeted());
+        assertTrue(userDataService.isDateOfBirthCharacteristicSupported());
     }
 
     @Test
-    public void test_isDateOfBirthCharacteristicSupporeted_00003() {
+    public void test_isDateOfBirthCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATE_OF_BIRTH_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isDateOfBirthCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfBirthCharacteristicSupported());
     }
 
     @Test
-    public void test_isGenderCharacteristicSupporeted_00001() {
+    public void test_isGenderCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isGenderCharacteristicSupporeted());
+        assertFalse(userDataService.isGenderCharacteristicSupported());
     }
 
     @Test
-    public void test_isGenderCharacteristicSupporeted_00002() {
+    public void test_isGenderCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GENDER_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isGenderCharacteristicSupporeted());
+        assertTrue(userDataService.isGenderCharacteristicSupported());
     }
 
     @Test
-    public void test_isGenderCharacteristicSupporeted_00003() {
+    public void test_isGenderCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GENDER_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isGenderCharacteristicSupporeted());
+        assertFalse(userDataService.isGenderCharacteristicSupported());
     }
 
     @Test
-    public void test_isWeightCharacteristicSupporeted_00001() {
+    public void test_isWeightCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isWeightCharacteristicSupporeted());
+        assertFalse(userDataService.isWeightCharacteristicSupported());
     }
 
     @Test
-    public void test_isWeightCharacteristicSupporeted_00002() {
+    public void test_isWeightCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(WEIGHT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isWeightCharacteristicSupporeted());
+        assertTrue(userDataService.isWeightCharacteristicSupported());
     }
 
     @Test
-    public void test_isWeightCharacteristicSupporeted_00003() {
+    public void test_isWeightCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(WEIGHT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isWeightCharacteristicSupporeted());
+        assertFalse(userDataService.isWeightCharacteristicSupported());
     }
 
     @Test
-    public void test_isHeightCharacteristicSupporeted_00001() {
+    public void test_isHeightCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isHeightCharacteristicSupporeted());
+        assertFalse(userDataService.isHeightCharacteristicSupported());
     }
 
     @Test
-    public void test_isHeightCharacteristicSupporeted_00002() {
+    public void test_isHeightCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HEIGHT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isHeightCharacteristicSupporeted());
+        assertTrue(userDataService.isHeightCharacteristicSupported());
     }
 
     @Test
-    public void test_isHeightCharacteristicSupporeted_00003() {
+    public void test_isHeightCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HEIGHT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isHeightCharacteristicSupporeted());
+        assertFalse(userDataService.isHeightCharacteristicSupported());
     }
 
     @Test
-    public void test_isVO2MaxCharacteristicSupporeted_00001() {
+    public void test_isVO2MaxCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isVO2MaxCharacteristicSupporeted());
+        assertFalse(userDataService.isVO2MaxCharacteristicSupported());
     }
 
     @Test
-    public void test_isVO2MaxCharacteristicSupporeted_00002() {
+    public void test_isVO2MaxCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(VO2_MAX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isVO2MaxCharacteristicSupporeted());
+        assertTrue(userDataService.isVO2MaxCharacteristicSupported());
     }
 
     @Test
-    public void test_isVO2MaxCharacteristicSupporeted_00003() {
+    public void test_isVO2MaxCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(VO2_MAX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isVO2MaxCharacteristicSupporeted());
+        assertFalse(userDataService.isVO2MaxCharacteristicSupported());
     }
 
     @Test
-    public void test_isHeartRateMaxCharacteristicSupporeted_00001() {
+    public void test_isHeartRateMaxCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isHeartRateMaxCharacteristicSupporeted());
+        assertFalse(userDataService.isHeartRateMaxCharacteristicSupported());
     }
 
     @Test
-    public void test_isHeartRateMaxCharacteristicSupporeted_00002() {
+    public void test_isHeartRateMaxCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HEART_RATE_MAX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isHeartRateMaxCharacteristicSupporeted());
+        assertTrue(userDataService.isHeartRateMaxCharacteristicSupported());
     }
 
     @Test
-    public void test_isHeartRateMaxCharacteristicSupporeted_00003() {
+    public void test_isHeartRateMaxCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HEART_RATE_MAX_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isHeartRateMaxCharacteristicSupporeted());
+        assertFalse(userDataService.isHeartRateMaxCharacteristicSupported());
     }
 
     @Test
-    public void test_isRestingHeartRateCharacteristicSupporeted_00001() {
+    public void test_isRestingHeartRateCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isRestingHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isRestingHeartRateCharacteristicSupported());
     }
 
     @Test
-    public void test_isRestingHeartRateCharacteristicSupporeted_00002() {
+    public void test_isRestingHeartRateCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(RESTING_HEART_RATE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isRestingHeartRateCharacteristicSupporeted());
+        assertTrue(userDataService.isRestingHeartRateCharacteristicSupported());
     }
 
     @Test
-    public void test_isRestingHeartRateCharacteristicSupporeted_00003() {
+    public void test_isRestingHeartRateCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(RESTING_HEART_RATE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isRestingHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isRestingHeartRateCharacteristicSupported());
     }
 
     @Test
-    public void test_isMaximumRecommendedHeartRateCharacteristicSupporeted_00001() {
+    public void test_isMaximumRecommendedHeartRateCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupported());
     }
 
     @Test
-    public void test_isMaximumRecommendedHeartRateCharacteristicSupporeted_00002() {
+    public void test_isMaximumRecommendedHeartRateCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isMaximumRecommendedHeartRateCharacteristicSupporeted());
+        assertTrue(userDataService.isMaximumRecommendedHeartRateCharacteristicSupported());
     }
 
     @Test
-    public void test_isMaximumRecommendedHeartRateCharacteristicSupporeted_00003() {
+    public void test_isMaximumRecommendedHeartRateCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupporeted());
+        assertFalse(userDataService.isMaximumRecommendedHeartRateCharacteristicSupported());
     }
 
     @Test
-    public void test_isAerobicThresholdCharacteristicSupporeted_00001() {
+    public void test_isAerobicThresholdCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isAerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicThresholdCharacteristicSupported());
     }
 
     @Test
-    public void test_isAerobicThresholdCharacteristicSupporeted_00002() {
+    public void test_isAerobicThresholdCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_THRESHOLD_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isAerobicThresholdCharacteristicSupporeted());
+        assertTrue(userDataService.isAerobicThresholdCharacteristicSupported());
     }
 
     @Test
-    public void test_isAerobicThresholdCharacteristicSupporeted_00003() {
+    public void test_isAerobicThresholdCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_THRESHOLD_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isAerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicThresholdCharacteristicSupported());
     }
 
     @Test
-    public void test_isAnaerobicThresholdCharacteristicSupporeted_00001() {
+    public void test_isAnaerobicThresholdCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupported());
     }
 
     @Test
-    public void test_isAnaerobicThresholdCharacteristicSupporeted_00002() {
+    public void test_isAnaerobicThresholdCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_THRESHOLD_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isAnaerobicThresholdCharacteristicSupporeted());
+        assertTrue(userDataService.isAnaerobicThresholdCharacteristicSupported());
     }
 
     @Test
-    public void test_isAnaerobicThresholdCharacteristicSupporeted_00003() {
+    public void test_isAnaerobicThresholdCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_THRESHOLD_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicThresholdCharacteristicSupported());
     }
 
     @Test
-    public void test_isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted_00001() {
+    public void test_isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted());
+        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported());
     }
 
     @Test
-    public void test_isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted_00002() {
+    public void test_isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted());
+        assertTrue(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported());
     }
 
     @Test
-    public void test_isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted_00003() {
+    public void test_isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted());
+        assertFalse(userDataService.isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported());
     }
 
     @Test
-    public void test_isDateOfThresholdAssessmentCharacteristicSupporeted_00001() {
+    public void test_isDateOfThresholdAssessmentCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupported());
     }
 
     @Test
-    public void test_isDateOfThresholdAssessmentCharacteristicSupporeted_00002() {
+    public void test_isDateOfThresholdAssessmentCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isDateOfThresholdAssessmentCharacteristicSupporeted());
+        assertTrue(userDataService.isDateOfThresholdAssessmentCharacteristicSupported());
     }
 
     @Test
-    public void test_isDateOfThresholdAssessmentCharacteristicSupporeted_00003() {
+    public void test_isDateOfThresholdAssessmentCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupporeted());
+        assertFalse(userDataService.isDateOfThresholdAssessmentCharacteristicSupported());
     }
 
     @Test
-    public void test_isWaistCircumferenceCharacteristicSupporeted_00001() {
+    public void test_isWaistCircumferenceCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupported());
     }
 
     @Test
-    public void test_isWaistCircumferenceCharacteristicSupporeted_00002() {
+    public void test_isWaistCircumferenceCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(WAIST_CIRCUMFERENCE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isWaistCircumferenceCharacteristicSupporeted());
+        assertTrue(userDataService.isWaistCircumferenceCharacteristicSupported());
     }
 
     @Test
-    public void test_isWaistCircumferenceCharacteristicSupporeted_00003() {
+    public void test_isWaistCircumferenceCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(WAIST_CIRCUMFERENCE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isWaistCircumferenceCharacteristicSupported());
     }
 
     @Test
-    public void test_isHipCircumferenceCharacteristicSupporeted_00001() {
+    public void test_isHipCircumferenceCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isHipCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isHipCircumferenceCharacteristicSupported());
     }
 
     @Test
-    public void test_isHipCircumferenceCharacteristicSupporeted_00002() {
+    public void test_isHipCircumferenceCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HIP_CIRCUMFERENCE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isHipCircumferenceCharacteristicSupporeted());
+        assertTrue(userDataService.isHipCircumferenceCharacteristicSupported());
     }
 
     @Test
-    public void test_isHipCircumferenceCharacteristicSupporeted_00003() {
+    public void test_isHipCircumferenceCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(HIP_CIRCUMFERENCE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isHipCircumferenceCharacteristicSupporeted());
+        assertFalse(userDataService.isHipCircumferenceCharacteristicSupported());
     }
 
     @Test
-    public void test_isFatBurnHeartRateLowerLimitCharacteristicSupporeted_00001() {
+    public void test_isFatBurnHeartRateLowerLimitCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isFatBurnHeartRateLowerLimitCharacteristicSupporeted_00002() {
+    public void test_isFatBurnHeartRateLowerLimitCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupporeted());
+        assertTrue(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isFatBurnHeartRateLowerLimitCharacteristicSupporeted_00003() {
+    public void test_isFatBurnHeartRateLowerLimitCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isFatBurnHeartRateUpperLimitCharacteristicSupporeted_00001() {
+    public void test_isFatBurnHeartRateUpperLimitCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isFatBurnHeartRateUpperLimitCharacteristicSupporeted_00002() {
+    public void test_isFatBurnHeartRateUpperLimitCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupporeted());
+        assertTrue(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isFatBurnHeartRateUpperLimitCharacteristicSupporeted_00003() {
+    public void test_isFatBurnHeartRateUpperLimitCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isFatBurnHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isAerobicHeartRateLowerLimitCharacteristicSupporeted_00001() {
+    public void test_isAerobicHeartRateLowerLimitCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isAerobicHeartRateLowerLimitCharacteristicSupporeted_00002() {
+    public void test_isAerobicHeartRateLowerLimitCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertTrue(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isAerobicHeartRateLowerLimitCharacteristicSupporeted_00003() {
+    public void test_isAerobicHeartRateLowerLimitCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isAerobicHeartRateUpperLimitCharacteristicSupporeted_00001() {
+    public void test_isAerobicHeartRateUpperLimitCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isAerobicHeartRateUpperLimitCharacteristicSupporeted_00002() {
+    public void test_isAerobicHeartRateUpperLimitCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertTrue(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isAerobicHeartRateUpperLimitCharacteristicSupporeted_00003() {
+    public void test_isAerobicHeartRateUpperLimitCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isAnaerobicHeartRateLowerLimitCharacteristicSupporeted_00001() {
+    public void test_isAnaerobicHeartRateLowerLimitCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isAnaerobicHeartRateLowerLimitCharacteristicSupporeted_00002() {
+    public void test_isAnaerobicHeartRateLowerLimitCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertTrue(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isAnaerobicHeartRateLowerLimitCharacteristicSupporeted_00003() {
+    public void test_isAnaerobicHeartRateLowerLimitCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateLowerLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isAnaerobicHeartRateUpperLimitCharacteristicSupporeted_00001() {
+    public void test_isAnaerobicHeartRateUpperLimitCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isAnaerobicHeartRateUpperLimitCharacteristicSupporeted_00002() {
+    public void test_isAnaerobicHeartRateUpperLimitCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertTrue(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isAnaerobicHeartRateUpperLimitCharacteristicSupporeted_00003() {
+    public void test_isAnaerobicHeartRateUpperLimitCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isAnaerobicHeartRateUpperLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isFiveZoneHeartRateLimitsCharacteristicSupporeted_00001() {
+    public void test_isFiveZoneHeartRateLimitsCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
-    public void test_isFiveZoneHeartRateLimitsCharacteristicSupporeted_00002() {
+    public void test_isFiveZoneHeartRateLimitsCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupporeted());
+        assertTrue(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
-    public void test_isFiveZoneHeartRateLimitsCharacteristicSupporeted_00003() {
+    public void test_isFiveZoneHeartRateLimitsCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isFiveZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
-    public void test_isThreeZoneHeartRateLimitsCharacteristicSupporeted_00001() {
+    public void test_isThreeZoneHeartRateLimitsCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
-    public void test_isThreeZoneHeartRateLimitsCharacteristicSupporeted_00002() {
+    public void test_isThreeZoneHeartRateLimitsCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupporeted());
+        assertTrue(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
-    public void test_isThreeZoneHeartRateLimitsCharacteristicSupporeted_00003() {
+    public void test_isThreeZoneHeartRateLimitsCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupporeted());
+        assertFalse(userDataService.isThreeZoneHeartRateLimitsCharacteristicSupported());
     }
 
     @Test
-    public void test_isTwoZoneHeartRateLimitCharacteristicSupporeted_00001() {
+    public void test_isTwoZoneHeartRateLimitCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isTwoZoneHeartRateLimitCharacteristicSupporeted_00002() {
+    public void test_isTwoZoneHeartRateLimitCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isTwoZoneHeartRateLimitCharacteristicSupporeted());
+        assertTrue(userDataService.isTwoZoneHeartRateLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isTwoZoneHeartRateLimitCharacteristicSupporeted_00003() {
+    public void test_isTwoZoneHeartRateLimitCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMIT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupporeted());
+        assertFalse(userDataService.isTwoZoneHeartRateLimitCharacteristicSupported());
     }
 
     @Test
-    public void test_isLanguageCharacteristicSupporeted_00001() {
+    public void test_isLanguageCharacteristicSupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isLanguageCharacteristicSupporeted());
+        assertFalse(userDataService.isLanguageCharacteristicSupported());
     }
 
     @Test
-    public void test_isLanguageCharacteristicSupporeted_00002() {
+    public void test_isLanguageCharacteristicSupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LANGUAGE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isLanguageCharacteristicSupporeted());
+        assertTrue(userDataService.isLanguageCharacteristicSupported());
     }
 
     @Test
-    public void test_isLanguageCharacteristicSupporeted_00003() {
+    public void test_isLanguageCharacteristicSupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LANGUAGE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isLanguageCharacteristicSupporeted());
+        assertFalse(userDataService.isLanguageCharacteristicSupported());
     }
 
     @Test
-    public void test_isDatabaseChangeIncrementCharacteristicNotifySupporeted_00001() {
+    public void test_isDatabaseChangeIncrementCharacteristicNotifySupported_00001() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
 
-        assertFalse(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupporeted());
+        assertFalse(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupported());
     }
 
     @Test
-    public void test_isDatabaseChangeIncrementCharacteristicNotifySupporeted_00002() {
+    public void test_isDatabaseChangeIncrementCharacteristicNotifySupported_00002() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
@@ -10635,11 +10635,11 @@ public class UserDataServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupporeted());
+        assertTrue(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupported());
     }
 
     @Test
-    public void test_isDatabaseChangeIncrementCharacteristicNotifySupporeted_00003() {
+    public void test_isDatabaseChangeIncrementCharacteristicNotifySupported_00003() {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(USER_DATA_SERVICE, 0);
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0);
@@ -10648,7 +10648,7 @@ public class UserDataServiceTest {
         userDataService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         userDataService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupporeted());
+        assertFalse(userDataService.isDatabaseChangeIncrementCharacteristicNotifySupported());
     }
 
     @Test
@@ -10677,7 +10677,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isFirstNameCharacteristicSupporeted() {
+            public boolean isFirstNameCharacteristicSupported() {
                 return true;
             }
 
@@ -10705,7 +10705,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isFirstNameCharacteristicSupporeted() {
+            public boolean isFirstNameCharacteristicSupported() {
                 return true;
             }
 
@@ -10749,7 +10749,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isFirstNameCharacteristicSupporeted() {
+            public boolean isFirstNameCharacteristicSupported() {
                 return true;
             }
 
@@ -10778,7 +10778,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isFirstNameCharacteristicSupporeted() {
+            public boolean isFirstNameCharacteristicSupported() {
                 return true;
             }
 
@@ -10821,7 +10821,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isLastNameCharacteristicSupporeted() {
+            public boolean isLastNameCharacteristicSupported() {
                 return true;
             }
 
@@ -10849,7 +10849,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isLastNameCharacteristicSupporeted() {
+            public boolean isLastNameCharacteristicSupported() {
                 return true;
             }
 
@@ -10893,7 +10893,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isLastNameCharacteristicSupporeted() {
+            public boolean isLastNameCharacteristicSupported() {
                 return true;
             }
 
@@ -10922,7 +10922,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isLastNameCharacteristicSupporeted() {
+            public boolean isLastNameCharacteristicSupported() {
                 return true;
             }
 
@@ -10965,7 +10965,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isLastNameCharacteristicSupporeted() {
+            public boolean isLastNameCharacteristicSupported() {
                 return true;
             }
 
@@ -10993,7 +10993,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isEmailAddressCharacteristicSupporeted() {
+            public boolean isEmailAddressCharacteristicSupported() {
                 return true;
             }
 
@@ -11037,7 +11037,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isEmailAddressCharacteristicSupporeted() {
+            public boolean isEmailAddressCharacteristicSupported() {
                 return true;
             }
 
@@ -11066,7 +11066,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isEmailAddressCharacteristicSupporeted() {
+            public boolean isEmailAddressCharacteristicSupported() {
                 return true;
             }
 
@@ -11109,7 +11109,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isLastNameCharacteristicSupporeted() {
+            public boolean isLastNameCharacteristicSupported() {
                 return true;
             }
 
@@ -11137,7 +11137,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAgeCharacteristicSupporeted() {
+            public boolean isAgeCharacteristicSupported() {
                 return true;
             }
 
@@ -11181,7 +11181,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAgeCharacteristicSupporeted() {
+            public boolean isAgeCharacteristicSupported() {
                 return true;
             }
 
@@ -11210,7 +11210,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAgeCharacteristicSupporeted() {
+            public boolean isAgeCharacteristicSupported() {
                 return true;
             }
 
@@ -11253,7 +11253,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isDateOfBirthCharacteristicSupporeted() {
+            public boolean isDateOfBirthCharacteristicSupported() {
                 return true;
             }
 
@@ -11281,7 +11281,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isDateOfBirthCharacteristicSupporeted() {
+            public boolean isDateOfBirthCharacteristicSupported() {
                 return true;
             }
 
@@ -11325,7 +11325,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isDateOfBirthCharacteristicSupporeted() {
+            public boolean isDateOfBirthCharacteristicSupported() {
                 return true;
             }
 
@@ -11354,7 +11354,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isDateOfBirthCharacteristicSupporeted() {
+            public boolean isDateOfBirthCharacteristicSupported() {
                 return true;
             }
 
@@ -11397,7 +11397,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isGenderCharacteristicSupporeted() {
+            public boolean isGenderCharacteristicSupported() {
                 return true;
             }
 
@@ -11425,7 +11425,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isGenderCharacteristicSupporeted() {
+            public boolean isGenderCharacteristicSupported() {
                 return true;
             }
 
@@ -11469,7 +11469,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isGenderCharacteristicSupporeted() {
+            public boolean isGenderCharacteristicSupported() {
                 return true;
             }
 
@@ -11498,7 +11498,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isGenderCharacteristicSupporeted() {
+            public boolean isGenderCharacteristicSupported() {
                 return true;
             }
 
@@ -11541,7 +11541,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isWeightCharacteristicSupporeted() {
+            public boolean isWeightCharacteristicSupported() {
                 return true;
             }
 
@@ -11569,7 +11569,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isWeightCharacteristicSupporeted() {
+            public boolean isWeightCharacteristicSupported() {
                 return true;
             }
 
@@ -11613,7 +11613,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isWeightCharacteristicSupporeted() {
+            public boolean isWeightCharacteristicSupported() {
                 return true;
             }
 
@@ -11642,7 +11642,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isWeightCharacteristicSupporeted() {
+            public boolean isWeightCharacteristicSupported() {
                 return true;
             }
 
@@ -11685,7 +11685,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isHeightCharacteristicSupporeted() {
+            public boolean isHeightCharacteristicSupported() {
                 return true;
             }
 
@@ -11713,7 +11713,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isHeightCharacteristicSupporeted() {
+            public boolean isHeightCharacteristicSupported() {
                 return true;
             }
 
@@ -11757,7 +11757,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isHeightCharacteristicSupporeted() {
+            public boolean isHeightCharacteristicSupported() {
                 return true;
             }
 
@@ -11786,7 +11786,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isHeightCharacteristicSupporeted() {
+            public boolean isHeightCharacteristicSupported() {
                 return true;
             }
 
@@ -11829,7 +11829,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isVO2MaxCharacteristicSupporeted() {
+            public boolean isVO2MaxCharacteristicSupported() {
                 return true;
             }
 
@@ -11857,7 +11857,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isVO2MaxCharacteristicSupporeted() {
+            public boolean isVO2MaxCharacteristicSupported() {
                 return true;
             }
 
@@ -11901,7 +11901,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isVO2MaxCharacteristicSupporeted() {
+            public boolean isVO2MaxCharacteristicSupported() {
                 return true;
             }
 
@@ -11930,7 +11930,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isVO2MaxCharacteristicSupporeted() {
+            public boolean isVO2MaxCharacteristicSupported() {
                 return true;
             }
 
@@ -11973,7 +11973,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isHeartRateMaxCharacteristicSupporeted() {
+            public boolean isHeartRateMaxCharacteristicSupported() {
                 return true;
             }
 
@@ -12001,7 +12001,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isHeartRateMaxCharacteristicSupporeted() {
+            public boolean isHeartRateMaxCharacteristicSupported() {
                 return true;
             }
 
@@ -12045,7 +12045,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isHeartRateMaxCharacteristicSupporeted() {
+            public boolean isHeartRateMaxCharacteristicSupported() {
                 return true;
             }
 
@@ -12074,7 +12074,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isHeartRateMaxCharacteristicSupporeted() {
+            public boolean isHeartRateMaxCharacteristicSupported() {
                 return true;
             }
 
@@ -12117,7 +12117,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isRestingHeartRateCharacteristicSupporeted() {
+            public boolean isRestingHeartRateCharacteristicSupported() {
                 return true;
             }
 
@@ -12145,7 +12145,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isRestingHeartRateCharacteristicSupporeted() {
+            public boolean isRestingHeartRateCharacteristicSupported() {
                 return true;
             }
 
@@ -12189,7 +12189,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isRestingHeartRateCharacteristicSupporeted() {
+            public boolean isRestingHeartRateCharacteristicSupported() {
                 return true;
             }
 
@@ -12218,7 +12218,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isRestingHeartRateCharacteristicSupporeted() {
+            public boolean isRestingHeartRateCharacteristicSupported() {
                 return true;
             }
 
@@ -12261,7 +12261,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isMaximumRecommendedHeartRateCharacteristicSupporeted() {
+            public boolean isMaximumRecommendedHeartRateCharacteristicSupported() {
                 return true;
             }
 
@@ -12289,7 +12289,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isMaximumRecommendedHeartRateCharacteristicSupporeted() {
+            public boolean isMaximumRecommendedHeartRateCharacteristicSupported() {
                 return true;
             }
 
@@ -12333,7 +12333,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isMaximumRecommendedHeartRateCharacteristicSupporeted() {
+            public boolean isMaximumRecommendedHeartRateCharacteristicSupported() {
                 return true;
             }
 
@@ -12362,7 +12362,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isMaximumRecommendedHeartRateCharacteristicSupporeted() {
+            public boolean isMaximumRecommendedHeartRateCharacteristicSupported() {
                 return true;
             }
 
@@ -12405,7 +12405,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAerobicThresholdCharacteristicSupporeted() {
+            public boolean isAerobicThresholdCharacteristicSupported() {
                 return true;
             }
 
@@ -12433,7 +12433,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAerobicThresholdCharacteristicSupporeted() {
+            public boolean isAerobicThresholdCharacteristicSupported() {
                 return true;
             }
 
@@ -12477,7 +12477,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAerobicThresholdCharacteristicSupporeted() {
+            public boolean isAerobicThresholdCharacteristicSupported() {
                 return true;
             }
 
@@ -12506,7 +12506,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAerobicThresholdCharacteristicSupporeted() {
+            public boolean isAerobicThresholdCharacteristicSupported() {
                 return true;
             }
 
@@ -12549,7 +12549,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAnaerobicThresholdCharacteristicSupporeted() {
+            public boolean isAnaerobicThresholdCharacteristicSupported() {
                 return true;
             }
 
@@ -12577,7 +12577,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAnaerobicThresholdCharacteristicSupporeted() {
+            public boolean isAnaerobicThresholdCharacteristicSupported() {
                 return true;
             }
 
@@ -12621,7 +12621,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAnaerobicThresholdCharacteristicSupporeted() {
+            public boolean isAnaerobicThresholdCharacteristicSupported() {
                 return true;
             }
 
@@ -12650,7 +12650,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAnaerobicThresholdCharacteristicSupporeted() {
+            public boolean isAnaerobicThresholdCharacteristicSupported() {
                 return true;
             }
 
@@ -12693,7 +12693,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted() {
+            public boolean isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported() {
                 return true;
             }
 
@@ -12721,7 +12721,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted() {
+            public boolean isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported() {
                 return true;
             }
 
@@ -12765,7 +12765,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted() {
+            public boolean isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported() {
                 return true;
             }
 
@@ -12794,7 +12794,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupporeted() {
+            public boolean isSportTypeForAerobicAndAnaerobicThresholdsCharacteristicSupported() {
                 return true;
             }
 
@@ -12837,7 +12837,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isDateOfThresholdAssessmentCharacteristicSupporeted() {
+            public boolean isDateOfThresholdAssessmentCharacteristicSupported() {
                 return true;
             }
 
@@ -12865,7 +12865,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isDateOfThresholdAssessmentCharacteristicSupporeted() {
+            public boolean isDateOfThresholdAssessmentCharacteristicSupported() {
                 return true;
             }
 
@@ -12909,7 +12909,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isDateOfThresholdAssessmentCharacteristicSupporeted() {
+            public boolean isDateOfThresholdAssessmentCharacteristicSupported() {
                 return true;
             }
 
@@ -12938,7 +12938,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isDateOfThresholdAssessmentCharacteristicSupporeted() {
+            public boolean isDateOfThresholdAssessmentCharacteristicSupported() {
                 return true;
             }
 
@@ -12981,7 +12981,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isWaistCircumferenceCharacteristicSupporeted() {
+            public boolean isWaistCircumferenceCharacteristicSupported() {
                 return true;
             }
 
@@ -13009,7 +13009,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isWaistCircumferenceCharacteristicSupporeted() {
+            public boolean isWaistCircumferenceCharacteristicSupported() {
                 return true;
             }
 
@@ -13053,7 +13053,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isWaistCircumferenceCharacteristicSupporeted() {
+            public boolean isWaistCircumferenceCharacteristicSupported() {
                 return true;
             }
 
@@ -13082,7 +13082,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isWaistCircumferenceCharacteristicSupporeted() {
+            public boolean isWaistCircumferenceCharacteristicSupported() {
                 return true;
             }
 
@@ -13125,7 +13125,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isHipCircumferenceCharacteristicSupporeted() {
+            public boolean isHipCircumferenceCharacteristicSupported() {
                 return true;
             }
 
@@ -13153,7 +13153,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isHipCircumferenceCharacteristicSupporeted() {
+            public boolean isHipCircumferenceCharacteristicSupported() {
                 return true;
             }
 
@@ -13197,7 +13197,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isHipCircumferenceCharacteristicSupporeted() {
+            public boolean isHipCircumferenceCharacteristicSupported() {
                 return true;
             }
 
@@ -13226,7 +13226,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isHipCircumferenceCharacteristicSupporeted() {
+            public boolean isHipCircumferenceCharacteristicSupported() {
                 return true;
             }
 
@@ -13269,7 +13269,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isFatBurnHeartRateLowerLimitCharacteristicSupporeted() {
+            public boolean isFatBurnHeartRateLowerLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13297,7 +13297,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isFatBurnHeartRateLowerLimitCharacteristicSupporeted() {
+            public boolean isFatBurnHeartRateLowerLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13341,7 +13341,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isFatBurnHeartRateLowerLimitCharacteristicSupporeted() {
+            public boolean isFatBurnHeartRateLowerLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13370,7 +13370,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isFatBurnHeartRateLowerLimitCharacteristicSupporeted() {
+            public boolean isFatBurnHeartRateLowerLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13413,7 +13413,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isFatBurnHeartRateUpperLimitCharacteristicSupporeted() {
+            public boolean isFatBurnHeartRateUpperLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13441,7 +13441,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isFatBurnHeartRateUpperLimitCharacteristicSupporeted() {
+            public boolean isFatBurnHeartRateUpperLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13485,7 +13485,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isFatBurnHeartRateUpperLimitCharacteristicSupporeted() {
+            public boolean isFatBurnHeartRateUpperLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13514,7 +13514,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isFatBurnHeartRateUpperLimitCharacteristicSupporeted() {
+            public boolean isFatBurnHeartRateUpperLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13557,7 +13557,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAerobicHeartRateLowerLimitCharacteristicSupporeted() {
+            public boolean isAerobicHeartRateLowerLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13585,7 +13585,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAerobicHeartRateLowerLimitCharacteristicSupporeted() {
+            public boolean isAerobicHeartRateLowerLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13629,7 +13629,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAerobicHeartRateLowerLimitCharacteristicSupporeted() {
+            public boolean isAerobicHeartRateLowerLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13658,7 +13658,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAerobicHeartRateLowerLimitCharacteristicSupporeted() {
+            public boolean isAerobicHeartRateLowerLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13701,7 +13701,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAerobicHeartRateUpperLimitCharacteristicSupporeted() {
+            public boolean isAerobicHeartRateUpperLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13729,7 +13729,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAerobicHeartRateUpperLimitCharacteristicSupporeted() {
+            public boolean isAerobicHeartRateUpperLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13773,7 +13773,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAerobicHeartRateUpperLimitCharacteristicSupporeted() {
+            public boolean isAerobicHeartRateUpperLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13802,7 +13802,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAerobicHeartRateUpperLimitCharacteristicSupporeted() {
+            public boolean isAerobicHeartRateUpperLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13845,7 +13845,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAnaerobicHeartRateLowerLimitCharacteristicSupporeted() {
+            public boolean isAnaerobicHeartRateLowerLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13873,7 +13873,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAnaerobicHeartRateLowerLimitCharacteristicSupporeted() {
+            public boolean isAnaerobicHeartRateLowerLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13917,7 +13917,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAnaerobicHeartRateLowerLimitCharacteristicSupporeted() {
+            public boolean isAnaerobicHeartRateLowerLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13946,7 +13946,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAnaerobicHeartRateLowerLimitCharacteristicSupporeted() {
+            public boolean isAnaerobicHeartRateLowerLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -13989,7 +13989,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAnaerobicHeartRateUpperLimitCharacteristicSupporeted() {
+            public boolean isAnaerobicHeartRateUpperLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -14017,7 +14017,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAnaerobicHeartRateUpperLimitCharacteristicSupporeted() {
+            public boolean isAnaerobicHeartRateUpperLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -14061,7 +14061,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAnaerobicHeartRateUpperLimitCharacteristicSupporeted() {
+            public boolean isAnaerobicHeartRateUpperLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -14090,7 +14090,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isAnaerobicHeartRateUpperLimitCharacteristicSupporeted() {
+            public boolean isAnaerobicHeartRateUpperLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -14133,7 +14133,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isFiveZoneHeartRateLimitsCharacteristicSupporeted() {
+            public boolean isFiveZoneHeartRateLimitsCharacteristicSupported() {
                 return true;
             }
 
@@ -14161,7 +14161,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isFiveZoneHeartRateLimitsCharacteristicSupporeted() {
+            public boolean isFiveZoneHeartRateLimitsCharacteristicSupported() {
                 return true;
             }
 
@@ -14205,7 +14205,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isFiveZoneHeartRateLimitsCharacteristicSupporeted() {
+            public boolean isFiveZoneHeartRateLimitsCharacteristicSupported() {
                 return true;
             }
 
@@ -14234,7 +14234,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isFiveZoneHeartRateLimitsCharacteristicSupporeted() {
+            public boolean isFiveZoneHeartRateLimitsCharacteristicSupported() {
                 return true;
             }
 
@@ -14277,7 +14277,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isThreeZoneHeartRateLimitsCharacteristicSupporeted() {
+            public boolean isThreeZoneHeartRateLimitsCharacteristicSupported() {
                 return true;
             }
 
@@ -14305,7 +14305,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isThreeZoneHeartRateLimitsCharacteristicSupporeted() {
+            public boolean isThreeZoneHeartRateLimitsCharacteristicSupported() {
                 return true;
             }
 
@@ -14349,7 +14349,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isThreeZoneHeartRateLimitsCharacteristicSupporeted() {
+            public boolean isThreeZoneHeartRateLimitsCharacteristicSupported() {
                 return true;
             }
 
@@ -14378,7 +14378,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isThreeZoneHeartRateLimitsCharacteristicSupporeted() {
+            public boolean isThreeZoneHeartRateLimitsCharacteristicSupported() {
                 return true;
             }
 
@@ -14421,7 +14421,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isTwoZoneHeartRateLimitCharacteristicSupporeted() {
+            public boolean isTwoZoneHeartRateLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -14449,7 +14449,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isTwoZoneHeartRateLimitCharacteristicSupporeted() {
+            public boolean isTwoZoneHeartRateLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -14493,7 +14493,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isTwoZoneHeartRateLimitCharacteristicSupporeted() {
+            public boolean isTwoZoneHeartRateLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -14522,7 +14522,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isTwoZoneHeartRateLimitCharacteristicSupporeted() {
+            public boolean isTwoZoneHeartRateLimitCharacteristicSupported() {
                 return true;
             }
 
@@ -14565,7 +14565,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isLanguageCharacteristicSupporeted() {
+            public boolean isLanguageCharacteristicSupported() {
                 return true;
             }
 
@@ -14593,7 +14593,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isLanguageCharacteristicSupporeted() {
+            public boolean isLanguageCharacteristicSupported() {
                 return true;
             }
 
@@ -14637,7 +14637,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isLanguageCharacteristicSupporeted() {
+            public boolean isLanguageCharacteristicSupported() {
                 return true;
             }
 
@@ -14666,7 +14666,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isLanguageCharacteristicSupporeted() {
+            public boolean isLanguageCharacteristicSupported() {
                 return true;
             }
 
@@ -14804,7 +14804,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isDatabaseChangeIncrementCharacteristicNotifySupporeted() {
+            public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
                 return true;
             }
 
@@ -14832,7 +14832,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isDatabaseChangeIncrementCharacteristicNotifySupporeted() {
+            public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
                 return true;
             }
 
@@ -14874,7 +14874,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isDatabaseChangeIncrementCharacteristicNotifySupporeted() {
+            public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
                 return true;
             }
 
@@ -14902,7 +14902,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isDatabaseChangeIncrementCharacteristicNotifySupporeted() {
+            public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
                 return true;
             }
 
@@ -14944,7 +14944,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(new MockBLEConnection(), new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isDatabaseChangeIncrementCharacteristicNotifySupporeted() {
+            public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
                 return true;
             }
 
@@ -14972,7 +14972,7 @@ public class UserDataServiceTest {
         UserDataService userDataService = new UserDataService(mockBLEConnection, new MockUserDataServiceCallback(), null) {
 
             @Override
-            public boolean isDatabaseChangeIncrementCharacteristicNotifySupporeted() {
+            public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
                 return true;
             }
 

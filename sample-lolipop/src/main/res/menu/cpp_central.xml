@@ -17,11 +17,11 @@
             android:id="@+id/has_battery_service"
             android:title="@string/menu_has_battery_service" />
         <item
-            android:id="@+id/is_cycling_power_control_point_characteristic_supporeted"
-            android:title="@string/menu_is_cycling_power_control_point_characteristic_supporeted" />
+            android:id="@+id/is_cycling_power_control_point_characteristic_supported"
+            android:title="@string/menu_is_cycling_power_control_point_characteristic_supported" />
         <item
-            android:id="@+id/is_cycling_power_vector_characteristic_supporeted"
-            android:title="@string/menu_is_cycling_power_vector_characteristic_supporeted" />
+            android:id="@+id/is_cycling_power_vector_characteristic_supported"
+            android:title="@string/menu_is_cycling_power_vector_characteristic_supported" />
 
         <item
             android:id="@+id/read_cycling_power_feature"

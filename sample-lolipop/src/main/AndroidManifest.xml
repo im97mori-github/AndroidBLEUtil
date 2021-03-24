@@ -147,6 +147,12 @@
         <activity
             android:name=".esp.EspCentralSampleActivity"
             android:label="@string/label_esp_central" />
+        <activity
+            android:name=".scpp.ScppPeripheralSampleActivity"
+            android:label="@string/label_scpp_peripheral" />
+        <activity
+            android:name=".scpp.ScppCentralSampleActivity"
+            android:label="@string/label_scpp_central" />
     </application>
 
 </manifest>

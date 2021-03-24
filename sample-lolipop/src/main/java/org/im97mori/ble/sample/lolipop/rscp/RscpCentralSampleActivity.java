@@ -140,10 +140,10 @@ public class RscpCentralSampleActivity extends BaseActivity implements View.OnCl
             updateLayout();
         } else if (R.id.has_device_information_service == item.getItemId()) {
             addRow("hasDeviceInformationService", mRunningSpeedAndCadenceProfile.hasDeviceInformationService());
-        } else if (R.id.is_sensor_location_characteristic_supporeted == item.getItemId()) {
-            addRow("isSensorLocationCharacteristicSupporeted", mRunningSpeedAndCadenceProfile.isSensorLocationCharacteristicSupporeted());
-        } else if (R.id.is_sc_control_point_characteristic_supporeted == item.getItemId()) {
-            addRow("isSCControlPointCharacteristicSupporeted", mRunningSpeedAndCadenceProfile.isSCControlPointCharacteristicSupporeted());
+        } else if (R.id.is_sensor_location_characteristic_supported == item.getItemId()) {
+            addRow("isSensorLocationCharacteristicSupported", mRunningSpeedAndCadenceProfile.isSensorLocationCharacteristicSupported());
+        } else if (R.id.is_sc_control_point_characteristic_supported == item.getItemId()) {
+            addRow("isSCControlPointCharacteristicSupported", mRunningSpeedAndCadenceProfile.isSCControlPointCharacteristicSupported());
         } else if (R.id.read_rsc_feature == item.getItemId()) {
             mRunningSpeedAndCadenceProfile.getRSCFeature();
         } else if (R.id.read_rsc_measurement_characteristic_configuration == item.getItemId()) {

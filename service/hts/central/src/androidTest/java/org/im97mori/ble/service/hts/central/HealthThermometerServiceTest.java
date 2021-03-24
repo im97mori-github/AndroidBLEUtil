@@ -61,7 +61,7 @@ public class HealthThermometerServiceTest {
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(healthThermometerService.isTemperatureTypeCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isTemperatureTypeCharacteristicSupported());
     }
 
     @Test
@@ -71,7 +71,7 @@ public class HealthThermometerServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isTemperatureTypeCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isTemperatureTypeCharacteristicSupported());
     }
 
     @Test
@@ -81,7 +81,7 @@ public class HealthThermometerServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isTemperatureTypeCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isTemperatureTypeCharacteristicSupported());
     }
 
     @Test
@@ -92,7 +92,7 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BODY_SENSOR_LOCATION_CHARACTERISTIC, 0, 0));
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isTemperatureTypeCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isTemperatureTypeCharacteristicSupported());
     }
 
     @Test
@@ -103,7 +103,7 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(TEMPERATURE_TYPE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(healthThermometerService.isTemperatureTypeCharacteristicSupporeted());
+        assertTrue(healthThermometerService.isTemperatureTypeCharacteristicSupported());
     }
 
     @Test
@@ -112,7 +112,7 @@ public class HealthThermometerServiceTest {
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(healthThermometerService.isIntermediateTemperatureCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isIntermediateTemperatureCharacteristicSupported());
     }
 
     @Test
@@ -122,7 +122,7 @@ public class HealthThermometerServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isIntermediateTemperatureCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isIntermediateTemperatureCharacteristicSupported());
     }
 
     @Test
@@ -132,7 +132,7 @@ public class HealthThermometerServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isIntermediateTemperatureCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isIntermediateTemperatureCharacteristicSupported());
     }
 
     @Test
@@ -143,7 +143,7 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BODY_SENSOR_LOCATION_CHARACTERISTIC, 0, 0));
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isIntermediateTemperatureCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isIntermediateTemperatureCharacteristicSupported());
     }
 
     @Test
@@ -154,7 +154,7 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(INTERMEDIATE_TEMPERATURE_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(healthThermometerService.isIntermediateTemperatureCharacteristicSupporeted());
+        assertTrue(healthThermometerService.isIntermediateTemperatureCharacteristicSupported());
     }
 
     @Test
@@ -163,7 +163,7 @@ public class HealthThermometerServiceTest {
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicSupported());
     }
 
     @Test
@@ -173,7 +173,7 @@ public class HealthThermometerServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicSupported());
     }
 
     @Test
@@ -183,7 +183,7 @@ public class HealthThermometerServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicSupported());
     }
 
     @Test
@@ -194,7 +194,7 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BODY_SENSOR_LOCATION_CHARACTERISTIC, 0, 0));
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicSupported());
     }
 
     @Test
@@ -205,7 +205,7 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(MEASUREMENT_INTERVAL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(healthThermometerService.isMeasurementIntervalCharacteristicSupporeted());
+        assertTrue(healthThermometerService.isMeasurementIntervalCharacteristicSupported());
     }
 
     @Test
@@ -214,7 +214,7 @@ public class HealthThermometerServiceTest {
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupported());
     }
 
     @Test
@@ -224,7 +224,7 @@ public class HealthThermometerServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupported());
     }
 
     @Test
@@ -234,7 +234,7 @@ public class HealthThermometerServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupported());
     }
 
     @Test
@@ -245,7 +245,7 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BODY_SENSOR_LOCATION_CHARACTERISTIC, 0, 0));
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupported());
     }
 
     @Test
@@ -256,7 +256,7 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(MEASUREMENT_INTERVAL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0));
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupported());
     }
 
     @Test
@@ -269,7 +269,7 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupported());
     }
 
     @Test
@@ -282,7 +282,7 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupporeted());
+        assertTrue(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupported());
     }
 
     @Test
@@ -291,7 +291,7 @@ public class HealthThermometerServiceTest {
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupported());
     }
 
     @Test
@@ -301,7 +301,7 @@ public class HealthThermometerServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupported());
     }
 
     @Test
@@ -311,7 +311,7 @@ public class HealthThermometerServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupported());
     }
 
     @Test
@@ -322,7 +322,7 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(BODY_SENSOR_LOCATION_CHARACTERISTIC, 0, 0));
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupported());
     }
 
     @Test
@@ -333,7 +333,7 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(MEASUREMENT_INTERVAL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupported());
     }
 
     @Test
@@ -346,7 +346,7 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupported());
     }
 
     @Test
@@ -359,7 +359,7 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupporeted());
+        assertTrue(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupported());
     }
 
     @Test
@@ -5216,14 +5216,14 @@ public class HealthThermometerServiceTest {
     }
 
     @Test
-    public void test_isTemperatureTypeCharacteristicSupporeted_00001() {
+    public void test_isTemperatureTypeCharacteristicSupported_00001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(new MockBLEConnection(), new MockHealthThermometerServiceCallback(), null);
 
-        assertFalse(healthThermometerService.isTemperatureTypeCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isTemperatureTypeCharacteristicSupported());
     }
 
     @Test
-    public void test_isTemperatureTypeCharacteristicSupporeted_00002() {
+    public void test_isTemperatureTypeCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5231,11 +5231,11 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(healthThermometerService.isTemperatureTypeCharacteristicSupporeted());
+        assertTrue(healthThermometerService.isTemperatureTypeCharacteristicSupported());
     }
 
     @Test
-    public void test_isTemperatureTypeCharacteristicSupporeted_00003() {
+    public void test_isTemperatureTypeCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5244,18 +5244,18 @@ public class HealthThermometerServiceTest {
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         healthThermometerService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(healthThermometerService.isTemperatureTypeCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isTemperatureTypeCharacteristicSupported());
     }
 
     @Test
-    public void test_isIntermediateTemperatureCharacteristicSupporeted_00001() {
+    public void test_isIntermediateTemperatureCharacteristicSupported_00001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(new MockBLEConnection(), new MockHealthThermometerServiceCallback(), null);
 
-        assertFalse(healthThermometerService.isIntermediateTemperatureCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isIntermediateTemperatureCharacteristicSupported());
     }
 
     @Test
-    public void test_isIntermediateTemperatureCharacteristicSupporeted_00002() {
+    public void test_isIntermediateTemperatureCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5263,11 +5263,11 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(healthThermometerService.isIntermediateTemperatureCharacteristicSupporeted());
+        assertTrue(healthThermometerService.isIntermediateTemperatureCharacteristicSupported());
     }
 
     @Test
-    public void test_isIntermediateTemperatureCharacteristicSupporeted_00003() {
+    public void test_isIntermediateTemperatureCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5276,18 +5276,18 @@ public class HealthThermometerServiceTest {
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         healthThermometerService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(healthThermometerService.isIntermediateTemperatureCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isIntermediateTemperatureCharacteristicSupported());
     }
 
     @Test
-    public void test_isMeasurementIntervalCharacteristicSupporeted_00001() {
+    public void test_isMeasurementIntervalCharacteristicSupported_00001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(new MockBLEConnection(), new MockHealthThermometerServiceCallback(), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicSupported());
     }
 
     @Test
-    public void test_isMeasurementIntervalCharacteristicSupporeted_00002() {
+    public void test_isMeasurementIntervalCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5295,11 +5295,11 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(healthThermometerService.isMeasurementIntervalCharacteristicSupporeted());
+        assertTrue(healthThermometerService.isMeasurementIntervalCharacteristicSupported());
     }
 
     @Test
-    public void test_isMeasurementIntervalCharacteristicSupporeted_00003() {
+    public void test_isMeasurementIntervalCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5308,18 +5308,18 @@ public class HealthThermometerServiceTest {
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         healthThermometerService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicSupported());
     }
 
     @Test
-    public void test_isMeasurementIntervalCharacteristicIndicateSupporeted_00001() {
+    public void test_isMeasurementIntervalCharacteristicIndicateSupported_00001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(new MockBLEConnection(), new MockHealthThermometerServiceCallback(), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupported());
     }
 
     @Test
-    public void test_isMeasurementIntervalCharacteristicIndicateSupporeted_00002() {
+    public void test_isMeasurementIntervalCharacteristicIndicateSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5328,11 +5328,11 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupporeted());
+        assertTrue(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupported());
     }
 
     @Test
-    public void test_isMeasurementIntervalCharacteristicIndicateSupporeted_00003() {
+    public void test_isMeasurementIntervalCharacteristicIndicateSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5342,18 +5342,18 @@ public class HealthThermometerServiceTest {
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         healthThermometerService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicIndicateSupported());
     }
 
     @Test
-    public void test_isMeasurementIntervalCharacteristicWriteSupporeted_00001() {
+    public void test_isMeasurementIntervalCharacteristicWriteSupported_00001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(new MockBLEConnection(), new MockHealthThermometerServiceCallback(), null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupported());
     }
 
     @Test
-    public void test_isMeasurementIntervalCharacteristicWriteSupporeted_00002() {
+    public void test_isMeasurementIntervalCharacteristicWriteSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5362,11 +5362,11 @@ public class HealthThermometerServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupporeted());
+        assertTrue(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupported());
     }
 
     @Test
-    public void test_isMeasurementIntervalCharacteristicWriteSupporeted_00003() {
+    public void test_isMeasurementIntervalCharacteristicWriteSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(HEALTH_THERMOMETER_SERVICE, 0);
@@ -5376,7 +5376,7 @@ public class HealthThermometerServiceTest {
         healthThermometerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         healthThermometerService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupporeted());
+        assertFalse(healthThermometerService.isMeasurementIntervalCharacteristicWriteSupported());
     }
 
     @Test
@@ -5575,7 +5575,7 @@ public class HealthThermometerServiceTest {
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null) {
 
             @Override
-            public boolean isTemperatureTypeCharacteristicSupporeted() {
+            public boolean isTemperatureTypeCharacteristicSupported() {
                 return true;
             }
 
@@ -5649,7 +5649,7 @@ public class HealthThermometerServiceTest {
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null) {
 
             @Override
-            public boolean isIntermediateTemperatureCharacteristicSupporeted() {
+            public boolean isIntermediateTemperatureCharacteristicSupported() {
                 return true;
             }
 
@@ -5723,7 +5723,7 @@ public class HealthThermometerServiceTest {
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null) {
 
             @Override
-            public boolean isIntermediateTemperatureCharacteristicSupporeted() {
+            public boolean isIntermediateTemperatureCharacteristicSupported() {
                 return true;
             }
 
@@ -5797,7 +5797,7 @@ public class HealthThermometerServiceTest {
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null) {
 
             @Override
-            public boolean isIntermediateTemperatureCharacteristicSupporeted() {
+            public boolean isIntermediateTemperatureCharacteristicSupported() {
                 return true;
             }
 
@@ -5871,7 +5871,7 @@ public class HealthThermometerServiceTest {
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null) {
 
             @Override
-            public boolean isMeasurementIntervalCharacteristicSupporeted() {
+            public boolean isMeasurementIntervalCharacteristicSupported() {
                 return true;
             }
 
@@ -5948,7 +5948,7 @@ public class HealthThermometerServiceTest {
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null) {
 
             @Override
-            public boolean isMeasurementIntervalCharacteristicWriteSupporeted() {
+            public boolean isMeasurementIntervalCharacteristicWriteSupported() {
                 return true;
             }
 
@@ -6024,7 +6024,7 @@ public class HealthThermometerServiceTest {
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null) {
 
             @Override
-            public boolean isMeasurementIntervalCharacteristicIndicateSupporeted() {
+            public boolean isMeasurementIntervalCharacteristicIndicateSupported() {
                 return true;
             }
 
@@ -6098,7 +6098,7 @@ public class HealthThermometerServiceTest {
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null) {
 
             @Override
-            public boolean isMeasurementIntervalCharacteristicIndicateSupporeted() {
+            public boolean isMeasurementIntervalCharacteristicIndicateSupported() {
                 return true;
             }
 
@@ -6172,7 +6172,7 @@ public class HealthThermometerServiceTest {
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null) {
 
             @Override
-            public boolean isMeasurementIntervalCharacteristicIndicateSupporeted() {
+            public boolean isMeasurementIntervalCharacteristicIndicateSupported() {
                 return true;
             }
 
@@ -6247,7 +6247,7 @@ public class HealthThermometerServiceTest {
         HealthThermometerService healthThermometerService = new HealthThermometerService(mockBLEConnection, new MockHealthThermometerServiceCallback(), null) {
 
             @Override
-            public boolean isMeasurementIntervalCharacteristicWriteSupporeted() {
+            public boolean isMeasurementIntervalCharacteristicWriteSupported() {
                 return true;
             }
 

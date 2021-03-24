@@ -140,10 +140,10 @@ public class CscpCentralSampleActivity extends BaseActivity implements View.OnCl
             updateLayout();
         } else if (R.id.has_device_information_service == item.getItemId()) {
             addRow("hasDeviceInformationService", mCyclingSpeedAndCadenceProfile.hasDeviceInformationService());
-        } else if (R.id.is_sensor_location_characteristic_supporeted == item.getItemId()) {
-            addRow("isSensorLocationCharacteristicSupporeted", mCyclingSpeedAndCadenceProfile.isSensorLocationCharacteristicSupporeted());
-        } else if (R.id.is_sc_control_point_characteristic_supporeted == item.getItemId()) {
-            addRow("isSCControlPointCharacteristicSupporeted", mCyclingSpeedAndCadenceProfile.isSCControlPointCharacteristicSupporeted());
+        } else if (R.id.is_sensor_location_characteristic_supported == item.getItemId()) {
+            addRow("isSensorLocationCharacteristicSupported", mCyclingSpeedAndCadenceProfile.isSensorLocationCharacteristicSupported());
+        } else if (R.id.is_sc_control_point_characteristic_supported == item.getItemId()) {
+            addRow("isSCControlPointCharacteristicSupported", mCyclingSpeedAndCadenceProfile.isSCControlPointCharacteristicSupported());
         } else if (R.id.read_csc_feature == item.getItemId()) {
             mCyclingSpeedAndCadenceProfile.getCSCFeature();
         } else if (R.id.read_csc_measurement_characteristic_configuration == item.getItemId()) {

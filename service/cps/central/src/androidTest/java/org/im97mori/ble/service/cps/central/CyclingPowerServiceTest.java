@@ -51,7 +51,7 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, new MockCyclingPowerServiceCallback(), null);
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupporeted());
+        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupported());
     }
 
     @Test
@@ -61,7 +61,7 @@ public class CyclingPowerServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupporeted());
+        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupported());
     }
 
     @Test
@@ -71,7 +71,7 @@ public class CyclingPowerServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupporeted());
+        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupported());
     }
 
     @Test
@@ -82,7 +82,7 @@ public class CyclingPowerServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, 0, 0));
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupporeted());
+        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupported());
     }
 
     @Test
@@ -93,7 +93,7 @@ public class CyclingPowerServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupporeted());
+        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupported());
     }
 
     @Test
@@ -104,7 +104,7 @@ public class CyclingPowerServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0));
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupporeted());
+        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupported());
     }
 
     @Test
@@ -115,7 +115,7 @@ public class CyclingPowerServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0));
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupporeted());
+        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupported());
     }
 
     @Test
@@ -128,7 +128,7 @@ public class CyclingPowerServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupporeted());
+        assertTrue(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupported());
     }
 
     @Test
@@ -137,7 +137,7 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, new MockCyclingPowerServiceCallback(), null);
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerVectorCharacteristicSupporeted());
+        assertFalse(cyclingPowerService.isCyclingPowerVectorCharacteristicSupported());
     }
 
     @Test
@@ -147,7 +147,7 @@ public class CyclingPowerServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerVectorCharacteristicSupporeted());
+        assertFalse(cyclingPowerService.isCyclingPowerVectorCharacteristicSupported());
     }
 
     @Test
@@ -157,7 +157,7 @@ public class CyclingPowerServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerVectorCharacteristicSupporeted());
+        assertFalse(cyclingPowerService.isCyclingPowerVectorCharacteristicSupported());
     }
 
     @Test
@@ -168,7 +168,7 @@ public class CyclingPowerServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CYCLING_POWER_VECTOR_CHARACTERISTIC, 0, 0));
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerVectorCharacteristicSupporeted());
+        assertFalse(cyclingPowerService.isCyclingPowerVectorCharacteristicSupported());
     }
 
     @Test
@@ -179,7 +179,7 @@ public class CyclingPowerServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CYCLING_POWER_VECTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerVectorCharacteristicSupporeted());
+        assertFalse(cyclingPowerService.isCyclingPowerVectorCharacteristicSupported());
     }
 
     @Test
@@ -192,7 +192,7 @@ public class CyclingPowerServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(cyclingPowerService.isCyclingPowerVectorCharacteristicSupporeted());
+        assertTrue(cyclingPowerService.isCyclingPowerVectorCharacteristicSupported());
     }
 
     @Test
@@ -1609,14 +1609,14 @@ public class CyclingPowerServiceTest {
     }
 
     @Test
-    public void test_isCyclingPowerControlPointCharacteristicSupporeted_00001() {
+    public void test_isCyclingPowerControlPointCharacteristicSupported_00001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(new MockBLEConnection(), new MockCyclingPowerServiceCallback(), null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupporeted());
+        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isCyclingPowerControlPointCharacteristicSupporeted_00002() {
+    public void test_isCyclingPowerControlPointCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -1625,11 +1625,11 @@ public class CyclingPowerServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupporeted());
+        assertTrue(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isCyclingPowerControlPointCharacteristicSupporeted_00003() {
+    public void test_isCyclingPowerControlPointCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -1639,18 +1639,18 @@ public class CyclingPowerServiceTest {
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         cyclingPowerService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupporeted());
+        assertFalse(cyclingPowerService.isCyclingPowerControlPointCharacteristicSupported());
     }
 
     @Test
-    public void test_isCyclingPowerVectorCharacteristicSupporeted_00001() {
+    public void test_isCyclingPowerVectorCharacteristicSupported_00001() {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(new MockBLEConnection(), new MockCyclingPowerServiceCallback(), null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerVectorCharacteristicSupporeted());
+        assertFalse(cyclingPowerService.isCyclingPowerVectorCharacteristicSupported());
     }
 
     @Test
-    public void test_isCyclingPowerVectorCharacteristicSupporeted_00002() {
+    public void test_isCyclingPowerVectorCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -1659,11 +1659,11 @@ public class CyclingPowerServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(cyclingPowerService.isCyclingPowerVectorCharacteristicSupporeted());
+        assertTrue(cyclingPowerService.isCyclingPowerVectorCharacteristicSupported());
     }
 
     @Test
-    public void test_isCyclingPowerVectorCharacteristicSupporeted_00003() {
+    public void test_isCyclingPowerVectorCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, new MockCyclingPowerServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(CYCLING_POWER_SERVICE, 0);
@@ -1673,7 +1673,7 @@ public class CyclingPowerServiceTest {
         cyclingPowerService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         cyclingPowerService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(cyclingPowerService.isCyclingPowerVectorCharacteristicSupporeted());
+        assertFalse(cyclingPowerService.isCyclingPowerVectorCharacteristicSupported());
     }
 
     @Test
@@ -1930,7 +1930,7 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(new MockBLEConnection(), new MockCyclingPowerServiceCallback(), null) {
 
             @Override
-            public boolean isCyclingPowerControlPointCharacteristicSupporeted() {
+            public boolean isCyclingPowerControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -1959,7 +1959,7 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, new MockCyclingPowerServiceCallback(), null) {
 
             @Override
-            public boolean isCyclingPowerControlPointCharacteristicSupporeted() {
+            public boolean isCyclingPowerControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -2002,7 +2002,7 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(new MockBLEConnection(), new MockCyclingPowerServiceCallback(), null) {
 
             @Override
-            public boolean isCyclingPowerControlPointCharacteristicSupporeted() {
+            public boolean isCyclingPowerControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -2030,7 +2030,7 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, new MockCyclingPowerServiceCallback(), null) {
 
             @Override
-            public boolean isCyclingPowerControlPointCharacteristicSupporeted() {
+            public boolean isCyclingPowerControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -2072,7 +2072,7 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(new MockBLEConnection(), new MockCyclingPowerServiceCallback(), null) {
 
             @Override
-            public boolean isCyclingPowerControlPointCharacteristicSupporeted() {
+            public boolean isCyclingPowerControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -2101,7 +2101,7 @@ public class CyclingPowerServiceTest {
 
 
             @Override
-            public boolean isCyclingPowerControlPointCharacteristicSupporeted() {
+            public boolean isCyclingPowerControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -2143,7 +2143,7 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(new MockBLEConnection(), new MockCyclingPowerServiceCallback(), null) {
 
             @Override
-            public boolean isCyclingPowerControlPointCharacteristicSupporeted() {
+            public boolean isCyclingPowerControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -2171,7 +2171,7 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, new MockCyclingPowerServiceCallback(), null) {
 
             @Override
-            public boolean isCyclingPowerControlPointCharacteristicSupporeted() {
+            public boolean isCyclingPowerControlPointCharacteristicSupported() {
                 return true;
             }
 
@@ -2213,7 +2213,7 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(new MockBLEConnection(), new MockCyclingPowerServiceCallback(), null) {
 
             @Override
-            public boolean isCyclingPowerVectorCharacteristicSupporeted() {
+            public boolean isCyclingPowerVectorCharacteristicSupported() {
                 return true;
             }
 
@@ -2241,7 +2241,7 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, new MockCyclingPowerServiceCallback(), null) {
 
             @Override
-            public boolean isCyclingPowerVectorCharacteristicSupporeted() {
+            public boolean isCyclingPowerVectorCharacteristicSupported() {
                 return true;
             }
 
@@ -2283,7 +2283,7 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(new MockBLEConnection(), new MockCyclingPowerServiceCallback(), null) {
 
             @Override
-            public boolean isCyclingPowerVectorCharacteristicSupporeted() {
+            public boolean isCyclingPowerVectorCharacteristicSupported() {
                 return true;
             }
 
@@ -2312,7 +2312,7 @@ public class CyclingPowerServiceTest {
 
 
             @Override
-            public boolean isCyclingPowerVectorCharacteristicSupporeted() {
+            public boolean isCyclingPowerVectorCharacteristicSupported() {
                 return true;
             }
 
@@ -2354,7 +2354,7 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(new MockBLEConnection(), new MockCyclingPowerServiceCallback(), null) {
 
             @Override
-            public boolean isCyclingPowerVectorCharacteristicSupporeted() {
+            public boolean isCyclingPowerVectorCharacteristicSupported() {
                 return true;
             }
 
@@ -2382,7 +2382,7 @@ public class CyclingPowerServiceTest {
         CyclingPowerService cyclingPowerService = new CyclingPowerService(mockBLEConnection, new MockCyclingPowerServiceCallback(), null) {
 
             @Override
-            public boolean isCyclingPowerVectorCharacteristicSupporeted() {
+            public boolean isCyclingPowerVectorCharacteristicSupported() {
                 return true;
             }
 

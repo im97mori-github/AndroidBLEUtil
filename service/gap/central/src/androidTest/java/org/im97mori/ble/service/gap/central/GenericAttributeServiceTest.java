@@ -45,7 +45,7 @@ public class GenericAttributeServiceTest {
         GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(genericAttributeService.isServiceChangedCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
@@ -55,7 +55,7 @@ public class GenericAttributeServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAttributeService.isServiceChangedCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
@@ -65,7 +65,7 @@ public class GenericAttributeServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAttributeService.isServiceChangedCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
@@ -76,7 +76,7 @@ public class GenericAttributeServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SERVICE_CHANGED_CHARACTERISTIC, 0, 0));
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAttributeService.isServiceChangedCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
@@ -87,7 +87,7 @@ public class GenericAttributeServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SERVICE_CHANGED_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_INDICATE, 0));
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAttributeService.isServiceChangedCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
@@ -100,7 +100,7 @@ public class GenericAttributeServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(genericAttributeService.isServiceChangedCharacteristicSupporeted());
+        assertTrue(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
@@ -109,7 +109,7 @@ public class GenericAttributeServiceTest {
         GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
@@ -119,7 +119,7 @@ public class GenericAttributeServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
@@ -129,7 +129,7 @@ public class GenericAttributeServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
@@ -140,7 +140,7 @@ public class GenericAttributeServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, 0, 0));
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
@@ -151,7 +151,7 @@ public class GenericAttributeServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
@@ -162,7 +162,7 @@ public class GenericAttributeServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
@@ -173,7 +173,7 @@ public class GenericAttributeServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, 0));
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(genericAttributeService.isClientSupportedFeaturesCharacteristicSupporeted());
+        assertTrue(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
@@ -182,7 +182,7 @@ public class GenericAttributeServiceTest {
         GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.<BluetoothGattService>emptyList(), null);
 
-        assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupported());
     }
 
     @Test
@@ -192,7 +192,7 @@ public class GenericAttributeServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupported());
     }
 
     @Test
@@ -202,7 +202,7 @@ public class GenericAttributeServiceTest {
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupported());
     }
 
     @Test
@@ -213,7 +213,7 @@ public class GenericAttributeServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATABASE_HASH_CHARACTERISTIC, 0, 0));
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupported());
     }
 
     @Test
@@ -224,7 +224,7 @@ public class GenericAttributeServiceTest {
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(DATABASE_HASH_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(genericAttributeService.isDatabaseHashCharacteristicSupporeted());
+        assertTrue(genericAttributeService.isDatabaseHashCharacteristicSupported());
     }
 
     @Test
@@ -905,14 +905,14 @@ public class GenericAttributeServiceTest {
     }
 
     @Test
-    public void test_isServiceChangedCharacteristicSupporeted_00001() {
+    public void test_isServiceChangedCharacteristicSupported_00001() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null);
 
-        assertFalse(genericAttributeService.isServiceChangedCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
-    public void test_isServiceChangedCharacteristicSupporeted_00002() {
+    public void test_isServiceChangedCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -921,11 +921,11 @@ public class GenericAttributeServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(genericAttributeService.isServiceChangedCharacteristicSupporeted());
+        assertTrue(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
-    public void test_isServiceChangedCharacteristicSupporeted_00003() {
+    public void test_isServiceChangedCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -935,18 +935,18 @@ public class GenericAttributeServiceTest {
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         genericAttributeService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(genericAttributeService.isServiceChangedCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isServiceChangedCharacteristicSupported());
     }
 
     @Test
-    public void test_isClientSupportedFeaturesCharacteristicSupporeted_00001() {
+    public void test_isClientSupportedFeaturesCharacteristicSupported_00001() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null);
 
-        assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
-    public void test_isClientSupportedFeaturesCharacteristicSupporeted_00002() {
+    public void test_isClientSupportedFeaturesCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -954,11 +954,11 @@ public class GenericAttributeServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(genericAttributeService.isClientSupportedFeaturesCharacteristicSupporeted());
+        assertTrue(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
-    public void test_isClientSupportedFeaturesCharacteristicSupporeted_00003() {
+    public void test_isClientSupportedFeaturesCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -967,18 +967,18 @@ public class GenericAttributeServiceTest {
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         genericAttributeService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isClientSupportedFeaturesCharacteristicSupported());
     }
 
     @Test
-    public void test_isDatabaseHashCharacteristicSupporeted_00001() {
+    public void test_isDatabaseHashCharacteristicSupported_00001() {
         GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null);
 
-        assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupported());
     }
 
     @Test
-    public void test_isDatabaseHashCharacteristicSupporeted_00002() {
+    public void test_isDatabaseHashCharacteristicSupported_00002() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -986,11 +986,11 @@ public class GenericAttributeServiceTest {
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(genericAttributeService.isDatabaseHashCharacteristicSupporeted());
+        assertTrue(genericAttributeService.isDatabaseHashCharacteristicSupported());
     }
 
     @Test
-    public void test_isDatabaseHashCharacteristicSupporeted_00003() {
+    public void test_isDatabaseHashCharacteristicSupported_00003() {
         MockBLEConnection mockBLEConnection = new MockBLEConnection();
         GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ATTRIBUTE_SERVICE, 0);
@@ -999,7 +999,7 @@ public class GenericAttributeServiceTest {
         genericAttributeService.onDiscoverServiceSuccess(1, MockBLEConnection.MOCK_DEVICE, Collections.singletonList(bluetoothGattService), null);
         genericAttributeService.onBLEDisconnected(1, MockBLEConnection.MOCK_DEVICE, 0, null);
 
-        assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupporeted());
+        assertFalse(genericAttributeService.isDatabaseHashCharacteristicSupported());
     }
 
     @Test
@@ -1028,7 +1028,7 @@ public class GenericAttributeServiceTest {
         GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
 
             @Override
-            public boolean isServiceChangedCharacteristicSupporeted() {
+            public boolean isServiceChangedCharacteristicSupported() {
                 return true;
             }
 
@@ -1056,7 +1056,7 @@ public class GenericAttributeServiceTest {
         GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
-            public boolean isServiceChangedCharacteristicSupporeted() {
+            public boolean isServiceChangedCharacteristicSupported() {
                 return true;
             }
 
@@ -1098,7 +1098,7 @@ public class GenericAttributeServiceTest {
         GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
 
             @Override
-            public boolean isServiceChangedCharacteristicSupporeted() {
+            public boolean isServiceChangedCharacteristicSupported() {
                 return true;
             }
 
@@ -1127,7 +1127,7 @@ public class GenericAttributeServiceTest {
 
 
             @Override
-            public boolean isServiceChangedCharacteristicSupporeted() {
+            public boolean isServiceChangedCharacteristicSupported() {
                 return true;
             }
 
@@ -1169,7 +1169,7 @@ public class GenericAttributeServiceTest {
         GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
 
             @Override
-            public boolean isServiceChangedCharacteristicSupporeted() {
+            public boolean isServiceChangedCharacteristicSupported() {
                 return true;
             }
 
@@ -1197,7 +1197,7 @@ public class GenericAttributeServiceTest {
         GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
-            public boolean isServiceChangedCharacteristicSupporeted() {
+            public boolean isServiceChangedCharacteristicSupported() {
                 return true;
             }
 
@@ -1239,7 +1239,7 @@ public class GenericAttributeServiceTest {
         GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
 
             @Override
-            public boolean isClientSupportedFeaturesCharacteristicSupporeted() {
+            public boolean isClientSupportedFeaturesCharacteristicSupported() {
                 return true;
             }
 
@@ -1267,7 +1267,7 @@ public class GenericAttributeServiceTest {
         GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
-            public boolean isClientSupportedFeaturesCharacteristicSupporeted() {
+            public boolean isClientSupportedFeaturesCharacteristicSupported() {
                 return true;
             }
 
@@ -1311,7 +1311,7 @@ public class GenericAttributeServiceTest {
         GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
 
             @Override
-            public boolean isClientSupportedFeaturesCharacteristicSupporeted() {
+            public boolean isClientSupportedFeaturesCharacteristicSupported() {
                 return true;
             }
 
@@ -1340,7 +1340,7 @@ public class GenericAttributeServiceTest {
         GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
-            public boolean isClientSupportedFeaturesCharacteristicSupporeted() {
+            public boolean isClientSupportedFeaturesCharacteristicSupported() {
                 return true;
             }
 
@@ -1383,7 +1383,7 @@ public class GenericAttributeServiceTest {
         GenericAttributeService genericAttributeService = new GenericAttributeService(new MockBLEConnection(), new MockGenericAttributeServiceCallback(), null) {
 
             @Override
-            public boolean isDatabaseHashCharacteristicSupporeted() {
+            public boolean isDatabaseHashCharacteristicSupported() {
                 return true;
             }
 
@@ -1411,7 +1411,7 @@ public class GenericAttributeServiceTest {
         GenericAttributeService genericAttributeService = new GenericAttributeService(mockBLEConnection, new MockGenericAttributeServiceCallback(), null) {
 
             @Override
-            public boolean isDatabaseHashCharacteristicSupporeted() {
+            public boolean isDatabaseHashCharacteristicSupported() {
                 return true;
             }
 

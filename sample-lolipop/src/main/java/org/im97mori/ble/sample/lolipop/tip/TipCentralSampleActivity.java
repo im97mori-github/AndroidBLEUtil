@@ -180,11 +180,11 @@ public class TipCentralSampleActivity extends BaseActivity implements View.OnCli
             mTimeProfile.stopCurrentTimeNotification();
         } else if (R.id.has_local_time_information == item.getItemId()) {
             String text;
-            Boolean result = mTimeProfile.isLocalTimeInformationCharacteristicSupporeted();
+            Boolean result = mTimeProfile.isLocalTimeInformationCharacteristicSupported();
             if (result == null) {
-                text = "isLocalTimeInformationCharacteristicSupporeted\nnull";
+                text = "isLocalTimeInformationCharacteristicSupported\nnull";
             } else {
-                text = "isLocalTimeInformationCharacteristicSupporeted\n" + result.toString();
+                text = "isLocalTimeInformationCharacteristicSupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -204,11 +204,11 @@ public class TipCentralSampleActivity extends BaseActivity implements View.OnCli
             mTimeProfile.setLocalTimeInformation(new LocalTimeInformation(LocalTimeInformation.TIME_ZONE_IS_NOT_KNOWN, 2));
         } else if (R.id.menu_has_reference_time_information == item.getItemId()) {
             String text;
-            Boolean result = mTimeProfile.isReferenceTimeInformationCharacteristicSupporeted();
+            Boolean result = mTimeProfile.isReferenceTimeInformationCharacteristicSupported();
             if (result == null) {
-                text = "isReferenceTimeInformationCharacteristicSupporeted\nnull";
+                text = "isReferenceTimeInformationCharacteristicSupported\nnull";
             } else {
-                text = "isReferenceTimeInformationCharacteristicSupporeted\n" + result.toString();
+                text = "isReferenceTimeInformationCharacteristicSupported\n" + result.toString();
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());

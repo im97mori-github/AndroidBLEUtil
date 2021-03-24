@@ -53,7 +53,7 @@ import static org.junit.Assert.assertTrue;
 public class WeightScaleProfileTest {
 
     @Test
-    public void test_findBloodPressureProfileDevices_00001() {
+    public void test_findWeightScaleProfileDevices_00001() {
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
         assertNull(weightScaleProfile.findWeightScaleProfileDevices(null));
     }
@@ -711,13 +711,13 @@ public class WeightScaleProfileTest {
     }
 
     @Test
-    public void test_isAgeCharacteristicSupporeted_00001() {
+    public void test_isAgeCharacteristicSupported_00001() {
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
-        assertNull(weightScaleProfile.isAgeCharacteristicSupporeted());
+        assertNull(weightScaleProfile.isAgeCharacteristicSupported());
     }
 
     @Test
-    public void test_isAgeCharacteristicSupporeted_00002() {
+    public void test_isAgeCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -750,18 +750,18 @@ public class WeightScaleProfileTest {
             }
         };
         weightScaleProfile.connect(MOCK_DEVICE);
-        assertNotNull(weightScaleProfile.isAgeCharacteristicSupporeted());
+        assertNotNull(weightScaleProfile.isAgeCharacteristicSupported());
         weightScaleProfile.disconnect();
     }
 
     @Test
-    public void test_isDateOfBirthCharacteristicSupporeted_00001() {
+    public void test_isDateOfBirthCharacteristicSupported_00001() {
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
-        assertNull(weightScaleProfile.isDateOfBirthCharacteristicSupporeted());
+        assertNull(weightScaleProfile.isDateOfBirthCharacteristicSupported());
     }
 
     @Test
-    public void test_isDateOfBirthCharacteristicSupporeted_00002() {
+    public void test_isDateOfBirthCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -794,18 +794,18 @@ public class WeightScaleProfileTest {
             }
         };
         weightScaleProfile.connect(MOCK_DEVICE);
-        assertNotNull(weightScaleProfile.isDateOfBirthCharacteristicSupporeted());
+        assertNotNull(weightScaleProfile.isDateOfBirthCharacteristicSupported());
         weightScaleProfile.disconnect();
     }
 
     @Test
-    public void test_isFirstNameCharacteristicSupporeted_00001() {
+    public void test_isFirstNameCharacteristicSupported_00001() {
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
-        assertNull(weightScaleProfile.isFirstNameCharacteristicSupporeted());
+        assertNull(weightScaleProfile.isFirstNameCharacteristicSupported());
     }
 
     @Test
-    public void test_isFirstNameCharacteristicSupporeted_00002() {
+    public void test_isFirstNameCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -838,18 +838,18 @@ public class WeightScaleProfileTest {
             }
         };
         weightScaleProfile.connect(MOCK_DEVICE);
-        assertNotNull(weightScaleProfile.isFirstNameCharacteristicSupporeted());
+        assertNotNull(weightScaleProfile.isFirstNameCharacteristicSupported());
         weightScaleProfile.disconnect();
     }
 
     @Test
-    public void test_isHeightCharacteristicSupporeted_00001() {
+    public void test_isHeightCharacteristicSupported_00001() {
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
-        assertNull(weightScaleProfile.isHeightCharacteristicSupporeted());
+        assertNull(weightScaleProfile.isHeightCharacteristicSupported());
     }
 
     @Test
-    public void test_isHeightCharacteristicSupporeted_00002() {
+    public void test_isHeightCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -882,18 +882,18 @@ public class WeightScaleProfileTest {
             }
         };
         weightScaleProfile.connect(MOCK_DEVICE);
-        assertNotNull(weightScaleProfile.isHeightCharacteristicSupporeted());
+        assertNotNull(weightScaleProfile.isHeightCharacteristicSupported());
         weightScaleProfile.disconnect();
     }
 
     @Test
-    public void test_isGenderCharacteristicSupporeted_00001() {
+    public void test_isGenderCharacteristicSupported_00001() {
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
-        assertNull(weightScaleProfile.isGenderCharacteristicSupporeted());
+        assertNull(weightScaleProfile.isGenderCharacteristicSupported());
     }
 
     @Test
-    public void test_isGenderCharacteristicSupporeted_00002() {
+    public void test_isGenderCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -926,18 +926,18 @@ public class WeightScaleProfileTest {
             }
         };
         weightScaleProfile.connect(MOCK_DEVICE);
-        assertNotNull(weightScaleProfile.isGenderCharacteristicSupporeted());
+        assertNotNull(weightScaleProfile.isGenderCharacteristicSupported());
         weightScaleProfile.disconnect();
     }
 
     @Test
-    public void test_isDatabaseChangeIncrementCharacteristicNotifySupporeted_00001() {
+    public void test_isDatabaseChangeIncrementCharacteristicNotifySupported_00001() {
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
-        assertNull(weightScaleProfile.isDatabaseChangeIncrementCharacteristicNotifySupporeted());
+        assertNull(weightScaleProfile.isDatabaseChangeIncrementCharacteristicNotifySupported());
     }
 
     @Test
-    public void test_isDatabaseChangeIncrementCharacteristicNotifySupporeted_00002() {
+    public void test_isDatabaseChangeIncrementCharacteristicNotifySupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -970,7 +970,7 @@ public class WeightScaleProfileTest {
             }
         };
         weightScaleProfile.connect(MOCK_DEVICE);
-        assertNotNull(weightScaleProfile.isDatabaseChangeIncrementCharacteristicNotifySupporeted());
+        assertNotNull(weightScaleProfile.isDatabaseChangeIncrementCharacteristicNotifySupported());
         weightScaleProfile.disconnect();
     }
 
@@ -1018,7 +1018,7 @@ public class WeightScaleProfileTest {
                         }
 
                         @Override
-                        public boolean isAgeCharacteristicSupporeted() {
+                        public boolean isAgeCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1083,7 +1083,7 @@ public class WeightScaleProfileTest {
                         }
 
                         @Override
-                        public boolean isAgeCharacteristicSupporeted() {
+                        public boolean isAgeCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1148,7 +1148,7 @@ public class WeightScaleProfileTest {
                         }
 
                         @Override
-                        public boolean isDateOfBirthCharacteristicSupporeted() {
+                        public boolean isDateOfBirthCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1213,7 +1213,7 @@ public class WeightScaleProfileTest {
                         }
 
                         @Override
-                        public boolean isDateOfBirthCharacteristicSupporeted() {
+                        public boolean isDateOfBirthCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1278,7 +1278,7 @@ public class WeightScaleProfileTest {
                         }
 
                         @Override
-                        public boolean isFirstNameCharacteristicSupporeted() {
+                        public boolean isFirstNameCharacteristicSupported() {
                             return true;
                         }
 
@@ -1344,7 +1344,7 @@ public class WeightScaleProfileTest {
                         }
 
                         @Override
-                        public boolean isFirstNameCharacteristicSupporeted() {
+                        public boolean isFirstNameCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1409,7 +1409,7 @@ public class WeightScaleProfileTest {
                         }
 
                         @Override
-                        public boolean isHeightCharacteristicSupporeted() {
+                        public boolean isHeightCharacteristicSupported() {
                             return true;
                         }
 
@@ -1475,7 +1475,7 @@ public class WeightScaleProfileTest {
                         }
 
                         @Override
-                        public boolean isHeightCharacteristicSupporeted() {
+                        public boolean isHeightCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1540,7 +1540,7 @@ public class WeightScaleProfileTest {
                         }
 
                         @Override
-                        public boolean isGenderCharacteristicSupporeted() {
+                        public boolean isGenderCharacteristicSupported() {
                             return true;
                         }
 
@@ -1606,7 +1606,7 @@ public class WeightScaleProfileTest {
                         }
 
                         @Override
-                        public boolean isGenderCharacteristicSupporeted() {
+                        public boolean isGenderCharacteristicSupported() {
                             return true;
                         }
                     };
@@ -1787,7 +1787,7 @@ public class WeightScaleProfileTest {
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupporeted() {
+                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
                             return true;
                         }
 
@@ -1853,7 +1853,7 @@ public class WeightScaleProfileTest {
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupporeted() {
+                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
                             return true;
                         }
 
@@ -1919,7 +1919,7 @@ public class WeightScaleProfileTest {
                 if (mUserDataService == null) {
                     mUserDataService = new UserDataService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupporeted() {
+                        public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
                             return true;
                         }
 
@@ -3490,13 +3490,13 @@ public class WeightScaleProfileTest {
     }
 
     @Test
-    public void test_isLocalTimeInformationCharacteristicSupporeted_00001() {
+    public void test_isLocalTimeInformationCharacteristicSupported_00001() {
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
-        assertNull(weightScaleProfile.isLocalTimeInformationCharacteristicSupporeted());
+        assertNull(weightScaleProfile.isLocalTimeInformationCharacteristicSupported());
     }
 
     @Test
-    public void test_isLocalTimeInformationCharacteristicSupporeted_00002() {
+    public void test_isLocalTimeInformationCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -3526,7 +3526,7 @@ public class WeightScaleProfileTest {
             }
         };
         weightScaleProfile.connect(MOCK_DEVICE);
-        assertNotNull(weightScaleProfile.isLocalTimeInformationCharacteristicSupporeted());
+        assertNotNull(weightScaleProfile.isLocalTimeInformationCharacteristicSupported());
         weightScaleProfile.disconnect();
     }
 
@@ -3572,13 +3572,13 @@ public class WeightScaleProfileTest {
     }
 
     @Test
-    public void test_isReferenceTimeInformationCharacteristicSupporeted_00001() {
+    public void test_isReferenceTimeInformationCharacteristicSupported_00001() {
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
-        assertNull(weightScaleProfile.isReferenceTimeInformationCharacteristicSupporeted());
+        assertNull(weightScaleProfile.isReferenceTimeInformationCharacteristicSupported());
     }
 
     @Test
-    public void test_isReferenceTimeInformationCharacteristicSupporeted_00002() {
+    public void test_isReferenceTimeInformationCharacteristicSupported_00002() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         assertNotNull(bluetoothAdapter);
         final BluetoothDevice MOCK_DEVICE = bluetoothAdapter.getRemoteDevice("00:11:22:33:AA:BB");
@@ -3608,7 +3608,7 @@ public class WeightScaleProfileTest {
             }
         };
         weightScaleProfile.connect(MOCK_DEVICE);
-        assertNotNull(weightScaleProfile.isReferenceTimeInformationCharacteristicSupporeted());
+        assertNotNull(weightScaleProfile.isReferenceTimeInformationCharacteristicSupported());
         weightScaleProfile.disconnect();
     }
 
@@ -3966,7 +3966,7 @@ public class WeightScaleProfileTest {
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isLocalTimeInformationCharacteristicSupporeted() {
+                        public boolean isLocalTimeInformationCharacteristicSupported() {
                             return true;
                         }
 
@@ -4031,7 +4031,7 @@ public class WeightScaleProfileTest {
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isLocalTimeInformationCharacteristicSupporeted() {
+                        public boolean isLocalTimeInformationCharacteristicSupported() {
                             return true;
                         }
 
@@ -4095,7 +4095,7 @@ public class WeightScaleProfileTest {
                 if (mCurrentTimeService == null) {
                     mCurrentTimeService = new CurrentTimeService(mBLEConnection, mWeightScaleProfileCallback, null) {
                         @Override
-                        public boolean isReferenceTimeInformationCharacteristicSupporeted() {
+                        public boolean isReferenceTimeInformationCharacteristicSupported() {
                             return true;
                         }
 

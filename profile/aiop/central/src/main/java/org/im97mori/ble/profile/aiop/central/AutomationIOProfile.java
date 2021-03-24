@@ -472,12 +472,12 @@ public class AutomationIOProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see AutomationIOService#isAggregateSupporeted()
+     * @see AutomationIOService#isAggregateSupported()
      */
-    public synchronized Boolean isAggregateSupporeted() {
+    public synchronized Boolean isAggregateSupported() {
         Boolean result = null;
         if (mAutomationIOService != null) {
-            result = mAutomationIOService.isAggregateSupporeted();
+            result = mAutomationIOService.isAggregateSupported();
         }
         return result;
     }

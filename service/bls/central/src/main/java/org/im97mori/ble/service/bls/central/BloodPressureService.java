@@ -45,7 +45,7 @@ public class BloodPressureService extends AbstractCentralService {
      * Intermediate Cuff Pressure characteristic flag
      * {@code true}:Intermediate Cuff Pressure characteristic is exist, {@code false}:Intermediate Cuff Pressure characteristic is not exist or service not ready
      */
-    private boolean mIsIntermediateCuffPressureCharacteristicSupporeted;
+    private boolean mIsIntermediateCuffPressureCharacteristicSupported;
 
     /**
      * @param bleConnection                {@link BLEConnection} instance
@@ -63,7 +63,7 @@ public class BloodPressureService extends AbstractCentralService {
     @Override
     public synchronized void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
-            mIsIntermediateCuffPressureCharacteristicSupporeted = false;
+            mIsIntermediateCuffPressureCharacteristicSupported = false;
         }
         super.onBLEDisconnected(taskId, bluetoothDevice, status, argument);
     }
@@ -82,7 +82,7 @@ public class BloodPressureService extends AbstractCentralService {
                     if (bluetoothGattCharacteristic != null && BluetoothGattCharacteristic.PROPERTY_NOTIFY == bluetoothGattCharacteristic.getProperties()) {
                         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC);
                         if (bluetoothGattDescriptor != null) {
-                            mIsIntermediateCuffPressureCharacteristicSupporeted = true;
+                            mIsIntermediateCuffPressureCharacteristicSupported = true;
                         }
                     }
                 }
@@ -259,7 +259,7 @@ public class BloodPressureService extends AbstractCentralService {
      * @return {@code true}:Intermediate Cuff Pressure characteristic is exist, {@code false}:Intermediate Cuff Pressure characteristic is not exist or service not ready
      */
     public boolean isIntermediateCuffPressureSupported() {
-        return mIsIntermediateCuffPressureCharacteristicSupporeted;
+        return mIsIntermediateCuffPressureCharacteristicSupported;
     }
 
     /**
